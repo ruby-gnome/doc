@@ -1,0 +1,74 @@
+= class Gtk::Progress
+A Gtk::Progress is the abstract base class used to derive a Gtk::ProgressBar which provides a visual representation of the progress of a long running operation. 
+
+== Object Hierarchy
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Gtk::Object
+        * Gtk::Widget
+          * Gtk::Progress
+
+== Instance Methods
+--- activity_mode?
+    Return a value indicating whether activity mode is enabled.
+    * Returns: true if activity mode is enabled.
+--- activity_mode=(enable)
+    Sets a value indicating whether activity mode is enabled.
+    * enable: true if activity mode is enabled.
+    * Returns: enable
+--- set_activity_mode(enable)
+    Same as Gtk::Progress#activity_mode=.
+    * enable: true if activity mode is enabled.
+    * Returns: self
+
+--- show_text?
+    Return a value indicating whether the progress is shown as text.
+    * Returns: true if the progress is shown as text.
+--- show_text=(shown)
+    Return a value indicating whether the progress is shown as text.
+    * shown: true if the progress is shown as text.
+    * Returns: shown
+--- set_show_text(shown)
+    Same as Gtk::Progress#show_text=.
+    * shown: true if the progress is shown as text.
+    * Returns: shown
+
+--- text_xalign
+    Return a number between 0.0 and 1.0 specifying the horizontal alignment.
+    * Returns: a number specifying th horizontal alignment.
+--- text_xalign=(xalign)
+    Sets a number between 0.0 and 1.0 specifying the horizontal alignment.
+    * xalign: a number specifying th horizontal alignment.
+    * Returns: xalign
+--- set_text_xalign(xalign)
+    Same as Gtk::Progress#text_xalign=.
+    * xalign: a number specifying th horizontal alignment.
+    * Returns: self
+
+--- text_yalign
+    Return a number between 0.0 and 1.0 specifying the vertical alignment.
+    * Returns: a number specifying th vertical alignment.
+--- text_yalign=(yalign)
+    Sets a number between 0.0 and 1.0 specifying the vertical alignment.
+    * yalign: a number specifying th vertical alignment.
+    * Returns: yalign
+--- set_text_yalign(yalign)
+    Same as Gtk::Progress#text_yalign=.
+    * yalign: a number specifying th vertical alignment.
+    * Returns: self
+
+== Properties
+--- activity-mode: true or false (Read/Write)
+    If true the Gtk::Progress is in activity mode, meaning that it signals something is happening, but not how much of the activity is finished. This is used when you're doing something that you don't know how long it will take
+
+--- show-text: true or false (Read/Write)
+    Whether the progress is shown as text
+
+--- text-xalign: Float (Read/Write)
+    A number between 0.0 and 1.0 specifying the horizontal alignment of the text in the progress widget
+
+--- text-yalign: Float (Read/Write)
+    A number between 0.0 and 1.0 specifying the vertical alignment of the text in the progress widget
+
+((<Masao>))

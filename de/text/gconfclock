@@ -1,0 +1,41 @@
+=gconfclock
+Gconfclock ist eine MVC-artige Uhr, die Ruby/GConf benutzt.
+
+* Das "Model" ist eine Datei ($HOME/.gconf/apps/gconfclock/%gconf.xml).
+* Der Betrachter ist gconfclock_viewer.rb.
+* Zur Steuerung dienen gconfclock_controller.rb und gconfd.
+
+(1)gconfclock_controller.rb sagt dem "Model" via gconfd, wieviel Uhr es ist.
+(2)gconfd gibt die Uhrzeit an den Betrachter weiter.
+(3)gconfclock_viewer.rb zeigt die Uhrzeit an.
+
+Es ist möglich, gconfclock_viewer.rb mehrmals zu starten.
+
+== Download
+* {{attach_anchor("gconfclock_controller.rb")}}
+* {{attach_anchor("gconfclock_viewer.rb")}}
+
+== Systemvoraussetzungen
+Der Entwickler benutzte:
+* ruby 1.8.0 (2003-04-22) [i686-linux]
+* Ruby/GTK2, Ruby/GConf
+
+Von Ruby/GConf wird die neueste CVS-Version (2003-06-19 oder neuer) benötigt.
+
+== Syntax
+  $ ruby gconfclock_controller.rb
+In einem anderen Terminal:
+  $ ruby gconfclock_viewer.rb &
+  $ ruby gconfclock_viewer.rb &
+  $ ruby gconfclock_viewer.rb &
+  $ ruby gconfclock_viewer.rb &
+
+== Lizenz
+Dieselbe wie Ruby.
+
+== Author
+((<Masao>))
+
+== Änderungen
+:2003-06-19
+ Initial release

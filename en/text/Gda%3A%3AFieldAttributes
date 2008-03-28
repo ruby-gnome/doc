@@ -1,0 +1,174 @@
+= class Gda::FieldAttributes
+Management of database fields.
+
+== Object Hierarchy
+* Object
+  * GLib::Boxed
+    * Gda::FieldAttributes
+
+== Class Methods
+--- Gda::FieldAttributes.new
+    This method returns a newly created Gda::FieldAttributes object.
+    * Returns: a newly created Gda::FieldAttributes object.
+
+== Instance Methods
+--- allow_null=(allow)
+    Sets the 'allow null' flag of the field attributes.
+    * allow: whether the given field should allows null values or not.  
+    * Returns: the given parameter 'allow'.
+
+--- allow_null?
+    Gets the 'allow null' flag of the field attributes.
+    * Returns: whether the field allows null values or not (true or false).
+
+--- auto_increment=(is_auto)
+    Sets the auto increment flag for the field.
+    * is_auto: auto increment boolean status.  
+    * Returns: the given parameter 'is_auto'.
+
+--- auto_increment?
+    This method returns whether the given field is an auto incremented one (true or false).
+    * Returns: whether the given field is an auto incremented one (true or false).
+
+--- caption
+    This method returns the caption of the field attributes.
+    * Returns: the caption of the field attributes.
+
+--- caption=(caption)
+    Sets the caption of the field attributes.
+    * caption: the new caption of the field attributes.  
+    * Returns: the given parameter 'caption'.
+
+--- defined_size
+    This method returns the defined size of the field attributes.
+    * Returns: the defined size of the field attributes.
+
+--- defined_size=(size)
+    Sets the defined size of the field attributes.
+    * size: the defined size we want to set.  
+    * Returns: the given parameter 'size'.
+
+--- name
+    This method returns the name of the field attributes.
+    * Returns: the name of the field attributes.
+
+--- name=(name)
+    Sets the name of the field attributes.
+    * name: the new name of the field attributes.  
+    * Returns: the given parameter 'name'.
+
+--- position
+    This method returns the position of the field the attributes refer to in the containing data model.
+    * Returns: the position of the field the attributes refer to in the containing data model.
+
+--- position=(position)
+    Sets the position of the field the attributes refer to in the containing
+    data model.
+    * position: the wanted position of the field in the containing data model.  
+    * Returns: the given parameter 'position'.
+
+--- primary_key=(pk)
+    Sets the 'primary key' flag of the field attributes.
+    * pk: whether if the field should be a primary key.  
+    * Returns: the given parameter 'pk'.
+
+--- primary_key?
+    This method returns whether if the field is a primary key (true or false).
+    * Returns: whether if the field is a primary key (true or false).
+
+--- references
+    This method returns the references of the field attributes.
+    * Returns: the references of the field attributes.
+
+--- references=(references)
+    Sets the references of the field attributes.
+    * references: the new references of the field attributes.  
+    * Returns: the given parameter 'references'.
+
+--- scale
+    This method returns the scale of the field attributes.
+    * Returns: the scale of the field attributes.
+
+--- scale=(scale)
+    Sets the scale of the field attributes.
+    * scale: the new scale of the field attributes.  
+    * Returns: the given parameter 'scale'.
+
+--- set_allow_null(allow)
+    Sets the 'allow null' flag of the field attributes.
+    * allow: whether the given field should allows null values or not.  
+    * Returns: self.
+
+--- set_auto_increment(is_auto)
+    Sets the auto increment flag for the field.
+    * is_auto: auto increment boolean status.  
+    * Returns: self.
+
+--- set_caption(caption)
+    Sets the caption of the field attributes.
+    * caption: the new caption of the field attributes.  
+    * Returns: self.
+
+--- set_defined_size(size)
+    Sets the defined size of the field attributes.
+    * size: the defined size we want to set.  
+    * Returns: self.
+
+--- set_name(name)
+    Sets the name of the field attributes.
+    * name: the new name of the field attributes.  
+    * Returns: self.
+
+--- set_position(position)
+    Sets the position of the field the attributes refer to in the containing
+    data model.
+    * position: the wanted position of the field in the containing data model.  
+    * Returns: self.
+
+--- set_primary_key(pk)
+    Sets the 'primary key' flag of the field attributes.
+    * pk: whether if the field should be a primary key.  
+    * Returns: self.
+
+--- set_references(references)
+    Sets the references of the field attributes.
+    * references: the new references of the field attributes.  
+    * Returns: self.
+
+--- set_scale(scale)
+    Sets the scale of the field attributes.
+    * scale: the new scale of the field attributes.  
+    * Returns: self.
+
+--- set_table(name)
+    Sets the name of the table to which this field belongs.
+    * name: a table name.  
+    * Returns: self.
+
+--- set_unique_key(uk)
+    Sets the 'unique key' flag of the field attributes.
+    * uk: whether if the field should be a unique key.  
+    * Returns: self.
+
+--- table
+    This method returns the name of the table to which this field belongs.
+    * Returns: the name of the table to which this field belongs.
+
+--- table=(name)
+    Sets the name of the table to which this field belongs.
+    * name: a table name.  
+    * Returns: the given parameter 'name'.
+
+--- unique_key 
+    This method returns whether the field is an unique key (true or false).
+    * Returns: whether the field is an unique key (true or false).
+
+--- unique_key=(uk)
+    Sets the 'unique key' flag of the field attributes.
+    * uk: whether if the field should be a unique key.  
+    * Returns: the given parameter 'uk'.
+
+== See Also
+((<Gda>)).
+
+- ((<lrz>))

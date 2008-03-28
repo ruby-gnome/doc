@@ -1,0 +1,120 @@
+= Compile Guide for MS Windows (vc++)
+This is a guide on how to compile and install ruby-gtk2-0.13.0 on Microsoft Windows.
+
+((*Note*)) The latest ((<One-Click Ruby Installer For Windows Project|URL:http://rubyinstaller.rubyforge.org/wiki/wiki.pl>))(ruby-1.8.5 or later?) requires ((<VC++ 6.0|URL:http://rubyinstaller.rubyforge.org/wiki/wiki.pl?DevDoc>)) or MinGW.
+You can't compile Ruby-GNOME2 with VC++ 7.0 or later and this tutorial is for VC++7.0.
+If you don't have MSVC++6.0, try ((<Compile Guide for MS Windows (mswin32, mingw32)|compile_mingw>))
+
+== Install Ruby
+First the most obvious. :-) 
+
+Get Ruby from the ((<One-Click Ruby Installer For Windows Project|URL:http://rubyinstaller.rubyforge.org/wiki/wiki.pl>)), if you haven't done so already.
+
+== Install VC++
+This guide uses the freely available VC++ compiler for which there are links and instructions at:
+((<URL:http://www.rubygarden.org/ruby?WindowsCompiler>))
+Thanks to Daniel Berger for providing them.
+
+Needless to say that you could use other version of VC++ as well, as long as it has the needed tools and libraries.
+
+=== Microsoft Platform SDK
+Download and install the SDK from ((<URL:http://www.microsoft.com/downloads/details.aspx?FamilyId=A55B6B43-E24F-4EA3-A93E-40C0EC4F68E5&displaylang=en>))
+
+This guide installed Windows XP SP2 version to "C:\Microsoft Platform SDK for Windows XP SP2"
+
+=== Microsoft .NET Framework Version 1.1 Redistributable Package
+Install the .NET redistributable package from ((<URL:http://tinyurl.com/95zt>))
+
+=== .NET Framework SDK Version 1.1
+Install the .NET SDK from ((<URL:http://tinyurl.com/97x7>))
+
+It got installed to "C:\Microsoft DotNet SDK".
+
+=== Microsoft Visual C++ Toolkit 2003
+Install the VC Toolkit from ((<URL:http://msdn.microsoft.com/visualc/vctoolkit2003/>))
+
+Installed to "C:\Microsoft Visual C++ Toolkit 2003"
+
+Edit "C:\Microsoft Visual C++ Toolkit 2003\vcvars32.bat" and add these directories to some of the Environment Variables:
+
+"C:\Microsoft Platform SDK for Windows XP SP2\Bin" and "C:\Microsoft DotNet SDK\v1.1\Bin" to PATH, so it reads
+
+ Set PATH=C:\Microsoft Platform SDK for Windows XP SP2\Bin;C:\Microsoft DotNet SDK\v1.1\Bin;C:\Microsoft Visual C++ Toolkit 2003\bin;%PATH%
+
+"C:\Microsoft Platform SDK for Windows XP SP2\Include" to INCLUDE, so it reads
+
+ Set INCLUDE=C:\Microsoft Platform SDK for Windows XP SP2\Include;C:\Microsoft Visual C++ Toolkit 2003\include;%INCLUDE%
+
+"C:\Program Files\Microsoft Visual Studio .NET 2003\Vc7\lib" and "C:\Microsoft Platform SDK for Windows XP SP2\Lib" to LIB, so it reads
+
+ Set LIB=C:\Program Files\Microsoft Visual Studio .NET 2003\Vc7\lib;C:\Microsoft Platform SDK for Windows XP SP2\Lib;C:\Microsoft Visual C++ Toolkit 2003\lib;%LIB%
+
+
+By the way, thanks to Microsoft for providing these tools. Also, all the Microsoft trademarks and rights are acknowledged, even if not explicitly said.
+
+== Install GTK+ Libraries from ((<GLADE for Windows|URL:http://gladewin32.sourceforge.net/>)).
+((<Download and install the latest Development Environment|URL:http://gladewin32.sourceforge.net/>)), which includes the Runtime already.
+
+Installed to "C:\GTK"
+
+set LIB=c:\GTK\lib;%LIB% unless it's not set by the gladewin32 installer.
+
+== Compile/Install Ruby-GNOME2
+Download and extract the latest ((<ruby-gtk2|URL:http://sourceforge.net/project/showfiles.php?group_id=53614>)) version.
+
+Extracted to "C:\ruby-gtk2-0.13.0"
+
+If you use a CVS version of Ruby-GNOME2, some GNOME libraries won't succeed to compile because they are lacking on Windows, that's why there is a "ruby-gtk2" package which includes only the supported libraries. So, don't worry much about compiling failures, because the compiling and installing routines of the supported libraries will work just fine, even if some libraries don't compile. 
+
+
+Run "Start > Programs > Microsoft Visual C++ Toolkit 2003 > Visual C++ Toolkit 2003 Command Prompt" 
+
+And enter these commands:
+
+ C:\Microsoft Visual C++ Toolkit 2003>cd c:\ruby-gtk2-0.13.0
+ C:\ruby-gtk2-0.13.0>ruby extconf.rb
+
+Should result in something like:
+
+ -----
+ Target libraries: glib, gdkpixbuf, pango, atk, gtk
+ -----
+
+Enter:
+
+ C:\ruby-gtk2-0.13.0>nmake
+
+If everything went well, this should result in
+
+ -----
+ SUCCEEDED: glib gdkpixbuf pango atk gtk gtkglext libglade
+ FAILED: NONE
+ -----
+ Done.
+
+Running:
+
+ C:\ruby-gnome2>nmake install
+
+Should result in:
+
+ -----
+ SUCCEEDED: glib gdkpixbuf pango atk gtk gtkglext libglade
+ FAILED: NONE
+ -----
+ Done.
+
+Job done!
+
+Now you can help us develop Ruby-GNOME2 :-), or at least you can update your Ruby-GNOME2 whenever you feel like it. This has been facilitated enormously by all the installers that have configured a lot of environment variables automatically. The only downside was to use Windows XP for this. :-)
+
+== See Also
+If you have some troubles, see also ((<Install Guide for Windows>)).
+
+== ChangeLog
+:2005-10-16 ((<Masao>)) 
+  * Updated the SDK URL.
+:2005-07-31 ((<Masao>))
+  * Updated to ruby-gnome2-0.13.0.
+:2005-03-14 ((<Joao Pedrosa|jpedrosa>))
+  * Initial release.

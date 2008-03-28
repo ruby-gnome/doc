@@ -1,0 +1,40 @@
+= Modifier l'icone d'un bouton sur une barre d'outils
+Gtk::Toolbar, comme beaucoup d'autres widgets, hérite de Gtk::Container et de Gtk::Bin.  Ces classes peuvent contenir d'autres widgets, dont vous pouvez obtenir facilement les références pour appeler leurs méthodes.
+
+Voici un exemple.
+
+ require 'gtk2'
+ 
+ toolbar = Gtk::Toolbar.new
+ toolbar.append(Gtk::Stock::NEW) do
+   toolbar.children[0].child.children[0].set(Gtk::Stock::QUIT, Gtk::IconSize::SMALL_TOOLBAR)  #(1)
+ end
+ Gtk::Window.new.add(toolbar).show_all
+ 
+ Gtk.main
+
+Cliquez sur le bouton, et l'icone changera.
+A la place de la ligne (1) vous pouvez écrire:
+
+ button = toolbar.children[0]
+ vbox = button.child
+ image = vbox.children[0]
+ image.set(Gtk::Stock::QUIT, Gtk::IconSize::SMALL_TOOLBAR)
+
+Evidemment, vous devez utiliser la façon qui vous plait le mieux.  Mais la première technique utilise le chaînage d'appels de méthodes, qui est une des fonctionnalité intéressantes du langage Ruby.  La figure suivante montre les différentes relations entre ces objets:
+
+((<Containers|URL:/ja/hiki.cgi?c=plugin;plugin=attach_download;p=tips_toolbar;file_name=containers.jpg>))
+{{br}}
+
+(1) Gtk::Toolbar hérite de Gtk::Container, donc vous pouvez obtenir tous les widgets "fils" avec Gtk::Container#children.  Ici, le premier widget "fils" est l'objet cible (Gtk::Button), donc vous pouvez le récupérer avec toolbar.children[0].
+(2) Gtk::Button hérite de Gtk::Bin, donc il ne peut avoir qu'un seul fils.  Vous pouvez l'obtenir avec Gtk::Bin#child.  Dans notre cas, le widget "fils" est une Gtk::VBox.
+(3) Gtk::VBox est également une sous-classe de Gtk::Container.  Donc vous obtiendrez notre objet Gtk::Image en utilisant vbox.children[0].
+(4) Finalement, il ne reste plus qu'à utiliser Gtk::Image#set pour modifier l'icone.
+
+== Modifications
+:2003-09-11 ((<Laurent|lrz>))
+  Correction de l'anglais.
+:2003-09-11 ((<Masao>))
+  Première version.
+
+Page traduite de l'anglais par Laurent Sansonetti.

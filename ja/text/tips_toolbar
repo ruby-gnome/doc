@@ -1,0 +1,36 @@
+= ツールバー上のボタンのアイコンだけ変更する
+ツールバーをはじめ、多くのウィジェットはGtk::Container, Gtk::Binのサブクラスです。それらのウィジェットはいくつかの子ウィジェットがまとまったウィジェットとなっていますので、その一つ一つの子ウィジェットを取り出して、その子ウィジェットのメソッドを呼び出すことができます。
+ここではツールバー上のボタンのアイコンを変更してみましょう。
+
+ require 'gtk2'
+
+ toolbar = Gtk::Toolbar.new
+ toolbar.append(Gtk::Stock::NEW) do
+   toolbar.children[0].child.children[0].set(Gtk::Stock::QUIT, Gtk::IconSize::SMALL_TOOLBAR)  #(1)
+ end
+ Gtk::Window.new.add(toolbar).show_all
+ 
+ Gtk.main
+
+ボタンをクリックするとアイコンが変化します。
+
+(('(1)'))の部分はちょっと説明しづらいので以下のように分解してみます（自分で使う際はどちらでもお好みでどうぞ）。
+
+   button = toolbar.children[0]
+   vbox = button.child
+   image = vbox.children[0]
+   image.set(Gtk::Stock::QUIT, Gtk::IconSize::SMALL_TOOLBAR)
+
+階層図（というか各ウィジェットの包含関係と言った方が良いかな）は以下のようなイメージになります。
+
+{{image_right("containers.jpg")}}
+{{br}}
+
+具体的な処理の流れは以下のようになります。
+
+(1)Gtk::ToolbarはGtk::ContainerのサブクラスなのでGtk::Container#childrenで子ウィジェットを全て取得できます。で、今回はその１番目の子ウィジェット(Gtk::Button)を変更の対象としますのでtoolbar.children[0]で１番目の子ウィジェットを取得します。
+(2)Gtk::ButtonはGtk::Binのサブクラスで子ウィジェットは１つしかありません。子ウィジェットはGtk::Bin#childで取得できます。この場合のGtk::Buttonの子ウィジェットはGtk::VBoxです。
+(3)Gtk::VBoxもGtk::Containerのサブクラスです。vbox.children[0]で１番目の子ウィジェットであるGtk::Imageを取得します。
+(4)取得したGtk::Imageに対し、新しいアイコンをセットします。
+
+- ((<むとう>))

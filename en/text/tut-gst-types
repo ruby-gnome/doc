@@ -1,0 +1,32 @@
+= GStreamer Types
+{{link("tut-gst-mime-types", nil, "tut-gst", "tut-gst-threads")}}
+
+GStreamer assigns a unique number to all registered MIME types. GStreamer also keeps a reference to a function that can be used to determine if a given buffer is of the given MIME type.
+
+There is also an association between a MIME type and a file extension, but the use of typefind functions (similar to (({file(1)}))) is preferred.
+
+The type information is maintained in a list of Gst::Type.  All operations on Gst::Type occur via their ID numbers, which you can retrieve with Gst::Type#id.  You can also get the file extensions handled with Gst::Type#exts and the MIME type with Gst::Type#mime.
+
+== MIME Type Conversion
+
+We can obtain a Gst::Type for a given MIME type with the following piece of code:
+
+  type = Gst::Type.find_by_mime("audio/mpeg")
+
+This method will return nil if the type was not known.
+
+== ID Conversion
+
+We can obtain a Gst::Type for a given ID with the following piece of code:
+
+  type = Gst::Type.find_by_id(id)
+
+This method will return nil if the id was not associated with any known Gst::Type.
+
+== Extension Conversion
+
+We can obtain the Gst::Type for a given file extension with the following piece of code:
+
+  type = Gst::Type.find_by_ext(".mp3")
+
+This method will return nil if the type was not known.

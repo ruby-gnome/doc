@@ -1,0 +1,80 @@
+= Gerenciando Seleções
+{{link "tut-treeview-renderer-bold", nil, "tut-treeview", "tut-treeview-selection-doubleclick"}}
+
+Uma das habilidades mais básicas de um "view" de lista ou árvore é que as linhas podem ser selecionadas ou deselecionadas ("unselected"). As seleções são gerenciadas usand o objeto Gtk::TreeSelection de um "tree view". Todo "tree view" automaticamente tem um Gtk::TreeSelection associado a ele, e você pode pegá-lo usando Gtk::TreeView#selection. As seleções são gerenciadas completamente no lado do "tree view", o que significa que o "model" sabe nada sobre quais linhas estão selecionadas ou não. Não existe razão em particular de por quê o gerenciamento de seleção não poderia ter sido implementado com métodos acessando o componente de "tree view" diretamente, mas por razões de clareza das "APIs" e de código, os desenvolvedores da GTK+ decidiram criar esse objeto especial GtkTreeSelection que então interamente lida com o componente "tree view". 
+
+Existem três maneiras de lidar com seleções de "tree view": você pega uma lista de linhas atualmente selecionadas quando você precisa, por exemplo dentro de um método de menu de contexto, ou você mantém o controle de todas as ações de seleção e deseleção e mantém uma lista por perto das linhas atualmente selecionadas para quando precisar; como um último recurso, você também pode navegar a sua lista ou árvore e verificar cada linha para verificar se ela está selecionada ou não (o que você tem que se você se você quiser todas as linhas que não estão selecionadas, por exemplo).
+
+== Modos de Seleção
+
+Você pode usar Gtk::TreeSelection#mode= para influenciar a maneira que as seleções são gerenciadas. Existem quatro modos de seleção: 
+
+* Gtk::SELECTION_NONE - nenhum ítem pode ser selecionado
+* Gtk::SELECTION_SINGLE - apenas um ítem pode ser selecionado
+* Gtk::SELECTION_BROWSE - exatamente um ítem está sempre selecionado
+* Gtk::SELECTION_MULTIPLE - qualquer número de ítems pode ser selecionado
+
+== Pegando as Linhas que Estão Atualmente Selecionadas
+
+você pode acessar as linhas selecionadas atualmente navegando todas as linhas selecionadas com Gtk::TreeSelection#selected_each.
+
+Se o modo de seleção que você está usando for Gtk::SELECTION_SINGLE ou Gtk::SELECTION_BROWSE, a maneira mais conveniente de conseguir a linha selecionada é com o método Gtk::TreeSelection#selected, o qual retornará um Gtk::TreeIter apontando para a linha selecionada (se a linha está selecionada), ou nil de outro modo. Ele é usado assim:
+
+  selection = view.selection
+
+  if iter = selection.selected
+    puts "a linha selecionada é #{iter[0]}"
+  else
+    puts "nenhuma linha selecionada"
+  end
+
+Uma coisa que você precisa ter cuidado é ao remover linhas de um "model" com o método Gtk::TreeSelection#selected_each method. A solução mais fácil para remover linhas múltiplas foi descrita ((<anteriormente|tut-treeview-model-remove>)), i.e., pega referências de linha de árvore para todas as linhas selecionadas e então remove as linhas uma por uma. Você não pode remover as linhas de dentro do bloco de código em qualquer caso, isso simplesmente não é permitido.
+
+Eis um exemplo de como usar Gtk::TreeSelection#selected_each:
+
+  selection.selected_each do |model, path, iter|
+    puts "#{iter[0]} está selecionado"
+  end
+
+== Usando Funções de Seleção
+
+Você pode configurar uma função de seleção "custom" com Gtk::TreeSelection#set_select_function. Esse bloco de código será então chamado toda vez que uma linha for ser selecionada ou deselecionada (significando: ele será chamado antes que o status da seleção dessa linha seja alterado). Funções de seleção são usadas comumente para as coisas a seguir:
+
+* Manter o controle dos itens atualmente selecionados (então você mantém uma lista de itens selecionados). Nesse caso, note novamente que o seu bloco de código é chamado antes que o status de seleção da linha seja alterado. Em outras palavras: se a linha for ser selecionada, então o argumento boolean path_currently_selected que é passado ainda é FALSE. Também note que ele pode não ser sempre chamado quando uma linha for removida, assim você tem que deselecionar a linha antes de você removê-la para ter certeza que a sua função de seleção seja chamada e remove a linha da sua lista, ou verificar a validade de uma linha quando você processa a lista de seleção que você mantém. Você não deve armazenar os caminhos de árvore na sua lista de linhas selecionadas, porque sempre que as linhas forem adicionadas ou removidas ou o "model" for reordenado, os caminhos podem apontar para outras linhas. Use referências de linhas de árvore e outra maneira especial de identificar a linha.
+* Dizer para a GTK+ se ela pode selecionar ou deselecionar uma linha específicar (Por outro lado, você deve certificar-se que é óbvio para o usuário se uma linha pode ser selecionada ou não, porque o usuário pode ficar confuso se ele simplesmente não puder selecionar ou deselecionar uma linha). Isso é feito retornando TRUE ou FALSE.
+* Tomando ação adicional quando uma linha for selecionada ou não. 
+
+Outro exemplo simples:
+
+  selection.set_select_function do |selection, model, path, currently_selected|
+    if iter = model.get_iter(path)
+      if ! currently_selected
+        puts "#{iter[0]} está quase para ser selecionada"
+          else
+        puts "#{iter[0]} está quase para ser deselecionada"
+      end
+    end
+
+    # permite o estado de seleção ser alterado
+    true
+  end
+
+== Verificando se uma Linha Está Selecionada
+
+Você pode verificar se uma dada linha está selecionada ou não usando os métodos Gtk::TreeSelection#iter_is_selected? e Gtk::TreeSelection#path_is_selected?. Se você quiser saber todas as linhas que ((*não*)) estão selecionadas, por exemplo, você poderia navegar a lista ou árvore inteira, e usar esses métodos para verificar cada linha se ela está selecionada ou não.
+
+== Selecionando e Deselecionando Linhas
+
+Você pod selecionar ou deselecionar linhas manualmente com Gtk::TreeSelection#select_iter, Gtk::TreeSelection#select_path, Gtk::TreeSelection#unselect_iter, Gtk::TreeSelection#unselect_path, Gtk::TreeSelection#select_all, e Gtk::TreeSelection#unselect_all, caso você algum dia precise fazer isso.
+
+== Pegando o Número de Linhas Selecionadas
+
+Algumas vezes você quer saber o número de linhas que estão atualmente selecionadas (por exemplo para configurar entradas de menu de contexto ativa ou inativa antes de fazer aparecer um menu de contexto). Se você estiver usando o modo de seleção Gtk::SELECTION_SINGLE ou Gtk::SELECTION_BROWSE, isso é trivial para checar com Gtk::TreeSelection#selected, o qual retornará um Gtk::TreeIter se uma linha estiver selecionada ou nil, caso contrário. Obviamente, se você estiver usando Gtk::SELECTION_NONE, o número de linhas selecionadas será sempre 0.
+
+Se você estiver usando Gtk::SELECTION_MULTIPLE ou quiser uma maneira mais geral que funciona para todos os modos, eis um método simples, usando o método Gtk::TreeSelection#selected_each:
+
+  def count_selected_rows(selection)
+    count = 0
+    selection.selected_each { count += 1 }
+    count
+  end

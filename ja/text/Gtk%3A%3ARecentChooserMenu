@@ -1,0 +1,53 @@
+= class Gtk::RecentChooserMenu
+Gtk::RecentChooserMenu is a widget suitable for displaying recently used files inside a menu. It can be used to set a sub-menu of a Gtk::MenuItem using Gtk::MenuItem#set_submenu, or as the menu of a Gtk::MenuToolButton.
+
+Note that Gtk::RecentChooserMenu does not have any methods of its own. Instead, you should use the methods that work on a Gtk::RecentChooser.
+
+Note also that Gtk::RecentChooserMenu does not support multiple filters, as it has no way to let the user choose between them as the Gtk::RecentChooserWidget and Gtk::RecentChooserDialog widgets do. Thus using Gtk::RecentChooser#add_filter on a Gtk::RecentChooserMenu widget will yield the same effects as using Gtk::RecentChooser#set_filter, replacing any currently set filter with the supplied filter; Gtk::RecentChooser#remove_filter will remove any currently set Gtk::RecentFilter object and will unset the current filter; Gtk::RecentChooser#filters will return a list containing a single Gtk::RecentFilter object.
+
+Recently used files are supported since GTK+ 2.10. 
+
+== Object Hierarchy
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::InitiallyUnowned
+        * Gtk::Object
+          * Gtk::Widget
+            * Gtk::Container
+              * Gtk::MenuShell
+                * Gtk::Menu
+                  * Gtk::RecentChooserMenu
+
+== Included Modules
+* Gtk::RecentChooser
+
+== Class Methods
+--- Gtk::RecentChooserMenu.new(manager = nil)
+    Creates a new Gtk::RecentChooserMenu widget.
+    This kind of widget shows the list of recently used resources as a menu, each item as a menu item. Each item inside the menu might have an icon, representing its MIME type, and a number, for mnemonic access. ((* Since 2.10 *))
+    * manager: a Gtk::RecentManager. This is useful if you have implemented your own recent manager, or if you have a customized instance of a Gtk::RecentManager object or if you wish to share a common Gtk::RecentManager object among multiple Gtk::RecentChooser widgets. If nil, this widget creates its own Gtk::RecentManager object.
+    * Returns: a new Gtk::RecentChooserMenu
+
+--- show_numbers?
+    Returns the value set by Gtk::RecentChooserMenu#show_numbers=. ((* Since 2.10 *))
+    * Returns: true if numbers should be shown.
+--- show_numbers=(show_numbers)
+    Sets whether a number should be added to the items of menu. The numbers are shown to provide a unique character for a mnemonic to be used inside the menu item's label. Only the first the items get a number to avoid clashes. ((* Sinec 2.10 *))
+    * show_numbers: true if the items should be displayed with a number, otherwise false.
+    * Returns: show_numbers
+--- set_show_numbers(show_numbers)
+    Same as show_numbers=. ((* Since 2.10 *))
+    * show_numbers: true if the items should be displayed with a number, otherwise false.
+    * Returns: self
+
+== Properties
+--- show-numbers: true or false (Read/Write)
+    Whether the items should be displayed with a number ((* Since 2.10 *))
+    * Default value: false
+
+== See Also
+Gtk::RecentChooser
+
+== ChangeLog
+* 2007-01-30: Added. - ((<Masao>))

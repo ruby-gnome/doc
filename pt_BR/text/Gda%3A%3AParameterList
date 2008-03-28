@@ -1,0 +1,73 @@
+= class Gda::ParameterList
+A list of Gda::Parameter objects.
+
+== Object Hierarchy
+* Object
+  * GLib::Boxed
+    * Gda::ParameterList
+
+== Class Methods
+--- Gda::ParameterList.new(*parameters=nil)
+    Creates a new Gda::ParameterList from optional Gda::Parameter objects.
+    * parameters: a list of Gda::Parameter objects.  
+    * Returns: the newly created Gda::ParameterList object.
+
+== Instance Methods
+--- <<(param)
+    Synonym for Gda::ParameterList#add.
+    * param: the Gda::Parameter to be added to the list.  
+    * Returns: self.
+
+--- [](name)
+    Synonym for Gda::ParameterList#find.
+    * name: name of the parameter to search for.  
+    * Returns: a Gda::Parameter reference if found, nil if not found.
+
+--- add(param)
+    Adds a new parameter to the list.
+    * param: the Gda::Parameter to be added to the list.  
+    * Returns: self.
+
+--- clear
+    Removes all parameters from the parameter list.
+    * Returns: self.
+
+--- each_name { |name| ... }
+    Calls the block for each parameter in the list, passing its name as
+    parameter.
+    * Returns: always nil.
+
+--- each_parameter { |param| ... }
+    Calls the block for each parameter in the parameter list, passing a
+    reference to a Gda::Parameter object as argument.
+    * Returns: always nil.
+
+--- empty?
+    This method returns true if the list is empty, false otherwise.
+    * Returns: true if the list is empty, false otherwise.
+
+--- find(name)
+    Gets a parameter from the list given its name.
+    * name: name of the parameter to search for.  
+    * Returns: a Gda::Parameter reference if found, nil if not found.
+
+--- length
+    This method returns the number of parameters stored in the list.
+    * Returns: the number of parameters stored in the list.
+
+--- names
+    Gets the names of all parameters in the parameter list.
+    * Returns: an Array containing the names of all parameters.
+
+--- parameters
+    Gets all parameters in the parameter list.
+    * Returns: an Array of Gda::Parameter objects.
+
+--- size
+    Synonym for Gda::ParameterList#length.
+    * Returns: the number of parameters stored in the list.
+
+== See Also
+((<Gda>)).
+
+- ((<lrz>))

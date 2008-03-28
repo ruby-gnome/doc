@@ -1,0 +1,71 @@
+= ステータスバー 
+ステータスバーはテキストメッセージを表示するのに使われる簡単なウィジェットである．
+ステータスバーはプッシュされたメッセージをスタックに保持するので，現在のメッセージをポップすると直前のメッセージが再び表示される．
+
+アプリケーションの異なる部分が同じステータスバーを共有しメッセージを表示することができるように，ステータスバーウィジェットは異なる「ユーザ」を識別するためのコンテキスト識別子(Context Identifier)を発行する．
+スタックの再上位にあるメッセージが表示され，それがどのコンテキストに所属するかは関係ない．
+メッセージは，コンテキストの識別子の順番ではなく，後入れ先出し(last-in-first-out)方式で積まれる．
+
+ステータスバーは以下の呼び出しによって作成される：
+
+  Gtk::Statusbar.new
+
+新しいコンテキスト識別子は，コンテキストの内容を記述する短い説明文を引数に以下のメソッドを呼び出すことで取得する．
+
+  Gtk::Statusbar#get_context_id(context_description)
+
+ステータスバーを操作するメソッドは3つある：
+
+  Gtk::Statusbar#push(context_id, text)
+  Gtk::Statusbar#pop(context_id)
+  Gtk::Statusbar#remove(context_id, message_id)
+
+最初のGtk::Statusbar#pushはステータスバーに新しいメッセージを追加するのに用いられる．
+返り値はメッセージ識別子(Message Identifier)である．
+この識別子は後でステータスバーのスタックからメッセージを取り除くときにコンテキスト識別子と共にGtk::Statusbar#removeに渡すことができる．
+
+Gtk::Statusbar#pushは指定されたコンテキスト識別子での最上位のメッセージを削除する．
+
+メッセージに加えてステータスバーはリサイズグリップを表示することができる．
+ウィンドウのフレームをマウスでドラッグするのと同様，このグリップをマウスでドラッグすることでステータスバーが属するトップレベルウィンドウをリサイズすることができる．
+
+次のメソッドでリサイズグリップの表示を制御することができる：
+
+  Gtk::Statusbar#set_has_resize_grip(setting)
+  Gtk::Statusbar#has_resize_grip=(setting)
+  Gtk::Statusbar#has_resize_grip?
+
+{{image_right "statusbar.png"}}
+以下の例はステータスバーと2つのボタンを作成する．
+1つはステータスバーにアイテムをプッシュし，もう1つは最後に挿入されたアイテムをポップする．
+
+  #! /usr/bin/env ruby
+  
+  require 'gtk2'
+  
+  window = Gtk::Window.new
+  window.set_size_request(200, 100)
+  window.title = "GTK Statusbar Example"
+  window.signal_connect("destroy") {Gtk.main_quit}
+  
+  vbox = Gtk::VBox.new(false, 1)
+  window.add(vbox) 
+  
+  status_bar = Gtk::Statusbar.new
+  vbox.pack_start(status_bar, true, true, 0)          
+  
+  # このコメントを外すとリサイズグリップが消える
+  # status_bar.has_resize_grip = false
+  
+  context_id = status_bar.get_context_id("Statusbar example")
+  count = 0
+  button = Gtk::Button.new("push item")
+  button.signal_connect("clicked") {status_bar.push(context_id, "Item #{count += 1}")}
+  vbox.pack_start(button, false, false, 2)
+  
+  button = Gtk::Button.new("pop last item")
+  button.signal_connect("clicked") {status_bar.pop(context_id)}
+  vbox.pack_start(button, false, false, 2)
+  
+  window.show_all
+  Gtk.main

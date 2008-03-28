@@ -1,0 +1,172 @@
+= class Gda::Client
+This class is the main entry point for Ruby/Libgda client applications.
+It provides the way by which client applications open connections. 
+Thus, before using any other database-oriented function in libgda,
+applications must create a Gda::Client object (via Gda::Client.new), 
+and, once created, open the connections from it.
+
+Gda::Client also provides a way to treat several connections as if they were
+only one (a connection pool), which allows applications to, for instance,
+commit/rollback a transaction in all the connections being managed by a
+unique GdaClient object, or obtain the list of all tables in all opened
+connections.
+
+== Object Hierarchy
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Gda::Client
+
+== Class Methods
+--- Gda::Client.new
+    Creates a new Gda::Client object, which is the entry point for libgda client
+    applications. This object, once created, can be used for opening new database
+    connections and activating other services available to GDA clients.
+    * Returns: the newly created object.
+
+== Instance Methods
+--- begin_transaction(xaction)
+    Starts a transaction on all connections being managed by the Gda::Client.
+    It is important to note that this operates on all connections opened within
+    a Gda::Client, which could not be what you're looking for.
+    To execute a transaction on a unique connection, use
+    Gda::Connection#begin_transaction, Gda::Connection#commit_transaction and
+    Gda::Connection#rollback_transaction.
+    * xaction: a Gda::Transaction object.  
+    * Returns: true if all transactions could be started successfully, or false if one of them fails.
+
+--- close_all_connections
+    Closes all connections opened by the Gda::Client object.
+    * Returns: self.
+
+--- commit_transaction(xaction)
+    Commits a transaction on all connections being managed by the Gda::Client.
+    It is important to note that this operates on all connections opened within
+    a Gda::Client, which could not be what you're looking for.
+    To execute a transaction on a unique connection, use
+    Gda::Connection#begin_transaction, Gda::Connection#commit_transaction and
+    Gda::Connection#rollback_transaction.
+    * xaction: a Gda::Transaction object.  
+    * Returns: true if all transactions could be committed successfully, or false if one of them fails.
+
+--- connections
+    Gets the list of all opened connections in the Gda::Client object.
+    * Returns: an Array of Gda::Connection objects.
+
+--- each_connection { |conn| ... }
+    Calls the block for each opened connection by the client, passing
+    a reference to a Gda::Connection object as parameter.
+    * Returns: always nil.
+
+--- find_connection(dsn, username, password)
+    Looks for an open connection given a data source name (per libgda
+    configuration), a username and a password.
+    This method iterates over the list of open connections in the 
+    Gda::Client object and looks for one that matches the given data source
+    name, username and password.
+    * username: user name. 
+    * password: password for user name.  
+    * dsn: data source name. 
+    * Returns: a reference to the found Gda::Connection object, or nil if it could not be found.
+
+--- notify_connection_closed_event(conn)
+    Notifies the Gda::Client of the Gda::Client::EVENT_CONNECTION_CLOSED event.
+    * conn: a Gda::Connection object were the event has occured.  
+    * Returns: self.
+
+--- notify_connection_opened_event(conn)
+    Notifies the Gda::Client of the Gda::Client::EVENT_CONNECTION_OPENED event.
+    * conn: a Gda::Connection object were the event has occured.  
+    * Returns: self.
+
+--- notify_error_event(conn, error)
+    Notifies the Gda::Client of the Gda::Client::EVENT_ERROR event.
+    * error: the error to be notified, as a Gda::Error object.  
+    * conn: a Gda::Connection object were the event has occured. 
+    * Returns: self.
+
+--- notify_event(conn, event, params)
+    Notifies an event to the Gda::Client's listeners. The event can be anything
+    (see ((<GdaClientEvent|Gda::Client#GdaClientEvent>))) ranging from a connection opening operation, to
+    changes made to a table in an underlying database.
+    * conn: a Gda::Connection object were the event has occured. 
+    * event: an event ID (see ((<GdaClientEvent|Gda::Client#GdaClientEvent>))). 
+    * params: parameters associated with the event, as a Gda::ParameterList object.  
+    * Returns: self.
+
+--- notify_transaction_cancelled_event(conn, xaction)
+    Notifies the Gda::Client of the
+    Gda::Client::EVENT_CONNECTION_TRANSACTION_CANCELLED event.
+    * conn: a Gda::Connection object were the event has occured. 
+    * xaction: a Gda::Transaction object.  
+    * Returns: self.
+
+--- notify_transaction_committed_event(conn, xaction)
+    Notifies the Gda::Client of the
+    Gda::Client::EVENT_CONNECTION_TRANSACTION_COMMITTED event.
+    * conn: a Gda::Connection object were the event has occured. 
+    * xaction: a Gda::Transaction object.  
+    * Returns: self.
+
+--- notify_transaction_started_event(conn, xaction)
+    Notifies the Gda::Client of the
+    Gda::Client::EVENT_CONNECTION_TRANSACTION_STARTED event.
+    * conn: a Gda::Connection object were the event has occured. 
+    * xaction: a Gda::Transaction object.  
+    * Returns: self.
+
+--- open_connection(dsn, username, password, options=0)
+    Establishes a connection to a data source. The connection will be opened if
+    no identical connection is available in the GdaClient connection pool, and
+    re-used if available. If you dont want to share the connection, specify
+    Gda::Connection::OPTIONS_DONT_SHARE as one of the flags in the options
+    parameter.
+    When provided with a block of code, Gda::Client#open_connection will then
+    call the block when the connection will be enabled, passing a reference to
+    a Gda::Connection object as parameter.  At the end of the block, it will
+    automatically disconnect from the data source, calling Gda::Connection#close
+    on the connection object.
+    	client = Gda::Client.new
+    	client.open_connection ('arrakis', nil, nil) do |conn|
+    	# ...
+    	end
+    When no block code is provided, Gda::Client#open_connection simply returns
+    a reference to a Gda::Connection object.  You should take care to disconnect
+    by yourself, calling Gda::Connection#close manually.
+    	client = Gda::Client.new
+    	conn = client.open_connection ('arrakis', nil, nil)
+    	# ...
+    	conn.close
+    * options: options for the connection (see ((<GdaConnectionOptions|Gda::Connection#GdaConnectionOptions>))).  
+    * username: user name. 
+    * password: password for user name. 
+    * dsn: data source name. 
+    * Returns: when used with a block of code, always nil, when used without a a block of code, a Gda::Connection object on success, nil if there is an error.
+
+--- rollback_transaction(xaction)
+    Cancels a transaction on all connections being managed by the Gda::Client.
+    It is important to note that this operates on all connections opened within
+    a Gda::Client, which could not be what you're looking for.
+    To execute a transaction on a unique connection, use
+    Gda::Connection#begin_transaction, Gda::Connection#commit_transaction and
+    Gda::Connection#rollback_transaction.
+    * xaction: a Gda::Transaction object.  
+    * Returns: true if all transactions could be cancelled successfully, or false if one of them fails.
+
+== Constants
+=== GdaClientEvent
+--- EVENT_CONNECTION_CLOSED
+--- EVENT_CONNECTION_OPENED
+--- EVENT_ERROR
+--- EVENT_INVALID
+--- EVENT_TRANSACTION_CANCELLED
+--- EVENT_TRANSACTION_COMMITTED
+--- EVENT_TRANSACTION_STARTED
+
+== Signals
+--- event-notification
+
+== See Also
+((<Gda>)).
+
+- ((<lrz>))

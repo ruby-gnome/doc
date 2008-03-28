@@ -1,0 +1,338 @@
+= class Pango::Layout
+The Pango::Layout class represents and entire paragraph of text. It is initialized with a Pango::Context, UTF-8 string and set of attributes for that string. 
+Once that is done, the set of formatted lines can be extracted from the object, the layout can be rendered, and conversion between logical character positions within the layout's text, and the physical position of the resulting glyphs can be made. 
+
+There are also a number of parameters to adjust the formatting of a Pango::Layout, which are illustrated in Figure 1, “Adjustable parameters for a Pango::Layout”. It is possible, as well, to ignore the 2-D setup, and simply treat the results of a Pango::Layout as a list of lines. 
+
+=== Figure 1. Adjustable parameters for a Pango::Layout
+((<URL:http://developer.gnome.org/doc/API/2.0/pango/layout.gif>))
+
+== Object Hierarchy
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Pango::Layout
+
+== Class Methods
+--- Pango::Layout.new
+    Create a new Pango::Layout object with attributes initialized to default values for a particular Pango::Context.
+    * Returns: a new Pango::Layout  
+
+== Instance Methods
+--- context
+    Retrieves the Pango::Context used for this layout.
+    * Returns: The Pango::Context for the layout 
+
+--- context_changed
+    Forces recomputation of any state in the Pango::Layout that might depend on the layout's context. This method should be called if you make changes to the context subsequent to creating the layout.
+    * Returns: self
+
+--- text
+    Gets the text in the layout. 
+    * Returns: the text in the layout  
+--- text=(text)
+    Sets the text of the layout.
+    * text: a UTF-8 string
+    * Returns: self
+--- set_text(text)
+    Same as Pango::Layout#text=.
+    * text: a UTF-8 string
+    * Returns: self
+
+--- markup=(markup)
+    Same as Pango::Layout#set_markup(markup, nil).
+    * markup: some marked-up text (see ((<markup format|pango-markup>)))  
+    * Returns: any located accelerators  
+--- set_markup(markup, accel_marker = nil)
+    Sets the layout text and attribute list from marked-up text (see markup format). Replaces the current text and attribute list. If accel_marker is non-nil, the given character will mark the character following it as an accelerator. For example, the accel marker might be an ampersand or underscore. All characters marked as an accelerator will receive a Pango::UNDERLINE_LOW attribute, and the first character so marked will be returned value. Two accel_marker characters following each other produce a single literal accel_marker character.
+    * markup: some marked-up text (see ((<markup format|pango-markup>)))  
+    * accel_marker : marker for accelerators in the text or nil
+    * Returns: any located accelerators  
+
+--- attributes
+    Gets the attribute list for the layout, if any.
+    * Returns : a Pango::AttrList
+--- attributes=(attrs)
+    Sets the text attributes for a layout object.
+    * attrs : a Pango::AttrList  
+    * Returns: attrs
+--- set_attributes(attrs)
+    Same as Pango::Layout#attributes=
+    * attrs : a Pango::AttrList  
+    * Returns: self
+
+--- font_description
+    Gets the font description for the layout, if any.
+    * Returns: the layout's font description(Pango::FontDescription), or nil if the font description from the layout's context is inherited. 
+--- font_description=(desc)
+    Sets the default font description for the layout. If no font description is set on the layout, the font description from the layout's context is used.
+    * desc: the new Pango::FontDescription, or nil to unset the current font description.
+    * Returns: desc
+--- set_font_description(desc)
+    Same as Pango::Layout#font_description=.
+    * desc: the new Pango::FontDescription, or nil to unset the current font description.
+    * Returns: self
+
+--- width
+    Gets the width to which the lines of the Pango::Layout should be wrapped.
+    * Returns: the width  
+--- width=(width)
+    Sets the width to which the lines of the Pango::Layout should be wrapped.
+    * width : the desired width, or -1 to indicate that no wrapping should be performed.
+    * Returns: width
+--- set_width(width)
+    Same as Pango::Layout#width=.
+    * width: the desired width, or -1 to indicate that no wrapping should be performed.
+    * Returns: self
+
+--- wrap
+    Gets the wrap mode for the layout.
+    * Returns: Active wrap mode(Pango::Layout#WrapMode).  
+--- wrap=(wrap)
+    Sets the wrap mode; the wrap mode only has an effect if a width is set on the layout with Pango::Layout#width=. To turn off wrapping, set the width to -1.
+    * wrap: the wrap mode(Pango::Layout#WrapMode).
+    * Returns: wrap
+--- set_wrap(wrap)
+    Same as Pango::Layout#wrap=.
+    * wrap: the wrap mode(Pango::Layout#WrapMode).
+    * Returns: self
+
+--- ellipsize
+    Gets the type of ellipsization being performed for layout. See Pango::Layout#ellipsize=.
+    * Returns: the current ellipsization mode for layout (Pango::Layout#EllipzeMode)
+--- ellipsize=(ellipsize)
+    Sets the type of ellipsization being performed for layout. Depending on the ellipsization mode ellipsize text is removed from the start, middle, or end of lines so they fit within the width of layout set with Pango::Layout#width=. 
+    If the layout contains characters such as newlines that force it to be layed out in multiple lines, then each line is ellipsized separately. ((* Since 1.6 *))
+    * ellipsize: the new ellipsization mode for layout(Pango::Layout#EllipzeMode)
+    * Returns: ellipsize
+--- set_ellipsize(ellipsize)
+    Same as Pango::Layout#ellipsize=.  ((* Since 1.6 *))
+    * ellipsize: the new ellipsization mode for layout(Pango::Layout#EllipzeMode)
+    * Returns: self
+
+--- indent
+    Gets the paragraph indent width in pango units. A negative value indicates a hanging indent.
+    * Returns: the indent  
+--- indent=(indent)
+    Sets the width in pango units to indent each paragraph. A negative value of indent will produce a hanging indent. That is, the first line will have the full width, and subsequent lines will be indented by the absolute value of indent.
+    * indent: the amount by which to indentset (Integer)
+    * Returns: indent
+--- set_indent(indent)
+    Same as Pango::Layout#indent=. 
+    * indent: the amount by which to indentset (Integer)
+    * Returns: self
+
+--- spacing
+    Gets the amount of spacing between the lines of the layout.
+    * Returns: the spacing(in glyph units). the dimension is stored in 1/Pango::SCALE of a device unit. (A device unit might be a pixel for screen display, or a point on a printer.) Pango::SCALE is currently 1024, and is unlikely to change, but you should not depend on its exact value. The Pango.pixels can be used to convert from glyph units into device units with correct rounding. 
+--- spacing=(spacing)
+    Sets the amount of spacing between the lines of the layout.
+    * spacing: the amount of spacing(in glyph units). the dimension is stored in 1/Pango::SCALE of a device unit. (A device unit might be a pixel for screen display, or a point on a printer.) Pango::SCALE is currently 1024, and is unlikely to change, but you should not depend on its exact value. The Pango.pixels can be used to convert from glyph units into device units with correct rounding.
+    * Returns: spacing
+
+--- set_spacing(spacing)
+    Same as Pango::Layout#spacing=.
+    * spacing: the amount of spacing(in glyph units). the dimension is stored in 1/Pango::SCALE of a device unit. (A device unit might be a pixel for screen display, or a point on a printer.) Pango::SCALE is currently 1024, and is unlikely to change, but you should not depend on its exact value. The Pango.pixels can be used to convert from glyph units into device units with correct rounding.
+    * Returns: self
+
+--- justify?
+    Gets whether or not each complete line should be stretched to fill the entire width of the layout.
+    * Returns: the justify(true or false)
+--- justify=(justify)
+    Sets whether or not each complete line should be stretched to fill the entire width of the layout. This stretching is typically done by adding whitespace, but for some scripts (such as Arabic), the justification is done by extending the characters. Note that as of Pango-1.4, this functionality is not yet implemented.
+    * justify: true if the lines in the layout should be justified, otherwise false.
+    * Returns: justify
+--- set_justify(justify)
+    Same as Pango::Layout#justify=.
+    * justify: true if the lines in the layout should be justified, otherwise false.
+    * Returns: self
+
+--- auto_dir?
+    
+     * Returns: self
+--- auto_dir=(auto_dir)
+    Sets whether to calculate the bidirectional base direction for the layout according to the contents of the layout; when this flag is on (the default), then paragraphs in layout that begin with strong right-to-left characters (Arabic and Hebrew principally), will have right-to-left layout, paragraphs with letters from other scripts will have left-to-right layout. Paragraphs with only neutral characters get their direction from the surrounding paragraphs. 
+    When false, the choice between left-to-right and right-to-left layout is done by according to the base direction of the layout's Pango::Context. (See Pango::Context#base_dir=). 
+    When the auto-computed direction of a paragraph differs from the base direction of the context, then the interpretation of Pango::ALIGN_LEFT and Pango::ALIGN_RIGHT are swapped.
+    * auto_dir: if true, compute the bidirectional base direction from the layout's contents.  
+    * Returns: auto_dir
+--- set_auto_dir(auto_dir)
+    Same as Pango::Layout#auto_dir=.
+    * auto_dir: if true, compute the bidirectional base direction from the layout's contents.  
+    * Returns: self
+
+--- alignment
+    Gets the alignment for the layout (how partial lines are positioned within the horizontal space available.)
+    * Returns: the alignment value (Pango::Layout#Alignment)
+--- alignment=(alignment)
+    Sets the alignment for the layout (how partial lines are positioned within the horizontal space available.)
+    * alignment : the new alignment (Pango::Layout#Alignment)
+    * Returns: alignment
+--- set_alignment(alignment)
+    Same as Pango::Layout#alignment=.
+    * alignment : the new alignment (Pango::Layout#Alignment)
+    * Returns: self
+
+--- tabs
+    Gets the current PangoTabArray used by this layout. If no Pango::TabArray has been set, then the default tabs are in use and nil is returned. Default tabs are every 8 spaces. 
+    * Returns: a copy of the tabs for this layout, or nil
+--- tabs=(tabs)
+    Sets the tabs to use for layout, overriding the default tabs (by default, tabs are every 8 spaces). If tabs is nil, the default tabs are reinstated. tabs is copied into the layout; you must free your copy of tabs yourself.
+    * tabs: a Pango::TabArray  
+    * Returns: tabs
+--- set_tabs(tabs)
+    Same as Pango::Layout#tabs=.
+    * Returns: self
+
+--- single_paragraph_mode?
+    Obtains the value set by Pango::Layout#single_paragraph_mode=.
+    * Returns: true if the layout does not break paragraphs at paragraph separator characters
+--- single_paragraph_mode=(setting)
+    If setting is true, do not treat newlines and similar characters as paragraph separators; instead, keep all text in a single paragraph, and display a glyph for paragraph separator characters. Used when you want to allow editing of newlines on a single text line.
+    * setting: new setting(true or false)
+    * Returns: setting
+--- set_single_paragraph_mode(setting)
+    Same as Pango::Layout#single_paragraph_mode=.
+    * setting: new setting(true or false)
+    * Returns: self
+
+--- log_attrs
+    Retrieves an Array of logical attributes for each character in the layout.
+    * Returns: an Array of logical attributes(Pango::LogAttr)
+
+
+--- xy_to_index(x, y)
+    Converts from X and Y position within a layout to the byte index to the character at that logical position. If the Y position is not inside the layout, the closest position is chosen (the position will be clamped inside the layout). If the X position is not within the layout, then the start or the end of the line is chosen as described for Pango::Layout#x_to_index. If either the X or Y positions were not inside the layout, then the method returns false; on an exact hit, it returns true.
+    * x: the X offset (in PangoGlyphUnit) from the left edge of the layout.  
+    * y: the Y offset (in PangoGlyphUnit) from the top edge of the layout  
+    * Returns: [inside, index, trailing]
+      * inside: true if the coordinates were inside text, otherwise false
+      * index: calculated byte index  
+      * trailing: An integer indicating where in the grapheme the user clicked. It will either be zero, or the number of characters in the grapheme. 0 represents the trailing edge of the grapheme.  
+
+--- index_to_pos(index)
+    Converts from an index within a Pango::Layout to the onscreen position corresponding to the grapheme at that index, which is represented as rectangle. Note that pos.x is always the leading edge of the grapheme and pos.x + pos.width the trailing edge of the grapheme. If the directionality of the grapheme is right-to-left, then pos.width will be negative.
+    * index: byte index within layout  
+    * Returns: the position of the grapheme(Pango::Rectangle)
+
+--- get_cursor_pos(index)
+    Given an index within a layout, determines the positions that of the strong and weak cursors if the insertion point is at that index. The position of each cursor is stored as a zero-width rectangle. The strong cursor location is the location where characters of the directionality equal to the base direction of the layout are inserted. The weak cursor location is the location where characters of the directionality opposite to the base direction of the layout are inserted.
+    * index: the byte index of the cursor
+    * Returns: [strong_pos, weak_pos]
+       * strong_pos: the strong cursor position (may be nil)  
+       * weak_pos: the weak cursor position (may be nil)  
+
+--- move_cursor_visually(strong, old_index, old_trailing, direction)
+    Computes a new cursor position from an old position and a count of positions to move visually. If count is positive, then the new strong cursor position will be one position to the right of the old cursor position. If count is position then the new strong cursor position will be one position to the left of the old cursor position. 
+    In the presence of bidirection text, the correspondence between logical and visual order will depend on the direction of the current run, and there may be jumps when the cursor is moved off of the end of a run. 
+    Motion here is in cursor positions, not in characters, so a single call to Pango::Layout#move_cursor_visually may move the cursor over multiple characters when multiple characters combine to form a single grapheme.
+    * strong: true if the moving cursor is the strong cursor or false if it is the weak cursor. The strong cursor is the cursor corresponding to text insertion in the base direction for the layout.  
+    * old_index: the byte index of the grapheme for the old index  
+    * old_trailing: if 0, the cursor was at the trailing edge of the grapheme indicated by old_index, if > 0, the cursor was at the leading edge.  
+    * direction: direction to move cursor. A negative value indicates motion to the left.  
+    * Returns: [new_index, new_traiding]
+       * new_index: the new cursor byte index. A value of -1 indicates that the cursor has been moved off the beginning of the layout. A value of GLib::MAXINT indicates that the cursor has been moved off the end of the layout.  
+       * new_trailing: number of characters to move forward from the location returned for new_index to get the position where the cursor should be displayed. This allows distinguishing the position at the beginning of one line from the position at the end of the preceding line. new_index is always on the line where the cursor should be displayed. 
+
+--- get_extents(ink_rect = nil, logical_rect = nil)
+    Computes the logical and ink extents of layout. Logical extents are usually what you want for positioning things. The extents are given in layout coordinates; layout coordinates begin at the top left corner of the layout.
+    * ink_rect: a Pango::Rectangle used as initial value then stored the extents of the layout as drawn, or nil 
+    * logical_rect: Pango::Rectangle used as initial value then stored the logical extents of the layout, or nil
+    * Returns: [ink_rect, logical_rect]
+      * ink_rect: the extents of the layout as drawn. (Pango::Rectangle) 
+      * logical_rect: the logical extents of the layout. (Pango::Rectangle)   
+
+--- extents
+    Same as Pango::Layout#get_extents(nil, nil)
+    * Returns: [ink_rect, logical_rect]
+      * ink_rect: the extents of the layout as drawn. (Pango::Rectangle) 
+      * logical_rect: the logical extents of the layout. (Pango::Rectangle)   
+
+--- get_pixel_extents(ink_rect = nil, logical_rect = nil)
+    Computes the logical and ink extents of layout in device units. See Pango::Layout#extents; this method just calls Pango::Layout#extents and then converts the extents to device units using the Pango::SCALE factor.
+    * ink_rect: a Pango::Rectangle used as initial value then stored the extents of the layout as drawn, or nil 
+    * logical_rect: Pango::Rectangle used as initial value then stored the logical extents of the layout, or nil
+    * Returns: [ink_rect, logical_rect]
+       * ink_rect: the extents of the layout as drawn. (Pango::Rectangle)
+       * logical_rect: the logical extents of the layout. (Pango::Rectangle)
+
+--- pixel_extents
+    Same as Pango::Layout#get_pixel_extents(nil, nil)
+    * Returns: [ink_rect, logical_rect]
+       * ink_rect: the extents of the layout as drawn. (Pango::Rectangle)
+       * logical_rect: the logical extents of the layout. (Pango::Rectangle)
+
+--- size
+    Determines the logical width and height of a Pango::Layout in Pango units. (device units divided by Pango::SCALE). This is simply a convenience method around Pango::Layout#extents.
+    * Returns: [width, height]
+       * width: the logical width
+       * height : the logical height
+
+--- pixel_size
+    Determines the logical width and height of a Pango::Layout in device units. (Pango::Layout#size returns the width and height in thousandths of a device unit.) This is simply a convenience method around Pango::Layout#extents.
+    * Returns: [width, height]
+       * width: the logical width
+       * height: the logical height
+
+--- line_count
+    Retrieves the count of lines for the layout.
+    * Returns: the line count  
+
+--- get_line(line)
+    Retrieves a particular line from a Pango::Layout.
+    * line: the index of a line, which must be between 0 and Pango::Layout#line_count - 1, inclusive.
+    * Returns: the requested Pango::LayoutLine, or nil if the index is out of range. This layout line can be ref'ed and retained, but will become invalid if changes are made to the Pango::Layout.  
+
+--- lines
+    Returns the lines of the layout as a list.
+    * Returns: an Array containing the lines(Pango::LayoutLine) in the layout. This points to internal data of the Pango::Layout and must be used with care. It will become invalid on any change to the layout's text or properties.  
+
+--- iter
+    Returns an iterator to iterate over the visual extents of the layout.
+    * Returns: a new Pango::LayoutIter  
+
+--- copy
+    Creates a copy of the Pango::Layout.
+    * Returns: a copyed Pango::Layout
+
+--- get_clip_region(x_origin, y_origin, index_ranges)
+    ((* Ruby/GTK *)) Obtains a clip region which contains the areas where the given ranges of text would be drawn. x_origin and y_origin are the same position you would pass to Gdk::Drawable#draw_layout_line. index_ranges should contain ranges of bytes in the layout's text.
+    * x_origin: X pixel where you intend to draw the layout with this clip 
+    * y_origin: Y pixel where you intend to draw the layout with this clip 
+    * index_ranges: an Array of byte(Integer) indexes into the layout, where even members of array are start indexes and odd elements are end indexes 
+    * Returns: a clip region(Gdk::Region) containing the given ranges 
+
+== Constants
+=== WrapMode
+A WrapMode describes how to wrap the lines of a Pango::Layout to the desired width. 
+--- WRAP_WORD
+    wrap lines at word boundaries. 
+--- WRAP_CHAR
+    wrap lines at character boundaries. 
+--- WRAP_WORD_CHAR
+    wrap lines at word boundaries, but fall back to character boundaries if there is not enough space for a full word. 
+
+=== EllipsizeMode
+The EllipsizeMode type describes what sort of (if any) ellipsization should be applied to a line of text. In the ellipsization process characters are removed from the text in order to make it fit to a given width and replaced with an ellipsis.
+--- ELLIPSIZE_NONE
+    No ellipsization 
+--- ELLIPSIZE_START
+    Omit characters at the start of the text 
+--- ELLIPSIZE_MIDDLE
+    Omit characters in the middle of the text 
+--- ELLIPSIZE_END
+    Omit characters at the end of the text 
+
+=== Alignment
+An Alignment describes how to align the lines of a Pango::Layout within the available space. If the Pango::Layout is set to justify using Pango::Layout#justify=, then this only has an effect for partial lines. 
+--- ALIGN_LEFT
+    Put all available space on the right 
+--- ALIGN_CENTER
+    Center the line within the available space 
+--- ALIGN_RIGHT
+    Put all available space on the left 
+
+== ChangeLog
+* 2005-11-15 Done for 1.10. - ((<Masao>))
+* 2005-11-11 Modified. - ((<Masao>))
+* 2005-11-10 Added. - ((<Masao>))

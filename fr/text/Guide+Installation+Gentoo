@@ -1,0 +1,20 @@
+= Guide d'installation pour Gentoo GNU/Linux
+
+C'est très facile, car Ruby-GNOME2 fait partie du système Portage.
+
+Démarrez simplement la commande suivante:
+
+    emerge ruby-gnome2
+
+N'oubliez pas de synchroniser avant votre arborescence Portage, avec cette commande:
+
+    emerge sync
+
+Pour plus d'informations concernant le système Portage, veuillez consulter le ((<Guide de l'utilisateur de Portage|URL:http://www.gentoo.org/doc/fr/portage-user.xml>)).
+
+=== Auteur
+* ((<Laurent Sansonetti|lrz>))
+
+=== Changements
+:2003-08-11 Laurent Sansonetti
+ Première version.

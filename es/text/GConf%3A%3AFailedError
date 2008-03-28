@@ -1,0 +1,5 @@
+= class GConf::FailedError
+This error class is raised when something failed in GConf, but nothing more specific can be said about it.  It is most likely fatal.
+
+== Super Class
+* GConf::Error

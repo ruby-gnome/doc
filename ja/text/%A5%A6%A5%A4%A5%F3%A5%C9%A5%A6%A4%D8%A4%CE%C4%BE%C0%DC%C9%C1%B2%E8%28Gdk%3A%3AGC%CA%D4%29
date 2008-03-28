@@ -1,0 +1,229 @@
+= ウインドウへの直接描画(Gdk::GC編)
+((*まだRuby/GTK(1)用です*))
+
+Gdk::GCはグラフィックコンテキスト(Graphic Context)を表すオブジェクトで、描画に関する様々な情報を保持しています。具体的には、前景色や背景色、線の属性等々。各描画メソッドは、Gdk::GCへ描画情報を設定　→　それを元に描画(<A HREF="drawable.html">Gdk::Drawable</A>)　という流れになります。
+
+== いろいろな線を描画する
+まずは、Gdk::GC#set_line_attributes()を使って、線の細かな属性を指定してみます。なお、ここでは直線を例にしていますが、円や四角などでも同様に指定できますのでいろいろとやってみてください。
+
+ 
+  require 'gtk'
+  
+  window = Gtk::Window.new
+  window.set_usize(300, 300)
+  window.set_app_paintable(true)
+  window.realize                
+
+  drawable = window.window      
+  gc = Gdk::GC.new(drawable)            
+
+  red   = Gdk::Color.new(65535, 0, 0)
+  green = Gdk::Color.new(0, 65535, 0)
+  colormap = Gdk::Colormap.get_system
+  colormap.alloc_color(red,   false, true)
+  colormap.alloc_color(green, false, true)
+
+  window.signal_connect(Gtk::Widget::SIGNAL_EXPOSE_EVENT) do |win, evt|
+    gc.set_foreground(red)           #(1)
+    gc.set_background(green)         #(2)
+    
+    gc.set_line_attributes(5, Gdk::LINE_SOLID, Gdk::CAP_NOT_LAST, Gdk::JOIN_MITER)       #(3)
+    drawable.draw_line(gc, 20, 10, 150, 10)
+    gc.set_line_attributes(5, Gdk::LINE_ON_OFF_DASH, Gdk::CAP_NOT_LAST, Gdk::JOIN_MITER) #(4)
+    drawable.draw_line(gc, 20, 30, 150, 30)
+    gc.set_line_attributes(5, Gdk::LINE_DOUBLE_DASH, Gdk::CAP_NOT_LAST, Gdk::JOIN_MITER) #(5)
+    drawable.draw_line(gc, 20, 50, 150, 50)
+    
+    gc.set_line_attributes(30, Gdk::LINE_SOLID, Gdk::CAP_NOT_LAST, Gdk::JOIN_MITER)      #(6)
+    drawable.draw_line(gc, 20, 100, 120, 100)
+    gc.set_line_attributes(30, Gdk::LINE_SOLID, Gdk::CAP_BUTT, Gdk::JOIN_MITER)          #(7)
+    drawable.draw_line(gc, 20, 140, 120, 140)
+    gc.set_line_attributes(30, Gdk::LINE_SOLID, Gdk::CAP_ROUND, Gdk::JOIN_MITER)         #(8)
+    drawable.draw_line(gc, 20, 180, 120, 180)
+    gc.set_line_attributes(30, Gdk::LINE_SOLID, Gdk::CAP_PROJECTING, Gdk::JOIN_MITER)    #(9)
+    drawable.draw_line(gc, 20, 220, 120, 220)
+    
+    gc.set_line_attributes(40, Gdk::LINE_SOLID, Gdk::CAP_NOT_LAST, Gdk::JOIN_MITER)      #(10)
+    drawable.draw_lines(gc, [[200, 80], [220, 30], [280, 50]])
+    gc.set_line_attributes(40, Gdk::LINE_SOLID, Gdk::CAP_NOT_LAST, Gdk::JOIN_ROUND)      #(11)
+    drawable.draw_lines(gc, [[200, 170], [220, 120], [280, 140]])
+    gc.set_line_attributes(40, Gdk::LINE_SOLID, Gdk::CAP_NOT_LAST, Gdk::JOIN_BEVEL)      #(12)
+    drawable.draw_lines(gc, [[200, 260], [220, 210], [280, 230]])
+  end
+
+  window.show_all
+  Gtk.main
+
+<TABLE ALIGN="CENTER" CELLSPACING=0 BORDER=1><TR><TD><IMG SRC="gc_lines.jpg" ALT="表示イメージ"></TD></TR></TABLE>
+(1)(2)で前景色・背景色を設定します。(3)以降は画面イメージを参考にしてください。
+Gdk::GC#set_line_attributes(line_width, line_style, cap_style, join_style)
+
+  * line_width - 線の太さ
+  * line_style - 線のスタイル
+
+  * Gdk::LINE_SOLID - 直線(3)
+  * Gdk::LINE_ON_OFF_DASH - 点線(4)
+  * Gdk::LINE_DOUBLE_DASH - 点線(5)
+     (1)の前景色と(2)の背景色が交互に表示されます。背景色が影響するのは今回はここだけですね。
+
+  * cap_style - 端点のスタイル
+
+  * Gdk::CAP_NOT_LAST - 指定した終点にはちょっと届かない長さ(6)
+    ....みたいなんですが、今のXではGdk::CAP_BUTTと同じみたいです。これは、Ruby/GTKのバグではなくて、Xlibレベルで実装しても同様になりますんでこれで良いのでしょう(^^;)。
+  * Gdk::CAP_BUTT - 指定した終点にぴったりの長さ(7)
+  * Gdk::CAP_ROUND - 終点を丸くする(8)
+    指定した終点からちょっと丸みを帯びた分だけはみ出る形になります。
+  * Gdk::CAP_PROJECTING - 指定した終点よりちょっと長め(9)
+
+  * join_style - 接合部分のスタイル
+
+  * Gdk::JOIN_MITER - 尖った接合(10)
+  * Gdk::JOIN_ROUND - 丸みを帯びた接合(11)
+  * Gdk::JOIN_BEVEL - 帯を折ったような接合(12)
+
+   
+
+== 点線を描画する
+1でline_styleをGdk::LINE_ON_OFF_DASHかGdk::LINE_DOUBLE_DASHに設定した場合、Gdk::GC#set_dashes()を用いて点線の形状を変更できます。ここでは、Gdk::LINE_ON_OFF_DASHを使って説明します。
+<DIV CLASS="notice1" STYLE="padding:20pt">このテストプログラムはRuby/GTK-0.24以前では動きません。<A HREF="http://www.ruby-lang.org/gtk/ja/index.html">Ruby/GTK-0.25以降を取得</A>してください。</DIV>
+<IMG SRC="gc_dash.jpg" ALT="表示イメージ" ALIGN="RIGHT">
+
+
+  require 'gtk'
+  
+  window = Gtk::Window.new
+  window.set_usize(200, 100)
+  window.set_app_paintable(true)
+  window.realize                
+
+  drawable = window.window      
+  gc = Gdk::GC.new(drawable)            
+  gc.set_line_attributes(3, Gdk::LINE_ON_OFF_DASH, Gdk::CAP_NOT_LAST, Gdk::JOIN_MITER)
+
+  window.signal_connect(Gtk::Widget::SIGNAL_EXPOSE_EVENT) do |win, evt|
+    gc.set_dashes(0, [20, 10])  #(1)
+    drawable.draw_line(gc, 20, 30, 180, 30)
+    gc.set_dashes(4, [10, 5, 3, 5]) #(2)
+    drawable.draw_line(gc, 20, 50, 180, 50)
+  end
+
+  window.show_all
+  Gtk.main
+
+Gdk::GC#set_dashes(offset, dash_list)
+
+   * offset - 線の開始位置
+   dash_listで設定した線のパターンのどこから開始するかを指定します。
+   (1)では0なので、20,10,20,10,20,10,...の繰り返しになります。
+   (2)では4なので、6(10 - 4),5,3,5,10,5,3,5,10,5,3,5,...の繰り返しになります。
+   * dash_list - 線のパターン配列
+   配列の奇数の位置に指定した値が前景色へ、偶数の位置に指定した値が背景色になります。
+
+
+== 2つの画像(線や点線,Pixmapなど)の重ね合わせ方法を指定する
+2つ以上の画像(線や点線,Pixmapなど)を重ね合わせる時、通常は最後に描画した画像(src)がその前までに描画されていた画像((dst)の上に描画されますが、この描画の仕方はGdk::GC#set_function()を使って、いろいろと指定できます。
+ここでは、赤・オレンジ・緑（背景色はグレー）で描画された四角形をまたぐ形で、前景色：青、背景色：黄の四角形をいろいろなfunctionを使って描画してみます。
+<DIV CLASS="notice1" STYLE="padding:20pt">このテストプログラムはRuby/GTK-0.24以前では動きません。<A HREF="http://www.ruby-lang.org/gtk/ja/index.html">Ruby/GTK-0.25以降を取得</A>してください。</DIV>
+
+<TABLE ALIGN="RIGHT" CELLSPACING=0 BORDER=1><TR><TD><IMG SRC="gc_function.jpg" ALT="表示イメージ"></TD></TR></TABLE>
+
+
+  require 'gtk'
+  
+  window = Gtk::Window.new
+  window.set_usize(450, 200)
+  window.set_app_paintable(true)
+  window.realize                
+
+  red     = Gdk::Color.new(65535, 0, 0)
+  orange  = Gdk::Color.new(65535, 30000, 0)
+  green   = Gdk::Color.new(0, 65535, 0)
+  gray    = Gdk::Color.new(40000, 40000, 40000)
+
+  blue    = Gdk::Color.new(0, 0, 65535)
+  yellow  = Gdk::Color.new(65535, 65535, 0)
+
+  colormap = Gdk::Colormap.get_system
+  colormap.alloc_color(red,    false, true)
+  colormap.alloc_color(gray,   false, true) 
+  colormap.alloc_color(orange, false, true)
+  colormap.alloc_color(green,  false, true)
+  colormap.alloc_color(blue,   false, true)
+  colormap.alloc_color(yellow, false, true)
+
+  drawable = window.window
+  gc = Gdk::GC.new(drawable)            
+
+ window.signal_connect(Gtk::Widget::SIGNAL_EXPOSE_EVENT) do |win, evt|
+    gc.set_foreground(red)
+    gc.set_background(gray)
+    drawable.draw_rectangle(gc, true, 0, 45, 450, 35) 
+    
+    gc.set_foreground(orange)
+    gc.set_background(gray)
+    drawable.draw_rectangle(gc, true, 0, 80, 450, 35) 
+    
+    gc.set_foreground(green)
+    gc.set_background(gray)
+    drawable.draw_rectangle(gc, true, 0, 115, 450, 35) 
+    
+    
+    gc.set_foreground(blue)
+    gc.set_background(yellow)
+    
+    gc.set_function(Gdk::COPY)                           #(1)
+    drawable.draw_rectangle(gc, true, 10, 20, 10, 150) 
+    gc.set_function(Gdk::INVERT)                         #(2)
+    drawable.draw_rectangle(gc, true, 40, 20, 10, 150) 
+    gc.set_function(Gdk::XOR)                            #(3)
+    drawable.draw_rectangle(gc, true, 70, 20, 10, 150) 
+    gc.set_function(Gdk::CLEAR)                          #(4)
+    drawable.draw_rectangle(gc, true, 100, 20, 10, 150) 
+    gc.set_function(Gdk::AND)                            #(5)
+    drawable.draw_rectangle(gc, true, 130, 20, 10, 150)              
+    gc.set_function(Gdk::AND_REVERSE)                    #(6)
+    drawable.draw_rectangle(gc, true, 160, 20, 10, 150) 
+    gc.set_function(Gdk::AND_INVERT)                     #(7)
+    drawable.draw_rectangle(gc, true, 190, 20, 10, 150) 
+    gc.set_function(Gdk::NOOP)                           #(8)
+    drawable.draw_rectangle(gc, true, 220, 20, 10, 150) 
+    gc.set_function(Gdk::OR)                             #(9)
+    drawable.draw_rectangle(gc, true, 250, 20, 10, 150) 
+    gc.set_function(Gdk::EQUIV)                          #(10)
+    drawable.draw_rectangle(gc, true, 280, 20, 10, 150) 
+    gc.set_function(Gdk::OR_REVERSE)                     #(11)
+    drawable.draw_rectangle(gc, true, 310, 20, 10, 150) 
+    gc.set_function(Gdk::COPY_INVERT)                    #(12)
+    drawable.draw_rectangle(gc, true, 340, 20, 10, 150) 
+    gc.set_function(Gdk::OR_INVERT)                      #(13)
+    drawable.draw_rectangle(gc, true, 370, 20, 10, 150) 
+    gc.set_function(Gdk::NAND)                           #(14)
+    drawable.draw_rectangle(gc, true, 400, 20, 10, 150) 
+    gc.set_function(Gdk::SET)                            #(15)
+    drawable.draw_rectangle(gc, true, 430, 20, 10, 150) 
+  end
+
+  window.show_all
+  Gtk.main
+  
+  Gtk::Widget::SIGNAL_EXPOSE_EVENTが発生するたびに描画しますので、ウインドウを動かすたび（厳密には背面から前面に移動した場合）に色が変わってしまいますので注意してください。
+  それでは以下にGdk::GC#set_function(function)で設定できる項目と演算方法をあげておきます。
+  すでに描画されている状態のPixel値をdst、最後に描画したもののPixel値をsrcとします。
+<TABLE BORDER=1 CELLSPACING=0>
+<TR><TH>No.</TH><TH>定数値</TH><TH NOWRAP>演算方法</TH><TH>説明</TH></TR>
+<TR><TD>(1)</TD><TD CLASS="code">Gdk::COPY</TD><TD NOWRAP>src</TD><TD>デフォルトの重ね合わせです。後に書いたもので上書きされます。</TD></TR>
+<TR><TD>(2)</TD><TD CLASS="code">Gdk::INVERT</TD><TD>NOT dst</TD><TD>NOTは1なら0に、0なら1にします。例えば、赤:0xff0000(111111110000000000000000)は水色：0x00ffff(000000001111111111111111)になります(24bitカラーの場合)。色が指定していない部分は黒(0x000000)になる....みたいです...ほんとかな？</TD></TR>
+<TR><TD>(3)</TD><TD CLASS="code">Gdk::XOR</TD><TD>src XOR dst</TD><TD>XORはどちらか一方が1の時1、両方とも1の時は0、両方とも0のときは0になります。例えば、赤:0xff0000(111111110000000000000000)と青：0x0000ff(000000000000000011111111)のXORはパープル：0xff00ff(111111110000000011111111)になります(24bitカラーの場合)。色が指定していない部分はsrcの背景色になる....みたいです...ほんとかな？</TD></TR>
+<TR><TD>(4)</TD><TD CLASS="code">Gdk::CLEAR</TD><TD>0</TD><TD>全部0(つまり、黒(0x000000))になります。</TD></TR>
+<TR><TD>(5)</TD><TD CLASS="code">Gdk::AND</TD><TD>src AND dst</TD><TD>両方とも1の時のみ1、それ以外は0になります。例えば、赤:0xff0000(111111110000000000000000)と青：0x0000ff(000000000000000011111111)のANDは黒：0x000000です。</TD></TR>
+<TR><TD>(6)</TD><TD CLASS="code">Gdk::AND_REVERSE</TD><TD NOWRAP>src AND (NOT dst)</TD><TD>NOTとANDの組み合わせです。例えば、dstが赤:0xff0000(111111110000000000000000)とsrcが青：0x0000ff(000000000000000011111111)の時は、青：0x0000ffになります。色が指定していない部分は黒(0x000000)になる....みたいです...ほんとかな？</TD></TR>
+<TR><TD>(7)</TD><TD CLASS="code">Gdk::AND_INVERT</TD><TD NOWRAP>(NOT src) AND dst</TD><TD>他を参考にしてください。なんとなくわかりますよね。色が指定していない部分はsrcの背景色になる....のかな？</TD></TR>
+<TR><TD>(8)</TD><TD CLASS="code">Gdk::AND_NOOP</TD><TD>dst</TD><TD>何も上書きされません。</TD></TR>
+<TR><TD>(9)</TD><TD CLASS="code">Gdk::OR</TD><TD NOWRAP>src OR dst</TD><TD>ORはどちらか一方が1の時1、両方とも1の時1、両方とも0の時は0になります。</TD></TR>
+<TR><TD>(10)</TD><TD CLASS="code">Gdk::EQUIV</TD><TD NOWRAP>(NOT src) XOR dst</TD><TD>他を参考にしてください。</TD></TR>
+<TR><TD>(11)</TD><TD CLASS="code">Gdk::OR_REVERSE</TD><TD>src OR (NOT dst)</TD><TD>他を参考にしてください。</TD></TR>
+<TR><TD>(12)</TD><TD CLASS="code">Gdk::COPY_INVERT</TD><TD NOWRAP>NOT src</TD><TD>他を参考にしてください。</TD></TR>
+<TR><TD>(13)</TD><TD CLASS="code">Gdk::OR_INVERT</TD><TD NOWRAP>(NOT src) AND dst</TD><TD>他を参考にしてください。</TD></TR>
+<TR><TD>(14)</TD><TD CLASS="code">Gdk::NAND</TD><TD NOWRAP>NOT (src AND dst)</TD><TD>他を参考にしてください。</TD></TR>
+<TR><TD>(15)</TD><TD CLASS="code">Gdk::SET</TD><TD>1</TD><TD>全部1(つまり、白(0xffffff))になります。</TD></TR>
+</TABLE>

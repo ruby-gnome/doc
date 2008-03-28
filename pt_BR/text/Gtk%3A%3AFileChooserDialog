@@ -1,0 +1,55 @@
+= class Gtk::FileChooserDialog
+Gtk::FileChooserDialog is a dialog box suitable for use with "File/Open" or "File/Save as" commands. This widget works by putting a Gtk::FileChooserWidget inside a Gtk::Dialog. It includes the Gtk::FileChooser module, so you can use all of the Gtk::FileChooser methods on the file chooser dialog as well as those for Gtk::Dialog. ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/filechooser.png>))
+
+Note that Gtk::FileChooserDialog does not have any methods of its own. Instead, you should use the methods that work on a Gtk::FileChooser. 
+
+==== Example of typical usage
+In the simplest of cases, you can use Gtk::FileChooserDialog as in the following code: 
+
+ dialog = Gtk::FileChooserDialog.new("Open File",
+                                      parent_window,
+                                      Gtk::FileChooser::ACTION_OPEN,
+                                      nil,
+                                      [Gtk::Stock::CANCEL, Gtk::Dialog::RESPONSE_CANCEL],
+                                      [Gtk::Stock::OPEN, Gtk::Dialog::RESPONSE_ACCEPT])
+  
+  
+ if dialog.run == Gtk::Dialog::RESPONSE_ACCEPT
+   puts "filename = #{dialog.filename}"
+ end
+ dialog.destroy
+
+Warning, there are some ((<encoding issues|Gtk::FileChooser#File+Names+and+Encodings>)) with the #filename method.
+
+== Object Hierarchy
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Gtk::Object
+        * Gtk::Widget
+          * Gtk::Container
+            * Gtk::Bin
+              * Gtk::Window
+                * Gtk::Dialog
+                  * Gtk::FileChooserDialog
+
+== Included Modules
+* Gtk::FileChooser
+
+== Class Methods
+--- Gtk::FileChooserDialog.new(title = nil, parent = nil, action = nil, backend = nil, [button_face1, response_id1], [button_face2, response_id2], ...)
+    Creates a new Gtk::FileChooserDialog. ((* Since 2.4 *))
+    * title: Title of the dialog, or nil
+    * parent: Transient parent of the dialog, or nil
+    * action: Open or save mode for the dialog(Gtk::FileChooser::Action)
+    * backend: The name of the specific filesystem backend to use or nil. (e.g.) "gnome-vfs" 
+    * [button_face1, response_id1], [button_face2, response_id2], ...: Button face/response ID pairs should be listed.        
+       * button_face: Button face can be either a stock ID(Gtk::Stock constants) such as Gtk::Stock::OK, or some arbitrary text. 
+       * response_id: A response ID can be any positive number, or one of the values in the ((<Gtk::Dialog#ResponseType>)) enumeration. If the user clicks one of these dialog buttons, Gtk::Dialog will emit the "response" signal with the corresponding response ID. If a Gtk::Dialog receives the "delete_event" signal, it will emit "response" with a response ID of Gtk::Dialog::RESPONSE_DELETE_EVENT. However, destroying a dialog does not emit the "response" signal; so be careful relying on "response" when using the Gtk::Dialog::DESTROY_WITH_PARENT flag. Buttons are from left to right, so the first button in the list will be the leftmost button in the dialog.
+    * Returns: a new Gtk::FileChooserDialog  
+
+== See Also
+Gtk::FileChooser, Gtk::Dialog 
+
+
+- ((<Masao>))

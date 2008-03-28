@@ -1,0 +1,62 @@
+= Ruby/GDK classes/modules index and documented status
+
+* ((<Gdk>)) - Done for 2.6.
+* Gdk::Atom - Done.
+* Gdk::Color - Done.
+* Gdk::Colormap - Done.
+* Gdk::Cursor - Done for 2.8.
+* Gdk::Device
+* Gdk::DeviceKey
+* Gdk::DeviceAxis
+* Gdk::Display (Since GTK+-2.2) - Done for 2.8.
+* Gdk::DisplayManager (Since GTK+-2.2) - Done for 2.6.
+* Gdk::DragContext - Done.
+* Gdk::Drawable - Done for 2.6.
+* Gdk::Event - Done for 2.8.
+  * Gdk::EventAny - Done.
+    * Gdk::EventKey - Done.
+    * Gdk::EventButton - Done.
+    * Gdk::EventScroll - Done.
+    * Gdk::EventMotion - Done.
+    * Gdk::EventExpose - Done.
+    * Gdk::EventVisibility - Done.
+    * Gdk::EventCrossing - Done.
+    * Gdk::EventFocus - Done.
+    * Gdk::EventConfigure - Done.
+    * Gdk::EventProperty - Done.
+    * Gdk::EventSelection - Done.
+    * Gdk::EventDND - Done.
+    * Gdk::EventProximity - Done.
+    * Gdk::EventClient - Done.
+    * Gdk::EventNoExpose - Done.
+    * Gdk::EventWindowState - Done.
+    * Gdk::EventSetting - Done.
+    * Gdk::EventOwnerChange - Done for 2.6.
+    * Gdk::EventGrabBroken - Done for 2.8.
+* ((<Gdk::GC>)) - Done for 2.6.
+* Gdk::Geometry - Done for 2.6.
+* Gdk::Image - Done.
+* Gdk::Input
+* Gdk::Keymap - Done.
+* Gdk::Keyval - Done.
+* Gdk::Pango - Done for 2.6.
+* Gdk::PangoRenderer
+* Gdk::PangoAttrEmbossed - Done for 2.6.
+* Gdk::PangoAttrStipple - Done for 2.6.
+* Gdk::Pixbuf
+* Gdk::PixbufAnimation
+* Gdk::PixbufSimpleAnim - Done for 2.8.
+* Gdk::Pixmap - Done.
+* Gdk::PointerHooks
+* Gdk::Property
+* Gdk::Rectangle - Done.
+* Gdk::Region - Done.
+* ((<Gdk::RGB>))
+* Gdk::Screen - Done for 2.8.
+* Gdk::Selection - Done.
+* Gdk::TimeCoord
+* Gdk::Threads
+* Gdk::Visual - Done for 2.6.
+* Gdk::Window - Done.
+* Gdk::WindowAttr
+* Gdk::X11

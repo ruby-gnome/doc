@@ -1,0 +1,47 @@
+= Conectando Elementos
+{{link("tut-gst-pads-caps", nil, "tut-gst", "tut-gst-bins-create")}}
+
+Você pode conectar os "pads" de elementos diferentes, assim os elementos formam uma cadeia.
+
+{{image_left("en:linked-elements.png")}}
+{{br}}
+
+Ao conectar esses três elementos, nós criamos uma cadeia bem simples. O efeito disso será que a saída do elemento de origem ("element1") será usada como a entrada para o elemento de filtro ("element2"). O elemento de filtro fará algo com os dados e enviará o resultado para o elemento de entrada ("sink") final ("element3").
+
+Imagine o gráfico acima como um decodificador de áudio MPEG simples. O elemento de origem é uma fonte de disco, o elemento de filtro é o decodificador de MPEG e o elemento de saída ("sink") é a sua placa de som. Usaremos esse gráfico simples para construir um tocador de MPEG mais tarde neste manual. 
+
+== Fazendo Conexões Simples
+
+Você pode conectar dois "pads" com:
+
+  srcpad = element1.get_pad("src")
+  sinpad = element2.get_pad("sink")
+
+  # conecta-os
+  srcpad.link(sinkpad)
+
+  ....
+
+  # desconecta-os
+  srcpad.unlink(sinkpad)
+
+Um atalho conveniente para elementos de origem-única, entrada-única é o método Gst::Element#link:
+
+  # conecta-os
+  element1.link(element2)
+   
+  ...
+
+  # desconecta-os
+  element1.unlink(element2)
+
+Um atalho ainda mais conveniente é o operador Gst::Element#>>, o qual é um alias para Gst::Element#link:
+
+  # conecta todos
+  element1 >> element2 >> element3
+
+Você pode perguntar se um "pad" está conectado com Gst::Pad#linked?.
+
+== Fazendo Conexões com Filtros
+
+Você pode também forçar um tipo de multimídia específico na conexão usando using Gst::Pad#link_filtered e Gst::Element#link_filtered com capacidades.

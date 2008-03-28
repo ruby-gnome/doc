@@ -1,0 +1,22 @@
+= Ruby/GTK2 Anleitung
+
+== Über dieses Dokument
+Diese Kurzanleitung behandelt die Ruby/Gtk2-Bibliothek, die der Erstellung grafischer Benutzerschnittstellen (sog. GUIs) unter GNOME2 dient. Sie ist eine Übersetzung der ((<englischen Version|URL:http://ruby-gnome2.sourceforge.jp/hiki.cgi?tut-gtk>)), welche wiederum von ((<Laurent Sansonetti|lrz>)) aus dem ((<Japanischen|URL:../ja/hiki.cgi?gtk2-tut>)) übersetzt wurde.
+
+== Inhaltsverzeichnis
+
+* ((<Einleitung|tut-gtk-preface>))
+* ((<Erste Schritte|tut-gtk-intro>))
+  * ((<Hallo Welt|tut-gtk-helloworld>))
+  * ((<Signale und Callbacks: Theoretisches|tut-gtk-signals>))
+  * ((<Ereignisse|tut-gtk-events>))
+  * ((<Schritt für Schritt durch "Hallo Welt"|tut-gtk-helloworld-details>))
+* Weiterführendes
+  * ((<Mehr über Signalbehandler|tut-gtk-signals-more>))
+  * ((<Ein aufgestocktes "Hallo Welt"|tut-gtk-helloworld2>))
+* ((<Widgets anordnen|tut-gtk2-packing-intro>))
+  * ((<Boxen anordnen: Theoretisches|tut-gtk2-packing-theory>))
+  * ((<Genaueres über Boxen|tut-gtk2-packing-box-details>))
+  * ((<Boxen anordnen: Beispielprogramm|tut-gtk2-packing-demo>))
+  * ((<Anordnen mit Hilfe von Tabellen|tut-gtk2-packing-tables>))
+  * ((<Tabellen anordnen: Beispielprogramm|tut-gtk2-packing-tables-demo>))

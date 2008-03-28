@@ -1,0 +1,34 @@
+= News (2005-11-14)
+== Ruby-GNOME2-0.14.1 released.
+((*Posted by Masao on 2005-11-14 (Mon) 15:25:09*))
+
+Ruby-GNOME2-0.14.1 is now available. 
+
+Serious memory leaks on 0.14.0 was fixed on 0.14.1.
+Update your 0.14.0 to 0.14.1 as soon as possible. 
+
+== Highlights
+* Fixed memory leaks and some bugs.
+
+== Know problems
+Ruby/Libgda works with libgda-1.2.x, 
+but it doesn't work with libgda-1.3.9x.
+
+== Downloads
+((<URL:http://sourceforge.net/project/showfiles.php?group_id=53614>))
+
+:ruby-gtk2-x.x.x.tar.gz
+  The minimum package which includes Ruby/GLib2, Ruby/ATK, Ruby/GdkPixbuf2, Ruby/Pango, Ruby/GTK2.
+
+:ruby-gnome2-all-x.x.x.tar.gz
+  All of Ruby-GNOME2 libraries.
+
+:ruby-gtk2-x.x.x-x-i386-msvcrt-1.8.zip
+  The binary package for One-Click Ruby Installer.
+  Includes Ruby/GLib2, Ruby/ATK, Ruby/GdkPixbuf2, Ruby/Pango, Ruby/GTK2, Ruby/Libglade2, Ruby/GtkGLExt.
+  With extra libraries (rcairo-1.0.0, Ruby-GetText-Package-1.0.0, Racc-1.4.4-all).
+
+== Changes since version 0.14.0
+* Ruby/GLib2: Fixed memory leaks. 
+* Ruby/Pango: Fixed some bugs.
+* Ruby/GTK2: Improve memory management.

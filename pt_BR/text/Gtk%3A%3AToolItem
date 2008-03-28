@@ -1,0 +1,182 @@
+= class Gtk::ToolItem
+((<Gtk::ToolItem>))s are widgets that can appear on a toolbar. To create a toolbar item that contain something else than a button, use Gtk::ToolItem.new. Use Gtk::Container#add to add a child widget to the tool item.
+
+For toolbar items that contain buttons, see the Gtk::ToolButton, Gtk::ToggleToolButton and Gtk::RadioToolButton classes.
+
+See the Gtk::Toolbar class for a description of the toolbar widget.
+
+== Object Hierarchy
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Gtk::Object
+        * Gtk::Widget
+          * Gtk::Container
+            * Gtk::Bin
+              * Gtk::ToolItem
+
+== Class Methods
+--- Gtk::ToolItem.new
+    Creates a new Gtk::ToolItem
+    * Returns: the new Gtk::ToolItem
+
+== Instance Methods
+--- homogeneous?
+    Returns whether the tool item is the same size as other homogeneous items. See Gtk::ToolItem#homogeneous=.
+    * Returns: true if the tool item is the same size as other homogeneous items, otherwise false
+--- homogeneous=(homogeneous)
+    Sets whether the tool item is to be allocated the same size as other homogeneous items. The effect is that all homogeneous items will have the same width as the widest of the items.
+    * homogeneous: true if the tool item is the same size as other homogeneous items, otherwise false
+    * Returns: homogeneous
+--- set_homogeneous(homogeneous)
+    Same as Gtk::ToolItem#homogeneous=.
+    * homogeneous: true if the tool item is the same size as other homogeneous items, otherwise false
+    * Returns: self
+
+--- expand?
+    Returns whether the tool item is allocated extra space. See Gtk::ToolItem#expand=.
+    * Returns: true if the tool item is allocated extra space, otherwise false
+--- expand=(expand)
+    Sets whether the tool item is allocated extra space when there is more room on the toolbar then needed for the items. The effect is that the item gets bigger when the toolbar gets bigger and smaller when the toolbar gets smaller.
+    * expand: true if the tool item is allocated extra space, otherwise false
+    * Returns: expand
+--- set_expand(expand)
+    Same as Gtk::ToolItem#expand=.
+    * expand: true if the tool item is allocated extra space, otherwise false
+    * Returns: self
+
+--- set_tooltip(tooltips, tip_text, tip_private)
+    Sets the Gtk::Tooltips object to be used for this tool item, the text to be displayed as tooltip on the item and the private text to be used. See Gtk::Tooltips#set_tip.
+    * tooltips: The Gtk::Tooltips object to be used
+    * tip_text: text to be used as tooltip text for the tool item
+    * tip_private: text to be used as private tooltip text, or nil
+    * Returns: self
+
+--- use_drag_window?
+    Returns whether the tool item has a drag window. See Gtk::ToolItem#use_drag_window=.
+    * Returns: true if toolitem uses a drag window.
+--- use_drag_window=(use_drag_window)
+    Sets whether the tool item has a drag window. When true the toolitem can be used as a drag source through Gtk::Drag.source_set. When toolitem has a drag window it will intercept all events, even those that would otherwise be sent to a child of toolitem.
+    * use_drag_window: true if toolitem has a drag window, otherwise false
+    * Returns: self
+--- set_use_drag_window(use_drag_window)
+    Same as Gtk::ToolItem#use_drag_window=.
+    * use_drag_window: true if toolitem has a drag window, otherwise false
+    * Returns: self
+
+--- visible_horizontal?
+    Returns whether the tool item is visible on toolbars that are docked horizontally.
+    * Returns: true if the tool item is visible on toolbars that are docked horizontally.
+--- visible_horizontal=(visible_horizontal)
+    Sets whether the tool item is visible when the toolbar is docked horizontally.
+    * visible_horizontal: true if the toolbar item is visible when in horizontal mode, othewise false.
+    * Returns: visible_horizontal
+--- set_visible_horizontal(visible_horizontal)
+    Same as Gtk::ToolItem#visible_horizontal=.
+    * visible_horizontal: true if the toolbar item is visible when in horizontal mode, othewise false.
+    * Returns: self
+
+--- visible_vertical?
+    Returns whether the tool item is visible on toolbars that are docked vertically.
+    * Returns: true if the tool item is visible on toolbars that are docked vertically.
+--- visible_vertical=(visible_vertical)
+    Sets whether the tool item is visible when the toolbar is docked vertically.
+    * visible_vertical: true if the toolbar item is visible when in vertical mode, othewise false.
+    * Returns: visible_vertical
+--- set_visible_vertical(visible_vertical)
+    Same as Gtk::ToolItem#visible_vertical=.
+    * visible_vertical: true if the toolbar item is visible when in vertical mode, othewise false.
+    * Returns: self
+
+--- important?
+    Returns whether the tool item is considered important. See Gtk::ToolItem#important=.
+    * Returns: true if the tool item is considered important. 
+--- important=(important)
+    Sets whether the tool item should be considered important. The Gtk::ToolButton uses this property to determine whether to show or hide its label when the toolbar style is Gtk::Toolbar::BOTH_HORIZ. The result is that only tool buttons with the "is-important" property set have labels, an effect known as "priority text"
+    * important: true if the tool item should be considered important
+    * Returns: important
+--- set_important(important)
+    Same as Gtk::ToolItem#important=.
+    * important: true if the tool item should be considered important
+    * Returns: self
+
+--- icon_size
+    Returns the icon size used for the tool item. Custom subclasses of Gtk::ToolItem should call this method to find out what size icons they should use.
+    * Returns: a Gtk::IconSize indicating the icon size used for the tool item
+
+--- orientation
+    Returns the orientation used for the tool item. Custom subclasses of Gtk::ToolItem should call this method to find out what size icons they should use.
+    * Returns: a ((<Gtk::Orientation|Gtk#Orientation>)) indicating the orientation used for the tool item
+
+--- toolbar_style
+    Returns the toolbar style used for this tool item. Custom subclasses of Gtk::ToolItem should call this method in the handler of the Gtk::ToolItem::toolbar_reconfigured signal to find out in what style the toolbar is displayed and change themselves accordingly
+    
+    Possibilities are:
+    * Gtk::Toolbar::BOTH, meaning the tool item should show both an icon and a label, stacked vertically
+    * Gtk::Toolbar::ICONS, meaning the toolbar shows only icons
+    * Gtk::Toolbar::TEXT, meaning the tool item should only show text
+    * Gtk::Toolbar::BOTH_HORIZ, meaning the tool item should show both an icon and a label, arranged horizontally (however, note the GtkToolButton::has_text_horizontally that makes tool buttons not show labels when the toolbar style is Gtk::Toolbar::BOTH_HORIZ.
+    * Returns: A ((<GtkToolbarStyle|Gtk::Toolbar#GtkToolbarStyle>)) indicating the toolbar style used for tool_item.
+
+--- relief_style
+    Returns the relief style of the tool item. See Gtk::Button#relief_style=. Custom subclasses of Gtk::ToolItem should call this method in the handler of the Gtk::ToolItem::toolbar_reconfigured signal to find out the relief style of buttons.
+    * Returns: a ((<GtkReliefStyle|Gtk::GtkReliefStyle>)) indicating the relief style used for tool_item.
+    * Returns: self
+
+--- retrieve_proxy_menu_item
+    Returns the Gtk::MenuItem that was last set by Gtk::ToolItem#set_proxy_menu_item, ie. the Gtk::MenuItem that is going to appear in the overflow menu.
+    * Returns: The Gtk::MenuItem that is going to appear in the overflow menu for this tool item.
+
+--- get_proxy_menu_item(menu_item_id)
+    If menu_item_id matches the string passed to Gtk::ToolItem#set_proxy_menu_item return the corresponding Gtk::MenuItem.
+    Custom subclasses of Gtk::ToolItem should use this method to update their menu item when the Gtk::ToolItem changes. That the menu_item_ids must match ensures that a Gtk::ToolItem will not inadvertently change a menu item that they did not create.
+    * menu_item_id: a String used to identify the menu item
+    * Returns: The Gtk::MenuItem passed to Gtk::ToolItem#set_proxy_menu_item, if the menu_item_ids match.
+
+--- set_proxy_menu_item(menu_item_id, menu_item)
+    Sets the Gtk::MenuItem used in the toolbar overflow menu. The menu_item_id is used to identify the caller of this method and should also be used with Gtk::ToolItem#get_proxy_menu_item.
+    * menu_item_id: a String used to identify menu_item
+    * menu_item:  a Gtk::MenuItem to be used in the overflow menu
+    * Returns: self
+
+--- rebuild_menu
+    Calling this method signals to the toolbar that the overflow menu item for the tool item has changed. If the overflow menu is visible when this function it called, the menu will be rebuilt.
+    The method must be called when the tool item changes what it will do in response to the "create_menu_proxy" signal.
+    * Returns: self
+
+
+== Properties
+--- is-important: true or false (Read/Write)
+    Whether the toolbar item is considered important. When true, toolbar buttons show text in Gtk::Toolbar::BOTH_HORIZ mode
+
+--- visible-horizontal: true or false (Read/Write)
+    Whether the toolbar item is visible when the toolbar is in a horizontal orientation.
+
+--- visible-vertical: true or false (Read/Write)
+    Whether the toolbar item is visible when the toolbar is in a vertical orientation.
+
+== Signals
+--- create-menu-proxy: self
+     * self: Gtk::ToolItem
+--- set-tooltip: self, tooltips, tip_text, tip_private
+     * self: Gtk::ToolItem
+     * tooltips:  the Gtk::Tooltips
+     * tip_text: the tooltip text
+     * tip_private: the tooltip private text
+
+--- toolbar-reconfigured: self
+    This signal is emitted when some property of the toolbar that the item is a child of changes. For custom subclasses of Gtk::ToolItem, the default handler of this signal use the methods
+     * Gtk::Toolbar#orientation
+     * Gtk::Toolbar#style
+     * Gtk::Toolbar#icon_size
+     * Gtk::Toolbar#relief_style
+    to find out what the toolbar should look like and change themselves accordingly.
+     * self: Gtk::ToolItem
+
+== See Also
+* Gtk::Toolbar - The toolbar widget
+* Gtk::ToolButton - A subclass of Gtk::ToolItem that displays buttons on the toolbar
+* Gtk::SeparatorToolItem - A subclass of Gtk::ToolItem that separates groups of items on a toolbar
+
+== ChangeLog
+* 2005-05-06 Added ((<Masao>))

@@ -1,0 +1,8 @@
+= Conclusão
+{{link("tut-gst-helloworld", nil, "tut-gst", "tut-gst-helloworld-problem")}}
+
+Isso conclui nosso primeiro exemplo. Como você pode ver, configurar um "pipeline" é bem baixo-nível mas poderoso. Você verá depois neste manual como você pode criar um elemento de MP3 "custom" com uma "API" de alto-nível.
+
+Deve estar claro do exemplo que a gente pode bem facilmente substituir o elemento "filesrc" com um elemento "httpsrc", dando-lhe capacidade de tocar pela rede instantaneamente. Um elemento poderia ser feito para lidar com conexões "icecast", por exemplo.
+
+A gente também pode usar outro tipo de "sink" em vez de um "audiosink". A gente poderia usar um "disksink" para escrever os dados para um arquivo, por exemplo. Deve também estar claro que inserir filtros, como um efeito estereofônico ("stereo"), nos "pipelines" não é difícil de ser feito. A coisa mais importante é que você pode reusar elementos que já existem. 

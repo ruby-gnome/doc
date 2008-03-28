@@ -1,0 +1,36 @@
+= Conectando
+{{link("tut-libgda-init", nil, "tut-libgda", "tut-libgda-build-queries")}}
+
+Para conectar voc precisa usar dois métodos.
+
+A gente usa Gda::Client.new para criar um "pool" de conexão e Gda::Client#open_connection para criar as conexões específicas para as fontes de dados diferentes.
+
+Gda::Client#open_connection leva pelo menos 3 parâmetros. O primeiro é o nome da fonte de dados que você deseja conectar.
+O segundo é o nome do usuário a usar, enquanto o terceiro é a senha associada. Finalmente, você pode usar um quarto parâmetro, o qual configura as opções de conexão. Mas esse últim parâmetro não é mandatório. Se ele não for específicado, a conexão irá simplesmente ser inicializada com as opções padrões.
+
+Opções válidas são:
+
+    Gda::Connection::OPTIONS_READ_ONLY
+    Gda::Connection::OPTIONS_DONT_SHARE
+
+Você pode usar Gda::Client#open_connection de duas maneiras diferentes:
+
+:Com bloco
+ Quando provido com um bloco de código, o Gda::Client#open_connection irá então chamar o bloco quando a conexão for habilitada, passando uma referência para um objeto Gda::Connection como parâmetro. No final do bloco, ele irá automaticamente desconectar da fonte de dados, chamando Gda::Connection#close.  
+
+    client = Gda::Client.new
+    client.open_connection("arrakis", nil, nil) do |conn|
+        # ...
+    end
+
+ Dessa maneira, Gda::Client#open_connection sempre retornará nil.
+
+:Sem bloco
+ Quando nenhum bloco de código foi provido, o Gda::Client#open_connection simplesmente retorna uma referência para um objeto Gda::Connection. Você deve cuidar para desconectar por conta própria, chamando Gda::Connection#close manualmente.
+
+    client = Gda::Client.new
+    conn = client.open_connection("arrakis", nil, nil)
+    # ...
+    conn.close
+
+Você também pode fechar todas as conexões abertas para um cliente especificado usando Gda::Client#close_all_connections.

@@ -1,0 +1,5 @@
+= class GConf::ParseError
+This error class gets raised whenever there is a syntax error in a GConf file.
+
+== Super Class
+* GConf::Error

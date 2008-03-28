@@ -1,0 +1,28 @@
+= module Gnome::Print
+
+== Constants
+
+--- LOG_DOMAIN
+      Ruby/GnomePrint's log domain.
+
+=== Return codes
+
+There are some return codes for Ruby/GnomePrint. But user
+doesn't need to care those codes. Because Ruby/GnomePrint
+raises an exception when a return code shows an error. 
+
+--- ERROR_BADCONTEXT
+--- ERROR_BADVALUE
+--- ERROR_NOCURRENTPATH
+--- ERROR_NOCURRENTPOINT
+--- ERROR_NOMATCH
+--- ERROR_NOPAGE
+--- ERROR_TEXTCORRUPT
+--- ERROR_UNKNOWN
+--- OK
+
+== See Also
+
+== ChangeLog
+
+- ((<kou>))

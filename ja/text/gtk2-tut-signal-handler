@@ -1,0 +1,48 @@
+= シグナルハンドラをさらに 
+
+GLib::Instantiatable#signal_connectについて別の視点から見てみよう．
+
+  % irb
+  irb(main):001:0> require 'gtk2'
+  => true
+  irb(main):002:0> b = Gtk::Button.new("hoge")
+  => #<Gtk::Button:0x0a2b84c0 ptr=0x0a3431a8>
+  irb(main):003:0> b.signal_connect("clicked") {puts 1}
+  => 1
+  irb(main):004:0> b.signal_connect("clicked") {puts 2}
+  => 2
+
+GLib::Instantiatable#signal_connectメソッドからの返り値に気付いただろうか?
+これはコールバックブロックを識別するためのタグである。
+前述したようにシグナルやオブジェクトには必要なだけのコールバックブロックを登録することができ、それらは接続した順番に実行される。 
+
+それでは実際にシグナルを発行してみよう．
+GLib::Instantiatable#signal_emitメソッドは，引数に指定したシグナルを発行するメソッドである．
+
+コールバックブロックが登録された順番に実行されていることが分かる．
+
+  irb(main):005:0> b.signal_emit "clicked"
+  1
+  2
+  => nil
+
+GLib::Instantiatable#signal_handler_disconnectメソッドはコールバックブロックを取り除くメソッドである．
+取り除くコールバックブロックを指定する際にGLib::Instantiatable#signal_connectが返すタグを使う．
+
+  irb(main):006:0> b.signal_handler_disconnect 1
+  => #<Gtk::Button:0x0a2b84c0 ptr=0x0a3431a8>
+  irb(main):007:0> b.signal_emit "clicked"
+  2
+  => nil
+
+また，GLib::Instantiatable#signal_handler_blockメソッドとGLib::Instantiatable#signal_handler_unblockメソッドを用いて，一時的にコールバックブロックを無効にしたり有効にしたりできる．
+
+  irb(main):008:0> b.signal_handler_block 2
+  => #<Gtk::Button:0x0a2b84c0 ptr=0x0a3431a8>
+  irb(main):009:0> b.signal_emit "clicked"
+  => nil
+  irb(main):010:0> b.signal_handler_unblock 2
+  => #<Gtk::Button:0x0a2b84c0 ptr=0x0a3431a8>
+  irb(main):011:0> b.signal_emit "clicked"
+  2
+  => nil

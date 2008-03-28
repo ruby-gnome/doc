@@ -1,0 +1,8 @@
+= Creating a Tree View
+{{link "tut-treeview-model-remove", nil, "tut-treeview", "tut-treeview-view-connect"}}
+
+In order to display data in a tree view widget, we need to create one first, and we need to instruct it where to get the data to display from.
+
+A new tree view is created with:
+
+  view = Gtk::TreeView.new

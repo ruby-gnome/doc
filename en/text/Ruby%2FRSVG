@@ -1,0 +1,6 @@
+= Ruby/RSVG API Reference
+
+* ((<RSVG>))
+* RSVG::Handle
+* RSVG::DimensionData
+* RSVG::Error

@@ -1,0 +1,19 @@
+= class Gtk::Bin
+The Gtk::Bin widget is a container with just one child. It is not very useful itself, but it is useful for deriving subclasses, since it provides common code needed for handling a single child widget. 
+
+Many Ruby/GTK widgets are subclasses of Gtk::Bin, including Gtk::Window, Gtk::Button, Gtk::Frame, Gtk::HandleBox, and Gtk::ScrolledWindow. 
+
+== Object Hierarchy
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Gtk::Object
+        * Gtk::Widget
+          * Gtk::Container
+            * Gtk::Bin
+
+== Instance Methods
+--- child
+    Gets the child of the Gtk::Bin, or nil if the bin contains no child widget. The returned widget does not have a reference added, so you do not need to unref it.
+
+- ((<Masao>))

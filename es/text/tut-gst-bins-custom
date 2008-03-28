@@ -1,0 +1,27 @@
+= Contenedores a medida
+{{link("tut-gst-bins-add", nil, "tut-gst", "tut-gst-bins-ghost-pads")}}
+
+El programador puede crear contenedores personalizados con sus elementos para realizar una tarea específica.
+
+Esto te permite escribir un decodificador de audio MPEG con solo estas líneas de código:
+
+  # crea el elemento mp3player
+  player = Gst::ElementFactory.make("mp3player")
+
+  # fija la fuente del archivo mp3
+  player.location = "helloworld.mp3"
+
+  # comienza la reproducción
+  player.play
+
+  ...
+
+  # detiene la reproducción
+  player.pause
+
+  ...
+
+  # stop
+  player.stop
+
+Notese que el código anterior supone que el contenedor mp3player deriva de un Gst::Thread, que comienza a reproducir tan pronto como su estado pasa a ser Gst::Element::STATE_PLAYING. Otros tipos de contenedor nececesitan ser iniciados explícitamente. Para más información, lea el capítulo llamado Hilos (Threads).

@@ -1,0 +1,17 @@
+= Problemas con Hola mundo
+{{link("tut-gst-helloworld-conclusion", nil, "tut-gst", "tut-gst-mime-types")}}
+
+La pequeña aplicación que creamos en el capítulo anterior usaba el concepto de factoría para crear los elementos. En este capítulo veremos como usar los conceptor de factoría para crear elementos basándose en que hacen y no en como se llaman.
+
+Veamos los conceptos relacionado antes de avanzar en el removado holamundo usando "autopplugin"
+
+Si hechamos un vistazo a cómo los elementos son creados, en el ejemplo anterior se usa un mecanismo tosco:
+
+  ...
+  # es el momento de crear el decodificador
+  decoder = Gst::ElementFactory.make("mad")
+  ...
+
+Aunque este mecanismo es bastante efectivo, también presenta algunos problemas: los elementos son creados basandose en su nombre. De hecho, creamos un elemento, mad, especificando explícitamente el nombre del elemento mad. Nuestro pequeño programa usa el elemento decodificador mas para decodificar el flujo de MP3 incluso si hay otros tres decodificadores MP3 en el sistema. Veremos cómo usar un modo genérico de crear una elemento decodificador de MP3.
+
+Tenemos que introducir el concepto de tipo MIME y capacidades añadidas de los puertos de entrada y salida.

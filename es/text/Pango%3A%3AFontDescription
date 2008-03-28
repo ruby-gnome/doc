@@ -1,0 +1,212 @@
+= class Pango::FontDescription
+The Pango::FontDescription class represents the description of an ideal font. These are used both to list what fonts are available on the system and also for specifying the characteristics of a font to load. 
+
+== Object Hierarchy
+* Object
+  * GLib::Boxed
+    * Pango::FontDescription
+
+== Class Methods
+--- Pango::FontDescription.new(str = nil)
+    Creates a new font description from a string representation in the form "[FAMILY-LIST] [STYLE-OPTIONS] [SIZE]", where FAMILY-LIST is a comma separated list of families optionally terminated by a comma, STYLE_OPTIONS is a whitespace separated list of words where each WORD describes one of style, variant, weight, or stretch, and SIZE is an decimal number (size in points). Any one of the options may be absent. If FAMILY-LIST is absent, then the family_name field of the resulting font description will be initialized to nil. If STYLE-OPTIONS is missing, then all style options will be set to the default values. If SIZE is missing, the size in the resulting font description will be set to 0. If str is nil, creates a new font description structure with all fields unset.
+    * str: string representation of a font description or nil
+    * Returns: a new Pango::FontDescription
+
+== Instance Methods
+--- hash
+    Computes a hash of a Pango::FontDescription suitable to be used.
+    * Returns: the hash value.  
+
+--- ==(other)
+    Compares two font descriptions for equality.
+    other: another Pango::FontDescription  
+    * Returns: true if the two font descriptions are proveably identical. (Two font descriptions may result in identical fonts being loaded, but still compare false.)
+
+--- family
+    Gets the family name field of a font description. See Pango::FontDescription#family=.
+    * Returns: The family name field. (Will be nil if not previously set.)  
+--- family=(family)
+    Sets the family name field of a font description. The family name represents a family of related font styles, and will resolve to a particular Pango::FontFamily. In some uses of Pango::FontDescription, it is also possible to use a comma separated list of family names for this field.
+    * family: a String representing the family name.  
+    * Returns: family
+--- set_family(family)
+    Same as Pango::FontDescription#family=.
+    * family: a String representing the family name.  
+    * Returns: self
+
+--- style
+    Gets the style field of a Pango::FontDescription. See Pango::FontDescription#style=.
+    * Returns: the  Pango::FontDescription#Style for the font description. Use Pango::FontDescription#set_fields to find out if the field was explicitely set or not. 
+--- style=(style)
+    Sets the style field of a Pango::FontDescription. The Pango::FontDescription#Style enumeration describes whether the font is slanted and the manner in which it is slanted; it can be either Pango::STYLE_NORMAL, Pango::STYLE_ITALIC, or Pango::STYLE_OBLIQUE. Most fonts will either have a italic style or an oblique style, but not both, and font matching in Pango will match italic specifications with oblique fonts and vice-versa if an exact match is not found.
+    * style: the Pango::FontDescription#Style for the font description  
+     * Returns: style
+--- set_style(style)
+    Same as Pango::FontDescription#style=.
+    * style: the Pango::FontDescription#Style for the font description  
+    * Returns: self
+
+--- variant
+    Gets the variant field of a Pango::FontDescription. See Pango::FontDescription#variant=.
+    * Returns: the  Pango::FontDescription#Variant for the font description. Use Pango::FontDescription#set_fields to find out if the field was explicitely set or not. 
+--- variant=(variant)
+    Sets the variant field of a font description. The ((<Pango::FontDescription#Variant>)) can either be Pango::VARIANT_NORMAL or Pango::VARIANT_SMALL_CAPS.
+    * variant: the ((<Pango::FontDescription#Variant>)) for the font description. 
+    * Returns: variant
+--- set_variant(variant)
+    Same as Pango::FontDescription#variant=.
+    * variant: the ((<Pango::FontDescription#Variant>)) for the font description. 
+    * Returns: self
+
+--- weight
+    Gets the weight field of a Pango::FontDescription. See Pango::FontDescription#weight=.
+    * Returns: the  ((<Pango::FontDescription#Weight>)) for the font description. Use Pango::FontDescription#set_fields to find out if the field was explicitely set or not. 
+     * Returns: self
+--- weight=(weight)
+    Sets the weight field of a font description. The weight field specifies how bold or light the font should be. In addition to the values of the ((<Pango::FontDescription#Weight>)) enumeration, other intermediate numeric values are possible.
+    * weight: the ((<Pango::FontDescription#Weight>)) for the font description.  
+    * Returns: weight
+--- set_weight(weight)
+    Same as Pango::FontDescription#weight=.
+    * weight: the ((<Pango::FontDescription#Weight>)) for the font description.  
+    * Returns: self
+
+--- stretch
+     
+     * Returns: self
+--- stretch=(stretch)
+    Sets the stretch field of a font description. The stretch field specifies how narrow or wide the font should be.
+    * stretch: the ((<Pango::FontDescription#Stretch>)) for the font description  
+    * Returns: stretch
+--- set_stretch(stretch)
+    Same as Pango::FontDescription#stretch=.
+    * weight: the ((<Pango::FontDescription#Stretch>)) for the font description.  
+    * Returns: self
+
+--- size
+    Gets the size field of a font description. See Pango::FontDescription#size=.    * Returns: the size field for the font description in points or device units. You must call Pango::FontDescription#size_is_absolute? to find out which is the case. Returns 0 if the size field has not previously been set. Pango::FontDescription#set_fields to find out if the field was explicitely set or not.  
+
+     * Returns: self
+--- size=(size)
+    Sets the size field of a font description in fractional points. This is mutually exclusive with Pango::FontDescription#absolute_size=.
+    * size: the size of the font in points, scaled by Pango::SCALE. (That is, a size value of 10 * Pango::SCALE is a 10 point font. The conversion factor between points and device units depends on system configuration and the output device. For screen display, a logical DPI of 96 is common, in which case a 10 point font corresponds to a 10 * (96 / 72) = 13.3 pixel font. Use Pango::FontDescription#absolute_size= if you need a particular size in device units.
+    * Returns: size
+--- set_size(size)
+    Same as Pango::FontDescription#size=.
+    * size: the size of the font in points, scaled by Pango::SCALE. (That is, a size value of 10 * Pango::SCALE is a 10 point font. The conversion factor between points and device units depends on system configuration and the output device. For screen display, a logical DPI of 96 is common, in which case a 10 point font corresponds to a 10 * (96 / 72) = 13.3 pixel font. Use Pango::FontDescription#absolute_size= if you need a particular size in device units.
+    * Returns: self
+
+--- absolute_size=(size)
+    Sets the size field of a font description, in device units. This is mutually exclusive with Pango::FontDescription#size=.
+    * size: the new size, in pango units. There are Pango::SCALE Pango units in one device unit. For an output backend where a device unit is a pixel, a size value of 10 * Pango::SCALE gives a 10 pixel font.  ((*Since 1.8*))
+    * Returns: size
+--- set_absolute_size(size)
+    Same as Pango::FontDescription#absolute_size=.
+    * size: the new size, in pango units. There are Pango::SCALE Pango units in one device unit. For an output backend where a device unit is a pixel, a size value of 10 * Pango::SCALE gives a 10 pixel font.  ((*Since 1.8*))
+    * Returns: self
+
+--- size_is_absolute?
+    Determines whether the size of the font is in points or device units. See Pango::FontDescription#size= and Pango::FontDescription#absolute_size=.
+    * Returns: true if the size for the font description is in points or device units. Use Pango::FontDescription#set_fields to find out if the size field of the font description was explicitely set or not. ((*Since 1.8*))
+    * Returns: self
+
+--- set_fields
+    Determines which fields in a font description have been set.
+    * Returns: a ((<Pango::FontDescription#FontMask>)) with bits set corresponding to the fields in desc that have been set. 
+
+--- unset_fields(to_unset)
+    Unsets some of the fields in a Pango::FontDescription. Note that this merely marks the fields cleared, it does not clear the settings for those fields.
+    * to_unset: ((<Pango::FontDescription#FontMask>)) of fields in the desc to unset.  
+    * Returns: self
+
+--- merge(desc_to_merge, replace_existing
+    Merges the fields that are set in desc_to_merge into the fields in desc. If replace_existing is false, only fields in desc that are not already set are affected. If true, then fields that are already set will be replaced as well.
+    * desc_to_merge: the Pango::FontDescription to merge from  
+    * replace_existing: if true, replace fields in desc with the corresponding values from desc_to_merge, even if they are already exist.  
+    * Returns: self
+
+--- better_match(old_match, new_match)
+    Determines if the style attributes of new_match are a closer match for desc than old_match, or if old_match is nil, determines if new_match is a match at all. Approximate matching is done for weight and style; other attributes must match exactly.
+    * old_match: a Pango::FontDescription, or nil  
+    * new_match: a Pango::FontDescription  
+    * Returns: true if new_match is a better match  
+
+--- to_s
+    Creates a String representation of a font description. See Pango::FontDescription.new for a description of the format of the string representation. The family list in the String description will only have a terminating comma if the last word of the list is a valid style option.
+    * Returns: a String representation of a font description
+
+--- to_str
+    Same as Pango::FontDescription#to_s.
+    * Returns: a String representation of a font description
+
+--- to_filename
+    Creates a filename representation of a font description. The filename is identical to the result from calling Pango::FontDescription#to_s, but with underscores instead of characters that are untypical in filenames, and in lower case only.
+    * Returns: a filename representation of a font description.
+
+== Constants
+You can omit "FontDescription::" like as Pango::FONT_MASK_FAMILY instead of Pango::FontDescription::FONT_MASK_FAMILY.
+
+=== FontMask
+The bits in a FontMask correspond to fields in a Pango::FontDescription that have been set. 
+--- FONT_MASK_FAMILY
+    the font family is specified.
+--- FONT_MASK_STYLE
+    the font style is specified. 
+--- FONT_MASK_VARIANT
+    the font variant is specified.
+--- FONT_MASK_WEIGHT
+    the font weight is specified.
+--- FONT_MASK_STRETCH
+    the font stretch is specified.
+--- FONT_MASK_SIZE
+    the font size is specified. 
+
+=== Stretch
+An enumeration specifying the width of the font relative to other designs within a family. 
+--- STRETCH_ULTRA_CONDENSED
+--- STRETCH_EXTRA_CONDENSED
+--- STRETCH_CONDENSED
+--- STRETCH_SEMI_CONDENSED
+--- STRETCH_NORMAL
+    the normal width
+--- STRETCH_SEMI_EXPANDED
+--- STRETCH_EXPANDED
+--- STRETCH_EXTRA_EXPANDED
+--- STRETCH_ULTRA_EXPANDED
+
+=== Style
+An enumeration specifying the various slant styles possible for a font.
+--- STYLE_NORMAL
+    the font is upright. 
+--- STYLE_OBLIQUE
+    the font is slanted, but in a roman style.
+--- STYLE_ITALIC
+    the font is slanted in an italic style.
+
+=== Variant
+An enumeration specifying capitalization variant of the font.
+--- VARIANT_NORMAL
+    A normal font. 
+--- VARIANT_SMALL_CAPS
+    A font with the lower case characters replaced by smaller variants of the capital characters.  
+
+=== Weight
+An enumeration specifying the weight (boldness) of a font. This is a numerical value ranging from 100 to 900, but there are some predefined values: 
+--- WEIGHT_ULTRALIGHT
+    the ultralight weight (= 200) 
+--- WEIGHT_LIGHT
+    the light weight (=300) 
+--- WEIGHT_NORMAL
+    the default weight (= 400) 
+--- WEIGHT_SEMIBOLD
+    a weight intermediate between normal and bold (=600)
+--- WEIGHT_BOLD
+    the bold weight (= 700) 
+--- WEIGHT_ULTRABOLD
+    the ultrabold weight (= 800) 
+--- WEIGHT_HEAVY
+    the heavy weight (= 900) 
+
+== ChangeLog
+* 2005-11-16 Added Constants section. - ((<Masao>))
+* 2005-10-13 Added. - ((<Masao>))

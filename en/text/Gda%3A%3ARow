@@ -1,0 +1,90 @@
+= class Gda::Row
+Accessing rows of Gda::DataModel.
+
+== Object Hierarchy
+* Object
+  * GLib::Boxed
+    * Gda::Row
+
+== Class Methods
+--- Gda::Row.new(model, *values)
+    Creates a new row from a list of values.
+    If you don't want to specify values, you can also build a row like this:
+    	Gda::Row.new(model, 5)      # the model will hold 5 values
+    * values: a list of Gda::Value object to compose the row.  
+    * model: the Gda::DataModel this row belongs to. 
+    * Returns: a newly created Gda::Row object.
+
+== Instance Methods
+--- [](key)
+    Gets the value in the row indexed by the 'key' parameter.
+    If the 'key' parameter is a Fixnum, it will be used as an field index.
+    If the 'key' parameter is a String, it will be used as the column's name.
+    * key: field index or column name.  
+    * Returns: a Gda::Value object if successful, or nil if there was an error.
+
+--- each_value { |value| ... }
+    Calls the block for each value this row has, passing a reference to a
+    Gda::Value object as parameter.
+    * Returns: always nil.
+
+--- get_value(colnum)
+    Gets the value indexed in the row at the given position.
+    * colnum: field index.  
+    * Returns: a Gda::Value object if successful, or nil if there was an error.
+
+--- length
+    This method returns the number of column the row has.
+    * Returns: the number of column the row has.
+
+--- model
+    Gets the model this row belongs to.
+    * Returns: a Gda::DataModel object.
+
+--- number
+    Gets the number of the given row, that is, its position in its containing
+    data model.
+    * Returns: the row number, or -1 if there was an error.
+
+--- number=(number)
+    Sets the row number of the row.
+    * number: the new row number.  
+    * Returns: the given parameter 'number'.
+
+--- set_number(number)
+    Sets the row number of the row.
+    * number: the new row number.  
+    * Returns: self.
+
+--- set_unique_id(unique_id)
+    Assigns a new identifier to the given row. This method is usually called by
+    providers.
+    * unique_id: new identifier for the row.  
+    * Returns: self.
+
+--- size
+    Synonym for Gda::Row#length.
+    * Returns: the number of column the row has.
+
+--- unique_id
+    Returns the unique identifier for this row. This identifier is assigned by
+    the different providers, to uniquely identify rows returned to clients.
+    If there is no ID, this means that the row has not been created by a
+    provider, or that it the provider cannot identify it (ie, modifications to
+    it won't take place into the database).
+    * Returns: the unique identifier for this row.
+
+--- unique_id=(unique_id)
+    Assigns a new identifier to the given row. This method is usually called by
+    providers.
+    * unique_id: new identifier for the row.  
+    * Returns: the given parameter 'unique_id'.
+
+--- values
+    Gets a list of all values this row has.
+    * Returns: an Array of Gda::Value objects.
+
+== See Also
+((<Gda>)).
+
+- ((<lrz>))

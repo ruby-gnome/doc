@@ -1,0 +1,41 @@
+= Primeros Pasos
+{{link "tut-gtk-intro", nil, "tut-gtk", "tut-gtk-holamundo"}}
+{{image_right("base.png")}}
+
+Evidentemente, necesitas instalar Ruby-GNOME2 en tu sistema. Por favor, consulta la ((<Guía de Instalación|URL:../hiki.cgi?"Install Guide">)).
+
+Si tu sistema no está soportado, descarga el último paquete de SourceForge, descomprímelo y lee el archivo README para obtener más instrucciones.
+ 
+Para comenzar nuestra introducción a GTK, vamos a empezar con el programa más sencillo. Este programa creará una ventana de 200x200 pixel sin más forma de cerrarla que a través de la consola:
+
+  require 'gtk2'
+  window = Gtk::Window.new
+  window.show
+  Gtk.main
+
+Guarda este programa en un archivo llamado base.rb, y ejecútalo con:
+
+  ruby base.rb
+
+Vamos a comentar paso a paso el programa.
+
+La primera línea carga la librería Ruby/GTK2 en el programa.
+  
+  require 'gtk2'
+
+La tercera línea usa Gtk::Window.new para crear una nueva ventana GTK con los parámetros predeterminados, estos son:
+* tamaño: 200x200
+* tipo: Gtk::Window::TOP_LEVEL
+* titulo: el mismo que el nombre de tu programa (aquí: base.rb)
+
+ window = Gtk::Window.new
+
+La cuarta línea llama a Gtk::Window#show para mostrar la ventana que acabamos de crear:
+
+  window.show
+
+La última línea activa el proceso principal GTK:
+
+  Gtk.main
+
+Gtk.main es una llamada que verás en todos los programas Ruby/GTK2. Cuando el control de la aplicación alcanza este punto, GTK se detendrá y se mantendrá a la escucha de eventos (como pulsar un botón o una tecla), temporizadores, o notificaciones de Entrada/Salida en archivos. Aún así, en el ejemplo anterior, los eventos son ignorados.

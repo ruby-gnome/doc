@@ -1,0 +1,22 @@
+= class Gnome::GPAList
+
+== Object Hierarchy
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Gnome::GPANode
+        * Gnome::GPAList
+
+== Instance Methods
+--- default
+    
+     * Returns: the default value of self.
+--- set_default(default)
+--- default=(default)
+    
+     * Returns: the new default value of self.
+     * Returns: ((|true|)) when success, or ((|false|)).
+
+== See Also
+
+- kou

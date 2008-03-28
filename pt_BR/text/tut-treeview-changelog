@@ -1,0 +1,65 @@
+= Log de Alterações
+{{link "tut-treeview-license-credits", nil, "tut-treeview", nil}}
+
+== Adaptação para Ruby
+:2004-4-10 Joao Pedrosa
+
+Tradução para Português
+
+:2003-12-03 Matthew Berg
+
+Extendida a seção "Como Fazer uma Linha Inteira em Negrito ou Colorida" e adicionado um exemplo de código
+
+:2003-11-23 Matthew Berg
+
+Pequenas alterações de linguagem
+
+Restaurado as seções de função de dados de célula
+
+:2003-11-22 Matthew Berg
+
+Consertos de terminologia e formatação sugeridos por Masao.
+
+:2003-11-20 Matthew Berg
+
+Referências removidas para métodos de "pegar linhas selecionadas" e de "contar linhas selecionadas" até o tempo em que eles forem implementados
+
+Alguns exemplos foram simplificados para concentrar mais no tópico sendo discutido
+
+:2003-11-19 Matthew Berg
+
+Referências removidas para "funções de dados de célula" até o tempo em que for implementada
+
+Removido parágrafo que explicava herança, visto que isso é assumido com Ruby
+
+:2003-11-16 Matthew Berg
+
+Versão inicial
+
+Removidas referências para "custom models" 
+ 
+Alteradas referências de funções de C para métodos de Ruby
+
+== Documento Original
+:2003-10-28 Tim-Philipp Müller
+Células editáveis funcionarão bem mesmo se a seleção for configurada para GTK_SELECTION_NONE. Frases removidas que diziam o contrário.
+
+:2003-10-23 Tim-Philipp Müller
+Consertado seleções 'jumpy' na implementação de interface de "custom model" de GtkTreeSortable. gtk_tree_model_rows_reordered() não parece funcionar como a documentação de referência indica (veja bug #124790)
+
+Adicionada seção sobre como pegar o renderizador de célula onde ocorreu um clique de botão
+
+Adicionada seção sobre células editáveis com "spin buttons" (e uma implementação de CellRendererSpin para os exemplos)
+
+:2003-10-10 Tim-Philipp Müller
+Fiz a implementação de "custom model" de GtkTreeSortable emitir o sinal "sort-column-changed" quando o "sortid" for alterado
+
+Consertado um erro ortográfico na seção de função de seleção; adicionado um parágrafo sobre sugestão de regra para a seção "tornar a linha toda colorida ou negrito"
+
+:2003-10-07 Tim-Philipp Müller
+Código-fonte reformatado para adequá-lo nas páginas quando gerar saídas ps/pdf
+
+Adicionado um link para para versões em PDF e XML.
+
+:2003-09-23 Tim-Philipp Müller
+Versão Inicial

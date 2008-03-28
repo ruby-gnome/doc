@@ -1,0 +1,5 @@
+= class GConf::CorruptError
+This error class gets raised whenever there is a fatal error parsing or loading information inside the GConf backend.
+
+== Super Class
+* GConf::Error

@@ -1,0 +1,90 @@
+= テンプレートの参照
+さて、それではhwedit_glade.rbをエディタで見てみましょう。ここでは上から説明していきます。
+
+  require 'libglade2'
+
+Ruby/Libglade2を読み込みます。自動的にRuby/GTK2, Ruby/GNOME2(存在する場合)も読み込まれます。
+
+  begin
+    require 'gettext'
+  rescue LoadError
+    unless defined? GetText
+      module GetText
+        module_function
+        def _(str)
+          str
+        end
+        def bindtextdomain(domainname, path = nil, locale = nil, charset = nil)
+        end
+      end
+    end
+  end
+
+Ruby/Libglade2は国際化が前提なので((<Ruby-GetText-Package|raa:ruby-gettext>))が必要です。
+しかし、この部分のように偽のGetTextモジュールを作ることで、((<Ruby-GetText-Package|raa:ruby-gettext>))が無くてもアプリケーションとしては動作するようになります（その場合英語版になります）。
+    
+  class HweditGlade
+
+勝手にHweditGladeという名前のクラスになりました。
+
+    include GetText
+    
+    def initialize(path_or_data, root = nil, domain = nil, localedir = nil, flag = GladeXML::FILE)
+      GetText.bindtextdomain(domain, localedir, nil, "UTF-8")
+      @glade = GladeXML.new(path_or_data, root, domain, localedir, flag) {|handler| method(handler)}
+      
+    end
+
+path_or_dataは必須です。Glade XMLファイル(*.glade)を指定するか、Glade XML(*.gladeの内容)を文字列として渡してあげます。ただし、文字列として渡す場合はflag = GladeXML::
+domainはRuby/Libgladeと((<Ruby-GetText-Package|raa:ruby-gettext>))で用いるドメイン名（言語リソース名：moファイルの検索に用いられる）です。
+
+  def on_save1_activate(widget)
+    puts "on_save1_activate() is not implemented yet."
+  end
+  def on_quit1_activate(widget)
+    puts "on_quit1_activate() is not implemented yet."
+  end
+  def on_cut1_activate(widget)
+    puts "on_cut1_activate() is not implemented yet."
+  end
+  def on_about1_activate(widget)
+    puts "on_about1_activate() is not implemented yet."
+  end
+  def on_open1_activate(widget)
+    puts "on_open1_activate() is not implemented yet."
+  end
+  def on_paste1_activate(widget)
+    puts "on_paste1_activate() is not implemented yet."
+  end
+  def on_closebutton1_clicked(widget)
+    puts "on_closebutton1_clicked() is not implemented yet."
+  end
+  def on_new1_activate(widget)
+    puts "on_new1_activate() is not implemented yet."
+  end
+  def on_save_as1_activate(widget)
+    puts "on_save_as1_activate() is not implemented yet."
+  end
+  def on_main_window_delete_event(widget, arg0)
+    puts "on_main_window_delete_event() is not implemented yet."
+  end
+  def on_copy1_activate(widget)
+    puts "on_copy1_activate() is not implemented yet."
+  end
+
+これらは全てイベントハンドラ（ボタンクリック等のイベントが発生したときに呼び出されるメソッド）です。
+デフォルトでは、"xxxx is not implemented yet."と表示されるようになっていますので自分で実装したいところから書き換えて行くイメージです。
+
+  end
+    
+  
+  # Main program
+  if __FILE__ == $0
+    # Set values as your own application. 
+    PROG_PATH = "hwedit.glade"
+    PROG_NAME = "YOUR_APPLICATION_NAME"
+    HweditGlade.new(PROG_PATH, nil, PROG_NAME)
+    Gtk.main
+  end
+
+最後にアプリケーションを実行します。 if __FILE == $0 〜 endはこのスクリプトファイル自身が呼び出されたときのみ呼び出されます。逆に、ライブラリとしてこのスクリプトファイルをrequireしたときには呼ばれないという性質があります。

@@ -1,0 +1,138 @@
+= How to edit this site
+This site is written with RD+. 
+RD+ means RD with some additional rules.
+
+== About RD
+See the documents below.
+* ((<RD working draft|URL:http://helium.ruby-lang.org/~rubikitch/RDP-en.cgi?cmd=view&name=RD>))
+* ((<Embedded Documentation in Programming Ruby|URL:http://www.pragmaticprogrammer.com/ruby/articles/rdtool.html>))
+
+== About Additional Rules
+=== ModuleNames
+The ((<ModuleNames>)) page is a list of modules which will be directly linked in Hiki. 
+Modules names written in ((<ModuleNames>)) will be linked properly, so it is not required anymore to surround Class/Module names with (('((< >))')).
+
+* For href links  
+  * Hoge::Foo - Class name
+  * Hoge::FOO - Constant (if you need to use this style as class/module name, use (('((<Hoge::FOO>))')) explicity. e.g. ((<Gdk::GC>)))
+  * Hoge::Foo#bar - Instance method
+  * Hoge::Foo.bar - Class method
+  * Hoge.bar - Module method
+
+* For linked names
+  * Class method - "--- Hoge::Foo.new" 
+  * Instance method - "--- bar" #Method only.
+
+Before you use this, be sure that the module you need to refer is on the ((<ModuleNames>)) page.
+
+=== Auto-generated anchor
+==== RD style
+
+ ((<URL:url>))
+ ((<name|URL:url>))
+
+* name - Displayed words.
+* url - URL
+
+ e.g.
+ ((<URL:http://www.hoge.com/>))
+ ((<hoge|URL:http://www.hoge.com/>))
+
+ result
+ <a href="http://www.hoge.com/">http://www.hoge.com/</a>
+ <a href="http://www.hoge.com/">hoge</a>
+
+Image URLs (with suffix = png, jpg, jpeg, gif) extend as image.
+
+==== InterWiki style
+InterWiki is a mechanism to automatically generate links from a dictionary (an InterWikiName page). 
+
+ ((<name|key:option>)) 
+
+* name - Displayed words.
+* key - keyword. Replace InterWikiName's URL if the key existed.
+* option - Add the URL (optional). 
+
+ e.g.
+ ((<Hiki>))
+ ((<masao:20020329>))
+ ((<Here|masao:20020329>))
+
+ result
+ <a href="http://www.namaraii.com/hiki.cgi?">Hiki</a>
+ <a href="http://ponx.s5.xrea.com/bibo/?date=20020329">masao</a>
+ <a href="http://ponx.s5.xrea.com/bibo/?date=20020329">Here</a>
+
+==== How to edit InterWikiName page
+InterWikiName page's format is (('[[keyword|url]]')) charset.
+
+ *[[Hiki|http://www.namaraii.com/hiki/hiki.cgi?]] euc
+ *[[masao|http://ponx.s5.xrea.com/bibo/?date=]] euc
+
+== Plugins
+=== status plugin
+Create status table easily. 
+
+ {{status "Title", "
+ GLib::Type|GType|#|hoge
+ GLib::TypePlugin|GTypePlugin|#|hoge
+ "}}
+
+or you can show plural versions.
+
+ {{status "Title", ["1.0", "1.2"], "
+ GLib::Type|GType|O|#|hoge
+ GLib::TypePlugin|GTypePlugin|#|#|hoge
+ "}}
+
+=== image plugin
+Show an image from an attached file.  Obviously, you need to upload the file before using the image plugin.
+
+ {{image_left("foo.png")}}
+ {{image_right("foo.png")}}
+
+If you use an image of English site, you can write it as below:
+
+ {{image_right("en:foo.png")}}           #The current PageID is the same as English site. 
+ {{image_right("en:foo.png", "OtherPageID")}}
+
+You can also write URL directly as below:
+
+ {{image_right("http://..../foo.png")}}
+  #Support "http://" only
+
+If you want to force a line break after an image, use the br plugin.
+
+ {{br}}
+
+=== attach_anchor plugin
+Show a link to an attached file.
+
+ {{attach_anchor("foo.png")}}
+
+=== link plugin
+Create Prev/Up/Home/Next link.
+
+ {{link("PrevPageID", "UpPageID", "HomePageID", "NextPageID")}}
+
+If you use nil for the page_ids, the link will not show.
+
+ {{link(nil, nil, "HomePageID", "NextPageID")}}
+
+== How to write API Reference
+See existing files.  Please ask me if you need help.
+
+== Remove a page
+You can remove Hiki pages, but be careful with this function!
+
+Here are the steps:
+
+(1) edit the page.
+(2) remove title and page contents.
+(3) enter password (same as Hiki's) in the text field (just after the ((*Freeze the current page*)) option).
+(4) click on Save.
+
+== Misc
+Train yourself on the ((<Practice Page>))!
+
+- ((<Masao>))

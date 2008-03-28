@@ -1,0 +1,71 @@
+= Glade, Ruby/Libglade2チュートリアル
+
+この文章はまだ書きかけです。
+
+== はじめに
+((<Glade|URL:http://glade.gnome.org/>))はGNOME向けのGUIビルダです。もともとC言語向けだったのですが、Gladeが生成するGUI情報が記述されたXMLファイル(Glade XMLファイル)とLibgladeを使うことで、C言語以外の言語からも簡単に使うことができるようになりました。Rubyでも、Ruby/Libglade2経由で使うことができます。
+
+Gladeは地域化（L10n:Localization)のためのフレームワーク(GetTextベース)を持っています。GTK+も国際化(I18n:Internationalization)されたGUIツールキットであり、この2つのを組み合わせることで国際化アプリケーションを簡単に開発することができます。Glade/GTK+とRubyであなたのGUIアプリケーションを世界に発信しましょう！
+
+{{br}}
+
+本チュートリアルでは、Glade, Ruby-GNOME2(Ruby/Libglade2, Ruby/GTK)を用いたGUIの開発手順を説明します。
+
+また、同時に、((<Ruby-GetText-Package|URL:http://ponx.s5.xrea.com/hiki/ja/ruby-gettext.html>))を利用することで、地域化（L10n）されたアプリケーションの開発手順についても説明します。
+
+== 目次
+=== まずはGladeでGUIの雛形をつくる
+最初にGladeを使ってGUIの雛形を作ります。Gladeの使い方を知っている方はこの章を読み飛ばしていただいて構いません。
+* ((<GLadeのインストール|libglade2-tut-install>))
+* ((<Gladeの起動 - 英語モードで！|libglade2-tut-run>))
+   * MS Windowsの場合
+   * Linux/FreeBSDの場合
+* ((<プロジェクトの新規作成とGladeウインドウの説明|libglade2-tut-create-newprj>))
+   * プロジェクトの新規作成
+   * Gladeウインドウの説明
+      * メインウインドウ
+      * ウィジェットパレットウインドウ
+      * プロパティウインドウ
+* ((<Gladeでテキストエディタを作ってみよう|libglade2-tut-textedit>))
+   * ((<プライマリ（メイン）ウィンドウを作る|libglade2-tut-mainwindow>))
+      * Widgetタブ
+      * Signalsタブ
+   * ((<コンテナウィジェットを追加する|libglade2-tut-container>))
+   * ((<メニューを追加する|libglade2-tut-menu>))
+      * メニューアイテムの編集
+   * ((<テキストエディタ(Gtk::TextView)を追加する|libglade2-tut-textview>))
+   * ((<各種ダイアログを作る|libglade2-tut-dialogs>))
+      * ファイル選択ダイアログ
+      * Aboutダイアログ
+* ((<プロジェクトの保存|libglade2-tut-save>))
+
+=== Ruby/Libglade2でGUIの雛形に命を吹き込む
+ここから、われらがRuby/Libgladeの登場です。
+
+* ((<テンプレートの生成|libglade2-tut-create-template>))
+   * MS Windowsの場合
+   * Linux/FreeBSDの場合
+   * テンプレートを実行する
+
+* ((<テンプレートの参照|libglade2-tut-about-template>))
+* ((<テンプレートからソースコード(Rubyスクリプト)へ|libglade2-tut-create-src>))
+   * まずはコピペ
+   * イベントハンドラの実装
+
+* ((<Localization(L10n): 文字列の地域化|libgade2-tut-l10n>))
+   * ソースコード(Rubyスクリプト)をL10n対応させる
+   * rgettextによるカタログファイル(poファイルの抽出)
+
+* ((<setup.rbを用いた開発|libglade2-tut-setup>))
+   
+* ((<その他のTips|libglade2-tut-tips>))
+   * Gtk::Object#destroyはしないように
+   * プロジェクトの単位
+
+=== 参考文献
+   * GLADEホームページのFeaturesのページ - (((<URL:http://glade.gnome.org/features.html>)))
+   * GNOME Human Interface Guidelines - ((<URL:http://kazehakase.sourceforge.jp/cgi-bin/hiki/hiki.cgi?GNOME_HIG>))
+
+=== ChangeLog
+* 2004/11/08 ((<むとう>))
+   * 新規作成

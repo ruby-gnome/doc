@@ -1,0 +1,155 @@
+= Programme de démonstration des placements
+
+  #!/usr/bin/env ruby
+
+  require 'gtk2'
+
+  # Fabrique une nouvelle hbox remplie avec des boutons-étiquettes.  
+  # Les arguments qui nous intéressent pour Gtk::HBox.new et Gtk::Box#pack_start 
+  # sont passés à cette méthode.
+  def make_box(homogeneous, spacing, expand, fill, padding)
+      box = Gtk::HBox.new(homogeneous, spacing)
+      
+      "Gtk::Box#pack_start (button, #{expand}, #{fill}, #{padding})".split(/ /).each do |s|
+          button = Gtk::Button.new(s)
+          box.pack_start(button, expand, fill, padding)
+      end
+      box
+  end
+
+  # Analyse les arguments de la ligne de commande.
+  which = ARGV.shift
+  unless which
+      $stderr.puts "usage: #{$0} num"
+      $stderr.puts "	where num is 1, 2, or 3."
+      exit 1
+  end
+
+  # Crée la fenêtre principale.
+  window = Gtk::Window.new
+  
+  # Vous devriez toujours vous souvenir de connecter le signal deleve_event 
+  # à la fenêtre principale.  C'est très important si vous désirez obtenir un
+  # comportement intuitif propre.
+  window.signal_connect("delete_event") do
+      Gtk::main_quit
+      false
+  end
+  window.border_width = 10
+
+  # Nous créons ici une boîte verticale (vbox) pour y placer des boîtes horizontales (créées par make_box).
+  # Ceci nous permet d'empiler les boîtes horizontales contenant nos boutons une sur l'autre, dans une vbox.
+  box1 = Gtk::VBox.new(false, 0)
+
+  case which.to_i
+  when 1
+      # Crée et aligne une nouvelle étiquette sur le côté gauche.  
+      # Nous allons discuter cette méthode avec d'autres dans une des prochaines sections 
+      # (appelée 'attributs des widgets').
+      label = Gtk::Label.new("Gtk::HBox.new(false, 0)")
+      label.set_alignment(0, 0)
+      box1.pack_start(label, false, false, 0)
+
+      # Les deux premiers éléments représentent les paramêtres homegeneous et spacing de Gtk::HBox.new.
+      # Les trois derniers éléments représentes les paramêtres expand, fill and padding pour Gtk::HBox#pack_start.
+      [
+          [false, 0, false, false, 0],
+          [false, 0, true,  false, 0],
+          [false, 0, true,  true,  0],
+      ].each do |args|
+          # Crée et place une nouvelle boîte horizontale avec les paramêtres spécifiés sur la boîte verticale.
+
+          box2 = make_box(*args)
+          box1.pack_start(box2, false, false, 0)
+      end
+
+      # Insère un séparateur sur la boîte verticale.
+      separator = Gtk::HSeparator.new
+      box1.pack_start(separator, false, true, 5)
+
+      # Idem que précédent.
+      label = Gtk::Label.new("Gtk::HBox.new(true, 0)")
+      label.set_alignment(0, 0)
+      box1.pack_start(label, false, false, 0)
+      [
+          [true, 0, true, false, 0],
+          [true, 0, true, true,  0],
+      ].each do |args|
+          box2 = make_box(*args)
+          box1.pack_start(box2, false, false, 0)
+      end
+
+      separator = Gtk::HSeparator.new
+      box1.pack_start(separator, false, true, 5)
+
+  when 2
+      label = Gtk::Label.new("Gtk::HBox.new(false, 10)")
+      label.set_alignment(0, 0)
+      box1.pack_start(label, false, false, 0)
+
+      [
+          [false, 10, true, false, 0],
+          [false, 10, true, true,  0],
+      ].each do |args|
+          box2 = make_box(*args)
+          box1.pack_start(box2, false, false, 0)
+      end
+
+      separator = Gtk::HSeparator.new
+      box1.pack_start(separator, false, true, 5)
+
+      label = Gtk::Label.new("Gtk::HBox.new(false, 0)")
+      label.set_alignment(0, 0)
+      box1.pack_start(label, false, false, 0)
+
+      [
+          [false, 0, true, false, 10],
+          [false, 0, true, true,  10],
+      ].each do |args|
+          box2 = make_box(*args)
+          box1.pack_start(box2, false, false, 0)
+      end
+
+      separator = Gtk::HSeparator.new
+      box1.pack_start(separator, false, true, 5)
+
+  when 3
+      # Ceci démontre la possibilité d'utiliser Gtk::Box#pack_end tpour justifier les widgets.
+      # Tout d'abord nous créons une boîte comme précédemment.
+      box2 = make_box(false, 0, false, false, 0);
+
+      # Crée une étiquette qui sera insérée à la fin.
+      label = Gtk::Label.new("end")
+      box2.pack_end(label, false, false, 0)
+      box1.pack_start(box2, false, false, 0)
+
+      # Un séparateur pour la fin.
+      separator = Gtk::HSeparator.new
+
+      # Ceci ajuste explicitement le séparateur à 400 pixels de longueur sur 
+      # 5 pixels de hauteur.  La hbox que l'on a créée aura donc 400 pixels de large, 
+      # et l'étiquette "end" sera séparé des autres de la hbox.
+      # Sinon, tous les widgets de la hbox seraient placés les plus près possible les 
+      # uns des autres. 
+      separator.set_size_request(400, 5)
+      box1.pack_start(separator, false, true, 5)
+  end
+
+  # Crée et place un bouton "Quit" dans une nouvelle boîte, qui sera utilisé pour
+  # terminer le programme, exactement de la même façon que la croix de fermeture de la fenêtre.
+  quitbox = Gtk::HBox.new(false, 0)
+  button = Gtk::Button.new("Quit")
+  button.signal_connect("clicked") do
+      Gtk.main_quit
+  end 
+
+  quitbox.pack_start(button, true, false, 0)
+  box1.pack_start(quitbox, true, false, 0)
+  window.add(box1)
+
+  # Affiche tous les widgets à l'écran.
+  window.show_all
+
+  # Comme d'habitude, nous terminons en entrant dans la boucle GTK principale, Gtk.main.
+  Gtk.main
+

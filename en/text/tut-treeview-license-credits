@@ -1,0 +1,18 @@
+= Credits
+{{link "tut-treeview-license-copyright", nil, "tut-treeview", "tut-treeview-changelog"}}
+
+== Ruby Adaption
+
+Thanks to Tim-Philipp Müller for writing such wonderful source material, and for answering my questions in #gtk+. 
+
+And of course thanks to the entire ((<Ruby-GNOME2 team|Authors>)).
+
+== Original Document
+
+Thanks to Axel C. for proof-reading the first drafts, for many suggestions, and for introducing me to the tree view widget in the first place (back then when I was still convinced that porting to Gtk+-2.x was unnecessary, Gtk+-1.2 applications looked nice, and Aristotle had already said everything about politics that needs to be said).
+
+Harring Figueiredo shed some light on how GtkListStore and GtkTreeStore deal with pixbufs.
+
+Ken Rastatter suggested some additional topics (with complete references even).
+
+Many thanks to all of them, and of course also to kris and everyone else in #gtk+.

@@ -1,0 +1,33 @@
+= class Pango::FontMap
+The Pango::FontMap represents the set of fonts available for a particular rendering system. This is a virtual object with implementations being specific to particular rendering systems. 
+
+== Object Hierarchy
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Pango::FontMap
+
+== Instance Methods
+--- load_font(context, desc)
+     Load the font in the fontmap that is the closest match for desc.
+     * context: the Pango::Context the font will be used with  
+     * desc: a Pango::FontDescription describing the font to load  
+     * Returns: the Pango::Font loaded, or nil if no font matched.  
+
+--- load_fontset(context, desc, language)
+    Load a set of fonts in the fontmap that can be used to render a font matching desc.
+    * context : the Pango::Context the font will be used with  
+    * desc : a Pango::FontDescription describing the font to load  
+    * language : a Pango::Language the fonts will be used for  
+    * Returns : the Pango::Fontset, or nil if no font matched.  
+
+--- families
+    Gets all families for a fontmap.
+    * Returns: an Array of Pango::FontFamily. 
+
+--- shape_engine_type
+    Returns the render ID for shape engines for this fontmap. See the render_type field of Pango::EngineInfo. ((*Since 1.4*))
+    * Returns: the ID string for shape engines for this fontmap.
+
+== ChangeLog
+* 2005-10-13 Added. - ((<Masao>))

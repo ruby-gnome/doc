@@ -1,0 +1,94 @@
+= module RSVG
+
+== Module Functions
+--- RSVG.pixbuf_from_file(file_name)
+
+     Loads a new Gdk::Pixbuf from (({file_name})) and
+     returns it. If an error occurred, raises an exception.
+     
+     * file_name: A file name
+     * Returns: A newly allocated Gdk::Pixbuf, or raises an
+       exception.
+
+--- RSVG.pixbuf_from_file_at_max_size(file_name, max_width, max_height)
+
+     Loads a new Gdk::Pixbuf from (({file_name})) and
+     returns it. This pixbuf is uniformly scaled so that the
+     it fits into a rectangle of size (({max_width})) *
+     (({max_height})). If an error occurred, raises an exception.
+
+     * file_name: A file name
+     * max_width: The requested max width
+     * max_height: The requested max height
+     * Returns: A newly allocated Gdk::Pixbuf, or raises an
+       exception.
+
+--- RSVG.pixbuf_from_file_at_size(file_name, width, height)
+
+     Loads a new Gdk::Pixbuf from (({file_name})) and
+     returns it. This pixbuf is scaled from the size
+     indicated to the new size indicated by (({width})) and
+     (({height})). If either of these are -1, then the
+     default size of the image being loaded is used. If an
+     error occurred, raises an exception.
+
+     * file_name: A file name
+     * width: The new width, or -1
+     * height: The new height, or -1
+     * Returns: A newly allocated Gdk::Pixbuf, or raises an
+       exception.
+     
+--- RSVG.pixbuf_from_file_at_zoom(file_name, x_zoom, y_zoom)
+
+     Loads a new Gdk::Pixbuf from (({file_name})) and
+     returns it. This pixbuf is scaled from the size
+     indicated by the file by a factor of (({x_zoom})) and
+     (({y_zoom})). If an error occurred, raises an exception.
+
+     * file_name: A file name
+     * x_zoom: The horizontal zoom factor
+     * y_zoom: The vertical zoom factor
+     * Returns: A newly allocated Gdk::Pixbuf, or raises an
+       exception.
+
+--- RSVG.pixbuf_from_file_at_zoom_with_max(file_name, x_zoom, y_zoom, max_width, max_height)
+
+     Loads a new Gdk::Pixbuf from (({file_name})) and
+     returns it. This pixbuf is scaled from the size
+     indicated by the file by a factor of (({x_zoom})) and
+     (({y_zoom})). If the resulting pixbuf would be larger
+     than (({max_width}))/(({max_height})) it is uniformly
+     scaled down to fit in that rectangle. If an error
+     occurred, raises an exception.
+
+     * file_name: A file name
+     * x_zoom: The horizontal zoom factor
+     * y_zoom: The vertical zoom factor
+     * max_width: The requested max width
+     * max_height: The requested max height
+     * Returns: A newly allocated Gdk::Pixbuf, or raises an
+       exception.
+
+--- RSVG.set_default_dpi_x_y(dpi_x, dpi_y)
+     
+     Sets the DPI for the outgoing pixbuf. Common values are
+     75, 90, and 300 DPI. Passing a number <= 0 to (({dpi_x})) or
+     (({dpi_y})) will reset the DPI to whatever the default value
+     happens to be.
+
+     * dpi_x: Dots Per Inch (aka Pixels Per Inch) of x
+     * dpi_y: Dots Per Inch (aka Pixels Per Inch) of y
+     * Returns: (({nil}))
+
+== Constants
+--- Error
+--- Handle
+--- LOG_DOMAIN
+
+== See Also
+
+== ChangeLog
+
+* 2005-06-11 ((<kou>)): completed.
+
+- ((<kou>))

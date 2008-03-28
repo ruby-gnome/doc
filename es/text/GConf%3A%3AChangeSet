@@ -1,0 +1,41 @@
+= class GConf::ChangeSet
+GConf::ChangeSet represents a set of changes to be made to the GConf database.
+
+== Super Class
+* Glib::Boxed
+
+== Class Methods
+--- GConf::ChangeSet.new
+    Creates a new GConf::ChangeSet object.
+    * Returns: a new GConf::ChangeSet
+
+== Instance Methods
+--- clear
+    Clears all changes in the GConf::ChangeSet, so that commiting it will have no effect.
+    * Returns: self
+
+--- each { |value| ... }
+    Call the given block on each value in the GConf::ChangeSet.
+    * value: a basic type (String, Integer, so on)
+    * Returns: self
+
+--- remove(key)
+    Removes any changes for the given key.
+    * key: the key to remove
+    * Returns: self
+
+--- set(key, value)
+    Adds a "set" operation to the GConf::ChangeSet. This will not take effect before the GConf::ChangeSet gets commited (by GConf::Client#commit_change_set).  Errors don't occur until the GConf::ChangeSet is actually commited.
+    * key: the key to change
+    * value: the value to set the key to
+    * Returns: self
+
+--- size
+    Returns the number of operations in the GConf::ChangeSet.
+    * Returns: number of operations
+
+--- unset(key)
+    Adds an "unset" operation to the GConf::ChangeSet, unseting the key once the GConf::ChangeSet gets commited.
+    * Returns: self
+
+- ((<lone-star>))

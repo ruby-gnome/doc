@@ -1,0 +1,86 @@
+= class Gda::Export
+Exporting of databases.
+
+== Object Hierarchy
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Gda::Export
+
+== Class Methods
+--- Gda::Export.new(conn)
+    Creates a new Gda::Export object, which allows you to easily add exporting
+    functionality to your programs.
+    It works by first having a Gda::Connection object associated to it, and then
+    allowing you to retrieve information about all the objects present in the
+    database, and also to add/remove those objects from a list of selected
+    objects.
+    When you're done, you just run the export (Gda::Export#run), first
+    connecting to the different signals that will let you be informed of the
+    export process progress.
+    * conn: a Gda::Connection object.  
+    * Returns: a newly created Gda::Export object.
+
+== Instance Methods
+--- connection
+    This method returns the Gda::Connection object associated with the export object.
+    * Returns: the Gda::Connection object associated with the export object.
+
+--- connection=(conn)
+    Associates the given Gda::Connection object with the export object.
+    * conn: a Gda::Connection object.  
+    * Returns: the given parameter 'conn'.
+
+--- run(flags=Gda::Export::FLAGS_TABLE_DATA)
+    Starts the execution of the given export object. This means that, after
+    calling this method, your application will lose control about the
+    export process and will only receive notifications via the class signals.
+    * flags: executing flags (see ((<GdaExportFlags|Gda::Export#GdaExportFlags>))).  
+    * Returns: self.
+
+--- select_tables(*names)
+    Adds all the given tables to the list of selected tables.
+    * names: list of table names to be selected.  
+    * Returns: self.
+
+--- selected_tables
+    Returns a list with the names of all the currently selected objects in the
+    Gda::Export object.
+    * Returns: an Array containing the names of the selected tables.
+
+--- set_connection(conn)
+    Associates the given Gda::Connection object with the export object.
+    * conn: a Gda::Connection object.  
+    * Returns: self.
+
+--- stop
+    Stops execution of the export object.
+    * Returns: self.
+
+--- tables
+    Returns a list of all tables that exist in the Gda::Connection being used by
+    the Gda::Export object. This method is useful when you're building, for
+    example, a list for the user to select which tables he/she wants in the
+    export process.
+    * Returns: an Array containing the name of all the tables.
+
+--- unselect_tables(*names)
+    Removes the given table names from the list of selected tables.
+    * names: list of table names to be unselected.  
+    * Returns: self.
+
+== Constants
+=== GdaExportFlags
+--- FLAGS_TABLE_DATA
+
+== Signals
+--- finished
+
+--- object-selected
+
+--- object-unselected
+
+== See Also
+((<Gda>)).
+
+- ((<lrz>))

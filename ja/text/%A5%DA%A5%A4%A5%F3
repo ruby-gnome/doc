@@ -1,0 +1,64 @@
+= ペイン
+((*まだRuby/GTK(1)用です。*))
+
+2つのウィジェット（ペイン）のみ追加でき、2つのウィジェット間の小さなハンドルをマウスでドラッグすることで2つのウィジェットの大きさを調節できるコンテナです。
+Gtk::PanedのサブクラスのGtk::HPaned(水平方向),Gtk::VPaned(垂直方向)を使用します。
+
+== 基本的な使い方
+Gtk::HPaned(水平方向),Gtk::VPaned(垂直方向)を一つずつ使ってみます。
+
+  require 'gtk'
+  
+  vpaned = Gtk::VPaned.new
+  vpaned.add1(Gtk::Label.new("VPaned, Label1"))
+  vpaned.add2(Gtk::Label.new("VPaned, Label2"))
+  #vpaned.pack1(Gtk::Label.new("VPaned, Label1"), false, true)
+  #vpaned.pack2(Gtk::Label.new("VPaned, Label2"), false, true)
+
+  hpaned = Gtk::HPaned.new
+  hpaned.add1(Gtk::Label.new("Label1"))
+  hpaned.add2(vpaned)
+  
+  window = Gtk::Window.new
+  window.set_usize(300, 200)
+  window.add(hpaned)
+  window.show_all
+
+  Gtk.main
+  
+Gtk::Paned#add1(widget)はペインの1番目（上側 or 左側）にウィジェットを追加します。これはGtk::Paned#pack1(widget, false, true)と同じです。
+Gtk::Paned#add2(widget)はペインの2番目（下側 or 右側）にウィジェットを追加します。これもGtk::Paned#pack2(widget, false, true)と同じです。
+Gtk::Paned#pack1(widget, resize, shrink), Gtk::Paned#pack2(widget, resize, shrink)
+  
+* widget - 追加するウィジェット
+* resize - ペインがリサイズされたときにウィジェット自体がリサイズする場合はtrue、リサイズしない場合はfalseを指定する。
+* shrink - ペインがリサイズされたときに、そのウィジェットが持つ最小の大きさより小さくしても良い場合はtrue、最小値よりは小さくしない場合はfalseを指定する
+  
+
+== 各種プロパティの設定
+プロパティを設定してみます。Gtk::HPaned(水平方向)を例にしますが、Gtk::VPanedでも同様です。
+
+  require 'gtk'
+  
+  hpaned = Gtk::HPaned.new
+  hpaned.add1(Gtk::Button.new("Button 1"))
+  hpaned.add2(Gtk::Button.new("Button 2"))
+  
+  hpaned.set_gutter_size(60)
+  hpaned.set_handle_size(30)
+  hpaned.set_position(200)
+  
+  window = Gtk::Window.new
+  window.set_usize(300, 150)
+  window.add(hpaned)
+  window.show_all
+
+  Gtk.main
+
+
+ * Gtk::Paned#set_gutter_size(size) または、Gtk::Paned#gutter_size = size
+ガター（2つのペインの間）の幅を指定します。
+ * Gtk::Paned#set_handle_size(size) または、Gtk::Paned#handle_size = size
+ハンドルの大きさを指定します。
+ * Gtk::Paned#set_position(position) または、Gtk::Paned#position = position
+左（or上）のペインの幅（高さ）を指定します。

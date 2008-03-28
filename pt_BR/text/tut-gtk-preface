@@ -1,0 +1,50 @@
+= Prefácio do Tutorial de Ruby/GTK2
+{{link nil, nil, "tut-gtk", "tut-gtk-intro"}}
+== Sobre a GTK
+
+(De acordo com o ((<Tutorial de GTK|URL:http://www.gtk.org/tutorial/ch-introduction.html>)))
+
+GTK ("GIMP Toolkit") é uma biblioteca para criar interfaces de usuário gráficas. Ela é licenciada usando a licença LGPL, assim você pode desenvolver software aberto, software livre, ou até mesmo software não-livre comercial usando GTK sem ter que gastar qualquer coisa para licenças ou "royalties".
+
+Ela é chamada de "GIMP toolkit" porque ela foi originalmente escrita para desenvolver o "GNU Image Manipulation Program" (GIMP), mas o GTK agora tem sido usado em um grande número de projetos de software, incluindo o projeto "GNU Network Object Model Environment" (GNOME). A GTK é construída sobre a GDK ("GIMP Drawing Kit"), a qual é basicamente um "wrapper" em volta das funções de baixo-nível para acessar as funções de janela abaixo (Xlib no caso do "X windows system"), e gdk-pixbuf, uma biblioteca para manipulação de imagens no lado do cliente.
+
+Os autores principais da GTK são:
+* Peter Mattis 
+* Spencer Kimball 
+* Josh MacDonald 
+
+A GTK é atualmente mantida por:
+* Owen Taylor 
+* Tim Janik 
+
+A GTK é essencialmente uma interface de programação de aplicações (API) orientada a objeto. Embora escrita completamente em C, ela é implementada usando a ideia de classes e funções de "callback" (ponteiros para funções).
+
+Existe também um terceiro componente chamado GLib que contém alguns substitutos para algumas chamadas ("calls") padrões, assim como algumas funções adicionais para gerenciar as listas ligadas ("linked lists"), etc. As funções substitutas são usadas para aumentar a portabilidade da GTK, pois algumas das funções implementadas aqui não estão disponíveis ou não são padrões em outros "Unixes" como g_strerror(). Algumas também contêm melhorias para as versões da libc, como g_malloc() que tem utilitários de depuração melhorados.
+
+Na versão 2.0, GLib pegou o sistema de tipos que forma a base da hierarquia de classes da GTK, o sistema de sinal que é usado por toda a GTK, uma API de thread que abstrai as diferentes APIs de thread nativas de varias plataformas e um utilitário para carregar módulos.
+
+Como o último componente, A GTK usa a biblioteca Pango para saída de texto internacionalizado.
+
+== Sobre o Ruby-GNOME2
+
+(D acordo com o ((<Tutorial de Ruby-GNOME2|URL:http://ruby-gnome2.sourceforge.net/tut/2.0.htm>)))
+
+Ruby é "a linguagem de scripting interpretada para programação orientada a objeto rápida e fácil".  Ela tem uma sintaxe de exceções simples para gerenciamento de erros. Os operadores são sintaxes fáceis para métodos, pois você pode redefini-los facilmente. Ruby é uma verdadeira linguagem OO. Isso significa que tudo em Ruby é um objeto. Ruby é também "cross-platform", e rodará em muitos tipos de Unix, DOS, Windows, Mac, etc.
+
+O autor principal de Ruby é:
+* Yukihiro Matsumoto (Matz)
+
+O Ruby-GNOME2 é uma ligação ("binding") para a linguagem Ruby usar a biblioteca GTK, assim como algumas das bibliotecas de GNOME. O Ruby-GNOME2 provém uma maneira para criar um "frontend" de GUI para qualquer coisa que você possa escrever em Ruby.
+
+Os autores principais do Ruby-GNOME2 são:
+* Masahiro Sakai
+* Masao Mutoh
+* Takehiro Kubo
+
+== Sobre este tutorial
+
+A GTK é acessível através de várias linguagens de programação, como C++, Guile, Perl, Python, TOM, Ada95, Objective C, Free Pascal, Eiffel, Java, e C#.  Este documento cobre Ruby/GTK2, a ligação de Ruby para a biblioteca de GTK versão 2.
+
+O leitor deve ter algum conhecimento de Ruby. Seria melhor se ele/ela tivesse alguma experiência de programação para o "X" ("Xfree86"), mas isso não é exigido.
+
+Este documento ainda está sob construção. Não hesite em mandar comentário ou a fazer perguntas na lista de mensagens. Qualquer "feedback" será bastante aprecidado.

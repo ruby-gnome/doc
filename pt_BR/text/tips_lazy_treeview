@@ -1,0 +1,40 @@
+= Criando um TreeView "lazy"
+{{link nil, "Ruby-GNOME2+Tips", nil, nil}}
+
+Em algumas aplicações, encher uma árvore inteira com dados para serem mostrados por um Gtk::TreeView pode ser "caro" (em termos de recursos) para fazê-lo tudo de uma vez. Graças que é possível criar um gerenciador (handler) de sinal que enche as fileiras (rows) filhas that quando elas são expandidas. O truque é conseguir que o expansor de fileira apareça sem sem qualquer fileira filha real.  O jeito mais fácil de conseguir isso é criar uma fileira "falsa" (dummy) que não contem dado.
+
+Por exemplo, vamos criar um simples TreeStore, e adicionar uma única fileira nele.
+
+ model = Gtk::TreeStore.new(String)
+ view = Gtk::TreeView.new(model)
+ column = Gtk::TreeViewColumn.new("Coluna de Exemplo", 
+                                   Gtk::CellRendererText.new, {:text => 1})
+
+ iter = store.append(nil)
+ iter[0] = 'Fileira Pai'
+ store.append(iter)         # "Falso filho" (DUMMY)
+
+Então nós podemos criar um gerenciador de "fileira-expandida" que checa se a primeira fileira filha contém um valor real; se não contém, os dados verdadeiros serão adicionados.
+
+ view.signal_connect("row-expanded") do |self, iter, path|
+   child = iter.first_child
+   if (! child[0])
+     new_child = store.append(iter)
+     new_child[0] = 'Fileira filha'
+     store.remove(child)    # "Remove falso filho" (DUMMY)
+   end
+ end
+
+A ordem aqui é importante. Se você remover o "falso" filho antes de adicionar dados reais, a fileira acabará sem filho algum e nunca será expandida.
+
+((<Masao>)) escreveu um pequeno navegador de árvore de árquivo que demonstra um uso prático dessa técnica: {{attach_anchor("fileview.rb")}}
+
+== Log de Alterações
+:2003-10-21 Matthew Berg
+ Log de Alterações adicionado
+:2003-10-20 Matthew Berg
+ Correções de terminologias
+:2003-10-20 Matthew Berg
+ Versão inicial
+
+Autor da Tradução para Português: ((<Joao Pedrosa|jpedrosa>))

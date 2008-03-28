@@ -1,0 +1,40 @@
+= Erste Schritte
+{{link "tut-gtk-preface", nil, "tut-gtk", "tut-gtk-helloworld"}}
+{{image_right("base.png")}}
+
+Als erstes müssen sie natürlich Ruby-GNOME2 auf ihrem Computer installieren. Bitte lesen Sie sich eine unserer ((<Installationsanweisungen|Install Guide>)) durch.
+Wenn Ihr System noch nicht unterstützt wird, laden Sie sich selbst das aktuelle Paket von SourceForge herunter, entpacken Sie es und lesen Sie die README-Datei für weitere Informationen.
+
+Um unseren Einstieg in GTK zu beginnen, werden wir mit dem einfachsten möglichen Program starten. Dieses Programm wird ein 200x200 Pixel großes Fenster und hat keine Möglichkeit, beendet zu werden, außer dem Abbrechen auf der Shell:
+
+  require 'gtk2'
+  window = Gtk::Window.new
+  window.show
+  Gtk.main
+
+Speichern Sie dieses Program in einer Datei namens base.rb und rufen Sie es auf mit:
+
+  ruby base.rb
+
+Wir werden jetzt die einzelnen Schritte des Programms erklären.
+
+Die erste Zeile bindet die Ruby/GTK2-Bibliothek in das Programm ein.
+  
+  require 'gtk2'
+
+Die dritte Zeile benutzt die Methode Gtk::Window.new, um ein neues GTK-Fenster mit voreingestellten Parametern zu erstellen:
+* size: 200x200
+* style: Gtk::Window::TOP_LEVEL
+* title: entspricht dem Programmnamen (hier: base.rb)
+
+ window = Gtk::Window.new
+
+Die vierte Zeile ruft Gtk::Window#show auf, um das gerade erstellte Fenster-Objekt anzuzeigen:
+
+  window.show
+
+Die letzte Zeilt springt in die GTK main-Schleife, die der Hauptausführung dient:
+
+  Gtk.main
+
+Gtk.main ist eine Anweisung, die Sie in jeder Ruby/GTK2-Anwendung wiederfinden werden. Wenn der Programmablauf diese Stelle erreicht, wird GTK auf XWindow-Ereignisse (wie Mausklicks oder Tastendrücke), Timeouts oder Benachrichtigungen über Datei-E/A warten. In unserem Beispiel kommen diese Ereignisse allerdings noch nicht vor.

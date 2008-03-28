@@ -1,0 +1,15 @@
+= Otros recursos 
+{{link "tut-treeview-selection-contextmenu", nil, "tut-treeview", "tut-treeview-license-copyright"}}
+
+Un pequeño tutorial como este no puede abarcarlo todo. Por suerte, hay mucha más información en la red. Aquí se recopila una serie de enlaces que pueden ser útiles (si tiene algún enlace que debería aparecer aquí, envíelo a tim en centricular punto net).
+
+ * ((<"Ruby/GTK API Reference"|"Ruby/GTK">))
+ * ((<"Ruby/GDK API Reference"|"Ruby/GDK">))
+ * ((<"Ruby/GLib API Reference"|"Ruby/GLib">))
+ * ((<Ruby-GNOME2 Mailing Lists|URL:http://sourceforge.net/mail/?group_id=53614>))
+ * ((<gtk-demo|URL:http://cvs.sourceforge.net/viewcvs.py/ruby-gnome2/ruby-gnome2/gtk/sample/gtk-demo/>)) - parte del código fuente de Ruby/GTK (mire en gtk/sample/gtk-demo)
+ * ((<TreeView tutorial using GTK+ (C)|URL:http://scentric.net/temp/tutorial/>))
+ * ((<TreeView tutorial using gtkmm (C++)|URL:http://www.gtkmm.org/gtkmm2/docs/tutorial/html/ch08.html>))
+ * ((<TreeView tutorial using PyGTK (Python)|URL:http://liw.iki.fi/liw/texts/gtktreeview-tutorial.html>))
+
+Los enlaces listados arriba se encuentrán en inglés. Si conoce versiones traducidas al español, por favor envíelos a angelcarballo en gmail punto com. 

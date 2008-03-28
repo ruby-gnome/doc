@@ -1,0 +1,89 @@
+= class Poppler::IndexIter
+
+== Object Hierarchy
+* Object
+  * GLib::Boxed
+    * Poppler::IndexIter
+
+== Included Modules
+* Enumerable
+
+== Class Methods
+--- Poppler::IndexIter.new
+
+    Returns the root Poppler::IndexIter for document.
+
+    Certain documents have an index associated with them.
+    This index can be used to help the user navigate the
+    document, and is similar to a table of contents. Each
+    node in the index will contain a Poppler::Action that can
+    be displayed to the user -- typically a
+    Poppler::ActionGotoDest or a Poppler::ActionUri.
+
+    Here is a simple example of some code that walks the full index:
+
+      def walk_index(iter)
+        iter.each do |i|
+          # Get the the action and do something with it
+          child = i.child
+          work_index(child) if child
+        end
+      end
+
+      iter = Poppler::Index.new(document)
+      walk_index(iter)
+
+     * Returns: a new Poppler::IndexIter
+
+== Instance Methods
+--- child
+
+     Returns a newly created child of self, or nil if
+     the iter has no child.  See Poppler::IndexIter.new
+     for more information on this method.
+
+     * Returns: a new Poppler::IndexIter
+
+--- open?
+
+    Returns whether this node should be expanded by default
+    to the user.  The document can provide a hint as to how
+    the document's index should be expanded initially.
+
+    * Returns: true, if the document wants iter to be expanded
+
+--- action
+     
+     Returns the Poppler::Action associated with iter.
+
+     * Returns: a new Poppler::Action
+
+--- next
+     
+     Sets iter to point to the next action at the current
+     level, if valid.
+
+     * Returns: true, if iter was set to the next action
+
+--- each
+
+     An alias of the following code:
+
+      def each
+        yield(self)
+        yield(self) while next
+      end
+     
+     * Returns: nil
+
+--- valid?
+     
+     * Returns: true, if iter wasn't finished.
+
+== See Also
+
+== ChangeLog
+
+* 2006-05-19 ((<kou>)): completed.
+
+- ((<kou>))

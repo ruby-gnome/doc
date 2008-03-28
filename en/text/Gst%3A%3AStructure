@@ -1,0 +1,134 @@
+= class Gst::Structure
+Generic structure containing fields of names and values.
+
+== Object Hierarchy
+* Object
+  * GLib::Boxed
+    * Gst::Structure
+
+== Class Methods
+--- Gst::Structure.from_string(string)
+    Creates a Gst::Structure from a string representation.
+    * string: a string representation of a Gst::Structure.  
+    * Returns: a newly allocated Gst::Structure.
+
+--- Gst::Structure.new(name, *fields)
+    Creates a new Gst::Structure with the given name.  If no fields are provided, 
+    the structure will be empty.  Otherwise, parses the variable list and sets fields
+    to the values listed.  Variables arguments should be passed as field name and value.
+    * name: the name for the new structure. 
+    * fields: a set of name/value pairs.  
+    * Returns: a newly created Gst::Structure object.
+
+== Instance Methods
+--- [](name)
+    Synonym for Gst::Structure#get_value.
+    * name: the name of the field to get.  
+    * Returns: the value corresponding to the field with the given name.
+
+--- [name]=(value)
+    Sets the field with the given name to the provided value. 
+    If the field does not exist, it is created.  If the field exists, the
+    previous value is freed and replaced.
+    * name: the name of the field to set. 
+    * value: the new value of the field.  
+    * Returns: the given value.
+
+--- clear
+    Synonym for Gst::Structure#remove_all_fields.
+    * Returns: self.
+
+--- get_field_type(field)
+    This method returns the type of the field with the given name (as a Class object), or nil if the field is not found.
+    * field: the name of the field.  
+    * Returns: the type of the field with the given name (as a Class object), or nil if the field is not found.
+
+--- get_value(name)
+    This method returns the value corresponding to the field with the given name.
+    * name: the name of the field to get.  
+    * Returns: the value corresponding to the field with the given name.
+
+--- has_field?(field)
+    This method returns true if the structure contains a field with the given name.
+    * field: the name of a field.  
+    * Returns: true if the structure contains a field with the given name.
+
+--- has_field_typed?(field, klass)
+    This method returns true if the structure contains a field with the given name and klass.
+    * klass: the class of a value.   
+    * field: the name of a field. 
+    * Returns: true if the structure contains a field with the given name and klass.
+
+--- length
+    Synonym for Gst::Structure#n_fields.
+    * Returns: the number of fields in the structure.
+
+--- n_fields
+    This method returns the number of fields in the structure.
+    * Returns: the number of fields in the structure.
+
+--- name
+    This method returns the string representing the name of the structure.
+    * Returns: the string representing the name of the structure.
+
+--- name=(name)
+    Sets the name of the structure to the given name.
+    * name: the new name of the structure.  
+    * Returns: the given parameter 'name'.
+
+--- remove(*fields)
+    Synonym for Gst::Structure#remove_fields.
+    * fields: the name of the fields to remove.  
+    * Returns: self.
+
+--- remove_all_fields
+    Removes all fields in the structure.
+    * Returns: self.
+
+--- remove_field(field)
+    Removes the field with the given name.  If the field with the given
+    name does not exist, the structure is unchanged.
+    * field: the name of the field to remove.  
+    * Returns: self.
+
+--- remove_fields(*fields)
+    Removes the fields with the given names.  If a field does not exist, 
+    it is ignored.
+    * fields: the name of the fields to remove.  
+    * Returns: self.
+
+--- set(*fields)
+    Parses the variable arguments and sets fields accordingly.  Variable arguments should be in
+    the form field name and value.
+    * fields: a set of name/value pairs.  
+    * Returns: self.
+
+--- set_name(name)
+    Sets the name of the structure to the given name.
+    * name: the new name of the structure.  
+    * Returns: self.
+
+--- set_value(name, value)
+    Sets the field with the given name to the provided value. 
+    If the field does not exist, it is created.  If the field exists, the
+    previous value is freed and replaced.
+    * name: the name of the field to set. 
+    * value: the new value of the field.  
+    * Returns: self.
+
+--- size
+    Synonym for Gst::Structure#n_fields.
+    * Returns: the number of fields in the structure.
+
+--- to_s
+    Synonym for Gst::Structure#to_string.
+    * Returns: a human-readable representation of the structure.
+
+--- to_string
+    This method returns a human-readable representation of the structure.
+    * Returns: a human-readable representation of the structure.
+
+== See Also
+((<Gst>)).
+
+- ((<lrz>))

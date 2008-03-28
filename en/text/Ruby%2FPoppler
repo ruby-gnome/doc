@@ -1,0 +1,36 @@
+= Ruby/Poppler API Reference
+
+* ((<Poppler>))
+
+* Poppler::Error
+
+* Poppler::Document
+* Poppler::FontsIter
+* Poppler::FontInfo
+* Poppler::IndexIter
+* Poppler::PSFile
+
+* Poppler::Page
+* Poppler::LinkMapping
+* Poppler::Rectangle
+
+* Poppler::Action
+* Poppler::ActionMovie
+* Poppler::ActionNamed
+* Poppler::ActionUri
+* Poppler::ActionLaunch
+* Poppler::ActionGotoRemote
+* Poppler::ActionGotoDest
+* Poppler::Dest
+
+* Poppler::Attachment
+
+* Poppler::Permissions
+* Poppler::ViewerPreferences
+* Poppler::DestType
+* Poppler::ActionType
+* Poppler::FontType
+* Poppler::PageMode
+* Poppler::PageLaytout
+* Poppler::Backend
+* Poppler::Orientation

@@ -1,0 +1,32 @@
+= Tutoriais de Ruby-GNOME2
+
+== Tutoriais Rápidos
+
+Você encontrará aqui alguns tutoriais sobre os componentes de Ruby-GNOME2. Não é possível cobrir todo o Ruby-GNOME2 em apenas um pequeno tutorial, pois ele inclui diversas bibliotecas. Então decidimos escrever tutoriais para cada biblioteca.
+
+=== ((<"Tutorial de Ruby/GTK2"|tut-gtk>))
+Cobre a biblioteca Ruby/GTK2, que é a base usada para construir interfaces gráficas para os usuários sob o ambiente GNOME2.  ((<"Leia agora!"|tut-gtk>)).
+
+==== ((<"Tutorial de TreeView Ruby/GTK"|tut-treeview>))
+Este é um tutorial separado sobre como usar o componente (widget) Gtk::TreeView.  ((<"Leia agora!"|tut-treeview>)).
+
+=== ((<"Tutorial de Ruby/GConf2"|tut-gconf>))
+Cobre a biblioteca Ruby/GConf2, a qual pode ser usada para implementar facilmente um sistema de configuração para as suas aplicações  GNOME2.  ((<"Leia agora!"|tut-gconf>)).
+
+=== ((<"Tutorial de Ruby/GStreamer"|tut-gst>))
+Cobre a biblioteca Ruby/GStreamer, um "framework" para criar aplicações multimídia de "streaming".  ((<"Leia agora!"|tut-gst>)).
+
+=== ((<"Tutorial de Ruby/Libgda"|tut-libgda>))
+Cobre a biblioteca Ruby/Libgda, a qual provém acesso universal a vários tipos de origem de dados.  ((<"Leia agora!"|tut-libgda>)).
+
+== Outros recursos
+
+Documentos miscelâneos, os quais podem ser de grande utilidade para aprender Ruby-GNOME2.
+
+=== ((<Tutorial de Ruby-GNOME2|URL:http://ruby-gnome2.sourceforge.net/tut/toc.htm>))
+
+É uma versão de Ruby do famoso tutorial de GNOME2, gentilmente fornecido por Joshua Keith (joshuakeith at linuxmail dot org).
+
+Este tutorial tem como objetivo ser usado por desenvolvedores de C, pois o autor adotou um estilo de C para os exemplos. Não é recomendado para iniciantes.
+
+Você pode lê-lo ((<aqui|URL:http://ruby-gnome2.sourceforge.net/tut/toc.htm>)).

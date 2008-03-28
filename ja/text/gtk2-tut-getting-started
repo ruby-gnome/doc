@@ -1,0 +1,54 @@
+= さあ始めよう
+
+まず最初にする事は、もちろん、Ruby-GNOME2のソースをダウンロードしてインストールする事だ．
+Ruby-GNOME2の最新版はいつでも
+((<ここ|URL:http://sourceforge.net/project/showfiles.php?group_id=53614>))
+から入手できる．
+Ruby-GNOME2に関する情報は
+((<Ruby-GNOME2 Project Website|URL:http://ruby-gnome2.sourceforge.jp/>))
+( ((<日本語版|URL:http://ruby-gnome2.sourceforge.jp/ja/hiki.cgi>)) )
+
+で参照できる．インストール手順については((<インストールガイド|installguide>))を参照して欲しい．
+
+{{image_right("simple.png")}}
+Ruby/GTK2の紹介は、まず出来るだけ簡単なプログラムから始めよう．
+このプログラムは200x200ピクセルのウィンドウを作成するが、shellからkillする以外にプログラムを止める方法はないというものだ。
+
+  require 'gtk2'
+  
+  window = Gtk::Window.new
+  window.show
+  Gtk.main
+
+このプログラムをbase.rbという名前で保存しよう．
+コマンドラインから
+
+  ruby base.rb
+
+とすることで実行することができる．
+
+それでは，上のプログラムをもう少し詳しく見ていこう．
+
+  require 'gtk2'
+
+Ruby/GTK2を使う全てのスクリプトでは、gtk2をrequireする．
+これによりRuby/GTK2のクラス・定数・メソッドなどを利用できるようになる．
+
+次の 2 行のコードはウィンドウを作成し表示する．
+
+  window = Gtk::Window.new
+  window.show
+
+Gtk::Window.newの引数を省略するとGtk::Window::TOPLEVELが指定されたことになる．
+Gtk::Window::TOPLEVELを指定すると，このウィンドウはウィンドウマネージャによるデコレーションと配置の指示を受けるようなる．
+ユーザがウィンドウを操作できるように、子ウィジェットの無いウィンドウはデフォルトサイズが0x0ではなく200x200のサイズで作成される．
+
+Gtk::Window#showメソッド で、このウィジェットの設定が終り、表示可能であることをGTKに知らせている．
+
+最後の行でGTKのメイン処理ループに入る．
+
+  Gtk.main
+
+Gtk.mainも，全てのRuby/GTK2アプリケーションで呼出す必要のあるメソッドである．
+処理がここに到達すると、GTKはXイベント(ボタンやキーの押下など)や，タイムアウト，ファイルI/Oからの通知を待ってスリープする．
+このシンプルな例ではイベントに対する処理を記述していないがそれらについては後述する．

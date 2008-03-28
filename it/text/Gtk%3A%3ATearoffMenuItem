@@ -1,0 +1,26 @@
+= class Gtk::TearoffMenuItem
+a Gtk::TearoffMenuItem is a special Gtk::MenuItem which is used to tear off and reattach its menu. 
+When its menu is shown normally, the Gtk::TearoffMenuItem is drawn as a dotted line indicating that the menu can be torn off. Activating it causes its menu to be torn off and displayed in its own window as a tearoff menu. 
+When its menu is shown as a tearoff menu, the Gtk::TearoffMenuItem is drawn as a dotted line which has a left pointing arrow graphic indicating that the tearoff menu can be reattached. Activating it will erase the tearoff menu window. 
+
+== Object Hierarchy
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Gtk::Object
+        * Gtk::Widget
+          * Gtk::Container
+            * Gtk::Bin
+              * Gtk::Item
+                * Gtk::MenuItem
+                  * Gtk::TearoffMenuItem
+
+== Class Methods
+--- Gtk::TearoffMenuItem.new
+    Creates a new Gtk::TearoffMenuItem. 
+    * Returns: a new Gtk::TearoffMenuItem.  
+
+== See Also
+Gtk::Menu for further discussion of menus in Ruby/GTK.
+
+- ((<Masao>))

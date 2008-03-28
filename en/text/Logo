@@ -1,0 +1,48 @@
+= Logo demo
+{{image_right "logo.png"}}
+Logo demo is a sample application for Ruby/GtkGLExt, Ruby/GTK.
+
+The original C program is distributed with GtkGLExt.
+
+== Download
+* {{attach_anchor("logo.tar.gz")}}
+
+== Requirements
+Developed environments are:
+* ruby 1.9.0 (2004-02-14) [i686-linux]
+* Ruby-GNOME2-0.9.0 (Ruby/GTK2, Ruby/GtkGLExt)
+* GtkGLExt 1.0.5 ((<URL:http://gtkglext.sourceforge.net/>))
+* OpenGL Interface for ruby 0.32c ((<URL:http://www2.giganet.net/~yoshi/>))
+{{br}}
+
+== How to play
+ $ruby main.rb [--count num] [--no-anim] [--help]
+
+* --count num: Number of the rotation count. Default value is 100.
+* --no-anim:   Stop animation.
+* --help:      Show usage.
+
+=== Mouse operation
+* Drag the logo with Button1 of your mouse - Rotate the logo.
+* Drag the logo with Button2 of your mouse - Move the logo.
+* Click Button3 of your mouse              - Show menus.
+
+=== Keyboard operation
+* a - Stop/Start animation.
+* i - Initialize the logo.
+* Escape - Quit this program.
+
+== License
+GPL (Notice: trackball.rb is not GPL. See trackball.rb for more details).
+
+== Author
+((<Masao>))
+
+{{br}}
+=== Changelog
+:2004-03-09 Masao
+ Apply Ruby-GNOME2-0.9.0 changes.
+:2004-02-14 Vincent
+ Corrected a few bugs.
+:2004-01-19 Masao
+ Initial release.

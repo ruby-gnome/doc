@@ -1,0 +1,28 @@
+= class Gst::Pipeline
+In almost all cases, you'll want to use a Gst::Pipeline when creating a 
+filter graph. The Gst::Pipeline will manage all the scheduling issues, 
+including threading, as well as provide simple interfaces to common 
+functions, like 'Play'.
+
+== Object Hierarchy
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Gst::Object
+        * Gst::Element
+          * Gst::Bin
+            * Gst::Pipeline
+
+== Class Methods
+--- Gst::Pipeline.new(name=nil)
+    Constructs a new Gst::Pipeline object.
+    If element name is ommited (or nil), then the pipeline will receive a guaranteed
+    unique name, consisting of the "pipeline" string and a number.
+    If name is given, it will be given the name supplied.
+    * name: a name for the pipeline.  
+    * Returns: a newly constructed Gst::Pipeline.
+
+== See Also
+((<Gst>)).
+
+- ((<lrz>))

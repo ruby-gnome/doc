@@ -1,0 +1,14 @@
+= Introdução de Ruby/GStreamer
+{{link(nil, nil, "tut-gst", "tut-gst-init")}}
+
+GStreamer é um "framework" para criar aplicações de multimídia. O design fundamental vem de um "pipeline" de vídeo do "Oregon Graduate Institute", assim como algumas idéias do DirectShow.
+
+O desenvolvimento do framework de GStreamer torna possível escrever qualquer tipo de aplicação de multimídia. O "framework" de GStreamer foi criado para tornar fácil escrever aplicações que lidam com áudio e/ou vídeo. O design de "pipeline" é feito para não ter sobrecarga extra sobre o que os filtros aplicados induzem. Isso torna o GStreamer um bom "framework" para criar até mesmo aplicações de áudio de alta qualidade que exigem muito de latência.
+
+Uma dos usos mais óbvios de GStreamer é usá-lo para fazer um tocador de multimídia. O GStreamer já inclui componentes para construir um tocador multimídia que pode suportar a grande variedade de formatos, incluindo MP3, Ogg Vorbis, MPEG1, MPEG2, AVI, Quicktime, mod e assim por diante. O GStreamer, entretanto, é muito mais que apenas outro tocador multimídia. Suas principais vantagens são que os componentes "plugáveis" podem ser misturados e combinados em "pipelines" arbitrários, assim é possível escrever uma aplicação de edição de vídeo ou áudio completa.
+
+O "framework" é baseado em plugins que irão prover os vários codecs e outras funcionalidades. Os plugins podem ser ligados e organizados em um "pipeline". Esse "pipeline" define o fluxo de dados. Os "pipelines" também podem ser editados com um editor de GUI e salvados como XML, assim as bibliotecas de "pipeline" podem ser feitas com um mínimo de esforço.
+
+A função principal do GStreamer é prover um "framework" para plugins, fluxo de dados e negociação/gerenciamento de tipos de multimídia. Ele também provê uma "API" para escrever aplicações usando os diversos plugins.
+
+Este livro é sobre o GStreamer do ponto de vista de um desenvolvedor de Ruby developer; ele descreve como escrever uma aplicação Ruby/GStreamer usando as ferramentas e bibliotecas de GStreamer.

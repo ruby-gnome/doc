@@ -1,0 +1,43 @@
+= class Gtk::DrawingArea
+The Gtk::DrawingArea widget is used for creating custom user interface elements. It's essentially a blank widget; you can draw on widget.window. After creating a drawing area, the application may want to connect to: 
+
+* Mouse and button press signals to respond to input from the user. (Use Gtk::Widget#add_events() to enable events you wish to receive.) 
+* The "realize" signal to take any necessary actions when the widget is instantiated on a particular display. (Create GDK resources in response to this signal.) 
+* The "configure_event" signal to take any necessary actions when the widget changes size. 
+* The "expose_event" signal to handle redrawing the contents of the widget. 
+
+The following code portion demonstrates using a drawing area to display a circle in the normal widget foreground color. Note that GDK automatically clears the exposed area to the background color before sending the expose event, and that drawing is implicitly clipped to the exposed area.
+
+=== Example 1. Simple GtkDrawingArea usage.
+ require 'gtk2'
+
+ area = Gtk::DrawingArea.new
+ area.set_size_request(100,100)
+ area.signal_connect("expose_event") do
+   alloc = area.allocation
+   area.window.draw_arc(area.style.fg_gc(area.state), true, 
+                        0, 0, alloc.width, alloc.height, 0, 64 * 360) 
+ end
+ 
+ Gtk::Window.new.add(area).show_all
+ 
+ Gtk.main
+
+== Object Hierarchy
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Gtk::Object
+        * Gtk::Widget
+          * Gtk::DrawingArea
+
+== Class Methods
+--- Gtk::DrawingArea.new
+    Creates a new drawing area.
+    * Returns: a new Gtk::DrawingArea  
+
+== See Also
+Sometimes Gtk::Image is a useful alternative to a drawing area. You can put a Gdk::Pixmap in the Gtk::Image and draw to the Gdk::Pixmap, calling Gtk::Widget#queue_draw on the Gtk::Image when you want to refresh to the screen.
+
+
+((<Masao>))

@@ -1,0 +1,34 @@
+= インストールガイド
+== Debian GNU/Linux
+
+=== ご注意
+
+* Debian Project的には非公式パッケージです。そのため、他のパッケージとの整合性は保証しません。
+* Ruby関連の公式パッケージに関しては((<Ruby本家のインストールガイド|URL:"http://www.ruby-lang.org/ja/install.cgi?cmd=view;name=Debian+GNU%2FLinux">))が参考になります。以下を読む前にまずそちらを参照してください。
+* とりあえずRuby-GNOME2のrelease versionのみの提供です。CVS版については要望があれば提供するかもしれません。
+* architectureはi386のみです。
+* woody+ruby1.6向けとsid+ruby1.8向けの2系統あります。お使いのシステムに合わせてどちらかを利用してください。
+
+=== woody(stable)
+* ((<GNOME2 on Debian |URL:http://people.debian.org/~walters/gnome2.html>))に従ってXFree86 4.2とGNOME 2.2をインストールしてください。フォント周りがいろいろ変更されているため、適切に設定修正をしないと日本語表示に支障をきたす可能性もありますが、自己責任でお願いします。
+* 以下の行を/etc/apt/sources.listに加えてください。
+    deb http://ruby.yi.org/debian/ woody-gnome2 ruby-gnome2
+* root権限で以下のコマンドを実行してください。
+    apt-get update
+    apt-get install ruby-gnome2
+* 試しにrbbrを起動してみましょう。GNOMEメニューからも起動できます。
+    /usr/bin/rbbr
+
+=== sid(unstable)
+* 以下の行を/etc/apt/sources.listに加えてください。
+    deb http://ruby.yi.org/debian/ sid ruby-gnome2
+* root権限で以下のコマンドを実行してください。
+    apt-get update
+    apt-get install ruby1.8-gnome2
+* 試しにrbbrを起動してみましょう。GNOMEメニューからも起動できます。
+    /usr/bin/rbbr
+
+=== Changelog
+* 2003-09-20 rubyのバージョンについて追記 - ((<いがらし>))
+* 2003-03-28 ファイル名を変更しました - ((<むとう>))
+* 2003-03-28 新規作成 - ((<いがらし>))

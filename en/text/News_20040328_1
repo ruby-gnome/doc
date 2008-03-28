@@ -1,0 +1,19 @@
+= News (2004-03-28)
+== rbbr-0.6.0
+((*Posted by Masao on 2004-03-28 (Sun) 16:52:30*))
+
+rbbr-0.6.0 released. Enjoy!
+
+== Changes
+* Support ri in ruby. [Masao Mutoh]
+* Hypertext. You can click the class/module names and move to the page. [Kenichi Komiya, Masao Mutoh]
+* Improved Keyboard accelerations [Masao Mutoh]
+* Added "Go back", "Go forward" [Masao Mutoh]
+* Support to search classes/modules with method [Masao Mutoh]
+   * e.g.) "Gtk main"   => You can find Gtk.main first
+* Reduced warning messages on Win32 [Masao Mutoh]
+* Enhanced to support L10n for menus/labels [Ales Nyakhaychyk, Dafydd Harries, David Espada, Gabriele Renzi, Jan Weil, Joao Pedrosa, Laurent Snsonetti, Masao Mutoh, Park Ji-ln]
+   * Belarusian, English, French, German, Italian, Japanese, Korean, Portuguese from Brazil, Spanish, Welsh are now supported. (optional)
+* Updated Ruby-GNOME2 API Reference. (optional)
+   * rbbr-0.6.0-withapi.tar.gz include this reference.
+* Fixed some bugs, improved.

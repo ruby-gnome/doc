@@ -1,0 +1,57 @@
+= module Poppler
+
+== Module Functions
+--- Poppler.backend
+     
+     * Returns: Poppler::Backend
+--- Poppler.cairo_available?
+     
+     * Returns: true if rcairo is avilable, otherwise false
+--- Poppler.version
+     
+     * Returns: Poppler version as String
+
+== Constants
+
+--- BUILD_VERSION
+     * build version number as [major, minor, micro]
+--- VERSION
+     * version number as [major, minor, micro]
+--- LOG_DOMAIN
+
+== See Also
+
+* Poppler::Action
+* Poppler::ActionGotoDest
+* Poppler::ActionGotoRemote
+* Poppler::ActionLaunch
+* Poppler::ActionMovie
+* Poppler::ActionNamed
+* Poppler::ActionType
+* Poppler::ActionUri
+* Poppler::Attachment
+* Poppler::Backend
+* Poppler::Dest
+* Poppler::DestType
+* Poppler::Document
+* Poppler::Error
+* Poppler::FontInfo
+* Poppler::FontType
+* Poppler::FontsIter
+* Poppler::IndexIter
+* Poppler::LinkMapping
+* Poppler::Orientation
+* Poppler::PSFile
+* Poppler::Page
+* Poppler::PageLaytout
+* Poppler::PageMode
+* Poppler::Permissions
+* Poppler::Rectangle
+* Poppler::ViewerPreferences
+
+
+== ChangeLog
+
+* 2006-05-18 ((<kou>)): completed.
+
+- ((<kou>))

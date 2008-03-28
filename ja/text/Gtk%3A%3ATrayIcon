@@ -1,0 +1,56 @@
+= class Gtk::TrayIcon
+This class provides a Ruby access to the System Tray Protocol
+Specification.
+The class is based on Gtk::Plug, so you can easily add widgets
+in the GNOME notification area using Gtk::Plug#add.
+Here is an example:
+
+	require 'gtktrayicon'
+
+	tray = Gtk::TrayIcon.new("test")
+	tray.add(Gtk::Label.new("Hello, World!"))
+	tray.show_all
+
+	Gtk.main
+
+== Object Hierarchy
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Gtk::Object
+        * Gtk::Widget
+          * Gtk::Container
+            * Gtk::Bin
+              * Gtk::Window
+                * Gtk::Plug
+                  * Gtk::TrayIcon
+
+== Class Methods
+--- Gtk::TrayIcon.new(name, screen=nil)
+    Constructs a new Gtk::TrayIcon object using the given parameters.
+    * name: the name of the tray icon. 
+    * screen: a Gdk::Screen (can be nil).  
+    * Returns: a newly created Gtk::TrayIcon object.
+
+== Instance Methods
+--- cancel_message(id)
+    Cancels a message which is currently displayed on the tray, giving its
+    ID.
+    * id: a message ID.  
+    * Returns: self.
+
+--- orientation
+    This method returns the orientation of the tray, as a Gdk::Orientation.
+    * Returns: the orientation of the tray, as a Gdk::Orientation.
+
+--- send_message(timeout, message)
+    Asks the tray to display the given message for the given timeout milliseconds.
+    If timeout is 0, the message will not expire.
+    * message: a message to send (String).  
+    * timeout: a timeout value (Integer). 
+    * Returns: an Integer identifier for the message.
+
+== See Also
+((<Gtk>)).
+
+- ((<lrz>))

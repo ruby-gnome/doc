@@ -1,0 +1,27 @@
+= Mais Sobre os Tipos de "MIME"
+{{link("tut-gst-helloworld-problem", nil, "tut-gst", "tut-gst-types")}}
+
+O GStreamer usa tipos de "MIME" para identificar os tipos diferentes de dados que podem ser gerenciados pelos elementos. Eles são os mecanismos de alto-nível que certificam que todo mundo está falando sobre o tipo certo de dados.
+
+Um tipo "MIME" ("Multipurpose Internet Mail Extension") é um par de strings que denotam um certo tipo de dados. 
+
+Exemplos incluem:
+
+* (({audio/raw}))  : dados de áudio puro ("raw")
+* (({audio/mpeg})) : áudio de MPEG
+* (({video/mpeg})) : vídeo de MPEG 
+
+Um Gst::Element deve associar um tipo de MIME aos seus "pads" de origem e "sink" quando ele for carregado no sistema. O GStreamer sabe sobre os diferentes elementos e que tipos de dados eles esperam e emitem. Isso permite criação de elementos bastante extensível e dinâmica como veremos.
+
+Como vímos no capítulo anterior, os tipos de "MIME" são adicionados a estrutura de capacidade (Gst::Caps) de um Gst::Pad.
+
+No nosso exemplo de "Olá Mundo", os elementos que construímos teríam os seguintes tipos de "MIME" associados com os seus "pads" de origem e "sink": 
+
+{{image_left("en:mime-world.png")}}
+{{br}}
+
+Veremos como você pode criar um elemento baseado nos tipos de "MIME" de seus "pads" de origem e "sink". Dessa maneira, o usuário final terá a habilidade de escolher o decodificador de áudio/vídeo preferido dele, sem você nem se importar sobre isso.
+
+A tipificação dos "pads" de origem e "sink" também torna possível a ligar automaticamente ('autoplug') um Gst::Pipeline. Nós teremos a habilidade de dizer: "construa-me um 'pipeline' que faz uma conversão de áudio/mp3g para audio/raw".
+
+((*Nota*)) A biblioteca básica de GStreamer não tenta solucionar todos os seus problemas de "autoplug". Ela deixa as decisões difíceis para o programador de aplicação, onde elas pertençam.

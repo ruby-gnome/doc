@@ -1,0 +1,45 @@
+= Refering to Rows: Gtk::TreeIter, Gtk::TreePath, Gtk::TreeRowReference
+{{link "tut-treeview-model-data", "tut-treeview-model", "tut-treeview", "tut-treeview-model-add"}}
+
+There are different ways to refer to a specific row. The two you will have to deal with are Gtk::TreeIter and Gtk::TreePath.
+
+A Gtk::TreePath is a comparatively straight-forward way to describe the logical position of a row in the model. As a Gtk::TreeView always displays all rows in a model, a tree path always describes the same row in both model and view.
+
+{{image_right "treepath.png"}}
+
+The picture shows the tree path in string form next to the label. Basically, it just counts the children from the imaginary root of the tree view. An empty tree path string would specify that imaginary invisible root. Now 'Songs' is the first child (from the root) and thus its tree path is just "0". 'Videos' is the second child from the root, and its tree path is "1". 'oggs' is the second child of the first item from the root, so its tree path is "0:1". So you just count your way down from the root to the row in question, and you get your tree path. You can get a new Gtk::TreePath from a path in string form using Gtk::TreePath.new, and you can convert a given Gtk::TreePath into its string notation with Gtk::TreePath#to_str. Usually you will rarely have to handle the string notation, it is described here merely to demonstrate the concept of tree paths.
+
+Instead of the string notation, Gtk::TreePath uses an integer array internally. You can get the depth (ie. the nesting level) of a tree path with Gtk::TreePath#depth. A depth of 0 is the imaginary invisible root node of the tree view and model. A depth of 1 means that the tree path describes a top-level row. As lists are just trees without child nodes, all rows in a list always have tree paths of depth 1. Gtk::TreePath#indices returns the internal integer array of a tree path. You will rarely need to operate with those either.
+
+If you operate with tree paths, you are most likely to use a given tree path, and use methods like Gtk::TreePath#up!, Gtk::TreePath#down!, Gtk::TreePath#next!, Gtk::TreePath#prev!, Gtk::TreePath#ancestor?, Gtk::TreePath#decendent?. Note that this way you can construct and operate on tree paths that refer to rows that do not exist in model or view.
+
+Another way to refer to a row in a list or tree model is Gtk::TreeIter. A tree iter is just a structure that contains a couple of pointers that mean something to the model you are using. Tree iters are used internally by models, and they often contain a direct pointer to the internal data of the row in question. You should never look at the content of a tree iter and you must not modify it directly either. All tree models provide methods that operate on tree iters (e.g. get the tree iter for the child of the row specified by a given tree iter, etc.).
+
+Tree iters are used to retrieve data from the store, and to put data into the store. You also get a tree iter as result if you add a new row to the store using Gtk::ListStore#append or Gtk::TreeStore#append.
+
+Tree iters are often only valid for a short time, and might become invalid if the store changes. It is therefore usually a bad idea to store tree iters. You can use Gtk::TreeModel#flags to get a model's flags, and check whether the ITERS_PERSIST flag is set (in which case a tree iter will be valid as long as a row exists), but there is a better way to keep track of a row: Gtk::TreeRowReference.
+
+A GtkTreeRowReference is basically an object that takes a tree path, and watches the model for changes. If anything changes, like rows getting inserted or removed, or rows getting re-ordered, the tree row reference object will keep the given tree path up to date, so that it always points to the same row as before.
+
+In practice a programmer can either use tree row references to keep track of rows over time, or store tree iters directly (if, and only if, the model has persistent iters). Both Gtk::ListStore and Gtk::TreeStore have persistent iters. Using tree row references is definitively the right way to do things, but comes with considerable overhead that might impact performance in case of trees that have a large number of rows.
+
+Tree iters can easily be converted into tree paths using Gtk::TreeIter#path, and tree paths can easily be converted into tree iters using Gtk::TreeModel#get_iter. Tree row references reveal the current path of a row with Gtk::TreeRowReference#.path. There is no direct way to get a tree iter from a tree row reference, you have to retrieve the tree row reference's path first and then convert that into a tree iter.
+
+As tree iters are only valid for a short time, they are usually allocated on the heap, as in the following example:
+
+ def traverse_list_store (liststore)
+   # get first row in list store
+   return unless iter = liststore.iter_first
+
+   begin   
+     # ... do something with that row using the iter ...
+     # (Here column 0 of the list store is of type String)
+     iter[0] = "Joe"
+   end while iter.next!
+
+   true
+ end
+
+The code above asks the model to fill the iter structure to make it point to the first row in the list store. If there is a first row and the list store is not empty, the iter will be set, and Gtk::TreeModel#iter_first will return TRUE. If there is no first row, it will just return FALSE. If a first row exists, the while loop will be entered and we change some of the first row's data. Then we ask the model to make the given iter point to the next row, until there are no more rows, which is when Gtk::TreeIter#next! returns FALSE. Instead of traversing the list store we could also have used Gtk::TreeModel#each
+
+ liststore.each { |model,path,iter| iter[0]= "Joe" }

@@ -1,0 +1,108 @@
+=Internationalisation (i18n) in Ruby/libglade unterstützen
+
+==Einführung
+Dieses Tutorial zeigt, wie man auch mit Ruby/libglade die Vorteile von per Gettext übersetzten Strings nutzen kann. Für diejenigen, die mit dem Konzept von Gettext nicht vertraut sind, empfiehlt sich die Lektüre des ((<Handbuches|URL:http://www.gnu.org/software/gettext/manual>)).
+
+Bevor es losgeht, stellen Sie bitte sicher, das Ruby-GNOME2 auf ihrem Rechner installiert ist.
+
+Der ursprüngliche Autor dieses Hilfetextes benutzte Ruby 1.8.1, Ruby-GNOME2 0.8.1 und gettext 0.12.1 auf einem Gentoo-Linux-Rechner. Falls etwas bei Ihnen nicht funktioniert wie hier beschrieben, dann denken Sie daran, dass dies durch Versionsunterschiede verursacht sein könnte. Keines der Beispiele wurde unter MS Windows getestet; es wäre natürlich hilfreich, wenn jemand dem Autor diesbezügliche Informationen zugehen lassen könnte.
+
+Viele der folgenden Informationen stammen aus der ((<PyGTK FAQ|URL:http://www.async.com.br/faq/pygtk/index.py?req=show&file=faq22.001.htp>)).
+
+==Das Interface in Glade erstellen
+Der erste Schritt ist die Erstellung der Benutzeroberfläche mithilfe von glade-2. Beachten Sie, dass jedes Widget mit einem Textfeld in der XML-Datei das translatable-Attribut mit dem Wert "yes" besitzt.
+
+Wählen Sie nun unter Projekt -> Einstellungen -> LibGlade-Einstellungen "Übersetzbare Zeichenketten speichern".
+Als Dateinamen geben Sie z.B. glade-msg.c an. Der Output wird ein C-ähnliches Format besitzen, das von xgettext verwendet wird.
+
+== Die Übersetzungen erstellen
+
+((*Beachten Sie*)) Dieser Abschnitt ist stark an die ((<PyGTK FAQ|URL:http://www.async.com.br/faq/pygtk/index.py?req=show&file=faq22.001.htp>)) angelehnt. Er wurde hier eingebunden, damit die Leser nicht zwischen verschiedenen Seiten herumspringen müssen.
+
+Als nächstes werden Sie vermutlich die für die Übersetzung verwendete Hauptdatei erstellen wollen. Um das zu tun, können Sie den folgenden Befehl auf der Shell eingeben:
+
+  xgettext -kN_ -o myapp.pot glade-msg.c
+
+Werfen Sie einen Blick in diese Datei. Wenn alles richtig funktioniert hat, müssten Sie dort die Glade-Strings aufgelistet sehen können.
+
+Diese .pot-Datei wird an die Übersetzer gesendet. Wenn sie einmal die Datei empfangen haben, sollten Sie eine .po-Datei erstellen. Als Beispiel wird folgender Befehl genutzt, um eine deutsche Übersetzung zu erstellen:
+
+  LANG=de_DE msginit
+
+Dadurch wird de.po erstellt, wo die übersetzten Strings eingetragen werden sollten. Die Übersetzungsdatei muss in ein Binärformat umgewandelt werden, bevor sie verwendet werden kann:
+
+  msgfmt de.po -o myapp.mo
+
+Diese Datei sollte dann in dem entsprechenden Verzeichnis abgelegt werden. In der Umgebung des Autors ist dieses Verzeichnis /usr/share/locale/de/LC_MESSAGES/.
+
+== Code schreiben
+
+Jetzt können Sie Ruby/Libglade veranlassen, die Dateien zu laden. Normalerweise werden Sie in Ihrem Code eine Zeile haben, die der folgenden ähnelt:
+
+  @glade = GladeXML.new('myapp.glade') { |handler| method(handler) }
+
+Um die übersetzten Strings zu laden, müssen Sie einen Locale-Namen für Glade festlegen, damit Glade weiß, aus welcher Datei die Strings geladen werden sollen. Ändern Sie die oben stehenden Code folgendermaßen ab:
+
+  @glade = GladeXML.new('myapp.glade', nil, 'myapp') { |handler| method(handler) }
+
+Der dritte Parameter, 'myapp', teilt Glade mit, dass nach der Datei 'myapp.mo' gesucht werden soll. Jetzt laden Sie die Anwendung:
+
+  LANG=de_DE ruby myapp.rb
+
+Die übersetzten Strings sollten erscheinen. Das ist bis zu diesem Punkt erst einmal alles.
+
+== Automatische Erstellung der Binärdatei zur Übersetzung
+
+((*Beachten Sie*)) Dieser Abschnitt basiert auf Code, der zu Masao Mutoh's ((<Ruby-Gettext-Distribution|URL:http://ponx.s5.xrea.com/hiki/ruby-gettext.html>)) gehört.
+
+Für jeve Übersetzungsdatei, müssen Sie eine neue .mo-Datei erstellen. Mit Minero Aoki's ((<install.rb|URL:http://i.loveruby.net/en/setup.html>)) lässt sich das einfach automatisieren.
+
+Für dieses Beispiel werden wir davon ausgehen, dass eine deutsche und eine spanische Übersetzung bereits erstellt worden ist, die als de.po und es.po gespeichert wurden.
+
+  cd $PROJECTROOT
+  mkdir po
+  mkdir po/de
+  mkdir po/es
+  cp de.po po/de/myapp.po
+  cp es.po po/es/myapp.po
+
+Erstellen Sie in Ihrem Hauptverzeichnis eine Datei mit dem Namen post-setup.rb, die die folgenden Zeilen enthält:
+
+  require 'fileutils'
+
+  podir = srcdir_root + "/po/"
+  modir = srcdir_root + "/data/locale/%s/LC_MESSAGES/"
+
+  Dir.glob("po/*/*.po") do |file|
+      lang, basename = /po\/([\w\.]*)\/(.*)\.po/.match(file).to_a[1,2]
+      FileUtils.mkdir_p modir % lang
+      system("msgfmt #{podir}#{lang}/#{basename}.po -o #{modir}#{basename}.mo" % lang)
+  end
+
+Sie werden möglicherweise auch die folgende Datei pre-clean.rb erstellen wollen:
+  
+  Dir.glob("data/**/*.mo").each do |file|
+      File.delete(file)
+  end
+
+Wenn Sie jetzt "ruby install.rb setup" laufen lassen, werden die Übersetzungsdateien erstellt.
+Bei dem Aufruf von "ruby install.rb install" werden Sie an die richtige Stelle kopiert.
+
+== Autor
+
+Zachary P. Landau (kapheine AT hypa DOT net).
+
+The reader should be warned that I am far from an expert on the subject. I only
+very recently started trying to add internationalization support to one of my
+projects. While searching for information, I found only bits and pieces that
+had to be put together. I wrote this tutorial in attempt to keep other people
+from having to do the same.
+
+That being said, I'd be very happy to incorporate additions and corrections from
+people who know more about the subject. Please contact me with any information
+you have.
+
+== ChangeLog
+
+:2004-03-20 Zachary P. Landau
+ Initial release

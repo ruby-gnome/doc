@@ -1,0 +1,35 @@
+= class Gnome::PaperSelector
+
+== Object Hierarchy
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Gtk::Object
+        * Gtk::Widget
+          * Gtk::Container
+            * Gtk::Box
+              * Gtk::HBox
+                * Gnome::PaperSelector
+
+== Class Methods
+--- Gnome::PaperSelector.new(config=nil, flags=nil)
+     
+     * config: A Gnome::PrintConfig, used
+       Gnome::PrintConfig.default when ((|config|)) is
+       (({nil}))
+     * flags: Gnome::PaperSelector::MARGINS and/or
+       Gnome::PaperSelector::FEED_ORIENTATION
+     * Returns: A Gnome::PaperSelector object
+
+== Constants
+--- FEED_ORIENTATION
+--- Flags
+--- MARGINS
+
+== See Also
+
+== ChangeLog
+
+* 2005-06-10 ((<kou>)): added
+
+- ((<kou>))

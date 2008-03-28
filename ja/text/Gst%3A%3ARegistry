@@ -1,0 +1,191 @@
+= class Gst::Registry
+Abstract class for managing plugins.
+
+== Object Hierarchy
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Gst::Registry
+
+== Class Methods
+--- Gst::Registry.add(registry, priority)
+    Adds the registry to the pool with the given priority.
+    * priority: the priority (as a Fixnum).  
+    * registry: a Gst::Registry. 
+    * Returns: always nil.
+
+--- Gst::Registry.add_plugin(plugin)
+    Adds the plugin to the global pool of plugins.
+    * plugin: a Gst::Plugin.  
+    * Returns: always nil.
+
+--- Gst::Registry.each { |registry| ... } -> nil
+    Calls the block for each registries in the pool, passing a reference to
+    the Gst::Registry as parameter.
+    * Returns: always nil.
+
+--- Gst::Registry.each_feature(feature_type) { |plugin_feature| ... }
+    Calls the block for each plugin features of the given type in the pool, 
+    passing a reference to the Gst::PluginFeature as parameter.
+    Valid features types are Gst::AutoplugFactory, Gst::ElementFactory,
+    Gst::IndexFactory, Gst::SchedulerFactory and Gst::TypeFactory.
+    * Returns: always nil.
+
+--- Gst::Registry.each_plugin { |plugin| ... }
+    Calls the block for each plugin in the pool, passing a reference to
+    the Gst::Plugin as parameter.
+    * Returns: always nil.
+
+--- Gst::Registry.find_feature(feature_name, feature_type)
+    Finds the plugin feature with the given name and type from the pool of 
+    registries, as a Gst::PluginFeature reference.  
+    Valid features types are Gst::AutoplugFactory, Gst::ElementFactory,
+    Gst::IndexFactory, Gst::SchedulerFactory and Gst::TypeFactory.
+    * feature_name: a name of a feature. 
+    * feature_type: a type of a feature.  
+    * Returns: a Gst::PluginFeature reference, or nil if the named plugin feature is not found.
+
+--- Gst::Registry.find_plugin(name)
+    Finds the plugin with the given name in the registry.
+    * name: a plugin name.  
+    * Returns: a reference to the Gst::Plugin object if found, otherwise returns nil.
+
+--- Gst::Registry.get_features(feature_type)
+    Gets a list of all plugin features of the given type in the pool.
+    Valid features types are Gst::AutoplugFactory, Gst::ElementFactory,
+    Gst::IndexFactory, Gst::SchedulerFactory and Gst::TypeFactory.
+    * feature_type: a feature type.  
+    * Returns: an array of Gst::PluginFeature objects.
+
+--- Gst::Registry.get_prefered(flags)
+    This method returns the prefered registry with the given flags.
+    * flags: registry flags (see ((<GstRegistryFlags|Gst::Registry#GstRegistryFlags>))).  
+    * Returns: the prefered registry with the given flags.
+
+--- Gst::Registry.load_all
+    Loads all the registries in the pool. 
+    Registries with the Gst::Registry::DELAYED_LOADING flag on will not be loaded.
+    * Returns: always nil.
+
+--- Gst::Registry.plugins
+    Gets a list of all plugins in the pool.
+    * Returns: an array of Gst::Plugin objects.
+
+--- Gst::Registry.registries
+    Gets a list of all registries in the pool.
+    * Returns: an Array of Gst::Registry objects.
+
+--- Gst::Registry.remove(registry)
+    Removes the registry from the pool.
+    * registry: a Gst::Registry.  
+    * Returns: always nil.
+
+== Instance Methods
+--- add_path(path)
+    Add the given path to the registry. 
+    The syntax of the path is specific to the registry. 
+    If the path has already been added, do nothing.
+    * path: a path (a String object).  
+    * Returns: self.
+
+--- add_plugin(plugin)
+    Adds a plugin to the registry. The 'plugin-added' signal will be emitted.
+    * plugin: a Gst::Plugin.  
+    * Returns: true on success, false otherwise.
+
+--- clear_paths
+    Clears the paths of the registry.
+    * Returns: self.
+
+--- details
+    This method returns some details about the registry, or nil if the registry has no details.
+    * Returns: some details about the registry, or nil if the registry has no details.
+
+--- each_path { |path| ... } 
+    Calls the block for each path of the registry, passing a reference to
+    the path (a String object) as parameter.
+    * Returns: always nil.
+
+--- find_feature(feature_name, feature_type)
+    Finds the plugin feature with the given name and type in the registry.
+    Valid features types are Gst::AutoplugFactory, Gst::ElementFactory,
+    Gst::IndexFactory, Gst::SchedulerFactory and Gst::TypeFactory.
+    * feature_name: a feature name. 
+    * feature_type: a feature type.  
+    * Returns: a reference to a Gst::PluginFeature on success, or nil if the named plugin feature is not found.
+
+--- find_plugin(name)
+    Finds the plugin with the given name in the registry.
+    * name: a plugin name.  
+    * Returns: a reference to a Gst::Plugin object if found, otherwise returns nil.
+
+--- load
+    Loads the registry.
+    * Returns: true on success, otherwise false.
+
+--- load_plugin(plugin)
+    Brings the specified plugin from the registry into memory.
+    * plugin: a Gst::Plugin.  
+    * Returns: a code indicating the result (see ((<GstRegistryReturn|Gst::Registry#GstRegistryReturn>))).
+
+--- loaded?
+    This method returns true if the registry is currently loaded, false otherwise.
+    * Returns: true if the registry is currently loaded, false otherwise.
+
+--- name
+    This method returns the name of the registry.
+    * Returns: the name of the registry.
+
+--- paths
+    Gets a list of paths of the registry.
+    * Returns: an array of strings.
+
+--- rebuild
+    Rebuilds the registry.
+    * Returns: true on success, otherwise false.
+
+--- remove_plugin(plugin)
+    Removes a plugin from the registry.
+    * plugin: a Gst::Plugin.  
+    * Returns: self.
+
+--- save
+    Saves the contents of the registry.
+    * Returns: true on success, otherwise false.
+
+--- unload
+    Unloads the registry.
+    * Returns: true on success, otherwise false.
+
+--- unload_plugin(plugin)
+    Unloads a plugin from the registry.
+    * plugin: a Gst::Plugin.  
+    * Returns: a code indicating the result (see ((<GstRegistryReturn|Gst::Registry#GstRegistryReturn>))).
+
+--- update_plugin(plugin)
+    Updates a plugin in the registry.
+    * plugin: a Gst::Plugin.  
+    * Returns: a code indicating the result (see ((<GstRegistryReturn|Gst::Registry#GstRegistryReturn>))).
+
+== Constants
+=== GstRegistryFlags
+--- DELAYED_LOADING
+--- EXISTS
+--- READABLE
+--- REMOTE
+--- WRITABLE
+
+=== GstRegistryReturn
+--- LOAD_ERROR
+--- OK
+--- PLUGIN_LOAD_ERROR
+--- PLUGIN_SIGNATURE_ERROR
+--- SAVE_ERROR
+
+== Signals
+--- plugin-added
+
+== See Also
+((<Gst>)).
+
+- ((<lrz>))

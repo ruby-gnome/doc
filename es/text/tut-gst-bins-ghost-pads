@@ -1,0 +1,30 @@
+= Puertos fantasma
+{{link("tut-gst-bins-custom", nil, "tut-gst", "tut-gst-elements-state")}}
+
+Puede verse en la siguiente figura como un contenedor no tiene puertos por si mismo. Aquí es donde los "puertos fantasma" entran en juego.
+
+{{image_left("bin-element-noghost.png")}}
+{{br}}
+
+Un puerto fantasma es un puerto del mismo elemento del contenedor que ha sido promocionado. De esta forma, el contenedor también tiene un puerto. El contenedor se convierte entonces en otro elemento con un puerto, y se puede usar como cualquier otro elemento. Esta es una característica muy importante a la hora de crear contenedores personalizados.
+
+{{image_left("bin-element-ghost.png")}}
+{{br}}
+
+La imagen superior muestra la representación de un puerto fantasma. El puerto de entrada del elemento uno es también un puerto del contenedor.
+
+Los puertos fantasma en realidad se pueden añadir a todos los objetos Gst::Element y no solo a los objetos Gst::Bin. Usemos el siguiente código de ejemplo para añadir un puerto fantasma a un contenedor:
+
+  element = Gst::ElementFactory.make("mad")
+  bin = Gst::Bin.new
+
+  bin.add(element)
+
+  bin.add_ghost_pad(element.get_pad("sink"), "sink")
+
+En el ejemplo anterior, el contenedor ahora tiene también un puerto: el puerto llamado 'sink' del elemento dado.
+
+Ahora podemos, por ejemplo, conectar el puerto de salida de un elemento filesrc al contenedor con:
+
+  filesrc = Gst::ElementFactory.make("filesrc")
+  filesrc >> bin

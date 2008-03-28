@@ -1,0 +1,21 @@
+= Eliminando filas
+{{link "tut-treeview-model-retrieve", "tut-treeview-model", "tut-treeview", "tut-treeview-view"}}
+
+Las filas se pueden eliminar fácilmente con los métodos Gtk::ListStore#remove y Gtk::TreeStore#remove. La fila eliminada automáticamente se elimina también en el TreeView.
+
+Eliminar varias filas de una vez puede resultar complicado en ocasiones, y requiere conocer el mejor modo de hacerlo. Por ejemplo, es imposible recorrer un almacén con Gtk::TreeModel#each, comprobar en el bloque de código si cada fila debe ser eliminada y en caso afirmativo llamar a uno de los métodos 'remove' del almacén. Esto puede no funcionar, porque el modelo es alterado desde el interior del bucle foreach, lo cual puede invalidar TreeIters que anteriormente eran válido en cada ciclo, y en consecuencia provocar resultados impredecibles.
+
+Aquí hay un ejemplo de un modo alternativo de eliminar varias filas de una pasada (en este ejemplo queremos eliminar todas las filas del almacén que contengan personas nacidas después de 1980, pero podrían ser también todas las filas seleccionadas):
+
+  underage = []
+  liststore.each do |model,path,iter|
+    (iter[2] > 1980) and underage.push(Gtk::TreeRowReference.new(model,path))
+  end
+
+  underage.each do |rowref|
+    (path = rowref.path) and liststore.remove(liststore.get_iter(path))
+  end
+
+Gtk::ListStore#clear y Gtk::TreeStore#clear nos permiten, por su parte, eliminar todas las filas de un almacén.
+
+Habiendo aprendido como agregar, manipular, y obtener datos de un almacén, el siguiente paso es conseguir mostrar esos datos en un widget Gtk::TreeView.

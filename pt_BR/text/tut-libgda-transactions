@@ -1,0 +1,70 @@
+= Gerenciando Transações
+{{link("tut-libgda-datamodels", nil, "tut-libgda", "tut-libgda-errors")}}
+
+Os métodos especiais que precisamos para isso estão definidos nas classes Gda::Transaction, Gda::Connection e Gda::Command, e eles são:
+
+ * Gda::Transaction.new;
+ * Gda::Connection#begin_transaction;
+ * Gda::Connection#commit_transaction;
+ * Gda::Connection#rollback_transaction;
+ * Gda::Command#set_transaction or Gda::Command#transaction=.
+
+
+As coisas que você precisa fazer para gerenciar transações são:
+
+(1) Criar uma transação
+(2) Alterar, se preciso, o nível de isolamento ("isolation level")
+(3) Ligue a transação a uma conexão
+(4) Para cada comando você precisa executar:
+    (1) Criar o comando
+    (2) Ligar a transação ao comando
+    (3) Execute o comando
+(5) Commit ou rollback a transação
+
+Aqui você pode ver um exemplo: 
+
+  def process_accounts(conn)
+      # Cria a primeira transação.
+      transaction_one = Gda::Transaction.new("accounts1")
+      # Altera o nível de isolamento.
+      transaction_one.isolation_level = Gda::Transaction::ISOLATION_SERIALIZABLE
+      # Liga-a a conexão.
+      conn.begin_transaction(transaction_one)
+  
+      command = Gda::Command.new("UPDATE accounts SET balance=balance+50 WHERE ref_customer=1",
+                                 Gda::Command::TYPE_SQL,
+                                 Gda::Command::OPTION_STOP_ON_ERRORS)
+      # Liga o comando a transação.
+      command.transaction = transaction_one
+      conn.execute_non_query(command)
+  
+      command = Gda::Command.new("UPDATE accounts SET balance=balance-50 WHERE ref_customer=2",
+                                 Gda::Command::TYPE_SQL,
+                                 Gda::Command::OPTION_STOP_ON_ERRORS)
+      command.transaction = transaction_one
+      conn.execute_non_query(command)
+  
+      # Faz commit na transação.
+      conn.commit_transaction(transaction_one)
+  
+      transaction_two = Gda::Transaction.new("accounts2")
+      transaction_two.isolation_level = Gda::Transaction::ISOLATION_SERIALIZABLE
+      conn.begin_transaction(transaction_two)
+  
+      command = Gda::Command.new("UPDATE accounts SET balance=balance+400 WHERE ref_customer=1",
+                                 Gda::Command::TYPE_SQL,
+                                 Gda::Command::OPTION_STOP_ON_ERRORS)
+      command.transaction = transaction_two
+      conn.execute_non_query(command)
+  
+      command = Gda::Command.new("UPDATE accounts SET balance=balance-400 WHERE ref_customer=2",
+                                 Gda::Command::TYPE_SQL,
+                                 Gda::Command::OPTION_STOP_ON_ERRORS)
+      command.transaction = transaction_two
+      conn.execute_non_query(command)
+  
+      # Faz rollback na segunda transação.
+      conn.rollback_transaction(transaction_two)
+  
+      execute_sql_command(conn, "SELECT * FROM accounts")
+  end

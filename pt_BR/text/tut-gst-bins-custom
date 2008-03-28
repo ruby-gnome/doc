@@ -1,0 +1,27 @@
+= "Custom Bins"
+{{link("tut-gst-bins-add", nil, "tut-gst", "tut-gst-bins-ghost-pads")}}
+
+O programador de aplicação pode criar "custom bins" carregados com elementos para realizar uma tarefa específica.
+
+Isso permite você a escrever um decodificador de áudio MPEG com apenas as linhas de código a seguir:
+
+  # cria o elemento tocador de mp3 (mp3player)
+  player = Gst::ElementFactory.make("mp3player")
+
+  # configura o arquivo de origem de mp3 
+  player.location = "olámundo.mp3"
+
+  # inicia o tocador
+  player.play
+
+  ...
+
+  # pausa o tocador
+  player.pause
+
+  ...
+
+  # para
+  player.stop
+
+Note que o código acima assume que o "bin" tocador de mp3 ("mp3player") deriva de um Gst::Thread, o qual começa a tocar tão logo seu estado seja configurado para Gst::Element::STATE_PLAYING. Outros tipos de "bin" podem precisar de iteração explícita. Para mais informações, veja o caítulo chamado "Threads".

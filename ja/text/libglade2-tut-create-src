@@ -1,0 +1,96 @@
+= テンプレートからソースコード(Rubyスクリプト)へ
+さて、後はテンプレートを編集していきます。というのは半分正解で半分不正解です。
+
+前章でも
+
+「"xxxx is not implemented yet."と表示されるようになっていますので自分で実装したいところから書き換えて行くイメージ」
+
+と書きました。実際それで動きますし、Ruby-GNOME2-0.9.1までは確かにその方法が一般的（？）でした。
+でも、その方法だと「機能追加などでGUIを変更したとき、hwedit_glade.rbを毎回作り直す（バックアップを取っておいてイベントハンドラ部分を書き直す」というような「手動マージ作業」を行う必要があります。
+もっと複雑なこと、たとえば自前の定数を書いてみたり、メソッドを追加してみたりするとなおさらマージ作業が大変になりますし、Ruby/Libglade2がバージョンアップしたときに自動的に追加されるメソッドが増えるかもしれません。
+このように、ruby-glade-create-templateは最初の1回のテンプレート生成だけは使えるのですが、2度目以降はあまり使えないツールになってしまい、とたんに生産性が落ちてしまいます。
+
+そこで、ここでは、hwedit_glade.rbに触れることなく別ファイルにソースコードを書いておくようにして、少しでもその辺の面倒くささを回避する方法を推奨します（Ruby-GNOME2-0.10.0以降）。
+
+
+== まずはコピペ
+一番最初にhwedit_glade.rbを生成したとき、これをコピーして、（この例では）hwedit.rbという名前にします。
+次に、このファイルを編集します。以下に例を示します。
+
+  require 'hwedit_glade'
+ 
+  class Hwedit < HweditGlade 
+　
+    def initialize(path_or_data, root = nil, domain = nil, localedir = nil, flag = GladeXML::FILE)
+      GetText.bindtextdomain(domain, localedir, nil, "UTF-8")
+      super(path_or_data, root = nil, domain = nil, localedir = nil, flag = GladeXML::FILE)
+    end
+　
+    def on_save1_activate(widget)
+      puts "on_save1_activate() is not implemented yet."
+    end
+    def on_quit1_activate(widget)
+      puts "on_quit1_activate() is not implemented yet."
+    end
+    def on_cut1_activate(widget)
+      puts "on_cut1_activate() is not implemented yet."
+    end
+    def on_about1_activate(widget)
+      puts "on_about1_activate() is not implemented yet."
+    end
+    def on_open1_activate(widget)
+      puts "on_open1_activate() is not implemented yet."
+    end
+    def on_paste1_activate(widget)
+      puts "on_paste1_activate() is not implemented yet."
+    end  
+    def on_closebutton1_clicked(widget)
+  　　puts "on_closebutton1_clicked() is not implemented yet."
+    end
+    def on_new1_activate(widget)
+      puts "on_new1_activate() is not implemented yet."
+    end
+    def on_save_as1_activate(widget)
+      puts "on_save_as1_activate() is not implemented yet."
+    end
+    def on_main_window_delete_event(widget, arg0)
+      puts "on_main_window_delete_event() is not implemented yet."
+    end
+    def on_copy1_activate(widget)
+      puts "on_copy1_activate() is not implemented yet."
+    end
+  end
+  
+  
+  # Main program
+  if __FILE__ == $0
+    # Set values as your own application. 
+    PROG_PATH = "hwedit.glade"
+    PROG_NAME = "hwedit"
+    Hwedit.new(PROG_PATH, nil, PROG_NAME)
+    Gtk.main
+  end
+
+要はinitializeとイベントハンドラだけを上書きするようなサブクラスを作るわけです。
+この部分だけ、きっと手間に感じると思いますが、一度作れば後は楽チンなこと間違いなしです。
+
+PROG_PATHとPROG_NAMEは適切な値に書き直します。また、HweditGlade.newとなっている行もHwedit.newに変更します。
+
+PROG_PATHはhwedit.gladeを置くPATHです。上記例ではこのツールを実行するディレクトリに置いているのでそのままにしてありますが、実際にアプリケーションとして公開する場合はちょっと考えなければなりません。
+一般的にはMS Windowsであればc:\ruby\share\hwedit\glade\配下、Linux/FreeBSDであれば、/usr/share/hwedit/gladeに置けば良いでしょう。
+
+これらの値は以下のようにすれば取得できます。
+
+ require 'rbconfig'
+ datadir = Config::CONFIG["datadir"]
+ 
+したがって、先のPROG_PATHはこれを指定してしまうというのも一案でしょう。
+私はこの辺の設定周りは別ファイル化(config.rbとか)にして、インストーラを起動するときに自動的に生成するようにしています。
+
+=== イベントハンドラの実装
+さて、後は気の向くままにイベントハンドラたちを実装しましょう。@glade["textview1"]というような形でそれぞれウィジェットのインスタンスを呼び出すことができます。"textview1"はGlade-2上で設定した（あるいはデフォルトのままではウィジェット + 番号という形になる）ウィジェット名です。
+ただ、いちいちそのように書くのも手間なので良く使うウィジェットはインスタンス変数に代入しておくと便利です。
+
+ここに例を置いておきます。
+
+(まだ未)

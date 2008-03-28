@@ -1,0 +1,30 @@
+= Analog Clock
+Simple analog clock widget.
+
+
+This is a sample application for Ruby/GNOME2, Ruby/GnomeCanvas.
+
+{{image_right('gnomecanvas-clock-snapshot1.png')}}
+== Download
+* {{attach_anchor('gnomecanvas-clock.rb')}}
+
+== Requirements
+Developed environments are:
+* ruby 1.8.1 (2003-12-25) [i686-linux]
+* Ruby-GNOME2-0.9.0(Ruby/GTK2, Ruby/GnomeCanvas)
+
+== Usage
+$ ruby gnomecanvas-clock.rb
+
+== License
+Ruby's
+
+== Author
+((<Geoff Youngs>))
+
+=== Changelog
+
+:2003-07-11 Geoff Youngs
+ Initial release
+
+

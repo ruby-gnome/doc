@@ -1,0 +1,116 @@
+= class GladeXML
+GladeXML allows dynamic loading of user interfaces from XML descriptions.
+
+== Object Hierarchy
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GladeXML
+
+== Class Methods
+--- GladeXML.new(file_or_buffer, root = nil, domain = nil, source = GladeXML::FILE) {|handler| ... }
+    Creates a new GladeXML object (and the corresponding widgets) from the Glade XML file or a String representation of the XML.  
+    Optionally it will only build the interface from the widget node root (if it is not nil).  
+    This feature is useful if you only want to build say a toolbar or menu from the Glade XML file, but not the window it is embedded in.  
+    Note also that the XML parse tree is cached to speed up creating another GladeXML object for the same file
+
+    The additional block is connected to all signal handlers.
+    It receives the signal handler name as the only argument.
+    A common block is 
+
+    {|handler| method(handler)} 
+
+    which returns a reference to the instance method if the class with the same name as the signal handler.
+    * file_or_buffer: if source is GladeXML::FILE, a file name, if source is GladeXML::BUFFER, a String representation of the Glade XML.
+    * root: the widget node in fname to start building from.
+    * domain: the translation domain for the XML file
+    * source: GladeXML::FILE or GladeXML::BUFFER
+    * {|handler| ...}: a handler block. If you don't define this block, you will need to call GladeXML#signal_autoconnect_full
+        * handler: the name of the signal handler.
+    * Returns: a GladeXML instance
+
+--- GladeXML.require(library)
+    Ensures that a required library is available. 
+    If it is not already available, libglade will attempt to dynamically load a module that contains the handlers for that library.
+    * library: the required library.
+    * Returns: self
+
+--- GladeXML.provide(library)
+    This method should be called by a module to assert that it provides wrappers for a particular library.  
+    This should be called by the register_widgets() function of a libglade module so that it isn't loaded twice, for instance.
+    * library: the provided library.
+    * Returns: self
+
+--- GladeXML.set_custom_widget_handler(setting)
+    Turns the custom widget handler on or off. Usually you don't need to call this method by yourself. This is only used by the ruby-glade-create-template program.
+    * setting: true or false
+    * Returns: self
+
+== Instance Methods
+--- get_widget(name)
+    This method is used to get a reference to the Gtk::Widget corresponding to name in the XML interface description. 
+    You can use it if you need to work with the widgets after the interface has been loaded.
+    * name: the name of the widget (as a String) in the glade tree.
+    * Returns: a reference to a Gtk::Widget or nil if name does not exist
+--- [](name)
+    This is the same as get_widget(name).
+    * name: the widget's name(String) in the glade tree.
+    * Returns: a reference(Gtk::Widget) to name or nil if name does not exist
+
+--- filename
+    Gets the name of the original Glade XML file.
+    * Returns: the name of the glade file
+    * Returns: self
+
+--- connect(source, target, signal_name, handler_name, signal_data, after = false)
+    Connects a handler method to a signal in the Glade XML file with the given signal handler name. Usually, this method is called from GladeXML.new. You don't need to call this method by yourself. 
+    * source: the object (GLib::Instantiatable) to connect the signal to.
+    * target: the object (GLib::Instantiatable) which the handler method is defined. 
+    * signal_name: the name of the signal.
+    * handler_name: the name of the handler method to connect.  
+    * signal_data: the string value of the signal data given in the XML file.  
+    * after: true if the connection should be made with GLib::Instantiatable#signal_connect_after, otherwise with GLib::Instantiatable#signal_connect.  
+    * Returns: self
+
+--- signal_autoconnect_full{|source, target, signal_name, handler_name, signal_data, after| ... }
+    This method is for connecting each handler methods to each signals from the parameters. Usually you don't need to call this method by yourself. This method is only used by the ruby-glade-create-template program.
+    * {|source, target, signal_name, handler_name, signal_data, after| ... }: a block to define handlers.
+       * source: the object (GLib::Instantiatable) to connect the signal to.
+       * target: the object (GLib::Instantiatable) which the handler method is defined. 
+       * signal_name: the name of the signal.
+       * handler_name: the name of the handler method to connect.  
+       * signal_data: the string value of the signal data given in the XML file.  
+       * after: true if the connection should be made with GLib::Instantiatable#signal_connect_after, otherwise with GLib::Instantiatable#signal_connect.  
+    * Returns: self
+
+--- canonical_handler(handler_name)
+    Converts an handler_name to a canonical handler name. '-', ' ' are converted to '_'. You don't need to call this method by yourself. This method is only used by libglade2.rb and ruby-glade-create-template.
+    * handler_name: the name which you want to covert
+    * Returns: converted name.
+
+--- custom_creation_methods
+    Gets an Array of the custom creation methods in the GladeXML object.
+    * Returns: a list of custom creation methods, as an Array of String objects.
+
+--- widget_names
+    Gets an Array of the widget names in the GladeXML object.
+    * Returns: a list of widget names, as an Array of String objects.
+
+--- handler_proc
+    Gets the handler_proc.
+    * Returns: handler proc.
+
+--- handler_proc=(proc)
+    Sets the handler_proc. If target of GladeXML#connect sets nil, this handler_proc is called as the default handler.
+
+== Constants
+--- BUFFER
+    Buffer mode to create a new GladeXML. This is used with GladeXML.new.
+--- FILE
+    File mode to create a new GladeXML. This is used with GladeXML.new.
+
+
+* 2004-05-01 Fixed some typos. ((<lrz>))
+* 2004-04-28 Change pageid. Some modified. ((<Masao>))
+* 2004-04-27 Revised some methods. ((<Masao>))
+* 2004-04-24 Initial release. ((<jawebada>))

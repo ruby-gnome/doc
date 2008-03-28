@@ -1,0 +1,53 @@
+= class Gda::Select
+Filtering data from Gda::DataModel.
+
+== Object Hierarchy
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Gda::DataModel
+        * Gda::DataModelArray
+          * Gda::Select
+
+== Class Methods
+--- Gda::Select.new
+    Creates a new Gda::Select object, which allows programs to filter
+    Gda::DataModel's based on a given SQL SELECT command.
+    A Gda::Select is just another Gda::DataModel based class, so it can be used
+    in the same way any other data model class is.
+    * Returns: the newly created Gda::Select object.
+
+== Instance Methods
+--- add_source(name, source)
+    Adds a data model as a source of data for the Gda::Select object.
+    When the select object is run (via Gda::Select#run), it will parse the SQL
+    and get the required data from the source data models.
+    * name: name to identify the data model (usually a table name). 
+    * source: a Gda::DataModel object from which to get data.  
+    * Returns: self.
+
+--- run
+    Runs the query and fills in the Gda::Select object with the rows that
+    matched the SQL command (which can be set with Gda::Select#set_sql)
+    associated with this Gda::Select object.
+    After calling this function, if everything is successful, the Gda::Select
+    object will contain the matched rows, which can then be accessed like a
+    normal Gda::DataModel.
+    * Returns: true if successful, false if there was an error.
+
+--- set_sql(sql)
+    Sets the SQL command to be used on the Gda::Select object for filtering rows
+    from the source data model (which is set with Gda::Select#set_source).
+    * sql: the SQL command to be used for filtering rows.  
+    * Returns: self.
+
+--- sql=(sql)
+    Sets the SQL command to be used on the Gda::Select object for filtering rows
+    from the source data model (which is set with Gda::Select#set_source).
+    * sql: the SQL command to be used for filtering rows.  
+    * Returns: the given parameter 'sql'.
+
+== See Also
+((<Gda>)).
+
+- ((<lrz>))

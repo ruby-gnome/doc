@@ -1,0 +1,255 @@
+= ウインドウ
+まずはウインドウのみを表示するためのGtk::Windowを説明します。他のほとんどのウィジェットはこのGtk::Windowの上に追加していく形になります。
+
+== 基本的な使い方
+  require 'gtk2'
+  
+  window = Gtk::Window.new("Test")
+  window.set_default_size(300,200)
+  window.show_all
+
+  Gtk.main
+
+--- Gtk::Window.new(window_title = nil)
+    Gtk::Windowオブジェクトを生成します。この段階ではまだ表示されません。引数はウインドウのタイトル名称を設定します。ウインドウマネージャによって表示のされ方が違いますが、平均的にはウインドウの一番外側に表示されます。
+
+--- Gtk::Widget#show_all
+    実際に画面表示を行います。Gtk::Widget#show_all, Gtk::Widget#showの2種類があります。前者はウインドウを含め全ての子ウィジェットの表示を行い、後者はこのウインドウのみの表示を行います。
+
+--- Gtk.main
+    ここからイベントループ（無限ループ）に入ります。イベントループの中から各種のイベントをディスパッチします（イベント毎に処理に処理を振り分けます）。一回Gtk.mainでイベントループに入ると、Gtk.main_quitが呼び出されるまでイベントループから抜け出せません。
+
+== 子ウィジェットを追加する
+ウインドウを生成したら次はウィジェットを追加していきます。Gtk::Windowには基本的に1つしかウィジェットを追加できません。実際は、ウインドウにコンテナウィジェット(Gtk::VBoxなど)を追加してそれに対してウィジェットを追加するという感じでどんどんウィジェットを追加していきます。ここではただ単純にGtk::Buttonを追加してみます。
+
+  require 'gtk2'
+
+  button = Gtk::Button.new("OK?")
+  window = Gtk::Window.new
+  window.add(button)
+  window.show_all
+
+  Gtk.main
+
+--- Gtk::Container#add(widget)
+    ウィジェットを追加します。
+
+== 表示位置を指定する
+スクリーン上のどこに表示するか、その表示位置を指定します。
+
+  require 'gtk2'
+  
+  button = Gtk::Button.new("OK?")
+  window = Gtk::Window.new
+  window.set_title("Test")
+  window.set_window_position(Gtk::Window::POS_CENTER)
+  window.show_all
+
+  Gtk.main
+
+--- Gtk::Window#window_position=(pos)
+--- Gtk::Window#set_window_position(pos)
+    ポジションを指定します。
+   * Gtk::Window::POS_NONE - 指定なし(default)
+   * Gtk::Window::POS_CENTER - 画面中央
+   * Gtk::Window::POS_MOUSE - マウスの位置
+   * Gtk::Window::POS_CENTER_ALWAYS - 常に中央(サイズを変更したりしても極力中央に移動しようとします)
+   * Gtk::Window::POS_CENTER_ON_PARENT - 親ウインドウの中央
+
+== ジオメトリ情報を指定する
+ユーザによってどのようにそのウインドウがリサイズすることができるかといった情報(Gdk::Geometry ジオメトリヒント)を指定します。
+
+  require 'gtk2'
+  
+  geometry = Gdk::Geometry.new
+  geometry.set_min_width(100)
+  geometry.set_min_height(100)
+  geometry.set_max_width(600)
+  geometry.set_max_height(600)
+  geometry.set_width_inc(50)
+  geometry.set_height_inc(100)
+
+  mask = Gdk::Window::HINT_MIN_SIZE |
+         Gdk::Window::HINT_MAX_SIZE | Gdk::Window::HINT_RESIZE_INC
+
+  button = Gtk::Button.new("OK?")
+  window = Gtk::Window.new
+  window.add(button)
+  window.set_geometry_hints(button, geometry, mask)
+
+  window.show_all
+  Gtk.main  
+
+
+--- Gtk::Window#set_geometry_hints(widget, geometry, mask)
+    ジオメトリ情報を設定します。
+    *　widget - 対象のGtk::Widget
+    *　geometry - Gdk::Geometry。ここでは、最小・最大サイズ、それから幅・高さ共に増減分（ウインドウをマウスで大きく・小さくする際に、一度にどれだけ変化するか）を指定しています。
+    *　mask - この値は上記でも示しているように、実際Gdk::Geometryで使用する（ジオメトリのヒントとして認識させたい）項目(Gdk::Window::HINT_*)を|(パイプ)で論理和を取っていきます。上記例ですとポジション・最小・最大・リサイズの増減分がジオメトリの対象となります。例えば、ここでGdk::Window_HINT_MIN_SIZEを除いてみると、set_min_{width|height}で指定した情報が認識されなくなります。
+
+== ウインドウの閉じるボタンで画面を閉じる（メインループを抜ける場合）
+ウインドウマネージャによって表示場所などは一概に言えないのですが、大抵のウインドウはウインドウ枠の部分に「閉じる」ボタンがあります(×ボタンが多いようです)。で、このボタンを閉じる際にきちんと後処理をしないと正常に終了してくれません（ウインドウは表示されていないがメインループからは抜けていないため、プロセスは残ってしまう）。そこで、ここでは「閉じる」ボタンがクリックされたのと同タイミングでメインループから抜けてみます。
+
+  require 'gtk2'
+   
+  window = Gtk::Window.new
+ 
+  window.signal_connect("delete-event") do 
+    p "DELETE EVENT"   #(1)
+    false
+  end
+ 
+  window.signal_connect("destroy") do 
+    p "DESTROY EVENT"  #(2)
+    Gtk.main_quit  
+  end
+ 
+  window.show_all
+ 
+  p "Start"
+  Gtk.main             #(3)
+  p "End"
+
+この場合、ウインドウマネージャの「閉じる」ボタン　→　(1)(ここでfalseを返した場合)　→　(2)　という風に呼び出されます。通常は(2)でそのままGtk.main_quitを呼び出しても良いのですが、Gtk::Window::SIGNAL_DESTROYのイベントハンドラの中でGtk.main_quitを呼び出した方がお行儀が良いんじゃないかな。まぁ、どちらかを使えば良いと言うことで。
+
+--- "destroy"
+    "destroy"シグナル。このシグナルが発生するのは、このウインドウでGtk::Widget#destroyを読んだ場合かあるいは、"delete-event"コールバックがfalseを返した場合です。
+
+--- "delete-event"
+    ウインドウがウインドウマネージャから、普通は'close'オプション、あるいはタイトルバーの「閉じる」ボタンによって"delete-event"シグナルを与えられた場合に発生します。
+
+--- Gtk.main_quit
+    Gtk.mainループを抜けます。この場合、Gtk.mainループが(3)の部分になりますので、このメソッドが呼ばれたときには(3)より後が実行されます（Endを表示してプログラムは終了する）。
+
+== ウインドウの閉じるボタンで画面を閉じる（ウインドウを隠す場合）
+次に、ウインドウは閉じるけどそのウインドウは破壊（destroy）せずに隠すだけにして、使い回す例をあげてみます。1つのウインドウではうまく説明できないので、2つのウインドウを使って説明します。
+
+  require 'gtk2'
+   
+  window = Gtk::Window.new
+  window2 = Gtk::Window.new
+
+  window2.signal_connect("delete-event") do 
+    p "DELETE EVENT"
+    window2.hide
+    true
+  end
+
+  button = Gtk::Button.new("Create New Window")
+  button.signal_connect("clicked") do
+    window2.show_all
+  end
+
+  window.add(button)
+  window.show_all
+
+  Gtk.main
+
+ここでのポイントは、"delete-event"のブロックの中でtrueを返すところです。これがfalseだとdestroyイベントが発生してしまいます（そしてwindow2自体が破棄される）。
+
+--- Gtk::Widget#hide
+    ウィジェットを隠します。インスタンス自体は破棄しません。インスタンスも破棄する場合はGtk::Object#destroyを使います。
+
+ちなみに、"delete-event"のブロックをコメントアウトして再度実行してみてください。
+一度ウインドウをクローズしてから再度ボタンをクリックしてウインドウを表示しようとするとdestroyed GLib::Objectというエラーになってしまいます。
+
+アプリケーションを作る際は、このようにwindow2の生成は1度しかしないで使い回すという方法と、上の例で言うと"clicked"のブロックの中で毎回window2を生成する場合の2つの実装方法があります。個人的には、リソースに余裕がある場合は、後者の方が読みやすいと思います。
+ちょっと説明したい内容がずれるのですが、そのような実装例を次に示しますので見比べてみてください。
+
+== モーダルウインドウを作る
+2つ目のウインドウを生成した際に、1つ目のウインドウへのユーザのアクセスを禁止したい場合がありますが、そのような場合はウインドウをモーダルにします。
+
+  require 'gtk2'
+ 
+  window1 = Gtk::Window.new
+ 
+  button = Gtk::Button.new("Create New Window")
+  button.signal_connect("clicked") do
+    window2 = Gtk::Window.new
+    window2.set_modal(true)
+    window2.show_all
+  end
+ 
+  window1.add(button)
+  window1.show_all
+ 
+  Gtk.main
+
+--- Gtk::Window#modal=(modal)
+--- Gtk::Window#set_modal(modal)
+    ウインドウをモーダルにするかどうかを指定します。
+    * modal - モーダルにする場合はtrue,モーダルにしない場合はfalse(デフォルト)
+
+== サブウインドウを常にメインウインドウの手前に表示する
+サブウインドウを常にメインウインドウの手前に表示してみます。Gtk::Window#set_modal()と組み合わせて使う場合が多いと思いいます。
+
+  require 'gtk2'
+
+  window1 = Gtk::Window.new
+
+  button = Gtk::Button.new("Create New Window")
+  button.signal_connect("clicked") do
+    window2 = Gtk::Window.new
+    window2.set_transient_for(window1)
+    window2.show_all
+  end
+
+  window1.add(button)
+  window1.show_all
+
+  Gtk.main
+
+--- Gtk::Window#transient_for=(parent)
+--- Gtk::Window#set_transient_for(parent)
+    ウインドウを指定したウインドウよりも常に手前に表示します。
+    * parent - 親ウインドウ(Gtk::Window)。常にここで指定したウインドウより手前に表示されます。
+
+== 指定ウィジェットにフォーカスをあてる
+ここでは3つのボタンを生成して3つ目のウインドウにフォーカスをあててみます。ちょっとわかりづらいかな...。
+
+  require 'gtk2'
+  
+  window = Gtk::Window.new
+  
+  button1 = Gtk::Button.new("Button1")
+  button2 = Gtk::Button.new("Button2")
+  button3 = Gtk::Button.new("Button3")
+  
+  window.add(Gtk::VBox.new.add(button1).add(button2).add(button3))
+  window.set_focus(button3)
+  window.set_default_size(100,100)
+  window.show_all
+  
+  Gtk.main
+
+--- Gtk::Window.focus=(widget)
+--- Gtk::Window.set_focus(widget)
+    指定したウィジェットにフォーカスをあてます。
+    * widget - フォーカスをあてるウィジェット(Gtk::Widget)
+
+== ウインドウクラスヒントを指定する
+クラスヒントは、ウィンドウマネージャがそのウィンドウを判別できるようにするためのIDみたいなものです。
+大部分のウインドウマネージャは、クラスヒントを用いてウインドウを区別します。例えば、私が使っているsawfishではウインドウ毎にウインドウ枠の属性や大きさ、位置を変更し、それらを保存することができます。
+ここでは、3つのウインドウにクラスヒントを指定してみます。
+このサンプルを起動しただけでは何も起きませんが、例えば、sawfishの場合、ウインドウの大きさや位置などを変更した後で、ウインドウ枠についてるメニューから「履歴」→「位置を記憶」「大きさを記憶」「属性を記憶」等を選択した後でこのサンプルを再度起動してみると、クラスヒントを指定した場合とそうでない場合での違いがわかると思います。
+
+  require 'gtk2'
+
+  window1 = Gtk::Window.new.set_title("Window1")
+  window2 = Gtk::Window.new.set_title("Window2")
+  window3 = Gtk::Window.new.set_title("Window3")
+
+  window1.set_wmclass("test1", "Ruby/GTK Test")
+  window2.set_wmclass("test2", "Ruby/GTK Test")
+  window3.set_wmclass("test3", "Ruby/GTK Test")
+
+  window1.show
+  window2.show
+  window3.show
+
+  Gtk.main
+
+--- Gtk::Window#set_wmclass(wmclass_name, wmclass_class)
+    ウインドウクラスヒントを指定します。このメソッドはそのウインドウがrealizeされる前（例えば、showの前）に呼び出される必要があります。
+    * wmclass_name - アプリケーション(例えばメインウィンドウやダイアログ等)のウインドウの名称を指定します。
+    * wmclass_class - 通常はアプリケーション名を指定します。

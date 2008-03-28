@@ -1,0 +1,91 @@
+= Historique de Ruby-GNOME
+(Cette page a été écrite pour le premier anniversaire. Félicitations !)
+
+*2003-11-17 - [2] Sortie de Ruby-GNOME2-0.8.0
+*2003-09-22 - [2] Début de la mise en place du site Web italien par Luigi Maselli
+*2003-09-21 - [2] Début du développement de Ruby/Libgda (premier import) par Laurent Sansonetti
+*2003-09-07 - [2] Sortie de Ruby-GNOME2-0.7.0
+*2003-08-16 - [2] Fusion de Ruby/GtkGLExt dans Ruby-GNOME2 par Vincent Isambart
+*2003-08-15 - [2] Sortie de Ruby/GtkGLExt-0.0.0 par Vincent Isambart
+*2003-08-10 - [2] Début de la mise en place du site Web français par Laurent Sansonetti
+*2003-08-09 - [2] Sortie de Ruby-GNOME2-0.6.0
+*2003-08-08 - [2] Début du développement de Ruby/GtkHtml2 (premier import) par Martin Povolny
+*2003-07-25 - [2] Fusion de Ruby-GStreamer dans Ruby-GNOME2 par Laurent Sansonetti
+*2003-07-24 - [2] Début du développement de Ruby/GnomeVFS (premier import) par Nikolai Weibull
+*2003-07-07 - [2] Sortie de Ruby-GStreamer-0.1.1 par Laurent Sansonetti
+*2003-07-06 - [1] Sortie de Ruby-GNOME-0.34
+*2003-07-02 - [1] Sortie de Ruby-GNOME-0.33
+*2003-06-28 - [1] Sortie de Ruby-GNOME-0.32
+*2003-06-01 - [2] Sortie de Ruby-GStreamer-0.1.0 (projet individuel) par Laurent Sansonetti
+*2003-05-24 - [2] Sortie de Ruby-GNOME2-0.5.0, Ruby/GtkSourceView-0.1.0
+*2003-05-14 - [2] Début du développement de Ruby/GtkSourceView (premier import) par Geoff Youngs
+*2003-03-23 - [2] Sortie de Ruby-GNOME2-0.4.0
+*2003-03-19 - [2] Support de Win32 par Masahiro Sakai
+*2003-03-17 - [2] Déplacement du site Web vers SF.jp(Hiki/RD+) par Masao Mutoh
+*2003-02-09 - [2] Sortie de Ruby-GNOME2-0.3.0
+*2003-01-19 - [1] Sortie de Ruby-GNOME-0.31
+
+*2002-12-28 - [2] Sortie de Ruby-GNOME2-0.2.0 et de rbbr-0.2
+*2002-12-14 - [2] Proposition de déplacer Ruby-GNOME2 sur SourceForge.jp acceptée par Masao Mutoh
+*2002-12-10 - [2] Début de l'écriture du tutoriel Ruby/GTK2 (version japonaise) par Junichiro Kita
+*2002-12-07 - [2] Renouveau du site Web. Sortie du tutoriel Ruby-GNOME2 par Joshua Keith
+*2002-12-05 - [2] Début de l'écriture de la référence de l'API Ruby-GNOME2 par Tamura, Ogasawara et Masao Mutoh
+*2002-11-23 - [2] Sortie de Ruby-GNOME2-0.1 et de rbbr-0.1
+*2002-11-15 - [2] Sortie de Ruby-GNOME2-0.1pre1
+*2002-11-12 - [2] Début du développement de Ruby/GConf2 (premier import) par Nikolai :: lone-star :: Weibull
+*2002-10-14 - [2] Modification de rbbr pour fonctionner avec Ruby/GTK2 par Masao Mutoh
+*2002-09-19 - [2] Début du développement de Ruby/GNOME2, Ruby/GnomeCanvas2 et Ruby/Libart2 par Kubo Takehiro
+*2002-08-31 - [1] Sortie de Ruby-GNOME-0.30
+*2002-06-30 - [1] Sortie de Ruby-GNOME-0.29
+*2002-06-01 - [1] Sortie de Ruby-GNOME-0.28, et annonce de Ruby-GNOME2 ((<ruby-list:35313|URL:http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-list/35313>))(ja)
+
+*2002-05-26 - [2] Création des listes de diffusion Ruby-GNOME2 (en, ja).
+*2002-05-20 - [1] Changement du responsable de Ruby-GNOME (de Neil Conway à Masao Mutoh)
+*2002-05-19 - [2] Premier import CVS de Ruby-GNOME2 par Masao Mutoh - date anniversaire de Ruby-GNOME2 ;).
+*2002-05-15 - [2] Proposition de déplacer Ruby-GNOME2 sur SourceForge.Net acceptée par Masao Mutoh
+*2002-03-15 - [2] ((<Sortie|URL:http://web.sfc.keio.ac.jp/~s01397ms/d/?date=20020315#p02>))(ja) du premier patch Ruby/GTK pour GTK+-2.0 par Masahiro Sakai
+*2002-03-12 - [1] Sortie de Ruby-GNOME-0.27
+*2002-01-25 - [1] Sortie de ruby-gconf-0.2 par Neil Conway
+
+*2001-11-16 - [1] Sortie de Ruby-GNOME-0.26
+*2001-10-16 - [1] Sortie de ruby-gconf-0.1 par Neil Conway
+*2001-10-03 - [1] Proposition de déplacer Ruby-GNOME2 sur SourceForge.Net par Neil Conway
+*2001-09-21 - [1] Changement du responsable de Ruby-GNOME (de Igarashi à Neil Conway)
+*2001-06-25 - [1] Sortie de ruby-libglade-1.2 par Avi Bryant
+*2001-05-24 - [1] Sortie de Ruby-GNOME-0.25
+*2001-05-22 - [1] Intégration de ruby-libglade et panel-applet par Hiroshi Igarashi
+*2001-02-16 - [1] Sortie de Ruby-GNOME-0.24
+*2001-01-24 - [1] Sortie de ruby-libglade-1.1 par Avi Bryant
+
+*2000-03-30 - [1] Début de la fusion de ruby-{gtk,gdkimlib,gdkpixbuf,gnome} par Hiroshi Igarashi
+*2000-03-01 - [1] Sortie de Ruby/GnomeCanvas (patch Ruby/GNOME) par Kubo Takehiro
+*2000-02-11 - [1] Sortie de Ruby-GTK-0.23
+*2000-01-27 - [1] Sortie de Ruby/Gdk-Pixbuf par yashi
+
+*1999-10-20 - [1] Sortie de Ruby-GTK-0.22
+*1999-09-03 - [1] Sortie de Ruby/GNOME-0.0.1 par Inachi
+*1999-08-24 - [1] Sortie de Ruby-GTK-0.21
+*1999-08-03 - [1] Début du développement de Ruby/GNOME indépendemment de Ruby-GTK par Inachi
+*1999-07-21 - [1] Sortie de Ruby/Imlib (patch Ruby/GTK) par Nakamura
+*1999-07-21 - [1] Sortie de Ruby-GTK-0.20
+*1999-07-02 - [1] Sortie de Programming Ruby/GTK(tutoriel) par Akaishi
+*1999-06-28 - [1] Sortie de Ruby-GTK-0.19
+*1999-06-03 - [1] Changement du responsable de Ruby-GNOME (de Kanda à Igarashi)
+
+*1998-11-09 - [1] Sortie de Ruby-GTK-0.14
+*1998-09-28 - [1] Sortie de Ruby-GTK-0.13
+*1998-09-16 - [1] Sortie de Ruby-GTK-0.12
+*1998-09-16 - [1] Sortie de Ruby-GTK-0.11
+*1998-08-17 - [1] Sortie de Ruby-GTK-0.10
+*1998-08-?? - [1] Sortie de Ruby-GTK-0.09
+*1998-06-26 - [1] Sortie de Ruby-GTK-0.08
+*1998-0?-?? - [1] Sortie de Ruby-GTK-0.07
+*1998-04-27 - [1] Sortie de Ruby-GTK-0.06
+*1998-04-24 - [1] Sortie de Ruby-GTK-0.05
+*1998-0?-?? - [1] Sortie de Ruby-GTK-0.04
+*1998-0?-?? - [1] Sortie de Ruby-GTK-0.03
+*1998-01-27 - [1] Sortie de Ruby-GTK-0.02
+*1998-01-20 - [1] Sortie de Ruby-GTK-0.01
+*1998-01-14 - [1] ((<Sortie|URL:http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-list/5877>))(ja) de Ruby-GTK-0.0 par Matz (pour gtk-0.99.2)
+
+Traduction de la page japonaise par ((<Vincent Isambart|Scritch>)), ((<Masao Mutoh|URL:../hiki.cgi?Masao>)) et ((<Laurent Sansonetti|lrz>)).

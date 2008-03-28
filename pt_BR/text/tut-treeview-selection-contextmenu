@@ -1,0 +1,26 @@
+= Menus de Contexto
+{{link "tut-treeview-selection-doubleclick", nil, "tut-treeview", "tut-treeview-resources"}}
+
+Menus de contexto são menus dependentes de contexto que aparecem quando um usuário clica com o botão direito em uma lista ou árvore e comumente deixa o usuário fazer algo com ositens selecionados ou manipular a lista ou árvore de outras maneiras.
+
+Cliques com o botão direito em um "tree view" são pegados como exatamente como os cliques de botão de mouse são pegados com qualquer outro componente, especificamente conectando ao gerenciador de sinal "button_press_event" do "tree view" (o qual é um sinal de  Gtk::Widget, e como o Gtk::TreeView é derivado de Gtk::Widget ele tem este sinal também). Adicionalmente, você também deve conectar ao sinal "popup-menu", para que os usuários possam acessar o seu menu de contexto sem um mouse. O sinal "popup-menu" é emitido quando o usuário pressiona Shift-F10. Também, você deve certificar-se que todas as ações fornecidas no seu menu de contexto podem também ser feitas por outras maneiras, como com o menu principal da aplicação. Veja o ((<"GNOME Human Interface Guidelines (HIG)"|URL: http://developer.gnome.org/projects/gup/hig/>)) para mais detalhes. Direto do departamento-um-exemplo-de-código-diz-mais-que-mil-palavras, algum código para olhar: 
+
+  # Cria um menu
+  menu = Gtk::Menu.new
+
+  # Adiciona um item com um "callback" inútil
+  item = Gtk::MenuItem.new("Faça algo")
+  item.signal_connect("activate") { puts "Fez algo!" }
+  menu.append(item)
+
+  menu.show_all
+
+  # Faz aparecer o menu no clique com o botão direito
+  view.signal_connect("button_press_event") do |widget, event|
+    if event.kind_of? Gdk::EventButton and event.button == 3
+      menu.popup(nil, nil, event.button, event.time)
+    end
+  end
+
+  # Faz aparecer o menu no Shift-F10
+  view.signal_connect("popup_menu") { menu.popup(nil, nil, 0, Gdk::Event::CURRENT_TIME) }

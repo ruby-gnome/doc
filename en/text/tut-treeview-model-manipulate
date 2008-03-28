@@ -1,0 +1,17 @@
+= Manipulating Row Data
+{{link "tut-treeview-model-add", "tut-treeview-model", "tut-treeview", "tut-treeview-model-retrieve"}}
+
+Adding empty rows to a data store is not terribly exciting, so let's see how we can add or change data in the store.  This is typically done with Gtk::TreeIter#[column]=.
+
+Here is an example where we create a store that stores two strings and one integer for each row: 
+
+ # Create a store for first name, last name, and year born
+ liststore = Gtk::ListStore.new(String, String, Integer)
+
+ # Append an empty row to the list store.
+ iter = liststore.append
+
+ # Fill fields with some data
+ iter[0] = "Joe"
+ iter[1] = "Average"
+ iter[2] = 1970

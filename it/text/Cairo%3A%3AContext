@@ -1,0 +1,202 @@
+= class Cairo::Context
+
+There are only GDK and Pango related APIs.
+
+== Object Hierarchy
+* Object
+  * Cairo::Context
+
+== Instance Methods
+
+=== GDK related APIs
+
+--- gdk_rectangle(rectangle)
+    ((*Ruby/GDK*))
+    Adds the given rectangle to the current path of self.
+     
+     * rectangle: Gdk::Rectangle
+     * Returns: self
+
+--- gdk_region(region)
+    ((*Ruby/GDK*))
+    Adds the given region to the current path of self.
+    
+     * region: Gdk::Region
+     * Returns: self
+
+--- set_source_color(color)
+    ((*Ruby/GDK*))
+    Sets the specified Gdk::Color as the source color of self.
+    
+     * color: Gdk::Color
+     * Returns: self
+
+--- set_source_pixbuf(pixbuf, pixbuf_x=0, pixbuf_y=0)
+    ((*Ruby/GDK*))
+    Sets the given pixbuf as the source pattern for the
+    Cairo context. The pattern has an extend mode of
+    Cairo::EXTEND_NONE and is aligned so that the origin of
+    ((|pixbuf|)) is ((|pixbuf_x|)), ((|pixbuf_y|))
+     
+     * pixbuf: Gdk::Pixbuf
+     * pixbuf_x: X coordinate of location to place upper
+       left corner of ((|pixbuf|))
+     * pixbuf_y: Y coordinate of location to place upper
+       left corner of ((|pixbuf|))
+     * Returns: self
+
+=== Pango related APIs
+
+--- create_pango_layout
+     ((*Ruby/Pango*))
+     Creates a layout object set up to match the
+     current transformation and target surface of the Cairo
+     context. This layout can then be used for text
+     measurement with functions like Pango::Layout#size
+     or drawing with functions like
+     Cairo::Context#show_layout. If you change the
+     transformation or target surface for self, you need to
+     call Cairo::Context#update_layout.
+
+     This function is the most convenient way to use Cairo with
+     Pango, however it is slightly inefficient since it
+     creates a separate Pango::Context object for each
+     layout. This might matter in an application that was
+     laying out large amounts of text.
+
+     * Returns: the newly created Pango::Layout
+
+--- pango_glyph_string_path(font, glyphs)
+
+     ((*Ruby/Pango*))
+     Adds the glyphs in ((|glyphs|)) to the current path in self.
+     The origin of the glyphs (the left
+     edge of the baseline) will be at the current point of self.
+
+     * font: a Pango::Font
+     * glyphs: a Pango::GlyphString
+     * Returns: self
+
+--- pango_layout_path(layout)
+
+     ((*Ruby/Pango*))
+     Adds the text in a Pango::LayoutLine to the current
+     path in self. The top-left corner of the Pango::Layout
+     will be at the current point of self.
+
+     * layout: a Pango::Layout
+     * Returns: self
+
+--- pango_layout_line_path(line)
+
+     ((*Ruby/Pango*))
+     Adds the text in Pango::LayoutLine to the current path
+     in self. The origin of the glyphs (the left edge of the
+     line) will be at the current point of self.
+
+     * line: a Pango::LayoutLine
+     * Returns: self
+
+--- show_pango_glyph_string(font, glyphs)
+
+     ((*Ruby/Pango*))
+     Draws the glyphs in ((|glyphs|)) in self.
+     The origin of the glyphs (the left edge of the
+     baseline) will be drawn at the current point of self.
+
+     * font: Pango::Font
+     * glyphs: Pango::GlyphString
+     * Returns: self
+
+--- show_pango_layout(layout)
+
+     ((*Ruby/Pango*))
+     Draws a Pango::LayoutLine in self. The
+     top-left corner of the Pango::Layout will be drawn at
+     the current point of self.
+
+     * layout: a Pango layout
+     * Returns: self
+
+--- show_pango_layout_line(line)
+
+     ((*Ruby/Pango*))
+     Draws a Pango::LayoutLine in self. The
+     origin of the glyphs (the left edge of the line) will be
+     drawn at the current point of self.
+
+     * line: a Pango::LayoutLine
+     * Returns: self
+
+--- update_pango_context(context);
+
+     ((*Ruby/Pango*))
+     Updates a Pango::Context previously created for use
+     with Cairo to match the current transformation and
+     target surface of a Cairo context. If any layouts have
+     been created for the context, it's necessary to call
+     Pango::Layout#context_changed on those layouts.
+
+     * context: a Pango::Context, from
+       Pango::CairoFontMap#create_context
+     * Returns: self
+
+--- update_pango_layout(layout)
+
+     ((*Ruby/Pango*))
+     Updates the private Pango::Context of a Pango::Layout
+     created with Cairo::Context#create_layout to match the
+     current transformation and target surface of a Cairo
+     context.
+
+     * layout: a Pango::Layout, from
+       Cairo::Context#create_layout
+     * Returns: self
+
+=== librsvg related API
+
+--- render_rsvg_handle(handle, id=nil)
+
+    ((*Ruby/RSVG*))
+    Draws a subset of a SVG to a Cairo surface
+
+    * handle: a RSVG::Handle.
+    * id: An element's id within the SVG, or nil to render the whole SVG
+
+=== Poppler related API
+
+--- render_poppler_page(page)
+
+    ((*Ruby/Poppler*))
+    Draws a page of a PDF to a cairo surface
+
+    * page: a Poppler::Page.
+
+--- render_poppler_page_selection(page, selection, old_selection, glyph_color, background_color)
+
+    ((*Ruby/Poppler*))
+    Draws a selection in page of a PDF to a cairo surface
+
+    * page: a Poppler::Page.
+    * selection: a Poppler::Rectangle
+    * old_selection: a Poppler::Rectangle or nil
+    * glyph_color: a Gdk::Color
+    * background_color: a Gdk::Color
+
+== See Also
+
+* Gdk::Drawable#create_cairo_context
+* Pango::Context
+* Pango::CairoFontMap
+* RSVG::Handle#render_cairo
+* Poppler::Page#render
+* Poppler::Page#render_selection
+
+== ChangeLog
+
+* 2006-12-17 Updated Cairo::Context#set_source_pixbuf. - ((<kou>))
+* 2006-05-27 Updated Poppler related APIs. - ((<kou>))
+* 2006-05-19 Added VTE related API - ((<kou>))
+* 2006-03-17 Added librsvg related API - ((<kou>))
+* 2005-10-05 Added Pango related APIs. - ((<kou>))
+* 2005-10-03 Added GDK related APIs. - ((<kou>))

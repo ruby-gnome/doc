@@ -1,0 +1,15 @@
+= Initializing
+{{link("tut-gst-intro", nil, "tut-gst", "tut-gst-elements-intro")}}
+
+When writing a Ruby/GStreamer application, you can simply require "gst" to get access to the library classes and methods.
+
+Before the Ruby/GStreamer library can be used Gst.init has to be called from the main application. This call will perform the necessary initialization of the library as well as parse the GStreamer-specific command line options.
+
+A typical program would start like this:
+  
+  require 'gst'
+
+  Gst.init
+  # ...
+
+Use the Gst::VERSION_MAJOR, Gst::VERSION_MINOR and Gst::VERSION_MICRO macros to get the GStreamer version you are using.  You can also get them via the Gst.version function.

@@ -1,0 +1,39 @@
+= Changes an icon on a button of a toolbar
+Gtk::Toolbar, like a lot of other widgets, is either a subclass of Gtk::Container or Gtk::Bin. They can contain child widgets and you can iterate over each child and send methods to it.
+
+Here is a sample script.
+
+ require 'gtk2'
+ 
+ toolbar = Gtk::Toolbar.new
+ toolbar.append(Gtk::Stock::NEW) do
+   toolbar.children[0].child.children[0].set(Gtk::Stock::QUIT, Gtk::IconSize::SMALL_TOOLBAR)  #(1)
+ end
+ Gtk::Window.new.add(toolbar).show_all
+ 
+ Gtk.main
+
+Click the button, and then icon will be changed.
+Instead of line (1) you can also write:
+
+ button = toolbar.children[0]
+ vbox = button.child
+ image = vbox.children[0]
+ image.set(Gtk::Stock::QUIT, Gtk::IconSize::SMALL_TOOLBAR)
+
+Of course, you can use both ways as you like.  But the first one uses the Ruby call chaining feature.
+And the following figure shows relationships amongst these objects:
+
+((<Containers|URL:/ja/hiki.cgi?c=plugin;plugin=attach_download;p=tips_toolbar;file_name=containers.jpg>))
+{{br}}
+
+(1) Gtk::Toolbar is a subclass of Gtk::Container, so you can get all child widgets by using Gtk::Container#children. Here, the first child is the target object (Gtk::Button), so you can retrieve it with toolbar.children[0].
+(2) Gtk::Button is a subclass of Gtk::Bin, so it has only one child. You can retrieve the child widget with Gtk::Bin#child. In this case, the child widget is a Gtk::VBox.
+(3) Gtk::VBox is a also subclass of Gtk::Container. So you get the Gtk::Image object by using vbox.children[0].
+(4) Finally, use Gtk::Image#set to change the icon.
+
+== ChangeLog
+:2003-09-11 ((<Laurent|lrz>))
+  Fixed English.
+:2003-09-11 ((<Masao>))
+  Initial release.

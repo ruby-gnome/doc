@@ -1,0 +1,30 @@
+= Mecânismos de "callbacks" e sinais
+{{link "tut-gtk-helloworld", "tut-gtk-intro", "tut-gtk", "tut-gtk-events"}}
+
+Antes de olhar no programa "Olá Mundo" em detalhes, devemos estudar um pouco como a GTK gerencia "callbacks" e sinais.
+
+Da mesma maneira que o seu sistema envia um sinal para processos ao desligar ("shutdown")
+((-Note que sinais de GTK não são relacionados de qualquer maneira com os sinais de UNIX. A "GTK toolkit" foi feita para ser independente do sistema abaixo. -)),  A GTK envia um sinal para o loop principal (Gtk.main) quando um evento especial ocorreu. O loop principal irá assim chamar de volta ("call back") a função apropriada do componente ("widget").
+
+Até que um sinal seja recebido, o loop principal ficará "dormindo".
+
+Com o objetivo de dizer a um componente de GTK que ele tem que pegar um sinal específico, e então executar o código apropriado, precisamos configurar um gerenciador ("handler") de sinal.
+
+Isso pode ser feito com o método GLib::Instantiatable#signal_connect, o qual é parte da biblioteca Ruby/GLib 
+(não esqueça que a GTK é feita sobre a GLib):
+
+  GLib::Instantiatable#signal_connect("nome do sinal") do
+      # Código para executar quando "nome do sinal" for pego.
+  end
+
+GLib::Instantiatable#signal_connect precisa de 2 coisas:
+* o nome do sinal que será pego; 
+* um bloco de código que será executado na recepção do devido sinal.
+
+O bloco de código pode ter um parâmetro adicional como a seguir:
+
+  GLib::Instantiatable#signal_connect("nome do sinal") do |w|
+      # ...
+  end
+
+O componente que dispara o sinal terá uma referência no parâmetro "w".

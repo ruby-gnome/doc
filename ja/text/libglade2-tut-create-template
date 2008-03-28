@@ -1,0 +1,43 @@
+= テンプレートの生成
+まずは、ruby-glade-create-templateというツールを使ってテンプレートを生成します。
+
+先ほどの保存先のディレクトリに移動します。
+
+== MS Windowsの場合
+rubyはc:\rubyにインストールされていて、hweditはc:\Projects\hweditにインストールされているとします。
+
+ C:\>cd c:\Projects\Projects\hwedit
+ C:\>ruby c:\ruby\bin\ruby-glade-create-template hwedit.glade > hwedit_glade.rb
+
+=== (注意）上記で動作しない場合は以下のようにしてください。
+
+ C:\>cd c:\Projects\Projects\hwedit
+ C:\>c:\ruby\bin\ruby.exe c:\ruby\bin\ruby-glade-create-template hwedit.glade > hwedit_glade.rb
+
+== Linux/FreeBSDの場合
+hweditは$HOME/Projects/hweditにインストールされているとします。
+
+ $ cd $HOME/Projects/hwedit
+ $ ruby-glade-create-template hwedit.glade > hwedit_glade.rb
+
+== テンプレートを実行する
+さて、これでテンプレートができました。実行してみましょう。
+
+ (MS Windows)
+ C:\>ruby hwedit_glade.rb
+
+ (Linux/FreeBSD)
+ $ ruby hwedit_glade.rb
+
+もうほとんどエディタそのものですね！
+
+さて、それではしばらくこの状態でいろいろといじってみてください。
+メニューを選択したりすると、標準出力(DOS Promptやshell上)に"on_xxxx_activate() is not implemented yet" と表示されますね。あとはこのメッセージを頼りにそのメソッドを1つずつインプリメントしていけばいいのです。
+
+ちなみに、一部、日本語化されているところがありますよね？
+これらはもともとGTK+が持っている国際化(L10n)機能が使われているからです。これは楽チン！
+
+もし、英語で表示したければ、glade-2を起動したときのようにLANGをCにして実行してみてください。
+逆に日本語が表示されていない場合は、LANGをja（またはja_JP、ja_JP.UTF-8）にして実行してみます。
+
+日本語化されていないメニューなどは自分で日本語化する必要があるのですがそれについてはまた後ほどご説明します。

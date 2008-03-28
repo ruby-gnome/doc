@@ -1,0 +1,18 @@
+= module Vte
+
+== Constants
+
+--- BUILD_VERSION
+
+      = [major, minor, micro]
+
+== See Also
+
+* Vte::Reaper
+* Vte::Terminal
+
+== ChangeLog
+
+* 2006-05-18 ((<kou>)): completed.
+
+- ((<kou>))

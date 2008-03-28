@@ -1,0 +1,169 @@
+= class Gtk::PageSetup
+
+A Gtk::PageSetup object stores the page size, orientation
+and margins. The idea is that you can get one of these from
+the page setup dialog and then pass it to the
+Gtk::PrittntOperation when printing. The benefit of
+splitting this out of the Gtk::PrintSettings is that these
+affect the actual layout of the page, and thus need to be
+set long before user prints.
+
+The margins specified in this object are the "print
+margins", i.e. the parts of the page that the printer cannot
+print on. These are different from the layout margins that a
+word processor uses; they are typically used to determine
+the minimal size for the layout margins.
+
+To obtain a Gtk::PageSetup use Gtk::PageSetup.new to get the
+defaults, or use Gtk::Print.run_page_setup_dialog to show
+the page setup dialog and receive the resulting page setup.
+
+== Object Hierarchy
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Gtk::PageSetup
+
+== Class Methods
+--- Gtk::PageSetup.new
+     Creates a new Gtk::PageSetup.
+
+     * Returns: a new Gtk::PageSetup
+
+== Instance Methods
+--- dup
+     Duplicates a Gtk::PageSetup.
+
+     * Returns: a copy of self
+
+--- top_margin(unit)
+     Gets the top margin in units of ((|unit|)).
+
+     * unit: the unit for the return value
+     * Returns: the top margin
+--- set_top_margin(margin, unit)
+     Sets the top margin of the Gtk::PageSetup.
+
+     * margin: the new top margin in units of ((|unit|))
+     * unit: the units for ((|margin|))
+     * Returns: self
+
+--- bottom_margin(unit)
+     Gets the bottom margin in units of ((|unit|)).
+
+     * unit: the unit for the return value
+     * Returns: the bottom margin
+--- set_bottom_margin(margin, unit)
+     Sets the bottom margin of the Gtk::PageSetup.
+
+     * margin: the new bottom margin in units of ((|unit|))
+     * unit: the units for ((|margin|))
+     * Returns: self
+
+--- left_margin(unit)
+     Gets the left margin in units of ((|unit|)).
+
+     * unit: the unit for the return value
+     * Returns: the left margin
+--- set_left_margin(margin, unit)
+     Sets the left margin of the Gtk::PageSetup.
+
+     * margin: the new left margin in units of ((|unit|))
+     * unit: the units for ((|margin|))
+     * Returns: self
+
+--- right_margin(unit)
+     Gets the right margin in units of ((|unit|)).
+
+     * unit: the unit for the return value
+     * Returns: the right margin
+--- set_right_margin(margin, unit)
+     Sets the right margin of the Gtk::PageSetup.
+
+     * margin: the new right margin in units of ((|unit|))
+     * unit: the units for ((|margin|))
+     * Returns: self
+
+--- orientation
+     Gets the page orientation of the Gtk::PageSetup.
+
+     * Returns: the page orientation
+--- orientation=(orientation)
+     Sets the page orientation of the #GtkPageSetup.
+
+     * orientation: a Gtk::PageOrientation value
+     * Returns: orientation
+--- set_orientation(orientation)
+     Same as #orientation=.
+     * Returns: self
+
+--- page_height(unit)
+     Returns the page height in units of ((|unit|)).
+
+     Note that this function takes orientation and
+     margins into consideration.
+     See Gtk::PageSetup#paper_height().
+
+     * unit: the unit for the return value
+     * Returns: the page height.
+--- page_width(unit)
+     Returns the page width in units of ((|unit|)).
+
+     Note that this function takes orientation and
+     margins into consideration.
+     See Gtk::PageSetup#paper_width().
+
+     * unit: the unit for the return value
+     * Returns: the page width.
+
+--- paper_height
+     Returns the paper height in units of ((|unit|)).
+
+     Note that this function takes orientation and
+     not margins into consideration.
+     See Gtk::PageSetup#page_height().
+
+     * unit: the unit for the return value
+     * Returns: the paper height.
+--- paper_width
+     Returns the paper width in units of ((|unit|)).
+
+     Note that this function takes orientation and
+     not margins into consideration.
+     See Gtk::PageSetup#page_width().
+
+     * unit: the unit for the return value
+     * Returns: the paper width.
+
+--- paper_size
+     Gets the paper size of the Gtk::PageSetup.
+
+     * Returns: the paper size
+--- paper_size=(size)
+     Sets the paper size of the Gtk::PageSetup without
+     changing the margins. See
+     Gtk::PageSetup#set_paper_size_and_default_margins.
+
+     * size: a Gtk::PaperSize
+     * Returns: size
+--- set_paper_size(size)
+     Same as #paper_size=
+     * Returns: self
+
+--- paper_size_and_default_margins=(size)
+     Sets the paper size of the Gtk::PageSetup and modifies
+     the margins according to the new paper size.
+
+     * size: a Gtk::PaperSize
+     * Returns: size
+--- set_paper_size_and_default_margins(size)
+     Same as #paper_size_and_default_margins=.
+     * Returns: self
+
+== See Also
+
+== ChangeLog
+
+* 2006-07-09: updated for 2.10. - ((<kou>))
+
+- ((<kou>))

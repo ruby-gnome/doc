@@ -1,0 +1,189 @@
+= class Gtk::ActionGroup
+Actions are organised into groups. An action group is essentially a map from names to Gtk::Action objects. 
+
+All actions that would make sense to use in a particular context should be in a single group. Multiple action groups may be used for a particular user interface. In fact, it is expected that most nontrivial applications will make use of multiple groups. For example, in an application that can edit multiple documents, one group holding global actions (e.g. quit, about, new), and one group per document holding actions that act on that document (eg. save, cut/copy/paste, etc). Each window's menus would be constructed from a combination of two action groups. 
+
+Accelerators are handled by the GTK+ accelerator map. All actions are assigned an accelerator path (which normally has the form <Actions>/group-name/action-name) and a shortcut is associated with this accelerator path. All menuitems and toolitems take on this accelerator path. The GTK+ accelerator map code makes sure that the correct shortcut is displayed next to the menu item. 
+
+== Object Hierarchy
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Gtk::ActionGroup
+
+== Class Methods
+--- Gtk::ActionGroup.new(name)
+    Creates a new Gtk::ActionGroup object. The name of the action group is used when associating keybindings with the actions.
+    * name: the name of the action group.  ((* Since 2.4 *))
+    * Returns: the new Gtk::ActionGroup  
+
+== Instance Methods
+--- name
+    Gets the name for the action group. ((* Since 2.4 *))
+    * Returns: The name for the action group.
+--- name=(name)
+    Sets a name for the action group.  ((* Since 2.4 *))
+    * name: A name for the action group.
+    * Returns: name
+--- set_name(name)
+    Same as Gtk::ActionGroup#name=.  ((* Since 2.4 *))
+    * name: A name for the action group.
+    * Returns: self
+
+--- sensitive?
+    Returns true if the group is sensitive. The constituent actions can only be logically sensitive (see Gtk::Action#sensitive?) if they are sensitive (see Gtk::Action#sensitive) and their group is sensitive. ((* Since 2.4 *))
+    * Returns: true if the action group is sensitive.
+--- sensitive=(sensitive)
+    Sets the value whether the action group is sensitive. or not. ((* Since 2.4 *))
+    * sensitive: true if the action group is sensitive.
+    * Returns: sensitive
+--- set_sensitive(sensitive)
+    Same as Gtk::ActionGroup#sensitive=. ((* Since 2.4 *))
+    * sensitive: true if the action group is sensitive.
+    * Returns: self
+
+--- visible?
+    Returns true if the group is visible. The constituent actions can only be logically visible (see Gtk::Action#visible) if they are visible (see Gtk::Action#visible) and their group is visible. ((* Since 2.4 *))
+    * Returns: true if the group is visible.  
+--- visible=(visible)
+    Changes the visible of action_group. ((* Since 2.4 *))
+    * visible: true if the action group is visible.
+    * Returns: visible
+--- set_visible(visible)
+    Same as Gtk::ActionGroup#visible=. ((* Since 2.4 *))
+    * visible: true if the action group is visible.
+    * Returns: self
+
+--- get_action(action_name)
+    Looks up an action in the action group by name.  ((* Since 2.4 *))
+    * action_name : the name of the action  
+    * Returns : the action, or nil if no action by that name exists  
+
+--- actions
+    Gets the actions in the action group.      ((* Since 2.4 *))
+    * Returns: an Array of the Gtk::Action objects in the action group  
+
+--- add_action(action, accelerator = nil)
+    Adds an action object to the action group and sets up the accelerator.   ((* Since 2.4 *))
+    If accelerator is nil, attempts to use the accelerator associated with the stock_id of the action. 
+    Accel paths are set to <Actions>/group-name/action-name.
+    * action: the Gtk::Action to add  
+    * accelerator: the accelerator for the action, in the format understood by Gtk::Accelerator.parse, or "" for no accelerator, or nil to use the stock accelerator  
+    * Returns: self
+
+--- remove_action(action)
+    Removes a Gtk::Action object from the action group.  ((* Since 2.4 *))
+    * action: a Gtk::Action  
+    * Returns: self
+
+--- add_actions(entries)
+    This is a convenience method to create a number of actions and add them to the action group. 
+    The "activate" signals of the actions are connected to the procs and their accel paths are set to <Actions>/group-name/action-name.  ((* Since 2.4 *))
+    * entries: [[name, stock_id, label, accelerator, tooltip, proc], ... ]: an array of action descriptions
+       * name: The name of the action. 
+       * stock_id: The stock id(the constant value of Gtk::Stock) for the action.
+       * label: The label for the action. This field should typically be marked for translation, see Gtk::ActionGroup#translation_domain=. 
+       * accelerator: The accelerator for the action, in the format understood by Gtk::Accelerator.parse.
+       * tooltip: The tooltip for the action. This field should typically be marked for translation, see Gtk::ActionGroup#translation_domain=. 
+       * proc: The proc object to call when the action is activated. The proc takes 2 parameters. 1st parameter is Gtk::ActionGroup, and 2nd one is Gtk::Action. 
+               (e.g.) prc = Proc.new {|actiongroup, action| ... }
+    * Returns: self
+
+--- add_toggle_actions(entries)
+    This is a convenience method to create a number of toggle actions and add them to the action group. 
+    The "activate" signals of the actions are connected to the procs and their accel paths are set to <Actions>/group-name/action-name.  ((* Since 2.4 *))
+    * entries: [[name, stock_id, label, accelarator, tooltip, proc, is_active], ... ]: an array of toggle action descriptions
+       * name: The name of the action. 
+       * stock_id: The stock id(the constant value of Gtk::Stock) for the action.
+       * label: The label for the action. This field should typically be marked for translation, see Gtk::ActionGroup#translation_domain=. 
+       * accelerator: The accelerator for the action, in the format understood by Gtk::Accelerator.parse.
+       * tooltip: The tooltip for the action. This field should typically be marked for translation, see Gtk::ActionGroup#translation_domain=. 
+       * proc: The proc object to call when the action is activated. The proc takes 2 parameters. 1st parameter is Gtk::ActionGroup, and 2nd one is Gtk::Action. 
+               (e.g.) prc = Proc.new {|actiongroup, action| ... }
+       * is_active: The initial state of the toggle action.(true or false)
+    * Returns: self
+
+--- add_radio_actions(entries) {|action, current| ... }
+    This is a convenience routine to create a group of radio actions and add them to the action group. 
+    The "changed" signal of the first radio action is connected to the on_change callback and the accel paths of the actions are set to <Actions>/group-name/action-name.  ((* Since 2.4 *))
+    * entries: [[name, stock_id, label, accelarator, tooltip, value], ... ]: an array of toggle action descriptions
+       * name: The name of the action. 
+       * stock_id: The stock id(the constant value of Gtk::Stock) for the action.
+       * label: The label for the action. This field should typically be marked for translation, see Gtk::ActionGroup#translation_domain=. 
+       * accelerator: The accelerator for the action, in the format understood by Gtk::Accelerator.parse.
+       * tooltip: The tooltip for the action. This field should typically be marked for translation, see Gtk::ActionGroup#translation_domain=. 
+       * value: The value to set on the radio action. See Gtk::RadioAction#current_value. 
+    * {|action, current| ... }: The block to connect to the changed signal
+       * action: Previous Gtk::Action
+       * current: Current Gtk::Action
+    * Returns: self
+
+--- set_translate_func{|path| ... }
+    Sets a method to be used for translating the label and tooltip of Gtk::ActionGroup entries added by Gtk::ActionGroup#add_actions. 
+    If you're using Gettext, it is enough to set the translation domain with Gtk::ActionGroup#translation_domain=.  ((* Since 2.4 *))
+    * {|path| ... }: a block to translate given path.
+       * path: path for translation
+    * Returns: self
+
+--- translation_domain=(domain)
+    Sets the translation domain and uses dgettext() for translating the label and tooltip of Gtk::Action entries added by Gtk::ActionGroup#add_actions. 
+    If you're not using GetText for localization, see Gtk::ActionGroup#set_translate_func.  ((* Since 2.4 *))
+    * domain: the translation domain to use for dgettext calls
+    * Returns: domain
+
+--- set_translation_domain(domain)
+    Same as Gtk::ActionGroup#translation_domain=.  ((* Since 2.4 *))
+    * domain: the translation domain to use for dgettext calls
+    * Returns: self
+
+--- translate_string(string)
+    Translates a string using the specified Gtk::ActionGroup#set_translate_func. This is mainly intended for language bindings. ((* Since 2.6 *))
+    * string: a String  
+    * Returns: the translation of string  
+
+== Properties
+--- name: String (Read/Write/Construct Only)
+    A name for the action group.  ((* Since 2.4 *))
+    * Default value: nil
+
+--- sensitive: true or false (Read/Write)
+    Whether the action group is enabled.  ((* Since 2.4 *))
+    * Default value: true
+
+--- visible: true or false (Read/Write)
+    Whether the action group is visible.  ((* Since 2.4 *))
+    * Default value: true
+
+== Signals
+--- connect-proxy: self, action, proxy
+    The connect_proxy signal is emitted after connecting a proxy to an action in the group. Note that the proxy may have been connected to a different action before. 
+    This is intended for simple customizations for which a custom action class would be too clumsy, e.g. showing tooltips for menuitems in the statusbar. 
+    Gtk::UIManager proxies the signal and provides global notification just before any action is connected to a proxy, which is probably more convenient to use.  ((* Since 2.4 *))
+     * self: the Gtk::ActionGroup  
+     * action: the Gtk::Action  
+     * proxy: the proxy(Gtk::Widget)
+
+--- disconnect-proxy: self, action, proxy
+    The disconnect_proxy signal is emitted after disconnecting a proxy from an action in the group. 
+    Gtk::UIManager proxies the signal and provides global notification just before any action is connected to a proxy, which is probably more convenient to use.  ((* Since 2.4 *))
+     * self: the Gtk::ActionGroup  
+     * action: the Gtk::Action  
+     * proxy: the proxy(Gtk::Widget)
+
+--- post-activate: self, action
+    The post_activate signal is emitted just after the action in the action_group is activated 
+    This is intended for Gtk::UIManager to proxy the signal and provide global notification just after any action is activated.  ((* Since 2.4 *))
+     * self: the Gtk::ActionGroup  
+     * action: the Gtk::Action  
+
+--- pre-activate: self, action
+    The pre_activate signal is emitted just before the action in the action_group is activated 
+    This is intended for Gtk::UIManager to proxy the signal and provide global notification just before any action is activated.  ((* Since 2.4 *))
+     * self: the Gtk::ActionGroup  
+     * action: the Gtk::Action  
+
+
+== ChangeLog
+* 2006-01-31 Apply GTK+-2.6 method. - ((<Masao>))
+* 2005-03-11 Fixed Gtk::Action#add_actions. Reported by Zoe.
+* 2004-11-01 Added. - ((<Masao>))

@@ -1,0 +1,58 @@
+= Install Guide for Fedora
+{{link nil, "Install Guide", nil, nil}}
+
+
+
+== Fedora Core 5
+
+=== Installation
+
+There are RPM packages for Fedora Core 5 available. You can download them ((<here|URL:
+http://franz.hob-bruneck.info/downloads/fc5/ruby-gnome2/0.14.1/ruby-gnome2-0.14.1-fc5.tar.gz>)). Simply untar the package and install the RPMs.
+
+The binding for GDA (GNOME Data Access) is missing, Ruby/Libgda seems not to be compatible yet with the version of libgda delivered with Fedora Core 5.
+
+Make sure that the package gtkglext (e.g. ((<here|URL:http://download.fedora.redhat.com/pub/fedora/linux/extras/5/i386/>))) is installed, it is not on the CDs/DVD.
+
+The packages are available for the i386 architecture.
+
+Martin Kaffanke kindly set up a ((<yum-repository|URL:http://kleinerdrache.org/repos/fc5/repodata/>)) with the Ruby-GNOME2-Packages included. After having installed the configuration as described on the ((<here|URL:http://kleinerdrache.org/>)), you should be able to install all packages with the following command: yum install ruby-gnome2
+
+Have fun with Ruby-GNOME2!
+
+=== Bugs
+
+Report bugs to ((<"Franz"|Franz>)) <franz.burgmann@gmx.net>
+
+=== ChangeLog
+
+* 2006/05/28 Created - ((<"Franz"|Franz>))
+* 2006/06/29 Packages also available by yum-repository
+* 2007/06/16 Updated - ((<"Franz"|Franz>))
+
+
+
+== Fedora Core 4
+
+=== Installation
+
+There are RPM packages for Fedora Core 4 available. You can download them ((<here|URL:
+http://franz.hob-bruneck.info/downloads/fc4/ruby-gnome2/0.14.1/ruby-gnome2-0.14.1-fc4.tar.gz>)). Simply untar the package and install the RPMs.
+
+Make sure that the packages gtkglext (e.g. ((<here|URL:http://dries.studentenweb.org/>))) and libgda (e.g. ((<here|URL:http://download.fedora.redhat.com/pub/fedora/linux/extras/4/>))) are installed, they are not on the CD/DVD.
+
+
+The packages are available for the i386 architecture.
+
+Have fun with Ruby-GNOME2!
+
+=== Bugs
+
+Report bugs to ((<"Franz"|Franz>)) <franz.burgmann@gmx.net>
+
+=== ChangeLog
+
+* 2005/08/22 Created - ((<"Franz"|Franz>))
+* 2005/10/19 Ruby-GNOME2-0.14.0 binary packages available - ((<"Franz"|Franz>))
+* 2005/11/17 Ruby-GNOME2-0.14.1 binary packages available - ((<"Franz"|Franz>))
+* 2007/06/16 Updated - ((<"Franz"|Franz>))

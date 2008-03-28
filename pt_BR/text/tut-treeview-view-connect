@@ -1,0 +1,6 @@
+= Conectando "Tree View" e "Model"
+{{link "tut-treeview-view", "tut-treeview-view", "tut-treeview", "tut-treeview-view-look"}}
+
+Antes de continuarmos com a próxima seção onde mostramos dados na tela, precisamos conectar nosso armazenador de dados ao "tree view", para que ele saiba onde conseguir os dados para mostrar. Isso é conseguido com Gtk::TreeView#model=, o qual sozinho fará muito pouco. Entretanto, é um pré-requisito para o que fazemos nas seções seguintes. Alternativamente você pode passar o "model" como um parâmetro quando você chamar o Gtk::TreeView.new. 
+
+O Gtk::TreeView#model retornará o "model" que está atualmente anexado a um dado "tree view", o qual é útil em "callbacks" onde você recebe apenas o componente "tree view" (afinal, nós não queremos seguir os caminhos das variávies globais, as quais inevitavelmente levariam ao Lado Negro ("Dark Side"), queremos ?).

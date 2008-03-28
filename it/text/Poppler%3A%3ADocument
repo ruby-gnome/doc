@@ -1,0 +1,202 @@
+= class Poppler::Document
+
+== Object Hierarchy
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Poppler::Document
+
+== Included Modules
+* Enumerable
+
+== Class Methods
+--- Poppler::Document.new(uri, password=nil)
+     
+    Creates a new Poppler::Document.
+
+     * uri: URI of the file to load
+     * password: password to unlock the file with, or nil
+     * Returns: A newly created Poppler::Document
+
+== Instance Methods
+--- [index]
+--- get_page(index)
+
+    Returns the Poppler::Page indexed at (({index})).
+    Poppler::Page's are indexed starting at 0.
+
+     * index: a page index
+     * Returns: The Poppler::Page at (({index}))
+
+--- [label]
+--- get_page(label)
+
+    Returns the Poppler::Page reference by (({label})). This
+    object is owned by the caller. (({label})) is a
+    human-readable string representation of the page number,
+    and can be document specific.  Typically, it is a value
+    such as "iii" or "3".
+
+    By default, "1" refers to the first page.
+
+     * label: a page label
+     * Returns: The Poppler::Page referenced by label
+
+--- attachments
+     
+    Returns an Array containing Poppler::Attachment's.
+
+     * Returns: a list of available attachments.
+
+--- each
+
+    Yields each page.
+
+     * Returns: self
+
+--- find_dest(link_name)
+     
+    Finds named destination (({link_name})) in (({self}))
+
+     * link_name: a named destination
+
+     * Returns: The Poppler::Dest destination or nil if
+       (({link_name})) is not a destination.
+
+--- font_info
+
+    An alias of 'Poppler::FontInfo.new(self)'.
+
+     * Returns: The Poppler::FontInfo
+
+--- has_attachments?
+--- have_attachments?
+
+    Returns true of document has any attachments.
+
+     * Returns: true, if document has attachments.
+
+--- index_iter
+
+    An alias of 'Poppler::IndexIter.new(self)'.
+
+     * Returns: The Poppler::IndexIter
+
+--- n_pages
+
+    Returns the number of pages in a loaded document.
+
+     * Returns: Number of pages
+
+--- save(uri)
+
+    Saves document.
+
+     * Returns: true, if the document was successfully saved
+
+--- author
+    Gets the author of the document.
+     * Returns: The author of the document
+
+--- creation_date
+    Gets the date and time the document was created.
+     * Returns: The date and time the document was created
+
+--- creator
+    Gets the software that created the document.
+     * Returns: The software that created the document
+
+--- format
+    Gets the PDF version of the document.
+     * Returns: The PDF version of the document
+
+--- keywords
+    Gets the Keywords.
+     * Returns: Keywords
+
+--- linearized
+    Gets the Is the document optimized for web viewing?.
+     * Returns: Is the document optimized for web viewing?
+
+--- mod_date
+    Gets the date and time the document was modified.
+     * Returns: The date and time the document was modified
+
+--- page_layout
+    Gets the Initial Page Layout.
+     * Returns: Initial Page Layout
+
+--- page_mode
+    Gets the Page Mode.
+     * Returns: Page Mode
+
+--- permissions
+    Gets the Permissions.
+     * Returns: Permissions
+
+--- producer
+    Gets the software that converted the document.
+     * Returns: The software that converted the document
+
+--- subject
+    Gets the Subjects the document touches.
+     * Returns: Subjects the document touches
+
+--- title
+    Gets the title of the document.
+     * Returns: The title of the document
+
+--- viewer_preferences
+    Gets the Viewer Preferences.
+     * Returns: Viewer Preferences
+
+== Properties
+--- author: String (Read)
+    The author of the document
+
+--- creation-date: Integer (Read)
+    The date and time the document was created
+
+--- creator: String (Read)
+    The software that created the document
+
+--- format: String (Read)
+    The PDF version of the document
+
+--- keywords: String (Read)
+    Keywords
+
+--- linearized: String (Read)
+    Is the document optimized for web viewing?
+
+--- mod-date: Integer (Read)
+    The date and time the document was modified
+
+--- page-layout: Poppler::PageLayout (Read)
+    Initial Page Layout
+
+--- page-mode: Poppler::PageMode (Read)
+    Page Mode
+
+--- permissions: Poppler::Permissions (Read)
+    Permissions
+
+--- producer: String (Read)
+    The software that converted the document
+
+--- subject: String (Read)
+    Subjects the document touches
+
+--- title: String (Read)
+    The title of the document
+
+--- viewer-preferences: Poppler::ViewerPreferences (Read)
+    Viewer Preferences
+
+== See Also
+
+== ChangeLog
+
+* 2006-05-18 ((<kou>)): completed.
+
+- ((<kou>))

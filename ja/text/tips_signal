@@ -1,0 +1,37 @@
+= シグナルの動きを調べる
+各ウィジェットが持つシグナルは一体どのような時に使えばいいのだろう。
+
+代表的なシグナルやサンプルがあるものは良いのだけど、本家のAPIドキュメントにすらドキュメント化されていないシグナルも多く、そのようなシグナルは調べようがない(GTK+のソースコードを読む...なんてわけにはいかないよね(^^;))。
+
+そこで、以下のようなスクリプトを書いてみてはどうだろう。
+これを使うと、そのクラスがどのようなシグナルを持っていて、それぞれどのようなタイミングでシグナルが発行されるのかが「体感」できる。
+
+  require 'gtk2'
+  widget = Gtk::Button.new("click")        #(1)
+  Gtk::Button.signals(false).each do |v|   #(2)
+    p v
+    widget.signal_connect(v) do
+      p "#{v} is occured."
+    end
+  end
+  Gtk::Window.new.set_default_size(100, 100).add(widget).show_all
+  Gtk.main
+
+上記例ではボタンを使っているけど、(1),(2)をいじって調べたいウィジェット（厳密にはGLib::Objectのサブクラス）を書いてあげればよい。
+
+スーパークラスのシグナルも含みたい場合は(2)のfalseをtrueにすればOK。
+
+ウィジェットによっては大量のシグナルが発生してしまうかもしれない。その場合は、出力された名前から、自分が目的とする動作に近そうなシグナルを選んで、以下のようなスクリプトに書き直してみる。
+
+  require 'gtk2'
+  v = "clicked"                            #(1)
+  widget = Gtk::Button.new("click")        #(2)
+  widget.signal_connect(v) do
+    p "#{v} is occured."
+  end
+  Gtk::Window.new.set_default_size(100, 100).add(widget).show_all
+  Gtk.main
+
+これで(1)の部分にシグナルを書いてみるわけ。あとはマウスでクリックしてみたりキーボード叩いてみたりしてそのシグナルの意味を「体感」して調べてみるわけだ。
+
+- ((<むとう>))

@@ -1,0 +1,14 @@
+= class Gnome::PrintPrinter
+
+== Class Methods
+== Instance Methods
+
+--- name
+     * Returns: the name of printer.
+
+--- description
+     * Returns: the description of printer.
+
+== See Also
+
+- kou

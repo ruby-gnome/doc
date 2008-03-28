@@ -1,0 +1,17 @@
+= class Gtk::SourceTagStyle
+The style of a source tag.
+
+== Object Hierarchy
+* Object
+  * GLib::Boxed
+    * Gtk::SourceTagStyle
+
+== Class Methods
+--- Gtk::SourceTagStyle.new
+    This method returns a newly created Gtk::SourceTagStyle object.
+    * Returns: a newly created Gtk::SourceTagStyle object.
+
+== See Also
+((<Gtk>)).
+
+- ((<lrz>))

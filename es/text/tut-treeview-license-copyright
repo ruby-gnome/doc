@@ -1,0 +1,15 @@
+= Copyright y Licencia 
+{{link "tut-treeview-resources", nil, "tut-treeview", "tut-treeview-license-credits"}}
+
+== Adaptación para Ruby 
+
+Copyright (c) 2003 Matthew Berg <galt en gothpoodle punto com>
+
+== Documento original 
+
+Copyright (c) 2003 Tim-Philipp Müller <tim en centricular punto net>
+
+Este tutorial puede distribuirse y modificarse libremente de cualquier forma, siempre que todos sus autores reciban el crédito por su trabajo y todas las modificaciones no triviales realizadas por terceros se encuentren claramente indicadas en el documento (p.e en un historial de versiones), o en un lugar externo de carácter público y accesible al que se hará referencia en el documento (p.e. un repositorio CVS).
+
+This tutorial may be redistributed and modified freely in any form, as long as all authors are given due credit for their work and all non-trivial changes by third parties are clearly marked as such either within the document (e.g. in a revision history), or at an external and publicly accessible place that is refered to in the document (e.g. a CVS repository).
+

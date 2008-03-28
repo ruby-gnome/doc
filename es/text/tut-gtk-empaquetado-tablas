@@ -1,0 +1,71 @@
+= Empaquetado con Tablas
+{{link "tut-gtk-empaquetado-demo", "tut-gtk-empaquetado-intro", "tut-gtk", "tut-gtk-empaquetado-tablas-demo"}}
+
+Veamos otro sistema de empaquetado: Tablas. Estas pueden ser extremadamente útiles en ciertas situaciones.
+
+Usando tablas, creamos una rejilla en la que colocar widgets. Los widgets pueden ocupar tantos espacios como nosotros especifiquemos.
+
+El primer paso, por supuesto, es el constructor Gtk::Table.new:
+
+  Gtk::Table.new(rows, columns, homogeneous) 
+
+El primer argumento es el número de filas de la tabla, mientras que el segundo, obviamente, es el número de columnas.
+
+El argumento homogeneous tiene que ver con el tamaño que toman las celdas de la tabla. Si homogeneous es true, las celdas de la tabla se redimensionan a la medida del widget más grande. Si homogeneous es false, el tamaño de las celdas viene indicado por el widget más alto de su misma fila, y por el más ancho de su columna.
+
+Las filas y las columnas se enumeran de 0 a n, donde n era el número especificado en Gtk::Table.new. Entonces, si especificas rows = 2 y columns = 2, la distribución será algo parecido a esto:
+
+  .0          1          2
+  0+----------+----------+
+   |          |          |
+  1+----------+----------+
+   |          |          |
+  2+----------+----------+
+
+Hay que tener en cuenta que el sistema de coordenadas comienza en la esquina superior izquierda. Para situar un widget en una celda, hay que usar el siguiente método:
+
+  Gtk::Table#attach(child, 
+                    left_attach, right_attach, top_attach, bottom_attach, 
+                    xoptions, yoptions, 
+                    xpadding, ypadding)
+
+El primer argumento ("child") es el widget que quieres situar en la tabla.
+
+Los argumentos left y rigth attach especifican donde situar el widget, y cuantas celdas usar. Si quieres un botón en la parte inferior izquierda de nuestra tabla de 2x2, y quieres que solo ocupe esa celda, left_attach valdría 1, right_attach 2, top_attach 1, bottom_attach 2.
+
+Ahora, si quiere un widget que ocupe la fila superior entera de nuestra tabla 2x2, usaría: left_attach 0, right_attach 2, top_attach 0, bottom_attach 1.
+
+Las xoptions e yoptions se usan para especificar opciones de empaquetado, y pueden ser combinadas usando el operador OR para permitir opciones múltiples.
+
+Estas opciones son:
+
+:Gtk::FILL
+ Si la celda es más grande que el widget, entonces este widget se expandirá para usar todo el espacio disponible.
+
+:Gtk::SHRINK
+Si la  tabla dispone de menos espacio del requerido (normalmente debido a que el usuario redimensiona la ventana), entonces los widgets son empujados normalmente al fondo de la ventana y desaparecen. Si Gtk::SHRINK es especificado, los widgets se reducirán con la tabla.
+
+:Gtk::EXPAND
+ Esta propiedad hará que la tabla se expanda para usar todo el espacio disponible de la ventana.
+
+Padding actúa como en Gtk::Box, creando un área vacía alrededor del widget medida en pixels.
+
+Gtk::Table#attach tiene muchas opciones. Así que aquí hay un atajo:
+
+  Gtk::Table#attach_defaults(widget, left_attach, right_attach, top_attach, bottom_attach)
+
+Las opciones X e Y predeterminadas son Gtk::FILL | Gtk::EXPAND, y el padding x e y se fijan a 0. El resto de argumentos son idénticos a los del método anterior.
+
+También tenemos los métodos Gtk::Table#set_row_spacing y Gtk::Table#set_col_spacing. Estos sitúan márgenes entre celdas en la fila o columna especificada.
+
+  Gtk::Table#set_row_spacing(row, spacing)
+  Gtk::Table#set_col_spacing(column, spacing) 
+
+Hay que tener en cuenta, que el margen va a la derecha de la columna, y para las filas, debajo.
+
+También se puede fijar un margen constante para todas las filas y/o columnas con:
+
+  Gtk::Table#set_row_spacings(spacing)
+  Gtk::Table#set_col_spacings(spacing) 
+
+Nótese que con estos métodos, la última fila y la última columna no tendrán ningún margen.

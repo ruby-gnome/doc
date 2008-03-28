@@ -1,0 +1,189 @@
+= 普通のボタン
+これまでにボタンウィジェットについて見るべきものはほとんど全て見て来た。
+実に簡単である。
+しかし、ボタンを作成する方法は一通りではない．
+
+{{image_right "button.png"}}
+:Gtk::Button.new
+  ボタンウィジェットを作成する．
+:Gtk::Button.new(text, use_underline = true)
+  Gtk::Button.newにStringを与えると，Gtk::Labelを内包するボタンウィジェットを生成することができる．
+  use_underlineがtrueの場合，text中の'_'は次の文字の下線として表示される．
+  もし'_'自身を表示したい場合，'__'のように'_'を続けて2つ書く．
+  最初の下線装飾された文字はニーモニックと呼ばれるキーボードアクセラレータとして登録され，
+  Altキーとその文字を同時に押すと"activate"シグナルが発行される．
+:Gtk::Button.new(stock_id)
+  ストックアイテムとは，"Open"や"Exit"のような一般にメニューやツールバーで使用される部品である．
+  各ストックアイテムはストックIDで識別される．
+  Gtk::Button.newの引数にストックIDを渡すことで，
+  ストックIDに対応したストックアイテムを内部に含むボタンを作成できる．
+  ストックアイテムについては((<アイテムファクトリ|gtk2-tut-itemfactory>))を参照．
+
+次のプログラムでは，様々な方法でボタンウィジェットを生成している．
+生成方法が実際のボタンウィジェットの振舞いや外観にどのような影響を与えるのか確認しよう．
+
+  #! /usr/bin/env ruby
+  
+  require 'gtk2'
+  
+  window = Gtk::Window.new
+  window.signal_connect("delete_event") {Gtk::main_quit}
+  window.signal_connect("destroy") {Gtk::main_quit}
+  
+  box = Gtk::VBox.new(false, 0)
+  window.add(box)
+  
+  button = Gtk::Button.new("_Tex_t")
+  button.signal_connect("activate") do
+  	puts "activated"
+  end
+  box.pack_start(button, false, false, 5)
+  
+  button = Gtk::Button.new("_Text", false)
+  box.pack_start(button, false, false, 5)
+  
+  count = 0
+  button = Gtk::Button.new
+  button.signal_connect("clicked") do |b|
+  	b.label = "#{count} times"
+  	count += 1
+  end
+  box.pack_start(button, false, false, 5)
+  
+  button = Gtk::Button.new(Gtk::Stock::OK)
+  box.pack_start(button, false, false, 5)
+  
+  window.show_all
+  Gtk.main
+
+ボタンウィジェットは次のシグナルを持つ: 
+
+* pressed - ボタンウィジェットの中でポインタのボタンが押された時に発生する。 
+* released - ボタンウィジェットの中でポインタのボタンが離された時に発生する。 
+* clicked - ボタンウィジェットの中でポインタのボタンが押されそのあと離された時に発生する。 
+* enter - ボタンウィジェットにポインタが入った時に発生する。 
+* leave - ボタンウィジェットからポインタが出た時に発生する。 
+
+== 画像つきボタンを作る
+{{image_right "pixmap_button.png"}}
+Gtk::Button.new(stock_id)を使えば、簡単に画像付きのボタンを作ることができるが、その画像や文字はGtk::Stockで定義されたもののみである。そこで、この章ではオリジナルの画像を使ったボタンを生成する方法を解説する。
+
+Gtk::ButtonはGtk::Binのサブクラスである。つまり、１つだけ子ウィジェットを持つことができる。もちろん、その子ウィジェットにコンテナウィジェットをパックしてあげれば、そのさらに子ウィジェットに複数のウィジェットをパックすることができる。
+
+以下に示す例では絵とラベルを入れたボタンを作成する。この例では，Gtk::HBox.newで新しいボックスを作成し，Gtk::Box#pack_startでボックス内にラベルやピックスマップをパックしてみる。
+
+  require 'gtk2'
+    
+  window = Gtk::Window.new
+  window.title = "Pixmap'd Buttons!"
+  window.border_width = 10
+  window.signal_connect("destroy") {Gtk::main_quit}
+  window.signal_connect("delete_event") {Gtk::main_quit}
+  
+  button = Gtk::Button.new
+  button.signal_connect("clicked") do
+  	puts "Hello again - cool button was pressed"
+  end
+  
+  box = Gtk::HBox.new(false, 0)
+  box.pack_start(Gtk::Image.new("xpm/folder.xpm"), false, false, 3)
+  box.pack_start(Gtk::Label.new("cool button"), false, false, 3)
+  
+  button.add(box)
+  window.add(button)
+  window.show_all
+  Gtk.main
+
+== デフォルトボタンを指定する
+デフォルトボタンとは、選択していない状態でEnterキーを押すだけでそのボタンがクリック(activate)されるようなボタンのことを指す。
+
+ require 'gtk2'
+ 
+ button1 = Gtk::Button.new("button1")
+ button1.signal_connect("clicked") do
+   p "button1 is clicked."
+ end
+ 
+ button2 = Gtk::Button.new("button2")
+ button2.can_default = true
+ button2.signal_connect("clicked") do
+   p "button2 is clicked."
+ end
+ # button2.grab_default  #(1)
+ label =  Gtk::Label.new("button2 is default button")
+ label.can_focus = true
+ 
+ vbox = Gtk::VBox.new
+ vbox.pack_start(label, true, true, 10)
+ vbox.pack_start(button1, true, true, 10)
+ vbox.pack_start(button2, true, true, 10)
+ 
+ window = Gtk::Window.new
+ window.set_default_size(300,300)
+ window.add(vbox)
+ 
+ button2.grab_default
+ 
+ window.show_all
+ 
+ Gtk.main
+
+この例では、初期表示時、２つのボタンのどちらも選択されていない（ラベルにフォーカスがある）状態になっている。
+この状態でEnterキーを押すと、button2の方が有効になる(activateされる)。
+
+デフォルトボタンを有効に使うためにはいくつかの条件が必要である。
+
+(1) Gtk::Widget#grab_defaultの位置が要注意。(1)の部分に書いてもうまく表示できない。どうやら、一番親のウインドウにウィジェットがGtk::Container#add()された後でないと反映されないようだ。
+(2) ボタンにフォーカスが当たっている場合はEnterを押した場合にそのボタンが優先してactivateされてしまうため、この例では、Gtk::VBoxの１番上にラベルを用意して明示的にフォーカスを当てている。(これはGTK+-1.2の頃と動作が異なるような気がする）。
+
+== ボタンの枠を変更する
+ボタンの枠の表示状態をGtk::Button#relief=を使用して変更する。以下は、枠を表示しない例である。
+
+ require 'gtk2'
+ 
+ button = Gtk::Button.new("HELLO") 
+ button.set_relief(Gtk::RELIEF_NONE)
+ p button.relief
+
+ window = Gtk::Window.new
+ window.set_default_size(100,100)
+ window.add(button)
+ window.show_all
+ Gtk.main
+
+== スタイル(前景色/背景色/フォント)を指定する
+背景色の情報はGtk::Buttonが、前景色（文字色）・フォントはGtk::Buttonのchild（Gtk::Label）が管理しているのでそれぞれにスタイルを指定する。ボタンの背景色はボタンの５つの状態(Gtk::STATE_NORMAL, Gtk::STATE_ACTIVE, Gtk::STATE_PRELIGHT, Gtk::STATE_SELECTED, Gtk::STATE_INSENSITIVE)のそれぞれに指定する。
+
+  require 'gtk2'
+  
+  window = Gtk::Window.new
+  style = window.style
+  style.font_desc = Pango::FontDescription.new("Serif 24")
+  style.set_fg(Gtk::STATE_NORMAL, 0, 65535, 0)
+  style.set_bg(Gtk::STATE_NORMAL, 65535, 0, 0)
+  
+  style.set_fg(Gtk::STATE_ACTIVE, 0, 0, 65535)
+  style.set_bg(Gtk::STATE_ACTIVE, 0, 65535, 0)
+  
+  style.set_fg(Gtk::STATE_PRELIGHT, 65535, 0, 0)
+  style.set_bg(Gtk::STATE_PRELIGHT, 0, 0, 65535)
+  
+  style.set_fg(Gtk::STATE_SELECTED, 65535, 65535, 0)
+  style.set_bg(Gtk::STATE_SELECTED, 0, 65535, 65535)
+  
+  style.set_fg(Gtk::STATE_INSENSITIVE, 65535, 65535, 65535)
+  style.set_bg(Gtk::STATE_INSENSITIVE, 0, 0, 0)
+  
+  button = Gtk::Button.new("Hello World")
+  button.style = style
+  button.child.style = style
+  
+  button2 = Gtk::Button.new("Insensitive")
+  button2.style = style
+  button2.child.style = style
+  button2.sensitive = false
+  
+  window.add(Gtk::VBox.new.add(button).add(button2))
+  window.show_all
+  Gtk.main
+

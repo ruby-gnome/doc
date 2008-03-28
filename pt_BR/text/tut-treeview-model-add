@@ -1,0 +1,35 @@
+= Adicionando Linhas a um Armazenador
+{{link "tut-treeview-model-reference", "tut-treeview-model", "tut-treeview", "tut-treeview-model-manipulate"}}
+
+== Adicionando Linhas a um Armazenador de Lista
+
+As linhas são adicionadas a um armazenador de lista com Gtk::ListStore#append. Isso inserirá uma nova linha vazia no final da lista. Existem outros métodos, documentados na documentação de referência de Gtk::ListStore, que dá mais controle sobre exatamente onde a nova linha é inserida, mas como eles funcionam de maneira parecida ao Gtk::ListStore#append e são bastante diretos de usar, não trataremos com eles aqui.
+
+Eis um exemplo simples de como criar um armazenador de lista e adicionar uma linha vazia a ele:
+
+ liststore = Gtk::ListStore.new(String)
+
+ # Adicionar uma linha vazia ao armazenador de lista. O "iter" apontará para a nova linha.
+ iter = liststore.append
+
+Isso sozinho não é de muito uso ainda, claro. Nós adicionaremos dados as linhas na próxima seção. 
+
+== Adicionando Linhas a um Armazenador de Árvore
+
+Adicionar linhas a um armazenador de árvore funciona de maneira parecida com adicionar linhas a um armazenador de lista, a única coisa é que o Gtk::TreeStore#append é o método usado e mais um argumento é exigido, especificamente o "iter" de árvore para pai da linha que será inserida. Se você fornecer nil em vez de fornecer um "iter" de árvore de outra linha, uma nova linha de nível superior será inserida. Se você fornecer um "iter" de árvore pai, a nova linha vazia será inserida após qualquer filho que já exista do pai. De novo, existem outras maneiras de inserir uma linha em um armazenador de árvore e elas estão documentadas na documentação de referência de Gtk::TreeStore. Outro exemplo curto:
+
+ treestore = Gtk::TreeStore.new(String)
+
+ # Adiciona uma linha vazia de nível superior ao armazenador de árvore. 
+ parent_iter = treestore.append(nil)
+
+ # Adiciona um filho a linha que acabamos de adicionar.
+ child_iter = treestore.append(parent_iter)
+
+== Problemas de Performance ao Adicionar muitas Linhas
+
+Um caso comum é que um model precisa ser preenchido com um bocado de linhas em algum momento, seja no início ou quando algum arquivo for aberto. Um caso igualmente comum é que isso leva um terrível tmepo longo, mesmo em máquinas poderosas, uma vez que o model contenha mais que alguns milhares de linhas, com uma taxa de inserção que vai diminuindo exponencialmente. Existem algumas coisas que você pode fazer para contornar esse problema e acelerar um pouco as coisas.
+
+Primeiramente, você deve certificar-se que a ordenação está desabilitada enquanto você está fazendo a sua inserção em massa, de outra maneira o seu armazenador poderá ser reordenado após cada inserção de linha simples, o que vai ser qualquer coisa, menos rápido..
+
+Segundo, você não deve manter um monte de referências de linha de árvore se você tem tantas linhas, porque com cada inserção (ou remoção), cada referência de linha de árvore precisará checar se o seu caminho precisa ser atualizado ou não.

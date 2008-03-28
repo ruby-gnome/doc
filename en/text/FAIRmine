@@ -1,0 +1,26 @@
+=FAIRmine
+
+MineSweeper clone using Ruby/GTK2.
+Have fun!
+
+==Download
+{{attach_anchor("FAIRmine.tar.gz")}}
+{{image_right "waiting.png"}}
+
+==Usage
+$ ruby FAIRmine.rb
+
+==License
+Ruby's
+
+==Author
+Fabian Irsara - fabianirsara@hotmail.com
+
+
+
+{{br}}
+===Changelog
+:2006-05-24
+Fixed some bugs
+:2006-05-16
+Initial release

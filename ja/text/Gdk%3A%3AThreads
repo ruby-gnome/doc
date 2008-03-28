@@ -1,0 +1,32 @@
+= module Gdk::Threads
+For thread safety, GDK relies on the thread primitives in GLib, and on the thread-safe GLib main loop.
+
+GLib is completely thread safe (all global data is automatically locked), but individual data structure instances are not automatically locked for performance reasons.
+
+GTK+ is "thread aware" but not thread safe --- it provides a global lock controlled by Gdk::Threads.enter/Gdk::Threads.leave which protects all use of GTK+. That is, only one thread can use GTK+ at any given time.
+
+In Ruby/GTK, you should use Ruby-Thread instead of Gdk::Threads. It's a wellknown issue what ruby thread doesn't work well with Native-Thread. Almost of all case, Ruby-Thread works well and you don't need call these functions in Ruby.
+
+On the other hands, you may need to call these functions of Gdk::Threads when it's required by native libraries.
+
+== Module Functions
+--- Gdk::Threads.init
+    Initializes GDK so that it can be used from multiple threads in conjunction with Gdk::Threads.enter and Gdk::Threads.leave. 
+    This call must be made before any use of the main loop from GTK+; to be safe, call it before Gtk.init.
+    * Returns: self
+
+--- Gdk::Threads.enter
+    This macro marks the beginning of a critical section in which GDK and GTK+ functions can be called. Only one thread at a time can be in such a critial section.
+    * Returns: self
+
+--- Gdk::Threads.leave
+    Leaves a critical region begun with Gdk::Threads.enter.
+    * Returns: self
+
+--- Gdk::Threads.synchronize{ ... }
+    This is same as Gdk::Threads.enter; ... ; Gdk::Treads.leave.
+    * { ... }: a block of critical section 
+    * Returns: self
+
+== ChangeLog
+* 2005-05-14 Added. - ((<Masao>))

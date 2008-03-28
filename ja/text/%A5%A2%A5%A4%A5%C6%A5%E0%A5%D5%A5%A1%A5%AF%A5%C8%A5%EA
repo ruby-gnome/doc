@@ -1,0 +1,224 @@
+= アイテムファクトリ
+((*これはRuby/GTK(1)用です*))
+
+メニューバーを作る場合、Gtk::MenBar, Gtk::Menu, Gtk::MenuItem等を使うのですが、さらに簡単にメニューバーを作る方法として、Gdk::ItemFactoryがあります。
+このテストプログラムはRuby/GTK-0.24以前では動きません。((<"Ruby/GTK-0.25以降"|URL:http://ruby-gnome.sourceforge.net/>))を取得してください。
+
+== 基本的な使い方：アイテムを一つずつ生成する
+まずは、1つずつアイテムを追加していく方法を使ってみます。
+
+  require 'gtk'
+  
+  window = Gtk::Window.new
+  window.set_usize(300, 300)
+  
+  accel = Gtk::AccelGroup.new
+  accel.attach(window)
+  
+  ifp = Gtk::ItemFactory.new(Gtk::ItemFactory::TYPE_MENU_BAR, "<main>", accel)
+  
+  ifp.create_item("/ファイル(_F)",                                   nil,                 Gtk::ItemFactory::BRANCH)
+  ifp.create_item("/ファイル(_F)/Tearoff1",                          nil,                 Gtk::ItemFactory::TEAROFF)
+   
+  ifp.create_item("/ファイル(_F)/新規作成(_N)",                      "<control>N",        Gtk::ItemFactory::ITEM) do |item|
+    p item; printf("%s\n", item.children[0].get_text)
+  end
+  
+  ifp.create_item("/ファイル(_F)/開く(_O)",                          "<control>O") do |item| 
+    p item; printf("%s\n", item.children[0].get_text)
+  end
+  
+  ifp.create_item("/ファイル(_F)/セパレータ",                        nil,                 Gtk::ItemFactory::SEPARATOR)
+  
+  ifp.create_item("/ファイル(_F)/終了(_Q)",                          "<control>Q") do
+    Gtk.main_quit
+  end
+  ifp.create_item("/オブション(_O)",                                 nil,                 Gtk::ItemFactory::BRANCH)
+  ifp.create_item("/オブション(_O)/チェックボタン",                  nil,                 Gtk::ItemFactory::BRANCH)
+  ifp.create_item("/オブション(_O)/チェックボタン/チェックボタン1", "<shift>1",           Gtk::ItemFactory::CHECK_ITEM)
+  ifp.create_item("/オブション(_O)/チェックボタン/チェックボタン2", "<shift>2",           Gtk::ItemFactory::CHECK_ITEM)
+  
+  ifp.create_item("/オブション(_O)/トグルボタン",                    nil,                 Gtk::ItemFactory::BRANCH)
+  ifp.create_item("/オブション(_O)/トグルボタン/トグルボタン1",      "<shift><control>1", Gtk::ItemFactory::TOGGLE_ITEM)
+  ifp.create_item("/オブション(_O)/トグルボタン/トグルボタン2",      "<shift><control>2", Gtk::ItemFactory::TOGGLE_ITEM)
+  
+  ifp.create_item("/オブション(_O)/ラジオボタン",                    nil,                 Gtk::ItemFactory::BRANCH)
+  
+  ifp.create_item("/オブション(_O)/ラジオボタン/ラジオボタン1",      "<alt>1",            Gtk::ItemFactory::RADIO_ITEM)
+  ifp.create_item("/オブション(_O)/ラジオボタン/ラジオボタン2",      "<alt>2",            "/オブション(O)/ラジオボタン/ラジオボタン1")
+  
+  ifp.create_item("/ヘルプ(_H)",                                     nil,                 Gtk::ItemFactory::LAST_BRANCH)
+  ifp.create_item("/ヘルプ(_H)/_About")
+  
+  menubar = ifp.get_widget("<main>")
+  
+  box = Gtk::VBox.new
+  box.pack_start(menubar, false, false, 0)
+  
+  window.add(box)
+  window.show_all
+  
+  Gtk.main
+  
+
+上記の色が違う部分の処理は以下のようなイメージです。
+
+--- Gtk::AccelGroup.new, Gtk::AccelGroup#attach(window)
+    Gtk::AccelGroupはアクセラレータキー（ショートカットキー）を管理するオブジェクトです。Gtk::AccelGroup#attach()でオブジェクトにattachします。attachしたオブジェクト(Gtk::Objectとそのサブクラス)にフォーカスが当たると、アクセラレータキーが有効になります。
+--- Gtk::ItemFactory.new(container_type, path, accelgroup)
+    Gtk::ItemFactoryオブジェクトを生成する
+    * container_type - 生成するメニューウィジェットの種類
+      * Gtk::ItemFactory::TYPE_MENU_BAR - Gtk::MenuBarを生成する。
+      * Gtk::ItemFactory::TYPE_MENU - Gtk::Menuを生成する。ポップアップメニューに使えます。
+      * Gtk::ItemFactory::TYPE_OPTION_MENU - Gtk::OptionMenuを生成する。
+    * path - メニューバー自身の名称。Gtk::ItemFactory#get_widget(path)でメニューオブジェクトを取得する際に使用する名称です。もちろんユニークである必要があります。
+    * accelgroup - Gtk::AccelGroup
+--- Gtk::ItemFactory#create_item(path, accelkey, item_type) do 〜　end
+    アイテムを１つ生成する
+    * path - 生成するメニューのパス（兼名称）。/（スラッシュ）で区切るとネスト（そこまでのパスを含めたメニューブランチ(Gtk::ItemFactory::BRANCH, Gtk::ItemFactory::LAST_BRANCH)の子供になる）します。'_'（アンダースコア）の次の文字がマウスを使わないでメニューバーを操作する際に使うことができます（メニューバーから選ぶ時はALT+文字で、メニューが選択された後はそのキーを押すのみで選択できます）。アンダースコアは必須ではありません。また、パスの名称そのものとしては無視されるようです。
+    * accelkey - ショートカットキーを指定します。指定しない場合は>nil（または""）にします。例えばCtrlキー+Qであれば「<control>Q」というように指定します。
+    * item_type - アイテム（メニューの一つ一つ）の種類
+      * Gtk::ItemFactory::ITEM - 通常のメニューアイテム(Gtk::MenuItem)。省略可能です。
+      * Gtk::ItemFactory::CHECK_ITEM - チェックボックスアイテム(Gtk::CheckMenuItem)。
+      * Gtk::ItemFactory::TOGGLE_ITEM - トグルボタンアイテム。少なくともGTK+ 1.2.10の実装ではチェックボックスアイテムと同じです。エイリアスなのかな...、それともGTK+のバグなのかな...。
+      * Gtk::ItemFactory::RADIO_ITEM - ラジオボタンアイテム(Gtk::RadioMenuItem)。
+        ラジオボタンの場合、複数のボタンをグループ化する必要があります（詳しくは((<Gtk::RadioButton>))参照）。そこで、2つ目以降は1つ目のGtk::RadioMenuItemのパスの文字列を指定します。ただし、パスの文字列からアンダースコアを除かないとうまくいきません(これもGTK+のバグか....？)。
+      * Gtk::ItemFactory::BRANCH - ブランチを生成する。ブランチはそこから子供（サブメニュー）を追加できるメニューアイテムです。したがって、最初は必ずブランチを生成し、そこへ各アイテムを追加していく形になります。
+      * Gtk::ItemFactory::LAST_BRANCH - 基本的にはBRANCHと同じなのですが、メニューバーの一番右側に表示されます。1つしか指定できないようです。
+      * Gtk::ItemFactory::TEAROFF - Gtk::TearOffMenuItemを生成する。
+        TearOffMenuは点線状に表示されるアイテムで、そこをクリックすると「ちぎれて」元のウインドウから独立するメニューとなります。
+--- Gtk::ItemFactory#get_widget(path)
+    生成するメニューバーのパス(path)を指定し、実際のオブジェクトを生成します。Gtk::ItemFactory.newで指定したcontainer_typeにより、生成されるオブジェクトが異なります。
+
+
+== 基本的な使い方2：まとめてアイテムを生成する
+今度は、1とほぼ同じ内容を配列にまとめて生成してみます。
+
+  require 'gtk'
+  
+  window = Gtk::Window.new
+  window.set_usize(300, 300)
+  
+  accel = Gtk::AccelGroup.new
+  accel.attach(window)
+  callback = Proc.new{|i| print "#{i} is activated.\n"}
+  quit = Proc.new{ Gtk.main_quit }
+
+  ifp = Gtk::ItemFactory.new(Gtk::ItemFactory::TYPE_MENU_BAR, "<main>", accel)
+  ifp.create_items(
+  [["/ファイル(_F)",                                  nil,                 Gtk::ItemFactory::BRANCH,                       nil,      nil],
+   ["/ファイル(_F)/Tearoff1",                         nil,                 Gtk::ItemFactory::TEAROFF,                      nil,      nil],
+   ["/ファイル(_F)/新規作成(_N)",                     "<control>N",        Gtk::ItemFactory::ITEM,                         callback, 1],
+   ["/ファイル(_F)/開く(_O)",                         "<control>O",        nil,                                            callback, 2],
+   ["/ファイル(_F)/セパレータ",                       nil,                 Gtk::ItemFactory::SEPARATOR,                    nil,      nil],
+   ["/ファイル(_F)/終了(_Q)",                         "<control>Q",        nil,                                            quit,     nil],
+   ["/オブション(_O)",                                nil,                 Gtk::ItemFactory::BRANCH,                       nil,      nil],
+   ["/オブション(_O)/チェックボタン",                 nil,                 Gtk::ItemFactory::BRANCH,                       nil,      nil],
+   ["/オブション(_O)/チェックボタン/チェックボタン1", "<shift>1",          Gtk::ItemFactory::CHECK_ITEM,                   nil,      nil],
+   ["/オブション(_O)/チェックボタン/チェックボタン2", "<shift>2",          Gtk::ItemFactory::CHECK_ITEM,                   nil,      nil],
+   ["/オブション(_O)/トグルボタン",                   nil,                 Gtk::ItemFactory::BRANCH,                       nil,      nil],
+   ["/オブション(_O)/トグルボタン/トグルボタン1",     "<shift><control>1", Gtk::ItemFactory::TOGGLE_ITEM,                  nil,      nil],
+   ["/オブション(_O)/トグルボタン/トグルボタン2",     "<shift><control>2", Gtk::ItemFactory::TOGGLE_ITEM,                  nil,      nil],
+   ["/オブション(_O)/ラジオボタン",                   nil,                 Gtk::ItemFactory::BRANCH,                       nil,      nil],
+   ["/オブション(_O)/ラジオボタン/ラジオボタン1",     "<alt>1",            Gtk::ItemFactory::RADIO_ITEM,                   nil,      nil],
+   ["/オブション(_O)/ラジオボタン/ラジオボタン2",     "<alt>2",            "/オブション(O)/ラジオボタン/ラジオボタン1",    nil,      nil],
+   ["/オブション(_O)/ラジオボタン/ラジオボタン3",     "<alt>3",            "/オブション(O)/ラジオボタン/ラジオボタン1",    nil,      nil],
+   ["/ヘルプ(_H)",                                    nil,                 Gtk::ItemFactory::LAST_BRANCH,                  nil,      nil],
+   ["/ヘルプ(_H)/_About",                             nil,                 nil,                                            nil,      nil]])
+  
+  menubar = ifp.get_widget("<main>") 
+  
+  box = Gtk::VBox.new
+  box.pack_start(menubar, false, false, 0)
+  
+  window.add(box)
+  window.show_all
+  
+  Gtk.main
+  
+Gtk::ItemFactory#create_items(array)を使うところが1と異なります。それ以外は大体同じで、内容については見ての通りです(^^;)。
+ちょっとだけ注意が必要なのが、callback, quitという2つのProcオブジェクトを作って、それを配列の4つ目に指定していることです。callbackのProcオブジェクトの方は、1つだけ引数を取る形になっていますが、これは、上記配列の一行の最後の値(オブジェクト)が返ります。特に必要のない場合はnilで構いません。
+
+--- Gtk::ItemFactory#create_items(array)
+    一度にたくさんのアイテムを生成する
+    * array - [path, accelkey, item_type, callback(Procオブジェクト), callback_data(callbackに渡す引数)]　の配列です。
+
+== ポップアップメニュー
+右クリックでポップアップするポップアップメニューを作ってみます。Window上で右クリックするとメニューが現れます。
+
+  require 'gtk'
+  
+  window = Gtk::Window.new
+  window.set_usize(300, 300)
+  
+  accel = Gtk::AccelGroup.new
+  accel.attach(window)
+  callback = Proc.new{|i| print "#{i} is activated.\n"}
+  quit = Proc.new{ Gtk.main_quit }
+
+  ifp = Gtk::ItemFactory.new(Gtk::ItemFactory::TYPE_MENU, "<main>", accel)
+  ifp.create_items(
+  [["/ファイル(_F)",              nil,          Gtk::ItemFactory::BRANCH,       nil,      nil],
+   ["/ファイル(_F)/Tearoff1",     nil,          Gtk::ItemFactory::TEAROFF,      nil,      nil],
+   ["/ファイル(_F)/新規作成(_N)", "<control>N", Gtk::ItemFactory::ITEM,         callback, 1],
+   ["/ファイル(_F)/開く(_O)",     "<control>O", nil,                            callback, 2],
+   ["/ファイル(_F)/セパレータ",   nil,          Gtk::ItemFactory::SEPARATOR,    nil,      nil],
+   ["/ファイル(_F)/終了(_Q)",     "<control>Q", nil,                            quit,     nil],
+   ["/ヘルプ(_H)",                nil,          Gtk::ItemFactory::LAST_BRANCH,  nil,      nil],
+   ["/ヘルプ(_H)/_About",         nil,          nil,                            nil,      nil]])
+  
+  menu = ifp.get_widget("<main>") 
+
+  window.set_events(Gdk::BUTTON_PRESS_MASK)
+  window.signal_connect(Gtk::Widget::SIGNAL_BUTTON_PRESS_EVENT) do |widget, event|
+    if event.button == 3
+      menu.popup(nil, nil, nil, event.button, event.time)
+    end
+  end
+  
+  window.show_all
+  Gtk.main
+
+Gtk::Windowはデフォルトではボタンをクリックしたイベントを捕捉しません。そこで、Gtk::Widget#set_events(events)で捕捉するイベント(Gdk::BUTTON_PRESS_MASK)を明示的に指定してあげます。ちなみに補足したいイベントは|(OR)を使って複数指定できます。例えば、
+
+ window.set_events(Gdk::BUTTON_PRESS_MASK|Gdk::BUTTON_RELEASE_MASK|Gdk::BUTTON_MOTION_MASK)
+
+という感じです。
+
+次に、Gtk::Widget::SIGNAL_BUTTON_PRESS_EVENTのシグナルハンドラではどのボタンをクリックしたのかがわからないので、event.buttonをチェックしています。左クリック:1, 中央クリック:2, 右クリック:3, ホイールマウスの上側:4, ホイールマウスの手前側:5となります。
+
+実際のポップアップはGtk::Menu#popupで行います。パラメータについてはちょっと調べたのですがよくわかりませんでした。もしかしたらきちんと調べるかもしれませんが、（上記以外の設定での）あまり用途も思いつかないので優先度低です。まぁ、こういうもんだということで(^^;)。
+＃どなたか教えてくれると助かります。
+ 
+== オプションメニュー
+あまり使わないかもしれませんが、オプションメニューというのもあります。
+  
+  require 'gtk'
+  
+  window = Gtk::Window.new
+  window.set_usize(300, 300)
+  
+  accel = Gtk::AccelGroup.new
+  accel.attach(window)
+  callback = Proc.new{|i| print "#{i} is activated.\n"}
+  quit = Proc.new{ Gtk.main_quit }
+
+  ifp = Gtk::ItemFactory.new(Gtk::ItemFactory::TYPE_OPTION_MENU, "<main>", accel)
+  ifp.create_items(
+  [["/ファイル(_F)",              nil,          Gtk::ItemFactory::BRANCH,      nil,      nil],
+   ["/ファイル(_F)/Tearoff1",     nil,          Gtk::ItemFactory::TEAROFF,     nil,      nil],
+   ["/ファイル(_F)/新規作成(_N)", "<control>N", Gtk::ItemFactory::ITEM,        callback, 1],
+   ["/ファイル(_F)/開く(_O)",     "<control>O", nil,                           callback, 2],
+   ["/ファイル(_F)/セパレータ",   nil,          Gtk::ItemFactory::SEPARATOR,   nil,      nil],
+   ["/ファイル(_F)/終了(_Q)",     "<control>Q", nil,                           quit,     nil],
+   ["/ヘルプ(_H)",                nil,          Gtk::ItemFactory::LAST_BRANCH, nil,      nil],
+   ["/ヘルプ(_H)/_About",         nil,          nil,                           nil,      nil]])
+  
+  menu = ifp.get_widget("<main>")
+
+  box = Gtk::VBox.new
+  box.pack_start(menu, false, true, 10)
+  
+  window.add(box)
+  window.show_all
+  Gtk.main

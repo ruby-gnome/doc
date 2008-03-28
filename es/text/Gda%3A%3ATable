@@ -1,0 +1,51 @@
+= class Gda::Table
+An in-memory representation of a database table
+
+== Object Hierarchy
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Gda::DataModel
+        * Gda::DataModelArray
+          * Gda::Table
+
+== Class Methods
+--- Gda::Table.new(name, model=nil, add_data=nil)
+    Creates a new Gda::Table object, which is an in-memory representation of an
+    entire table. It is mainly used by the Gda::XmlDatabase class, but you can
+    also use it in your applications for whatever you may need it.
+    You can optionally pass a Gda::DataModel object to create the table from.
+    * name: name for the new table. 
+    * add_data: whether to add model's data or not.  
+    * model: a Gda::DataModel to create the table from. 
+    * Returns: a newly created Gda::Table object.
+
+== Instance Methods
+--- add_data_from_model(model)
+    Adds data from the given model to the table.
+    * model: the Gda::DataModel from which to add the data.  
+    * Returns: self.
+
+--- add_field(field)
+    Adds a field to the table.
+    * field: a Gda::FieldAttributes object.  
+    * Returns: self.
+
+--- name
+    This method returns the name of the table.
+    * Returns: the name of the table.
+
+--- name=(name)
+    Sets the name of the table.
+    * name: new name for the table.  
+    * Returns: the given parameter 'name'.
+
+--- set_name(name)
+    Sets the name of the table.
+    * name: new name for the table.  
+    * Returns: self.
+
+== See Also
+((<Gda>)).
+
+- ((<lrz>))

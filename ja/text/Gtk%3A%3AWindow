@@ -1,0 +1,579 @@
+= class Gtk::Window
+
+== Object Hierarchy
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Gtk::Object
+        * Gtk::Widget
+          * Gtk::Container
+            * Gtk::Bin
+              * Gtk::Window
+
+== クラスメソッド
+--- Gtk::Window.new(type = Gtk::Window::TOPLEVEL)
+    他のウィジェットを含むことのできる新しいトップレベルのGtk::Windowを作成します。通常は常にウィンドウはGtk::Window::TOPLEVEL型です（そして"Gtk::Window.new"のような引数は省略されます）。もしポップアップメニューのようなものをスクラッチから実装したいと考えたなら（その用途に適したGtk::Menuが使えますからこれは良くないアイデアです）Gtk::Window::POPUPを使うことができます。他のいくつかのツールキットではダイアログが"ポップアップ"によって呼ばれますが、Gtk::Window::POPUPはダイアログを呼び出すためのものではありません。GTK+において、Gtk::Window::POPUPはポップアップメニューかポップアップツールチップを意味します。X11の場合、ポップアップウィンドウはウィンドウマネージャによって制御されません。
+    単に装飾されていないウィンドウ（ウィンドウの境界線が無いもの）が欲しいのであれば、Gtk::Window#decorated=を使用し、Gtk::Window::POPUPは使わないで下さい。
+    * type：ウィンドウの型 (((<GtkWindowType|Gtk::Window#GtkWindowType>)))
+    * 戻り値：新しいGtk::Window 
+
+--- Gtk::Window.toplevels
+    存在する全てのトップレベルウィンドウを配列で返します。
+    * 戻り値：Gtk::Widget(Gtk::Window)の配列
+
+--- Gtk::Window.default_icon_list 
+    Gtk::Window.default_icon_list=により値のセットを取得します。
+    * 戻り値：デフォルトのアイコンリストのコピー
+--- Gtk::Window.default_icon_list=(icon_list)
+    Gtk::Window#icon_list=がウィンドウ固有のアイコンリストをセットアップする際に、リストを指定しなかった場合使用されるアイコンリストを設定します。このメソッドでアプリケーション中に一度リストを設定すると、全てのウィンドウもそれに従います。
+    より詳しい情報はGtk::Window#icon_list=をご覧下さい。
+    * icon_list：Gdk::Pixbufの配列
+    * 戻り値：icon_list
+--- Gtk::Window.set_default_icon_list(icon_list)
+    default_icon_list=と同様のものです。
+    * icon_list：Gdk::Pixbufの配列
+    * 戻り値：self
+
+== インスタンスメソッド
+--- title
+    Gtk::Windowのタイトルを取得します。
+    * 戻り値：取得したタイトル
+--- title=(title)
+    Gtk::Windowのタイトルを設定します。ウィンドウのタイトルはタイトルバーに表示されます。X Window Systemでは、タイトルバーはウィンドウマネージャによって描画され、厳密にはユーザーの設定によって見え方が異なります。タイトルはユーザーが開くであろう他のウィンドウとあなたのウィンドウを区別するのを助けるものでなければなりません。良いタイトルとは例えばアプリケーション名と現在のドキュメントファイルの名前を含むようなものです。
+    * title：ウィンドウのタイトル
+    * 戻り値：title
+--- set_title(title)
+    title=と同様のものです。
+    * title：ウィンドウのタイトル
+    * 戻り値：self
+
+--- set_wmclass(wmclass_name, wmclass_class)
+    このメソッドを使用しないで下さい。このメソッドはX Window Systemの"クラス"と"名前"のヒントをウィンドウに対して設定します。ICCCM（だれも守らない規約マニュアル）によれば、あなたは一つのアプリケーション中で全てのウィンドウに対して同じ値を設定すべきです。GTK+はデフォルトでそれらに値を設定します。よってこのメソッドを呼び出すことは無意味なソートをするということになります。しかしながら、セッションマネージャの恩恵を受けるために、アプリケーション内で各々のウィンドウでGtk::Window#role=を呼び出したいということもあるかも知れません。その際は保存されたセッションを読み込んだときにウィンドウマネージャがウィンドウの位置を復元することを許すように設定して下さい。
+    * wmclass_name：ウィンドウの名前のヒント
+    * wmclass_class：ウィンドウのクラスのヒント
+    * 戻り値：self
+
+--- resizable?
+    Gtk::Window#resizable=によって設定された値を取得します。
+    * 戻り値：ユーザーがリサイズ可能ならばtrue
+--- resizable=(resizable)
+    ユーザーがウィンドウをリサイズ可能かどうかを設定します。ウィンドウはデフォルトでリサイズ可能です。
+    * resizable：ユーザーがこのウィンドウをリサイズ可能にするならばtrue
+    * 戻り値：resizable
+--- set_resizable(resizable)
+    resizable=と同様のものです。
+    * resizable：ユーザーがこのウィンドウをリサイズ可能にするならばtrue
+    * 戻り値：self
+
+--- add_accel_group(accel_group)
+    accel_groupをウィンドウに関連付けます。このaccel_groupには、ウィンドウでのGtk::AccelGroup.activateの呼び出しでアクセラレータを設定することができます。
+    * accel_group：Gtk::AccelGroup
+    * 戻り値：self
+--- remove_accel_group(accel_group)
+    Gtk::Window#add_accel_groupと逆の効果を与えます。
+    * accel_group：Gtk::AccelGroup
+
+--- active_focus
+    ウィンドウ内で現在フォーカスされているウィジェットをアクティブにします。
+    * 戻り値：ウィジェットがアクティブになったらtrue
+--- active_default
+    現在フォーカスされているウィジェットにデフォルトの動作が設定されていない限り、ウィンドウのデフォルトのウィジェットをアクティブにします（((<GtkWidgetFlags|Gtk::Widget#GtkWidgetFlags>))内のGtk::Widget::RECEIVES_DEFAULTもご覧下さい）。
+    * 戻り値：ウィジェットがアクティブになったらtrue
+
+--- modal?
+    ウィンドウがモーダルかどうかを返します。Gtk::Window#modal=もご覧下さい。
+    * 戻り値：ウィンドウがモーダルで、表示されたときにイベント受け入れ口が定められていればtrue
+--- modal=(modal)
+    ウィンドウがモーダルであるかどうかを設定します。モーダルウィンドウは同アプリケーション内で他のウィンドウを操作できなくします。メインアプリケーションのトップでモーダルダイアログを保持するならば、Gtk::Window#transient_for=を用いてダイアログを親に対して一時的なものにして下さい。そのような場合、ほとんどのウィンドウマネージャではダイアログが親の下に下がることを拒否します。
+    * modal：ウィンドウがモーダルならばtrue
+    * 戻り値：modal
+--- set_modal(modal)
+    modal=と同様のものです。
+    * modal：ウィンドウがモーダルならばtrue
+    * 戻り値：self
+
+--- default_size
+    Gtk::Window#set_default_sizeによって設定された値を取得します。
+    * 戻り値：[width, height]
+--- set_default_size(width, height)
+    ウィンドウのサイズをデフォルトに設定します。ウィンドウの"自然な"サイズ（要求するサイズ）がデフォルトより大きかったならば、デフォルトは無視されます。より一般的に言えば、デフォルトサイズがウィンドウに対するジオメトリヒント（Gtk::Window#set_geometry_hintsを用いることで明示的に指定できます）に沿わなかった場合、デフォルトサイズは許されるサイズの中で最も近いサイズになります。
+    ウィジェットに対して要求されたサイズを設定し、ユーザーがウィンドウの縮小をできなくするようなGtk::Widget#set_size_requestとは異なり、このメソッドは初期のサイズを設定するのみでユーザーはウィンドウをリサイズでき、再びウィンドウを通常と同様に縮小することができます。デフォルトサイズを-1にすることは"自然な"デフォルトサイズ（ウィンドウの要求するサイズ）を使うことを意味しています。
+    ウィンドウの初期化サイズとリサイズの動きをより細かくコントロールしたいならばGtk::Window#set_geometry_hintsを良く調べるといいでしょう。
+    いくつかの用途ではGtk::Window#resizeはより適切なメソッドです。Gtk::Window#resizeは最初に表示されるサイズではなくウィンドウの現在のサイズを変更します。またGtk::Window#resizeは常にジオメトリウィジェットではなくウィンドウ自体に作用します。
+    ウィンドウのデフォルトサイズはウィンドウが表示される最初のサイズに影響を与えるだけです。ウィンドウが隠されたり再表示されたりしたならば、デフォルトサイズではなく変更されたサイズが優先されます。
+    実はウィンドウはサイズの最小が1x1で0x0にすることができません。しかし、widthとheightに0を渡したとしても結果としてデフォルトサイズを1x1とするので問題はありません。
+    * width：ピクセルの幅。-1の場合はデフォルトの幅を設定しない
+    * height：ピクセルの高さ。-1の場合はデフォルトの高さを設定しない
+    * 戻り値：self
+
+--- set_geometry_hints(geometry_widget, geometry, geom_mask)
+    このメソッドはユーザーがリサイズできるかどうかのヒントを設定します。これはサイズの最大値と最小値、リサイズする際にどれだけずつ増減するか（例えばxtermでは一文字ずつしかリサイズできません）、アスペクト比等を設定できます。詳しくはGdk::Geometryをご覧下さい。
+    * geometry_widget：ジオメトリヒントを適用する対象となるウィジェット
+    * geometry：Gdk::Geometry
+    * geom_mask：ジオメトリヒントを有効にしたい項目。(((<GdkWindowHints|Gdk::Window#GdkWindowHints>)))の定数を参照
+    * 戻り値：self
+
+--- gravity
+    Gtk::Window#gravity=によって設定された値を取得します。
+    * 戻り値：ウィンドウの重心
+--- gravity=(gravity)
+    ウィンドウの重心（gravity）とはGtk::Window#moveに渡される座標がどのような位置かを定義するものです。詳しくはGtk::Window#moveと((<GdkGravity|Gdk::Window#GdkGravity>))をご覧下さい。
+    デフォルトのウィンドウの重心は概ね"あなたのご意向通り"だと思われるGdk::Window#GRAVITY_NORTH_WESTです。
+    * gravity：ウィンドウの重心(((<GdkGravity|Gdk::Window#GdkGravity>)))
+    * 戻り値：gravity=
+--- set_gravity(gravity)
+    gravity=と同様のものです。
+    * gravity：ウィンドウの重心(((<GdkGravity|Gdk::Window#GdkGravity>)))
+    * 戻り値：self
+
+--- window_position
+    Gtk::Window#window_position=によって設定された値を取得します。
+    * 戻り値：ウィンドウの位置(((<GtkWindowPosition|Gtk::Window#GtkWindowPosition>)))
+--- window_position=(position)
+    このウィンドウに対して位置の制約を設定します。新しい制約か古い制約のどちらかがGtk::Window::POS_CENTER_ALWAYSであれば、このメソッドはウィンドウを新しい制約に従うように再配置します。
+    * position：位置の制約(((<GtkWindowPosition|Gtk::Window#GtkWindowPosition>)))
+    * 戻り値：position
+--- set_window_position(position)
+    window_position=と同様のものです。
+    * position：位置の制約(((<GtkWindowPosition|Gtk::Window#GtkWindowPosition>)))
+    * 戻り値：self
+
+--- transient_for
+    このウィンドウに対しての一時的な親を取り出します。Gtk::Window#transient_for=もご覧下さい。
+    * 戻り値：このウィンドウに対しての一時的な親、一時的な親が設定されていない場合はnil
+
+--- transient_for=(parent)
+    ダイアログウィンドウはそれらが生成されたメインアプリケーションウィンドウに対して一時的なものとして設定されなければいけません。これは常にダイアログがメインウィンドウの手前になったり、メインウィンドウよりもダイアログにイベントを集中させることを可能にします。Gtk::Dialog.newとその他のGTK+の便利なメソッドは時々あなたの利便性のためにGtk::Window#transient_for=を呼び出します。
+    Windowsでこのメソッドは、X上でウィンドウマネージャがやるのとほぼ同様に親の手前に子ウィンドウを置きます。
+    * parent：親となるGtk::Window 
+    * 戻り値：parent
+--- set_transient_for(parent)
+    transient_for=と同様のものです。
+    * parent：親となるGtk::Window 
+    * 戻り値：self
+
+--- destroy_with_parent?
+    ウィンドウがその一時的な親と一緒に破棄されたかどうかを返します。Gtk::Window#destroy_with_parent=もご覧下さい。
+    * 戻り値：ウィンドウがその一時的な親と共に破棄されたらtrue
+--- destroy_with_parent=(setting)
+    settingをtrueにすると、ウィンドウの一時的な親を破棄し、ウィンドウ自身も破棄されます。これは例えばダイアログがそれらに対応するメインウィンドウの生存期間を超えて存続してはいけないような場面で有用です。
+    * setting：ウィンドウがその一時的な親と共に破棄されたらtrue
+    * 戻り値：setting
+--- set_destroy_with_parent(setting)
+    destroy_with_parent=と同様のものです。
+    * setting：ウィンドウがその一時的な親と共に破棄されたらtrue
+    * 戻り値：self
+
+--- add_mnemonic(keyval, target)
+    このウィンドウにニーモニックを加えます。
+    * keyval：加えるニーモニック（Integer）
+    * target：ニーモニックによってアクティブにされるGtk::Widget
+    * 戻り値：self
+--- remove_mnemonic(keyval, target)
+    このウィンドウからニーモニックを削除します。
+    * keyval：削除するニーモニック（Integer）
+    * target : ニーモニックによってアクティブにされるGtk::Widget
+    * 戻り値：self
+
+--- mnemonic_activate(keyval, modifier)
+    ニーモニックに関連付けられた対象をアクティブにします。
+    * keyval：ニーモニック（Integer）
+    * modifier：修飾キー(((<GdkModifierType|Gdk::Window#GdkModifierType>)))
+    * 戻り値：既にアクティブであればtrue
+
+--- focus
+    ウィンドウ中で現在フォーカスされているウィジェットを取得します。このメソッドではトップレベルのウィンドウがフォーカスされているとき、ウィジェットがフォーカスを持つということに注意して下さい。トップレベルのウィンドウがフォーカスされていない場合はGtk::Widget#has_focus?がウィジェットに対してtrueになりません。
+    * 戻り値：現在フォーカスされているウィジェット
+
+--- focus=(focus)
+    focusが現在のフォーカスウィジェットではなく、フォーカス可能であればウィンドウに対してフォーカスウィジェットを設定します。focusがnilならばフォーカスウィジェットを設定しません。トップレベルでの特殊なウィジェットへのフォーカスの設定は、通常このメソッドの代わりにGtk::Widget#grab_focusを使用した方がより便利です。
+    * focus：新しくフォーカスウィジェットにするGtk::Widget。トップレベルウィンドウに対するフォーカスウィジェットを解除する場合にはnil
+    * 戻り値：focus
+--- set_focus(focus)
+    focus=と同様のものです。
+    * focus：新しくフォーカスウィジェットにするGtk::Widget。トップレベルウィンドウに対するフォーカスウィジェットを解除する場合にはnil
+    * 戻り値：self
+
+--- default=(default_widget)
+    デフォルトウィジェットとは、ダイアログでユーザーがEnterを押した際にアクティブになるようなウィジェットのことです。このメソッドはGtk::Windowについてデフォルトウィジェットの設定や解除を行います。デフォルトウィジェットを設定する（というよりむしろ解除する）ときは普通ウィジェットでGtk::Widget#grab_focusを呼ぶ方が簡単です。ウィジェットをデフォルトウィジェットとする前に、Gtk::Widget#flags=を用いてウィジェットにGtk::Widget::CAN_DEFAULTフラグを設定しなければなりません。
+    * default_widget：デフォルトにするウィジェット。トップレベルに対するデフォルトウィジェットを解除する場合にはnil
+    * 戻り値：default_widget
+--- set_default(default_widget)
+    default=と同様のものです。
+    * default_widget：デフォルトにするウィジェット。トップレベルに対するデフォルトウィジェットを解除する場合にはnil
+    * 戻り値：self
+
+--- present
+    ユーザーにウィンドウを表示します。これはスタック順序の中でウィンドウを引き上げ、アイコンから復元し、現在のデスクトップに移動します。そして/またはキーボードフォーカスを与え、もしかするとユーザーのプラットフォームやウィンドウマネージャ、その他の選択に依存するかも知れません。
+    ウィンドウが隠されている場合、このメソッドは更にGtk::Widget#showを呼び出します。
+    このメソッドはユーザーが既に開いているウィンドウを開こうとしたときによく用いられるでしょう。例を挙げれば、選択したダイアログが現在開いていて、ユーザーが二回目の選択をメニューから行った場合などで、既に開いているダイアログをユーザーの見える場所に移動させるためにGtk::Window#presentを使います。
+    * 戻り値：self
+
+--- iconify
+    指定のウィンドウのアイコン化（例えば最小化など）を要求します。ウィンドウがこの後に確実にアイコン化されていることを仮定すべきではないということに注意して下さい。何故ならば他の要素（例えばユーザーやウィンドウマネージャなど）が再びアイコンから復元することができたり、アイコン化が不可能なウィンドウマネージャがあるかもしれないからです。しかし、通常はアイコン化された状態になります。そうでない場合にクラッシュするようなコードを書かないで下さい。
+    ウィンドウを表示する前にこのメソッドを呼び出すと、ウィンドウは画面上に現れる前にアイコン化されます。
+    アイコン化はGtk::Widget上で"window_state_event"シグナルによって追跡することができます。
+    * 戻り値：self
+
+--- deiconify
+    指定のウィンドウにアイコン化からの復元（例えば最小化からの復元）を要求します。ウィンドウがこの後に確実にアイコン化を解除されていることを仮定すべきではないということに注意して下さい。何故ならば他の要素（例えばユーザーやウィンドウマネージャなど）が、アイコン化を解除されていることを前提としたあなたのコードが走りだす前に再びアイコン化することができるからです。
+    アイコン化はGtk::Widget上で"window_state_event"シグナルによって追跡することができます。
+    * 戻り値：self
+
+--- stick
+    ウィンドウが張り付けられる（スティック）ことを要求します。これはウィンドウがユーザーの全てのデスクトップに表示されることを意味します。ウィンドウがこの後に確実にスティックされていることを仮定すべきではないということに注意して下さい。何故ならば他の要素（例えばユーザーやウィンドウマネージャなど）が再びスティックを解除することができたり、スティックが不可能なウィンドウマネージャがあるかもしれないからです。しかし、通常はスティックされた状態になります。そうでない場合にクラッシュするようなコードを書かないで下さい。
+    ウィンドウを表示する前にこのメソッドを呼び出すことは許されます。
+    スティックしているかどうかはGtk::Widget上で"window_state_event"シグナルによって追跡することができます。
+    * 戻り値：self
+
+--- unstick
+    ウィンドウが引きはがれる（アンスティック）ように要求します。これはウィンドウがユーザーのデスクトップの一つだけで表示されることを意味します。ウィンドウがこの後に確実にアンスティックされていることを仮定すべきではないということに注意して下さい。何故ならば他の要素（例えばユーザーやウィンドウマネージャなど）が再びスティックをすることができるからです。しかし、通常はアンスティックされた状態になります。そうでない場合にクラッシュするようなコードを書かないで下さい。スティックしているかどうかはGtk::Widget上で"window_state_event"シグナルによって追跡することができます。
+    * 戻り値：self
+
+--- maximize
+    ウィンドウを最大化するように要求します。その結果としてフルスクリーンとなります。ウィンドウがこの後に確実に最大化されていることを仮定すべきではないということに注意して下さい。何故ならば他の要素（例えばユーザーやウィンドウマネージャなど）が再び最大化を解除することができたり、最大化が不可能なウィンドウマネージャがあるかもしれないからです。しかし、通常は最大化された状態になります。そうでない場合にクラッシュするようなコードを書かないで下さい。
+    ウィンドウを表示する前にこのメソッドを呼び出すことは許されます。その場合、ウィンドウは最初に表示されたときに最大化されます。
+    最大化についてはGtk::Widget上で"window_state_event"シグナルによって追跡することができます。
+    * 戻り値：self
+
+--- unmaximize
+    ウィンドウの最大化を解除するように要求します。ウィンドウがこの後に確実に最大化されていないことを仮定すべきではないということに注意して下さい。何故ならば他の要素（例えばユーザーやウィンドウマネージャなど）が再び最大化することができたり、最大化の解除が不可能なウィンドウマネージャがあるかもしれないからです。しかし、通常は最大化が解除された状態になります。そうでない場合にクラッシュするようなコードを書かないで下さい。
+    最大化についてはGtk::Widget上で"window_state_event"シグナルによって追跡することができます。
+    * 戻り値：self
+
+--- begin_resize_drag(edge, button, root_x, root_y, timestamp)
+    ウィンドウのリサイズを開始します。このメソッドはアプリケーションがウィンドウのリサイズ制御を持つ場合に用いられます。GDKがこれをサポートしているとき、リサイズはウィンドウマネージャかウィンドウシステムに対して標準のメカニズムを使用します。そうでない場合には、GDKはウィンドウのリサイズのエミュレートを試みます。これは完全ではない可能性があり、ウィンドウシステムに依存します。
+    * edge：リサイズ制御の位置（((<GdkWindowEdge|Gdk::Window#GdkWindowEdge>))）
+    * button：マウスボタンのドラッグが開始された位置（Integer）
+    * root_x：ルートウィンドウの座標内でユーザーのドラッグが開始された位置のX座標（Integer）
+    * root_y：ユーザーがドラッグを開始した位置のY座標（Integer）
+    * timestamp：ドラッグを開始したclick eventのタイムスタンプ（Integer）
+    * 戻り値：self
+
+--- begin_move_drag(edge, button, root_x, root_y, timestamp)
+    ウィンドウの移動を開始します。このメソッドはアプリケーションがウィンドウのリサイズ制御を持つ場合に用いられます。GDKがこれをサポートしているとき、リサイズはウィンドウマネージャかウィンドウシステムに対して標準のメカニズムを使用します。そうでない場合には、GDKはウィンドウのリサイズのエミュレートを試みます。これは完全ではない可能性があり、ウィンドウシステムに依存します。
+    * edge：リサイズ制御の位置（((<GdkWindowEdge|Gdk::Window#GdkWindowEdge>))）
+    * button：マウスボタンのドラッグが開始された位置（Integer）
+    * root_x：ルートウィンドウの座標内でユーザーのドラッグが開始された位置のX座標（Integer）
+    * root_y：ユーザーがドラッグを開始した位置のY座標（Integer）
+    * timestamp：ドラッグを開始したclick eventのタイムスタンプ（Integer）
+    * 戻り値：self
+
+--- decorated?
+    Gtk::Window#decorated=を通してタイトルバーのような装飾が設定されているかどうかを返します。
+    * 戻り値：ウィンドウが装飾を持つように設定されていたらtrue
+--- decorated=(setting)
+    デフォルトでは、ウィンドウはタイトルバー、リサイズコントロール等によって装飾されています。いくつかのウィンドウマネージャはGTK+がそれらの装飾を無効にし、ボーダレスウィンドウを作ることを許します。このメソッドを使用して装飾されたプロパティをfalseに設定すると、GTK+はウィンドウを装飾しないようウィンドウマネージャの説得にベストを尽くします。
+    Windowsでは関係するウィンドウマネージャのポリシーが存在せず、このメソッドは常に動作します。
+    * setting：ウィンドウを装飾するならtrue
+    * 戻り値：setting
+--- set_decorated(setting)
+    Same as Gtk::Window#decorated=.
+    * setting: true to decorate the window 
+    * Returns: self
+
+--- frame_dimensions
+    (((*Note: this is a special-purpose method intended for the framebuffer port; see Gtk::Window#has_frame=. It will not return the size of the window border drawn by the window manager, which is the normal case when using a windowing system. See Gdk::Window#frame_extents to get the standard window border extents.*)))
+    Retrieves the dimensions of the frame window for this toplevel. See Gtk::Window#has_frame?, Gtk::Window#set_frame_dimensions.
+    * Returns: [left, top, right, bottom]
+      * left: location to store the width of the frame at the left, or nil 
+      * top: location to store the height of the frame at the top, or nil 
+      * right: location to store the width of the frame at the returns, or nil 
+      * bottom: location to store the height of the frame at the bottom, or nil 
+--- set_frame_dimensions(left, top, right, bottom)
+    (((*Note: this is a special-purpose method intended for the framebuffer port; see Gtk::Window#has_frame?. It will have no effect on the window border drawn by the window manager, which is the normal case when using the X Window system.*)))
+    For windows with frames (see Gtk::Window#has_frame?) this method can be used to change the size of the frame border.
+    * left: The width of the left border(Integer)
+    * top: The height of the top border(Integer)
+    * right: The width of the right border(Integer)
+    * bottom: The height of the bottom border(Integer)
+    * Returns: self
+
+--- has_frame?
+    Accessor for whether the window has a frame window exterior to Gtk::Window#window.window. Gets the value set by Gtk::Window#has_frame=.
+    * Returns: true if a frame has been added to the window via Gtk::Window#has_frame=. 
+--- has_frame=
+    (((*Note: this is a special-purpose method for the framebuffer port, that causes GTK+ to draw its own window border. For most applications, you want Gtk::Window#decorated= instead, which tells the window manager whether to draw the window border.*)))
+    If this method is called on a window with setting of true, before it is realized or showed, it will have a "frame" window around Gtk::Window.window, accessible in Gtk::Window.frame. Using the signal frame_event you can recieve all events targeted at the frame.
+    This method is used by the linux-fb port to implement managed windows, but it could concievably be used by X-programs that want to do their own window decorations.
+    * setting: true or false
+    * Returns: setting
+--- set_has_frame(setting)
+    Same as Gtk::Window#setting=.
+    * setting: true or false
+    * Returns: self
+
+--- mnemonic_modifier
+    Returns the mnemonic modifier for this window. See Gtk::Window#mnemonic_modifier=.
+    * Returns: the modifier mask used to activate mnemonics on this window. 
+--- mnemonic_modifier=(modifier)
+    Sets the mnemonic modifier for this window.
+    * modifier: the modifier mask(((<GdkModifierType|Gdk::Window#GdkModifierType>))) used to activate mnemonics on this window 
+    * Returns: modifier
+--- set_mnemonic_modifier(modifier)
+    Same as Gtk::Window#mnemonic_modifier=.
+    * modifier: the modifier mask(((<GdkModifierType|Gdk::Window#GdkModifierType>))) used to activate mnemonics on this window
+    * Returns: self
+
+--- role
+    Returns the role of the window. See Gtk::Window#role= for further explanation.
+    * Returns : the role of the window if set, or nil. The returned is owned by the widget.
+--- role=(role)
+    This method is only useful on X11, not with other GTK+ targets.
+    In combination with the window title, the window role allows a window manager to identify "the same" window when an application is restarted. So for example you might set the "toolbox" role on your app's toolbox window, so that when the user restarts their session, the window manager can put the toolbox back in the same place.
+    If a window already has a unique title, you don't need to set the role, since the WM can use the title to identify the window when restoring the session.
+    * role: unique identifier for the window to be used when restoring a session(String)
+    * Returns: role
+--- set_role(role)
+    Same as Gtk::Window#role=.
+    * role: unique identifier for the window to be used when restoring a session(String)
+    * Returns: self
+
+--- type_hint
+    Gets the type hint for this window. See Gtk::Window#type_hint=.
+    * Returns: the type hint for window. 
+--- type_hint=(hint)
+    By setting the type hint for the window, you allow the window manager to decorate and handle the window in a way which is suitable to the function of the window in your application.
+    This method should be called before the window becomes visible.
+    Gtk::Dialog.new and other convenience methods in GTK+ will sometimes call Gtk::Window#type_hint= on your behalf.
+    * hint: the window type (((<GdkWindowTypeHint|Gdk::Window#GdkWindowTypeHint>)))
+    * Returns: hint
+--- set_type_hint(hint)
+    Same as Gtk::Window#type_hint=.
+    * hint: the window type (((<GdkWindowTypeHint|Gdk::Window#GdkWindowTypeHint>)))
+    * Returns: self
+
+--- icon
+    Gets the value set by Gtk::Window#icon= (or if you've called Gtk::Window#icon_list=, gets the first icon in the icon list).
+    * Returns: icon for window(Gdk::Pixbuf)
+--- icon=(icon)
+    Sets up the icon representing a Gtk::Window. This icon is used when the window is minimized (also known as iconified). Some window managers or desktop environments may also place it in the window frame, or display it in other contexts.
+    The icon should be provided in whatever size it was naturally drawn; that is, don't scale the image before passing it to GTK+. Scaling is postponed until the last minute, when the desired final size is known, to allow best quality.
+    If you have your icon hand-drawn in multiple sizes, use Gtk::Window#icon_list=. Then the best size will be used.
+    This method is equivalent to calling Gtk::Window#icon_list= with a 1-element array.
+    See also Gtk::Window.default_icon_list= to set the icon for all windows in your application in one go.
+    * icon: icon image(Gdk::Pixbuf), or nil
+    * Returns: icon
+--- set_icon(icon)
+    Same as Gtk::Window#icon=.
+    * icon: icon image(Gdk::Pixbuf), or nil
+    * Returns: icon
+
+--- icon_list
+    Retrieves the list of icons set by Gtk::Window#icon_list=. The list is copied, but the reference count on each member won't be incremented.
+    * Returns: copy of window's icon list 
+
+--- icon_list=(icon_list)
+    Sets up the icon representing a Gtk::Window. The icon is used when the window is minimized (also known as iconified). Some window managers or desktop environments may also place it in the window frame, or display it in other contexts.
+    Gtk::Window#icon_list= allows you to pass in the same icon in several hand-drawn sizes. The list should contain the natural sizes your icon is available in; that is, don't scale the image before passing it to GTK+. Scaling is postponed until the last minute, when the desired final size is known, to allow best quality.
+    By passing several sizes, you may improve the final image quality of the icon, by reducing or eliminating automatic image scaling.
+    Recommended sizes to provide: 16x16, 32x32, 48x48 at minimum, and larger images (64x64, 128x128) if you have them.
+    See also Gtk::Window.default_icon_list to set the icon for all windows in your application in one go.
+    Note that transient windows (those who have been set transient for another window using Gtk::Window#transient_for=) will inherit their icon from their transient parent. So there's no need to explicitly set the icon on transient windows.
+    * icon_list: an array of Gdk::Pixbuf 
+    * Returns: icon_list
+--- set_icon_list(icon_list)
+    Same as Gtk::Window#icon_list=.
+    * icon_list: an array of Gdk::Pixbuf 
+    * Returns: self
+
+--- position
+    This method returns the position you need to pass to Gtk::Window#move to keep window in its current position. This means that the meaning of the returned value varies with window gravity. See Gtk::Window#move for more details.
+    If you haven't changed the window gravity, its gravity will be Gdk::Window::GRAVITY_NORTH_WEST. This means that Gtk::Window#position gets the position of the top-left corner of the window manager frame for the window. Gtk::Window#move sets the position of this same top-left corner.
+    Gtk::Window#position is not 100% reliable because the X Window System does not specify a way to obtain the geometry of the decorations placed on a window by the window manager. Thus GTK+ is using a "best guess" that works with most window managers.
+    Moreover, nearly all window managers are historically broken with respect to their handling of window gravity. So moving a window to its current position as returned by Gtk::Window#position tends to result in moving the window slightly. Window managers are slowly getting better over time.
+    If a window has gravity Gdk::Window::GRAVITY_STATIC the window manager frame is not relevant, and thus Gtk::Window#position will always produce accurate results. However you can't use static gravity to do things like place a window in a corner of the screen, because static gravity ignores the window manager decorations.
+    If you are saving and restoring your application's window positions, you should know that it's impossible for applications to do this without getting it somewhat wrong because applications do not have sufficient knowledge of window manager state. The Correct Mechanism is to support the session management protocol (see the "Gnome::Client" object in the Ruby/GNOME libraries for example) and allow the window manager to save your window sizes and positions.
+    * Returns: [root_x, root_y]
+       * root_x: return location for X coordinate of gravity-determined reference point 
+       * root_y: return location for Y coordinate of gravity-determined reference point 
+
+--- size
+    Obtains the current size of window. If window is not onscreen, it returns the size GTK+ will suggest to the window manager for the initial window size (but this is not reliably the same as the size the window manager will actually select). The size obtained by Gtk::Window#size is the last size received in a Gdk::EventConfigure, that is, GTK+ uses its locally-stored size, rather than querying the X server for the size. As a result, if you call Gtk::Window#resize then immediately call Gtk::Window#size, the size won't have taken effect yet. After the window manager processes the resize request, GTK+ receives notification that the size has changed via a configure event, and the size of the window gets updated.
+    Note 1: Nearly any use of this method creates a race condition, because the size of the window may change between the time that you get the size and the time that you perform some action assuming that size is the current size. To avoid race conditions, connect to "configure_event" on the window and adjust your size-dependent state to match the size delivered in the Gdk::EventConfigure.
+    Note 2: The returned size does not include the size of the window manager decorations (aka the window frame or border). Those are not drawn by GTK+ and GTK+ has no reliable method of determining their size.
+    Note 3: If you are getting a window size in order to position the window onscreen, there may be a better way. The preferred way is to simply set the window's semantic type with Gtk::Window#type_hint=, which allows the window manager to e.g. center dialogs. Also, if you set the transient parent of dialogs with Gtk::Window#transient_for= window managers will often center the dialog over its parent window. It's much preferred to let the window manager handle these things rather than doing it yourself, because all apps will behave consistently and according to user prefs if the window manager handles it. Also, the window manager can take the size of the window decorations/border into account, while your application cannot.
+    In any case, if you insist on application-specified window positioning, there's still a better way than doing it yourself - Gtk::Window#window_position= will frequently handle the details for you.
+    * [width, height]
+       * width: return location for width, or nil
+       * height: return location for height, or nil 
+
+--- move(x, y)
+    Asks the window manager to move window to the given position. Window managers are free to ignore this; most window managers ignore requests for initial window positions (instead using a user-defined placement algorithm) and honor requests after the window has already been shown.
+    Note: the position is the position of the gravity-determined reference point for the window. The gravity determines two things: first, the location of the reference point in root window coordinates; and second, which point on the window is positioned at the reference point.
+    By default the gravity is Gdk::Window::GRAVITY_NORTH_WEST, so the reference point is simply the x, y supplied to Gtk::Widnow#move. The top-left corner of the window decorations (aka window frame or border) will be placed at x, y. Therefore, to position a window at the top left of the screen, you want to use the default gravity (which is Gdk::Window::GRAVITY_NORTH_WEST) and move the window to 0,0.
+    To position a window at the bottom right corner of the screen, you would set Gdk::Window::GRAVITY_SOUTH_EAST, which means that the reference point is at x + the window width and y + the window height, and the bottom-right corner of the window border will be placed at that reference point. So, to place a window in the bottom right corner you would first set gravity to south east, then write: Gtk::Window#move (window, Gdk.screen_width - window_width, Gdk.screen_height - window_height).
+    The extended window manager hints specification at http://www.freedesktop.org/standards/wm-spec.html has a nice table of gravities in the "implementation notes" section.
+    The Gtk::Window#position documentation may also be relevant.
+    * x: X coordinate to move window to 
+    * y: Y coordinate to move window to 
+    * Returns: self
+
+--- parse_geometry(geometry)
+    Parses a standard X Window System geometry string - see the manual page for X (type 'man X') for details on this. Gtk::Window#parse_geometry does work on all GTK+ ports including Win32 but is primarily intended for an X environment.
+    If either a size or a position can be extracted from the geometry string, Gtk::Window#parse_geometry returns true and calls Gtk::Window#set_default_size() and/or Gtk::Window#move to resize/move the window.
+    If Gtk::Window#parse_geometry returns true, it will also set the Gdk::Window::HINT_USER_POS and/or Gdk::Window::HINT_USER_SIZE hints indicating to the window manager that the size/position of the window was user-specified. This causes most window managers to honor the geometry.
+    * geometry: geometry string 
+    * Returns: true if string was parsed successfully 
+
+--- reshow_with_initial_size
+    Hides window, then reshows it, resetting the default size and position of the window. Used by GUI builders only.
+    * Returns: self
+
+--- resize
+    Resizes the window as if the user had done so, obeying geometry constraints. The default geometry constraint is that windows may not be smaller than their size request; to override this constraint, call Gtk::Widget#set_size_request to set the window's request to a smaller value.
+    If Gtk::Window#resize is called before showing a window for the first time, it overrides any default size set with Gtk::Window#set_default_size.
+    Windows may not be resized smaller than 1 by 1 pixels.
+    * width: width in pixels to resize the window to 
+    * height: height in pixels to resize the window to 
+    * Returns: self
+
+--- allow_grow?
+    Retrieves the value whether the window can be resized to a larger size by the user.
+    * Returns: true if the window can be resized to a larger size by the user.
+--- allow_grow=(setting)
+    Sets the value whether the window can be resized to a larger size by the user.
+    * setting: true if the window can be resized to a larger size by the user.
+    * Returns: setting
+--- set_allow_grow(setting)
+    Same as Gtk::Window#allow_grow=.
+    * setting: true if the window can be resized to a larger size by the user.
+    * Returns: self
+
+--- allow_shrink?
+    Retrieves the value whether the window can be resized to a smaller size by the user.
+    * Returns: true if the window can be resized to a smaller size by the user.
+--- allow_shrink=(setting)
+    Sets the value whether the window can be resized to a smaller size by the user.
+    * setting: true if the window can be resized to a smaller size by the user.
+    * Returns: setting
+--- set_allow_shrink(setting)
+    Same as Gtk::Window#allow_shrink=.
+    * setting: true if the window can be resized to a smaller size by the user.
+    * Returns: self
+
+--- default_height
+    Retrieves the default height of the window, used when initially showing the window.
+    * Returns: the default height of the window
+--- default_height=(height)
+    Sets the default height of the window, used when initially showing the window.
+    * height: Sets the default height of the window
+    * Returns: height
+--- set_default_height(height)
+    Same as Gtk::Window#default_height=.
+    * height: Sets the default height of the window
+    * Returns: self
+
+--- default_width
+    Retrieves the default width of the window, used when initially showing the window.
+    * Returns: the default width of the window
+--- default_width=(width)
+    Sets the default width of the window, used when initially showing the window.
+    * width: Sets the default width of the window
+    * Returns: width
+--- set_default_width(width)
+    Same as Gtk::Window#default_width=.
+    * width: Sets the default width of the window
+    * Returns: self
+
+== Constants
+=== GtkWindowPosition
+Window placement can be influenced using these constants. 
+--- POS_NONE
+    No influence is made on placement.
+--- POS_CENTER
+    Windows should be placed in the center of the screen. 
+--- POS_MOUSE
+    Windows should be placed at the current mouse position. 
+--- POS_CENTER_ALWAYS
+    Keep window centered as it changes size, etc.
+--- POS_CENTER_ON_PARENT
+    Center the window on its transient parent (see Gtk::Window#transient_for=).  
+
+=== GtkWindowType
+A Gtk::Window can be one of these types. 
+Most things you'd consider a "window" should have type Gtk::Window::TOPLEVEL; 
+windows with this type are managed by the window manager and have a frame by default (call Gtk::Window#decorated= to toggle the frame). 
+Windows with type Gtk::Window::POPUP are ignored by the window manager; 
+window manager keybindings won't work on them, 
+the window manager won't decorate the window with a frame, 
+many GTK+ features that rely on the window manager will not work (e.g. resize grips and maximization/minimization). 
+Gtk::Window::POPUP is used to implement widgets such as Gtk::Menu or tooltips that you normally don't think of as windows per se. 
+Nearly all windows should be Gtk::Window::TOPLEVEL. 
+In particular, do not use Gtk::Window::POPUP just to turn off the window borders; 
+use Gtk::Window#decorated= for that.
+--- TOPLEVEL
+    A regular window, such as a dialog.
+--- POPUP
+    A special window such as a tooltip. 
+
+== Properties
+--- allow-grow: true or false (Read/Write)
+    If true, users can expand the window beyond its minimum size
+
+--- allow-shrink: true or false (Read/Write)
+    If true, the window has no mimimum size. Setting this to true is 99% of the time a bad idea
+
+--- default-height: Integer (Read/Write)
+    The default height of the window, used when initially showing the window
+
+--- default-width: Integer (Read/Write)
+    The default width of the window, used when initially showing the window
+
+--- destroy-with-parent: true or false (Read/Write)
+    If this window should be destroyed when the parent is destroyed
+
+--- has-toplevel-focus: true or false (Read)
+    Whether the input focus is within this Gtk::Window
+
+--- icon: Gdk::Pixbuf (Read/Write)
+    Icon for this window
+
+--- is-active: true or false (Read)
+    Whether the toplevel is the current active window
+
+--- modal: true or false (Read/Write)
+    If true, the window is modal (other windows are not usable while this one is up)
+
+--- resizable: true or false (Read/Write)
+    If true, users can resize the window
+
+--- screen: Gdk::Screen (Read/Write)
+    The screen where this window will be displayed
+
+--- skip-pager-hint: true or false (Read/Write)
+    true if the window should not be in the pager.
+
+--- skip-taskbar-hint: true or false (Read/Write)
+    true if the window should not be in the task bar.
+
+--- title: String (Read/Write)
+    The title of the window
+
+--- type: Integer (Read/Write)
+    The type of the window
+
+--- type-hint: Integer (Read/Write)
+    Hint to help the desktop environment understand what kind of window this is and how to treat it.
+
+--- window-position: Integer (Read/Write)
+    The initial position of the window
+
+== Signals
+--- activate-default: self
+     * self: Gtk::Window
+--- activate-focus: self
+     * self: Gtk::Window
+--- frame-event: self, event
+     * self: Gtk::Window
+     * event: Gdk::Event
+--- keys-changed: self
+     * self: Gtk::Window
+--- move-focus: self, dir_type
+     * self: Gtk::Window
+     * dir_type: ((<GtkDirectionType|Gtk#GtkDirectionType>))
+--- set-focus: self, widget
+     * self: Gtk::Window
+     * widget: Gtk::Widget
+
+- ((<Masao>))

@@ -1,0 +1,115 @@
+= Configurando
+{{link("tut-libgda-install", nil, "tut-libgda", "tut-libgda-init")}}
+
+Dependendo do uso que você terá de Ruby/Libgda, você pode ter que aprofundar nas partes internas, mas não fique receoso, as coisas foram implementadas para serem fáceis de usar.
+
+== Configuração para Desenvolvimento
+
+Os únicos passos que você precisa fazer para ter certeza que tudo está instalado bem, é verificar que a biblioteca Ruby/Libgda é vista pelo seu sistema:
+
+  $ irb --simple-prompt -r libgda
+  >> Gda.init("test", "0.0.0")
+  => nil
+
+== Configuração para Acessar um Banco de Dados
+
+Se você quer acessar uma fonte de dados através de um provedor da GDA, você precisa primeiro ter acesso a esse provedor, e mais importante, esse provedor deve ter acesso a sua fonte de dados específica. Assim, primeiro tenha o seu banco de dados funcionando. Para isso, você terá que verificar a sua documentação de fonte de dados específica, ou ver a documentação específica do provedor da libgda.
+
+Uma vez que você tenha o seu provedor de GDA instalado, se na sua máquina ou em outra na rede, você precisa configurar o seu sistema local para ter acesso a ele. Se você está em uma instalação local, uma vez que você tenha instalado o provedor de GDA (ao compilá-lo ou instalando o seu RPM ou pacote Debian), o provedor está visível na sua máquina. Isso é porque o provedor instala ele mesmo em uma localização bem conhecida que deixa a libgda saber sobre o seu novo provedor.
+
+Então, o próximo passo é configurar as fontes de dados que você quer disponíveis no seu sistema. para fazer isso, por enquanto, use o GNOME-DB, o qual é um "front-end" para a libgda para o ((<projeto GNOME|URL:http://www.gnome.org>)).
+
+Um dos problemas que a GDA soluciona é a nomeação de fontes de dados. Todo sistema de banco de dados tem a sua própria maneira de definir nomes para o seu banco de dados. Por exemplo, o MySQL usa o nome do hospedador ("hostname"), número da porta, e o nome do banco de dados. Outros bancos de dados, como o Solid, usa o nome do nome do hospedador e o número da porta apenas. Não existe suporte para múltiplos bancos de dados por servidor. Por causa que o cliente não precisa de todos esses detalhes, a configuração da  libgda define todas as propriedades como a fonte de dados, assim o servidor de banco de dados correto pode ser conectado. Essa informação é acessada pela biblioteca de cliente e enviada para o provedor, o qual por sua vez irá interpretar a string e decidir qual banco de dados deve ser conectado. Os dados armazenados para cada fonte de dados são como a seguir: 
+
+  Provider=MySQL                                       (1)                            
+  DSN=DATABASE=test;HOST=localhost;PORT=1111           (2)
+  Description=MySQL Test Database in native mode       (3)
+  Username=username                                    (4)
+  Password=password                                    (5)
+
+:1
+ O provedor para esse banco de dados é o provedor "gda-mysql". O valor dessa entrada é usado como o ID do objeto para a ativação do plugin. 
+
+:2
+ Essa é a entrada mais importante. O valor dessa entrada é a string enviada para o provedor para que ele saiba qual fonte de dados acessar. Como essa entrada é interpretada pelos provedores é descrita na seção de provedor (no final desta página). 
+
+ Existem, entretanto, um conjunto de propriedades padrões que podem ser usadas para a string de conexão para todos os provedores. Essas são:
+   * USERNAME: nome do usuário a ser usado na autenticação.
+   * PASSWORD: senha a ser usada para autenticação.
+
+:3
+ O valor dessa entrada é uma descrição curta da fonte de dados. Está aqui por conveniência apenas e não é usada para qualquer propósito. 
+
+:4
+ O nome do usuário a ser usado ao conectar ao banco de dados. 
+ 
+:5
+ A senha a ser usada quando conectar ao banco de dados. Isso é armazenada em texto puro, então tenha certeza que você restringe o acesso ao arquivo de configuração (~/.libgda/config) a qualquer usuário "perigoso".
+
+O arquivo de configuração em XML (~/.libgda/config) não é recomendado a ser modificado pela mão e, para nosso exemplo, ele é algo assim:
+
+  <?xml version="1.0"?>
+  <libgda-config>
+    <section path="/apps/libgda/Datasources/sales">
+      <entry name="DSN" type="string" value="PORT=1111;DATABASE=test;HOST=localhost"/>
+      <entry name="Description" type="string" value="MySQL Test Database in native mode"/>
+      <entry name="Password" type="string" value="password"/>
+      <entry name="Provider" type="string" value="MySQL"/>
+      <entry name="Username" type="string" value="username"/>
+    </section>
+  </libgda-config>
+  
+===  Gerenciando Fontes de Dados com Métodos de "API"
+
+====  Criar Fontes de Dados
+
+Para criar uma fonte de dados você precisa usar os métodos Gda::DataSource.new e Gda::DataSource#save.
+
+Aqui você vê como criar uma fonte de dado nomeada foo_ds. Se você não precisa fornecer um nome de usuário ou senha para entrar no banco de dados, você pode coloca nil:
+
+  datasource1 = Gda::DataSource.new("foo_ds", "PostgreSQL", "DATABASE=foo_db",
+                                    "description of foo_ds", "foo_username, "foo_password")
+  datasource2 = Gda::DataSource.new("other_foo_ds", "MySQL", "DATABASE=other_foo_db,HOST=db.foo.com",
+                                    "description of other_foo_ds", "foo", nil)
+  datasource1.save
+  datasource2.save
+
+Para mais detalhes sobre informação específica de provedor veja na seção sobre sobre "informação específica de provedor" no final desta página.
+
+Não existe problema em chamar várias vezes Gda::DataSource#save porque se voc salvar uma fonte de dados existente, ela é substituída.
+
+==== Removendo Fontes de Dados
+
+Para remover fontes de dados você precisa usar o método Gda::DataSource#remove.
+
+Aqui você vê como remover uma fonte de dados nomeada foo_ds:
+
+  datasource = Gda::DataSource.find('foo_ds')
+  datasource.remove
+
+==== Listando as Fontes de Dados Disponíveis
+
+Para listar as fontes de dados disponíveis você deve usar os métodos Gda::DataSource.datasources ou Gda::DataSource.each.
+
+Aqui você vê um método que lista as fontes de dados disponíveis:
+
+  def list_datasources
+      Gda::DataSource.each do |ds|
+          puts "NAME: '#{ds.name}', PROVIDER: '#{ds.provider}', CNC: '#{ds.cnc_string}', " \
+               "USER: '#{ds.username}', PASSWORD: '#{ds.password}'."
+      end
+  end
+
+==== Listando Provedores Disponíveis
+
+Para listar provedores disponíveis você deve usar os métodos Gda::Providers.providers ou Gda::Providers.each.
+
+Aqui você vê um método que lista os provedores disponíveis:
+
+  def list_providers
+      Gda::Provider.each { |provider| puts "ID: '#{provider.prov_id}'." }
+  end
+
+== Informação Específica de Provedor
+
+Para conseguir mais detalhes sobre cada informação específica de provedor, voce deve navegar ((<a seção dedicada|URL:http://www.gnome-db.org/docs/libgda/installation-configuring.html#INSTALLATION-PROVIDER>)) no manual da GDA.

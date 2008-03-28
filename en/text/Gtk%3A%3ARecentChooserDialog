@@ -1,0 +1,67 @@
+= class Gtk::RecentChooserDialog
+Gtk::RecentChooserDialog is a dialog box suitable for displaying the recently used documents. This widgets works by putting a Gtk::RecentChooserWidget inside a Gtk::Dialog. It exposes the Gtk::RecentChooserIface interface, so you can use all the Gtk::RecentChooser functions on the recent chooser dialog as well as those for Gtk::Dialog.
+
+Note that Gtk::RecentChooserDialog does not have any methods of its own. Instead, you should use the functions that work on a Gtk::RecentChooser.
+
+==== Example 1. Typical usage
+In the simplest of cases, you can use the following code to use a Gtk::RecentChooserDialog to select a recently used file:
+
+  dialog = Gtk::RecentChooserDialog.new("Recent Documents", parent_window,
+                                        [Gtk::Stock::CANCEL, Gtk::Dialog::RESPONSE_CANCEL],
+                                        [Gtk::Stock::OPEN, Gtk::Dialog::RESPONSE_ACCEPT])
+  
+  if dialog.run == Gtk::Dialog::RESPONSE_ACCEPT
+    info = dialog.current_item
+    p info.uri
+  end
+  
+  dialog.destroy
+  
+
+Recently used files are supported since GTK+ 2.10. 
+
+((<URL:http://developer.gnome.org/doc/API/2.0/gtk/recentchooserdialog.png>))
+
+== Object Hierarchy
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::InitiallyUnowned
+        * Gtk::Object
+          * Gtk::Widget
+            * Gtk::Container
+              * Gtk::Bin
+                * Gtk::Window
+                  * Gtk::Dialog
+                    * Gtk::RecentChooserDialog
+
+== Included Modules
+* Gtk::RecentChooser
+
+== Class Methods
+--- Gtk::RecentChooserDialog.new(title, parent, [button_face1, response_id1], [button_face2, response_id2], .....)
+    Creates a new Gtk::RecentChooserDialog. This method is analogous to Gtk::Dialog.new.  ((* Since 2.10 *))
+    * title: Title of the dialog, or nil
+    * parent: Transient parent(Gtk::Widget) of the dialog, or nil
+    * [button_face1, response_id1], [button_face2, response_id2], ...: Button face/response ID pairs should be listed.        
+       * button_face: Button face can be either a stock ID (Gtk::Stock constants) such as Gtk::Stock::OK, or some arbitrary text. 
+       * response_id: A response ID can be any positive number, or one of the values in the ((<Gtk::Dialog#ResponseType>)) enumeration. If the user clicks one of these dialog buttons, Gtk::RecentChooserDialog will emit the "response" signal with the corresponding response ID. If a Gtk::RecentChooserDialog receives the "delete_event" signal, it will emit "response" with a response ID of Gtk::Dialog::RESPONSE_DELETE_EVENT. However, destroying a dialog does not emit the "response" signal; so be careful relying on "response" when using the Gtk::Dialog::DESTROY_WITH_PARENT flag. Buttons are from left to right, so the first button in the list will be the leftmost button in the dialog.
+    * Returns : a new Gtk::RecentChooserDialog
+
+--- Gtk::RecentChooserDialog.new(title, parent, manager, [button_face1, response_id1], [button_face2, response_id2], .....)
+    Creates a new Gtk::RecentChooserDialog. This is useful if you have implemented your own recent manager, or if you have a customized instance of a Gtk::RecentManager object.  ((* Since 2.10 *))
+    * title: Title of the dialog, or nil
+    * parent: Transient parent(Gtk::Widget) of the dialog, or nil
+    * manager: a Gtk::RecentManager
+    * [button_face1, response_id1], [button_face2, response_id2], ...: Button face/response ID pairs should be listed.        
+       * button_face: Button face can be either a stock ID (Gtk::Stock constants) such as Gtk::Stock::OK, or some arbitrary text. 
+       * response_id: A response ID can be any positive number, or one of the values in the ((<Gtk::Dialog#ResponseType>)) enumeration. If the user clicks one of these dialog buttons, Gtk::RecentChooserDialog will emit the "response" signal with the corresponding response ID. If a Gtk::RecentChooserDialog receives the "delete_event" signal, it will emit "response" with a response ID of Gtk::Dialog::RESPONSE_DELETE_EVENT. However, destroying a dialog does not emit the "response" signal; so be careful relying on "response" when using the Gtk::Dialog::DESTROY_WITH_PARENT flag. Buttons are from left to right, so the first button in the list will be the leftmost button in the dialog.
+    * Returns : a new Gtk::RecentChooserDialog
+
+
+
+== See Also
+Gtk::RecentChooser, Gtk::Dialog 
+
+== ChangeLog
+* 2007-01-30: Added. ((<Masao>))

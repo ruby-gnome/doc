@@ -1,0 +1,34 @@
+= Agragando filas a  un almacén
+{{link "tut-treeview-model-reference", "tut-treeview-model", "tut-treeview", "tut-treeview-model-manipulate"}}
+
+== Agregando filas a un ListStore
+
+Para añadir flas a un ListStore se usa Gtk::ListStore#append. Este método añade una nueva fila vacía al final de la lista. Hay otros métodos, documentados en el API de Gtk::ListStore, que otorgan más control sobre donde insertar la nueva fila, pero ya que trabaja de forma similar a Gtk::ListStore#append y son bastante sencillos de usar, no los detallaremos aquí.
+
+Aquí hay un ejemplo sencillo de como crear un ListStore y añadir una fila vacía al mismo:
+
+ liststore = Gtk::ListStore.new(String)
+
+ # añadir una fila vacía al list store. 'iter' apuntará a la nueva fila
+ iter = liststore.append
+
+Por supuesto, esto de por sí no es muy útil. Añadiremos datos a las filas en la siguiente sección. 
+
+== Añadiendo filas a un TreeStore
+
+Agregar filas a un TreeStore es similar a añadirlas a un ListStore, la única diferencia es que se usa el método Gtk::TreeStore#append que requiere un argumento más, el 'iter' del padre de la fila a insertar. Si se introduce nil en lugar del TreeIter de otra fila, se insertará una fila de primer nivel. Si se proporciona un TreeIter del elemento padre, la nueva fila vacía será insertada después de la última fila hijo de dicho elemento padre. De nuevo, hay otras maneras de insertar filas en un TreeStore y están documentadas en el API de Gtk::TreeStore. Otro pequeño ejemplo.
+ treestore = Gtk::TreeStore.new(String)
+
+ # Agrega una fila vacía de primer nivel al TreeStore. 
+ parent_iter = treestore.append(nil)
+
+ # Agrega una fila hijo a la fila que acabamos de agregar.
+ child_iter = treestore.append(parent_iter)
+
+== Sobre la velocidad al añadir muchas filas
+
+Un escenario común es aquel en el que un modelo necesita rellenarse con un montón de filas en un punto concreto, al comienzo del programa, o al abrir algún archivo. Otro escenario común es que esta tarea tarde mucho tiempo incluso en máquinas potentes a partir de que el modelo supere las doscientas filas, con lo que la velocidad insertando filas decrece exponencialmente. Se pueden hacer algunas cosas para evitar este problema y acelerar un poco el proceso.
+
+Primero, hay que asegurarse de que la ordenación esté deshabilitada mientras se realizan inserciones masivas, de otra forma tu almacén será regenerado tras insertar cada una de las filas,lo que resulta de todo menos rápido.
+
+Segundo, no se deben mantener muchos TreeRowReference si se tiene muchas filas, porque con cada inserción (o eliminación) cada TreeRowReference comprobará si su path debe ser actualizado o no.

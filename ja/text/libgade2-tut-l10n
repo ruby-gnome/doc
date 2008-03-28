@@ -1,0 +1,50 @@
+= Localization(L10n): 文字列の地域化
+さて仕上げのL10n化です。Ruby/Libglade2を用いた場合、Glade XMLファイル、Rubyスクリプトファイルの2種類のファイル中に現れる文字列が対象になります。
+
+== スクリプトをL10n対応させる
+Rubyスクリプトの方はRuby-GetText-Packageを用いますので詳しくは((<そちら|URL:http://ponx.s5.xrea.com/hiki/ja/ruby-gettext.html>))を参照してください。簡単に説明すると、Rubyスクリプト中のL10n化したい文字列を_("foo")とかN_("bar")いう形で括り出します。
+
+(例)
+    def on_save_as1_activate(widget)
+      ret = select_file(Gtk::FileChooser::ACTION_SAVE)
+      if @filename and ret == Gtk::Dialog::RESPONSE_OK
+        if FileTest.exist?(@filename)
+          dialog = Gtk::MessageDialog.new(@main_window, Gtk::Dialog::MODAL, 
+                                        Gtk::MessageDialog::ERROR, 
+                                        Gtk::MessageDialog::BUTTONS_OK_CANCEL, 
+                                        _("The file has already existed. Do you override it?"))  #ここ！
+          ret = dialog.run
+          dialog.destroy
+          save_file if ret == Gtk::Dialog::RESPONSE_OK
+        else
+          save_file
+        end
+      end
+    end
+
+また、initializeにGetText.bindtextdomainを呼び出していることに注意してください。
+
+    def initialize(path_or_data, root = nil, domain = nil, localedir = nil, flag = GladeXML::FILE)
+      GetText.bindtextdomain(domain, localedir, nil, "UTF-8")
+      super(path_or_data, root = nil, domain = nil, localedir = nil, flag = GladeXML::FILE)
+    end
+
+
+この"domain"名が、本アプリケーション用のIDであり、リソースファイル(moファイル)のファイル名となります。
+＃したがって、ここでは、hwedit.moというファイル名になります。
+
+
+== rgettextによるカタログファイル(poファイルの抽出)
+元ネタは揃ったので、あとはカタログファイルという翻訳ファイルを作ります。((<Ruby-GetText-Package|URL:http://ponx.s5.xrea.com/hiki/ja/ruby-gettext.html>))に付属のrgettextというコマンドを使います。
+
+
+ (MS Windows)
+ C:\>rgettext *.glade *.rb -o hwedit.pot
+
+ (Linux/FreeBSD)
+ $ rgettext *.glade *.rb -o hwedit.pot
+ 
+ここでは、対象となる全てのファイル（*.rb, *.glade）を指定します。
+日本語のリソースを作る場合は、hwedit.potをja/hwedit.poとディレクトリを分けておいてその中身を修正していけばよいでしょう。
+
+これ以降はまだ書きかけなりm(__)m。

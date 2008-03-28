@@ -1,0 +1,31 @@
+= Obteniendo datos de una fila
+{{link "tut-treeview-model-manipulate", "tut-treeview-model", "tut-treeview", "tut-treeview-model-remove"}}
+
+Almacenar datos no es muy útil si no se pueden recuperar después. Esto se consigue usando Gtk::TreeIter#[], que devuelve el valor de la columna dada de la fila a la que apunta el TreeIter.
+
+Aquí está el ejemplo anterior ampliado para recorrer el almacén e imprimir la información almacenada. Como añadido, usaremos Gtk::TreeModel#each para recorrer el almacén y obtener el número de fila del Gtk::TreePath que se nos pasa en el bloque de código:
+
+
+
+  # Crea un almacén para el nombre, los apellidos y el año de nacimiento
+  liststore = Gtk::ListStore.new(String, String, Integer)
+
+  # Agrega una fila vacía al almacén
+  iter = liststore.append
+
+  iter[0] = "Joe"
+  iter[1] = "Average"
+  iter[2] = 1970
+
+  # Agrega otra fila y rellena los campos
+  iter = liststore.append
+
+  iter[0] = "Jane"
+  iter[1] = "Common"
+  iter[2] = 1967
+
+  liststore.each do |model,path,iter|
+    printf("Row %s: %s %s, born %i\n", path.to_str, iter[0], iter[1], iter[2]);
+  end
+
+Una cosa a tener en cuenta: hay que liberarlo una vez hemos acabado con él; lo segundo es que a todos los campos de una fila se les asigna un valor nulo por defecto apropiado al tipo de dato en cuestión. Un campo de tipo Integer tendrá valor 0 hasta que se le asigne uno diferente, y tanto Strings como toda clase de tipos puntero tendrán valor nil hasta que se le de otro. Ejecuta el programa anterior con una fila más vacía y observa la salida para comprobarlo.

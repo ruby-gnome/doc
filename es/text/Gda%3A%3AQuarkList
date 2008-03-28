@@ -1,0 +1,44 @@
+= class Gda::QuarkList
+Quark lists (lists of KEY=VALUE's).
+
+== Object Hierarchy
+* Object
+  * GLib::Boxed
+    * Gda::QuarkList
+
+== Class Methods
+--- Gda::QuarkList.new(string=nil)
+    Creates a new Gda::QuarkList, which is a set of key->value pairs, very
+    similar to GLib's GHashTable, but with the only purpose to make easier the
+    parsing and creation of data source connection strings.
+    You can optionally pass a connection string to initialize the quark list.
+    * string: a connection string.  
+    * Returns: a newly created Gda::QuarkList object.
+
+== Instance Methods
+--- add(string, cleanup=false)
+    Synonym for Gda::QuarkList#add_from_string.
+    * cleanup: whether to cleanup the previous content or not.  
+    * string: a connection string. 
+    * Returns: self.
+
+--- add_from_string(string, cleanup=false)
+    Adds new key->value pairs from the given string. If cleanup is set to true,
+    the previous contents will be discarded before adding the new pairs.
+    * cleanup: whether to cleanup the previous content or not.  
+    * string: a connection string. 
+    * Returns: self.
+
+--- clear
+    Removes all key->pair values from the quark list.
+    * Returns: self.
+
+--- find(name)
+    Searches for the value identified by name in the quark list.
+    * name: the name of the value to search for.  
+    * Returns: the value associated with the given key if found, or nil if not found.
+
+== See Also
+((<Gda>)).
+
+- ((<lrz>))

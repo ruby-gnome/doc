@@ -1,0 +1,159 @@
+= アイテムファクトリを使う
+さて，これまで難しい方法を見てきたが，今度はGtk::ItemFactoryを使う簡単な方法を見てみよう．
+
+いつものように，まずアイテムファクトリを作成しよう：
+
+  Gtk::ItemFactory.new(container_type, path, accel_group)
+
+container_typeで，どの種類のメニューを作成するかを指定できる．
+
+:Gtk::ItemFactory::TYPE_MENU
+  メニュー．例えばポップアップメニューとして使用する．
+:Gtk::ItemFactory::TYPE_MENU_BAR
+  メニューバー
+:Gtk::ItemFactory::TYPE_OPTION_MENU
+  オプションメニュー(メニューをプルダウンすることができるコンボボックスのようなもの)
+
+のいずれかを指定する．
+
+pathでメニューのrootの名前を指定する．基本的にはメニューのroot名はユニークで必ず'<'と'>'で囲まなければならない．
+例えばfooというフログラムのメインメニューは"<FooMain>"，ポップアップメニューは"<FooImagePopUp>"のよ
+うにする必要がある．
+メニューのroot名がユニークであるということが重要なのだ．
+
+accel_groupにはあらかじめ作成しておいたGtk::AccelGroupのインスタンスを渡す．
+((-Gtk::ItemFactory.newにはaccel_groupを省略できると書かれているが，どうやら省略不可の模様．-))
+アイテムファクトリはメニューの生成課程でアクセラレータテーブルを設定する．
+ここで指定したアクセラレータグループは，メニュー作成後に
+
+  Gtk::Window#add_accel_group(accel_group)
+
+でウィンドウにアタッチするとよいだろう．
+
+これで第1段階は終了である．
+実際にメニューを作成するには，ひとつずつメニューアイテムを作成する方法と，一度に複数のメニューアイテムを作成する方法がある．
+
+== ひとつずつメニューアイテムを作成する
+
+ひとつずつメニューアイテムを作成するには，Gtk::ItemFactory#create_itemを用いる：
+
+  Gtk::ItemFactory#create_item(path, item_type = nil, accelerator = nil, extdata = nil, data = nil) do |data, item|
+     ...
+   end
+
+path以外は省略可能である．各引数の意味は後述する．
+
+== 一度に複数のメニューアイテムを作成する
+一度に複数のメニューアイテムを作成するには，Gtk::ItemFactory#create_itemsを用いる：
+
+  Gtk::ItemFactory#create_items(entries)
+
+entriesにはアイテムファクトリエントリの配列を指定する．
+アイテムファクトリエントリの定義は次のようになっている．
+
+  [path, item_type, accelerator, extdata, proc, data]
+
+path以外は省略可能である．
+
+
+=== path
+メニューアイテムの名前とパスを指定する文字列．
+
+例えば"/File/Open"は"/File"というパスを持つアイテムファクトリエントリの子メニューアイテムとなる．
+"/File/Open"は"File"メニュー中では"Open"と表示される．
+'/'はメニューアイテムのパス区切文字として利用されるため，メニューの名前の一部としては利用できないことに注意．
+'_'に続く文字はメニューが開かれている時のアクセラレータ(ショートカット)キーとして用いられる．
+
+=== item_type
+メニューアイテムコンテナにどのタイプのウィジェットをパックするかを指定する文字列．
+Ruby-GTK2では((<GtkItemType|Gtk::ItemFactroy#GtkItemType>))で指定することもできる．
+
+:"<Item>"，Gtk::ItemFactory::ITEM
+  単純なメニューアイテム
+:"<Title>"，Gtk::ItemFactory::TITLE
+  タイトル
+:"<ImageItem>"，Gtk::ItemFactory::IMAGE_ITEM
+  イメージ付きアイテム
+:"<StockItem>"，Gtk::ItemFactory::STOCK_ITEM
+  Gtk::Stockイメージ付きアイテム
+:"<CheckItem>"，Gtk::ItemFactory::CHECK_ITEM
+  チェックアイテム
+:"<ToggleItem>"，Gtk::ItemFactory::TOGGLE_ITEM
+  トグルアイテム
+:"<RadioItem>"，Gtk::ItemFactory::RADIO_ITEM
+  親ラジオアイテム
+:"/Path/To/Parent/Radio"
+  子ラジオアイテム．親ラジオアイテムのパスを指定する．
+:"<Separator>"，Gtk::ItemFactory::SEPARATOR
+  セパレータ
+:"<Tearoff>"，Gtk::ItemFactory::TEAROFF
+  メニューを親ウィンドウから分離するためのセパレータ
+:nil，"<Branch>"，Gtk::ItemFactory::BRANCH
+  サブメニューを持つアイテム
+:"<LastBranch>"，Gtk::ItemFactory::LAST_BRANCH
+  右寄せされた"<Branch>"．メニューバーのサブメニューのうちの一つにしか指定できない．通常は"/Help"などに適用する．
+ 
+=== accelerator
+メニューアイテムを起動するショートカットとして使用されるキーの組み合わせを指定する文字列．
+
+一文字またはモディファイアキーで修飾された一文字で指定する．なお大文字小文字は無視される．
+利用可能なモディファイアキーは：
+
+* "<ALT>"
+* "<CTL>", "<CTRL>", "<CONTROL>"
+* "<MOD1>" 〜 "<MOD5>"
+* "<SHFT>", "<SHIFT>"
+
+acceleratorの例：
+
+  "<ConTroL>a"
+  "<SHFT><ALT><CONTROL>X"
+
+アクセラレータは各メニューアイテムにユニークなものを設定する必要がある．
+
+=== extdata
+いくつかのitem_typeのための追加情報．
+
+:Gtk::ItemFactory::IMAGE_ITEMの場合
+  Gdk::Pixbufを指定する．Gtk::Image#pixbufで生成するとよい．
+:Gtk::ItemFactory::STOCK_ITEMの場合
+  Gtk::Stockの定数(Gtk::Stock::Openなど)を指定する．
+:その他のitem_typeの場合
+  nil
+
+=== procとdata
+メニューアイテムが"activate"シグナルを発行した際にcallされるProcとその引数．
+procには
+
+  [data，シグナルを発行したメニュアイテムウィジェット]
+
+が引数として渡される．
+Gtk::ItemFactory#create_itemの場合は，メソッドへのブロック引数でprocを渡すことに注意．
+
+== メニューとメニューアイテムの使い方
+
+最後に，実際にメニューを使えるようにしよう．
+
+次のメソッドでアイテムファクトリから適切なウィジェットを取り出すことができる．
+
+  Gtk::ItemFactory#get_widget(path)
+
+例えば，"/File"と"/File/New"の2つのエントリを持つアイテムファクトリから"/File"というpathでウィジェットを取り出すとメニューウィジェットが，"/File/New"というpathで取り出せばメニューアイテムウィジェットが得られる．
+((-"/_File"で定義されたpathは，ここでは"/File"として扱われることに注意．-))
+
+このようにして得たメニューアイテムに対して初期状態を設定することができる．
+デフォルトのラジオアイテムを"/Shape/Oval"に設定するには次のようにすればよい．
+
+  item_factory.get_item("/Shape/Oval").active = true
+
+メニューのrootを取得するには，Gtk::ItemFactory#get_itemで"<main>"というpath(またはGtk::ItemFactory.newに与えたpath)を取り出そう．
+container_typeに応じて異なるウィジェットが得られる．
+
+:Gtk::ItemFactory::TYPE_MENU_BAR
+  メニューバーウィジェット
+:Gtk::ItemFactory::TYPE_MENU
+  メニューウィジェット
+:Gtk::ItemFactory::TYPE_OPTION_MENU
+  オプションメニューウィジェット
+
+これらのメニューウィジェットやメニューバーウィジェットは((<手作業でのメニュー作成|gtk2-tut-manualmenu>))で紹介した方法と同じように扱うことができる．

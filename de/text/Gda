@@ -1,0 +1,30 @@
+= module Gda
+The Gda module.
+
+== Module Functions
+--- Gda.init(app_id, version)
+    Initializes the Ruby/Libgda library, using arguments from the command line.
+    * version: revision number of the program.  
+    * app_id: name of the program.  
+    * Returns: always nil.
+
+--- Gda.main { ... }
+    Runs the GDA main loop, which is nothing more than the Bonobo main loop, 
+    but with internally added stuff specific for applications using libgda.
+    You can specify a block code to be called after everything has been 
+    correctly initialized (that is, for initializing your own stuff).
+    In this case, Gda.main_quit method will be called at the end of the block.
+    * Returns: always nil.
+
+--- Gda.main_quit
+    Exits the main loop.
+    * Returns: always nil.
+
+--- Gda.sql_replace_placeholders(sql, params)
+    Replaces the placeholders (:name) in the given SQL command with the values
+    from the Gda::ParameterList specified as the params argument.
+    * sql: a SQL command containing placeholders for values. 
+    * params: a list of values for the placeholders, as a Gda::ParameterList object.  
+    * Returns: the SQL string with all placeholders replaced, or nil on error.
+
+- ((<lrz>))

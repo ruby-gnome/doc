@@ -1,0 +1,55 @@
+= Managing errors
+{{link("tut-libgda-transactions", nil, "tut-libgda", "tut-libgda-full-example")}}
+
+You can manage errors using the Gda::Error class, and obtain objects with the method Gda::Connection#errors.
+
+A GDA error contains 4 distinct piece of information.
+
+:Gda::Error#description
+ A full description of the error. 
+
+:Gda::Error#number
+ Error's number.
+
+:Gda::Error#source
+ Error's source.
+
+:Gda::Error#sqlstate
+ SQL state.
+
+Here you can see an example of using this:
+
+  def show_errors(conn)
+      # Obtains errors list and loop for getting error information.
+      conn.errors.each do |error|
+          puts "Error no: #{error.number.to_s}"
+          puts "Description: #{error.description}"
+          puts "Source: #{error.source}"
+          puts "SQL state: #{error.sqlstate}"
+      end
+  end
+
+Usually, you can check errors when Gda::Connection query methods fail.  For instance:
+
+  # For Gda::Connection#execute_non_query:
+  if conn.execute_non_query(cmd) == -1
+      show_errors(conn)
+  end
+
+  # For Gda::Connection#execute_single_command:
+  dm = conn.execute_single_command(cmd)
+  if dm.nil?
+      show_errors(conn)
+  end
+
+  # For Gda::Connection#execute_command:
+  arr = conn.execute_command(cmd)
+  arr.each do |dm|
+      if dm.nil?
+          show_errors(conn)
+      end
+  end
+
+Also, it is possible to be notified with a GLib signal when an error occurs:
+
+  conn.signal_connect('error') { show_errors(conn) }

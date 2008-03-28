@@ -1,0 +1,83 @@
+= class Gda::DataSource
+Data sources.
+
+== Object Hierarchy
+* Object
+  * GLib::Boxed
+    * Gda::DataSource
+
+== Class Methods
+--- Gda::DataSource.datasources
+    This method returns a list of all data sources currently configured in the system, as an Array of Gda::DataSource objects.
+    * Returns: a list of all data sources currently configured in the system, as an Array of Gda::DataSource objects.
+
+--- Gda::DataSource.each { |datasource| ... }
+    Calls the block for each data source which is currently configured in the
+    system, passing a reference to a Gda::DataSource object as parameter.
+    * Returns: always nil.
+
+--- Gda::DataSource.find(name)
+    Gets a Gda::DataSource object givin its name.
+    * name: name of the data source to search to.  
+    * Returns: a Gda::DataSource reference if found, nil if not found.
+
+--- Gda::DataSource.model
+    Fills and returns a new Gda::DataModel object using information from all
+    data sources which are currently configured in the system.
+    Rows are separated in 6 columns: 'Name', 'Provider', 'Connection string',
+    'Description', 'Username' and 'Password'.
+    * Returns: a newly created Gda::DataModel object.
+
+--- Gda::DataSource.new(name, provider, cnc_string, description, username, password)
+    This method returns a newly created Gda::DataSource object.
+    * name: name of the data source to create. 
+    * cnc_string: connection string that will be used to connect to the data source. 
+    * username: user name to use for the connection (may be nil). 
+    * description: a short description of the data source. 
+    * password: password to use for the connection (may be nil).  
+    * provider: name of the provider to use. 
+    * Returns: a newly created Gda::DataSource object.
+
+== Instance Methods
+--- ==(an_other_datasource)
+    Checks if two Gda::DataSource objects are representing the same
+    data source.
+    * an_other_datasource: a Gda::DataSource object.  
+    * Returns: true on success, false on failure.
+
+--- cnc_string
+    This method returns the connection string this data source will be using to connect to the provider.
+    * Returns: the connection string this data source will be using to connect to the provider.
+
+--- description
+    This method returns a short description of the data source.
+    * Returns: a short description of the data source.
+
+--- name
+    This method returns the name of the data source.
+    * Returns: the name of the data source.
+
+--- password
+    This method returns the password that will be used for the connection,  or nil of no password has been specified.
+    * Returns: the password that will be used for the connection,  or nil of no password has been specified.
+
+--- provider
+    This method returns the name of the provider this data source is using.
+    * Returns: the name of the provider this data source is using.
+
+--- remove
+    Removes the data source from the libgda configuration.
+    * Returns: self.
+
+--- save
+    Saves the data source in the libgda configuration.
+    * Returns: self.
+
+--- username
+    This method returns the user name that will be used for the connection,  or nil of no user name has been specified.
+    * Returns: the user name that will be used for the connection,  or nil of no user name has been specified.
+
+== See Also
+((<Gda>)).
+
+- ((<lrz>))

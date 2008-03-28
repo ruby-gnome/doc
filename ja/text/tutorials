@@ -1,0 +1,13 @@
+= Ruby-GNOME2チュートリアル
+Ruby-GNOME2プロジェクトが提供するライブラリのチュートリアルです。
+
+:((<"Glade, Ruby/Libglade2 チュートリアル"|libglade2-tut>))
+ Glade(Glade-2.x)とRuby/Libglade2, Ruby/GTK2のチュートリアルです。
+
+:((<"Ruby/GTK2チュートリアル"|gtk2-tut>))
+ Ruby/GTK2のチュートリアルです。
+
+:((<"Ruby/GConf2チュートリアル"|gconf2-tut>))
+ Ruby/GConf2のチュートリアルです。
+
+英語版のチュートリアルは((<こちら|URL:../hiki.cgi?tutorials>))。

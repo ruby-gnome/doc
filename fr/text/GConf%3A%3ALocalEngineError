@@ -1,0 +1,5 @@
+= class GConf::LocalEngineError
+This error class gets raised whenever remote operations are performed on a local engine.
+
+== Super Class
+* GConf::Error

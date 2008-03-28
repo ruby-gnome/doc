@@ -1,0 +1,68 @@
+= Colas
+{{link("tut-gst-threads", nil, "tut-gst", nil)}}
+
+Una Gst::Queue es un elemento de filtro. Las colas pueden ser usadas para conectar dos elementos de forma que el flujo de datos se pueda almacenar en un buffer.
+
+Un buffer que sea recibido por una Cola no será enviado automáticamente al siguiente elemento enlazado, sino que se almacenará en un buffer. Se pasará el siguiente elemento tan pronto como se llame a Gst::Pad#pull en el puerto fuente de la cola.
+
+Las colas, por lo general, se usan en combinación con un Gst::Thread para proporcionar un enlace con los elementos hilo. Se puede tener un hilo alimentando los buffers de una Gst::Queue y otro hilo llamando continuamente a Gst::Pad#pull en la cola para alimentar sus elementos internos.
+
+Abajo hay una figura de un decodificador de dos hilos. Tenemos un hilo (el hilo principal de ejecución) leyendo datos de un fichero, y otro decodificando los datos.
+
+{{image_left("queue.png")}}
+{{br}}
+
+La implementación de la cola estándar GStreamer tiene algunas propiedades que pueden ser alteradas usando sus métodos accesores. Para asignar el número máximo de buffers que puede tener una cola a 30, hacemos:
+
+  queue.max_level = 30
+
+El siguiente reproductor MP3 muestra como crear la tubería anterior usando un hilo y una cola.
+
+  require 'gst'
+
+  Gst.init
+  unless ARGV.size == 1
+      $stderr.puts "Usage: "{__FILE__} <mp3 filename>"
+      exit 1
+  end
+
+  playing = true
+
+  # crea un nuevo hilo para almacenar los elementos
+  thread = Gst::Thread.new
+
+  # crea un nuevo contenedor para agrupar los elementos
+  bin = Gst::Bin.new
+
+  # crea el lector de disco
+  filesrc = Gst::ElementFactory.make("filesrc")
+  filesrc.location = ARGV.first
+  filesrc.signal_connect("eos") do
+      puts "have eos, quitting..."
+      playing = false
+  end
+
+  # un decodificador
+  decoder = Gst::ElementFactory.make("mad")
+
+  # una salida de audio
+  audiosink = Gst::ElementFactory.make("osssink")
+  
+  # crea la cola
+  queue = Gst::ElementFactory.make("queue")
+
+  # agrega los elementos al contenedor principal
+  thread.add(decode, audiosink)
+  bin.add(filesrc, queue, thread)
+
+  # conecta los elementos
+  filesrc >> queue >> decode >> audiosink
+
+  # comienza la reproducción
+  bin.play
+
+  while playing do
+      bin.iterate
+  end
+
+  bin.stop

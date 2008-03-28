@@ -1,0 +1,23 @@
+= Tutorial de Ruby/GTK2
+
+== Synopsis
+
+Este documento cobre a biblioteca Ruby/GTK2, a qual pode ser usada para construir interfaces de usuário gráficas (GUI) sob o ambiente de GNOME2.
+
+== Tabela de Conteúdo
+
+* ((<Introdução|tut-gtk-preface>))
+* ((<Iniciando|tut-gtk-intro>))
+  * ((<Olá Mundo|tut-gtk-helloworld>))
+  * ((<Teoria de "Callbacks" e Sinais|tut-gtk-signals>))
+  * ((<Eventos|tut-gtk-events>))
+  * ((<Olhando o Código do Olá Mundo|tut-gtk-helloworld-details>))
+* Continuando
+  * ((<Mais Sobre os Gerenciadores de Sinais|tut-gtk-signals-more>))
+  * ((<Um Olá Mundo Melhorado|tut-gtk-helloworld2>))
+* ((<Posicionando os Componentes|tut-gtk2-packing-intro>))
+  * ((<Teoria das Caixas de Posicionamento|tut-gtk2-packing-theory>))
+  * ((<Detalhes das Caixas|tut-gtk2-packing-box-details>))
+  * ((<Programa de Demonstração de Posicionamento|tut-gtk2-packing-demo>))
+  * ((<Usando Tabelas para Posicionamento|tut-gtk2-packing-tables>))
+  * ((<Exemplo de Posicionamento Usando Tabelas|tut-gtk2-packing-tables-demo>))

@@ -1,0 +1,80 @@
+= Ein aufgestocktes Hallo Welt
+{{link "tut-gtk-signals-more", nil, "tut-gtk", "tut-gtk2-packing-intro"}}
+
+{{image_right("helloworld2.png")}}
+
+Lassen Sie uns einen Blick auf ein etwas besseres "Hello World"-Programm werfen, das die Beispiele für Callback-Blöcke verdeutlicht.
+Das wird uns außerdem einen Einstieg in das nächste Thema liefern: Das Packen von Widgets.
+
+  #!/usr/bin/env ruby
+
+  # Initialisiert Ruby/GTK2, wie üblich.
+  require 'gtk2'
+
+  # Ein Klick auf einen Button wird diese Methode aufrufen.
+  def callback(widget)
+    # Zeigt die 'label'-Eigenschaft des Widgets an.
+    # Benutzen Sie die API-Referenz für weitere Informationen.
+    puts "Hallo nochmal - #{widget.label}(#{widget}) wurde geklickt."
+  end
+
+  # Erstellt das Fenster.
+  window = Gtk::Window.new
+
+  # Legt den Titel und die Rahmenbreite des Fensters fest.
+  window.title = "Hello Buttons"
+  window.border_width = 10
+
+  # Das Programm wird bei einem 'delete_event' sofort beendet.
+  window.signal_connect('delete_event') do
+    Gtk.main_quit
+    false
+  end
+
+  # Wir erstellen eine Box, in die wir die Widgets packen.
+  # Das wird in den folgenden Abschnitten ausführlicher erklärt.
+  # Die Box ist nicht wirklich sichtbar, sie wird nur benutzt, um die Widgets
+  # auszurichten.
+  box1 = Gtk::HBox.new(false, 0)
+
+  # Legt die Box in das Hauptfenster.
+  window.add(box1)
+
+  # Erstellt einen neuen Button mit dem Text "Button 1".
+  button1 = Gtk::Button.new("Button 1")
+
+  # Wenn der Button angeklickt wird, rufen wir die Callback-Methode
+  # mit einer Referenz auf "button 1" als Parameter auf.
+  button1.signal_connect( "clicked" ) do |w|
+    callback(w)
+  end
+
+  # Anstelle von window.add, packen wir diesen Button in die unsichtbare
+  # Box, die wir in das Fenster gepackt haben.
+  box1.pack_start(button1, true, true, 0)
+
+  # Wiederholen Sie diese Schritte, um einen zweiten Button zu erstellen.
+  button2 = Gtk::Button.new("Button 2")
+
+  # Ruft dieselbe Callback-Methode mit anderen Parametern auf
+  # und übergibt stattdessen eine Referenz auf "button 2".
+  button2.signal_connect("clicked") do |w|
+    callback(w)
+  end
+
+  # Packt den zweiten Button in die Box.
+  box1.pack_start(button2, true, true, 0)
+
+  # Sie können die show-Methode jedes Widgets folgendermaßen aufrufen:
+  #   button1.show
+  #   button2.show
+  #   box1.show
+  #   window.show 
+  window.show_all
+  Gtk.main
+
+Wie in dem ersten "Hello World" werden Sie bemerken, dass es dieses Mal keine einfache Möglichkeit gibt, das Programm zu beenden. Sie müssen den Window Manager oder die Kommandozeile benutzen, um das Programm zu beenden.
+
+Eine gute Übung für den Leser wäre es, einen dritten "Beenden"-Button, der das Programm beendet.
+
+Möglicherweise denken Sie daran, die Optionen von Gtk::Box#pack_start auszuprobieren, während Sie den nächsten Abschnitt lesen. Versuchen Sie, das Fenster zu vergrößern und beobachten Sie sein Verhalten.

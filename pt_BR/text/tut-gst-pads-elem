@@ -1,0 +1,72 @@
+= Pegando "Pads" de um Elemento
+{{link("tut-gst-plugins", nil, "tut-gst", "tut-gst-pads-caps")}}
+
+Como vímos no capítulo anterior (Gst::Element), os "pads" (Gst::Pad) são os links dos elementos com o mundo exterior.
+
+O tipo específico de multimídia que o elemento pode lidar será exposto pelos "pads". A descrição desse tipo de mídia é feita com as capacidades (Gst::Caps).
+
+Uma vez que você tenha criado um elemento, você pode conseguir um de seus "pads" com:
+
+  src_pad = element.get_pad("src")
+
+Esse método pegará o "pad" de nome "src" do elemento fornecido.
+
+Alternativamente, voce pode pedir uma lista de "pads" do elemento. O exemplo de código a seguir imprimirá os nomes de todos os "pads" de um elemento. 
+
+  element.each_pad do |pad|
+    puts "Nome do pad: " + pad.name
+  end
+
+== "Pads" Dinãmicos
+
+Alguns elementos podem não ter seus "pads" quando eles são criados. Isso pode acontecer, por exemplo, com um sistema "demultiplexer" de MPEG2. O "demultiplexer" criará seus "pads" em tempo de execução, quando detectar os fluxos elementários diferentes no fluxo de sistema de MPEG2.
+
+Ao executar (({gst-inspect mpegdemux})) será mostrado que o elemento tem apenas um "pad": um "pad" de entrada ("sink"). Os outros "pads" estão inativos como você pode ver nos "padtemplates" da propriedade "Existe: às vezes" ('Exists: Sometimes').
+Dependendo do tipo de arquigo de MPEG2 que você toque, os "pads" são criados. Nós veremos que isso é muito importante quando você for criar "pipelines" dinâmicos mais tarde neste manual.
+
+Você pode anexar um sinal a um elemento para informar você quando o elemento criou um "pad" de um dos seus "padtemplates". O segmento de código a seguir é um exemplo de como fazer isso: 
+
+  # Cria o "pipeline" e faz algo útil
+  pipeline = Gst::Pipeline.new
+  ...
+
+  mpeg2parser = Gst::ElementFactory.make("mpegdemux")
+  mpeg2parser.signal_connect("new_pad") do |parser, pad|
+      puts "um novo pad #{pad.name} foi criado!"
+      pipeline.pause
+      if pad.name == "private_stream_1.0"
+          # configura um "pipeline" decodificador de AC3
+          ...
+
+          # conecta o pad ao "pipeline" decodificador de AC3
+          ...
+      end
+  end
+
+  # inicia o "pipeline"
+  pipeline.play
+  ...
+
+== "Request Pads"
+
+Um elemento pode também ter "request pads". Esses "pads" não são criados automaticamente, mas são apenas criados sob demanda. Isso é muito útil para elementos "multiplexers", agregadores ("aggregators") e "tee".
+
+O elemento "tee", por exemplo, tem um "pad" de entrada e um "request padtemplate" para os "pads" de saída. Sempre que um elemento quiser pegar um "pad" de saída de um elemento "tee", ele tem que pedir o "pad".
+
+O segmento de código a seguir pode ser usado para pegar um "pad" de um eelemento "tee". Após o "pad" ser pedido, ele pode ser usado para conectar um outro elemento a ele. 
+
+  element = Gst::ElementFactory.make("tee")
+  pad = element.request_pad("src%d")
+  puts "novo pad: " + pad.name
+
+O método Gst::Element#request_pad pode ser usado para pegar um "pad" do elemento baseado no "nome do template" de "padtemplate".
+
+É também possível pedir um "pad" que seja compatível com outro "pad template". Isso é bastante útil se você quiser conectar um elemento a um elemento "multiplexer" e você precisa pedir um "pad" que seja compatível. O Gst::Element#get_compatible_pad é usado para pedir um "pad" compatível, como mostrado no próximo exemplo.
+
+  element = Gst::ElementFactory.make("tee")
+  mad = Gst::ElementFactory.make("mad")
+
+  templ = mad.get_pad_template_by_name("sink")
+
+  pad = element.get_compatible_pad(templ)
+  puts "novo pad: " = pad.name

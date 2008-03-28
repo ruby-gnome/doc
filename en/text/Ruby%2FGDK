@@ -1,0 +1,70 @@
+= Ruby/GDK API Reference
+
+== Table of Contents
+* ((<"Ruby/GDK classes/modules index and documented status"|api-gdk-index>))
+
+* ((<Gdk>)) - General module. Library initialization and miscellaneous functions.
+* ((<Multi-head Support Overview|api-gdk-multihead>)) of Gdk::Display and Gdk::Screen.
+* Gdk::Display - Controls the keyboard/mouse pointer grabs and a set of ((<Gdk::Screen>))s.
+* Gdk::DisplayManager - Maintains a list of all open ((<Gdk::Display>))s.
+* Gdk::Screen - Object representing a physical screen.
+* Points, Rectangles, and Regions - Simple graphical data types.
+   * Gdk::Rectangle
+   * Gdk::Region
+* ((<Gdk::GC>)) - Graphics Contexts. Objects to encapsulate drawing properties
+* Gdk::Drawable - Drawing Primitives. Functions for drawing points, lines, arcs, and text.
+* Gdk::Pixmap - Bitmaps and Pixmaps. Offscreen drawables.
+* ((<Gdk::RGB>)) - Renders RGB, grayscale, or indexed image data to a Gdk::Drawable.
+* Gdk::Image - Images. A client-side area for bit-mapped graphics.
+* Gdk::Pixbuf - Pixbufs. Functions for rendering pixbufs on drawables.
+* Colormaps and Colors - Manipulation of colors and colormaps.
+   * Gdk::Color
+   * Gdk::Colormap
+* Gdk::Visual - Low-level display hardware information.
+* Gdk::Cursor - Standard and pixmap cursors.
+* Windows - Onscreen display areas in the target window system
+   * Gdk::Window
+   * Gdk::Geometry
+   * Gdk::WindowAttr
+* Events - Functions for handling events from the window system
+   * Gdk::Event
+     * Gdk::EventAny
+     * Gdk::EventKey
+     * Gdk::EventButton
+     * Gdk::EventScroll
+     * Gdk::EventMotion
+     * Gdk::EventExpose
+     * Gdk::EventVisibility
+     * Gdk::EventCrossing
+     * Gdk::EventFocus
+     * Gdk::EventConfigure
+     * Gdk::EventProperty
+     * Gdk::EventSelection
+     * Gdk::EventDND
+     * Gdk::EventProximity
+     * Gdk::EventClient
+     * Gdk::EventNoExpose
+     * Gdk::EventWindowState
+     * Gdk::EventSetting
+     * Gdk::EventOwnerChange
+* Key Values - Functions for manipulating keyboard codes.
+  * Gdk::Keymap
+  * Gdk::Keyval
+* Gdk::Selection - Functions for transfering data via the X selection mechanism.
+* Gdk::DragContext - Drag and Drop. Functions for controlling drag and drop handling.
+* Properties and Atoms - Functions to manipulate properties on windows.
+  * Gdk::Atom
+  * Gdk::Property
+* Gdk::Threads - Functions for using GDK in multi-threaded programs.
+* Gdk::Input - Callbacks on file descriptors.
+* Input Devices. Functions for handling extended input devices.
+  * Gdk::Device
+  * Gdk::TimeCoord
+* Pango Interaction - Using Pango in GDK.
+  * Gdk::Pango
+  * Gdk::PangoRenderer
+  * Gdk::PangoAttrEmbossed
+  * Gdk::PangoAttrStipple
+* Cairo Interaction - Functions to support using Cairo
+  * Cairo::Context
+* Gdk::X11 - X Window System Interaction. X backend-specific functions.

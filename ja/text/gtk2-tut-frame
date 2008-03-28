@@ -1,0 +1,61 @@
+= フレーム
+フレームは一つまたは一グループのウィジェットを枠で囲むことができ，枠にはオプションでラベルを付けることができる．
+ラベルの位置と枠のスタイルは必要に応じて変えられる．
+
+フレームは次のメソッドで作成する：
+
+  Gtk::Frame.new(label = nil)
+
+ラベルはデフォルトでフレームの左上端に置かれる．
+引数labelを指定しなかった場合はラベルは表示されない．
+ラベルのテキストを変更するには次のメソッドを使う：
+
+  Gtk::Frame#label=(label)
+  Gtk::Frame#set_label(label)
+
+ラベルの位置を変更するには：
+
+  Gtk::Frame#set_label_align(xalign, yalign)
+
+引数xalignとyalignは0.0〜1.0までの値を取る．
+xalignはフレームの左枠からのラベルの位置を示す．
+yalignは現在使われていない．
+xalignのデフォルト値は0.0で，ラベルはフレームの左端に置かれる．
+
+フレームを囲む枠のスタイルを変更するには：
+
+  Gtk::Frame#shadow_type=(type)
+  Gtk::Frame#set_shadow_type(type)
+
+引数typeは以下のうち一つの値を取る．
+
+* Gtk::SHADOW_NONE
+* Gtk::SHADOW_IN
+* Gtk::SHADOW_OUT
+* Gtk::SHADOW_ETCHED_IN  ←デフォルト
+* Gtk::SHADOW_ETCHED_OUT
+
+{{image_right "frame.png"}}{{br}}
+
+サンプル：
+
+  #! /usr/bin/env ruby
+  
+  require 'gtk2'
+  
+  window = Gtk::Window.new
+  window.title = "Frame Example"
+  window.signal_connect("destroy") {Gtk.main_quit}
+  window.set_size_request(300, 300)
+  window.border_width = 10
+  
+  frame = Gtk::Frame.new
+  window.add(frame)
+  
+  frame.label = "GTK Frame Widget"
+  frame.set_label_align(1.0, 0.0)
+  frame.shadow_type = Gtk::SHADOW_ETCHED_OUT
+  
+  window.show_all
+  
+  Gtk.main

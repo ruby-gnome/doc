@@ -1,0 +1,20 @@
+= Guida all'Installazione 
+
+== FreeBSD
+
+Il modo più semplice di installare Ruby-GNOME2 su FreeBSD è probabilmente tramite la collezione dei Port .
+
+Eseguite questi comandi:
+
+  cd /usr/ports/x11/ruby-gnome2-all
+  make all install
+
+Non dimenticate di sincronizzare il vostro albero dei Port prima di farlo!  
+
+Per maggiori informazioni a riguardo, consultate la sezione collegata nel  ((<FreeBSD Handbook|URL:http://www.freebsd.org/doc/en_US.ISO8859-1/books/handbook/ports.html>)).
+
+==== Autore
+* ((<Laurent Sansonetti|lrz>))
+
+==== ChangeLog
+* 2003/10/04 Traduzione Iniziale ((<Gabriele>))

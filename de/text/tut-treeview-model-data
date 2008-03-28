@@ -1,0 +1,14 @@
+= Wie die Daten in einem Store aufgebaut sind
+{{link "tut-treeview-model", "tut-treeview-model", "tut-treeview", "tut-treeview-model-reference"}}
+
+Ein Modell (Data Store) besteht aus Spalten und Zeilen. Während ein Gtk::TreeView-Widget jede Zeile des Modells als eine Zeile in der Ansichtskomponente darstellt, dürfen die Spalten des Modells nicht mit den Spalten der Ansichtskomponente verwechselt werden. Eine Spalte in dem Modell repräsentiert ein bestimmtes Datenfeld mit einem Wert von einem festgelegten Datentyp. Sie müssen wissen, welche Art von Daten Sie in dem Modell ablegen möchten, wenn Sie das Modell (Gtk::ListStore oder Gtk::TreeStore) erstellen. Sie können später keine zusätzlichen Felder mehr einfügen.
+
+Ein Beispiel: Wir möchten eine Dateiliste anzeigen. Dazu würden wir ein Gtk::ListStore-Objekt mit zwei Feldern erzeugen: Ein Feld enthält den Dateinamen (üblicherweise einen String), während das zweite die Dateigröße enthält (üblicherweise ein Integerwert). Der Dateiname wird dazu in der Spalte mit dem Index 0 eingefügt und die Dateigröße dementsprechend in der Spalte mit dem Index 1. Für jede Datei müssen wir eine neue Zeile in dem Modell einfügen und dessen Felder mit dem Dateinamen und der Dateigröße beschreiben.
+
+Die Ruby-Klasse (Object, Integer, Float, String, Hash, Gdk::Pixbuf, usw.) wird verwendet, um zu indizieren, um welchen Datentyp es sich bei den Inhalten einer Spalte handeln wird.
+
+Hier ist ein Beispiel für die Erstellung von einem Gtk::ListStore-Objekt:
+
+ list_store = Gtk::ListStore.new(String, Integer)
+
+Dieser Code erstellt ein neues Listenmodell mit zwei Spalten. Die Spalte mit dem Index 0 enthält einen String un die Spalte mit dem Index 1 speichert einen Integerwert für jede Zeile in dem Modell. An diesem Punkt gibt es in dem Modell natürlich noch keine Zeilen. Bevor wir mit dem Hinzufügen von Zeilen anfangen, werden wir einen Blick auf die verschiedenen Wege zum Ansprechen einer bestimmten Zeile des Modells werfen.

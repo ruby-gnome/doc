@@ -1,0 +1,52 @@
+= class Gda::DataModelHash
+An implementation of Gda::DataModel based on a hash table.
+
+== Object Hierarchy
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Gda::DataModel
+        * Gda::DataModelHash
+
+== Class Methods
+--- Gda::DataModelHash.new(n_column)
+    This method returns a reference to a newly created Gda::DataModelHash object.
+    * n_column: number of columns for rows in this data model.  
+    * Returns: a reference to a newly created Gda::DataModelHash object.
+
+== Instance Methods
+--- clear
+    Frees all the rows inserted in this model.
+    * Returns: self.
+
+--- get_row(rownum)
+    Retrieves a row from the underlying hash table.
+    * rownum: a row number.  
+    * Returns: a reference to a Gda::Row or nil if the requested row is not in the hash table.
+
+--- get_value_at(colnum, rownum)
+    Retrieves the value at a specified column and row.
+    * rownum: row number (starting from 0).  
+    * colnum: column number (starting from 0). 
+    * Returns: a reference to a Gda::Value object if successful, nil otherwise.
+
+--- insert_row(rownum, row)
+    Inserts a row in the data model.
+    * rownum: the number of the row. 
+    * row: the row to insert, as a Gda::Row object.  
+    * Returns: self.
+
+--- n_columns=(n_columns)
+    Sets the number of columns for rows inserted in this model.
+    * n_columns: number of columns for rows this data model should use (must be greated than or equal to 0).  
+    * Returns: the given parameter 'n_columns'.
+
+--- set_n_columns(n_columns)
+    Sets the number of columns for rows inserted in this model.
+    * n_columns: number of columns for rows this data model should use (must be greated than or equal to 0).  
+    * Returns: self.
+
+== See Also
+((<Gda>)).
+
+- ((<lrz>))

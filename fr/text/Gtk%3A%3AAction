@@ -1,0 +1,345 @@
+= class Gtk::Action
+Actions represent operations that the user can be perform, along with some information how it should be presented in the interface. Each action provides methods to create icons, menu items and toolbar items representing itself. 
+
+As well as the callback that is called when the action gets activated, the following also gets associated with the action: 
+* a name (not translated, for path lookup)
+* a label (translated, for display)
+* an accelerator
+* whether label indicates a stock id
+* a tooltip (optional, translated)
+* a toolbar label (optional, shorter than label)
+
+The action will also have some state information: 
+
+* visible (shown/hidden)
+* sensitive (enabled/disabled)
+
+Apart from regular actions, there are toggle actions, which can be toggled between two states and radio actions, of which only one in a group can be in the "active" state. Other actions can be implemented as Gtk::Action subclasses. 
+
+Each action can have one or more proxy menu item, toolbar button or other proxy widgets. Proxies mirror the state of the action (text label, tooltip, icon, visible, sensitive, etc), and should change when the action's state changes. When the proxy is activated, it should activate its action. 
+
+== Object Hierarchy
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Gtk::Action
+
+== Class Methods
+--- Gtk::Action.new(name, label, tooltip, stock_id)
+    Creates a new Gtk::Action object. To add the action to a Gtk::ActionGroup and set the accelerator for the action, call Gtk::ActionGroup#add_action. See the section called “UI Definitions” for information on allowed action names. ((* Since 2.4 *))
+    * name: A unique name for the action (String)
+    * label: the label displayed in menu items and on buttons (String)
+    * tooltip: a tooltip for the action (String)
+    * stock_id: the stock icon to display in widgets representing the action  (String)
+    * Returns: a new Gtk::Action  
+
+== Instance Methods
+--- name
+    Gets the unique name for the action.  ((* Since 2.4 *))
+    * Returns: A unique name for the action.
+--- name=(name)
+    Sets the unique name for the action.  ((* Since 2.4 *))
+    * name: A unique name for the action.
+    * Returns: name
+--- set_name(name)
+    Same as Gtk::Action#name=. ((* Since 2.4 *))
+    * name: A unique name for the action.
+    * Returns: self
+
+--- sensitive?
+    Gets the value whether the action is enabled or not. ((* Since 2.4 *))
+    * Returns: true if the action is enabled.
+--- sensitive
+    Returns whether the action itself is sensitive. Note that this doesn't necessarily mean effective sensitivity. See Gtk::Action#sensitive? for that. ((* Since 2.4 *))
+    * Returns: true if the action itself is sensitive.  
+--- sensitive=(sensitive)
+    Sets the value whether the action is enabled or not. ((* Since 2.6 *))
+    * sensitive: true if the action is enabled.
+    * Returns: sensitive
+--- set_sensitive(sensitive)
+    Same as Gtk::Action#sensitive=. ((* Since 2.6 *))
+    * sensitive: true if the action is enabled.
+    * Returns: self
+
+--- visible?
+    Gets the value whether the action is visible or not. ((* Since 2.4 *))
+    * Returns: true if the action is visible.
+--- visible
+    Returns whether the action itself is visible. Note that this doesn't necessarily mean effective visibility. See Gtk::Action#visible? for that. ((* Since 2.4 *))
+    * action: the action object  
+    * Returns: true if the action itself is visible. 
+--- visible=(visible)
+    Sets the value whether the action is visible or not.  ((* Since 2.6 *))
+    * visible: true if the action is visible.
+    * Returns: visible
+--- set_visible(visible)
+    Same as Gtk::Action#visible=.  ((* Since 2.6 *))
+    * visible: true if the action is visible. 
+    * Returns: self
+
+--- activate
+    Emits the "activate" signal on the specified action, if it isn't insensitive. This gets called by the proxy widgets when they get activated.   ((* Since 2.4 *))
+    It can also be used to manually activate an action.
+    * Returns: self
+
+--- create_icon(icon_size)
+    This method is intended for use by action implementations to create icons displayed in the proxy widgets. ((* Since 2.4 *))
+    * icon_size: the size of the icon that should be created(Gtk::IconSize). 
+    * Returns: a Gtk::Widget that displays the icon for this action.  
+
+--- create_menu_item
+    Creates a menu item widget that proxies for the given action.  ((* Since 2.4 *))
+    * Returns: a menu item(Gtk::ImageMenuItem) connected to the action.  
+
+--- create_tool_item
+    Creates a toolbar item widget that proxies for the given action.  ((* Since 2.4 *))
+    * Returns: a toolbar item(Gtk::ToolButton) connected to the action.  
+
+--- connect_proxy(proxy)
+    Connects a widget to an action object as a proxy. Synchronises various properties of the action with the widget (such as label text, icon, tooltip, etc), and attaches a callback so that the action gets activated when the proxy widget does. 
+    If the widget is already connected to an action, it is disconnected first. ((* Since 2.4 *))
+    * proxy : the proxy Gtk::Widget  
+    * Returns: self
+--- disconnect_proxy(proxy)
+    Disconnects a proxy widget from an action. Does not destroy the widget, however. ((* Since 2.4 *))
+    * proxy : the proxy Gtk::Widget  
+    * Returns: self
+
+--- proxies
+    Returns the proxy widgets for an action. ((* Since 2.4 *))
+    * Returns : an Array of proxy widgets
+
+--- connect_accelerator
+    Installs the accelerator for action if action has an accel path and group. See Gtk::Action#accel_path= and Gtk::Action#accel_group=. 
+    Since multiple proxies may independently trigger the installation of the accelerator, the action counts the number of times this method has been called and doesn't remove the accelerator until Gtk::Action#disconnect_accelerator has been called as many times.  ((* Since 2.4 *))
+    * Returns: self
+--- disconnect_accelerator
+    Undoes the effect of one call to Gtk::Action#connect_accelerator. ((* Since 2.4 *))
+    * Returns: self
+
+--- block_activate_from(proxy)
+    Disables calls to the Gtk::Action#activate method by signals on the given proxy widget. This is used to break notification loops for things like check or radio actions.
+    This method is intended for use by action implementations.  ((* Since 2.4 *))
+    * proxy: a proxy Gtk::Widget  
+    * Returns: self
+--- unblock_activate_from
+    Re-enables calls to the Gtk::Action#activate method by signals on the given proxy widget. This undoes the blocking done by Gtk::Action#block_activate_from. 
+    This method is intended for use by action implementations.  ((* Since 2.4 *))
+    * proxy: a proxy Gtk::Widget  
+    * Returns: self
+
+--- accel_path
+    Returns the accel path for this action.
+    * Returns: the accel path for this action, or nil if none is set. ((*Since 2.6*))
+--- accel_path=(accel_path)
+    Sets the accel path for this action. All proxy widgets associated with the action will have this accel path, so that their accelerators are consistent. ((* Since 2.4 *))
+    * accel_path: the accelerator path  
+    * Returns: accel_path
+--- set_accel_path(accel_path)
+    Same as Gtk::Action#accel_path=.  ((* Since 2.4 *))
+    * accel_path: the accelerator path  
+    * Returns: self
+
+--- accel_closure
+    Returns the accel closure for this action. ((*Since 2.8*))
+    * Returns: the accel closure for this action. The returned closure is owned by GTK+ must and not be modified.
+
+--- accel_group=(accel_group)
+    Sets the Gtk::AccelGroup in which the accelerator for this action will be installed.  ((* Since 2.4 *))
+    * accel_group: a Gtk::AccelGroup or nil 
+    * Returns: accel_group
+--- set_accel_group(accel_group)
+    Same as Gtk::Action#accel_group=.
+    * accel_group: a Gtk::AccelGroup or nil 
+    * Returns: self
+
+--- action_group
+    Gets the Gtk::ActionGroup which Gtk::Action is associated with, or nil (for internal use).  ((* Since 2.4 *))
+    * Returns: The Gtk::ActionGroup or nil
+--- action_group=(action_group)
+    Sets the  Gtk::ActionGroup which Gtk::Action is associated with, or nil (for internal use).  ((* Since 2.4 *))
+    * action_group: The Gtk::ActionGroup or nil
+    * Returns: action_group
+--- set_action_group(action_group)
+    Same as Gtk::Action#action_group=.  ((* Since 2.4 *))
+    * action_group: The Gtk::ActionGroup or nil
+    * Returns: self
+
+--- hide_if_empty?
+    Sets the value whether empty menu proxies for this action are hidden or not.  ((* Since 2.4 *))
+    * Returns: true if empty menu proxies for this action are hidden
+--- hide_if_empty=(hide_if_empty)
+    Sets the value whether empty menu proxies for this action are hidden or not.
+    * hide_if_empty: true if empty menu proxies for this action are hidden.  ((* Since 2.4 *))
+    * Returns: hide_if_empty
+--- set_hide_if_empty(hide_if_empty)
+    Same as Gtk::Action#hide_if_empty=.  ((* Since 2.4 *))
+    * hide_if_empty: true if empty menu proxies for this action are hidden.
+    * Returns: self
+
+--- important?
+    Gets the value whether the action is considered important. When true, toolitem proxies for this action show text in Gtk::Toolbar::BOTH_HORIZ mode. or not.  ((* Since 2.4 *))
+    * Returns: true if the action is considered important
+--- important=(important)
+    Sets the value whether the action is considered important. When true, toolitem proxies for this action show text in Gtk::Toolbar::BOTH_HORIZ mode. or not.  ((* Since 2.4 *))
+    * important: true if the action is considered important
+    * Returns: important
+--- set_important(important)
+    Same as Gtk::Action#important=.  ((* Since 2.4 *))
+    * important: true if the action is considered important
+    * Returns: self
+
+--- label
+    Gets the label used for menu items and buttons that activate this action.  ((* Since 2.4 *))
+    * Returns: The label used for menu items and buttons that activate this action.
+--- label=(label)
+    Sets the label used for menu items and buttons that activate this action.  ((* Since 2.4 *))
+    * label: The label used for menu items and buttons that activate this action.
+    * Returns: label
+--- set_label(label)
+    Same as Gtk::Action#label=.  ((* Since 2.4 *))
+    * label: The label used for menu items and buttons that activate this action.
+    * Returns: self
+
+--- short_label
+    Gets the shorter label that may be used on toolbar buttons.  ((* Since 2.4 *))
+    * Returns: The shorter label that may be used on toolbar buttons.
+--- short_label=(short_label)
+    Sets the shorter label that may be used on toolbar buttons.  ((* Since 2.4 *))
+    * short_label: A shorter label that may be used on toolbar buttons.
+    * Returns: short_label
+--- set_short_label(short_label)
+    Same as Gtk::Action#short_label=.  ((* Since 2.4 *))
+    * short_label: A shorter label that may be used on toolbar buttons.
+    * Returns: self
+
+--- stock_id
+    Gets the  stock icon displayed in widgets representing this action.  ((* Since 2.4 *))
+    * Returns: The stock icon(Gtk::Stock) displayed in widgets representing this action.
+--- stock_id=(stock_id)
+    Sets the  stock icon(Gtk::Stock) displayed in widgets representing this action.  ((* Since 2.4 *))
+    * stock_id: The stock icon displayed in widgets representing this action.
+    * Returns: stock_id
+--- set_stock_id(stock_id)
+    Same as Gtk::Action#stock_id=.  ((* Since 2.4 *))
+    * stock_id: The stock icon(Gtk::Stock) displayed in widgets representing this action.
+    * Returns: self
+
+--- tooltip
+    Gets the tooltip for this action..  ((* Since 2.4 *))
+    * Returns: The tooltip for this action.
+--- tooltip=(tooltip)
+    Sets the A tooltip for this action.  ((* Since 2.4 *))
+    * tooltip: A tooltip for this action.
+    * Returns: tooltip
+--- set_tooltip(tooltip)
+    Same as Gtk::Action#tooltip=.  ((* Since 2.4 *))
+    * tooltip: A tooltip for this action.
+    * Returns: self
+
+--- visible_horizontal?
+    Gets the value whether the toolbar item is visible when the toolbar is in a horizontal orientation or not. ((* Since 2.4 *))
+    * Returns: true if the toolbar item is visible when the toolbar is in a horizontal orientation. 
+--- visible_horizontal=(visible_horizontal)
+    Sets the value whether the toolbar item is visible when the toolbar is in a horizontal orientation or not.  ((* Since 2.4 *))
+    * visible_horizontal: true if the toolbar item is visible when the toolbar is in a horizontal orientation.
+    * Returns: visible_horizontal
+--- set_visible_horizontal(visible_horizontal)
+    Same as Gtk::Action#visible_horizontal=. ((* Since 2.4 *))
+    * visible_horizontal: true if the toolbar item is visible when the toolbar is in a horizontal orientation.
+    * Returns: self
+
+--- visible_vertical?
+    Gets the value whether the toolbar item is visible when the toolbar is in a vertical orientation or not. ((* Since 2.4 *))
+    * Returns: true if the toolbar item is visible when the toolbar is in a vertical orientation.
+--- visible_vertical=(visible_vertical)
+    Sets the value whether the toolbar item is visible when the toolbar is in a vertical orientation or not. ((* Since 2.4 *))
+    * visible_vertical: true if the toolbar item is visible when the toolbar is in a vertical orientation.
+    * Returns: visible_vertical
+--- set_visible_vertical(visible_vertical)
+    Same as Gtk::Action#visible_vertical=. ((* Since 2.4 *))
+    * visible_vertical: true if the toolbar item is visible when the toolbar is in a vertical orientation.
+    * Returns: self
+
+--- icon_name
+    Gets the  name of the icon from the icon theme. ((* Since 2.10 *))
+    * Returns: The name of the icon from the icon theme
+--- icon_name=(icon_name)
+    Sets the  name of the icon from the icon theme. ((* Since 2.10 *))
+    * icon_name: The name of the icon from the icon theme
+    * Returns: icon_name
+--- set_icon_name(icon_name)
+    Same as icon_name=. ((* Since 2.10 *))
+    * icon_name: The name of the icon from the icon theme
+    * Returns: self
+
+
+== Properties
+--- action-group: Gtk::ActionGroup (Read/Write)
+    This Gtk::Action is associated with, or nil (for internal use). ((* Since 2.4 *))
+
+--- hide-if-empty: true or false (Read/Write)
+    When true, empty menu proxies for this action are hidden. ((* Since 2.4 *))
+    * Default value: true
+
+--- icon-name: String (Read/Write)
+    The name of the icon from the icon theme
+    * Default value: nil
+
+--- is-important: true or false (Read/Write)
+    Whether the action is considered important. When true, toolitem proxies for this action show text in Gtk::Toolbar::BOTH_HORIZ mode. ((* Since 2.4 *))
+    * Default value: false
+
+--- label: String (Read/Write)
+    The label used for menu items and buttons that activate this action. ((* Since 2.4 *))
+    * Default value: nil
+
+--- name: String (Read/Write)
+    A unique name for the action. ((* Since 2.4 *))
+    * Default value: nil
+
+--- sensitive: true or false (Read/Write)
+    Whether the action is enabled. ((* Since 2.4 *))
+    * Default value: true
+
+--- short-label: String (Read/Write)
+    A shorter label that may be used on toolbar buttons. ((* Since 2.4 *))
+    * Default value: nil
+
+--- stock-id: String (Read/Write)
+    The stock icon displayed in widgets representing this action. ((* Since 2.4 *))
+    * Default value: nil
+
+--- tooltip: String (Read/Write)
+    A tooltip for this action. ((* Since 2.4 *))
+    * Default value: nil
+
+--- visible: true or false (Read/Write)
+    Whether the action is visible. ((* Since 2.4 *))
+    * Default value: true
+
+--- visible-horizontal: true or false (Read/Write)
+    Whether the toolbar item is visible when the toolbar is in a horizontal orientation. ((* Since 2.4 *))
+    * Default value: true
+
+--- visible-overflown: true or false (Read/Write)
+    When true, toolitem proxies for this action are represented in the toolbar overflow menu. ((* Since 2.6 *))
+    * Default value: true
+
+--- visible-vertical: true or false (Read/Write)
+    Whether the toolbar item is visible when the toolbar is in a vertical orientation. ((* Since 2.4 *))
+    * Default value: true
+
+== Signals
+--- activate: self  (Run first / No recursion)
+    The "activate" signal is emitted when the action is activated. ((* Since 2.4 *))
+     * self: 
+
+== See Also
+Gtk::ActionGroup, Gtk::UIManager 
+
+
+== ChangeLog
+2007-01-30: Apply 2.10. - ((<Masao>))
+
+- ((<Masao>))

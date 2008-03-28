@@ -1,0 +1,55 @@
+= Details of Boxes
+{{link "tut-gtk2-packing-theory", "tut-gtk2-packing-intro", "tut-gtk", "tut-gtk2-packing-demo"}}
+
+Because of this flexibility, packing boxes in GTK can be confusing at first. There are a lot of options, and it's 
+not immediately obvious how they all fit together. In the end, however, there are basically five different styles.
+
+{{image_left("packbox1.png")}}{{br}}
+
+Each line contains one horizontal box (hbox) with several buttons. The call of Gtk::Box#pack is shorthand for the 
+call to pack each of the buttons into the hbox. Each of the buttons is packed into the hbox the same way (i.e., 
+same arguments to the Gtk::Box#pack_start method).
+
+The Gtk::Box#pack_start method looks like this:
+
+  Gtk::Box#pack_start(child, expand, fill, padding) 
+
+The first argument is the object you are packing the into the box. The objects will all be buttons for now, so 
+we'll be packing buttons into boxes.
+
+The expand argument to Gtk::Box#pack_start and Gtk::Box#pack_end controls how the widgets are laid out in 
+the box:
+
+:If expand is true
+ widgets will fill in all the extra space in the box so the box is automatically expanded to fill the area 
+ allotted to it;
+
+:If expand is false
+ the box is shrunk to just fit the widgets.
+
+Setting expand to false will allow you to do right and left justification of your widgets. Otherwise, they will 
+all expand to fit into the box, and the same effect could be achieved by using only one of Gtk::Box#pack_start or Gtk::Box#pack_end.
+ 
+The fill argument controls where the space given to the object by the expand option is allocated:
+
+:If fill is true
+ the object is extented to fit the allocated space;
+:If fill is false
+ the object is left with its original size, and extra padding is added around it.
+
+Note that the fill argument only has an effect if the expand argument is true.
+
+When creating a new horizontal box, it looks like this:
+
+  Gtk::HBox.new(homogeneous, spacing) 
+
+The homogeneous argument to Gtk::HBox.new (and the same for Gtk::VBox.new) controls whether each object in the box has the same size (i.e., the same width in an hbox, or the same height in a vbox). If it is set, the Gtk::Box#pack_start or Gtk::Box#pack_end methods work essentially as if the expand argument was always set to true.
+
+What's the difference between spacing (set when the box is created) and padding (set when elements are packed)? 
+Spacing is added between objects, and padding is added on either side of an object. The following screenshot should 
+make it clearer:
+
+{{image_left("packbox2.png")}}{{br}}
+
+Following is the code used to create the above screenshots. It is commented fairly heavily so I hope you won't have 
+any problems following it. Just play with it.

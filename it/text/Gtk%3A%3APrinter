@@ -1,0 +1,186 @@
+= class Gtk::Printer
+A Gtk::Printer object represents a printer. You only need to deal directly with printers if you use the non-portable Gtk::PrintUnixDialog API.
+
+A Gtk::Printer allows to get status information about the printer, such as its description, its location, the number of queued jobs, etc. Most importantly, a Gtk::Printer object can be used to create a Gtk::PrintJob object, which lets you print to the printer.
+
+Printing support was added in GTK+ 2.10.
+
+== Object Hierarchy
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Gtk::Printer
+
+== Included Modules
+* Comparable
+
+== Class Methods
+--- Gtk::Printer.each(wait = false){|printer| ... }
+     Iterates all ((<Gtk::Printer>))s.  ((* Since 2.10 *))
+     * {|printer| ...}: a block to iterate printers.
+       * printer: an Gtk::Printer
+       * Returns: true if the enumeration is stopped, false is continue.
+     * wait: if true, wait in a recursive mainloop until all
+       printers are enumerated; otherwise return early
+     * Returns: self
+
+--- Gtk::Printer.printers(wait = false)
+    Retrives Printers. ((* Since 2.10 *))
+     * wait: if true, wait in a recursive mainloop until all
+       printers are enumerated; otherwise return early
+    * Returns: An Array of ((<Gtk::Printer>))s.
+
+--- Gtk::Printer.new(name, backend, virtual)
+     Creates a new Gtk::Printer. ((* Since 2.10 *))
+
+     * name: the name of the printer
+     * backend: a Gtk::PrintBackend
+     * virtual: whether the printer is virtual
+     * Returns: a new Gtk::Printer
+
+== Instance Methods
+--- <=>(other)
+     Compares two printers. ((* Since 2.10 *))
+
+     * Returns: 0 if the printer match, a negative value if
+       ((|self|)) < ((|other|)), or a positive value if
+       ((|self|)) > ((|other|))
+
+--- active?
+     Returns whether the printer is currently active
+     (i.e. accepts new jobs). ((* Since 2.10 *))
+
+     * Returns: true if self is active
+
+--- default?
+     Returns whether the printer is the default printer. ((* Since 2.10 *))
+
+     * Returns: true if self is the default
+
+--- description
+     Gets the description of the printer. ((* Since 2.10 *))
+
+     * Returns: the description of printer.
+
+--- accepts_pdf?
+    Gets the value whether this printer can accept PDF. ((* Since 2.10 *))
+     * Returns: true if this printer can accept PDF
+--- accepts_pdf=(accepts_pdf)
+    Sets the value this printer can accept PDF. ((* Since 2.10 *))
+     * accepts_pdf: true if this printer can accept PDF
+     * Returns: accepts_pdf
+--- set_accepts_pdf(accepts_pdf)
+    Same as accepts_pdf=. ((* Since 2.10 *))
+     * accepts_pdf: true if this printer can accept PDF
+     * Returns: self
+
+--- accepts_ps?
+    Gets the value whether this printer can accept PostScript. ((* Since 2.10 *))
+     * Returns: true if this printer can accept PostScript
+--- accepts_ps=(accepts_ps)
+    Sets the value whether this printer can accept PostScript. ((* Since 2.10 *))
+     * accepts_ps: true if this printer can accept PostScript
+     * Returns: accepts_ps
+--- set_accepts_ps(accepts_ps)
+    Same as accepts_ps=. ((* Since 2.10 *))
+     * accepts_ps: true if this printer can accept PostScript
+     * Returns: self
+
+--- backend
+    Gets the Gtk::PrintBackend for the printer. ((* Since 2.10 *))
+     * Returns: Gtk::PrintBackend for the printer
+--- backend=(backend)
+    Sets the Gtk::PrintBackend for the printer. ((* Since 2.10 *))
+     * backend: Gtk::PrintBackend for the printer
+     * Returns: backend
+--- set_backend(backend)
+    Same as backend=. ((* Since 2.10 *))
+     * backend: Gtk::PrintBackend for the printer
+     * Returns: self
+
+--- icon_name
+    Gets the icon name to use for the printer. ((* Since 2.10 *))
+     * Returns: The icon name to use for the printer
+
+--- virtual?
+    Gets the value whether this represents a real hardware printer. ((* Since 2.10 *))
+     * Returns: false if this represents a real hardware printer
+--- virtual=(virtual)
+    Sets the value whether this represents a real hardware printer. ((* Since 2.10 *))
+     * virtual: false if this represents a real hardware printer
+     * Returns: virtual
+--- set_virtual(virtual)
+    Same as virtual=. ((* Since 2.10 *))
+     * virtual: false if this represents a real hardware printer
+     * Returns: self
+
+--- job_count
+    Gets the Number of jobs queued in the printer. ((* Since 2.10 *))
+     * Returns: Number of jobs queued in the printer
+
+--- location
+    Gets the location of the printer. ((* Since 2.10 *))
+     * Returns: The location of the printer
+
+--- name
+    Gets the Name of the printer. ((* Since 2.10 *))
+     * Returns: Name of the printer
+--- name=(name)
+    Sets the Name of the printer. ((* Since 2.10 *))
+     * name: Name of the printer
+     * Returns: name
+--- set_name(name)
+    Same as name=. ((* Since 2.10 *))
+     * name: Name of the printer
+     * Returns: self
+
+--- state_message
+    Gets the String giving the current state of the printer. ((* Since 2.10 *))
+     * Returns: String giving the current state of the printer
+
+== Properties
+--- accepts-pdf: true or false (Read/Write)
+    true if this printer can accept PDF ((* Since 2.10 *))
+
+--- accepts-ps: true or false (Read/Write)
+    true if this printer can accept PostScript ((* Since 2.10 *))
+
+--- backend: Gtk::PrintBackend (Read/Write)
+    Gtk::PrintBackend for the printer ((* Since 2.10 *))
+
+--- icon-name: String (Read)
+    The icon name to use for the printer ((* Since 2.10 *))
+
+--- is-virtual: true or false (Read/Write)
+    false if this represents a real hardware printer ((* Since 2.10 *))
+
+--- job-count: Integer (Read)
+    Number of jobs queued in the printer ((* Since 2.10 *))
+
+--- location: String (Read)
+    The location of the printer ((* Since 2.10 *))
+
+--- name: String (Read/Write)
+    Name of the printer ((* Since 2.10 *))
+
+--- state-message: String (Read)
+    String giving the current state of the printer ((* Since 2.10 *))
+
+== Signals
+--- details-acquired: self, success
+
+     Gets emitted in response to a request for detailed
+     information about a printer from the print backend. The
+     ((|success|)) parameter indicates if the information was
+     actually obtained. ((* Since 2.10 *))
+
+     * self: the Gtk::Printer on which the signal is emitted
+     * success: true if the details were successfully acquired
+
+== See Also
+
+== ChangeLog
+* 2006-11-02: Modified. - ((<Masao>))
+* 2006-07-10: updated for 2.10. - ((<kou>))
+
+- ((<kou>))

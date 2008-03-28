@@ -1,0 +1,60 @@
+= Como escrever os textos não-ascii
+{{link nil, "Ruby-GNOME2+Tips", nil, nil}}
+Todas as strings que você passa para funções GTK+ precisam estar em UTF-8. Claro que o Ruby-GNOME2 tem a mesma exigência.
+
+Comumente, você escreveu scripts em Ruby no seu "locale" e "charset", o qual não é necessariamente UTF-8.
+
+Então você pode ficar confuso sobre como escrever textos em Ruby-GNOME2 num primeiro momento.
+
+Eis um resumo das suas opções:
+
+== 1 Escreva scripts em UTF-8
+Esta é a maneiras mais fácil se você usa um editor que suporta UTF-8.
+
+Você precisa definir $KCODE = 'u' no cabeçalho do seu script.
+
+ $KCODE = 'u'
+ require 'gtk2'
+ 
+ ...
+
+Também você pode usar a opção para -K para Ruby.
+
+== 2 Escreva o script no seu "charset" e converta-o com iconv
+Escreva seu script com o seu editor favorito que não suporta UTF-8.
+Você salva com o seu próprio "charset" (não-UTF-8).
+
+Então você o converte com iconv quando você for executá-lo.
+
+ iconv -f <your charset> -t utf-8 foo.rb |ruby -
+ iconv -f euc-jp -t utf-8 foo.rb |ruby -
+
+Efetivamente, esse é o mesmo que o primeiro método. Então voce precisa definir $KCODE = 'u' no seu script.
+
+== 3 Use GLib.convert para cada string.
+GLib.convert converte uma string de um "charset" para outro. 
+
+ require 'gtk2'
+ 
+ Gtk::Button.new(GLib.convert("mão-na-roda", "utf-8", "iso-8859-1"))  #str, to, from
+
+Eu não recomendo este jeito para textos estáticos. Comumente você deve usar GLib.convert quando você ler não-ascii, não-utf-8 textos de arquivos ou redes.
+
+== 4 ((<Ruby-GetText-Package|URL:http://ponx.s5.xrea.com/hiki/ruby-gettext.html>))
+Até agora, eles não suportam i18n (L10n). Pode não ser problema se você distribuir seus scripts localmente.
+Mas se você quiser distribuir para o mundo todo, você precisa suportar i18n (L10n). 
+
+((<Ruby-GetText-Package|URL:http://ponx.s5.xrea.com/hiki/ruby-gettext.html>))
+é uma das soluções que automatiza a substituição de textos em inglês com texto localizado.
+É também compatível com o pacote GNU gettext. 
+Tente se você estiver interessado.
+
+== Log de Alterações
+:2003-08-29 Masao Mutoh
+ Alterado o tratamento de $KCODE="u" 
+:2003-07-08 Evan Martin 
+ Corrigido o inglês.
+:2003-07-08 Masao Mutoh
+ Versão inicial
+
+Autor da Tradução para Português: ((<Joao Pedrosa|jpedrosa>))

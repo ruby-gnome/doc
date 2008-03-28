@@ -1,0 +1,30 @@
+= Construindo Comandos
+{{link("tut-libgda-connect", nil, "tut-libgda", "tut-libgda-exec-queries")}}
+
+antes de invocar um "query" você tem que construir o objeto contendo o comando e você pode fazer isso com Gda::Command.new.
+
+  Gda::Command.new(texto, tipo_de_comando, opções)
+
+Possíveis tipo_de_comando são:
+
+  Gda::Command::TYPE_SQL
+  Gda::Command::TYPE_XML
+  Gda::Command::TYPE_PROCEDURE
+  Gda::Command::TYPE_TABLE
+  Gda::Command::TYPE_SCHEMA
+
+O tipo de comando que a gente usa mais comumente é Gda::Command::TYPE_SQL porque nos concentraremos em "SQL queries".
+
+Possíveis opções são:
+
+  # Ignora todos os erros e executa todas as sentenças retornando "models" de dados. 
+  # Para sentenças que falharam, ele retorna um "model" de dados vazio.
+  Gda::Command::OPTION_IGNORE_ERRORS
+
+  # Para quando acha um erro e não retorna "model" de dados.
+  Gda::Command::OPTION_STOP_ON_ERRORS
+
+Aqui você vê um exemplo de criação de comando:
+
+  # texto contem um ou vários comandos de SQL (separados por vírgula).
+  command = Gda::Command.new(texto, Gda::Command::TYPE_SQL, Gda::Command::OPTION_STOP_ON_ERRORS)

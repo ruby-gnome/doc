@@ -1,0 +1,66 @@
+= class Gst::Plugin
+Dynamically loadable Elements
+
+== Object Hierarchy
+* Object
+  * GLib::Boxed
+    * Gst::Plugin
+
+== Instance Methods
+--- ==(plugin)
+    This method returns true if two Gst::Plugin objects are refered by the same file, false otherwise.
+    * Returns: true if two Gst::Plugin objects are refered by the same file, false otherwise.
+
+--- description 
+    This method returns a long description of the plugin.
+    * Returns: a long description of the plugin.
+
+--- each_feature { |plugin_feature| ... }
+    Calls the block for each feature this plugin provides, passing
+    a reference to the Gst::PluginFeature object as parameter.
+    * Returns: always nil.
+
+--- features
+    Gets a list of all the features that this plugin provides.
+    * Returns: an array of Gst::PluginFeature objects.
+
+--- filename
+    This method returns the filename where this plugin comes from.
+    * Returns: the filename where this plugin comes from.
+
+--- license 
+    This method returns the effective license of the plugin.
+    * Returns: the effective license of the plugin.
+
+--- loaded?
+    This method returns true if the plugin is loaded into memory, false otherwise.
+    * Returns: true if the plugin is loaded into memory, false otherwise.
+
+--- major_version 
+    This method returns the major version of the core this plugin was compiled for.
+    * Returns: the major version of the core this plugin was compiled for.
+
+--- minor_version 
+    This method returns the minor version of the core this plugin was compiled for.
+    * Returns: the minor version of the core this plugin was compiled for.
+
+--- name 
+    This method returns the unique name of the plugin.
+    * Returns: the unique name of the plugin.
+
+--- origin
+    This method returns the URL to the provider of the plugin.
+    * Returns: the URL to the provider of the plugin.
+
+--- package 
+    This method returns the name of the package this plugin belongs to.
+    * Returns: the name of the package this plugin belongs to.
+
+--- version
+    This method returns the version of the plugin (note: as a string).
+    * Returns: the version of the plugin (note: as a string).
+
+== See Also
+((<Gst>)).
+
+- ((<lrz>))

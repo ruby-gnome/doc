@@ -1,0 +1,481 @@
+= module Gtk
+Gtkモジュールはライブラリの初期化、メインイベントループ、イベントのような関数と一般的な定数を含みます。
+
+他の全てのGUIツールキットのようにRuby/GTKはイベント駆動プログラミングモデルを用います。
+ユーザーが何もしなかった場合、Ruby/GTKはメインループに入り入力を待ちます。
+もし何らかのアクション（例えばマウスクリックのような）を行うとメインループは"目を覚ま"し、Ruby/GTKにイベントを届けます。
+Ruby/GTKは一つかそれ以上のウィジェットにイベントを転送します。
+
+ウィジェットがイベントを受け取ったとき、それらはしばしば一つかより多くのシグナルを発します。
+シグナルはあなたのプログラムに"何か興味深い出来事が起こったぞ"と、あなたがシグナルにGLib::Instantiatable#signal_connectと共に関連付けたブロックを呼び出すことで通知します。
+ブロックはシグナルに関連付けられ、多くの場合コールバックと呼ばれます。
+
+あなたのコールバックが呼び出されたとき、通常は何らかのアクションをするでしょう。
+例えば、「開く」ボタンが押されたときGtk::FileChooserDialogを表示するかも知れません。
+コールバックが終わった後、Ruby/GTKはメインループに戻りユーザーの次の入力を待ちます。
+
+== モジュール関数
+--- Gtk.set_locale
+    GTK+に対する国際化サポートを初期化します。Gtk.initは自動的にこれを実行しますが、通常はこの関数を呼び出す意味はありません。
+    もしあなたがGTK+が初期化された後でロケールを変更したいとしたら、この関数を呼ぶとわずかに助けになるかも知れません。（注記：しかしながらGTK+が初期化された後にロケールを変更することは、矛盾した結果を引き起こすかも知れず本来はサポート外です）
+    正確には現在のロケールはプログラムの実行環境に従いセットされます。これはCライブラリ関数のsetlocale(LC_ALL, "")と同じですが、GDKを利用したウィンドウ・システムのある特定な設定をも配慮したものになっています。
+    ((* Note *))：Ruby-GNOME2は恐らくこの関数を将来的にはサポートしません。なぜならsetlocaleはRubyにマッチしないからです。
+    * 戻り値：ロケールの型に対応した文字列で、通常はlang_COUNTRYという形式です。langにはISO-639の文字コードが、COUNTRYにはISO-3166の国コードが入ります。Unixではこれはsetlocale()の結果と一致し、Windowsのような他のプラットフォームでもよく使われていますが、Cライブラリの場合は異なる結果を返します。この文字列はGTK+によって保持され、変更されたり解放されることはありません。 
+
+--- Gtk.disable_setlocale
+    Gtk.initのsetlocale(LC_ALL, "")の呼び出しを防ぎます。あなたのプログラムをユーザーのロケールより別のロケールにセットしたい場合や、異なるロケールのカテゴリに異なる値を割り当てたい場合にこの関数を使いたくなるかも知れません。しかし、ほとんどのプログラムではこの関数を呼ぶ必要はないはずです。
+    ((* Note *))：Ruby-GNOME2は恐らくこの関数を将来的にはサポートしません。なぜならsetlocaleはRubyにマッチしないからです。
+    * 戻り値：nil
+
+--- Gtk.default_language
+    今現在のデフォルトの言語に対するPango::Languageを返します。（これは一つのアプリケーションの実行中に切り替えることが可能なことに注意して下さい）デフォルトの言語は現在のロケールから生成されます。これは例えばGTK+が文字の方向が右から左か、左から右かを決定したりすることに使われます。Windows上での挙動についての_gtk_get_lc_ctype()に対する記述もご覧下さい。
+    * 戻り値：デフォルトの言語のPango::Language
+
+--- Gtk.init(argv = ARGV)
+    ((*注意: *)) Ruby-GNOME2-0.15.0からこの関数はgtk2.rbに含まれるようになったため、あなた自身が直接呼び出す必要は無くなりました。この関数を自ら呼び出したい場合はgtk2.rbの代わりにgtk2/base.rbをrequireしてください(require 'gtk2/base')。
+    
+    この関数をあなたのGUIアプリケーションの中で他のGTK+関数を呼び出す前に呼んでください。ツールキットを操作するために必要な全てを初期化し、標準的なコマンドライン引数を解析します。argvはそれにより調整され、結果的にあなた自身のコードからはそれらの標準的な引数は決して見えなくなります。
+    
+    注記：この関数は何らかの理由でGUIが初期化できなかった場合、RuntimeErrorを投げます。
+    * argv：ARGVの値です。全てのパラメータはあなたのコードに戻る前に分解され、Gtk.initにより解釈されます。
+    * 戻り値：self
+
+--- Gtk.events_pending?
+    処理待ちのイベントがあるかチェックします。この関数はGUIの更新やタイムアウトの呼び出し等に用いることができます。例えば、しばらく重い処理を行うときは次のようにします。
+
+      while (Gtk.events_pending?)
+        Gtk.main_iteration
+      end
+
+    * 戻り値：処理待ちのイベントがある場合true、そうでない場合はfalse
+
+--- Gtk.main
+    Gtk.main_quitが呼ばれるまでメインループを実行します。Gtk.mainの呼び出しはネストすることができます。
+    その場合はGtk.main_quitは最も深くネストされたメインループの実行から戻ります。
+    * 戻り値：nil
+
+--- Gtk.main_level
+    メインループの現在のネストレベルを問い合わせます。これはGtk.quit_addを使う際に便利です。
+    * 戻り値：現在実行中のメインループのネストレベル
+
+--- Gtk.main_quit
+    コントロールを取り戻したいときに、最も深くネストされたメインループの実行から戻ります。
+    * 戻り値：nil
+
+--- Gtk.main_iteration
+    一度だけメインループ処理を行います。待機しているイベントが無かった場合、Gtk+は次のイベントが通知されるまでブロックします。もしブロックを望まないならばGtk.main_iteration_doを検討するか、まず最初にGtk.events_pending?で待機中のイベントがないかチェックして下さい。
+    * 戻り値：Gtk.main_quitが最も深くネストされたメインループに対して呼ばれた場合true
+--- Gtk.main_iteration_do(blocking)
+    一度だけメインループ処理を行います。待機しているイベントが無かった場合に戻るかブロックするかはblockingの値によります。
+    * blocking：待機中のイベントが存在せず、GTK+がブロックして欲しいならばtrue 
+    * 戻り値：Gtk.main_quitが最も深くネストされたメインループに対して呼ばれた場合true
+
+--- Gtk.main_do_event(event)
+    GDKイベントを一つだけ実行します。これはGDKとGTK+の間にあるイベントのフィルタリングを可能にするだけのものです。通常は、この関数を直接呼ぶ必要はありませんが、どのようにイベントを正確に処理されているのかを知りたいと思うかも知れません。そのため、ここではこの関数がイベントを使って何をするかを説明します：
+    (1) enter/leave通知イベントを押し込みます。引き渡されたイベントが（GDKから見た）次のイベントを使ってenter/leaveのペアを組み上げると、それらのイベントは両方とも破棄されます。これはポインタが交差するウィジェットを（非）強調表示するという余計な処理を避けるためのものです。
+    (2) イベントを取得したウィジェットを検索します。そのようなウィジェットが見つからなければ、そのイベントは INCRトランザクションに入っていない限り破棄されます。そのような場合イベントは（GTK+の内部関数である）gtk_selection_incr_event()に渡されます。
+    (3) それからイベントはスタックに積まれ、現在の処理対象のイベントをGtk.current_eventを使って問い合わせられるようになります。
+    
+    (4) イベントがウィジェットに送られます。グラブ (イベント受け入れ口) が、グラブウィジェット内に含まれないウィジェットに対する全てのイベントに有効ならば、イベントはいくつかの例外を除いて遅れて送信されます。その例外とは
+        * 削除とdestruction（破壊）イベント。これらはその明白な理由より、上記にも関わらずイベントウィジェットに送信されます。
+        * イベントウィジェットの視覚的な表現に直接関係するイベント。
+        * イベントウィジェットにenterイベントが配送済みであり、且つそれのペアのleaveイベントが配送されていない場合のleaveイベント。これはそのウィジェットに対して配送されます。
+        * ドラッグ関連のイベント。これはドラッグして結果的に何をするかがその時点では不明なために配送されません。
+        他に重要な点として、全てのキーイベントは最初にキー押下感知関数を通して引き渡されるかもしれないことがあります。この機能が必要ならばGtk.key_snooper_installの記述をご覧下さい。
+    (5) イベントの配送が終了した後、イベントスタックから一つ取り出されます。
+    * event：GDKによって渡された（普通に）処理されるGdk::Event
+
+--- Gtk.current_event
+    現在GTK+によって処理されているイベントのコピーを取得します。例えばGtk::Buttonから"clicked"シグナルを得た場合、現在のイベントは"clicked"シグナルを始動させたGdk::EventButtonになります。もし現在のイベントが無ければこの関数はnilを返します。
+    * 戻り値：現在のイベントのコピー。現在のイベントが無ければnil
+
+--- Gtk.grab_add(widget)
+    widgetを処理の対象となるべきウィジェットにします。これは同じアプリケーションの中で他のウィジットと相互に作用することを止め、キーボードのイベントの他にマウスのイベントもこのwidgetに配送されることを意味しています。
+    * widget：キーボードとポインタのイベントを受け取るウィジェット
+    * 戻り値：nil
+
+--- Gtk.current
+    現在のイベントの受け入れ口（grab）を問い合わせます。
+    * 戻り値：現在のイベント受け入れ口（grab）。有効なものがなければnil
+
+--- Gtk.grab_remove(widget)
+    指定したウィジェットからイベント受け入れ口（grab）を取り除きます。Gtk.grab_addとGtk.grab_removeは対で呼び出して下さい。
+    * widget：イベント受け入れ口（grab）を剥奪するウィジェット
+    * 戻り値：nil
+
+--- Gtk.init_add { ... }
+    メインループが開始したら呼び出されるブロックを登録します。
+    * { ... }：Gtk.mainが次に呼び出されたとき、呼び出されるブロック
+    * 戻り値：nil
+
+--- Gtk.quit_add(main_level) { ... }
+    メインループのインスタンスが無くなったときに呼び出されるブロックを登録します。
+    * main_level：関数が呼び出されて終了するメインループのレベル。0を指定すると、現在処理中のメインループが終了する際に呼び出される関数になる。
+    * { ... }：呼び出すブロック。これは終了ハンドラの一覧から削除されたことを意味するtrueを戻さなければならない。それ以外の戻り値は、この関数が再び呼び出されることを意味する。
+    * 戻り値：この終了ハンドラに対する（Gtk.quit_removeを呼び出す際に必要となる）ハンドルID
+
+--- Gtk.quit_remove(handler_id)
+    終了ハンドラの識別子を使って、終了ハンドラを削除します。
+    * handler_id：ハンドラを登録した際に返される識別子
+    * 戻り値：handler_id
+
+--- Gtk.timeout_add(interval){ ... }
+    周期的に呼び出されるブロックをセットします。これはデフォルトの優先度ではGLib::PRIORITY_DEFAULTです。このブロックは繰り返し呼ばれますが、タイムアウトが自動的に破棄された時点で呼ばれなくなりfalseを返します。ブロックに対する最初の呼び出しは最初の待ち時間の終わりで行われます。
+    タイムアウト時の動作は他のイベントソースの処理のために遅れるかもしれないことに注意して下さい。従って、正確なタイミングをそれに頼るべきではありません。次のタイムアウト時間は毎回のタイムアウト動作の呼び出し後に、現在の時刻と与えられたintervalを元に再計算されます。（遅延によって失われた時間を'補正する'ことは試みません）
+    * interval：ブロックが呼ばれる時間間隔で、単位はミリセカンド（1/1000秒）
+    * { ... }：呼ばれるブロック
+    * 戻り値：イベントソースのtimeout_handler_id
+
+--- Gtk.timeout_remove(timeout_handler_id)
+    与えられたタイムアウト処理の全ての情報を破壊して削除します。
+    * timeout_handler_id：タイムアウト処理を登録した際に返される識別子
+    * 戻り値：nil
+
+--- Gtk.idle_add { ... }
+    処理すべき優先度が高いイベントが無いときは、常にメインループ中で与えられたブロックを呼び出します。デフォルトの優先度はGLib::PRIORITY_DEFAULTで、やや低いものとなります。
+    * { ... }：呼ばれるブロック
+    * 戻り値：この登録に対しての一意なハンドル
+
+--- Gtk.idle_add_priority(priority) { ... }
+    Gtk.idle_addのように、この関数はイベントループがアイドル状態になったら呼び出すブロックを登録します。Gtk.idle_addとの違いはGLib::PRIORITY_DEFAULTと異なる優先度をアイドル時に呼び出されるブロックに設定できることです。
+    * priority：GLib::PRIORITY_HIGH_IDLEより高くない優先度。Gtk::PRIORITY_RESIZEより高い優先度を使う場合はGTK+を使ってインタフェースを作成する必要があることに注意。
+
+--- Gtk.idle_remove(idle_handler_id)
+    指定した識別子のアイドル時に動作するブロックを削除します。
+    * idle_handler_id：削除するアイドルブロックの識別子
+    * 戻り値：nil
+
+--- Gtk.key_snooper_install {|grab_widget, event| ... }
+    全てのキーイベントが通常の配送先に届けられる前に呼び出されるキースヌーパー（覗き見）ブロックを登録します。
+    * {|grab_widget, event| ... }：通常のイベントが配送される前に呼び出されるキースヌーパーブロックです。これはよくカスタムキーイベント処理を実装するために用いられます。
+      * grab_widget：イベントが配送されるウィジェット
+      * event：覗き見たキーイベント（Gdk::EventKey）
+      * 戻り値：イベントの処理をさらに続けるならfalse、停止するならtrueを返さなければならない
+    * 戻り値；Gtk.key_snooper_removeで使う、このキースヌーパーに固有なID
+
+--- Gtk.key_snooper_remove(handler_id)
+    与えられたIDに対応するキースヌーパー（覗き見）ブロックを取り除きます。
+    * handler_id：取り除かれるキースヌーパーの識別子
+
+--- Gtk.current_event_time
+    現在イベントが存在し、タイムスタンプを持つときそのタイムスタンプを返します。そうでなければGdk::Event::CURRENT_TIMEを返します。
+    * 戻り値：現在のイベントのタイムスタンプ。またはGdk::Event::CURRENT_TIME
+
+--- Gtk.current_event_state
+    現在イベントが存在し、状態フィールドを持つときその状態を返します。そうでなければnilを返します。
+    * 戻り値：現在のイベントの状態(((<GdkModifierType|Gdk::Window::GdkModifierType>)))。またはnil
+
+--- Gtk.get_event_widget(event = nil)
+    初めにイベントを受け入れたウィジェットを返します。イベントがnilか、対応するウィジェットがない場合nilを返します。
+    * event：Gdk::Eventクラスのイベント
+    * 戻り値：イベントを初めに受け入れたウィジェット。またはnil
+
+--- Gtk.propagate_event(widget, event)
+    一つのイベントをウィジェットに配送します。イベントが処理されなかった場合は親ウィジェットにイベントを伝播させます。イベントは受け取られ、GDKからGTK+に渡された後、通常はGtk.main_do_eventで処理されます。モーダルダイアログやグラブ（イベント受け入れ口）等のイベントの種類により、イベントが伝播されるかどうか決まり、伝播される場合はこの関数が使われます。Gtk.propagate_eventは各々のウィジェットに対してGtk::Widget#eventを呼び出し、イベントを送信するかを決定します。Gtk::Widget#eventは最も低レベルな関数で、単純にウィジェットで"event"かイベント特有のシグナルを送出することしか行いません。Gtk.propagate_eventはそれより少々高レベルで、Gtk.main_do_eventは最も高レベルとなります。
+    上記の理由から、恐らくあなたはこれらの関数を使いたくなくなると思いますが、これらの関数はイベントの同期で稀に必要となります。必要となったときはあなたの目標の達成のためにより良い方法がないか、メーリングリストで質問してみることを検討してみて下さい。例えば、Gdk::Window#invalidateやGtk::Widget#queue_drawは代わりにexposeイベントを使った方が上手くいきます。
+    * widget：Gtk::Widgetクラスのウィジェット
+    * event：Gdk::Eventクラスのイベント
+
+--- Gtk.check_version(required_major, required_minor, required_micro)
+    使用されているGTK+ライブラリが与えられたバージョンと互換性がとれるかどうかチェックします。通常はこの関数には引数としてGtk::MAJOR_VERSIONとGtk::MINOR_VERSION、Gtk::MICRO_VERSIONという三つの定数を与え、使用しているライブラリのGTK+のバージョンがアプリケーションやコンパイルされたモジュールと互換性がとれるかチェックします。
+    互換性は二つの要因によって定義されます。まず実行されているライブラリがrequired_majorとrequired_minor、required_microのバージョンより新しいかどうか。二つ目が実行されているライブラリが上記の三つのバージョンとバイナリ互換性がある（同じメジャーバージョンである）かどうかです。
+    この関数は主にGTK+モジュールに対するものです。モジュールはこの関数を非互換のバージョンのGTK+をロードしないようにチェックするために用います。しかしながら、そのチェックは残念ながら完全に信頼の置けるものではありません。モジュールは古いバージョンのGTK+をリンクしたら、古いバージョンのGtk.check_versionを呼び出しますが、その時点でアプリケーション内で使われている新しいバージョンのGTK+がまだloadされているかもしれないからです。
+    * required_major：必須のメジャーバージョン
+    * required_minor：必須のマイナーバージョン
+    * required_micro：必須のマイクロバージョン
+    * 戻り値：GTK+ライブラリが与えられたバージョンに対して互換性があればnil。そうでなければバージョンの不一致についての文字列
+
+--- Gtk.check_version?(required_major, required_minor, required_micro)
+    Gtk.check_versionとほぼ同じですが、与えられたバージョンと互換性があった場合にtrueを返し、そうでなければfalseを返します。
+    * required_major：必須のメジャーバージョン
+    * required_minor：必須のマイナーバージョン
+    * required_micro：必須のマイクロバージョン
+    * 戻り値：ライブラリが与えられたバージョンと互換性があればtrue。そうでなければfalse
+
+== 定数
+=== GtkAccelFlags
+--- ACCEL_VISIBLE
+    = 1 << 0
+--- ACCEL_LOCKED
+    = 1 << 1
+--- ACCEL_MASK
+    = 0x07
+
+=== GtkAnchorType
+--- ANCHOR_CENTER
+--- ANCHOR_NORTH
+--- ANCHOR_NORTH_WEST
+--- ANCHOR_NORTH_EAST
+--- ANCHOR_SOUTH
+--- ANCHOR_SOUTH_WEST
+--- ANCHOR_SOUTH_EAST
+--- ANCHOR_WEST
+--- ANCHOR_EAST
+--- ANCHOR_N
+        = ANCHOR_NORTH
+--- ANCHOR_NW
+        = ANCHOR_NORTH_WEST
+--- ANCHOR_NE
+        = ANCHOR_NORTH_EAST
+--- ANCHOR_S
+        = ANCHOR_SOUTH
+--- ANCHOR_SW
+        = ANCHOR_SOUTH_WEST
+--- ANCHOR_SE
+        = ANCHOR_SOUTH_EAST
+--- ANCHOR_W
+        = ANCHOR_WEST
+--- ANCHOR_E
+        = ANCHOR_EAST
+
+=== GtkAttachOptions
+ウィジェット（もしくはその親）がリサイズされたときの振る舞いを表します。
+--- EXPAND
+    = 1 << 0. ウィジェットのために用意されたコンテナの中で、余っている領域を埋めるように広げられる属性を表す
+--- SHRINK
+    = 1 << 1. 可能ならば、ウィジットを縮ませる属性を表す
+--- FILL
+    = 1 << 2. ウィジェットのために用意された領域を埋めるように、広げられる属性を表す
+
+=== GtkCornerType
+Gtk::ScrolledWindowに中に子ウィジェットを詰めこむときに、どちらの隅に配置するかを指定します。これはスクロールバーを配置する位置を反対にする場合に効果があります。
+--- CORNER_TOP_LEFT
+       スクロールバーをウィジェットの右と下に配置する（デフォルト）
+--- CORNER_BOTTOM_LEFT
+       スクロールバーをウィジェットの上と右に配置する
+--- CORNER_TOP_RIGHT
+       スクロールバーをウィジェットの左と下に配置する
+--- CORNER_BOTTOM_RIGHT
+       スクロールバーをウィジェットの上と左に配置する
+
+=== GtkDeleteType
+--- DELETE_CHARS
+--- DELETE_WORD_ENDS
+       単語の途中で、カーソルの右（言語によっては左）部分の単語のみを削除した場合
+--- DELETE_WORDS
+--- DELETE_DISPLAY_LINES
+--- DELETE_DISPLAY_LINE_ENDS
+--- DELETE_PARAGRAPH_ENDS
+       EmacsのC-kのような（言語によっては逆方向になる場合もあります）削除をした場合
+--- DELETE_PARAGRAPHS
+       picoでいうC-k（行全体をkillします）をした場合
+--- DELETE_WHITESPACE
+        EmacsでいうM-\をした場合
+
+=== GtkDirectionType
+--- DIR_TAB_FORWARD
+--- DIR_TAB_BACKWARD
+--- DIR_UP
+--- DIR_DOWN
+--- DIR_LEFT
+--- DIR_RIGHT
+
+=== GtkExpanderStyle
+Gtk::TreeViewによって描画されるツリーのスタイルを表します。
+--- EXPANDER_COLLAPSED
+    サブツリーが折り畳まれたスタイル
+--- EXPANDER_SEMI_COLLAPSED
+    アニメーション途中のスタイル
+--- EXPANDER_SEMI_EXPANDED
+    アニメーション途中のスタイル
+--- EXPANDER_EXPANDED
+    サブツリーが広げられたスタイル
+
+
+=== GtkIMPreeditStyle
+--- IM_PREEDIT_NOTHING
+--- IM_PREEDIT_CALLBACK
+
+=== GtkIMStatusStyle
+--- IM_STATUS_NOTHING
+--- IM_STATUS_CALLBACK
+
+=== GtkJustification
+Gtk::Labelウィジェットの内側にあるテキストの行揃えに使用します（Gtk::Alignmentもご覧下さい）。
+--- JUSTIFY_LEFT
+       テキストはラベルに対して左詰めで配置される
+--- JUSTIFY_RIGHT
+       テキストはラベルに対して右詰めで配置される
+--- JUSTIFY_CENTER
+       テキストはラベルの中央に配置される
+--- JUSTIFY_FILL
+       テキストはラベルに対して均等に配置される
+
+=== GtkMetricType
+Gtk::Rulerで使用される測定の単位を表します。
+--- PIXELS
+--- INCHES
+--- CENTIMETERS
+
+=== GtkMovementStep
+--- MOVEMENT_LOGICAL_POSITIONS 
+       文字単位で前後に移動する
+--- MOVEMENT_VISUAL_POSITIONS  
+       文字単位で左右に移動する
+--- MOVEMENT_WORDS                
+       単語単位で前後に移動する
+--- MOVEMENT_DISPLAY_LINES      
+       行を（自動改行された行に対しても）上下に移動する
+--- MOVEMENT_DISPLAY_LINE_ENDS 
+       行を（自動改行された行に対しても）上下に移動する
+--- MOVEMENT_PARAGRAPHS          
+       段落（新しい行から終了するまでの複数行）を上下に移動する
+--- MOVEMENT_PARAGRAPH_ENDS     
+       段落の終わりへ移動する
+--- MOVEMENT_PAGES
+       ページ単位で移動する
+--- MOVEMENT_BUFFER_ENDS        
+       バッファの終わりへ移動する
+--- MOVEMENT_HORIZONTAL_PAGES   
+       ページ単位で横方向に移動する
+
+=== GtkOrientation
+ウィジェットの配置の方向を表し、配置方向を水平または垂直方向にGtk::Toolbarのようにその場で切り替えることができます。
+--- ORIENTATION_HORIZONTAL
+    ウィジェットは水平方向に配置される
+--- ORIENTATION_VERTICAL
+    ウィジェットは垂直方向に配置される
+
+=== GtkPackType
+Gtk::Boxに子ウィジェットが配置される順序を表します（Gtk::VBox及びGtk::HBoxもご覧下さい）。
+--- PACK_START
+       子ウィジェットはボックスの初めから詰め込まれる
+--- PACK_END
+       子ウィジェットはボックスの終わりから詰め込まれる
+
+=== GtkPathPriorityType
+--- PATH_PRIO_LOWEST
+    = 0
+--- PATH_PRIO_GTK
+    = 4
+--- PATH_PRIO_APPLICATION
+    = 8
+--- PATH_PRIO_THEME
+    = 10
+--- PATH_PRIO_RC
+    = 12
+--- PATH_PRIO_HIGHEST
+    = 15
+
+=== GtkPathType
+--- PATH_WIDGET
+--- PATH_WIDGET_CLASS
+--- PATH_CLASS
+
+=== GtkPolicyType
+スクロールバーの表示の可否を定義します。
+--- POLICY_ALWAYS
+       スクロールバーを常に表示する
+--- POLICY_AUTOMATIC
+       必要に応じて表示、非表示を切り替える
+--- POLICY_NEVER
+       スクロールバーは表示しない
+
+=== GtkPositionType
+ウィジェットの特定の特徴を持つ端の位置を表します。これはGtk::Notebookでのタブや、Gtk::HandleBoxでのハンドル、Gtk::Scaleでのラベル等の位置を表します。
+--- POS_LEFT
+    特徴のある部分を左端にする
+--- POS_RIGHT
+    特徴のある部分を右端にする
+--- POS_TOP
+    特徴のある部分を上端にする
+--- POS_BOTTOM
+    特徴のある部分を下端にする
+
+=== GtkReliefStyle
+Gtk::Buttonの淵の装飾をどうするのか指定します。
+--- RELIEF_NORMAL
+    ノーマルの装飾
+--- RELIEF_HALF
+    部分的な装飾
+--- RELIEF_NONE
+    装飾をしない
+
+=== GtkResizeMode
+--- RESIZE_PARENT		
+    リサイズ要求を親に渡す
+--- RESIZE_QUEUE		
+    リサイズをこのウィジェットの待ち行列に入れる
+--- RESIZE_IMMEDIATE		
+    即座にリサイズを実行する
+
+=== GtkScrollType
+--- SCROLL_NONE
+--- SCROLL_JUMP
+--- SCROLL_STEP_BACKWARD
+--- SCROLL_STEP_FORWARD
+--- SCROLL_PAGE_BACKWARD
+--- SCROLL_PAGE_FORWARD
+--- SCROLL_STEP_UP
+--- SCROLL_STEP_DOWN
+--- SCROLL_PAGE_UP
+--- SCROLL_PAGE_DOWN
+--- SCROLL_STEP_LEFT
+--- SCROLL_STEP_RIGHT
+--- SCROLL_PAGE_LEFT
+--- SCROLL_PAGE_RIGHT
+--- SCROLL_START
+--- SCROLL_END
+
+=== GtkSelectionMode
+ユーザーが選択することを許すかどうかを指定する値です。
+--- SELECTION_NONE
+    選択可能ではない
+--- SELECTION_SINGLE
+    ゼロもしくは一つの要素が選択される
+--- SELECTION_BROWSE
+    厳密に一つの要素が選択される。初期化や検索中などのいくつかの場合はGtk::SELECTION_BROWSEでは選択できない。また、ユーザーは他の要素を選択する以外に要素を非選択状態にすることができない
+--- SELECTION_MULTIPLE
+    いくつでも選択可能である。クリックは一つのアイテムの状態を切り替える。ドラッグすることで要素の範囲を選択することができる。Ctrlキーは選択を増やすことによく用いられ、Shiftキーは選択した場所と現在フォーカスしている場所までの間を選択する
+
+=== GtkShadowType
+通常Gtk::Frameが提供する囲み罫線 (アウトライン) の影の付け方を変更するために使用します。
+--- SHADOW_NONE
+       囲み罫線なし
+--- SHADOW_IN
+       凹型 (内側に斜めに切られた囲み罫線)
+--- SHADOW_OUT
+       凸型 (ボタンのように外側に斜めに切られた囲み罫線)
+--- SHADOW_ETCHED_IN
+       輪郭凹型 (内側に掘られた囲み罫線)
+--- SHADOW_ETCHED_OUT
+       輪郭凸型 (外側に掘られた囲み罫線)
+
+=== GtkStateType
+ウィジェットの現在の状態を表す定数です。状態はどのようにウィジェットが描画されるかを決定します。また、GtkStateTypeはGtk::Styleの描画において色を決定することにも使われます。これらの状態はウィジェットの一部だけではなく、全てのウィジェットに使用することが可能です。
+--- STATE_NORMAL
+       通常の操作が行われている状態
+--- STATE_ACTIVE
+       ウィジェットは現在アクティブ状態 (動作状態)
+--- STATE_PRELIGHT
+       ウィジェットの上をマウス・カーソルが通過した状態
+--- STATE_SELECTED
+       ウィジェットの上にマウス・カーソルが乗った状態
+--- STATE_INSENSITIVE
+       ユーザがウィジェットの状態を変更できない状態。外観は普通のウィジェットを表している
+
+=== GtkUpdateType
+--- UPDATE_CONTINUOUS
+--- UPDATE_DISCONTINUOUS
+--- UPDATE_DELAYED
+
+=== GtkVisibility
+--- VISIBILITY_NONE
+    列は不可視
+--- VISIBILITY_PARTIAL
+    列は部分的に見える
+--- VISIBILITY_FULL
+    列は完全に見える
+
+=== GtkSortType
+ソート（並べ替え）の方向を決定します。
+--- SORT_ASCENDING
+    昇順にソートする
+--- SORT_DESCENDING
+    降順にソートする
+
+- ((<Masao>))
+
+== ChangeLog
+2005-10-27 誤字修正 ((<むとう>))
+2005-02-02 訳:((<高松>))

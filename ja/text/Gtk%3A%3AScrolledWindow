@@ -1,0 +1,187 @@
+= Gtk::ScrolledWindow クラス
+Gtk::ScrolledWindow は Gtk::Bin のサブクラスで、単一の子ウィジェットを持つことの出来るコンテナウィジェットです。
+Gtk::ScrolledWindow は子ウィジェットにスクロールバーを追加し、オプションで子ウィジェットを((<ベベル付きフレーム|translation>))に
+することができます。
+
+ウィンドウをスクロールさせるには、以下の二つの方法があります。
+* ウィジェット自体が、そもそもスクロールをサポートしているもの
+
+  これらのウィジェットは Gtk::Adjustment を“スロット”として持っています。
+  Gtk::TreeView, Gtk::TextView, Gtk::Layout が該当します。
+  この場合、これらのウィジェットは Gtk::Container#add メソッドで Gtk::ScrolledWindow の子ウィジェットとして
+  登録できます。
+
+* ウィジェット自体では、スクロールをサポートしていないもの
+
+  この場合、アダプタークラスとして Gtk::Viewport を使い、スクロールを実現します。
+  Gtk::Table, Gtk::Box 等が該当します。
+  まず、Gtk::Viewport をこれらのウィジェットに追加し、スクロールがサポートされるようにします。
+  この後、上記と同様に、 Gtk::Container#add メソッドで Gtk::ScrolledWindow の子ウィジェットとして
+  登録します。ここで、Gtk::ScrolledWindow#add_with_viewport メソッドを使えば、Gtk::Viewport を
+  意識することもないでしょう。
+
+スクロールバーにおける、((<スクロールサム|translation>))の位置は Gtk::Adjustment のインスタンスを
+引数に与えることで制御します。 Gtk::Adjustment 参照。
+Gtk::Adjustment の value はスクロールバーの位置を表します。但し
+
+lower ≦ value ≦ upper - page_size
+
+を満たしていなくてはなりません。page_size はスクロールして見られるサイズです。
+step_increment はユーザが((<スクロールアロー|translation>))をクリックしたときのスクロール量を、 
+page_increment はユーザが（例えば）PageDown/PageUp キーを押下した時のスクロール量を指定するのに使用します。
+
+もし、Gtk::ScrolledWindow が狙った通り動かないのは、 Gtk::Scrollbar と（例えば） Gtk::Table を使って
+スクロールの制御を行っている可能性が高いと思われます。
+
+== オブジェクト階層
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Gtk::Object
+        * Gtk::Widget
+          * Gtk::Container
+            * Gtk::Bin
+              * Gtk::ScrolledWindow
+
+== クラスメソッド
+--- Gtk::ScrolledWindow.new(hadjustment = nil, vadjustment = nil)
+    新しいスクロール可能なウィンドウを生成します。
+    生成されるウィンドウの調整に二つの引数をとります。これらの引数は、スクロールバーと登録される子ウィジェットの
+    双方に反映して、スクロールの同期が取られます。
+
+    通常、引数に nil を渡して、登録された子ウィジェットのほうで調整します。
+    * hadjustment: 水平方向の調整 (Gtk::Adjustment)
+    * vadjustment: 垂直方向の調整 (Gtk::Adjustment)
+    * 戻り値: 新しいスクロール可能なウィンドウ（コンテナ）
+
+== インスタンスメソッド
+--- add_with_viewport(child)
+    スクロールに対応していない子ウィジェットを追加するときに使用する、便利なメソッドです。
+    このメソッドは、以下のように動作します。スクロールに対応していないウィジェットを Gtk::Viewport に追加し、
+    改めてこれをスクロールに対応している子ウィジェットとして追加します。
+    ですから、そもそもスクロールに対応している子ウィジェットを追加する場合は、本メソッドでは無く、
+    Gtk::Container#add を使ってください。
+    Gtk::Viewport は Gdk::Window を動かすことによって子ウィジェットのスクロールを実現しており、
+    子ウィジェットのサイズがトップレベル Gdk::Window のサイズになってしまいます。
+    従って、たいていの元からスクロールに対応したウィジェットにとっては、とてもまずい動きになります。
+    例えば、Gtk::TreeView ウィジェットに Gtk::Viewport を加えると、そのウィジェット全体が、
+    見出し行まで含めてスクロールされてしまいます。
+    ですので、スクロールをサポートしているウィジェットには、Gtk::Viewport を使用するべきではありません。
+--- hadjustment
+    水平スクロールバーの調整値を返します。子ウィジェットの水平スクロール機能との接続に使われます。
+    * 戻り値: 水平方向の Gtk::Adjustment.  
+--- hadjustment=(hadjustment)
+    水平スクロールバーの Gtk::Adjustment をセットします。 
+    * hadjustment : 水平方向の Gtk::Adjustment
+    * 戻り値: 設定した Gtk::Adjustment
+--- set_hadjustment(hadjustment)
+    hadjustment= と同じです。
+    * hadjustment : 水平方向の Gtk::Adjustment
+    * 戻り値: self
+--- vadjustment
+    垂直スクロールバーの調整値を返します。子ウィジェットの垂直スクロール機能との接続に使われます。
+    * 戻り値: 垂直方向の Gtk::Adjustment.  
+--- vadjustment=(vadjustment)
+    垂直スクロールバーの Gtk::Adjustment をセットします。
+    * vadjustment: 垂直方向の Gtk::Adjustment  
+    * 戻り値: 設定した Gtk::Adjustment
+--- set_vadjustment(vadjustment)
+    vadjustment= と同じです。
+    * vadjustment: 垂直方向の Gtk::Adjustment  
+    * 戻り値: self
+--- hscrollbar
+    スクロールウィンドウの水平スクロールバーを返します。 ((*Since 2.8*))
+    * 戻り値: 水平スクロールバー (Gtk::HScrollbar)
+
+--- vscrollbar
+    スクロールウィンドウの垂直スクロールバーを返します。 ((*Since 2.8*))
+    * 戻り値: 垂直スクロールバー (Gtk::VScrollbar)
+
+--- policy
+    現在の水平・垂直スクロールバーのそれぞれの((<GtkPolicyType|Gtk#GtkPolicyType>))を要素に持つ配列を取得します。
+    Gtk::ScrolledWindow#set_policy 参照。
+    * 戻り値: [hscrollbar_policy, vscrollbar_policy]
+--- set_policy(hscrollbar_policy, vscrollbar_policy)
+    水平・垂直スクロールバーのスクロールバーポリシーを設定します。スクロールバーポリシーとは、スクロールバーがいつ
+    表示されるかを決定するもので、((<GtkPolicyType|Gtk#GtkPolicyType>)) 定数の値になります。
+    もしポリシーが Gtk::POLICY_ALWAYS ならスクロールバーは常に表示されます。また Gtk::POLICY_NEVER であれば、
+    スクロールバーは常に表示されず、Gtk::POLICY_AUTOMATIC であれば、スクロールバーは必要なときだけ表示されます。
+    （つまり、ページサイズより表示する部分が大きいときです。）
+    * hscrollbar_policy: Policy for horizontal bar. (((<GtkPolicyType|Gtk#GtkPolicyType>))) 
+    * vscrollbar_policy: Policy for vertical bar. (((<GtkPolicyType|Gtk#GtkPolicyType>)))
+    * Returns: self
+
+--- hscrollbar_policy
+    Retrieves the current policy values for the horizontal scrollbar. See Gtk::ScrolledWindow#set_policy.
+    * Returns: Policy for horizontal bar. (((<GtkPolicyType|Gtk#GtkPolicyType>))) 
+--- hscrollbar_policy=(hscrollbar_policy)
+    Sets the scrollbar policy for the horizontal scrollbar.
+    * hscrollbar_policy: Policy for horizontal bar. (((<GtkPolicyType|Gtk#GtkPolicyType>))) 
+    * Returns: hscrollbar_policy
+--- set_hscrollbar_policy(vscrollbar_policy)
+    Same as Gtk::ScrolledWindow#hscrollbar_policy=.
+    * hscrollbar_policy: Policy for horizontal bar. (((<GtkPolicyType|Gtk#GtkPolicyType>))) 
+    * Returns: self
+
+--- vscrollbar_policy
+    Retrieves the current policy values for the vertical scrollbar. See Gtk::ScrolledWindow#set_policy.
+    * Returns: Policy for vertical bar. (((<GtkPolicyType|Gtk#GtkPolicyType>))) 
+--- vscrollbar_policy=(vscrollbar_policy)
+    Sets the scrollbar policy for the vertical scrollbar.
+    * vscrollbar_policy: Policy for vertical bar. (((<GtkPolicyType|Gtk#GtkPolicyType>))) 
+    * Returns: vscrollbar_policy
+--- set_vscrollbar_policy(vscrollbar_policy)
+    Same as Gtk::ScrolledWindow#vscrollbar_policy=.
+    * vscrollbar_policy: Policy for vertical bar. (((<GtkPolicyType|Gtk#GtkPolicyType>))) 
+    * Returns: self
+
+--- shadow_type
+    Gets the shadow type of the scrolled window. See Gtk::ScrolledWindow#shadow_type=.
+    * Returns: the current shadow type  
+--- shadow_type=(type)
+    Changes the type of shadow drawn around the contents of scrolled_window.
+    * type: kind of shadow to draw around scrolled window contents(((<GtkShadowType|Gtk#GtkShadowType>)))
+    * Returns: type  
+
+--- set_shadow_type(type)
+    Same as Gtk::ScrolledWindow#shadow_type=.
+    * type: kind of shadow to draw around scrolled window contents(((<GtkShadowType|Gtk#GtkShadowType>)))
+    * Returns: self
+
+--- window_placement
+--- window_placement=(window_placement)
+    Determines the location of the child widget with respect to the scrollbars. The default is Gtk::CORNER_TOP_LEFT, meaning the child is in the top left, with the scrollbars underneath and to the right. Other values in ((<GtkCornerType|Gtk#GtkCornerType>)) are Gtk::CORNER_TOP_RIGHT, Gtk::CORNER_BOTTOM_LEFT, and Gtk::CORNER_BOTTOM_RIGHT.
+    * window_placement: Position of the child window. (((<GtkCornerType|Gtk#GtkCornerType>))) 
+    * Returns: window_placement
+--- set_window_placement(window_placement)
+    Same as Gtk::ScrolledWindow#window_placement=.
+    * window_placement: Position of the child window. (((<GtkCornerType|Gtk#GtkCornerType>))) 
+    * Returns: self
+
+== Properties
+--- hadjustment: Gtk::Adjustment (Read/Write)
+    The Gtk::Adjustment for the horizontal position
+
+--- hscrollbar-policy: Integer (Read/Write)
+    When the horizontal scrollbar is displayed
+
+--- shadow-type: Integer (Read/Write)
+    Style of bevel around the contents
+
+--- vadjustment: Gtk::Adjustment (Read/Write)
+    The Gtk::Adjustment for the vertical position
+
+--- vscrollbar-policy: Integer (Read/Write)
+    When the vertical scrollbar is displayed
+
+--- window-placement: Integer (Read/Write)
+    Where the contents are located with respect to the scrollbars
+
+== See Also
+Gtk::Viewport, Gtk::Adjustment
+
+== ChangeLog
+* 2005-10-19 和訳 - ((<高木喬>))
+
+
+((<Masao>))

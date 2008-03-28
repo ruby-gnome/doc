@@ -1,0 +1,8 @@
+= Posicionando os Componentes
+{{link "tut-gtk-helloworld2", nil, "tut-gtk", "tut-gtk2-packing-theory"}}
+
+Quando você criar uma aplicação, você quererá colocar mais de um componente dentro de uma janela. 
+
+Nosso primeiro exemplo de olámundo usou apenas um componente, assim a gente pode usar simplesmente Gtk::Container#add para posicionar o componente dentro da janela. Mas quando você quer colocar mais de um componente dentro de uma janela, como você controla onde o componente será posicionado ? 
+
+Isso é quando posicionamento ("packing") entra em jogo.

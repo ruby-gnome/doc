@@ -1,0 +1,20 @@
+= class Gtk::HPaned
+The HPaned widget is a container widget with two children arranged horizontally. The division between the two panes is adjustable by the user by dragging a handle. See Gtk::Paned for details.
+
+== Object Hierarchy
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Gtk::Object
+        * Gtk::Widget
+          * Gtk::Container
+            * Gtk::Paned
+              * Gtk::HPaned
+
+== Class Methods
+--- Gtk::HPaned.new
+    Create a new Gtk::HPaned
+    * Returns: the new Gtk::HPaned  
+
+
+((<Masao>))

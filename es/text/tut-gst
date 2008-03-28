@@ -1,0 +1,39 @@
+= Tutorial Ruby/GStreamer
+
+== Introducción
+
+GStreamer es un entorno de trabajo diseñado para crear aplicaciones multimedia  y de streaming. El entorno de desarrollo GStreamer haace posible escribir todo tipo de aplicaciones multimedia y de streaming. GStreamer está diseñado para facilitar la creación de aplicaciones que trabajan con audio, vídeo o ambos.
+
+Este tutorial se basa en el ((<"GStreamer Application Development Manual"|URL:http://www.freedesktop.org/~gstreamer/data/doc/gstreamer/stable/manual/html/index.html>)) escrito por ((<"Laurent Sansonetti"|URL:../hiki.cgi?lrz>)). La obra original tiene copyright a nombre de varias personas: Wim Taymans, Steve Baker y Andy Wingo.
+
+== Contenidos
+
+* ((<Introducción|tut-gst-intro>))
+* Conceptos Básicos
+  * ((<Iniciando GStreamer|tut-gst-init>))
+  * Elementos
+    * ((<Qué es un elemento|tut-gst-elements-intro>))
+    * ((<Creando elementos|tut-gst-elements-create>))
+    * ((<Propiedades de los elementos|tut-gst-elements-properties>))
+  * ((<Plugins|tut-gst-plugins>))
+  * Puertos
+    * ((<Obteniendo puertos de un elemento|tut-gst-pads-elem>))
+    * ((<Capacidades de un puerto|tut-gst-pads-caps>))
+  * ((<Conectando elementos|tut-gst-link-elements-intro>))
+  * Contenedores
+    * ((<Creando contenedores|tut-gst-bins-create>))
+    * ((<Añadiendo elementos a un contenedor|tut-gst-bins-add>))
+    * ((<Contenedores a medida|tut-gst-bins-custom>))
+    * ((<Puertos Fastasma|tut-gst-bins-ghost-pads>))
+  * ((<Estados de un elemento|tut-gst-elements-state>))
+* Construyendo una aplicación
+  * Tu primera aplicación
+    * ((<Hola mundo|tut-gst-helloword>))
+    * ((<Conclusión|tut-gst-helloword-conclusion>))
+  * Más sobre Factorías
+    * ((<Problemas con Hola Mundo|tut-gst-helloword-problem>))
+    * ((<Más sobre tipos MIME|tut-gst-mime-types>))
+    * ((<Tipos GStreamer|tut-gst-types>))
+* Conceptos avanzados
+  * ((<Hilos|tut-gst-threads>))
+  * ((<Colas|tut-gst-queues>))

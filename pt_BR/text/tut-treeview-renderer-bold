@@ -1,0 +1,40 @@
+= Como Fazer Uma Linha Inteira em Negrito ou Colorida
+{{link "tut-treeview-renderer-example", "tut-treeview-renderer", "tut-treeview", "tut-treeview-selection-handle"}}
+
+Isso parece ser uma pergunta feita frequentemente, então vale a pena mencioná-la aqui. Você tem as duas maneiras mencionadas anteriormente: você usa funções de dados de célula, e verifica em cada se uma linha am particular deve ser destacada de uma maneira em particular (necrito, colorida, etc), e então configurar as propriedades do renderizador de acordo (e desconfigurá-las se você quiser que essa linha apareça normal), ou você usa atributos. Embora as funções de dados de célula mais provavelmente não são a escolha certa neste caso.
+
+Se você quer apenas que toda segunda linha tenha uma cor de fundo diferente para torná-la mais fácil para o usuário ver que dados pertencem a que linha em "tree views" largos, então você não tem que se preocupar com as coisas mencionadas aqui. Apenas configure a sugestão de regra no "tree view" como descrito na ((<seção "Look and Feel" de "TreeView"|tut-treeview-view-look>)), e tudo será feito automaticamente, em cores que combinam com o tema escolhido (isto é, a menos que o tema desabilite sugestão de regra).
+
+De outro jeito, a maneira mais adequada é usar atributos. A maneira mais fácil é configurar o atributo de cor de fundo ("background") e adicionar uma coluna ao seu "model" que determina se a linha é para ser colorida e conectá-la ao atributo "background_set":
+
+  liststore = Gtk::ListStore.new(String, String, TrueClass)
+
+  # Adiciona uma linha e a preenche com alguns dados
+  iter = liststore.append
+  iter[0] = "José "
+  iter[1] = "Silva"
+  iter[2] = false
+
+  # Adiciona uma segunda linha e a preenche com alguns dados
+  iter = liststore.append
+  iter[0] = "Ana"
+  iter[1] = "Maria"
+  iter[2] = true
+
+  view = Gtk::TreeView.new(liststore)
+
+  # Cria um renderizador com a propriedade de cor de fundo configurada
+  renderer = Gtk::CellRendererText.new
+  renderer.background = "pink"
+
+  # Adiciona as colunas, com a propriedade "background_set" mapeada a coluna apropriada
+  col = Gtk::TreeViewColumn.new("Primeiro Nome", renderer, :text => 0, :background_set => 2)
+  view.append_column(col)
+
+  col = Gtk::TreeViewColumn.new("Último Nome", renderer, :text => 1, :background_set => 2)
+  view.append_column(col)
+
+Uma maneira alternativa, se você gostaria de ter uma cor de fundo diferente, seria adicionar uma segunda coluna que listaria a cor de fundo desejada, e mapear o atributo de cor de fundo para essa coluna em vez de configurá-la diretamente no renderizador de célula. Note que esse método pode ser usado com qualquer atributo que forneça um atributo correspondente "foo-set"; ex.: "foreground" ou "weight".
+
+Como uma regra geral, você não deve alterar a cor de texto ou de fundo da célula, a menos que você tenha uma razão realmente boa para isso. Para citar o Havoc Pennington: "Por causa que as cores em GTK+ representam um tema escolhido pelo usuário, você não deveria nunca configurar as cores por razões puramente estéticas. Se os usuários não gostam de cinza de GTK+, eles podem alterá-la sozinhos para a sua tonalidade preferida de laranja."
+

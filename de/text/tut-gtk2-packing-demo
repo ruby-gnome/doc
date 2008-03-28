@@ -1,0 +1,164 @@
+= Boxen anordnen: Beispielprogramm
+{{link "tut-gtk2-packing-box-details", "tut-gtk2-packing-intro", "tut-gtk", "tut-gtk2-packing-tables"}}
+
+  #!/usr/bin/env ruby
+
+  require 'gtk2'
+
+  # Erstellen Sie eine neue Gtk::HBox-Instanz, die Sie mit Button-Beschriftungen
+  # füllen. Die für uns interessanten Argumente beim Aufruf von Gtk::HBox.new und
+  # Gtk::Box#pack_start, werden übergeben.
+  def make_box(homogeneous, spacing, expand, fill, padding)
+      box = Gtk::HBox.new(homogeneous, spacing)
+      
+      "Gtk::Box#pack_start (button, #{expand}, #{fill}, #{padding})".split(/ /).each do |s|
+          button = Gtk::Button.new(s)
+          box.pack_start(button, expand, fill, padding)
+      end
+      box
+  end
+
+  # Argumente von der Shell verarbeiten.
+  which = ARGV.shift
+  unless which
+      $stderr.puts "usage: #{$0} num"
+      $stderr.puts "	where num is 1, 2, or 3."
+      exit 1
+  end
+
+  # Erstellt das Hauptfenster.
+  window = Gtk::Window.new
+  
+  # Sie sollten immer daran denken, das Signal "delete_event" des
+  # Hauptfensters zu verbinden. Das ist sehr wichtig für richtiges,
+  # intuitives Verhalten des Programmes.
+  window.signal_connect("delete_event") do
+      Gtk::main_quit
+      false
+  end
+  window.border_width = 10
+
+  # Wir erstellen eine vertikale Box (Gtk::VBox), um die horizontalen Boxen darin anzuordnen
+  # (wird erstellt durch make_box).
+  # Das erlaubt uns, die horizontalen (mit Buttons gefüllten) Boxen nacheinander in der
+  # vertikalen Box zu stapeln.
+  box1 = Gtk::VBox.new(false, 0)
+
+  case which.to_i
+  when 1
+      # Erstellt ein neues Label und richtet dieses linksbündig aus.
+      # Wir werden diese und andere Funktionen im Abschnitt über Widget-Attribute genauer
+      # besprechen.
+      label = Gtk::Label.new("Gtk::HBox.new(false, 0)")
+      label.set_alignment(0, 0)
+      box1.pack_start(label, false, false, 0)
+
+      # Die ersten beiden Einträge sind für die homogeneous- und spacing-Parameter
+      # von Gtk::HBox.new.
+      # Die drei letzten Einträge sind für die Parameter expand, fill und padding der
+      # Methode Gtk::HBox#pack_start.
+      [
+          [false, 0, false, false, 0],
+          [false, 0, true,  false, 0],
+          [false, 0, true,  true,  0],
+      ].each do |args|
+          # Erstellt eine horizontale Box mit spezifizierten Parametern und ordnet
+          # diese oben in der vertikalen Box an.
+
+          box2 = make_box(*args)
+          box1.pack_start(box2, false, false, 0)
+      end
+
+      # Fügt einen Trenner in der vertikalen Box ein.
+      separator = Gtk::HSeparator.new
+      box1.pack_start(separator, false, true, 5)
+
+      # Das gleiche wie im letzten Abschnitt.
+      label = Gtk::Label.new("Gtk::HBox.new(true, 0)")
+      label.set_alignment(0, 0)
+      box1.pack_start(label, false, false, 0)
+      [
+          [true, 0, true, false, 0],
+          [true, 0, true, true,  0],
+      ].each do |args|
+          box2 = make_box(*args)
+          box1.pack_start(box2, false, false, 0)
+      end
+
+      separator = Gtk::HSeparator.new
+      box1.pack_start(separator, false, true, 5)
+
+  when 2
+      label = Gtk::Label.new("Gtk::HBox.new(false, 10)")
+      label.set_alignment(0, 0)
+      box1.pack_start(label, false, false, 0)
+
+      [
+          [false, 10, true, false, 0],
+          [false, 10, true, true,  0],
+      ].each do |args|
+          box2 = make_box(*args)
+          box1.pack_start(box2, false, false, 0)
+      end
+
+      separator = Gtk::HSeparator.new
+      box1.pack_start(separator, false, true, 5)
+
+      label = Gtk::Label.new("Gtk::HBox.new(false, 0)")
+      label.set_alignment(0, 0)
+      box1.pack_start(label, false, false, 0)
+
+      [
+          [false, 0, true, false, 10],
+          [false, 0, true, true,  10],
+      ].each do |args|
+          box2 = make_box(*args)
+          box1.pack_start(box2, false, false, 0)
+      end
+
+      separator = Gtk::HSeparator.new
+      box1.pack_start(separator, false, true, 5)
+
+  when 3
+      # Dies demonstriert die Fähigkeit, Gtk::Box#pack_end einzusetzen, um
+      # Widgets rechtsbündig auszurichten. Als erstes erstellen wir wie zuvor
+      # eine neue Box.
+      box2 = make_box(false, 0, false, false, 0);
+
+      # Erstellt eine neues Label, das am Ende eingefügt wird.
+      label = Gtk::Label.new("end")
+      box2.pack_end(label, false, false, 0)
+      box1.pack_start(box2, false, false, 0)
+
+      # Einen Trenner für unten.
+      separator = Gtk::HSeparator.new
+
+      # Dies setzt den Trenner explizit auf 400 Pixel in der Breite und 5
+      # Pixel in der Höhe. Das führt das zu, dass die horizontale Box, die
+      # wir erstellt haben, ebenfalls 400 Pixel breit sein wird und das
+      # abschließende Label ("end") wird von den anderen Labels in der Box getrennt.
+      # Andererseits werden alle Widgets in der Box so dicht wie möglich
+      # nebeneinander angeordnet.
+      separator.set_size_request(400, 5)
+      box1.pack_start(separator, false, true, 5)
+  end
+
+  # Erstellt eine neue Box und ordnet einen "Beenden"-Button darin an.
+  # Dieser button kann verwendet werden, um das Programm zu beenden, genau
+  # wie das Kreuz zum Schließen des Fensters.
+  quitbox = Gtk::HBox.new(false, 0)
+  button = Gtk::Button.new("Beenden")
+  button.signal_connect("clicked") do
+      Gtk.main_quit
+  end 
+
+  quitbox.pack_start(button, true, false, 0)
+  box1.pack_start(quitbox, true, false, 0)
+  window.add(box1)
+
+  # Alle Widgets anzeigen.
+  window.show_all
+
+  # Wie gewohnt, schließen wir mit dem Aufruf der Hauptschleife ab:
+  Gtk.main
+

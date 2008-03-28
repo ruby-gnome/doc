@@ -1,0 +1,55 @@
+= class Gtk::Tooltips
+Tooltips are the messages that appear next to a widget when the mouse pointer is held over it for a short amount of time. They are especially helpful for adding more verbose descriptions of things such as buttons in a toolbar.
+
+An individual tooltip belongs to a group of tooltips. A group is created with a call to Gtk::Tooltips.new. Every tooltip in the group can then be turned off with a call to Gtk::Tooltips#disable and enabled with Gtk::Tooltips#enable.
+
+To assign a tip to a particular Gtk::Widget, Gtk::Tooltips#set_tip is used.
+
+((*Note:*))
+Tooltips can only be set on widgets which have their own X window. To check if a widget has its own window use Gtk::Widget#no_window?. To add a tooltip to a widget that doesn't have its own window, place the widget inside a Gtk::EventBox and add a tooltip to that instead.
+
+The default appearance of all tooltips in a program is determined by the current GTK+ theme that the user has selected.
+
+Information about the tooltip (if any) associated with an arbitrary widget can be retrieved using Gtk::Tooltips.get_data.
+
+== Object Hierarchy
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Gtk::Object
+        * Gtk::Tooltips
+
+== Class Methods
+--- Gtk::Tooltips.new
+    Creates an empty group of tooltips. This method initialises a Gtk::Tooltips structure. Without at least one such structure, you can not add tips to your application.
+    * Returns : a new Gtk::Tooltips group for you to use.  
+
+--- Gtk::Tooltips.get_data(widget)
+    Retrieves any GtkTooltipsData([widget, tip_text, tip_private]) previously associated with the given widget.
+    * widget: a Gtk::Widget. 
+    * Returns: [widget, tip_text, tip_private], or nil if the widget has no tooltip.  
+
+== Instance Methods
+--- disable
+    Causes all tooltips in tooltips to become inactive. Any widgets that have tips associated with that group will no longer display their tips until they are enabled again with Gtk::Tooltips#enable.
+    * Returns: self
+
+--- enable
+    Allows the user to see your tooltips as they navigate your application.
+    * Returns: self
+
+--- set_tip
+    Adds a tooltip containing the message tip_text to the specified Gtk::Widget. 
+    widget: the Gtk::Widget you wish to associate the tip with. 
+    tip_text: a string containing the tip itself. 
+    tip_private: a string of any further information that may be useful if the user gets stuck.  
+
+--- force_window
+    Ensures that the window used for displaying the given tooltips is created.
+    Applications should never have to call this method, since GTK+ takes care of this.
+
+== See Also
+* Gtk::Toolbar - Create groups of widgets with their own tooltips.
+
+
+- ((<Masao>))

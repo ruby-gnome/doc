@@ -1,0 +1,45 @@
+= Détails sur les boîtes
+
+À cause de cette liberté, le placement des boîtes avec GTK peut paraître déroutant au premier abord. Il existe beaucoup d'options et il n'est pas tout de suite évident de comprendre comment elles s'accordent toutes ensemble. En fait, il y a 5 styles de base différents.
+
+{{image_left("packbox1.png")}}{{br}}
+
+Chaque ligne contient une boîte horizontale (hbox) contenant plusieurs boutons. L'appel à Gtk::Box#pack indique la façon dont sont placés tous les boutons dans la hbox. Chaque bouton est placé dans la hbox de la même façon (mêmes paramètres que la méthode Gtk::Box#pack_start).
+
+La méthode Gtk::Box#pack_start ressemble à ceci:
+
+  Gtk::Box#pack_start(child, expand, fill, padding) 
+
+Le premier paramêtre est l'objet que vous désirez placer dans la boîte.  Tous les objets sont tous des boutons jusqu'à maintenant, on place donc des boutons dans des boîtes.
+
+Le paramêtre expand des méthodes Gtk::Box#pack_start et Gtk::Box#pack_end contrôle la façon dont le widget est placé dans la boîte:
+
+:Si expand vaut true
+ les widgets sont disposés dans la boîte de façon à en occuper tout l'espace;
+
+:Si expand vaut false
+ la boîte est rétrécie pour correspondre à la taille du widget.
+
+Mettre expand à false vous permettra d'aligner à droite et à gauche vos widgets. Sinon, ils s'élargiront pour occuper toute la boîte. Le même effet pourrait être obtenu en utilisant uniquement une des deux méthodes Gtk::Box#pack_start ou Gtk::Box#pack_end.
+
+Le paramètre fill contrôle l'endroit ou l'espace accordé par le paramêtre expand doit-être alloué:
+
+:Si fill vaut true
+ l'espace sera alloué dans l'objet lui-même.  Ce dernier sera redimensionné en fonction de la taille de cet espace;
+
+:Si fill faut false
+ l'objet garde sa taille originale, et une couche invisible (padding) est rajoutée autour de lui.
+
+Notez que le paramêtre fill n'a d'effet que si le paramêtre expand vaut également true.
+
+Lorsque l'on crée une nouvelle boîte horizontale, on utilise cette méthode:
+
+  Gtk::HBox.new(homogeneous, spacing) 
+
+Le paramètre homogeneous de Gtk::HBox.new (et c'est la même chose pour Gtk::VBox.new) vérifie que chaque objet de la boîte ait la même taille (i.e. la même largeur dans une hbox, la même hauteur dans une vbox). S'il vaut vrai, le paramètre expand des fonctions Gtk::Box#pack_start et Gtk::Box#pack_end sera toujours vrai.
+
+Quelle est alors la différence entre les paramètres spacing (configuré lorsque la boîte est créée) et padding (configuré lorque les éléments sont placés) ? spacing ajoute de l'espace entre les objets, et padding en ajoute de chaque côté d'un objet. La capture suivante devrait éclairer tout cela:
+
+{{image_left("packbox2.png")}}{{br}}
+
+Vous trouverez dans la section suivante le code utilisé pour réaliser les captures de cette page.  Ce dernier est suffisament commenté, et vous n'aurez probablement pas de problèmes pour le lire.  Jouez simplement avec.

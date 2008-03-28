@@ -1,0 +1,28 @@
+= Scrolling Credits display
+Simple vertical scrolling text display with fading at the edges.
+
+
+This is a sample application using Ruby/GNOME2, Ruby/GnomeCanvas.
+
+{{image_right('gnomecanvas-credits-snapshot1.png')}}
+== Download
+* {{attach_anchor('gnomecanvas-credits.rb')}}
+
+== Requirements
+Developed environments are:
+* ruby 1.8.1 (2003-12-25) [i686-linux]
+* Ruby-GNOME2-0.9.0(Ruby/GTK2, Ruby/GnomeCanvas)
+
+== Usage
+$ ruby gnomecanvas-credits.rb
+
+== License
+Ruby's
+
+== Author
+((<Geoff Youngs>))
+
+=== Changelog
+
+:2003-07-11 Geoff Youngs
+ Initial release

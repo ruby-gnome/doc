@@ -1,0 +1,117 @@
+=インストールガイド
+
+== Windows編(Ruby-1.8.0/MinGW32)
+
+=== はじめに
+ここでは、* ((<One-Click Ruby Installer|URL:http://rubyinstaller.rubyforge.org/wiki/wiki.pl>))と ((<"ruby-gnome2.sourceforge.jpのWindowsパッケージ"|URL:http://ruby-gnome2.sourceforge.jp/>)) を使います。
+* Windowsの種類としては、Win9x系(95,98,Me)と NT系(NT4,2000,XP,2003)とに分かれますので注意してください。
+* Rubyのバージョンは 1.8.5です。
+
+=== 手順
+
+==== その一
+
+* ((<Ruby packaged by the Pragmatic Programmers|URL:http://rubyinstaller.rubyforge.org/wiki/wiki.pl/>))をダウンロードします。このガイドでは((<ruby182-15.exe|URL:http://rubyforge.org/frs/?group_id=167>))で確認しています。
+* 適当なディレクトリにインストールします(Ex: c:\Ruby).
+
+Win9x系(実際に確認したのはWinME)では、インストーラが autoexec.batに C:\ruby\bin を
+追加してくれます。
+
+ C:\>type \autoexec.bat
+ SET windir=C:\WINDOWS
+ SET winbootdir=C:\WINDOWS
+ SET COMSPEC=C:\WINDOWS\COMMAND.COM
+ SET PROMPT=$p$g
+ SET TEMP=C:\WINDOWS\TEMP
+ SET TMP=C:\WINDOWS\TEMP
+ SET TCL_LIBRARY=c:\ruby\tcl\lib\tcl8.3
+ SET RUBY_TCL_DLL=c:\ruby\bin\tcl83.dll
+ SET RUBY_TK_DLL=c:\ruby\bin\tk83.dll
+ SET PATH=c:\ruby\bin;C:\WINDOWS;C:\WINDOWS\COMMAND
+
+したがって、ここで一度再起動する必要があります。 
+
+NT系でもレジストリに追加されてるので、ここで一度再起動して反映しておきます。
+
+==== その二
+
+* ((<"Ruby/GTK2 binaries for Windows"|URL:http://sourceforge.net/project/showfiles.php?group_id=53614>)) をダウンロードします。このガイドでは((<ruby-gnome2-0.16.0-1-i386-mswin32.exe|URL:http://prdownloads.sourceforge.net/ruby-gnome2/ruby-gnome2-0.16.0-1-i386-mswin32.exe?download>))  で確認しています。
+* 実行します。基本的に表示されている内容を変更せずにインストールしますが、以下の３つの点については変更可能です。
+  * GTK2 Runtime: もしも、他のGTK2のライブラリを持っている場合(そしてbinディレクトリがPATHに追加されている場合)、このチェックをオフにすることができます。しかし、ディスク容量に余裕が無いとき以外はチェックを外さない方が良いでしょう。
+  * Register Environment Variables: チェックするとGTK Runtimeのbin-pathがPATH環境変数に追加されます。msginit, msgmerge, 等、GTK2 Runtimeに含まれる便利な開発向けのツール群を利用する場合はチェックすると良いでしょう。ただし、それらを必要としない場合はチェックは外したままにしてください。特に、他のGTK2アプリケーションがインストールされている場合などでDLLの衝突を起こし、どちらかがうまく動作しなくなる場合があります。。
+  * Choose the install directory: インストール先のディレクトリは変更可能ですが、必ずRubyがインストールされているトップフォルダを選択するようにしてください(Ex: c:\Ruby)。
+
+==== その三
+* 次はテスト。うまくいかない場合は後述の「うまくいかないときは」を参照してください。
+* DOSプロンプトで以下を入力してみます。DOSプロンプトの開き方は：
+    * Win9X/ME スタートボタン上でクリックしてそれを実行。((*command*))と入力して<ENTER>キーをクリックする。
+    * WinNT/2000/XP/2003 スタートボタン上でクリックしてそれを実行。((*cmd*))と入力して<ENTER>キーをクリックする。
+    C:\>ruby -v
+    ruby 1.8.0 (2003-05-26) [i386-mswin32]
+
+    C:\>ruby -e "require 'gtk2'"
+
+    C:\>ruby -e "require 'gtk2';Gtk::Window.new.show;Gtk.main"
+* エラーが出ずにきちんとウインドウが表示されたらインストールは成功です。
+
+以上で無事 GtkなWindowが表示されます。
+
+=== うまくいかない時は
+==== ruby -v
+もしこのコマンドがうまく動かなかったら、ruby-install-dir\binがきちんとPATH環境変数にセットされているか確認してください。
+
+==== 日本語がうまく表示できない場合
+C:\ruby\lib\GTK\etc\gtk-2.0\gtkrcにフォントの設定を追加すると良いでしょう。以下のような感じです。
+
+ style "user-font"
+ {
+   font_name="ms pgothic 10"
+ }
+ widget_class "*" style "user-font"
+
+==== それでも動かないときは
+上記を試してみても動かない場合は、((<メーリングリスト|URL:http://sourceforge.net/mail/?group_id=53614>))で質問してください。なるべく自分の環境や試したことを細かく報告すると回答が早く返ってくると思います。
+
+=== 書いた人
+* ((<原著|URL:http://ruby-gnome2.sourceforge.jp/hiki.cgi?Install+Guide+for+Windows>)) Joao Pedrosa - joaopedrosa at yahoo dot com
+
+* 訳 たむら けんいち - sgs02516 at nifty dot com
+
+=== Changelog
+:2007-02-12 ((<むとう>))
+ 新しいRuby-GNOME2 Win32 GUI Installer向けに書き直した。
+:2006-04-15 ((<むとう>))
+ アップデート。
+:2004-08-10 ((<むとう>))
+ Ruby/GTK2のバージョンを0.10.0にあげ、また、GTK+はGLADE for Win32のものを使うように変更(GTK+-2.4.x)。その他古くなっていた記述を改修。
+
+:2003-12-18 ((<むとう>))
+ Ruby/GTK2のバージョンを0.8.0にあげた。
+
+:2003-12-14 ((<むとう>))
+ フォント指定を追加。「レジストリから GTK2 Runtimeへの PATHを自動追加」を削除（本体に組み込まれたため）。その四の初期設定も不要になったため削除。
+
+:2003-11-05 ((<さかい>))
+ droplineをGTK-Runtime-Environment-2.2.4.1.exeに更新
+ 
+:2003-09-08 ((<さかい>))
+ Ruby-GNOME2 0.7.0 用に更新
+
+:2003-06-18 tamura
+ gtk2.rb から glib2.rbに変更
+
+:2004-06-15 ((<むとう>))
+ 「ダイナミックリンクライブラリ libglib-2.0-0.dll から見つかりませんでした」にWindows/Systemの話を追加。
+
+:2004-06-14 ((<むとう>))
+ 「ダイナミックリンクライブラリ libglib-2.0-0.dll から見つかりませんでした」を追加
+ 「うまく行かないときは」を日本語化
+
+:2003-06-14 tamura
+ 日本語での説明を若干追加
+ gtk2.rbへの PATH追加ルーチンの説明を追記(あくまで暫定なもの)
+
+:2003-06-13 ((<むとう>))
+ 本インストールガイド自体のファイル名を変更しました。
+:2003-06-12 tamura
+ just start

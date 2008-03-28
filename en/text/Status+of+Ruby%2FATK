@@ -1,0 +1,32 @@
+= Status of Ruby/ATK
+
+{{status "Ruby/ATK", ["1.2.4", "1.6", "1.7", "1.10"], "
+-|Atk::Action|AtkAction|O|O|O|O|
+-|Atk::Component|AtkComponent|#|#|#|#|Done except .add_focus_handler
+-|Atk::Document|AtkDocument|#|#|#|#|Done except #document
+-|Atk::EditableText|AtkEditableText|O|O|O|O|
+-|Atk::GObjectAccessible|AtkGObjectAccessible|O|O|O|O|
+-|Atk::Hyperlink|AtkHyperlink|O|O|O|O|
+-|Atk::Hypertext|AtkHypertext|O|O|O|O|
+-|Atk::Image|AtkImage|O|O|O|O|
+-|Atk::NoOpObject|AtkNoOpObject|O|O|O|O|
+-|Atk::NoOpObjectFactory|AtkNoOpObjectFactory|O|O|O|O|
+-|Atk::Object|AtkObject|O|O|O|#| Done except #(connect/remove)_property_change_handler, #initialize
+-|Atk::ObjectFactory|AtkObjectFactory|O|O|O|O|
+-|Atk::Registry|AtkRegistry|O|O|O|O|
+-|Atk::Relation|AtkRelation|O|O|O|O|
+-|Atk::RelationSet|AtkRelationSet|O|O|O|O|
+-|Atk::Selection|AtkSelection|O|O|O|O|
+-|Atk::State|AtkState|O|O|O|O|
+-|Atk::State|AtkStateSet|O|O|O|O|
+-|Atk::StreamableContent|AtkStreamableContent|O|O|O|O|Done except .get_stream which uses GIOChannel.
+-|Atk::Table|AtkTable|O|O|O|O|
+-|Atk::Text|AtkText|O|O|O|O|
+-|Atk::Text::Attribute|AtkTextAttribute|O|O|O|O| in AtkText(GLib::Enum with some methods).
+-|Atk::TextRange|AtkTextRange|-|O|O|O| in AtkText.
+-|Atk::TextRectangle|AtkTextRectangle|-|O|O|O| in AtkText.
+-|Atk::Attribute|AtkAttribute|x|x|x|x|Use [name, value] instead.
+-|Atk::AttributeSet|AtkAttributeSet|x|x|x|x| Use array of AtkAttribute([name, value]) instead.
+-|Atk::Util|AtkUtil|#|#|#|#|
+-|Atk::Value|AtkValue|O|O|O|O|
+"}}

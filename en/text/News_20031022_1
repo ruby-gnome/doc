@@ -1,0 +1,15 @@
+= News (Detail)
+== News page is now available on Hiki
+((*Posted by Masao on 2003-10-22 (Wed) 17:55:02*))
+
+I added a new feature to this site(English site only).
+It can create news pages easily(This is a feature for Writer on this Hiki).
+
+News pages are added from ((<create_news>)) page.
+You can write news with RD+ style.
+
+Recent news is shown in ((<FrontPage>)).
+Other news are shown in ((<News>)) page.
+((<News>)) page shows each News headlines.
+If you want to read more, click "Read more".
+You can also access each news as a page.

@@ -1,0 +1,26 @@
+= class Gdk::GLWindow
+OpenGL Window - OpenGL window which is located on-screen
+
+== Object Hierarchy
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Gdk::Drawable
+        * Gdk::GLWindow
+
+== Class Methods
+--- Gdk::GLWindow.new(glconfig, window)
+    Creates an on-screen rendering area.
+    * glconfig: a Gdk::GLConfig.
+    * window: the Gdk::Window to be used as the rendering area.
+    * Returns: the new Gdk::GLWindow.
+
+== Instance Methods
+--- destroy
+    Destroys the OpenGL resources associated with the Gdk::GLWindow.
+    * Returns: nil
+
+--- window
+    Returns the Gdk::Window associated with the Gdk::GLWindow.
+    Notice that Gdk::GLWindow is not Gdk::Window, but another Gdk::Drawable which have an associated Gdk::Window.
+    * Returns: the Gdk::Window associated with the Gdk::GLWindow

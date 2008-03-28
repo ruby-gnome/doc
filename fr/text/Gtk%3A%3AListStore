@@ -1,0 +1,95 @@
+= class Gtk::ListStore
+The Gtk::ListStore object is a list model for use with a Gtk::TreeView widget. It implements the Gtk::TreeModel interface, and consequentialy, can use all of the methods available there. It also implements the Gtk::TreeSortable interface so you can sort the list using the view. Finally, it also implements the tree drag and drop interfaces.
+
+== Object Hierarchy
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Gtk::ListStore
+
+== Included Modules
+* Gtk::TreeDragDest
+* Gtk::TreeDragSource
+* Gtk::TreeModel
+* Gtk::TreeSortable
+
+== Class Methods
+--- Gtk::ListStore.new(type1, type2, type3, ...)
+    Creates a new tree store as with columns each of the types passed in. As an example, Gtk::ListStore.new(Integer, String, Gdk::Pixbuf) will create a new Gtk::ListStore with three columns, of type Integer, String and Gdk::Pixbuf respectively. 
+    * type1, type2, type3, ... : Object.class value
+    * Returns: A new Gtk::ListStore 
+
+== Instance Methods
+--- set_column_types(type1, type2, type3, ...)
+    This method is meant primarily for classes that inherit from Gtk::ListStore, and should only be used when constructing a new Gtk::ListStore. It will not function after a row has been added, or a method on the Gtk::TreeModel interface is called. 
+    * type1, type2, type3, ... : Object.class value
+    * Returns: self 
+
+--- set_value(iter, column, value)
+    Sets the data in the cell specified by iter and column. The type of value must be convertible to the type of the column. Use Gtk::TreeIter#set_value instead. 
+    * iter : A valid Gtk::TreeIter for the row being modified 
+    * column : A column number to modify 
+    * value : A new value for the cell 
+    * Returns: self
+
+--- remove(iter)
+    Removes the given row from the list store. After being removed, iter is set to be the next valid row, or invalidated if it pointed to the last row in list_store.
+    * iter : A valid Gtk::TreeIter 
+    * Returns: true if iter is valid, false if not.
+
+--- insert(position)
+    Creates a new row at position. iter will be changed to point to this new row. If position is larger than the number of rows on the list, then the new row will be appended to the list. The new row will be empty after this method is called. To fill in values, you need to call Gtk::TreeIter#set_value or Gtk::ListStore#set_value. 
+    * position: position to insert the new row 
+    * Returns: A new row(Gtk::TreeIter) 
+
+--- insert_before(sibling)
+    Inserts a new row before sibling. If sibling is nil, then the row will be appended to the end of the list. iter will be changed to point to this new row. The new row will be empty after this method is called. To fill in values, you need to call Gtk::TreeIter#set_value or Gtk::ListStore#set_value. 
+    * sibling: A valid Gtk::TreeIter
+    * Returns: A new row(Gtk::TreeIter) 
+
+--- insert_after(sibling)
+    Inserts a new row after sibling. If sibling is nil, then the row will be prepended to the beginning of the list. iter will be changed to point to this new row. The new row will be empty after this method is called. To fill in values, you need to call Gtk::TreeIter#set_value or Gtk::ListStore#set_value. 
+    * sibling: A valid Gtk::TreeIter
+    * Returns: A new row(Gtk::TreeIter) 
+
+--- prepend
+    Prepends a new row to list_store. iter will be changed to point to this new row. The new row will be empty after this method is called. To fill in values, you need to call Gtk::TreeIter#set_value or Gtk::ListStore#set_value. 
+    * Returns: A new row(Gtk::TreeIter) 
+
+--- append
+    Appends a new row to list_store. iter will be changed to point to this new row. The new row will be empty after this method is called. To fill in values, you need to call Gtk::TreeIter#set_value or Gtk::ListStore#set_value. 
+    * Returns: A new row(Gtk::TreeIter) 
+
+--- clear
+    Removes all rows from the list store.
+    * Returns: self
+
+--- iter_is_valid?(iter)
+    Checks if the given iter is a valid iter for this Gtk::ListStore.
+    ((* Warning *)) This method is slow. Only use it for debugging and/or testing purposes. ((* Since 2.2 *))
+    *iter: A Gtk::TreeIter
+    *Returns: true if the iter is valid, false if the iter is invalid.
+
+--- reorder(new_order)
+    Reorders store to follow the order indicated by new_order. Note that this method only works with unsorted stores. ((* Since 2.2 *))
+    * new_order: an Array of Integers mapping the new position of each child to its old position before the re-ordering, i.e. new_order[newpos] = oldpos.
+
+--- swap(a, b)
+    Swaps a and b in store. Note that this method only works with unsorted stores.((* Since 2.2 *))
+    * a: A Gtk::TreeIter.
+    * b: Another Gtk::TreeIter.
+
+--- move_before(iter, position)
+    Moves iter in store to the position before position. Note that this method only works with unsorted stores. If position is nil, iter will be moved to the end of the list. ((* Since 2.2 *))
+    * iter: A Gtk::TreeIter
+    * position: A Gtk::TreeIter, or nil.
+
+--- move_after(iter, position)
+    Moves iter in store to the position after position. Note that this method only works with unsorted stores. If position is nil, iter will be moved to the start of the list. ((* Since 2.2 *))
+    * iter: A Gtk::TreeIter
+    * position: A Gtk::TreeIter, or nil.
+
+== ChangeLog
+*2006-11-03 Apply latest APIs. ((<Masao>))
+
+- ((<Masao>))

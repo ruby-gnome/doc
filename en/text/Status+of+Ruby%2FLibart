@@ -1,0 +1,16 @@
+= Status of Ruby/Libart
+
+{{status "Libart", "
+Memory management|-|-|-
+Affine transformation matrices|Art::Affine|-|O
+Art Alpha Gamma Stuff|Art::AlphaGamma|ArtAlphaGamma|-
+Core Construction APIs|-|ArtPoint|x|Use Array([x, y]) instead.
+Core Construction APIs|Art::Vpath|ArtVpath|#
+Core Construction APIs|Art::Bpath|ArtBpath|O
+Extended Construction APIs|Art::Vpath|-|O
+Extended Construction APIs|Art::VpathDash|ArtVpathDash|O
+Transformation operations|Art::Vpath, Art::Bpath|-|O
+SVPs|Art::SVP|ArtSVP|O|art_svp_from_vpath is implemented as Art::Vpath.to_svp
+Uta|Art::Uta|ArtUta|O| ArtUtaBbox is defined as Integer.
+Svp rendering|-|-
+"}}

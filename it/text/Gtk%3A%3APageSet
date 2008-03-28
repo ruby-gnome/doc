@@ -1,0 +1,21 @@
+= class Gtk::PageSet
+
+== Object Hierarchy
+* Object
+  * GLib::Enum
+    * Gtk::PageSet
+
+== Constants
+--- ALL
+--- EVEN
+--- ODD
+
+== See Also
+
+* Gtk::PrintSettings
+
+== ChangeLog
+
+* 2006-07-09: updated for 2.10 - ((<kou>))
+
+- ((<kou>))

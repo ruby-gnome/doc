@@ -1,0 +1,53 @@
+= イベントボックス 
+GTKのウィジェットには，対応するXのウィンドウを持たず，親ウィジェットの上に単に描画するだけのものがいくつかある．
+これらのウィジェットはウィンドウを持たないためイベントを受け取ることができず，不適当なサイズにリサイズされても，うまくクリップできずに汚くオーバーライトされたりする．
+このようなウィジェットに更に何か追加したい場合には，EventBox がある．
+
+一見すると，イベントボックスウィジェットは全く使いものにならないように見えるかもしれない．
+これはなにも画面に表示しないし，なんのイベントにも反応しない．
+しかし，「子ウィジェットに X のウィンドウを提供する」という機能を提供するのである．
+
+多くのGTKウィジェットが関連するXのウィンドウを持たないことは重要なことである．
+Xのウィンドウを持たないことでメモリが節約され性能も向上するが，そのぶんいくつか欠点がある．
+Xのウィンドウを持たないウィジェットはイベントを受け取れないので，自分の内容をクリップできない．
+EventBoxと言う名前は，このウィジェットがイベントを扱う機能を持つことを強調しているが，それだけでなくクリッピングにも使われる．
+
+新しくイベントボックスウィジェットを作成するには：
+
+  Gtk::EventBox.new
+
+このイベントボックスに子ウィジェットを追加：
+
+  Gtk::EventBox#add(child)
+
+{{image_right "eventbox.png"}}
+以下はイベントボックスの使い方の両方を示す例である．
+
+*  小さな四角形にクリップされるようにラベルが作成され，ウィンドウをリサイズするとラベルの残りの部分が表示される．
+*  ラベルをクリックするとプログラムが終了する．
+
+  #! /usr/bin/env ruby
+  
+  require 'gtk2'
+  
+  window = Gtk::Window.new
+  window.title = "Event Box"
+  window.signal_connect("destroy") {Gtk.main_quit}
+  window.border_width = 10
+  
+  event_box = Gtk::EventBox.new
+  window.add(event_box)
+  
+  label = Gtk::Label.new("Click here to quit, quit, quit, quit, quit")
+  event_box.add(label)
+  
+  label.set_size_request(110, 20)
+  
+  event_box.events = Gdk::Event::BUTTON_PRESS_MASK
+  event_box.signal_connect("button_press_event") {Gtk.main_quit}
+  
+  event_box.realize
+  event_box.window.cursor = Gdk::Cursor.new(Gdk::Cursor::HAND1)
+  
+  window.show_all
+  Gtk.main

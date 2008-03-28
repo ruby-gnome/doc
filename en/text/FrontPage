@@ -1,0 +1,56 @@
+= Ruby-GNOME2 Project Website
+== What's New!?
+{{news(1, 1)}}
+
+== What's Ruby-GNOME2?
+Ruby-GNOME2 is a set of Ruby language bindings for the GNOME 2.0 development environment. This is the next generation of Ruby-GNOME. 
+
+Ruby-GNOME2 now includes the libraries below:
+
+--- ruby-gtk2 package
+    Ruby/GLib2, Ruby/ATK, Ruby/GdkPixbuf2, Ruby/Pango, Ruby/GTK2
+--- ruby-gnome2-all package
+    ruby-gtk2, Ruby/GnomeCanvas2, Ruby/GNOME2, Ruby/Libart2, Ruby/Libglade2, Ruby/GConf2, Ruby/GnomeVFS, Ruby/GtkGLExt, Ruby/GtkHtml2, Ruby/GtkSourceView, Ruby/PanelApplet, Ruby/GnomePrint, Ruby/GnomePrintUI, Ruby/RSVG, Ruby/GtkMozEmbed, Ruby/Poppler, Ruby/VTE
+--- ruby-gtktrayicon
+    Ruby/GtkTrayIcon (Deprecated. Use Gtk::StatusIcon in Ruby/GTK instead)
+
+((<See more details.|Ruby-GNOME2 API Reference>))
+
+Ruby-GNOME2 also provides the following programs:
+--- rbbr
+    ((<Ruby Browser|rbbr>))
+
+== Contents
+* ((<API Reference|Ruby-GNOME2 API Reference>))
+* ((<Tutorials|tutorials>))
+* ((<Install Guide>))
+* ((<Tips|tips>))
+* ((<Samples>))
+* ((<IRC|irc>))
+* ((<Icons>))
+* ((<Links>))
+
+== For Developers
+* ((<How to Implement Ruby-GNOME2>))
+* ((<Naming and Conversion Rules>))
+* ((<How to compile Ruby-GNOME2 with several ruby binaries|howto_compile_serverl_ruby>))
+* ((<Status>))
+
+== For Web Editors
+This site can't be editted by everyone. You need an account.
+If you would like to create/modify pages on this site, please send a message to the mailing list.
+
+* ((<How to edit this site|howto_hikird>))
+* ((<"About Hiki/RD+">))
+* ((<"Add a news"|create_news>))
+* ((<"Options"|options>))
+
+== Misc
+* ((<History>))
+* ((<googleplot|URL:/googleplot/>))
+* ((<LinkedMap|linkedmap>))
+* ((<"Copyright/License information"|License>))
+* ((<Authors>))
+
+
+Total: {{totalpages}} pages

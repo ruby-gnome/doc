@@ -1,0 +1,205 @@
+= class Gtk::EntryCompletion
+Gtk::EntryCompletion is an auxiliary object to be used in conjunction with Gtk::Entry to provide the completion functionality. It implements the Gtk::CellLayout interface, to allow the user to add extra cells to the Gtk::TreeView with completion matches. 
+
+"Completion functionality" means that when the user modifies the text in the entry, Gtk::EntryCompletion checks which rows in the model match the current content of the entry, and displays a list of matches. By default, the matching is done by comparing the entry text case-insensitively against the text column of the model (see Gtk::EntryCompletion#text_column=), but this can be overridden with a custom match method (see Gtk::EntryCompletion_set_match_func). 
+
+When the user selects a completion, the content of the entry is updated. By default, the content of the entry is replaced by the text column of the model, but this can be overridden by connecting to the ::match-selected signal and updating the entry in the signal handler. Note that you should return TRUE from the signal handler to suppress the default behaviour. 
+
+To add completion functionality to an entry, use Gtk::Entry#set_completion. 
+
+In addition to regular completion matches, which will be inserted into the entry when they are selected, Gtk::EntryCompletion also allows to display "actions" in the popup window. Their appearance is similar to menuitems, to differentiate them clearly from completion strings. When an action is selected, the ::action-activated signal is emitted. 
+
+== Object Hierarchy
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Gtk::EntryCompletion
+
+== Included Modules
+* Gtk::CellLayout
+
+== Class Methods
+--- Gtk::EntryCompletion.new
+    Creates a new Gtk::EntryCompletion object. ((* Since 2.4 *))
+    * Returns: A newly created GtkEntryCompletion object.  
+
+== Instance Methods
+--- entry
+    Gets the entry completion has been attached to. ((* Since 2.4 *))
+    * Returns: The entry completion has been attached to.  
+
+--- model
+    Returns the model the Gtk::EntryCompletion is using as data source. Returns nil if the model is unset. ((* Since 2.4 *))
+    * Returns:  A Gtk::TreeModel, or nil if none is currently being used.  
+--- model=(model)
+    Sets the model for a Gtk::EntryCompletion. If completion already has a model set, it will remove it before setting the new model. If model is nil, then it will unset the model. ((* Since 2.4 *))
+    * model: The Gtk::TreeModel 
+    * Returns: model
+--- set_model(model)
+    Same as Gtk::EntryCompletion#model=. ((* Since 2.4 *))
+    * model: The Gtk::TreeModel 
+    * Returns: self
+
+--- set_match_func{|completion, key, iter| ... }
+    Sets the match function for completion as a block. The match function is used to determine if a row should or should not be in the completion list. ((* Since 2.4 *))
+    * {|completion, key, iter| ... } : match function for completion as a block. A block which decides whether the row indicated by iter matches a given key, and should be displayed as a possible completion for key. Note that key is normalized and case-folded (see g_utf8_normalize() and g_utf8_casefold()). If this is not appropriate, match functions have access to the unmodified key via Gtk::Entry#text.
+      * completion: the Gtk::EntryCompletion  
+      * key: the string to match, normalized and case-folded  
+      * iter: a Gtk::TreeIter indicating the row to match  
+      * Returns: true if iter should be displayed as a possible completion for key  
+    * Returns: self
+
+--- minimum_key_length
+    Returns the minimum key length as set for completion. ((* Since 2.4 *))
+    * Returns: The currently used minimum key length.
+--- minimum_key_length=(length)
+    Requires the length of the search key for completion to be at least length. This is useful for long lists, where completing using a small key takes a lot of time and will come up with meaningless results anyway (ie, a too large dataset). ((* Since 2.4 *))
+    * length: The minimum length of the key in order to start completing 
+    * Returns: length
+--- set_minimum_key_length(length)
+    Same as Gtk::EntryCompletion#minimum_key_length=. ((* Since 2.4 *))
+    * length: The minimum length of the key in order to start completing 
+    * Returns: self
+
+--- complete
+    Requests a completion operation, or in other words a refiltering of the current list with completions, using the current key. The completion list view will be updated accordingly. ((* Since 2.4 *))
+    * Returns: self
+
+--- insert_prefix
+    Requests a prefix insertion. ((* Since 2.6 *))
+    * Returns: self
+
+--- insert_action_text(index, text)
+    Inserts an action in completion's action item list at position index with text text. If you want the action item to have markup, use Gtk::EntryCompletion#insert_action_markup. ((* Since 2.4 *))
+    * index: The index of the item to insert.  
+    * text: Text of the item to insert.  
+    * Returns: self
+
+--- insert_action_markup(index, markup)
+    Inserts an action in completion's action item list at position index with markup markup. ((* Since 2.4 *))
+    * index: The index of the item to insert.  
+    * markup: Markup of the item to insert.  
+    * Returns: self
+
+--- delete_action(index)
+    Deletes the action at index from completion's action list. ((* Since 2.4 *))
+    * index: The index of the item to Delete.  
+    * Returns: self
+
+--- text_column
+    Returns the column in the model of completion to get strings from. ((* Since 2.6 *))
+    * Returns: the column containing the strings
+--- text_column=(column)
+    Convenience method for setting up the most used case of this code: a completion list with just strings. This method will set up completion to have a list displaying all (and just) strings in the completion list, and to get those strings from column in the model of completion. 
+    The method creates and adds a Gtk::CellRendererText for the selected column. If you need to set the text column, but don't want the cell renderer, use GLib::Object#set_property to set the ::text_column property directly. ((* Since 2.4 *))
+    * column: The column(Integer) in the model of completion to get strings from.  
+    * Returns: column
+--- set_text_column(column)
+    Same as Gtk::EntryCompletion#text_column=. ((* Since 2.4 *))
+    * column: The column(Integer) in the model of completion to get strings from.  
+    * Returns: self
+
+--- inline_completion?
+    Returns whether the common prefix of the possible completions should be automatically inserted in the entry. ((* Since 2.6 *))
+    * Returns: true if inline completion is turned on
+--- inline_completion=(inline_completion)
+    Sets whether the common prefix of the possible completions should be automatically inserted in the entry. ((* Since 2.6 *))
+    * inline_completion: true to do inline completion
+    * Returns: inline_completion
+--- set_inline_completion(inline_completion)
+    Same as inline_completion=. ((* Since 2.6 *))
+    * inline_completion: true to do inline completion
+     * Returns: self
+
+--- popup_completion?
+    Returns whether the completions should be presented in a popup window. ((* Since 2.6 *))
+    * Returns: true if popup completion is turned on
+--- popup_completion=(popup_completion)
+    Sets whether the completions should be presented in a popup window. ((* Since 2.6 *))
+    * popup_completion: true to do popup completion
+    * Returns: popup_completion
+--- set_popup_completion(popup_completion)
+    Same as popup_completion=. ((* Since 2.6 *))
+    * popup_completion: true to do popup completion
+    * Returns: self
+
+--- popup_set_width=(popup_set_width)
+    Sets whether the completion popup window will be resized to be the same width as the entry. ((*Since 2.8*))
+    * popup_set_width: true to make the width of the popup the same as the entry
+    * Returns: popup_set_width
+
+--- set_popup_set_width(popup_set_width)
+    Same as Gtk::EntryCompletion#popup_set_width=. ((*Since 2.8*))
+    * popup_set_width: true to make the width of the popup the same as the entry
+    * Returns: self
+
+--- popup_set_width?
+    Returns whether the completion popup window will be resized to the width of the entry. ((*Since 2.8*))
+    * Returns: true if the popup window will be resized to the width of the entry
+
+--- popup_single_match=(popup_single_match)
+    Sets whether the completion popup window will appear even if there is only a single match. You may want to set this to false if you are using inline completion. ((*Since 2.8*))
+    * popup_single_match: true if the popup should appear even for a single match
+    * Returns: popup_single_match
+
+--- set_popup_single_match(popup_single_match)
+    Same as Gtk::EntryCompletion#popup_single_match=. ((*Since 2.8*))
+    * popup_single_match: true if the popup should appear even for a single match
+    * Returns: self
+    
+--- popup_single_match?
+    Returns whether the completion popup window will appear even if there is only a single match. ((*Since 2.8*))
+    * Returns: true if the popup window will appear regardless of the number of matches.
+
+== Properties
+--- inline-completion: true or false (Read/Write)
+    Determines whether the common prefix of the possible completions should be inserted automatically in the entry. Note that this requires text-column to be set, even if you are using a custom match function. ((* Since 2.6 *))
+    * Default value: false
+
+--- minimum-key-length: Integer (Read/Write)
+    Minimum length of the search key in order to look up matches. ((* Since 2.4 *))
+    * Allowed values: >= -1
+    * Default value: 1
+
+--- model: Gtk::TreeModel (Read/Write)
+    The model to find matches in. ((* Since 2.4 *))
+
+--- popup-completion: true or false (Read/Write)
+    Determines whether the possible completions should be shown in a popup window. ((* Since 2.6 *))
+    * Default value: true
+
+--- popup-set-width: true or false (Read/Write)
+    Determines whether the completions popup window will be resized to the width of the entry. Default value: true. ((*Since 2.8*))
+    * Default value: true
+
+--- popup-single-match: true or false (Read/Write)Write
+    Determines whether the completions popup window will be shown for a single possible completion. You probably want to set this to false if you are using inline completion. Default value: true. ((*Since 2.8*))
+    * Default value: true
+
+--- text-column: Integer (Read/Write)
+    The column of the model containing the strings. ((* Since 2.6 *))
+    * Allowed values: >= -1
+    * Default value: -1
+
+== Signals
+--- action-activated: self, index
+    Gets emitted when an action is activated. ((* Since 2.4 *))
+    * self: the object which received the signal  
+    * index: the index of the activated action  
+
+--- insert-prefix: self, prefix
+    Gets emitted when the inline autocompletion is triggered. The default behaviour is to make the entry display the whole prefix and select the newly inserted part.
+    Applications may connect to this signal in order to insert only a smaller part of the prefix into the entry - e.g. the entry used in the Gtk::FileChooser inserts only the part of the prefix up to the next '/'. ((* Since 2.6 *))
+    * self: the object which received the signal
+    * prefix: the common prefix of all possible completions (String)
+    * Returns: true if the signal has been handled
+
+--- match-selected: self
+    Gets emitted when a match from the list is selected. The default behaviour is to replace the contents of the entry with the contents of the text column in the row pointed to by iter. ((* Since 2.4 *))
+    * self: the object which received the signal  
+    * model: the Gtk::TreeModel containing the matches  
+    * iter: a Gtk::TreeIter positioned at the selected match  
+    * Returns: true if the signal has been handled
+
+== ChangeLog
+* 2007-03-01: Applied GTK+-2.6 - ((<Masao>))

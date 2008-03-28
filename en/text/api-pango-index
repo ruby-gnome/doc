@@ -1,0 +1,72 @@
+= Ruby/Pango classes/modules index and documented status
+
+* ((<Pango>)) - Done 1.10
+* Pango::Analysis - Done 1.10
+* Pango::AttrBackground
+* Pango::AttrBool
+* Pango::AttrColor
+* Pango::AttrColor
+* Pango::AttrFallback
+* Pango::AttrFamily
+* Pango::AttrFloat
+* Pango::AttrFontDesc
+* Pango::AttrForeground
+* Pango::AttrInt - Done 1.10
+* Pango::AttrIterator
+* Pango::AttrLanguage
+* Pango::AttrLetterSpacing - Done 1.10
+* Pango::AttrList
+* Pango::AttrRise - Done 1.10
+* Pango::AttrScale
+* Pango::AttrShape
+* Pango::AttrSize
+* Pango::AttrStretch
+* Pango::AttrStrikethrough
+* Pango::AttrStrikethroughColor
+* Pango::AttrString
+* Pango::AttrStyle
+* Pango::AttrUnderline - Done 1.10
+* Pango::AttrUnderlineColor
+* Pango::AttrVariant
+* Pango::AttrWeight
+* Pango::Attribute
+* Pango::Context - Done 1.10
+* Pango::Coverage
+* Pango::Engine - Done 1.10
+* Pango::EngineInfo
+* Pango::EngineLang - Done 1.10
+* Pango::EngineRange
+* Pango::EngineShape - Done 1.10
+* Pango::Font - Done 1.10
+* Pango::FontDescription - Done 1.10
+* Pango::FontFace - Done 1.10
+* Pango::FontFamily - Done 1.10
+* Pango::FontMap - Done 1.10
+* Pango::FontMetrics - Done 1.10
+* Pango::Fontset - Done 1.10
+* Pango::FontsetSimple - Done 1.10
+* Pango::Glyph
+* Pango::GlyphGeometry
+* Pango::GlyphInfo
+* Pango::GlyphItem - Done 1.10
+* Pango::GlyphString
+* Pango::GlyphUnit
+* Pango::GlyphVisAttr
+* Pango::IncludedModule
+* Pango::IndicScript
+* Pango::Item
+* Pango::Layout - Done 1.10
+* Pango::LayoutIter
+* Pango::LayoutLine
+* Pango::LayoutRun
+* Pango::LogAttr
+* Pango::Map
+* Pango::MapEntry
+* Pango::Matrix
+* Pango::OTInfo
+* Pango::OTRuleset
+* Pango::Rectangle
+* Pango::Renderer - Done 1.10
+* Pango::TabArray
+* Pango::Win32FontCache
+* Pango::XFontCache

@@ -1,0 +1,23 @@
+= Cell Data Functions
+{{link "tut-treeview-renderer-attributes", "tut-treeview-renderer", "tut-treeview", "tut-treeview-renderer-types"}}
+
+A cell data function is a block of code that is called for a specific cell renderer for each single row before that row is rendered. It gives you maximum control over what exactly is going to be rendered, as you can set the cell renderer's properties just like you want to have them. Remember not only to set a property if you want it to be active, but also to unset a property if it should not be active (and it might have been set in the previous row).
+
+Cell data functions are often used if you want more fine-grained control over what is to be displayed, or if the standard way to display something is not quite like you want it to be. A case in point are floating point numbers. If you want floating point numbers to be displayed in a certain way, say with only one digit after the colon/comma, then you need to use a cell data function. Use Gtk::TreeViewColumn#set_cell_data_func to set up a cell data function for a particular cell renderer. Here is an example:
+
+  liststore = Gtk::ListStore.new(String, Float)
+
+  renderer = Gtk::CellRendererText.new
+
+  col = Gtk::TreeViewColumn.new("Age", renderer)
+
+  col.set_cell_data_func(renderer) do |col, renderer, model, iter|
+    # display age with only one digit 
+    renderer.text = sprintf("%.1f", iter[2])
+    # display cell in red if the age is below 18
+    if iter[2] < 18
+      renderer.background = "red"
+    else
+      renderer.background = nil
+    end
+  end

@@ -1,0 +1,14 @@
+Gtk
+Gdk
+Pango
+Gnome
+GnomeVFS
+GConf
+GLib
+Gst
+Gda
+GladeXML
+RSVG
+Cairo
+Poppler
+Vte

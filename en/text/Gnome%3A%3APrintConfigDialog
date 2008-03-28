@@ -1,0 +1,42 @@
+= class Gnome::PrintConfigDialog
+
+This interface is considered private and should not be used
+by applications directly!
+
+== Object Hierarchy
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Gtk::Object
+        * Gtk::Widget
+          * Gtk::Container
+            * Gtk::Bin
+              * Gtk::Window
+                * Gtk::Dialog
+                  * Gnome::PrintConfigDialog
+
+== Class Methods
+--- Gnome::PrintConfigDialog.new(config=nil)
+     Create a new Gnome::PrintConfigDialog window.
+
+     * config: Gnome::PrintConfig. Used
+       Gnome::PrintConfig#default if config is (({nil})).
+     * Returns: A newly created and initialised widget
+
+--- print_config=(print_config)
+--- set_print_config(print_config)
+    Sets the Printing Configuration to be used.
+     * print_config: Printing Configuration to be used
+     * Returns: print_config
+
+== Properties
+--- print-config: Gnome::PrintConfig (Write)
+    Printing Configuration to be used
+
+== See Also
+
+== ChangeLog
+
+* 2005-06-09 ((<kou>)): added
+
+- ((<kou>))

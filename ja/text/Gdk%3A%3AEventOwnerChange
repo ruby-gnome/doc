@@ -1,0 +1,91 @@
+= class Gdk::EventOwnerChange
+Generated when the owner of a selection changes. On X11, this information is only available if the X server supports the XFIXES extension.
+
+== Object Hierarchy
+* Object
+  * GLib::Boxed
+    * Gdk::Event
+      * Gdk::EventAny
+        * Gdk::EventOwnerChange
+
+== Class Methods
+--- Gdk::EventOwnerChange.new(type)
+    Creates a new event of the given type. All fields are set to 0. ((* Since 2.6 *))
+    * type: Gdk::Event::OWNER_CHANGE
+    * Returns: a new Gdk::EventOwenerChange.
+
+== Instance Methods
+--- owner 
+    Gets the new owner of the selection as Integer. ((* Since 2.6 *))
+    * Returns: the new owner of the selection
+--- owner=(owner)
+    Sets the new owner of the selection.((* Since 2.6 *))
+    * owner: the new owner of the selection as Integer.
+    * Returns: owner
+--- set_owner(owner)
+    Same as Gdk::EventOwnerChange#owner=.((* Since 2.6 *))
+    * owner: the new owner of the selection as Integer.
+    * Returns: self
+
+--- reason
+    Gets the reason for the ownership change as a((<GdkEventOwnerChange|Gdk::EventOwnerChange#GdkEventOwnerChange>)) value.((* Since 2.6 *))
+    * Returns: ((<GdkEventOwnerChange|Gdk::EventOwnerChange#GdkEventOwnerChange>))
+--- reason=(reason)
+    Sets the reason for the ownership change as a((<GdkEventOwnerChange|Gdk::EventOwnerChange#GdkEventOwnerChange>)) value. ((* Since 2.6 *))
+    * reason: ((<GdkEventOwnerChange|Gdk::EventOwnerChange#GdkEventOwnerChange>))
+    * Returns: reason
+--- set_reason(reason)
+    Same as Gdk::EventOwnerChange#reason=. ((* Since 2.6 *))
+    * reason: ((<GdkEventOwnerChange|Gdk::EventOwnerChange#GdkEventOwnerChange>))
+    * Returns: self
+
+--- selection
+    Gets the selection. ((* Since 2.6 *)) 
+    * Returns: the selection(Gdk::Atom)
+--- selection=(selection)
+    Sets the selection. ((* Since 2.6 *))
+    * selection: the selection(Gdk::Atom)
+    * Returns: selection
+--- set_selection(selection)
+    Same as Gdk::EventOwnerChange#selection=. ((* Since 2.6 *))
+    * selection: the selection(Gdk::Atom)
+    * Returns: self
+
+--- selection_time
+    Gets the time at which the selection ownership was taken over in milliseconds. ((* Since 2.6 *))
+    * Returns: the time at which the selection ownership was taken over in milliseconds.
+--- selection_time=(time)
+    Sets the time at which the selection ownership was taken over in milliseconds. ((* Since 2.6 *))
+    * time: the time at which the selection ownership was taken over in milliseconds.
+    * Returns: self
+--- set_selection_time(time)
+    Same as Gdk::EventOwnerChange#selection_time=. ((* Since 2.6 *))
+    * time: the time at which the selection ownership was taken over in milliseconds.
+    * Returns: self
+
+--- time
+    Gets the time of the event in milliseconds. ((* Since 2.6 *))
+    * Returns: the time of the event in milliseconds
+--- time=(time)
+    Sets the time of the event in milliseconds.((* Since 2.6 *))
+    * time: the time of the event in milliseconds
+    * Returns: time
+--- set_time(time)
+    Same as Gdk::EventOwnerChange#time=. ((* Since 2.6 *))
+    * time: the time of the event in milliseconds
+    * Returns: self
+
+== Constants
+=== GdkEventOwnerChange
+Specifies why a selection ownership was changed. ((* Since 2.6 *))
+
+--- NEW_OWNER
+    Some other app claimed the ownership ((* Since 2.6 *))
+--- DESTROY
+    The window was destroyed ((* Since 2.6 *))
+--- CLOSE
+    The client was closed ((* Since 2.6 *))
+
+
+== ChangeLog
+* 2005-05-03 Added. - Masao

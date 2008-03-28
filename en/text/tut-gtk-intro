@@ -1,0 +1,42 @@
+= Getting Started
+{{link "tut-gtk-preface", nil, "tut-gtk", "tut-gtk-helloworld"}}
+{{image_right("base.png")}}
+
+Obviously, you need to install Ruby-GNOME2 on your machine.  Please consult one of our ((<Install Guide>)).  
+If your system is not yet covered, just download manually the latest package from SourceForge, decompress the
+tarball and read the README file for further instructions.
+
+To begin our introduction to GTK, we'll start with the simplest program possible. This program will create a 
+200x200 pixel window and has no way of exiting except to be killed by using the shell:
+
+  require 'gtk2'
+  window = Gtk::Window.new
+  window.show
+  Gtk.main
+
+Save this program in a file named base.rb, and call it with:
+
+  ruby base.rb
+
+We will comment now each step of the program.
+
+The first line links the Ruby/GTK2 library in the program.
+  
+  require 'gtk2'
+
+The second line uses Gtk::Window.new to create a new GTK window with default parameters, as follows:
+* size: 200x200
+* style: Gtk::Window::TOPLEVEL
+* title: same as your program name (here: base.rb)
+
+ window = Gtk::Window.new
+
+The third line calls Gtk::Window#show to display the window we just created:
+
+  window.show
+
+The last line enters the GTK main processing loop:
+
+  Gtk.main
+
+Gtk.main is another call you will see in every Ruby/GTK2 application. When control reaches this point, GTK will sleep waiting for X events (such as button or key presses), timeouts, or file IO notifications to occur. In our simple example, however, events are ignored.

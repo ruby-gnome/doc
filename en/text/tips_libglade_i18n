@@ -1,0 +1,130 @@
+= Supporting internationalization (i18n) in Ruby/Libglade
+
+== Introduction
+
+This tutorial will show how to have Ruby/Libglade take advantage of gettext
+translated strings. For those of you unfamiliar with the concept of gettext,
+reading the ((<manual|URL:http://www.gnu.org/software/gettext/manual>)) is probably
+a good idea. Also Ruby-GetText-Package has ((<an API referrence and tutorials|URL:http://ponx.s5.xrea.com/hiki/ruby-gettext-dev.html>)).
+
+Before starting, make sure you have both of Ruby-GNOME2 and ((<Ruby-GetText-Package|URL:http://ponx.s5.xrea.com/hiki/ruby-gettext.html>)) installed.
+
+== Creating the interface in Glade
+
+The first step is to create the interface with 'glade-2'. Every time you create
+a widget with a text field, the XML generated will have a 'translatable="yes"' 
+field added to it.
+
+== Creating the translations
+
+Next you'll want to create the main translation file. To do this, use the following
+command:
+
+  rgettext myapp.glade myapp.rb lib/lib.rb -o myapp.pot
+
+foo.glade is genereated by glade-2. myapp.rb and lib/lib.rb are the script files for your application  which you created.
+
+
+Look inside of this file. You should see the glade strings listed. 
+
+This .pot file should be sent to the translators. Once they get the file, they should
+create a .po file. As an example, to create a German translation they would use:
+
+  LANG=de_DE msginit
+
+This will create de.po, where the translated strings should be entered. The translation
+file needs to be converted to a binary format before use:
+
+  rmsgfmt de.po -o myapp.mo
+
+This file should then be placed in the appropriate directory. On my machine,
+this would go in /usr/share/locale/de/LC_MESSAGES/
+
+== Writing your code
+
+Now to tell Ruby/Libglade to load the locale files. Normally you would have a line
+in your code similar to this:
+
+  @glade = GladeXML.new('myapp.glade') { |handler| method(handler) }
+
+To get the translated strings to load, you need to specify a locale name to glade so
+it knows which file to load the strings from. Change the above code to:
+
+  @glade = GladeXML.new('myapp.glade', nil, 'myapp') { |handler| method(handler) }
+
+The third parameter, 'myapp', will tell glade to look for 'myapp.mo'. Now to load the
+application:
+
+  LANG=de_DE ruby myapp.rb
+
+The translated strings should appear. That's all there is to it.
+
+== Auto-generating the template file
+
+ruby-glade-create-template is a helper tool which creates a template script from a .glade file.
+
+ ruby-glade-create-template myapp.glade > myapp.rb
+
+Check myapp.rb. You can find GladeXML.new and signal handlers as the template.
+
+== Auto-generating the binary translation file
+
+((*Note*)) this section is based on code included with Masao Mutoh's ((<ruby-gettext
+distribution|URL:http://ponx.s5.xrea.com/hiki/ruby-gettext.html>)).
+
+For every translation file, you'll need to create a new .mo file. With Minero
+Aoki's ((<install.rb|URL:http://i.loveruby.net/en/setup.html>)) this becomes very easy
+to automate. 
+
+For this example we will pretend we have German and Spanish translations already
+created, named de.po and es.po, respectively.
+
+  cd $PROJECTROOT
+  mkdir po
+  mkdir po/de
+  mkdir po/es
+  cp de.po po/de/myapp.po
+  cp es.po po/es/myapp.po
+
+Then, in your main directory, create a file named post-setup.rb which contains:
+
+  require 'gettext/rmsgfmt'
+  GetText.create_mofiles
+
+You may also want to create the following pre-clean.rb:
+  
+  Dir.glob("data/**/*.mo").each do |file|
+      File.delete(file)
+  end
+
+Now, when 'ruby install.rb setup' is run, the translation files will be generated.
+On 'ruby install.rb install' they will be installed to the correct place.
+
+== Conclusion
+
+I hope this all was decently clear. If people run into problems, feel free to
+contact me and I will try to help out. I would like to improve this document,
+so also contact me with corrections, etc.
+
+== Author
+
+Zachary P. Landau (kapheine AT hypa DOT net).
+
+The reader should be warned that I am far from an expert on the subject. I only
+very recently started trying to add internationalization support to one of my
+projects. While searching for information, I found only bits and pieces that
+had to be put together. I wrote this tutorial in attempt to keep other people
+from having to do the same.
+
+That being said, I'd be very happy to incorporate additions and corrections from
+people who know more about the subject. Please contact me with any information
+you have.
+
+== ChangeLog
+:2005-10-12 ((<Masao>))
+ Use Ruby-GetText-Package's new method (GetText.create_mofiles)
+:2005-08-05 ((<Masao>))
+ Revised to use ruby-glade-create-package, rgettext and rmsgfmt.
+
+:2004-03-20 Zachary P. Landau
+ Initial release

@@ -1,0 +1,35 @@
+= Adding Rows to a Store
+{{link "tut-treeview-model-reference", "tut-treeview-model", "tut-treeview", "tut-treeview-model-manipulate"}}
+
+== Adding Rows to a List Store
+
+Rows are added to a list store with Gtk::ListStore#append. This will insert a new empty row at the end of the list. There are other methods, documented in the Gtk::ListStore API reference, that give you more control about where exactly the new row is inserted, but as they work very similar to Gtk::ListStore#append and are fairly straight-forward to use, we will not deal with them here.
+
+Here is a simple example of how to create a list store and add an empty row to it:
+
+ liststore = Gtk::ListStore.new(String)
+
+ # Append an empty row to the list store. Iter will point to the new row.
+ iter = liststore.append
+
+This in itself is not very useful yet of course. We will add data to the rows in the next section. 
+
+== Adding Rows to a Tree Store
+
+Adding rows to a tree store works similar to adding rows to a list store, only that Gtk::TreeStore#append is the method to use and one more argument is required, namely the tree iter to the parent of the row to insert. If you supply nil instead of providing the tree iter of another row, a new top-level row will be inserted. If you do provide a parent tree iter, the new empty row will be inserted after any already existing children of the parent. Again, there are other ways to insert a row into the tree store and they are documented in the Gtk::TreeStore API reference manual. Another short example:
+
+ treestore = Gtk::TreeStore.new(String)
+
+ # Append an empty top-level row to the tree store. 
+ parent_iter = treestore.append(nil)
+
+ # Append a child to the row we just added.
+ child_iter = treestore.append(parent_iter)
+
+== Speed Issues when Adding a Lot of Rows
+
+A common scenario is that a model needs to be filled with a lot of rows at some point, either at start-up, or when some file is opened. An equally common scenario is that this takes an awfully long time even on powerful machines once the model contains more than a couple of thousand rows, with an exponentially decreasing rate of insertion. There are some things you can do to work around this problem and speed things up a bit.
+
+Firstly, you should make sure that sorting is disabled while you are doing your mass insertions, otherwise your store might be resorted after each and every single row insertion, which is going to be everything but fast.
+
+Secondly, you should not keep around a lot of tree row references if you have so many rows, because with each insertion (or removal) every single tree row reference will check whether its path needs to be updated or not.

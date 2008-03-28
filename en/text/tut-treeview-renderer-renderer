@@ -1,0 +1,62 @@
+= Cell Renderers
+{{link "tut-treeview-renderer", "tut-treeview-renderer", "tut-treeview", "tut-treeview-renderer-attributes"}}
+
+Different cell renderers exist for different purposes:
+
+* Gtk::CellRendererText renders strings or numbers or boolean values as text strings ("Joe", "99.32", "true")
+* Gtk::CellRendererPixbuf is used to display images; either user-defined images, or one of the included stock icons.
+* Gtk::CellRendererToggle displays a boolean value in form of a check box or as a radio button.
+* Gtk::CellEditable is a special cell that implements editable cells (ie. Gtk::Entry or Gtk::SpinButton in a treeview)
+
+Contrary to what one may think, a cell renderer does not render just one single cell, but is responsible for rendering part or whole of a tree view column for each single row. It basically starts in the first row and renders its part of the column there. Then it proceeds to the next row and renders its part of the column there again. And so on.
+
+How does a cell renderer know what to render? A cell renderer object has certain 'properties' that are documented in the API reference (just like most other objects, and widgets). These properties determine what the cell renderer is going to render and how it is going to be rendered. Whenever the cell renderer is called upon to render a certain cell, it looks at its properties and renders the cell accordingly. This means that whenever you set a property or change a property of the cell renderer, this will affect all rows that are rendered after the change, until you change the property again.
+
+Here is a silly and utterly useless little example that demonstrates this behaviour, and introduces some of the most commonly used properties of Gtk::CellRendererText:
+
+  require 'gtk2'
+
+  treestore = Gtk::TreeStore.new(String, String)
+                                                                                                                               
+  # Append a toplevel row and leave it empty
+  parent = treestore.append(nil)
+                                                                                                                               
+  # Append a child to the toplevel row and fill in some data
+  iter = treestore.append(parent)
+  iter[0] = "Joe"
+  iter[1] = "Average"
+                                                                                                                               
+  # Append a second child to the toplevel row and fill in some data
+  iter = treestore.append(parent)
+  iter[0] = "Jane"
+  iter[1] = "Common"
+                                                                                                                               
+  view = Gtk::TreeView.new(treestore)
+  view.selection.mode = Gtk::SELECTION_NONE                                                                                                                               
+                                                                                                                               
+  # Create a renderer and set the 'text' property
+  renderer = Gtk::CellRendererText.new
+  renderer.text = "Boooo!"
+                                                                                                                               
+  # Add column using our renderer
+  col = Gtk::TreeViewColumn.new("First Name", renderer)
+  view.append_column(col)
+                                                                                                                                                                                                                                                               
+  # Create another renderer and set the 'background' property
+  renderer = Gtk::CellRendererText.new
+  renderer.background = "orange"
+                                                                                                                               
+  # Add column using the second renderer
+  col = Gtk::TreeViewColumn.new("Last Name", renderer)
+  view.append_column(col)
+  
+  window = Gtk::Window.new(Gtk::Window::TOPLEVEL)
+  window.signal_connect("delete_event") { Gtk.main_quit; exit! }
+  window.add(view)
+  window.show_all
+                                                                                                                               
+  Gtk.main
+
+{{image_right "renderer.png"}}
+
+It looks like the tree view display is partly correct and partly incomplete. On the one hand the tree view renders the the left), but it does not display any of the data that we have stored in the model. This is because we have made no connection between what the cell renderers should render and the data in the model. We have simply set some cell renderer properties on start-up, and the cell renderers adhere to those set properties meticulously.

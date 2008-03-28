@@ -1,0 +1,56 @@
+= class Gda::Provider
+Information about providers which are installed in the system.
+
+== Object Hierarchy
+* Object
+  * GLib::Boxed
+    * Gda::Provider
+
+== Class Methods
+--- Gda::Provider.each_provider { |provider| ... }
+    Calls the block for each provider which is currently installed in the
+    system, passing a reference to a Gda::Provider object as parameter.
+    * Returns: always nil.
+
+--- Gda::Provider.get_by_name(name)
+    Gets a Gda::Provider object from the provider list givin its name.
+    * name: name of the provider to search for.  
+    * Returns: a Gda::Provider object if found, nil if not found.
+
+--- Gda::Provider.model
+    Fills and returns a new Gda::DataModel object using information from all
+    providers which are currently installed in the system.
+    Rows are separated in 3 columns:
+    'Id', 'Location' and 'Description'.
+    * Returns: a new Gda::DataModel object.
+
+--- Gda::Provider.providers
+    This method returns a list of all providers currently installed in the system, as an Array of Gda::Provider objects.
+    * Returns: a list of all providers currently installed in the system, as an Array of Gda::Provider objects.
+
+== Instance Methods
+--- ==(an_other_provider)
+    This method returns true if the two Gda::Provider are referring the same provider, false otherwise.
+    * an_other_provider: a Gda::Provider object.  
+    * Returns: true if the two Gda::Provider are referring the same provider, false otherwise.
+
+--- description
+    This method returns the provider's description.
+    * Returns: the provider's description.
+
+--- location
+    This method returns the provider's location (usually, the file name where it came from).
+    * Returns: the provider's location (usually, the file name where it came from).
+
+--- name
+    Synonym for Gda::Provider#prov_id.
+    * Returns: the provider's ID (usually its name).
+
+--- prov_id
+    This method returns the provider's ID (usually its name).
+    * Returns: the provider's ID (usually its name).
+
+== See Also
+((<Gda>)).
+
+- ((<lrz>))

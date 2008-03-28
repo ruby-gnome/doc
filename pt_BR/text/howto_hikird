@@ -1,0 +1,145 @@
+= Como editar este site
+Este site é escrito com RD+.
+RD+ significa RD com algumas regras adicionais.
+
+== Sobre RD
+Veja os documentos abaixo:
+* ((<RD working draft|URL:http://helium.ruby-lang.org/~rubikitch/RDP-en.cgi?cmd=view&name=RD>)) (em inglês)
+* ((<Documentação Embutida em Programação de Ruby|URL:http://www.pragmaticprogrammer.com/ruby/articles/rdtool.html>)) (em inglês)
+
+== Sobre as Regras Adicionais About Additional Rules
+=== ModuleNames
+A página ((<ModuleNames>)) é uma lista de módulos que serão ligados diretamente no Hiki.
+Nomes de módulos escritos em ((<ModuleNames>)) serão ligados apropriadamente, assim não é mais exigido circundar nomes de Classes/Módulos com (('((< >))')).
+
+* Para links href
+  * Hoge::Foo - Nome da Classe
+  * Hoge::FOO - Constante (Se você precisa usar esse estilo como nome de classe/módulo, use (('((<Hoge::FOO>))')) explicitamente. ex.: ((<Gdk::GC>)))
+  * Hoge::Foo#bar - Método de Instância
+  * Hoge::Foo.bar - Método de Classe
+  * Hoge.bar - Método de Módulo
+
+* Para nomes ligados (linked)
+  * Método de Classe - "--- Hoge::Foo.new" 
+  * Método de Instância - "--- bar" #Apenas o método.
+
+Antes de você usar isso, certifique-se que o módulo que você precisar referenciar está na página ((<ModuleNames>)).
+
+=== Âncora gerada automaticamente
+==== Estilo RD
+
+ ((<URL:url>))
+ ((<nome|URL:url>))
+
+* nome - Palavras mostradas.
+* url - URL
+
+ ex.:
+ ((<URL:http://www.hoge.com/>))
+ ((<hoge|URL:http://www.hoge.com/>))
+
+ resultado
+ <a href="http://www.hoge.com/">http://www.hoge.com/</a>
+ <a href="http://www.hoge.com/">hoge</a>
+
+URLs de Imagem (com sufixo = png, jpg, jpeg, gif) extendidas como imagem.
+
+==== Estilo InterWiki
+InterWiki é um mecanismo para gerar automaticamente links de um dicionário (uma página InterWikiName). 
+
+ ((<nome|chave:opção>)) 
+
+* nome - Palavras mostradas.
+* chave - Palavra-chave. Substitue o URL do InterWikiName se a chave já existir.
+* opção - Adicionar o URL (opcional). 
+
+ ex.:
+ ((<Hiki>))
+ ((<masao:20020329>))
+ ((<Aqui|masao:20020329>))
+
+ resultado
+ <a href="http://www.namaraii.com/hiki.cgi?">Hiki</a>
+ <a href="http://ponx.s5.xrea.com/bibo/?date=20020329">masao</a>
+ <a href="http://ponx.s5.xrea.com/bibo/?date=20020329">Aqui</a>
+
+==== Como editar uma página InterWikiName
+O formato da página de InterWikiName é (('[[palavra-chave|url]]')) "charset".
+
+ *[[Hiki|http://www.namaraii.com/hiki/hiki.cgi?]] euc
+ *[[masao|http://ponx.s5.xrea.com/bibo/?date=]] euc
+
+== Plugins
+=== Plugin de Status
+Cria uma tabela de status facilmente. 
+
+ {{status "Título", "
+ GLib::Type|GType|#|hoge
+ GLib::TypePlugin|GTypePlugin|#|hoge
+ "}}
+
+ou você pode mostrar mais de uma versão.
+
+ {{status "Título", ["1.0", "1.2"], "
+ GLib::Type|GType|O|#|hoge
+ GLib::TypePlugin|GTypePlugin|#|#|hoge
+ "}}
+
+=== Plugin de Imagem
+Mostra uma imagem de um arquivo anexado. Obviamente, você precisa enviar o arquivo antes de usar o plugin de imagem.
+
+ {{image_left("foo.png")}}
+ {{image_right("foo.png")}}
+
+Se a imagem for de uma página de mesmo id do site em inglês, pode-se usar:
+
+  {{image_right("en:base.png")}}
+
+onde "en:" é o código especial 
+
+Se o id da página for diferente, pode-se colocar o id como o segundo parâmetro:
+
+  {{image_right("en:logo-gy.png", "Icons"}}
+
+Outra opção é colocar o URL completo:
+
+  {{image_right("http://.../etc.png")}}
+
+
+Se você quiser forçar uma quebra de linha após uma imagem, use o plugin de "br".
+
+ {{br}}
+
+=== Plugin de attach_anchor
+Mostra um link para um arquivo anexado.
+
+ {{attach_anchor("foo.png")}}
+
+=== Plugin de link
+Cria links Anterior/Cima/Página principal/Próxima (Prev/Up/Home/Next).
+
+ {{link("IDPáginaAnterior", "IDPáginaCima", "IDPáginaPrincipal", "IDPróximaPágina")}}
+
+Se você usar nil para os ids das páginas, o link não aparecerá.
+
+ {{link(nil, nil, "IDPáginaPrincipal", "IDPróximaPágina")}}
+
+== Como escrever "API" da Documentação de Referência
+Veja os arquivos existentes. Por favor, pergunte-me se você precisar de ajuda.
+
+== Remover uma página
+Você pode remover páginas de Hiki, mas seja cuidadoso com essa função!
+
+Eis os passos:
+
+(1) edite a página.
+(2) remova os conteúdos do título e da página.
+(3) entre a senha (mesma do Hiki) no campo de texto (exatamente após a opção de ((*Freeze the current page*)) option).
+(4) clique em salvar.
+
+== Miscelâneo
+Treine você mesmo na ((<Página de Prática>))!
+
+- ((<Masao>))
+
+Autor da Tradução para Português: ((<Joao Pedrosa|jpedrosa>))

@@ -1,0 +1,40 @@
+= Sample Scripts
+
+== ((<FAIRmine>))
+Ruby/GTK2
+
+== ((<gconfclock>))
+Ruby/GConf2
+
+== ((<Sokoban>))
+Ruby/GnomeCanvas2, Ruby/GConf2, Ruby/GTK2
+
+== ((<Simple Text Editor>))
+Ruby/GNOME2, Ruby/Libglade2
+
+== ((<pkg-config viewer>))
+Ruby/GNOME2, Ruby/Libglade2, L10n using Ruby-GetText-Package.
+
+== ((<XML Tree Viewer>))
+Ruby/GTK2, (REXML)
+
+== ((<Simple Audio Player>))
+Ruby/GNOME2, Ruby/GStreamer (not available)
+
+== ((<Logo demo|Logo>))
+Ruby/GtkGLExt, Ruby/GTK2
+
+== ((<Gnome Canvas Clock>))
+Ruby/GTK2, Ruby/GnomeCanvas2
+
+== ((<Gnome Canvas Credits>))
+Ruby/GTK2, Ruby/GnomeCanvas2
+
+== ((<Gtk::MDI - Tabbed Notebook MDI|MDI>))
+Ruby/GLib2, Ruby/GTK2
+
+== ((<Gtk::MozEmbed - Mozilla Gecko rendering widget|RubyGecko>))
+Ruby/GtkMozEmbed, Ruby/GTK2
+
+== ((<RubyZilla - A demo flash movie|RubyZilla>))
+Ruby/GtkMozEmbed, Ruby/Libglade2, Ruby/GTK2 and Glade2

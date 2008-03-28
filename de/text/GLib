@@ -1,0 +1,80 @@
+= module GLib
+
+== Module Functions
+--- GLib.charset
+    Obtains the character set for the current locale; you might use this character set as an argument to GLib.convert, to convert from the current locale's encoding to some other encoding. (Frequently GLib.locale_to_utf8 and GLib.locale_from_utf8 are nice shortcuts, though.) 
+    * Returns: the character set name 
+
+--- GLib.language_names
+    Computes a list of applicable locale names, which can be used to e.g. construct locale-dependent filenames or search paths. The returned list is sorted from most desirable to least desirable and always contains the default locale "C".
+
+    For example, if LANGUAGE=de:en_US, then the returned list is "de", "en_US", "en", "C".
+
+    This method consults the environment variables LANGUAGE, LC_ALL, LC_MESSAGES and LANG to find the list of locales specified by the user.
+    * Returns: an array of language name
+
+--- GLib.win32_locale
+    The setlocale() function in the Microsoft C library uses locale names of the form "English_United States.1252" etc. We want the UNIXish standard form "en_US", "zh_TW" etc. This function gets the current thread locale from Windows - without any encoding info - and returns it as a string of the above form for use in forming file names etc. 
+    * Returns: locale name. 
+
+--- GLib.convert(str, to_codeset, from_codeset)
+    Converts a string from one character set to another. 
+    If the conversion is not successful, it causes GLib::ConvertError.
+    * str: the string to convert  
+    * to_codeset : name of character set into which to convert str  
+    * from_codeset : character set of str.  
+    * Returns: a newly string
+
+--- GLib.locale_from_utf8(str)
+    Converts a string from UTF-8 to the encoding used for strings by the C runtime (usually the same as that used by the operating system) in the current locale. If the conversion is not successful, it causes GLib::ConvertError.
+    * str: a UTF-8 encoded string  
+    * Returns: the converted string
+
+--- GLib.locale_to_utf8(str)
+    Converts a string which is in the encoding used for strings by the C runtime (usually the same as that used by the operating system) in the current locale into a UTF-8 string. If the conversion is not successful, it causes GLib::ConvertError.
+    * str: a string in the encoding of the current locale  
+    * Returns: the converted string 
+
+--- GLib.filename_from_utf8(str)
+    Converts a string from UTF-8 to the encoding used for filenames.
+    * str: a UTF-8 encoded string  
+    * Returns: the converted string
+
+--- GLib.win32_locale_filename_from_utf8(str)
+    Converts a filename from UTF-8 to the system codepage.
+
+    On NT-based Windows, on NTFS file systems, file names are in Unicode. It is quite possible that Unicode file names contain characters not representable in the system codepage. (For instance, Greek or Cyrillic characters on Western European or US Windows installations, or various less common CJK characters on CJK Windows installations.)
+
+    In such a case, and if the filename refers to an existing file, and the file system stores alternate short (8.3) names for directory entries, the short form of the filename is returned. Note that the "short" name might in fact be longer than the Unicode name if the Unicode name has very short pathname components containing non-ASCII characters. If no system codepage name for the file is possible, nil is returned.
+
+    * str: a UTF-8 encoded filename.
+    * Returns: The converted filename, or nil on conversion failure and lack of short names.
+
+--- GLib.filename_to_utf8(str)
+    Converts a string which is in the encoding used for filenames into a UTF-8 string. If the conversion is not successful, it causes GLib::ConvertError.
+    * str: a string in the encoding for filenames
+    * Returns: the converted string 
+
+--- GLib.filename_from_uri(uri)
+    Converts an escaped UTF-8 encoded URI to a local filename in the encoding used for filenames. If the conversion is not successful, it causes GLib::ConvertError.
+    * uri: a uri describing a filename (escaped, encoded in UTF-8)
+    * Returns: an Array of [filename, hostname]
+
+--- GLib.filename_to_uri(filename, hostname = nil)
+    Converts an absolute filename to an escaped UTF-8 encoded URI.
+    * filename: an absolute filename specified in the encoding used for filenames by the operating system.  
+    * hostname: a UTF-8 encoded hostname, or nil for none.  
+    * Returns: the resulting URI
+
+== Constants
+--- MAJOR_VERSION
+--- MICRO_VERSION
+--- MINOR_VERSION
+--- VERSION
+    = [major, micro, minor]
+
+== ChangeLog
+
+  * 2006-12-10: removed Unicode related methods and constants. - ((<kou>))
+  * 2006-12-09: added Unicode related methods and constants. - ((<kou>))
+  * added - ((<Masao>))

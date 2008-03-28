@@ -1,0 +1,70 @@
+= Anordnen mit Hilfe von Tabellen
+{{link "tut-gtk2-packing-demo", "tut-gtk2-packing-intro", "tut-gtk", "tut-gtk2-packing-tables-demo"}}
+
+Lassen Sie uns einen Blick auf eine weitere Möglichkeit zur Anordnung von Widgets werfen: Tabellen. Tabellen können in bestimmten Situationen sehr nützlich sein.
+
+Indem wir Tabellen benutzen, erzeugen wir ein Gitter, in welches wir unsere Widgets einfügen können. Die Widgets können innerhalb des Gitters so viele Zwischenräume ausfüllen, wie wir bestimmen.
+
+Das erste, worauf wir achten müssen ist natürlich der Konstruktor Gtk::Table.new:
+
+  Gtk::Table.new(rows, columns, homogeneous) 
+
+Das erste Argument ist die Anzahl der Zeilen, die in der Tabelle vorhanden sein sollen, während das zweite die Anzahl der Spalten festlegt.
+
+Das Argument "homogeneous" hat damit zu tun, wie die Tabellenfelder in ihrer Größe angepasst werden. Wenn homogeneous auf true gesetzt wurde, werden die Tabellenfeld entsprechend dem größten Widget in der gesamten Tabelle vergrößert. Wenn homogeneous auf false gesetzt wurde, wird die Größe der Felder von dem größten Widget in der gleichen Zeile und der gleichen Spalte vorgeschrieben.
+
+Die Zeilen und Spalten werden von 0 bis n aufgeteilt, wobei n die Zahl ist, die in dem Konstruktor Gtk::Table.new angegeben wurde. Wenn Sie also dem Parameter rows einen Wert von beispielsweise 2 geben und columns ebenfalls auf 2 setzen, würde das Layout etwa folgendermaßen aussehen:
+
+  .0          1          2
+  0+----------+----------+
+   |          |          |
+  1+----------+----------+
+   |          |          |
+  2+----------+----------+
+
+Beachten Sie, dass das Koordinatensystem in der oberen linken Ecke seinen Ursprung hat. Um ein Widget in einem der Felder zu platzieren, können Sie die folgende Methode benutzen:
+
+  Gtk::Table#attach(child, 
+                    left_attach, right_attach, top_attach, bottom_attach, 
+                    xoptions, yoptions, 
+                    xpadding, ypadding)
+
+Das erste Argument ("child") ist das Widget, dass Sie in die Tabelle einfügen möchten.
+
+Die Argumente "left_attach" und "right_attach" legen fest, wo das Widget platziert wird und wie viele Felder es ausfüllen soll. Wenn Sie einen Button in der unteren rechten Zelle unserer 2x2-Tabelle einfügen möchten, der nur dieses eine Feld ausfüllen soll, wären die Werte für left_attach 1, für right_attach 2, für top_attach 1 und für bottom_attach 2.
+
+Wenn Sie jetzt ein Widget möchten, dass eine ganze Zeile unserer 2x2-Tabelle ausfüllt, würden Sie left_attach mit 0 belegen, right_attach mit 2, top_attach mit 0 und bottom_attach mit 1.
+
+Die Argumente "xoptions" und "yoptions" werden benutzt, um Optionen zur Anordnung festzulegen und können bitweise (mit booleschen OR-Operationen) verknüpft werden, um mehrere Optionen zu erlauben. (Beachten Sie, dass in Ruby der OR-Operator mit dem (Pipe-)Zeichen | dargestellt wird.)
+Diese Optionen können folgende sein:
+
+:Gtk::FILL
+ Wenn das Tabellenfeld größer als das Widget ist, dann wird das Widget sich ausdehnen, um den verfügbaren Platz auszufüllen.
+
+:Gtk::SHRINK
+ Wenn dem Tabellen-Widget weniger Platz zugeordnet wurde, als es benötigt (üblicherweise bei einer Änderung der Fenstergröße durch den Benutzer), dann würden die Widgets normalerweise einfach nach unten aus dem Fenster geschoben und aus dem sichtbaren Bereich verschwinden. Wenn Gtk::SHRINK festgelegt wurde, werden die Widgets innerhalb der Tabelle auf die minimal erforderliche Größe schrumpfen.
+
+:Gtk::EXPAND
+ Diese Option führt dazu, dass die Tabelle sich ausdehnt, um den verfügbaren Platz des Fensters auszufüllen.
+
+Die Polsterung ist identisch mit der aus Gtk::Box: Sie dient zur Erstellung von freiem Platz rund um das Widget. Die Angabe wird in Pixeln berechnet.
+
+Gtk::Table#attach hat viele Optionen, daher gibt es einen Shortcut:
+
+  Gtk::Table#attach_defaults(widget, left_attach, right_attach, top_attach, bottom_attach)
+
+Die Optionen X und Y sind standardmäßig vorbelegt mit Gtk::FILL | Gtk::EXPAND und die Polsterung an den X- und Y-Achsen ist auf 0 gesetzt. Der Rest der Argument ist identisch mit der oben beschriebenen Methode.
+
+Wir haben ebenfalls die Methoden Gtk::Table#set_row_spacing und Gtk::Table#set_col_spacing. Diese Methoden legen den freien Platz zwischen den Zeilen oder Spalten der Tabelle fest.
+
+  Gtk::Table#set_row_spacing(row, spacing)
+  Gtk::Table#set_col_spacing(column, spacing) 
+
+Beachten Sie, dass der freie Platz bei Spalten nach rechts und bei Zeilen nach unten reserviert wird.
+
+Sie können auch eine Sammlung von konsistenten Abständen für alle Zeilen und/oder Spalten festlegen:
+
+  Gtk::Table#set_row_spacings(spacing)
+  Gtk::Table#set_col_spacings(spacing) 
+
+Beachten Sie, dass mit diesen Aufrufen die letzte Zeile und die letzte Spalte keinen Abstand mehr nach rechts bzw. unten reservieren.

@@ -1,0 +1,10 @@
+= Propriedades de Gst::Element
+{{link("tut-gst-elements-create", nil, "tut-gst", "tut-gst-plugins")}}
+
+Um Gst::Element pode ter várias propriedades que são implementadas usando propriedades padrões de GLib::Object. Os métodos comuns de GLib::Object para perguntar, configurar e pegar valores de propriedades e GLib::ParamSpecs são assim suportados.
+
+Todo Gst::Element herda pelo menos uma propriedade do seu pai Gst::Object: a propriedade "name". Esse é o nome que você fornece para os métodos Gst::ElementFactory.make ou Gst::ElementFactory#create. Você pode pegar e configurar essa propriedade usando os métodos Gst::Object#set_name, Gst::Object#name= e Gst::Object#name.
+
+Você não precisa acessar diretamente o mecanismo de propriedade de GLib::Object, como o Ruby/GLib automaticamente provê métodos de acesso para isso no seu objeto (nesse caso, baseados no Gst::Object).
+
+A maioria dos plugins fornecem propriedades adicionais para fornecer mais informação sobre suas configurações ou para configurar o elemento. (({gst-inspect})) é uma ferramenta útil para perguntar as propriedades de um elemento em particular, ele também usará a propriedade de introspecção para dar uma pequena explicação sobre a função da propriedade e sobre os tipos de parâmetros e alcances ("ranges") que eles suportam.

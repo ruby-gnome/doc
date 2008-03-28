@@ -1,0 +1,17 @@
+= Status of Ruby/GConf
+
+{{ status "Ruby/GConf", "
+GConfEngine|GConf::Engine|GConfEngine|O
+GError|GConf::Error|GConfError|O
+GConfValue, GConfEntry, GConfMetaInfo|GConf::Value|GConfValue|x|Use Ruby values instead. 
+GConfValue, GConfEntry, GConfMetaInfo|-|GConfMetaInfo|x|Can't be used at the moment. 
+GConfValue, GConfEntry, GConfMetaInfo|GConf::Entry|GConfEntry|O
+gconf-schema|GConf::Schema|GConfSchema|O|Any reason/good way of dealing with gconf_schema_[get/set]_[car/cdr/list]_type? 
+GConfChangeSet|GConf::ChangeSet|GConfChangeSet|O
+GConfClient|GConf::Client|GConfClient|O|Should get take only one argument? Should we default remove_commited to Qfalse in commit_change_set? 
+gconf-backend|GConf::Backend|GconfBackend|x
+gconf-listeners|GConf::Listeners|GConfListener|x
+gconf-locale|GConf::LocaleCache|GConfLocaleCache|x
+gconf-sources|GConf::Source|GConfSource|x
+GConf module|-|-|O
+"}}

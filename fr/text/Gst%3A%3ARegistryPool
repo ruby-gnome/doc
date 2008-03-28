@@ -1,0 +1,50 @@
+= module Gst::RegistryPool
+The registry pool manages the available registries and plugins in the 
+system.
+
+== Module Functions
+--- Gst::RegistryPool.add(registry, priority)
+    Adds the given registry to the pool with the given priority.
+    * priority: an integer value representing the priority of the registry.  
+    * registry: a Gst::Registry object to add. 
+    * Returns: self.
+
+--- Gst::RegistryPool.add_plugin(plugin)
+    Adds the given plugin to the global pool of plugins.
+    * plugin: a Gst::Plugin object to add.  
+    * Returns: self.
+
+--- Gst::RegistryPool.feature_list(klass)
+    Gets a list of all plugins features of the given type in the pool.
+    * klass: a GTyped class object.  
+    * Returns: an Array of Gst::PluginFeature objects.
+
+--- Gst::RegistryPool.find_plugin(name)
+    Gets the named plugin from the registry pool.
+    * name: the name of the plugin to find.  
+    * Returns: the Gst::Plugin with the given name, or nil if the plugin was not found.
+
+--- Gst::RegistryPool.get_prefered(flags)
+    This method returns the prefered Gst::Registry with the given flags.
+    * flags: the flags for the prefered registry (see ((<GstRegistryFlags|Gst::Registry#GstRegistryFlags>))).  
+    * Returns: the prefered Gst::Registry with the given flags.
+
+--- Gst::RegistryPool.list
+    Gets a list of all registries in the pool.
+    * Returns: an Array of Gst::Registry objects.
+
+--- Gst::RegistryPool.load_all
+    Loads all the registries in the pool.  Registries with the
+    Gst::Registry::DELAYED_LOADING flag will not be loaded.
+    * Returns: self.
+
+--- Gst::RegistryPool.plugin_list
+    Gets a list of all plugins in the pool.
+    * Returns: an Array of Gst::Plugin objects.
+
+--- Gst::RegistryPool.remove(registry)
+    Removes the given registry from the pool.
+    * registry: a Gst::Registry object to remove.  
+    * Returns: self.
+
+- ((<lrz>))

@@ -1,0 +1,57 @@
+= class Gnome::PrintJob
+
+== Class Methods
+
+--- new(config=nil)
+     Creats a new Gnome::PrintJob object.
+     * Returns: the newly created object or nil. An error
+       occured when this method returns nil.
+
+== Instance Methods
+
+--- context
+     * Returns: Gnome::PrintContext object of self.
+
+--- config
+     * Returns: Gnome::PrintConfig object of self.
+
+--- close
+     Closes job, ready for printing or previewing. You must
+     call it before Gnome::PrintConfig#print. Raises
+     Gnome::PrintError error if error occured.
+     * Returns: true when not raised.
+
+--- render(context)
+     Renders printout to specified ((|context|)).
+     * context: a Gnome::PrintContext object.
+     * Returns: true when not raised.
+
+--- render_page(context, page_number, send_beginpage_and_showpage)
+     Renderes the specified page ((|page_number|)).
+     * context: a Gnome::PrintContext object.
+     * page_number: a page number (e.g. 1).
+     * send_beginpage_and_showpage: a boolean.
+     * Returns: true when not raised.
+
+--- pages
+     Find the number of pages stored in a completed
+     printout. This is the number of physical pages, so if the
+     layout can hold 4 pages per page, and 5 logical pages are
+     printed (5 beginpage/endpage convinations) 2 is returned.
+     (from API reference of libgnomeprint)
+     * Returns: the number of pages, 0 on error.
+
+--- page_size
+     * Returns: an array of width and height of page.
+
+--- print_to_file(filename)
+     Sets ((|filename|)) as output filename. Job sends output to other
+     program if ((|filename|)) is started by "|". Job sends
+     output to printer if ((|filename|)) is nil.
+     * Returns: true when not raised.
+
+
+== Constants
+== See Also
+
+- kou

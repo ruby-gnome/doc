@@ -1,0 +1,62 @@
+= class Gdk::EventDND
+Generated during DND operations. 
+
+== Object Hierarchy
+* Object
+  * GLib::Boxed
+    * Gdk::Event
+      * Gdk::EventAny
+        * Gdk::EventDND
+
+== Instance Methods
+--- context
+    Gets the Gdk::DragContext for the current DND operation. 
+    * Returns: the Gdk::DragContext
+--- context=(context)
+    Sets the Gdk::DragContext for the current DND operation. 
+    * context: the Gdk::DragContext
+    * Returns: context
+--- set_context(context)
+    Same as Gdk::EventDND#context=.
+    * context: the Gdk::DragContext
+    * Returns: self
+
+--- time
+    Gets the time of the event in milliseconds. 
+    * Returns: the time of the event in milliseconds
+--- time=(time)
+    Sets the time of the event in milliseconds. 
+    * time: the time of the event in milliseconds
+    * Returns: time
+--- set_time(time)
+    Same as Gdk::EventDND#time=.
+    * time: the time of the event in milliseconds
+    * Returns: self
+
+--- x_root
+    Gets the x coordinate of the pointer relative to the root of the screen, only set for Gdk::Event::DRAG_MOTION and Gdk::Event::DROP_START. 
+    * Returns: the x coordinate
+--- x_root=(val)
+    Sets the x coordinate of the pointer relative to the root of the screen, only set for Gdk::Event::DRAG_MOTION and Gdk::Event::DROP_START. 
+    * val: the x coordinate
+    * Returns: val
+--- set_x_root(val)
+    Same as Gdk::EventDND#x_root=.
+    * val: the x coordinate
+    * Returns: self
+
+--- y_root
+    Gets the y coordinate of the pointer relative to the root of the screen, only set for Gdk::Event::DRAG_MOTION and Gdk::Event::DROP_START. 
+    * Returns: the y coordinate
+--- y_root=(val)
+    Sets the y coordinate of the pointer relative to the root of the screen, only set for Gdk::Event::DRAG_MOTION and Gdk::Event::DROP_START. 
+    * val: the y coordinate
+    * Returns: val
+--- set_y_root(val)
+    Same as Gdk::EventDND#y_root=.
+    * val: the y coordinate
+    * Returns: self
+
+
+
+-((<Masao>))

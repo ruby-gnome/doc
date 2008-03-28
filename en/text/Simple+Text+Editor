@@ -1,0 +1,37 @@
+= Simple Text Editor
+Simple UTF-8 Text Editor.
+This is a sample application for Ruby/GNOME2, Ruby/Libglade2.
+
+== Download
+* {{attach_anchor("simple-editor.rb")}}
+* {{attach_anchor("simple-editor.glade")}}
+
+(Save simple-editor.[rb|glade] to same directory.)
+
+== Requirements
+Developed environments are:
+* ruby 1.9.0 (2004-02-14) [i686-linux]
+* Ruby-GNOME2-0.9.0(Ruby/GTK2, Ruby/GNOME2, Ruby/Libglade2)
+
+{{image_right "simple-editor.png"}}
+== Usage
+$ ruby simple-editor.rb
+
+== License
+Ruby's
+
+== Author
+((<Masao>))
+
+{{br}}
+=== Changelog
+:2004-03-09 Masao Mutoh
+ Apply Ruby-GNOME2-0.9.0.
+:2003-07-05 Tadashi Saito
+ Fix a redo bug.
+:2003-07-03 Masao Mutoh
+ Fix a bug for cut/copy/paste(Experimental code had been included).
+:2003-06-01 Masao Mutoh
+ Show "Help" next to "Edit" on the menu (Pointed out by Ralph Aichinger).
+:2003-05-05 Masao Mutoh
+ Initial release

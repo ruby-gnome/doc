@@ -1,0 +1,10 @@
+= Ruby/GConf API Reference
+
+* ((<GConf>))
+* ((<GConf::ChangeSet>))
+* ((<GConf::Client>))
+* ((<GConf::Engine>))
+* ((<GConf::Entry>))
+* ((<GConf::Error>))
+* ((<GConf::MetaInfo>))
+* ((<GConf::Schema>))

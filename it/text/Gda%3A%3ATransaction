@@ -1,0 +1,67 @@
+= class Gda::Transaction
+Management of transactions.
+
+== Object Hierarchy
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Gda::Transaction
+
+== Class Methods
+--- Gda::Transaction.new(name)
+    Creates a new Gda::Transaction object, which allows a fine-tune and full
+    control of transactions to be used with providers.
+    * name: name for the transaction.  
+    * Returns: a newly created Gda::Transaction object.
+
+== Instance Methods
+--- isolation_level
+    Gets the isolation level (see ((<GdaTransactionIsolation|Gda::Transaction#GdaTransactionIsolation>))) for the
+    transaction. This specifies the locking behavior for the database connection
+    during the given transaction.
+    * Returns: the isolation level.
+
+--- isolation_level=(level)
+    Sets the isolation level of the transaction.
+    * level: the isolation level (see ((<GdaTransactionIsolation|Gda::Transaction#GdaTransactionIsolation>))).  
+    * Returns: the given parameter 'level'.
+
+--- name
+    Retrieves the name of the transaction, as specified by the client
+    application (via a non-nil parameter in the call to Gda::Transaction.new, 
+    or by calling Gda::Transaction#set_name).
+    Note that some providers may set, when you call
+    Gda::Connection#begin_transaction, the name of the transaction if it's not
+    been specified by the client application, so this method may return, for
+    some providers, values that you don't expect.
+    * Returns: the name of the transaction.
+
+--- name=(name)
+    Sets the name of the transaction. This is very useful when using providers
+    that support named transactions.
+    * name: a new name for the transaction.  
+    * Returns: the given parameter 'name'.
+
+--- set_isolation_level(level)
+    Sets the isolation level of the transaction.
+    * level: the isolation level (see ((<GdaTransactionIsolation|Gda::Transaction#GdaTransactionIsolation>))).  
+    * Returns: self.
+
+--- set_name(name)
+    Sets the name of the transaction. This is very useful when using providers
+    that support named transactions.
+    * name: a new name for the transaction.  
+    * Returns: self.
+
+== Constants
+=== GdaTransactionIsolation
+--- ISOLATION_READ_COMMITTED
+--- ISOLATION_READ_UNCOMMITTED
+--- ISOLATION_REPEATABLE_READ
+--- ISOLATION_SERIALIZABLE
+--- ISOLATION_UNKNOWN
+
+== See Also
+((<Gda>)).
+
+- ((<lrz>))

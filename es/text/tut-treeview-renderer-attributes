@@ -1,0 +1,19 @@
+= Atributos
+{{link "tut-treeview-renderer-renderer", "tut-treeview-renderer", "tut-treeview", "tut-treeview-renderer-celldatafunc"}}
+
+Un atributo es una conexión entre una propiedad de un CellRenderer y un campo/columna del modelo. Cuando una celda va a ser dibujada, una propiedad del CellRenderer tomará el valor/es de la columna especificada de la fila a dibujar. Es muy importante que el tipo de dato de la columna sea el mismo que toma la propiedad como se indica en el API. Veamos algo de código:
+
+  renderer = Gtk::CellRendererText.new
+  col = Gtk::TreeViewColumn.new("First Name", renderer, :text => 0)
+
+También se pueden agregar atributos a una columna que ya existe:
+
+  col.add_attribute(renderer, "text",  0)
+
+Esto significa que la propiedad "text" del TextCellRenderer tomará el valor del string de la columna 0 del modelo para cada una de las filas a dibujar. Es importante darse cuenta de que Gtk::TreeView#add_atribute asignará a la propiedad el valor de la columna del modelo en el momento en que vaya a dibujarla.
+
+Hay un par de cosas significativas sobre las propiedades de Gtk::CellRenderer: una es que a veces hay diferentes propiedades que hacen lo mismo, pero toman diferentes argumentos, como las propiedades "foreground" y "foreground-gtk" de Gtk::CellRendererText (que indican el color del texto). La propiedad "foreground" toma un color en forma de string, como "Orange" o "Blue", mientras que "foreground-gtk" toma como argumento un Gtk::Color. Es labor del programador decidir cual usar - el efecto será el mismo. La otra cosa a tener en cuenta es que la mayoría de las propiedades tienen un "propiedad-set" que toma un booleano como argumento, como por ejemplo "foreground-set". Esto es útil cuando se quiere que una propiedad tenfa efecto o no. Si se asigna la propiedad "foreground", pero se pone "foreground-set" a FALSE, entonces el color del texto será ignorado. Esto es útil con funciones sobre datos de celda, o, por ejemplo, si se quiere asignar el color de fondo al comienzo, pero solo se quiere que afecte a algunas columnas, no a todas (en cuyo caso se podría simplemente conectar la propiedad "foreground-set" a una columna del modelo).
+
+Asignando atributos de columna es la forma más directa de mostrar los datos del modelo. Esto se usa normalmente cuando se quieren mostrar los datos del modelo de la misma forma que aparecen en él.
+
+Otra forma de mostrar los datos del modelo en pantalla es usando ((<Funciones sobre Datos de Celda|tut-treeview-renderer.celldatafunc>)).

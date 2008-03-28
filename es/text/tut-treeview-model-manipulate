@@ -1,0 +1,18 @@
+= Manipulando los datos de una fila
+{{link "tut-treeview-model-add", "tut-treeview-model", "tut-treeview", "tut-treeview-model-retrieve"}}
+
+Agregar filas vacías a un almacén no es muy excitante, así que veamos como se puede añadir o cambiar los datos del almacén. Normalmente se hace a través de Gtk::TreeIter#[column]=.
+
+Aquí hay un ejemplo donde se crea un almacén que guarda dos strings y un int para cada fila:
+
+ # Crea un almacén para el nombre, los apellidos y el año de nacimiento
+ liststore = Gtk::ListStore.new(String, String, Integer)
+
+ # Agrega una fila vacía al almacén
+ iter = liststore.append
+
+ # Rellena los campos
+ iter[0] = "Joe"
+ iter[1] = "Average"
+ iter[2] = 1970
+

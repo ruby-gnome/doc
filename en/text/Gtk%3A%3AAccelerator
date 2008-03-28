@@ -1,0 +1,49 @@
+= module Gtk::Accelerator
+
+== Module Functions
+--- Gtk::Accelerator.valid(keyval, modifier)
+    Determines whether a given keyval and modifier mask constitute a valid keyboard accelerator. 
+    For example, the Gdk::Keyval::GDK_a keyval plus Gdk::Window::CONTROL_MASK is valid - this is a "Ctrl+a" accelerator. But, you can't, for instance, use the Gdk::Keyval::GDK_Control_L keyval as an accelerator.
+    * keyval : a GDK keyval(Gdk::Keyval constants) 
+    * modifiers : modifier mask(Gdk::Window#GdkModifierType)
+    * Returns : true if the accelerator is valid 
+
+--- Gtk::Accelerator.parse(accelerator)
+    Parses a string representing an accelerator. The format looks like "<Control>a" or "<Shift><Alt>F1" or "<Release>z" (the last one is for key release). The parser is fairly liberal and allows lower or upper case, and also abbreviations such as "<Ctl>" and "<Ctrl>".
+    If the parse fails, accelerator_key and accelerator_mods will be set to 0 (zero).
+    * accelerator: string representing an accelerator 
+    * Returns: [key, mods]
+       * key: return accelerator keyval
+       * mods: return accelerator modifier mask(Gdk::Window#GdkModfierType)
+
+--- Gtk::Accelerator.to_name(key, mods)
+    Converts an accelerator keyval and modifier mask into a string parseable by Gtk::Accelerator.parse. For example, if you pass in Gdk::Keyval::GDK_q and Gdk::Window::CONTROL_MASK, this method returns "<Control>q". 
+    * keyval: accelerator keyval(Gdk::Keyval constants) 
+    * modifiers: accelerator modifier mask(Gdk::Window#GdkModfierType)
+    * Returns: an accelerator name 
+
+--- Gtk::Accelerator.default_mod_mask
+    Gets the value set by Gtk::Accelerator.set_default_mod_mask.
+    * Returns : the default accelerator modifier mask (Gdk::Window#GdkModfierType)
+--- Gtk::Accelerator.default_mod_mask=(default_mod_mask)
+    Sets the modifiers that will be considered significant for keyboard accelerators. The default mod mask is Gdk::Window::CONTROL_MASK | Gdk::Window::SHIFT_MASK | Gdk:Window::MOD1_MASK, that is, Control, Shift, and Alt. Other modifiers will by default be ignored by Gtk:AccelGroup. You must include at least the three default modifiers in any value you pass to this method.
+    The default mod mask should be changed on application startup, before using any accelerator groups.
+    * default_mod_mask: accelerator modifier mask (Gdk::Window#GdkModfierType)
+    * Returns: default_mod_mask
+--- Gtk::Accelerator.set_default_mod_mask(default_mod_mask)
+    Same as Gtk::Accelerator.default_mod_mask=.
+    * default_mod_mask: accelerator modifier mask (Gdk::Window#GdkModfierType)
+    * Returns: self
+
+--- Gtk::Accelerator.get_label(accelerator_key, accelerator_mods)
+    Converts an accelerator keyval and modifier mask into a string which can be used to represent the accelerator to the user. ((* Since 2.6 *))
+    * accelerator_key: accelerator keyval  
+    * accelerator_mods: accelerator modifier mask  
+    * Returns: a String representing the accelerator.  
+
+== See Also
+Gtk::Window#add_accel_group, Gtk::AccepMap.change_entry, Gtk::ItemFactory.new, Gtk::Label.new
+
+== ChangeLog
+* 2006-03-18 Fixed Accelerator#to_name. Reported by David Maciejak. - ((<Masao>))
+* 2006-01-26 Apply GTK+-2.8. - ((<Masao>))

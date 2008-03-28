@@ -1,0 +1,46 @@
+= class Gtk::ComboBoxEntry
+A text entry field with a dropdown list.
+
+== Object Hierarchy
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Gtk::Object
+        * Gtk::Widget
+          * Gtk::Container
+            * Gtk::Bin
+              * Gtk::ComboBox
+                * Gtk::ComboBoxEntry
+
+== Class Methods
+--- Gtk::ComboBoxEntry.new(is_text_only = true)
+    Creates a new Gtk::ComboBoxEntry which has a Gtk::Entry as child. If is_text_only is true, you should only manipulate its data source with the following convenience methods: Gtk::ComboBox#append_text, Gtk::ComboBox#insert_text, Gtk::ComboBOx#prepend_text? and Gtk::ComboBox#remove_text. If is_text_only is false, you should set a model using Gtk::COmboBox#model= and a text_column * using Gtk::ComboBoxEntry#text_column= after construction.  ((* Since 2.4 *))
+    * Returns: A new Gtk::ComboBoxEntry.  
+
+--- Gtk::ComboBoxEntry.new(model, text_column)
+    Creates a new Gtk::ComboBoxEntry which has a Gtk::Entry as child and a list of strings as popup. You can get the Gtk::Entry from a Gtk::ComboBoxEntry using Gtk::Bin#child. To add and remove strings from the list, just modify model using its data manipulation API.  ((* Since 2.4 *))
+    * text_column: A column in model to get the strings from.  
+    * Returns: A new Gtk::ComboBoxEntry.  
+
+== Instance Methods
+
+--- text_column
+    Returns the column which entry_box is using to get the strings from.  ((* Since 2.4 *))
+    * Returns: A column in the data source model
+--- text_column=(text_column)
+    Sets the model column which entry_box should use to get strings from.  ((* Since 2.4 *))
+    * text_column: A column in model to get the strings from.
+    * Returns: text_column
+--- set_text_column(text_column)
+    Same as Gtk::ComboBoxEntry#text_column=.  ((* Since 2.4 *))
+    * text_column: A column in model to get the strings from.
+    * Returns: self
+
+== Properties
+--- text-column: Integer (Read/Write)
+    A column in the data source model to get the strings from.  ((* Since 2.4 *))
+    * Allowed values: >= -1
+    * Default value: -1
+
+
+- ((<Masao>))

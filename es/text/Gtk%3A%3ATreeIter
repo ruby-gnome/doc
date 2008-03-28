@@ -1,0 +1,70 @@
+= class Gtk::TreeIter
+A Gtk::TreeIter is a reference to a specific node on a specific model. These are filled in by the model in a model-specific way. One can convert a path to an iterator by calling Gtk::TreeModel#get_iter. These iterators are the primary way of accessing a model and are similar to the iterators used by Gtk::TextBuffer. They are generally statically allocated on the heap and only used for a short time. The model interface defines a set of operations using them for navigating the model.
+
+== Object Hierarchy
+* Object
+  * GLib::Boxed
+    * Gtk::TreeIter
+
+== Instance Methods
+--- first!
+    Initializes iter with the first iterator in the tree (the one at the path "0") and returns true. Returns false if the tree is empty.
+    * Returns: false if the tree is empty.
+
+--- ==(iter)
+    Compare two iters.
+    * Returns: true if the iters are same object.
+
+--- [column]
+    Same as Gtk::TreeIter#get_value.
+    * column: The column to lookup the value at. 
+    * Returns: the value at column
+--- get_value(column)
+    Gets the value at the column. 
+    * column: The column to lookup the value at. 
+    * Returns: the value at column
+
+--- next!
+    Move iter to point to the node following it at the current level. If there is no next iter, false is returned and iter is set with the first iterator in the tree (same as Gtk::TreeIter#first!).
+    * Returns: true if iter has been changed to the next node. 
+
+--- first_child
+    Sets iter to point to the first child of parent. If parent has no children, Qnil is returned. parent will remain a valid node after this method has been called.
+    * Returns: the first child of self.
+
+--- has_child?
+    Returns true if iter has children, false otherwise.
+    * Returns: true if iter has children. 
+
+--- n_children
+    Gets the number of children that iter has.
+    * Returns: The number of children of iter. 
+
+--- nth_child(n)
+    Gets the iter to be the child of self, using the given index. The first index is 0. If index is too big, or self has no children, iter is set to nil. 
+    * n: Then index of the desired child. 
+    * Returns: the nth child(Gtk::TreeIter) or nil
+
+--- parent
+    Gets iter to be the parent of self. If self is at the toplevel, and doesn't have a parent, then nil is returned. 
+    * Returns: The parent(Gtk::TreeIter) or nil
+
+--- path
+    Returns a newly-created Gtk::TreePath referenced by self.
+    * Returns: a newly-created Gtk::TreePath. 
+
+--- [column]= value
+    Same as Gtk::TreeIter#set_value.
+    * column: column number to modify 
+    * value: new value for the cell
+    * Returns: value
+--- set_value(column, value)
+    Sets the data in the cell specified by column. The type of value must be convertible to the type of the column.
+    * column: column number to modify 
+    * value: new value for the cell
+    * Returns: self
+
+== See Also
+Gtk::TreeModel, Gtk::TreeStore, Gtk::ListStore, Gtk::TreeView
+
+- ((<Masao>))
