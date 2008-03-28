@@ -13,6 +13,7 @@
 * Poppler::Page
 * Poppler::LinkMapping
 * Poppler::ImageMapping
+* Poppler::FormFieldMapping
 * Poppler::Rectangle
 * Poppler::Color
 
@@ -28,6 +29,10 @@
 * Poppler::Dest
 
 * Poppler::Attachment
+
+* Poppler::Annotation
+* Poppler::AnnotationCalloutLine
+* Poppler::AnnotationText
 
 * Poppler::Permissions
 * Poppler::ViewerPreferences
