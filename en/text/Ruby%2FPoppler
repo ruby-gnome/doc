@@ -12,15 +12,19 @@
 
 * Poppler::Page
 * Poppler::LinkMapping
+* Poppler::ImageMapping
 * Poppler::Rectangle
+* Poppler::Color
 
 * Poppler::Action
+* Poppler::ActionAny
+* Poppler::ActionGotoDest
+* Poppler::ActionGotoRemote
+* Poppler::ActionLaunch
 * Poppler::ActionMovie
 * Poppler::ActionNamed
+* Poppler::ActionType
 * Poppler::ActionUri
-* Poppler::ActionLaunch
-* Poppler::ActionGotoRemote
-* Poppler::ActionGotoDest
 * Poppler::Dest
 
 * Poppler::Attachment
