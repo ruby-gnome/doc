@@ -9,7 +9,7 @@ rbbr is an application to browse modules/classes hierarchy and their constants a
 See ((<URL:http://sourceforge.net/project/showfiles.php?group_id=53614>))
 
 == Requirements
-* ruby 1.6.x, 1.8.x, 1.9.x
+* ruby 1.8.x, 1.9.x
 * Ruby/GTK2 0.9.1(older versions can't work this rbbr)
 * (option) Ruby-GNOME2 API Documents in RD+((<URL:http://ruby-gnome2.sourceforge.jp/data/ruby-gnome2-api.tar.gz>)). The rbbr-withapi package includes them. 
 * (option) ri 0.8a ((<URL:http://raa.ruby-lang.org/list.rhtml?name=ri>)). 
