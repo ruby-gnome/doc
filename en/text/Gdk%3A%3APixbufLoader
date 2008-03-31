@@ -65,7 +65,7 @@ Loading an animation is almost as easy as loading an image. Once the first "area
     * Returns: The Gdk::PixbufAnimation that the loader is loading, or nil if not enough data has been read to determine the information.  
 
 --- close
-    Informs a pixbuf loader that no further writes with Gdk::PixbufLoader#write will occur, so that it can free its internal loading structures. Also, tries to parse any data that hasn't yet been parsed; if the remaining data is partial or corrupt, an exception will be raised. Possible exceptions are in the Gdk::PixbufError and GLib::FileError. If you're just cancelling a load rather than expecting it to be finished, passing nil for error to ignore it is reasonable.
+    Informs a pixbuf loader that no further writes with Gdk::PixbufLoader#write will occur, so that it can free its internal loading structures. Also, tries to parse any data that hasn't yet been parsed; if the remaining data is partial or corrupt, an exception will be raised. Possible exceptions are in the Gdk::PixbufError and GLib::FileError. If you're just cancelling a load rather than expecting it to be finished, ignoring the thrown exception is reasonable.
     * Returns: true if all image data written so far was successfully passed out via the update_area signal  
 
 
