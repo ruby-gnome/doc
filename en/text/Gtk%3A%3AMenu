@@ -14,6 +14,8 @@ Applications can display a Gtk::Menu as a popup menu by calling the Gtk::Menu#po
 
 == Description
 
+== Description
+
 === Example 1. Displays a popup menu with 3rd mouse button
   require 'gtk2'
    
