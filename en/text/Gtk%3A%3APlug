@@ -33,5 +33,6 @@ Together with Gtk::Socket, Gtk::Plug provides the ability to embed widgets from 
 == See Also
 Gtk::Socket - the widget that a Gtk::Plug plugs into.
 
+== ChangeLog
 
 - ((<Masao>))
