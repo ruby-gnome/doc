@@ -3,7 +3,9 @@ Gtk::RecentChooserDialog is a dialog box suitable for displaying the recently us
 
 Note that Gtk::RecentChooserDialog does not have any methods of its own. Instead, you should use the functions that work on a Gtk::RecentChooser.
 
-==== Example 1. Typical usage
+== Description
+
+=== Example 1. Typical usage
 In the simplest of cases, you can use the following code to use a Gtk::RecentChooserDialog to select a recently used file:
 
   dialog = Gtk::RecentChooserDialog.new("Recent Documents", parent_window,

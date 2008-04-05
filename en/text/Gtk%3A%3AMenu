@@ -7,6 +7,8 @@ A Gtk::Menu can also be popped up by activating a Gtk::OptionMenu. Other composi
 
 Applications can display a Gtk::Menu as a popup menu by calling the Gtk::Menu#popup method. The example below shows how an application can pop up a menu when the 3rd mouse button is pressed. 
 
+== Description
+
 === Example 1. Displays a popup menu with 3rd mouse button
   require 'gtk2'
    

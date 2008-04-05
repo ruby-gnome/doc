@@ -8,6 +8,8 @@ The Gtk::DrawingArea widget is used for creating custom user interface elements.
 
 The following code portion demonstrates using a drawing area to display a circle in the normal widget foreground color. Note that GDK automatically clears the exposed area to the background color before sending the expose event, and that drawing is implicitly clipped to the exposed area.
 
+== Description
+
 === Example 1. Simple Gtk::DrawingArea usage.
  require 'gtk2'
  

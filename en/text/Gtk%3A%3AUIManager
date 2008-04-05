@@ -1,6 +1,8 @@
 = class Gtk::UIManager
 A Gtk::UIManager constructs a user interface (menus and toolbars) from one or more UI definitions, which reference actions from one or more action groups. 
 
+== Description
+
 === UI Definitions
 The UI definitions are specified in an XML format which can be roughly described by the following DTD. 
 
