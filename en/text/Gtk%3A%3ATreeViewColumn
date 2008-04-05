@@ -368,5 +368,6 @@ The sizing method the column uses to determine its width. Please note that Gtk::
 == See Also
 Gtk::TreeView, Gtk::TreeSelection, Gtk::TreeModel, Gtk::TreeSortable, Gtk::TreeModelSort, Gtk::ListStore, Gtk::TreeStore, Gtk::CellRenderer, Gtk::CellEditable, Gtk::CellRendererPixbuf, Gtk::CellRendererText, Gtk::CellRendererToggle 
 
+== ChangeLog
 
 - ((<Masao>))
