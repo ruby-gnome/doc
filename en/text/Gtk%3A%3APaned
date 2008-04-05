@@ -14,6 +14,8 @@ The application can set the position of the slider as if it were set by the user
 
 == Description
 
+== Description
+
 === Example 1. Creating a paned widget with minimum sizes.
 
   require 'gtk2'
