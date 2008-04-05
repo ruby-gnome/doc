@@ -512,7 +512,7 @@ class UpdateRD
         signals = klass.signals(false)
         @indexes[klass][:signals] =
           put_methods("Signals", signals, @indexes[klass][:signals_info],
-                      "", ": self\n     * self: ")
+                      "", ": self", "     * self: #{klass.inspect}")
       rescue
         $stderr.print $!
         $stderr.print klass.inspect, "\n"
