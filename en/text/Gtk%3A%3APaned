@@ -9,6 +9,8 @@ The application can set the position of the slider as if it were set by the user
 
 ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/panes.png>))
 
+== Description
+
 === Example 1. Creating a paned widget with minimum sizes.
 
   require 'gtk2'

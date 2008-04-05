@@ -11,6 +11,8 @@ Use Gtk::FileSelection#complete to display files and directories that match a gi
 
 Simple file operations; create directory, delete file, and rename file, are available from buttons at the top of the dialog. These can be hidden using Gtk::FileSelection#hide_fileop_buttons and shown again using Gtk::FileSelection#show_fileop_buttons.
 
+== Description
+
 === Example 1. Getting a filename from the user.
  require 'gtk2'
   
