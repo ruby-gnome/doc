@@ -144,6 +144,10 @@ Base container element.
 --- iterate
 
 == See Also
-((<Gst::Pipeline>)), ((<Gst>)).
+
+  * ((<Gst>))
+  * Gst::Pipeline
+
+== ChangeLog
 
 - ((<lrz>))
