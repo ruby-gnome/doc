@@ -68,7 +68,10 @@ A path is essentially a potential node. It is a location on a model that may or 
 
 
 == See Also
-Gtk::TreeModel, Gtk::TreeView
 
+  * Gtk::TreeModel
+  * Gtk::TreeView
+
+== ChangeLog
 
 - ((<Masao>))
