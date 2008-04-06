@@ -6,6 +6,8 @@
     * GLib::Object
       * Poppler::Action
 
+== Instance Methods
+
 --- title
     Gets the title of the action.
      * Returns: The title of the action
