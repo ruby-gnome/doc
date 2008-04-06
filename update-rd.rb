@@ -159,25 +159,25 @@ class Property
     attr_explanation.gsub!(/^If/, "true if")
 
     if @prop.readable?
-      detail = "\n    Gets the #{explanation}.\n" +
-      "     * Returns: #{attr_explanation}\n"
+      detail = "    Gets the #{explanation}.\n" +
+        "     * Returns: #{attr_explanation}\n"
       if @prop.value_type.to_class == TrueClass
         name.gsub!(/is_/, "")
-        prop_methods << [name + "?", detail]
+        prop_methods << ["#{name}?", detail]
       else
         prop_methods << [name, detail]
       end
     end
     if @prop.writable?
-      detail = "(#{name})\n    Sets the #{explanation}.\n" +
-      "     * #{name}: #{attr_explanation}\n" +
-      "     * Returns: #{name}\n"
-      prop_methods << ["#{name}=", detail]
+      detail = "    Sets the #{explanation}.\n" +
+        "     * #{name}: #{attr_explanation}\n" +
+        "     * Returns: #{name}\n"
+      prop_methods << ["#{name}=", detail, "(#{name})"]
 
-      detail = "(#{name})\n    Same as #{name}=.\n" +
-      "     * #{name}: #{attr_explanation}\n" +
-      "     * Returns: self\n"
-      prop_methods << ["set_#{name}", detail]
+      detail = "    Same as #{name}=.\n" +
+        "     * #{name}: #{attr_explanation}\n" +
+        "     * Returns: self\n"
+      prop_methods << ["set_#{name}", detail, "(#{name})"]
     end
     prop_methods
   end
@@ -253,14 +253,16 @@ class UpdateRD
     end
   end
 
+  def extract_name(name)
+    name.gsub(/(?:\A\S*?[\.\#]|\(.*\z|\s*\{.*\z|:.*\z)/, '')
+  end
+
   def put_methods(title, methods, methods_info=nil, prefix="", postfix="",
                   default_desc=nil)
     method_names = []
     methods_info ||= []
     method_names = methods_info.collect do |name, desc|
-      prev_name = name
-      name = name.gsub(/(?:\A\S*?[\.\#]|\(.*\z|\s*\{.*\z|:.*\z)/, '')
-      name
+      extract_name(name)
     end
     methods -= method_names
     method_names = (method_names + methods).uniq
@@ -283,7 +285,7 @@ class UpdateRD
       puts "--- #{name}"
       method_description = desc || default_desc
       if method_description.respond_to?(:call)
-        method_description = method_description.call(name)
+        method_description = method_description.call(extract_name(name))
       end
       method_description = method_description.to_s.rstrip
       unless method_description.empty?
@@ -471,9 +473,11 @@ class UpdateRD
 
   def put_instance_methods(klass, properties)
     property_descriptions = {}
+    property_postfixes = {}
     properties.each do |property|
-      property.methods.each do |name, detail|
+      property.methods.each do |name, detail, postfix|
         property_descriptions[name] = detail
+        property_postfixes[name] = postfix
       end
     end
 
@@ -487,17 +491,16 @@ class UpdateRD
 
     included_module_descriptions = {}
     klass.included_modules.each do |mod|
-      if target_module?(mod)
-        (mod.public_instance_methods(false) +
-         mod.protected_instance_methods(false)).each do |method|
-          unless instance_methods.include?(method)
-            instance_methods << method
-            description = "    See #{mod.name}##{method}."
-            included_module_descriptions[method] = description
-          end
-        end
+      next unless target_module?(mod)
+      (mod.public_instance_methods(false) +
+       mod.protected_instance_methods(false)).each do |method|
+        next if instance_methods.include?(method)
+        instance_methods << method
+        description = "    See #{mod.name}##{method}."
+        included_module_descriptions[method] = description
       end
     end
+
     default_descriptions = Proc.new do |name|
       property_descriptions[name] ||
         included_module_descriptions[name] ||
@@ -505,7 +508,9 @@ class UpdateRD
     end
     @indexes[klass][:instance_methods] =
       put_methods("Instance Methods", instance_methods,
-                  @indexes[klass][:instance_methods_info], "", "",
+                  @indexes[klass][:instance_methods_info],
+                  "",
+                  Proc.new {|name| property_postfixes[name] || ""},
                   default_descriptions)
   end
 
