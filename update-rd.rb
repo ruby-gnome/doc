@@ -37,6 +37,7 @@ end
 default_output_dir = "doc"
 options = OpenStruct.new
 options.replace = false
+options.index_page_name = nil
 
 opts = OptionParser.new do |opts|
   opts.banner += " [OUTPUT_DIR]"
@@ -49,6 +50,11 @@ opts = OptionParser.new do |opts|
 
   opts.on("--[no-]replace", "Don't merge exist RD.") do |replace|
     options.replace = replace
+  end
+
+  opts.on("iNAME", "--index-page=NAME",
+          "Index page name. [api-\#{MODULE_NAME}-status]") do |name|
+    options.index_page_name = name
   end
 end
 
@@ -180,13 +186,14 @@ end
 class UpdateRD
   RETURNS = "     * Returns: self"
 
-  def initialize(target_modules, output_dir, replace)
+  def initialize(target_modules, output_dir, replace, index_page_name=nil)
     @target_modules = target_modules
     @output_dir = output_dir
     @replace = replace
     @target_classes = []
     @current_class = nil
     @indexes = {}
+    @index_page_name = index_page_name
     FileUtils.mkdir_p(@output_dir)
     @dag = RBBR::MetaInfo::ModuleDAG.full_module_dag
   end
@@ -197,7 +204,7 @@ class UpdateRD
       nest_classes(mod)
     end
     output_classes
-    # output_index
+    output_index
   end
 
   private
@@ -251,13 +258,20 @@ class UpdateRD
     method_names = []
     methods_info ||= []
     method_names = methods_info.collect do |name, desc|
-      name = name.gsub(/(?:\A\S*?[\.\#]|\(.*\Z|\s*\{.*\Z)/, '')
+      prev_name = name
+      name = name.gsub(/(?:\A\S*?[\.\#]|\(.*\z|\s*\{.*\z|:.*\z)/, '')
+      name
     end
     methods -= method_names
     method_names = (method_names + methods).uniq
     target_methods = methods_info
     target_methods += methods.sort.collect do |name|
-      ["#{prefix}#{name}#{postfix}"]
+      if postfix.respond_to?(:call)
+        _postfix = postfix.call(name)
+      else
+        _postfix = postfix
+      end
+      ["#{prefix}#{name}#{_postfix}"]
     end
     return method_names if target_methods.size == 0
 
@@ -311,7 +325,8 @@ class UpdateRD
   def read_entries(component)
     title, *entries = component.split(/^---\s*.*?/m)
     entries.collect do |entry|
-      entry.split(/\n+/, 2)
+      name, description = entry.split(/\n+/, 2)
+      [name.strip, description]
     end
   end
 
@@ -328,7 +343,7 @@ class UpdateRD
     components.each do |component|
       case component
       when /\ADescription/
-        info[:description] += "\n\n== #{component}"
+        info[:description] += "\n\n== #{component.strip}"
       when /\AClass Methods/
         info[:class_methods_info] = read_entries(component)
       when /\AModule Functions/
@@ -370,15 +385,27 @@ class UpdateRD
   end
 
   def output_index
-    File.open(File.join(@output_dir, "index.rd"), "w") do |index|
-      index.puts "= Index"
+    module_name = "GTK"
+    index_page_name = @index_page_name || "index-#{module_name.downcase}"
+    File.open(File.join(@output_dir, index_page_name), "w") do |index|
+      if @index_page_name
+        index.puts "= Index"
+      else
+        index.puts "= Ruby/#{module_name} index"
+      end
       index.puts
       @indexes.sort_by {|klass, info| klass.inspect}.each do |klass, info|
         index.puts "  * #{klass.inspect}"
 
         info[:constants].sort.each do |name, desc|
-          next if @indexes.has_key?(klass.const_get(name))
-          index.puts "  * #{klass.inspect}::#{name}"
+          begin
+            next unless klass.const_defined?(name)
+          rescue NameError
+            next
+          end
+          constant = klass.const_get(name)
+          next unless @indexes.has_key?(constant)
+          index.puts "  * #{constant.inspect}"
         end
 
         methods = info[:class_methods] || info[:module_functions]
@@ -394,10 +421,10 @@ class UpdateRD
   end
 
   def new_methods(klass)
-    if klass.private_instance_methods(false).include?("initialize")
-      ["new"]
-    else
+    if klass.respond_to?(:gtype) and klass.gtype.abstract?
       []
+    else
+      ["new"]
     end
   end
 
@@ -408,9 +435,10 @@ class UpdateRD
     else
       put_module_functions(klass)
     end
-    put_instance_methods(klass)
+    properties = find_properties(klass, GLib::Object, "")
+    put_instance_methods(klass, properties)
     put_constants(klass)
-    put_all_properties(klass)
+    put_all_properties(klass, properties)
     put_signals(klass)
     put_see_also(klass)
     put_change_log(klass)
@@ -441,7 +469,14 @@ class UpdateRD
                   klass.inspect + ".", "", RETURNS)
   end
 
-  def put_instance_methods(klass)
+  def put_instance_methods(klass, properties)
+    property_descriptions = {}
+    properties.each do |property|
+      property.methods.each do |name, detail|
+        property_descriptions[name] = detail
+      end
+    end
+
     if klass.class?
       instance_methods = klass.public_instance_methods(false) +
         klass.protected_instance_methods(false)
@@ -449,15 +484,29 @@ class UpdateRD
       instance_methods = klass.public_instance_methods(false) - ["initialize"] +
         klass.protected_instance_methods(false)
     end
+
+    included_module_descriptions = {}
     klass.included_modules.each do |mod|
       if target_module?(mod)
-        instance_methods += mod.public_instance_methods(false) +
-          mod.protected_instance_methods(false)
+        (mod.public_instance_methods(false) +
+         mod.protected_instance_methods(false)).each do |method|
+          unless instance_methods.include?(method)
+            instance_methods << method
+            description = "    See #{mod.name}##{method}."
+            included_module_descriptions[method] = description
+          end
+        end
       end
+    end
+    default_descriptions = Proc.new do |name|
+      property_descriptions[name] ||
+        included_module_descriptions[name] ||
+        RETURNS
     end
     @indexes[klass][:instance_methods] =
       put_methods("Instance Methods", instance_methods,
-                  @indexes[klass][:instance_methods_info], "", "", RETURNS)
+                  @indexes[klass][:instance_methods_info], "", "",
+                  default_descriptions)
   end
 
   def put_constants(klass)
@@ -481,20 +530,23 @@ class UpdateRD
   end
 
   def put_properties(klass, title, properties, key)
+    property_postfixes = {}
     property_descriptions = {}
     property_names = properties.collect do |property|
-      name = "#{property.name}: #{property.type} (#{property.flags})"
+      name = property.name
+      property_postfixes[name] = ": #{property.type} (#{property.flags})"
       property_descriptions[name] = "    #{property.blurb}"
       name
     end
 
     @indexes[klass][key.to_sym] =
       put_methods(title, property_names, @indexes[klass]["#{key}_info".to_sym],
-                  "", "", Proc.new {|name| property_descriptions[name]})
+                  "",
+                  Proc.new {|name| property_postfixes[name]},
+                  Proc.new {|name| property_descriptions[name]})
   end
 
-  def put_all_properties(klass)
-    properties = find_properties(klass, GLib::Object, "")
+  def put_all_properties(klass, properties)
     put_properties(klass, "Properties", properties, "properties")
 
     put_special_properties(klass, "Style Properties", Gtk::Widget, "style_")
@@ -512,7 +564,7 @@ class UpdateRD
         signals = klass.signals(false)
         @indexes[klass][:signals] =
           put_methods("Signals", signals, @indexes[klass][:signals_info],
-                      "", ": self", "     * self: #{klass.inspect}")
+                      "", ": self", "     * self: #{klass.name}")
       rescue
         $stderr.print $!
         $stderr.print klass.inspect, "\n"
@@ -545,4 +597,6 @@ class UpdateRD
   end
 end
 
-UpdateRD.new(target_modules, options.output_dir, options.replace).run
+updater = UpdateRD.new(target_modules, options.output_dir,
+                       options.replace, options.index_page_name)
+updater.run
