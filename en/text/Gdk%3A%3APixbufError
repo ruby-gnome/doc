@@ -33,6 +33,9 @@ An error code in the Gdk::PixbufError. Many gdk-pixbuf operations can cause erro
     Generic failure code, something went wrong.  
 
 == See Also
-GLib::Error
+
+  * GLib::Error
+
+== ChangeLog
 
 -((<Masao>))
