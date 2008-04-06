@@ -38,5 +38,6 @@ A Gdk::PixbufFormat contains information about the image format accepted by a mo
        * mask: mask containing bytes which modify how the prefix is matched against test data
        * relevance: relevance of this pattern 
 
+== ChangeLog
 
 - ((<Masao>))

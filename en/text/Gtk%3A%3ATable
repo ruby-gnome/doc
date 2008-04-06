@@ -161,4 +161,6 @@ Gtk::Table#homogeneous=, can be used to set whether all cells in the table will 
 --- row-spacing: Integer (Read/Write)
     The amount of space between two consecutive rows
 
+== ChangeLog
+
 ((<Masao>))

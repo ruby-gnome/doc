@@ -72,4 +72,6 @@ The mode of the size group determines the directions in which the size group eff
 --- ignore-hidden: true or false (Read/Write)
     If true, hidden widgets are ignored when determining the size of the group. Default value: false. ((*Since 2.8*))
 
+== ChangeLog
+
 - ((<Masao>))
