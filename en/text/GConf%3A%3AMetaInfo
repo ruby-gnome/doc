@@ -47,4 +47,6 @@ The class GConf::MetaInfo holds metainformation about a key, such as last modifi
     * time: a unix timestamp, given as an Integer
     * Returns: self
 
+== ChangeLog
+
 - ((<lone-star>))

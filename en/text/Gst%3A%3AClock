@@ -130,4 +130,6 @@ Abstract class for global clocks.
 == See Also
 ((<Gst::SystemClock>)), ((<Gst>)).
 
+== ChangeLog
+
 - ((<lrz>))

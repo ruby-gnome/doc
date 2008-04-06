@@ -147,4 +147,6 @@ Applications can display a Gtk::Menu as a popup menu by calling the Gtk::Menu#po
 --- tearoff-title: String (Read/Write)
     A title that may be displayed by the window manager when this menu is torn-off
 
+== ChangeLog
+
 - ((<Masao>))

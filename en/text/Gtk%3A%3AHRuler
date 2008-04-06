@@ -18,4 +18,6 @@ The Gtk::HRuler widget is a widget arranged horizontally creating a ruler that i
     * Returns: a new Gtk::HRuler.  
 
 
+== ChangeLog
+
 - ((<Masao>))

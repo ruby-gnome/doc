@@ -10,4 +10,6 @@ A GConf::Engine represents a connection to a GConf database.  The default GConf:
     * address: a configuration source address
     * Returns: a new GConf::Engine
 
+== ChangeLog
+
 - ((<lone-star>))

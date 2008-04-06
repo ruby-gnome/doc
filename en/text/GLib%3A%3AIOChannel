@@ -195,4 +195,6 @@ Flag operations use a bitwise combination of these.
 --- FLAG_SET_MASK 
     Masks only the changeable bits.
 
+== ChangeLog
+
 - ((<Bruce>))

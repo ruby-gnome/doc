@@ -46,5 +46,6 @@ The gdk-pixbuf library provides a simple mechanism to load and represent animati
 == See Also
 Gdk::PixbufLoader 
 
+== ChangeLog
 
 -((<Masao>))

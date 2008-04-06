@@ -46,5 +46,7 @@ A radio menu item is a check menu item that belongs to a group. At each instant 
 == See Also
 * Gtk::MenuItem because a radio menu item is a menu item.
 * Gtk::CheckMenuItem to know how to handle the check.
- 
+
+== ChangeLog
+
 - ((<Masao>))

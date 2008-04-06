@@ -55,4 +55,6 @@ If you know none of these things are an issue for your application, and prefer t
     * has_window: true if a separate window should be created.
     * Returns: self
 
+== ChangeLog
+
 ((<Masao>))

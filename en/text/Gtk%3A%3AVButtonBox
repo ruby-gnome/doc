@@ -23,4 +23,6 @@ A button box should be used to provide a consistent layout of buttons throughout
 * Gtk::ButtonBox - Provides functions for controlling button boxes.
 * Gtk::HButtonBox - Pack buttons horizontally
  
+== ChangeLog
+
 - ((<Masao>))

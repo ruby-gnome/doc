@@ -71,4 +71,6 @@ A Gtk::Progress is the abstract base class used to derive a Gtk::ProgressBar whi
 --- text-yalign: Float (Read/Write)
     A number between 0.0 and 1.0 specifying the vertical alignment of the text in the progress widget
 
+== ChangeLog
+
 ((<Masao>))
