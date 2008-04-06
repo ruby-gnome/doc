@@ -24,20 +24,35 @@ require 'optparse'
 require 'ostruct'
 require 'cgi'
 
+ENV["LANG"] = "C"
+
 #
 # Set targets.
 #
-target_libs = ["gtk2"]
-target_modules = ["Gtk"]
+target_libs = ["atk", "bonobo2", "bonoboui2", "gconf2", "gdk_pixbuf2",
+               "glib2", "gnome2", "gnomecanvas2", "gnomeprint2",
+               "gnomeprintui2", "gnomevfs", "gst", "gtk2", "gtkglext",
+               "gtkhtml2", "gtkmozembed", "gtksourceview", "libart2",
+               "libglade2", "pango", "poppler", "rsvg2", "vte"]
+target_modules = ["Atk", "Bonobo", "Bonobo::UI", "GConf", "Gdk::Pixbuf",
+                  "GLib", "Gnome", "Gnome::Canvas", "Gnome::Print",
+                  "Gnome::PrintUI", "GnomeVFS", "Gst",
+                  "Gtk", "Gtk::GL", "Gdk::GL", "Gtk::Html",
+                  "Gtk::MozEmbed", "Gtk::SourceView", "Art",
+                  "GladeXML", "Pango", "Poppler", "RSVG", "Vte",]
 
 target_libs.each do |lib|
-  require lib
+  begin
+    require lib
+  rescue LoadError
+    puts "can't load #{lib}"
+  end
 end
 
 default_output_dir = "doc"
 options = OpenStruct.new
 options.replace = false
-options.index_page_name = nil
+options.index_page_name_template = nil
 
 opts = OptionParser.new do |opts|
   opts.banner += " [OUTPUT_DIR]"
@@ -52,9 +67,10 @@ opts = OptionParser.new do |opts|
     options.replace = replace
   end
 
-  opts.on("iNAME", "--index-page=NAME",
-          "Index page name. [api-\#{MODULE_NAME}-status]") do |name|
-    options.index_page_name = name
+  opts.on("iTEMPLATE", "--index-page-name-template=TEMPLATE",
+          "Index page name template. '%s' will be replaced module name.",
+          "[#{options.index_page_name_template}]") do |template|
+    options.index_page_name_template = template
   end
 end
 
@@ -186,14 +202,15 @@ end
 class UpdateRD
   RETURNS = "     * Returns: self"
 
-  def initialize(target_modules, output_dir, replace, index_page_name=nil)
+  def initialize(target_modules, output_dir, replace,
+                 index_page_name_template=nil)
     @target_modules = target_modules
     @output_dir = output_dir
     @replace = replace
     @target_classes = []
     @current_class = nil
     @indexes = {}
-    @index_page_name = index_page_name
+    @index_page_name_template = index_page_name_template
     FileUtils.mkdir_p(@output_dir)
     @dag = RBBR::MetaInfo::ModuleDAG.full_module_dag
   end
@@ -204,7 +221,7 @@ class UpdateRD
       nest_classes(mod)
     end
     output_classes
-    output_index
+    output_indexes
   end
 
   private
@@ -337,8 +354,8 @@ class UpdateRD
     File.join(@output_dir, klass_to_page_name(klass))
   end
 
-  def read_section(component)
-    title, *entries = component.split(/^---\s*.*?/m)
+  def read_section(section)
+    title, *entries = section.split(/^---\s*.*?/m)
     entries = entries.collect do |entry|
       name, description = entry.split(/\n+/, 2)
       [name.strip, description]
@@ -346,8 +363,20 @@ class UpdateRD
     [title, entries]
   end
 
-  def read_entries(component)
-    read_section(component)[1]
+  def read_sections(component)
+    title, component = component.split(/\n+/, 2)
+    first_section, *sections = component.split(/^===\s+.*?/m)
+    sections = [first_section] if sections.empty?
+    sections = sections.compact
+
+    section_infos = []
+    sections.each do |section|
+      group_info, entries = read_section(section)
+      group_title, group_description = group_info.split(/\n/, 2)
+      entries[0][2, 0] = [group_title, group_description].compact
+      section_infos.concat(entries)
+    end
+    section_infos
   end
 
   def read_initial_info(klass)
@@ -365,29 +394,21 @@ class UpdateRD
       when /\ADescription/
         info[:description] += "\n\n== #{component.strip}"
       when /\AClass Methods/
-        info[:class_methods_info] = read_entries(component)
+        info[:class_methods_info] = read_sections(component)
       when /\AModule Functions/
-        info[:module_functions_info] = read_entries(component)
+        info[:module_functions_info] = read_sections(component)
       when /\AInstance Methods/
-        info[:instance_methods_info] = read_entries(component)
+        info[:instance_methods_info] = read_sections(component)
       when /\AConstants/
-        constants_info = []
-        _, *constants = component.split(/^===\s+.*?/m)
-        constants.each do |constant|
-          group_info, entries = read_section(constant)
-          group_title, group_description = group_info.split(/\n/, 2)
-          entries[0][2, 0] = [group_title, group_description].compact
-          constants_info.concat(entries)
-        end
-        info[:constants_info] = constants_info
+        info[:constants_info] = read_sections(component)
       when /\AProperties/
-        info[:properties_info] = read_entries(component)
+        info[:properties_info] = read_sections(component)
       when /\AStyle Properties/
-        info[:style_properties_info] = read_entries(component)
+        info[:style_properties_info] = read_sections(component)
       when /\AChild Properties/
-        info[:child_properties_info] = read_entries(component)
+        info[:child_properties_info] = read_sections(component)
       when /\ASignals/
-        info[:signals_info] = read_entries(component)
+        info[:signals_info] = read_sections(component)
       when /\ASee Also/
         title, info[:see_also] = component.split(/\n+/, 2)
       when /\AChangeLog/
@@ -412,17 +433,37 @@ class UpdateRD
     end
   end
 
-  def output_index
-    module_name = "GTK"
-    index_page_name = @index_page_name || "index-#{module_name.downcase}"
+  def output_indexes
+    if @target_modules.size == 1 and @index_page_name_template.nil?
+      output_index("index")
+    else
+      @target_modules.each do |target_module|
+        template = @index_page_name_template || "index-%s"
+        template += "-%s" unless /%s/ =~ template
+        page_name = template % target_module.downcase
+        output_index(page_name, target_module)
+      end
+    end
+  end
+
+  def output_index(index_page_name, target_module=nil)
+    if target_module
+      other_modules = @target_modules - [target_module]
+      other_modules_re = /\A(?:#{Regexp.union(*other_modules)})/
+    end
     File.open(File.join(@output_dir, index_page_name), "w") do |index|
-      if @index_page_name
-        index.puts "= Index"
+      if target_module
+        index.puts "= #{target_module} index"
       else
-        index.puts "= Ruby/#{module_name} index"
+        index.puts "= Index"
       end
       index.puts
       @indexes.sort_by {|klass, info| klass.inspect}.each do |klass, info|
+        if target_module and
+            /\A#{target_module}/ !~ klass.name and
+            other_modules =~ klass.name
+          next
+        end
         index.puts "  * #{klass.inspect}"
 
         info[:constants].sort.each do |name, desc|
@@ -449,7 +490,7 @@ class UpdateRD
   end
 
   def new_methods(klass)
-    if klass.respond_to?(:gtype)
+    if klass.respond_to?(:gtype) and klass.method(:gtype).arity <= 0
       return ["new"] if klass.gtype.abstract?
     else
       if klass.private_instance_methods(false).include?("initialize")
@@ -632,5 +673,5 @@ class UpdateRD
 end
 
 updater = UpdateRD.new(target_modules, options.output_dir,
-                       options.replace, options.index_page_name)
+                       options.replace, options.index_page_name_template)
 updater.run
