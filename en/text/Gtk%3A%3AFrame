@@ -108,4 +108,6 @@ The frame widget is a Gtk::Bin that surrounds its child with a decorative frame 
 --- shadow-type: Integer (Read/Write)
     Appearance of the frame border
 
+== ChangeLog
+
 ((<Masao>))
