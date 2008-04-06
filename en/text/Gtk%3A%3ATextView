@@ -421,7 +421,7 @@ Widget that displays a Gtk::TextBuffer.
 
 === Priority
 --- PRIORITY_VALIDATE
-The priority at which the text view validates onscreen lines in an idle job in the background(Gdk::PRIORITY_REDRAW + 5).
+    The priority at which the text view validates onscreen lines in an idle job in the background(Gdk::PRIORITY_REDRAW + 5).
 
 == Properties
 --- accepts-tab: true or false (Read/Write)
