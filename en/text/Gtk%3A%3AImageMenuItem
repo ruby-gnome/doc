@@ -47,4 +47,6 @@ Note that the user can disable display of menu icons, so make sure to still fill
 --- image: Gtk::Widget (Read/Write)
     Child widget to appear next to the menu text
 
+== ChangeLog
+
 - ((<Masao>))

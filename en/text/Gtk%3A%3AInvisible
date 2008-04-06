@@ -32,4 +32,6 @@ It is used for reliable pointer grabs and selection handling in the code for dra
 --- screen: Gdk::Screen (Read/Write)
     The screen where this window will be displayed
 
+== ChangeLog
+
 - ((<Masao>))

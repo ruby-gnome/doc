@@ -7,4 +7,6 @@ But this is not so useful in Ruby/GTK.
   * GLib::Boxed
     * Gtk::NotebookPage
 
+== ChangeLog
+
 - ((<Masao>))

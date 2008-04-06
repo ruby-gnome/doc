@@ -43,6 +43,7 @@
 --- sort-column-changed: self
      * self: Gtk::TreeSortable
 
+== ChangeLog
 
 :2003-07-12 ((<Masao>))
  Done.

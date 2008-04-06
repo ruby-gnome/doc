@@ -66,4 +66,6 @@ To change the text which is shown in the preview area, use Gtk::FontSelectionDia
 == See Also
 Gtk::FontSelection - the underlying widget for selecting fonts.
 
+== ChangeLog
+
 - ((<Masao>))

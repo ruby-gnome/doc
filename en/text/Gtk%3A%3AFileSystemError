@@ -25,5 +25,6 @@ This is a "semi-private" class. It is meant only for alternate Gtk::FileChooser 
 --- NONEXISTENT
 --- NOT_FOLDER
 
+== ChangeLog
 
 -((<Masao>))

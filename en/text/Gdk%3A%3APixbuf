@@ -445,5 +445,6 @@ This enumeration describes the different interpolation modes that can be used wi
 == See Also
 Gdk::RGB
 
+== ChangeLog
 
 - ((<Masao>))

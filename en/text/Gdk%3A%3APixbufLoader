@@ -95,5 +95,6 @@ Loading an animation is almost as easy as loading an image. Once the first "area
 == See Also
 Gdk::Pixbuf.new, Gdk::PixbufAnimation.new
 
+== ChangeLog
 
 -((<Masao>))

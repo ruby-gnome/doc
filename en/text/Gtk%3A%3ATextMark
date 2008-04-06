@@ -42,5 +42,7 @@ Marks are typically created using the Gtk::TextBuffer#create_mark.
     * setting: visibility of mark (true or false)
     * Returns: Gtk::TextMark
 
+== ChangeLog
+
 * 2003-04-07 ((<Masao>)): Move from The RWiki. Some modified.
 * 2002-12-14 ((<OGASAWARA>))

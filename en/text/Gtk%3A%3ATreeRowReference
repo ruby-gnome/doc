@@ -56,4 +56,6 @@
 Gtk::TreeModel, Gtk::TreeView
 
 
+== ChangeLog
+
 - ((<Masao>))

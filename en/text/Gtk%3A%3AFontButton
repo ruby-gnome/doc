@@ -124,5 +124,6 @@ The Gtk::FontButton is a button which displays the currently selected font an al
 == See Also
 Gtk::FontSelectionDialog, Gtk::ColorButton. 
 
+== ChangeLog
 
 - ((<Masao>))
