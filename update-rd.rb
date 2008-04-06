@@ -275,13 +275,27 @@ class UpdateRD
       end
       ["#{prefix}#{name}#{_postfix}"]
     end
-    return method_names if target_methods.size == 0
 
-    puts "== " + title
+    unless target_methods.empty?
+      put_method_section(title, target_methods, default_desc)
+    end
+    method_names
+  end
+
+  def put_method_section(title, target_methods, default_desc)
+    puts "== #{title}"
     puts
     last_putted = true
-    target_methods.each do |name, desc|
+    target_methods.each do |name, desc, group_name, group_description|
       last_putted = false
+      if group_name
+        puts "=== #{group_name}"
+        puts
+        if group_description and /\A\s*\z/ !~ group_description
+          puts(group_description.rstrip)
+          puts
+        end
+      end
       puts "--- #{name}"
       method_description = desc || default_desc
       if method_description.respond_to?(:call)
@@ -296,7 +310,6 @@ class UpdateRD
       end
     end
     puts unless last_putted
-    method_names
   end
 
   def target_module?(mod)
@@ -324,12 +337,17 @@ class UpdateRD
     File.join(@output_dir, klass_to_page_name(klass))
   end
 
-  def read_entries(component)
+  def read_section(component)
     title, *entries = component.split(/^---\s*.*?/m)
-    entries.collect do |entry|
+    entries = entries.collect do |entry|
       name, description = entry.split(/\n+/, 2)
       [name.strip, description]
     end
+    [title, entries]
+  end
+
+  def read_entries(component)
+    read_section(component)[1]
   end
 
   def read_initial_info(klass)
@@ -353,7 +371,15 @@ class UpdateRD
       when /\AInstance Methods/
         info[:instance_methods_info] = read_entries(component)
       when /\AConstants/
-        info[:constants_info] = read_entries(component)
+        constants_info = []
+        _, *constants = component.split(/^===\s+.*?/m)
+        constants.each do |constant|
+          group_info, entries = read_section(constant)
+          group_title, group_description = group_info.split(/\n/, 2)
+          entries[0][2, 0] = [group_title, group_description].compact
+          constants_info.concat(entries)
+        end
+        info[:constants_info] = constants_info
       when /\AProperties/
         info[:properties_info] = read_entries(component)
       when /\AStyle Properties/
@@ -423,11 +449,14 @@ class UpdateRD
   end
 
   def new_methods(klass)
-    if klass.respond_to?(:gtype) and klass.gtype.abstract?
-      []
+    if klass.respond_to?(:gtype)
+      return ["new"] if klass.gtype.abstract?
     else
-      ["new"]
+      if klass.private_instance_methods(false).include?("initialize")
+        return ["new"]
+      end
     end
+    []
   end
 
   def output_class(klass)
