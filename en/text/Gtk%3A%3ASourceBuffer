@@ -184,4 +184,6 @@ Text buffer object for Gtk::SourceView.
 == See Also
 ((<Gtk>)).
 
+== ChangeLog
+
 - ((<lrz>))

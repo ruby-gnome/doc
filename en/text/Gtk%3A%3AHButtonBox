@@ -21,5 +21,7 @@ A button box should be used to provide a consistent layout of buttons throughout
 * Gtk::Box - Used to pack widgets into button boxes.
 * Gtk::ButtonBox - Provides functions for controlling button boxes.
 * Gtk::VButtonBox - Pack buttons vertically.
- 
+
+== ChangeLog
+
 - ((<Masao>))

@@ -1,10 +1,8 @@
 = class RSVG::Handle
 
-== Object Hierarchy
-* Object
-  * RSVG::Handle
-
 ((*Since 2.14*))
+
+== Object Hierarchy
 
 * Object
   * GLib::Instantiatable

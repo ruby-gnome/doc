@@ -1,3 +1,5 @@
+= class Gtk::ScaleButton
+
 Gtk::ScaleButton provides a button which pops up a scale widget if clicked.
 This scale widget then allows you to set its value.
 

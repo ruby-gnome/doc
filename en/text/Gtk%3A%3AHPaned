@@ -16,5 +16,6 @@ The HPaned widget is a container widget with two children arranged horizontally.
     Create a new Gtk::HPaned
     * Returns: the new Gtk::HPaned  
 
+== ChangeLog
 
 ((<Masao>))

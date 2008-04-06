@@ -592,4 +592,6 @@
     Copy the object.
     * Returns: a copied object.
 
+== ChangeLog
+
 - ((<Masao>))

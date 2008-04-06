@@ -26,5 +26,6 @@ The position to show the current value, and the number of decimal places shown c
     * step: step increment (tick size) used with keyboard shortcuts(Float)
     * Returns: a new Gtk::HScale 
 
+== ChangeLog
 
 ((<Masao>))
