@@ -65,4 +65,6 @@ Every radio button is a member of some group of radio buttons. When one is selec
 == See Also
 Gtk::OptionMenu: Another way of offering the user a single choice from many.
 
+== ChangeLog
+
 - ((<Masao>))

@@ -25,4 +25,6 @@ This is a base class for anything that can be added to a Gst::Plugin.
 == See Also
 ((<Gst::ElementFactory>)), ((<Gst::IndexFactory>)), ((<Gst::SchedulerFactory>)), ((<Gst>)).
 
+== ChangeLog
+
 - ((<lrz>))

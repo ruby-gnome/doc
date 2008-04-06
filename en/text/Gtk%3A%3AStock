@@ -244,4 +244,7 @@ Each stock ID can be associated with a stock item, which contains the user-visib
 == See Also
 Gtk::IconFactory, Gtk::IconSet, Gtk::IconSize
 
+
+== ChangeLog
+
 - ((<Masao>))

@@ -44,5 +44,6 @@
 == See Also
 Gtk::IconFactory, Gtk::IconSet, Gtk::IconSource
 
+== ChangeLog
 
 - ((<Masao>))
