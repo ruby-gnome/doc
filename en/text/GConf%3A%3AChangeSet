@@ -38,4 +38,6 @@ GConf::ChangeSet represents a set of changes to be made to the GConf database.
     Adds an "unset" operation to the GConf::ChangeSet, unseting the key once the GConf::ChangeSet gets commited.
     * Returns: self
 
+== ChangeLog
+
 - ((<lone-star>))
