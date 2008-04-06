@@ -16,6 +16,9 @@ using the system time.
     * Returns: a handle to the default system clock, as a reference to a Gst::SystemClock object.
 
 == See Also
-((<Gst>)).
+
+  * ((<Gst>))
+
+== ChangeLog
 
 - ((<lrz>))
