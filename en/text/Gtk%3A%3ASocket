@@ -60,5 +60,6 @@ The communication between a Gtk::Socket and a Gtk::Plug follows the XEmbed proto
 * Gtk::Plug
 * ((<XEmbed|URL:http://www.freedesktop.org/standards/xembed-spec/>))
 
+== ChangeLog
 
 - ((<Masao>))
