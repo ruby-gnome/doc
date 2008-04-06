@@ -142,7 +142,8 @@ The Gtk::TreeViewColumn object is a visible column in a Gtk::TreeView widget. It
     * Returns: self
 
 --- min_width
-    Returns the minimum width in pixels of the Gtk::TreeViewColumn, or -1 if no minimum width is set.    * Returns: The minimum width of the Gtk::TreeViewColumn. 
+    Returns the minimum width in pixels of the Gtk::TreeViewColumn, or -1 if no minimum width is set.
+    * Returns: The minimum width of the Gtk::TreeViewColumn. 
 --- min_width=(min_width)
     Sets the minimum width of the Gtk::TreeViewColumn. If min_width is -1, then the minimum width is unset.
     * min_width: The minimum width of the column in pixels, or -1. 
