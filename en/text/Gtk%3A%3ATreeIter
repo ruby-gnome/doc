@@ -67,4 +67,6 @@ A Gtk::TreeIter is a reference to a specific node on a specific model. These are
 == See Also
 Gtk::TreeModel, Gtk::TreeStore, Gtk::ListStore, Gtk::TreeView
 
+== ChangeLog
+
 - ((<Masao>))
