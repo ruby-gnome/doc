@@ -200,7 +200,7 @@ class Property
 end
 
 class UpdateRD
-  RETURNS = "     * Returns: self"
+  RETURNS = "     * Returns: self: ((*FIXME*))"
 
   def initialize(target_modules, output_dir, replace,
                  index_page_name_template=nil)
@@ -278,7 +278,9 @@ class UpdateRD
                   default_desc=nil)
     method_names = []
     methods_info ||= []
-    method_names = methods_info.collect do |name, desc|
+    method_names = methods_info.reject do |name, desc|
+      name.nil?
+    end.collect do |name, desc|
       extract_name(name)
     end
     methods -= method_names
@@ -305,14 +307,15 @@ class UpdateRD
     last_putted = true
     target_methods.each do |name, desc, group_name, group_description|
       last_putted = false
-      if group_name
-        puts "=== #{group_name}"
+      if group_name and /\A\s*\z/ !~ group_name
+        puts "=== #{group_name.strip}"
         puts
-        if group_description and /\A\s*\z/ !~ group_description
-          puts(group_description.rstrip)
-          puts
-        end
       end
+      if group_description and /\A\s*\z/ !~ group_description
+        puts(group_description.rstrip)
+        puts
+      end
+      next if name.nil?
       puts "--- #{name}"
       method_description = desc || default_desc
       if method_description.respond_to?(:call)
@@ -364,12 +367,16 @@ class UpdateRD
   end
 
   def read_sections(component)
+    section_infos = []
+
     title, component = component.split(/\n+/, 2)
     first_section, *sections = component.split(/^===\s+.*?/m)
-    sections = [first_section] if sections.empty?
-    sections = sections.compact
+    if sections.empty?
+      sections = ["\n#{first_section}"] if first_section
+    else
+      section_infos << [nil, nil, nil, first_section]
+    end
 
-    section_infos = []
     sections.each do |section|
       group_info, entries = read_section(section)
       group_title, group_description = group_info.split(/\n/, 2)
