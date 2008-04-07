@@ -17,5 +17,6 @@ The Gtk::VRuler widget is a widget arranged vertically creating a ruler that is 
     Creates a new vertical ruler
     * Returns: a new Gtk::VRuler.  
 
+== ChangeLog
 
 - ((<Masao>))

@@ -146,5 +146,6 @@ Simple file operations; create directory, delete file, and rename file, are avai
 == See Also
 * Gtk::Dialog - Add your own widgets into the Gtk::FileSelection.
 
+== ChangeLog
 
 - ((<Masao>))

@@ -32,4 +32,6 @@ The Gtk::Item widget is an abstract base class for Gtk::MenuItem.
 --- toggle: self
      * self: the object which received the signal.
 
+== ChangeLog
+
 - ((<Masao>))

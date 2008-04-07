@@ -50,5 +50,6 @@
 == See Also
 Gtk::AccelGroup, Gtk::Accelerator
 
+== ChangeLog
 
 -((<Masao>))

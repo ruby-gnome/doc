@@ -20,5 +20,6 @@ The Gtk::HScrollbar widget is a widget arranged horizontally creating a scrollba
 == See Also
 Gtk::Scrollbar, Gtk::ScrolledWindow 
 
+== ChangeLog
 
 ((<Masao>))

@@ -1146,4 +1146,6 @@ Tells about certain properties of the widget.
      * self: Gtk::Widget
      * event: Gdk::Event
 
+== ChangeLog
+
 - ((<Masao>))

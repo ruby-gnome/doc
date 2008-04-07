@@ -78,4 +78,6 @@ A Gtk::AccelLabel will only display accelerators which have Gtk::ACCEL_VISIBLE s
 Keyboard Accelerators installing and using keyboard short-cuts.
 Gtk::ItemFactory an easier way to create menus.
 
+== ChangeLog
+
 - ((<Masao>))

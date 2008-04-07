@@ -111,5 +111,7 @@ To simply switch the state of a toggle button, use Gtk::ToggleButton#toggled.
 * Gtk::CheckButton another way of presenting a toggle option.
 * Gtk::CheckMenuItem a Gtk::ToggleButton as a menu item
 
+== ChangeLog
+
 - ((<Masao>))
 

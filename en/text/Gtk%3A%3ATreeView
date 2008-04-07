@@ -551,5 +551,6 @@ Determining where a dropped row goes.
 Gtk::TreeViewColumn, Gtk::TreeSelection, Gtk::TreeModel, Gtk::TreeSortable, Gtk::TreeModelSort, Gtk::ListStore, Gtk::TreeStore, Gtk::CellRenderer, Gtk::CellEditable, Gtk::CellRendererPixbuf, Gtk::CellRendererText, Gtk::CellRendererToggle
 
 
+== ChangeLog
 
 - ((<Masao>))

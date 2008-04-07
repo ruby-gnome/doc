@@ -12,5 +12,6 @@
     This function specifies the callback function to be called when the widget corresponding to a Gtk::Accessible is destroyed.
     * Returns: self
 
+== ChangeLog
 
 - ((<Masao>))

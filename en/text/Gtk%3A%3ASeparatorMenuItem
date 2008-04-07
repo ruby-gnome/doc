@@ -17,4 +17,6 @@ The Gtk::SeparatorMenuItem is a separator used to group items within a menu. It 
     Creates a new Gtk::SeparatorMenuItem. 
     * Returns: a new Gtk::SeparatorMenuItem.  
 
+== ChangeLog
+
 - ((<Masao>))

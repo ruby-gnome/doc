@@ -1,7 +1,7 @@
-= class GLib::IOChannelError 
+= class GLib::IOChannelError
 Error codes from GLib::IOChannel
 
-=Object Hierarchy
+= Object Hierarchy
 * Object
   * Exception
     * StandardError
@@ -34,5 +34,7 @@ Error codes from GLib::IOChannel
     Broken pipe.
 --- FAILED 
     Some other error.
+
+== ChangeLog
 
 - ((<Bruce>))

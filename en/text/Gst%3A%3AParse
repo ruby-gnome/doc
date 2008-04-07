@@ -9,4 +9,6 @@ Parses command-line syntax into a pipeline.
     * command: a command line.  
     * Returns: a reference to a new Gst::Bin on success, an exception on failure.
 
+== ChangeLog
+
 - ((<lrz>))

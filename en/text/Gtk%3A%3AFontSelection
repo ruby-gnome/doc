@@ -59,4 +59,6 @@ Filters can be used to limit the fonts shown. There are 2 filters in the Gtk::Fo
 == See Also
 Gtk::FontSelectionDialog a dialog box which uses Gtk::FontSelection.
 
+== ChangeLog
+
 - ((<Masao>))

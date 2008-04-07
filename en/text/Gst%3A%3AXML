@@ -59,4 +59,5 @@ Convert Gst::Element objects into an XML presentation.
 == See Also
 ((<Gst>)).
 
+== ChangeLog
 - ((<lrz>))

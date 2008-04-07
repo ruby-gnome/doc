@@ -20,5 +20,6 @@ The Gtk::VScrollbar widget is a widget arranged vertically creating a scrollbar.
 == See Also
 Gtk::Scrollbar, Gtk::ScrolledWindow 
 
+== ChangeLog
 
 ((<Masao>))

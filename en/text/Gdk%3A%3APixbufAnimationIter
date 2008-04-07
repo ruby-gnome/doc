@@ -32,5 +32,6 @@ A Gdk::PixbufAnimationIter provides the necessary functionality to display an an
 == See Also
 Gdk::PixbufLoader
 
+== ChangeLog
 
 -((<Masao>))
