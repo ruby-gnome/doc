@@ -10,6 +10,7 @@ GConf::Client is the main class for accessing GConf functionality.  All interfac
     * engine:  a GConf::Engine to create the client for
     * Returns: a new GConf::Client
 
+== Instance Methods
 --- add_dir(dir, preload_type = nil)
     Adds a directory to the list of directories this GConf::Client will watch.  Any changes to a key in this directory or any sub-directory will trigger the "value_changed" signal.  A preloading method may also be specified for this directory.  It is not possible to add sub-directories to any directories already added in this way, doing so will cause an exception.  It is, however, possible to add the same directory multiple times, and it will be watched until it has been removed, by GConf::Client#remove_dir, an equal number of times.
      * dir: the directory to add
@@ -119,6 +120,8 @@ GConf::Client is the main class for accessing GConf functionality.  All interfac
     Commits the given GConf::ChangeSet to the GConf database.
     * change_set: the GConf::ChangeSet to commit
     * Returns: true on success, false otherwise
+
+== Constants
 
 === PreloadType
 --- PRELOAD_NONE
