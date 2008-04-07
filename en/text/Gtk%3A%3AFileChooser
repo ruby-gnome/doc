@@ -1,4 +1,5 @@
 = module Gtk::FileChooser
+
 Gtk::FileChooser is an interface that can be implemented by file selection widgets. In GTK+, the main objects that implement this interface are Gtk::FileChooserWidget, Gtk::FileChooserDialog, and Gtk::FileChooserButton. You do not need to write an object that implements the Gtk::FileChooser interface unless you are trying to adapt an existing file selector to expose a standard programming interface. 
 
 == Description
