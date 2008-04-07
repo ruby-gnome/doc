@@ -75,6 +75,6 @@ Note that Gdk::Keymap#translate_keyboard_state also returns the keyval, i.e. it 
     The ::keys_changed signal is emitted when the mapping represented by keymap changes.
     * self: Gdk::Keymap
 
-
+== ChangeLog
 
 - ((<Masao>))
