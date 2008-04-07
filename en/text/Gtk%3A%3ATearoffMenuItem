@@ -23,4 +23,6 @@ When its menu is shown as a tearoff menu, the Gtk::TearoffMenuItem is drawn as a
 == See Also
 Gtk::Menu for further discussion of menus in Ruby/GTK.
 
+== ChangeLog
+
 - ((<Masao>))

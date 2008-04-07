@@ -128,5 +128,6 @@ By default, the icon source has all parameters wildcarded. That is, the icon sou
 == See Also
 Gtk::IconFactory, Gtk::IconSet, Gtk::IconSize
 
+== ChangeLog
 
 - ((<Masao>))

@@ -144,5 +144,6 @@ If a Gtk::ScrolledWindow doesn't behave quite as you would like, or doesn't have
 == See Also
 Gtk::Viewport, Gtk::Adjustment
 
+== ChangeLog
 
 ((<Masao>))

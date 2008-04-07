@@ -92,4 +92,6 @@ The horizontal and vertical alignment attributes enable the widget to be positio
 --- ypad: Integer (Read/Write)
     The amount of space to add on the top and bottom of the widget, in pixels
 
+== ChangeLog
+
 - ((<Masao>))

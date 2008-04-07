@@ -279,5 +279,6 @@ These enumeration values are used by Gtk::UIManager#add_ui to determine what UI 
      * self: Gtk::UIManager
      * action: the Gtk::Action  
 
+== ChangeLog
 
 - ((<Masao>))

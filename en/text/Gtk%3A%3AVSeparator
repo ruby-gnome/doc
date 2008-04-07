@@ -18,4 +18,6 @@ The Gtk::VSeparator widget is a vertical separator, used to group the widgets wi
 == See Also
 * Gtk::HSeparator - a horizontal separator.
 
+== ChangeLog
+
 - ((<Masao>))

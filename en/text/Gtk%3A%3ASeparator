@@ -9,4 +9,6 @@ The Gtk::Separator widget is an abstract class, used only for deriving the subcl
         * Gtk::Widget
           * Gtk::Separator
 
+== ChangeLog
+
 - ((<Masao>))

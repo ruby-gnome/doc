@@ -44,5 +44,6 @@ To display an icon, always use Gtk::Style#lookup_icon_set on the widget that wil
 == See Also
 Gtk::IconSet, Gtk::IconSize, Gtk::IconSource
 
+== ChangeLog
 
 - ((<Masao>))

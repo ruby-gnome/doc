@@ -40,5 +40,6 @@ Icon sets have a list of Gtk::IconSource, which they use as base icons for rende
 == See Also
 Gtk::IconFactory, Gtk::IconSize, Gtk::IconSource
 
+== ChangeLog
 
 - ((<Masao>))

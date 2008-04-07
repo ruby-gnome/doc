@@ -90,4 +90,6 @@ To make detaching and reattaching the handlebox as minimally confusing as possib
      * widget: the child widget of the handlebox. (this argument provides no extra information and is here only for backwards-compatibility) 
 
 
+== ChangeLog
+
 ((<Masao>))

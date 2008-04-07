@@ -102,5 +102,6 @@ data : user data to pass to the function.
 == See Also
 Gtk::TreeView, Gtk::TreeViewColumn, Gtk::TreeDragDest, Gtk::TreeDragSource, Gtk::TreeModel, Gtk::TreeSortable, Gtk::TreeModelSort, Gtk::ListStore, Gtk::TreeStore, Gtk::CellRenderer, Gtk::CellEditable, Gtk::CellRendererPixbuf, Gtk::CellRendererText, Gtk::CellRendererToggle
 
+== ChangeLog
 
 - ((<Masao>))

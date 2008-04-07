@@ -114,7 +114,7 @@ These flags indicate various properties of a Gtk::TreeModel. They are returned b
 == See Also
 Gtk::TreeView, Gtk::TreeStore, Gtk::ListStore, Gtk::TreeSortable
 
-
+== ChangeLog
 
 -((<Masao>))
 

@@ -93,5 +93,6 @@ A Gtk::MenuShell is a container of Gtk::MenuItem objects arranged in a list whic
     This signal is emitted when a selection has been completed within a menu shell.
      * self: Gtk::MenuShell
 
+== ChangeLog
 
 - ((<Masao>))

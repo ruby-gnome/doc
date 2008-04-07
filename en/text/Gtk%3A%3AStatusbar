@@ -77,5 +77,6 @@ The message at the top of the stack can be removed using Gtk::Statusbar#pop. A m
 == See Also
 * Gtk::Dialog - another way of reporting information to the user.
 
+== ChangeLog
 
 ((<Masao>))

@@ -17,4 +17,6 @@ The VPaned widget is a container widget with two children arranged vertically. T
     * Returns: the new Gtk::VPaned  
 
 
+== ChangeLog
+
 ((<Masao>))
