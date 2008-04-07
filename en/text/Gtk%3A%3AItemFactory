@@ -119,5 +119,6 @@ GtkContainerTypes are original constants for Ruby/GTK2.
 --- TYPE_OPTION_MENU
     As Gtk::OptionMenu
 
+== ChangeLog
 
 - ((<Masao>))

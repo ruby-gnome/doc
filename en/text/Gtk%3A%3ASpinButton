@@ -237,5 +237,6 @@ The main properties of a Gtk::SpinButton are through a Gtk::Adjustment. See the 
 == See Also
 * Gtk::Entry - retrieve text rather than numbers.
 
+== ChangeLog
 
 ((<Masao>))

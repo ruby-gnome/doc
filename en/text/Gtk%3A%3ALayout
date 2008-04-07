@@ -124,5 +124,6 @@ When handling expose events on a Gtk::Layout, you must draw to Gtk::Layout#bin_w
 == See Also
 Gtk::DrawingArea, Gtk::ScrolledWindow
 
+== ChangeLog
 
 - ((<Masao>))

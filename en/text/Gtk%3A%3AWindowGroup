@@ -22,4 +22,6 @@
     * window: the Gtk::Window to remove.
     * Returns: self
 
+== ChangeLog
+
 - ((<Masao>))

@@ -23,4 +23,6 @@ Error codes returned by character set conversion routines.
 --- NOT_ABSOLUTE_PATH
     Pathname is not an absolute path.
 
+== ChangeLog
+
 - ((<detlef>))

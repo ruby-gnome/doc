@@ -4,4 +4,6 @@ The GnomeVFS module contains all the methods, constants, and classes associated 
 == Notes
 Not every part has been bound to Ruby yet.  In the future, every feature deemed worthy will be available, but hopefully (in my opinion) the GNOME team will realize that GnomeVFS is a bad library, with ill-defined and ill-conceived goals, and substitute it for something else.
 
+== ChangeLog
+
 -- ((<lone-star>))

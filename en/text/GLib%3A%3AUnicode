@@ -1,6 +1,6 @@
-= class GLib::Unicode
+= module GLib::Unicode
 
-== Class Methods
+== Module Functions
 
 --- GLib::Unicode.canonical_ordering(ucs4)
      Computes the canonical ordering of a string. This

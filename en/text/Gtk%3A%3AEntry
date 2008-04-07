@@ -306,6 +306,8 @@ The Gtk::Entry widget is a single line text entry widget. A fairly large set of 
     Emits when overwrite key is pressed.
      * self: Gtk::Entry
 
+== ChangeLog
+
 * 2007-03-01 Added methods for 2.10. - ((<Masao>))
 * 2004-12-15 Added method for 2.4, improved Propeties section to show allowed/default values. - ((<Masao>))
 * 2004-05-25 Added method for 2.4 - ((<Masao>))

@@ -76,4 +76,6 @@
      * adj1: Gtk::Adjustment
      * adj2: Gtk::Adjustment
 
+== ChangeLog
+
 - ((<Masao>))

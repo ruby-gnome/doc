@@ -56,4 +56,6 @@ Defines how items should be packed. ((*Since 2.8*))
 * Gtk::Menu
 * Gtk::MenuItem
 
+== ChangeLog
+
 - ((<Masao>))
