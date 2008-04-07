@@ -1,5 +1,5 @@
 = class Gtk::Image
-((<URL:http://developer.gnome.org/doc/API/2.0/gtk/image.png>))
+((<URL:http://library.gnome.org/devel/gtk/stable/image.png>))
 
 The Gtk::Image widget displays an image. Various kinds of object can be displayed as an image; most typically, you would load a Gdk::Pixbuf ("pixel buffer") from a file, and then display that. There's a convenience function to do this, Gtk::Image.new, used as follows: 
 

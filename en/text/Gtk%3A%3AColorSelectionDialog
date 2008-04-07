@@ -1,7 +1,7 @@
 = class Gtk::ColorSelectionDialog
 The Gtk::ColorSelectionDialog provides a standard dialog which allows the user to select a color much like the Gtk::FileSelection provides a standard dialog for file selection.
 
-((<URL:http://developer.gnome.org/doc/API/2.0/gtk/colorsel.png>))
+((<URL:http://library.gnome.org/devel/gtk/stable/colorsel.png>))
 
 == Object Hierarchy
 * Object

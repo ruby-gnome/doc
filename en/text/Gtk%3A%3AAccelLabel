@@ -10,7 +10,7 @@ Note that creating a Gtk::MenuItem with Gtk::MenuItem.new (or one of the similar
 A Gtk::AccelLabel will only display accelerators which have Gtk::ACCEL_VISIBLE set (see ((<GtkAccelFlags|Gtk#GtkAccelFlags>))). A Gtk::AccelLabel can display multiple accelerators and even signal names, though it is almost always used to display just one accelerator key. 
 
 
-((<URL:http://developer.gnome.org/doc/API/2.0/gtk/accel-label.png>))
+((<URL:http://library.gnome.org/devel/gtk/stable/accel-label.png>))
 
 == Object Hierarchy
 * Object

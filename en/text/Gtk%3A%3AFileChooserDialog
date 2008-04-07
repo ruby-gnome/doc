@@ -1,5 +1,5 @@
 = class Gtk::FileChooserDialog
-Gtk::FileChooserDialog is a dialog box suitable for use with "File/Open" or "File/Save as" commands. This widget works by putting a Gtk::FileChooserWidget inside a Gtk::Dialog. It includes the Gtk::FileChooser module, so you can use all of the Gtk::FileChooser methods on the file chooser dialog as well as those for Gtk::Dialog. ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/filechooser.png>))
+Gtk::FileChooserDialog is a dialog box suitable for use with "File/Open" or "File/Save as" commands. This widget works by putting a Gtk::FileChooserWidget inside a Gtk::Dialog. It includes the Gtk::FileChooser module, so you can use all of the Gtk::FileChooser methods on the file chooser dialog as well as those for Gtk::Dialog. ((<URL:http://library.gnome.org/devel/gtk/stable/filechooser.png>))
 
 Note that Gtk::FileChooserDialog does not have any methods of its own. Instead, you should use the methods that work on a Gtk::FileChooser. 
 

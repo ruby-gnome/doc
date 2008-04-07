@@ -3,7 +3,7 @@
 == Table of Contents
 
 === I. GTK+ Overview
-* ((<"GTK+ API Reference"|URL:http://developer.gnome.org/doc/API/2.0/gtk/index.html>))
+* ((<"GTK+ API Reference"|URL:http://library.gnome.org/devel/gtk/stable/index.html>))
 * ((<Install Guide>))
 * ((<Tutorials|tutorials>))
 
@@ -43,7 +43,7 @@
 === III. GTK+ Widgets and Objects
 * ((<Object Hierarchy|ruby-gtk-object-hierarchy>))
 
-* ((<Widget Gallery|URL:http://developer.gnome.org/doc/API/2.0/gtk/ch02.html>)) - Jump to the GTK+ document
+* ((<Widget Gallery|URL:http://library.gnome.org/devel/gtk/stable/ch02.html>)) - Jump to the GTK+ document
 * Windows
 
   * Gtk::Dialog - Create popup windows
@@ -260,8 +260,8 @@
   * See ((<"Status of Ruby/GTK">))
 
 === V. GTK+ Tools
-* ((<gtk-query-immodules-2.0|URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-query-immodules-2.0.html>)) - Input method module registration utility (Jump to GTK+ document)
-* ((<gtk-update-icon-cache|URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-update-icon-cache.html>)) - Icon theme caching utility (Jump to GTK+ document)
+* ((<gtk-query-immodules-2.0|URL:http://library.gnome.org/devel/gtk/stable/gtk-query-immodules-2.0.html>)) - Input method module registration utility (Jump to GTK+ document)
+* ((<gtk-update-icon-cache|URL:http://library.gnome.org/devel/gtk/stable/gtk-update-icon-cache.html>)) - Icon theme caching utility (Jump to GTK+ document)
 
 === VI. Index and Status
 * ((<"Ruby/GTK classes/modules index and documented status"|api-gtk-index>))

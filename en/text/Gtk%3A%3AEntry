@@ -1,7 +1,7 @@
 = class Gtk::Entry
 The Gtk::Entry widget is a single line text entry widget. A fairly large set of key bindings are supported by default. If the entered text is longer than the allocation of the widget, the widget will scroll so that the cursor position is visible. 
 
-((<URL:http://developer.gnome.org/doc/API/2.0/gtk/entry.png>))
+((<URL:http://library.gnome.org/devel/gtk/stable/entry.png>))
 
 == Object Hierarchy
 * Object

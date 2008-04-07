@@ -22,7 +22,7 @@ In the simplest of cases, you can use the following code to use a Gtk::RecentCho
 
 Recently used files are supported since GTK+ 2.10. 
 
-((<URL:http://developer.gnome.org/doc/API/2.0/gtk/recentchooserdialog.png>))
+((<URL:http://library.gnome.org/devel/gtk/stable/recentchooserdialog.png>))
 
 == Object Hierarchy
 * Object
