@@ -1,6 +1,6 @@
 = Status of Ruby/GtkSourceView
 
-GtkSourceView is a subclass of GtkTextView - see the ((<"Gtk manual"|URL:http://developer.gnome.org/doc/API/2.0/gtk/TextWidget.html>)) for an overview of the relationship between the view widget, buffer and markers etc.
+GtkSourceView is a subclass of GtkTextView - see the ((<"Gtk manual"|URL:http://library.gnome.org/devel/gtk/stable/TextWidget.html>)) for an overview of the relationship between the view widget, buffer and markers etc.
 
 Ruby/GtkSourceView contains complete bindings for GtkSourceView 1.0.x serie.  Check out the ((<README|URL:http://cvs.sourceforge.net/viewcvs.py/*checkout*/ruby-gnome2/gtksourceview/README?content-type=text%2Fplain&rev=1.5>)) file to see the GtkSourceView exact version that it requires.
 

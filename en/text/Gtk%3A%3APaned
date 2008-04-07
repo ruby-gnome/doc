@@ -7,7 +7,7 @@ Each child has two options that can be set, resize and shrink. If resize is true
 
 The application can set the position of the slider as if it were set by the user, by calling Gtk::Paned#position=.
 
-((<URL:http://developer.gnome.org/doc/API/2.0/gtk/panes.png>))
+((<URL:http://library.gnome.org/devel/gtk/stable/panes.png>))
 
 == Description
 

@@ -1,5 +1,5 @@
 = class Gtk::ComboBox
-((<URL:http://developer.gnome.org/doc/API/2.0/gtk/combo-box.png>))
+((<URL:http://library.gnome.org/devel/gtk/stable/combo-box.png>))
 
 A Gtk::ComboBox is a widget that allows the user to choose from a list of valid choices. The Gtk::ComboBox displays the selected choice. When activated, the Gtk::ComboBox displays a popup which allows the user to make a new choice. The style in which the selected value is displayed, and the style of the popup is determined by the current theme. It may be similar to a Gtk::OptionMenu, or similar to a Windows-style combo box. 
 

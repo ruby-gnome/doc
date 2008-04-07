@@ -3,7 +3,7 @@ The Gtk::Button widget is generally used to attach a function to that is called 
 
 The Gtk::Button widget can hold any valid child widget. That is it can hold most any other standard Gtk::Widget. The most commonly used child is the Gtk::Label. 
 
-((<URL:http://developer.gnome.org/doc/API/2.0/gtk/button.png>))
+((<URL:http://library.gnome.org/devel/gtk/stable/button.png>))
 
 == Object Hierarchy
 * Object

@@ -1,5 +1,5 @@
 = class Gtk::ComboBoxEntry
-((<URL:http://developer.gnome.org/doc/API/2.0/gtk/combo-box-entry.png>))
+((<URL:http://library.gnome.org/devel/gtk/stable/combo-box-entry.png>))
 
 A Gtk::ComboBoxEntry is a widget that allows the user to choose from a list of valid choices or enter a different value. It is very similar to a Gtk::ComboBox, but it displays the selected value in an entry to allow modifying it. 
 

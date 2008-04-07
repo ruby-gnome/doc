@@ -1,7 +1,7 @@
 = class Gtk::ColorButton
 The Gtk::ColorButton is a button which displays the currently selected color an allows to open a color selection dialog to change the color. It is suitable widget for selecting a color in a preference dialog. 
 
-((<URL:http://developer.gnome.org/doc/API/2.0/gtk/color-button.png>))
+((<URL:http://library.gnome.org/devel/gtk/stable/color-button.png>))
 
 == Object Hierarchy
 * Object
