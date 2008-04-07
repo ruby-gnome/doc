@@ -491,7 +491,7 @@ class UpdateRD
 
   def new_methods(klass)
     if klass.respond_to?(:gtype) and klass.method(:gtype).arity <= 0
-      return ["new"] if klass.gtype.abstract?
+      return ["new"] unless klass.gtype.abstract?
     else
       if klass.private_instance_methods(false).include?("initialize")
         return ["new"]
