@@ -391,7 +391,7 @@ class UpdateRD
     introduction, *components = File.read(rd_file(klass)).split(/^==\s+.*?/m)
     info = {}
 
-    return unless /\A[\r\n\s]*=\s*(?:class|module)\s+(.*)/ =~ introduction
+    return unless /\A[\r\n\s]*=\s*(?:class|module)\s+(.*)\s*/ =~ introduction
     return if $1 != klass.inspect
     description = $POSTMATCH.strip
     info[:description] = description
@@ -646,7 +646,8 @@ class UpdateRD
         signals = klass.signals(false)
         @indexes[klass][:signals] =
           put_methods("Signals", signals, @indexes[klass][:signals_info],
-                      "", ": self", "     * self: #{klass.name}")
+                      "", ": self",
+                      "     * self: #{klass.name}: ((*FIXME*))")
       rescue
         $stderr.print $!
         $stderr.print klass.inspect, "\n"
