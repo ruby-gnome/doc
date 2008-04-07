@@ -30,215 +30,215 @@ Each stock ID can be associated with a stock item, which contains the user-visib
     * Returns: nil
 
 == Constants
---- Gtk::Stock::ABOUT
+--- ABOUT
     The "About" item. ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-about.png>)) ((*Since 2.6*))
---- Gtk::Stock::ADD
+--- ADD
     The "Add" item. ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-add.png>))
---- Gtk::Stock::APPLY
+--- APPLY
     The "Apply" item. ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-apply.png>))
---- Gtk::Stock::BOLD
+--- BOLD
     The "Bold" item. ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-bold.png>))
---- Gtk::Stock::CANCEL
+--- CANCEL
     The "Cancel" item. ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-cancel.png>))
---- Gtk::Stock::CDROM
+--- CDROM
     The "CD-Rom" item. ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-cdrom.png>))
---- Gtk::Stock::CLEAR
+--- CLEAR
     The "Clear" item. ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-clear.png>))
---- Gtk::Stock::CLOSE
+--- CLOSE
     The "Close" item. ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-close.png>))
---- Gtk::Stock::COLOR_PICKER
+--- COLOR_PICKER
     The "Color Picker" item. ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-color-picker.png>)) ((*Since 2.2*)) 
---- Gtk::Stock::CONVERT
+--- CONVERT
     The "Convert" item. ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-convert.png>))
---- Gtk::Stock::CONNECT
+--- CONNECT
     The "Connect" item. ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-connect.png>)) ((*Since 2.6*))
---- Gtk::Stock::COPY
+--- COPY
     The "Copy" item. ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-copy.png>))
---- Gtk::Stock::CUT
+--- CUT
     The "Cut" item. ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-cut.png>))
---- Gtk::Stock::DELETE
+--- DELETE
     The "Delete" item. ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-delete.png>))
---- Gtk::Stock::DIALOG_AUTHENTICATION
+--- DIALOG_AUTHENTICATION
     The "Authentication" item. ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-dialog-authentication.png>)) ((*Since 2.4*))
---- Gtk::Stock::DIALOG_ERROR
+--- DIALOG_ERROR
     The "Error" item. ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-dialog-error.png>))
---- Gtk::Stock::DIALOG_INFO
+--- DIALOG_INFO
     The "Information" item. ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-dialog-info.png>))
---- Gtk::Stock::DIALOG_QUESTION
+--- DIALOG_QUESTION
     The "Question" item. ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-dialog-question.png>))
---- Gtk::Stock::DIALOG_WARNING
+--- DIALOG_WARNING
     The "Warning" item. ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-dialog-warning.png>))
---- Gtk::Stock::DISCONNECT
+--- DISCONNECT
     The "Disconnect" item. ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-disconnect.png>)) ((*Since 2.6*))
---- Gtk::Stock::DND
+--- DND
     The "Drag-And-Drop" item. ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-dnd.png>))
---- Gtk::Stock::DND_MULTIPLE
+--- DND_MULTIPLE
     The "Drag-And-Drop multiple" item. ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-dnd-multiple.png>))
---- Gtk::Stock::EDIT
+--- EDIT
     The "Edit" item. ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-edit.png>)) ((*Since 2.6*))
---- Gtk::Stock::EXECUTE
+--- EXECUTE
     The "Execute" item. ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-execute.png>))
---- Gtk::Stock::FILE
+--- FILE
     The "File" item. ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-file.png>)) ((*Since 2.6*))
---- Gtk::Stock::FIND
+--- FIND
     The "Find" item. ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-find.png>))
---- Gtk::Stock::FIND_AND_REPLACE
+--- FIND_AND_REPLACE
     The "Find and Replace" item. ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-find-and-replace.png>))
---- Gtk::Stock::FLOPPY
+--- FLOPPY
     The "Floppy" item. ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-save.png>))
---- Gtk::Stock::FULLSCREEN
+--- FULLSCREEN
     The "Fullscreen" item. ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-fullscreen.png>)) ((*Since 2.8*))
---- Gtk::Stock::GOTO_BOTTOM
+--- GOTO_BOTTOM
     The "Bottom" item. ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-goto-bottom.png>))
---- Gtk::Stock::GOTO_FIRST
+--- GOTO_FIRST
     The "First" item. ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-goto-first-ltr.png>))
     RTL variant ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-goto-first-rtl.png>))
---- Gtk::Stock::GOTO_LAST
+--- GOTO_LAST
     The "Last" item. ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-goto-last-ltr.png>))
     RTL variant ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-goto-last-rtl.png>))
---- Gtk::Stock::GOTO_TOP
+--- GOTO_TOP
     The "Top" item. ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-goto-top.png>))
---- Gtk::Stock::GO_BACK
+--- GO_BACK
     The "Back" item. ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-go-back-ltr.png>))
     RTL variant ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-go-back-rtl.png>))
---- Gtk::Stock::GO_DOWN
+--- GO_DOWN
     The "Down" item. ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-go-down.png>))
---- Gtk::Stock::GO_FORWARD
+--- GO_FORWARD
     The "Forward" item. ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-go-forward-ltr.png>))
     RTL variant ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-go-forward-rtl.png>))
---- Gtk::Stock::GO_UP
+--- GO_UP
     The "Up" item. ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-go-up.png>))
---- Gtk::Stock::HARDDISK
+--- HARDDISK
     The "Hard disk" item. ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-harddisk.png>)) ((*Since 2.4*))
---- Gtk::Stock::HELP
+--- HELP
     The "Help" item. ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-help.png>))
---- Gtk::Stock::HOME
+--- HOME
     The "Home" item. ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-home.png>))
---- Gtk::Stock::INDENT
+--- INDENT
     The "Indent" item. ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-indent-ltr.png>))
     RTL variant ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-indent-rtl.png>)) ((*Since 2.4*))
---- Gtk::Stock::INDEX
+--- INDEX
     The "Index" item. ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-index.png>))
---- Gtk::Stock::INFO
+--- INFO
     The "Info" item. ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-info.png>)) ((*Since 2.8*))
---- Gtk::Stock::ITALIC
+--- ITALIC
     The "Italic" item. ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-italic.png>))
---- Gtk::Stock::JUMP_TO
+--- JUMP_TO
     The "Jump to" item. ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-jump-to-ltr.png>))
     RTL-variant ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-jump-to-rtl.png>)) 
---- Gtk::Stock::JUSTIFY_CENTER
+--- JUSTIFY_CENTER
     The "Center" item. ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-justify-center.png>))
---- Gtk::Stock::JUSTIFY_FILL
+--- JUSTIFY_FILL
     The "Fill" item. ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-justify-fill.png>))
---- Gtk::Stock::JUSTIFY_LEFT
+--- JUSTIFY_LEFT
     The "Left" item. ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-justify-left.png>))
---- Gtk::Stock::JUSTIFY_RIGHT
+--- JUSTIFY_RIGHT
     The "Right" item. ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-justify-right.png>))
---- Gtk::Stock::LEAVE_FULLSCREEN
+--- LEAVE_FULLSCREEN
     The "Leave fullscreent" item. ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-leave-fullscreen.png>)) ((*Since 2.8*))
---- Gtk::Stock::MEDIA_FORWARD
+--- MEDIA_FORWARD
     The "Media forward" item. ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-media-forward-ltr.png>))
     RTL variant ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-media-forward-rtl.png>)) ((*Since 2.6*))
---- Gtk::Stock::MEDIA_NEXT
+--- MEDIA_NEXT
     The "Media next" item. ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-media-next-ltr.png>))
     RTL variant ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-media-next-rtl.png>)) ((*Since 2.6*))
---- Gtk::Stock::MEDIA_PAUSE
+--- MEDIA_PAUSE
     The "Media pause" item. ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-media-pause.png>)) ((*Since 2.6*))
---- Gtk::Stock::MEDIA_PLAY
+--- MEDIA_PLAY
     The "Media play" item. ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-media-play-ltr.png>))
     RTL variant ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-media-play-rtl.png>)) ((*Since 2.6*))
---- Gtk::Stock::MEDIA_PREVIOUS
+--- MEDIA_PREVIOUS
     The "Media previous" item. ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-media-previous-ltr.png>))
     RTL variant ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-media-previous-rtl.png>)) ((*Since 2.6*))
---- Gtk::Stock::MEDIA_RECORD
+--- MEDIA_RECORD
     The "Media record" item. ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-media-record.png>)) ((*Since 2.6*))
---- Gtk::Stock::MEDIA_REWIND
+--- MEDIA_REWIND
     The "Media rewind" item. ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-media-rewind-ltr.png>))
     RTL variant ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-media-rewind-rtl.png>)) ((*Since 2.6*))
---- Gtk::Stock::MEDIA_STOP
+--- MEDIA_STOP
     The "Media stop" item. ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-media-stop.png>)) ((*Since 2.6*))
---- Gtk::Stock::MISSING_IMAGE
+--- MISSING_IMAGE
     The "Missing image" item. ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-missing-image.png>))
---- Gtk::Stock::NETWORK
+--- NETWORK
     The "Network" item. ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-network.png>)) ((*Since 2.4*))
---- Gtk::Stock::NEW
+--- NEW
     The "New" item. ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-new.png>))
---- Gtk::Stock::NO
+--- NO
     The "No" item. ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-no.png>))
---- Gtk::Stock::OK
+--- OK
     The "OK" item. ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-ok.png>))
---- Gtk::Stock::OPEN
+--- OPEN
     The "Open" item. ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-open.png>))
---- Gtk::Stock::ORIENTATION_LANDSCAPE
+--- ORIENTATION_LANDSCAPE
     The "Landscape Orientation" item. ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-orientation-landscape.png>)) ((*Since 2.10*))
---- Gtk::Stock::ORIENTATION_PORTRAIT
+--- ORIENTATION_PORTRAIT
     The "Portrait Orientation" item. ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-orientation-portrait.png>)) ((*Since 2.10*))
---- Gtk::Stock::ORIENTATION_REVERSE_LANDSCAPE
+--- ORIENTATION_REVERSE_LANDSCAPE
     The "Reverse Landscape Orientation" item. ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-orientation-reverse-landscape.png>)) ((*Since 2.10*))
---- Gtk::Stock::ORIENTATION_REVERSE_PORTRAIT
+--- ORIENTATION_REVERSE_PORTRAIT
     The "Reverse Portrait Orientation" item. ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-orientation-reverse-portrait.png>)) ((*Since 2.10*))
---- Gtk::Stock::PASTE
+--- PASTE
     The "Paste" item. ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-paste.png>))
---- Gtk::Stock::PREFERENCES
+--- PREFERENCES
     The "Preferences" item. ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-preferences.png>))
---- Gtk::Stock::PRINT
+--- PRINT
     The "Print" item. ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-print.png>))
---- Gtk::Stock::PRINT_PREVIEW
+--- PRINT_PREVIEW
     The "Print Preview" item. ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-print-preview.png>))
---- Gtk::Stock::PROPERTIES
+--- PROPERTIES
     The "Properties" item. ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-properties.png>))
---- Gtk::Stock::QUIT
+--- QUIT
     The "Quit" item. ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-quit.png>))
---- Gtk::Stock::REDO
+--- REDO
     The "Redo" item. ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-redo-ltr.png>))
     RTL variant ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-redo-rtl.png>))
---- Gtk::Stock::REFRESH
+--- REFRESH
     The "Refresh" item. ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-refresh.png>))
---- Gtk::Stock::REMOVE
+--- REMOVE
     The "Remove" item. ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-remove.png>))
---- Gtk::Stock::REVERT_TO_SAVED
+--- REVERT_TO_SAVED
     The "Revert" item. ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-revert-to-saved-ltr.png>))
     RTL variant ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-revert-to-saved-rtl.png>))
---- Gtk::Stock::SAVE
+--- SAVE
     The "Save" item. ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-save.png>))
---- Gtk::Stock::SAVE_AS
+--- SAVE_AS
     The "Save As" item. ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-save-as.png>))
---- Gtk::Stock::SELECT_ALL
+--- SELECT_ALL
     The "Select All" item. ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-select-all.png>)) ((*Since 2.10*))
---- Gtk::Stock::SELECT_COLOR
+--- SELECT_COLOR
     The "Color" item. ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-select-color.png>))
---- Gtk::Stock::SELECT_FONT
+--- SELECT_FONT
     The "Font" item. ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-font.png>))
---- Gtk::Stock::SORT_ASCENDING
+--- SORT_ASCENDING
     The "Ascending" item. ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-sort-ascending.png>))
---- Gtk::Stock::SORT_DESCENDING
+--- SORT_DESCENDING
     The "Descending" item. ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-sort-descending.png>))
---- Gtk::Stock::SPELL_CHECK
+--- SPELL_CHECK
     The "Spell Check" item. ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-spell-check.png>))
---- Gtk::Stock::STOP
+--- STOP
     The "Stop" item. ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-stop.png>))
---- Gtk::Stock::STRIKETHROUGH
+--- STRIKETHROUGH
     The "Strikethrough" item. ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-strikethrough.png>))
---- Gtk::Stock::UNDELETE
+--- UNDELETE
     The "Undelete" item. ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-undelete-ltr.png>))
     RTL variant ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-undelete-rtl.png>))
---- Gtk::Stock::UNDERLINE
+--- UNDERLINE
     The "Underline" item. ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-underline.png>))
---- Gtk::Stock::UNDO
+--- UNDO
     The "Undo" item. ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-undo-ltr.png>))
     RTL variant ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-undo-rtl.png>))
---- Gtk::Stock::UNINDENT
+--- UNINDENT
     The "Unindent" item. ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-unindent-ltr.png>))
     RTL variant ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-unindent-rtl.png>)) ((*Since 2.4*))
---- Gtk::Stock::YES
+--- YES
     The "Yes" item. ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-yes.png>))
---- Gtk::Stock::ZOOM_100
+--- ZOOM_100
     The "Zoom 100%" item. ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-zoom-100.png>))
---- Gtk::Stock::ZOOM_FIT
+--- ZOOM_FIT
     The "Zoom to Fit" item. ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-zoom-fit.png>))
---- Gtk::Stock::ZOOM_IN
+--- ZOOM_IN
     The "Zoom In" item. ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-zoom-in.png>))
---- Gtk::Stock::ZOOM_OUT
+--- ZOOM_OUT
     The "Zoom Out" item. ((<URL:http://developer.gnome.org/doc/API/2.0/gtk/gtk-zoom-out.png>))
 
 == See Also
