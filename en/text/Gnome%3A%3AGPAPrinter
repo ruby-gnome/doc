@@ -32,13 +32,15 @@
 --- settings
     
      * Returns: Gnome::GPASettings.
-#--- state(id=nil)
+--- state(id=nil)
     
-#     * id: the id of target printer.
-#     * Returns: Gnome::GPAState of the printer whose id id
-#       ((|id|)). The target printer is receiver printer if
-#       ((|nil|)).
+     * id: the id of target printer.
+     * Returns: Gnome::GPAState of the printer whose id id
+       ((|id|)). The target printer is receiver printer if
+       ((|nil|)).
 
 == See Also
+
+== ChangeLog
 
 - kou

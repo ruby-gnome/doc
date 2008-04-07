@@ -38,4 +38,6 @@ Basis for the GST object hierarchy.
 == See Also
 ((<Gst::Clock>)), ((<Gst::Element>)), ((<Gst::Index>)), ((<Gst::Pad>)), ((<Gst::PadTemplate>)), ((<Gst::Scheduler>)), ((<Gst>)).
 
+== ChangeLog
+
 - ((<lrz>))

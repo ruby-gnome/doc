@@ -7,6 +7,8 @@
       * Poppler::Action
         * Poppler::ActionUri
 
+== Instance Methods
+
 --- uri
     Gets the URI of the action.
      * Returns: The URI of the action

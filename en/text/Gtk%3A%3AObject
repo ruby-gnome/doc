@@ -51,4 +51,6 @@ In Ruby/GTK, one of the difference between Gtk::Object and GLib::Object is the "
 == See Also
 GLib::Object
 
+== ChangeLog
+
 ((<Masao>))

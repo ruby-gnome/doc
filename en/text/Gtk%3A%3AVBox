@@ -24,4 +24,6 @@ All children are allocated the same width.
 == See Also
 Gtk::HBox a sister class that organizes widgets into a row.
 
+== ChangeLog
+
 - ((<Masao>))

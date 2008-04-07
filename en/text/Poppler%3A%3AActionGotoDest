@@ -7,6 +7,8 @@
       * Poppler::Action
         * Poppler::ActionGotoDest
 
+== Instance Methods
+
 --- dest
     Gets the destination of the action.
      * Returns: The destination of the action
