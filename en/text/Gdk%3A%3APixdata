@@ -109,5 +109,5 @@ An enumeration which is used by Gdk::Pixdata#to_csource to determine the form of
     = (4 + 4 + 4 + 4 + 4 + 4). The length of a Gdk::Pixdata structure without the pixel_data pointer.
 
 
-=== ChangeLog
+== ChangeLog
 2006-04-23: Fixed the content of Gdk::Pixdata#length. - ((<Masao>))
