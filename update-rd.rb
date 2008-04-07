@@ -37,9 +37,10 @@ target_libs = ["atk", "bonobo2", "bonoboui2", "gconf2", "gdk_pixbuf2",
 target_modules = ["Atk", "Bonobo", "Bonobo::UI", "GConf", "Gdk::Pixbuf",
                   "GLib", "Gnome", "Gnome::Canvas", "Gnome::Print",
                   "Gnome::PrintUI", "GnomeVFS", "Gst",
-                  "Gtk", "Gtk::GL", "Gdk::GL", "Gtk::Html",
+                  "Gtk", "Gdk", "Gtk::GL", "Gdk::GL", "Gtk::Html",
                   "Gtk::MozEmbed", "Gtk::SourceView", "Art",
                   "GladeXML", "Pango", "Poppler", "RSVG", "Vte",]
+target_modules = ["Gdk"]
 
 target_libs.each do |lib|
   begin
@@ -447,7 +448,7 @@ class UpdateRD
       @target_modules.each do |target_module|
         template = @index_page_name_template || "index-%s"
         template += "-%s" unless /%s/ =~ template
-        page_name = template % target_module.downcase
+        page_name = template % target_module.downcase.gsub(/::/, "-")
         output_index(page_name, target_module)
       end
     end
@@ -466,10 +467,9 @@ class UpdateRD
       end
       index.puts
       @indexes.sort_by {|klass, info| klass.inspect}.each do |klass, info|
-        if target_module and
-            /\A#{target_module}/ !~ klass.name and
-            other_modules =~ klass.name
-          next
+        if target_module
+          next if /\A#{target_module}/ !~ klass.name
+          next if other_modules_re =~ klass.name
         end
         index.puts "  * #{klass.inspect}"
 
@@ -498,12 +498,13 @@ class UpdateRD
 
   def new_methods(klass)
     if klass.respond_to?(:gtype) and klass.method(:gtype).arity <= 0
-      return ["new"] unless klass.gtype.abstract?
-    else
-      if klass.private_instance_methods(false).include?("initialize")
-        return ["new"]
-      end
+      return [] if klass.gtype.abstract?
     end
+    private_instance_methods = klass.private_instance_methods(false)
+    private_instance_methods = private_instance_methods.collect do |name|
+      name.to_s
+    end
+    return ["new"] if private_instance_methods.include?("initialize")
     []
   end
 
