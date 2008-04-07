@@ -1,7 +1,7 @@
 = module GnomeVFS
 The GnomeVFS module contains all the methods, constants, and classes associated with the GnomeVFS project.  GnomeVFS is a library that acts as a filesystem abstraction layer, making it easier to deal with a wide range of different filesystems through a common API.
 
-== Notes
+=== Notes
 Not every part has been bound to Ruby yet.  In the future, every feature deemed worthy will be available, but hopefully (in my opinion) the GNOME team will realize that GnomeVFS is a bad library, with ill-defined and ill-conceived goals, and substitute it for something else.
 
 == ChangeLog
