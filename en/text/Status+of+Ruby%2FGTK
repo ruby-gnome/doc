@@ -11,7 +11,7 @@ Clipboards|Gtk::Clipboard|GtkClipboard|O|O|O|O|O|O||
 Drag and Drop|Gtk::Drag|-|O|O|O|O|O|O||As a module
 GtkIconTheme|Gtk::IconTheme|GtkIconTheme|-|-|O|O|O|O||Since 2.4
 GtkIconTheme|Gtk::IconInfo|GtkIconInfo|-|-|O|O|O|O||Since 2.4
-Stock Items|Gtk::Stock|Stock Items|O|O|O|O|O|O||As a module
+Stock Items|Gtk::Stock|Stock Items|O|O|O|O|O|O|O|As a module
 Themeable Stock Images|Gtk::IconFactory|GtkIconFactory|O|O|O|O|O|O||
 Themeable Stock Images|Gtk::IconSet|GtkIconSet|O|O|O|O|O|O||
 Themeable Stock Images|Gtk::IconSource|GtkIconSource|O|O|O|O|O|O||
@@ -53,6 +53,8 @@ Buttons and Toggles|Gtk::CheckButton|GtkCheckButton|O|O|O|O|O|O||
 Buttons and Toggles|Gtk::RadioButton|GtkRadioButton|O|O|O|O|O|O||
 Buttons and Toggles|Gtk::ToggleButton|GtkToggleButton|O|O|O|O|O|O||
 Buttons and Toggles|Gtk::LinkButton|GtkLinkButton|-|-|-|-|-|O||Since 2.10
+Buttons and Toggles|Gtk::ScaleButton|GtkScaleButton|-|-|-|-|-|-|O|Since 2.12
+Buttons and Toggles|Gtk::VolumeButton|GtkVolumeButton|-|-|-|-|-|-|O|Since 2.12
 Numeric/Text Data Entry|Gtk::Entry|GtkEntry|O|O|O|O|O|O||
 Numeric/Text Data Entry|Gtk::EntryCompletion|GtkEntryCompletion|-|-|O|O|O|O||Since 2.4
 Numeric/Text Data Entry|Gtk::HScale|GtkHScale|O|O|O|O|O|O||
@@ -60,8 +62,8 @@ Numeric/Text Data Entry|Gtk::VScale|GtkVScale|O|O|O|O|O|O||
 Numeric/Text Data Entry|Gtk::SpinButton|GtkSpinButton|O|O|O|O|O|O||
 Numeric/Text Data Entry|Gtk::Editable|-|O|O|O|O|O|O||As a module
 Multiline Text Editor|Gtk::TextIter|GtkTextIter|O|O|O|O|O|O||
-Multiline Text Editor|Gtk::TextMark|GtkTextMark|O|O|O|O|O|O||
-Multiline Text Editor|Gtk::TextBuffer|GtkTextBuffer|O|O|O|O|O|O||Gtk::TextBuffer#get_insert not implemented.
+Multiline Text Editor|Gtk::TextMark|GtkTextMark|O|O|O|O|O|O|O|
+Multiline Text Editor|Gtk::TextBuffer|GtkTextBuffer|O|O|O|O|O|O|O|Gtk::TextBuffer#get_insert not implemented.
 Multiline Text Editor|Gtk::TextTag|GtkTextTag|O|O|O|O|O|O|
 Multiline Text Editor|Gtk::TextAppearance|GtkTextAppearance|O|O|O|O|O|O||In GtkTextTag
 Multiline Text Editor|Gtk::TextAttributes|GtkTextAttributes|O|O|O|O|O|O||In GtkTextTag
@@ -74,8 +76,8 @@ Tree,List and Icon Grid Widgets|Gtk::TreePath|GtkTreePath|O|O|O|O|O|O||In GtkTre
 Tree,List and Icon Grid Widgets|Gtk::TreeRowReference|GtkTreeRowReference|O|O|O|O|O|O||In GtkTreeModel
 Tree,List and Icon Grid Widgets|Gtk::TreeModelIface|GtkTreeModelIface|x|x|x|x|x|x|x|In GtkTreeModel. Don't need to implement.
 Tree,List and Icon Grid Widgets|Gtk::TreeSelection|GtkTreeSelection|O|O|O|O|O|O||
-Tree,List and Icon Grid Widgets|Gtk::TreeViewColumn|GtkTreeViewColumn|O|O|O|O|O|O||
-Tree,List and Icon Grid Widgets|Gtk::TreeView|GtkTreeView|O|O|O|O|O|O||
+Tree,List and Icon Grid Widgets|Gtk::TreeViewColumn|GtkTreeViewColumn|O|O|O|O|O|O|O|
+Tree,List and Icon Grid Widgets|Gtk::TreeView|GtkTreeView|O|O|O|O|O|O|O|
 Tree,List and Icon Grid Widgets|Gtk::TreeDragDest|GtkTreeDragDest|O|O|O|O|O|O||As a module. GtkTreeView drag-and-drop
 Tree,List and Icon Grid Widgets|Gtk::TreeDragSource|GtkTreeDragSource|O|O|O|O|O|O||As a module. GtkTreeView drag-and-drop
 Tree,List and Icon Grid Widgets|Gtk::TreeDragDestIface|GtkTreeDragDestIface|x|x|x|x|x|x|x|GtkTreeView drag-and-drop
@@ -121,6 +123,7 @@ Action-based menus and toolbars|Gtk::ActionGroup|GtkActionGroup|-|-|O|O|O|O||Sin
 Action-based menus and toolbars|Gtk::Action|GtkAction|-|-|O|O|O|O||Since 2.4
 Action-based menus and toolbars|Gtk::ToggleAction|GtkToggleAction|-|-|O|O|O|O||Since 2.4
 Action-based menus and toolbars|Gtk::RadioAction|GtkRadioAction|-|-|O|O|O|O||Since 2.4
+Action-based menus and toolbars|Gtk::RecentAction|GtkRecentAction|-|-|-|-|-|-|O|Since 2.12
 Selectors|Gtk::ColorButton|GtkColorButton|-|-|O|O|O|O||Since 2.4
 Selectors|Gtk::ColorSelection|GtkColorSelection|O|O|O|O|O|O||Done except Gtk::ColorSelection.set_change_palette_hook
 Selectors|Gtk::ColorSelectionDialog|GtkColorSelectionDialog|O|O|O|O|O|O||
@@ -175,6 +178,7 @@ Miscellaneous|Gtk::IMContextSimple|GtkIMContextSimple|O|O|O|O|O|O||
 Miscellaneous|Gtk::IMMulticontext|GtkIMMulticontext|O|O|O|O|O|O||
 Miscellaneous|Gtk::SizeGroup|GtkSizeGroup|O|O|O|O|O|O||
 Miscellaneous|Gtk::Tooltips|GtkTooltips|O|O|O|O|O|O||
+Miscellaneous|Gtk::Tooltip|GtkTooltip|-|-|-|-|-|-|O|Since 2.12
 Miscellaneous|Gtk::Viewport|GtkViewport|O|O|O|O|O|O||
 Miscellaneous|Gtk::Accessible|GtkAccessible|O|O|O|O|O|O||AtkObject
 Miscellaneous|Gtk::StatusIcon|GtkStatusIcon|-|-|-|-|-|O||Since 2.10
@@ -190,7 +194,7 @@ Abstract Base Classes|Gtk::Range|GtkRange|O|O|O|O|O|O||
 Abstract Base Classes|Gtk::Scale|GtkScale|O|O|O|O|O|O||
 Abstract Base Classes|Gtk::Scrollbar|GtkScrollbar|O|O|O|O|O|O||
 Abstract Base Classes|Gtk::Separator|GtkSeparator|O|O|O|O|O|O||
-Abstract Base Classes|Gtk::Widget|GtkWidget|O|O|O|O|O|O||
+Abstract Base Classes|Gtk::Widget|GtkWidget|O|O|O|O|O|O|O|
 Abstract Base Classes|Gtk::IMContext|GtkIMContext|O|O|O|O|O|O||
 Abstract Base Classes|Gtk::Requisition|GtkRequisition|x|x|x|x|x|x|x|Use [width, height] instead. included in Gtk::Widget
 Abstract Base Classes|Gtk::Allocation|GtkAllocation|O|O|O|O|O|O||included in Gtk::Widget
