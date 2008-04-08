@@ -23,8 +23,13 @@
 --- ==(other)
     Compares two colors. 
     * other: another Gdk::Color. 
-    * Returns: true if the two colors compare equal  
-
+    * Returns: true if the two colors compare equal
+--- to_s
+    Returns a textual specification of color in the hexadecimal form #rrrrggggbbbb, where r, g and b are hex digits representing the red, green and blue components respectively. ((*Since 2.12*))
+    * Returns: the textual specification of color.
+--- to_a
+    Retrieves the value of the color.
+    * Returns: [red, green, blue]
 --- red
     Gets the value of red.
     * Returns: self
@@ -58,10 +63,6 @@
 --- pixel
     Retrieves the value used to draw this color on the screen (for allocated colors).
     * Returns: the value used to draw this color on the screen
-
---- to_a
-    Retrieves the value of the color.
-    * Returns: [red, green, blue]
 
 == See Also
 Gdk::Colormap
