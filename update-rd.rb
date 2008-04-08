@@ -40,7 +40,6 @@ target_modules = ["Atk", "Bonobo", "Bonobo::UI", "GConf", "Gdk::Pixbuf",
                   "Gtk", "Gdk", "Gtk::GL", "Gdk::GL", "Gtk::Html",
                   "Gtk::MozEmbed", "Gtk::SourceView", "Art",
                   "GladeXML", "Pango", "Poppler", "RSVG", "Vte",]
-target_modules = ["Gdk"]
 
 target_libs.each do |lib|
   begin
