@@ -2,7 +2,7 @@
 
 {{status "Ruby/GDK", ["2.0", "2.2", "2.4", "2.6", "2.8", "2.10", "2.12"], "
 General|Gdk module|-|O|O|O|O|O|O||Some constants moved to several classes.
-GdkDisplay|Gdk::Display|GdkDisplay|-|O|O|O|O|O||Since 2.2
+GdkDisplay|Gdk::Display|GdkDisplay|-|O|O|O|O|O|O|Since 2.2
 GdkDisplayManager|Gdk::DisplayManager|GdkDisplayManager|-|O|O|O|O|O||since 2.2
 GdkScreen|Gdk::Screen|GdkScreen|-|O|O|O|O|O||Since 2.2
 Points, Rectangles and Regions|-|GdkPoint|x|x|x|x|x|x|x|Use Array [x,y] instead.
