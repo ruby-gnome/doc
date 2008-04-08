@@ -271,7 +271,7 @@ class UpdateRD
   end
 
   def extract_name(name)
-    name.gsub(/(?:\A\S*?[\.\#]|\(.*\z|\s*\{.*\z|:.*\z)/, '')
+    name.gsub(/(?:\A\S*?[\.\#]|\[[^\]]*\]|\(.*\z|\s*\{.*\z|:.*\z)/, '')
   end
 
   def put_methods(title, methods, methods_info=nil, prefix="", postfix="",
@@ -454,10 +454,7 @@ class UpdateRD
   end
 
   def output_index(index_page_name, target_module=nil)
-    if target_module
-      other_modules = @target_modules - [target_module]
-      other_modules_re = /\A(?:#{Regexp.union(*other_modules)})/
-    end
+    other_modules = @target_modules - [target_module]
     File.open(File.join(@output_dir, index_page_name), "w") do |index|
       if target_module
         index.puts "= #{target_module} index"
@@ -468,7 +465,10 @@ class UpdateRD
       @indexes.sort_by {|klass, info| klass.inspect}.each do |klass, info|
         if target_module
           next if /\A#{target_module}/ !~ klass.name
-          next if other_modules_re =~ klass.name
+          next if other_modules.any? do |other_module|
+            /\A#{other_module}/ =~ klass.name and
+              other_module.size > target_module.size
+          end
         end
         index.puts "  * #{klass.inspect}"
 
