@@ -7,7 +7,7 @@ The second signal, "area_prepared", will be called as soon as the pixbuf of the 
 
 The last signal, "area_updated" gets called every time a region is updated. This way you can update a partially completed image. Note that you do not know anything about the completeness of an image from the area updated. For example, in an interlaced image, you need to make several passes before the image is done loading. 
 
-==== Loading an animation
+=== Loading an animation
 Loading an animation is almost as easy as loading an image. Once the first "area_prepared" signal has been emitted, you can call Gdk::PixbufLoader#animation to get the Gdk::PixbufAnimation and Gdk::PixbufAnimation#get_iter to get an Gdk::PixbufAnimationIter for displaying it. 
 
 == Object Hierarchy
