@@ -219,6 +219,10 @@ Gdk::Display objects are the GDK representation of the X Display which can be de
     * size: the cursor size to use (Fixnum)
     * Returns: self
 
+--- trigger_tooltip_query
+    Triggers a new tooltip query on this display, in order to update the current visible tooltip, or to show/hide the current tooltip. This function is useful to call when, for example, the state of the widget changed by a key press. ((*Since 2.12*))
+    * Returns: self
+
 == Signals
 --- closed: self, is_error
     The ::closed signal is emitted when the connection to the windowing system for display is closed. ((*Since 2.2*))
