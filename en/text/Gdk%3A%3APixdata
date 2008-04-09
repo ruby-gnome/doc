@@ -1,113 +1,170 @@
 = class Gdk::Pixdata
+
 A Gdk::Pixdata contains pixbuf information in a form suitable for serialization and streaming.
 
 == Object Hierarchy
+
 * Object
   * GLib::Boxed
     * Gdk::Pixdata
 
 == Class Methods
+
 --- Gdk::Pixdata.deserialize(stream)
+
     Deserializes (reconstruct) a Gdk::Pixdata from a byte stream(Array). The byte stream consists of a straightforward writeout of the Gdk::Pixdata fields in network byte order, plus the pixel_data bytes the structure points to. The pixdata contents are reconstructed byte by byte and are checked for validity. This method may raises Gdk::PixbufError::CORRUPT_IMAGE or Gdk::PixbufError::UNKNOWN_TYPE.
     * stream: stream of bytes containing a serialized Gdk::Pixdata structure(Array of Integer).
     * Returns: a newly-allocated Gdk::Pixdata.
 
 --- Gdk::Pixdata.from_pixbuf(pixbuf, use_rle)
+
     Converts a Gdk::Pixbuf to a Gdk::Pixdata. If use_rle is true, the pixel data is run-length encoded into newly-allocated memory.
     * pixbuf: the data to fill pixdata with.  
     * use_rle: true if it uses run-length encoding for the pixel data, or false.  
     * Returns: If ure_rle is true, the newly-allocated Gdk::Pixdata, or Gdk::Pixdata.
 
 == Instance Methods
+
 --- serialize
+
     Serializes a Gdk::Pixdata into a byte stream(Array). The byte stream consists of a straightforward writeout of the Gdk::Pixdata fields in network byte order, plus the pixel_data bytes the structure points to.
-    * Returns: A newly-allocated Array containing the serialized Gdk::Pixdata structure.  
+    * Returns: A newly-allocated Array containing the serialized Gdk::Pixdata structure.
 
 --- to_pixbuf(copy_pixels)
+
     Converts a Gdk::Pixdata to a Gdk::Pixbuf. If copy_pixels is true or if the pixel data is run-length-encoded, the pixel data is copied into newly-allocated memory; otherwise it is reused. If failure, it raises an Gdk::PixbufError.
     * copy_pixels: true if it copies raw pixel data; run-length encoded pixel data is always copied.  
     * Returns: a new Gdk::Pixbuf
 
 --- to_csource(name, dump_type)
+
     Generates C source code suitable for compiling images directly into programs. 
     GTK+ ships with a program called gdk-pixbuf-csource which offers a command line interface to this method.
     * name: used for naming generated data structures or macros.  
     * dump_type: a ((<GdkPixdataDumpType|Gdk::Pixdata#GdkPixdataDumpType>)) determining the kind of C source to be generated.  
-    * Returns: a newly-allocated string containing the C source form of pixdata.  
+    * Returns: a newly-allocated string containing the C source form of pixdata.
 
 --- magic
+
     Magic number. A valid Gdk::Pixdata must have Gdk::Pixdata::PIXBUF_MAGIC_NUMBER here. 
     * Returns: magic number
+
 --- length
+
     Less than 1 to disable length checks, otherwise the length of pixel_data. 
     * Returns: length
 
 --- pixdata_type
+
     Information about colorspace, sample width and encoding, in a ((<GdkPixdataType|Gdk::Pixdata#GdkPixdataType>)). 
     * Returns: pixdata_type
 
 --- rowstride
+
     Distance in bytes between rows. 
     * Returns: rowstride
 
 --- width
+
     Width of the image in pixels. 
     * Returns: width
 
 --- height
+
     Height of the image in pixels. 
     * Returns: height
 
 --- pixel_data
+
     width x height pixels, encoded according to pixdata_type and rowstride. 
     * Returns: pixel_data
 
 == Constants
+
 === GdkPixdataType
+
 An enumeration containing three sets of flags for a GdkPixdata struct: one for the used colorspace, one for the width of the samples and one for the encoding of the pixel data.
+
 --- COLOR_TYPE_RGB
-    = 0x01. Each pixel has red, green and blue samples. 
+
+    = 0x01. Each pixel has red, green and blue samples.
+
 --- COLOR_TYPE_RGBA
-    = 0x02. Each pixel has red, green and blue samples and an alpha value. 
+
+    = 0x02. Each pixel has red, green and blue samples and an alpha value.
+
 --- COLOR_TYPE_MASK
-    = 0xff. Mask for the colortype flags of the enum. 
+
+    = 0xff. Mask for the colortype flags of the enum.
+
 --- SAMPLE_WIDTH_8
-    = 0x01 << 16. Each sample has 8 bits. 
+
+    = 0x01 << 16. Each sample has 8 bits.
+
 --- SAMPLE_WIDTH_MASK
-    = 0x0f << 16. Mask for the sample width flags of the enum. 
+
+    = 0x0f << 16. Mask for the sample width flags of the enum.
+
 --- ENCODING_RAW
-    = 0x01 << 24. The pixel data is in raw form. 
+
+    = 0x01 << 24. The pixel data is in raw form.
+
 --- ENCODING_RLE
-    = 0x02 << 24. The pixel data is run-length encoded. Runs may be up to 127 bytes long; their length is stored in a single byte preceding the pixel data for the run. If a run is constant, its length byte has the high bit set and the pixel data consists of a single pixel which must be repeated. 
+
+    = 0x02 << 24. The pixel data is run-length encoded. Runs may be up to 127 bytes long; their length is stored in a single byte preceding the pixel data for the run. If a run is constant, its length byte has the high bit set and the pixel data consists of a single pixel which must be repeated.
+
 --- ENCODING_MASK
-    = 0x0f << 24. Mask for the encoding flags of the enum. 
+
+    = 0x0f << 24. Mask for the encoding flags of the enum.
 
 === GdkPixdataDumpType
+
 An enumeration which is used by Gdk::Pixdata#to_csource to determine the form of C source to be generated. The three values Gdk::Pixdata::DUMP_PIXDATA_STREAM, Gdk::Pixdata::DUMP_PIXDATA_STRUCT and Gdk::Pixdata::DUMP_MACROS are mutually exclusive, as are Gdk::Pixdata::DUMP_GTYPES and Gdk::Pixdata::DUMP_CTYPES. The remaining elements are optional flags that can be freely added.
 
 --- DUMP_PIXDATA_STREAM
-    = 0. Generate pixbuf data stream (a single string containing a serialized Gdk::Pixdata structure in network byte order). 
+
+    = 0. Generate pixbuf data stream (a single string containing a serialized Gdk::Pixdata structure in network byte order).
+
 --- DUMP_PIXDATA_STRUCT
-    = 1. Generate GdkPixdata structure (needs the GdkPixdata structure definition from gdk-pixdata.h). 
+
+    = 1. Generate GdkPixdata structure (needs the GdkPixdata structure definition from gdk-pixdata.h).
+
 --- DUMP_MACROS
-    = 2. Generate *_ROWSTRIDE, *_WIDTH, *_HEIGHT, *_BYTES_PER_PIXEL and *_RLE_PIXEL_DATA or *_PIXEL_DATA macro definitions for the image. 
+
+    = 2. Generate *_ROWSTRIDE, *_WIDTH, *_HEIGHT, *_BYTES_PER_PIXEL and *_RLE_PIXEL_DATA or *_PIXEL_DATA macro definitions for the image.
+
 --- DUMP_GTYPES
-    = 0. Generate GLib data types instead of standard C data types. 
+
+    = 0. Generate GLib data types instead of standard C data types.
+
 --- DUMP_CTYPES
-    = 1 << 8. Generate standard C data types instead of GLib data types. 
+
+    = 1 << 8. Generate standard C data types instead of GLib data types.
+
 --- DUMP_STATIC
-    = 1 << 9. Generate static symbols. 
+
+    = 1 << 9. Generate static symbols.
+
 --- DUMP_CONST
-    = 1 << 10. Generate const symbols. 
+
+    = 1 << 10. Generate const symbols.
+
 --- DUMP_RLE_DECODER
-    = 1 << 16. Provide a *_RUN_LENGTH_DECODE(image_buf, rle_data, size, bpp) macro definition to decode run-length encoded image data. 
+
+    = 1 << 16. Provide a *_RUN_LENGTH_DECODE(image_buf, rle_data, size, bpp) macro definition to decode run-length encoded image data.
 
 === Misc
+
 --- PIXBUF_MAGIC_NUMBER
+
     = 'GdkP'. Magic number for Gdk::Pixdata structures.
+
 --- HEADER_LENGTH
+
     = (4 + 4 + 4 + 4 + 4 + 4). The length of a Gdk::Pixdata structure without the pixel_data pointer.
 
+== See Also
 
 == ChangeLog
+
 2006-04-23: Fixed the content of Gdk::Pixdata#length. - ((<Masao>))

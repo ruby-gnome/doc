@@ -1,11 +1,13 @@
 = class Poppler::Permissions
 
 == Object Hierarchy
+
 * Object
   * GLib::Flags
     * Poppler::Permissions
 
 == Instance Methods
+
 --- full?
 --- ok_to_add_notes?
 --- ok_to_copy?
@@ -13,6 +15,7 @@
 --- ok_to_print?
 
 == Constants
+
 --- FULL
 --- OK_TO_ADD_NOTES
 --- OK_TO_COPY
@@ -20,6 +23,7 @@
 --- OK_TO_PRINT
 
 == See Also
+
 
 == ChangeLog
 

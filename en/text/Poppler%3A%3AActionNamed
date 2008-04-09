@@ -1,29 +1,27 @@
 = class Poppler::ActionNamed
 
 == Object Hierarchy
+
 * Object
-  * GLib::Instantiatable
-    * GLib::Object
-      * Poppler::Action
+  * GLib::Boxed
+    * Poppler::Action
+      * Poppler::ActionAny
         * Poppler::ActionNamed
 
+== Instance Methods
+
 --- named_dest
-    Gets the named destination of the action.
-     * Returns: The named destination of the action
---- named_dest=(named_dest)
-    Sets the named destination of the action.
-     * named_dest: The named destination of the action
-     * Returns: named_dest
---- set_named_dest(named_dest)
-    Same as named_dest=.
-     * named_dest: The named destination of the action
-     * Returns: self
+
+     * Returns: self: ((*FIXME*))
 
 == Properties
+
 --- named-dest: String (Read/Write)
+
     The named destination of the action
 
 == See Also
+
 
 == ChangeLog
 

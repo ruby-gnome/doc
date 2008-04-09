@@ -1,4 +1,5 @@
 = module Gtk::RC
+
 GTK+ provides resource file mechanism for configuring various aspects of the operation of a GTK+ program at runtime. 
 
 === Default files
@@ -198,103 +199,134 @@ key is a string consisting of a series of modifiers followed by the name of a ke
 
 The action that is bound to the key is a sequence of signal names (strings) followed by parameters for each signal. The signals must be action signals. (See GLib::Signal.new). Each parameter can be a float, integer, string, or unquoted string representing an enumeration value. The types of the parameters specified must match the types of the parameters of the signal. 
 
-Binding sets are connected to widgets in the same manner as styles, with one difference: Binding sets override other binding sets first by pattern type, then by priority and then by order of specification. The priorities that can be specified and their default values are the same as for styles. 
-
+Binding sets are connected to widgets in the same manner as styles, with one difference: Binding sets override other binding sets first by pattern type, then by priority and then by order of specification. The priorities that can be specified and their default values are the same as for styles.
 
 == Module Functions
+
 --- Gtk::RC.get_style(widget)
+
     Finds all matching RC styles for a given widget, composites them together, and then creates a Gtk::Style representing the composite appearance. (GTK+ actually keeps a cache of previously created styles, so a new style may not be created.)
     * widget: a Gtk::Widget  
     * Returns: the resulting Gtk::Style
 
 --- Gtk::RC.get_style_by_paths(settings, widget_path = nil, klass_path = nil, klass = nil)
+
     Creates up a Gtk::Style from styles defined in a RC file by providing the raw components used in matching. This function may be useful when creating pseudo-widgets that should be themed like widgets but don't actually have corresponding GTK+ widgets. An example of this would be items inside a GNOME canvas widget. 
     * settings: a Gtk::Settings object  
     * widget_path: the widget path to use when looking up the style, or nil if no matching against the widget path should be done  
     * class_path: the class path to use when looking up the style, or nil if no matching against the class path should be done.  
     * klass: a subclass of GLib::Instantiatable that will be used along with parent class of this class when matching against class styles, or nil
-    * Returns: A style created by matching with the supplied paths, or nil if nothing matching was specified and the default style should be used. 
+    * Returns: A style created by matching with the supplied paths, or nil if nothing matching was specified and the default style should be used.
 
 --- Gtk::RC.parse(filename)
+
     Parses a given resource file. 
     * filename: the filename of a file to parse. If filename is not absolute, it is searched in the current directory.
     * Returns: filename
 
 --- Gtk::RC.parse_string(rc_string)
+
     Parses resource information directly from a string. 
     * rc_string: a String to parse. 
     * Returns: rc_string
 
 --- Gtk::RC.reparse_all
+
     If the modification time on any previously read file for the default Gtk::Settings has changed, discard all style information and then reread all previously read RC files.
-    * Returns: true if the files were reread.  
+    * Returns: true if the files were reread.
 
 --- Gtk::RC.reparse_all_for_settings(settings, force_load)
+
     If the modification time on any previously read file for the given Gtk::Settings has changed, discard all style information and then reread all previously read RC files.
     * settings: a Gtk::Settings  
     * force_load: load whether or not anything changed  
-    * Returns: true if the files were reread.  
+    * Returns: true if the files were reread.
 
 --- Gtk::RC.reset_styles(settings)
+
     This function recomputes the styles for all widgets that use a particular Gtk::Settings object. (There is one Gtk::Settings object per Gdk::Screen, see Gtk::Settings.get_for_screen); It is useful when some global parameter has changed that affects the appearance of all widgets, because when a widget gets a new style, it will both redraw and recompute any cached information about its appearance. As an example, it is used when the default font size set by the operating system changes. Note that this function doesn't affect widgets that have a style set explicitely on them with Gtk::Widget#style=. ((* Since 2.4 *))
     * settings: a Gtk::Settings
     * Returns: settings
 
 --- Gtk::RC.add_default_file(filename)
+
     Adds a file to the list of files to be parsed at the end of Gtk.init.
     * filename: the pathname to the file. If filename is not absolute, it is searched in the current directory.  
     * Returns: filename
 
 --- Gtk::RC.default_files
+
     Retrieves the current list of RC files that will be parsed at the end of Gtk.init.
     * Returns: An Array of filenames.
 
 --- Gtk::RC.default_files=(filenames)
+
     Sets the list of files that GTK+ will read at the end of Gtk.init.
     * filenames: An array of filenames.  
     * Returns: filenames
+
 --- Gtk::RC.set_default_files(filenames)
+
     Same as Gtk::RC.default_files=.
     * filenames: An Array of filenames.  
     * Returns: self
 
 --- Gtk::RC.find_module_in_path(module_file)
+
     Searches for a theme engine in the GTK+ search path. This function is not useful for applications and should not be used.
     * module_file: name of a theme engine  
-    * Returns: The filename, if found, otherwise nil.  
+    * Returns: The filename, if found, otherwise nil.
 
 --- Gtk::RC.module_dir
+
     Returns a directory in which GTK+ looks for theme engines. For full information about the search for theme engines.
     * Returns: The directory
 
 --- Gtk::RC.im_module_file
+
     Obtains the path to the IM modules file. See the documentation of the GTK_IM_MODULE_FILE environment variable for more details.
-    * Returns: the name of the file listing the IM modules available for loading  
+    * Returns: the name of the file listing the IM modules available for loading
+
 --- Gtk::RC.im_module_path
+
     Obtains the path in which to look for IM modules. See the documentation of the GTK_PATH environment variable for more details about looking up modules. This function is useful solely for utilities supplied with GTK+ and should not be used by applications under normal circumstances.
-    * Returns: The path in which to look for IM modules.  
+    * Returns: The path in which to look for IM modules.
 
 --- Gtk::RC.theme_dir
+
     Returns the standard directory in which themes should be installed. (GTK+ does not actually use this directory itself.) 
-    * Returns: The directory.  
+    * Returns: The directory.
 
 == Constants
+
 === GtkRcFlags
-The Gtk::RC::Flags is used as a bitmask to specify which fields of a Gtk::RcStyle have been set for each state. 
+
+The Gtk::RC::Flags is used as a bitmask to specify which fields of a Gtk::RcStyle have been set for each state.
+
 --- FG
+
     If present, the foreground color has been set for this state.
+
 --- BG
+
     If present, the background color has been set for this state.
+
 --- TEXT
-    If present, the text color has been set for this state. 
+
+    If present, the text color has been set for this state.
+
 --- BASE
-    If present, the base color has been set for this state. 
+
+    If present, the base color has been set for this state.
 
 === GtkRcTokenType
-The Gtk::RC::TokenType represents the tokens in the RC file. It is exposed so that theme engines can reuse these tokens when parsing the theme-engine specific portions of a RC file. 
+
+The Gtk::RC::TokenType represents the tokens in the RC file. It is exposed so that theme engines can reuse these tokens when parsing the theme-engine specific portions of a RC file.
 
 --- TOKEN_INVALID
+
     = TOKEN_LAST
+
 --- TOKEN_ACTIVE
 --- TOKEN_APPLICATION
 --- TOKEN_BASE
@@ -332,9 +364,13 @@ The Gtk::RC::TokenType represents the tokens in the RC file. It is exposed so th
 --- TOKEN_XTHICKNESS
 --- TOKEN_YTHICKNESS
 --- TOKEN_LAST
+--- TOKEN_COLOR
+--- TOKEN_UNBIND
 
 == See Also
+
 Gtk::RcStyle
 
 == ChangeLog
+
 * 2005-03-24 Added - ((<Masao>))

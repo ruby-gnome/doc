@@ -1,4 +1,5 @@
 = class Gdk::Geometry
+
 The Gdk::Geometry gives the window manager information about a window's geometry constraints. Normally you would set these on the GTK+ level using Gtk::Window#set_geometry_hints. Gtk::Window then sets the hints on the Gdk::Window it creates.
 
 Gdk::Window#set_geometry_hints expects the hints to be fully valid already and simply passes them to the window manager; in contrast, Gtk::Window#set_geometry_hints performs some interpretation. For example, Gtk::Window will apply the hints to the geometry widget instead of the toplevel window, if you set a geometry widget. Also, the min_width/min_height/max_width/max_height fields may be set to -1, and Gtk::Window will substitute the size request of the window or geometry widget. If the minimum size hint is not provided, Gtk::Window will use its requisition as the minimum size. If the minimum size is provided and a geometry widget is set, Gtk::Window will take the minimum size as the minimum size of the geometry widget rather than the entire window. The base size is treated similarly.
@@ -24,17 +25,22 @@ Here's an example of how the terminal example would be implemented, assuming a t
 The other useful fields are the min_aspect and max_aspect fields; these contain a width/height ratio as a floating point number. If a geometry widget is set, the aspect applies to the geometry widget rather than the entire window. The most common use of these hints is probably to set min_aspect and max_aspect to the same value, thus forcing the window to keep a constant aspect ratio.
 
 == Object Hierarchy
+
 * Object
   * GLib::Boxed
     * Gdk::Geometry
 
 == Class Methods
+
 --- Gdk::Geometry.new
+
     Creates a new Gdk::Geometry.
     * Returns: a newly created Gdk::Geometry
 
 == Instance Methods
+
 --- set(min_width, min_height, max_width, max_height, base_width, base_height, width_inc, height_inc, min_aspect, max_aspect, gravity)
+
     Sets the all values of properties of Gdk::Geometry.
     * min_width: the minimum width of window
     * min_height: the minimum height of window
@@ -49,138 +55,195 @@ The other useful fields are the min_aspect and max_aspect fields; these contain 
     * gravity: the window gravity (((<GdkGravity|Gdk::Window#GdkGravity>)))
     * Returns: self
 
-
 --- min_width
+
     Gets the minimum width of window (or -1 to use requisition, with Gtk::Window only)
     * Returns: the minimum width of window
+
 --- min_width=(width)
+
     Sets the minimum width of window (or -1 to use requisition, with Gtk::Window only)
     * width: the minimum width of window
     * Returns: width
+
 --- set_min_width(width)
+
     Same as Gdk::Geometry#min_width=
     * width: the minimum width of window
     * Returns: self
 
 --- min_height
+
     Gets the minimum height of window (or -1 to use requisition, with Gtk::Window only)
     * Returns: the minimum height of window
+
 --- min_height=(height)
+
     Sets the minimum height of window (or -1 to use requisition, with Gtk::Window only)
     * height: the minimum height of window
     * Returns: height
+
 --- set_min_height(height)
+
     Same as Gdk::Geometry#min_height=
     * height: the minimum height of window
     * Returns: self
 
 --- max_width
+
     Gets the maximum width of window (or -1 to use requisition, with Gtk::Window only)
     * Returns: the maximum width of window
+
 --- max_width=(width)
+
     Sets the maximum width of window (or -1 to use requisition, with Gtk::Window only)
     * width: the maximum width of window
     * Returns: width
+
 --- set_max_width(width)
+
     Same as Gdk::Geometry#max_width=
     * width: the maximum width of window
     * Returns: self
 
 --- max_height
+
     Gets the maximum height of window (or -1 to use requisition, with Gtk::Window only)
     * Returns: the maximum height of window
+
 --- max_height=(height)
+
     Sets the maximum height of window (or -1 to use requisition, with Gtk::Window only)
     * height: the maximum height of window
     * Returns: height
+
 --- set_max_height(height)
+
     Same as Gdk::Geometry#max_height=
     * height: the maximum height of window
     * Returns: self
 
 --- base_width
+
     Gets the base width of window. Allowed window widths are base_width + width_inc * N where N is any integer (-1 allowed with Gtk::Window)
     * Returns: the base width.
+
 --- base_width=(width)
+
     Sets the base width of window. Allowed window widths are base_width + width_inc * N where N is any integer (-1 allowed with Gtk::Window)
     * width: the base width.
     * Returns: width
+
 --- set_base_width(width)
+
     Same as Gdk::Geometry#base_width=.
     * width: the base width.
     * Returns: self
 
 --- base_height
+
     Gets the base height of window. Allowed window heights are base_height + height_inc * N where N is any integer (-1 allowed with Gtk::Window)
     * Returns: the base height.
+
 --- base_height=(height)
+
     Sets the base height of window. Allowed window heights are base_height + height_inc * N where N is any integer (-1 allowed with Gtk::Window)
     * height: the base height.
     * Returns: height
+
 --- set_base_height(height)
+
     Same as Gdk::Geometry#base_height=.
     * height: the base height.
     * Returns: self
 
 --- width_inc
+
     Gets the width resize increment
     * Returns: the width resize increment
+
 --- width_inc=(inc)
+
     Sets the width resize increment
     * inc: the width resize increment
     * Returns: inc
+
 --- set_width_inc(inc)
+
     Same as Gdk::Geometry#width_inc=.
     * inc: the width resize increment
     * Returns: self
 
 --- height_inc
+
     Gets the height resize increment
     * Returns: the height resize increment
+
 --- height_inc=(inc)
+
     Sets the height resize increment
     * inc: the height resize increment
     * Returns: inc
+
 --- set_height_inc(inc)
+
     Same as Gdk::Geometry#height_inc=.
     * inc: the height resize increment
     * Returns: self
 
 --- min_aspect
+
     Gets the minimum width/height ratio (Float)
     * Returns: the minimum width/height ratio
+
 --- min_aspect=(aspect)
+
     Sets the minimum width/height ratio (Float)
     * aspect: the minimum width/height ratio
     * Returns: self
+
 --- set_min_aspect(aspect)
+
     Same as Gdk::Geometry#min_aspect=.
     * aspect: the minimum width/height ratio    
     * Returns: self
 
 --- max_aspect
+
     Gets the maximum width/height ratio (Float)
     * Returns: the maximum width/height ratio
+
 --- max_aspect=(aspect)
+
     Sets the maximum width/height ratio (Float)
     * aspect: the maximum width/height ratio
     * Returns: self
+
 --- set_max_aspect(aspect)
+
     Same as Gdk::Geometry#max_aspect=.
     * aspect: the maximum width/height ratio    
     * Returns: self
 
 --- win_gravity
+
     Gets the window gravity. See Gtk::Window#gravity=. 
     * Returns: the window gravity (((<GdkGravity|Gdk::Window#GdkGravity>)))
+
 --- win_gravity=(gravity)
+
     Sets the window gravity. See Gtk::Window#gravity=. 
     * gravity: the window gravity (((<GdkGravity|Gdk::Window#GdkGravity>)))
     * Returns: gravity
+
 --- set_win_gravity(gravity)
+
     Same as Gdk::Geometry#gravity=.
     * gravity: the window gravity (((<GdkGravity|Gdk::Window#GdkGravity>)))
     * Returns: self
 
+== See Also
+
 == ChangeLog
+
 :2005-05-10 Added - ((<Masao>))

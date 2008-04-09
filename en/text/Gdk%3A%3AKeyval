@@ -1,4 +1,5 @@
 = module Gdk::Keyval
+
 Key values are the codes which are sent whenever a key is pressed or released. They appear in the keyval field of the Gdk::EventKey structure, which is passed to signal handlers for the "key-press-event" and "key-release-event" signals. The complete list of key values can be found in the <gdk/gdkkeysyms.h> header file. <gdk/gdkkeysyms.h> is not included in <gtk/gtk.h>, it must be included independently, because the file is quite large.
 
 Key values can be converted into a string representation using Gdk::Keyval.to_name. The reverse function, converting a string to a key value, is provided by Gdk::Keyval.from_name.
@@ -8,46 +9,63 @@ The case of key values can be determined using Gdk::Keyval.upper? and Gdk::Keyva
 When it makes sense, key values can be converted to and from Unicode characters with Gdk::Keyval.to_unicode and Gdk::Keyval.from_unicode.
 
 == Module Functions
+
 --- Gdk::Keyval.to_name(keyval)
+
     Converts a key value into a symbolic name. The names are the same as those in the ((<GdkKeyvals|Gdk::Keyval#GdkKeyvals>)) but without the leading "GDK_".
     * keyval: a key value(Integer). 
-    * Returns: a string containing the name of the key, or nil if keyval is not a valid key. The string should not be modified. 
+    * Returns: a string containing the name of the key, or nil if keyval is not a valid key. The string should not be modified.
 
 --- Gdk::Keyval.from_name(keyval_name)
+
     Converts a key name to a key value.
     * keyval_name: a key name. 
-    * Returns: the corresponding key value, or Gdk::Keyval::GDK_VoidSymbol if the key name is not a valid key.  
+    * Returns: the corresponding key value, or Gdk::Keyval::GDK_VoidSymbol if the key name is not a valid key.
 
 --- Gdk::Keyval.convert_case(symbol)
+
     Obtains the upper- and lower-case versions of the keyval symbol. Examples of keyvals are Gdk::Keyval::GDK_a, Gdk::Keyval::GDK_KP_Enter, Gdk::Keyval::GDK_F1, etc.
     * symbol: a key value(Integer).
     * Returns: [lower, upper]
        * lower: lowercase version of symbol 
-       * upper: uppercase version of symbol 
+       * upper: uppercase version of symbol
 
 --- Gdk::Keyval.to_upper(keyval)
+
     Converts a key value to upper case, if applicable.
     * keyval : a key value(Integer). 
-    * Returns : the upper case form of keyval, or keyval itself if it is already in upper case or it is not subject to case conversion.  
+    * Returns : the upper case form of keyval, or keyval itself if it is already in upper case or it is not subject to case conversion.
 
 --- Gdk::Keyval.to_lower(keyval)
+
     Converts a key value to lower case, if applicable.
     * keyval: a key value(Integer).
-    * Returns: the lower case form of keyval, or keyval itself if it is already in lower case or it is not subject to case conversion.  
+    * Returns: the lower case form of keyval, or keyval itself if it is already in lower case or it is not subject to case conversion.
 
 --- Gdk::Keyval.upper?(keyval)
+
     Returns true if the given key value is in upper case.
     * keyval: a key value(Integer).
-    * Returns: true if keyval is in upper case, or if keyval is not subject to case conversion.  
+    * Returns: true if keyval is in upper case, or if keyval is not subject to case conversion.
 
 --- Gdk::Keyval.lower?(keyval)
+
     Returns true if the given key value is in lower case.
     * keyval: a key value(Integer).
-    * Returns: true if keyval is in lower case, or if keyval is not subject to case conversion.  
+    * Returns: true if keyval is in lower case, or if keyval is not subject to case conversion.
 
+--- Gdk::Keyval.from_unicode
+
+     * Returns: self: ((*FIXME*))
+
+--- Gdk::Keyval.to_unicode
+
+     * Returns: self: ((*FIXME*))
 
 == Constants
+
 === GdkKeyvals
+
 --- GDK_0
 --- GDK_1
 --- GDK_2
@@ -1383,8 +1401,382 @@ When it makes sense, key values can be converted to and from Unicode characters 
 --- GDK_zabovedot
 --- GDK_zacute
 --- GDK_zcaron
+--- GDK_Abelowdot
+--- GDK_Abreveacute
+--- GDK_Abrevebelowdot
+--- GDK_Abrevegrave
+--- GDK_Abrevehook
+--- GDK_Abrevetilde
+--- GDK_Acircumflexacute
+--- GDK_Acircumflexbelowdot
+--- GDK_Acircumflexgrave
+--- GDK_Acircumflexhook
+--- GDK_Acircumflextilde
+--- GDK_Ahook
+--- GDK_Arabic_0
+--- GDK_Arabic_1
+--- GDK_Arabic_2
+--- GDK_Arabic_3
+--- GDK_Arabic_4
+--- GDK_Arabic_5
+--- GDK_Arabic_6
+--- GDK_Arabic_7
+--- GDK_Arabic_8
+--- GDK_Arabic_9
+--- GDK_Arabic_ddal
+--- GDK_Arabic_farsi_yeh
+--- GDK_Arabic_fullstop
+--- GDK_Arabic_gaf
+--- GDK_Arabic_hamza_above
+--- GDK_Arabic_hamza_below
+--- GDK_Arabic_heh_doachashmee
+--- GDK_Arabic_heh_goal
+--- GDK_Arabic_jeh
+--- GDK_Arabic_keheh
+--- GDK_Arabic_madda_above
+--- GDK_Arabic_noon_ghunna
+--- GDK_Arabic_peh
+--- GDK_Arabic_percent
+--- GDK_Arabic_rreh
+--- GDK_Arabic_superscript_alef
+--- GDK_Arabic_tcheh
+--- GDK_Arabic_tteh
+--- GDK_Arabic_veh
+--- GDK_Arabic_yeh_baree
+--- GDK_Armenian_AT
+--- GDK_Armenian_AYB
+--- GDK_Armenian_BEN
+--- GDK_Armenian_CHA
+--- GDK_Armenian_DA
+--- GDK_Armenian_DZA
+--- GDK_Armenian_E
+--- GDK_Armenian_FE
+--- GDK_Armenian_GHAT
+--- GDK_Armenian_GIM
+--- GDK_Armenian_HI
+--- GDK_Armenian_HO
+--- GDK_Armenian_INI
+--- GDK_Armenian_JE
+--- GDK_Armenian_KE
+--- GDK_Armenian_KEN
+--- GDK_Armenian_KHE
+--- GDK_Armenian_LYUN
+--- GDK_Armenian_MEN
+--- GDK_Armenian_NU
+--- GDK_Armenian_O
+--- GDK_Armenian_PE
+--- GDK_Armenian_PYUR
+--- GDK_Armenian_RA
+--- GDK_Armenian_RE
+--- GDK_Armenian_SE
+--- GDK_Armenian_SHA
+--- GDK_Armenian_TCHE
+--- GDK_Armenian_TO
+--- GDK_Armenian_TSA
+--- GDK_Armenian_TSO
+--- GDK_Armenian_TYUN
+--- GDK_Armenian_VEV
+--- GDK_Armenian_VO
+--- GDK_Armenian_VYUN
+--- GDK_Armenian_YECH
+--- GDK_Armenian_ZA
+--- GDK_Armenian_ZHE
+--- GDK_Armenian_accent
+--- GDK_Armenian_amanak
+--- GDK_Armenian_apostrophe
+--- GDK_Armenian_at
+--- GDK_Armenian_ayb
+--- GDK_Armenian_ben
+--- GDK_Armenian_but
+--- GDK_Armenian_cha
+--- GDK_Armenian_da
+--- GDK_Armenian_dza
+--- GDK_Armenian_e
+--- GDK_Armenian_exclam
+--- GDK_Armenian_fe
+--- GDK_Armenian_full_stop
+--- GDK_Armenian_ghat
+--- GDK_Armenian_gim
+--- GDK_Armenian_hi
+--- GDK_Armenian_ho
+--- GDK_Armenian_hyphen
+--- GDK_Armenian_ini
+--- GDK_Armenian_je
+--- GDK_Armenian_ke
+--- GDK_Armenian_ken
+--- GDK_Armenian_khe
+--- GDK_Armenian_ligature_ew
+--- GDK_Armenian_lyun
+--- GDK_Armenian_men
+--- GDK_Armenian_nu
+--- GDK_Armenian_o
+--- GDK_Armenian_paruyk
+--- GDK_Armenian_pe
+--- GDK_Armenian_pyur
+--- GDK_Armenian_question
+--- GDK_Armenian_ra
+--- GDK_Armenian_re
+--- GDK_Armenian_se
+--- GDK_Armenian_separation_mark
+--- GDK_Armenian_sha
+--- GDK_Armenian_shesht
+--- GDK_Armenian_tche
+--- GDK_Armenian_to
+--- GDK_Armenian_tsa
+--- GDK_Armenian_tso
+--- GDK_Armenian_tyun
+--- GDK_Armenian_verjaket
+--- GDK_Armenian_vev
+--- GDK_Armenian_vo
+--- GDK_Armenian_vyun
+--- GDK_Armenian_yech
+--- GDK_Armenian_yentamna
+--- GDK_Armenian_za
+--- GDK_Armenian_zhe
+--- GDK_Babovedot
+--- GDK_Cyrillic_CHE_descender
+--- GDK_Cyrillic_CHE_vertstroke
+--- GDK_Cyrillic_EN_descender
+--- GDK_Cyrillic_GHE_bar
+--- GDK_Cyrillic_HA_descender
+--- GDK_Cyrillic_I_macron
+--- GDK_Cyrillic_KA_descender
+--- GDK_Cyrillic_KA_vertstroke
+--- GDK_Cyrillic_O_bar
+--- GDK_Cyrillic_SCHWA
+--- GDK_Cyrillic_SHHA
+--- GDK_Cyrillic_U_macron
+--- GDK_Cyrillic_U_straight
+--- GDK_Cyrillic_U_straight_bar
+--- GDK_Cyrillic_ZHE_descender
+--- GDK_Cyrillic_che_descender
+--- GDK_Cyrillic_che_vertstroke
+--- GDK_Cyrillic_en_descender
+--- GDK_Cyrillic_ghe_bar
+--- GDK_Cyrillic_ha_descender
+--- GDK_Cyrillic_i_macron
+--- GDK_Cyrillic_ka_descender
+--- GDK_Cyrillic_ka_vertstroke
+--- GDK_Cyrillic_o_bar
+--- GDK_Cyrillic_schwa
+--- GDK_Cyrillic_shha
+--- GDK_Cyrillic_u_macron
+--- GDK_Cyrillic_u_straight
+--- GDK_Cyrillic_u_straight_bar
+--- GDK_Cyrillic_zhe_descender
+--- GDK_Dabovedot
+--- GDK_Ebelowdot
+--- GDK_Ecircumflexacute
+--- GDK_Ecircumflexbelowdot
+--- GDK_Ecircumflexgrave
+--- GDK_Ecircumflexhook
+--- GDK_Ecircumflextilde
+--- GDK_Ehook
+--- GDK_Etilde
+--- GDK_Fabovedot
+--- GDK_Farsi_0
+--- GDK_Farsi_1
+--- GDK_Farsi_2
+--- GDK_Farsi_3
+--- GDK_Farsi_4
+--- GDK_Farsi_5
+--- GDK_Farsi_6
+--- GDK_Farsi_7
+--- GDK_Farsi_8
+--- GDK_Farsi_9
+--- GDK_Farsi_yeh
+--- GDK_Gcaron
+--- GDK_Georgian_an
+--- GDK_Georgian_ban
+--- GDK_Georgian_can
+--- GDK_Georgian_char
+--- GDK_Georgian_chin
+--- GDK_Georgian_cil
+--- GDK_Georgian_don
+--- GDK_Georgian_en
+--- GDK_Georgian_fi
+--- GDK_Georgian_gan
+--- GDK_Georgian_ghan
+--- GDK_Georgian_hae
+--- GDK_Georgian_har
+--- GDK_Georgian_he
+--- GDK_Georgian_hie
+--- GDK_Georgian_hoe
+--- GDK_Georgian_in
+--- GDK_Georgian_jhan
+--- GDK_Georgian_jil
+--- GDK_Georgian_kan
+--- GDK_Georgian_khar
+--- GDK_Georgian_las
+--- GDK_Georgian_man
+--- GDK_Georgian_nar
+--- GDK_Georgian_on
+--- GDK_Georgian_par
+--- GDK_Georgian_phar
+--- GDK_Georgian_qar
+--- GDK_Georgian_rae
+--- GDK_Georgian_san
+--- GDK_Georgian_shin
+--- GDK_Georgian_tan
+--- GDK_Georgian_tar
+--- GDK_Georgian_un
+--- GDK_Georgian_vin
+--- GDK_Georgian_we
+--- GDK_Georgian_xan
+--- GDK_Georgian_zen
+--- GDK_Georgian_zhar
+--- GDK_Greek_IOTAdieresis
+--- GDK_Ibelowdot
+--- GDK_Ibreve
+--- GDK_Ihook
+--- GDK_Lbelowdot
+--- GDK_Mabovedot
+--- GDK_Obarred
+--- GDK_Obelowdot
+--- GDK_Ocaron
+--- GDK_Ocircumflexacute
+--- GDK_Ocircumflexbelowdot
+--- GDK_Ocircumflexgrave
+--- GDK_Ocircumflexhook
+--- GDK_Ocircumflextilde
+--- GDK_Ohook
+--- GDK_Ohorn
+--- GDK_Ohornacute
+--- GDK_Ohornbelowdot
+--- GDK_Ohorngrave
+--- GDK_Ohornhook
+--- GDK_Ohorntilde
+--- GDK_Oslash
+--- GDK_Pabovedot
+--- GDK_SCHWA
+--- GDK_Sabovedot
+--- GDK_Tabovedot
+--- GDK_Ubelowdot
+--- GDK_Uhook
+--- GDK_Uhorn
+--- GDK_Uhornacute
+--- GDK_Uhornbelowdot
+--- GDK_Uhorngrave
+--- GDK_Uhornhook
+--- GDK_Uhorntilde
+--- GDK_Ukrainian_GHE_WITH_UPTURN
+--- GDK_Ukrainian_ghe_with_upturn
+--- GDK_Wacute
+--- GDK_Wcircumflex
+--- GDK_Wdiaeresis
+--- GDK_Wgrave
+--- GDK_Xabovedot
+--- GDK_Ybelowdot
+--- GDK_Ycircumflex
+--- GDK_Ygrave
+--- GDK_Yhook
+--- GDK_Ytilde
+--- GDK_Zstroke
+--- GDK_abelowdot
+--- GDK_abreveacute
+--- GDK_abrevebelowdot
+--- GDK_abrevegrave
+--- GDK_abrevehook
+--- GDK_abrevetilde
+--- GDK_acircumflexacute
+--- GDK_acircumflexbelowdot
+--- GDK_acircumflexgrave
+--- GDK_acircumflexhook
+--- GDK_acircumflextilde
+--- GDK_ahook
+--- GDK_approxeq
+--- GDK_babovedot
+--- GDK_because
+--- GDK_containsas
+--- GDK_cuberoot
+--- GDK_dabovedot
+--- GDK_dead_hook
+--- GDK_dead_horn
+--- GDK_dintegral
+--- GDK_ebelowdot
+--- GDK_ecircumflexacute
+--- GDK_ecircumflexbelowdot
+--- GDK_ecircumflexgrave
+--- GDK_ecircumflexhook
+--- GDK_ecircumflextilde
+--- GDK_ehook
+--- GDK_eightsubscript
+--- GDK_eightsuperior
+--- GDK_elementof
+--- GDK_emptyset
+--- GDK_etilde
+--- GDK_fabovedot
+--- GDK_fivesubscript
+--- GDK_fivesuperior
+--- GDK_foursubscript
+--- GDK_foursuperior
+--- GDK_fourthroot
+--- GDK_gcaron
+--- GDK_ibelowdot
+--- GDK_ibreve
+--- GDK_ihook
+--- GDK_lbelowdot
+--- GDK_mabovedot
+--- GDK_ninesubscript
+--- GDK_ninesuperior
+--- GDK_notapproxeq
+--- GDK_notelementof
+--- GDK_notidentical
+--- GDK_obarred
+--- GDK_obelowdot
+--- GDK_ocaron
+--- GDK_ocircumflexacute
+--- GDK_ocircumflexbelowdot
+--- GDK_ocircumflexgrave
+--- GDK_ocircumflexhook
+--- GDK_ocircumflextilde
+--- GDK_ohook
+--- GDK_ohorn
+--- GDK_ohornacute
+--- GDK_ohornbelowdot
+--- GDK_ohorngrave
+--- GDK_ohornhook
+--- GDK_ohorntilde
+--- GDK_onesubscript
+--- GDK_ooblique
+--- GDK_pabovedot
+--- GDK_partdifferential
+--- GDK_sabovedot
+--- GDK_schwa
+--- GDK_sevensubscript
+--- GDK_sevensuperior
+--- GDK_sixsubscript
+--- GDK_sixsuperior
+--- GDK_squareroot
+--- GDK_stricteq
+--- GDK_tabovedot
+--- GDK_threesubscript
+--- GDK_tintegral
+--- GDK_twosubscript
+--- GDK_ubelowdot
+--- GDK_uhook
+--- GDK_uhorn
+--- GDK_uhornacute
+--- GDK_uhornbelowdot
+--- GDK_uhorngrave
+--- GDK_uhornhook
+--- GDK_uhorntilde
+--- GDK_wacute
+--- GDK_wcircumflex
+--- GDK_wdiaeresis
+--- GDK_wgrave
+--- GDK_xabovedot
+--- GDK_ybelowdot
+--- GDK_ycircumflex
+--- GDK_ygrave
+--- GDK_yhook
+--- GDK_ytilde
+--- GDK_zerosubscript
+--- GDK_zerosuperior
+--- GDK_zstroke
 
 == See Also
+
 Gdk::Keymap
 
 == ChangeLog

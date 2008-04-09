@@ -1,18 +1,21 @@
 = class Gnome::PrintDialog
 
 == Object Hierarchy
+
 * Object
   * GLib::Instantiatable
     * GLib::Object
-      * Gtk::Object
-        * Gtk::Widget
-          * Gtk::Container
-            * Gtk::Bin
-              * Gtk::Window
-                * Gtk::Dialog
-                  * Gnome::PrintDialog
+      * GLib::InitiallyUnowned
+        * Gtk::Object
+          * Gtk::Widget
+            * Gtk::Container
+              * Gtk::Bin
+                * Gtk::Window
+                  * Gtk::Dialog
+                    * Gnome::PrintDialog
 
 == Class Methods
+
 --- Gnome::PrintDialog.new(job=nil, title="Gnome::PrintDialog", flags=Gnome::PrintDialog::RANGE|Gnome::PrintDialog::COPIES)
 
      Create a new Gnome::PrintDialog window.
@@ -33,11 +36,13 @@
      * Returns:  A newly created and initialised widget.
 
 == Instance Methods
+
 --- config
 
      * Returns: Setupped Gnome::PrintConfig
 
 --- construct_range_custom(widget)
+
     
      Install a custom range specification widget.
      
@@ -46,6 +51,7 @@
      * Returns: (({nil}))
 
 --- construct_range_any(flags, widget, current_label, range_label)
+
      
      Create a generic range area within the print range
      dialogue. The flags field contains a mask of which
@@ -136,13 +142,91 @@
      * Returns: (({nil}))
 
 --- print_config=(print_config)
+
     Sets the Printing Configuration to be used.
      * print_config: Printing Configuration to be used
      * Returns: print_config
+
 --- set_print_config(print_config)
+
     Same as Gnome::PrintDialog#print_config=.
      * print_config: Printing Configuration to be used
      * Returns: self
+
+--- content_selector
+
+    Gets the Content selector.
+     * Returns: Content selector
+
+--- content_selector=(content_selector)
+
+    Sets the Content selector.
+     * content_selector: Content selector
+     * Returns: content_selector
+
+--- flags
+
+    Gets the Flags.
+     * Returns: Flags
+
+--- flags=(flags)
+
+    Sets the Flags.
+     * flags: Flags
+     * Returns: flags
+
+--- notebook
+
+    Gets the Notebook.
+     * Returns: Notebook
+
+--- page_selector
+
+    Gets the Page selector.
+     * Returns: Page selector
+
+--- print_config
+
+    Gets the Printing Configuration to be used.
+     * Returns: Printing Configuration to be used
+
+--- printer_selector
+
+    Gets the Printer selector.
+     * Returns: Printer selector
+
+--- ref_accessible
+
+    See Atk::Implementor#ref_accessible.
+
+--- set_content_selector(content_selector)
+
+    Same as content_selector=.
+     * content_selector: Content selector
+     * Returns: self
+
+--- set_flags(flags)
+
+    Same as flags=.
+     * flags: Flags
+     * Returns: self
+
+--- set_title(title)
+
+    Same as title=.
+     * title: Title
+     * Returns: self
+
+--- title
+
+    Gets the Title.
+     * Returns: Title
+
+--- title=(title)
+
+    Sets the Title.
+     * title: Title
+     * Returns: title
 
 == Constants
 
@@ -150,13 +234,11 @@
 
 --- COPIES
 --- RANGE
-
 === Range types
 
 --- RANGETYPE_CUSTOM
 --- RANGETYPE_NONE
 --- RANGETYPE_PAGES
-
 === Range flags for Gnome::PrintDialog#range
 
 --- RANGE_ALL
@@ -164,13 +246,11 @@
 --- RANGE_RANGE
 --- RANGE_SELECTION
 --- RANGE_SELECTION_UNSENSITIVE
-
 === Responses for Gnome::PrintDialog#run
 
 --- RESPONSE_CANCEL
 --- RESPONSE_PREVIEW
 --- RESPONSE_PRINT
-
 === Others
 
 --- Flags
@@ -179,10 +259,37 @@
 --- Response
 
 == Properties
+
 --- print-config: gpointer (Write)
+
     Printing Configuration to be used
 
+--- content-selector: Gnome::PrintContentSelector (Read/Write)
+
+    Content selector
+
+--- flags: Integer (Read/Write)
+
+    Flags
+
+--- notebook: Gtk::Notebook (Read)
+
+    Notebook
+
+--- page-selector: Gnome::PrintPageSelector (Read)
+
+    Page selector
+
+--- printer-selector: Gnome::PrinterSelector (Read)
+
+    Printer selector
+
+--- title: String (Read/Write)
+
+    Title
+
 == See Also
+
 
 == ChangeLog
 

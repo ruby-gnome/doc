@@ -1,14 +1,18 @@
 = class Gtk::AccelMap
+
 Accelerator Maps. This is a module until GTK+-2.2, and then a class since GTK+-2.4.
 
 == Object Hierarchy
+
 * Object
   * GLib::Instantiatable
     * GLib::Object
       * Gtk::AccelMap
 
 == Class Methods
+
 --- Gtk::AccelMap.add_entry(accel_path, accel_key, accel_mods)
+
     Registers a new accelerator with the global accelerator map. This function should only be called once per accel_path with the canonical accel_key and accel_mods for this path. To change the accelerator during runtime programatically, use Gtk::AccelMap.change_entry. The accelerator path must consist of "<WINDOWTYPE>/Category1/Category2/.../Action", where <WINDOWTYPE> should be a unique application-specific identifier, that corresponds to the kind of window the accelerator is being used in, e.g. "Gimp-Image", "Abiword-Document" or "Gnumeric-Settings". The Category1/.../Action portion is most appropriately chosen by the action the accelerator triggers, i.e. for accelerators on menu items, choose the item's menu path, e.g. "File/Save As", "Image/View/Zoom" or "Edit/Select All". So a full valid accelerator path may look like: "<Gimp-Toolbox>/File/Dialogs/Tool Options...".
     * accel_path: valid accelerator path 
     * accel_key: the accelerator key (Gdk::Keyval constants)
@@ -16,29 +20,34 @@ Accelerator Maps. This is a module until GTK+-2.2, and then a class since GTK+-2
     * Returns: self
 
 --- Gtk::AccelMap.lookup_entry(accel_path)
+
     Looks up the accelerator entry for accel_path.
     * accel_path: a valid accelerator path
-    * Returns: a Gtk::AccelKey or nil 
+    * Returns: a Gtk::AccelKey or nil
 
 --- Gtk::AccelMap.change_entry(accel_path, accel_key, accel_mods, replace)
+
     Changes the accel_key and accel_mods currently associated with accel_path. Due to conflicts with other accelerators, a change may not always be possible, replace indicates whether other accelerators may be deleted to resolve such conflicts. A change will only occur if all conflicts could be resolved (which might not be the case if conflicting accelerators are locked). Successful changes are indicated by a true return value.
     * accel_path: a valid accelerator path 
     * accel_key: the new accelerator key (Gdk::Keyval constants)
     * accel_mods: the new accelerator modifiers (((<GdkModifierType|Gdk::Window#GdkModifierType>)))
     * replace: true if other accelerators may be deleted upon conflicts 
-    * Returns: true if the accelerator could be changed, false otherwise 
+    * Returns: true if the accelerator could be changed, false otherwise
 
 --- Gtk::AccelMap.load(file_name)
+
     Parses a file previously saved with Gtk::AccelMap.save for accelerator specifications, and propagates them accordingly.
     * file_name: a file containing accelerator specifications 
     * Returns: self
 
 --- Gtk::AccelMap.save(file_name)
+
     Saves current accelerator specifications (accelerator path, key and modifiers) to file_name. The file is written in a format suitable to be read back in by Gtk::AccelMap.load.
     * file_name: the file to contain accelerator specifications 
     * Returns: self
 
 --- Gtk::AccelMap.each{|accel_path, accel_key, accel_mods, changed| ... }
+
     Loops over the entries in the accelerator map whose accel path doesn't match any of the filters added with Gtk::AccelMap.add_filter, and execute given block on each. The changed parameter indicates whether this accelerator was changed during runtime (thus, would need saving during an accelerator map dump).
     * {|accel_path, accel_key, accel_mods, changed| ... }: a block to be executed for each accel map entry which is not filtered out
       * accel_path: an accelerator path 
@@ -48,6 +57,7 @@ Accelerator Maps. This is a module until GTK+-2.2, and then a class since GTK+-2
     * Returns: self
 
 --- Gtk::AccelMap.add_filter(filter_pattern)
+
     Adds a filter to the global list of accel path filters.
     Accel map entries whose accel path matches one of the filters are skipped by Gtk::AccelMap.each.
     This function is intended for GTK+ modules that create their own menus, but don't want them to be saved into the applications accelerator map dump.
@@ -56,6 +66,7 @@ Accelerator Maps. This is a module until GTK+-2.2, and then a class since GTK+-2
     * Returns: self
 
 --- Gtk::AccelMap.each_unfilterd{|accel_path, accel_key, accel_mods, changed| ... }
+
     Loops over all entries in the accelerator map, and execute given block on each. The changed parameter indicates whether this accelerator was changed during runtime (thus, would need saving during an accelerator map dump).
     * {|accel_path, accel_key, accel_mods, changed| ... }: a block to be executed for each accel map entry 
       * accel_path: an accelerator path 
@@ -65,10 +76,12 @@ Accelerator Maps. This is a module until GTK+-2.2, and then a class since GTK+-2
     * Returns: self
 
 --- Gtk::AccelMap.get
+
     Gets the singleton global Gtk::AccelMap object. This object is useful only for notification of changes to the accelerator map via the ::changed signal; it isn't a parameter to the other accelerator map methods. ((*Since 2.4*))
-    * Returns: the global Gtk::AccelMap object 
+    * Returns: the global Gtk::AccelMap object
 
 --- Gtk::AccelMap.lock_path(accel_path)
+
     Locks the given accelerator path. If the accelerator map doesn't yet contain an entry for accel_path, a new one is created.
     Locking an accelerator path prevents its accelerator from being changed during runtime. A locked accelerator path can be unlocked by Gtk::AccelMap.unlock_path. Refer to Gtk::AccelMap.change_entry for information about runtime accelerator changes.
     If called more than once, accel_path remains locked until Gtk::AccelMap.unlock_path has been called an equivalent number of times.
@@ -77,9 +90,22 @@ Accelerator Maps. This is a module until GTK+-2.2, and then a class since GTK+-2
     * Returns: self
 
 --- Gtk::AccelMap.unlock_path(accel_path)
+
     Undoes the last call to Gtk::AccelMap.lock_path on this accel_path. Refer to Gtk::AccelMap.lock_path for information about accelerator path locking. ((*Since 2.4*))
     * accel_path: a valid accelerator path
     * Returns: self
 
 * 2004-05-18 Support GTK+-2.4 - ((<Masao>)) 
 * 2003-08-12 Created ((<Masao>))
+
+== Signals
+
+--- changed: self
+
+     * self: Gtk::AccelMap: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

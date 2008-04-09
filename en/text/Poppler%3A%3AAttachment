@@ -1,25 +1,31 @@
 = class Poppler::Attachment
 
 == Object Hierarchy
+
 * Object
   * GLib::Instantiatable
     * GLib::Object
       * Poppler::Attachment
 
 == Instance Methods
+
 --- ctime
+
      
      * Returns: created time of the attachement as Time
 
 --- description
+
      
      * Returns: description of the attachement as String
 
 --- mtime
+
      
      * Returns: modified time of the attachement as Time
 
 --- name
+
      
      * Returns: name of the attachement as String
 
@@ -43,7 +49,16 @@
      * filename: name of file to save.
      * Returns: true, if the file successfully saved
 
+--- checksum
+
+     * Returns: self: ((*FIXME*))
+
+--- size
+
+     * Returns: self: ((*FIXME*))
+
 == See Also
+
 
 == ChangeLog
 

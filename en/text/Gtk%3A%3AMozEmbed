@@ -1,4 +1,5 @@
 = class Gtk::MozEmbed
+
 This class wraps the GtkMozEmbed widget in a Ruby class.  The
 GtkMozEmbed is an HTML rendering widget based on Mozilla Gecko
 provided by either Mozilla or Firefox.
@@ -16,27 +17,33 @@ provided by either Mozilla or Firefox.
 Please see the sample application ruby-gecko and ((<RubyGecko>)) for more.
 
 == Object Hierarchy
+
 * Object
   * GLib::Instantiatable
     * GLib::Object
-      * Gtk::Object
-        * Gtk::Widget
-          * Gtk::Container
-            * Gtk::Bin
-              * Gtk::MozEmbed
+      * GLib::InitiallyUnowned
+        * Gtk::Object
+          * Gtk::Widget
+            * Gtk::Container
+              * Gtk::Bin
+                * Gtk::MozEmbed
 
 == Class Methods
+
 --- Gtk::MozEmbed.new
+
     Constructor for the Gtk::MozEmbed object.
     * Returns: a newly created Gtk::MozEmbed widget.
 
 --- Gtk::MozEmbed.set_comp_path(path)
+
     You should call this method before the constructor. 
     The path should be set to the value of the MOZILLA_FIVE_HOME environment variable if present.
     * path: the mozilla component path (String).  
     * Returns: nil.
 
 --- Gtk::MozEmbed.set_profile_path(profile_path, profile_name)
+
     You should call this method before the constructor. The
     profile_path parameter should be set to $ENV['HOME']+'/.mozilla'.
     A new profile directory with this name will be created in the
@@ -45,8 +52,14 @@ Please see the sample application ruby-gecko and ((<RubyGecko>)) for more.
     * profile_path: the path to store the profile (String). 
     * Returns: nil.
 
+--- Gtk::MozEmbed.comp_path=
+
+     * Returns: self: ((*FIXME*))
+
 == Instance Methods
+
 --- append_data(data)
+
     You should feed data to the rendering stream via this method.
     The data should be in the mime format if you want to send some
     self drawn PNG or JPEG data from a Pixbuf please see: Gdk::Pixbuf#save_to_buffer
@@ -54,65 +67,79 @@ Please see the sample application ruby-gecko and ((<RubyGecko>)) for more.
     * Returns: self.
 
 --- can_go_back?
+
     This method reflects the status of the browsing history.
     * Returns: True if the browser can go back one page.
 
 --- can_go_forward?
+
     This method reflects the status of the browsing history.
     * Returns: True if the browser can go forward one page.
 
 --- chrome_mask
+
     Get the chrome mask.
     * Returns: a combination of Moz::GtkEmbed::ChromeFlags.
 
 --- chrome_mask=flags
+
     Set the chrome mask.
     * flags: a combination of Gtk::MozEmbed::ChromeFlags.  
     * Returns: the given parameter 'flags'.
 
 --- close_stream
+
     This closes the stream. This way Gtk::MozEmbed knows we
     are finished.
     * Returns: self.
 
 --- go_back
+
     Tells the browser to go back one page in the history.
     * Returns: the object itself.
 
 --- go_forward
+
     Tells the browser to go one page forward in the history.
     * Returns: the object itself.
 
 --- js_status
+
     The JavaScript|ECMAScript status message, useful when the
     "js_status" signal is raised.
     * Returns: the selected url (String).
 
 --- link_message
+
     The location of the selected link, useful when the "link_message"
     signal is raised.
     * Returns: the selected url.
 
 --- load_url(url)
+
     This method starts loading the given url, and returns
     immediately. The url should be in the form "http://www.gnome.org".
     * url: the url to load (String).  
     * Returns: the object itself.
 
 --- location
+
     The current location, usefull when the "location" signal is raised.
     * Returns: the current location (String).
 
 --- location=url
+
     See Gtk::MozEmbed#load_url
     * Returns: self.
 
 --- no_new_window
+
     This method clears the code block associated via the
     Gtk::MozEmbed#on_new_window method.
     * Returns: self.
 
---- on_new_window { |widget, chromemask| block } 
+--- on_new_window { |widget, chromemask| block }
+
     The new_window signal should not be connected directly, this method
     should be used instead. The block should eval to the newly created
     Gtk::MozEmbed widget. This method serves the purpose of creating
@@ -149,6 +176,7 @@ Please see the sample application ruby-gecko and ((<RubyGecko>)) for more.
     * Returns: self.
 
 --- reload(flags)
+
     Forces a page reload of a specific type.
     * flags: one of the Gtk::MozEmbed::ReloadFlags (Gtk::MozEmbed::RELOADNORMAL, Gtk::MozEmbed::RELOADBYPASSCACHE, Gtk::MozEmbed::RELOADBYPASSPROXY, Gtk::MozEmbed::RELOADBYPASSPROXYANDCACHE).  
     * Returns: the object itself.
@@ -167,22 +195,38 @@ Please see the sample application ruby-gecko and ((<RubyGecko>)) for more.
     * Returns: self.
 
 --- set_chrome_mask(flags)
+
     Set the chrome mask.
     * flags: a combination of Gtk::MozEmbed::ChromeFlags.  
     * Returns: the object itself.
 
 --- set_location(url)
+
     See Gtk::MozEmbed#load_url
     * Returns: self.
 
 --- stop_load
+
     Stops loading the current page.
     * Returns: the object itself.
 
 --- title
+
     The title of the currently loaded page, usefull when the "title"
     signal is raised.
     * Returns: the page title (String).
+
+--- chrome_mask=
+
+     * Returns: self: ((*FIXME*))
+
+--- location=
+
+     * Returns: self: ((*FIXME*))
+
+--- ref_accessible
+
+    See Atk::Implementor#ref_accessible.
 
 == Constants
 
@@ -208,17 +252,20 @@ Please see the sample application ruby-gecko and ((<RubyGecko>)) for more.
 --- OPENASDIALOG
 --- OPENASCHROME
 --- ALLCHROME
-
 === ReloadFlags
 
 --- RELOADNORMAL
 --- RELOADBYPASSCACHE
 --- RELOADBYPASSPROXY
 --- RELOADBYPASSPROXYANDCACHE
-
 === Misc
+
 --- BUILD_VERSION
-    built gtkmozembed version information. 
+
+    built gtkmozembed version information.
+
+--- LOG_DOMAIN
+--- RELOADCHARSETCHANGE
 
 == Signals
 
@@ -278,11 +325,112 @@ If you return true than the loading of the uri will NOT be permitted.
 
 uri: the requested page
 
+--- destroy-browser: self
+
+     * self: Gtk::MozEmbed: ((*FIXME*))
+
+--- dom-activate: self
+
+     * self: Gtk::MozEmbed: ((*FIXME*))
+
+--- dom-focus-in: self
+
+     * self: Gtk::MozEmbed: ((*FIXME*))
+
+--- dom-focus-out: self
+
+     * self: Gtk::MozEmbed: ((*FIXME*))
+
+--- dom-key-down: self
+
+     * self: Gtk::MozEmbed: ((*FIXME*))
+
+--- dom-key-press: self
+
+     * self: Gtk::MozEmbed: ((*FIXME*))
+
+--- dom-key-up: self
+
+     * self: Gtk::MozEmbed: ((*FIXME*))
+
+--- dom-mouse-click: self
+
+     * self: Gtk::MozEmbed: ((*FIXME*))
+
+--- dom-mouse-dbl-click: self
+
+     * self: Gtk::MozEmbed: ((*FIXME*))
+
+--- dom-mouse-down: self
+
+     * self: Gtk::MozEmbed: ((*FIXME*))
+
+--- dom-mouse-out: self
+
+     * self: Gtk::MozEmbed: ((*FIXME*))
+
+--- dom-mouse-over: self
+
+     * self: Gtk::MozEmbed: ((*FIXME*))
+
+--- dom-mouse-up: self
+
+     * self: Gtk::MozEmbed: ((*FIXME*))
+
+--- js-status: self
+
+     * self: Gtk::MozEmbed: ((*FIXME*))
+
+--- link-message: self
+
+     * self: Gtk::MozEmbed: ((*FIXME*))
+
+--- net-start: self
+
+     * self: Gtk::MozEmbed: ((*FIXME*))
+
+--- net-state: self
+
+     * self: Gtk::MozEmbed: ((*FIXME*))
+
+--- net-state-all: self
+
+     * self: Gtk::MozEmbed: ((*FIXME*))
+
+--- net-stop: self
+
+     * self: Gtk::MozEmbed: ((*FIXME*))
+
+--- new-window: self
+
+     * self: Gtk::MozEmbed: ((*FIXME*))
+
+--- open-uri: self
+
+     * self: Gtk::MozEmbed: ((*FIXME*))
+
+--- progress-all: self
+
+     * self: Gtk::MozEmbed: ((*FIXME*))
+
+--- security-change: self
+
+     * self: Gtk::MozEmbed: ((*FIXME*))
+
+--- size-to: self
+
+     * self: Gtk::MozEmbed: ((*FIXME*))
+
+--- status-change: self
+
+     * self: Gtk::MozEmbed: ((*FIXME*))
+
 == See Also
 
 ((<Gtk>)), ((<GtkEmbedding on mozilla.org|URL:http://www.mozilla.org/unix/gtk-embedding.html>)).
 
 == ChangeLog
+
 * 2005-10-10 ((<Masao>)) Fixed a bug of the sample.
 * 2005-03-17 ((<MirkoMaischberger>)) (added #render_data, #open_stream, #append_data, #close_stream, #on_new_window)
 * 2005-02-20 ((<MirkoMaischberger>))

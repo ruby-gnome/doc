@@ -1,7 +1,9 @@
 = class Gdk::EventNoExpose
-Generated when the area of a Gdk::Drawable being copied, with Gdk::Drawable#draw_drawable. 
+
+Generated when the area of a Gdk::Drawable being copied, with Gdk::Drawable#draw_drawable.
 
 == Object Hierarchy
+
 * Object
   * GLib::Boxed
     * Gdk::Event
@@ -9,10 +11,14 @@ Generated when the area of a Gdk::Drawable being copied, with Gdk::Drawable#draw
         * Gdk::EventNoExpose
 
 == Class Methods
+
 --- Gdk::EventNoExpose.new(type = Gdk::Event::NO_EXPOSE)
+
     Creates a new event of the given type. All fields are set to 0. ((* Since 2.2 *))
     * type: Gdk::Event::NO_EXPOSE
     * Returns: a new Gdk::EventNoExpose.
+
+== See Also
 
 == ChangeLog
 

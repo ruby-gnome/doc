@@ -1,60 +1,97 @@
 = class Gtk::OptionMenu
+
 A Gtk::OptionMenu is a widget that allows the user to choose from a list of valid choices. The Gtk::OptionMenu displays the selected choice. When activated the Gtk::OptionMenu displays a popup Gtk::Menu which allows the user to make a new choice.
 
 Using a Gtk::OptionMenu is simple; build a Gtk::Menu, by calling Gtk::Menu.new, then appending menu items to it with Gtk::MenuShell#append. Set that menu on the option menu with Gtk::OptionMenu#menu=. Set the selected menu item with Gtk::OptionMenu#history=; connect to the "changed" signal on the option menu; in the "changed" signal, check the new selected menu item with Gtk::OptionMenu#history.
 
 == Object Hierarchy
+
 * Object
   * GLib::Instantiatable
     * GLib::Object
-      * Gtk::Object
-        * Gtk::Widget
-          * Gtk::Container
-            * Gtk::Bin
-              * Gtk::Button
-                * Gtk::OptionMenu
+      * GLib::InitiallyUnowned
+        * Gtk::Object
+          * Gtk::Widget
+            * Gtk::Container
+              * Gtk::Bin
+                * Gtk::Button
+                  * Gtk::OptionMenu
 
 == Class Methods
+
 --- Gtk::OptionMenu.new
+
     Creates a new Gtk::OptionMenu.
-    * Returns: a new Gtk::OptionMenu.  
+    * Returns: a new Gtk::OptionMenu.
 
 == Instance Methods
+
 --- menu
+
     Returns the Gtk::Menu associated with the Gtk::OptionMenu.
-    * Returns : the Gtk::Menu associated with the Gtk::OptionMenu.  
+    * Returns : the Gtk::Menu associated with the Gtk::OptionMenu.
+
 --- menu=(menu)
+
     Provides the Gtk::Menu that is popped up to allow the user to choose a new value. You should provide a simple menu avoiding the use of tearoff menu items, submenus, and accelerators.    
     * menu: the Gtk::Menu to associate with the Gtk::OptionMenu.  
     * Returns: menu
+
 --- set_menu(menu)
+
     Same as Gtk::OptionMenu#menu=.
     * menu: the Gtk::Menu to associate with the Gtk::OptionMenu.  
     * Returns: self
 
 --- remove_menu
+
     Removes the menu from the option menu.
     * Returns: self
 
 --- history
+
     Retrieves the index of the currently selected menu item. The menu items are numbered from top to bottom, starting with 0.
-    * Returns: index of the selected menu item, or -1 if there are no menu items 
+    * Returns: index of the selected menu item, or -1 if there are no menu items
+
 --- history=(index)
+
     Selects the menu item specified by index making it the newly selected value for the option menu.
     * index: the index of the menu item to select. Index values are from 0 to n-1.  
     * Returns: index
+
 --- set_history(index)
+
     Same as Gtk::OptionMenu#history=.
     * index: the index of the menu item to select. Index values are from 0 to n-1.  
     * Returns: self
 
+--- ref_accessible
+
+    See Atk::Implementor#ref_accessible.
+
 == Properties
+
 --- menu: Gtk::Menu (Read/Write)
+
     The menu of options.
 
+== Style Properties
+
+--- indicator-size: Gtk::Requisition (Read)
+
+    Size of dropdown indicator
+
+--- indicator-spacing: Gtk::Border (Read)
+
+    Spacing around indicator
+
 == Signals
+
 --- changed: self
+
      * self: Gtk::OptionMenu
+
+== See Also
 
 == ChangeLog
 

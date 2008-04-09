@@ -1,6 +1,7 @@
 = class Gtk::PrintError
 
 == Object Hierarchy
+
 * Object
   * Exception
     * StandardError
@@ -8,17 +9,23 @@
         * Gtk::PrintError
 
 == Instance Methods
+
 --- code
+
      
      * Returns: self
+
 --- domain
+
      
      * Returns: self
 
 == Constants
+
 --- GENERAL
 --- INTERNAL_ERROR
 --- NOMEM
+--- INVALID_FILE
 
 == See Also
 

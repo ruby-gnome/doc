@@ -35,6 +35,7 @@ Gnome::PrintContext.
      * Returns: a newly created Pango::FontMap object
 
 == Instance Methods
+
 --- create_layout
 
      Convenience function that creates a new Pango::Context,

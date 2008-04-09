@@ -1,7 +1,9 @@
 = class Gtk::SourceTagTable
+
 A source tag table.
 
 == Object Hierarchy
+
 * Object
   * GLib::Instantiatable
     * GLib::Object
@@ -9,17 +11,22 @@ A source tag table.
         * Gtk::SourceTagTable
 
 == Class Methods
+
 --- Gtk::SourceTagTable.new
+
     Creates a new GtkSourceTagTable. The table contains no tags by default.
     * Returns: a newly created Gtk::SourceTagTable object.
 
 == Instance Methods
+
 --- <<(*tags)
+
     Synonym for Gtk::SourceTagTable#add_tags.
     * tags: a list of Gtk::TextTag objects.  
     * Returns: self.
 
 --- add_tags(*tags)
+
     Adds a list of tag to the table. The added tags are assigned the highest
     priority in the table.
     If a tag is already present in table or has the same name as an already-added
@@ -28,13 +35,16 @@ A source tag table.
     * Returns: self.
 
 --- remove_source_tags
+
     Removes all the source tags from the table.
     * Returns: self.
 
 == Signals
+
 --- changed
 
 == See Also
+
 ((<Gtk>)).
 
 == ChangeLog

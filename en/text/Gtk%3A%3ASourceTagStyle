@@ -1,17 +1,117 @@
 = class Gtk::SourceTagStyle
+
 The style of a source tag.
 
 == Object Hierarchy
+
 * Object
   * GLib::Boxed
     * Gtk::SourceTagStyle
 
 == Class Methods
+
 --- Gtk::SourceTagStyle.new
+
     This method returns a newly created Gtk::SourceTagStyle object.
     * Returns: a newly created Gtk::SourceTagStyle object.
 
+== Instance Methods
+
+--- background
+
+     * Returns: self: ((*FIXME*))
+
+--- background=
+
+     * Returns: self: ((*FIXME*))
+
+--- bold=
+
+     * Returns: self: ((*FIXME*))
+
+--- bold?
+
+     * Returns: self: ((*FIXME*))
+
+--- default?
+
+     * Returns: self: ((*FIXME*))
+
+--- foreground
+
+     * Returns: self: ((*FIXME*))
+
+--- foreground=
+
+     * Returns: self: ((*FIXME*))
+
+--- italic=
+
+     * Returns: self: ((*FIXME*))
+
+--- italic?
+
+     * Returns: self: ((*FIXME*))
+
+--- mask
+
+     * Returns: self: ((*FIXME*))
+
+--- mask=
+
+     * Returns: self: ((*FIXME*))
+
+--- set_background
+
+     * Returns: self: ((*FIXME*))
+
+--- set_bold
+
+     * Returns: self: ((*FIXME*))
+
+--- set_foreground
+
+     * Returns: self: ((*FIXME*))
+
+--- set_italic
+
+     * Returns: self: ((*FIXME*))
+
+--- set_mask
+
+     * Returns: self: ((*FIXME*))
+
+--- set_strikethrough
+
+     * Returns: self: ((*FIXME*))
+
+--- set_underline
+
+     * Returns: self: ((*FIXME*))
+
+--- strikethrough=
+
+     * Returns: self: ((*FIXME*))
+
+--- strikethrough?
+
+     * Returns: self: ((*FIXME*))
+
+--- underline=
+
+     * Returns: self: ((*FIXME*))
+
+--- underline?
+
+     * Returns: self: ((*FIXME*))
+
+== Constants
+
+--- USE_BACKGROUND
+--- USE_FOREGROUND
+
 == See Also
+
 ((<Gtk>)).
 
 == ChangeLog

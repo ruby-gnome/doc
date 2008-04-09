@@ -1,6 +1,7 @@
 = class Gtk::Socket
+
 Together with Gtk::Plug, Gtk::Socket provides the ability to embed widgets from one process into another process in a fashion that is transparent to the user. One process creates a Gtk::Socket widget and, passes the that widget's window ID to the other process, which then creates a Gtk::Plug with that window ID. Any widgets contained in the Gtk::Plug then will appear inside the first applications window.
-The socket's window ID is obtained by using Gtk::Socket#id. Before using this method, the socket must have been realized, and for hence, have been added to its parent. 
+The socket's window ID is obtained by using Gtk::Socket#id. Before using this method, the socket must have been realized, and for hence, have been added to its parent.
 
 == Description
 
@@ -19,21 +20,27 @@ When GTK+ is notified that the embedded window has been destroyed, then it will 
 The communication between a Gtk::Socket and a Gtk::Plug follows the XEmbed protocol. This protocol has also been implemented in other toolkits, e.g. Qt, allowing the same level of integration when embedding a Qt widget in GTK or vice versa.
 
 == Object Hierarchy
+
 * Object
   * GLib::Instantiatable
     * GLib::Object
-      * Gtk::Object
-        * Gtk::Widget
-          * Gtk::Container
-            * Gtk::Socket
+      * GLib::InitiallyUnowned
+        * Gtk::Object
+          * Gtk::Widget
+            * Gtk::Container
+              * Gtk::Socket
 
 == Class Methods
+
 --- Gtk::Socket.new
+
     Create a new empty Gtk::Socket.
-    * Returns: the new Gtk::Socket. 
+    * Returns: the new Gtk::Socket.
 
 == Instance Methods
+
 --- add_id(window_id)
+
     Adds an XEMBED client, such as a Gtk::Plug, to the Gtk::Socket. The client may be in the same process or in a different process. 
     To embed a Gtk::Plug in a Gtk::Socket, you can either create the Gtk::Plug with Gtk::Plug.new(0), call Gtk::Plug#id to get the window ID of the plug, and then pass that to the Gtk::Socket#add_id, or you can call Gtk::Socket#id to get the window ID for the socket, and call Gtk::Plug.new passing in that ID.
     The Gtk::Socket must have already be added into a toplevel window before you can make this call.
@@ -41,22 +48,32 @@ The communication between a Gtk::Socket and a Gtk::Plug follows the XEmbed proto
     * Returns: self
 
 --- id
+
     Gets the window ID of a Gtk::Socket widget, which can then be used to create a client embedded inside the socket, for instance with Gtk::Plug.new. 
     The Gtk::Socket must have already be added into a toplevel window before you can make this call.
-    * Returns: the window ID for the socket 
+    * Returns: the window ID for the socket
 
 --- plug_window
+
     Returns plug_window value. You can check if the plug has been created.
     * Returns: plug_window(Gdk::Window)
 
+--- ref_accessible
+
+    See Atk::Implementor#ref_accessible.
+
 == Signals
+
 --- plug-added: self
+
      * self: Gtk::Socket
 
 --- plug-removed: self
+
      * self: Gtk::Socket
 
 == See Also
+
 * Gtk::Plug
 * ((<XEmbed|URL:http://www.freedesktop.org/standards/xembed-spec/>))
 

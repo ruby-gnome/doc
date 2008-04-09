@@ -1,46 +1,61 @@
 = class Poppler::ActionLaunch
 
 == Object Hierarchy
+
 * Object
-  * GLib::Instantiatable
-    * GLib::Object
-      * Poppler::Action
+  * GLib::Boxed
+    * Poppler::Action
+      * Poppler::ActionAny
         * Poppler::ActionLaunch
 
 == Instance Methods
 
 --- file_name
+
     Gets the file name of the launch.
      * Returns: The file name of the launch
+
 --- file_name=(file_name)
+
     Sets the file name of the launch.
      * file_name: The file name of the launch
      * Returns: file_name
+
 --- set_file_name(file_name)
+
     Same as file_name=.
      * file_name: The file name of the launch
      * Returns: self
 
 --- params
+
     Gets the parameters of the action.
      * Returns: The parameters of the action
+
 --- params=(params)
+
     Sets the parameters of the action.
      * params: The parameters of the action
      * Returns: params
+
 --- set_params(params)
+
     Same as params=.
      * params: The parameters of the action
      * Returns: self
 
 == Properties
+
 --- file-name: String (Read/Write)
+
     The file name of the launch
 
 --- params: String (Read/Write)
+
     The parameters of the action
 
 == See Also
+
 
 == ChangeLog
 

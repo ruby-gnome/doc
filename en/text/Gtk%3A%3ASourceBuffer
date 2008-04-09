@@ -1,7 +1,9 @@
 = class Gtk::SourceBuffer
+
 Text buffer object for Gtk::SourceView.
 
 == Object Hierarchy
+
 * Object
   * GLib::Instantiatable
     * GLib::Object
@@ -9,7 +11,9 @@ Text buffer object for Gtk::SourceView.
         * Gtk::SourceBuffer
 
 == Class Methods
+
 --- Gtk::SourceBuffer.new(obj=nil)
+
     Creates a new source buffer.  If a Gtk::SourceTagTable is provided, the
     buffer will use it, otherwise it will create a new one.
     If a Gtk::SourceLanguage object is given, the buffer will be created
@@ -20,21 +24,26 @@ Text buffer object for Gtk::SourceView.
     * Returns: a newly created Gtk::SourceBuffer object.
 
 == Instance Methods
+
 --- bracket_match_style=(style)
+
     Sets the style used for highlighting matching brackets.
     * style: the Gtk::SourceTagStyle specifying colors and text attributes.  
     * Returns: the given parameter 'style'.
 
 --- can_redo?
+
     Determines whether a source buffer can redo the last action (i.e. if the
     last operation was an undo).
     * Returns: whether a redo is possible.
 
 --- can_undo?
+
     Determines whether a source buffer can undo the last action.
     * Returns: whether it's possible to undo the last action.
 
 --- create_marker(name=nil, type=nil, where)
+
     Creates a marker in the buffer of the given type. A marker is semantically
     very similar to a Gtk::TextMark, except it has a type which is used by the
     Gtk::SourceView object displaying the buffer to show a pixmap on the left
@@ -57,28 +66,33 @@ Text buffer object for Gtk::SourceView.
     * Returns: a new Gtk::SourceMarker object, owned by the buffer.
 
 --- delete_marker(marker)
+
     Deletes a marker from the source buffer. The same conditions as for
     Gtk::TextMark apply here.
     * marker: a Gtk::SourceMarker object in the buffer.  
     * Returns: self.
 
 --- first_marker
+
     Gets the first (nearest to the top of the buffer) marker in the buffer.
     * Returns: a reference to the first Gtk::SourceMarker, or nil if there are no markers in the buffer.
 
 --- get_iter_at_marker(iter, marker)
+
     Initializes iter at the location of marker.
     * iter: a Gtk::TextIter to initialize. 
     * marker: a Gtk::SourceMarker of the buffer.  
     * Returns: self.
 
 --- get_marker(name)
+
     Looks up the Gtk::SourceMarker named name in buffer, returning nil if it
     doesn't exists.
     * name: the name of the marker to retrieve.  
     * Returns: a reference to a Gtk::SourceMarker object, or nil if it's not found.
 
 --- get_markers(begin, end)
+
     Returns an ordered (by position) list of Gtk::SourceMarker objects inside
     the region delimited by the Gtk::TextIter begin and end. The iters may be in
     any order.
@@ -87,6 +101,7 @@ Text buffer object for Gtk::SourceView.
     * Returns: an array of Gtk::SourceMarker objects inside the range.
 
 --- get_next_marker(iter)
+
     Returns the nearest marker to the right of iter. If there are multiple
     markers at the same position, this method will always return the first one
     (from the internal linked list), even if starting the search exactly at its
@@ -95,6 +110,7 @@ Text buffer object for Gtk::SourceView.
     * Returns: the Gtk::SourceMarker nearest to the right of iter, or nil if there are no more markers after iter.
 
 --- get_prev_marker(iter)
+
     Returns the nearest marker to the left of iter. If there are multiple
     markers at the same position, this method will always return the last one
     (from the internal linked list), even if starting the search exactly at its
@@ -103,32 +119,38 @@ Text buffer object for Gtk::SourceView.
     * Returns: the Gtk::SourceMarker nearest to the left of iter, or nil if there are no more markers after iter.
 
 --- last_marker
+
     Returns the last (nearest to the bottom of the buffer) marker in buffer.
     * Returns: a reference to the first Gtk::SourceMarker, or nil if there are no markers in the buffer.
 
 --- move_marker(marker, where)
+
     Moves a marker to a new location in the buffer.
     * where: the new location of the marker, as a Gtk::TreeIter object.  
     * marker: a Gtk::SourceMarker object in the buffer. 
     * Returns: self.
 
 --- non_undoable_action { ... }
+
     Synonym for Gtk::SourceBuffer#not_undoable_action.
     * Returns: the return value of the provided block.
 
 --- begin_not_undoable_action
 --- begin_not_undoable_action { ... }
+
     Marks the beginning of a not undoable action on the buffer, disabling the undo manager.
     If a block is given, the block is called after marking the beginning of a not undoable action on the buffer.
     At the end of the block, marks the end of a not undoable action on the buffer. When the last not undoable block is finished, the list of undo actions is cleared and the undo manager is re-enabled.
     * Returns: self
 
 --- end_not_undoable_action
+
     Marks the end of a not undoable action on the buffer.
     When the last not undoable block is finished, the list of undo actions is cleared and the undo manager is re-enabled.
     * Returns: self
 
 --- not_undoable_action { ... }
+
     Marks the beginning of a not undoable action on the buffer, disabling the
     undo manager, then calls the provided block of code.
     At the end of the block, marks the end of a not undoable action on the
@@ -138,16 +160,19 @@ Text buffer object for Gtk::SourceView.
     * Returns: the return value of the provided block.
 
 --- redo!
+
     Redoes the last undo operation. Use Gtk::SourceBuffer#can_redo? to check
     whether a call to this function will have any effect.
     * Returns: self.
 
 --- set_bracket_match_style(style)
+
     Sets the style used for highlighting matching brackets.
     * style: the Gtk::SourceTagStyle specifying colors and text attributes.  
     * Returns: self.
 
 --- undo!
+
     Undoes the last user action which modified the buffer.
     Use Gtk::SourceBuffer#can_undo? to check whether a call to this function
     will have any effect.
@@ -156,32 +181,122 @@ Text buffer object for Gtk::SourceView.
     or sequences of similar edits (inserts or deletes) on the same line.
     * Returns: self.
 
+--- check_brackets=(check_brackets)
+
+    Sets the value whether to check and highlight matching brackets or not.
+     * check_brackets: true if to check and highlight matching brackets
+     * Returns: check_brackets
+
+--- check_brackets?
+
+    Gets the value whether to check and highlight matching brackets or not.
+     * Returns: true if to check and highlight matching brackets
+
+--- escape_char
+
+    Gets the Escaping character for syntax patterns.
+     * Returns: Escaping character for syntax patterns
+
+--- escape_char=(escape_char)
+
+    Sets the Escaping character for syntax patterns.
+     * escape_char: Escaping character for syntax patterns
+     * Returns: escape_char
+
+--- highlight=(highlight)
+
+    Sets the value whether to highlight syntax in the buffer or not.
+     * highlight: true if to highlight syntax in the buffer
+     * Returns: highlight
+
+--- highlight?
+
+    Gets the value whether to highlight syntax in the buffer or not.
+     * Returns: true if to highlight syntax in the buffer
+
+--- language
+
+    Gets the Language object to get highlighting patterns from.
+     * Returns: Language object to get highlighting patterns from
+
+--- language=(language)
+
+    Sets the Language object to get highlighting patterns from.
+     * language: Language object to get highlighting patterns from
+     * Returns: language
+
+--- max_undo_levels
+
+    Gets the Number of undo levels for the buffer.
+     * Returns: Number of undo levels for the buffer
+
+--- max_undo_levels=(max_undo_levels)
+
+    Sets the Number of undo levels for the buffer.
+     * max_undo_levels: Number of undo levels for the buffer
+     * Returns: max_undo_levels
+
+--- set_check_brackets(check_brackets)
+
+    Same as check_brackets=.
+     * check_brackets: true if to check and highlight matching brackets
+     * Returns: self
+
+--- set_escape_char(escape_char)
+
+    Same as escape_char=.
+     * escape_char: Escaping character for syntax patterns
+     * Returns: self
+
+--- set_highlight(highlight)
+
+    Same as highlight=.
+     * highlight: true if to highlight syntax in the buffer
+     * Returns: self
+
+--- set_language(language)
+
+    Same as language=.
+     * language: Language object to get highlighting patterns from
+     * Returns: self
+
+--- set_max_undo_levels(max_undo_levels)
+
+    Same as max_undo_levels=.
+     * max_undo_levels: Number of undo levels for the buffer
+     * Returns: self
+
 == Properties
+
 --- check-brackets: true or false (Read/Write)
+
     Whether to check and highlight matching brackets.
 
 --- escape-char: Integer (Read/Write)
+
     Escaping character for syntax patterns.
 
 --- highlight: true or false (Read/Write)
+
     Whether to highlight syntax in the buffer.
 
 --- language: Gtk::SourceLanguage (Read/Write)
+
     Language object to get highlighting patterns from.
 
 --- max-undo-levels: Integer (Read/Write)
+
     Number of undo levels for the buffer.
 
 == Signals
+
 --- can-redo
-
 --- can-undo
-
 --- highlight-updated
-
 --- marker-updated
 
 == See Also
+
 ((<Gtk>)).
 
 == ChangeLog

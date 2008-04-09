@@ -1,68 +1,83 @@
 = class Gtk::SourceLanguage
+
 Source language.
 
 == Object Hierarchy
+
 * Object
   * GLib::Instantiatable
     * GLib::Object
       * Gtk::SourceLanguage
 
 == Instance Methods
+
 --- each_mime_type { |mime_type| ... }
+
     Calls the block for each mime type for the given language, passing a 
     string as parameter.
     * Returns: self.
 
 --- each_tag { |tag| ... }
+
     Calls the block for each tag for the given language, passing a 
     reference to a Gtk::SourceTag object as parameter.
     * Returns: self.
 
 --- escape_char
+
     This method returns the value of the ESC character in the given language.
     * Returns: the value of the ESC character in the given language.
 
 --- get_tag_default_style(tag_id)
+
     Gets the default style of the tag whose ID is tag_id.
     * tag_id: the ID of a Gtk::SourceTag, as a string.  
     * Returns: a Gtk::SourceTagStyle object.
 
 --- get_tag_style(tag_id)
+
     Gets the style of the tag whose ID is tag_id. If the style is not defined
     then returns the default style.
     * tag_id: the ID of a Gtk::SourceTag, as a string.   
     * Returns: a Gtk::SourceTagStyle object.
 
 --- mime_types
+
     This method returns a list of mime types for the given language, as an array of strings.
     * Returns: a list of mime types for the given language, as an array of strings.
 
 --- mime_types=(arr)
+
     Sets a list of mime types for the given language. If mime types is nil this
     method will use the default mime types from the language file.
     * arr: an array of mime types (strings).  
     * Returns: the given parameter 'arr'.
 
 --- name
+
     This method returns the localized name of the language.
     * Returns: the localized name of the language.
 
 --- section
+
     HTML belogs to the Markup section).
-    * Returns: the localized section of the language, each language belong to a section (ex. 
+    * Returns: the localized section of the language, each language belong to a section (ex.
 
 --- set_mime_types(arr)
+
     Sets a list of mime types for the given language. If mime types is nil this
     method will use the default mime types from the language file.
     * arr: an array of mime types (strings).  
     * Returns: self.
 
 --- set_style_scheme(scheme)
+
     Sets the style scheme of the given language.
     * scheme: a Gtk::SourceStyleScheme object.  
     * Returns: self.
 
 --- set_tag_style(tag_id, style=nil)
+
     Sets the style of the tag whose ID is tag_id. If style is nil restore
     the default style.
     * tag_id: the ID of a Gtk::SourceTag, as a string. 
@@ -70,22 +85,27 @@ Source language.
     * Returns: self.
 
 --- style_scheme
+
     This method returns the style scheme associated with the given language, as a reference to a Gtk::SourceStyleScheme object.
     * Returns: the style scheme associated with the given language, as a reference to a Gtk::SourceStyleScheme object.
 
 --- style_scheme=(scheme)
+
     Sets the style scheme of the given language.
     * scheme: a Gtk::SourceStyleScheme object.  
     * Returns: the given parameter 'scheme'.
 
 --- tags
+
     This method returns a list of tags for the given language, as an array of Gtk::SourceTag objects.
     * Returns: a list of tags for the given language, as an array of Gtk::SourceTag objects.
 
 == Signals
+
 --- tag-style-changed
 
 == See Also
+
 ((<Gtk>)).
 
 == ChangeLog

@@ -12,18 +12,22 @@ The Gtk::PaperSize object stores not only the dimensions
 provides default print margins.
 
 == Object Hierarchy
+
 * Object
   * GLib::Boxed
     * Gtk::PaperSize
 
 == Class Methods
+
 --- Gtk::PaperSize.default
+
      Returns the name of the default paper size, which
      depends on the current locale.
 
      * Returns: the name of the default paper size.
 
 --- Gtk::PaperSize.new(name=nil)
+
      Creates a new Gtk::PaperSize object by parsing a PWG
      5101.1-2002 PWG paper name.
 
@@ -34,6 +38,7 @@ provides default print margins.
      * Returns: a new Gtk::PaperSize
 
 --- Gtk::PaperSize.new(ppd_name, ppd_display_name, width, height)
+
      Creates a new Gtk::PaperSize object by using PPD information.
 
      If ((|ppd_name|)) is not a recognized PPD paper name,
@@ -47,6 +52,7 @@ provides default print margins.
      * Returns: a new Gtk::PaperSize
 
 --- Gtk::PaperSize.new(name, display_name, width, height, unit)
+
      Creates a new Gtk::PaperSize object with the given parameters.
 
      * name: the paper name
@@ -56,9 +62,10 @@ provides default print margins.
      * unit: the unit for ((|width|)) and ((|height|))
      * Returns: a new Gtk::PaperSize object
 
-
 == Instance Methods
+
 --- ==(other)
+
      Compares two Gtk::PaperSize objects.
 
      * other: another Gtk::PaperSize.
@@ -66,56 +73,73 @@ provides default print margins.
        represent the same paper size
 
 --- custom?
+
      Returns true if ((|self|)) is not a standard paper size.
 
      * Returns: whether ((|self|)) is a custom paper size.
 
 --- default_top_margin(unit)
+
      Gets the default top margin for the Gtk::PaperSize.
 
      * unit: the unit for the return value as Gtk::PaperSize#Unit
      * Returns: the default top margin
+
 --- default_bottom_margin(unit)
+
      Gets the default bottom margin for the Gtk::PaperSize.
 
      * unit: the unit for the return value as Gtk::PaperSize#Unit
      * Returns: the default bottom margin
+
 --- default_left_margin(unit)
+
      Gets the default left margin for the Gtk::PaperSize.
 
      * unit: the unit for the return value as Gtk::PaperSize#Unit
      * Returns: the default left margin
+
 --- default_margin_margin(unit)
+
      Gets the default margin margin for the Gtk::PaperSize.
 
      * unit: the unit for the return value as Gtk::PaperSize#Unit
      * Returns: the default margin margin
 
 --- name
+
      Gets the name of the Gtk::PaperSize.
 
      * Returns: the name of ((|self|))
+
 --- display_name
+
      Gets the human-readable name of the Gtk::PaperSize.
 
      * Returns: the human-readable name of ((|self|))
+
 --- ppd_name
+
      Gets the PPD name of the Gtk::PaperSize, which may be nil.
 
      * Returns: the PPD name of ((|self|))
 
 --- width(unit)
+
      Gets the paper width of the Gtk::PaperSize, in units of ((|unit|)).
 
      * unit: the unit for the return value
      * Returns: the paper width
+
 --- height(unit)
+
      Gets the paper height of the Gtk::PaperSize, in units of ((|unit|)).
 
      * unit: the unit for the return value
      * Returns: the paper height
 
 --- set_size(size, width, height, unit)
+
      Changes the dimensions of a ((|size|)) to ((|width|)) x ((|height|)).
 
      * size: a custom Gtk::PaperSize object
@@ -124,7 +148,32 @@ provides default print margins.
      * unit: the unit for ((|width|)) and ((|height|))
      * Returns: self
 
+--- get_default_bottom_margin
+
+     * Returns: self: ((*FIXME*))
+
+--- get_default_left_margin
+
+     * Returns: self: ((*FIXME*))
+
+--- get_default_right_margin
+
+     * Returns: self: ((*FIXME*))
+
+--- get_default_top_margin
+
+     * Returns: self: ((*FIXME*))
+
+--- get_height
+
+     * Returns: self: ((*FIXME*))
+
+--- get_width
+
+     * Returns: self: ((*FIXME*))
+
 == Constants
+
 --- A3
 --- A4
 --- A5
@@ -134,12 +183,21 @@ provides default print margins.
 --- LETTER
 
 === Unit
+
 --- UNIT_PIXEL
 --- UNIT_POINTS
 --- UNIT_INCH
 --- UNIT_MM
+--- A3
+--- A4
+--- A5
+--- B5
+--- EXECUTIVE
+--- LEGAL
+--- LETTER
 
 == See Also
+
 
 == ChangeLog
 

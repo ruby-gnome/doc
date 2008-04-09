@@ -1,6 +1,7 @@
 = class Pango::AttrLetterSpacing
 
 == Object Hierarchy
+
 * Object
   * Data
     * Pango::Attribute
@@ -8,12 +9,16 @@
         * Pango::AttrLetterSpacing
 
 == Class Methods
+
 --- Pango::AttrLetterSpacing.new(letter_spacing)
+
     Create a new letter-spacing attribute. ((* Since 1.6 *))
     * letter_spacing: amount of extra space to add between graphemes of the text, in Pango units.  
-    * Returns: the new Pango::Attribute.  
+    * Returns: the new Pango::Attribute.
 
 == See Also
 
+
 == ChangeLog
+
 * 2005-11-15 Added. - ((<Masao>))

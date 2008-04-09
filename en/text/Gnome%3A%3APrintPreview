@@ -1,6 +1,7 @@
 = class Gnome::PrintPreview
 
 == Object Hierarchy
+
 * Object
   * GLib::Instantiatable
     * GLib::Object
@@ -8,6 +9,7 @@
         * Gnome::PrintPreview
 
 == Class Methods
+
 --- Gnome::PrintPreview.new(config, canvas)
 --- Gnome::PrintPreview.new(config, canvas, transform, region)
 
@@ -19,7 +21,103 @@
      * transform: A Art::Affine object
      * region: A Art::DRect object
      * Returns: A Gnome::PrintPreview suitable for using
-       with the GNOME print API. 
+       with the GNOME print API.
+
+== Instance Methods
+
+--- create_layout
+
+    See Gnome::PrintPango#create_layout.
+
+--- glyph_string
+
+    See Gnome::PrintPango#glyph_string.
+
+--- group
+
+    Gets the Group.
+     * Returns: Group
+
+--- layout
+
+    See Gnome::PrintPango#layout.
+
+--- layout_line
+
+    See Gnome::PrintPango#layout_line.
+
+--- only_first=(only_first)
+
+    Sets the Show only first page.
+     * only_first: Show only first page
+     * Returns: only_first
+
+--- only_first?
+
+    Gets the Show only first page.
+     * Returns: Show only first page
+
+--- set_only_first(only_first)
+
+    Same as only_first=.
+     * only_first: Show only first page
+     * Returns: self
+
+--- set_theme_compliance(theme_compliance)
+
+    Same as theme_compliance=.
+     * theme_compliance: Theme compliance
+     * Returns: self
+
+--- set_use_theme(use_theme)
+
+    Same as use_theme=.
+     * use_theme: Use theme
+     * Returns: self
+
+--- theme_compliance=(theme_compliance)
+
+    Sets the me compliance.
+     * theme_compliance: Theme compliance
+     * Returns: theme_compliance
+
+--- theme_compliance?
+
+    Gets the me compliance.
+     * Returns: Theme compliance
+
+--- update_context
+
+    See Gnome::PrintPango#update_context.
+
+--- use_theme=(use_theme)
+
+    Sets the Use theme.
+     * use_theme: Use theme
+     * Returns: use_theme
+
+--- use_theme?
+
+    Gets the Use theme.
+     * Returns: Use theme
+
+== Properties
+
+--- group: Gnome::CanvasGroup (Read/Write)
+
+    Group
+
+--- only-first: true or false (Read/Write)
+
+    Show only first page
+
+--- theme-compliance: true or false (Read/Write)
+
+    Theme compliance
+
+--- use-theme: true or false (Read/Write)
+
+    Use theme
 
 == See Also
 

@@ -1,7 +1,9 @@
 = class Gdk::PixbufError
+
 Error class used for pixbuf operations.
 
 == Object Hierarchy
+
 * Object
   * Exception
     * StandardError
@@ -9,28 +11,46 @@ Error class used for pixbuf operations.
         * Gdk::PixbufError
 
 == Instance Methods
+
 --- code
+
     Returns the error code (((<GdkPixbufError|Gdk::PixbufError#GdkPixbufError>))).
     * Returns: self
+
 --- domain
+
     Returns the error domain.
     * Returns: self
 
 == Constants
+
 === GdkPixbufError
-An error code in the Gdk::PixbufError. Many gdk-pixbuf operations can cause errors in this class, or in the GLib::FileError class. 
+
+An error code in the Gdk::PixbufError. Many gdk-pixbuf operations can cause errors in this class, or in the GLib::FileError class.
+
 --- CORRUPT_IMAGE
-    An image file was broken somehow.  
+
+    An image file was broken somehow.
+
 --- INSUFFICIENT_MEMORY
-    Not enough memory. 
+
+    Not enough memory.
+
 --- BAD_OPTION
+
     A bad option was passed to a pixbuf save module.
+
 --- UNKNOWN_TYPE
-    Unknown image type.  
+
+    Unknown image type.
+
 --- UNSUPPORTED_OPERATION
-    Don't know how to perform the given operation on the type of image at hand. 
+
+    Don't know how to perform the given operation on the type of image at hand.
+
 --- FAILED
-    Generic failure code, something went wrong.  
+
+    Generic failure code, something went wrong.
 
 == See Also
 

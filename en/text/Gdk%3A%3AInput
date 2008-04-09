@@ -1,29 +1,47 @@
 = module Gdk::Input
+
 The functions in this section are used to establish callbacks when some condition becomes true for a file descriptor.
 
 ((* Notice *)) Gdk::Input is deprecated and should not be used in newly-written code since 2.0.
 
 == Module Functions
+
 --- Gdk::Input.add(source, condition) {|condition| ... }
+
     Establish a callback when a condition becomes true on a file descriptor. 
     * source: a file descriptor.  
     * condition: the condition.  
-    * Returns: a tag that can later be used as an argument to Gdk::Input.remove.  
+    * Returns: a tag that can later be used as an argument to Gdk::Input.remove.
 
 --- Gdk::Input.remove(tag)
+
     Remove a callback added with gdk_input_add() or gdk_input_add_full(). 
     * tag: the tag returned when the callback was set up.  
     * Returns: tag
 
 == Constants
+
 === GdkInputCondition
-A set of bit flags used to specify conditions for which an input callback will be triggered. The three members of this enumeration correspond to the readfds, writefds, and exceptfds arguments to the select system call. 
+
+A set of bit flags used to specify conditions for which an input callback will be triggered. The three members of this enumeration correspond to the readfds, writefds, and exceptfds arguments to the select system call.
+
 --- READ
+
     The file descriptor has become available for reading. (Or, as is standard in Unix, a socket or pipe was closed at the other end; this is the case if a subsequent read on the file descriptor returns a count of zero.)
+
 --- WRITE
+
     The file descriptor has become available for writing.
+
 --- EXCEPTION
+
     An exception was raised on the file descriptor.
 
 
 * 2004-05-27 Initial upload - ((<Masao>))
+
+== See Also
+
+== ChangeLog
+
+

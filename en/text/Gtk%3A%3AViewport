@@ -1,80 +1,110 @@
 = class Gtk::Viewport
 
 == Object Hierarchy
+
 * Object
   * GLib::Instantiatable
     * GLib::Object
-      * Gtk::Object
-        * Gtk::Widget
-          * Gtk::Container
-            * Gtk::Bin
-              * Gtk::Viewport
+      * GLib::InitiallyUnowned
+        * Gtk::Object
+          * Gtk::Widget
+            * Gtk::Container
+              * Gtk::Bin
+                * Gtk::Viewport
 
 == Class Methods
+
 --- Gtk::Viewport.new(hadjustment, vadjustment)
+
     Creates a new Gtk::Viewport with the given adjustments.
     * hadjustment : horizontal adjustment.Gtk::Adjustment  
     * vadjustment : vertical adjustment. Gtk::Adjustment
-    * Returns : a new Gtk::Viewport.  
+    * Returns : a new Gtk::Viewport.
 
 == Instance Methods
+
 --- hadjustment
+
     Returns the horizontal adjustment of the viewport.
-    * Returns: the horizontal adjustment of viewport.  
+    * Returns: the horizontal adjustment of viewport.
 
 --- hadjustment=(adjustment)
+
     Sets the horizontal adjustment of the viewport.
     * adjustment: a Gtk::Adjustment.  
-    * Returns: adjustment 
+    * Returns: adjustment
 
 --- set_hadjustment(adjustment)
+
     Sets the horizontal adjustment of the viewport.
     * adjustment : a Gtk::Adjustment.  
     * Returns: self
 
 --- vadjustment
+
     Returns the vertical adjustment of the viewport.
-    * Returns: the vertical adjustment of viewport.  
+    * Returns: the vertical adjustment of viewport.
 
 --- vadjustment=(adjustment)
+
     Sets the vertical adjustment of the viewport.
     * adjustment: a Gtk::Adjustment.  
-    * Returns: adjustment 
+    * Returns: adjustment
 
 --- set_vadjustment(adjustment)
+
     Same as Gtk::Viewport#vadjustment=.
     * adjustment : a Gtk::Adjustment.  
     * Returns: self
 
 --- shadow_type
+
     Gets the shadow type of the Gtk::Viewport. See Gtk::Viewport#shadow_type=.
     * viewport: a Gtk::Viewport  
-    * Returns: the shadow type  
+    * Returns: the shadow type
 
 --- shadow_type=(type)
+
     Sets the shadow type(GtkShadowType) of the viewport.
     * type: the new shadow type.  
     * Returns: type
 
 --- set_shadow_type
+
     Same as Gtk::Viewport#shadow_type=.
     * Returns: self
 
+--- ref_accessible
+
+    See Atk::Implementor#ref_accessible.
+
+--- set_scroll_adjustments
+
+     * Returns: self: ((*FIXME*))
+
 == Properties
+
 --- hadjustment: Gtk::Adjustment (Read/Write)
+
     The Gtk::Adjustment that determines the values of the horizontal position for this viewport
 
 --- shadow-type: Integer (Read/Write)
+
     Determines how the shadowed box around the viewport is drawn
 
 --- vadjustment: Gtk::Adjustment (Read/Write)
+
     The Gtk::Adjustment that determines the values of the vertical position for this viewport
 
 == Signals
+
 --- set-scroll-adjustments: self, adj1, adj2
+
      * self: Gtk::Viewport
      * adj1: Gtk::Adjustment
      * adj2: Gtk::Adjustment
+
+== See Also
 
 == ChangeLog
 

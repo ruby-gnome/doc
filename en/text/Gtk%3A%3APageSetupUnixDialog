@@ -8,6 +8,7 @@ like Unix. It can be used very much like any other GTK+
 dialog, at the cost of the portability offered by Gtk::PrintOperation.
 
 == Object Hierarchy
+
 * Object
   * GLib::Instantiatable
     * GLib::Object
@@ -21,7 +22,9 @@ dialog, at the cost of the portability offered by Gtk::PrintOperation.
                     * Gtk::PageSetupUnixDialog
 
 == Class Methods
+
 --- Gtk::PageSetupUnixDialog.new(title=nil, parent=nil)
+
      Creates a new page setup dialog.
 
      * title: the title of the dialog, or nil
@@ -29,12 +32,15 @@ dialog, at the cost of the portability offered by Gtk::PrintOperation.
      * Returns: the new Gtk::PageSetupUnixDialog
 
 == Instance Methods
+
 --- page_setup
+
      Gets the currently selected page setup from the dialog.
 
      * Returns: the current page setup
 
 --- page_setup=(page_setup)
+
      Sets the #GtkPageSetup from which the page setup
      dialog takes its values.
 
@@ -42,15 +48,18 @@ dialog, at the cost of the portability offered by Gtk::PrintOperation.
      * Returns: self
 
 --- set_page_setup(page_setup)
+
      Same as page_setup= but returns nil.
      * Returns: nil
 
 --- print_settings
+
      Gets the current print settings from the dialog.
 
      * Returns: the current print settings
 
 --- print_settings=(print_settings)
+
      Sets the Gtk::PrintSettings from which the page setup dialog
      takes its values.
 
@@ -58,10 +67,16 @@ dialog, at the cost of the portability offered by Gtk::PrintOperation.
      * Returns: self
 
 --- set_print_settings
+
      Same as set_print_setup= but returns nil.
      * Returns: nil
 
+--- ref_accessible
+
+    See Atk::Implementor#ref_accessible.
+
 == See Also
+
 
 == ChangeLog
 

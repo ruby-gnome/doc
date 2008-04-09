@@ -1,11 +1,14 @@
 = module GLib
 
 == Module Functions
+
 --- GLib.charset
+
     Obtains the character set for the current locale; you might use this character set as an argument to GLib.convert, to convert from the current locale's encoding to some other encoding. (Frequently GLib.locale_to_utf8 and GLib.locale_from_utf8 are nice shortcuts, though.) 
-    * Returns: the character set name 
+    * Returns: the character set name
 
 --- GLib.language_names
+
     Computes a list of applicable locale names, which can be used to e.g. construct locale-dependent filenames or search paths. The returned list is sorted from most desirable to least desirable and always contains the default locale "C".
 
     For example, if LANGUAGE=de:en_US, then the returned list is "de", "en_US", "en", "C".
@@ -14,10 +17,12 @@
     * Returns: an array of language name
 
 --- GLib.win32_locale
+
     The setlocale() function in the Microsoft C library uses locale names of the form "English_United States.1252" etc. We want the UNIXish standard form "en_US", "zh_TW" etc. This function gets the current thread locale from Windows - without any encoding info - and returns it as a string of the above form for use in forming file names etc. 
-    * Returns: locale name. 
+    * Returns: locale name.
 
 --- GLib.convert(str, to_codeset, from_codeset)
+
     Converts a string from one character set to another. 
     If the conversion is not successful, it causes GLib::ConvertError.
     * str: the string to convert  
@@ -26,21 +31,25 @@
     * Returns: a newly string
 
 --- GLib.locale_from_utf8(str)
+
     Converts a string from UTF-8 to the encoding used for strings by the C runtime (usually the same as that used by the operating system) in the current locale. If the conversion is not successful, it causes GLib::ConvertError.
     * str: a UTF-8 encoded string  
     * Returns: the converted string
 
 --- GLib.locale_to_utf8(str)
+
     Converts a string which is in the encoding used for strings by the C runtime (usually the same as that used by the operating system) in the current locale into a UTF-8 string. If the conversion is not successful, it causes GLib::ConvertError.
     * str: a string in the encoding of the current locale  
-    * Returns: the converted string 
+    * Returns: the converted string
 
 --- GLib.filename_from_utf8(str)
+
     Converts a string from UTF-8 to the encoding used for filenames.
     * str: a UTF-8 encoded string  
     * Returns: the converted string
 
 --- GLib.win32_locale_filename_from_utf8(str)
+
     Converts a filename from UTF-8 to the system codepage.
 
     On NT-based Windows, on NTFS file systems, file names are in Unicode. It is quite possible that Unicode file names contain characters not representable in the system codepage. (For instance, Greek or Cyrillic characters on Western European or US Windows installations, or various less common CJK characters on CJK Windows installations.)
@@ -51,27 +60,217 @@
     * Returns: The converted filename, or nil on conversion failure and lack of short names.
 
 --- GLib.filename_to_utf8(str)
+
     Converts a string which is in the encoding used for filenames into a UTF-8 string. If the conversion is not successful, it causes GLib::ConvertError.
     * str: a string in the encoding for filenames
-    * Returns: the converted string 
+    * Returns: the converted string
 
 --- GLib.filename_from_uri(uri)
+
     Converts an escaped UTF-8 encoded URI to a local filename in the encoding used for filenames. If the conversion is not successful, it causes GLib::ConvertError.
     * uri: a uri describing a filename (escaped, encoded in UTF-8)
     * Returns: an Array of [filename, hostname]
 
 --- GLib.filename_to_uri(filename, hostname = nil)
+
     Converts an absolute filename to an escaped UTF-8 encoded URI.
     * filename: an absolute filename specified in the encoding used for filenames by the operating system.  
     * hostname: a UTF-8 encoded hostname, or nil for none.  
     * Returns: the resulting URI
 
+--- GLib.__add_one_arg_setter
+
+     * Returns: self: ((*FIXME*))
+
+--- GLib.application_name
+
+     * Returns: self: ((*FIXME*))
+
+--- GLib.application_name=
+
+     * Returns: self: ((*FIXME*))
+
+--- GLib.bit_nth_lsf
+
+     * Returns: self: ((*FIXME*))
+
+--- GLib.bit_nth_msf
+
+     * Returns: self: ((*FIXME*))
+
+--- GLib.bit_storage
+
+     * Returns: self: ((*FIXME*))
+
+--- GLib.check_binding_version?
+
+     * Returns: self: ((*FIXME*))
+
+--- GLib.check_version?
+
+     * Returns: self: ((*FIXME*))
+
+--- GLib.current_dir
+
+     * Returns: self: ((*FIXME*))
+
+--- GLib.exit_application
+
+     * Returns: self: ((*FIXME*))
+
+--- GLib.find_program_in_path
+
+     * Returns: self: ((*FIXME*))
+
+--- GLib.getenv
+
+     * Returns: self: ((*FIXME*))
+
+--- GLib.home_dir
+
+     * Returns: self: ((*FIXME*))
+
+--- GLib.host_name
+
+     * Returns: self: ((*FIXME*))
+
+--- GLib.listenv
+
+     * Returns: self: ((*FIXME*))
+
+--- GLib.os_beos?
+
+     * Returns: self: ((*FIXME*))
+
+--- GLib.os_unix?
+
+     * Returns: self: ((*FIXME*))
+
+--- GLib.os_win32?
+
+     * Returns: self: ((*FIXME*))
+
+--- GLib.parse_debug_string
+
+     * Returns: self: ((*FIXME*))
+
+--- GLib.path_get_basename
+
+     * Returns: self: ((*FIXME*))
+
+--- GLib.path_get_dirname
+
+     * Returns: self: ((*FIXME*))
+
+--- GLib.path_is_absolute?
+
+     * Returns: self: ((*FIXME*))
+
+--- GLib.path_skip_root
+
+     * Returns: self: ((*FIXME*))
+
+--- GLib.prgname
+
+     * Returns: self: ((*FIXME*))
+
+--- GLib.prgname=
+
+     * Returns: self: ((*FIXME*))
+
+--- GLib.real_name
+
+     * Returns: self: ((*FIXME*))
+
+--- GLib.set_application_name
+
+     * Returns: self: ((*FIXME*))
+
+--- GLib.set_prgname
+
+     * Returns: self: ((*FIXME*))
+
+--- GLib.setenv
+
+     * Returns: self: ((*FIXME*))
+
+--- GLib.spaced_primes_closest
+
+     * Returns: self: ((*FIXME*))
+
+--- GLib.tmp_dir
+
+     * Returns: self: ((*FIXME*))
+
+--- GLib.unsetenv
+
+     * Returns: self: ((*FIXME*))
+
+--- GLib.user_name
+
+     * Returns: self: ((*FIXME*))
+
+--- GLib.utf8_validate
+
+     * Returns: self: ((*FIXME*))
+
 == Constants
+
 --- MAJOR_VERSION
 --- MICRO_VERSION
 --- MINOR_VERSION
 --- VERSION
+
     = [major, micro, minor]
+
+--- BINARY_AGE
+--- BINDING_VERSION
+--- BUILD_VERSION
+--- DIR_SEPARATOR
+--- E
+--- INTERFACE_AGE
+--- LN10
+--- LN2
+--- LOG_2_BASE_10
+--- LOG_DOMAIN
+--- MAXDOUBLE
+--- MAXFLOAT
+--- MAXINT
+--- MAXINT16
+--- MAXINT32
+--- MAXINT64
+--- MAXINT8
+--- MAXLONG
+--- MAXSHORT
+--- MAXSIZE
+--- MAXUINT
+--- MAXUINT16
+--- MAXUINT32
+--- MAXUINT64
+--- MAXUINT8
+--- MAXULONG
+--- MAXUSHORT
+--- MINDOUBLE
+--- MINFLOAT
+--- MININT
+--- MININT16
+--- MININT32
+--- MININT64
+--- MININT8
+--- MINLONG
+--- MINSHORT
+--- PI
+--- PI_2
+--- PI_4
+--- PRIORITY_DEFAULT
+--- PRIORITY_DEFAULT_IDLE
+--- PRIORITY_HIGH
+--- PRIORITY_HIGH_IDLE
+--- PRIORITY_LOW
+--- SEARCHPATH_SEPARATOR
+--- SQRT2
+
+== See Also
 
 == ChangeLog
 

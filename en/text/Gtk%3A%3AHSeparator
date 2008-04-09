@@ -1,22 +1,37 @@
 = class Gtk::HSeparator
+
 The Gtk::HSeparator widget is a horizontal separator, used to group the widgets within a window. It displays a horizontal line with a shadow to make it appear sunken into the interface.
 
 ((*Note*))
-The Gtk::HSeparator widget is not used as a separator within menus. To create a separator in a menu create an empty Gtk::SeparatorMenuItem widget using Gtk::SeparatorMenuItem.new and add it to the menu with Gtk::MenuShell#append. 
+The Gtk::HSeparator widget is not used as a separator within menus. To create a separator in a menu create an empty Gtk::SeparatorMenuItem widget using Gtk::SeparatorMenuItem.new and add it to the menu with Gtk::MenuShell#append.
 
 == Object Hierarchy
+
 * Object
   * GLib::Instantiatable
     * GLib::Object
-      * Gtk::Object
-        * Gtk::Widget
-          * Gtk::Separator
-            * Gtk::HSeparator
+      * GLib::InitiallyUnowned
+        * Gtk::Object
+          * Gtk::Widget
+            * Gtk::Separator
+              * Gtk::HSeparator
 
 == Class Methods
+
 --- Gtk::HSeparator.new
+
     Creates a new Gtk::HSeparator.
     * Returns: a new Gtk::HSeparator.
 
+== Instance Methods
+
+--- ref_accessible
+
+    See Atk::Implementor#ref_accessible.
+
 == See Also
+
 * Gtk::VSeparator - a vertical separator.
+== ChangeLog
+
+

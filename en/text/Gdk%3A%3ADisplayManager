@@ -1,44 +1,62 @@
 = class Gdk::DisplayManager
+
 The purpose of the Gdk::DisplayManager singleton object is to offer notification when displays appear or disappear or the default display changes.
 
 == Object Hierarchy
+
 * Object
   * GLib::Instantiatable
     * GLib::Object
       * Gdk::DisplayManager
 
 == Class Methods
+
 --- Gdk::DisplayManager.get
+
     Returns the global Gdk::DisplayManager singleton. You need to call Gdk.init first. ((* Since 2.2 *))
     * Returns: the singleton Gdk::DisplayManager object.
     * Returns: self
 
 == Instance Methods
+
 --- default_display
+
     Gets the default GdkDisplay. ((* Since 2.2 *))
-    * Returns: a Gdk::Display, or nil if there is no default display. 
+    * Returns: a Gdk::Display, or nil if there is no default display.
+
 --- default_display=(display)
+
     Sets display as the default display. ((* Since 2.2 *))
     * display: a Gdk::Display
     * Returns: default_display
+
 --- set_default_display(display)
+
     Same as Gdk::DisplayManager#default_display=. ((* Since 2.2 *))
     * display: a Gdk::Display
     * Returns: self
 
 --- displays
+
     Returns an Adday of all currently open displays. ((* Since 2.2 *))
     * Returns: a newly allocated Array of Gdk::Display objects.
 
 == Properties
+
 --- default-display: Gdk::Display (Read/Write)
+
     The default display for GDK ((* Since 2.2 *))
 
 == Signals
+
 --- display-opened: self, display
+
     The ::display_opened signal is emitted when a display is opened. ((* Since 2.2 *))
      * self: the Gdk::DisplayManager
      * display: the opened Gdk::Display
 
+== See Also
+
 == ChangeLog
+
 * 2005-05-07 Added. - ((<Masao>))

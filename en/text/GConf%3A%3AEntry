@@ -1,52 +1,72 @@
 = class GConf::Entry
+
 A GConf::Entry pairs a relative key to its value, e.g. if the value "10" is stored in "/foo/bar/baz", the GConf::Entry will store "baz" and "10".
 
+== Object Hierarchy
+
+* Object
+  * GLib::Boxed
+    * GConf::Entry
+
 == Instance Methods
+
 --- key
+
     Gets the key of this GConf::Entry.
     * Returns: the key of this GConf::Entry
 
 --- value
+
     Gets the value of this GConf::Entry.
     * Returns: the value of this GConf::Entry
 
 --- value=(value)
+
     Sets the value of this GConf::Entry's key.
     * value: the value to use
     * Returns: value
 
 --- set_value(value)
+
     Same as ((<value=|GConf::Entry#value=>)).
     * value: the value to use
     * Returns: self
 
 --- schema_name
+
     Gets the name of the schema associated with this GConf::Entry's key.
     * Returns: the schema name
 
 --- schema_name=(name)
+
     Sets the name of the schema for the key of this GConf::Entry.
     * name: the schema name to use
     * Returns: name
 
 --- set_schema_name(name)
+
     Same as ((<scema_name=|GConf::Entry#schema_name=>)).
     * name: the schema name to use
     * Returns: self
 
 --- default?
+
     Queries whether the value of the key is the default value as specified by the schema for this key.
     * Returns: true if the value is the default value, or false if not
 
 --- default=(is_default)
+
     Sets whether the current value of the key should be the default value or not.
     * is_default: whether or not the value should be the default value or not
     * Returns: is_default
 
 --- set_default(is_default)
+
     Same as ((<default=|GConf::Entry#default=>)).
     * is_default: whether or not the value should be the default value or not
     * Returns: self
+
+== See Also
 
 == ChangeLog
 

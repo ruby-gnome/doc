@@ -1,7 +1,9 @@
 = class Gdk::PangoAttrEmbossed
+
 A Pango text attribute containing a embossed bitmap to be used when rendering the text.
 
 == Object Hierarchy
+
 * Object
   * Data
     * Pango::Attribute
@@ -9,15 +11,22 @@ A Pango text attribute containing a embossed bitmap to be used when rendering th
         * Gdk::PangoAttrEmbossed
 
 == Class Methods
+
 --- Gdk::PangoAttrEmbossed.new(embossed)
+
     Creates a new attribute containing a embossed bitmap to be used when rendering the text.
     * embossed: true if a bitmap to be set as embossed
     * Returns: a new Gdk::PangoAttrEmbossed
 
 == Instance Methods
+
 --- value
+
     Gets the value wheter embossed or not.
     * Returns: true if embossed, otherwise false.
 
+== See Also
+
 == ChangeLog
+
 * 2005-05-08 Added. - ((<Masao>))

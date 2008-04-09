@@ -1,6 +1,9 @@
 = class Gdk::EventExpose
-Generated when all or part of a window becomes visible and needs to be redrawn. 
+
+Generated when all or part of a window becomes visible and needs to be redrawn.
+
 == Object Hierarchy
+
 * Object
   * GLib::Boxed
     * Gdk::Event
@@ -8,50 +11,71 @@ Generated when all or part of a window becomes visible and needs to be redrawn.
         * Gdk::EventExpose
 
 == Class Methods
+
 --- Gdk::EventExpose.new(type = Gdk::EventExpose)
+
     Creates a new event of the given type. All fields are set to 0. ((* Since 2.2 *))
     * type: Gdk::Event::EXPOSE.
     * Returns: a new Gdk::EventExpose.
 
 --- Gdk::EventExpose.get_graphics_expose(window)
+
     Waits for a GraphicsExpose or NoExpose event from the X server.
     * window: the Gdk::Window to wait for the events for
     * Returns: a Gdk::EventExpose if a GraphicsExpose was received, or nil if a NoExpose event was received
 
 == Instance Methods
+
 --- area
+
     Gets the bounding box of region. 
     * Returns: the bounding box of region(Gdk::Rectangle)
+
 --- area=(rect)
+
     Sets the bounding box of retion.
     * rect: the bounding box of region(Gdk::Rectangle)
     * Returns: rect
+
 --- set_area(rect)
+
     Same as Gdk::EventExpose#area=.
     * rect: the bounding box of region(Gdk::Rectangle)
     * Returns: self
 
 --- region
+
     Gets the region that needs to be redrawn.
     * Returns: the Gdk::Region that needs to be redrawn
+
 --- region=(region)
+
     Sets the region that needs to be redrawn. 
     * region: the Gdk::Region that needs to be redrawn
     * Returns: region
+
 --- set_region(region)
+
     Same as Gdk::EventExpose#region=.
     * region: the Gdk::Region that needs to be redrawn
     * Returns: self
 
 --- count
+
     Gets the number of contiguous Gdk::Event::EXPOSE events following this one. The only use for this is "exposure compression", i.e. handling all contiguous Gdk::Event::EXPOSE events in one go, though GDK performs some exposure compression so this is not normally needed. 
     * Returns: the number of contiguous Gdk::Event::EXPOSE events following this one.
+
 --- count=(count)
+
     Sets the number of contiguous Gdk::Event::EXPOSE events following this one. The only use for this is "exposure compression", i.e. handling all contiguous Gdk::Event::EXPOSE events in one go, though GDK performs some exposure compression so this is not normally needed. 
     * Returns: count
+
 --- set_count(count)
+
     Same as Gdk::EventExpose#count=.
     * Returns: self
+
+== See Also
 
 == ChangeLog
 

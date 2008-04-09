@@ -1,8 +1,10 @@
 = class Gst::SystemClock
+
 The Gst::SystemClock class is an implementation of Gst::Clock 
 using the system time.
 
 == Object Hierarchy
+
 * Object
   * GLib::Instantiatable
     * GLib::Object
@@ -11,7 +13,9 @@ using the system time.
           * Gst::SystemClock
 
 == Class Methods
+
 --- Gst::SystemClock.obtain
+
     This method returns a handle to the default system clock, as a reference to a Gst::SystemClock object.
     * Returns: a handle to the default system clock, as a reference to a Gst::SystemClock object.
 

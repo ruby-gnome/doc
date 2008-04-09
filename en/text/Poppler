@@ -1,22 +1,32 @@
 = module Poppler
 
 == Module Functions
+
 --- Poppler.backend
+
      
      * Returns: Poppler::Backend
+
 --- Poppler.cairo_available?
+
      
      * Returns: true if rcairo is avilable, otherwise false
+
 --- Poppler.version
+
      
      * Returns: Poppler version as String
 
 == Constants
 
 --- BUILD_VERSION
+
      * build version number as [major, minor, micro]
+
 --- VERSION
+
      * version number as [major, minor, micro]
+
 --- LOG_DOMAIN
 
 == See Also

@@ -1,11 +1,13 @@
 = class Poppler::ViewerPreferences
 
 == Object Hierarchy
+
 * Object
   * GLib::Flags
     * Poppler::ViewerPreferences
 
 == Instance Methods
+
 --- center_window?
 --- direction_rtl?
 --- display_doc_title?
@@ -16,6 +18,7 @@
 --- unset?
 
 == Constants
+
 --- CENTER_WINDOW
 --- DIRECTION_RTL
 --- DISPLAY_DOC_TITLE
@@ -26,6 +29,7 @@
 --- UNSET
 
 == See Also
+
 
 == ChangeLog
 

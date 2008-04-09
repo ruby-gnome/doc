@@ -3,6 +3,7 @@
 == Module Functions
 
 --- GLib::UniChar.alnum?(unichar)
+
      Determines whether a character is alphanumeric. Given
      some UTF-8 text, obtain a character value with
      GLib::UTF8.get_char.
@@ -11,6 +12,7 @@
      * Returns: true if ((|unichar|)) is an alphanumeric character.
 
 --- GLib::UniChar.alpha?(unichar)
+
      Determines whether a character is alphabetic (i.e. a
      letter). Given some UTF-8 text, obtain a character
      value with GLib::UTF8.get_char.
@@ -19,6 +21,7 @@
      * Returns: true if ((|unichar|)) is an alphabetic character
 
 --- GLib::UniChar.cntrl?(unichar)
+
      Determines whether a character is a control
      character. Given some UTF-8 text, obtain a character
      value with GLib::UTF8.get_char.
@@ -27,6 +30,7 @@
      * Returns: true if ((|unichar|)) is a control character
 
 --- GLib::UniChar.digit?(unichar)
+
      Determines whether a character is numeric (i.e. a
      digit). This covers ASCII 0-9 and also digits in other
      languages/scripts. Given some UTF-8 text, obtain a
@@ -36,6 +40,7 @@
      * Returns: true if ((|unichar|)) is a digit
 
 --- GLib::UniChar.graph?(unichar)
+
      Determines whether a character is printable and not a
      space (returns (({false})) for control characters, format
      characters, and spaces). g_unichar_isprint() is
@@ -47,6 +52,7 @@
        it's a space
 
 --- GLib::UniChar.lower?(unichar)
+
      Determines whether a character is a lowercase
      letter. Given some UTF-8 text, obtain a character value
      with GLib::UTF8.get_char.
@@ -55,6 +61,7 @@
      * Returns: true if ((|unichar|)) is a lowercase letter
 
 --- GLib::UniChar.print?(unichar)
+
      Determines whether a character is printable. Unlike
      GLib::UniChar.graph?, returns (({true})) for spaces. Given
      some UTF-8 text, obtain a character value with
@@ -64,6 +71,7 @@
      * Returns: true if ((|unichar|)) is printable.
 
 --- GLib::UniChar.punct?(unichar)
+
      Determines whether a character is punctuation or a
      symbol. Given some UTF-8 text, obtain a character value
      with GLib::UTF8.get_char.
@@ -73,6 +81,7 @@
        symbol character
 
 --- GLib::UniChar.space?(unichar)
+
      Determines whether a character is a space, tab, or line
      separator (newline, carriage return, etc.). Given some
      UTF-8 text, obtain a character value with
@@ -86,19 +95,21 @@
      * Returns: true if ((|unichar|)) is a space character
 
 --- GLib::UniChar.upper?(unichar)
+
      Determines if a character is uppercase.
 
      * unichar: a Unicode character as Integer
      * Returns: true if ((|unichar|)) is an uppercase character
 
 --- GLib::UniChar.xdigit?(unichar)
+
      Determines if a character is uppercase.
 
      * unichar: a Unicode character as Integer
      * Returns: true if ((|unichar|)) is a hexadecimal digit
 
-
 --- GLib::UniChar.title?(unichar)
+
      Determines if a character is titlecase. Some characters
      in Unicode which are composites, such as the DZ digraph
      have three case variants instead of just two. The
@@ -111,6 +122,7 @@
      * Returns: true if ((|unichar|)) is titlecase
 
 --- GLib::UniChar.defined?(unichar)
+
      Determines if a given character is assigned in the
      Unicode standard.
 
@@ -118,6 +130,7 @@
      * Returns: true if ((|unichar|)) has an assigned value
 
 --- GLib::UniChar.wide?(unichar)
+
      Determines if a character is typically rendered in a
      double-width cell.
 
@@ -125,6 +138,7 @@
      * Returns: true if ((|unichar|)) is wide
 
 --- GLib::UniChar.wide_cjk?(unichar)
+
      Determines if a character is typically rendered in a
      double-width cell under legacy East Asian locales. If a
      character is wide according to GLib::UniChar.wide?,
@@ -137,6 +151,7 @@
        Asian locales
 
 --- GLib::UniChar.to_upper(unichar)
+
      Converts a character to uppercase.
 
      * unichar: a Unicode character as Integer
@@ -146,6 +161,7 @@
        ((|unichar|)) is returned unchanged
 
 --- GLib::UniChar.to_lower(unichar)
+
      Converts a character to lower case.
 
      * unichar: a Unicode character as Integer
@@ -154,8 +170,8 @@
        titlecase character, or has no lowercase equivalent
        ((|unichar|)) is returned unchanged
 
-
 --- GLib::UniChar.to_title(unichar)
+
      Converts a character to the titlecase.
 
      * unichar: a Unicode character as Integer
@@ -164,6 +180,7 @@
        lowercase character, ((|unichar|)) is returned unchanged.
 
 --- GLib::UniChar.digit_value(unichar)
+
      Determines the numeric value of a character as a
      decimal digit.
 
@@ -173,6 +190,7 @@
        value. Otherwise, -1.
 
 --- GLib::UniChar.xdigit_value(unichar)
+
      Determines the numeric value of a character as a
      hexidecimal digit.
 
@@ -182,12 +200,14 @@
        -1.
 
 --- GLib::UniChar.type(unichar)
+
      Classifies a Unicode character by type.
 
      * unichar: a Unicode character as Integer
      * Returns: the type of the character as GLib::Unicode::Type.
 
 --- GLib::UniChar.break_type(unichar)
+
      Determines the break type of
      ((|unichar|)). ((|unichar|)) should be a Unicode
      character (to derive a character from UTF-8 encoded
@@ -203,6 +223,7 @@
        GLib::Unicode::BreakType.
 
 --- GLib::UniChar.get_mirror_char(unichar)
+
      In Unicode, some characters are mirrored. This means
      that their images are mirrored horizontally in text
      that is laid out from right to left. For instance, "("
@@ -221,6 +242,7 @@
        otherwise.
 
 --- GLib::UniChar.get_script(unichar)
+
     Looks up the GLib::Unicode::Script for a particular character
     (as defined by Unicode Standard Annex 24). No check is
     made for ((|unichar|)) being a valid Unicode character;
@@ -231,10 +253,13 @@
      * Returns: the GLib::Unicode::Script for the character.
 
 --- GLib::UniChar.to_utf8(unichar)
+
      Converts a single character to UTF-8.
 
      * unichar: a Unicode character as Integer
      * Returns: a UTF-8 encoded String
+
+== See Also
 
 == ChangeLog
 

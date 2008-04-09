@@ -1,7 +1,9 @@
 = class Gdk::EventVisibility
-Generated when the window visibility status has changed. 
+
+Generated when the window visibility status has changed.
 
 == Object Hierarchy
+
 * Object
   * GLib::Boxed
     * Gdk::Event
@@ -9,35 +11,51 @@ Generated when the window visibility status has changed.
         * Gdk::EventVisibility
 
 == Class Methods
+
 --- Gdk::EventVisibility.new(type = Gdk::Event::VISIBILITY_NOTIFY)
+
     Creates a new event of the given type. All fields are set to 0. ((* Since 2.2 *))
     * type: Gdk::Event::VISIBILITY_NOTIFY.
     * Returns: a new Gdk::EventVisibility.
 
 == Instance Methods
+
 --- state
+
     Gets the visibility state. See ((<GdkEventVisibilityState|Gdk::EventVisibility#GdkEventVisibilityState>)).
     * Returns: the visibility state
 
 --- state=(state)
+
     Sets the visibility state. See ((<GdkEventVisibilityState|Gdk::EventVisibility#GdkEventVisibilityState>)).
     * state: a new visibility state
     * Returns: the visibility state
 
 --- set_state(state)
+
     Same as Gdk::EventVisibility#state=.
     * state: a new visibility state
     * Returns: self
 
 == Constants
+
 === GdkEventVisibilityState
+
 Specifies the visiblity status of a window
+
 --- UNOBSCURED
+
     the window is completely visible.
+
 --- PARTIAL
-    the window is partially visible. 
+
+    the window is partially visible.
+
 --- FULLY_OBSCURED
-    the window is not visible at all.  
+
+    the window is not visible at all.
+
+== See Also
 
 == ChangeLog
 

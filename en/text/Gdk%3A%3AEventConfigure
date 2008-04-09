@@ -1,7 +1,9 @@
 = class Gdk::EventConfigure
-Generated when a window size or position has changed. 
+
+Generated when a window size or position has changed.
 
 == Object Hierarchy
+
 * Object
   * GLib::Boxed
     * Gdk::Event
@@ -9,59 +11,84 @@ Generated when a window size or position has changed.
         * Gdk::EventConfigure
 
 == Class Methods
+
 --- Gdk::EventConfigure.new(type = Gdk::Event::CONFIGURE)
+
     Creates a new event of the given type. All fields are set to 0. ((* Since 2.2 *))
     * type: Gdk::Event::CONFIGURE
     * Returns: a new Gdk::EventConfigure.
 
 == Instance Methods
+
 --- x
+
     Gets the new x coordinate of the window, relative to its parent. 
     * Returns: the new x coordinate of the window.
+
 --- x=(val)
+
     Sets the new x coordinate of the window, relative to its parent. 
     * val: the new x coordinate of the window.
     * Returns: x
+
 --- set_x(val)
+
     Same as Gdk::EventConfigure#x=.
     * val: the new x coordinate of the window.
     * Returns: self
 
 --- y
+
     Gets the new y coordinate of the window, relative to its parent. 
     * Returns: the new y coordinate of the window.
+
 --- y=(val)
+
     Sets the new y coordinate of the window, relative to its parent. 
     * val: the new y coordinate of the window.
     * Returns: y
+
 --- set_y(val)
+
     Same as Gdk::EventConfigure#y=.
     * val: the new y coordinate of the window.
     * Returns: self
 
 --- width
+
     Gets the new width of the window. 
-    * Returns: the new width of the window. 
+    * Returns: the new width of the window.
+
 --- width=(val)
+
     Sets the new width of the window. 
     * val: the new width of the window. 
     * Returns: val
+
 --- set_width(val)
+
     Same as Gdk::EventConfigure#width=.
     * val: the new width of the window. 
     * Returns: self
 
 --- height
+
     Gets the new height of the window. 
-    * Returns: the new height of the window. 
+    * Returns: the new height of the window.
+
 --- height=(val)
+
     Sets the new height of the window. 
     * val: the new height of the window. 
     * Returns: val
+
 --- set_height(val)
+
     Same as Gdk::EventConfigure#height=.
     * val: the new height of the window. 
     * Returns: self
+
+== See Also
 
 == ChangeLog
 

@@ -1,4 +1,5 @@
 = class Gtk::TextTag
+
 You may wish to begin by reading ((<the text widget conceptual overview>)) which gives an overview of all the objects and data types related to the text widget and how they work together.
 
 Tags should be in the Gtk::TextTagTable for a given Gtk::TextBuffer before using them with that buffer.
@@ -8,962 +9,1426 @@ Gtk::TextBuffer#create_tag is the best way to create tags. See gtk-demo for nume
 The "invisible" property was not implemented for GTK+ 2.0; it's planned to be implemented in future releases.
 
 == Object Hierarchy
+
 * Object
   * GLib::Instantiatable
     * GLib::Object
       * Gtk::TextTag
 
 == Class Methods
+
 --- Gtk::TextTag.new(name = nil)
+
     Creates a Gtk::TextTag. Configure the tag using object arguments, 
     * name: tag name, or nil 
-    * Returns: a new Gtk::TextTag 
-
+    * Returns: a new Gtk::TextTag
 
 == Instance Methods
+
 --- priority
+
     Get the tag priority.
-    * Returns: The tag's priority. 
+    * Returns: The tag's priority.
+
 --- priority=(priority)
+
     Sets the priority of a Gtk::TextTag. Valid priorities are start at 0 and go to one less than Gtk::TextTagTable#size. Each tag in a table has a unique priority; setting the priority of one tag shifts the priorities of all the other tags in the table to maintain a unique priority for each tag. Higher priority tags "win" if two tags both set the same text attribute. When adding a tag to a tag table, it will be assigned the highest priority in the table by default; so normally the precedence of a set of tags is the order in which they were added to the table, or created with Gtk::TextBuffer#create_tag, which adds the tag to the buffer's table automatically.
     * priority: the new priority 
     * Returns: priority
+
 --- set_priority(priority)
+
     Same as Gtk::TextTag#priority=.
     * priority: the new priority 
     * Returns: self
 
 --- event(event_object, event, iter)
+
     Emits the "event" signal on the Gtk::TextTag.
     * event_object: object that received the event, such as a widget 
     * event: the event 
     * iter: location where the event was received 
-    * Returns : result of signal emission (true if the event was handled) 
+    * Returns : result of signal emission (true if the event was handled)
 
 --- name
+
     Gets the name of the tag, or nil for anonymous tags. Can only be set when the tag is created.
     * Returns: the name of the tag.
+
 --- name=(name)
+
     Sets the name of the tag, or nil for anonymous tags. Can only be set when the tag is created.
     * name: the name of the tag
     * Returns: self
+
 --- set_name(name)
+
     Same as Gtk::TextTag#name=.
     * name: the name of the tag
     * Returns: self
 
 --- background=(color)
+
     Sets the background color, as a string such as "red" or "FFFFFF"
     * color: a background color
     * Returns: color
+
 --- set_background(color)
+
     Same as Gtk::TextTag#background=.
     * color: a background color
     * Returns: self
 
 --- foreground=(color)
+
     Sets the foreground color, as a string such as "red" or "FFFFFF"
     * color: a foreground color
     * Returns: color
+
 --- set_foreground(color)
+
     Same as Gtk::TextTag#foreground=.
     * color: a foreground color
     * Returns: self
 
 --- background_gdk
+
     Gets the background color, as a Gdk::Color. The color need not be allocated.
     * Returns: a Gdk::Color
+
 --- background_gdk=(color)
+
     Sets the background color, as a Gdk::Color. The color need not be allocated.
     * color: a Gdk::Color
     * Returns: color
+
 --- set_background_gdk(color)
+
     Same as Gtk::TextTag#background_gdk=.
     * color: a Gdk::Color
     * Returns: self
 
 --- foreground_gdk
+
     Gets the foreground color, as a Gdk::Color. The color need not be allocated.
     * Returns: a Gdk::Color
+
 --- foreground_gdk=(color)
+
     Sets the foreground color, as a Gdk::Color. The color need not be allocated.
     * color: a Gdk::Color
     * Returns: color
+
 --- set_foreground_gdk(color)
+
     Same as Gtk::TextTag#foreground_gdk=.
     * color: a Gdk::Color
     * Returns: self
 
 --- background_stipple
+
     Gets a Gdk::Pixmap(depth=1) to use for stippling the background color.
     * Returns: a Gdk::Pixmap
+
 --- background_stipple=(bitmap)
+
     Sets a Gdk::Pixmap(depth=1) to use for stippling the background color.
     * bitmap: a Gdk::Pixmap(depth=1)
     * Returns: bitmap
+
 --- set_background_stipple(bitmap)
+
     Same as Gtk::TextTag#background_stipple=.
     * bitmap: a Gdk::Pixmap(depth=1)
     * Returns: self
 
 --- foreground_stipple
+
     Gets a Gdk::Pixmap(depth=1) to use for stippling the foreground color.
     * Returns: a Gdk::Pixmap
+
 --- foreground_stipple=(bitmap)
+
     Sets a Gdk::Pixmap(depth=1) to use for stippling the foreground color.
     * bitmap: a Gdk::Pixmap(depth=1)
     * Returns: bitmap
+
 --- set_foreground_stipple(bitmap)
+
     Same as Gtk::TextTag#foreground_stipple=.
     * bitmap: a Gdk::Pixmap(depth=1)
     * Returns: self
 
 --- font
+
     Gets the font as a Pango font name, e.g. "Sans Italic 12"
     * Returns: the font name.
+
 --- font=(font)
+
     Sets the font as a Pango font name, e.g. "Sans Italic 12"
     * font: the font name.
     * Returns: font.
+
 --- set_font(font)
+
     Same as Gtk::TextTag#font=.
     * font: the font name.
     * Returns: self
 
 --- font_desc
+
     Gets the font as a Pango::FontDescription.
     * Returns: the font description.
+
 --- font_desc=(desc)
+
     Sets the font as a Pango::FontDescription.
     * desc: the font description
     * Returns: desc
+
 --- set_font_desc(desc)
+
     Same as Gtk::TextTag#font_desc=.
     * desc: the font description
     * Returns: self
 
 --- family
+
     Gets the name of the font family, e.g. Sans, Helvetica, Times, Monospace
     * Returns: the name of the font family
+
 --- family=(family)
+
     Sets the name of the font family, e.g. Sans, Helvetica, Times, Monospace
     * family: the name of the font family
     * Returns: family
+
 --- set_family(family)
+
     Same as Gtk::TextTag#family=.
     * family: the name of the font family
     * Returns: self
 
 --- style
+
     Gets the font style as a ((<PangoStyle|Pango::FontDescription#PangoStyle>)), e.g. Pango::FontDescription::STYLE_ITALIC
     * Returns: the font style(((<PangoStyle|Pango::FontDescription#PangoStyle>)))
+
 --- style=(style)
+
     Sets the font style as a ((<PangoStyle|Pango::FontDescription#PangoStyle>)), e.g. Pango::FontDescription::STYLE_ITALIC
     * style: the font style(((<PangoStyle|Pango::FontDescription#PangoStyle>)))
     * Returns: style
+
 --- set_style(style)
+
     Same as Gtk::TextTag#style=.
     * style: the font style(((<PangoStyle|Pango::FontDescription#PangoStyle>)))
     * Returns: self
 
 --- variant
+
     Gets the font variant as a ((<PangoVariant|Pango::FontDescription#PangoVariant>)), e.g. Pango::FontDescription::VARIANT_SMALL_CAPS
     * Returns: the font variant(((<PangoVariant|Pango::FontDescription#PangoVariant>)))
+
 --- variant=(variant)
+
     Sets the font variant as a ((<PangoVariant|Pango::FontDescription#PangoVariant>)), e.g. Pango::FontDescription::VARIANT_SMALL_CAPS
     * variant: the font variant(((<PangoVariant|Pango::FontDescription#PangoVariant>)))
     * Returns: variant
+
 --- set_variant(variant)
+
     Same as Gtk::TextTag#variant=.
     * variant: the font variant(((<PangoVariant|Pango::FontDescription#PangoVariant>)))
     * Returns: self
 
 --- weight
+
     Gets the font weight as an Integer, see predefined values in ((<PangoWeight|Pango::FontDescription#PangoWeight>)); for example, Pango::FontDescription::WEIGHT_BOLD
     * Returns: the font weight(Integer)
+
 --- weight=(weight)
+
     Sets the font weight as an Integer, see predefined values in ((<PangoWeight|Pango::FontDescription#PangoWeight>)); for example, Pango::FontDescription::WEIGHT_BOLD
     * weight: the font weight(Integer) or predefined values in ((<PangoWeight|Pango::FontDescription#PangoWeight>))
     * Returns: weight
+
 --- set_weight(weight)
+
     Same as Gtk::TextTag#weight=.
     * weight: the font weight(Integer) or predefined values in ((<PangoWeight|Pango::FontDescription#PangoWeight>))
     * Returns: self
 
 --- stretch
+
     Gets the font stretch as a ((<PangoStretch|Pango::FontDescription#PangoStretch>)), e.g. Pango::FontDescription::STRETCH_CONDENSED
     * Returns: the font stretch(((<PangoStretch|Pango::FontDescription#PangoStretch>)))
+
 --- stretch=(stretch)
+
     Sets the font stretch as a ((<PangoStretch|Pango::FontDescription#PangoStretch>)), e.g. Pango::FontDescription::STRETCH_CONDENSED
     * stretch: the font stretch(((<PangoStretch|Pango::FontDescription#PangoStretch>)))
     * Returns: stretch
+
 --- set_stretch(stretch)
+
     Same as Gtk::TextTag#stretch=.
     * Returns: self
 
 --- size
+
     Gets the font size in Pango units.
     * Returns: the font size
+
 --- size=(size)
+
     Sets the font size in Pango units.
     * size: the font size
     * Returns: size
+
 --- set_size(size)
+
     Same as Gtk::TextTag#size=.
     * size: the font size
     * Returns: self
 
 --- size_points
+
     Gets the font size in points.
     * Returns: the font size in points
+
 --- size_points=(size_points)
+
     Sets the font size in points.
     * size_points: the font size in points
     * Returns: size_points
+
 --- set_size_points(size_points)
+
     Same as Gtk::TextTag#size_points=.
     * size_points: the font size in points
     * Returns: self
 
 --- scale
+
     Gets the font size as a scale factor relative to the default font size. This properly adapts to theme changes etc. so is recommended. Pango predefines some scales such as Pango::AttrScale::X_LARGE
     * Returns: the font size as a scale factor relative to the default font size
+
 --- scale=(scale)
+
     Sets the font size as a scale factor relative to the default font size. This properly adapts to theme changes etc. so is recommended. Pango predefines some scales such as Pango::AttrScale::X_LARGE
     * scale: the font size as a scale factor relative to the default font size
     * Returns: scale
+
 --- set_scale(scale)
+
     Same as Gtk::TextTag#scale=.
     * scale: the font size as a scale factor relative to the default font size
     * Returns: self
 
 --- pixels_above_lines
+
     Gets the pixels of blank space above paragraphs.
     * Returns: the pixels of blank space above paragraphs
+
 --- pixels_above_lines=(pixels)
+
     Sets the pixels of blank space above paragraphs.
     * pixels: the pixels of blank space above paragraphs
     * Returns: pixels
+
 --- set_pixels_above_lines(pixels)
+
     Same as Gtk::TextTag#pixels_above_lines=.
     * pixels: the pixels of blank space above paragraphs
     * Returns: self
 
 --- pixels_below_lines
+
     Gets the pixels of blank space below paragraphs
     * Returns: the pixels of blank space below paragraphs
+
 --- pixels_below_lines=(pixels)
+
     Sets the pixels of blank space below paragraphs
     * pixels: the pixels of blank space below paragraphs
     * Returns: pixels
+
 --- set_pixels_below_lines(pixels)
+
     Same as Gtk::TextTag#pixels_below_lines=.
     * pixels: the pixels of blank space below paragraphs
     * Returns: self
 
 --- pixels_inside_wrap_set?
+
     Gets the value whether this tag affects the number of pixels between wrapped lines or not.
     * Returns: true if this tag affects the number of pixels between wrapped lines
+
 --- pixels_inside_wrap_set=(setting)
+
     Sets the value whether this tag affects the number of pixels between wrapped lines or not.
     * setting: true if this tag affects the number of pixels between wrapped lines
     * Returns: setting
+
 --- set_pixels_inside_wrap_set(setting)
+
     Same as Gtk::TextTag#pixels_inside_wrap_set=.
     * setting: true if this tag affects the number of pixels between wrapped lines
     * Returns: self
 
 --- editable?
+
     Gets the value whether the text can be modified by the user or not.
     * Returns: true if the text can be modified by the user
+
 --- editable=(editable)
+
     Sets the value whether the text can be modified by the user or not.
     * editable: true if the text can be modified by the user
     * Returns: editable
+
 --- set_editable(editable)
+
     Same as Gtk::TextTag#editable=.
     * editable: true if the text can be modified by the user
     * Returns: self
 
 --- wrap_mode
+
     Gets the value whether to wrap lines never, at word boundaries, or at character boundaries or not.
     * Returns: true if to wrap lines never, at word boundaries, or at character boundaries
+
 --- wrap_mode=(wrap_mode)
+
     Sets the value whether to wrap lines never, at word boundaries, or at character boundaries or not.
     * wrap_mode: true if to wrap lines never, at word boundaries, or at character boundaries
     * Returns: wrap_mode
+
 --- set_wrap_mode(wrap_mode)
+
     Same as Gtk::TextTag#wrap_mode=.
     * wrap_mode: true if to wrap lines never, at word boundaries, or at character boundaries
     * Returns: self
 
 --- justification
+
     Gets the Left, right, or center justification.
     * Returns: Left, right, or center justification (((<GtkJustification|Gtk#GtkJustification>)))
+
 --- justification=(setting)
+
     Sets the Left, right, or center justification.
     * setting: Left, right, or center justification (((<GtkJustification|Gtk#GtkJustification>)))
     * Returns: setting
+
 --- set_justification(setting)
+
     Same as Gtk::TextTag#justification=.
     * setting: Left, right, or center justification (((<GtkJustification|Gtk#GtkJustification>)))
     * Returns: self
 
 --- direction
+
     Gets the Text direction, e.g. right-to-left or left-to-right.
     * Returns: Text direction, e.g. right-to-left or left-to-right (((<GtkTextDirection|Gtk::Widget#GtkTextDirection>)))
+
 --- direction=(direction)
+
     Sets the Text direction, e.g. right-to-left or left-to-right.
     * direction: Text direction, e.g. right-to-left or left-to-right (((<GtkTextDirection|Gtk::Widget#GtkTextDirection>)))
     * Returns: direction
+
 --- set_direction(direction)
+
     Same as Gtk::TextTag#direction=.
     * direction: Text direction, e.g. right-to-left or left-to-right (((<GtkTextDirection|Gtk::Widget#GtkTextDirection>)))
     * Returns: self
 
 --- left_margin
+
     Gets the Width of the left margin in pixels.
     * Returns: Width of the left margin in pixels
+
 --- left_margin=(pixels)
+
     Sets the Width of the left margin in pixels.
     * pixels: Width of the left margin in pixels
     * Returns: pixels
+
 --- set_left_margin(pixels)
+
     Same as Gtk::TextTag#left_margin=.
     * pixels: Width of the left margin in pixels
     * Returns: self
 
 --- indent
+
     Gets the Amount to indent the paragraph, in pixels.
     * Returns: Amount to indent the paragraph, in pixels
+
 --- indent=(pixels)
+
     Sets the Amount to indent the paragraph, in pixels.
     * pixels: Amount to indent the paragraph, in pixels
     * Returns: pixels
+
 --- set_indent(pixels)
+
     Same as Gtk::TextTag#indent=.
     * pixels: Amount to indent the paragraph, in pixels
     * Returns: self
 
 --- strikethrough?
+
     Gets the value whether to strike through the text or not.
     * Returns: true if to strike through the text
+
 --- strikethrough=(strikethrough)
+
     Sets the value whether to strike through the text or not.
     * strikethrough: true if to strike through the text
     * Returns: strikethrough
+
 --- set_strikethrough(strikethrough)
+
     Same as Gtk::TextTag#strikethrough=.
     * strikethrough: true if to strike through the text
     * Returns: self
 
 --- right_margin
+
     Gets the Width of the right margin in pixels.
     * Returns: Width of the right margin in pixels
+
 --- right_margin=(margin)
+
     Sets the Width of the right margin in pixels.
     * margin: Width of the right margin in pixels
     * Returns: margin
+
 --- set_right_margin(margin)
+
     Same as Gtk::TextTag#right_margin=.
     * margin: Width of the right margin in pixels
     * Returns: self
 
 --- underline
+
     Gets the style of underline for this text.
     * Returns: Style of underline for this text (((<PangoUnderline|Pango::AttrUnderline#PangoUnderline>)))
+
 --- underline=(underline)
+
     Sets the style of underline for this text.
     * underline: Style of underline for this text (((<PangoUnderline|Pango::AttrUnderline#PangoUnderline>)))
     * Returns: underline
+
 --- set_underline(underline)
+
     Same as Gtk::TextTag#underline=.
     * underline: Style of underline for this text (((<PangoUnderline|Pango::AttrUnderline#PangoUnderline>)))
     * Returns: self
 
 --- rise
+
     Gets the offset of text above the baseline (below the baseline if rise is negative) in pixels.
     * Returns: Offset of text above the baseline (below the baseline if rise is negative) in pixels
+
 --- rise=(pixel)
+
     Sets the offset of text above the baseline (below the baseline if rise is negative) in pixels.
     * pixel: Offset of text above the baseline (below the baseline if rise is negative) in pixels
     * Returns: pixel
+
 --- set_rise(pixel)
+
     Same as Gtk::TextTag#rise=.
     * pixel: Offset of text above the baseline (below the baseline if rise is negative) in pixels
     * Returns: self
 
 --- background_full_height?
+
     Gets the value whether the background color fills the entire line height or only the height of the tagged characters or not.
     * Returns: true if the background color fills the entire line height or only the height of the tagged characters
+
 --- background_full_height=(setting)
+
     Sets the value whether the background color fills the entire line height or only the height of the tagged characters or not.
     * setting: true if the background color fills the entire line height or only the height of the tagged characters
     * Returns: setting
+
 --- set_background_full_height(setting)
+
     Same as Gtk::TextTag#background_full_height=.
     * setting: true if the background color fills the entire line height or only the height of the tagged characters
     * Returns: self
 
 --- language
+
     Gets the language this text is in, as an ISO code. Pango can use this as a hint when rendering the text. If you don't understand this parameter, you probably don't need it.
     * Returns: The language this text is in, as an ISO code. Pango can use this as a hint when rendering the text. If you don't understand this parameter, you probably don't need it
+
 --- language=(language)
+
     Sets the language this text is in, as an ISO code. Pango can use this as a hint when rendering the text. If you don't understand this parameter, you probably don't need it.
     * language: The language this text is in, as an ISO code. Pango can use this as a hint when rendering the text. If you don't understand this parameter, you probably don't need it
     * Returns: language
+
 --- set_language(language)
+
     Same as Gtk::TextTag#language=.
     * language: The language this text is in, as an ISO code. Pango can use this as a hint when rendering the text. If you don't understand this parameter, you probably don't need it
     * Returns: self
 
 --- tabs
+
     Gets the custom tabs for this text.
     * Returns: custom tabs for this text
+
 --- tabs=(tabs)
+
     Sets the custom tabs for this text.
     * tabs: custom tabs for this text
     * Returns: tabs
+
 --- set_tabs(tabs)
+
     Same as Gtk::TextTag#tabs=.
     * tabs: custom tabs for this text
     * Returns: self
 
 --- invisible?
+
     Gets the value whether this text is hidden. Not implemented in GTK 2.0.
     * Returns: true if this text is hidden
+
 --- invisible=(invisible)
+
     Sets the value whether this text is hidden. Not implemented in GTK 2.0.
     * invisible: true if this text is hidden
     * Returns: invisible
+
 --- set_invisible(invisible)
+
     Same as Gtk::TextTag#invisible=. Not implemented in GTK 2.0.
     * invisible: true if this text is hidden
     * Returns: self
 
 --- background_set?
+
     Gets the value whether this tag affects the background color or not.
     * Returns: true if this tag affects the background color
+
 --- background_set=(setting)
+
     Sets the value whether this tag affects the background color or not.
     * setting: true if this tag affects the background color
     * Returns: setting
+
 --- set_background_set(setting)
+
     Same as Gtk::TextTag#background_set=.
     * setting: true if this tag affects the background color
     * Returns: self
 
 --- foreground_set?
+
     Gets the value whether this tag affects the foreground color or not.
     * Returns: true if this tag affects the foreground color
+
 --- foreground_set=(setting)
+
     Sets the value whether this tag affects the foreground color or not.
     * setting: true if this tag affects the foreground color
     * Returns: setting
+
 --- set_foreground_set(setting)
+
     Same as Gtk::TextTag#foreground_set=.
     * setting: true if this tag affects the foreground color
     * Returns: self
 
 --- background_stipple_set?
+
     Gets the value whether this tag affects the background stipple or not.
     * Returns: true if this tag affects the background stipple
+
 --- background_stipple_set=(setting)
+
     Sets the value whether this tag affects the background stipple or not.
     * setting: true if this tag affects the background stipple
     * Returns: setting
+
 --- set_background_stipple_set(setting)
+
     Same as Gtk::TextTag#background_stipple_set=.
     * setting: true if this tag affects the background stipple
     * Returns: self
 
 --- foreground_stipple_set?
+
     Gets the value whether this tag affects the foreground stipple or not.
     * Returns: true if this tag affects the foreground stipple
+
 --- foreground_stipple_set=(setting)
+
     Sets the value whether this tag affects the foreground stipple or not.
     * setting: true if this tag affects the foreground stipple
     * Returns: setting
+
 --- set_foreground_stipple_set(setting)
+
     Same as Gtk::TextTag#foreground_stipple_set=.
     * setting: true if this tag affects the foreground stipple
     * Returns: self
 
 --- family_set?
+
     Gets the value whether this tag affects the font family or not.
     * Returns: true if this tag affects the font family
+
 --- family_set=(family_set)
+
     Sets the value whether this tag affects the font family or not.
     * family_set: true if this tag affects the font family
     * Returns: family_set
+
 --- set_family_set(family_set)
+
     Same as Gtk::TextTag#family_set=.
     * family_set: true if this tag affects the font family
     * Returns: self
 
 --- style_set?
+
     Gets the value whether this tag affects the font style or not.
     * Returns: true if this tag affects the font style
+
 --- style_set=(style_set)
+
     Sets the value whether this tag affects the font style or not.
     * style_set: true if this tag affects the font style
     * Returns: style_set
+
 --- set_style_set(style_set)
+
     Same as Gtk::TextTag#style_set=.
     * style_set: true if this tag affects the font style
     * Returns: self
 
 --- variant_set?
+
     Gets the value whether this tag affects the font variant or not.
     * Returns: true if this tag affects the font variant
+
 --- variant_set=(variant_set)
+
     Sets the value whether this tag affects the font variant or not.
     * variant_set: true if this tag affects the font variant
     * Returns: variant_set
+
 --- set_variant_set(variant_set)
+
     Same as Gtk::TextTag#variant_set=.
     * variant_set: true if this tag affects the font variant
     * Returns: self
 
 --- weight_set?
+
     Gets the value whether this tag affects the font weight or not.
     * Returns: true if this tag affects the font weight
+
 --- weight_set=(weight_set)
+
     Sets the value whether this tag affects the font weight or not.
     * weight_set: true if this tag affects the font weight
     * Returns: weight_set
+
 --- set_weight_set(weight_set)
+
     Same as Gtk::TextTag#weight_set=.
     * weight_set: true if this tag affects the font weight
     * Returns: self
 
 --- stretch_set?
+
     Gets the value whether this tag affects the font stretch or not.
     * Returns: true if this tag affects the font stretch
+
 --- stretch_set=(stretch_set)
+
     Sets the value whether this tag affects the font stretch or not.
     * stretch_set: true if this tag affects the font stretch
     * Returns: stretch_set
+
 --- set_stretch_set(stretch_set)
+
     Same as Gtk::TextTag#stretch_set=.
     * stretch_set: true if this tag affects the font stretch
     * Returns: self
 
 --- size_set?
+
     Gets the value whether this tag affects the font size or not.
     * Returns: true if this tag affects the font size
+
 --- size_set=(size_set)
+
     Sets the value whether this tag affects the font size or not.
     * size_set: true if this tag affects the font size
     * Returns: size_set
+
 --- set_size_set(size_set)
+
     Same as Gtk::TextTag#size_set=.
     * size_set: true if this tag affects the font size
     * Returns: self
 
 --- scale_set?
+
     Gets the value whether this tag scales the font size by a factor or not.
     * Returns: true if this tag scales the font size by a factor
+
 --- scale_set=(scale_set)
+
     Sets the value whether this tag scales the font size by a factor or not.
     * scale_set: true if this tag scales the font size by a factor
     * Returns: scale_set
+
 --- set_scale_set(scale_set)
+
     Same as Gtk::TextTag#scale_set=.
     * scale_set: true if this tag scales the font size by a factor
     * Returns: self
 
 --- pixels_above_lines_set?
+
     Gets the value whether this tag affects the number of pixels above lines or not.
     * Returns: true if this tag affects the number of pixels above lines
+
 --- pixels_above_lines_set=(setting)
+
     Sets the value whether this tag affects the number of pixels above lines or not.
     * setting: true if this tag affects the number of pixels above lines
     * Returns: setting
+
 --- set_pixels_above_lines_set(setting)
+
     Same as Gtk::TextTag#pixels_above_lines_set=.
     * setting: true if this tag affects the number of pixels above lines
     * Returns: self
 
 --- pixels_below_lines_set?
+
     Gets the value whether this tag affects the number of pixels above lines or not.
     * Returns: true if this tag affects the number of pixels above lines
+
 --- pixels_below_lines_set=(setting)
+
     Sets the value whether this tag affects the number of pixels above lines or not.
     * setting: true if this tag affects the number of pixels above lines
     * Returns: setting
+
 --- set_pixels_below_lines_set(setting)
+
     Same as Gtk::TextTag#pixels_below_lines_set=.
     * setting: true if this tag affects the number of pixels above lines
     * Returns: self
 
 --- pixels_inside_wrap
+
     Gets the Pixels of blank space between wrapped lines in a paragraph.
     * Returns: Pixels of blank space between wrapped lines in a paragraph
+
 --- pixels_inside_wrap=(setting)
+
     Sets the Pixels of blank space between wrapped lines in a paragraph.
     * setting: Pixels of blank space between wrapped lines in a paragraph
     * Returns: setting
+
 --- set_pixels_inside_wrap(setting)
+
     Same as Gtk::TextTag#pixels_inside_wrap=.
     * setting: Pixels of blank space between wrapped lines in a paragraph
     * Returns: self
 
 --- editable_set?
+
     Gets the value whether this tag affects text editability or not.
     * Returns: true if this tag affects text editability
+
 --- editable_set=(editable_set)
+
     Sets the value whether this tag affects text editability or not.
     * editable_set: true if this tag affects text editability
     * Returns: editable_set
+
 --- set_editable_set(editable_set)
+
     Same as Gtk::TextTag#editable_set=.
     * editable_set: true if this tag affects text editability
     * Returns: self
 
 --- wrap_mode_set?
+
     Gets the value whether this tag affects line wrap mode or not.
     * Returns: true if this tag affects line wrap mode
+
 --- wrap_mode_set=(wrap_mode_set)
+
     Sets the value whether this tag affects line wrap mode or not.
     * wrap_mode_set: true if this tag affects line wrap mode
     * Returns: wrap_mode_set
+
 --- set_wrap_mode_set(wrap_mode_set)
+
     Same as Gtk::TextTag#wrap_mode_set=.
     * wrap_mode_set: true if this tag affects line wrap mode
     * Returns: self
 
 --- justification_set?
+
     Gets the value whether this tag affects paragraph justification or not.
     * Returns: true if this tag affects paragraph justification
+
 --- justification_set=(setting)
+
     Sets the value whether this tag affects paragraph justification or not.
     * setting: true if this tag affects paragraph justification
     * Returns: setting
+
 --- set_justification_set(setting)
+
     Same as Gtk::TextTag#justification_set=.
     * setting: true if this tag affects paragraph justification
     * Returns: self
 
 --- left_margin_set?
+
     Gets the value whether this tag affects the left margin or not.
     * Returns: true if this tag affects the left margin
+
 --- left_margin_set=(setting)
+
     Sets the value whether this tag affects the left margin or not.
     * setting: true if this tag affects the left margin
     * Returns: setting
+
 --- set_left_margin_set(setting)
+
     Same as Gtk::TextTag#left_margin_set=.
     * setting: true if this tag affects the left margin
     * Returns: self
 
 --- indent_set?
+
     Gets the value whether this tag affects indentation or not.
     * Returns: true if this tag affects indentation
+
 --- indent_set=(indent_set)
+
     Sets the value whether this tag affects indentation or not.
     * indent_set: true if this tag affects indentation
     * Returns: indent_set
+
 --- set_indent_set(indent_set)
+
     Same as Gtk::TextTag#indent_set=.
     * indent_set: true if this tag affects indentation
     * Returns: self
 
 --- strikethrough_set?
+
     Gets the value whether this tag affects strikethrough or not.
     * Returns: true if this tag affects strikethrough
+
 --- strikethrough_set=(setting)
+
     Sets the value whether this tag affects strikethrough or not.
     * setting: true if this tag affects strikethrough
     * Returns: setting
+
 --- set_strikethrough_set(setting)
+
     Same as Gtk::TextTag#strikethrough_set=.
     * setting: true if this tag affects strikethrough
     * Returns: self
 
 --- right_margin_set?
+
     Gets the value whether this tag affects the right margin or not.
     * Returns: true if this tag affects the right margin
+
 --- right_margin_set=(setting)
+
     Sets the value whether this tag affects the right margin or not.
     * setting: true if this tag affects the right margin
     * Returns: setting
+
 --- set_right_margin_set(setting)
+
     Same as Gtk::TextTag#right_margin_set=.
     * setting: true if this tag affects the right margin
     * Returns: self
 
 --- underline_set?
+
     Gets the value whether this tag affects underlining or not.
     * Returns: true if this tag affects underlining
+
 --- underline_set=(setting)
+
     Sets the value whether this tag affects underlining or not.
     * setting: true if this tag affects underlining
     * Returns: setting
+
 --- set_underline_set(setting)
+
     Same as Gtk::TextTag#underline_set=.
     * setting: true if this tag affects underlining
     * Returns: self
 
 --- rise_set?
+
     Gets the value whether this tag affects the rise or not.
     * Returns: true if this tag affects the rise
+
 --- rise_set=(rise_set)
+
     Sets the value whether this tag affects the rise or not.
     * rise_set: true if this tag affects the rise
     * Returns: rise_set
+
 --- set_rise_set(rise_set)
+
     Same as Gtk::TextTag#rise_set=.
     * rise_set: true if this tag affects the rise
     * Returns: self
 
 --- background_full_height_set?
+
     Gets the value whether this tag affects background height or not.
     * Returns: true if this tag affects background height
+
 --- background_full_height_set=(setting)
+
     Sets the value whether this tag affects background height or not.
     * setting: true if this tag affects background height
     * Returns: setting
+
 --- set_background_full_height_set(setting)
+
     Same as Gtk::TextTag#background_full_height_set=.
     * setting: true if this tag affects background height
     * Returns: self
 
 --- language_set?
+
     Gets the value whether this tag affects the language the text is rendered as or not.
     * Returns: true if this tag affects the language the text is rendered as
+
 --- language_set=(setting)
+
     Sets the value whether this tag affects the language the text is rendered as or not.
     * setting: true if this tag affects the language the text is rendered as
     * Returns: setting
+
 --- set_language_set(setting)
+
     Same as Gtk::TextTag#language_set=.
     * setting: true if this tag affects the language the text is rendered as
     * Returns: self
 
 --- tabs_set?
+
     Gets the value whether this tag affects tabs or not.
     * Returns: true if this tag affects tabs
+
 --- tabs_set=(tabs_set)
+
     Sets the value whether this tag affects tabs or not.
     * tabs_set: true if this tag affects tabs
     * Returns: tabs_set
+
 --- set_tabs_set(tabs_set)
+
     Same as Gtk::TextTag#tabs_set=.
     * tabs_set: true if this tag affects tabs
     * Returns: self
 
 --- invisible_set?
+
     Gets the value whether this tag affects text visibility or not.
     * Returns: true if this tag affects text visibility
+
 --- invisible_set=(setting)
+
     Sets the value whether this tag affects text visibility or not.
     * setting: true if this tag affects text visibility
     * Returns: setting
+
 --- set_invisible_set(setting)
+
     Same as Gtk::TextTag#invisible_set=.
     * setting: true if this tag affects text visibility
     * Returns: self
 
+--- accumulative_margin=(accumulative_margin)
+
+    Sets the value whether left and right margins accumulate. or not.
+     * accumulative_margin: true if left and right margins accumulate.
+     * Returns: accumulative_margin
+
+--- accumulative_margin?
+
+    Gets the value whether left and right margins accumulate. or not.
+     * Returns: true if left and right margins accumulate.
+
+--- paragraph_background=(paragraph_background)
+
+    Sets the Paragraph background color as a string.
+     * paragraph_background: Paragraph background color as a string
+     * Returns: paragraph_background
+
+--- paragraph_background_gdk
+
+    Gets the Paragraph background color as a (possibly unallocated) Gdk::Color.
+     * Returns: Paragraph background color as a (possibly unallocated) Gdk::Color
+
+--- paragraph_background_gdk=(paragraph_background_gdk)
+
+    Sets the Paragraph background color as a (possibly unallocated) Gdk::Color.
+     * paragraph_background_gdk: Paragraph background color as a (possibly unallocated) Gdk::Color
+     * Returns: paragraph_background_gdk
+
+--- paragraph_background_set=(paragraph_background_set)
+
+    Sets the value whether this tag affects the paragraph background color or not.
+     * paragraph_background_set: true if this tag affects the paragraph background color
+     * Returns: paragraph_background_set
+
+--- paragraph_background_set?
+
+    Gets the value whether this tag affects the paragraph background color or not.
+     * Returns: true if this tag affects the paragraph background color
+
+--- set_accumulative_margin(accumulative_margin)
+
+    Same as accumulative_margin=.
+     * accumulative_margin: true if left and right margins accumulate.
+     * Returns: self
+
+--- set_paragraph_background(paragraph_background)
+
+    Same as paragraph_background=.
+     * paragraph_background: Paragraph background color as a string
+     * Returns: self
+
+--- set_paragraph_background_gdk(paragraph_background_gdk)
+
+    Same as paragraph_background_gdk=.
+     * paragraph_background_gdk: Paragraph background color as a (possibly unallocated) Gdk::Color
+     * Returns: self
+
+--- set_paragraph_background_set(paragraph_background_set)
+
+    Same as paragraph_background_set=.
+     * paragraph_background_set: true if this tag affects the paragraph background color
+     * Returns: self
+
 == Constants
+
 === GtkWrapMode
+
 Describes a type of line wrapping.
+
 --- WRAP_NONE
+
     do not wrap lines; just make the text area wider.
+
 --- WRAP_CHAR
+
     wrap text, breaking lines anywhere the cursor can appear (between characters, usually - if you want to be technical, between graphemes, see Pango.get_log_attrs).
+
 --- WRAP_WORD
+
     wrap text, breaking lines in between words.
 
+--- WRAP_WORD_CHAR
+
 == Properties
+
 --- background: String (Write)
+
     Background color as a string
 
 --- background-full-height: true or false (Read/Write)
+
     Whether the background color fills the entire line height or only the height of the tagged characters
 
 --- background-full-height-set: true or false (Read/Write)
+
     Whether this tag affects background height
 
 --- background-gdk: Gdk::Color (Read/Write)
+
     Background color as a (possibly unallocated) Gdk::Color
 
 --- background-set: true or false (Read/Write)
+
     Whether this tag affects the background color
 
 --- background-stipple: Gdk::Pixmap (Read/Write)
+
     Bitmap to use as a mask when drawing the text background
 
 --- background-stipple-set: true or false (Read/Write)
+
     Whether this tag affects the background stipple
 
 --- direction: Integer (Read/Write)
+
     Text direction, e.g. right-to-left or left-to-right
 
 --- editable: true or false (Read/Write)
+
     Whether the text can be modified by the user
 
 --- editable-set: true or false (Read/Write)
+
     Whether this tag affects text editability
 
 --- family: String (Read/Write)
+
     Name of the font family, e.g. Sans, Helvetica, Times, Monospace
 
 --- family-set: true or false (Read/Write)
+
     Whether this tag affects the font family
 
 --- font: String (Read/Write)
+
     Font description as a string, e.g. "Sans Italic 12"
 
 --- font-desc: Pango::FontDescription (Read/Write)
+
     Font description as a Pango::FontDescription struct
 
 --- foreground: String (Write)
+
     Foreground color as a string
 
 --- foreground-gdk: Gdk::Color (Read/Write)
+
     Foreground color as a (possibly unallocated) Gdk::Color
 
 --- foreground-set: true or false (Read/Write)
+
     Whether this tag affects the foreground color
 
 --- foreground-stipple: Gdk::Pixmap (Read/Write)
+
     Bitmap to use as a mask when drawing the text foreground
 
 --- foreground-stipple-set: true or false (Read/Write)
+
     Whether this tag affects the foreground stipple
 
 --- indent: Integer (Read/Write)
+
     Amount to indent the paragraph, in pixels
 
 --- indent-set: true or false (Read/Write)
+
     Whether this tag affects indentation
 
 --- invisible: true or false (Read/Write)
+
     Whether this text is hidden. Not implemented in GTK 2.0
 
 --- invisible-set: true or false (Read/Write)
+
     Whether this tag affects text visibility
 
 --- justification: Integer (Read/Write)
+
     Left, right, or center justification
 
 --- justification-set: true or false (Read/Write)
+
     Whether this tag affects paragraph justification
 
 --- language: String (Read/Write)
+
     The language this text is in, as an ISO code. Pango can use this as a hint when rendering the text. If you don't understand this parameter, you probably don't need it
 
 --- language-set: true or false (Read/Write)
+
     Whether this tag affects the language the text is rendered as
 
 --- left-margin: Integer (Read/Write)
+
     Width of the left margin in pixels
 
 --- left-margin-set: true or false (Read/Write)
+
     Whether this tag affects the left margin
 
 --- name: String (Read/Write)
+
     Name used to refer to the text tag. nil for anonymous tags
 
 --- pixels-above-lines: Integer (Read/Write)
+
     Pixels of blank space above paragraphs
 
 --- pixels-above-lines-set: true or false (Read/Write)
+
     Whether this tag affects the number of pixels above lines
 
 --- pixels-below-lines: Integer (Read/Write)
+
     Pixels of blank space below paragraphs
 
 --- pixels-below-lines-set: true or false (Read/Write)
+
     Whether this tag affects the number of pixels above lines
 
 --- pixels-inside-wrap: Integer (Read/Write)
+
     Pixels of blank space between wrapped lines in a paragraph
 
 --- pixels-inside-wrap-set: true or false (Read/Write)
+
     Whether this tag affects the number of pixels between wrapped lines
 
 --- right-margin: Integer (Read/Write)
+
     Width of the right margin in pixels
 
 --- right-margin-set: true or false (Read/Write)
+
     Whether this tag affects the right margin
 
 --- rise: Integer (Read/Write)
+
     Offset of text above the baseline (below the baseline if rise is negative) in pixels
 
 --- rise-set: true or false (Read/Write)
+
     Whether this tag affects the rise
 
 --- scale: Float (Read/Write)
+
     Font size as a scale factor relative to the default font size. This properly adapts to theme changes etc. so is recommended. Pango predefines some scales such as Pango::AttrScale::X_LARGE
 
 --- scale-set: true or false (Read/Write)
+
     Whether this tag scales the font size by a factor
 
 --- size: Integer (Read/Write)
+
     Font size in Pango units
 
 --- size-points: Float (Read/Write)
+
     Font size in points
 
 --- size-set: true or false (Read/Write)
+
     Whether this tag affects the font size
 
 --- stretch: Integer (Read/Write)
+
     Font stretch as a PangoStretch, e.g. Pango::FontDescription::STRETCH_CONDENSED
 
 --- stretch-set: true or false (Read/Write)
+
     Whether this tag affects the font stretch
 
 --- strikethrough: true or false (Read/Write)
+
     Whether to strike through the text
 
 --- strikethrough-set: true or false (Read/Write)
+
     Whether this tag affects strikethrough
 
 --- style: Integer (Read/Write)
+
     Font style as a PangoStyle, e.g. Pango::FontDescription::STYLE_ITALIC
 
 --- style-set: true or false (Read/Write)
+
     Whether this tag affects the font style
 
 --- tabs: Pango::TabArray (Read/Write)
+
     Custom tabs for this text
 
 --- tabs-set: true or false (Read/Write)
+
     Whether this tag affects tabs
 
 --- underline: Integer (Read/Write)
+
     Style of underline for this text
 
 --- underline-set: true or false (Read/Write)
+
     Whether this tag affects underlining
 
 --- variant: Integer (Read/Write)
+
     Font variant as a PangoVariant, e.g. Pango::FontDescription::VARIANT_SMALL_CAPS
 
 --- variant-set: true or false (Read/Write)
+
     Whether this tag affects the font variant
 
 --- weight: Integer (Read/Write)
+
     Font weight as an integer, see predefined values in PangoWeight; for example, Pango::FontDescription::WEIGHT_BOLD
 
 --- weight-set: true or false (Read/Write)
+
     Whether this tag affects the font weight
 
 --- wrap-mode: Integer (Read/Write)
+
     Whether to wrap lines never, at word boundaries, or at character boundaries
 
 --- wrap-mode-set: true or false (Read/Write)
+
     Whether this tag affects line wrap mode
 
+--- accumulative-margin: true or false (Read/Write)
+
+    Whether left and right margins accumulate.
+
+--- paragraph-background: String (Write)
+
+    Paragraph background color as a string
+
+--- paragraph-background-gdk: Gdk::Color (Read/Write)
+
+    Paragraph background color as a (possibly unallocated) Gdk::Color
+
+--- paragraph-background-set: true or false (Read/Write)
+
+    Whether this tag affects the paragraph background color
+
 == Signals
+
 --- event: self
-     * self: 
+
+     * self:
 
 == See Also
+
 
 == ChangeLog
 

@@ -1,7 +1,9 @@
 = class Gtk::EventBox
+
 The Gtk::EventBox widget is a subclass of Gtk::Bin which also has its own window. It is useful since it allows you to catch events for widgets which do not have their own window.
 
 == Object Hierarchy
+
 * Object
   * GLib::Instantiatable
     * GLib::Object
@@ -13,29 +15,38 @@ The Gtk::EventBox widget is a subclass of Gtk::Bin which also has its own window
                 * Gtk::EventBox
 
 == Class Methods
+
 --- Gtk::EventBox.new
+
     Creates a new Gtk::EventBox.
     * Returns: a new Gtk::EventBox.
 
-
 == Instance Methods
+
 --- above_child?
+
     Returns whether the event box window is above or below the windows of its child. See Gtk::EventBox#above_child= for details. ((* Since 2.4 *))
     * Returns: true if the event box window is above the window of its child.
+
 --- above_child=(above_child)
+
     Set whether the event box window is positioned above the windows of its child, as opposed to below it. If the window is above, all events inside the event box will go to the event box. If the window is below, events in windows of child widgets will first got to that widget, and then to its parents. The default is to keep the window below the child. ((* Since 2.4 *))
     * above_child: true if the event box window is above the windows of its child
     * Returns: above_child
+
 --- set_above_child(above_child)
+
     Same as above_child=. ((* Since 2.4 *))
     * above_child: true if the event box window is above the windows of its child
     * Returns: self
 
-
 --- visible_window?
+
     Gets the value whether the event box is visible, as opposed to invisible and only used to trap events. or not. ((* Since 2.4 *))
      * Returns: true if the event box is visible, as opposed to invisible and only used to trap events.
+
 --- visible_window=(visible_window)
+
     Set whether the event box uses a visible or invisible child window. The default is to use visible windows. In an invisible window event box, the window that the event box creates is a Gdk::Window::INPUT_ONLY window, which means that it is invisible and only serves to receive events. A visible window event box creates a visible (Gdk::Window::INPUT_OUTPUT) window that acts as the parent window for all the widgets contained in the event box.
     
     You should generally make your event box invisible if you just want to trap events. Creating a visible window may cause artifacts that are visible to the user, especially if the user is using a theme with gradients or pixmaps.
@@ -48,21 +59,33 @@ The Gtk::EventBox widget is a subclass of Gtk::Bin which also has its own window
     This problem doesn't occur for visible event boxes, because in that case, the event box window is actually the ancestor of the descendant windows, not just at the same place on the screen. ((* Since 2.4 *))
     * visible_window: true if the event box is visible, as opposed to invisible and only used to trap events.
     * Returns: visible_window
+
 --- set_visible_window(visible_window)
+
     Same as visible_window=. ((* Since 2.4 *))
     * visible_window: true if the event box is visible, as opposed to invisible and only used to trap events.
     * Returns: self
 
+--- ref_accessible
+
+    See Atk::Implementor#ref_accessible.
+
 == Properties
+
 --- above-child: true or false (Read/Write)
+
     Whether the event-trapping window of the eventbox is above the window of the child widget as opposed to below it. ((* Since 2.4 *))
     * Default value: false
 
 --- visible-window: true or false (Read/Write)
+
     Whether the event box is visible, as opposed to invisible and only used to trap events. ((* Since 2.4 *))
     * Default value: true
 
+== See Also
+
 == ChangeLog
+
 * 2007-03-01 Apply GTK+-2.4 - ((<Masao>))
 
 

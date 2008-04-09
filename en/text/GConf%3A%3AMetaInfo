@@ -1,51 +1,72 @@
 = class GConf::MetaInfo
+
 The class GConf::MetaInfo holds metainformation about a key, such as last modification time and the name of the associated schema.  Though this may sound nice, the current GConf API does not allow for the actual retrieval of this information, and so this is only included for consistency with the C version of the GConf API.
 
-== Super Class
-* GLib.Boxed
+== Object Hierarchy
+
+* Object
+  * GLib::Boxed
+    * GConf::MetaInfo
 
 == Class Methods
+
 --- GConf::MetaInfo.new
+
     Creates a new GConf::MetaInfo object.
     * Returns: a new GConf::Metainfo object
 
 == Instance Methods
+
 --- schema
+
     Gets the name of the associated schema
 
 --- schema=(schema)
+
     Sets the name of the schema that should be associated with this key.
     * schema: the name of the schema
     * Returns: ((|schema|))
 
 --- set_schema(schema)
+
     Same as ((<schema=|GConf::MetaInfo#schema=>)).
     * schema: the name of the schema
     * Returns: self
 
 --- mod_user
+
     Gets the name of the user who last modified the key.
     * Returns: the name of the user
 
 --- mod_user=(user)
+
     Sets the name of the user who last modified the key.
     * user: the name of the user
     * Returns: ((|user|))
 
 --- set_mod_user(user)
+
     Same as ((<mod_user=|GConf::MetaInfo#mod_user=>)).
     * user: the name of the user
     * Returns: self
 
 --- mod_time=(time)
+
     Sets the time of the last modification of the key.
     * time: a unix timestamp, given as an Integer
     * Returns: ((|time|))
 
 --- set_mod_time(time)
+
     Same as ((<mod_time=|GConf::MetaInfo#mod_time=>)).
     * time: a unix timestamp, given as an Integer
     * Returns: self
+
+--- mod_time
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
 
 == ChangeLog
 

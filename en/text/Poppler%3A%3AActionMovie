@@ -1,13 +1,15 @@
 = class Poppler::ActionMovie
 
 == Object Hierarchy
+
 * Object
-  * GLib::Instantiatable
-    * GLib::Object
-      * Poppler::Action
+  * GLib::Boxed
+    * Poppler::Action
+      * Poppler::ActionAny
         * Poppler::ActionMovie
 
 == See Also
+
 
 == ChangeLog
 

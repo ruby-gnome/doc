@@ -1,6 +1,7 @@
 = module RSVG
 
 == Module Functions
+
 --- RSVG.pixbuf_from_file(file_name)
 
      Loads a new Gdk::Pixbuf from (({file_name})) and
@@ -37,7 +38,7 @@
      * height: The new height, or -1
      * Returns: A newly allocated Gdk::Pixbuf, or raises an
        exception.
-     
+
 --- RSVG.pixbuf_from_file_at_zoom(file_name, x_zoom, y_zoom)
 
      Loads a new Gdk::Pixbuf from (({file_name})) and
@@ -76,6 +77,7 @@
     * dpi: Dots Per Inch (aka Pixels Per Inch)
 
 --- RSVG.set_default_dpi_x_y(dpi_x, dpi_y)
+
      
      Sets the DPI for the outgoing pixbuf. Common values are
      75, 90, and 300 DPI. Passing a number <= 0 to (({dpi_x})) or
@@ -86,12 +88,20 @@
      * dpi_y: Dots Per Inch (aka Pixels Per Inch) of y
      * Returns: (({nil}))
 
+--- RSVG.cairo_available?
+
+     * Returns: self: ((*FIXME*))
+
 == Constants
+
 --- Error
 --- Handle
 --- LOG_DOMAIN
+--- BINDING_VERSION
+--- BUILD_VERSION
 
 == See Also
+
 
 == ChangeLog
 

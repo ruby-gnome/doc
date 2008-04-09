@@ -1,6 +1,7 @@
 = class RSVG::Error
 
 == Object Hierarchy
+
 * Object
   * Exception
     * StandardError
@@ -8,18 +9,23 @@
         * RSVG::Error
 
 == Instance Methods
+
 --- code
+
      
      * Returns: The error code of RSVG::Error
 
 --- domain
+
      
      * Returns: The error domain of RSVG::Error
 
 == Constants
+
 --- FAILED
 
 == See Also
+
 
 == ChangeLog
 

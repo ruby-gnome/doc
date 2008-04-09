@@ -1,41 +1,68 @@
 = class Gst::Object
+
 Basis for the GST object hierarchy.
 
 == Object Hierarchy
+
 * Object
   * GLib::Instantiatable
     * GLib::Object
       * Gst::Object
 
 == Instance Methods
+
 --- destroyed?
+
     Checks if the Gst::Object::FLAG_DESTROYED flag is set on the object.
     * Returns: true if the flag is set, false otherwise.
 
 --- floating?
+
     Checks if the Gst::Object::FLAG_FLOATING flag is set on the object.
     * Returns: true if the flag is set, false otherwise.
 
+--- name
+
+    Gets the name of the object.
+     * Returns: The name of the object
+
+--- name=(name)
+
+    Sets the name of the object.
+     * name: The name of the object
+     * Returns: name
+
+--- set_name(name)
+
+    Same as name=.
+     * name: The name of the object
+     * Returns: self
+
 == Constants
+
 === GstObjectFlags
+
 --- DESTROYED
 --- FLOATING
 --- OBJECT_FLAG_LAST
+--- OBJECT_DISPOSING
+--- OBJECT_FLOATING
 
 == Properties
+
 --- name: String (Read/Write)
+
     The name of the object.
 
 == Signals
+
 --- deep-notify
-
 --- object-saved
-
 --- parent-set
-
 --- parent-unset
 
 == See Also
+
 ((<Gst::Clock>)), ((<Gst::Element>)), ((<Gst::Index>)), ((<Gst::Pad>)), ((<Gst::PadTemplate>)), ((<Gst::Scheduler>)), ((<Gst>)).
 
 == ChangeLog

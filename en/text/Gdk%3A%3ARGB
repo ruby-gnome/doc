@@ -1,16 +1,21 @@
 = module Gdk::RGB
+
 ((<Gdk::RGB>)) converts RGB, grayscale, and colormapped images into the native window pixel format and displays them. It takes care of colormaps, visuals, dithering, and management of the temporary buffers.
 
 == Module Functions
+
 --- Gdk::RGB.colormap
+
     Retrieves colormap set by ((<Gdk::RGB>)).
     * Returns: The Gdk::Colormap set by ((<Gdk::RGB>)).
 
 --- Gdk::RGB.visual
+
     Retrieves visual set by Gdk::RGB.
     * Returns: The Gdk::Visual chosen by Gdk::RGB.
 
 --- Gdk::RGB.draw_rgb_image(win, gc, x, y, w, h, dither, buf, rowstride)
+
     Draws a rectangular RGB image in the Gdk::Drawable.
     * win: The Gdk::Drawable to draw in (usually a Gdk::Window).
     * gc: The ((<Gdk::GC>)) graphics context to control the drawing style.
@@ -24,6 +29,7 @@
     * Returns: self
 
 --- Gdk::RGB.draw_rgb_image_dithalign(win, gc, x, y w, h, dither, buf, rowstride, xdith, ydith)
+
     Draws an RGB image in the Gdk::Drawable, with an adjustment for dither alignment. This function is useful when drawing dithered images into a window that may be scrolled. Pixel (x, y) will be drawn dithered as if its actual location is (x + xdith, y + ydith). Thus, if you draw an image into a window using zero dither alignment, then scroll up one pixel, subsequent draws to the window should have ydith = 1.
     * win: The Gdk::Drawable to draw in (usually a Gdk::Window).
     * gc: The ((<Gdk::GC>)) graphics context to control the drawing style.
@@ -39,6 +45,7 @@
     * Returns: self
 
 --- Gdk::RGB.draw_gray_image(win, gc, x, y, w, h, dither, buf, rowstride)
+
     Draws a grayscale image in the Gdk::Drawable.
     * win: The Gdk::Drawable to draw in (usually a Gdk::Window).
     * gc: The ((<Gdk::GC>)) graphics context to control the drawing style.
@@ -50,8 +57,9 @@
     * buf: The pixel data, represented as 8-bit gray values.
     * rowstride: The number of bytes from the start of one row in buf to the start of the next.
     * Returns: self
-    
+
 --- Gdk::RGB.draw_rgb_32_image(win, gc, x, y, w, h, dither, buf, rowstride)
+
     Draws a padded RGB image in the Gdk::Drawable. The image is stored as one pixel per 32-bit word. It is laid out as a red byte, a green byte, a blue byte, and a padding byte.
     * win: The Gdk::Drawable to draw in (usually a Gdk::Window).
     * gc: The ((<Gdk::GC>)) graphics context to control the drawing style.
@@ -64,11 +72,39 @@
     * rowstride: The number of bytes from the start of one row in buf to the start of the next.
     * Returns: self
 
-==Constants
-===GdkRgbDither
+--- Gdk::RGB.ditherable?
+
+     * Returns: self: ((*FIXME*))
+
+--- Gdk::RGB.draw_indexed_image
+
+     * Returns: self: ((*FIXME*))
+
+--- Gdk::RGB.find_color
+
+     * Returns: self: ((*FIXME*))
+
+--- Gdk::RGB.set_install
+
+     * Returns: self: ((*FIXME*))
+
+--- Gdk::RGB.set_min_colors
+
+     * Returns: self: ((*FIXME*))
+
+--- Gdk::RGB.set_verbose
+
+     * Returns: self: ((*FIXME*))
+
+== Constants
+
+=== GdkRgbDither
+
 --- DITHER_MAX
 --- DITHER_NONE
 --- DITHER_NORMAL
+
+== See Also
 
 == ChangeLog
 

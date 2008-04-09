@@ -1,10 +1,12 @@
 = class Gst::Pipeline
+
 In almost all cases, you'll want to use a Gst::Pipeline when creating a 
 filter graph. The Gst::Pipeline will manage all the scheduling issues, 
 including threading, as well as provide simple interfaces to common 
 functions, like 'Play'.
 
 == Object Hierarchy
+
 * Object
   * GLib::Instantiatable
     * GLib::Object
@@ -14,7 +16,9 @@ functions, like 'Play'.
             * Gst::Pipeline
 
 == Class Methods
+
 --- Gst::Pipeline.new(name=nil)
+
     Constructs a new Gst::Pipeline object.
     If element name is ommited (or nil), then the pipeline will receive a guaranteed
     unique name, consisting of the "pipeline" string and a number.
@@ -22,7 +26,58 @@ functions, like 'Play'.
     * name: a name for the pipeline.  
     * Returns: a newly constructed Gst::Pipeline.
 
+== Instance Methods
+
+--- auto_flush_bus=(auto_flush_bus)
+
+    Sets the value whether to automatically flush the pipeline's bus when going from READY into NULL state or not.
+     * auto_flush_bus: true if to automatically flush the pipeline's bus when going from READY into NULL state
+     * Returns: auto_flush_bus
+
+--- auto_flush_bus?
+
+    Gets the value whether to automatically flush the pipeline's bus when going from READY into NULL state or not.
+     * Returns: true if to automatically flush the pipeline's bus when going from READY into NULL state
+
+--- bus
+
+     * Returns: self: ((*FIXME*))
+
+--- delay
+
+    Gets the Expected delay needed for elements to spin up to PLAYING in nanoseconds.
+     * Returns: Expected delay needed for elements to spin up to PLAYING in nanoseconds
+
+--- delay=(delay)
+
+    Sets the Expected delay needed for elements to spin up to PLAYING in nanoseconds.
+     * delay: Expected delay needed for elements to spin up to PLAYING in nanoseconds
+     * Returns: delay
+
+--- set_auto_flush_bus(auto_flush_bus)
+
+    Same as auto_flush_bus=.
+     * auto_flush_bus: true if to automatically flush the pipeline's bus when going from READY into NULL state
+     * Returns: self
+
+--- set_delay(delay)
+
+    Same as delay=.
+     * delay: Expected delay needed for elements to spin up to PLAYING in nanoseconds
+     * Returns: self
+
+== Properties
+
+--- auto-flush-bus: true or false (Read/Write)
+
+    Whether to automatically flush the pipeline's bus when going from READY into NULL state
+
+--- delay: Integer (Read/Write)
+
+    Expected delay needed for elements to spin up to PLAYING in nanoseconds
+
 == See Also
+
 ((<Gst>)).
 
 == ChangeLog

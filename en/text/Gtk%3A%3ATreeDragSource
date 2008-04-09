@@ -1,7 +1,10 @@
 = module Gtk::TreeDragSource
 
 == Included Modules
-* GLib::Interface
+
+  * GLib::Interface
+
+== See Also
 
 == ChangeLog
 

@@ -1,7 +1,9 @@
 = class Gdk::EventKey
-Describes a key press or key release event. 
+
+Describes a key press or key release event.
 
 == Object Hierarchy
+
 * Object
   * GLib::Boxed
     * Gdk::Event
@@ -9,73 +11,101 @@ Describes a key press or key release event.
         * Gdk::EventKey
 
 == Class Methods
+
 --- Gdk::EventKey.new(type)
+
     Creates a new event of the given type. All fields are set to 0. ((* Since 2.2 *))
     * type: Gdk::Event::KEY_PRESS or Gdk::Event::KEY_RELEASE
     * Returns: a new Gdk::EventKey.
 
 == Instance Methods
+
 --- time
+
     Gets the time of the event in milliseconds. 
     * Returns: the time of the event in milliseconds
 
 --- time=(time)
+
     Sets the time of the event in milliseconds.
     * time: the time of the event in milliseconds
     * Returns: time
+
 --- set_time(time)
+
     Same as Gdk::EventKey#time=.
     * time: the time of the event in milliseconds
     * Returns: self
 
 --- state
+
     Gets the bit-mask representing the state of the modifier keys (e.g. Control, Shift and Alt) and the pointer buttons. See ((<GdkModifierType|Gdk::Window#GdkModifierType>)). 
     * Returns: ((<GdkModifierType|Gdk::Window#GdkModifierType>))
+
 --- state=(state)
+
     Sets a bit-mask representing the state of modifier keys.
     * state: a bit-mask of ((<GdkModifierType|Gdk::Window#GdkModifierType>)).
     * Returns: self
+
 --- set_state(state)
+
     Same as Gdk::EventKey#state=.
     * state: a bit-mask of ((<GdkModifierType|Gdk::Window#GdkModifierType>)).
     * Returns: self
 
 --- keyval
+
     Gets the GDK key code that was pressed or released.
     * Returns: GDK key code
+
 --- keyval=(keyval)
+
     Sets the GDK key code.
     * keyval: GDK key code
     * Returns: self
+
 --- set_keyval(keyval)
+
     Same as Gdk::EventKey#keyval=.
     * keyval: GDK key code
     * Returns: self
 
 --- hardware_keycode
+
     Gets the raw code of the key that was pressed or released. 
     * Returns: the raw code of the key
+
 --- hardware_keycode=(keycode)
+
     Sets the raw code of the key that was pressed or released. 
     * keycode: the raw code of the key
     * Returns: keycode
+
 --- set_hardware_keycode(keycode)
+
     Same as Gdk::EventKey#hardware_keycode=.
     * keycode: the raw code of the key
     * Returns: self
 
 --- group
+
     Gets the keyboard group. 
     * Returns: the keyboard group
+
 --- group=(group)
+
     Sets a keyboard group.
     * group: a new keyboard group(Integer)
     * Returns: group
+
 --- set_group(group)
+
     Same as Gdk::EventKey#group=.
     * group: a new keyboard group(Integer)
     * Returns: self
 
+== See Also
 
 == ChangeLog
 

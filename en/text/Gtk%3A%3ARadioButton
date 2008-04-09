@@ -1,24 +1,29 @@
 = class Gtk::RadioButton
+
 Gtk::RadioButton is for a choice from multiple check buttons.
 A single radio button performs the same basic function as a Gtk::CheckButton, as it's position in the object hierarchy reflects. It is only when multiple radio buttons are grouped together that they become a different user interface component in their own right.
 
-Every radio button is a member of some group of radio buttons. When one is selected, all other radio buttons in the same group are deselected. A Gtk::RadioButton is one way of giving the user a choice from many options. 
+Every radio button is a member of some group of radio buttons. When one is selected, all other radio buttons in the same group are deselected. A Gtk::RadioButton is one way of giving the user a choice from many options.
 
 == Object Hierarchy
+
 * Object
   * GLib::Instantiatable
     * GLib::Object
-      * Gtk::Object
-        * Gtk::Widget
-          * Gtk::Container
-            * Gtk::Bin
-              * Gtk::Button
-                * Gtk::ToggleButton
-                  * Gtk::CheckButton
-                    * Gtk::RadioButton
+      * GLib::InitiallyUnowned
+        * Gtk::Object
+          * Gtk::Widget
+            * Gtk::Container
+              * Gtk::Bin
+                * Gtk::Button
+                  * Gtk::ToggleButton
+                    * Gtk::CheckButton
+                      * Gtk::RadioButton
 
 == Class Methods
+
 --- Gtk::RadioButton.new(label = nil, use_underline = true)
+
     Creates a new Gtk::RadioButton with a text label.
     This is for a first radio button, this is same as Gtk::RadioButton.new(nil, label, use_underline).
     * label : the text label to display next to the radio button.
@@ -26,11 +31,13 @@ Every radio button is a member of some group of radio buttons. When one is selec
     * Returns: a new Gtk::RadioButton.
 
 --- Gtk::RadioButton.new(stock)
+
     Creates a new Gtk::RadioButton with a Gtk::Stock constant value.
     * stock: a Gtk::Stock constant value.
     * Returns: a new Gtk::RadioButton.
 
 --- Gtk::RadioButton.new(group, label = nil, use_underline = true)
+
     Creates a new Gtk::RadioButton with a text label, adding it to the same group as group.
     * group : a group (Gtk::RadioButton) what you want to make a group.
     * label : the text label to display next to the radio button.
@@ -38,31 +45,49 @@ Every radio button is a member of some group of radio buttons. When one is selec
     * Returns: a new Gtk::RadioButton.
 
 --- Gtk::RadioButton.new(group, stock)
+
     Creates a new Gtk::RadioButton with a Gtk::Stock constant value., adding it to the same group as group.
     * group : a group (Gtk::RadioButton) what you want to make a group.
     * stock: a Gtk::Stock constant value.
     * Returns: a new Gtk::RadioButton.
 
 == Instance Methods
+
 --- group
+
     Retrieves the group assigned to a radio button. 
-    Returns: an array containing all the radio buttons in the same group as radio_button.   
+    Returns: an array containing all the radio buttons in the same group as radio_button.
 
 --- group=(group)
+
     Sets a Gtk::RadioButton's group. It should be noted that this does not change the layout of your interface in any way, so if you are changing the group, it is likely you will need to re-arrange the user interface to reflect these changes. 
     * group: an existing radio button group, such as one returned from Gtk::RadioButton#group.
     * Returns: group
 
 --- set_group(group)
+
     Same as Gtk::RadioButton#group=.
     * group: an existing radio button group, such as one returned from Gtk::RadioButton#group.
     * Returns: self
 
+--- ref_accessible
+
+    See Atk::Implementor#ref_accessible.
+
 == Properties
+
 --- group: Gtk::RadioButton (Write)
+
     The radio button whose group this widget belongs.
 
+== Signals
+
+--- group-changed: self
+
+     * self: Gtk::RadioButton: ((*FIXME*))
+
 == See Also
+
 Gtk::OptionMenu: Another way of offering the user a single choice from many.
 
 == ChangeLog

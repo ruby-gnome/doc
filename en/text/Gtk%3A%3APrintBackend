@@ -3,24 +3,36 @@
 Represents a printer
 
 == Object Hierarchy
+
 * Object
   * GLib::Instantiatable
     * GLib::Object
       * Gtk::PrintBackend
 
 == Signals
+
 --- printer-added: self
-     * self: 
+
+     * self:
+
 --- printer-list-changed: self
-     * self: 
+
+     * self:
+
 --- printer-list-done: self
-     * self: 
+
+     * self:
+
 --- printer-removed: self
-     * self: 
+
+     * self:
+
 --- printer-status-changed: self
-     * self: 
+
+     * self:
 
 == See Also
+
 
 == ChangeLog
 

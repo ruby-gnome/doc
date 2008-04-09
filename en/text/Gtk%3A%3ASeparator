@@ -1,13 +1,24 @@
 = class Gtk::Separator
+
 The Gtk::Separator widget is an abstract class, used only for deriving the subclasses Gtk::HSeparator and Gtk::VSeparator.
 
 == Object Hierarchy
+
 * Object
   * GLib::Instantiatable
     * GLib::Object
-      * Gtk::Object
-        * Gtk::Widget
-          * Gtk::Separator
+      * GLib::InitiallyUnowned
+        * Gtk::Object
+          * Gtk::Widget
+            * Gtk::Separator
+
+== Instance Methods
+
+--- ref_accessible
+
+    See Atk::Implementor#ref_accessible.
+
+== See Also
 
 == ChangeLog
 

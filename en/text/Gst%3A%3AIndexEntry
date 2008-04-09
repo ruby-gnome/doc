@@ -1,13 +1,17 @@
 = class Gst::IndexEntry
+
 An index's entry.
 
 == Object Hierarchy
+
 * Object
   * GLib::Boxed
     * Gst::IndexEntry
 
 == Instance Methods
+
 --- data
+
     Gets the internal data stored in the entry.  The data depends of the type
     of the entry:
     	* Gst::IndexEntry::ID: the description of the ID, as a String. 
@@ -17,17 +21,21 @@ An index's entry.
     * Returns: the internal data of the entry.
 
 --- entry_type
+
     This method returns the type of the entry (see ((<GstIndexEntryType|Gst::IndexEntry#GstIndexEntryType>))).
     * Returns: the type of the entry (see ((<GstIndexEntryType|Gst::IndexEntry#GstIndexEntryType>))).
 
 == Constants
+
 === GstIndexEntryType
+
 --- ASSOCIATION
 --- FORMAT
 --- ID
 --- OBJECT
 
 == See Also
+
 ((<Gst>)).
 
 == ChangeLog

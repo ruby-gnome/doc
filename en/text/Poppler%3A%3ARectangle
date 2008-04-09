@@ -1,11 +1,13 @@
 = class Poppler::Rectangle
 
 == Object Hierarchy
+
 * Object
   * GLib::Boxed
     * Poppler::Rectangle
 
 == Class Methods
+
 --- Poppler::Rectangle.new(x1, y1, x2, y2)
 
      * x1: x1
@@ -15,7 +17,9 @@
      * Returns: a new Poppler::Rectangle.
 
 == Instance Methods
+
 --- x1
+
      
      * Returns: x1
 
@@ -26,10 +30,12 @@
      * Returns: nil
 
 --- x1=
+
      
      Same as #set_x1 but returns self.
 
 --- y1
+
      
      * Returns: y1
 
@@ -40,10 +46,12 @@
      * Returns: nil
 
 --- y1=
+
      
      Same as #set_y1 but returns self.
 
 --- x2
+
      
      * Returns: x2
 
@@ -54,10 +62,12 @@
      * Returns: nil
 
 --- x2=
+
      
      Same as #set_x2 but returns self.
 
 --- y2
+
      
      * Returns: y2
 
@@ -68,14 +78,21 @@
      * Returns: nil
 
 --- y2=
+
      
      Same as #set_y2 but returns self.
 
 --- to_a
+
      
      * Returns: [x1, y1, x2, y2]
 
+--- inspect
+
+     * Returns: self: ((*FIXME*))
+
 == See Also
+
 
 == ChangeLog
 

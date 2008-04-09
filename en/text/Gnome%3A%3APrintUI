@@ -1,9 +1,13 @@
 = module Gnome::PrintUI
 
 == Constants
+
 --- LOG_DOMAIN
+--- BINDING_VERSION
+--- BUILD_VERSION
 
 == See Also
+
 
 == ChangeLog
 

@@ -1,18 +1,22 @@
 = class Gnome::PaperSelector
 
 == Object Hierarchy
+
 * Object
   * GLib::Instantiatable
     * GLib::Object
-      * Gtk::Object
-        * Gtk::Widget
-          * Gtk::Container
-            * Gtk::Box
-              * Gtk::HBox
-                * Gnome::PaperSelector
+      * GLib::InitiallyUnowned
+        * Gtk::Object
+          * Gtk::Widget
+            * Gtk::Container
+              * Gtk::Box
+                * Gtk::HBox
+                  * Gnome::PaperSelector
 
 == Class Methods
+
 --- Gnome::PaperSelector.new(config=nil, flags=nil)
+
      
      * config: A Gnome::PrintConfig, used
        Gnome::PrintConfig.default when ((|config|)) is
@@ -21,12 +25,61 @@
        Gnome::PaperSelector::FEED_ORIENTATION
      * Returns: A Gnome::PaperSelector object
 
+== Instance Methods
+
+--- config
+
+    Gets the Configuration.
+     * Returns: Configuration
+
+--- config=(config)
+
+    Sets the Configuration.
+     * config: Configuration
+     * Returns: config
+
+--- height
+
+    Gets the Height.
+     * Returns: Height
+
+--- ref_accessible
+
+    See Atk::Implementor#ref_accessible.
+
+--- set_config(config)
+
+    Same as config=.
+     * config: Configuration
+     * Returns: self
+
+--- width
+
+    Gets the Width.
+     * Returns: Width
+
 == Constants
+
 --- FEED_ORIENTATION
 --- Flags
 --- MARGINS
 
+== Properties
+
+--- config: Gnome::PrintConfig (Read/Write)
+
+    Configuration
+
+--- height: Float (Read)
+
+    Height
+
+--- width: Float (Read)
+
+    Width
+
 == See Also
+
 
 == ChangeLog
 

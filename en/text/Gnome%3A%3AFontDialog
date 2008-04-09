@@ -1,32 +1,44 @@
 = class Gnome::FontDialog
 
 == Object Hierarchy
+
 * Object
   * GLib::Instantiatable
     * GLib::Object
-      * Gtk::Object
-        * Gtk::Widget
-          * Gtk::Container
-            * Gtk::Bin
-              * Gtk::Window
-                * Gtk::Dialog
-                  * Gnome::FontDialog
+      * GLib::InitiallyUnowned
+        * Gtk::Object
+          * Gtk::Widget
+            * Gtk::Container
+              * Gtk::Bin
+                * Gtk::Window
+                  * Gtk::Dialog
+                    * Gnome::FontDialog
 
 == Class Methods
+
 --- Gnome::FontDialog.new
+
      
      * Returns: self
 
 == Instance Methods
+
 --- fontsel
+
      
      * Returns: Gnome::FontSelection
 
 --- preview
+
      
      * Returns: Gnome::FontPreview
 
+--- ref_accessible
+
+    See Atk::Implementor#ref_accessible.
+
 == See Also
+
 
 == ChangeLog
 

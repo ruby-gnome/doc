@@ -1,172 +1,323 @@
 = class Gtk::Range
 
 == Object Hierarchy
+
 * Object
   * GLib::Instantiatable
     * GLib::Object
-      * Gtk::Object
-        * Gtk::Widget
-          * Gtk::Range
+      * GLib::InitiallyUnowned
+        * Gtk::Object
+          * Gtk::Widget
+            * Gtk::Range
 
 == Instance Methods
---- adjustment 
+
+--- adjustment
+
     Get the Gtk::Adjustment which is the "model" object for Gtk::Range. See Gtk::Range#adjustment= for details. The return value does not have a reference added, so should not be unreferenced.
     * Returns: the Gtk::Adjustment
+
 --- adjustment=(adj)
+
     Sets the adjustment to be used as the "model" object for this range widget. The adjustment indicates the current range value, the minimum and maximum range values, the step/page increments used for keybindings and scrolling, and the page size. The page size is normally 0 for Gtk::Scale and nonzero for Gtk::Scrollbar, and indicates the size of the visible area of the widget being scrolled. The page size affects the size of the scrollbar slider.
     * adj: a Gtk::Adjustment 
     * Returns: adj
+
 --- set_adjustment(adj)
+
     Same as Gtk::Range#adjustment=.
     * adj: a Gtk::Adjustment 
     * Returns: self
 
 --- inverted?
+
     Gets the value set by Gtk::Range#inverted=.
-    * Returns: true if the range is inverted 
+    * Returns: true if the range is inverted
+
 --- inverted=(setting)
+
     Ranges normally move from lower to higher values as the slider moves from top to bottom or left to right. Inverted ranges have higher values at the top or on the right rather than on the bottom or left.
     * setting : true to invert the range 
     * Returns: setting
+
 --- set_inverted(setting)
+
     Same as Gtk::Range#inverted=.
     * setting : true to invert the range 
     * Returns: self
 
 --- update_policy
+
     Gets the update policy of range. See Gtk::Range#update_policy=.
     * Returns: the current update policy(((<GtkUpdateType|Gtk#GtkUpdateType>))).
+
 --- update_policy=(policy)
+
     Sets the update policy for the range. Gtk::UPDATE_CONTINUOUS means that anytime the range slider is moved, the range value will change and the value_changed signal will be emitted. Gtk::UPDATE_DELAYED means that the value will be updated after a brief timeout where no slider motion occurs, so updates are spaced by a short time rather than continuous. Gtk::UPDATE_DISCONTINUOUS means that the value will only be updated when the user releases the button and ends the slider drag operation.
     * policy: update policy(((<GtkUpdateType|Gtk#GtkUpdateType>)))
     * Returns: policy
+
 --- set_update_policy(policy)
+
     Same as Gtk::Range#update_policy=.
     * policy : update policy(((<GtkUpdateType|Gtk#GtkUpdateType>)))
     * Returns: self
 
 --- value
+
     Gets the current value of the range.
-    * Returns: current value of the range. 
+    * Returns: current value of the range.
 
 --- value=(value)
+
     Sets the current value of the range; if the value is outside the minimum or maximum range values, it will be clamped to fit inside them. The range emits the "value_changed" signal if the value changes.
     * value: new value of the range
     * Returns: value
+
 --- set_value(value)
+
     Same as Gtk::Range#value=.
     * value: new value of the range
     * Returns: self
 
 --- set_increments(step, page)
+
     Sets the step and page sizes for the range. The step size is used when the user clicks the Gtk::Scrollbar arrows or moves Gtk::Scale via arrow keys. The page size is used for example when moving via Page Up or Page Down keys.
     * step: step size(Float)
     * page: page size(Float)
 
 --- set_range(min, max)
+
     Sets the allowable values in the Gtk::Range, and clamps the range value to be between min and max. (If the range has a non-zero page size, it is clamped between min and max - page-size.)
     * min: minimum range value(Float)
     * max: maximum range value(Float)
 
 --- lower_stepper_sensitivity
+
     Gets the sensitivity policy for the stepper that points to the 'lower' end of the Gtk::Range's adjustment. ((* Since 2.10 *))
     * Returns: The lower stepper's sensitivity policy(Gtk::Range#SensitivityType).
+
 --- lower_stepper_sensitivity=(sensitivity)
+
     Sets the sensitivity policy for the stepper that points to the 'lower' end of the GtkRange's adjustment. ((* Since 2.10 *))
     * sensitivity: the lower stepper's sensitivity policy(Gtk::Range#SensitivityType).
     * Returns: sensitivity
+
 --- set_lower_stepper_sensitivity(sensitivity)
+
     Same as lower_stepper_sensitivity=. ((* Since 2.10 *))
     * sensitivity: the lower stepper's sensitivity policy(Gtk::Range#SensitivityType).
     * Returns: self
 
 --- upper_stepper_sensitivity
+
     Gets the sensitivity policy for the stepper that points to the 'upper' end of the Gtk::Range's adjustment. ((* Since 2.10 *))
     * Returns: The upper stepper's sensitivity policy(Gtk::Range#SensitivityType).
+
 --- upper_stepper_sensitivity=(sensitivity)
+
     Sets the sensitivity policy for the stepper that points to the 'upper' end of the Gtk::Range's adjustment. ((* Since 2.10 *))
     * sensitivity: the upper stepper's sensitivity policy(Gtk::Range#SensitivityType).
     * Returns: sensitivity
+
 --- set_upper_stepper_sensitivity(sensitivity)
+
     Sets the sensitivity policy for the stepper that points to the 'upper' end of the Gtk::Range's adjustment. ((* Since 2.10 *))
     * sensitivity: the upper stepper's sensitivity policy(Gtk::Range#SensitivityType).
     * Returns: self
 
+--- fill_level
+
+    Gets the fill level..
+     * Returns: The fill level.
+
+--- fill_level=(fill_level)
+
+    Sets the fill level..
+     * fill_level: The fill level.
+     * Returns: fill_level
+
+--- move_slider
+
+     * Returns: self: ((*FIXME*))
+
+--- ref_accessible
+
+    See Atk::Implementor#ref_accessible.
+
+--- restrict_to_fill_level=(restrict_to_fill_level)
+
+    Sets the value whether to restrict the upper boundary to the fill level. or not.
+     * restrict_to_fill_level: true if to restrict the upper boundary to the fill level.
+     * Returns: restrict_to_fill_level
+
+--- restrict_to_fill_level?
+
+    Gets the value whether to restrict the upper boundary to the fill level. or not.
+     * Returns: true if to restrict the upper boundary to the fill level.
+
+--- set_fill_level(fill_level)
+
+    Same as fill_level=.
+     * fill_level: The fill level.
+     * Returns: self
+
+--- set_restrict_to_fill_level(restrict_to_fill_level)
+
+    Same as restrict_to_fill_level=.
+     * restrict_to_fill_level: true if to restrict the upper boundary to the fill level.
+     * Returns: self
+
+--- set_show_fill_level(show_fill_level)
+
+    Same as show_fill_level=.
+     * show_fill_level: true if to display a fill level indicator graphics on trough.
+     * Returns: self
+
+--- show_fill_level=(show_fill_level)
+
+    Sets the value whether to display a fill level indicator graphics on trough. or not.
+     * show_fill_level: true if to display a fill level indicator graphics on trough.
+     * Returns: show_fill_level
+
+--- show_fill_level?
+
+    Gets the value whether to display a fill level indicator graphics on trough. or not.
+     * Returns: true if to display a fill level indicator graphics on trough.
+
 == Constants
+
 === SensitivityType
+
 Determines how GTK+ handles the sensitivity of stepper arrows at the end of range widgets.
+
 --- SENSITIVITY_AUTO
+
     The arrow is made insensitive if the thumb is at the end
+
 --- SENSITIVITY_ON
+
     The arrow is always sensitive
+
 --- SENSITIVITY_OFF
+
     The arrow is always insensitive
 
 == Properties
+
 --- adjustment: Gtk::Adjustment (Read/Write)
+
     The Gtk::Adjustment that contains the current value of this range object
 
 --- inverted: true or false (Read/Write)
+
     Invert direction slider moves to increase range value
     * Default value: false
+
 --- update-policy: Integer (Read/Write)
+
     How the range should be updated on the screen
     * Default value: Gtk::UPDATE_CONTINUOUS
+
 --- lower-stepper-sensitivity: Gtk::Range::SensitivityType (Read/Write)
+
     The sensitivity policy for the stepper that points to the adjustment's lower side. ((* Since 2.10 *))
     * Default value: Gtk::Range::SENSITIVITY_AUTO
+
 --- upper-stepper-sensitivity: Gtk::Range::SensitivityType (Read/Write)
+
     The sensitivity policy for the stepper that points to the adjustment's upper side. ((* Since 2.10 *))
     * Default value: Gtk::Range::SENSITIVITY_AUTO
 
+--- fill-level: Float (Read/Write)
+
+    The fill level.
+
+--- restrict-to-fill-level: true or false (Read/Write)
+
+    Whether to restrict the upper boundary to the fill level.
+
+--- show-fill-level: true or false (Read/Write)
+
+    Whether to display a fill level indicator graphics on trough.
+
 == Style Properties
+
 --- activate-slider: true or false (Read)
+
     With this option set to true, sliders will be drawn ACTIVE and with shadow IN while they are dragged
     * Default value: false
+
 --- arrow-displacement-x: Integer (Read)
+
     How far in the x direction to move the arrow when the button is depressed
     * Default value: 0
+
 --- arrow-displacement-y: Integer (Read)
+
     How far in the y direction to move the arrow when the button is depressed
     * Default value: 0
+
 --- slider-width: Integer (Read)
+
     Width of scrollbar or scale thumb
     * Allowed values: >= 0
     * Default value: 14
+
 --- stepper-size: Integer (Read)
+
     Length of step buttons at ends
     * Allowed values: >= 0
     * Default value: 14
+
 --- stepper-spacing: Integer (Read)
+
     Spacing between step buttons and thumb
     * Allowed values: >= 0
     * Default value: 0
+
 --- trough-border: Integer (Read)
+
     Spacing between thumb/steppers and outer trough bevel
     * Allowed values: >= 0
     * Default value: 1
+
 --- trough-side-details: true or false (Read)
+
     When true, the parts of the trough on the two sides of the slider are drawn with different details ((* Since 2.10 *))
     * Default value: false
+
 --- trough-under-steppers: true or false (Read)
+
     Whether to draw trought for full length of range or exclude the steppers and spacing ((* Since 2.10 *))
     * Default value: true
-    
+
 == Signals
+
 --- adjust-bounds: self, arg1
+
      * self: Gtk::Range
-     * arg1: 
+     * arg1:
 
 --- move-slider: self, scroll_type
+
     Virtual function that moves the slider. Used for keybindings.
      * self: Gtk::Range
      * scroll_type: ((<GtkScrollType|Gtk#GtkScrollType>))
 
 --- value-changed: self
+
     Emitted when the range value changes.
      * self: Gtk::Range
 
+--- change-value: self
+
+     * self: Gtk::Range: ((*FIXME*))
+
+== See Also
+
 == ChangeLog
+
 * 2006-11-04: Apply GTK+-2.10 - ((<Masao>))
 
 - ((<Masao>))

@@ -1,52 +1,68 @@
 = class Gnome::FontPreview
 
 == Object Hierarchy
+
 * Object
   * GLib::Instantiatable
     * GLib::Object
-      * Gtk::Object
-        * Gtk::Widget
-          * Gtk::Misc
-            * Gtk::Image
-              * Gnome::FontPreview
+      * GLib::InitiallyUnowned
+        * Gtk::Object
+          * Gtk::Widget
+            * Gtk::Misc
+              * Gtk::Image
+                * Gnome::FontPreview
 
 == Class Methods
+
 --- Gnome::FontPreview.new
+
      
      * Returns: self
 
 == Instance Methods
+
 --- color=(color)
+
      
      * color: as integer.
      * Returns: ((|color|))
 
 --- font=(font)
+
      
      * font: Gnome::Font
      * Returns: ((|font|))
 
 --- phrase=(phrase)
+
      
      * phrase: as String.
      * Returns: ((|phrase|))
 
 --- set_color(color)
+
      
      * color: as integer.
      * Returns: self
 
 --- set_font(font)
+
      
      * font: Gnome::Font
      * Returns: self
 
 --- set_phrase(phrase)
+
      
      * phrase: as String.
      * Returns: self
 
+--- ref_accessible
+
+    See Atk::Implementor#ref_accessible.
+
 == See Also
+
 
 == ChangeLog
 

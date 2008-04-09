@@ -1,23 +1,28 @@
 = class Gnome::PrintUnitSelector
 
 == Object Hierarchy
+
 * Object
   * GLib::Instantiatable
     * GLib::Object
-      * Gtk::Object
-        * Gtk::Widget
-          * Gtk::Container
-            * Gtk::Box
-              * Gtk::HBox
-                * Gnome::PrintUnitSelector
+      * GLib::InitiallyUnowned
+        * Gtk::Object
+          * Gtk::Widget
+            * Gtk::Container
+              * Gtk::Box
+                * Gtk::HBox
+                  * Gnome::PrintUnitSelector
 
 == Class Methods
+
 --- Gnome::PrintUnitSelector.new(bases)
+
     
      * bases: Gnome::PrintUnit::UNIT_*
      * Returns: A new Gnome::PrintUnitSelector object
 
 == Instance Methods
+
 --- add_adjustment(adjustment)
 
      * adjustment: A Gtk::Adjustment object
@@ -25,30 +30,41 @@
 
 --- bases=(basis)
 --- set_bases(basis)
+
      
      * basis: Gnome::PrintUnit::UNIT_*
      * Returns: (({nil}))
 
 --- remove_adjustment(adjustment)
+
      
      * adjustment: A Gtk::Adjustment object
      * Returns: (({nil}))
 
 --- unit
+
      
      * Returns: A Gnome::PrintUnit
 
 --- unit=(unit)
 --- set_unit(unit)
+
      
      * unit: A Gnome::PrintUnit
      * Returns: (({nil}))
 
+--- ref_accessible
+
+    See Atk::Implementor#ref_accessible.
+
 == Signals
+
 --- modified: self
+
      * self: Gnome::PrintUnitSelector
 
 == See Also
+
 
 == ChangeLog
 

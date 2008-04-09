@@ -1,6 +1,7 @@
 = class Poppler::Page
 
 == Object Hierarchy
+
 * Object
   * GLib::Instantiatable
     * GLib::Object
@@ -9,6 +10,7 @@
 == Instance Methods
 
 --- render(src_x, src_y, src_width, src_height, scale, rotation, pixbuf)
+
      
     First scale the document to match the specified pixels
     per point, then render the rectangle given by the upper
@@ -139,11 +141,38 @@
      * Returns: nil
 
 --- label
+
     Gets the label of the page.
      * Returns: The label of the page
 
+--- crop_box
+
+     * Returns: self: ((*FIXME*))
+
+--- duration
+
+     * Returns: self: ((*FIXME*))
+
+--- form_field_mapping
+
+     * Returns: self: ((*FIXME*))
+
+--- image_mapping
+
+     * Returns: self: ((*FIXME*))
+
+--- thumbnail_pixbuf
+
+     * Returns: self: ((*FIXME*))
+
+--- transition
+
+     * Returns: self: ((*FIXME*))
+
 == Properties
+
 --- label: String (Read)
+
     The label of the page
 
 == See Also

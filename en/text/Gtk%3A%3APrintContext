@@ -12,6 +12,7 @@ Gtk::PrintContext objects gets passed to the ::begin-print,
 the Gtk::PrintOperation.
 
 == Object Hierarchy
+
 * Object
   * GLib::Instantiatable
     * GLib::Object
@@ -20,54 +21,64 @@ the Gtk::PrintOperation.
 == Instance Methods
 
 --- cairo_context
+
      Obtains the cairo context that is associated with the Gtk::PrintContext.
      * Returns: the cairo context of self
 
 --- create_pango_context
+
      Creates a new Pango::Context that can be used with the Gtk::PrintContext.
      * Returns: a new Pango context for self
 
 --- create_pango_layout
+
      Creates a new Pango::Layout that is suitable for use
      with the Gtk::PrintContext.
 
      * Returns: a new Pango layout for self
 
 --- dpi_x
+
      Obtains the horizontal resolution of the
      Gtk::PrintContext, in dots per inch.
 
      * Returns: the horizontal resolution of self
 
 --- dpi_y
+
      Obtains the vertical resolution of the
      Gtk::PrintContext, in dots per inch.
 
      * Returns: the vertical resolution of self
 
 --- height
+
      Obtains the height of the Gtk::PrintContext, in pixels.
 
      * Returns: the height of self
 
 --- width
+
      Obtains the width of the Gtk::PrintContext, in pixels.
 
      * Returns: the width of self
 
 --- page_setup
+
      Obtains the Gtk::PageSetup that determines the page
      dimensions of the Gtk::PrintContext.
 
      * Returns: the page setup of self
 
 --- pango_fontmap
+
      Returns a Pango::FontMap that is suitable for use with
      the Gtk::PrintContext.
 
      * Returns: the font map of self
 
 --- set_cairo_context(cr, dpi_x, dpi_y)
+
      Sets a new cairo context on a print context.
 
      This function is intended to be used when implementing

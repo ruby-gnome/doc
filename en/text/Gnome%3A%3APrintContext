@@ -1,17 +1,20 @@
 = class Gnome::PrintContext
 
 == Object Hierarchy
+
 * Object
   * GLib::Instantiatable
     * GLib::Object
       * Gnome::PrintContext
 
 == Included Modules
-* Gnome::PrintPango
+
+  * Gnome::PrintPango
 
 == Class Methods
 
 --- Gnome::PrintContext.new(config=nil)
+
      
      * config: a Gnome::PrintConfig object, can be (({nil}))
        in which case a default Gnome::PrintConfig is created.
@@ -57,6 +60,7 @@
        exception of Gnome::PrintError
 
 --- bpath(bpath, append=true)
+
      
      Adds all ((|bpath|)) segments up to Art::END to currentpath. If
      ((|append|)) is false, currentpath is cleared first, otherwise
@@ -72,6 +76,7 @@
        exception of Gnome::PrintError
 
 --- clip
+
      
      Defines drawing region as inside area of currentpath. If
      path is self-intersecting or consists of several overlapping
@@ -97,6 +102,7 @@
        exception of Gnome::PrintError
 
 --- close_path
+
      
      Closes the last segment of currentpath, optionally drawing
      straight line segment from its endpoint to starting
@@ -128,6 +134,7 @@
        exception of Gnome::PrintError
 
 --- curve_to(x1, y1, x2, y2, x3, y3)
+
      
      Adds new cubig bezier segment with control points
      ((|x1|)),((|y1|)) and ((|x2|)),((|y2|)) and endpoint
@@ -178,6 +185,7 @@
        exception of Gnome::PrintError
 
 --- fill
+
      
      Fills the inside area of currentpath, using current
      graphic state. If path is self-intersecting or consists
@@ -244,6 +252,7 @@
        exception of Gnome::PrintError
 
 --- move_to(x, y)
+
      
      Starts new subpath in currentpath with coordinates
      ((|x|)),((|y|)). Moves currentpoint to x,y.
@@ -263,6 +272,7 @@
        exception of Gnome::PrintError
 
 --- pages
+
     
      * Returns: number of pages
 
@@ -301,6 +311,7 @@
        exception of Gnome::PrintError
 
 --- restore
+
      
      Retrieves last saved graphic state from stack
      (pop). Stack has to be at least the size of one.
@@ -464,6 +475,7 @@
        exception of Gnome::PrintError
 
 --- set_rgb_color(r, g, b)
+
      
      Sets color in graphic state to RGB triplet. This does
      not imply anything about which colorspace is used
@@ -533,6 +545,7 @@
        exception of Gnome::PrintError
 
 --- stroke_path
+
      
      Converts currentpath to new path, that is identical to
      area painted by gnome_print_stroke function, using
@@ -571,8 +584,109 @@
      * Returns: nil on success, otherwise raises an
        exception of Gnome::PrintError
 
+--- circle_to
+
+     * Returns: self: ((*FIXME*))
+
+--- config
+
+    Gets the Config.
+     * Returns: Config
+
+--- config=(config)
+
+    Sets the Config.
+     * config: Config
+     * Returns: config
+
+--- create_layout
+
+    See Gnome::PrintPango#create_layout.
+
+--- filter
+
+    Gets the Filter.
+     * Returns: Filter
+
+--- filter=(filter)
+
+    Sets the Filter.
+     * filter: Filter
+     * Returns: filter
+
+--- glyph_string
+
+    See Gnome::PrintPango#glyph_string.
+
+--- layout
+
+    See Gnome::PrintPango#layout.
+
+--- layout_line
+
+    See Gnome::PrintPango#layout_line.
+
+--- rounded_rect
+
+     * Returns: self: ((*FIXME*))
+
+--- rounded_rect_filled
+
+     * Returns: self: ((*FIXME*))
+
+--- rounded_rect_stroked
+
+     * Returns: self: ((*FIXME*))
+
+--- set_config(config)
+
+    Same as config=.
+     * config: Config
+     * Returns: self
+
+--- set_filter(filter)
+
+    Same as filter=.
+     * filter: Filter
+     * Returns: self
+
+--- set_transport(transport)
+
+    Same as transport=.
+     * transport: Transport
+     * Returns: self
+
+--- transport
+
+    Gets the Transport.
+     * Returns: Transport
+
+--- transport=(transport)
+
+    Sets the Transport.
+     * transport: Transport
+     * Returns: transport
+
+--- update_context
+
+    See Gnome::PrintPango#update_context.
+
+== Properties
+
+--- config: Gnome::PrintConfig (Read/Write)
+
+    Config
+
+--- filter: Gnome::PrintFilter (Read/Write)
+
+    Filter
+
+--- transport: Gnome::PrintTransport (Read/Write)
+
+    Transport
 
 == See Also
+
 
 == ChangeLog
 

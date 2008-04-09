@@ -1,11 +1,13 @@
 = class Poppler::ActionType
 
 == Object Hierarchy
+
 * Object
   * GLib::Enum
     * Poppler::ActionType
 
 == Constants
+
 --- GOTO_DEST
 --- GOTO_REMOTE
 --- LAUNCH
@@ -15,6 +17,7 @@
 --- URI
 
 == See Also
+
 
 == ChangeLog
 

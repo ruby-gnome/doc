@@ -7,6 +7,7 @@ The range of the spinbutton is taken from the adjustment property of the cell re
 ((*Since 2.10*))
 
 == Object Hierarchy
+
 * Object
   * GLib::Instantiatable
     * GLib::Object
@@ -17,66 +18,142 @@ The range of the spinbutton is taken from the adjustment property of the cell re
               * Gtk::CellRendererSpin
 
 == Class Methods
+
 --- Gtk::CellRendererSpin.new
+
     Creates a new Gtk::CellRendererSpin.
     ((*Since 2.10*))
 
     * Returns: a new Gtk::CellRendererSpin
 
 --- adjustment
+
     Gets the  adjustment that holds the value of the spinbutton. ((*Since 2.10*))
-    * Returns: The adjustment that holds the value of the spinbutton. (Gtk::Adjustment) 
+    * Returns: The adjustment that holds the value of the spinbutton. (Gtk::Adjustment)
+
 --- adjustment=(adjustment)
+
     Sets the  adjustment that holds the value of the spinbutton. ((*Since 2.10*))
     * adjustment: The adjustment that holds the value of the spinbutton. (Gtk::Adjustment) 
     * Returns: adjustment
+
 --- set_adjustment(adjustment)
+
     Same as adjustment=.  ((*Since 2.10*))
     * adjustment: The adjustment that holds the value of the spinbutton.(Gtk::Adjustment)
     * Returns: self
 
 --- climb_rate
+
     Gets the  acceleration rate when you hold down a button.
     * Returns: The acceleration rate when you hold down a button
+
 --- climb_rate=(climb_rate)
+
     Sets the  acceleration rate when you hold down a button.
     * climb_rate: The acceleration rate when you hold down a button
     * Returns: climb_rate
+
 --- set_climb_rate(climb_rate)
+
     Same as climb_rate=.
     * climb_rate: The acceleration rate when you hold down a button
     * Returns: self
 
 --- digits
+
     Gets the  number of decimal places to display.
     * Returns: The number of decimal places to display
+
 --- digits=(digits)
+
     Sets the  number of decimal places to display.
     * digits: The number of decimal places to display
     * Returns: digits
+
 --- set_digits(digits)
+
     Same as digits=.
     * digits: The number of decimal places to display
     * Returns: self
 
+== Instance Methods
+
+--- adjustment
+
+    Gets the adjustment that holds the value of the spinbutton..
+     * Returns: The adjustment that holds the value of the spinbutton.
+
+--- adjustment=(adjustment)
+
+    Sets the adjustment that holds the value of the spinbutton..
+     * adjustment: The adjustment that holds the value of the spinbutton.
+     * Returns: adjustment
+
+--- climb_rate
+
+    Gets the acceleration rate when you hold down a button.
+     * Returns: The acceleration rate when you hold down a button
+
+--- climb_rate=(climb_rate)
+
+    Sets the acceleration rate when you hold down a button.
+     * climb_rate: The acceleration rate when you hold down a button
+     * Returns: climb_rate
+
+--- digits
+
+    Gets the number of decimal places to display.
+     * Returns: The number of decimal places to display
+
+--- digits=(digits)
+
+    Sets the number of decimal places to display.
+     * digits: The number of decimal places to display
+     * Returns: digits
+
+--- set_adjustment(adjustment)
+
+    Same as adjustment=.
+     * adjustment: The adjustment that holds the value of the spinbutton.
+     * Returns: self
+
+--- set_climb_rate(climb_rate)
+
+    Same as climb_rate=.
+     * climb_rate: The acceleration rate when you hold down a button
+     * Returns: self
+
+--- set_digits(digits)
+
+    Same as digits=.
+     * digits: The number of decimal places to display
+     * Returns: self
+
 == Properties
+
 --- adjustment: Gtk::Adjustment (Read/Write)
+
     The adjustment that holds the value of the spinbutton. This must be non-nil for the cell renderer to be editable.
 
 --- climb-rate: Float (Read/Write)
+
     The acceleration rate when you hold down a button
     * Allowed values: >= 0
     * Default value: 0
 
 --- digits: Integer (Read/Write)
+
     The number of decimal places to display
     * Allowed values: <= 20
     * Default value: 0
 
 == See Also
+
 Gtk::CellRendererText, Gtk::SpinButton 
 
 == ChangeLog
+
 * 2007-02-03: Modified. Add properties. - ((<Masao>))
 * 2006-07-16: new widget binded and documented for 2.10. - ((<gc>))
 

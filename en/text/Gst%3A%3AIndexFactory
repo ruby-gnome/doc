@@ -1,19 +1,35 @@
 = class Gst::IndexFactory
+
 Create indexes from a factory.
 
 == Object Hierarchy
+
 * Object
   * GLib::Instantiatable
     * GLib::Object
-      * Gst::PluginFeature
-        * Gst::IndexFactory
+      * Gst::Object
+        * Gst::PluginFeature
+          * Gst::IndexFactory
+
+== Class Methods
+
+--- Gst::IndexFactory.find
+
+     * Returns: self: ((*FIXME*))
 
 == Instance Methods
+
 --- to_s
+
     This method returns a String representing the factory.
     * Returns: a String representing the factory.
 
+--- description
+
+     * Returns: self: ((*FIXME*))
+
 == See Also
+
 ((<Gst>)).
 
 == ChangeLog

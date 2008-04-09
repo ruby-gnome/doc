@@ -1,9 +1,11 @@
 = class Gtk::CheckMenuItem
+
 A Gtk::CheckMenuItem is a menu item that maintains the state of a boolean value in addition to a Gtk::MenuItem's usual role in activating application code. 
 
-A check box indicating the state of the boolean value is displayed at the left side of the Gtk::MenuItem. Activating the Gtk::MenuItem toggles the value. 
+A check box indicating the state of the boolean value is displayed at the left side of the Gtk::MenuItem. Activating the Gtk::MenuItem toggles the value.
 
 == Object Hierarchy
+
 * Object
   * GLib::Instantiatable
     * GLib::Object
@@ -17,81 +19,111 @@ A check box indicating the state of the boolean value is displayed at the left s
                     * Gtk::CheckMenuItem
 
 == Class Methods
+
 --- Gtk::CheckMenuItem.new(label = nil, use_underline = true)
+
     Creates a new Gtk::CheckMenuItem. 
     * label: the string to use for the label.  
     * use_undeline: true if underscores in label indicate the mnemonic for the menu item.
-    * Returns : a new Gtk::CheckMenuItem.  
+    * Returns : a new Gtk::CheckMenuItem.
 
 == Instance Methods
+
 --- active?
+
     Returns whether the check menu item is active.
-    * Returns: true if the menu item is checked.  
-   
+    * Returns: true if the menu item is checked.
+
 --- active=(active)
+
     Sets the active state of the menu item's check box. 
     * active: true if the check box is active.  
     * Returns: active
 
 --- set_active(active)
+
     Same as Gtk::CheckMenuItem#active=.
     * active: true if the check box is active.  
     * Returns: self
 
 --- inconsistent?
+
     Retrieves the value set by Gtk::CheckMenuItem#inconsistent=.
     * Returns: true if inconsistent
 
 --- inconsistent=(setting)
+
     If the user has selected a range of elements (such as some text or spreadsheet cells) that are affected by a boolean setting, and the current values in that range are inconsistent, you may want to display the check in an "in between" state. This function turns on "in between" display. Normally you would turn off the inconsistent state again if the user explicitly selects a setting. This has to be done manually, this method only affects visual appearance, it doesn't affect the semantics of the widget.
     * setting: true to display an "inconsistent" third state check
     * Returns: setting
 
 --- set_inconsistent(setting)
+
     Same as Gtk::CheckMenuItem#inconsistent=.
     * setting: true to display an "inconsistent" third state check
     * Returns: self
 
 --- draw_as_radio?
+
     Gets the value whether the menu item looks like a radio menu item or not. ((* Since 2.4 *))
      * Returns: true if the menu item looks like a radio menu item
+
 --- draw_as_radio=(setting)
+
     Sets the value whether the menu item looks like a radio menu item or not. ((* Since 2.4 *))
      * setting: true if the menu item looks like a radio menu item
      * Returns: setting
+
 --- set_draw_as_radio(setting)
+
     Same as draw_as_radio=. ((* Since 2.4 *))
      * setting: true if the menu item looks like a radio menu item
      * Returns: self
 
 --- toggled
-    Emits the ((<Gtk::CheckMenuItem::toggled|Gtk::CheckMenuItem::toggled: self>)) signal. 
+
+    Emits the ((<Gtk::CheckMenuItem::toggled|Gtk::CheckMenuItem::toggled: self>)) signal.
+
+--- ref_accessible
+
+    See Atk::Implementor#ref_accessible.
 
 == Properties
+
 --- active: true or false (Read/Write)
+
     Whether the menu item is checked
     * Default value: false
 
 --- draw-as-radio: true or false (Read/Write)
+
     Whether the menu item looks like a radio menu item ((* Since 2.4 *))
     * Default value: false
 
 --- inconsistent: true or false (Read/Write)
+
     Whether to display an "inconsistent" state
     * Default value: false
 
 == Style Properties
+
 --- indicator-size: Integer (Read)
+
     Size of check or radio indicator
     * Allowed values: >= 0
     * Default value: 12
 
 == Signals
+
 --- toggled: self
+
     This signal is emitted when the state of the check box is changed. 
     A signal handler can examine the active field of the Gtk::CheckMenuItem-struct struct to discover the new state. 
     * self: Gtk::CheckMenuItem
 
+== See Also
+
 == ChangeLog
+
 * 2007-02-08 Apply 2.10. - ((<Masao>))
 * 2006-01-31 Apply GTK+-2.4 methods. Revised. - ((<Masao>))

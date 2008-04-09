@@ -1,712 +1,1006 @@
 = class Gtk::CellRendererText
-The Gtk::CellRendererText is used for rendering a cell to a Gdk::Drawable with texts. 
+
+The Gtk::CellRendererText is used for rendering a cell to a Gdk::Drawable with texts.
 
 == Object Hierarchy
+
 * Object
   * GLib::Instantiatable
     * GLib::Object
-      * Gtk::Object
-        * Gtk::CellRenderer
-          * Gtk::CellRendererText
+      * GLib::InitiallyUnowned
+        * Gtk::Object
+          * Gtk::CellRenderer
+            * Gtk::CellRendererText
 
 == Class Methods
+
 --- Gtk::CellRendererText.new
+
     Creates a new Gtk::CellRendererText. Adjust how text is drawn using object properties. Object properties can be set globally (with GLib::Object#set_property). Also, with Gtk::TreeViewColumn, you can bind a property to a value in a Gtk::TreeModel. For example, you can bind the "text" property on the cell renderer to a string value in the model, thus rendering a different string in each row of the Gtk::TreeView.
-    * Returns : the new cell renderer  
+    * Returns : the new cell renderer
 
 == Instance Methods
+
 --- alignment
+
     Gets the How to align the lines. ((* Since 2.10 *))
     * Returns: How to align the lines
+
 --- alignment=(alignment)
+
     Sets the How to align the lines. ((* Since 2.10 *))
     * alignment: How to align the lines
     * Returns: alignment
+
 --- set_alignment(alignment)
+
     Same as alignment=. ((* Since 2.10 *))
     * alignment: How to align the lines
     * Returns: self
 
 --- attributes
+
     Returns the attribute list.
     * Returns: Pango::AttrList
+
 --- attributes=(attrlist)
+
     Sets the attribute list.
     * attrlist: Pango::AttrList
     * Returns: attrlist
+
 --- set_attributes
+
     Same as Gtk::CellRendererText#attributes=.
     * attrlist: Pango::AttrList
     * Returns: self
-    
+
 --- background=(color_name)
+
     Sets the background color .
     * color_name: The color name like as "red". The color_name can either one of a large set of standard names. (Taken from the X11 rgb.txt file), or it can be a hex value in the form '#rgb' '#rrggbb' '#rrrgggbbb' or '#rrrrggggbbbb' where 'r', 'g' and 'b' are hex digits of the red, green, and blue components of the color, respectively. (White in the four forms is '#fff' '#ffffff' '#fffffffff' and '#ffffffffffff')
     * Returns: color_name
+
 --- set_background(color_name)
+
     Same as Gtk::CellRendererText#background=.
     * color_name: The color name.
     * Returns: self
-    
+
 --- background_gdk
+
     Returns the background color.
     * Returns: Gdk::Color
+
 --- background_gdk=(color)
+
     Sets the background color.
     * color: the new color (Gdk::Color).
     * Returns: color.
+
 --- set_background_gdk(color)
+
     Same as Gtk::CellRendererText#background_gdk=.
     * color: the new color (Gdk::Color).
     * Returns: color.
 
 --- background_set?
+
     Returns value whether background properties are enabled or not.
     * Returns: true if the background properties are enabled.
+
 --- background_set=(value)
+
     Sets value whether background properties are enabled or not.
     * value: true if background properties are enabled.
     * Returns: value
+
 --- set_background_set(value)
+
     Same as Gtk::CellRendererText#background_set=.
     * value: true if background properties are enabled.
     * Returns: self
-    
+
 --- editable?
+
     Returns the Gtk::CellRendererText is editable or not.
     * Returns: true if editable
+
 --- editable=(editable)
+
     Sets value whether the Gtk::CellRenderText is editable or not.
     * editable: true if editable
     * Returns: editable
+
 --- set_editable(editable)
+
     Same as Gtk::CellRendererText#editable=.
     * editable: true if editable
     * Returns: self
 
 --- editable_set?
+
     Returns the value whether editability are enabled or not.
     * Returns: true if the editability are enabled.
+
 --- editable_set=(value)
+
     Sets the value whether editablity are enabled or not.
     * value: true if the editability are enabled.
     * Returns: value
+
 --- set_editable_set(value)
+
     Same as Gtk::CellRendererText#editable_set=.
     * value: true if the editability are enabled.
     * Returns: self
 
 --- ellipsize
+
     Gets the preferred place to ellipsize the string, if the cell renderer does not have enough room to display the entire string, setting it to Pango::ELLIPSIZE_NONE turns off ellipsizing. See the wrap-width property for another way of making the text fit into a given width. ((* Since 2.6 *))
     * Returns: The ((<Pango#EllipsizeMode>))
+
 --- ellipsize=(ellipsize)
+
     Sets the  preferred place to ellipsize the string, if the cell renderer does not have enough room to display the entire string, setting it to Pango::ELLIPSIZE_NONE turns off ellipsizing. See the wrap-width property for another way of making the text fit into a given width. ((* Since 2.6 *))
     * ellipsize: a ((<Pango#EllipsizeMode>))
     * Returns: ellipsize
+
 --- set_ellipsize(ellipsize)
+
     Same as Gtk::CellRendererText#ellipsize=. ((* Since 2.6 *))
     * ellipsize: a ((<Pango#EllipsizeMode>))
     * Returns: self
 
 --- ellipsize_set?
+
     Gets the value whether this tag affects the ellipsize mode or not.  ((* Since 2.6 *))
      * Returns: true if this tag affects the ellipsize mode
+
 --- ellipsize_set=(value)
+
     Sets the value whether this tag affects the ellipsize mode or not.  ((* Since 2.6 *))
      * value: true if this tag affects the ellipsize mode
      * Returns: value
+
 --- set_ellipsize_set(value)
+
     Same as Gtk::CellRendererText#ellipsize_set=.  ((* Since 2.6 *))
      * value: true if this tag affects the ellipsize mode
      * Returns: self
 
 --- family
+
     Returns the font family name.
     * Returns: the font family name
+
 --- family=(family)
+
     Sets the font family name.
     * family: the font family name
     * Returns: the font family name
+
 --- set_family(family)
+
     Same as Gtk::CellRendererText#family=.
     * family: the font family name
     * Returns: self
 
 --- family_set?
+
     Returns the value whether font family properties are enabled or not.
     * Returns: true if the font family properties are enabled.
+
 --- family_set=(value)
+
     Sets the value whether editablity are enabled or not.
     * value: true if the font family properties are enabled.
     * Returns: value
+
 --- set_family_set(value)
+
     Same as Gtk::CellRendererText#family_set=.
     * value: true if the font family properties are enabled.
     * Returns: self
 
 --- fixed_height_from_font=(number_of_rows)
+
     Sets the height of a renderer to explicitly be determined by the "font" and "y_pad" property set on it. Further changes in these properties do not affect the height, so they must be accompanied by a subsequent call to this method. Using this method is unflexible, and should really only be used if calculating the size of a cell is too slow (ie, a massive number of cells displayed). If number_of_rows is -1, then the fixed height is unset, and the height is determined by the properties again.
     * number_of_rows: Number of rows of text each cell renderer is allocated, or -1  
     * Returns: number_of_rows
 
 --- set_fixed_height_from_font(number_of_rows)
+
     Same as Gtk::CellRendererText#fixed_height_from_font=.
     * number_of_rows: Number of rows of text each cell renderer is allocated, or -1  
     * Returns: self
 
 --- font
+
     Returns the string representation of a font description. The family list in the string description will only have a terminating comma if the last word of the list is a valid style option.
     * Returns: The string representation of a font description.
 
 --- font=(font)
+
     Set the font description from a string representation in the form "[FAMILY-LIST] [STYLE-OPTIONS] [SIZE]", where FAMILY-LIST is a comma separated list of families optionally terminated by a comma, STYLE_OPTIONS is a whitespace separated list of words where each WORD describes one of style, variant, weight, or stretch, and SIZE is an decimal number (size in points). Any one of the options may be absent. If FAMILY-LIST is absent, then the family_name field of the resulting font description will be initialized to nil. If STYLE-OPTIONS is missing, then all style options will be set to the default values. If SIZE is missing, the size in the resulting font description will be set to 0.
     * font: string representation of a font description. 
     * Returns: font
+
 --- set_font(font)
+
     Same as Gtk::CellRendererText#font=.
     * font: string representation of a font description. 
     * Returns: self
 
 --- font_desc
+
     Returns the Pango::FontDescription.
     * Returns: Pango::FontDescription
+
 --- font_desc=(font_desc)
+
     Sets the Pango::FontDescription
     * font_desc: the Pango::FontDescription
     * Returns: font_desc
+
 --- set_font_desc
+
     Same as Gtk::CellRendererText#font_desc=.
     * font_desc: the Pango::FontDescription
     * Returns: self
 
 --- foreground=(color_name)
+
     Sets the foreground color.
     * color_name: The color name like as "red". See Gtk::CellRendererText#background=.
     * Returns: color_name
+
 --- set_foreground(color_name)
+
     Same as Gtk::CellRendererText#foreground=.
     * color_name: The color name.
     * Returns: self
 
 --- foreground_gdk
+
     Returns the foreground color.
     * Returns: Gdk::Color
+
 --- foreground_gdk=(color)
+
     Sets the foreground color.
     * color: the new color (Gdk::Color).
     * Returns: color.
+
 --- set_foreground_gdk(color)
+
     Same as Gtk::CellRendererText#foreground_gdk=.
     * color: the new color (Gdk::Color).
     * Returns: color.
 
 --- foreground_set?
+
     Returns the value whether foreground properties are enabled or not.
     * Returns: true if the foreground properties are enabled.
+
 --- foreground_set=(value)
+
     Sets the value whether foreground properties are enabled or not.
     * value: true if foreground properties are enabled.
     * Returns: value
+
 --- set_foreground_set(value)
+
     Same as Gtk::CellRendererText#foreground_set=.
     * value: true if foreground properties are enabled.
     * Returns: self
 
 --- language
+
     Gets the language this text is in, as an ISO code. Pango can use this as a hint when rendering the text. If you don't understand this parameter, you probably don't need it.
     * Returns: The language this text is in, as an ISO code.
+
 --- language=(language)
+
     Sets the language this text is in, as an ISO code. Pango can use this as a hint when rendering the text. If you don't understand this parameter, you probably don't need it.
     * language: The language this text is in, as an ISO code.
     * Returns: language
+
 --- set_language(language)
+
     Same as Gtk::CellRendererText#language=.
     * language: The language this text is in, as an ISO code.
     * Returns: self
 
 --- language_set?
+
     Gets the value whether this tag affects the language the text is rendered as or not.
     * Returns: true if this tag affects the language the text is rendered as
+
 --- language_set=(value)
+
     Sets the value whether this tag affects the language the text is rendered as or not.
     * value: true if this tag affects the language the text is rendered as
     * Returns: language_set
+
 --- set_language_set(value)
+
     Same as Gtk::CellRendererText#language_set=.
     * value: true if this tag affects the language the text is rendered as
     * Returns: self
 
 --- markup=(text)
+
     Set the marked up text to render.
     * text: the marked up text
     * Returns: text
+
 --- set_markup(text)
+
     Same as Gtk::CellRendererText#markup=.
     * text: the marked up text
     * Returns: self
-  
+
 --- rise
+
     Returns the offset of text above the baseline (below the baseline if rise is negative).
     * Returns: the offset of text above the baseline
+
 --- rise=(offset)
+
     Sets the offset of text above the baseline.
     * offset: the offset of text above the baseline
     * Returns: offset
+
 --- set_rise(offset)
+
     Same as Gtk::CellRendererText#rise=.
     * offset: the offset of text above the baseline
     * Returns: self
 
 --- rise_set?
+
     Returns value whether rise property is enabled or not.
     * Returns: true if the rise property is enabled.
+
 --- rise_set=(value)
+
     Sets the value whether rise property is enabled or not.
     * value: true if rise property is enabled.
     * Returns: value
+
 --- set_rise_set(value)
+
     Same as Gtk::CellRendererText#rise_set=.
     * value: true if rise property is enabled.
     * Returns: self
 
 --- scale
+
     Returns the font scaling factor.
     * Returns: the font scaling factor.
+
 --- scale=(scale)
+
     Sets the font scaling factor.
     * scale: the font scaling factor.
     * Returns: scale
+
 --- set_scale(scale)
+
     Same as Gtk::CellRendererText#scale=.
     * scale: the font scaling factor.
     * Returns: self
 
 --- scale_set?
+
     Returns the value whether scale property is enabled or not.
     * Returns: true if the scale property is enabled.
+
 --- scale_set=(value)
+
     Sets the value whether scale property is enabled or not.
     * value: true if scale property is enabled.
     * Returns: value
+
 --- set_scale_set(value)
+
     Same as Gtk::CellRendererText#scale_set=.
     * value: true if scale property is enabled.
     * Returns: self
 
 --- single_paragraph_mode?
+
     Gets the value whether or not to keep all text in a single paragraph or not.
     * Returns: true if or not to keep all text in a single paragraph
+
 --- single_paragraph_mode=(mode)
+
     Sets the value whether or not to keep all text in a single paragraph or not.
     * mode: true if or not to keep all text in a single paragraph
     * Returns: mode
+
 --- set_single_paragraph_mode(mode)
+
     Same as Gtk::CellRendererText#single_paragraph_mode=.
     * mode: true if or not to keep all text in a single paragraph
     * Returns: self
 
 --- size
+
     Returns the font size.
     * Returns: the font size
 
 --- size=(size)
+
     Sets the font size.
     * size: the font size
     * Returns: size
 
 --- set_size(size)
+
     Same as Gtk::CellRendererText#size=.
     * size: the font size
     * Returns: self
 
 --- size_points
+
     Returns the font size in points.
     * Returns: the font size in points
+
 --- size_points=(size)
+
     Sets the font size in points.
     * size: the font size in points
     * Returns: size
+
 --- set_size_points(size)
+
     Same as Gtk::CellRendererText#size_points=.
     * size: the font size in points
     * Returns: self
 
 --- size_set?
+
     Returns the value whether size properties are enabled or not.
     * Returns: true if the size properties are enabled.
+
 --- size_set=(value)
+
     Sets the value whether size properties are enabled or not.
     * value: true if size properties are enabled.
     * Returns: value
+
 --- set_size_set(value)
+
     Same as Gtk::CellRendererText#size_set=.
     * value: true if size properties are enabled.
     * Returns: self
 
 --- stretch
+
     Returns the width of the font relative to other designs within a family. 
     * Returns: the width of the font relative (((<Pango#Stretch>)))
+
 --- stretch=(stretch)
+
     Sets the width of the font relative to other designs within a family.
     * stretch: the width of the font relative (((<Pango#Stretch>)))
     * Returns: stretch
+
 --- set_stretch(stretch)
+
     Same as Gtk::CellRendererText#stretch=.
     * stretch: the width of the font relative (((<Pango#Stretch>)))
     * Returns: self
 
 --- stretch_set?
+
     Returns the value whether stretch property is enabled or not.
     * Returns: true if the stretch property is enabled.
+
 --- stretch_set=(value)
+
     Sets the value whether stretch property is enabled or not.
     * value: true if stretch property is enabled.
     * Returns: value
+
 --- set_stretch_set(value)
+
     Same as Gtk::CellRendererText#stretch_set=.
     * value: true if stretch property is enabled.
     * Returns: self
 
 --- strikethrough?
+
     Returns whether to strike through the text or not.
     * Returns: true if the Gtk::CellRendererText is striked through.
+
 --- strikethrough=(strikethrough)
+
     Sets whether to strike through the text or not.
     * strikethrough: true if the Gtk::CellRendererText is striked through.
     * Returns: strikethrough
+
 --- set_strikethrough(strikethrough)
+
     Same as Gtk::CellRendererText#strikethrough=.
     * strikethrough: true if the Gtk::CellRendererText is striked through.
     * Returns: self
 
 --- strikethrough_set?
+
     Returns the value whether strikethrough property is enabled or not.
     * Returns: true if the strikethrough property is enabled.
+
 --- strikethrough_set=(value)
+
     Sets the value whether strikethrough property is enabled or not.
     * value: true if strikethrough property is enabled.
     * Returns: value
+
 --- set_strikethrough_set(value)
+
     Same as Gtk::CellRendererText#strikethrough_set=.
     * value: true if strikethrough property is enabled.
     * Returns: self
 
 --- style
+
     Returns the font style.
     * Returns: the font style (((<Pango#Style>)))
+
 --- style=(style)
+
     Sets the font style.
     * style: the font style (((<Pango#Style>)))
     * Returns: style
+
 --- set_style(style)
+
     Same as Gtk::CellRendererText#style=.
     * style: the font style (((<Pango#Style>)))
     * Returns: self
 
 --- style_set?
+
     Returns the value whether style property is enabled or not.
     * Returns: true if the style property is enabled.
+
 --- style_set=(value)
+
     Sets the value whether style property is enabled or not.
     * value: true if style property is enabled.
     * Returns: value
+
 --- set_style_set(value)
+
     Same as Gtk::CellRendererText#style_set=.
     * value: true if style property is enabled.
     * Returns: self
 
 --- text
+
     Returns the text to render.
     * Returns: the text to render.
+
 --- text=(text)
+
     Sets the text to render.
     * text: the text to render.
     * Returns: text
+
 --- set_text(text)
+
     Same as Gtk::CellRendererText#text=.
     * text: the text to render.
     * Returns: self
 
 --- underline
+
     Returns the style of underline for this text.
     * Returns: the style of underline (((<Pango#Underline>)))
+
 --- underline=(underline)
+
     Sets the style of underline.
     * underline: the style of underline (((<Pango#Underline>)))
     * Returns: underline
 
 --- set_underline(underline)
+
     Same as Gtk::CellRendererText#underline=.
     * underline: the style of underline (((<Pango#Underline>)))
     * Returns: self
 
 --- variant
+
     Returns the specifying capitalization variant of the font.
     * Returns: the specifying capitalization variant of the font (((<Pango#Variant>)))
+
 --- variant=(variant)
+
     Sets the style of variant.
     * variant: the specifying capitalization variant of the font (((<Pango#Variant>)))
     * Returns: variant
+
 --- set_variant(variant)
+
     Sets the style of variant.
     * variant: the specifying capitalization variant of the font (((<Pango#Variant>)))
     * Returns: self
 
 --- variant_set?
+
     Returns the value whether variant property is enabled or not.
     * Returns: true if the variant property is enabled.
+
 --- variant_set=(value)
+
     Sets the value whether variant property is enabled or not.
     * value: true if variant property is enabled.
     * Returns: value
+
 --- set_variant_set(value)
+
     Same as Gtk::CellRendererText#variant_set=.
     * value: true if variant property is enabled.
     * Returns: self
 
 --- weight
+
     Returns specifying the weight (boldness) of a font. 
     * Returns: specifying the weight (boldness) of a font. This is a numerical value ranging from 100 to 900, but there are some predefined values (((<Pango#Weight>)))
+
 --- weight=(weight)
+
     Sets specifying the weight (boldness) of a font. 
     * weight: This is a numerical value ranging from 100 to 900, but there are some predefined values (((<Pango#Weight>)))
     * Returns: weight
+
 --- set_weight(weight)
+
     Same as Gtk::CellRendererText#weight=.
     * weight: This is a numerical value ranging from 100 to 900, but there are some predefined values (((<Pango#Weight>)))
     * Returns: self
 
 --- weight_set?
+
     Returns the value whether weight property is enabled or not.
     * Returns: true if the weight property is enabled.
+
 --- weight_set=(value)
+
     Sets the value whether weight property is enabled or not.
     * value: true if weight property is enabled.
     * Returns: value
+
 --- set_weight_set(value)
+
     Same as Gtk::CellRendererText#weight_set=.
     * value: true if weight property is enabled.
     * Returns: self
 
 --- width_chars
+
     Gets the desired width of the label, in characters. ((* Since 2.6 *))
     * Returns: The desired width of the label, in characters
+
 --- width_chars=(width_chars)
+
     Sets the desired width of the label, in characters. ((* Since 2.6 *))
     * width_chars: The desired width of the label, in characters
     * Returns: width_chars
+
 --- set_width_chars(width_chars)
+
     Same as Gtk::CellRendererText#width_chars=. ((* Since 2.6 *))
     * width_chars: The desired width of the label, in characters
     * Returns: self
 
 --- wrap_mode
+
     Gets the value how to break the string into multiple lines, if the cell renderer does not have enough room to display the entire string. ((* Since 2.8 *))
     * Returns: the ((<Pango#WrapMode>))
+
 --- wrap_mode=(wrap_mode)
+
     Sets the How to break the string into multiple lines, if the cell renderer does not have enough room to display the entire string. ((* Since 2.8 *))
     * wrap_mode: a ((<Pango#WrapMode>))
     * Returns: wrap_mode
+
 --- set_wrap_mode(wrap_mode)
+
     Same as Gtk::CellRendererText#wrap_mode=. ((* Since 2.8 *))
     * wrap_mode: a ((<Pango#WrapMode>))
     * Returns: self
 
 --- wrap_width
+
     Gets the width at which the text is wrapped. ((* Since 2.8 *))
     * Returns: The width at which the text is wrapped
+
 --- wrap_width=(wrap_width)
+
     Sets the width at which the text is wrapped. ((* Since 2.8 *))
     * wrap_width: The width at which the text is wrapped
     * Returns: wrap_width
+
 --- set_wrap_width(wrap_width)
+
     Same as Gtk::CellRendererText#wrap_width=. ((* Since 2.8 *))
     * wrap_width: The width at which the text is wrapped
     * Returns: self
 
+--- align_set=(align_set)
+
+    Sets the value whether this tag affects the alignment mode or not.
+     * align_set: true if this tag affects the alignment mode
+     * Returns: align_set
+
+--- align_set?
+
+    Gets the value whether this tag affects the alignment mode or not.
+     * Returns: true if this tag affects the alignment mode
+
+--- set_align_set(align_set)
+
+    Same as align_set=.
+     * align_set: true if this tag affects the alignment mode
+     * Returns: self
+
+--- set_underline_set(underline_set)
+
+    Same as underline_set=.
+     * underline_set: true if this tag affects underlining
+     * Returns: self
+
+--- underline_set=(underline_set)
+
+    Sets the value whether this tag affects underlining or not.
+     * underline_set: true if this tag affects underlining
+     * Returns: underline_set
+
+--- underline_set?
+
+    Gets the value whether this tag affects underlining or not.
+     * Returns: true if this tag affects underlining
+
 == Properties
+
 --- alignment: Pango::Alignment (Read/Write)
+
     Specifies how to align the lines of text. ((* Since 2.10 *))
     * Default value: Pango::ALIGN_LEFT
-   
+
 --- attributes: Pango::AttrList (Read/Write)
+
     A list of style attributes to apply to the text of the renderer.
 
 --- background: String (Write)
+
     Background color as a String.
     * Default value: nil
 
 --- background-gdk: Gdk::Color (Read/Write)
+
     Background color as a Gdk::Color
 
 --- background-set: true or false (Read/Write)
+
     Whether this tag affects the background color
     * Default value: false
 
 --- editable: true or false (Read/Write)
+
     Whether the text can be modified by the user
     * Default value: false
 
 --- editable-set: true or false (Read/Write)
+
     Whether this tag affects text editability
     * Default value: false
 
 --- ellipsize: Pango::Layout::EllipsizeMode (Read/Write)
+
     Specifies the preferred place to ellipsize the string, if the cell renderer does not have enough room to display the entire string. Setting it to Pango::ELLIPSIZE_NONE turns off ellipsizing. See the wrap-width property for another way of making the text fit into a given width. ((* Since 2.6 *))
     * Default value: Pango::ELLIPSIZE_NONE
 
 --- ellipsize-set: true or false (Read/Write)
+
     Whether this tag affects the ellipsize mode. ((* Since 2.6 *))
     * Default value: false
 
 --- family: String (Read/Write)
+
     Name of the font family, e.g. Sans, Helvetica, Times, Monospace.
     * Default value: nil
 
 --- family-set: true or false (Read/Write)
+
     Whether this tag affects the font family.
     * Default value: false
 
 --- font: String (Read/Write)
+
     Font description as a String.
     * Default value: nil
 
 --- font-desc: Pango::FontDescription (Read/Write)
+
     Font description as a Pango::FontDescription.
 
 --- foreground: String (Write)
+
     Foreground color as a String.
     * Default value: nil
 
 --- foreground-gdk: Gdk::Color (Read/Write)
+
     Foreground color as a Gdk::Color.
 
 --- foreground-set: true or false (Read/Write)
+
     Whether this tag affects the foreground color
     * Default value: false
 
 --- language: String (Read/Write)
+
     The language this text is in, as an ISO code. Pango can use this as a hint when rendering the text. If you don't understand this parameter, you probably don't need it.
     * Default value: nil
 
 --- language-set: true or false (Read/Write)
+
     Whether this tag affects the language the text is rendered as.
     * Default value: false
 
 --- markup: String (Write)
+
     Marked up text to render.
     * Default value: nil
 
 --- rise: Integer (Read/Write)
+
     Offset of text above the baseline (below the baseline if rise is negative)
     * Allowed values: >= -2147483647
     * Default value: 0
 
 --- rise-set: true or false (Read/Write)
+
     Whether this tag affects the rise.
     * Default value: false
 
 --- scale: Float (Read/Write)
+
     Font scaling factor.
     * Allowed values: >= 0
     * Default value: 1
 
 --- scale-set: true or false (Read/Write)
+
     Whether this tag scales the font size by a factor.
     * Default value: false
 
 --- single-paragraph-mode: true or false (Read/Write)
+
     Whether or not to keep all text in a single paragraph.
     * Default value: false
 
 --- size: Integer (Read/Write)
+
     Font size.
     * Allowed values: >= 0
     * Default value: 0
 
 --- size-points: Float (Read/Write)
+
     Font size in points.
     * Allowed values: >= 0
     * Default value: 0
 
 --- size-set: true or false (Read/Write)
+
     Whether this tag affects the font size.
     * Default value: false
 
 --- stretch: Pango::FontDescription::Stretch (Read/Write)
+
     Font stretch.
     * Default value: Pango::STRETCH_NORMAL
 
 --- stretch-set: true or false (Read/Write)
+
     Whether this tag affects the font stretch.
     * Default value: false
 
 --- strikethrough: true or false (Read/Write)
+
     Whether to strike through the text.
     * Default value: false
 
 --- strikethrough-set: true or false (Read/Write)
+
     Whether this tag affects strikethrough.
     * Default value: false
 
 --- style: Pango::FontDescription::Style (Read/Write)
+
     Font style.
     * Default value: Pango::STYLE_NORMAL
 
 --- style-set: true or false (Read/Write)
+
     Whether this tag affects the font style.
     * Default value: false
 
 --- text: String (Read/Write)
+
     Text to render.
     * Default value: nil
 
 --- underline: Pango::AttrUnderline::Underline (Read/Write)
+
     Style of underline for this text
     * Default value: Pango::UNDERLINE_NONE
 
 --- underline-set: true or false (Read/Write)
+
     Whether this tag affects underlining
     * Default value: false
 
 --- variant: Pango::FontDescription::Variant (Read/Write)
+
     Font variant.
     * Default value: Pango::VARIANT_NORMAL
 
 --- variant-set: true or false (Read/Write)
+
     Whether this tag affects the font variant.
     * Default value: false
 
 --- weight: Integer (Read/Write)
+
     Font weight.
     * Allowed values: >= 0
     * Default value: 400
 
 --- weight-set: true or false (Read/Write)
+
     Whether this tag affects the font weight.
     * Default value: false
 
 --- width-chars: Integer (Read/Write)
+
     The desired width of the cell, in characters. If this property is set to -1, the width will be calculated automatically, otherwise the cell will request either 3 characters or the property value, whichever is greater. ((* Since 2.6 *))
     * Allowed values: >= -1
     * Default value: -1
 
 --- wrap-mode: Pango::Layout::WrapMode (Read/Write)
+
     Specifies how to break the string into multiple lines, if the cell renderer does not have enough room to display the entire string. This property has no effect unless the wrap-width property is set. ((* Since 2.8 *))
     * Default value: Pango::WRAP_CHAR
 
 --- wrap-width: Integer (Read/Write)
+
     Specifies the width at which the text is wrapped. The wrap-mode property can be used to influence at what character positions the line breaks can be placed. Setting wrap-width to -1 turns wrapping off. ((* Since 2.8 *))
     * Allowed values: >= -1
     * Default value: -1
 
+--- align-set: true or false (Read/Write)
+
+    Whether this tag affects the alignment mode
+
 == Signals
+
 --- edited: self
+
      * self: Gtk::CellRendererText
 
 == See Also
+
 Pango::FontDescription, Pango::Font
 
 == ChangeLog
+
 * 2007-02-03 Apply 2.10. - ((<Masao>))
 * 2006-01-31 Apply 2.8. Revised. - ((<Masao>))

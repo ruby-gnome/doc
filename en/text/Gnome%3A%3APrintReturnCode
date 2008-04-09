@@ -3,16 +3,20 @@
 Return codes for Gnome::PrintError.
 
 == Object Hierarchy
+
 * Object
   * GLib::Enum
     * Gnome::PrintReturnCode
 
 == Instance Methods
+
 --- to_s
+
      
      * Returns: description string of the return code
 
 == Constants
+
 --- ERROR_BADCONTEXT
 --- ERROR_BADVALUE
 --- ERROR_NOCURRENTPATH

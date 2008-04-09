@@ -1,17 +1,20 @@
 = class Vte::TerminalEraseBinding
 
 == Object Hierarchy
+
 * Object
   * GLib::Enum
     * Vte::TerminalEraseBinding
 
 == Constants
+
 --- ASCII_BACKSPACE
 --- ASCII_DELETE
 --- AUTO
 --- DELETE_SEQUENCE
 
 == See Also
+
 
 == ChangeLog
 

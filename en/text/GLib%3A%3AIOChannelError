@@ -1,4 +1,5 @@
 = class GLib::IOChannelError
+
 Error codes from GLib::IOChannel
 
 = Object Hierarchy
@@ -8,32 +9,70 @@ Error codes from GLib::IOChannel
       * IOError
         * GLib::IOChannelError
 
+== Object Hierarchy
+
+* Object
+  * Exception
+    * StandardError
+      * IOError
+        * GLib::IOChannelError
 
 == Class Methods
-    
+
 --- from_errno(errno)
+
     Converts an errno (eg. EINVAL) into an IOChannelError constant
     * Returns: the converted error (eg. for EINVAL, this would be GLib::IOChannelError::INVAL)
 
-== Constants 
---- FBIG 
+== Instance Methods
+
+--- code
+
+     * Returns: self: ((*FIXME*))
+
+--- domain
+
+     * Returns: self: ((*FIXME*))
+
+== Constants
+
+--- FBIG
+
     File too large.
---- INVAL 
+
+--- INVAL
+
     Invalid argument.
+
 --- IO
+
     IO Error.
---- ISDIR 
+
+--- ISDIR
+
     File is a directory.
---- NOSPC 
+
+--- NOSPC
+
     No space left on device.
---- NXIO 
+
+--- NXIO
+
     No such device or address.
---- OVERFLOW 
+
+--- OVERFLOW
+
     Value too large for defined datatype.
---- PIPE 
+
+--- PIPE
+
     Broken pipe.
---- FAILED 
+
+--- FAILED
+
     Some other error.
+
+== See Also
 
 == ChangeLog
 

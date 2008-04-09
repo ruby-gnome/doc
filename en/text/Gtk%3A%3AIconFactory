@@ -1,4 +1,5 @@
 = class Gtk::IconFactory
+
 Browse the available stock icons in the list of stock IDs found ((<here|Gtk::Stock>)). You can also use the gtk-demo application for this purpose.
 
 An icon factory manages a collection of Gtk::IconSet; a Gtk::IconSet manages a set of variants of a particular icon (i.e. a Gtk::IconSet contains variants for different sizes and widget states). Icons in an icon factory are named by a stock ID, which is a simple string identifying the icon. Each Gtk::Style has a list of Gtk::IconFactory derived from the current theme; those icon factories are consulted first when searching for an icon. If the theme doesn't set a particular icon, GTK+ looks for the icon in a list of default icon factories, maintained by Gtk::IconFactor#add_default and Gtk::IconFactor#remove_default. Applications with icons should add a default icon factory with their icons, which will allow themes to override the icons for the application.
@@ -6,42 +7,52 @@ An icon factory manages a collection of Gtk::IconSet; a Gtk::IconSet manages a s
 To display an icon, always use Gtk::Style#lookup_icon_set on the widget that will display the icon, or the convenience function Gtk::Widget#render_icon. These functions take the theme into account when looking up the icon to use for a given stock ID.
 
 == Object Hierarchy
+
 * Object
   * GLib::Instantiatable
     * GLib::Object
       * Gtk::IconFactory
 
 == Class Methods
+
 --- Gtk::IconFactory.new
+
     Creates a new Gtk::IconFactory. An icon factory manages a collection of icon sets(Gtk::IconSet); a Gtk::IconSet manages a set of variants of a particular icon (i.e. a Gtk::IconSet contains variants for different sizes and widget states). Icons in an icon factory are named by a stock ID, which is a simple string identifying the icon. Each Gtk::Style has a list of icon factories derived from the current theme; those icon factories are consulted first when searching for an icon. If the theme doesn't set a particular icon, GTK+ looks for the icon in a list of default icon factories, maintained by Gtk::IconFactory#add_default and Gtk::IconFactory#remove_default. Applications with icons should add a default icon factory with their icons, which will allow themes to override the icons for the application.
     * Returns: a new Gtk::IconFactory.
 
 --- Gtk::IconFactory.lookup_default(id)
+
     Looks for an icon in the list of default icon factories. For display to the user, you should use Gtk::Style#lookup_icon_set on the Gtk::Style for the widget that will display the icon, instead of using this function directly, so that themes are taken into account.
     * stock_id: an icon name(String)
-    * Returns: a Gtk::IconSet, or nil 
+    * Returns: a Gtk::IconSet, or nil
 
 == Instance Methods
+
 --- add(stock_id, icon_set)
+
     Adds the given icon_set to the icon factory, under the name stock_id. stock_id should be namespaced for your application, e.g. "myapp-whatever-icon". Normally applications create a Gtk::IconFactory, then add it to the list of default factories with Gtk::IconFactory#add_default. Then they pass the stock_id to widgets such as Gtk::Image to display the icon. Themes can provide an icon with the same name (such as "myapp-whatever-icon") to override your application's default icons. If an icon already existed in factory for stock_id, it is unreferenced and replaced with the new icon_set.
     * stock_id: icon name(String)
     * icon_set: icon set(Gtk::IconSet)
     * Returns: self
 
 --- add_default
+
     Adds an icon factory to the list of icon factories searched by Gtk::Style#lookup_icon_set. This means that, for example, Gtk::Image.new will be able to find icons in factory. There will normally be an icon factory added for each library or application that comes with icons. The default icon factories can be overridden by themes.
     * Returns: self
 
 --- lookup(stock_id)
+
     Looks up stock_id in the icon factory, returning an icon set if found, otherwise nil. For display to the user, you should use Gtk::Style#lookup_icon_set() on the Gtk::Style for the widget that will display the icon, instead of using this function directly, so that themes are taken into account.
     * stock_id: an icon name 
-    * Returns: a Gtk::IconSet of stock_id. 
+    * Returns: a Gtk::IconSet of stock_id.
 
 --- remove_default
+
     Removes the icon factory from the list of default icon factories. Not normally used; you might use it for a library that can be unloaded or shut down.
     * Returns: self
 
 == See Also
+
 Gtk::IconSet, Gtk::IconSize, Gtk::IconSource
 
 == ChangeLog

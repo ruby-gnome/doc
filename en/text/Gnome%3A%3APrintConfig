@@ -1,12 +1,14 @@
 = class Gnome::PrintConfig
 
 == Object Hierarchy
+
 * Object
   * GLib::Instantiatable
     * GLib::Object
       * Gnome::PrintConfig
 
 == Class Methods
+
 --- Gnome::PrintConfig.default
 
      Creates a Gnome::PrintConfig object with the default
@@ -16,14 +18,17 @@
        settings
 
 --- Gnome::PrintConfig.new(string, flags)
+
      
      * string: XML format
      * flags: not used
      * Returns: a new Gnome::PrintConfig object from ((|string|))
 
 == Instance Methods
+
 --- [](key, type=:string)
 --- get(key, type=:string)
+
      
      Gets the value of string ((|key|)) from the
      Gnome::PrintConfig object.
@@ -40,6 +45,7 @@
 
 --- []=(key, value)
 --- set(key, value)
+
      
      Sets the value of string ((|key|)) in the Gnome::PrintConfig
      object to value ((|value|)).
@@ -52,6 +58,7 @@
        failure
 
 --- dump
+
      
      Print out the tree structure representing the
      Gnome::PrintConfig. Output is to (({STDOUT})) and is
@@ -60,6 +67,7 @@
      * Returns: nil
 
 --- dup
+
      
      Does a deep copy of self.
 
@@ -75,8 +83,46 @@
        current config on success, (({nil})) on failure
 
 --- to_s
+
      
      * Returns: XML representation of self.
+
+--- get_boolean
+
+     * Returns: self: ((*FIXME*))
+
+--- get_double
+
+     * Returns: self: ((*FIXME*))
+
+--- get_int
+
+     * Returns: self: ((*FIXME*))
+
+--- get_length
+
+     * Returns: self: ((*FIXME*))
+
+--- get_transform
+
+     * Returns: self: ((*FIXME*))
+
+--- node
+
+    Gets the Node.
+     * Returns: Node
+
+--- node=(node)
+
+    Sets the Node.
+     * node: Node
+     * Returns: node
+
+--- set_node(node)
+
+    Same as node=.
+     * node: Node
+     * Returns: self
 
 == Constants
 
@@ -117,7 +163,14 @@ keys for get/set/[]/[]=.
 --- KEY_RESOLUTION_DPI_Y
 --- KEY_TUMBLE
 
+== Properties
+
+--- node: GPANode (Read/Write)
+
+    Node
+
 == See Also
+
 
 == ChangeLog
 

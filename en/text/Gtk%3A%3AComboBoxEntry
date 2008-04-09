@@ -1,12 +1,13 @@
 = class Gtk::ComboBoxEntry
+
 ((<URL:http://library.gnome.org/devel/gtk/stable/combo-box-entry.png>))
 
 A Gtk::ComboBoxEntry is a widget that allows the user to choose from a list of valid choices or enter a different value. It is very similar to a Gtk::ComboBox, but it displays the selected value in an entry to allow modifying it. 
 
-In contrast to a Gtk::ComboBox, the underlying model of a Gtk::ComboBoxEntry must always have a text column (see Gtk::ComboBoxEntry#text_column=), and the entry will show the content of the text column in the selected row. To get the text from the entry, use Gtk::ComboBox#active_text. 
-
+In contrast to a Gtk::ComboBox, the underlying model of a Gtk::ComboBoxEntry must always have a text column (see Gtk::ComboBoxEntry#text_column=), and the entry will show the content of the text column in the selected row. To get the text from the entry, use Gtk::ComboBox#active_text.
 
 == Object Hierarchy
+
 * Object
   * GLib::Instantiatable
     * GLib::Object
@@ -19,36 +20,96 @@ In contrast to a Gtk::ComboBox, the underlying model of a Gtk::ComboBoxEntry mus
                   * Gtk::ComboBoxEntry
 
 == Class Methods
+
 --- Gtk::ComboBoxEntry.new(is_text_only = true)
+
     Creates a new Gtk::ComboBoxEntry which has a Gtk::Entry as child. If is_text_only is true, you should only manipulate its data source with the following convenience methods: Gtk::ComboBox#append_text, Gtk::ComboBox#insert_text, Gtk::ComboBox#prepend_text? and Gtk::ComboBox#remove_text. If is_text_only is false, you should set a model using Gtk::ComboBox#model= and a text_column using Gtk::ComboBoxEntry#text_column= after construction.  ((* Since 2.4 *))
-    * Returns: A new Gtk::ComboBoxEntry.  
+    * Returns: A new Gtk::ComboBoxEntry.
 
 --- Gtk::ComboBoxEntry.new(model, text_column)
+
     Creates a new Gtk::ComboBoxEntry which has a Gtk::Entry as child and a list of strings as popup. You can get the Gtk::Entry from a Gtk::ComboBoxEntry using Gtk::Bin#child. To add and remove strings from the list, just modify model using its data manipulation API.  ((* Since 2.4 *))
     * text_column: A column in model to get the strings from.  
-    * Returns: A new Gtk::ComboBoxEntry.  
+    * Returns: A new Gtk::ComboBoxEntry.
 
 == Instance Methods
 
 --- text_column
+
     Returns the column which entry_box is using to get the strings from.  ((* Since 2.4 *))
     * Returns: A column in the data source model
+
 --- text_column=(text_column)
+
     Sets the model column which entry_box should use to get strings from.  ((* Since 2.4 *))
     * text_column: A column in model to get the strings from.
     * Returns: text_column
+
 --- set_text_column(text_column)
+
     Same as Gtk::ComboBoxEntry#text_column=.  ((* Since 2.4 *))
     * text_column: A column in model to get the strings from.
     * Returns: self
 
+--- add_attribute
+
+    See Gtk::CellLayout#add_attribute.
+
+--- clear
+
+    See Gtk::CellLayout#clear.
+
+--- clear_attributes
+
+    See Gtk::CellLayout#clear_attributes.
+
+--- editing_done
+
+    See Gtk::CellEditable#editing_done.
+
+--- pack_end
+
+    See Gtk::CellLayout#pack_end.
+
+--- pack_start
+
+    See Gtk::CellLayout#pack_start.
+
+--- ref_accessible
+
+    See Atk::Implementor#ref_accessible.
+
+--- remove_widget
+
+    See Gtk::CellEditable#remove_widget.
+
+--- reorder
+
+    See Gtk::CellLayout#reorder.
+
+--- set_attributes
+
+    See Gtk::CellLayout#set_attributes.
+
+--- set_cell_data_func
+
+    See Gtk::CellLayout#set_cell_data_func.
+
+--- start_editing
+
+    See Gtk::CellEditable#start_editing.
+
 == Properties
+
 --- text-column: Integer (Read/Write)
+
     A column in the data source model to get the strings from.  ((* Since 2.4 *))
     * Allowed values: >= -1
     * Default value: -1
 
+== See Also
 
 == ChangeLog
+
 * 2007-02-14 Apply 2.10. - ((<Masao>))
 * 2006-02-01 Revised. - ((<Masao>))

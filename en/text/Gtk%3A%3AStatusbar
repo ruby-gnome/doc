@@ -1,4 +1,5 @@
 = class Gtk::Statusbar
+
 A Gtk::Statusbar is usually placed along the bottom of an application's main Gtk::Window. It may provide a regular commentary of the application's status (as is usually the case in a web browser, for example), or may be used to simply output a message when the status changes, (when an upload is complete in an FTP client, for example). It may also have a resize grip (a triangular area in the lower right corner) which can be clicked on to resize the window containing the statusbar.
 
 Status bars in GTK+ maintain a stack of messages. The message at the top of the each bar's stack is the one that will currently be displayed.
@@ -12,69 +13,107 @@ Messages are added to the bar's stack with Gtk::Statusbar#push.
 The message at the top of the stack can be removed using Gtk::Statusbar#pop. A message can be removed from anywhere in the stack if it's message_id was recorded at the time it was added. This is done using Gtk::Statusbar#remove.
 
 == Object Hierarchy
+
 * Object
   * GLib::Instantiatable
     * GLib::Object
-      * Gtk::Object
-        * Gtk::Widget
-          * Gtk::Container
-            * Gtk::Box
-              * Gtk::HBox
-                * Gtk::Statusbar
+      * GLib::InitiallyUnowned
+        * Gtk::Object
+          * Gtk::Widget
+            * Gtk::Container
+              * Gtk::Box
+                * Gtk::HBox
+                  * Gtk::Statusbar
 
 == Class Methods
+
 --- Gtk::Statusbar.new
+
     Creates a new Gtk::Statusbar ready for messages.
-    * Returns: the new Gtk::Statusbar.  
+    * Returns: the new Gtk::Statusbar.
 
 == Instance Methods
+
 --- get_context_id(context_description)
+
     Returns a new context identifier, given a description of the actual context.
     * context_description : textual description of what context the new message is being used in. 
-    * Returns : an integer id.  
+    * Returns : an integer id.
 
 --- push(context_id, text)
+
     Pushes a new message onto a statusbar's stack.
     * context_id: the message's context id, as returned by Gtk::Statusbar#get_context_id. 
     * text: the message to add to the statusbar.  
-    * Returns: the message's new message id for use with Gtk::Statusbar#remove.  
+    * Returns: the message's new message id for use with Gtk::Statusbar#remove.
 
 --- pop(context_id)
+
     Removes the message at the top of a Gtk::StatusBar's stack.
     * context_id : a context identifier.  
     * Returns: self
 
 --- remove(context_id, message_id)
+
     Forces the removal of a message from a statusbar's stack. The exact context_id and message_id must be specified.
     * context_id: a context identifier. 
     * message_id: a message identifier, as returned by Gtk::Statusbar#push.  
     * Returns: self
 
 --- has_resize_grip?
+
     Returns whether the statusbar has a resize grip.
-    * Returns: true if the statusbar has a resize grip.  
+    * Returns: true if the statusbar has a resize grip.
+
 --- has_resize_grip=(setting)
+
     Sets whether the statusbar has a resize grip. true by default.
     * setting: true to have a resize grip.  
     * Returns: setting
+
 --- set_has_resize_grip(setting)
+
     Same as Gtk::Statusbar#has_resize_grip=.
     * setting: true to have a resize grip.  
     * Returns: self
 
+--- install_menu_hints
+
+     * Returns: self: ((*FIXME*))
+
+--- ref_accessible
+
+    See Atk::Implementor#ref_accessible.
+
+== Properties
+
+--- has-resize-grip: true or false (Read/Write)
+
+    Whether the statusbar has a grip for resizing the toplevel
+
+== Style Properties
+
+--- shadow-type: Gtk::ShadowType (Read)
+
+    Style of bevel around the statusbar text
+
 == Signals
+
 --- text-popped: self, context_id, text
+
     Is emitted whenever a new message is popped off a statusbar's stack.
     * self: the object which received the signal. 
     * context_id: the context id of the relevant message/statusbar. 
-    * text: the message that was just popped.  
+    * text: the message that was just popped.
 
 --- text-pushed: self, context_id, text
+
     Is emitted whenever a new message gets pushed onto a statusbar's stack.
     * context_id : the context id of the relevant message/statusbar. 
-    * text : the message that was pushed.  
+    * text : the message that was pushed.
 
 == See Also
+
 * Gtk::Dialog - another way of reporting information to the user.
 
 == ChangeLog

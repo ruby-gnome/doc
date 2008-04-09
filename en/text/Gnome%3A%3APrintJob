@@ -1,12 +1,14 @@
 = class Gnome::PrintJob
 
 == Object Hierarchy
+
 * Object
   * GLib::Instantiatable
     * GLib::Object
       * Gnome::PrintJob
 
 == Class Methods
+
 --- Gnome::PrintJob.new(config=nil)
 
      Creates a new Gnome::PrintJob.
@@ -26,6 +28,7 @@
      * Returns: (({nil}))
 
 --- context
+
      
      Retrieve the Gnome::PrintContext which applications
      print to.
@@ -33,6 +36,7 @@
      * Returns: The printing context, (({nil})) on error
 
 --- page_size
+
      
      Get the imaging area size that is available to the
      application. Sizes are given in PS points
@@ -42,6 +46,7 @@
        current config on success, (({nil})) on failure
 
 --- pages
+
      
      Find the number of pages stored in a completed
      printout. This is the number of physical pages, so if
@@ -60,6 +65,7 @@
        exception of Gnome::PrintError
 
 --- print_to_file(output)
+
      
      Sets/unsets the print to file option for the job.
 
@@ -101,12 +107,30 @@
      * config: The configuration for the print job
      * Returns: config
 
+--- context=(context)
+
+    Sets the context for the print job.
+     * context: The context for the print job
+     * Returns: context
+
+--- set_context(context)
+
+    Same as context=.
+     * context: The context for the print job
+     * Returns: self
 
 == Properties
+
 --- config: Gnome::PrintConfig (Read/Write)
+
     The configuration for the print job
 
+--- context: Gnome::PrintMeta (Read/Write)
+
+    The context for the print job
+
 == See Also
+
 
 == ChangeLog
 

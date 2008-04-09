@@ -1,26 +1,33 @@
 = class Gtk::Layout
+
 Gtk::Layout is similar to Gtk::DrawingArea in that it's a "blank slate" and doesn't do anything but paint a blank background by default. It's different in that it supports scrolling natively (you can add it to a Gtk::ScrolledWindow), and it can contain child widgets, since it's a Gtk::Container. However if you're just going to draw, a Gtk::DrawingArea is a better choice since it has lower overhead.
 
 When handling expose events on a Gtk::Layout, you must draw to Gtk::Layout#bin_window, rather than to Gtk::Widget#window, as you would for a drawing area.
 
 == Object Hierarchy
+
 * Object
   * GLib::Instantiatable
     * GLib::Object
-      * Gtk::Object
-        * Gtk::Widget
-          * Gtk::Container
-            * Gtk::Layout
+      * GLib::InitiallyUnowned
+        * Gtk::Object
+          * Gtk::Widget
+            * Gtk::Container
+              * Gtk::Layout
 
 == Class Methods
+
 --- Gtk::Layout.new(hadjustment = nil, vadjustment = nil)
+
     Creates a new Gtk::Layout. Unless you have a specific adjustment you'd like the layout to use for scrolling, pass nil for hadjustment and vadjustment.
     * hadjustment : horizontal scroll adjustment, or nil 
     * vadjustment : vertical scroll adjustment, or nil 
-    * Returns : a new Gtk::Layout 
+    * Returns : a new Gtk::Layout
 
 == Instance Methods
+
 --- put(child_widget, x, y)
+
     Adds child_widget to layout, at position (x, y). layout becomes the new parent container of child_widget.
     * child_widget: child widget(Gtk::Widget)
     * x: X position of child widget 
@@ -28,6 +35,7 @@ When handling expose events on a Gtk::Layout, you must draw to Gtk::Layout#bin_w
     * Returns: self
 
 --- move(child_widget, x, y)
+
     Moves a current child of layout to a new position.
     * child_widget: a current child(Gtk::Widget) of layout
     * x: X position to move to 
@@ -35,93 +43,142 @@ When handling expose events on a Gtk::Layout, you must draw to Gtk::Layout#bin_w
     * Returns: self
 
 --- size
+
     Gets the size that has been set on the layout, and that determines the total extents of the layout's scrollbar area. See Gtk::Layout#set_size.
     * Returns: [width, height]
        * width: location to store the width set on layout
        * height: location to store the height set on layout
 
 --- set_size(width, height)
+
     Sets the size of the scrollable area of the layout.
     * width : width of entire scrollable area 
     * height : height of entire scrollable area 
     * Returns: self
 
 --- hadjustment
+
     This method should only be called after the layout has been placed in a Gtk::ScrolledWindow or otherwise configured for scrolling. It returns the Gtk::Adjustment used for communication between the horizontal scrollbar and layout.
     See Gtk::ScrolledWindow, Gtk::Scrollbar, Gtk::Adjustment for details.
     * Returns: horizontal scroll adjustment(Gtk::Adjustment)
+
 --- hadjustment=(adjustment)
+
     Sets the horizontal scroll adjustment for the layout.
     See Gtk::ScrolledWindow, Gtk::Scrollbar, Gtk::Adjustment for details.
     * adjustment: new scroll adjustment(Gtk::Adjustment)
     * Returns: adjustment
+
 --- set_hadjustment(adjustment)
+
     Same as Gtk::Layout#hadjustment=.
     * adjustment: new scroll adjustment(Gtk::Adjustment)
     * Returns: self
 
 --- vadjustment
+
     This method should only be called after the layout has been placed in a Gtk::ScrolledWindow or otherwise configured for scrolling. It returns the Gtk::Adjustment used for communication between the vertical scrollbar and layout.
     See Gtk::ScrolledWindow, Gtk::Scrollbar, Gtk::Adjustment for details.
     * Returns: vertical scroll adjustment(Gtk::Adjustment)
+
 --- vadjustment=(adjustment)
+
     Sets the vertical scroll adjustment for the layout.
     See Gtk::ScrolledWindow, Gtk::Scrollbar, Gtk::Adjustment for details.
     * adjustment: new scroll adjustment(Gtk::Adjustment)
     * Returns: adjustment
+
 --- set_vadjustment(adjustment)
+
     Same as Gtk::Layout#vadjustment=.
     * adjustment: new scroll adjustment(Gtk::Adjustment)
     * Returns: self
 
 --- width
+
     Gets the layout width. See Gtk::Layout#set_size.
     * Returns: width
+
 --- width=(width)
+
     Sets the layout width. See Gtk::Layout#set_size.
     * width: the layout width
     * Returns: width
+
 --- set_width(width)
+
     Same as Gtk::Layout#width=.
     * width: the layout width
     * Returns: self
 
 --- height
+
     Gets the layout height. See Gtk::Layout#set_size.
     * Returns: height
+
 --- height=(height)
+
     Sets the layout height. See Gtk::Layout#set_size.
     * height: the layout height
     * Returns: height
+
 --- set_height(height)
+
     Same as Gtk::Layout#height=.
     * height: the layout height
     * Returns: self
 
 --- bin_window
+
     Gets the bin_window. When handling expose events on a Gtk::Layout, you must draw to Gtk::Layout#bin_window, rather than to Gtk::Widget#window, as you would for a drawing area.
     * Returns: the Gdk::Window
 
+--- ref_accessible
+
+    See Atk::Implementor#ref_accessible.
+
+--- set_scroll_adjustments
+
+     * Returns: self: ((*FIXME*))
+
 == Properties
+
 --- hadjustment: Gtk::Adjustment (Read/Write)
+
     The Gtk::Adjustment for the horizontal position
 
 --- height: Integer (Read/Write)
+
     The height of the layout
 
 --- vadjustment: Gtk::Adjustment (Read/Write)
+
     The Gtk::Adjustment for the vertical position
 
 --- width: Integer (Read/Write)
+
     The width of the layout
 
+== Child Properties
+
+--- x: Integer (Read/Write)
+
+    X position of child widget
+
+--- y: Integer (Read/Write)
+
+    Y position of child widget
+
 == Signals
+
 --- set-scroll-adjustments: self, arg1, arg2
+
      * self: a Gtk::Layout
      * arg1: a Gtk::Adjustment
      * arg2: a Gtk::Adjustment
 
 == See Also
+
 Gtk::DrawingArea, Gtk::ScrolledWindow
 
 == ChangeLog

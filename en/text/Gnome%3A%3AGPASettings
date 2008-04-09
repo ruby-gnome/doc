@@ -1,6 +1,7 @@
 = class Gnome::GPASettings
 
 == Object Hierarchy
+
 * Object
   * GLib::Instantiatable
     * GLib::Object
@@ -8,13 +9,16 @@
         * Gnome::GPASettings
 
 == Class Methods
+
 --- new(name, id)
+
     
      * name: the name of settings. (String)
      * id: the id of settings. (String)
      * Returns: new settings.
 
 --- new(model, name, id)
+
     
      * model: the model of settings. (Gnome::GPAModel)
      * name: the name of settings. (String)
@@ -28,6 +32,7 @@
 #     * Returns: new settings.
 
 == See Also
+
 
 == ChangeLog
 

@@ -1,7 +1,9 @@
 = class Gtk::CellRendererToggle
-The Gtk::CellRendererToggle is used for rendering a cell to a Gdk::Drawable with toggle buttons. 
+
+The Gtk::CellRendererToggle is used for rendering a cell to a Gdk::Drawable with toggle buttons.
 
 == Object Hierarchy
+
 * Object
   * GLib::Instantiatable
     * GLib::Object
@@ -11,84 +13,136 @@ The Gtk::CellRendererToggle is used for rendering a cell to a Gdk::Drawable with
             * Gtk::CellRendererToggle
 
 == Class Methods
+
 --- Gtk::CellRendererToggle.new
+
     Creates a new Gtk::CellRendererToggle. Adjust rendering parameters using object properties. Object properties can be set globally (with GLib::Object.set_property. Also, with Gtk::TreeViewColumn, you can bind a property to a value in a Gtk::TreeModel. For example, you can bind the "active" property on the cell renderer to a boolean value in the model, thus causing the check button to reflect the state of the model.
     * Returns: the new Gtk::CellRendererToggle
 
 == Instance Methods
+
 --- activatable?
+
     Returns the value whether the toggle button can be activated or not.
     Returns: true if the button can be activated.
 
 --- activatable=(actvatable)
+
     Sets the value whether the toggle button can be activated or not.
     * activatable: true if the button can be activated.
     * Returns: activatable
+
 --- set_activatable(activatable)
+
     Same as Gtk::CellRendererToggle#activatable=.
     * activatable: true if the button can be activated.
     * Returns: self
 
 --- active?
+
     Returns the toggle state of the button.
     * Returns: true if the toggle state is active.
+
 --- active=(active)
+
     Sets the toggle state of the button.
     * active: true if the toggle state is active.  
     * Returns: active
+
 --- set_active(active)
+
     Same as Gtk::CellRendererToggle#active=.
     * active: true if the toggle state is active.
     * Returns: self
 
 --- inconsistent?
+
     Gets the inconsistent state of the button.
     * Returns: true if the state of the button is inconsistent, otherwise false.
+
 --- inconsistent=(inconsistent)
+
     Sets the inconsistent state of the button.
     * inconsistent: true if the state of the button is inconsistent, otherwise false.
     * Returns: inconsistent
+
 --- set_inconsistent(inconsistent)
+
     Same as Gtk::CellRendererToggle#inconsistent=.
     * inconsistent: true if the state of the button is inconsistent, otherwise false.
     * Returns: self
 
 --- radio?
+
     Returns the value whether the toggle button is drawn as radio button or as toggle button.
+
 --- radio=(radio)
+
     Sets the value whether the toggle button is drawn as radio button or as toggle button.
     * radio: true if the toggle button is drawn as radio button.
     * Returns: radio
+
 --- set_radio(radio)
+
     Same as Gtk::CellRendererToggle#radio=.
     * radio: true if the toggle button is drawn as radio button.
     * Returns: self
 
+--- indicator_size
+
+    Gets the Size of check or radio indicator.
+     * Returns: Size of check or radio indicator
+
+--- indicator_size=(indicator_size)
+
+    Sets the Size of check or radio indicator.
+     * indicator_size: Size of check or radio indicator
+     * Returns: indicator_size
+
+--- set_indicator_size(indicator_size)
+
+    Same as indicator_size=.
+     * indicator_size: Size of check or radio indicator
+     * Returns: self
+
 == Properties
+
 --- activatable: true or false (Read/Write)
+
     The toggle button can be activated
     * Default value: true
 
 --- active: true or false (Read/Write)
+
     The toggle state of the button
     * Default value: false
 
 --- inconsistent: true or false (Read/Write)
+
     The inconsistent state of the button
     * Default value: false
 
 --- radio: true or false (Read/Write)
+
     Draw the toggle button as a radio button
     * Default value: false
 
+--- indicator-size: Integer (Read/Write)
+
+    Size of check or radio indicator
+
 == Signals
+
 --- toggled: self, path
+
     The ::toggled signal is emitted when the cell is toggled.
     * self: the object which received the signal.
     * path: the string representation of Gtk::TreePath describing the event location.
 
+== See Also
 
 == ChangeLog
+
 * 2006-01-31 Revised. - ((<Masao>))
 * 2005-06-03 Improved a description of toggled signal. - Gergely Kontra
 * 2005-05-09 Added. - ((<Masao>))

@@ -3,6 +3,7 @@
 == Module Functions
 
 --- GLib::UTF8.get_char(utf8, validate=false)
+
      Converts a sequence of bytes encoded as UTF-8 to a
      Unicode character.
 
@@ -21,12 +22,14 @@
        UTF-8 encoded Unicode character, returns -1.
 
 --- GLib::UTF8.size(utf8)
+
      Returns the length of the string in characters.
 
      * utf8: a UTF-8 encoded String
      * Returns: the length of the string in characters
 
 --- GLib::UTF8.reverse(utf8)
+
      Reverses a UTF-8 string. ((|utf8|)) must be valid UTF-8
      encoded text. (Use GLib::UTF8.validate on all text
      before trying to use UTF-8 utility functions with it.)
@@ -35,6 +38,7 @@
      * Returns: a string which is the reverse of ((|utf8|)).
 
 --- GLib::UTF8.validate(utf8)
+
      Validates UTF-8 encoded text. str is the text to validate
 
      Returns (({true})) if all of ((|utf8|)) was valid. Many GLib
@@ -46,6 +50,7 @@
      * Returns: (({true})) if the text was valid UTF-8
 
 --- GLib::UTF8.upcase(utf8)
+
      Converts all Unicode characters in the string that have
      a case to uppercase. The exact manner that this is done
      depends on the current locale, and may result in the
@@ -57,6 +62,7 @@
        uppercase.
 
 --- GLib::UTF8.downcase(utf8)
+
      Converts all Unicode characters in the string that have
      a case to lowercase. The exact manner that this is done
      depends on the current locale, and may result in the
@@ -67,6 +73,7 @@
        lowercase.
 
 --- GLib::UTF8.casefold(utf8)
+
      Converts a string into a form that is independent of
      case. The result will not correspond to any particular
      case, but can be compared for equality or ordered with
@@ -86,6 +93,7 @@
        ((|utf8|)).
 
 --- GLib::UTF8.normalize(utf8, mode=GLib::NomralizeMode::DEFAULT)
+
      Converts a string into canonical form, standardizing
      such issues as whether a character with an accent is
      represented as a base character and combining accent or
@@ -119,6 +127,7 @@
        ((|utf8|)).
 
 --- GLib::UTF8.collate(utf8_a, utf8_b)
+
      Compares two strings for ordering using the
      linguistically correct rules for the current
      locale. When sorting a large number of strings, it will
@@ -134,6 +143,7 @@
        ((|utf8_a|)) compares after ((|utf8_b|)).
 
 --- GLib::UTF8.collate_key(utf8, for_filename=false)
+
      Converts a string into a collation key that can be
      compared with other collation keys produced by the same
      function using String#<=>. The results of comparing the
@@ -155,6 +165,7 @@
      * Returns: a string.
 
 --- GLib::UTF8.to_utf16(utf8)
+
      Convert a string from UTF-8 to UTF-16. If the
      conversion is not successful, it causes
      GLib::ConvertError.
@@ -163,6 +174,7 @@
      * Returns: a UTF-16 encoded String
 
 --- GLib::UTF8.to_ucs4(utf8, fast=false)
+
      Convert a string from UTF-8 to a 32-bit fixed width
      representation as UCS-4. If ((|fast|)) isn't true and
      the conversion is not successful, it causes
@@ -173,6 +185,8 @@
      * fast: whether skip validating ((|utf8|)) or not to
        run as fast as possible.
      * Returns: a UCS-4 encoded String
+
+== See Also
 
 == ChangeLog
 

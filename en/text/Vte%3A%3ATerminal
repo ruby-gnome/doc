@@ -1,14 +1,17 @@
 = class Vte::Terminal
 
 == Object Hierarchy
+
 * Object
   * GLib::Instantiatable
     * GLib::Object
-      * Gtk::Object
-        * Gtk::Widget
-          * Vte::Terminal
+      * GLib::InitiallyUnowned
+        * Gtk::Object
+          * Gtk::Widget
+            * Vte::Terminal
 
 == Class Methods
+
 --- Vte::Terminal.new
 
     Create a new terminal widget.
@@ -16,6 +19,7 @@
      * Returns: a new Vte::Terminal object
 
 == Instance Methods
+
 --- fork_command(comand=nil, argv=nil, envv=nil, directory=nil, lastlog=true, utmp=true, wtmp=ture)
 
      Starts the specified command under a newly-allocated
@@ -38,6 +42,7 @@
      * Returns: the ID of the new process
 
 --- fork_pty(envv=nil, directory=nil, lastlog=true, utmp=true, wtmp=true)
+
      
      Starts a new child process under a newly-allocated
      controlling pseudo-terminal. TERM is automatically set
@@ -55,6 +60,7 @@
        in the child, and -1 if there was an error
 
 --- feed(data)
+
      
      Interprets (({data})) as if it were data received from
      a child process.  This can either be used to drive the
@@ -65,6 +71,7 @@
      * Returns: nil
 
 --- feed_child(text)
+
      
      Sends a block of UTF-8 text to the child as if it were
      entered by the user at the keyboard.
@@ -73,6 +80,7 @@
      * Returns: nil
 
 --- feed_child_binary(data)
+
      
      Sends a block of binary data to the child.
 
@@ -80,6 +88,7 @@
      * Returns: nil
 
 --- copy_clipboard
+
      
     Places the selected text in the terminal in the
     Gdk::Selection::CLIPBOARD selection.
@@ -87,6 +96,7 @@
      * Returns: nil
 
 --- paste_clipboard
+
      
     Sends the contents of the Gdk::Selection::CLIPBOARD selection to the
     terminal's child.  If necessary, the data is converted from UTF-8 to the
@@ -96,6 +106,7 @@
      * Returns: nil
 
 --- copy_primary
+
      
     Places the selected text in the terminal in the
     Gdk::Selection::PRIMARY selection.
@@ -103,6 +114,7 @@
      * Returns: nil
 
 --- paste_primary
+
      
     Sends the contents of the Gdk::Selection::PRIMARY
     selection to the terminal's child.  If necessary, the
@@ -114,6 +126,7 @@
      * Returns: nil
 
 --- set_size(columns, rows)
+
      
      Attempts to change the terminal's size in terms of rows
      and columns.  If the attempt succeeds, the widget will
@@ -124,6 +137,7 @@
      * Returns: nil
 
 --- audible_bell?
+
      
      Checks whether or not the terminal will beep when the
      child outputs the "bl" sequence.
@@ -131,6 +145,7 @@
      * Returns: true if audible bell is enabled, false if not
 
 --- set_audible_bell(is_audible)
+
      
     Controls whether or not the terminal will beep when the
     child outputs the "bl" sequence.
@@ -143,6 +158,7 @@
      Same as #set_audible_bell but returns self.
 
 --- visible_bell?
+
      
     Checks whether or not the terminal will present a
     visible bell to the user when the child outputs the "bl"
@@ -152,6 +168,7 @@
      * returns: true if visible bell is enabled, false if not
 
 --- set_visible_bell(is_visible)
+
      
     Controls whether or not the terminal will present a
     visible bell to the user when the child outputs the "bl"
@@ -166,6 +183,7 @@
      Same as #set_visible_bell but returns self.
 
 --- set_scroll_background(scroll)
+
      
      Controls whether or not the terminal will scroll the
      background image (if one is set) when the text in the
@@ -176,10 +194,12 @@
      * Returns: nil
 
 --- scroll_background=(scroll)
+
      
      Same as #set_scroll_background but returns self.
 
 --- set_scroll_on_output(scroll)
+
      
     Controls whether or not the terminal will forcibly
     scroll to the bottom of the viewable history when the
@@ -189,10 +209,12 @@
      * Returns: nil
 
 --- scroll_on_output=(scroll)
+
      
      Same as #set_scroll_on_output but returns self.
 
 --- set_scroll_on_keystroke(scroll)
+
      
     Controls whether or not the terminal will forcibly scroll to the bottom of
     the viewable history when the user presses a key.  Modifier keys do not
@@ -202,6 +224,7 @@
      * Returns: nil
 
 --- scroll_on_keystroke=(scroll)
+
      
      Same as #set_scroll_on_keystroke but returns self.
 
@@ -213,10 +236,12 @@
      * Returns: nil
 
 --- color_dim=(dim)
+
      
      Same as #set_color_dim but returns self.
 
 --- set_color_bold(bold)
+
      
     Sets the color used to draw bold text in the default foreground color.
 
@@ -224,6 +249,7 @@
      * Returns: self
 
 --- color_bold=(bold)
+
      
      Same as #set_color_bold but returns self.
 
@@ -235,6 +261,7 @@
      * Returns: nil
 
 --- color_foreground=(foreground)
+
      
      Same as #set_color_foreground but returns self.
 
@@ -249,10 +276,12 @@
      * Returns: self
 
 --- color_background=(background)
+
      
      Same as #set_color_background but returns self.
 
 --- set_color_cursor(cursor_background)
+
      
      Sets the background color for text which is under the
      cursor.  If nil, text under the cursor will be drawn
@@ -263,6 +292,7 @@
      * Returns: self
 
 --- color_cursor=(cursor_background)
+
      
      Same as #set_color_cursor but returns self.
 
@@ -278,10 +308,12 @@
      * Returns: self
 
 --- color_highlight=(highlight_background)
+
      
      Same as #set_color_highlight but returns self.
 
 --- set_colors(foreground, background, palette)
+
      
      The terminal widget uses a 28-color model comprised of
      the default foreground and background colors, the bold
@@ -307,10 +339,12 @@
      * Returns: self
 
 --- set_default_colors
+
      Reset the terminal palette to reasonable compiled-in defaults.
      * Returns: nil
 
 --- set_background_image(image)
+
      
     Sets a background image for the widget.  Text which
     would otherwise be drawn using the default background
@@ -336,10 +370,12 @@
 
 --- background_image=(image)
 --- background_image=(path)
+
      
      Same as #set_background_image but returns self.
 
 --- set_background_tint_color(color)
+
      
      If a background image has been set using
      Vte::Terminal#set_background_image,
@@ -358,10 +394,12 @@
      * Returns: nil
 
 --- background_tint_color=(color)
+
      
      Same as #set_background_tint_color but returns self.
 
 --- set_background_saturation(saturation)
+
      
     If a background image has been set using
     Vte::Terminal#set_background_image(),
@@ -377,10 +415,12 @@
      * Returns: nil
 
 --- background_saturation=(saturation)
+
      
      Same as #set_background_saturation but returns self.
 
 --- set_background_transparent(transparent)
+
      
     Sets the terminal's background image to the pixmap
     stored in the root window, adjusted so that if there are
@@ -391,10 +431,12 @@
      * Returns: self
 
 --- background_transparent=(transparent)
+
      
      Same as #set_background_transparent but returns self.
 
 --- set_cursor_blinks(blink)
+
      
     Sets whether or not the cursor will blink.  The length
     of the blinking cycle is controlled by the
@@ -404,10 +446,12 @@
      * Returns: nil
 
 --- cursor_blinks=(blink)
+
      
      Same as #set_cursor_blinks but returns self.
 
 --- set_scrollback_lines(lines)
+
      
     Sets the length of the scrollback buffer used by the
     terminal.  The size of the scrollback buffer will be set
@@ -422,10 +466,12 @@
      * Returns: self
 
 --- scrollback_lines=(lines)
+
      
      Same as #set_scrollback_lines but returns self.
 
 --- im_append_menuitems(menushell)
+
      
     Appends menu items for various input methods to the
     given menu.  The user can select one of these items to
@@ -435,6 +481,7 @@
      * Returns: self
 
 --- set_font(font_desc, antialias=Vte::TerminalAntiAlias::USE_DEFAULT)
+
      
     Sets the font used for rendering all text displayed by
     the terminal, overriding any fonts set using
@@ -460,6 +507,7 @@
      * Returns: nil
 
 --- font
+
      
     Queries the terminal for information about the fonts which will be
     used to draw text in the terminal.
@@ -468,6 +516,7 @@
       the terminal is currently using to render text.
 
 --- using_xft?
+
      
     A Vte::Terminal can use multiple methods to draw text.
     This function allows an application to determine whether
@@ -479,6 +528,7 @@
       find fonts, false if the terminal is using PangoX.
 
 --- allow_bold?
+
      
     Checks whether or not the terminal will attempt to draw bold text by
     repainting text with a one-pixel offset.
@@ -486,6 +536,7 @@
      * returns: true if bolding is enabled, false if not
 
 --- set_allow_bold(allow_bold)
+
      
     Controls whether or not the terminal will attempt to
     draw bold text by repainting text with a different
@@ -495,10 +546,12 @@
      * Returns: self
 
 --- allow_bold=(allow_bold)
+
      
      Same as #set_allow_bold but returns self.
 
 --- has_selection?
+
      
     Checks if the terminal currently contains selected text.
     Note that this is different from determining if the
@@ -507,10 +560,12 @@
     * Returns: true if part of the text in the terminal is selected.
 
 --- have_selection?
+
      
      Same as #has_selection?.
 
 --- set_word_chars(spec)
+
      
     When the user double-clicks to start selection, the
     terminal will extend the selection on word boundaries.
@@ -527,10 +582,12 @@
      * Returns: nil
 
 --- word_chars=(spec)
+
      
      Same as #set_word_chars but returns nil.
 
 --- word_char?(c)
+
      
     Checks if a particular character is considered to be
     part of a word or not, based on the values last passed
@@ -540,6 +597,7 @@
      * Returns: true if the character is considered to be part of a word
 
 --- set_backspace_binding(binding)
+
      
     Modifies the terminal's backspace key binding, which
     controls what string or control sequence the terminal
@@ -550,10 +608,12 @@
      * Returns: nil
 
 --- backspace_binding=(binding)
+
      
      Same as #set_backspace_binding but returns self.
 
 --- set_delete_binding(binding)
+
      
     Modifies the terminal's delete key binding, which
     controls what string or control sequence the terminal
@@ -563,10 +623,12 @@
      * Returns: self
 
 --- delete_binding=(binding)
+
      
      Same as #set_delete_binding but returns self.
 
 --- set_mouse_autohide(setting)
+
      
     Changes the value of the terminal's mouse autohide
     setting.  When autohiding is enabled, the mouse cursor
@@ -578,10 +640,12 @@
      * Returns: self
 
 --- mouse_autohide=(setting)
+
      
      Same as #set_delete_binding but returns self.
 
 --- mouse_autohide?
+
      
     Determines the value of the terminal's mouse autohide
     setting.  When autohiding is enabled, the mouse cursor
@@ -592,6 +656,7 @@
      * Returns: true if autohiding is enabled, false if not.
 
 --- reset(full, clear_history)
+
      
     Resets as much of the terminal's internal state as
     possible, discarding any unprocessed input data,
@@ -604,6 +669,7 @@
      * Returns: nil
 
 --- get_text(get_attrs=nil, include_trailing_spaces=false, &is_selected)
+
      
     Extracts a view of the visible part of the terminal.  If
     (({is_selected})) is not nil, characters will only be
@@ -625,6 +691,7 @@
        get_attrs == false.
 
 --- get_text_range(start_row, start_col, end_row, end_col, get_attrs=nil, &is_selected)
+
      
     Extracts a view of the visible part of the terminal.  If
     (({is_selected})) is not nil, characters will only be
@@ -650,6 +717,7 @@
        get_attrs == false.
 
 --- cursor_position(column, row)
+
      
     Reads the location of the insertion cursor and returns
     it.  The row coordinate is absolute.
@@ -659,6 +727,7 @@
      * Returns: self
 
 --- match_clear_all
+
      
      Clears the list of regular expressions the terminal
      uses to highlight text when the user moves the mouse
@@ -667,6 +736,7 @@
      * Returns: nil
 
 --- match_add(match)
+
      
     Adds a regular expression to the list of matching expressions.  When the
     user moves the mouse cursor over a section of displayed text which matches
@@ -676,6 +746,7 @@
      * Returns: an integer associated with this expression
 
 --- match_set_cursor(tag, cursor)
+
      
     Sets which cursor the terminal will use if the pointer
     is over the pattern specified by (({tag})).  The
@@ -688,6 +759,7 @@
      * Returns: nil
 
 --- match_set_cursor_type(tag, cursor)
+
      
     Sets which cursor the terminal will use if the pointer
     is over the pattern specified by (({tag})).  A
@@ -699,6 +771,7 @@
      * Returns: nil
 
 --- match_remove(tag)
+
      
     Removes the regular expression which is associated with
     the given (({tag})) from the list of expressions which
@@ -709,6 +782,7 @@
      * Returns: nil
 
 --- match_check(column, row)
+
      
     Checks if the text in and around the specified position
     matches any of the regular expressions previously set
@@ -728,6 +802,7 @@
        regular expression.
 
 --- set_emulation(emulation)
+
      
     Sets what type of terminal the widget attempts to
     emulate by scanning for control sequences defined in the
@@ -738,10 +813,12 @@
      * Returns: nil
 
 --- emulation=(emulation)
+
      
      Same as #set_emulation but returns self.
 
 --- emulation
+
      
     Queries the terminal for its current emulation, as last
     set by a call to  Vte::Terminal#set_emulation().
@@ -750,6 +827,7 @@
        attempting to emulate
 
 --- default_emulation
+
      
     Queries the terminal for its default emulation, which is attempted if the
     terminal type passed to vte_terminal_set_emulation() is NULL.
@@ -758,6 +836,7 @@
        widget attempts to emulate
 
 --- set_encoding(codeset)
+
      
     Changes the encoding the terminal will expect data from
     the child to  be encoded with.  For certain terminal
@@ -769,10 +848,12 @@
      * Returns: nil
 
 --- encoding=(codeset)
+
      
      Same as #set_encoding but returns self.
 
 --- encoding
+
      
      Determines the name of the encoding in which the
      terminal expects data to be encoded.
@@ -780,6 +861,7 @@
      * Returns: the current encoding for the terminal.
 
 --- status_line
+
      
     Some terminal emulations specify a status line which is
     separate from the main display area, and define a means
@@ -792,6 +874,7 @@
        be modified or freed by the caller.
 
 --- padding
+
      
     Determines the amount of additional space the widget is
     using to pad the edges of its visible area.  This is
@@ -811,6 +894,7 @@
        top/bottom-edge ypadding.
 
 --- set_pty(pty_master)
+
      
     Attach an existing PTY master side to the terminal widget.  Use
     instead of Vte::Terminal#fork_command or Vte::Terminal#fork_pty.
@@ -819,111 +903,188 @@
      * Returns: nil
 
 --- pty=
+
      
      Same as #set_pty but returns self.
 
 --- adjustment
+
      
      * Returns: the contents of terminal's adjustment field
        (Gtk::Adjustment)
 
 --- char_width
+
      
      * Returns: the contents of terminal's char_width field
        (Integer)
 
 --- char_height
+
      
      * Returns: the contents of terminal's char_height field
        (Integer)
 
 --- char_ascent
+
      
      * Returns: the contents of terminal's char_ascent field
        (Integer)
 
 --- char_descent
+
      
      * Returns: the contents of terminal's char_descent field
        (Integer)
 
 --- row_count
+
      
      * Returns: the contents of terminal's row_count field
        (Integer)
 
 --- column_count
+
      
      * Returns: the contents of terminal's column_count field
        (Integer)
 
 --- window_title
+
      
      * Returns: the contents of terminal's title field
        (String)
 
 --- icon_title
+
      
      * Returns: the contents of terminal's icon_title field
        (String)
 
+--- ref_accessible
+
+    See Atk::Implementor#ref_accessible.
+
 == Signals
+
 --- char-size-changed: self
-     * self: 
+
+     * self:
+
 --- child-exited: self
-     * self: 
+
+     * self:
+
 --- commit: self
-     * self: 
+
+     * self:
+
 --- contents-changed: self
-     * self: 
+
+     * self:
+
 --- cursor-moved: self
-     * self: 
+
+     * self:
+
 --- decrease-font-size: self
-     * self: 
+
+     * self:
+
 --- deiconify-window: self
-     * self: 
+
+     * self:
+
 --- emulation-changed: self
-     * self: 
+
+     * self:
+
 --- encoding-changed: self
-     * self: 
+
+     * self:
+
 --- eof: self
-     * self: 
+
+     * self:
+
 --- icon-title-changed: self
-     * self: 
+
+     * self:
+
 --- iconify-window: self
-     * self: 
+
+     * self:
+
 --- increase-font-size: self
-     * self: 
+
+     * self:
+
 --- lower-window: self
-     * self: 
+
+     * self:
+
 --- maximize-window: self
-     * self: 
+
+     * self:
+
 --- move-window: self
-     * self: 
+
+     * self:
+
 --- raise-window: self
-     * self: 
+
+     * self:
+
 --- refresh-window: self
-     * self: 
+
+     * self:
+
 --- resize-window: self
-     * self: 
+
+     * self:
+
 --- restore-window: self
-     * self: 
+
+     * self:
+
 --- selection-changed: self
-     * self: 
+
+     * self:
+
 --- status-line-changed: self
-     * self: 
+
+     * self:
+
 --- text-deleted: self
-     * self: 
+
+     * self:
+
 --- text-inserted: self
-     * self: 
+
+     * self:
+
 --- text-modified: self
-     * self: 
+
+     * self:
+
 --- text-scrolled: self
-     * self: 
+
+     * self:
+
 --- window-title-changed: self
-     * self: 
+
+     * self:
+
+--- copy-clipboard: self
+
+     * self: Vte::Terminal: ((*FIXME*))
+
+--- paste-clipboard: self
+
+     * self: Vte::Terminal: ((*FIXME*))
 
 == See Also
+
 
 == ChangeLog
 

@@ -1,22 +1,27 @@
 = class Gdk::Pixbuf
-Gdk::Pixbuf is a class for image loading and manipulation. 
+
+Gdk::Pixbuf is a class for image loading and manipulation.
 
 == Object Hierarchy
+
 * Object
   * GLib::Instantiatable
     * GLib::Object
       * Gdk::Pixbuf
 
 == Class Methods
+
 --- Gdk::Pixbuf.new(filename, width = nil, height = nil)
+
     Creates a new pixbuf by loading an image from a file. The file format is detected automatically. 
     Possible exceptions are in the Gdk::PixBufError and GLib::FileError.
     * filename: Name of file to load
     * width: The width the image should have or nil for default width. ((*Since 2.4*))
     * height: The height the image should have or nil for default height. ((*Since 2.4*))
-    * Returns: A newly-created pixbuf, or raise an exception if any of several error conditions occurred: the file could not be opened, there was no loader for the file's format, there was not enough memory to allocate the image buffer, or the image file contained invalid data.  
+    * Returns: A newly-created pixbuf, or raise an exception if any of several error conditions occurred: the file could not be opened, there was no loader for the file's format, there was not enough memory to allocate the image buffer, or the image file contained invalid data.
 
 --- Gdk::Pixbuf.new(colorspace, has_alpha, bits_per_sample, width, height)
+
     Creates a new Gdk::Pixbuf and allocates a buffer for it. The buffer has an optimal rowstride. Note that the buffer is not cleared; you will have to fill it completely yourself. Raises an Gdk::PixbufError if there was not enough memory.
     * colorspace: Color space(((<GdkColorspace|Gdk::Pixbuf#GdkColorSpace>))) for image.  
     * has_alpha: true if the image should have transparency information or false.  
@@ -26,6 +31,7 @@ Gdk::Pixbuf is a class for image loading and manipulation.
     * Returns: A newly-created Gdk::Pixbuf.
 
 --- Gdk::Pixbuf.new(data, colorspace, has_alpha, bit_per_sample, width, height, rowstride)
+
     Creates a new Gdk::Pixbuf out of in-memory image data. Currently only RGB images with 8 bits per sample are supported. Raises an Gdk::PixbufError if there was not enough memory.
     * data: Image data in 8-bit/sample packed format(String).  
     * colorspace: Color space(((<GdkColorspace|Gdk::Pixbuf#GdkColorSpace>))) for image data.  
@@ -37,11 +43,13 @@ Gdk::Pixbuf is a class for image loading and manipulation.
     * Returns: A newly-created Gdk::Pixbuf.
 
 --- Gdk::Pixbuf.new(xpmdata)
+
     Creates a new pixbuf by parsing XPM data in memory. Raises an Gdk::PixbufError if there was not enough memory.
     * data: an array of inline XPM data.  
     * Returns: A newly-created pixbuf.
 
 --- Gdk::Pixbuf.new(data, copy_pixels)
+
     Create a Gdk::Pixbuf from a flat representation that is suitable for storing as inline data in a program. This is useful if you want to ship a program with images, but don't want to depend on any external files. 
     GTK+ ships with a program called gdk-pixbuf-csource which allows for conversion of ((<Gdk::Pixbuf>))s into such a inline representation. In almost all cases, you should pass the --raw flag to gdk-pixbuf-csource. A sample invocation would be: 
     
@@ -54,6 +62,7 @@ Gdk::Pixbuf is a class for image loading and manipulation.
     * Returns: A newly-created Gdk::Pixbuf.
 
 --- Gdk::Pixbuf.new(src, src_x, src_y, width, height)
+
     Creates a new pixbuf which represents a sub-region of self(Gdk::Pixbuf). The new pixbuf shares its pixels with the original pixbuf, so writing to one affects both.
     * src: Source Gdk::Pixbuf.
     * src_x: X coord in source Gdk::Pixbuf 
@@ -63,14 +72,16 @@ Gdk::Pixbuf is a class for image loading and manipulation.
     * Returns: a new pixbuf
 
 --- Gdk::Pixbuf.get_file_info(filename)
+
     Parses an image file far enough to determine its format and size. ((*Since 2.4*))
     * filename: The name of the file to identify.  
     * Returns: [format, width, height]
       * format: A Gdk::PixbufFormat describing the image format of the file or nil if the image format wasn't recognized.
       * width: The width of the image, or 0  
-      * height: The height of the image, or 0  
+      * height: The height of the image, or 0
 
 --- Gdk::Pixbuf.from_drawable(cmap, src, src_x, src_y, width, height, dest = nil, dest_x = 0, dest_y = 0)
+
     Transfers image data from a Gdk::Drawable and converts it to an RGB(A) representation inside a Gdk::Pixbuf. In other words, copies image data from a server-side drawable to a client-side RGB(A) buffer. This allows you to efficiently read individual pixels on the client side.  ((* Ruby/GTK *))
 
     If the drawable src has no colormap (Gdk::Drawable#colormap returns nil), then a suitable colormap must be specified. Typically a Gdk::Window or a pixmap created by passing a Gdk::Window to Gdk::Pixmap.new will already have a colormap associated with it. If the drawable has a colormap, the cmap argument will be ignored. If the drawable is a bitmap (1 bit per pixel pixmap), then a colormap is not required; pixels with a value of 1 are assumed to be white, and pixels with a value of 0 are assumed to be black. For taking screenshots, Gdk::Colormap.system returns the correct colormap to use. 
@@ -99,9 +110,10 @@ Gdk::Pixbuf is a class for image loading and manipulation.
     * dest: Destination Gdk::Pixbuf, or nil if a new pixbuf should be created.  
     * dest_x: Destination X coordinate in pixbuf, or 0 if dest is nil.  
     * dest_y: Destination Y coordinate in pixbuf, or 0 if dest is nil.  
-    * Returns: The same pixbuf as dest if it was non-nil, or a newly-created pixbuf with a reference count of 1 if no destination pixbuf was specified, or nil on error  
+    * Returns: The same pixbuf as dest if it was non-nil, or a newly-created pixbuf with a reference count of 1 if no destination pixbuf was specified, or nil on error
 
 --- Gdk::Pixbuf.from_image(cmap, src, src_x, src_y, width, height, dest, dest_x, dest_y)
+
     Same as Gdk::Pixbuf.get_from_drawable but gets the pixbuf from an image. ((* Ruby/GTK *))
     * cmap: A Gdk::Colormap, or nil to use the one for src  
     * src : Source Gdk::Image.  
@@ -112,115 +124,163 @@ Gdk::Pixbuf is a class for image loading and manipulation.
     * dest: Destination Gdk::Pixbuf, or nil if a new pixbuf should be created.  
     * dest_x: Destination X coordinate in pixbuf, or 0 if dest is nil.  
     * dest_y : Destination Y coordinate in pixbuf, or 0 if dest is nil.  
-    * Returns: dest, newly-created Gdk::Pixbuf if dest was nil, nil on error  
+    * Returns: dest, newly-created Gdk::Pixbuf if dest was nil, nil on error
 
 --- Gdk::Pixbuf.formats
+
     Obtains the available information about the image formats supported by Gdk::Pixbuf. (((* Since 2.2 *)))
     * Returns: An Array of ((<Gdk::PixbufFormat>))s describing the supported image formats.
 
+--- Gdk::Pixbuf.cairo_available?
+
+     * Returns: self: ((*FIXME*))
+
 == Instance Methods
+
 --- colorspace
+
     Gets the  colorspace(((<GdkColorSpace|Gdk::Pixbuf#GdkColorSpace>))) in which the samples are interpreted.
     * Returns: The colorspace in which the samples are interpreted
+
 --- colorspace=(colorspace)
+
     Sets the  colorspace in which the samples are interpreted.
     * colorspace: The colorspace in which the samples are interpreted
     * Returns: colorspace(((<GdkColorSpace|Gdk::Pixbuf#GdkColorSpace>)))
+
 --- set_colorspace(colorspace)
+
     Same as Gdk::Pixbuf#colorspace=.
     * colorspace: The colorspace(((<GdkColorSpace|Gdk::Pixbuf#GdkColorSpace>))) in which the samples are interpreted
     * Returns: self
 
 --- n_channels
+
     Gets the  number of samples per pixel.
     * Returns: The number of samples per pixel
+
 --- n_channels=(n_channels)
+
     Sets the  number of samples per pixel.
     * n_channels: The number of samples per pixel
     * Returns: n_channels
+
 --- set_n_channels(n_channels)
+
     Same as Gdk::Pixbuf#n_channels=.
     * n_channels: The number of samples per pixel
     * Returns: self
 
 --- has_alpha?
+
     Gets the value whether the pixbuf has an alpha channel or not.
     * Returns: true if the pixbuf has an alpha channel
+
 --- has_alpha=(has_alpha)
+
     Sets the value whether the pixbuf has an alpha channel or not.
     * has_alpha: true if the pixbuf has an alpha channel
     * Returns: has_alpha
+
 --- set_has_alpha(has_alpha)
+
     Same as Gdk::Pixbuf#has_alpha=.
     * has_alpha: true if the pixbuf has an alpha channel
     * Returns: self
 
 --- bits_per_sample
+
     Gets the  number of bits per sample.
     * Returns: The number of bits per sample
+
 --- bits_per_sample=(bits_per_sample)
+
     Sets the  number of bits per sample. Allowed values are 1 to 16 and default value is 8.
     * bits_per_sample: The number of bits per sample
     * Returns: bits_per_sample
+
 --- set_bits_per_sample(bits_per_sample)
+
     Same as Gdk::Pixbuf#bits_per_sample=.
     * bits_per_sample: The number of bits per sample
     * Returns: self
 
 --- pixels
+
     Gets the pixel data of the pixbuf.
     * Returns: A pointer to the pixel data of the pixbuf
+
 --- pixels=(pixels)
+
     Sets the A pointer to the pixel data of the pixbuf.
     * pixels: A pointer to the pixel data of the pixbuf
     * Returns: pixels
+
 --- set_pixels(pixels)
+
     Same as Gdk::Pixbuf#pixels=.
     * pixels: A pointer to the pixel data of the pixbuf
     * Returns: self
 
 --- width
+
     Gets the  number of columns of the pixbuf.
     * Returns: The number of columns of the pixbuf
+
 --- width=(width)
+
     Sets the  number of columns of the pixbuf.
     * width: The number of columns of the pixbuf
     * Returns: width
+
 --- set_width(width)
+
     Same as Gdk::Pixbuf#width=.
     * width: The number of columns of the pixbuf
     * Returns: self
 
 --- height
+
     Gets the  number of rows of the pixbuf.
     * Returns: The number of rows of the pixbuf
+
 --- height=(height)
+
     Sets the  number of rows of the pixbuf.
     * height: The number of rows of the pixbuf
     * Returns: height
+
 --- set_height(height)
+
     Same as Gdk::Pixbuf#height=.
     * height: The number of rows of the pixbuf
     * Returns: self
 
 --- rowstride
+
     Gets the  number of bytes between the start of a row and the start of the next row.
     * Returns: The number of bytes between the start of a row and the start of the next row
+
 --- rowstride=(rowstride)
+
     Sets the  number of bytes between the start of a row and the start of the next row.
     * rowstride: The number of bytes between the start of a row and the start of the next row
     * Returns: rowstride
+
 --- set_rowstride(rowstride)
+
     Same as Gdk::Pixbuf#rowstride=.
     * rowstride: The number of bytes between the start of a row and the start of the next row
     * Returns: self
 
 --- get_option(key)
+
     Looks up key in the list of options that may have been attached to the pixbuf when it was loaded.
     * key: a String
     * Returns: the value associated with key.
 
 --- save(filename, type, options = nil)
+
     Saves pixbuf to a file in format type. By default, "jpeg", "png" and "ico" are possible file formats to save in, but more formats may be installed. Possible exceptions are in the Gdk::PixBufError and GLib::FileError.
     * filename: name of file to save
     * type: name of file format
@@ -231,6 +291,7 @@ Gdk::Pixbuf is a class for image loading and manipulation.
     * Returns: self
 
 --- save_to_buffer(type, options)
+
     Saves pixbuf to a new buffer in format type, which is currently "jpeg", "png" or "ico". Note that the buffer is not nul-terminated and may contain embedded nuls. 
     Possible errors include those in the Gdk::PixbufError. See Gdk::Pixbuf#save for more details. ((* Since 2.4 *))
     * type: name of file format
@@ -241,14 +302,16 @@ Gdk::Pixbuf is a class for image loading and manipulation.
     * Returns: a new buffer in format type(String)
 
 --- scale(dest_width, dest_height, interp_type = Gdk::Pixbuf::INTERP_BILINEAR)
+
     Create a new Gdk::Pixbuf containing a copy of src(self) scaled to dest_width x dest_height. Leaves src(self) unaffected. interp_type should be Gdk::Pixbuf::INTERP_NEAREST if you want maximum speed (but when scaling down Gdk::Pixbuf::INTERP_NEAREST is usually unusably ugly). The default interp_type should be Gdk::Pixbuf::INTERP_BILINEAR which offers reasonable quality and speed. 
     For more complicated scaling/compositing see Gdk::Pixbuf#scale! and Gdk::Pixbuf#composite!.
     * dest_width: the width of destination image  
     * dest_height: the height of destination image  
     * interp_type: the interpolation type for the transformation. (((<GdkInterpType|Gdk::Pixbuf#GdkInterpType>)) 
-    * Returns : the new Gdk::Pixbuf, or nil if not enough memory could be allocated for it.  
+    * Returns : the new Gdk::Pixbuf, or nil if not enough memory could be allocated for it.
 
 --- scale!(src, x, y, width, height, offset_x, offset_y, scale_x, scale_y, interp_type = Gdk::Pixbuf::INTERP_BILINEAR)
+
     Creates a transformation of the source image src by scaling by scale_x and scale_y then translating by offset_x and offset_y, then renders the rectangle (x, y, width, height) of the resulting image onto the image(self) replacing the previous contents. 
     Try to use Gdk::Pixbuf#scale first, this method is the industrial-strength power tool you can fall back to if Gdk::Pixbuf#scale isn't powerful enough.
     * src: a Gdk::Pixbuf to merge
@@ -264,6 +327,7 @@ Gdk::Pixbuf is a class for image loading and manipulation.
     * Returns: self
 
 --- composite(dest_width, dest_height, interp_type, overall_alpha, check_size, color1, color2)
+
     Creates a new Gdk::Pixbuf by scaling src to dest_width x dest_height and compositing the result with a checkboard of colors color1 and color2.
     * dest_width: the width of destination image  
     * dest_height: the height of destination image  
@@ -272,9 +336,10 @@ Gdk::Pixbuf is a class for image loading and manipulation.
     * check_size: the size of checks in the checkboard (must be a power of two)  
     * color1: the color of check at upper left(Integer)  
     * color2: the color of the other check(Integer)
-    * Returns : the new Gdk::Pixbuf, or nil if not enough memory could be allocated for it.  
+    * Returns : the new Gdk::Pixbuf, or nil if not enough memory could be allocated for it.
 
 --- composite!(src, x, y, width, height, offset_x, offset_y, scale_x, scale_y, interp_type, overall_alpha, check_x = 0, check_y = 0, color = 0, color2 = 0)
+
     Creates a transformation of the source image src by scaling by scale_x and scale_y then translating by offset_x and offset_y. This gives an image in the coordinates of the resulting pixbuf(self). The rectangle (x, y, width, height) is then composited onto the corresponding rectangle of the original destination image. 
     When the destination rectangle contains parts not in the source image, the data at the edges of the source image is replicated to infinity. 
     See Gdk::Pixbuf#composite for a simpler variant of this method suitable for many tasks.
@@ -298,8 +363,8 @@ Gdk::Pixbuf is a class for image loading and manipulation.
 
     {{image_right('composite.png')}}
 
-
 --- add_alpha(substitute_color, r, g, b)
+
     Takes an existing pixbuf and adds an alpha channel to it. If the existing pixbuf already had an alpha channel, the channel values are copied from the original; otherwise, the alpha channel is initialized to 255 (full opacity). 
     If substitute_color is true, then the color specified by (r, g, b) will be assigned zero opacity. That is, if you pass (255, 255, 255) for the substitute color, all white pixels will become fully transparent.
     * substitute_color: Whether to set a color to zero opacity. If this is false, then the (r, g, b) arguments will be ignored.  
@@ -309,7 +374,9 @@ Gdk::Pixbuf is a class for image loading and manipulation.
     * Returns : A newly-created Gdk::Pixbuf.
 
     * Returns: self
+
 --- copy_area(src_x, src_y, width, height, dest_pixbuf, dest_x, dest_y)
+
     Copies a rectangular area from source pixbuf(self) to dest_pixbuf. Conversion of pixbuf formats is done automatically.
     * src_x: Source X coordinate within src_pixbuf.  
     * src_y: Source Y coordinate within src_pixbuf.  
@@ -320,31 +387,33 @@ Gdk::Pixbuf is a class for image loading and manipulation.
     * dest_y: Y coordinate within dest_pixbuf.  
     * Returns: dest_pixbuf
 
-
 --- saturate_and_pixelate(saturation, pixelate)
+
     Modifies saturation and optionally pixelates a copy of the source pixbuf(self). If saturation is 1.0 then saturation is not changed. If it's less than 1.0, saturation is reduced (the image is darkened); if greater than 1.0, saturation is increased (the image is brightened). If pixelate is true, then pixels are faded in a checkerboard pattern to create a pixelated image.
     * saturation : saturation factor(Float)
     * pixelate : whether to pixelate(true or false)
     * Returns: modified version of a copy of src(self)
 
-
-
 --- fill!(pixel)
+
     Clears a pixbuf to the given RGBA value, converting the RGBA value into the pixbuf's pixel format. The alpha will be ignored if the pixbuf doesn't have an alpha channel.
     * pixel: RGBA pixel to clear to (0xffffffff is opaque white, 0x00000000 transparent black)  
     * Returns: self
 
 --- set_option(key, value)
+
     Attaches a key/value pair as an option to a Gdk::Pixbuf. If key already exists in the list of options attached to pixbuf, the new value is ignored and false is returned.  (((* Since 2.2 *))
     * key : a String.  
     * value : a String.  
-    * Returns : true on success.  
+    * Returns : true on success.
 
 --- dup
+
     Copy an object.
     * Returns: self
 
 --- render_threshold_alpha(bitmap, src_x, src_y, dest_x, dest_y, width, height, alpha_threshold)
+
     Takes the opacity values in a rectangular portion of a pixbuf and thresholds them to produce a bi-level alpha mask that can be used as a clipping mask for a Gdk::Drawable. ((* Ruby/GTK *))
     * bitmap: Bitmap(Gdk::Pixbuf, depth = 1) where the bilevel mask will be painted to.  
     * src_x: Source X coordinate.  
@@ -358,6 +427,7 @@ Gdk::Pixbuf is a class for image loading and manipulation.
 
 --- render_pixmap_and_mask(colormap, alpha_threshold)
 --- render_pixmap_and_mask(alpha_threshold)
+
     Creates a pixmap and a mask bitmap which are returned in the pixmap_return and mask_return arguments, respectively, and renders a pixbuf and its corresponding thresholded alpha mask to them. This is merely a convenience method; applications that need to render pixbufs with dither offsets or to given drawables should use Gdk::Drawable#draw_pixbuf and Gdk::Pixbuf#render_threshold_alpha.  ((* Ruby/GTK *))
     * colormap: A Gdk::Colormap(Optional)
     * alpha_threshold: Threshold value for opacity values.  
@@ -365,84 +435,143 @@ Gdk::Pixbuf is a class for image loading and manipulation.
        * pixmap: the created pixmap, or nil if the pixmap is not needed.
        * mask: the created mask, or nil if the mask is not needed.
 
+--- flip
+
+     * Returns: self: ((*FIXME*))
+
+--- render_to_drawable
+
+     * Returns: self: ((*FIXME*))
+
+--- rotate
+
+     * Returns: self: ((*FIXME*))
 
 == Constants
+
 === GdkColorspace
-This defines the color spaces that are supported by the gdk-pixbuf library. Currently only RGB is supported. 
+
+This defines the color spaces that are supported by the gdk-pixbuf library. Currently only RGB is supported.
+
 --- COLORSPACE_RGB
+
     Indicates a red/green/blue additive color space
 
 === GdkPixbufAlphaMode
-These values can be passed to Gdk::Pixbuf#render_to_drawable_alpha to control how the alpha channel of an image should be handled. This method can create a bilevel clipping mask (black and white) and use it while painting the image. In the future, when the X Window System gets an alpha channel extension, it will be possible to do full alpha compositing onto arbitrary drawables. For now both cases fall back to a bilevel clipping mask. 
+
+These values can be passed to Gdk::Pixbuf#render_to_drawable_alpha to control how the alpha channel of an image should be handled. This method can create a bilevel clipping mask (black and white) and use it while painting the image. In the future, when the X Window System gets an alpha channel extension, it will be possible to do full alpha compositing onto arbitrary drawables. For now both cases fall back to a bilevel clipping mask.
+
 --- ALPHA_BILEVEL
+
     A bilevel clipping mask (black and white) will be created and used to draw the image. Pixels below 0.5 opacity will be considered fully transparent, and all others will be considered fully opaque.
+
 --- ALPHA_FULL
-    For now falls back to Gdk::Pixbuf::ALPHA_BILEVEL. In the future it will do full alpha compositing. 
+
+    For now falls back to Gdk::Pixbuf::ALPHA_BILEVEL. In the future it will do full alpha compositing.
 
 === GdkPixbufError
-An error code in the Gdk::PixbufError domain. Many gdk-pixbuf operations can cause errors in this domain, or in the GLib::FileError domain. 
+
+An error code in the Gdk::PixbufError domain. Many gdk-pixbuf operations can cause errors in this domain, or in the GLib::FileError domain.
+
 --- ERROR_CORRUPT_IMAGE
+
     Image data hosed.
+
 --- ERROR_INSUFFICIENT_MEMORY
+
     No memory to load image.
+
 --- ERROR_BAD_OPTION
+
     Bad option passed to save routine.
+
 --- ERROR_UNKNOWN_TYPE
+
     Unsupported image type (sort of an ENOSYS)
+
 --- ERROR_UNSUPPORTED_OPERATION
+
     Unsupported operation (load, save) for image type.
+
 --- ERROR_FAILED
-
-
 === GdkInterpType
+
 This enumeration describes the different interpolation modes that can be used with the scaling functions. Gdk::Pixbuf::INTERP_NEAREST is the fastest scaling method, but has horrible quality when scaling down. Gdk::Pixbuf::BILINEAR is the best choice if you aren't sure what to choose, it has a good speed/quality balance. 
 
-((*Note *)): Cubic filtering is missing from the list; hyperbolic interpolation is just as fast and results in higher quality. 
+((*Note *)): Cubic filtering is missing from the list; hyperbolic interpolation is just as fast and results in higher quality.
 
 --- INTERP_NEAREST
-    Nearest neighbor sampling; this is the fastest and lowest quality mode. Quality is normally unacceptable when scaling down, but may be OK when scaling up. 
+
+    Nearest neighbor sampling; this is the fastest and lowest quality mode. Quality is normally unacceptable when scaling down, but may be OK when scaling up.
+
 --- INTERP_TILES
-    This is an accurate simulation of the PostScript image operator without any interpolation enabled. Each pixel is rendered as a tiny parallelogram of solid color, the edges of which are implemented with antialiasing. It resembles nearest neighbor for enlargement, and bilinear for reduction.  
+
+    This is an accurate simulation of the PostScript image operator without any interpolation enabled. Each pixel is rendered as a tiny parallelogram of solid color, the edges of which are implemented with antialiasing. It resembles nearest neighbor for enlargement, and bilinear for reduction.
 
 --- INTERP_BILINEAR
-    Best quality/speed balance; use this mode by default. Bilinear interpolation. For enlargement, it is equivalent to point-sampling the ideal bilinear-interpolated image. For reduction, it is equivalent to laying down small tiles and integrating over the coverage area.  
+
+    Best quality/speed balance; use this mode by default. Bilinear interpolation. For enlargement, it is equivalent to point-sampling the ideal bilinear-interpolated image. For reduction, it is equivalent to laying down small tiles and integrating over the coverage area.
+
 --- INTERP_HYPER
-    This is the slowest and highest quality reconstruction function. It is derived from the hyperbolic filters in Wolberg's "Digital Image Warping", and is formally defined as the hyperbolic-filter sampling the ideal hyperbolic-filter interpolated image (the filter is designed to be idempotent for 1:1 pixel mapping).  
+
+    This is the slowest and highest quality reconstruction function. It is derived from the hyperbolic filters in Wolberg's "Digital Image Warping", and is formally defined as the hyperbolic-filter sampling the ideal hyperbolic-filter interpolated image (the filter is designed to be idempotent for 1:1 pixel mapping).
 
 === Misc
+
 --- MAJOR
+
     major version
+
 --- MINOR
+
     minor version
+
 --- MICRO
+
     micro version
 
+--- LOG_DOMAIN
+--- ROTATE_CLOCKWISE
+--- ROTATE_COUNTERCLOCKWISE
+--- ROTATE_NONE
+--- ROTATE_UPSIDEDOWN
+
 == Properties
+
 --- bits-per-sample: Fixnum (Read/Write)
+
     The number of bits per sample. Allowed values: [1, 16].Default value: 8.
 
 --- colorspace: ((<GdkColorspace|Gdk::Pixbuf#GdkColorspace>)) (Read/Write)
+
     The colorspace in which the samples are interpreted
 
 --- has-alpha: true or false (Read/Write)
+
     Whether the pixbuf has an alpha channel
 
 --- n-channels: Fixnum (Read/Write)
+
     The number of samples per pixel
 
 --- pixels: String (Read/Write)
+
     A pointer to the pixel data of the pixbuf
 
 --- rowstride: Fixnum (Read/Write)
+
     The number of bytes between the start of a row and the start of the next row
 
 --- width: Fixnunm (Read/Write)
+
     The number of columns of the pixbuf
 
 --- height: Fixnumm (Read/Write)
+
     The number of rows of the pixbuf
 
 == See Also
+
 Gdk::RGB
 
 == ChangeLog

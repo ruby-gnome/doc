@@ -1,88 +1,109 @@
 = class Gdk::Region
-Gdk::Region is an opaque data type holding a set of arbitrary pixels, and is usually used for clipping graphical operations (see ((<Gdk::GC#set_clip_region>))). 
 
+Gdk::Region is an opaque data type holding a set of arbitrary pixels, and is usually used for clipping graphical operations (see ((<Gdk::GC#set_clip_region>))).
 
 == Object Hierarchy
+
 * Object
   * GLib::Boxed
     * Gdk::Region
 
 == Class Methods
+
 --- Gdk::Region.new
+
     Creates a new empty Gdk::Region. 
-    * Returns : a new empty Gdk::Region.  
+    * Returns : a new empty Gdk::Region.
+
 --- Gdk::Region.new(rectangle)
+
     Creates a new region containing the area rectangle.
     * rectangle: a Gdk::Rectangle  
-    * Returns: a new Gdk::Region  
+    * Returns: a new Gdk::Region
+
 --- Gdk::Region.new(points, fill_rule)
+
     Creates a new Gdk::Region using the polygon defined by a number of points. 
     * points: [[x1, y1], [x2, y2], ... ]: an array of points.
     * fill_rule: specifies which pixels are included in the region when the polygon overlaps itself. (((<GdkFillRule|Gdk::Region#GdkFillRule>))) 
-    * Returns: a new Gdk::Region based on the given polygon.  
+    * Returns: a new Gdk::Region based on the given polygon.
 
 == Instance Methods
+
 --- clipbox
+
     Returns the smallest rectangle which includes the entire Gdk::Region. 
-    * Returns: the smallest rectangle(Gdk::Rectangle) which includes all of region. 
+    * Returns: the smallest rectangle(Gdk::Rectangle) which includes all of region.
 
 --- rectangles
+
     Obtains the area covered by the region as a list of rectangles. 
     * Returns: an array of rectangles(Gdk::Rectangle)
 
 --- empty?
+
     Returns true if the Gdk::Region is empty. 
-    * Returns: true if region is empty.  
+    * Returns: true if region is empty.
 
 --- ==(other)
+
     Returns true if the two regions are the same value. 
     * other: a Gdk::Region.  
-    * Returns: true if self and other are equal.  
+    * Returns: true if self and other are equal.
 
 --- point_in?(x, y)
+
     Returns true if a point is in a region. 
     * x: the x coordinate of a point.  
     * y: the y coordinate of a point.  
-    * Returns: true if the point is in region.  
+    * Returns: true if the point is in region.
 
 --- rect_in(rectangle)
+
     Tests whether a rectangle is within a region. 
     * rect: a Gdk::Rectangle.  
-    * Returns: Gdk::Region::OVERLAP_RECTANGLE_IN, Gdk::Region::OVERLAP_RECTANGLE_OUT, or Gdk::Region::OVERLAP_RECTANGLE_PART, depending on whether the rectangle is inside, outside, or partly inside the Gdk::Region, respectively.  
+    * Returns: Gdk::Region::OVERLAP_RECTANGLE_IN, Gdk::Region::OVERLAP_RECTANGLE_OUT, or Gdk::Region::OVERLAP_RECTANGLE_PART, depending on whether the rectangle is inside, outside, or partly inside the Gdk::Region, respectively.
 
 --- offset(dx, dy)
+
     Moves a region the specified distance. 
     * dx: the distance to move the region horizontally.  
     * dy: the distance to move the region vertically.  
     * Returns: self
 
 --- shrink(dx, dy)
+
     Resizes a region by the specified amount. Positive values shrink the region. Negative values expand it. 
     * dx: the number of pixels to shrink the region horizontally.  
     * dy: the number of pixels to shrink the region vertically.  
     * Returns: self
 
 --- union(other)
+
     Sets the area of this region to the union of the areas of self and other. The resulting area is the set of pixels contained in either region or rect.
     * other: a Gdk::Region or a Gdk::Rectangle
     * Returns: self
 
 --- intersect(other)
+
     Sets the area of this region to the intersection of the areas of self and other. The resulting area is the set of pixels contained in both self and other.
     * other: a Gdk::Region
     * Returns: self
 
 --- subtract(other)
+
     Subtracts the area of other from the area of this region. The resulting area is the set of pixels contained in self but not in other.
     * other: a Gdk::Region
     * Returns: self
 
 --- xor(other)
+
     Sets the area of this region to the exclusive-OR of the areas of self and other. The resulting area is the set of pixels contained in one or the other of the two sources but not in both.
     * other: a Gdk::Region
     * Returns: self
 
 --- spans_intersect_each(spans, sorted){|span| ...}
+
     Calls a block on each span in the intersection of region and spans. 
     * spans: an array of spans [[x1, y1, width1], [x2, y2, width2], ... ].
     * sorted: true if spans is sorted wrt. the y coordinate
@@ -90,24 +111,37 @@ Gdk::Region is an opaque data type holding a set of arbitrary pixels, and is usu
     * Returns: self
 
 == Constants
+
 === GdkFillRule
-The method for determining which pixels are included in a region, when creating a Gdk::Region from a polygon. The fill rule is only relevant for polygons which overlap themselves. 
+
+The method for determining which pixels are included in a region, when creating a Gdk::Region from a polygon. The fill rule is only relevant for polygons which overlap themselves.
 
 --- EVEN_ODD_RULE
-    areas which are overlapped an odd number of times are included in the region, while areas overlapped an even number of times are not.  
+
+    areas which are overlapped an odd number of times are included in the region, while areas overlapped an even number of times are not.
+
 --- WINDING_RULE
-    overlapping areas are always included.  
+
+    overlapping areas are always included.
 
 === GdkOverlapType
-Specifies the possible values returned by Gdk::Region#rect_in. 
+
+Specifies the possible values returned by Gdk::Region#rect_in.
+
 --- OVERLAP_RECTANGLE_IN
-    if the rectangle is inside the GdkRegion. 
+
+    if the rectangle is inside the GdkRegion.
+
 --- OVERLAP_RECTANGLE_OUT
+
     if the rectangle is outside the GdkRegion.
+
 --- OVERLAP_RECTANGLE_PART
-    the rectangle is partly inside the GdkRegion.  
+
+    the rectangle is partly inside the GdkRegion.
 
 == See Also
+
 Gdk::Rectangle, Gdk::Span
 
 == ChangeLog

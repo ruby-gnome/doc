@@ -1,14 +1,17 @@
 = class Poppler::IndexIter
 
 == Object Hierarchy
+
 * Object
   * GLib::Boxed
     * Poppler::IndexIter
 
 == Included Modules
-* Enumerable
+
+  * Enumerable
 
 == Class Methods
+
 --- Poppler::IndexIter.new
 
     Returns the root Poppler::IndexIter for document.
@@ -36,6 +39,7 @@
      * Returns: a new Poppler::IndexIter
 
 == Instance Methods
+
 --- child
 
      Returns a newly created child of self, or nil if
@@ -53,12 +57,14 @@
     * Returns: true, if the document wants iter to be expanded
 
 --- action
+
      
      Returns the Poppler::Action associated with iter.
 
      * Returns: a new Poppler::Action
 
 --- next
+
      
      Sets iter to point to the next action at the current
      level, if valid.
@@ -77,10 +83,12 @@
      * Returns: nil
 
 --- valid?
+
      
      * Returns: true, if iter wasn't finished.
 
 == See Also
+
 
 == ChangeLog
 

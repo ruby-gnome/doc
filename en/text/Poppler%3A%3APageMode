@@ -1,11 +1,13 @@
 = class Poppler::PageMode
 
 == Object Hierarchy
+
 * Object
   * GLib::Enum
     * Poppler::PageMode
 
 == Constants
+
 --- FULL_SCREEN
 --- NONE
 --- UNSET
@@ -15,6 +17,7 @@
 --- USE_THUMBS
 
 == See Also
+
 
 == ChangeLog
 

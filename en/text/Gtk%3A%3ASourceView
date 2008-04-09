@@ -1,18 +1,23 @@
 = class Gtk::SourceView
+
 A view on a source.
 
 == Object Hierarchy
+
 * Object
   * GLib::Instantiatable
     * GLib::Object
-      * Gtk::Object
-        * Gtk::Widget
-          * Gtk::Container
-            * Gtk::TextView
-              * Gtk::SourceView
+      * GLib::InitiallyUnowned
+        * Gtk::Object
+          * Gtk::Widget
+            * Gtk::Container
+              * Gtk::TextView
+                * Gtk::SourceView
 
 == Class Methods
+
 --- Gtk::SourceView.new(buffer=nil)
+
     Creates a new Gtk::SourceView.  If buffer is not provided or nil, an empty
     buffer will be created for you.  Note that one buffer can be shared among
     many widgets.
@@ -20,48 +25,281 @@ A view on a source.
     * Returns: a newly created Gtk::SourceView object.
 
 == Instance Methods
+
 --- get_marker_type(marker_type)
+
     Gets the pixbuf which is associated with the given marker_type.
     * marker_type: a marker type (as a string).  
     * Returns: a Gdk::Pixbuf object if found, or nil if not found.
 
 --- set_marker_pixbuf(marker_type, pixbuf)
+
     Associates a given pixbuf with a given marker_type.
     * pixbuf: a Gdk::Pixbuf object.  
     * marker_type: a marker type (as a string). 
     * Returns: self.
 
-== Properties
---- auto-indent: true or false (Read/Write)
-    Whether to enable auto indentation.
+--- auto_indent=(auto_indent)
 
---- insert-spaces-instead-of-tabs: true or false (Read/Write)
-    Whether to insert spaces instead of tabs.
+    Sets the value whether to enable auto indentation or not.
+     * auto_indent: true if to enable auto indentation
+     * Returns: auto_indent
 
---- margin: Integer (Read/Write)
-    Position of the right margin.
+--- auto_indent?
 
---- show-line-markers: true or false (Read/Write)
-    Whether to display line marker pixbufs.
+    Gets the value whether to enable auto indentation or not.
+     * Returns: true if to enable auto indentation
 
---- show-line-numbers: true or false (Read/Write)
-    Whether to display line numbers.
+--- get_marker_pixbuf
 
---- show-margin: true or false (Read/Write)
-    Whether to display the right margin.
+     * Returns: self: ((*FIXME*))
 
---- smart-home-end: true or false (Read/Write)
-    HOME and END keys move to first/last characters on line first before going to the start/end of the line.
+--- highlight_current_line=(highlight_current_line)
 
---- tabs-width: Integer (Read/Write)
-    Tabs Width.
+    Sets the value whether to highlight the current line or not.
+     * highlight_current_line: true if to highlight the current line
+     * Returns: highlight_current_line
 
-== Signals
+--- highlight_current_line?
+
+    Gets the value whether to highlight the current line or not.
+     * Returns: true if to highlight the current line
+
+--- indent_on_tab=(indent_on_tab)
+
+    Sets the value whether to indent the selected text when the tab key is pressed or not.
+     * indent_on_tab: true if to indent the selected text when the tab key is pressed
+     * Returns: indent_on_tab
+
+--- indent_on_tab?
+
+    Gets the value whether to indent the selected text when the tab key is pressed or not.
+     * Returns: true if to indent the selected text when the tab key is pressed
+
+--- insert_spaces_instead_of_tabs=(insert_spaces_instead_of_tabs)
+
+    Sets the value whether to insert spaces instead of tabs or not.
+     * insert_spaces_instead_of_tabs: true if to insert spaces instead of tabs
+     * Returns: insert_spaces_instead_of_tabs
+
+--- insert_spaces_instead_of_tabs?
+
+    Gets the value whether to insert spaces instead of tabs or not.
+     * Returns: true if to insert spaces instead of tabs
+
+--- margin
+
+    Gets the Position of the right margin.
+     * Returns: Position of the right margin
+
+--- margin=(margin)
+
+    Sets the Position of the right margin.
+     * margin: Position of the right margin
+     * Returns: margin
+
 --- redo
+
+     * Returns: self: ((*FIXME*))
+
+--- ref_accessible
+
+    See Atk::Implementor#ref_accessible.
+
+--- set_auto_indent(auto_indent)
+
+    Same as auto_indent=.
+     * auto_indent: true if to enable auto indentation
+     * Returns: self
+
+--- set_highlight_current_line(highlight_current_line)
+
+    Same as highlight_current_line=.
+     * highlight_current_line: true if to highlight the current line
+     * Returns: self
+
+--- set_indent_on_tab(indent_on_tab)
+
+    Same as indent_on_tab=.
+     * indent_on_tab: true if to indent the selected text when the tab key is pressed
+     * Returns: self
+
+--- set_insert_spaces_instead_of_tabs(insert_spaces_instead_of_tabs)
+
+    Same as insert_spaces_instead_of_tabs=.
+     * insert_spaces_instead_of_tabs: true if to insert spaces instead of tabs
+     * Returns: self
+
+--- set_margin(margin)
+
+    Same as margin=.
+     * margin: Position of the right margin
+     * Returns: self
+
+--- set_show_line_markers(show_line_markers)
+
+    Same as show_line_markers=.
+     * show_line_markers: true if to display line marker pixbufs
+     * Returns: self
+
+--- set_show_line_numbers(show_line_numbers)
+
+    Same as show_line_numbers=.
+     * show_line_numbers: true if to display line numbers
+     * Returns: self
+
+--- set_show_margin(show_margin)
+
+    Same as show_margin=.
+     * show_margin: true if to display the right margin
+     * Returns: self
+
+--- set_smart_home_end(smart_home_end)
+
+    Same as smart_home_end=.
+     * smart_home_end: HOME and END keys move to first/last non whitespace characters on line before going to the start/end of the line
+     * Returns: self
+
+--- set_tabs_width(tabs_width)
+
+    Same as tabs_width=.
+     * tabs_width: Tabs Width
+     * Returns: self
+
+--- show_line_markers=(show_line_markers)
+
+    Sets the value whether to display line marker pixbufs or not.
+     * show_line_markers: true if to display line marker pixbufs
+     * Returns: show_line_markers
+
+--- show_line_markers?
+
+    Gets the value whether to display line marker pixbufs or not.
+     * Returns: true if to display line marker pixbufs
+
+--- show_line_numbers=(show_line_numbers)
+
+    Sets the value whether to display line numbers or not.
+     * show_line_numbers: true if to display line numbers
+     * Returns: show_line_numbers
+
+--- show_line_numbers?
+
+    Gets the value whether to display line numbers or not.
+     * Returns: true if to display line numbers
+
+--- show_margin=(show_margin)
+
+    Sets the value whether to display the right margin or not.
+     * show_margin: true if to display the right margin
+     * Returns: show_margin
+
+--- show_margin?
+
+    Gets the value whether to display the right margin or not.
+     * Returns: true if to display the right margin
+
+--- smart_home_end=(smart_home_end)
+
+    Sets the HOME and END keys move to first/last non whitespace characters on line before going to the start/end of the line.
+     * smart_home_end: HOME and END keys move to first/last non whitespace characters on line before going to the start/end of the line
+     * Returns: smart_home_end
+
+--- smart_home_end?
+
+    Gets the HOME and END keys move to first/last non whitespace characters on line before going to the start/end of the line.
+     * Returns: HOME and END keys move to first/last non whitespace characters on line before going to the start/end of the line
+
+--- tabs_width
+
+    Gets the Tabs Width.
+     * Returns: Tabs Width
+
+--- tabs_width=(tabs_width)
+
+    Sets the Tabs Width.
+     * tabs_width: Tabs Width
+     * Returns: tabs_width
 
 --- undo
 
+     * Returns: self: ((*FIXME*))
+
+== Constants
+
+--- BUILD_VERSION
+
+== Properties
+
+--- auto-indent: true or false (Read/Write)
+
+    Whether to enable auto indentation.
+
+--- insert-spaces-instead-of-tabs: true or false (Read/Write)
+
+    Whether to insert spaces instead of tabs.
+
+--- margin: Integer (Read/Write)
+
+    Position of the right margin.
+
+--- show-line-markers: true or false (Read/Write)
+
+    Whether to display line marker pixbufs.
+
+--- show-line-numbers: true or false (Read/Write)
+
+    Whether to display line numbers.
+
+--- show-margin: true or false (Read/Write)
+
+    Whether to display the right margin.
+
+--- smart-home-end: true or false (Read/Write)
+
+    HOME and END keys move to first/last characters on line first before going to the start/end of the line.
+
+--- tabs-width: Integer (Read/Write)
+
+    Tabs Width.
+
+--- highlight-current-line: true or false (Read/Write)
+
+    Whether to highlight the current line
+
+--- indent-on-tab: true or false (Read/Write)
+
+    Whether to indent the selected text when the tab key is pressed
+
+== Style Properties
+
+--- right-margin-line-alpha: Integer (Read)
+
+    Transparency of the margin line
+
+--- right-margin-line-color: Gdk::Color (Read)
+
+    Color to use for the right margin line
+
+--- right-margin-overlay-alpha: Integer (Read)
+
+    Transparency of the margin overlay
+
+--- right-margin-overlay-color: Gdk::Color (Read)
+
+    Color to use for drawing the margin overlay
+
+--- right-margin-overlay-toggle: String (Read)
+
+    Whether to draw the right margin overlay
+
+== Signals
+
+--- redo
+--- undo
+
 == See Also
+
 ((<Gtk>)).
 
 == ChangeLog

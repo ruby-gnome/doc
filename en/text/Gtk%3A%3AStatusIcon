@@ -1,4 +1,5 @@
 = class Gtk::StatusIcon
+
 The "system tray" or notification area is normally used for transient icons that indicate some special state. For example, a system tray icon might appear to tell the user that they have new mail, or have an incoming instant message, or something along those lines. The basic idea is that creating an icon in the notification area is less annoying than popping up a dialog.
 
 A Gtk::StatusIcon object can be used to display an icon in a "system tray". The icon can have a tooltip, and the user can interact with it by activating it or popping up a context menu. Critical information should not solely be displayed in a Gtk::StatusIcon, since it may not be visible (e.g. when the user doesn't have a notification area on his panel). This can be checked with Gtk::StatusIcon#embedded?.
@@ -10,109 +11,147 @@ Note that a Gtk::StatusIcon is not a widget, but just a GLib::Object. Making it 
 ((*Since 2.10*))
 
 == Object Hierarchy
+
 * Object
   * GLib::Instantiatable
     * GLib::Object
       * Gtk::StatusIcon
 
 == Class Methods
+
 --- Gtk::StatusIcon.new
+
     Creates an empty status icon object. ((*Since 2.10*))
     * Returns: a new Gtk::StatusIcon
 
 == Instance Methods
+
 --- file=(file)
+
     Sets the Filename to load and display. ((*Since 2.10*))
     * file: Filename to load and display
     * Returns: file
+
 --- set_file(file)
+
     Same as file=. ((*Since 2.10*))
     * file: Filename to load and display
     * Returns: self
 
 --- icon_name
+
     Gets the name of the icon from the icon theme. ((*Since 2.10*))
     * Returns: The name of the icon from the icon theme
+
 --- icon_name=(icon_name)
+
     Sets the name of the icon from the icon theme. ((*Since 2.10*))
     * icon_name: The name of the icon from the icon theme
     * Returns: icon_name
+
 --- set_icon_name(icon_name)
+
     Same as icon_name=. ((*Since 2.10*))
     * icon_name: The name of the icon from the icon theme
     * Returns: self
 
 --- pixbuf
+
     Gets the Gdk::Pixbuf to display. ((*Since 2.10*))
     * Returns: A Gdk::Pixbuf to display
+
 --- pixbuf=(pixbuf)
+
     Sets a Gdk::Pixbuf to display. ((*Since 2.10*))
     * pixbuf: A Gdk::Pixbuf to display
     * Returns: pixbuf
+
 --- set_pixbuf(pixbuf)
+
     Same as pixbuf=. ((*Since 2.10*))
     * pixbuf: A Gdk::Pixbuf to display
     * Returns: self
 
 --- stock
+
     Gets the Stock ID for a stock image to display. ((*Since 2.10*))
     * Returns: Stock ID(Gtk::Stock constant value) for a stock image to display
+
 --- stock=(stock)
+
     Sets the Stock ID for a stock image to display. ((*Since 2.10*))
     * stock: Stock ID(Gtk::Stock constant value) for a stock image to display
     * Returns: stock
+
 --- set_stock(stock)
+
     Same as stock=. ((*Since 2.10*))
     * stock: Stock ID(Gtk::Stock constant value) for a stock image to display
     * Returns: self
 
 --- size
+
     Gets the size of the icon. ((*Since 2.10*))
     * Returns: The size of the icon
 
 --- storage_type
+
     Gets the type of representation being used by the Gtk::StatusIcon to store image data. If the Gtk::StatusIcon has no image data, the return value will be Gtk::Image::EMPTY. ((*Since 2.10*))
     * Returns: The representation being used for image data (Gtk::Image::Type)
 
 --- tooltip=(tooltip_text)
+
     Sets the tooltip of the status icon ((*Since 2.10*))
     * tooltip_text: the tooltip text, or nil.
     * Returns: tooltip_text
 
 --- set_tooltip(tooltip_text)
+
     Same as tooltip=. ((*Since 2.10*))
     * tooltip_text: the tooltip text, or nil.
     * Returns: self
 
 --- visible?
+
     Gets the value whether the status icon is visible or not. ((*Since 2.10*))
     * Returns: true if the status icon is visible
+
 --- visible=(visible)
+
     Sets the value whether the status icon is visible or not. ((*Since 2.10*))
     * visible: true if the status icon is visible
     * Returns: visible
+
 --- set_visible(visible)
+
     Same as visible=. ((*Since 2.10*))
     * visible: true if the status icon is visible
     * Returns: self
 
 --- blinking?
+
     Gets the value whether the status icon is blinking or not. ((*Since 2.10*))
     * Returns: true if the status icon is blinking
+
 --- blinking=(blinking)
+
     Sets the value whether the status icon is blinking or not. ((*Since 2.10*))
     * blinking: true if the status icon is blinking
     * Returns: blinking
+
 --- set_blinking(blinking)
+
     Same as blinking=. ((*Since 2.10*))
     * blinking: true if the status icon is blinking
     * Returns: self
 
 --- embedded?
+
     Returns whether the status icon is embedded in a notification area. ((*Since 2.10*))
     * Returns: true if the status icon is embedded in a notification area.
 
 --- position_menu(menu)
+
     Menu positioning function to use with Gtk::Menu#popup to position menu aligned to the status icon user_data. ((*Since 2.10*))
     * menu: the Gtk::Menu
     * Returns: [x, y, push_in]
@@ -121,6 +160,7 @@ Note that a Gtk::StatusIcon is not a widget, but just a GLib::Object. Making it 
        * push_in: true if the menu should be pushed in to be completely inside the screen instead of just clamped to the size to the screen.
 
 --- geometry
+
     Obtains information about the location of the status icon on screen. This information can be used to e.g. position popups like notification bubbles. ((*Since 2.10*))
     See Gtk::StatusIcon#position_menu for a more convenient alternative for positioning menus.
     
@@ -131,54 +171,102 @@ Note that a Gtk::StatusIcon is not a widget, but just a GLib::Object. Making it 
        * orientation: the orientation(((<Gtk#Orientation|Gtk#Orientation>))) of the panel in which the status icon is embedded, or nil. A panel at the top or bottom of the screen is horizontal, a panel at the left or right is vertical.
 
 --- activate
+
     Emits an activate signal. ((*Since 2.10*))
     * Returns: self
 
 --- popup_menu(button, activate_time)
+
     Emits an popup-menu signal ((*Since 2.10*))
     * button: the button(Integer) that was pressed, or 0 if the signal is not emitted in response to a button press event
     * activate_time: the timestamp(Integer) of the event that triggered the signal emission
     * Returns: self
 
+--- orientation
+
+    Gets the orientation of the tray.
+     * Returns: The orientation of the tray
+
+--- screen
+
+    Gets the screen where this status icon will be displayed.
+     * Returns: The screen where this status icon will be displayed
+
+--- screen=(screen)
+
+    Sets the screen where this status icon will be displayed.
+     * screen: The screen where this status icon will be displayed
+     * Returns: screen
+
+--- set_screen(screen)
+
+    Same as screen=.
+     * screen: The screen where this status icon will be displayed
+     * Returns: self
+
 == Properties
+
 --- blinking: true or false (Read/Write)
+
     Whether or not the status icon is blinking ((*Since 2.10*))
     * Default value: false
 
 --- file: String (Write)
+
     Filename to load and display ((*Since 2.10*))
     * Default value: nil
 
 --- icon-name: String (Read/Write)
+
     The name of the icon from the icon theme ((*Since 2.10*))
     * Default value: nil
 
 --- pixbuf: Gdk::Pixbuf (Read/Write)
+
     A Gdk::Pixbuf to display ((*Since 2.10*))
 
 --- size: Integer (Read)
+
     The size of the icon ((*Since 2.10*))
     * Allowed values: >= 0
     * Default value: 0
 
 --- stock: String (Read/Write)
+
     Stock ID(Gtk::Stock constant value) for a stock image to display ((*Since 2.10*))
     * Default value: nil
 
 --- storage-type: Gtk::ImageType (Read)
+
     The representation being used for image data ((*Since 2.10*))
     * Default value: Gtk::Image::EMPTY
 
 --- visible: true or false (Read/Write)
+
     Whether or not the status icon is visible ((*Since 2.10*))
     * Default value: true
 
+--- embedded: true or false (Read)
+
+    Whether or not the status icon is embedded
+
+--- orientation: Gtk::Orientation (Read)
+
+    The orientation of the tray
+
+--- screen: Gdk::Screen (Read/Write)
+
+    The screen where this status icon will be displayed
+
 == Signals
+
 --- activate: self (Run first / Action)
+
     Gets emitted when the user activates the status icon. If and how status icons can activated is platform-dependent. ((*Since 2.10*))
      * self: the Gtk::StatusIcon
 
 --- popup-menu: self, button , activate_time (Run first / Action)
+
     Gets emitted when the user brings up the context menu of the status icon. Whether status icons can have context menus and how these are activated is platform-dependent.
     The button and activate_timeout parameters should be passed as the last to arguments to Gtk::Menu#popup. ((*Since 2.10*))
     * self: the Gtk::StatusIcon
@@ -186,11 +274,14 @@ Note that a Gtk::StatusIcon is not a widget, but just a GLib::Object. Making it 
     * activate_time: the timestamp of the event that triggered the signal emission
 
 --- size-changed: self, size (Run last)
+
     Gets emitted when the size available for the image changes, e.g. because the notification area got resized. ((*Since 2.10*))
     * self: the Gtk::StatusIcon
     * size: the new size
     * Returns: true if the icon was updated for the new size. Otherwise, GTK+ will scale the icon as necessary.
 
+== See Also
 
 == ChangeLog
+
 * 2007-02-14 Added. - ((<Masao>))

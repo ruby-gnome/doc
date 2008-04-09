@@ -1,6 +1,7 @@
 = class Gnome::GPAModel
 
 == Object Hierarchy
+
 * Object
   * GLib::Instantiatable
     * GLib::Object
@@ -9,5 +10,7 @@
 
 == See Also
 
+
 == ChangeLog
+
 - kou

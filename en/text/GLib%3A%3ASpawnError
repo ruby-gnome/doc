@@ -1,8 +1,9 @@
-
 = class GLib::SpawnError
+
 An Error class raised by spawning processes.
 
 == Object Hierarchy
+
 * Object
   * Exception
     * StandardError
@@ -10,77 +11,125 @@ An Error class raised by spawning processes.
         * GLib::SpawnError
 
 == Instance Methods
+
 --- code
+
     Returns the error code (((<GLib::SpawnError|GLib::SpawnError#GSpawnError>))). 
     * Returns: the error code
+
 --- domain
+
     Returns the error domain. 
     * Returns: the error domain
 
 == Constants
+
 === GSpawnError
+
 Error codes returned by spawning processes.
+
 --- FORK
+
     Fork failed due to lack of memory.
+
 --- READ
+
     Read or select on pipes failed.
+
 --- CHDIR
+
     Changing to working directory failed.
+
 --- EACCES
+
     execv() returned EACCES. 
     * The file or a script interpreter is not a regular file.
     * Execute permission is denied for the file or a script.
     * The file system is mounted noexec.
     * Search permission is denied on a component of the path prefix of filename or the name of a script interpreter.
+
 --- EPERM
+
     execv() returned EPERM.
     * The file system is mounted nosuid, the user is not the superuser, and the file has an SUID or SGID bit set.
     * The process is being traced, the user is not the superuser and the file has an SUID or SGID bit set.
+
 --- E2BIG
+
     execv() returned E2BIG.
     * The argument list is too big.
+
 --- ENOEXEC
+
     execv() returned ENOEXEC.
     * An executable is not in a recognised format, is for the wrong architecture, or has some other format error that means it cannot be executed.
+
 --- ENAMETOOLONG
+
     execv() returned ENAMETOOLONG.
     * filename is too long.
+
 --- ENOENT
+
     execv() returned ENOENT.
     * The file filename or a script does not exist, or a shared library needed for file or interpreter cannot be found.
+
 --- ENOMEM
+
     execv() returned ENOMEM.
     * Insufficient kernel memory was available.
+
 --- ENOTDIR
+
     execv() returned ENOTDIR.
     * A component of the path prefix of filename or a script is not a directory.
+
 --- ELOOP
+
     execv() returned ELOOP.
     * Too many symbolic links were encountered in resolving filename or the name of a script.
+
 --- ETXTBUSY
+
     execv() returned ETXTBUSY.
     * Executable was open for writing by one or more processes.
+
 --- EIO
+
     execv() returned EIO.
     * An I/O error occurred.
+
 --- ENFILE
+
     execv() returned ENFILE.
     * The limit on the total number of files open on the system has been reached.
+
 --- EMFILE
+
     execv() returned EMFILE.
     * The process has the maximum number of files open.
+
 --- EINVAL
+
     execv() returned EINVAL.
     * The pathname contains a character with the high-order bit set.
+
 --- EISDIR
+
     execv() returned EISDIR. 
     * The named file is a directory, and the arguments specify it is to be opened for writing.
+
 --- ELIBBAD
+
     execv() returned ELIBBAD.
     Not in a recognised format.
---- FAILED
-    Some other fatal failure, Exception#message should explain. 
 
+--- FAILED
+
+    Some other fatal failure, Exception#message should explain.
+
+== See Also
 
 == ChangeLog
+
 * 2005-05-08 Added. - ((<Masao>))

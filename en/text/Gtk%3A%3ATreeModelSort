@@ -1,68 +1,164 @@
 = class Gtk::TreeModelSort
 
 == Object Hierarchy
+
 * Object
   * GLib::Instantiatable
     * GLib::Object
       * Gtk::TreeModelSort
 
 == Included Modules
-* Gtk::TreeSortable
-* Gtk::TreeModel
+
+  * Gtk::TreeDragSource
+  * Gtk::TreeModel
+  * Gtk::TreeSortable
 
 == Class Methods
+
 --- Gtk::TreeModelSort.new(child_model)
+
     Creates a new Gtk::TreeModel, with child_model as the child_model.
     * child_model: A Gtk::TreeModel 
-    * Returns: A new Gtk::TreeModel. 
+    * Returns: A new Gtk::TreeModel.
 
 == Instance Methods
+
 --- model
+
     Returns the model the Gtk::TreeModelSort is sorting.
-    * Returns: the "child model" being sorted 
+    * Returns: the "child model" being sorted
+
 --- model=(child_model)
+
     Sets the model of the Gtk::TreeModelSort to be child_model.  If child_model is nil, then the old model is unset.  The sort method is unset as a result of this call. This method is for construct time only.
     The model will be in an unsorted state until a sort method is set.
     * child_model: A Gtk::TreeModel, or nil.
     * Returns: model
+
 --- set_model(child_model)
+
     Same as Gtk::TreeModelSort#model=.
     * child_model: A Gtk::TreeModel, or nil.
     * Returns: self
 
 --- convert_child_path_to_path(child_path)
+
     Converts child_path to a path relative to the Gtk::TreeModelSort. That is, child_path points to a path in the child model. The returned path will point to the same row in the sorted model. If child_path isn't a valid path on the child model, then nil is returned.
     * child_path: A Gtk::TreePath to convert 
-    * Returns: A newly allocated Gtk::TreePath, or nil 
+    * Returns: A newly allocated Gtk::TreePath, or nil
 
 --- convert_child_iter_to_iter(child_iter)
+
     Gets a Gtk::TreeIter which point to the row in the Gtk::TreeModelSort that corresponds to the row pointed at by child_iter.
     * child_iter: A valid Gtk::TreeIter pointing to a row on the child model 
-    * Returns: A Gtk::TreeIter. 
+    * Returns: A Gtk::TreeIter.
 
 --- convert_path_to_child_path(sorted_path)
+
     Converts sorted_path to a path on the child model of the Gtk::TreeModelSort. That is, sorted_path points to a location in the Gtk::TreeModelSort. The returned path will point to the same location in the model not being sorted. If sorted_path does not point to a location in the child model, nil is returned.
     * sorted_path: A Gtk::TreePath to convert 
     * Returns: A newly allocated Gtk::TreePath, or nil
 
 --- convert_iter_to_child_iter(sorted_iter)
+
     Gets a Gtk::TreeIter which point to the row pointed to by sorted_iter.
     * sorted_iter: A valid Gtk::TreeIter pointing to a row on the Gtk::TreeModelSort. 
-    * Returns: A Gtk::TreeIter 
+    * Returns: A Gtk::TreeIter
 
 --- reset_default_sort_func
+
     This resets the default sort function to be in the 'unsorted' state. That is, it is in the same order as the child model. It will re-sort the model to be in the same order as the child model only if the Gtk::TreeModelSort is in 'unsorted' state.
     * Returns: self
 
 --- clear_cache
+
     This method should almost never be called. It clears the Gtk::TreeModelSort of any cached iterators that haven't been reffed by GTK+. This might be useful if the child model being sorted is static (and doesn't change often) and there has been a lot of unreffed access to nodes. As a side effect of this method, all unreffed iters will be invalid.
     * Returns: self
 
+--- each
+
+    See Gtk::TreeModel#each.
+
+--- flags
+
+    See Gtk::TreeModel#flags.
+
+--- get_column_type
+
+    See Gtk::TreeModel#get_column_type.
+
+--- get_iter
+
+    See Gtk::TreeModel#get_iter.
+
+--- get_value
+
+    See Gtk::TreeModel#get_value.
+
+--- has_default_sort_func?
+
+    See Gtk::TreeSortable#has_default_sort_func?.
+
+--- iter_first
+
+    See Gtk::TreeModel#iter_first.
+
+--- iter_is_valid?
+
+     * Returns: self: ((*FIXME*))
+
+--- n_columns
+
+    See Gtk::TreeModel#n_columns.
+
+--- row_changed
+
+    See Gtk::TreeModel#row_changed.
+
+--- row_deleted
+
+    See Gtk::TreeModel#row_deleted.
+
+--- row_has_child_toggled
+
+    See Gtk::TreeModel#row_has_child_toggled.
+
+--- row_inserted
+
+    See Gtk::TreeModel#row_inserted.
+
+--- rows_reordered
+
+    See Gtk::TreeModel#rows_reordered.
+
+--- set_default_sort_func
+
+    See Gtk::TreeSortable#set_default_sort_func.
+
+--- set_sort_column_id
+
+    See Gtk::TreeSortable#set_sort_column_id.
+
+--- set_sort_func
+
+    See Gtk::TreeSortable#set_sort_func.
+
+--- sort_column_changed
+
+    See Gtk::TreeSortable#sort_column_changed.
+
+--- sort_column_id
+
+    See Gtk::TreeSortable#sort_column_id.
+
 == Properties
+
 --- model: Gtk::TreeModel (Read/Write)
+
     The model for the TreeModelSort to sort
 
 == See Also
+
 Gtk::TreeModel
 
 == ChangeLog

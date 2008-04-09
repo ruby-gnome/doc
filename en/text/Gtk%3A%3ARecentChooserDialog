@@ -1,4 +1,5 @@
 = class Gtk::RecentChooserDialog
+
 Gtk::RecentChooserDialog is a dialog box suitable for displaying the recently used documents. This widgets works by putting a Gtk::RecentChooserWidget inside a Gtk::Dialog. It exposes the Gtk::RecentChooserIface interface, so you can use all the Gtk::RecentChooser functions on the recent chooser dialog as well as those for Gtk::Dialog.
 
 Note that Gtk::RecentChooserDialog does not have any methods of its own. Instead, you should use the functions that work on a Gtk::RecentChooser.
@@ -25,6 +26,7 @@ Recently used files are supported since GTK+ 2.10.
 ((<URL:http://library.gnome.org/devel/gtk/stable/recentchooserdialog.png>))
 
 == Object Hierarchy
+
 * Object
   * GLib::Instantiatable
     * GLib::Object
@@ -38,10 +40,13 @@ Recently used files are supported since GTK+ 2.10.
                     * Gtk::RecentChooserDialog
 
 == Included Modules
-* Gtk::RecentChooser
+
+  * Gtk::RecentChooser
 
 == Class Methods
+
 --- Gtk::RecentChooserDialog.new(title, parent, [button_face1, response_id1], [button_face2, response_id2], .....)
+
     Creates a new Gtk::RecentChooserDialog. This method is analogous to Gtk::Dialog.new.  ((* Since 2.10 *))
     * title: Title of the dialog, or nil
     * parent: Transient parent(Gtk::Widget) of the dialog, or nil
@@ -51,6 +56,7 @@ Recently used files are supported since GTK+ 2.10.
     * Returns : a new Gtk::RecentChooserDialog
 
 --- Gtk::RecentChooserDialog.new(title, parent, manager, [button_face1, response_id1], [button_face2, response_id2], .....)
+
     Creates a new Gtk::RecentChooserDialog. This is useful if you have implemented your own recent manager, or if you have a customized instance of a Gtk::RecentManager object.  ((* Since 2.10 *))
     * title: Title of the dialog, or nil
     * parent: Transient parent(Gtk::Widget) of the dialog, or nil
@@ -60,10 +66,196 @@ Recently used files are supported since GTK+ 2.10.
        * response_id: A response ID can be any positive number, or one of the values in the ((<Gtk::Dialog#ResponseType>)) enumeration. If the user clicks one of these dialog buttons, Gtk::RecentChooserDialog will emit the "response" signal with the corresponding response ID. If a Gtk::RecentChooserDialog receives the "delete_event" signal, it will emit "response" with a response ID of Gtk::Dialog::RESPONSE_DELETE_EVENT. However, destroying a dialog does not emit the "response" signal; so be careful relying on "response" when using the Gtk::Dialog::DESTROY_WITH_PARENT flag. Buttons are from left to right, so the first button in the list will be the leftmost button in the dialog.
     * Returns : a new Gtk::RecentChooserDialog
 
+--- Gtk::RecentChooserDialog.new
 
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- add_filter
+
+    See Gtk::RecentChooser#add_filter.
+
+--- current_item
+
+    See Gtk::RecentChooser#current_item.
+
+--- current_uri
+
+    See Gtk::RecentChooser#current_uri.
+
+--- current_uri=
+
+    See Gtk::RecentChooser#current_uri=.
+
+--- filter
+
+    See Gtk::RecentChooser#filter.
+
+--- filter=
+
+    See Gtk::RecentChooser#filter=.
+
+--- filters
+
+    See Gtk::RecentChooser#filters.
+
+--- items
+
+    See Gtk::RecentChooser#items.
+
+--- limit
+
+    See Gtk::RecentChooser#limit.
+
+--- limit=
+
+    See Gtk::RecentChooser#limit=.
+
+--- local_only=
+
+    See Gtk::RecentChooser#local_only=.
+
+--- local_only?
+
+    See Gtk::RecentChooser#local_only?.
+
+--- ref_accessible
+
+    See Atk::Implementor#ref_accessible.
+
+--- remove_filter
+
+    See Gtk::RecentChooser#remove_filter.
+
+--- select_all
+
+    See Gtk::RecentChooser#select_all.
+
+--- select_multiple=
+
+    See Gtk::RecentChooser#select_multiple=.
+
+--- select_multiple?
+
+    See Gtk::RecentChooser#select_multiple?.
+
+--- select_uri
+
+    See Gtk::RecentChooser#select_uri.
+
+--- set_current_uri
+
+    See Gtk::RecentChooser#set_current_uri.
+
+--- set_filter
+
+    See Gtk::RecentChooser#set_filter.
+
+--- set_limit
+
+    See Gtk::RecentChooser#set_limit.
+
+--- set_local_only
+
+    See Gtk::RecentChooser#set_local_only.
+
+--- set_select_multiple
+
+    See Gtk::RecentChooser#set_select_multiple.
+
+--- set_show_icons
+
+    See Gtk::RecentChooser#set_show_icons.
+
+--- set_show_not_found
+
+    See Gtk::RecentChooser#set_show_not_found.
+
+--- set_show_numbers
+
+    See Gtk::RecentChooser#set_show_numbers.
+
+--- set_show_private
+
+    See Gtk::RecentChooser#set_show_private.
+
+--- set_show_tips
+
+    See Gtk::RecentChooser#set_show_tips.
+
+--- set_sort_func
+
+    See Gtk::RecentChooser#set_sort_func.
+
+--- set_sort_type
+
+    See Gtk::RecentChooser#set_sort_type.
+
+--- show_icons=
+
+    See Gtk::RecentChooser#show_icons=.
+
+--- show_icons?
+
+    See Gtk::RecentChooser#show_icons?.
+
+--- show_not_found=
+
+    See Gtk::RecentChooser#show_not_found=.
+
+--- show_not_found?
+
+    See Gtk::RecentChooser#show_not_found?.
+
+--- show_numbers
+
+    See Gtk::RecentChooser#show_numbers.
+
+--- show_numbers=
+
+    See Gtk::RecentChooser#show_numbers=.
+
+--- show_private=
+
+    See Gtk::RecentChooser#show_private=.
+
+--- show_private?
+
+    See Gtk::RecentChooser#show_private?.
+
+--- show_tips=
+
+    See Gtk::RecentChooser#show_tips=.
+
+--- show_tips?
+
+    See Gtk::RecentChooser#show_tips?.
+
+--- sort_type
+
+    See Gtk::RecentChooser#sort_type.
+
+--- sort_type=
+
+    See Gtk::RecentChooser#sort_type=.
+
+--- unselect_all
+
+    See Gtk::RecentChooser#unselect_all.
+
+--- unselect_uri
+
+    See Gtk::RecentChooser#unselect_uri.
+
+--- uris
+
+    See Gtk::RecentChooser#uris.
 
 == See Also
+
 Gtk::RecentChooser, Gtk::Dialog 
 
 == ChangeLog
+
 * 2007-01-30: Added. ((<Masao>))

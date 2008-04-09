@@ -1,47 +1,59 @@
 = module Gtk::TreeSortable
 
 == Included Modules
-* GLib::Interface
+
+  * GLib::Interface
 
 == Instance Methods
+
 --- sort_column_changed
+
     Emits a GtkTreeSortable::sort_column_changed signal on
     * Returns: self
 
 --- sort_column_id
+
     Returns the current sort column and the order, if applicable. If the sort column is not set, then nil is returned.
     * Returns: [sort_column_id, order] or nil
        * sort_column_id: current sort column id.
        * order: ((<GtkSortType|Gtk#GtkSortType>)).
 
 --- set_sort_column_id(sort_column_id, order = Gtk::SORT_ASCENDING)
+
     Sets the current sort column to be sort_column_id. The sortable will resort itself to reflect this change, after emitting a GtkTreeSortable::sort_column_changed signal. If sort_column_id is Gtk::TreeSortable::DEFAULT_SORT_COLUMN_ID, then the default sort function will be used, if it is set.
     * sort_column_id: the sort column id to set 
     * order: The sort order of the column (((<GtkSortType|Gtk#GtkSortType>))).
     * Returns: self
 
 --- set_sort_func(sort_column_id){|iter1, iter2| ... }
+
     Sets the comparison block used when sorting to be sort_func. If the current sort column id of sortable is the same as sort_column_id, then the model will sort.
     * sort_column_id: the sort column id to set the block for 
     * {|iter1, iter2| ... }: The sorting block. This is same as Array#sort{|a, b| ... }
     * Returns: self
 
 --- set_default_sort_func{|iter1, iter2| ... }
+
     Sets the default comparison block used when sorting to be sort_func. If the current sort column id of sortable is Gtk::TreeSortable::DEFAULT_SORT_COLUMN_ID, then the model will sort.
     * {|iter1, iter2| ... }: The sorting block. This is same as Array#sort{|a, b| ... }
     * Returns: self
 
 --- has_default_sort_func?
-    Returns true if the model has a default sort block. This is used primarily by Gtk::TreeViewColumn s in order to determine if a model can go back to the default state, or not.
-    * Returns: true, if the model has a default sort block 
 
+    Returns true if the model has a default sort block. This is used primarily by Gtk::TreeViewColumn s in order to determine if a model can go back to the default state, or not.
+    * Returns: true, if the model has a default sort block
 
 == Constants
+
 --- DEFAULT_SORT_COLUMN_ID
 
 == Signals
+
 --- sort-column-changed: self
+
      * self: Gtk::TreeSortable
+
+== See Also
 
 == ChangeLog
 

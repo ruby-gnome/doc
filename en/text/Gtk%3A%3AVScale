@@ -1,30 +1,44 @@
 = class Gtk::VScale
+
 The Gtk::VScale widget is used to allow the user to select a value using a vertical slider. 
 
 The position to show the current value, and the number of decimal places shown can be set using the parent Gtk::Scale class's methods.
 
 == Object Hierarchy
+
 * Object
   * GLib::Instantiatable
     * GLib::Object
-      * Gtk::Object
-        * Gtk::Widget
-          * Gtk::Range
-            * Gtk::Scale
-              * Gtk::VScale
+      * GLib::InitiallyUnowned
+        * Gtk::Object
+          * Gtk::Widget
+            * Gtk::Range
+              * Gtk::Scale
+                * Gtk::VScale
 
 == Class Methods
+
 --- Gtk::VScale.new(adj)
+
     Creates a new Gtk::VScale.
     * adj: the Gtk::Adjustment which sets the range of the scale. 
-    * Returns: a new Gtk::VScale.  
+    * Returns: a new Gtk::VScale.
 
 --- Gtk::VScale.new(min, max, step)
+
     Creates a new vertical scale widget that lets the user input a number between min and max (including min and max) with the increment step. step must be nonzero; it's the distance the slider moves when using the arrow keys to adjust the scale value.
     * min: minimum value(Float)
     * max: maximum value(Float) 
     * step: step increment (tick size) used with keyboard shortcuts(Float)
-    * Returns: a new Gtk::VScale 
+    * Returns: a new Gtk::VScale
+
+== Instance Methods
+
+--- ref_accessible
+
+    See Atk::Implementor#ref_accessible.
+
+== See Also
 
 == ChangeLog
 

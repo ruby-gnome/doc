@@ -1,23 +1,35 @@
 = class Gtk::VScrollbar
-The Gtk::VScrollbar widget is a widget arranged vertically creating a scrollbar. See Gtk::Scrollbar for details on scrollbars. Gtk::Adjustment pointers may be added to handle the adjustment of the scrollbar or it may be left nil in which case one will be created for you. See Gtk::Adjustment for details. 
+
+The Gtk::VScrollbar widget is a widget arranged vertically creating a scrollbar. See Gtk::Scrollbar for details on scrollbars. Gtk::Adjustment pointers may be added to handle the adjustment of the scrollbar or it may be left nil in which case one will be created for you. See Gtk::Adjustment for details.
 
 == Object Hierarchy
+
 * Object
   * GLib::Instantiatable
     * GLib::Object
-      * Gtk::Object
-        * Gtk::Widget
-          * Gtk::Range
-            * Gtk::Scrollbar
-              * Gtk::VScrollbar
+      * GLib::InitiallyUnowned
+        * Gtk::Object
+          * Gtk::Widget
+            * Gtk::Range
+              * Gtk::Scrollbar
+                * Gtk::VScrollbar
 
 == Class Methods
+
 --- Gtk::VScrollbar.new(adjustment = nil)
+
     Creates a new vertical scrollbar. 
     * adjustment: the Gtk::Adjustment to use, or nil to create a new adjustment.  
-    * Returns: the new Gtk::VScrollbar  
+    * Returns: the new Gtk::VScrollbar
+
+== Instance Methods
+
+--- ref_accessible
+
+    See Atk::Implementor#ref_accessible.
 
 == See Also
+
 Gtk::Scrollbar, Gtk::ScrolledWindow 
 
 == ChangeLog

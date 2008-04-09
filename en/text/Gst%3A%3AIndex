@@ -1,7 +1,9 @@
 = class Gst::Index
+
 Generates indexes on objects.
 
 == Object Hierarchy
+
 * Object
   * GLib::Instantiatable
     * GLib::Object
@@ -9,12 +11,16 @@ Generates indexes on objects.
         * Gst::Index
 
 == Class Methods
+
 --- Gst::Index.new
+
     This method returns a newly allocated Gst::Index object.
     * Returns: a newly allocated Gst::Index object.
 
 == Instance Methods
+
 --- add(id, *args)
+
     Adds an entry into the index.  The type of the entry depends of
     the number and kind of additional parameters.
     	* For an ID type, args must be a String.
@@ -26,21 +32,25 @@ Generates indexes on objects.
     * Returns: a reference to the newly allocated entry in the index, as a Gst::EntryIndex object.
 
 --- certainty
+
     This method returns the certainty of the index (see ((<GstIndexCertainty|Gst::Index#GstIndexCertainty>))).
     * Returns: the certainty of the index (see ((<GstIndexCertainty|Gst::Index#GstIndexCertainty>))).
 
 --- certainty=(certainty)
+
     Sets the certainty of the index.
     * certainty: the certainty to set (see ((<GstIndexCertainty|Gst::Index#GstIndexCertainty>))).  
     * Returns: the given parameter 'certainty'.
 
 --- commit(id)
+
     Tells the index that the writer with the given ID is done with 
     this index and is not going to write any more entries to it.
     * id: the writer that committed the index.  
     * Returns: self.
 
 --- get_assoc_entry(id, method, flags, format, value) { ... }
+
     Finds the given format/value in the index.  If a block is given, it will be
     called as a compare function, passing references to 2 Gst::IndexEntry objects,
     and waiting for a boolean as the return value.
@@ -52,72 +62,91 @@ Generates indexes on objects.
     * Returns: the entry associated with the value (as a Gst::IndexEntry object), or nil  if the value is not found.
 
 --- group
+
     This method returns the ID of the current group.
     * Returns: the ID of the current group.
 
 --- group=(group)
+
     Sets the current group number to the given argument.
     * group: the number of the group to set.  
     * Returns: the given parameter 'group'.
 
 --- new_group
+
     Creates a new group for the given index.  It will be set as the current
     group.
     * Returns: the ID of the newly created group.
 
 --- readable?
+
     This method returns whether the index can be read.
     * Returns: whether the index can be read.
 
 --- set_certainty(certainty)
+
     Sets the certainty of the index.
     * certainty: the certainty to set (see ((<GstIndexCertainty|Gst::Index#GstIndexCertainty>))).  
     * Returns: self.
 
 --- set_group(group)
+
     Sets the current group number to the given argument.
     * group: the number of the group to set.  
     * Returns: true if the operation succeeded, false if the group did not exist.
 
 --- writable?
+
     This method returns whether the index can be written.
     * Returns: whether the index can be written.
 
+--- set_resolver(resolver)
+
+    Same as resolver=.
+     * resolver: Select a predefined object to string mapper
+     * Returns: self
+
 == Constants
+
 === GstAssocFlags
+
 --- ASSOCIATION_FLAG_DELTA_UNIT
 --- ASSOCIATION_FLAG_KEY_UNIT
 --- ASSOCIATION_FLAG_LAST
 --- ASSOCIATION_FLAG_NONE
-
 === GstIndexCertainty
+
 --- CERTAIN
 --- FUZZY
 --- UNKNOWN
-
 === GstIndexFlags
+
 --- FLAG_LAST
 --- READABLE
 --- WRITABLE
-
 === GstIndexLookupMethod
+
 --- LOOKUP_AFTER
 --- LOOKUP_BEFORE
 --- LOOKUP_EXACT
-
 === GstIndexResolverMethod
+
 --- RESOLVER_CUSTOM
 --- RESOLVER_GTYPE
 --- RESOLVER_PATH
 
 == Properties
+
 --- resolver: GstIndexResolver (Read/Write)
+
     Select a predefined object to string mapper.
 
 == Signals
+
 --- entry-added
 
 == See Also
+
 ((<Gst>)).
 
 == ChangeLog

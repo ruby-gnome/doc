@@ -1,45 +1,69 @@
 = class Gtk::ToggleToolButton
-A Gtk::ToggleToolButton is a Gtk::ToolItem that contains a toggle button. 
+
+A Gtk::ToggleToolButton is a Gtk::ToolItem that contains a toggle button.
 
 == Object Hierarchy
+
 * Object
   * GLib::Instantiatable
     * GLib::Object
-      * Gtk::Object
-        * Gtk::Widget
-          * Gtk::Container
-            * Gtk::Bin
-              * Gtk::ToolItem
-                * Gtk::ToolButton
-                  * Gtk::ToggleToolButton
+      * GLib::InitiallyUnowned
+        * Gtk::Object
+          * Gtk::Widget
+            * Gtk::Container
+              * Gtk::Bin
+                * Gtk::ToolItem
+                  * Gtk::ToolButton
+                    * Gtk::ToggleToolButton
 
 == Class Methods
+
 --- Gtk::ToggleToolButton.new(stock_id = nil)
+
     Creates a new Gtk::ToggleToolButton containing the image and text from a stock item. ((* Since 2.4 *))
     * stock_id: the name of the stock item (a constant of Gtk::Stock)
     * Returns: self
 
 == Instance Methods
+
 --- active?
+
     Queries a Gtk::ToggleToolButton and returns its current state. Returns true if the toggle button is pressed in and false if it is raised.((* Since 2.4 *))
-    * Returns: true if the toggle tool button is pressed in, false if not  
+    * Returns: true if the toggle tool button is pressed in, false if not
+
 --- active=(is_active)
+
     Sets the status of the toggle tool button. Set to true if you want the Gtk::ToggleButton to be 'pressed in', and false to raise it. This action causes the toggled signal to be emitted.((* Since 2.4 *))
     * is_active: whether button should be active
     * Returns: is_active
 
 --- set_active(is_active)
+
     Same as Gtk::ToggleToolButton#active=. ((* Since 2.4 *))
     * is_active: whether button should be active
     * Returns: self
 
+--- ref_accessible
+
+    See Atk::Implementor#ref_accessible.
+
+== Properties
+
+--- active: true or false (Read/Write)
+
+    If the toggle button should be pressed in or not
+
 == Signals
+
 --- toggled: self
+
     Emitted whenever the toggle tool button changes state. ((* Since 2.4 *))
      * self: Gtk::ToggleToolButton
 
 == See Also
+
 Gtk::Toolbar, Gtk::ToolButton, Gtk::SeparatorToolItem
 
 == ChangeLog
+
 * 2005-1-27 Added. - Masao

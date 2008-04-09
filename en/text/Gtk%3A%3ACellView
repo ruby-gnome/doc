@@ -1,7 +1,9 @@
 = class Gtk::CellView
+
 A Gtk::CellView displays a single row of a Gtk::TreeModel, using cell renderers just like Gtk::TreeView. Gtk::CellView doesn't support some of the more complex features of Gtk::TreeView, like cell editing and drag and drop.
 
 == Object Hierarchy
+
 * Object
   * GLib::Instantiatable
     * GLib::Object
@@ -11,112 +13,190 @@ A Gtk::CellView displays a single row of a Gtk::TreeModel, using cell renderers 
             * Gtk::CellView
 
 == Included Modules
-* Gtk::CellLayout
+
+  * Gtk::CellLayout
 
 == Class Methods
+
 --- Gtk::CellView.new(text = nil, with_markup = true)
+
     Creates a new Gtk::CellView widget.
     * text: The text(String) to display in the cell view. If with_markup is set to true, the text is treaded as markup string.
     * with_markup: true if text is markup string, otherwise false
     * Returns: A newly created Gtk::CellView widget
     * Returns: self
+
 --- Gtk::CellView.new(pixbuf)
+
     Creates a new Gtk::CellView widget, adds a Gtk::CellRendererPixbuf to it, and makes its show pixbuf.
     * pixbuf: the Gdk::Pixbuf to display in the cell view
     * Returns: A newly created Gtk::CellView widget
 
 == Instance Methods
+
 --- model=(model)
+
     Sets the Gtk::TreeModel. If the Gtk::CellView already has a model set, it will remove it before setting the new model. If model is nil, then it will unset the old model.
     * model: a Gtk::TreeModel
     * Returns: self
+
 --- set_model(model)
+
     Same as Gtk::CellView#model=.
     * model: a Gtk::TreeModel
     * Returns: self
 
 --- displayed_row
+
     Gets the row of the model that is currently displayed by the Gtk::CellView. See displayed_row= for more detail.
     * Returns: the Gtk::TreePath
+
 --- displayed_row=(path)
+
     Sets the row of the model that is currently displayed by the Gtk::CellView. If the path is unset, then the contents of the cellview "stick" at their last value; this is not normally a desired result, but may be a needed intermediate state if say, the model for the Gtk::CellView becomes temporarily empty.
     * path: A Gtk::TreePath or nil to unset.
     * Returns: self
+
 --- set_displayed_row(path)
+
     Same as Gtk::CellView#displayed_row=.
     * path: A Gtk::TreePath or nil to unset.
     * Returns: self
 
 --- get_size_of_row(path)
+
     Gets the size needed by cell_view to display the model row pointed to by path. Or raise an RuntimeError if it can't get the size.
     * path: a Gtk::TreePath
     * Returns: [width, height]
 
 --- cell_renderers
+
     Returns Array of the cell renderers which have been added to the Gtk::CellView.
     * Returns: Array of the cell renderers
 
 --- background=(background)
+
     Sets the Background color as a String.
     * background: Background color as a String
     * Returns: background
+
 --- set_background(background)
+
     Same as Gtk::CellView#background=.
     * background: Background color as a String
     * Returns: self
 
 --- background_gdk
+
     Gets the Background color as a Gdk::Color.
     * Returns: Background color as a Gdk::Color
+
 --- background_gdk=(color)
+
     Sets the Background color as a Gdk::Color.
     * color: Background color as a Gdk::Color
     * Returns: color
+
 --- set_background_gdk(color)
+
     Same as Gtk::CellView#background_gdk=.
     * color: Background color as a Gdk::Color
     * Returns: self
 
 --- background_set?
+
     Gets the value whether this tag affects the background color or not.
     * Returns: true if this tag affects the background color
+
 --- background_set=(setting)
+
     Sets the value whether this tag affects the background color or not.
     * setting: true if this tag affects the background color
     * Returns: setting
+
 --- set_background_set(setting)
+
     Same as Gtk::CellView#background_set=.
     * setting: true if this tag affects the background color
     * Returns: self
 
 --- model
+
     Gets the  model for cell view. ((* Since 2.10 *))
     * Returns: The model for cell view
+
 --- model=(model)
+
     Sets the  model for cell view. ((* Since 2.10 *))
     * model: The model for cell view
     * Returns: model
+
 --- set_model(model)
+
     Same as model=. ((* Since 2.10 *))
     * model: The model for cell view
     * Returns: self
 
+--- add_attribute
+
+    See Gtk::CellLayout#add_attribute.
+
+--- clear
+
+    See Gtk::CellLayout#clear.
+
+--- clear_attributes
+
+    See Gtk::CellLayout#clear_attributes.
+
+--- pack_end
+
+    See Gtk::CellLayout#pack_end.
+
+--- pack_start
+
+    See Gtk::CellLayout#pack_start.
+
+--- ref_accessible
+
+    See Atk::Implementor#ref_accessible.
+
+--- reorder
+
+    See Gtk::CellLayout#reorder.
+
+--- set_attributes
+
+    See Gtk::CellLayout#set_attributes.
+
+--- set_cell_data_func
+
+    See Gtk::CellLayout#set_cell_data_func.
+
 == Properties
+
 --- background: String (Write)
+
     Background color as a string
     * Default value: nil
 
 --- background-gdk: Gdk::Color (Read/Write)
+
     Background color as a Gdk::Color
 
 --- background-set: true or false (Read/Write)
+
     Whether this tag affects the background color
     * Default value: false
 
 --- model: Gtk::TreeModel (Read/Write)
+
     The model for cell view ((* Since 2.10 *))
 
+== See Also
+
 == ChangeLog
+
 * 2007-02-08 Apply 2.10 - ((<Masao>))
 * 2006-01-31 Revised. - ((<Masao>))
 * 2005-05-05 Added - ((<Masao>))

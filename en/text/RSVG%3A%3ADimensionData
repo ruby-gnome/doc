@@ -1,6 +1,7 @@
 = class RSVG::DimensionData
 
 == Object Hierarchy
+
 * Object
   * RSVG::DimensionData
 
@@ -16,18 +17,28 @@
 --- height
 --- em
 --- ex
-
 --- width=(new_width)
 --- height=(new_height)
 --- em=(new_em)
 --- ex=(new_ex)
-
 --- set_width(new_width)
 --- set_height(new_height)
 --- set_em(new_em)
 --- set_ex(new_ex)
+--- to_a
+
+     * Returns: self: ((*FIXME*))
+
+--- to_ary
+
+     * Returns: self: ((*FIXME*))
+
+--- to_s
+
+     * Returns: self: ((*FIXME*))
 
 == See Also
+
 
 == ChangeLog
 

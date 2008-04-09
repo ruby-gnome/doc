@@ -1,11 +1,18 @@
 = class Vte::CharAttributes
 
 == Object Hierarchy
+
 * Object
   * Vte::CharAttributes
 
 == Class Methods
+
+--- Vte::CharAttributes.new
+
+     * Returns: self: ((*FIXME*))
+
 == Instance Methods
+
 --- back
 --- background
 --- column
@@ -16,6 +23,7 @@
 --- underline?
 
 == See Also
+
 
 == ChangeLog
 

@@ -1,4 +1,5 @@
 = class Gtk::AccelLabel
+
 The Gtk::AccelLabel widget is a subclass of Gtk::Label that also displays an accelerator key on the right of the label text, e.g. 'Ctl+S'. It is commonly used in menus to show the keyboard short-cuts for commands. 
 
 The accelerator key to display is not set explicitly. Instead, the Gtk::AccelLabel displays the accelerators which have been added to a particular widget. This widget is set by calling Gtk::AccelLabel#accel_widget=. 
@@ -13,6 +14,7 @@ A Gtk::AccelLabel will only display accelerators which have Gtk::ACCEL_VISIBLE s
 ((<URL:http://library.gnome.org/devel/gtk/stable/accel-label.png>))
 
 == Object Hierarchy
+
 * Object
   * GLib::Instantiatable
     * GLib::Object
@@ -24,57 +26,76 @@ A Gtk::AccelLabel will only display accelerators which have Gtk::ACCEL_VISIBLE s
                 * Gtk::AccelLabel
 
 == Class Methods
+
 --- Gtk::AccelLabel.new(string)
+
     Creates a new Gtk::AccelLabel. 
     * string: the label string. Must be non-nil
     * Returns: a new Gtk::AccelLabel
 
 == Instance Methods
+
 --- accel_closure
+
     Returns the accel_closure.
     * Returns: the accel_closure(GLib::Closure, or nil).
 
 --- accel_closure=(accel_closure)
+
     Sets the closure to be monitored by this accelerator label. The closure must be connected to an accelerator group; see Gtk::AccelGroup#connect
     * accel_closure: the closure(GLib::Closure) to monitor for accelerator changes.  
     * Returns: the accel_closure
 
 --- set_accel_closure(accel_closure)
+
     Same as Gtk::AccelLabel#accel_closure=.
     * accel_closure: the closure(GLib::Closure) to monitor for accelerator changes.  
     * Returns: self
 
 --- accel_widget
+
     Fetches the widget monitored by this accelerator label. 
-    * Returns : the object monitored by the accelerator label, or nil.  
+    * Returns : the object monitored by the accelerator label, or nil.
 
 --- accel_widget=(accel_widget)
+
     Sets the widget to be monitored by this accelerator label.
     * accel_widget: the widget to be monitored.  
     * Returns: accel_widget
 
 --- set_accel_widget(accel_widget)
+
     Same as Gtk::AccelLabel#accel_widget=.
     * accel_widget: the widget to be monitored.  
     * Returns: self
 
 --- accel_width
+
     Returns the width needed to display the accelerator key(s). This is used by menus to align all of the Gtk::MenuItem widgets, and shouldn't be needed by applications. 
-    * Returns: the width needed to display the accelerator key(s).  
+    * Returns: the width needed to display the accelerator key(s).
 
 --- refetch
+
     Recreates the string representing the accelerator keys. This should not be needed since the string is automatically updated whenever accelerators are added or removed from the associated widget. 
      * accel_label : a Gtk::AccelLabel.  
      * Returns : always returns false.
 
+--- ref_accessible
+
+    See Atk::Implementor#ref_accessible.
+
 == Properties
+
 --- accel-closure: GLib::Closure (Read/Write)
+
     The closure to be monitored for accelerator changes
 
 --- accel-widget: Gtk::Widget (Read/Write)
+
     The widget to be monitored for accelerator changes
 
 == See Also
+
 Keyboard Accelerators installing and using keyboard short-cuts.
 Gtk::ItemFactory an easier way to create menus.
 

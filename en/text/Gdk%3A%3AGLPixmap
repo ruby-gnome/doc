@@ -1,7 +1,9 @@
 = class Gdk::GLPixmap
+
 OpenGL Pixmap — OpenGL pixmap which is maintained off-screen
 
 == Object Hierarchy
+
 * Object
   * GLib::Instantiatable
     * GLib::Object
@@ -9,18 +11,29 @@ OpenGL Pixmap — OpenGL pixmap which is maintained off-screen
         * Gdk::GLPixmap
 
 == Class Methods
+
 --- Gdk::GLPixmap.new(glconfig, pixmap)
+
     Creates an off-screen rendering area.
     * glconfig: a Gdk::GLConfig.
     * pixmap: the Gdk::Pixmap to be used as the rendering area.
     * Returns: the new Gdk::GLPixmap.
 
 == Instance Methods
+
 --- destroy
+
     Destroys the OpenGL resources associated with the OpenGL pixmap.
     * Returns: nil
 
 --- pixmap
+
     Returns the Gdk::Pixmap associated with the OpenGL pixmap.
     Notice that Gdk::GLPixmap is not Gdk::Pixmap, but another Gdk::Drawable which have an associated Gdk::Pixmap.
     * Returns: the Gdk::Pixmap associated with the OpenGL pixmap.
+
+== See Also
+
+== ChangeLog
+
+

@@ -1,27 +1,54 @@
 = class GLib::ConvertError
-== Class Methods
+
+== Object Hierarchy
+
+* Object
+  * Exception
+    * StandardError
+      * IOError
+        * GLib::ConvertError
 
 == Instance Methods
+
 --- code
+
     Returns the error code (GLib::ConvertError)
+
 --- domain
+
     Returns the C name of the error domain (g_convert_error)
 
 == Constants
+
 === GLib::ConvertError
+
 Error codes returned by character set conversion routines.
+
 --- NO_CONVERSION
+
     Conversion between the requested character sets is not supported.
+
 --- ILLEGAL_SEQUENCE
+
     Invalid byte sequence in conversion input.
+
 --- FAILED
+
     Conversion failed for some reason.
+
 --- PARTIAL_INPUT
+
     Partial character sequence at end of input.
+
 --- BAD_URI
+
     URI is invalid.
+
 --- NOT_ABSOLUTE_PATH
+
     Pathname is not an absolute path.
+
+== See Also
 
 == ChangeLog
 

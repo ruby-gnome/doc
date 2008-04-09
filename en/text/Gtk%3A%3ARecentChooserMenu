@@ -1,13 +1,15 @@
 = class Gtk::RecentChooserMenu
+
 Gtk::RecentChooserMenu is a widget suitable for displaying recently used files inside a menu. It can be used to set a sub-menu of a Gtk::MenuItem using Gtk::MenuItem#set_submenu, or as the menu of a Gtk::MenuToolButton.
 
 Note that Gtk::RecentChooserMenu does not have any methods of its own. Instead, you should use the methods that work on a Gtk::RecentChooser.
 
 Note also that Gtk::RecentChooserMenu does not support multiple filters, as it has no way to let the user choose between them as the Gtk::RecentChooserWidget and Gtk::RecentChooserDialog widgets do. Thus using Gtk::RecentChooser#add_filter on a Gtk::RecentChooserMenu widget will yield the same effects as using Gtk::RecentChooser#set_filter, replacing any currently set filter with the supplied filter; Gtk::RecentChooser#remove_filter will remove any currently set Gtk::RecentFilter object and will unset the current filter; Gtk::RecentChooser#filters will return a list containing a single Gtk::RecentFilter object.
 
-Recently used files are supported since GTK+ 2.10. 
+Recently used files are supported since GTK+ 2.10.
 
 == Object Hierarchy
+
 * Object
   * GLib::Instantiatable
     * GLib::Object
@@ -20,34 +22,237 @@ Recently used files are supported since GTK+ 2.10.
                   * Gtk::RecentChooserMenu
 
 == Included Modules
-* Gtk::RecentChooser
+
+  * Gtk::RecentChooser
 
 == Class Methods
+
 --- Gtk::RecentChooserMenu.new(manager = nil)
+
     Creates a new Gtk::RecentChooserMenu widget.
     This kind of widget shows the list of recently used resources as a menu, each item as a menu item. Each item inside the menu might have an icon, representing its MIME type, and a number, for mnemonic access. ((* Since 2.10 *))
     * manager: a Gtk::RecentManager. This is useful if you have implemented your own recent manager, or if you have a customized instance of a Gtk::RecentManager object or if you wish to share a common Gtk::RecentManager object among multiple Gtk::RecentChooser widgets. If nil, this widget creates its own Gtk::RecentManager object.
     * Returns: a new Gtk::RecentChooserMenu
 
 --- show_numbers?
+
     Returns the value set by Gtk::RecentChooserMenu#show_numbers=. ((* Since 2.10 *))
     * Returns: true if numbers should be shown.
+
 --- show_numbers=(show_numbers)
+
     Sets whether a number should be added to the items of menu. The numbers are shown to provide a unique character for a mnemonic to be used inside the menu item's label. Only the first the items get a number to avoid clashes. ((* Sinec 2.10 *))
     * show_numbers: true if the items should be displayed with a number, otherwise false.
     * Returns: show_numbers
+
 --- set_show_numbers(show_numbers)
+
     Same as show_numbers=. ((* Since 2.10 *))
     * show_numbers: true if the items should be displayed with a number, otherwise false.
     * Returns: self
 
+== Instance Methods
+
+--- add_filter
+
+    See Gtk::RecentChooser#add_filter.
+
+--- current_item
+
+    See Gtk::RecentChooser#current_item.
+
+--- current_uri
+
+    See Gtk::RecentChooser#current_uri.
+
+--- current_uri=
+
+    See Gtk::RecentChooser#current_uri=.
+
+--- filter
+
+    See Gtk::RecentChooser#filter.
+
+--- filter=
+
+    See Gtk::RecentChooser#filter=.
+
+--- filters
+
+    See Gtk::RecentChooser#filters.
+
+--- items
+
+    See Gtk::RecentChooser#items.
+
+--- limit
+
+    See Gtk::RecentChooser#limit.
+
+--- limit=
+
+    See Gtk::RecentChooser#limit=.
+
+--- local_only=
+
+    See Gtk::RecentChooser#local_only=.
+
+--- local_only?
+
+    See Gtk::RecentChooser#local_only?.
+
+--- ref_accessible
+
+    See Atk::Implementor#ref_accessible.
+
+--- remove_filter
+
+    See Gtk::RecentChooser#remove_filter.
+
+--- select_all
+
+    See Gtk::RecentChooser#select_all.
+
+--- select_multiple=
+
+    See Gtk::RecentChooser#select_multiple=.
+
+--- select_multiple?
+
+    See Gtk::RecentChooser#select_multiple?.
+
+--- select_uri
+
+    See Gtk::RecentChooser#select_uri.
+
+--- set_current_uri
+
+    See Gtk::RecentChooser#set_current_uri.
+
+--- set_filter
+
+    See Gtk::RecentChooser#set_filter.
+
+--- set_limit
+
+    See Gtk::RecentChooser#set_limit.
+
+--- set_local_only
+
+    See Gtk::RecentChooser#set_local_only.
+
+--- set_select_multiple
+
+    See Gtk::RecentChooser#set_select_multiple.
+
+--- set_show_icons
+
+    See Gtk::RecentChooser#set_show_icons.
+
+--- set_show_not_found
+
+    See Gtk::RecentChooser#set_show_not_found.
+
+--- set_show_numbers(show_numbers)
+
+    Same as show_numbers=.
+     * show_numbers: true if the items should be displayed with a number
+     * Returns: self
+
+--- set_show_private
+
+    See Gtk::RecentChooser#set_show_private.
+
+--- set_show_tips
+
+    See Gtk::RecentChooser#set_show_tips.
+
+--- set_sort_func
+
+    See Gtk::RecentChooser#set_sort_func.
+
+--- set_sort_type
+
+    See Gtk::RecentChooser#set_sort_type.
+
+--- show_icons=
+
+    See Gtk::RecentChooser#show_icons=.
+
+--- show_icons?
+
+    See Gtk::RecentChooser#show_icons?.
+
+--- show_not_found=
+
+    See Gtk::RecentChooser#show_not_found=.
+
+--- show_not_found?
+
+    See Gtk::RecentChooser#show_not_found?.
+
+--- show_numbers
+
+    See Gtk::RecentChooser#show_numbers.
+
+--- show_numbers=(show_numbers)
+
+    Sets the value whether the items should be displayed with a number or not.
+     * show_numbers: true if the items should be displayed with a number
+     * Returns: show_numbers
+
+--- show_numbers?
+
+    Gets the value whether the items should be displayed with a number or not.
+     * Returns: true if the items should be displayed with a number
+
+--- show_private=
+
+    See Gtk::RecentChooser#show_private=.
+
+--- show_private?
+
+    See Gtk::RecentChooser#show_private?.
+
+--- show_tips=
+
+    See Gtk::RecentChooser#show_tips=.
+
+--- show_tips?
+
+    See Gtk::RecentChooser#show_tips?.
+
+--- sort_type
+
+    See Gtk::RecentChooser#sort_type.
+
+--- sort_type=
+
+    See Gtk::RecentChooser#sort_type=.
+
+--- unselect_all
+
+    See Gtk::RecentChooser#unselect_all.
+
+--- unselect_uri
+
+    See Gtk::RecentChooser#unselect_uri.
+
+--- uris
+
+    See Gtk::RecentChooser#uris.
+
 == Properties
+
 --- show-numbers: true or false (Read/Write)
+
     Whether the items should be displayed with a number ((* Since 2.10 *))
     * Default value: false
 
 == See Also
+
 Gtk::RecentChooser
 
 == ChangeLog
+
 * 2007-01-30: Added. - ((<Masao>))

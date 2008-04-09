@@ -7,9 +7,10 @@
 
 === Return codes
 
+
 There are some return codes for Ruby/GnomePrint. But user
 doesn't need to care those codes. Because Ruby/GnomePrint
-raises an exception when a return code shows an error. 
+raises an exception when a return code shows an error.
 
 --- ERROR_BADCONTEXT
 --- ERROR_BADVALUE
@@ -20,8 +21,12 @@ raises an exception when a return code shows an error.
 --- ERROR_TEXTCORRUPT
 --- ERROR_UNKNOWN
 --- OK
+--- BINDING_VERSION
+--- BUILD_VERSION
+--- LOG_DOMAIN
 
 == See Also
+
 
 == ChangeLog
 

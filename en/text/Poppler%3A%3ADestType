@@ -1,11 +1,13 @@
 = class Poppler::DestType
 
 == Object Hierarchy
+
 * Object
   * GLib::Enum
     * Poppler::DestType
 
 == Constants
+
 --- FIT
 --- FITB
 --- FITBH
@@ -18,6 +20,7 @@
 --- XYZ
 
 == See Also
+
 
 == ChangeLog
 

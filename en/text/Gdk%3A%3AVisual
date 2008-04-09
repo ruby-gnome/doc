@@ -1,4 +1,5 @@
 = class Gdk::Visual
+
 A Gdk::Visual describes a particular video hardware display format. It includes information about the number of bits used for each color, the way the bits are translated into an RGB value for display, and the way the bits are stored in memory. For example, a piece of display hardware might support 24-bit color, 16-bit color, or 8-bit color; meaning 24/16/8-bit pixel sizes. For a given pixel size, pixels can be in different formats; for example the "red" element of an RGB pixel may be in the top 8 bits of the pixel, or may be in the lower 4 bits.
 
 Usually you can avoid thinking about visuals in GTK+. Visuals are useful to interpret the contents of a Gdk::Image, but you should avoid Gdk::Image precisely because its contents depend on the display hardware; use Gdk::Pixbuf instead, for all but the most low-level purposes. Also, anytime you provide a Gdk::Colormap, the visual is implied as part of the colormap (Gdk::Colormap.visual), so you won't have to provide a visual in addition.
@@ -16,137 +17,191 @@ A number of methods are provided for determining the "best" available visual. Fo
   end
 
 == Object Hierarchy
+
 * Object
   * GLib::Instantiatable
     * GLib::Object
       * Gdk::Visual
 
 == Class Methods
+
 --- Gdk::Visual.query_depths
+
     This method returns the available bit depths for the default screen. It's equivalent to listing the visuals (Gdk::Visual.visuals) and then looking at the depth field in each visual, removing duplicates.
     * Returns: an Array of available depths
 
 --- Gdk::Visual.query_visual_types
+
     This method returns the available visual types for the default screen. It's equivalent to listing the visuals (Gdk::Visual.visuals) and then looking at the type field in each visual, removing duplicates.
     * Returns: the available visual types (((<GdkVisualType|Gdk::Visual#GdkVisualType>)))
 
 --- Gdk::Visual.visuals
+
     Lists the available visuals for the default screen. (See Gdk::Screen#visuals) A visual describes a hardware image data format. For example, a visual might support 24-bit color, or 8-bit color, and might expect pixels to be in a certain format.
     * Returns: an Array of ((<Gdk::Visual>))s
 
 --- Gdk::Visual.best_depth
+
     Get the best available depth for the default GDK screen. "Best" means "largest," i.e. 32 preferred over 24 preferred over 8 bits per pixel.
     * Returns: best available depth
 
 --- Gdk::Visual.best_type
+
     Return the best available visual type for the default GDK screen.
     * Returns: best visual type (((<GdkVisualType|Gdk::Visual#GdkVisualType>)))
 
 --- Gdk::Visual.system
+
     Get the system'sdefault visual for the default GDK screen. This is the visual for the root window of the display.
     * Returns: system Gdk::Visual
 
 --- Gdk::Visual.best
+
     Get the visual with the most available colors for the default GDK screen.
     * Returns: best Gdk::Visual
 
 --- Gdk::Visual.best_with_depth(depth)
+
     Get the best visual with depth depth for the default GDK screen. Color visuals and visuals with mutable colormaps are preferred over grayscale or fixed-colormap visuals. nil may be returned if no visual supports depth.
     * depth: a bit depth (Integer)
     * Returns: best Gdk::Visual for the given depth, or nil if none
 
 --- Gdk::Visual.best_with_type(visual_type)
+
     Get the best visual of the given visual_type for the default GDK screen. Visuals with higher color depths are considered better. nil may be returned if no visual has type visual_type.
     * visual_type: a visual type (((<GdkVisualType|Gdk::Visual#GdkVisualType>)))
     * Returns: best Gdk::Visual of the given type
 
 --- Gdk::Visual.best_with_both(depth, visual_type)
+
     Combines Gdk::Visual.best_with_depth and Gdk::Visual.best_with_type.
     * depth: a bit depth (Integer)
     * visual_type: a visual type (((<GdkVisualType|Gdk::Visual#GdkVisualType>)))
     * Returns: best visual with both depth and visual_type, or nil if none
 
-
 == Instance Methods
+
 --- screen
+
     Gets the screen to which this visual belongs. ((* Since 2.2 *))
     * Returns: the Gdk::Screen to which this visual belongs.
 
 --- visual_type
+
     Gets the type of this visual.
     * Returns: a ((<GdkVisualType|Gdk::Visual#GdkVisualType>))
 
 --- depth
+
     Gets the number of bits per pixel.
     * Returns: the number of bits per pixel (Integer)
 
 --- byte_order
+
     Gets the byte-order for this visual.
     * Returns: a ((<GdkByteOrder|Gdk::Visual#GdkByteOrder>))
 
 --- colormap_size
+
     Gets the number of entries in the colormap, for visuals of type Gdk::Visual::PSEUDO_COLOR or Gdk::Visual::GRAY_SCALE. For other visual types, it is the number of possible levels per color component. If the visual has different numbers of levels for different components, the value of this field is undefined. (Integer)
     * Returns: the number of entries in the colormap
 
 --- bits_per_rgb
+
     Gets the number of significant bits per red, green, or blue when specifying colors for this visual. (For instance, for Gdk::Colormap#alloc_color)
     * Returns: the number of significant bits per red, green, or blue when specifying colors for this visual. (Integer)
 
 --- red_mask
+
     Gets the mask giving the bits in a pixel value that correspond to the red field. Significant only for Gdk::Visual::PSEUDOCOLOR and Gdk::Visual::DIRECTCOLOR. 
     * Returns:  A mask giving the bits in a pixel value that correspond to the red field (Integer)
+
 --- red_shift
+
     Gets the red_shift (Integer). red_shift and red_prec give an alternate presentation of the information in red_mask. red_mask is a contiguous sequence of red_prec bits starting at bit number red_shift. The Example1 shows constructing a pixel value out of three 16 bit color values. (Integer)
     * Returns: self
+
 --- red_prec
+
     Gets the red_shift (Integer). red_shift and red_prec give an alternate presentation of the information in red_mask. red_mask is a contiguous sequence of red_prec bits starting at bit number red_shift. The Example1 shows constructing a pixel value out of three 16 bit color values. (Integer)
     * Returns: self
 
 --- green_mask
+
     Gets the mask giving the bits in a pixel value that correspond to the green field. Significant only for Gdk::Visual::PSEUDOCOLOR and Gdk::Visual::DIRECTCOLOR. 
     * Returns:  A mask giving the bits in a pixel value that correspond to the green field (Integer)
+
 --- green_shift
+
     Gets the green_shift (Integer). green_shift and green_prec give an alternate presentation of the information in green_mask. green_mask is a contiguous sequence of green_prec bits starting at bit number green_shift. The Example1 shows constructing a pixel value out of three 16 bit color values. (Integer)
     * Returns: self
+
 --- green_prec
+
     Gets the green_shift (Integer). green_shift and green_prec give an alternate presentation of the information in green_mask. green_mask is a contiguous sequence of green_prec bits starting at bit number green_shift. The Example1 shows constructing a pixel value out of three 16 bit color values. (Integer)
     * Returns: self
 
 --- blue_mask
+
     Gets the mask giving the bits in a pixel value that correspond to the blue field. Significant only for Gdk::Visual::PSEUDOCOLOR and Gdk::Visual::DIRECTCOLOR. 
     * Returns:  A mask giving the bits in a pixel value that correspond to the blue field (Integer)
+
 --- blue_shift
+
     Gets the blue_shift (Integer). blue_shift and blue_prec give an alternate presentation of the information in blue_mask. blue_mask is a contiguous sequence of blue_prec bits starting at bit number blue_shift. The Example1 shows constructing a pixel value out of three 16 bit color values. (Integer)
     * Returns: self
+
 --- blue_prec
+
     Gets the blue_shift (Integer). blue_shift and blue_prec give an alternate presentation of the information in blue_mask. blue_mask is a contiguous sequence of blue_prec bits starting at bit number blue_shift. The Example1 shows constructing a pixel value out of three 16 bit color values. (Integer)
     * Returns: self
 
 == Constants
+
 === GdkVisualType
+
 A set of values that describe the manner in which the pixel values for a visual are converted into RGB values for display.
+
 --- STATIC_GRAY
+
     Each pixel value indexes a grayscale value directly.
+
 --- GRAYSCALE
+
     Each pixel is an index into a color map that maps pixel values into grayscale values. The color map can be changed by an application.
+
 --- STATIC_COLOR
+
     Each pixel value is an index into a predefined, unmodifiable color map that maps pixel values into RGB values.
+
 --- PSEUDO_COLOR
+
     Each pixel is an index into a color map that maps pixel values into rgb values. The color map can be changed by an application.
+
 --- TRUE_COLOR
+
     Each pixel value directly contains red, green, and blue components. The red_mask, green_mask, and blue_mask fields of the Gdk::Visual describe how the components are assembled into a pixel value.
+
 --- DIRECT_COLOR
+
     Each pixel value contains red, green, and blue components as for Gdk::Visual::TRUE_COLOR, but the components are mapped via a color table into the final output table instead of being converted directly.
 
 === GdkByteOrder
+
 A set of values describing the possible byte-orders for storing pixel values in memory.
+
 --- LSB_FIRST
+
     The values are stored with the least-significant byte first. For instance, the 32-bit value 0xffeecc would be stored in memory as 0xcc, 0xee, 0xff, 0x00.
+
 --- MSB_FIRST
+
     The values are stored with the most-significant byte first. For instance, the 32-bit value 0xffeecc would be stored in memory as 0x00, 0xcc, 0xee, 0xff.
 
 == See Also
+
 Gdk::Image, Gdk::Colormap, ((<Gdk::RGB>))
 
 == ChangeLog
+
 2005-05-09 Added. - ((<Masao>))

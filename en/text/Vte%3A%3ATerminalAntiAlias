@@ -1,16 +1,19 @@
 = class Vte::TerminalAntiAlias
 
 == Object Hierarchy
+
 * Object
   * GLib::Enum
     * Vte::TerminalAntiAlias
 
 == Constants
+
 --- FORCE_DISABLE
 --- FORCE_ENABLE
 --- USE_DEFAULT
 
 == See Also
+
 
 == ChangeLog
 

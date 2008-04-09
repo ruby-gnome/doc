@@ -1,33 +1,48 @@
 = class Gtk::SourceLanguagesManager
+
 A class to manage source languages.
 
 == Object Hierarchy
+
 * Object
   * GLib::Instantiatable
     * GLib::Object
       * Gtk::SourceLanguagesManager
 
 == Class Methods
---- Gtk::SourceLanguagesManager.new 
+
+--- Gtk::SourceLanguagesManager.new
+
     This method returns a newly created Gtk::SourceLanguagesManager object.
     * Returns: a newly created Gtk::SourceLanguagesManager object.
 
 == Instance Methods
---- available_languages 
+
+--- available_languages
+
     This method returns a list of available languages for the given language manager, as an array of Gtk::SourceLanguage objects.
     * Returns: a list of available languages for the given language manager, as an array of Gtk::SourceLanguage objects.
 
 --- get_language(mime_type)
+
     Gets the Gtk::SourceLanguage which is associated with the given mime_type
     in the language manager.
     * mime_type: a mime type (as a string).  
     * Returns: a Gtk::SourceLanguage, or nil if there is no language associated with the given mime_type.
 
 --- lang_files_dirs
+
     This method returns a list of language files directories (strings) for the given language manager.
     * Returns: a list of language files directories (strings) for the given language manager.
 
+== Properties
+
+--- lang-files-dirs: gpointer (Read/Write)
+
+    List of directories where the language specification files (.lang) are located
+
 == See Also
+
 ((<Gtk>)).
 
 == ChangeLog

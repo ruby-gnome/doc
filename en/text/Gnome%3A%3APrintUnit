@@ -1,18 +1,22 @@
 = class Gnome::PrintUnit
 
 == Object Hierarchy
+
 * Object
   * GLib::Boxed
     * Gnome::PrintUnit
 
 == Class Methods
+
 --- Gnome::PrintUnit.default
+
     
      Used to get the default Gnome::PrintUnit
 
      * Returns: the default Gnome::PrintUnit
 
 --- Gnome::PrintUnit.get_by_abbreviation(abbreviation)
+
      
      Get a unit based on its abbreviation, for example "cm",
      "pts" or "in".
@@ -21,6 +25,7 @@
      * Returns: a Gnome::PrintUnit, (({nil})) on error
 
 --- Gnome::PrintUnit.get_by_name(name)
+
      
      Get a unit based on its name, for example "Millimeter"
      or "Inches".
@@ -38,6 +43,7 @@
        ((|base|)), (({nil})) on error
 
 --- Gnome::PrintUnit.get_list(bases)
+
      
      Gets a list of the units represented by the bases
      ((|bases|)). To get a list of all units then use
@@ -50,19 +56,24 @@
        empty array on error
 
 == Instance Methods
+
 --- abbr
+
      
      * Returns: The abbreviation of (({self}))
 
 --- abbr_plural
+
      
      * Returns: The plural form of abbreviation of (({self}))
 
 --- base
+
      
      * Returns: The base of (({self})), as Gnome::PrintUnitBase
 
 --- convert_distance(distance, to)
+
     
      Check whether a conversion between (({self})) and
      ((|to|)) can be made
@@ -73,6 +84,7 @@
        error
 
 --- convert_distance_full(distance, to, ctm_scale, device_scale)
+
      
      Convert a distance from one unit to another. You should
      supply a scale as necessary.
@@ -88,39 +100,54 @@
        on error
 
 --- name
+
      
      * Returns: The name of (({self}))
 
 --- plural
+
      
      * Returns: The plural form of name of (({self}))
 
 --- unit_to_base
+
      
      * Returns: The unit to base of (({self}))
 
 --- version
+
      
      * Returns: The version of (({self}))
 
 == Constants
---- PS_UNIT
 
+--- PS_UNIT
 --- ABSOLUTE
+
      Real world distances - i.e. mm, cm...
 
 --- ALL
+
      Represents all unit base.
      This is convinient when use Gnome::PrintUnit#get_list.
 
 --- DEVICE
+
      Semi-real device-dependent distances i.e. pixels
 
 --- DIMENSIONLESS
+
      For percentages and like
 
 --- USERSPACE
+
      Mathematical coordinates
+
+--- UNIT_ABSOLUTE
+--- UNIT_ALL
+--- UNIT_DEVICE
+--- UNIT_DIMENSIONLESS
+--- UNIT_USERSPACE
 
 == See Also
 

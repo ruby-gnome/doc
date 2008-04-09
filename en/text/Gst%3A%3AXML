@@ -1,7 +1,9 @@
 = class Gst::XML
+
 Convert Gst::Element objects into an XML presentation.
 
 == Object Hierarchy
+
 * Object
   * GLib::Instantiatable
     * GLib::Object
@@ -9,11 +11,14 @@ Convert Gst::Element objects into an XML presentation.
         * Gst::XML
 
 == Class Methods
+
 --- Gst::XML.new
+
     Creates a new Gst::XML parser object.
     * Returns: a newly created Gst::XML object.
 
 --- Gst::XML.write_file(element, filename)
+
     Converts the given element into XML and writes the formatted XML 
     to the specified file name.
     * filename: a file name.  
@@ -21,12 +26,15 @@ Convert Gst::Element objects into an XML presentation.
     * Returns: true on success, false on failure.
 
 == Instance Methods
+
 --- each_topelement { |element| ... }
+
     Calls the block for each topelement, passing a reference to
     a Gst::Element object as parameter.
     * Returns: always nil.
 
 --- get_element(element_name)
+
     This method is used to get a reference to the Gst::Element 
     corresponding to name in the pipeline description.  You would use 
     this if you have to do anything to the element after loading.
@@ -34,6 +42,7 @@ Convert Gst::Element objects into an XML presentation.
     * Returns: a reference to a Gst::Element object if found, otherwise returns nil.
 
 --- parse_file(filename, rootname=nil)
+
     Fills the Gst::XML object with the corresponding elements from 
     the XML file name.  Optionally it will only build the element 
     from the element node root (if it is not nil).  
@@ -46,6 +55,7 @@ Convert Gst::Element objects into an XML presentation.
     * Returns: true on success, false on failure.
 
 --- parse_memory(string, rootname=nil)
+
     Basically the same as Gst::XML#parse_file except that this method will
     take the XML directly from the memory.
     * rootname: a root name (optional).  
@@ -53,11 +63,20 @@ Convert Gst::Element objects into an XML presentation.
     * Returns: true on success, false on failure.
 
 --- topelements
+
     Retrieves a list of all toplevel elements.
     * Returns: an array of Gst::Element objects.
 
+== Signals
+
+--- object-loaded: self
+
+     * self: Gst::XML: ((*FIXME*))
+
 == See Also
+
 ((<Gst>)).
 
 == ChangeLog
+
 - ((<lrz>))

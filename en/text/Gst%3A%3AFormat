@@ -1,43 +1,55 @@
 = class Gst::Format
+
 Dynamically register new formats.
 
 == Object Hierarchy
+
 * Object
   * GLib::Boxed
     * Gst::Format
 
 == Class Methods
+
 --- Gst::Format.each { |format| ... }
+
     Calls the block for each registered format, passing a reference
     to the Gst::Format object as parameter.
     * Returns: always nil.
 
 --- Gst::Format.find(nick)
+
     This method returns a reference to the Gst::Format object registered with the given nick, or nil if this query was not registered.
     * nick: the nick of an existing format.  
     * Returns: a reference to the Gst::Format object registered with the given nick, or nil if this query was not registered.
 
 == Instance Methods
+
 --- ==(format)
+
     Checks if two Gst::Format objects are registered under the
     same nick.
     * format: a Gst::Format.  
     * Returns: true on success, false on failure.
 
 --- description
+
     This method returns a longer description of the format.
     * Returns: a longer description of the format.
 
 --- nick
+
     This method returns the short nick of the format.
     * Returns: the short nick of the format.
 
 --- type_id
+
     This method returns the type id of this format (see ((<GstFormat|Gst::Format#GstFormat>))).
     * Returns: the type id of this format (see ((<GstFormat|Gst::Format#GstFormat>))).
 
 == Constants
+
 === GstFormat
+
 --- BUFFERS
 --- BYTES
 --- DEFAULT
@@ -46,6 +58,7 @@ Dynamically register new formats.
 --- UNDEFINED
 
 == See Also
+
 ((<Gst>)).
 
 == ChangeLog

@@ -1,4 +1,5 @@
 = module Gtk
+
 Gtk module includes methods as Library initialization, main event loop, events, and standard constants.
 
 Like all GUI toolkits, Ruby/GTK uses an event-driven programming model. 
@@ -11,26 +12,31 @@ Signals notify your program that "something interesting happened" by invoking bl
 Blocks connected to a signal are often termed callbacks. 
 
 When your callbacks are invoked, you would typically take some action - for example, when an Open button is clicked you might display a Gtk::FileChooserDialog. 
-After a callback finishes, Ruby/GTK will return to the main loop and await more user input. 
+After a callback finishes, Ruby/GTK will return to the main loop and await more user input.
 
 == Module Functions
+
 --- Gtk.set_locale
+
     Initializes internationalization support for GTK+. Gtk.init automatically does this, so there is typically no point in calling this function. 
     If you are calling this function because you changed the locale after GTK+ is was initialized, then calling this function may help a bit. (Note, however, that changing the locale after GTK+ is initialized may produce inconsistent results and is not really supported.) 
     In detail - sets the current locale according to the program environment. This is the same as calling the C library function setlocale (LC_ALL, "") but also takes care of the locale specific setup of the windowing system used by GDK.
     ((* Note *)): Ruby-GNOME2 may not support this in the future, because setlocale doesn't match Ruby.
-    * Returns: a string corresponding to the locale set, typically in the form lang_COUNTRY, where lang is an ISO-639 language code, and COUNTRY is an ISO-3166 country code. On Unix, this form matches the result of the setlocale(); it is also used on other machines, such as Windows, where the C library returns a different result. The string is owned by GTK+ and should not be modified or freed.  
+    * Returns: a string corresponding to the locale set, typically in the form lang_COUNTRY, where lang is an ISO-639 language code, and COUNTRY is an ISO-3166 country code. On Unix, this form matches the result of the setlocale(); it is also used on other machines, such as Windows, where the C library returns a different result. The string is owned by GTK+ and should not be modified or freed.
 
 --- Gtk.disable_setlocale
+
     Prevents Gtk.init from automatically calling setlocale(LC_ALL, ""). You would want to use this function if you wanted to set the locale for your program to something other than the user's locale, or if you wanted to set different values for different locale categories.  Most programs should not need to call this function.
     ((* Note *)): Ruby-GNOME2 may not support this in the future, because setlocale doesn't match Ruby.
     * Returns: nil
 
 --- Gtk.default_language
+
     Returns the Pango::Language for the default language currently in effect. (Note that this can change over the life of an application.) The default language is derived from the current locale. It determines, for example, whether GTK+ uses the right-to-left or left-to-right text direction. See _gtk_get_lc_ctype() for notes on behaviour on Windows.
     * Returns: the default language as a Pango::Language
 
 --- Gtk.init(argv = ARGV)
+
     ((* Note *)) Since Ruby-GNOME2-0.15.0, this is included in gtk2.rb, so you don't need call this by yourself. If you want to call this by yourself, requre gtk2/base.rb instead of gtk2.rb.
     
     Call this function before using any other GTK+ functions in your GUI applications. It will initialize everything needed to operate the toolkit and parses some standard command line options. 
@@ -42,37 +48,44 @@ After a callback finishes, Ruby/GTK will return to the main loop and await more 
     * Returns: self
 
 --- Gtk.events_pending?
+
     Checks if any events are pending. This can be used to update the GUI and invoke timeouts etc. while doing some time intensive computation. 
 
       while (Gtk.events_pending?)
         Gtk.main_iteration
       end
 
-    * Returns: true if any events are pending, false otherwise.  
+    * Returns: true if any events are pending, false otherwise.
 
 --- Gtk.main
+
     Runs the main loop until Gtk.main_quit is called. You can nest calls to Gtk.main. 
     In that case Gtk.main_quit will make the innermost invocation of the main loop return.
     * Returns: nil
 
 --- Gtk.main_level
+
     Asks for the current nesting level of the main loop. This can be useful when calling Gtk.quit_add. 
-    * Returns: the nesting level of the current invocation of the main loop.  
+    * Returns: the nesting level of the current invocation of the main loop.
 
 --- Gtk.main_quit
+
     Makes the innermost invocation of the main loop return when it regains control. 
     * Returns: nil
 
 --- Gtk.main_iteration
+
     Runs a single iteration of the mainloop. If no events are waiting to be processed GTK+ will block until the next event is noticed. If you don't want to block look at Gtk.main_iteration_do or check if any events are pending with Gtk.events_pending? first. 
-    * Returns: true if Gtk.main_quit has been called for the innermost mainloop.  
+    * Returns: true if Gtk.main_quit has been called for the innermost mainloop.
 
 --- Gtk.main_iteration_do(blocking)
+
     Runs a single iteration of the mainloop. If no events are available either return or block dependent on the value of blocking.
     * blocking: true if you want GTK+ to block if no events are pending. 
     * Returns: true if Gtk.main_quit has been called for the innermost mainloop.
 
 --- Gtk.main_do_event(event)
+
     Processes a single GDK event. This is public only to allow filtering of events between GDK and GTK+. You will not usually need to call this function directly. 
     While you should not call this function directly, you might want to know how exactly events are handled. So here is what this function does with the event: 
     (1) Compress enter/leave notify events. If the event passed build an enter/leave pair together with the next event (peeked from GDK) both events are thrown away. This is to avoid a backlog of (de-)highlighting widgets crossed by the pointer. 
@@ -86,125 +99,153 @@ After a callback finishes, Ruby/GTK will return to the main loop and await more 
         * Drag events are not redirected because it is unclear what the semantics of that would be. 
         Another point of interest might be that all key events are first passed through the key snooper functions if there are any. Read the description of Gtk.key_snooper_install if you need this feature. 
     (5) After finishing the delivery the event is popped from the event stack. 
-    * event: An Gdk::Event to process (normally) passed by GDK.  
+    * event: An Gdk::Event to process (normally) passed by GDK.
 
 --- Gtk.current_event
+
     Obtains a copy of the event currently being processed by GTK+. For example, if you get a "clicked" signal from Gtk::Button, the current event will be the Gdk::EventButton that triggered the "clicked" signal. If there is no current event, the function returns nil.
-    * Returns: a copy of the current event, or nil if no current event.  
+    * Returns: a copy of the current event, or nil if no current event.
 
 --- Gtk.grab_add(widget)
+
     Makes widget the current grabbed widget. This means that interaction with other widgets in the same application is blocked and mouse as well as keyboard events are delivered to this widget. 
     * widget: The widget that grabs keyboard and pointer events.  
     * Returns: nil
 
 --- Gtk.current
+
     Queries the current grab. 
-    * Returns: The widget which currently has the grab or nil if no grab is active.  
+    * Returns: The widget which currently has the grab or nil if no grab is active.
 
 --- Gtk.grab_remove(widget)
+
     Removes the grab from the given widget. You have to pair calls to Gtk.grab_add and Gtk.grab_remove. 
     * widget : The widget which gives up the grab.  
     * Returns: nil
 
 --- Gtk.init_add { ... }
+
     Registers a block to be called when the mainloop is started. 
     * { ... }: A block to invoke when Gtk.main is called next.  
     * Returns: nil
 
 --- Gtk.quit_add(main_level) { ... }
+
     Registers a block to be called when an instance of the mainloop is left. 
     * main_level: Level at which termination the block shall be called. You can pass 0 here to have the block run at the termination of the current mainloop.  
     * { ... } : A block to call. This should return true to be removed from the list of quit handlers. Otherwise the block might be called again.  
-    * Returns : A handle ID for this quit handler (you need this for Gtk.quit_remove).  
+    * Returns : A handle ID for this quit handler (you need this for Gtk.quit_remove).
 
 --- Gtk.quit_remove(handler_id)
+
     Removes a quit handler by its identifier. 
     * handler_id: Identifier for the handler returned when installing it. 
     * Returns: handler_id
 
 --- Gtk.timeout_add(interval){ ... }
+
     Sets a block to be called at regular intervals, with the default priority, GLib::PRIORITY_DEFAULT. The block is called repeatedly until it returns false, at which point the timeout is automatically destroyed and the block will not be called again. The first call to the block will be at the end of the first interval. 
     Note that timeout blocks may be delayed, due to the processing of other event sources. Thus they should not be relied on for precise timing. After each call to the timeout block, the time of the next timeout is recalculated based on the current time and the given interval (it does not try to 'catch up' time lost in delays).
     * interval: the time between calls to the block, in milliseconds (1/1000ths of a second)  
     * { ... }: A block to call  
-    * Returns: the timeout_handler_id of event source.  
+    * Returns: the timeout_handler_id of event source.
 
 --- Gtk.timeout_remove(timeout_handler_id)
+
     Removes the given timeout destroying all information about it. 
     * timeout_handler_id: The identifier returned when installing the timeout. 
     * Returns: nil
 
 --- Gtk.idle_add { ... }
+
     Causes the mainloop to call the given block whenever no events with higher priority are to be processed. The default priority is GLib::PRIORITY_DEFAULT, which is rather low. 
     * { ... }: The block to call.  
-    * Returns: a unique handle for this registration.  
+    * Returns: a unique handle for this registration.
 
 --- Gtk.idle_add_priority(priority) { ... }
+
     Like Gtk.idle_add this function allows you to have a block called when the event loop is idle. The difference is that you can give a priority different from GLib::PRIORITY_DEFAULT to the idle block. 
-    * priority: The priority which should not be above GLib::PRIORITY_HIGH_IDLE. Note that you will interfere with GTK+ if you use a priority above Gtk::PRIORITY_RESIZE.  
+    * priority: The priority which should not be above GLib::PRIORITY_HIGH_IDLE. Note that you will interfere with GTK+ if you use a priority above Gtk::PRIORITY_RESIZE.
 
 --- Gtk.idle_remove(idle_handler_id)
+
     Removes the idle block with the given id. 
     * idle_handler_id: Identifies the idle block to remove.  
     * Returns: nil
 
 --- Gtk.key_snooper_install {|grab_widget, event| ... }
+
     Installs a key snooper block, which will get called on all key events before delivering them normally. 
     * {|grab_widget, event| ... }: a key snooper block which called before normal event delivery. They can be used to implement custom key event handling. 
       * grab_widget: the widget to which the event will be delivered.  
       * event: the key event(Gdk::EventKey).  
       * Returns: true to stop further processing of event, false to continue.  
-    * Returns: a unique id for this key snooper for use with Gtk.key_snooper_remove.  
+    * Returns: a unique id for this key snooper for use with Gtk.key_snooper_remove.
 
 --- Gtk.key_snooper_remove(handler_id)
+
     Removes the key snooper block with the given id. 
     * handler_id: Identifies the key snooper to remove
 
 --- Gtk.current_event_time
+
     If there is a current event and it has a timestamp, return that timestamp, otherwise return Gdk::Event::CURRENT_TIME.
-    * Returns: the timestamp from the current event, or Gdk::Event::CURRENT_TIME.  
+    * Returns: the timestamp from the current event, or Gdk::Event::CURRENT_TIME.
 
 --- Gtk.current_event_state
+
     If there is a current event and it has a state field, return the state, otherwise return nil.
     * Returns: the state of the current event(((<GdkModifierType|Gdk::Window::GdkModifierType>))) or nil.
 
 --- Gtk.get_event_widget(event = nil)
+
     If event is nil or the event was not associated with any widget, returns nil, otherwise returns the widget that received the event originally.
     * event: a Gdk::Event  
-    * Returns: the widget that originally received event, or nil  
+    * Returns: the widget that originally received event, or nil
 
 --- Gtk.propagate_event(widget, event)
+
     Sends an event to a widget, propagating the event to parent widgets if the event remains unhandled. Events received by GTK+ from GDK normally begin in Gtk.main_do_event. Depending on the type of event, existence of modal dialogs, grabs, etc., the event may be propagated; if so, this function is used. Gtk.propagate_event calls Gtk::Widget#event on each widget it decides to send the event to. So Gtk::Widget#event is the lowest-level function; it simply emits the "event" and possibly an event-specific signal on a widget. Gtk.propagate_event is a bit higher-level, and Gtk.main_do_event is the highest level. 
     All that said, you most likely don't want to use any of these functions; synthesizing events is rarely needed. Consider asking on the mailing list for better ways to achieve your goals. For example, use Gdk::Window#invalidate or Gtk::Widget#queue_draw instead of making up expose events.
     * widget: a Gtk::Widget  
-    * event: an Gdk::Event  
+    * event: an Gdk::Event
 
 --- Gtk.check_version(required_major, required_minor, required_micro)
+
     Checks that the GTK+ library in use is compatible with the given version. Generally you would pass in the constants Gtk::MAJOR_VERSION, Gtk::MINOR_VERSION, Gtk::MICRO_VERSION as the three arguments to this function; that produces a check that the library in use is compatible with the version of GTK+ the application or module was compiled against.
     Compatibility is defined by two things: first the version of the running library is newer than the version required_major.required_minor.required_micro. Second the running library must be binary compatible with the version required_major.required_minor.required_micro (same major version.)
     This function is primarily for GTK+ modules; the module can call this function to check that it wasn't loaded into an incompatible version of GTK+. However, such a a check isn't completely reliable, since the module may be linked against an old version of GTK+ and calling the old version of Gtk.check_version, but still get loaded into an application using a newer version of GTK+.
     * required_major: the required major version.
     * required_minor: the required minor version.
     * required_micro: the required micro version.
-    * Returns: nil if the GTK+ library is compatible with the given version, or a string describing the version mismatch. 
+    * Returns: nil if the GTK+ library is compatible with the given version, or a string describing the version mismatch.
 
 --- Gtk.check_version?(required_major, required_minor, required_micro)
+
     Same as Gtk.check_version, but returns true if the library is compatible with the given version, otherwise false.
     * required_major: the required major version.
     * required_minor: the required minor version.
     * required_micro: the required micro version.
-    * Returns: true if the library is compatible with the given version, otherwise false.   
+    * Returns: true if the library is compatible with the given version, otherwise false.
 
 == Constants
+
 === GtkAccelFlags
+
 --- ACCEL_VISIBLE
+
     = 1 << 0
+
 --- ACCEL_LOCKED
+
     = 1 << 1
+
 --- ACCEL_MASK
+
     = 0x07
 
 === GtkAnchorType
+
 --- ANCHOR_CENTER
 --- ANCHOR_NORTH
 --- ANCHOR_NORTH_WEST
@@ -215,203 +256,333 @@ After a callback finishes, Ruby/GTK will return to the main loop and await more 
 --- ANCHOR_WEST
 --- ANCHOR_EAST
 --- ANCHOR_N
+
         = ANCHOR_NORTH
+
 --- ANCHOR_NW
+
         = ANCHOR_NORTH_WEST
+
 --- ANCHOR_NE
+
         = ANCHOR_NORTH_EAST
+
 --- ANCHOR_S
+
         = ANCHOR_SOUTH
+
 --- ANCHOR_SW
+
         = ANCHOR_SOUTH_WEST
+
 --- ANCHOR_SE
+
         = ANCHOR_SOUTH_EAST
+
 --- ANCHOR_W
+
         = ANCHOR_WEST
+
 --- ANCHOR_E
+
         = ANCHOR_EAST
 
 === GtkAttachOptions
-Denotes the expansion properties that a widget will have when it (or it's parent) is resized. 
+
+Denotes the expansion properties that a widget will have when it (or it's parent) is resized.
+
 --- EXPAND
-    = 1 << 0. The widget should expand to take up any extra space in its container that has been allocated.  
+
+    = 1 << 0. The widget should expand to take up any extra space in its container that has been allocated.
+
 --- SHRINK
-    = 1 << 1. The widget should shrink as and when possible.  
+
+    = 1 << 1. The widget should shrink as and when possible.
+
 --- FILL
-    = 1 << 2. The widget should fill the space allocated to it. 
+
+    = 1 << 2. The widget should fill the space allocated to it.
 
 === GtkCornerType
-Specifies which corner a child widget should be placed in when packed into a Gtk::ScrolledWindow. This is effectively the opposite of where the scroll bars are placed. 
+
+Specifies which corner a child widget should be placed in when packed into a Gtk::ScrolledWindow. This is effectively the opposite of where the scroll bars are placed.
+
 --- CORNER_TOP_LEFT
+
        Place the scrollbars on the right and bottom of the widget (default behaviour).
+
 --- CORNER_BOTTOM_LEFT
-       Place the scrollbars on the top and right of the widget. 
+
+       Place the scrollbars on the top and right of the widget.
+
 --- CORNER_TOP_RIGHT
+
        Place the scrollbars on the left and bottom of the widget.
+
 --- CORNER_BOTTOM_RIGHT
+
        Place the scrollbars on the top and left of the widget.
 
 === GtkDeleteType
+
 --- DELETE_CHARS
 --- DELETE_WORD_ENDS
+
        delete only the portion of the word to the left/right of cursor if we're in the middle of a word.
+
 --- DELETE_WORDS
 --- DELETE_DISPLAY_LINES
 --- DELETE_DISPLAY_LINE_ENDS
 --- DELETE_PARAGRAPH_ENDS
+
        like C-k in Emacs (or its reverse)
+
 --- DELETE_PARAGRAPHS
+
        C-k in pico, kill whole line
+
 --- DELETE_WHITESPACE
+
         M-\ in Emacs
 
 === GtkDirectionType
+
 --- DIR_TAB_FORWARD
 --- DIR_TAB_BACKWARD
 --- DIR_UP
 --- DIR_DOWN
 --- DIR_LEFT
 --- DIR_RIGHT
-
 === GtkExpanderStyle
-Used to specify the style of the expanders drawn by a Gtk::TreeView. 
---- EXPANDER_COLLAPSED
-    The style used for a collapsed subtree. 
---- EXPANDER_SEMI_COLLAPSED
-    Intermediate style used during animation.
---- EXPANDER_SEMI_EXPANDED
-    Intermediate style used during animation.
---- EXPANDER_EXPANDED
-    The style used for an expanded subtree.  
 
+Used to specify the style of the expanders drawn by a Gtk::TreeView.
+
+--- EXPANDER_COLLAPSED
+
+    The style used for a collapsed subtree.
+
+--- EXPANDER_SEMI_COLLAPSED
+
+    Intermediate style used during animation.
+
+--- EXPANDER_SEMI_EXPANDED
+
+    Intermediate style used during animation.
+
+--- EXPANDER_EXPANDED
+
+    The style used for an expanded subtree.
 
 === GtkIMPreeditStyle
+
 --- IM_PREEDIT_NOTHING
 --- IM_PREEDIT_CALLBACK
-
 === GtkIMStatusStyle
+
 --- IM_STATUS_NOTHING
 --- IM_STATUS_CALLBACK
-
 === GtkJustification
-Used for justifying the text inside a Gtk::Label widget. (See also Gtk::Alignment). 
+
+Used for justifying the text inside a Gtk::Label widget. (See also Gtk::Alignment).
+
 --- JUSTIFY_LEFT
+
        The text is placed at the left edge of the label.
+
 --- JUSTIFY_RIGHT
-       The text is placed at the right edge of the label. 
+
+       The text is placed at the right edge of the label.
+
 --- JUSTIFY_CENTER
-       The text is placed in the center of the label. 
+
+       The text is placed in the center of the label.
+
 --- JUSTIFY_FILL
+
        The text is placed is distributed across the label.
 
 === GtkMetricType
-Used to indicate which metric is used by a Gtk::Ruler. 
+
+Used to indicate which metric is used by a Gtk::Ruler.
+
 --- PIXELS
 --- INCHES
 --- CENTIMETERS
-
 === GtkMovementStep
---- MOVEMENT_LOGICAL_POSITIONS 
-       move by forward/back graphemes 
---- MOVEMENT_VISUAL_POSITIONS  
-       move by left/right graphemes 
---- MOVEMENT_WORDS                
-       move by forward/back words 
---- MOVEMENT_DISPLAY_LINES      
-       move up/down lines (wrapped lines) 
---- MOVEMENT_DISPLAY_LINE_ENDS 
-       move up/down lines (wrapped lines) 
---- MOVEMENT_PARAGRAPHS          
-       move up/down paragraphs (newline-ended lines) 
---- MOVEMENT_PARAGRAPH_ENDS     
-       move to either end of a paragraph 
+
+--- MOVEMENT_LOGICAL_POSITIONS
+
+       move by forward/back graphemes
+
+--- MOVEMENT_VISUAL_POSITIONS
+
+       move by left/right graphemes
+
+--- MOVEMENT_WORDS
+
+       move by forward/back words
+
+--- MOVEMENT_DISPLAY_LINES
+
+       move up/down lines (wrapped lines)
+
+--- MOVEMENT_DISPLAY_LINE_ENDS
+
+       move up/down lines (wrapped lines)
+
+--- MOVEMENT_PARAGRAPHS
+
+       move up/down paragraphs (newline-ended lines)
+
+--- MOVEMENT_PARAGRAPH_ENDS
+
+       move to either end of a paragraph
+
 --- MOVEMENT_PAGES
-       move by pages 
---- MOVEMENT_BUFFER_ENDS        
-       move to ends of the buffer 
---- MOVEMENT_HORIZONTAL_PAGES   
-       move horizontally by pages 
+
+       move by pages
+
+--- MOVEMENT_BUFFER_ENDS
+
+       move to ends of the buffer
+
+--- MOVEMENT_HORIZONTAL_PAGES
+
+       move horizontally by pages
 
 === Orientation
-Represents the orientation of widgets which can be switched between horizontal and vertical orientation on the fly, like Gtk::Toolbar. 
+
+Represents the orientation of widgets which can be switched between horizontal and vertical orientation on the fly, like Gtk::Toolbar.
+
 --- ORIENTATION_HORIZONTAL
+
     The widget is in horizontal orientation.
+
 --- ORIENTATION_VERTICAL
-    The widget is in vertical orientation.  
+
+    The widget is in vertical orientation.
 
 === PackType
-Represents the packing location Gtk::Box children. (See: Gtk::VBox, Gtk::HBox, and Gtk::ButtonBox). 
+
+Represents the packing location Gtk::Box children. (See: Gtk::VBox, Gtk::HBox, and Gtk::ButtonBox).
+
 --- PACK_START
+
        The child is packed into the start of the box
+
 --- PACK_END
-       The child is packed into the end of the box  
+
+       The child is packed into the end of the box
 
 === GtkPathPriorityType
+
 --- PATH_PRIO_LOWEST
+
     = 0
+
 --- PATH_PRIO_GTK
+
     = 4
+
 --- PATH_PRIO_APPLICATION
+
     = 8
+
 --- PATH_PRIO_THEME
+
     = 10
+
 --- PATH_PRIO_RC
+
     = 12
+
 --- PATH_PRIO_HIGHEST
+
     = 15
 
 === GtkPathType
+
 --- PATH_WIDGET
 --- PATH_WIDGET_CLASS
 --- PATH_CLASS
-
 === GtkPolicyType
-Determines when a scroll bar will be visible. 
+
+Determines when a scroll bar will be visible.
+
 --- POLICY_ALWAYS
+
        The scrollbar is always visible.
+
 --- POLICY_AUTOMATIC
-       The scrollbar will appear and disappear as necessary. 
+
+       The scrollbar will appear and disappear as necessary.
+
 --- POLICY_NEVER
-       The scrollbar will never appear. 
+
+       The scrollbar will never appear.
 
 === GtkPositionType
-Describes which edge of a widget a certain feature is positioned at, e.g. the tabs of a Gtk::Notebook, the handle of a Gtk::HandleBox or the label of a Gtk::Scale. 
+
+Describes which edge of a widget a certain feature is positioned at, e.g. the tabs of a Gtk::Notebook, the handle of a Gtk::HandleBox or the label of a Gtk::Scale.
+
 --- POS_LEFT
+
     The feature is at the left edge.
+
 --- POS_RIGHT
-    The feature is at the right edge. 
+
+    The feature is at the right edge.
+
 --- POS_TOP
-    The feature is at the top edge. 
+
+    The feature is at the top edge.
+
 --- POS_BOTTOM
-    The feature is at the bottom edge. 
+
+    The feature is at the bottom edge.
 
 === GtkReliefStyle
-Indicated the relief to be drawn around a Gtk::Button. 
+
+Indicated the relief to be drawn around a Gtk::Button.
+
 --- RELIEF_NORMAL
+
     Draw a normal relief.
+
 --- RELIEF_HALF
-    A half relief. 
+
+    A half relief.
+
 --- RELIEF_NONE
-    No relief. 
+
+    No relief.
 
 === ResizeMode
---- RESIZE_PARENT		
-    Pass resize request to the parent 
---- RESIZE_QUEUE		
-    Queue resizes on this widget 
---- RESIZE_IMMEDIATE		
-    Perform the resizes now 
+
+--- RESIZE_PARENT
+
+    Pass resize request to the parent
+
+--- RESIZE_QUEUE
+
+    Queue resizes on this widget
+
+--- RESIZE_IMMEDIATE
+
+    Perform the resizes now
 
 === GtkScrollStep
+
 ((*Since 2.4*))
+
 --- SCROLL_ENDS
 --- SCROLL_PAGES
 --- SCROLL_STEPS
 --- SCROLL_HORIZONTAL_ENDS
 --- SCROLL_HORIZONTAL_PAGES
 --- SCROLL_HORIZONTAL_STEPS
-
 === GtkScrollType
+
 --- SCROLL_NONE
 --- SCROLL_JUMP
 --- SCROLL_STEP_BACKWARD
@@ -428,87 +599,151 @@ Indicated the relief to be drawn around a Gtk::Button.
 --- SCROLL_PAGE_RIGHT
 --- SCROLL_START
 --- SCROLL_END
-
 === GtkSelectionMode
-Used to control what selections users are allowed to make. 
+
+Used to control what selections users are allowed to make.
+
 --- SELECTION_NONE
-    No selection is possible. 
+
+    No selection is possible.
+
 --- SELECTION_SINGLE
-    Zero or one element may be selected. 
+
+    Zero or one element may be selected.
+
 --- SELECTION_BROWSE
-    Exactly one element is selected. In some circumstances, such as initially or during a search operation, it's possible for no element to be selected with Gtk::SELECTION_BROWSE. What is really enforced is that the user can't deselect a currently selected element except by selecting another element. 
+
+    Exactly one element is selected. In some circumstances, such as initially or during a search operation, it's possible for no element to be selected with Gtk::SELECTION_BROWSE. What is really enforced is that the user can't deselect a currently selected element except by selecting another element.
+
 --- SELECTION_MULTIPLE
-    Any number of elements may be selected. Clicks toggle the state of an item. Any number of elements may be selected. Click-drag selects a range of elements; the Ctrl key may be used to enlarge the selection, and Shift key to select between the focus and the child pointed to. 
+
+    Any number of elements may be selected. Clicks toggle the state of an item. Any number of elements may be selected. Click-drag selects a range of elements; the Ctrl key may be used to enlarge the selection, and Shift key to select between the focus and the child pointed to.
 
 === GtkShadowType
-Used to change the appearance of an outline typically provided by a Gtk::Frame. 
+
+Used to change the appearance of an outline typically provided by a Gtk::Frame.
+
 --- SHADOW_NONE
+
        No outline.
+
 --- SHADOW_IN
+
        The outline is bevelled inwards.
+
 --- SHADOW_OUT
-       The outline is bevelled outwards like a button. 
+
+       The outline is bevelled outwards like a button.
+
 --- SHADOW_ETCHED_IN
+
        The outline itself is an inward bevel, but the frame does
+
 --- SHADOW_ETCHED_OUT
+
        The outline itself is an outward bevel, but the frame does
 
 === GtkSortType
-Determines the direction of a sort. 
+
+Determines the direction of a sort.
+
 --- SORT_ASCENDING
-    Sorting is in ascending order. 
+
+    Sorting is in ascending order.
+
 --- SORT_DESCENDING
+
     Sorting is in descending order.
 
 === GtkStateType
-This constant indicates the current state of a widget; the state determines how the widget is drawn. The GtkStateType is also used to identify different colors in a Gtk::Style for drawing, so states can be used for subparts of a widget as well as entire widgets. 
+
+This constant indicates the current state of a widget; the state determines how the widget is drawn. The GtkStateType is also used to identify different colors in a Gtk::Style for drawing, so states can be used for subparts of a widget as well as entire widgets.
+
 --- STATE_NORMAL
+
        State during normal operation.
+
 --- STATE_ACTIVE
-       State of a currently active widget, such as a depressed button. 
+
+       State of a currently active widget, such as a depressed button.
+
 --- STATE_PRELIGHT
-       State indicating that the mouse pointer is over the widget and the widget will respond to mouse clicks. 
+
+       State indicating that the mouse pointer is over the widget and the widget will respond to mouse clicks.
+
 --- STATE_SELECTED
-       State of a selected item, such the selected row in a list. 
+
+       State of a selected item, such the selected row in a list.
+
 --- STATE_INSENSITIVE
-       State indicating that the widget is unresponsive to user actions.  
+
+       State indicating that the widget is unresponsive to user actions.
 
 === GtkUpdateType
+
 --- UPDATE_CONTINUOUS
 --- UPDATE_DISCONTINUOUS
 --- UPDATE_DELAYED
-
 === GtkVisibility
+
 --- VISIBILITY_NONE
+
     The row is not visible.
+
 --- VISIBILITY_PARTIAL
+
     The row is partially visible.
+
 --- VISIBILITY_FULL
-    The row is fully visible. 
+
+    The row is fully visible.
 
 === Version Information
+
 --- VERSION
+
     Current(runtime) GTK+ version. Same as [Gtk::MAJOR_VERSION, Gtk::MINOR_VERSION, Gtk::MICRO_VERSION].
+
 --- MAJOR_VERSION
+
     Current(runtime) GTK+ major version
+
 --- MINOR_VERSION
+
     Current(runtime) GTK+ minor version
+
 --- MICRO_VERSION
+
     Current(runtime) GTK+ minor version
 
 --- BUILD_VERSION
+
     GTK+ version which Ruby/GTK is compiled. [major, minor, micro]
 
 --- BINDING_VERSION
+
     Ruby/GTK version. [major, minor, micro]
 
 --- BINARY_AGE
+
     The binary age of the current GTK+.
 
 --- INTERFACE_AGE
+
     The interface age of the current GTK+.
 
+--- DIRECTION_LEFT
+--- DIRECTION_RIGHT
+--- LEFT_RIGHT
+--- LOG_DOMAIN
+--- PRIORITY_RESIZE
+--- SELECTION_EXTENDED
+--- TOP_BOTTOM
+
+== See Also
+
 == ChangeLog
+
 * 2006-01-08 Added "GtkScrollType". - Chris Moore
 * 2006-01-08 Moved "GtkSortType" for alphabetical order. - Chris Moore
 * 2005-10-24 Fix a typo. - Masao

@@ -1,31 +1,39 @@
 = class Gdk::Event
+
 Handling events from the window system.
 
 == Object Hierarchy
+
 * Object
   * GLib::Boxed
     * Gdk::Event
 
 == Class Methods
+
 --- Gdk::Event.events_pending?
+
     Checks if any events are ready to be processed for any display.
-    * Returns: true if any events are pending.  
+    * Returns: true if any events are pending.
 
 --- Gdk::Event.peek
+
     If there is an event waiting in the event queue of some open display, returns a copy of it.
-    * Returns: a copy of the first Gdk::Event on some event queue, or nil if no events are in any queues. 
+    * Returns: a copy of the first Gdk::Event on some event queue, or nil if no events are in any queues.
 
 --- Gdk::Event.get
+
     Checks all open displays for a Gdk::Event to process,to be processed on, fetching events from the windowing system if necessary. 
     * Returns: the next Gdk::Event to be processed, or nil if no events are pending.
 
 --- Gdk::Event.new(type)
+
     Creates a new event of the given type. All fields are set to 0.
     You should call this method on concrete classes with a proper event type(Gdk::EventButton, Gdk::EventKey, ...). ((*Since 2.2*))
     * type: a ((<GdkEventType|Gdk::Event#GdkEventType>))
     * Returns: a new Gdk::Event.
 
 --- Gdk::Event.handler_set{|event| ... }
+
     Sets the block to call to handle all events from GDK. 
     Note that GTK+ uses this to install its own event handler, so it is usually not useful for GTK+ applications. (Although an application can call this method then call Gtk.main_do_event to pass events to GTK+.)
     * {|event| ... }: the block to call to handle events from GDK
@@ -33,140 +41,240 @@ Handling events from the window system.
     * Returns: self
 
 --- Gdk::Event.show_events?
+
     Gets whether event debugging output is enabled.
     * Returns: true if event debugging output is enabled.
+
 --- Gdk::Event.set_show_events(show_events)
+
     Sets whether a trace of received events is output. Note that GTK+ must be compiled with debugging (that is, configured using the --enable-debug option) to use this option.
     * show_events: true to output event debugging information 
     * Returns: self
 
 --- Gdk::Event.setting_get(name, type = String)
+
     Obtains a desktop-wide setting, such as the double-click time, for the default screen. See Gdk::Screen#get_setting.
     * name: the name of the setting
     * type: the type of the return value(String, Integer, Gdk::Color)
     * Returns: the value of the setting if existed, otherwise nil
 
+--- Gdk::Event.add_client_message_filter
+
+     * Returns: self: ((*FIXME*))
+
+--- Gdk::Event.show_events=
+
+     * Returns: self: ((*FIXME*))
+
 == Instance Methods
+
 --- put
+
     Appends a copy of the self onto the front of the event queue for Gdk::EventAny#window 's display, or the default event queue if Gdk::Event#window is nil. See Gdk::Display#put_event.
     * Returns: self
 
 --- get_axis(axis_use)
+
     Extract the axis value for a particular axis use from an event structure.
     * axis_use : the axis use to look for (((<GdkAxisUse|Gdk::Device#GdkAxisUse>)))
     * Returns: the value if the specified axis was found, otherwise nil
 
 --- coords
+
     Extract the event window relative x/y coordinates from an event.
     * Returns: [x_win, y_win] if the event delivered event window coordinates, otherwise nil
        * x_win: event window x coordinate  
-       * y_win: event window y coordinate  
+       * y_win: event window y coordinate
 
 --- root_coords
+
     Extract the root window relative x/y coordinates from an event.
     * Returns: [x_root, y_root] if the event delivered root window coordinates, otherwise nil
        * x_root: root window x coordinate  
-       * y_root: root window y coordinate  
+       * y_root: root window y coordinate
 
 --- event_type
+
     Returns the event type.
     * Returns: ((<GdkEventType|Gdk::Event#GdkEventType>))
 
 --- screen
+
     Returns the screen for the event. The screen is typically the screen for Gdk::EventAny#window, but for events such as mouse events, it is the screen where the the pointer was when the event occurs - that is, the screen which has the root window to which Gdk::EventMotion#x_root and Gdk::EventMotion#y_root are relative. ((*Since 2.2*))
     * Returns: the Gdk::Screen for the event
+
 --- screen=(screen)
+
     Sets the screen for event to screen. The event must have been allocated by GTK+. ((*Since 2.2*))
     * screen: a Gdk::Screen
     * Returns: screen
+
 --- set_screen(screen)
+
     Same as Gdk::Event#screen=.  ((*Since 2.2*))
     * screen: a Gdk::Screen
     * Returns: self
 
 == Constants
+
 === GdkEventType
+
 Specifies the type of the event.
-Do not confuse these events with the signals that GTK+ widgets emit. Although many of these events result in corresponding signals being emitted, the events are often transformed or filtered along the way. 
+Do not confuse these events with the signals that GTK+ widgets emit. Although many of these events result in corresponding signals being emitted, the events are often transformed or filtered along the way.
+
 --- NOTHING
+
     a special code to indicate a null event.
+
 --- DELETE
+
     the window manager has requested that the toplevel window be hidden or destroyed, usually when the user clicks on a special icon in the title bar.
+
 --- DESTROY
+
     the window has been destroyed.
+
 --- EXPOSE
+
     all or part of the window has become visible and needs to be redrawn.
+
 --- MOTION_NOTIFY
+
     the pointer (usually a mouse) has moved.
+
 --- BUTTON_PRESS
+
     a mouse button has been pressed.
+
 --- BUTTON2_PRESS
+
     a mouse button has been double-clicked (clicked twice within a short period of time). Note that each click also generates a Gdk::Event::BUTTON_PRESS event.
+
 --- BUTTON3_PRESS
+
     a mouse button has been clicked 3 times in a short period of time. Note that each click also generates a Gdk::Event::BUTTON_PRESS event.
+
 --- BUTTON_RELEASE
+
     a mouse button has been released.
+
 --- KEY_PRESS
+
     a key has been pressed.
+
 --- KEY_RELEASE
+
     a key has been released.
+
 --- ENTER_NOTIFY
+
     the pointer has entered the window.
+
 --- LEAVE_NOTIFY
+
     the pointer has left the window.
+
 --- FOCUS_CHANGE
+
     the keyboard focus has entered or left the window.
+
 --- CONFIGURE
+
     the size, position or stacking order of the window has changed. Note that GTK+ discards these events for Gdk::Window::CHILD windows.
+
 --- MAP
+
     the window has been mapped.
+
 --- UNMAP
+
     the window has been unmapped.
+
 --- PROPERTY_NOTIFY
+
     a property on the window has been changed or deleted.
+
 --- SELECTION_CLEAR
+
     the application has lost ownership of a selection.
+
 --- SELECTION_REQUEST
+
     another application has requested a selection.
+
 --- SELECTION_NOTIFY
+
     a selection has been received.
+
 --- PROXIMITY_IN
+
     an input device has moved into contact with a sensing surface (e.g. a touchscreen or graphics tablet).
+
 --- PROXIMITY_OUT
+
     an input device has moved out of contact with a sensing surface.
+
 --- DRAG_ENTER
+
     the mouse has entered the window while a drag is in progress.
+
 --- DRAG_LEAVE
+
     the mouse has left the window while a drag is in progress.
+
 --- DRAG_MOTION
+
     the mouse has moved in the window while a drag is in progress.
+
 --- DRAG_STATUS
+
     the status of the drag operation initiated by the window has changed.
+
 --- DROP_START
+
     a drop operation onto the window has started.
+
 --- DROP_FINISHED
+
     the drop operation initiated by the window has completed.
+
 --- CLIENT_EVENT
+
     a message has been received from another application.
+
 --- VISIBILITY_NOTIFY
+
     the window visibility status has changed.
+
 --- NO_EXPOSE
+
     indicates that the source region was completely available when parts of a drawable were copied. This is not very useful.
+
 --- SCROLL
+
     Generated from button presses for the buttons 4 to 7. Wheel mice are usually configured to generate button press events for buttons 4 and 5 when the wheel is turned.
+
 --- WINDOW_STATE
+
     Generated when the state of a toplevel window changes.
+
 --- SETTING
+
     Generated when a setting is modified.
+
 --- OWNER_CHANGE
+
     Generated when the owner of a selection changes. ((*Since 2.6*))
+
 --- GRAB_BROKEN
+
     Generated when a pointer or keyboard grab is broken. ((*Since 2.8*))
 
 === GdkEventMask
+
 A set of bit-flags to indicate which events a window is to receive. Most of these masks map onto one or more of the ((<GdkEventType|Gdk::Event#GdkEventType>)) event types above.
 Gdk::Event::POINTER_MOTION_HINT_MASK is a special mask which is used to reduce the number of Gdk::Event::MOTION_NOTIFY events received. Normally a Gdk::Event::MOTION_NOTIFY event is received each time the mouse moves. However, if the application spends a lot of time processing the event (updating the display, for example), it can easily lag behind the position of the mouse. When using the Gdk::Event::POINTER_MOTION_HINT_MASK the server will only send a single Gdk::Event::MOTION_NOTIFY event (which is marked as a hint) until the application asks for more, by calling Gdk::Window#pointer.
- 
+
 --- EXPOSURE_MASK
 --- POINTER_MOTION_MASK
 --- POINTER_MOTION_HINT_MASK
@@ -189,16 +297,24 @@ Gdk::Event::POINTER_MOTION_HINT_MASK is a special mask which is used to reduce t
 --- SUBSTRUCTURE_MASK
 --- SCROLL_MASK
 --- ALL_EVENTS_MASK
+
     the combination of all the above event masks.
 
-
 === Misc
+
 --- CURRENT_TIME
+
     Represents the current time, and can be used anywhere a time is expected.
+
 --- PRIORITY_EVENTS
+
     This is the priority that events from the X server are given in the GLib Main Loop.
+
 --- PRIORITY_REDRAW
+
     This is the priority that the idle handler processing window updates is given in the GLib Main Loop
+
+== See Also
 
 == ChangeLog
 

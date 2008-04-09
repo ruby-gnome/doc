@@ -1,29 +1,37 @@
 = class Gtk::BindingSet
 
 == Object Hierarchy
+
 * Object
   * GLib::Boxed
     * Gtk::BindingSet
 
 == Class Methods
+
 --- Gtk::BindingSet.find(set_name)
+
     Finds the Gtk::BindingSet which name is the set_name.
     * set_name: target name of Gtk::BindingSet
     * Returns: self
+
 --- Gtk::BindingSet.new(set_name)
+
     Creates a new Gtk::BindingSet.
     * set_name: the name of Gtk::BindingSet.
     * Returns: a new Gtk::BindingSet
 
 == Instance Methods
+
 --- activate(keyval, modifiers, object)
+
     Activate the Gtk::BindingSet.
     * keyval: a keyval from a key event(the constants are in Gdk::Keyval)
     * modifiers: keyboard state mask from a key event (((<GdkModifierType|Gdk::Window#GdkModifierType>))) 
     * object: the Gtk::Object
-    * Returns: true if the binding_set was handled, false otherwise  
+    * Returns: true if the binding_set was handled, false otherwise
 
 --- add_path(path_type, path_pattern, priority)
+
     Add a path to the Gtk::BindingSet.
     * path_type: a ((<GtkPathType|Gtk#GtkPathType>))
     * path_pattern: a path pattern(String)
@@ -31,6 +39,7 @@
     * Returns: self
 
 --- entry_add_signal(keyval, modifiers, signal_name, arg1, arg2, ...)
+
     Bind a key event to a signal with arguments.
     * keyval: a keyval from a key event(the constants are in Gdk::Keyval)
     * modifiers: keyboard state mask from a key event (((<GdkModifierType|Gdk::Window#GdkModifierType>))) 
@@ -39,24 +48,34 @@
     * Returns: self
 
 --- entry_clear(keyval, modifiers)
+
     ((* Deprecated. *)) Clear an entry.
     * keyval: a keyval from a key event(the constants are in Gdk::Keyval)
     * modifiers: keyboard state mask from a key event (((<GdkModifierType|Gdk::Window#GdkModifierType>))) 
     * Returns: self
 
 --- entry_remove(keyval, modifiers)
+
     Remove a binding previously installed via Gtk::Binding#entry_add_signal on binding_set.
     * keyval: a keyval from a key event(the constants are in Gdk::Keyval)
     * modifiers: keyboard state mask from a key event (((<GdkModifierType|Gdk::Window#GdkModifierType>))) 
     * Returns: self
 
 --- entry_skip(keyval, modifiers)
+
     Install a binding on binding_set which causes key lookups to be aborted, to prevent bindings from lower priority sets to be activated. ((* Since 2.12 *))
     * keyval: a keyval from a key event(the constants are in Gdk::Keyval)
     * modifiers: keyboard state mask from a key event (((<GdkModifierType|Gdk::Window#GdkModifierType>))) 
-    * Returns: self    
+    * Returns: self
+
+--- add_signal
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
 
 == ChangeLog
+
 * 2006-01-31 Updated to GTK+-2.10. - ((<Masao>))
 
 - ((<Masao>))

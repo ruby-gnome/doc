@@ -1,6 +1,7 @@
 = class Gnome::PrintPaper
 
 == Object Hierarchy
+
 * Object
   * GLib::Boxed
     * Gnome::PrintPaper
@@ -8,19 +9,21 @@
 == Class Methods
 
 --- Gnome::PrintPaper.default
+
     
      Get the default paper for the system.
 
      * Returns: the default Gnome::PrintPaper
 
 --- Gnome::PrintPaper.get(name)
+
     
      Gets the paper represented by name ((|name|)), for
      example: "A4".
 
      * name: The name of the paper to get
      * Returns: the Gnome::PrintPaper, (({nil})) if not found.
-     
+
 --- Gnome::PrintPaper.get(width, height)
 
      Gets the paper with width ((|width|)) and height
@@ -44,6 +47,7 @@
      * Returns: the Gnome::PrintPaper, (({nil})) if not found.
 
 --- Gnome::PrintPaper.list
+
      
      Get an array of all the papers available on the system.
 
@@ -52,22 +56,27 @@
 == Instance Methods
 
 --- height
+
      
      * Returns: height of the paper
 
 --- name
+
      
      * Returns: name of the paper
 
 --- version
+
      
      * Returns: version of the paper
 
 --- width
+
      
      * Returns: width of the paper
 
 == See Also
+
 
 == ChangeLog
 

@@ -1,16 +1,20 @@
 = class Poppler::Document
 
 == Object Hierarchy
+
 * Object
   * GLib::Instantiatable
     * GLib::Object
       * Poppler::Document
 
 == Included Modules
-* Enumerable
+
+  * Enumerable
 
 == Class Methods
+
 --- Poppler::Document.new(uri, password=nil)
+
      
     Creates a new Poppler::Document.
 
@@ -19,6 +23,7 @@
      * Returns: A newly created Poppler::Document
 
 == Instance Methods
+
 --- [index]
 --- get_page(index)
 
@@ -43,6 +48,7 @@
      * Returns: The Poppler::Page referenced by label
 
 --- attachments
+
      
     Returns an Array containing Poppler::Attachment's.
 
@@ -55,6 +61,7 @@
      * Returns: self
 
 --- find_dest(link_name)
+
      
     Finds named destination (({link_name})) in (({self}))
 
@@ -95,105 +102,160 @@
      * Returns: true, if the document was successfully saved
 
 --- author
+
     Gets the author of the document.
      * Returns: The author of the document
 
 --- creation_date
+
     Gets the date and time the document was created.
      * Returns: The date and time the document was created
 
 --- creator
+
     Gets the software that created the document.
      * Returns: The software that created the document
 
 --- format
+
     Gets the PDF version of the document.
      * Returns: The PDF version of the document
 
 --- keywords
+
     Gets the Keywords.
      * Returns: Keywords
 
 --- linearized
+
     Gets the Is the document optimized for web viewing?.
      * Returns: Is the document optimized for web viewing?
 
 --- mod_date
+
     Gets the date and time the document was modified.
      * Returns: The date and time the document was modified
 
 --- page_layout
+
     Gets the Initial Page Layout.
      * Returns: Initial Page Layout
 
 --- page_mode
+
     Gets the Page Mode.
      * Returns: Page Mode
 
 --- permissions
+
     Gets the Permissions.
      * Returns: Permissions
 
 --- producer
+
     Gets the software that converted the document.
      * Returns: The software that converted the document
 
 --- subject
+
     Gets the Subjects the document touches.
      * Returns: Subjects the document touches
 
 --- title
+
     Gets the title of the document.
      * Returns: The title of the document
 
 --- viewer_preferences
+
     Gets the Viewer Preferences.
      * Returns: Viewer Preferences
 
+--- get_destination
+
+     * Returns: self: ((*FIXME*))
+
+--- get_form_field
+
+     * Returns: self: ((*FIXME*))
+
+--- metadata
+
+    Gets the Embedded XML metadata.
+     * Returns: Embedded XML metadata
+
+--- pages
+
+     * Returns: self: ((*FIXME*))
+
+--- size
+
+     * Returns: self: ((*FIXME*))
+
 == Properties
+
 --- author: String (Read)
+
     The author of the document
 
 --- creation-date: Integer (Read)
+
     The date and time the document was created
 
 --- creator: String (Read)
+
     The software that created the document
 
 --- format: String (Read)
+
     The PDF version of the document
 
 --- keywords: String (Read)
+
     Keywords
 
 --- linearized: String (Read)
+
     Is the document optimized for web viewing?
 
 --- mod-date: Integer (Read)
+
     The date and time the document was modified
 
 --- page-layout: Poppler::PageLayout (Read)
+
     Initial Page Layout
 
 --- page-mode: Poppler::PageMode (Read)
+
     Page Mode
 
 --- permissions: Poppler::Permissions (Read)
+
     Permissions
 
 --- producer: String (Read)
+
     The software that converted the document
 
 --- subject: String (Read)
+
     Subjects the document touches
 
 --- title: String (Read)
+
     The title of the document
 
 --- viewer-preferences: Poppler::ViewerPreferences (Read)
+
     Viewer Preferences
 
+--- metadata: String (Read)
+
+    Embedded XML metadata
+
 == See Also
+
 
 == ChangeLog
 

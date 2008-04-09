@@ -1,4 +1,5 @@
 = class Gtk::CellRenderer
+
 The Gtk::CellRenderer is a base class of a set of objects used for rendering a cell to a Gdk::Drawable. These objects are used primarily by the Gtk::TreeView widget, though they aren't tied to them in any specific way. It is worth noting that Gtk::CellRenderer is not a Gtk::Widget and cannot be treated as such. 
 
 The primary use of a Gtk::CellRenderer is for drawing a certain graphical elements on a Gdk::Drawable. Typically, one cell renderer is used to draw many cells on the screen. To this extent, it isn't expected that a CellRenderer keep any permanent state around. Instead, any state is set just prior to use using GLib::Object property system. Then, the cell is measured using Gtk::CellRenderer#get_size. Finally, the cell is rendered in the correct location using Gtk::CellRenderer#render. 
@@ -8,6 +9,7 @@ There are a number of rules that must be followed when writing a new Gtk::CellRe
 Beyond merely rendering a cell, cell renderers can optionally provide active user interface elements. A cell renderer can be activatable like Gtk::CellRendererToggle, which toggles when it gets activated by a mouse click, or it can be editable like Gtk::CellRendererText, which allows the user to edit the text using a Gtk::Entry. To make a cell renderer activatable or editable, you have to implement the activate or start_editing virtual functions, respectively.
 
 == Object Hierarchy
+
 * Object
   * GLib::Instantiatable
     * GLib::Object
@@ -16,7 +18,9 @@ Beyond merely rendering a cell, cell renderers can optionally provide active use
           * Gtk::CellRenderer
 
 == Instance Methods
+
 --- get_size(widget, cell_area)
+
     Obtains the width and height needed to render the cell. Used by view widgets to determine the appropriate size for the cell_area passed to Gtk::CellRenderer#render. If cell_area is not nil, fills in the x and y offsets (if set) of the cell relative to this location. Please note that the values set in width and height, as well as those in x(x_offset) and y(y_offset) are inclusive of the xpad and ypad properties.
     * widget: the widget the renderer is rendering to
     * cell_area: The area a cell will be allocated, or nil  
@@ -27,6 +31,7 @@ Beyond merely rendering a cell, cell renderers can optionally provide active use
        * height: height needed to render a cell
 
 --- render(window, widget, background_area, cell_area, expose_area, flags)
+
     Invokes the virtual render function of the Gtk::CellRenderer. The three passed-in rectangles are areas of window. Most renderers will draw within cell_area; the xalign, yalign, xpad, and ypad fields of the Gtk::CellRenderer should be honored with respect to cell_area. background_area includes the blank space around the cell, and also the area containing the tree expander; so the background_area rectangles for all cells tile to cover the entire window. expose_area is a clip rectangle.
 
     * window: a Gdk::Drawable to draw to  
@@ -38,6 +43,7 @@ Beyond merely rendering a cell, cell renderers can optionally provide active use
     * Returns: self
 
 --- activate(event, widget, path, background_area, cell_area, flags)
+
     Passes an activate event to the cell renderer for possible processing. Some cell renderers may use events; for example, Gtk::CellRendererToggle toggles when it gets a mouse click.
     * event: a Gdk::Event
     * widget: widget that received the event  
@@ -48,6 +54,7 @@ Beyond merely rendering a cell, cell renderers can optionally provide active use
     * Returns: true if the event was consumed/handled, or false
 
 --- start_editing(event, widget, path, background_area, cell_area, flags)
+
     Passes an activate event to the cell renderer for possible processing.
     * event: a Gdk::Event
     * widget: widget that received the event  
@@ -58,299 +65,387 @@ Beyond merely rendering a cell, cell renderers can optionally provide active use
     * Returns: A new Gtk::CellEditable, or nil
 
 --- editing_canceled
+
     ((* Deprecated. *)) Use Gtk::CellRenderer#stop_editing instead. ((* Since 2.4 *))
     * Returns: self
+
 --- stop_editing(canceled)
+
     Informs the cell renderer that the editing is stopped. If canceled is true, the cell renderer will emit the "editing-canceled" signal. This method should be called by cell renderer implementations in response to the "editing-done" signal of Gtk::CellEditable. ((* Since 2.6 *))
     * canceled: true if the editing has been canceled  
     * Returns: self
 
 --- fixed_size
+
     Returns the appropriate size of cell.
     * Returns: [width, height]
 
 --- set_fixed_size(width, height)
+
     Sets the renderer size to be explicit, independent of the properties set.
     * width: the width of the cell renderer, or -1  
     * height: the height of the cell renderer, or -1
     * Returns: self
 
 --- height
+
     Returns the height of the cell renderer.
     * Returns: the height of the cell renderer
 
 --- height=(height)
+
     Sets the height of the cell renderer.
     * height: the height of the cell renderer.
     * Returns: height
 
 --- set_height(height)
+
     Same as Gtk::CellRenderer#height=.
     * height: the height of the cell renderer.
     * Returns: self
 
 --- width
+
     Returns the width of the cell renderer.
     * Returns: the width of the cell renderer
 
 --- width=(width)
+
     Sets the width of the cell renderer.
     * width: the width of the cell renderer.
     * Returns: width
 
 --- set_width(width)
+
     Same as Gtk::CellRenderer#width=.
     * width: the width of the cell renderer.
     * Returns: self
 
 --- expanded?
+
     Returns true If the cell renderer is expanded or false.
     * Returns: true or false
 
 --- expanded=(expanded)
+
     Sets the cell renderer is expanded or not.
     * expanded: true if the cell renderer is expanded or false
     * Returns: expanded
 
 --- set_expanded(expanded)
+
     Same as Gtk::CellRenderer#expanded=.
     * expanded: true if the cell renderer is expanded or false
     * Returns: self
 
 --- expander?
+
     Returns true If the cell renderer is expander or false.
     * Returns: true or false
 
 --- expander=(expander)
+
     Sets the cell renderer is expander or not.
     * expander: true if the cell renderer is expander or false
     * Returns: expander
 
 --- set_expander(expander)
+
     Same as Gtk::CellRenderer#expander=.
     * expander: true if the cell renderer is expander or false
     * Returns: self
 
 --- mode
+
     Returns the Gtk::CellRenderer#Mode.
     * Returns: Gtk::CellRenderer#Mode
 
 --- mode=(mode)
+
     Sets the Gtk::CellRenderer#Mode.
     * mode: Gtk::CellRenderer#Mode
     * Returns: Gtk::CellRenderer#Mode
 
 --- set_mode(mode)
+
     Same as Gtk::CellRenderer#mode=.
     * mode: Gtk::CellRenderer#Mode
     * Returns: self
 
 --- visible?
+
     Returns true if the cell renderer is visible or false.
     * Returns: true or false
 
 --- visible=(visible)
+
     Sets visible of the cellrenderer.
     * visible: true or false
     * Returns: visible
 
 --- set_visible(visible)
+
     Sets visible of the cellrenderer.
     * visible: true or false
     * Returns: self
 
 --- xalign
+
     Returns the x alignment value of the cell renderer.
     * Returns: the x alignment value of the cell renderer.
 
 --- xalign=(xalign)
+
     Sets the x alignment value of the cell renderer.
     * xalign: the x alignment value of the cell renderer.
     * Returns: xalign
 
 --- set_xalign(xalign)
+
     Same as Gtk::CellRenderer#xalign=.
     * xalign: the x alignment value of the cell renderer.
     * Returns: self
 
 --- yalign
+
     Returns the y alignment value of the cell renderer.
     * Returns: the y alignment value of the cell renderer.
 
 --- yalign=(yalign)
+
     Sets the y alignment value of the cell renderer.
     * yalign: the y alignment value of the cell renderer.
     * Returns: yalign
 
 --- set_yalign(yalign)
+
     Same as Gtk::CellRenderer#yalign=.
     * yalign: the y alignment value of the cell renderer.
     * Returns: self
 
 --- xpad
+
     Returns the y alignment value of the cell renderer.
     * Returns: the xpad value of the cell renderer.
 
 --- xpad=(xpad)
+
     Sets the y alignment value of the cell renderer.
     * xpad: the xpad value of the cell renderer.
     * Returns: xpad
 
 --- set_xpad(xpad)
+
     Same as Gtk::CellRenderer#xpad=.
     * xpad: the xpad value of the cell renderer.
     * Returns: self
 
 --- ypad
+
     Returns the y alignment value of the cell renderer.
     * Returns: the ypad value of the cell renderer.
 
 --- ypad=(ypad)
+
     Sets the y alignment value of the cell renderer.
     * ypad: the ypad value of the cell renderer.
     * Returns: ypad
 
 --- set_ypad(ypad)
+
     Same as Gtk::CellRenderer#Gtk::CellRenderer#ypad=.
     * ypad: the ypad value of the cell renderer.
     * Returns: self
 
 --- cell_background=(colorname)
+
     Sets the Cell background color as a string.
     * colorname: Cell background color as a String
     * Returns: cell_background
+
 --- set_cell_background(colorname)
+
     Same as Gtk::CellRenderer#cell_background=.
     * colorname: Cell background color as a String
     * Returns: self
 
 --- cell_background_gdk
+
     Gets the Cell background color as a Gdk::Color.
     * Returns: Cell background color as a Gdk::Color
+
 --- cell_background_gdk=(gdkcolor)
+
     Sets the Cell background color as a Gdk::Color.
     * gdkcolor: Cell background color as a Gdk::Color
     * Returns: cell_background_gdk
+
 --- set_cell_background_gdk(gdkcolor)
+
     Same as Gtk::CellRenderer#cell_background_gdk=.
     * gdkcolor: Cell background color as a Gdk::Color
     * Returns: self
 
 --- cell_background_set?
+
     Gets the value whether this tag affects the cell background color or not.
     * Returns: true if this tag affects the cell background color
+
 --- cell_background_set=(setting)
+
     Sets the value whether this tag affects the cell background color or not.
     * setting: true if this tag affects the cell background color
     * Returns: cell_background_set
+
 --- set_cell_background_set(setting)
+
     Same as Gtk::CellRenderer#cell_background_set=.
     * setting: true if this tag affects the cell background color
     * Returns: self
 
 --- sensitive?
+
     Gets the Display the cell sensitive.
     * Returns: Display the cell sensitive
+
 --- sensitive=(sensitive)
+
     Sets the Display the cell sensitive.
     * sensitive: Display the cell sensitive (true or false)
     * Returns: sensitive
+
 --- set_sensitive(sensitive)
+
     Same as Gtk::CellRenderer#sensitive=.
     * sensitive: Display the cell sensitive (true or false)
     * Returns: self
 
-
 == Constants
+
 === State
-Tells how a cell is to be rendererd. 
+
+Tells how a cell is to be rendererd.
+
 --- SELECTED
-    The cell is currently selected, and probably has a selection colored background to render to. 
+
+    The cell is currently selected, and probably has a selection colored background to render to.
+
 --- PRELIT
-    The mouse is hovering over the cell. 
+
+    The mouse is hovering over the cell.
+
 --- INSENSITIVE
-    The cell is drawn in an insensitive manner 
+
+    The cell is drawn in an insensitive manner
+
 --- SORTED
-    The cell is in a sorted row 
+
+    The cell is in a sorted row
 
 === Mode
-Identifies how the user can interact with a particular cell. 
+
+Identifies how the user can interact with a particular cell.
+
 --- MODE_INERT
-    The cell is just for display and cannot be interacted with. Note that this doesn't mean that eg. the row being drawn can't be selected -- just that a particular element of it cannot be individually modified. 
+
+    The cell is just for display and cannot be interacted with. Note that this doesn't mean that eg. the row being drawn can't be selected -- just that a particular element of it cannot be individually modified.
+
 --- MODE_ACTIVATABLE
-    The cell can be clicked. 
+
+    The cell can be clicked.
 
 --- MODE_EDITABLE
-    The cell can be edited or otherwise modified. 
+
+    The cell can be edited or otherwise modified.
+
+--- FOCUSED
 
 == Properties
+
 --- cell-background: String (Write)
+
     Cell background color as a String
     * Default value: nil
 
 --- cell-background-gdk: Gdk::Color (Read/Write)
+
     Cell background color as a Gdk::Color
 
 --- cell-background-set: true or false (Read/Write)
+
     Whether this tag affects the cell background color
     * Default value: false
 
 --- height: Integer (Read/Write)
+
     The fixed height
     * Allowed values: >= -1
     * Default value: -1
 
 --- is-expanded: true or false (Read/Write)
+
     Row is an expander row, and is expanded
     * Default value: false
 
 --- is-expander: true or false (Read/Write)
+
     Row has children
     * Default value: false
 
 --- mode: Integer (Read/Write)
+
     Editable mode of the CellRenderer
     * Default value: Gtk::CellRenderer::MODE_INERT
 
 --- sensitive: true or false (Read/Write)
+
     Display the cell sensitive
     * Default value: true
 
 --- visible: true or false (Read/Write)
+
     Display the cell
     * Default value: true
 
 --- width: Integer (Read/Write)
+
     The fixed width
     * Allowed values: >= -1
     * Default value: -1
 
 --- xalign: Float (Read/Write)
+
     The x-align
     * Allowed values: [0,1]
     * Default value: 0.5
 
 --- xpad: Integer (Read/Write)
+
     The xpad
     * Default value: 0
 
 --- yalign: Float (Read/Write)
+
     The y-align
     * Allowed values: [0,1]
     * Default value: 0.5
 
 --- ypad: Integer (Read/Write)
+
     The ypad
     * Default value: 0
 
 == Signals
+
 --- editing-canceled: self
+
     This signal gets emitted when the user cancels the process of editing a cell. For example, an editable cell renderer could be written to cancel editing when the user presses Escape. ((* Since 2.4 *))
     
     See also: Gtk::CellRenderer#editing_canceled.
-    * self: Gtk::CellRenderer 
+    * self: Gtk::CellRenderer
 
 --- editing-started: self, editable, path
+
     This signal gets emitted when a cell starts to be edited. The indended use of this signal is to do special setup on editable, e.g. adding a Gtk::EntryCompletion or setting up additional columns in a Gtk::ComboBox. 
     
     Note that GTK+ doesn't guarantee that cell renderers will continue to use the same kind of widget for editing in future releases, therefore you should check the type of editable before doing any specific setup, as in the following example. ((* Since 2.6 *))
@@ -365,10 +460,11 @@ Identifies how the user can interact with a particular cell.
    end
  end
 
-
 == See Also
+
 Gtk::CellRendererText, Gtk::CellRendererPixbuf, Gtk::CellRendererToggle
 
 == ChangeLog
+
 * 2007-02-03 Apply 2.10. - ((<Masao>))
 * 2006-01-31 Apply 2.6 methods. Revised - ((<Masao>))

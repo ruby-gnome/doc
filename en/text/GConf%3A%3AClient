@@ -1,28 +1,47 @@
 = class GConf::Client
+
 GConf::Client is the main class for accessing GConf functionality.  All interfacing between the GConf daemon and the client application goes through this class.
 
-== Super Class
-* GLib::Object
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GConf::Client
 
 == Class Methods
+
 --- GConf::Client.new(engine = nil)
+
     Creates a new GConf::Client.  A client for a specific engine may be created, or a default engine may be used otherwise.
     * engine:  a GConf::Engine to create the client for
     * Returns: a new GConf::Client
 
+--- GConf::Client.default
+
+     * Returns: self: ((*FIXME*))
+
+--- GConf::Client.get_for_engine
+
+     * Returns: self: ((*FIXME*))
+
 == Instance Methods
+
 --- add_dir(dir, preload_type = nil)
+
     Adds a directory to the list of directories this GConf::Client will watch.  Any changes to a key in this directory or any sub-directory will trigger the "value_changed" signal.  A preloading method may also be specified for this directory.  It is not possible to add sub-directories to any directories already added in this way, doing so will cause an exception.  It is, however, possible to add the same directory multiple times, and it will be watched until it has been removed, by GConf::Client#remove_dir, an equal number of times.
      * dir: the directory to add
      * preload_type: ((<PreloadType|GConf::Client#PreloadType>)) to use for preloading; defaults to ((<PRELOAD_NONE|GConf::Client#PreloadType::PRELOAD_NONE>))
      * Returns: self
 
 --- remove_dir(dir)
+
     Removes a directory from the list of directories previously added by GConf::Client#add_dir.
     * dir: the directory to remove
     * Returns: self
 
 --- notify_add(namespace) { |client, entry| ... }
+
     Adds a notification callback.  The block gets called whenever a change is made to the key ((|namespace|)) or any sub-keys.  For notifications to take place, ((|namespace|)) must be equal to or below any directories added by GConf::Client#add_dir.  Using GConf::Client#remove_dir on such a directory thus temporarily disables notifications there.  The notification itself may later be removed with GConf::Client#notify_remove, passing it the return id from this method.
      * namespace: where to listen for changes
      * client: the GConf::Client that the notify is connected to
@@ -30,44 +49,52 @@ GConf::Client is the main class for accessing GConf functionality.  All interfac
      * Returns: an identifier that may later be used by GConf::Client#notify_remove
 
 --- notify_remove(id)
+
     Removes a previously added notification, identified by the return value of GConf::Client#notify_add.
     * id: the notification to remove
     * Returns: self
 
 --- clear_cache
+
     Clears the client-side cache of this GConf::Client.  Use this method if you know you are not going to use this GConf::Client for a while to save some memory.
     * Returns: self
 
 --- preload(dir, preload_type)
+
     Preloads a directory.  This is usually done when you call GConf::Client#add_dir, but may be useful if you have called GConf::Client#clear_cache since then.
     * dir: the directory to preload
     * preload_type: ((<PreloadType|GConf::Client#PreloadType>)) to use for preloading
     * Returns: self
 
 --- []=(key, value)
+
     Sets the value of a configuration key.  A GConf::Error::OverriddenError may be thrown if the system administrator has forced a certain value for the given key.
     * key: the key to set
     * value: the new value
     * Returns: self (NOTE to Masao: this seems wrong, what to do?)
 
 --- set(key, value)
+
     Same as ((<[]=|GConf::Client#[]=>)).
     * key: the key to set
     * value: the new value
     * Returns: self
 
 --- [](key)
+
     Gets the value of a configuration key.  This uses the schema default if it has not been set previously.
     * key: the key to get
     * Returns: the value of the key
 
 --- get(key, use_schema_default = true)
+
     Gets the value of a configuration key.
     * key: the key to get
     * use_schema_default: whether to use the default value specified in the schema for this key
     * Returns: the value of the key
 
 --- entry(key, locale = nil, use_schema_default = true)
+
     Gets the GConf::Entry representing the given configuration key.
     * key: the key to get
     * locale: the locale to use, or default if nil
@@ -75,58 +102,97 @@ GConf::Client is the main class for accessing GConf functionality.  All interfac
     * Returns: the GConf::Entry of the key
 
 --- default_from_schema(key)
+
     Gets the default value specified in the schema for the key.
     * key: the key to get the default value for
     * Returns: the default value specified in the schema
 
 --- unset(key)
+
     Unsets the value for the given key.  A GConf::Error::OverriddenError may be thrown if the system administrator has forced a certain value for the given key.
     * key: the key to unset
     * Returns: true if the key could be unset
 
 --- all_entries(dir)
+
     Retrieves an Array of all GConf::Entry's in the given directory.  This does not include sub-directories.  The keys are relative to the given directory.
     * dir: the directory for which to get all entries from
     * Returns: an Array of GConf::Entry
 
 --- all_dirs(dir)
+
     Retrieves an Array of all sub-directories of the given directory.
     * dir: the directory for which to get all sub-directories for
     * Returns: an Array of String's naming sub-directories
 
 --- suggest_sync
+
     Suggests to the GConf daemon that you have just finished a block of changes and that now would be a good time to store all changes to permanent storage.  Remember that this is merely a suggestion, and that changes will take effect later anyway.
     * Returns: self
 
 --- dir_exists?(dir)
+
     Queries whether the given directory exists in the GConf database.
     * dir: the directory to check for
     * Returns: true if the directory exists, false if not
 
 --- reverse(change_set)
 --- reverse_change_set(change_set)
+
     Creates a GConf::ChangeSet that would reverse the effect of the given GConf::ChangeSet.  That is, for each change in the given GConf::ChangeSet, save the current state of that key in the returned GConf::ChangeSet.
     * change_set: the GConf::ChangeSet to create the reverse of
     * Returns: a new GConf::ChangeSet that would restore the current state of each key in ((|change_set|))
 
 --- diff(keys)
 --- change_set_from_current(keys)
+
     Creates a GConf::ChangeSet that would restore the current state of each key in the given set of keys.  This can be used to save the current state and later restore it.
     * keys: an Array of keys to store state for
     * Returns: a GConf::ChangeSet of the current state of each key in ((|keys|))
 
 --- commit(change_set)
 --- commit_change_set(change_set)
+
     Commits the given GConf::ChangeSet to the GConf database.
     * change_set: the GConf::ChangeSet to commit
     * Returns: true on success, false otherwise
 
+--- key_is_writable?
+
+     * Returns: self: ((*FIXME*))
+
 == Constants
 
 === PreloadType
+
 --- PRELOAD_NONE
+
     Nothing gets preloaded.
+
 --- PRELOAD_ONELEVEL
+
     Preload the immediate children of the directory.
+
 --- PRELOAD_RECURSIVE
+
     Preload all sub-directories to the directory as well.
+
+== Signals
+
+--- error: self
+
+     * self: GConf::Client: ((*FIXME*))
+
+--- unreturned-error: self
+
+     * self: GConf::Client: ((*FIXME*))
+
+--- value-changed: self
+
+     * self: GConf::Client: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

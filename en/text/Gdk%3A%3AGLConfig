@@ -1,14 +1,18 @@
 = class Gdk::GLConfig
+
 Frame Buffer Configuration — OpenGL frame buffer configuration object
 
 == Object Hierarchy
+
 * Object
   * GLib::Instantiatable
     * GLib::Object
       * Gdk::GLConfig
 
 == Class Methods
+
 --- Gdk::GLConfig.new([screen,] attrib_list/mode)
+
     Returns an OpenGL frame buffer configuration that matches the specified configuration.
     * screen: optional, if specified indicates the target Gdk::Screen.
         * You can simply ignore it as on most computers it is not needed.
@@ -18,122 +22,183 @@ Frame Buffer Configuration — OpenGL frame buffer configuration object
         * mode: display mode bit mask.
     * Returns: the new Gdk::GLConfig
 
+--- Gdk::GLConfig.new
+
+     * Returns: self: ((*FIXME*))
+
 == Instance Methods
+
 --- colormap
+
     Gets the Gdk::Colormap that is appropriate for the OpenGL frame buffer configuration.
     * Returns: the appropriate Gdk::Colormap.
 
 --- depth
+
     Gets the color depth of the OpenGL-capable visual.
     * Returns: number of bits per pixel
 
 --- double_buffered?
+
     Returns whether the configuration supports the double-buffered visual.
     * Returns: true if the double-buffered visual is supported, false otherwise.
-    
+
 --- get_attrib(attribute)
+
     Gets information about the OpenGL frame buffer configuration.
     * attribute: the attribute to be returned.
     * Returns: the requested value or nil if the value could not be found.
-    
+
 --- has_accum_buffer?
+
     Returns whether the configured frame buffer has accumulation buffer.
     * Returns: true if the frame buffer has accumulation buffer, false otherwise.
-    
+
 --- has_alpha?
+
     Returns whether the configured color buffer has alpha bits.
     * Returns: true if the color buffer has alpha bits, false otherwise.
-    
+
 --- has_depth_buffer?
+
     Returns whether the configured frame buffer has depth buffer.
     * Returns: true if the frame buffer has depth buffer, false otherwise
-    
+
 --- has_stencil_buffer?
+
     Returns whether the configured frame buffer has stencil buffer.
     * Returns: true if the frame buffer has stencil buffer, false otherwise
-    
+
 --- layer_plane
+
     Gets the layer plane (level) of the frame buffer. Zero is the default frame buffer. Positive layer planes correspond to frame buffers that overlay the default buffer, and negative layer planes correspond to frame buffers that underlie the default frame buffer.
     * Returns: layer plane.
-    
+
 --- n_aux_buffers
+
     Gets the number of auxiliary color buffers.
     * Returns: number of auxiliary color buffers.
-    
+
 --- n_sample_buffers
+
     Gets the number of multisample buffers.
     * Returns: number of multisample buffers.
-    
+
 --- rgba?
+
     Returns whether the configured frame buffer is RGBA mode.
     * Returns: true if the configured frame buffer is RGBA mode, false otherwise.
 
 --- screen
+
     Gets the Gdk::Screen.
     * Returns: the Gdk::Screen
 
 --- stereo?
+
     Returns whether the configuration supports the stereo visual.
     * Returns: true if the stereo visual is supported, false otherwise.
-    
+
 --- visual
+
     Gets the Gdk::Visual that is appropriate for the OpenGL frame buffer configuration.
     * Returns: the appropriate Gdk::Visual.
-    
+
 == Constants
+
 === GdkGLConfigMode
+
 --- MODE_ACCUM
 --- MODE_ALPHA
 --- MODE_DEPTH
 --- MODE_DOUBLE
 --- MODE_INDEX
 --- MODE_MULTISAMPLE
+
     Not supported yet.
+
 --- MODE_RGB
 --- MODE_RGBA
+
     Same as Gdk::GLConfig#MODE_RGB.
+
 --- MODE_SINGLE
 --- MODE_STENCIL
 --- MODE_STEREO
-
 === GdkGLConfigAttrib
+
 Different types of attributes. Used in Gdk::GLConfig.new and in get_attrib.
+
 --- USE_GL
+
     support GLX rendering.
+
 --- BUFFER_SIZE
+
     depth of the color buffer.
+
 --- LEVEL
+
     level in plane stacking.
+
 --- RGBA
+
     true if in RGBA mode.
+
 --- DOUBLEBUFFER
+
     double buffering supported.
+
 --- STEREO
+
     stereo buffering supported.
+
 --- AUX_BUFFERS
+
     number of aux buffers.
+
 --- RED_SIZE
+
     number of red component bits.
+
 --- GREEN_SIZE
+
     number of green component bits.
+
 --- BLUE_SIZE
+
     number of blue component bits.
+
 --- ALPHA_SIZE
+
     number of alpha component bits.
+
 --- DEPTH_SIZE
+
     number of depth bits.
+
 --- STENCIL_SIZE
+
     number of stencil bits.
+
 --- ACCUM_RED_SIZE
+
     number of red accum bits.
+
 --- ACCUM_GREEN_SIZE
+
     number of green accum bits.
+
 --- ACCUM_BLUE_SIZE
+
     number of blue accum bits.
+
 --- ACCUM_ALPHA_SIZE
+
     number of alpha accum bits.
 
 ==== FBConfig-specific attributes. (GLX 1.3 and later)
+
 --- CONFIG_CAVEAT
 --- X_VISUAL_TYPE
 --- TRANSPARENT_TYPE
@@ -153,5 +218,12 @@ Different types of attributes. Used in Gdk::GLConfig.new and in get_attrib.
 --- SCREEN
 
 ==== Multisampling configuration attributes. (GLX 1.4 and later)
+
 --- SAMPLE_BUFFERS
 --- SAMPLES
+
+== See Also
+
+== ChangeLog
+
+

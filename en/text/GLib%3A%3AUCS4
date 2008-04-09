@@ -3,6 +3,7 @@
 == Module Functions
 
 --- GLib::UCS4.to_utf16(ucs4)
+
      Convert a string from UCS-4 to UTF-16. If the
      conversion is not successful, it causes
      GLib::ConvertError.
@@ -11,12 +12,15 @@
      * Returns: a UTF-16 encoded String
 
 --- GLib::UCS4.to_utf8(ucs4)
+
      Convert a string from UCS-4 to UTF-8. If the
      conversion is not successful, it causes
      GLib::ConvertError.
 
      * ucs4: a UCS-4 encoded String
      * Returns: a UTF-8 encoded String
+
+== See Also
 
 == ChangeLog
 

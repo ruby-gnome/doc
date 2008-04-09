@@ -3,13 +3,16 @@
 Exception for Ruby/GnomePrint.
 
 == Object Hierarchy
+
 * Object
   * Exception
     * StandardError
       * Gnome::PrintError
 
 == Class Methods
+
 --- Gnome::PrintError.new(code)
+
      
      * code: Return code which is Gnome::PrintReturnCode object
      * Returns: self
@@ -17,6 +20,7 @@ Exception for Ruby/GnomePrint.
 == Instance Methods
 
 --- code
+
      
      * Returns: Gnome::PrintReturnCode object
 

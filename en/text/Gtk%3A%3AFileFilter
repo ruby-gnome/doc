@@ -1,52 +1,67 @@
 = class Gtk::FileFilter
+
 A Gtk::FileFilter can be used to restrict the files being shown in a Gtk::FileChooser. Files can be filtered based on their name (with Gtk::FileFilter#add_pattern), on their mime type (with Gtk::FileFilter#add_mime_type), or by a custom filter proc (with Gtk::FileFilter#add_custom). 
 
 Filtering by mime types handles aliasing and subclassing of mime types; e.g. a filter for text/plain also matches a file with mime type application/rtf, since application/rtf is a subclass of text/plain. Note that Gtk::FileFilter allows wildcards for the subtype of a mime type, so you can e.g. filter for image/*. 
 
-Normally, filters are used by adding them to a Gtk::FileChooser, see Gtk::FileChooser#add_filter, but it is also possible to manually use a filter on a file with Gtk::FileFilter#filter. 
+Normally, filters are used by adding them to a Gtk::FileChooser, see Gtk::FileChooser#add_filter, but it is also possible to manually use a filter on a file with Gtk::FileFilter#filter.
 
 == Object Hierarchy
+
 * Object
   * GLib::Instantiatable
     * GLib::Object
-      * Gtk::Object
-        * Gtk::FileFilter
+      * GLib::InitiallyUnowned
+        * Gtk::Object
+          * Gtk::FileFilter
 
 == Class Methods
+
 --- Gtk::FileFilter.new
+
     Creates a new Gtk::FileFilter with no rules added to it. Such a filter doesn't accept any files, so is not particularly useful until you add rules with Gtk::FileFilter#add_mime_type, Gtk::FileFilter#add_pattern, or Gtk::FileFilter#add_custom. To create a filter that accepts any file, use: 
      filter = Gtk::FileFilter.new
      filter.add_pattern("*")
-    * Returns: a new Gtk::FileFilter  
+    * Returns: a new Gtk::FileFilter
 
 == Instance Methods
+
 --- name
+
     Gets the human-readable name for the filter. See Gtk::FileFilter#name=. ((* Since 2.4 *))
-    * Returns: The human-readable name of the filter, or nil. 
+    * Returns: The human-readable name of the filter, or nil.
+
 --- name=(name)
+
     Sets the human-readable name of the filter; this is the string that will be displayed in the file selector user interface if there is a selectable list of filters. ((* Since 2.4 *))
     * name: the human-readable-name for the filter, or nil to remove any existing name.  
     * Returns: name
+
 --- set_name(name)
+
     Same as Gtk::FileFilter#name=. ((* Since 2.4 *))
     * name: the human-readable-name for the filter, or nil to remove any existing name.  
     * Returns: self
 
 --- add_mime_type(mime_type)
+
     Adds a rule allowing a given mime type to filter. ((* Since 2.4 *))
     * mime_type: name of a MIME type
     * Returns: self
 
 --- add_pattern(pattern)
+
     Adds a rule allowing a shell style glob to a filter. ((* Since 2.4 *))
     * pattern: a shell style glob  
     * Returns: self
 
 --- add_pixbuf_formats
+
     Adds a rule allowing image files in the formats supported by Gdk::Pixbuf. ((* Since 2.6 *))
     * Returns: self
 
 --- add_custom(needed){|contains, filename, uri, display_name, mime_type| ...}
+
     Adds rule to a filter that allows files based on a custom callback block. The bitfield needed which is passed in provides information about what sorts of information that the filter block needs; this allows GTK+ to avoid retrieving expensive information when it isn't needed by the filter. ((* Since 2.4 *))
     * needed: bitfield of flags indicating the information that the custom filter block needs. (((<GtkFileFilterFlags|Gtk::FileFilter#GtkFileFilterFlags>))).
     * {|contains, filename, uri, display_name, mime_type| ...}: callback block; if the block returns true, then the file will be displayed. 
@@ -58,30 +73,44 @@ Normally, filters are used by adding them to a Gtk::FileChooser, see Gtk::FileCh
     * Returns: self
 
 --- needed
+
     Gets the fields that need to be filled in for the first argument("contains" value) passed to Gtk::FileFilter#filter?
     This method will not typically be used by applications; it is intended principally for use in the implementation of Gtk::FileChooser. ((* Since 2.4 *))
     * Returns: bitfield of flags indicating needed fields when calling Gtk::FileFilter#filter?   (((<GtkFileFilterFlags|Gtk::FileFilter#GtkFileFilterFlags>))).
 
 --- filter?(contains, filename, uri, display_name, mime_type)
+
     Tests whether a file should be displayed according to filter. 
     "contains" should include the fields returned from Gtk::FileFilter#needed. 
     This method will not typically be used by applications; it is intended principally for use in the implementation of Gtk::FileChooser. ((* Since 2.4 *))
-    * Returns: true if the file should be displayed 
+    * Returns: true if the file should be displayed
 
 == Constants
+
 === GtkFileFilterFlags
+
 These flags indicate what parts are filled or need to be filled.  ((* Since 2.4 *))
+
 --- FILENAME
+
     1 << 0, the filename of the file being tested
+
 --- URI
-    1 << 1, the URI for the file being tested 
+
+    1 << 1, the URI for the file being tested
+
 --- DISPLAY_NAME
-    1 << 2, the string that will be used to display the file in the file chooser 
+
+    1 << 2, the string that will be used to display the file in the file chooser
+
 --- MIME_TYPE
+
     1 << 3, the mime type of the file
 
 == See Also
+
 Gtk::FileChooser
 
 == ChangeLog
+
 * 2005-1-27 Added. - Masao
