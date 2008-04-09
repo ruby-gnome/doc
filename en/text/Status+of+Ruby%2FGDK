@@ -19,7 +19,7 @@ Bitmaps and Pixmaps|Gdk::Bitmap|GdkBitmap|x|x|x|x|x|x|x|Use Gdk::Pixmap(depth = 
 GdkRGB|Gdk::RGB|GdkRGB|O|O|O|O|O|O||As module
 Images|Gdk::Image|GdkImage|O|O|O|O|O|O||
 Pixbufs|Gdk::Pixbuf|GdkPixbuf|O|O|O|O|O|O||
-Colormaps and Colors|Gdk::Color|GdkColor|O|O|O|O|O|O||
+Colormaps and Colors|Gdk::Color|GdkColor|O|O|O|O|O|O|O|
 Colormaps and Colors|Gdk::Colormap|GdkColormap|O|O|O|O|O|O||
 Visuals|Gdk::Visual|GdkVisual|O|O|O|O|O|O||
 Fonts|Gdk::Font|GdkFont|x|x|x|x|x|x|x|Use Pango instead.
