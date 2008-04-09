@@ -1,0 +1,21 @@
+= class Pango::AttrStretch
+
+== Object Hierarchy
+
+* Object
+  * Data
+    * Pango::Attribute
+      * Pango::AttrInt
+        * Pango::AttrStretch
+
+== Class Methods
+
+--- Pango::AttrStretch.new
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

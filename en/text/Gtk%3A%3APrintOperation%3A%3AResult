@@ -1,0 +1,20 @@
+= class Gtk::PrintOperation::Result
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * Gtk::PrintOperation::Result
+
+== Constants
+
+--- APPLY
+--- CANCEL
+--- ERROR
+--- IN_PROGRESS
+
+== See Also
+
+== ChangeLog
+
+

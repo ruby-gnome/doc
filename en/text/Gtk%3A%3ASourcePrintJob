@@ -1,0 +1,380 @@
+= class Gtk::SourcePrintJob
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Gtk::SourcePrintJob
+
+== Class Methods
+
+--- Gtk::SourcePrintJob.new
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- buffer
+
+    Gets the Gtk::SourceBuffer object to print.
+     * Returns: Gtk::SourceBuffer object to print
+
+--- buffer=(buffer)
+
+    Sets the Gtk::SourceBuffer object to print.
+     * buffer: Gtk::SourceBuffer object to print
+     * Returns: buffer
+
+--- cancel
+
+     * Returns: self: ((*FIXME*))
+
+--- config
+
+    Gets the Configuration options for the print job.
+     * Returns: Configuration options for the print job
+
+--- config=(config)
+
+    Sets the Configuration options for the print job.
+     * config: Configuration options for the print job
+     * Returns: config
+
+--- font
+
+    Gets the Gnome::Font name to use for the document text (deprecated).
+     * Returns: Gnome::Font name to use for the document text (deprecated)
+
+--- font=(font)
+
+    Sets the Gnome::Font name to use for the document text (deprecated).
+     * font: Gnome::Font name to use for the document text (deprecated)
+     * Returns: font
+
+--- font_desc
+
+    Gets the Font to use for the document text (e.g. "Monospace 10").
+     * Returns: Font to use for the document text (e.g. "Monospace 10")
+
+--- font_desc=(font_desc)
+
+    Sets the Font to use for the document text (e.g. "Monospace 10").
+     * font_desc: Font to use for the document text (e.g. "Monospace 10")
+     * Returns: font_desc
+
+--- header_footer_font
+
+    Gets the Gnome::Font name to use for the header and footer (deprecated).
+     * Returns: Gnome::Font name to use for the header and footer (deprecated)
+
+--- header_footer_font=(header_footer_font)
+
+    Sets the Gnome::Font name to use for the header and footer (deprecated).
+     * header_footer_font: Gnome::Font name to use for the header and footer (deprecated)
+     * Returns: header_footer_font
+
+--- header_footer_font_desc
+
+    Gets the Font to use for headers and footers (e.g. "Monospace 10").
+     * Returns: Font to use for headers and footers (e.g. "Monospace 10")
+
+--- header_footer_font_desc=(header_footer_font_desc)
+
+    Sets the Font to use for headers and footers (e.g. "Monospace 10").
+     * header_footer_font_desc: Font to use for headers and footers (e.g. "Monospace 10")
+     * Returns: header_footer_font_desc
+
+--- highlight=(highlight)
+
+    Sets the value whether to print the document with highlighted syntax or not.
+     * highlight: true if to print the document with highlighted syntax
+     * Returns: highlight
+
+--- highlight?
+
+    Gets the value whether to print the document with highlighted syntax or not.
+     * Returns: true if to print the document with highlighted syntax
+
+--- numbers_font
+
+    Gets the Gnome::Font name to use for the line numbers (deprecated).
+     * Returns: Gnome::Font name to use for the line numbers (deprecated)
+
+--- numbers_font=(numbers_font)
+
+    Sets the Gnome::Font name to use for the line numbers (deprecated).
+     * numbers_font: Gnome::Font name to use for the line numbers (deprecated)
+     * Returns: numbers_font
+
+--- numbers_font_desc
+
+    Gets the Font description to use for the line numbers.
+     * Returns: Font description to use for the line numbers
+
+--- numbers_font_desc=(numbers_font_desc)
+
+    Sets the Font description to use for the line numbers.
+     * numbers_font_desc: Font description to use for the line numbers
+     * Returns: numbers_font_desc
+
+--- page
+
+     * Returns: self: ((*FIXME*))
+
+--- page_count
+
+     * Returns: self: ((*FIXME*))
+
+--- print
+
+     * Returns: self: ((*FIXME*))
+
+--- print_context
+
+     * Returns: self: ((*FIXME*))
+
+--- print_footer=(print_footer)
+
+    Sets the value whether to print a footer in each page or not.
+     * print_footer: true if to print a footer in each page
+     * Returns: print_footer
+
+--- print_footer?
+
+    Gets the value whether to print a footer in each page or not.
+     * Returns: true if to print a footer in each page
+
+--- print_header=(print_header)
+
+    Sets the value whether to print a header in each page or not.
+     * print_header: true if to print a header in each page
+     * Returns: print_header
+
+--- print_header?
+
+    Gets the value whether to print a header in each page or not.
+     * Returns: true if to print a header in each page
+
+--- print_numbers
+
+    Gets the Interval of printed line numbers (0 means no numbers).
+     * Returns: Interval of printed line numbers (0 means no numbers)
+
+--- print_numbers=(print_numbers)
+
+    Sets the Interval of printed line numbers (0 means no numbers).
+     * print_numbers: Interval of printed line numbers (0 means no numbers)
+     * Returns: print_numbers
+
+--- print_range
+
+     * Returns: self: ((*FIXME*))
+
+--- print_range_async
+
+     * Returns: self: ((*FIXME*))
+
+--- printjob
+
+     * Returns: self: ((*FIXME*))
+
+--- set_buffer(buffer)
+
+    Same as buffer=.
+     * buffer: Gtk::SourceBuffer object to print
+     * Returns: self
+
+--- set_config(config)
+
+    Same as config=.
+     * config: Configuration options for the print job
+     * Returns: self
+
+--- set_font(font)
+
+    Same as font=.
+     * font: Gnome::Font name to use for the document text (deprecated)
+     * Returns: self
+
+--- set_font_desc(font_desc)
+
+    Same as font_desc=.
+     * font_desc: Font to use for the document text (e.g. "Monospace 10")
+     * Returns: self
+
+--- set_footer_format
+
+     * Returns: self: ((*FIXME*))
+
+--- set_header_footer_font(header_footer_font)
+
+    Same as header_footer_font=.
+     * header_footer_font: Gnome::Font name to use for the header and footer (deprecated)
+     * Returns: self
+
+--- set_header_footer_font_desc(header_footer_font_desc)
+
+    Same as header_footer_font_desc=.
+     * header_footer_font_desc: Font to use for headers and footers (e.g. "Monospace 10")
+     * Returns: self
+
+--- set_header_format
+
+     * Returns: self: ((*FIXME*))
+
+--- set_highlight(highlight)
+
+    Same as highlight=.
+     * highlight: true if to print the document with highlighted syntax
+     * Returns: self
+
+--- set_numbers_font(numbers_font)
+
+    Same as numbers_font=.
+     * numbers_font: Gnome::Font name to use for the line numbers (deprecated)
+     * Returns: self
+
+--- set_numbers_font_desc(numbers_font_desc)
+
+    Same as numbers_font_desc=.
+     * numbers_font_desc: Font description to use for the line numbers
+     * Returns: self
+
+--- set_print_footer(print_footer)
+
+    Same as print_footer=.
+     * print_footer: true if to print a footer in each page
+     * Returns: self
+
+--- set_print_header(print_header)
+
+    Same as print_header=.
+     * print_header: true if to print a header in each page
+     * Returns: self
+
+--- set_print_numbers(print_numbers)
+
+    Same as print_numbers=.
+     * print_numbers: Interval of printed line numbers (0 means no numbers)
+     * Returns: self
+
+--- set_tabs_width(tabs_width)
+
+    Same as tabs_width=.
+     * tabs_width: Width in equivalent space characters of tabs
+     * Returns: self
+
+--- set_text_margins
+
+     * Returns: self: ((*FIXME*))
+
+--- set_wrap_mode(wrap_mode)
+
+    Same as wrap_mode=.
+     * wrap_mode: Word wrapping mode
+     * Returns: self
+
+--- setup
+
+     * Returns: self: ((*FIXME*))
+
+--- tabs_width
+
+    Gets the Width in equivalent space characters of tabs.
+     * Returns: Width in equivalent space characters of tabs
+
+--- tabs_width=(tabs_width)
+
+    Sets the Width in equivalent space characters of tabs.
+     * tabs_width: Width in equivalent space characters of tabs
+     * Returns: tabs_width
+
+--- text_margins
+
+     * Returns: self: ((*FIXME*))
+
+--- wrap_mode
+
+    Gets the Word wrapping mode.
+     * Returns: Word wrapping mode
+
+--- wrap_mode=(wrap_mode)
+
+    Sets the Word wrapping mode.
+     * wrap_mode: Word wrapping mode
+     * Returns: wrap_mode
+
+== Properties
+
+--- buffer: Gtk::SourceBuffer (Read/Write)
+
+    Gtk::SourceBuffer object to print
+
+--- config: Gnome::PrintConfig (Read/Write)
+
+    Configuration options for the print job
+
+--- font: String (Read/Write)
+
+    Gnome::Font name to use for the document text (deprecated)
+
+--- font-desc: Pango::FontDescription (Read/Write)
+
+    Font to use for the document text (e.g. "Monospace 10")
+
+--- header-footer-font: String (Read/Write)
+
+    Gnome::Font name to use for the header and footer (deprecated)
+
+--- header-footer-font-desc: Pango::FontDescription (Read/Write)
+
+    Font to use for headers and footers (e.g. "Monospace 10")
+
+--- highlight: true or false (Read/Write)
+
+    Whether to print the document with highlighted syntax
+
+--- numbers-font: String (Read/Write)
+
+    Gnome::Font name to use for the line numbers (deprecated)
+
+--- numbers-font-desc: Pango::FontDescription (Read/Write)
+
+    Font description to use for the line numbers
+
+--- print-footer: true or false (Read/Write)
+
+    Whether to print a footer in each page
+
+--- print-header: true or false (Read/Write)
+
+    Whether to print a header in each page
+
+--- print-numbers: Integer (Read/Write)
+
+    Interval of printed line numbers (0 means no numbers)
+
+--- tabs-width: Integer (Read/Write)
+
+    Width in equivalent space characters of tabs
+
+--- wrap-mode: Gtk::WrapMode (Read/Write)
+
+    Word wrapping mode
+
+== Signals
+
+--- begin-page: self
+
+     * self: Gtk::SourcePrintJob: ((*FIXME*))
+
+--- finished: self
+
+     * self: Gtk::SourcePrintJob: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

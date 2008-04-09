@@ -1,0 +1,15 @@
+= class Poppler::SignatureField
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Poppler::FormField
+        * Poppler::SignatureField
+
+== See Also
+
+== ChangeLog
+
+

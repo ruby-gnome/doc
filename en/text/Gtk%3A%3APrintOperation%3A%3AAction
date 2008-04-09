@@ -1,0 +1,20 @@
+= class Gtk::PrintOperation::Action
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * Gtk::PrintOperation::Action
+
+== Constants
+
+--- EXPORT
+--- PREVIEW
+--- PRINT
+--- PRINT_DIALOG
+
+== See Also
+
+== ChangeLog
+
+

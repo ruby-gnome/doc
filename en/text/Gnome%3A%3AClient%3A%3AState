@@ -1,0 +1,23 @@
+= class Gnome::Client::State
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * Gnome::Client::State
+
+== Constants
+
+--- DISCONNECTED
+--- FROZEN
+--- IDLE
+--- REGISTERING
+--- SAVING_PHASE_1
+--- SAVING_PHASE_2
+--- WAITING_FOR_PHASE_2
+
+== See Also
+
+== ChangeLog
+
+

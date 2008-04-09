@@ -1,0 +1,153 @@
+= class Pango::LogAttr
+
+== Object Hierarchy
+
+* Object
+  * GLib::Boxed
+    * Pango::LogAttr
+
+== Class Methods
+
+--- Pango::LogAttr.new
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- backspace_deletes_character=
+
+     * Returns: self: ((*FIXME*))
+
+--- backspace_deletes_character?
+
+     * Returns: self: ((*FIXME*))
+
+--- char_break=
+
+     * Returns: self: ((*FIXME*))
+
+--- char_break?
+
+     * Returns: self: ((*FIXME*))
+
+--- cursor_position=
+
+     * Returns: self: ((*FIXME*))
+
+--- cursor_position?
+
+     * Returns: self: ((*FIXME*))
+
+--- line_break=
+
+     * Returns: self: ((*FIXME*))
+
+--- line_break?
+
+     * Returns: self: ((*FIXME*))
+
+--- mandatory_break=
+
+     * Returns: self: ((*FIXME*))
+
+--- mandatory_break?
+
+     * Returns: self: ((*FIXME*))
+
+--- sentence_boundary=
+
+     * Returns: self: ((*FIXME*))
+
+--- sentence_boundary?
+
+     * Returns: self: ((*FIXME*))
+
+--- sentence_end=
+
+     * Returns: self: ((*FIXME*))
+
+--- sentence_end?
+
+     * Returns: self: ((*FIXME*))
+
+--- sentence_start=
+
+     * Returns: self: ((*FIXME*))
+
+--- sentence_start?
+
+     * Returns: self: ((*FIXME*))
+
+--- set_backspace_deletes_character
+
+     * Returns: self: ((*FIXME*))
+
+--- set_char_break
+
+     * Returns: self: ((*FIXME*))
+
+--- set_cursor_position
+
+     * Returns: self: ((*FIXME*))
+
+--- set_line_break
+
+     * Returns: self: ((*FIXME*))
+
+--- set_mandatory_break
+
+     * Returns: self: ((*FIXME*))
+
+--- set_sentence_boundary
+
+     * Returns: self: ((*FIXME*))
+
+--- set_sentence_end
+
+     * Returns: self: ((*FIXME*))
+
+--- set_sentence_start
+
+     * Returns: self: ((*FIXME*))
+
+--- set_white
+
+     * Returns: self: ((*FIXME*))
+
+--- set_word_end
+
+     * Returns: self: ((*FIXME*))
+
+--- set_word_start
+
+     * Returns: self: ((*FIXME*))
+
+--- white=
+
+     * Returns: self: ((*FIXME*))
+
+--- white?
+
+     * Returns: self: ((*FIXME*))
+
+--- word_end=
+
+     * Returns: self: ((*FIXME*))
+
+--- word_end?
+
+     * Returns: self: ((*FIXME*))
+
+--- word_start=
+
+     * Returns: self: ((*FIXME*))
+
+--- word_start?
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

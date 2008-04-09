@@ -1,0 +1,21 @@
+= module Gnome::Score
+
+== Module Functions
+
+--- Gnome::Score.get_notable
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::Score.init
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::Score.log
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

@@ -1,0 +1,31 @@
+= class Gst::Bus
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Gst::Object
+        * Gst::Bus
+
+== Instance Methods
+
+--- add_watch
+
+     * Returns: self: ((*FIXME*))
+
+== Signals
+
+--- message: self
+
+     * self: Gst::Bus: ((*FIXME*))
+
+--- sync-message: self
+
+     * self: Gst::Bus: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

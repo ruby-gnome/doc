@@ -1,0 +1,18 @@
+= class Gtk::Window::Type
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * Gtk::Window::Type
+
+== Constants
+
+--- POPUP
+--- TOPLEVEL
+
+== See Also
+
+== ChangeLog
+
+

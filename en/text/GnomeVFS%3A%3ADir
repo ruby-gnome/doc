@@ -1,0 +1,96 @@
+= class GnomeVFS::Dir
+
+== Object Hierarchy
+
+* Object
+  * GLib::Boxed
+    * GnomeVFS::Dir
+
+== Included Modules
+
+  * Enumerable
+
+== Class Methods
+
+--- GnomeVFS::Dir.delete
+
+     * Returns: self: ((*FIXME*))
+
+--- GnomeVFS::Dir.entries
+
+     * Returns: self: ((*FIXME*))
+
+--- GnomeVFS::Dir.foreach
+
+     * Returns: self: ((*FIXME*))
+
+--- GnomeVFS::Dir.list_load
+
+     * Returns: self: ((*FIXME*))
+
+--- GnomeVFS::Dir.make_directory
+
+     * Returns: self: ((*FIXME*))
+
+--- GnomeVFS::Dir.mkdir
+
+     * Returns: self: ((*FIXME*))
+
+--- GnomeVFS::Dir.new
+
+     * Returns: self: ((*FIXME*))
+
+--- GnomeVFS::Dir.open
+
+     * Returns: self: ((*FIXME*))
+
+--- GnomeVFS::Dir.remove_directory
+
+     * Returns: self: ((*FIXME*))
+
+--- GnomeVFS::Dir.rmdir
+
+     * Returns: self: ((*FIXME*))
+
+--- GnomeVFS::Dir.unlink
+
+     * Returns: self: ((*FIXME*))
+
+--- GnomeVFS::Dir.visit
+
+     * Returns: self: ((*FIXME*))
+
+--- GnomeVFS::Dir.visit_files
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- close
+
+     * Returns: self: ((*FIXME*))
+
+--- each
+
+     * Returns: self: ((*FIXME*))
+
+--- read
+
+     * Returns: self: ((*FIXME*))
+
+--- read_next
+
+     * Returns: self: ((*FIXME*))
+
+== Constants
+
+--- VISIT_DEFAULT
+--- VISIT_IGNORE_RECURSE_ERROR
+--- VISIT_LOOPCHECK
+--- VISIT_SAMEFS
+
+== See Also
+
+== ChangeLog
+
+

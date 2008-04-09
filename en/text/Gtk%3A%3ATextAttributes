@@ -1,0 +1,241 @@
+= class Gtk::TextAttributes
+
+== Object Hierarchy
+
+* Object
+  * GLib::Boxed
+    * Gtk::TextAttributes
+
+== Class Methods
+
+--- Gtk::TextAttributes.new
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- appearance
+
+     * Returns: self: ((*FIXME*))
+
+--- appearance=
+
+     * Returns: self: ((*FIXME*))
+
+--- bg_full_height=
+
+     * Returns: self: ((*FIXME*))
+
+--- bg_full_height?
+
+     * Returns: self: ((*FIXME*))
+
+--- copy_values
+
+     * Returns: self: ((*FIXME*))
+
+--- direction
+
+     * Returns: self: ((*FIXME*))
+
+--- direction=
+
+     * Returns: self: ((*FIXME*))
+
+--- editable=
+
+     * Returns: self: ((*FIXME*))
+
+--- editable?
+
+     * Returns: self: ((*FIXME*))
+
+--- font
+
+     * Returns: self: ((*FIXME*))
+
+--- font=
+
+     * Returns: self: ((*FIXME*))
+
+--- font_scale
+
+     * Returns: self: ((*FIXME*))
+
+--- font_scale=
+
+     * Returns: self: ((*FIXME*))
+
+--- indent
+
+     * Returns: self: ((*FIXME*))
+
+--- indent=
+
+     * Returns: self: ((*FIXME*))
+
+--- invisible=
+
+     * Returns: self: ((*FIXME*))
+
+--- invisible?
+
+     * Returns: self: ((*FIXME*))
+
+--- justification
+
+     * Returns: self: ((*FIXME*))
+
+--- justification=
+
+     * Returns: self: ((*FIXME*))
+
+--- language
+
+     * Returns: self: ((*FIXME*))
+
+--- language=
+
+     * Returns: self: ((*FIXME*))
+
+--- left_margin
+
+     * Returns: self: ((*FIXME*))
+
+--- left_margin=
+
+     * Returns: self: ((*FIXME*))
+
+--- pixels_above_lines
+
+     * Returns: self: ((*FIXME*))
+
+--- pixels_above_lines=
+
+     * Returns: self: ((*FIXME*))
+
+--- pixels_below_lines
+
+     * Returns: self: ((*FIXME*))
+
+--- pixels_below_lines=
+
+     * Returns: self: ((*FIXME*))
+
+--- pixels_inside_wrap
+
+     * Returns: self: ((*FIXME*))
+
+--- pixels_inside_wrap=
+
+     * Returns: self: ((*FIXME*))
+
+--- realized=
+
+     * Returns: self: ((*FIXME*))
+
+--- realized?
+
+     * Returns: self: ((*FIXME*))
+
+--- right_margin
+
+     * Returns: self: ((*FIXME*))
+
+--- right_margin=
+
+     * Returns: self: ((*FIXME*))
+
+--- set_appearance
+
+     * Returns: self: ((*FIXME*))
+
+--- set_bg_full_height
+
+     * Returns: self: ((*FIXME*))
+
+--- set_direction
+
+     * Returns: self: ((*FIXME*))
+
+--- set_editable
+
+     * Returns: self: ((*FIXME*))
+
+--- set_font
+
+     * Returns: self: ((*FIXME*))
+
+--- set_font_scale
+
+     * Returns: self: ((*FIXME*))
+
+--- set_indent
+
+     * Returns: self: ((*FIXME*))
+
+--- set_invisible
+
+     * Returns: self: ((*FIXME*))
+
+--- set_justification
+
+     * Returns: self: ((*FIXME*))
+
+--- set_language
+
+     * Returns: self: ((*FIXME*))
+
+--- set_left_margin
+
+     * Returns: self: ((*FIXME*))
+
+--- set_pixels_above_lines
+
+     * Returns: self: ((*FIXME*))
+
+--- set_pixels_below_lines
+
+     * Returns: self: ((*FIXME*))
+
+--- set_pixels_inside_wrap
+
+     * Returns: self: ((*FIXME*))
+
+--- set_realized
+
+     * Returns: self: ((*FIXME*))
+
+--- set_right_margin
+
+     * Returns: self: ((*FIXME*))
+
+--- set_tabs
+
+     * Returns: self: ((*FIXME*))
+
+--- set_wrap_mode
+
+     * Returns: self: ((*FIXME*))
+
+--- tabs
+
+     * Returns: self: ((*FIXME*))
+
+--- tabs=
+
+     * Returns: self: ((*FIXME*))
+
+--- wrap_mode
+
+     * Returns: self: ((*FIXME*))
+
+--- wrap_mode=
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

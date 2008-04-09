@@ -1,0 +1,19 @@
+= class Gst::Pad::Presence
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * Gst::Pad::Presence
+
+== Constants
+
+--- ALWAYS
+--- REQUEST
+--- SOMETIMES
+
+== See Also
+
+== ChangeLog
+
+

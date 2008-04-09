@@ -1,0 +1,34 @@
+= class Gst::Buffer::CopyFlags
+
+== Object Hierarchy
+
+* Object
+  * GLib::Flags
+    * Gst::Buffer::CopyFlags
+
+== Instance Methods
+
+--- caps?
+
+     * Returns: self: ((*FIXME*))
+
+--- flags?
+
+     * Returns: self: ((*FIXME*))
+
+--- timestamps?
+
+     * Returns: self: ((*FIXME*))
+
+== Constants
+
+--- ALL
+--- CAPS
+--- FLAGS
+--- TIMESTAMPS
+
+== See Also
+
+== ChangeLog
+
+

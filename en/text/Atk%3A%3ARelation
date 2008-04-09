@@ -1,0 +1,90 @@
+= class Atk::Relation
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Atk::Relation
+
+== Class Methods
+
+--- Atk::Relation.new
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- add_target
+
+     * Returns: self: ((*FIXME*))
+
+--- relation_type
+
+    Gets the type of the relation.
+     * Returns: The type of the relation
+
+--- relation_type=(relation_type)
+
+    Sets the type of the relation.
+     * relation_type: The type of the relation
+     * Returns: relation_type
+
+--- set_relation_type(relation_type)
+
+    Same as relation_type=.
+     * relation_type: The type of the relation
+     * Returns: self
+
+--- set_target(target)
+
+    Same as target=.
+     * target: An array of the targets for the relation
+     * Returns: self
+
+--- target
+
+    Gets the An array of the targets for the relation.
+     * Returns: An array of the targets for the relation
+
+--- target=(target)
+
+    Sets the An array of the targets for the relation.
+     * target: An array of the targets for the relation
+     * Returns: target
+
+== Constants
+
+--- RELATION_CONTROLLED_BY
+--- RELATION_CONTROLLER_FOR
+--- RELATION_DESCRIBED_BY
+--- RELATION_DESCRIPTION_FOR
+--- RELATION_EMBEDDED_BY
+--- RELATION_EMBEDS
+--- RELATION_FLOWS_FROM
+--- RELATION_FLOWS_TO
+--- RELATION_LABELLED_BY
+--- RELATION_LABEL_FOR
+--- RELATION_LAST_DEFINED
+--- RELATION_MEMBER_OF
+--- RELATION_NODE_CHILD_OF
+--- RELATION_NULL
+--- RELATION_PARENT_WINDOW_OF
+--- RELATION_POPUP_FOR
+--- RELATION_SUBWINDOW_OF
+
+== Properties
+
+--- relation-type: Atk::RelationType (Read/Write)
+
+    The type of the relation
+
+--- target: Array (Read/Write)
+
+    An array of the targets for the relation
+
+== See Also
+
+== ChangeLog
+
+

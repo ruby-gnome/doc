@@ -1,0 +1,21 @@
+= module GLib::Idle
+
+== Module Functions
+
+--- GLib::Idle.add
+
+     * Returns: self: ((*FIXME*))
+
+--- GLib::Idle.remove
+
+     * Returns: self: ((*FIXME*))
+
+--- GLib::Idle.source_new
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

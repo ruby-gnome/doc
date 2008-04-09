@@ -1,0 +1,19 @@
+= class Gst::Index::ResolverMethod
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * Gst::Index::ResolverMethod
+
+== Constants
+
+--- CUSTOM
+--- GTYPE
+--- PATH
+
+== See Also
+
+== ChangeLog
+
+

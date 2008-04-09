@@ -1,0 +1,159 @@
+= module GnomeVFS::Mime
+
+== Module Functions
+
+--- GnomeVFS::Mime.add_application_to_short_list
+
+     * Returns: self: ((*FIXME*))
+
+--- GnomeVFS::Mime.add_component_to_short_list
+
+     * Returns: self: ((*FIXME*))
+
+--- GnomeVFS::Mime.add_extension
+
+     * Returns: self: ((*FIXME*))
+
+--- GnomeVFS::Mime.can_be_executable?
+
+     * Returns: self: ((*FIXME*))
+
+--- GnomeVFS::Mime.extend_all_applications
+
+     * Returns: self: ((*FIXME*))
+
+--- GnomeVFS::Mime.get_all_applications
+
+     * Returns: self: ((*FIXME*))
+
+--- GnomeVFS::Mime.get_default_action_type
+
+     * Returns: self: ((*FIXME*))
+
+--- GnomeVFS::Mime.get_default_application
+
+     * Returns: self: ((*FIXME*))
+
+--- GnomeVFS::Mime.get_description
+
+     * Returns: self: ((*FIXME*))
+
+--- GnomeVFS::Mime.get_extensions_list
+
+     * Returns: self: ((*FIXME*))
+
+--- GnomeVFS::Mime.get_extensions_pretty_string
+
+     * Returns: self: ((*FIXME*))
+
+--- GnomeVFS::Mime.get_extensions_string
+
+     * Returns: self: ((*FIXME*))
+
+--- GnomeVFS::Mime.get_icon
+
+     * Returns: self: ((*FIXME*))
+
+--- GnomeVFS::Mime.get_key_list
+
+     * Returns: self: ((*FIXME*))
+
+--- GnomeVFS::Mime.get_short_list_applications
+
+     * Returns: self: ((*FIXME*))
+
+--- GnomeVFS::Mime.get_value
+
+     * Returns: self: ((*FIXME*))
+
+--- GnomeVFS::Mime.info_reload
+
+     * Returns: self: ((*FIXME*))
+
+--- GnomeVFS::Mime.registered_mime_type_delete
+
+     * Returns: self: ((*FIXME*))
+
+--- GnomeVFS::Mime.remove_application_to_short_list
+
+     * Returns: self: ((*FIXME*))
+
+--- GnomeVFS::Mime.remove_component_to_short_list
+
+     * Returns: self: ((*FIXME*))
+
+--- GnomeVFS::Mime.remove_extension
+
+     * Returns: self: ((*FIXME*))
+
+--- GnomeVFS::Mime.remove_from_all_applications
+
+     * Returns: self: ((*FIXME*))
+
+--- GnomeVFS::Mime.reset
+
+     * Returns: self: ((*FIXME*))
+
+--- GnomeVFS::Mime.set_can_be_executable
+
+     * Returns: self: ((*FIXME*))
+
+--- GnomeVFS::Mime.set_default_action_type
+
+     * Returns: self: ((*FIXME*))
+
+--- GnomeVFS::Mime.set_default_application
+
+     * Returns: self: ((*FIXME*))
+
+--- GnomeVFS::Mime.set_default_component
+
+     * Returns: self: ((*FIXME*))
+
+--- GnomeVFS::Mime.set_description
+
+     * Returns: self: ((*FIXME*))
+
+--- GnomeVFS::Mime.set_extensions_list
+
+     * Returns: self: ((*FIXME*))
+
+--- GnomeVFS::Mime.set_icon
+
+     * Returns: self: ((*FIXME*))
+
+--- GnomeVFS::Mime.set_registered_type_key
+
+     * Returns: self: ((*FIXME*))
+
+--- GnomeVFS::Mime.set_short_list_applications
+
+     * Returns: self: ((*FIXME*))
+
+--- GnomeVFS::Mime.set_short_list_components
+
+     * Returns: self: ((*FIXME*))
+
+--- GnomeVFS::Mime.set_value
+
+     * Returns: self: ((*FIXME*))
+
+--- GnomeVFS::Mime.thaw
+
+     * Returns: self: ((*FIXME*))
+
+--- GnomeVFS::Mime.type_is_known?
+
+     * Returns: self: ((*FIXME*))
+
+== Constants
+
+--- ACTION_TYPE_APPLICATION
+--- ACTION_TYPE_COMPONENT
+--- ACTION_TYPE_NONE
+
+== See Also
+
+== ChangeLog
+
+

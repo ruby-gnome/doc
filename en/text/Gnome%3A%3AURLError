@@ -1,0 +1,35 @@
+= class Gnome::URLError
+
+== Object Hierarchy
+
+* Object
+  * Exception
+    * StandardError
+      * RuntimeError
+        * Gnome::URLError
+
+== Instance Methods
+
+--- code
+
+     * Returns: self: ((*FIXME*))
+
+--- domain
+
+     * Returns: self: ((*FIXME*))
+
+== Constants
+
+--- CANCELLED
+--- LAUNCH
+--- NOT_SUPPORTED
+--- NO_DEFAULT
+--- PARSE
+--- URL
+--- VFS
+
+== See Also
+
+== ChangeLog
+
+

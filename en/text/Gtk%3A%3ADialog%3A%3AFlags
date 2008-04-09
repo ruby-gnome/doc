@@ -1,0 +1,33 @@
+= class Gtk::Dialog::Flags
+
+== Object Hierarchy
+
+* Object
+  * GLib::Flags
+    * Gtk::Dialog::Flags
+
+== Instance Methods
+
+--- destroy_with_parent?
+
+     * Returns: self: ((*FIXME*))
+
+--- modal?
+
+     * Returns: self: ((*FIXME*))
+
+--- no_separator?
+
+     * Returns: self: ((*FIXME*))
+
+== Constants
+
+--- DESTROY_WITH_PARENT
+--- MODAL
+--- NO_SEPARATOR
+
+== See Also
+
+== ChangeLog
+
+

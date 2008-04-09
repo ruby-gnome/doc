@@ -1,0 +1,37 @@
+= class GLib::MainLoop
+
+== Object Hierarchy
+
+* Object
+  * GLib::Boxed
+    * GLib::MainLoop
+
+== Class Methods
+
+--- GLib::MainLoop.new
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- context
+
+     * Returns: self: ((*FIXME*))
+
+--- quit
+
+     * Returns: self: ((*FIXME*))
+
+--- run
+
+     * Returns: self: ((*FIXME*))
+
+--- running?
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

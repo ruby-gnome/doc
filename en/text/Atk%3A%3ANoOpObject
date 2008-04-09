@@ -1,0 +1,448 @@
+= class Atk::NoOpObject
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Atk::Object
+        * Atk::NoOpObject
+
+== Included Modules
+
+  * Atk::Action
+  * Atk::Component
+  * Atk::Document
+  * Atk::EditableText
+  * Atk::Hypertext
+  * Atk::Image
+  * Atk::Selection
+  * Atk::Table
+  * Atk::Text
+  * Atk::Value
+
+== Class Methods
+
+--- Atk::NoOpObject.new
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- []
+
+    See Atk::Document#[].
+
+--- []=
+
+    See Atk::Document#[]=.
+
+--- add_column_selection
+
+    See Atk::Table#add_column_selection.
+
+--- add_row_selection
+
+    See Atk::Table#add_row_selection.
+
+--- add_selection
+
+    See Atk::Text#add_selection.
+
+--- alpha
+
+    See Atk::Component#alpha.
+
+--- attributes
+
+    See Atk::Document#attributes.
+
+--- caption
+
+    See Atk::Table#caption.
+
+--- caption=
+
+    See Atk::Table#caption=.
+
+--- caret_offset
+
+    See Atk::Text#caret_offset.
+
+--- caret_offset=
+
+    See Atk::Text#caret_offset=.
+
+--- character_count
+
+    See Atk::Text#character_count.
+
+--- child_selected?
+
+    See Atk::Selection#child_selected?.
+
+--- clear_selection
+
+    See Atk::Selection#clear_selection.
+
+--- column_selected?
+
+    See Atk::Table#column_selected?.
+
+--- contains?
+
+    See Atk::Component#contains?.
+
+--- copy_text
+
+    See Atk::EditableText#copy_text.
+
+--- current
+
+    See Atk::Value#current.
+
+--- current=
+
+    See Atk::Value#current=.
+
+--- cut_text
+
+    See Atk::EditableText#cut_text.
+
+--- default_attributes
+
+    See Atk::Text#default_attributes.
+
+--- delete_text
+
+    See Atk::EditableText#delete_text.
+
+--- do_action
+
+    See Atk::Action#do_action.
+
+--- document_type
+
+    See Atk::Document#document_type.
+
+--- get_attribute_value
+
+    See Atk::Document#get_attribute_value.
+
+--- get_bounded_ranges
+
+    See Atk::Text#get_bounded_ranges.
+
+--- get_character_at_offset
+
+    See Atk::Text#get_character_at_offset.
+
+--- get_character_extents
+
+    See Atk::Text#get_character_extents.
+
+--- get_column_at_index
+
+    See Atk::Table#get_column_at_index.
+
+--- get_column_description
+
+    See Atk::Table#get_column_description.
+
+--- get_column_extent_at
+
+    See Atk::Table#get_column_extent_at.
+
+--- get_column_header
+
+    See Atk::Table#get_column_header.
+
+--- get_description
+
+    See Atk::Action#get_description.
+
+--- get_extents
+
+    See Atk::Component#get_extents.
+
+--- get_index_at
+
+    See Atk::Table#get_index_at.
+
+--- get_keybinding
+
+    See Atk::Action#get_keybinding.
+
+--- get_link
+
+    See Atk::Hypertext#get_link.
+
+--- get_localized_name
+
+    See Atk::Action#get_localized_name.
+
+--- get_name
+
+    See Atk::Action#get_name.
+
+--- get_offset_at_point
+
+    See Atk::Text#get_offset_at_point.
+
+--- get_range_extents
+
+    See Atk::Text#get_range_extents.
+
+--- get_row_at_index
+
+    See Atk::Table#get_row_at_index.
+
+--- get_row_description
+
+    See Atk::Table#get_row_description.
+
+--- get_row_extent_at
+
+    See Atk::Table#get_row_extent_at.
+
+--- get_row_header
+
+    See Atk::Table#get_row_header.
+
+--- get_run_attributes
+
+    See Atk::Text#get_run_attributes.
+
+--- get_selection
+
+    See Atk::Text#get_selection.
+
+--- get_text
+
+    See Atk::Text#get_text.
+
+--- get_text_after_offset
+
+    See Atk::Text#get_text_after_offset.
+
+--- get_text_at_offset
+
+    See Atk::Text#get_text_at_offset.
+
+--- get_text_before_offset
+
+    See Atk::Text#get_text_before_offset.
+
+--- grab_focus
+
+    See Atk::Component#grab_focus.
+
+--- image_description
+
+    See Atk::Image#image_description.
+
+--- image_description=
+
+    See Atk::Image#image_description=.
+
+--- image_position
+
+    See Atk::Image#image_position.
+
+--- image_size
+
+    See Atk::Image#image_size.
+
+--- insert_text
+
+    See Atk::EditableText#insert_text.
+
+--- layer
+
+    See Atk::Component#layer.
+
+--- link_index
+
+    See Atk::Hypertext#link_index.
+
+--- locale
+
+    See Atk::Document#locale.
+
+--- max
+
+    See Atk::Value#max.
+
+--- min
+
+    See Atk::Value#min.
+
+--- n_actions
+
+    See Atk::Action#n_actions.
+
+--- n_columns
+
+    See Atk::Table#n_columns.
+
+--- n_links
+
+    See Atk::Hypertext#n_links.
+
+--- n_rows
+
+    See Atk::Table#n_rows.
+
+--- n_selections
+
+    See Atk::Text#n_selections.
+
+--- paste_text
+
+    See Atk::EditableText#paste_text.
+
+--- position
+
+    See Atk::Component#position.
+
+--- ref_accessible_at_point
+
+    See Atk::Component#ref_accessible_at_point.
+
+--- ref_at
+
+    See Atk::Table#ref_at.
+
+--- ref_selection
+
+    See Atk::Selection#ref_selection.
+
+--- remove_column_selection
+
+    See Atk::Table#remove_column_selection.
+
+--- remove_focus_handler
+
+    See Atk::Component#remove_focus_handler.
+
+--- remove_row_selection
+
+    See Atk::Table#remove_row_selection.
+
+--- remove_selection
+
+    See Atk::Text#remove_selection.
+
+--- row_selected?
+
+    See Atk::Table#row_selected?.
+
+--- select_all_selection
+
+    See Atk::Selection#select_all_selection.
+
+--- selected?
+
+    See Atk::Table#selected?.
+
+--- selected_columns
+
+    See Atk::Table#selected_columns.
+
+--- selected_rows
+
+    See Atk::Table#selected_rows.
+
+--- selection_count
+
+    See Atk::Selection#selection_count.
+
+--- set_attribute_value
+
+    See Atk::Document#set_attribute_value.
+
+--- set_caption
+
+    See Atk::Table#set_caption.
+
+--- set_caret_offset
+
+    See Atk::Text#set_caret_offset.
+
+--- set_column_description
+
+    See Atk::Table#set_column_description.
+
+--- set_column_header
+
+    See Atk::Table#set_column_header.
+
+--- set_current
+
+    See Atk::Value#set_current.
+
+--- set_description
+
+    See Atk::Action#set_description.
+
+--- set_extents
+
+    See Atk::Component#set_extents.
+
+--- set_image_description
+
+    See Atk::Image#set_image_description.
+
+--- set_position
+
+    See Atk::Component#set_position.
+
+--- set_row_description
+
+    See Atk::Table#set_row_description.
+
+--- set_row_header
+
+    See Atk::Table#set_row_header.
+
+--- set_run_attributes
+
+    See Atk::EditableText#set_run_attributes.
+
+--- set_selection
+
+    See Atk::Text#set_selection.
+
+--- set_size
+
+    See Atk::Component#set_size.
+
+--- set_summary
+
+    See Atk::Table#set_summary.
+
+--- set_text_contents
+
+    See Atk::EditableText#set_text_contents.
+
+--- size
+
+    See Atk::Component#size.
+
+--- summary
+
+    See Atk::Table#summary.
+
+--- summary=
+
+    See Atk::Table#summary=.
+
+--- text_contents=
+
+    See Atk::EditableText#text_contents=.
+
+== See Also
+
+== ChangeLog
+
+

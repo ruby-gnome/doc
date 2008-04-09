@@ -1,0 +1,13 @@
+= class Bonobo::DockLayoutItem
+
+== Object Hierarchy
+
+* Object
+  * Data
+    * Bonobo::DockLayoutItem
+
+== See Also
+
+== ChangeLog
+
+

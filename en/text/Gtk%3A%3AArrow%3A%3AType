@@ -1,0 +1,21 @@
+= class Gtk::Arrow::Type
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * Gtk::Arrow::Type
+
+== Constants
+
+--- DOWN
+--- LEFT
+--- NONE
+--- RIGHT
+--- UP
+
+== See Also
+
+== ChangeLog
+
+

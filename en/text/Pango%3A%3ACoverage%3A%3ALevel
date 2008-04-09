@@ -1,0 +1,20 @@
+= class Pango::Coverage::Level
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * Pango::Coverage::Level
+
+== Constants
+
+--- APPROXIMATE
+--- EXACT
+--- FALLBACK
+--- NONE
+
+== See Also
+
+== ChangeLog
+
+

@@ -1,0 +1,41 @@
+= class Gnome::CanvasPolygon
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::InitiallyUnowned
+        * Gtk::Object
+          * Gnome::CanvasItem
+            * Gnome::CanvasShape
+              * Gnome::CanvasPolygon
+
+== Instance Methods
+
+--- points
+
+    Gets the points.
+     * Returns: ((*FIXME*))
+
+--- points=(points)
+
+    Sets the points.
+     * points: ((*FIXME*))
+     * Returns: points
+
+--- set_points(points)
+
+    Same as points=.
+     * points: ((*FIXME*))
+     * Returns: self
+
+== Properties
+
+--- points: Gnome::CanvasPoints (Read/Write)
+
+== See Also
+
+== ChangeLog
+
+

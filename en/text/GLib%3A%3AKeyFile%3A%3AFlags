@@ -1,0 +1,33 @@
+= class GLib::KeyFile::Flags
+
+== Object Hierarchy
+
+* Object
+  * GLib::Flags
+    * GLib::KeyFile::Flags
+
+== Instance Methods
+
+--- keep_comments?
+
+     * Returns: self: ((*FIXME*))
+
+--- keep_translations?
+
+     * Returns: self: ((*FIXME*))
+
+--- none?
+
+     * Returns: self: ((*FIXME*))
+
+== Constants
+
+--- KEEP_COMMENTS
+--- KEEP_TRANSLATIONS
+--- NONE
+
+== See Also
+
+== ChangeLog
+
+

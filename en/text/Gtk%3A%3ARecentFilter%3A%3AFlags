@@ -1,0 +1,48 @@
+= class Gtk::RecentFilter::Flags
+
+== Object Hierarchy
+
+* Object
+  * GLib::Flags
+    * Gtk::RecentFilter::Flags
+
+== Instance Methods
+
+--- age?
+
+     * Returns: self: ((*FIXME*))
+
+--- application?
+
+     * Returns: self: ((*FIXME*))
+
+--- display_name?
+
+     * Returns: self: ((*FIXME*))
+
+--- group?
+
+     * Returns: self: ((*FIXME*))
+
+--- mime_type?
+
+     * Returns: self: ((*FIXME*))
+
+--- uri?
+
+     * Returns: self: ((*FIXME*))
+
+== Constants
+
+--- AGE
+--- APPLICATION
+--- DISPLAY_NAME
+--- GROUP
+--- MIME_TYPE
+--- URI
+
+== See Also
+
+== ChangeLog
+
+

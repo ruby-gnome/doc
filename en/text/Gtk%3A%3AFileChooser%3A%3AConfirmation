@@ -1,0 +1,19 @@
+= class Gtk::FileChooser::Confirmation
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * Gtk::FileChooser::Confirmation
+
+== Constants
+
+--- ACCEPT_FILENAME
+--- CONFIRM
+--- SELECT_AGAIN
+
+== See Also
+
+== ChangeLog
+
+

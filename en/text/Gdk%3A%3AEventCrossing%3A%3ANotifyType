@@ -1,0 +1,22 @@
+= class Gdk::EventCrossing::NotifyType
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * Gdk::EventCrossing::NotifyType
+
+== Constants
+
+--- ANCESTOR
+--- INFERIOR
+--- NONLINEAR
+--- NONLINEAR_VIRTUAL
+--- UNKNOWN
+--- VIRTUAL
+
+== See Also
+
+== ChangeLog
+
+

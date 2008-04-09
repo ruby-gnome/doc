@@ -1,0 +1,41 @@
+= module Atk::Action
+
+== Included Modules
+
+  * GLib::Interface
+
+== Instance Methods
+
+--- do_action
+
+     * Returns: self: ((*FIXME*))
+
+--- get_description
+
+     * Returns: self: ((*FIXME*))
+
+--- get_keybinding
+
+     * Returns: self: ((*FIXME*))
+
+--- get_localized_name
+
+     * Returns: self: ((*FIXME*))
+
+--- get_name
+
+     * Returns: self: ((*FIXME*))
+
+--- n_actions
+
+     * Returns: self: ((*FIXME*))
+
+--- set_description
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

@@ -1,0 +1,154 @@
+= module Atk::Text
+
+== Included Modules
+
+  * GLib::Interface
+
+== Instance Methods
+
+--- add_selection
+
+     * Returns: self: ((*FIXME*))
+
+--- caret_offset
+
+     * Returns: self: ((*FIXME*))
+
+--- caret_offset=
+
+     * Returns: self: ((*FIXME*))
+
+--- character_count
+
+     * Returns: self: ((*FIXME*))
+
+--- default_attributes
+
+     * Returns: self: ((*FIXME*))
+
+--- get_bounded_ranges
+
+     * Returns: self: ((*FIXME*))
+
+--- get_character_at_offset
+
+     * Returns: self: ((*FIXME*))
+
+--- get_character_extents
+
+     * Returns: self: ((*FIXME*))
+
+--- get_offset_at_point
+
+     * Returns: self: ((*FIXME*))
+
+--- get_range_extents
+
+     * Returns: self: ((*FIXME*))
+
+--- get_run_attributes
+
+     * Returns: self: ((*FIXME*))
+
+--- get_selection
+
+     * Returns: self: ((*FIXME*))
+
+--- get_text
+
+     * Returns: self: ((*FIXME*))
+
+--- get_text_after_offset
+
+     * Returns: self: ((*FIXME*))
+
+--- get_text_at_offset
+
+     * Returns: self: ((*FIXME*))
+
+--- get_text_before_offset
+
+     * Returns: self: ((*FIXME*))
+
+--- n_selections
+
+     * Returns: self: ((*FIXME*))
+
+--- remove_selection
+
+     * Returns: self: ((*FIXME*))
+
+--- set_caret_offset
+
+     * Returns: self: ((*FIXME*))
+
+--- set_selection
+
+     * Returns: self: ((*FIXME*))
+
+== Constants
+
+--- ATTR_BG_COLOR
+--- ATTR_BG_FULL_HEIGHT
+--- ATTR_BG_STIPPLE
+--- ATTR_DIRECTION
+--- ATTR_EDITABLE
+--- ATTR_FAMILY_NAME
+--- ATTR_FG_COLOR
+--- ATTR_FG_STIPPLE
+--- ATTR_INDENT
+--- ATTR_INVALID
+--- ATTR_INVISIBLE
+--- ATTR_JUSTIFICATION
+--- ATTR_LANGUAGE
+--- ATTR_LAST_DEFINED
+--- ATTR_LEFT_MARGIN
+--- ATTR_PIXELS_ABOVE_LINES
+--- ATTR_PIXELS_BELOW_LINES
+--- ATTR_PIXELS_INSIDE_WRAP
+--- ATTR_RIGHT_MARGIN
+--- ATTR_RISE
+--- ATTR_SCALE
+--- ATTR_SIZE
+--- ATTR_STRETCH
+--- ATTR_STRIKETHROUGH
+--- ATTR_STYLE
+--- ATTR_UNDERLINE
+--- ATTR_VARIANT
+--- ATTR_WEIGHT
+--- ATTR_WRAP_MODE
+--- BOUNDARY_CHAR
+--- BOUNDARY_LINE_END
+--- BOUNDARY_LINE_START
+--- BOUNDARY_SENTENCE_END
+--- BOUNDARY_SENTENCE_START
+--- BOUNDARY_WORD_END
+--- BOUNDARY_WORD_START
+--- CLIP_BOTH
+--- CLIP_MAX
+--- CLIP_MIN
+--- CLIP_NONE
+
+== Signals
+
+--- text-attributes-changed: self
+
+     * self: Atk::Text: ((*FIXME*))
+
+--- text-caret-moved: self
+
+     * self: Atk::Text: ((*FIXME*))
+
+--- text-changed: self
+
+     * self: Atk::Text: ((*FIXME*))
+
+--- text-selection-changed: self
+
+     * self: Atk::Text: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

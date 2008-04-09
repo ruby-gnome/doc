@@ -1,0 +1,17 @@
+= class Pango::TabArray::TabAlign
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * Pango::TabArray::TabAlign
+
+== Constants
+
+--- LEFT
+
+== See Also
+
+== ChangeLog
+
+

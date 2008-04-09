@@ -1,0 +1,68 @@
+= class Gnome::IconSelection
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::InitiallyUnowned
+        * Gtk::Object
+          * Gtk::Widget
+            * Gtk::Container
+              * Gtk::Box
+                * Gtk::VBox
+                  * Gnome::IconSelection
+
+== Class Methods
+
+--- Gnome::IconSelection.new
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- add_defaults
+
+     * Returns: self: ((*FIXME*))
+
+--- add_directory
+
+     * Returns: self: ((*FIXME*))
+
+--- box
+
+     * Returns: self: ((*FIXME*))
+
+--- clear
+
+     * Returns: self: ((*FIXME*))
+
+--- get_icon
+
+     * Returns: self: ((*FIXME*))
+
+--- gil
+
+     * Returns: self: ((*FIXME*))
+
+--- ref_accessible
+
+    See Atk::Implementor#ref_accessible.
+
+--- select_icon
+
+     * Returns: self: ((*FIXME*))
+
+--- show_icons
+
+     * Returns: self: ((*FIXME*))
+
+--- stop_loading
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

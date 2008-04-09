@@ -1,0 +1,111 @@
+= class Gdk::Device
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Gdk::Device
+
+== Class Methods
+
+--- Gdk::Device.core_pointer
+
+     * Returns: self: ((*FIXME*))
+
+--- Gdk::Device.list
+
+     * Returns: self: ((*FIXME*))
+
+--- Gdk::Device.set_extension_events
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- axes
+
+     * Returns: self: ((*FIXME*))
+
+--- get_axis
+
+     * Returns: self: ((*FIXME*))
+
+--- get_history
+
+     * Returns: self: ((*FIXME*))
+
+--- get_state
+
+     * Returns: self: ((*FIXME*))
+
+--- has_cursor?
+
+     * Returns: self: ((*FIXME*))
+
+--- keys
+
+     * Returns: self: ((*FIXME*))
+
+--- mode
+
+     * Returns: self: ((*FIXME*))
+
+--- mode=
+
+     * Returns: self: ((*FIXME*))
+
+--- name
+
+     * Returns: self: ((*FIXME*))
+
+--- set_axis_use
+
+     * Returns: self: ((*FIXME*))
+
+--- set_key
+
+     * Returns: self: ((*FIXME*))
+
+--- set_mode
+
+     * Returns: self: ((*FIXME*))
+
+--- set_source
+
+     * Returns: self: ((*FIXME*))
+
+--- source
+
+     * Returns: self: ((*FIXME*))
+
+--- source=
+
+     * Returns: self: ((*FIXME*))
+
+== Constants
+
+--- AXIS_IGNORE
+--- AXIS_LAST
+--- AXIS_PRESSURE
+--- AXIS_WHEEL
+--- AXIS_X
+--- AXIS_XTILT
+--- AXIS_Y
+--- AXIS_YTILT
+--- EXTENSION_EVENTS_ALL
+--- EXTENSION_EVENTS_CURSOR
+--- EXTENSION_EVENTS_NONE
+--- MODE_DISABLED
+--- MODE_SCREEN
+--- MODE_WINDOW
+--- SOURCE_CURSOR
+--- SOURCE_ERASER
+--- SOURCE_MOUSE
+--- SOURCE_PEN
+
+== See Also
+
+== ChangeLog
+
+

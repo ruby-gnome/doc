@@ -1,0 +1,36 @@
+= class GLib::BookmarkFileError
+
+== Object Hierarchy
+
+* Object
+  * Exception
+    * StandardError
+      * RuntimeError
+        * GLib::BookmarkFileError
+
+== Instance Methods
+
+--- code
+
+     * Returns: self: ((*FIXME*))
+
+--- domain
+
+     * Returns: self: ((*FIXME*))
+
+== Constants
+
+--- APP_NOT_REGISTERED
+--- FILE_NOT_FOUND
+--- INVALID_URI
+--- INVALID_VALUE
+--- READ
+--- UNKNOWN_ENCODING
+--- URI_NOT_FOUND
+--- WRITE
+
+== See Also
+
+== ChangeLog
+
+

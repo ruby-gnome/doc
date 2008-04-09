@@ -1,0 +1,24 @@
+= class Gtk::DeleteType
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * Gtk::DeleteType
+
+== Constants
+
+--- CHARS
+--- DISPLAY_LINES
+--- DISPLAY_LINE_ENDS
+--- PARAGRAPHS
+--- PARAGRAPH_ENDS
+--- WHITESPACE
+--- WORDS
+--- WORD_ENDS
+
+== See Also
+
+== ChangeLog
+
+

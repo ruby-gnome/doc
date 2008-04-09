@@ -1,0 +1,112 @@
+= class Atk::Hyperlink
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Atk::Hyperlink
+
+== Included Modules
+
+  * Atk::Action
+
+== Instance Methods
+
+--- do_action
+
+    See Atk::Action#do_action.
+
+--- end_index
+
+    Gets the end index of the Atk::Hyperlink object.
+     * Returns: The end index of the Atk::Hyperlink object
+
+--- get_description
+
+    See Atk::Action#get_description.
+
+--- get_keybinding
+
+    See Atk::Action#get_keybinding.
+
+--- get_localized_name
+
+    See Atk::Action#get_localized_name.
+
+--- get_name
+
+    See Atk::Action#get_name.
+
+--- get_object
+
+     * Returns: self: ((*FIXME*))
+
+--- get_uri
+
+     * Returns: self: ((*FIXME*))
+
+--- inline?
+
+     * Returns: self: ((*FIXME*))
+
+--- n_actions
+
+    See Atk::Action#n_actions.
+
+--- n_anchors
+
+     * Returns: self: ((*FIXME*))
+
+--- number_of_anchors
+
+    Gets the number of anchors associated with the Atk::Hyperlink object.
+     * Returns: The number of anchors associated with the Atk::Hyperlink object
+
+--- selected_link?
+
+    Gets the Specifies whether the Atk::Hyperlink object is selected.
+     * Returns: Specifies whether the Atk::Hyperlink object is selected
+
+--- set_description
+
+    See Atk::Action#set_description.
+
+--- start_index
+
+    Gets the start index of the Atk::Hyperlink object.
+     * Returns: The start index of the Atk::Hyperlink object
+
+--- valid?
+
+     * Returns: self: ((*FIXME*))
+
+== Properties
+
+--- end-index: Integer (Read)
+
+    The end index of the Atk::Hyperlink object
+
+--- number-of-anchors: Integer (Read)
+
+    The number of anchors associated with the Atk::Hyperlink object
+
+--- selected-link: true or false (Read)
+
+    Specifies whether the Atk::Hyperlink object is selected
+
+--- start-index: Integer (Read)
+
+    The start index of the Atk::Hyperlink object
+
+== Signals
+
+--- link-activated: self
+
+     * self: Atk::Hyperlink: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

@@ -1,0 +1,38 @@
+= class Gtk::RC::Flags
+
+== Object Hierarchy
+
+* Object
+  * GLib::Flags
+    * Gtk::RC::Flags
+
+== Instance Methods
+
+--- base?
+
+     * Returns: self: ((*FIXME*))
+
+--- bg?
+
+     * Returns: self: ((*FIXME*))
+
+--- fg?
+
+     * Returns: self: ((*FIXME*))
+
+--- text?
+
+     * Returns: self: ((*FIXME*))
+
+== Constants
+
+--- BASE
+--- BG
+--- FG
+--- TEXT
+
+== See Also
+
+== ChangeLog
+
+

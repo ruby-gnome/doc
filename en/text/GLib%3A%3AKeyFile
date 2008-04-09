@@ -1,0 +1,175 @@
+= class GLib::KeyFile
+
+== Object Hierarchy
+
+* Object
+  * GLib::Boxed
+    * GLib::KeyFile
+
+== Class Methods
+
+--- GLib::KeyFile.new
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- get_boolean
+
+     * Returns: self: ((*FIXME*))
+
+--- get_boolean_list
+
+     * Returns: self: ((*FIXME*))
+
+--- get_comment
+
+     * Returns: self: ((*FIXME*))
+
+--- get_double
+
+     * Returns: self: ((*FIXME*))
+
+--- get_double_list
+
+     * Returns: self: ((*FIXME*))
+
+--- get_integer
+
+     * Returns: self: ((*FIXME*))
+
+--- get_integer_list
+
+     * Returns: self: ((*FIXME*))
+
+--- get_keys
+
+     * Returns: self: ((*FIXME*))
+
+--- get_locale_string
+
+     * Returns: self: ((*FIXME*))
+
+--- get_locale_string_list
+
+     * Returns: self: ((*FIXME*))
+
+--- get_string
+
+     * Returns: self: ((*FIXME*))
+
+--- get_string_list
+
+     * Returns: self: ((*FIXME*))
+
+--- get_value
+
+     * Returns: self: ((*FIXME*))
+
+--- groups
+
+     * Returns: self: ((*FIXME*))
+
+--- has_group?
+
+     * Returns: self: ((*FIXME*))
+
+--- has_key?
+
+     * Returns: self: ((*FIXME*))
+
+--- load_from_data
+
+     * Returns: self: ((*FIXME*))
+
+--- load_from_data_dirs
+
+     * Returns: self: ((*FIXME*))
+
+--- load_from_file
+
+     * Returns: self: ((*FIXME*))
+
+--- remove_comment
+
+     * Returns: self: ((*FIXME*))
+
+--- remove_group
+
+     * Returns: self: ((*FIXME*))
+
+--- remove_key
+
+     * Returns: self: ((*FIXME*))
+
+--- set_boolean
+
+     * Returns: self: ((*FIXME*))
+
+--- set_boolean_list
+
+     * Returns: self: ((*FIXME*))
+
+--- set_comment
+
+     * Returns: self: ((*FIXME*))
+
+--- set_double
+
+     * Returns: self: ((*FIXME*))
+
+--- set_double_list
+
+     * Returns: self: ((*FIXME*))
+
+--- set_integer
+
+     * Returns: self: ((*FIXME*))
+
+--- set_integer_list
+
+     * Returns: self: ((*FIXME*))
+
+--- set_list_separator
+
+     * Returns: self: ((*FIXME*))
+
+--- set_locale_string
+
+     * Returns: self: ((*FIXME*))
+
+--- set_locale_string_list
+
+     * Returns: self: ((*FIXME*))
+
+--- set_string
+
+     * Returns: self: ((*FIXME*))
+
+--- set_string_list
+
+     * Returns: self: ((*FIXME*))
+
+--- set_value
+
+     * Returns: self: ((*FIXME*))
+
+--- start_group
+
+     * Returns: self: ((*FIXME*))
+
+--- to_data
+
+     * Returns: self: ((*FIXME*))
+
+== Constants
+
+--- KEEP_COMMENTS
+--- KEEP_TRANSLATIONS
+--- NONE
+
+== See Also
+
+== ChangeLog
+
+

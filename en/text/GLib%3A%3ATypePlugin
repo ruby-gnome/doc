@@ -1,0 +1,21 @@
+= module GLib::TypePlugin
+
+== Included Modules
+
+  * GLib::Interface
+
+== Instance Methods
+
+--- unuse
+
+     * Returns: self: ((*FIXME*))
+
+--- use
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

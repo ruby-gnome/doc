@@ -1,0 +1,23 @@
+= class Gdk::DragContext::Protocol
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * Gdk::DragContext::Protocol
+
+== Constants
+
+--- LOCAL
+--- MOTIF
+--- NONE
+--- OLE2
+--- ROOTWIN
+--- WIN32_DROPFILES
+--- XDND
+
+== See Also
+
+== ChangeLog
+
+

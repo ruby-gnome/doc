@@ -1,0 +1,127 @@
+= class Bonobo::Window
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::InitiallyUnowned
+        * Gtk::Object
+          * Gtk::Widget
+            * Gtk::Container
+              * Gtk::Bin
+                * Gtk::Window
+                  * Bonobo::Window
+
+== Class Methods
+
+--- Bonobo::Window.new
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- accel_group
+
+     * Returns: self: ((*FIXME*))
+
+--- add_popup
+
+     * Returns: self: ((*FIXME*))
+
+--- config_get_path
+
+     * Returns: self: ((*FIXME*))
+
+--- config_set_path
+
+     * Returns: self: ((*FIXME*))
+
+--- construct
+
+     * Returns: self: ((*FIXME*))
+
+--- contents
+
+     * Returns: self: ((*FIXME*))
+
+--- contents=
+
+     * Returns: self: ((*FIXME*))
+
+--- deregister_component
+
+     * Returns: self: ((*FIXME*))
+
+--- deregister_dead_components
+
+     * Returns: self: ((*FIXME*))
+
+--- name
+
+     * Returns: self: ((*FIXME*))
+
+--- name=
+
+     * Returns: self: ((*FIXME*))
+
+--- ref_accessible
+
+    See Atk::Implementor#ref_accessible.
+
+--- remove_popup
+
+     * Returns: self: ((*FIXME*))
+
+--- set_contents
+
+     * Returns: self: ((*FIXME*))
+
+--- set_name
+
+     * Returns: self: ((*FIXME*))
+
+--- set_ui_container
+
+     * Returns: self: ((*FIXME*))
+
+--- set_win_name(win_name)
+
+    Same as win_name=.
+     * win_name: Name of the window - used for configuration serialization.
+     * Returns: self
+
+--- ui_container
+
+     * Returns: self: ((*FIXME*))
+
+--- ui_container=
+
+     * Returns: self: ((*FIXME*))
+
+--- ui_engine
+
+     * Returns: self: ((*FIXME*))
+
+--- win_name
+
+    Gets the Name of the window - used for configuration serialization..
+     * Returns: Name of the window - used for configuration serialization.
+
+--- win_name=(win_name)
+
+    Sets the Name of the window - used for configuration serialization..
+     * win_name: Name of the window - used for configuration serialization.
+     * Returns: win_name
+
+== Properties
+
+--- win-name: String (Read/Write)
+
+    Name of the window - used for configuration serialization.
+
+== See Also
+
+== ChangeLog
+
+

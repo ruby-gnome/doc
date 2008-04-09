@@ -1,0 +1,32 @@
+= class Gst::Fourcc
+
+== Object Hierarchy
+
+* Object
+  * Gst::Fourcc
+
+== Class Methods
+
+--- Gst::Fourcc.new
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- replace!
+
+     * Returns: self: ((*FIXME*))
+
+--- to_i
+
+     * Returns: self: ((*FIXME*))
+
+--- to_s
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

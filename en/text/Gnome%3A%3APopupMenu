@@ -1,0 +1,52 @@
+= class Gnome::PopupMenu
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::InitiallyUnowned
+        * Gtk::Object
+          * Gtk::Widget
+            * Gtk::Container
+              * Gtk::MenuShell
+                * Gtk::Menu
+                  * Gnome::PopupMenu
+
+== Class Methods
+
+--- Gnome::PopupMenu.new
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- accel_group
+
+     * Returns: self: ((*FIXME*))
+
+--- append
+
+     * Returns: self: ((*FIXME*))
+
+--- attach
+
+     * Returns: self: ((*FIXME*))
+
+--- do_popup
+
+     * Returns: self: ((*FIXME*))
+
+--- do_popup_modal
+
+     * Returns: self: ((*FIXME*))
+
+--- ref_accessible
+
+    See Atk::Implementor#ref_accessible.
+
+== See Also
+
+== ChangeLog
+
+

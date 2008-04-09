@@ -1,0 +1,33 @@
+= class Gtk::VolumeButton
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::InitiallyUnowned
+        * Gtk::Object
+          * Gtk::Widget
+            * Gtk::Container
+              * Gtk::Bin
+                * Gtk::Button
+                  * Gtk::ScaleButton
+                    * Gtk::VolumeButton
+
+== Class Methods
+
+--- Gtk::VolumeButton.new
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- ref_accessible
+
+    See Atk::Implementor#ref_accessible.
+
+== See Also
+
+== ChangeLog
+
+

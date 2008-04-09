@@ -1,0 +1,28 @@
+= class Poppler::FormField
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Poppler::FormField
+
+== Instance Methods
+
+--- font_size
+
+     * Returns: self: ((*FIXME*))
+
+--- id
+
+     * Returns: self: ((*FIXME*))
+
+--- read_only?
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

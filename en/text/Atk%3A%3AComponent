@@ -1,0 +1,67 @@
+= module Atk::Component
+
+== Included Modules
+
+  * GLib::Interface
+
+== Instance Methods
+
+--- alpha
+
+     * Returns: self: ((*FIXME*))
+
+--- contains?
+
+     * Returns: self: ((*FIXME*))
+
+--- get_extents
+
+     * Returns: self: ((*FIXME*))
+
+--- grab_focus
+
+     * Returns: self: ((*FIXME*))
+
+--- layer
+
+     * Returns: self: ((*FIXME*))
+
+--- position
+
+     * Returns: self: ((*FIXME*))
+
+--- ref_accessible_at_point
+
+     * Returns: self: ((*FIXME*))
+
+--- remove_focus_handler
+
+     * Returns: self: ((*FIXME*))
+
+--- set_extents
+
+     * Returns: self: ((*FIXME*))
+
+--- set_position
+
+     * Returns: self: ((*FIXME*))
+
+--- set_size
+
+     * Returns: self: ((*FIXME*))
+
+--- size
+
+     * Returns: self: ((*FIXME*))
+
+== Signals
+
+--- bounds-changed: self
+
+     * self: Atk::Component: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

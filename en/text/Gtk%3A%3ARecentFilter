@@ -1,0 +1,81 @@
+= class Gtk::RecentFilter
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::InitiallyUnowned
+        * Gtk::Object
+          * Gtk::RecentFilter
+
+== Class Methods
+
+--- Gtk::RecentFilter.new
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- add_age
+
+     * Returns: self: ((*FIXME*))
+
+--- add_application
+
+     * Returns: self: ((*FIXME*))
+
+--- add_custom
+
+     * Returns: self: ((*FIXME*))
+
+--- add_group
+
+     * Returns: self: ((*FIXME*))
+
+--- add_mime_type
+
+     * Returns: self: ((*FIXME*))
+
+--- add_pattern
+
+     * Returns: self: ((*FIXME*))
+
+--- add_pixbuf_formats
+
+     * Returns: self: ((*FIXME*))
+
+--- filter
+
+     * Returns: self: ((*FIXME*))
+
+--- name
+
+     * Returns: self: ((*FIXME*))
+
+--- name=
+
+     * Returns: self: ((*FIXME*))
+
+--- needed
+
+     * Returns: self: ((*FIXME*))
+
+--- set_name
+
+     * Returns: self: ((*FIXME*))
+
+== Constants
+
+--- AGE
+--- APPLICATION
+--- DISPLAY_NAME
+--- GROUP
+--- MIME_TYPE
+--- URI
+
+== See Also
+
+== ChangeLog
+
+

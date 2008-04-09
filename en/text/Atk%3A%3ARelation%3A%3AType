@@ -1,0 +1,39 @@
+= class Atk::Relation::Type
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * Atk::Relation::Type
+
+== Class Methods
+
+--- Atk::Relation::Type.for_name
+
+     * Returns: self: ((*FIXME*))
+
+== Constants
+
+--- CONTROLLED_BY
+--- CONTROLLER_FOR
+--- DESCRIBED_BY
+--- DESCRIPTION_FOR
+--- EMBEDDED_BY
+--- EMBEDS
+--- FLOWS_FROM
+--- FLOWS_TO
+--- LABELLED_BY
+--- LABEL_FOR
+--- LAST_DEFINED
+--- MEMBER_OF
+--- NODE_CHILD_OF
+--- NULL
+--- PARENT_WINDOW_OF
+--- POPUP_FOR
+--- SUBWINDOW_OF
+
+== See Also
+
+== ChangeLog
+
+

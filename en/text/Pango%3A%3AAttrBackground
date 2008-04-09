@@ -1,0 +1,21 @@
+= class Pango::AttrBackground
+
+== Object Hierarchy
+
+* Object
+  * Data
+    * Pango::Attribute
+      * Pango::AttrColor
+        * Pango::AttrBackground
+
+== Class Methods
+
+--- Pango::AttrBackground.new
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

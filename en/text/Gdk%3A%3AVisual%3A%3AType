@@ -1,0 +1,22 @@
+= class Gdk::Visual::Type
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * Gdk::Visual::Type
+
+== Constants
+
+--- DIRECT_COLOR
+--- GRAYSCALE
+--- PSEUDO_COLOR
+--- STATIC_COLOR
+--- STATIC_GRAY
+--- TRUE_COLOR
+
+== See Also
+
+== ChangeLog
+
+

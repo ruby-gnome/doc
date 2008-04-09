@@ -1,0 +1,27 @@
+= class Gtk::IMMulticontext
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Gtk::IMContext
+        * Gtk::IMMulticontext
+
+== Class Methods
+
+--- Gtk::IMMulticontext.new
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- append_menuitems
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

@@ -1,0 +1,50 @@
+= class Bonobo::DockLayout
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Bonobo::DockLayout
+
+== Class Methods
+
+--- Bonobo::DockLayout.new
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- add_floating_item
+
+     * Returns: self: ((*FIXME*))
+
+--- add_item
+
+     * Returns: self: ((*FIXME*))
+
+--- add_to_dock
+
+     * Returns: self: ((*FIXME*))
+
+--- create_string
+
+     * Returns: self: ((*FIXME*))
+
+--- get_item
+
+     * Returns: self: ((*FIXME*))
+
+--- parse_string
+
+     * Returns: self: ((*FIXME*))
+
+--- remove_item
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

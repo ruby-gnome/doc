@@ -1,0 +1,18 @@
+= class Gdk::GL::RenderType
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * Gdk::GL::RenderType
+
+== Constants
+
+--- COLOR_INDEX_TYPE
+--- RGBA_TYPE
+
+== See Also
+
+== ChangeLog
+
+

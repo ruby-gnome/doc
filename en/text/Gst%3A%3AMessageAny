@@ -1,0 +1,14 @@
+= class Gst::MessageAny
+
+== Object Hierarchy
+
+* Object
+  * Gst::MiniObject
+    * Gst::Message
+      * Gst::MessageAny
+
+== See Also
+
+== ChangeLog
+
+

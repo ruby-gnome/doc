@@ -1,0 +1,34 @@
+= class Atk::Registry
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Atk::Registry
+
+== Class Methods
+
+--- Atk::Registry.default_registry
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- get_factory
+
+     * Returns: self: ((*FIXME*))
+
+--- get_factory_type
+
+     * Returns: self: ((*FIXME*))
+
+--- set_factory_type
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

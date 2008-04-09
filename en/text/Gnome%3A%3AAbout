@@ -1,0 +1,188 @@
+= class Gnome::About
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::InitiallyUnowned
+        * Gtk::Object
+          * Gtk::Widget
+            * Gtk::Container
+              * Gtk::Bin
+                * Gtk::Window
+                  * Gtk::Dialog
+                    * Gnome::About
+
+== Class Methods
+
+--- Gnome::About.new
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- authors=(authors)
+
+    Sets the List of authors of the programs.
+     * authors: List of authors of the programs
+     * Returns: authors
+
+--- comments
+
+    Gets the Comments about the program.
+     * Returns: Comments about the program
+
+--- comments=(comments)
+
+    Sets the Comments about the program.
+     * comments: Comments about the program
+     * Returns: comments
+
+--- copyright
+
+    Gets the Copyright information for the program.
+     * Returns: Copyright information for the program
+
+--- copyright=(copyright)
+
+    Sets the Copyright information for the program.
+     * copyright: Copyright information for the program
+     * Returns: copyright
+
+--- documenters=(documenters)
+
+    Sets the List of people documenting the program.
+     * documenters: List of people documenting the program
+     * Returns: documenters
+
+--- logo=(logo)
+
+    Sets the A logo for the about box.
+     * logo: A logo for the about box
+     * Returns: logo
+
+--- name
+
+    Gets the name of the program.
+     * Returns: The name of the program
+
+--- name=(name)
+
+    Sets the name of the program.
+     * name: The name of the program
+     * Returns: name
+
+--- ref_accessible
+
+    See Atk::Implementor#ref_accessible.
+
+--- set_authors(authors)
+
+    Same as authors=.
+     * authors: List of authors of the programs
+     * Returns: self
+
+--- set_comments(comments)
+
+    Same as comments=.
+     * comments: Comments about the program
+     * Returns: self
+
+--- set_copyright(copyright)
+
+    Same as copyright=.
+     * copyright: Copyright information for the program
+     * Returns: self
+
+--- set_documenters(documenters)
+
+    Same as documenters=.
+     * documenters: List of people documenting the program
+     * Returns: self
+
+--- set_logo(logo)
+
+    Same as logo=.
+     * logo: A logo for the about box
+     * Returns: self
+
+--- set_name(name)
+
+    Same as name=.
+     * name: The name of the program
+     * Returns: self
+
+--- set_translator_credits(translator_credits)
+
+    Same as translator_credits=.
+     * translator_credits: Credits to the translators. This string should be marked as translatable
+     * Returns: self
+
+--- set_version(version)
+
+    Same as version=.
+     * version: The version of the program
+     * Returns: self
+
+--- translator_credits
+
+    Gets the Credits to the translators. This string should be marked as translatable.
+     * Returns: Credits to the translators. This string should be marked as translatable
+
+--- translator_credits=(translator_credits)
+
+    Sets the Credits to the translators. This string should be marked as translatable.
+     * translator_credits: Credits to the translators. This string should be marked as translatable
+     * Returns: translator_credits
+
+--- version
+
+    Gets the version of the program.
+     * Returns: The version of the program
+
+--- version=(version)
+
+    Sets the version of the program.
+     * version: The version of the program
+     * Returns: version
+
+== Properties
+
+--- authors: Array (Write)
+
+    List of authors of the programs
+
+--- comments: String (Read/Write)
+
+    Comments about the program
+
+--- copyright: String (Read/Write)
+
+    Copyright information for the program
+
+--- documenters: Array (Write)
+
+    List of people documenting the program
+
+--- logo: Gdk::Pixbuf (Write)
+
+    A logo for the about box
+
+--- name: String (Read/Write)
+
+    The name of the program
+
+--- translator-credits: String (Read/Write)
+
+    Credits to the translators. This string should be marked as translatable
+
+--- version: String (Read/Write)
+
+    The version of the program
+
+== See Also
+
+== ChangeLog
+
+

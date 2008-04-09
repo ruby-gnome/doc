@@ -1,0 +1,19 @@
+= class Gtk::Widget::TextDirection
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * Gtk::Widget::TextDirection
+
+== Constants
+
+--- LTR
+--- NONE
+--- RTL
+
+== See Also
+
+== ChangeLog
+
+

@@ -1,0 +1,25 @@
+= class Art::VpathDash
+
+== Object Hierarchy
+
+* Object
+  * Data
+    * Art::VpathDash
+
+== Class Methods
+
+--- Art::VpathDash.new
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- to_a
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

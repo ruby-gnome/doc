@@ -1,0 +1,34 @@
+= class Pango::AttrShape
+
+== Object Hierarchy
+
+* Object
+  * Data
+    * Pango::Attribute
+      * Pango::AttrShape
+
+== Class Methods
+
+--- Pango::AttrShape.new
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- ink_rect
+
+     * Returns: self: ((*FIXME*))
+
+--- logical_rect
+
+     * Returns: self: ((*FIXME*))
+
+--- value
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

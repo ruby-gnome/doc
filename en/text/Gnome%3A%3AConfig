@@ -1,0 +1,225 @@
+= module Gnome::Config
+
+== Module Functions
+
+--- Gnome::Config.clean_file
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::Config.clean_key
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::Config.clean_section
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::Config.drop_all
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::Config.drop_file
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::Config.get_bool
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::Config.get_bool_with_default
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::Config.get_float
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::Config.get_float_with_default
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::Config.get_int
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::Config.get_int_with_default
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::Config.get_real_path
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::Config.get_string
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::Config.get_string_with_default
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::Config.get_translated_string
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::Config.get_translated_string_with_default
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::Config.get_vector
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::Config.get_vector_with_default
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::Config.has_section?
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::Config.pop_prefix
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::Config.private_clean_file
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::Config.private_clean_key
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::Config.private_clean_section
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::Config.private_drop_file
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::Config.private_get_bool
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::Config.private_get_bool_with_default
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::Config.private_get_float
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::Config.private_get_float_with_default
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::Config.private_get_int
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::Config.private_get_int_with_default
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::Config.private_get_real_path
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::Config.private_get_string
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::Config.private_get_string_with_default
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::Config.private_get_translated_string
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::Config.private_get_translated_string_with_default
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::Config.private_get_vector
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::Config.private_get_vector_with_default
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::Config.private_has_section?
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::Config.private_set_bool
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::Config.private_set_float
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::Config.private_set_int
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::Config.private_set_string
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::Config.private_set_translated_string
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::Config.private_set_vector
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::Config.private_sync_file
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::Config.push_prefix
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::Config.set_bool
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::Config.set_float
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::Config.set_int
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::Config.set_string
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::Config.set_translated_string
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::Config.set_vector
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::Config.sync
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::Config.sync_file
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

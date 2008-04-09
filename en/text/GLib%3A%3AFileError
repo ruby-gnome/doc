@@ -1,0 +1,52 @@
+= class GLib::FileError
+
+== Object Hierarchy
+
+* Object
+  * Exception
+    * StandardError
+      * IOError
+        * GLib::FileError
+
+== Instance Methods
+
+--- code
+
+     * Returns: self: ((*FIXME*))
+
+--- domain
+
+     * Returns: self: ((*FIXME*))
+
+== Constants
+
+--- ACCES
+--- AGAIN
+--- BADF
+--- EXIST
+--- FAILED
+--- FAULT
+--- INTR
+--- INVAL
+--- IO
+--- ISDIR
+--- LOOP
+--- MFILE
+--- NAMETOOLONG
+--- NFILE
+--- NODEV
+--- NOENT
+--- NOMEM
+--- NOSPC
+--- NOTDIR
+--- NXIO
+--- PERM
+--- PIPE
+--- ROFS
+--- TXTBSY
+
+== See Also
+
+== ChangeLog
+
+

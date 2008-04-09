@@ -1,0 +1,43 @@
+= class Art::SVP
+
+== Object Hierarchy
+
+* Object
+  * Data
+    * Art::SVP
+
+== Instance Methods
+
+--- &
+
+     * Returns: self: ((*FIXME*))
+
+--- ^
+
+     * Returns: self: ((*FIXME*))
+
+--- diff
+
+     * Returns: self: ((*FIXME*))
+
+--- intersect
+
+     * Returns: self: ((*FIXME*))
+
+--- to_vpath
+
+     * Returns: self: ((*FIXME*))
+
+--- union
+
+     * Returns: self: ((*FIXME*))
+
+--- |
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

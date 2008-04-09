@@ -1,0 +1,39 @@
+= class Pango::Attribute::Type
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * Pango::Attribute::Type
+
+== Constants
+
+--- ABSOLUTE_SIZE
+--- BACKGROUND
+--- FALLBACK
+--- FAMILY
+--- FONT_DESC
+--- FOREGROUND
+--- GRAVITY
+--- GRAVITY_HINT
+--- INVALID
+--- LANGUAGE
+--- LETTER_SPACING
+--- RISE
+--- SCALE
+--- SHAPE
+--- SIZE
+--- STRETCH
+--- STRIKETHROUGH
+--- STRIKETHROUGH_COLOR
+--- STYLE
+--- UNDERLINE
+--- UNDERLINE_COLOR
+--- VARIANT
+--- WEIGHT
+
+== See Also
+
+== ChangeLog
+
+

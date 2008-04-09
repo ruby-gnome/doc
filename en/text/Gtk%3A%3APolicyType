@@ -1,0 +1,19 @@
+= class Gtk::PolicyType
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * Gtk::PolicyType
+
+== Constants
+
+--- ALWAYS
+--- AUTOMATIC
+--- NEVER
+
+== See Also
+
+== ChangeLog
+
+

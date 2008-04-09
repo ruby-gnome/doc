@@ -1,0 +1,21 @@
+= class Gtk::Toolbar::ChildType
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * Gtk::Toolbar::ChildType
+
+== Constants
+
+--- BUTTON
+--- RADIOBUTTON
+--- SPACE
+--- TOGGLEBUTTON
+--- WIDGET
+
+== See Also
+
+== ChangeLog
+
+

@@ -1,0 +1,48 @@
+= class Gdk::DragContext::Action
+
+== Object Hierarchy
+
+* Object
+  * GLib::Flags
+    * Gdk::DragContext::Action
+
+== Instance Methods
+
+--- ask?
+
+     * Returns: self: ((*FIXME*))
+
+--- copy?
+
+     * Returns: self: ((*FIXME*))
+
+--- default?
+
+     * Returns: self: ((*FIXME*))
+
+--- link?
+
+     * Returns: self: ((*FIXME*))
+
+--- move?
+
+     * Returns: self: ((*FIXME*))
+
+--- private?
+
+     * Returns: self: ((*FIXME*))
+
+== Constants
+
+--- ASK
+--- COPY
+--- DEFAULT
+--- LINK
+--- MOVE
+--- PRIVATE
+
+== See Also
+
+== ChangeLog
+
+

@@ -1,0 +1,18 @@
+= class Gtk::SortType
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * Gtk::SortType
+
+== Constants
+
+--- ASCENDING
+--- DESCENDING
+
+== See Also
+
+== ChangeLog
+
+

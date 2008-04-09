@@ -1,0 +1,41 @@
+= module Bonobo::I18n
+
+== Module Functions
+
+--- Bonobo::I18n.N_
+
+     * Returns: self: ((*FIXME*))
+
+--- Bonobo::I18n._
+
+     * Returns: self: ((*FIXME*))
+
+--- Bonobo::I18n.bindtextdomain
+
+     * Returns: self: ((*FIXME*))
+
+--- Bonobo::I18n.dcgettext
+
+     * Returns: self: ((*FIXME*))
+
+--- Bonobo::I18n.dgettext
+
+     * Returns: self: ((*FIXME*))
+
+--- Bonobo::I18n.gettext
+
+     * Returns: self: ((*FIXME*))
+
+--- Bonobo::I18n.gettext_noop
+
+     * Returns: self: ((*FIXME*))
+
+--- Bonobo::I18n.textdomain
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

@@ -1,0 +1,59 @@
+= class Gtk::LinkButton
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::InitiallyUnowned
+        * Gtk::Object
+          * Gtk::Widget
+            * Gtk::Container
+              * Gtk::Bin
+                * Gtk::Button
+                  * Gtk::LinkButton
+
+== Class Methods
+
+--- Gtk::LinkButton.new
+
+     * Returns: self: ((*FIXME*))
+
+--- Gtk::LinkButton.set_uri_hook
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- ref_accessible
+
+    See Atk::Implementor#ref_accessible.
+
+--- set_uri(uri)
+
+    Same as uri=.
+     * uri: The URI bound to this button
+     * Returns: self
+
+--- uri
+
+    Gets the URI bound to this button.
+     * Returns: The URI bound to this button
+
+--- uri=(uri)
+
+    Sets the URI bound to this button.
+     * uri: The URI bound to this button
+     * Returns: uri
+
+== Properties
+
+--- uri: String (Read/Write)
+
+    The URI bound to this button
+
+== See Also
+
+== ChangeLog
+
+

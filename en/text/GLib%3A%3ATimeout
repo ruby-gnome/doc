@@ -1,0 +1,25 @@
+= module GLib::Timeout
+
+== Module Functions
+
+--- GLib::Timeout.add
+
+     * Returns: self: ((*FIXME*))
+
+--- GLib::Timeout.add_seconds
+
+     * Returns: self: ((*FIXME*))
+
+--- GLib::Timeout.source_new
+
+     * Returns: self: ((*FIXME*))
+
+--- GLib::Timeout.source_new_seconds
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

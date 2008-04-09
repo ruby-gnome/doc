@@ -1,0 +1,73 @@
+= class Gnome::DruidPage
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::InitiallyUnowned
+        * Gtk::Object
+          * Gtk::Widget
+            * Gtk::Container
+              * Gtk::Bin
+                * Gnome::DruidPage
+
+== Class Methods
+
+--- Gnome::DruidPage.new
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- back
+
+     * Returns: self: ((*FIXME*))
+
+--- cancel
+
+     * Returns: self: ((*FIXME*))
+
+--- finish
+
+     * Returns: self: ((*FIXME*))
+
+--- next
+
+     * Returns: self: ((*FIXME*))
+
+--- prepare
+
+     * Returns: self: ((*FIXME*))
+
+--- ref_accessible
+
+    See Atk::Implementor#ref_accessible.
+
+== Signals
+
+--- back: self
+
+     * self: Gnome::DruidPage: ((*FIXME*))
+
+--- cancel: self
+
+     * self: Gnome::DruidPage: ((*FIXME*))
+
+--- finish: self
+
+     * self: Gnome::DruidPage: ((*FIXME*))
+
+--- next: self
+
+     * self: Gnome::DruidPage: ((*FIXME*))
+
+--- prepare: self
+
+     * self: Gnome::DruidPage: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

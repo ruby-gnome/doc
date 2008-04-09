@@ -1,0 +1,19 @@
+= class Gnome::CanvasEllipse
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::InitiallyUnowned
+        * Gtk::Object
+          * Gnome::CanvasItem
+            * Gnome::CanvasShape
+              * Gnome::CanvasRE
+                * Gnome::CanvasEllipse
+
+== See Also
+
+== ChangeLog
+
+

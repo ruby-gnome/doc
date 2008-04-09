@@ -1,0 +1,29 @@
+= class Pango::ScriptIter
+
+== Object Hierarchy
+
+* Object
+  * GLib::Boxed
+    * Pango::ScriptIter
+
+== Class Methods
+
+--- Pango::ScriptIter.new
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- next!
+
+     * Returns: self: ((*FIXME*))
+
+--- range
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

@@ -1,0 +1,21 @@
+= class Gst::State
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * Gst::State
+
+== Constants
+
+--- NULL
+--- PAUSED
+--- PLAYING
+--- READY
+--- VOID_PENDING
+
+== See Also
+
+== ChangeLog
+
+

@@ -1,0 +1,21 @@
+= class Gst::Tag::Flag
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * Gst::Tag::Flag
+
+== Constants
+
+--- COUNT
+--- DECODED
+--- ENCODED
+--- META
+--- UNDEFINED
+
+== See Also
+
+== ChangeLog
+
+

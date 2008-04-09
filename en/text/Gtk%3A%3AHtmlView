@@ -1,0 +1,165 @@
+= class Gtk::HtmlView
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::InitiallyUnowned
+        * Gtk::Object
+          * Gtk::Widget
+            * Gtk::Container
+              * Gtk::Layout
+                * Gtk::HtmlView
+
+== Included Modules
+
+  * #<Module:0x2b195ae53118>
+
+== Class Methods
+
+--- Gtk::HtmlView.new
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- activate
+
+     * Returns: self: ((*FIXME*))
+
+--- button_press
+
+     * Returns: self: ((*FIXME*))
+
+--- button_release
+
+     * Returns: self: ((*FIXME*))
+
+--- document
+
+     * Returns: self: ((*FIXME*))
+
+--- document=
+
+     * Returns: self: ((*FIXME*))
+
+--- find_layout_box
+
+     * Returns: self: ((*FIXME*))
+
+--- jump_to_anchor
+
+     * Returns: self: ((*FIXME*))
+
+--- key_press
+
+     * Returns: self: ((*FIXME*))
+
+--- magnification
+
+     * Returns: self: ((*FIXME*))
+
+--- magnification=
+
+     * Returns: self: ((*FIXME*))
+
+--- mouse_move
+
+     * Returns: self: ((*FIXME*))
+
+--- move_cursor
+
+     * Returns: self: ((*FIXME*))
+
+--- move_focus_out
+
+     * Returns: self: ((*FIXME*))
+
+--- ref_accessible
+
+    See Atk::Implementor#ref_accessible.
+
+--- request_object
+
+     * Returns: self: ((*FIXME*))
+
+--- scroll_to_node
+
+     * Returns: self: ((*FIXME*))
+
+--- selection_end
+
+     * Returns: self: ((*FIXME*))
+
+--- selection_set
+
+     * Returns: self: ((*FIXME*))
+
+--- selection_start
+
+     * Returns: self: ((*FIXME*))
+
+--- selection_update
+
+     * Returns: self: ((*FIXME*))
+
+--- set_document
+
+     * Returns: self: ((*FIXME*))
+
+--- set_magnification
+
+     * Returns: self: ((*FIXME*))
+
+--- toggle_cursor
+
+     * Returns: self: ((*FIXME*))
+
+--- zoom_in
+
+     * Returns: self: ((*FIXME*))
+
+--- zoom_out
+
+     * Returns: self: ((*FIXME*))
+
+--- zoom_reset
+
+     * Returns: self: ((*FIXME*))
+
+== Constants
+
+--- LOG_DOMAIN
+
+== Signals
+
+--- activate: self
+
+     * self: Gtk::HtmlView: ((*FIXME*))
+
+--- move-cursor: self
+
+     * self: Gtk::HtmlView: ((*FIXME*))
+
+--- move-focus-out: self
+
+     * self: Gtk::HtmlView: ((*FIXME*))
+
+--- on-url: self
+
+     * self: Gtk::HtmlView: ((*FIXME*))
+
+--- request-object: self
+
+     * self: Gtk::HtmlView: ((*FIXME*))
+
+--- toggle-cursor: self
+
+     * self: Gtk::HtmlView: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

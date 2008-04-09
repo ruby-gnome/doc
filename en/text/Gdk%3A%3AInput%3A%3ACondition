@@ -1,0 +1,33 @@
+= class Gdk::Input::Condition
+
+== Object Hierarchy
+
+* Object
+  * GLib::Flags
+    * Gdk::Input::Condition
+
+== Instance Methods
+
+--- exception?
+
+     * Returns: self: ((*FIXME*))
+
+--- read?
+
+     * Returns: self: ((*FIXME*))
+
+--- write?
+
+     * Returns: self: ((*FIXME*))
+
+== Constants
+
+--- EXCEPTION
+--- READ
+--- WRITE
+
+== See Also
+
+== ChangeLog
+
+

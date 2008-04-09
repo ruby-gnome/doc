@@ -1,0 +1,47 @@
+= class Gtk::HtmlEmbedded
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::InitiallyUnowned
+        * Gtk::Object
+          * Gtk::Widget
+            * Gtk::Container
+              * Gtk::Bin
+                * Gtk::HtmlEmbedded
+
+== Class Methods
+
+--- Gtk::HtmlEmbedded.new
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- descent
+
+     * Returns: self: ((*FIXME*))
+
+--- descent=
+
+     * Returns: self: ((*FIXME*))
+
+--- dom_node
+
+     * Returns: self: ((*FIXME*))
+
+--- ref_accessible
+
+    See Atk::Implementor#ref_accessible.
+
+--- set_descent
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

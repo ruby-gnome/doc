@@ -1,0 +1,77 @@
+= class GLib::MainContext
+
+== Object Hierarchy
+
+* Object
+  * GLib::Boxed
+    * GLib::MainContext
+
+== Class Methods
+
+--- GLib::MainContext.default
+
+     * Returns: self: ((*FIXME*))
+
+--- GLib::MainContext.depth
+
+     * Returns: self: ((*FIXME*))
+
+--- GLib::MainContext.new
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- acquire
+
+     * Returns: self: ((*FIXME*))
+
+--- add_poll
+
+     * Returns: self: ((*FIXME*))
+
+--- dispatch
+
+     * Returns: self: ((*FIXME*))
+
+--- find_source
+
+     * Returns: self: ((*FIXME*))
+
+--- iteration
+
+     * Returns: self: ((*FIXME*))
+
+--- owner?
+
+     * Returns: self: ((*FIXME*))
+
+--- pending?
+
+     * Returns: self: ((*FIXME*))
+
+--- prepare
+
+     * Returns: self: ((*FIXME*))
+
+--- query
+
+     * Returns: self: ((*FIXME*))
+
+--- release
+
+     * Returns: self: ((*FIXME*))
+
+--- remove_poll
+
+     * Returns: self: ((*FIXME*))
+
+--- wakeup
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

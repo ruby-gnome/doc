@@ -1,0 +1,44 @@
+= class GnomeVFS::Monitor
+
+== Object Hierarchy
+
+* Object
+  * GLib::Boxed
+    * GnomeVFS::Monitor
+
+== Class Methods
+
+--- GnomeVFS::Monitor.add
+
+     * Returns: self: ((*FIXME*))
+
+--- GnomeVFS::Monitor.cancel
+
+     * Returns: self: ((*FIXME*))
+
+--- GnomeVFS::Monitor.new
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- remove
+
+     * Returns: self: ((*FIXME*))
+
+== Constants
+
+--- DIRECTORY
+--- EVENT_CHANGED
+--- EVENT_CREATED
+--- EVENT_DELETED
+--- EVENT_METADATA_CHANGED
+--- EVENT_STARTEXECUTING
+--- EVENT_STOPEXECUTING
+--- FILE
+
+== See Also
+
+== ChangeLog
+
+

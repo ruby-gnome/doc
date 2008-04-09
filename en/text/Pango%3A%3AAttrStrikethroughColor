@@ -1,0 +1,21 @@
+= class Pango::AttrStrikethroughColor
+
+== Object Hierarchy
+
+* Object
+  * Data
+    * Pango::Attribute
+      * Pango::AttrColor
+        * Pango::AttrStrikethroughColor
+
+== Class Methods
+
+--- Pango::AttrStrikethroughColor.new
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

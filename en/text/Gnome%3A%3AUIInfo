@@ -1,0 +1,233 @@
+= module Gnome::UIInfo
+
+== Module Functions
+
+--- Gnome::UIInfo.help
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::UIInfo.include
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::UIInfo.item
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::UIInfo.item_data
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::UIInfo.item_none
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::UIInfo.item_stock
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::UIInfo.menu_about_item
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::UIInfo.menu_clear_item
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::UIInfo.menu_close_item
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::UIInfo.menu_close_window_item
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::UIInfo.menu_copy_item
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::UIInfo.menu_cut_item
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::UIInfo.menu_edit_tree
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::UIInfo.menu_end_game_item
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::UIInfo.menu_file_tree
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::UIInfo.menu_files_tree
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::UIInfo.menu_find_again_item
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::UIInfo.menu_find_item
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::UIInfo.menu_game_tree
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::UIInfo.menu_help_tree
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::UIInfo.menu_hint_item
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::UIInfo.menu_new_game_item
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::UIInfo.menu_new_item
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::UIInfo.menu_new_subtree
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::UIInfo.menu_new_window_item
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::UIInfo.menu_open_item
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::UIInfo.menu_paste_item
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::UIInfo.menu_pause_game_item
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::UIInfo.menu_preferences_item
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::UIInfo.menu_print_item
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::UIInfo.menu_print_setup_item
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::UIInfo.menu_properties_item
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::UIInfo.menu_quit_item
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::UIInfo.menu_redo_item
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::UIInfo.menu_redo_move_item
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::UIInfo.menu_replace_item
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::UIInfo.menu_restart_game_item
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::UIInfo.menu_revert_item
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::UIInfo.menu_save_as_item
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::UIInfo.menu_save_item
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::UIInfo.menu_scores_item
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::UIInfo.menu_select_all_item
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::UIInfo.menu_settings_tree
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::UIInfo.menu_undo_item
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::UIInfo.menu_undo_move_item
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::UIInfo.menu_view_tree
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::UIInfo.menu_windows_tree
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::UIInfo.radioitem
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::UIInfo.radioitem_data
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::UIInfo.radiolist
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::UIInfo.separator
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::UIInfo.subtree
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::UIInfo.subtree_hint
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::UIInfo.subtree_stock
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::UIInfo.toggleitem
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::UIInfo.toggleitem_data
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

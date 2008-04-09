@@ -1,0 +1,21 @@
+= module GLib::Shell
+
+== Module Functions
+
+--- GLib::Shell.parse
+
+     * Returns: self: ((*FIXME*))
+
+--- GLib::Shell.quote
+
+     * Returns: self: ((*FIXME*))
+
+--- GLib::Shell.unquote
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

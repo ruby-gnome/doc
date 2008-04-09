@@ -1,0 +1,19 @@
+= class Gdk::EventCrossing::Mode
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * Gdk::EventCrossing::Mode
+
+== Constants
+
+--- GRAB
+--- NORMAL
+--- UNGRAB
+
+== See Also
+
+== ChangeLog
+
+

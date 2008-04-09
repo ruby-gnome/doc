@@ -1,0 +1,41 @@
+= class Pango::Language
+
+== Object Hierarchy
+
+* Object
+  * GLib::Boxed
+    * Pango::Language
+
+== Class Methods
+
+--- Pango::Language.new
+
+     * Returns: self: ((*FIXME*))
+
+--- Pango::Language.to_string
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- includes_script
+
+     * Returns: self: ((*FIXME*))
+
+--- matches
+
+     * Returns: self: ((*FIXME*))
+
+--- to_s
+
+     * Returns: self: ((*FIXME*))
+
+--- to_str
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

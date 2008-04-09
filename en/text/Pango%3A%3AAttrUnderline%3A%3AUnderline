@@ -1,0 +1,21 @@
+= class Pango::AttrUnderline::Underline
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * Pango::AttrUnderline::Underline
+
+== Constants
+
+--- DOUBLE
+--- ERROR
+--- LOW
+--- NONE
+--- SINGLE
+
+== See Also
+
+== ChangeLog
+
+

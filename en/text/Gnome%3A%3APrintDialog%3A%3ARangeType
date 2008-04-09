@@ -1,0 +1,19 @@
+= class Gnome::PrintDialog::RangeType
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * Gnome::PrintDialog::RangeType
+
+== Constants
+
+--- CUSTOM
+--- NONE
+--- PAGES
+
+== See Also
+
+== ChangeLog
+
+

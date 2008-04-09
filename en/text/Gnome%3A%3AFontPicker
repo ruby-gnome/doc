@@ -1,0 +1,215 @@
+= class Gnome::FontPicker
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::InitiallyUnowned
+        * Gtk::Object
+          * Gtk::Widget
+            * Gtk::Container
+              * Gtk::Bin
+                * Gtk::Button
+                  * Gnome::FontPicker
+
+== Class Methods
+
+--- Gnome::FontPicker.new
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- font
+
+    Gets the selected Gtk::Font.
+     * Returns: The selected Gtk::Font
+
+--- font_name
+
+    Gets the Name of the selected font.
+     * Returns: Name of the selected font
+
+--- font_name=(font_name)
+
+    Sets the Name of the selected font.
+     * font_name: Name of the selected font
+     * Returns: font_name
+
+--- label_font_size
+
+    Gets the Font size for label in font info mode.
+     * Returns: Font size for label in font info mode
+
+--- label_font_size=(label_font_size)
+
+    Sets the Font size for label in font info mode.
+     * label_font_size: Font size for label in font info mode
+     * Returns: label_font_size
+
+--- mode
+
+    Gets the mode of operation of the font picker.
+     * Returns: The mode of operation of the font picker
+
+--- mode=(mode)
+
+    Sets the mode of operation of the font picker.
+     * mode: The mode of operation of the font picker
+     * Returns: mode
+
+--- preview_text
+
+    Gets the Preview text shown in the dialog.
+     * Returns: Preview text shown in the dialog
+
+--- preview_text=(preview_text)
+
+    Sets the Preview text shown in the dialog.
+     * preview_text: Preview text shown in the dialog
+     * Returns: preview_text
+
+--- ref_accessible
+
+    See Atk::Implementor#ref_accessible.
+
+--- set_font_name(font_name)
+
+    Same as font_name=.
+     * font_name: Name of the selected font
+     * Returns: self
+
+--- set_label_font_size(label_font_size)
+
+    Same as label_font_size=.
+     * label_font_size: Font size for label in font info mode
+     * Returns: self
+
+--- set_mode(mode)
+
+    Same as mode=.
+     * mode: The mode of operation of the font picker
+     * Returns: self
+
+--- set_preview_text(preview_text)
+
+    Same as preview_text=.
+     * preview_text: Preview text shown in the dialog
+     * Returns: self
+
+--- set_show_size(show_size)
+
+    Same as show_size=.
+     * show_size: Show size in font info mode
+     * Returns: self
+
+--- set_title(title)
+
+    Same as title=.
+     * title: The title of the selection dialog box
+     * Returns: self
+
+--- set_use_font_in_label(use_font_in_label)
+
+    Same as use_font_in_label=.
+     * use_font_in_label: Use font in the label in font info mode
+     * Returns: self
+
+--- set_widget
+
+     * Returns: self: ((*FIXME*))
+
+--- show_size=(show_size)
+
+    Sets the Show size in font info mode.
+     * show_size: Show size in font info mode
+     * Returns: show_size
+
+--- show_size?
+
+    Gets the Show size in font info mode.
+     * Returns: Show size in font info mode
+
+--- title
+
+    Gets the title of the selection dialog box.
+     * Returns: The title of the selection dialog box
+
+--- title=(title)
+
+    Sets the title of the selection dialog box.
+     * title: The title of the selection dialog box
+     * Returns: title
+
+--- use_font_in_label=(use_font_in_label)
+
+    Sets the Use font in the label in font info mode.
+     * use_font_in_label: Use font in the label in font info mode
+     * Returns: use_font_in_label
+
+--- use_font_in_label?
+
+    Gets the Use font in the label in font info mode.
+     * Returns: Use font in the label in font info mode
+
+--- widget
+
+     * Returns: self: ((*FIXME*))
+
+--- widget=
+
+     * Returns: self: ((*FIXME*))
+
+== Constants
+
+--- MODE_FONT_INFO
+--- MODE_PIXMAP
+--- MODE_UNKNOWN
+--- MODE_USER_WIDGET
+
+== Properties
+
+--- font: gpointer (Read)
+
+    The selected Gtk::Font
+
+--- font-name: String (Read/Write)
+
+    Name of the selected font
+
+--- label-font-size: Integer (Read/Write)
+
+    Font size for label in font info mode
+
+--- mode: Gnome::FontPickerMode (Read/Write)
+
+    The mode of operation of the font picker
+
+--- preview-text: String (Read/Write)
+
+    Preview text shown in the dialog
+
+--- show-size: true or false (Read/Write)
+
+    Show size in font info mode
+
+--- title: String (Read/Write)
+
+    The title of the selection dialog box
+
+--- use-font-in-label: true or false (Read/Write)
+
+    Use font in the label in font info mode
+
+== Signals
+
+--- font-set: self
+
+     * self: Gnome::FontPicker: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

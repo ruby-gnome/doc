@@ -1,0 +1,19 @@
+= class Gnome::PreferencesType
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * Gnome::PreferencesType
+
+== Constants
+
+--- ALWAYS
+--- NEVER
+--- USER
+
+== See Also
+
+== ChangeLog
+
+

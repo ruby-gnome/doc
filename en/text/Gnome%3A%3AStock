@@ -1,0 +1,41 @@
+= module Gnome::Stock
+
+== Constants
+
+--- ABOUT
+--- ATTACH
+--- BLANK
+--- BOOK_BLUE
+--- BOOK_GREEN
+--- BOOK_OPEN
+--- BOOK_RED
+--- BOOK_YELLOW
+--- LINE_IN
+--- MAIL
+--- MAIL_FWD
+--- MAIL_NEW
+--- MAIL_RCV
+--- MAIL_RPL
+--- MAIL_SND
+--- MIC
+--- MIDI
+--- MULTIPLE_FILE
+--- NOT
+--- SCORES
+--- TABLE_BORDERS
+--- TABLE_FILL
+--- TEXT_BULLETED_LIST
+--- TEXT_INDENT
+--- TEXT_NUMBERED_LIST
+--- TEXT_UNINDENT
+--- TIMER
+--- TIMER_STOP
+--- TRASH
+--- TRASH_FULL
+--- VOLUME
+
+== See Also
+
+== ChangeLog
+
+

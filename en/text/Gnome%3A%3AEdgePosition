@@ -1,0 +1,20 @@
+= class Gnome::EdgePosition
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * Gnome::EdgePosition
+
+== Constants
+
+--- FINISH
+--- LAST
+--- OTHER
+--- START
+
+== See Also
+
+== ChangeLog
+
+

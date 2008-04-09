@@ -1,0 +1,23 @@
+= class Gst::Bin::Flags
+
+== Object Hierarchy
+
+* Object
+  * GLib::Flags
+    * Gst::Bin::Flags
+
+== Instance Methods
+
+--- last?
+
+     * Returns: self: ((*FIXME*))
+
+== Constants
+
+--- LAST
+
+== See Also
+
+== ChangeLog
+
+

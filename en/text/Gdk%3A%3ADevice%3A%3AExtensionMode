@@ -1,0 +1,19 @@
+= class Gdk::Device::ExtensionMode
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * Gdk::Device::ExtensionMode
+
+== Constants
+
+--- ALL
+--- CURSOR
+--- NONE
+
+== See Also
+
+== ChangeLog
+
+

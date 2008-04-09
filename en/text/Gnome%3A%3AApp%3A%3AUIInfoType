@@ -1,0 +1,27 @@
+= class Gnome::App::UIInfoType
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * Gnome::App::UIInfoType
+
+== Constants
+
+--- BUILDER_DATA
+--- ENDOFINFO
+--- HELP
+--- INCLUDE
+--- ITEM
+--- ITEM_CONFIGURABLE
+--- RADIOITEMS
+--- SEPARATOR
+--- SUBTREE
+--- SUBTREE_STOCK
+--- TOGGLEITEM
+
+== See Also
+
+== ChangeLog
+
+

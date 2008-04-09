@@ -1,0 +1,20 @@
+= class GLib::Param::Pointer
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Param
+      * GLib::Param::Pointer
+
+== Class Methods
+
+--- GLib::Param::Pointer.new
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

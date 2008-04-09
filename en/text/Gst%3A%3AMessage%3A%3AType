@@ -1,0 +1,142 @@
+= class Gst::Message::Type
+
+== Object Hierarchy
+
+* Object
+  * GLib::Flags
+    * Gst::Message::Type
+
+== Instance Methods
+
+--- any?
+
+     * Returns: self: ((*FIXME*))
+
+--- application?
+
+     * Returns: self: ((*FIXME*))
+
+--- async_done?
+
+     * Returns: self: ((*FIXME*))
+
+--- async_start?
+
+     * Returns: self: ((*FIXME*))
+
+--- buffering?
+
+     * Returns: self: ((*FIXME*))
+
+--- clock_lost?
+
+     * Returns: self: ((*FIXME*))
+
+--- clock_provide?
+
+     * Returns: self: ((*FIXME*))
+
+--- duration?
+
+     * Returns: self: ((*FIXME*))
+
+--- element?
+
+     * Returns: self: ((*FIXME*))
+
+--- eos?
+
+     * Returns: self: ((*FIXME*))
+
+--- error?
+
+     * Returns: self: ((*FIXME*))
+
+--- info?
+
+     * Returns: self: ((*FIXME*))
+
+--- latency?
+
+     * Returns: self: ((*FIXME*))
+
+--- name
+
+     * Returns: self: ((*FIXME*))
+
+--- new_clock?
+
+     * Returns: self: ((*FIXME*))
+
+--- segment_done?
+
+     * Returns: self: ((*FIXME*))
+
+--- segment_start?
+
+     * Returns: self: ((*FIXME*))
+
+--- state_changed?
+
+     * Returns: self: ((*FIXME*))
+
+--- state_dirty?
+
+     * Returns: self: ((*FIXME*))
+
+--- step_done?
+
+     * Returns: self: ((*FIXME*))
+
+--- stream_status?
+
+     * Returns: self: ((*FIXME*))
+
+--- structure_change?
+
+     * Returns: self: ((*FIXME*))
+
+--- tag?
+
+     * Returns: self: ((*FIXME*))
+
+--- unknown?
+
+     * Returns: self: ((*FIXME*))
+
+--- warning?
+
+     * Returns: self: ((*FIXME*))
+
+== Constants
+
+--- ANY
+--- APPLICATION
+--- ASYNC_DONE
+--- ASYNC_START
+--- BUFFERING
+--- CLOCK_LOST
+--- CLOCK_PROVIDE
+--- DURATION
+--- ELEMENT
+--- EOS
+--- ERROR
+--- INFO
+--- LATENCY
+--- NEW_CLOCK
+--- SEGMENT_DONE
+--- SEGMENT_START
+--- STATE_CHANGED
+--- STATE_DIRTY
+--- STEP_DONE
+--- STREAM_STATUS
+--- STRUCTURE_CHANGE
+--- TAG
+--- UNKNOWN
+--- WARNING
+
+== See Also
+
+== ChangeLog
+
+

@@ -1,0 +1,59 @@
+= class Gnome::CanvasClipgroup
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::InitiallyUnowned
+        * Gtk::Object
+          * Gnome::CanvasItem
+            * Gnome::CanvasGroup
+              * Gnome::CanvasClipgroup
+
+== Instance Methods
+
+--- path
+
+    Gets the path.
+     * Returns: ((*FIXME*))
+
+--- path=(path)
+
+    Sets the path.
+     * path: ((*FIXME*))
+     * Returns: path
+
+--- set_path(path)
+
+    Same as path=.
+     * path: ((*FIXME*))
+     * Returns: self
+
+--- set_wind(wind)
+
+    Same as wind=.
+     * wind: ((*FIXME*))
+     * Returns: self
+
+--- wind
+
+    Gets the wind.
+     * Returns: ((*FIXME*))
+
+--- wind=(wind)
+
+    Sets the wind.
+     * wind: ((*FIXME*))
+     * Returns: wind
+
+== Properties
+
+--- path: gpointer (Read/Write)
+--- wind: Integer (Read/Write)
+
+== See Also
+
+== ChangeLog
+
+

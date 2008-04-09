@@ -1,0 +1,23 @@
+= class Gtk::SpinButton::Type
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * Gtk::SpinButton::Type
+
+== Constants
+
+--- END
+--- HOME
+--- PAGE_BACKWARD
+--- PAGE_FORWARD
+--- STEP_BACKWARD
+--- STEP_FORWARD
+--- USER_DEFINED
+
+== See Also
+
+== ChangeLog
+
+

@@ -1,0 +1,28 @@
+= class Atk::ObjectFactory
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Atk::ObjectFactory
+
+== Instance Methods
+
+--- accessible_type
+
+     * Returns: self: ((*FIXME*))
+
+--- create_accessible
+
+     * Returns: self: ((*FIXME*))
+
+--- invalidate
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

@@ -1,0 +1,43 @@
+= class GnomeVFS::File::OpenMode
+
+== Object Hierarchy
+
+* Object
+  * GLib::Flags
+    * GnomeVFS::File::OpenMode
+
+== Instance Methods
+
+--- none?
+
+     * Returns: self: ((*FIXME*))
+
+--- random?
+
+     * Returns: self: ((*FIXME*))
+
+--- read?
+
+     * Returns: self: ((*FIXME*))
+
+--- truncate?
+
+     * Returns: self: ((*FIXME*))
+
+--- write?
+
+     * Returns: self: ((*FIXME*))
+
+== Constants
+
+--- NONE
+--- RANDOM
+--- READ
+--- TRUNCATE
+--- WRITE
+
+== See Also
+
+== ChangeLog
+
+

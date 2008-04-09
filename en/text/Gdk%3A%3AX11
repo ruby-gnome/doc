@@ -1,0 +1,29 @@
+= module Gdk::X11
+
+== Module Functions
+
+--- Gdk::X11.default_screen
+
+     * Returns: self: ((*FIXME*))
+
+--- Gdk::X11.grab_server
+
+     * Returns: self: ((*FIXME*))
+
+--- Gdk::X11.net_wm_supports?
+
+     * Returns: self: ((*FIXME*))
+
+--- Gdk::X11.ungrab_server
+
+     * Returns: self: ((*FIXME*))
+
+--- Gdk::X11.xid_table_lookup
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

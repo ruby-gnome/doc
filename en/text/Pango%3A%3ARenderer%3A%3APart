@@ -1,0 +1,20 @@
+= class Pango::Renderer::Part
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * Pango::Renderer::Part
+
+== Constants
+
+--- BACKGROUND
+--- FOREGROUND
+--- STRIKETHROUGH
+--- UNDERLINE
+
+== See Also
+
+== ChangeLog
+
+

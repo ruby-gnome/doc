@@ -1,0 +1,104 @@
+= class GLib::Signal
+
+== Object Hierarchy
+
+* Object
+  * Data
+    * GLib::Signal
+
+== Instance Methods
+
+--- action?
+
+     * Returns: self: ((*FIXME*))
+
+--- add_emission_hook
+
+     * Returns: self: ((*FIXME*))
+
+--- detailed?
+
+     * Returns: self: ((*FIXME*))
+
+--- flags
+
+     * Returns: self: ((*FIXME*))
+
+--- id
+
+     * Returns: self: ((*FIXME*))
+
+--- inspect
+
+     * Returns: self: ((*FIXME*))
+
+--- itype
+
+     * Returns: self: ((*FIXME*))
+
+--- name
+
+     * Returns: self: ((*FIXME*))
+
+--- no_hooks?
+
+     * Returns: self: ((*FIXME*))
+
+--- no_recurse?
+
+     * Returns: self: ((*FIXME*))
+
+--- owner
+
+     * Returns: self: ((*FIXME*))
+
+--- param_types
+
+     * Returns: self: ((*FIXME*))
+
+--- remove_emission_hook
+
+     * Returns: self: ((*FIXME*))
+
+--- return_type
+
+     * Returns: self: ((*FIXME*))
+
+--- run_cleanup?
+
+     * Returns: self: ((*FIXME*))
+
+--- run_first?
+
+     * Returns: self: ((*FIXME*))
+
+--- run_last?
+
+     * Returns: self: ((*FIXME*))
+
+== Constants
+
+--- ACTION
+--- CONNECT_AFTER
+--- CONNECT_SWAPPED
+--- DETAILED
+--- FLAGS_MASK
+--- MATCH_CLOSURE
+--- MATCH_DATA
+--- MATCH_DETAIL
+--- MATCH_FUNC
+--- MATCH_ID
+--- MATCH_MASK
+--- MATCH_UNBLOCKED
+--- NO_HOOKS
+--- NO_RECURSE
+--- RUN_CLEANUP
+--- RUN_FIRST
+--- RUN_LAST
+--- TYPE_STATIC_SCOPE
+
+== See Also
+
+== ChangeLog
+
+

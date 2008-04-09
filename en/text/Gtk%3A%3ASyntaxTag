@@ -1,0 +1,30 @@
+= class Gtk::SyntaxTag
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Gtk::TextTag
+        * Gtk::SourceTag
+          * Gtk::SyntaxTag
+
+== Class Methods
+
+--- Gtk::SyntaxTag.line_comment_tag_new
+
+     * Returns: self: ((*FIXME*))
+
+--- Gtk::SyntaxTag.new
+
+     * Returns: self: ((*FIXME*))
+
+--- Gtk::SyntaxTag.string_tag_new
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

@@ -1,0 +1,84 @@
+= class GLib::Unicode::Script
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * GLib::Unicode::Script
+
+== Constants
+
+--- ARABIC
+--- ARMENIAN
+--- BALINESE
+--- BENGALI
+--- BOPOMOFO
+--- BRAILLE
+--- BUGINESE
+--- BUHID
+--- CANADIAN_ABORIGINAL
+--- CHEROKEE
+--- COMMON
+--- COPTIC
+--- CUNEIFORM
+--- CYPRIOT
+--- CYRILLIC
+--- DESERET
+--- DEVANAGARI
+--- ETHIOPIC
+--- GEORGIAN
+--- GLAGOLITIC
+--- GOTHIC
+--- GREEK
+--- GUJARATI
+--- GURMUKHI
+--- HAN
+--- HANGUL
+--- HANUNOO
+--- HEBREW
+--- HIRAGANA
+--- INHERITED
+--- INVALID_CODE
+--- KANNADA
+--- KATAKANA
+--- KHAROSHTHI
+--- KHMER
+--- LAO
+--- LATIN
+--- LIMBU
+--- LINEAR_B
+--- MALAYALAM
+--- MONGOLIAN
+--- MYANMAR
+--- NEW_TAI_LUE
+--- NKO
+--- OGHAM
+--- OLD_ITALIC
+--- OLD_PERSIAN
+--- ORIYA
+--- OSMANYA
+--- PHAGS_PA
+--- PHOENICIAN
+--- RUNIC
+--- SHAVIAN
+--- SINHALA
+--- SYLOTI_NAGRI
+--- SYRIAC
+--- TAGALOG
+--- TAGBANWA
+--- TAI_LE
+--- TAMIL
+--- TELUGU
+--- THAANA
+--- THAI
+--- TIBETAN
+--- TIFINAGH
+--- UGARITIC
+--- UNKNOWN
+--- YI
+
+== See Also
+
+== ChangeLog
+
+

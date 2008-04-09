@@ -1,0 +1,18 @@
+= class Gnome::Client::DialogType
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * Gnome::Client::DialogType
+
+== Constants
+
+--- ERROR
+--- NORMAL
+
+== See Also
+
+== ChangeLog
+
+

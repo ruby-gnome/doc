@@ -1,0 +1,69 @@
+= class Gnome::Scores
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::InitiallyUnowned
+        * Gtk::Object
+          * Gtk::Widget
+            * Gtk::Container
+              * Gtk::Bin
+                * Gtk::Window
+                  * Gtk::Dialog
+                    * Gnome::Scores
+
+== Class Methods
+
+--- Gnome::Scores.display_with_pixmap
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::Scores.new
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- ref_accessible
+
+    See Atk::Implementor#ref_accessible.
+
+--- set_color
+
+     * Returns: self: ((*FIXME*))
+
+--- set_colors
+
+     * Returns: self: ((*FIXME*))
+
+--- set_current_player
+
+     * Returns: self: ((*FIXME*))
+
+--- set_def_color
+
+     * Returns: self: ((*FIXME*))
+
+--- set_logo_label
+
+     * Returns: self: ((*FIXME*))
+
+--- set_logo_label_title
+
+     * Returns: self: ((*FIXME*))
+
+--- set_logo_pixmap
+
+     * Returns: self: ((*FIXME*))
+
+--- set_logo_widget
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

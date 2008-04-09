@@ -1,0 +1,19 @@
+= Ruby/Bonobo2 index
+
+  * Bonobo
+  * Bonobo.activate
+  * Bonobo.debug_shutdown
+  * Bonobo.init
+  * Bonobo.initialized?
+  * Bonobo.main
+  * Bonobo.main_quit
+  * Bonobo.setup_x_error_handler
+  * Bonobo::I18n
+  * Bonobo::I18n.N_
+  * Bonobo::I18n._
+  * Bonobo::I18n.bindtextdomain
+  * Bonobo::I18n.dcgettext
+  * Bonobo::I18n.dgettext
+  * Bonobo::I18n.gettext
+  * Bonobo::I18n.gettext_noop
+  * Bonobo::I18n.textdomain

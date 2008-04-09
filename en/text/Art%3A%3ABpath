@@ -1,0 +1,33 @@
+= class Art::Bpath
+
+== Object Hierarchy
+
+* Object
+  * Data
+    * Art::Bpath
+
+== Class Methods
+
+--- Art::Bpath.new
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- affine_transform
+
+     * Returns: self: ((*FIXME*))
+
+--- to_a
+
+     * Returns: self: ((*FIXME*))
+
+--- to_vpath
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

@@ -1,0 +1,43 @@
+= class Gtk::CellRenderer::State
+
+== Object Hierarchy
+
+* Object
+  * GLib::Flags
+    * Gtk::CellRenderer::State
+
+== Instance Methods
+
+--- focused?
+
+     * Returns: self: ((*FIXME*))
+
+--- insensitive?
+
+     * Returns: self: ((*FIXME*))
+
+--- prelit?
+
+     * Returns: self: ((*FIXME*))
+
+--- selected?
+
+     * Returns: self: ((*FIXME*))
+
+--- sorted?
+
+     * Returns: self: ((*FIXME*))
+
+== Constants
+
+--- FOCUSED
+--- INSENSITIVE
+--- PRELIT
+--- SELECTED
+--- SORTED
+
+== See Also
+
+== ChangeLog
+
+

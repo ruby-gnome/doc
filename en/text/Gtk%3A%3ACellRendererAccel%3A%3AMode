@@ -1,0 +1,18 @@
+= class Gtk::CellRendererAccel::Mode
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * Gtk::CellRendererAccel::Mode
+
+== Constants
+
+--- GTK
+--- OTHER
+
+== See Also
+
+== ChangeLog
+
+

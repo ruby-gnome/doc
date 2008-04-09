@@ -1,0 +1,20 @@
+= class Gst::IndexEntry::Types
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * Gst::IndexEntry::Types
+
+== Constants
+
+--- ASSOCIATION
+--- FORMAT
+--- ID
+--- OBJECT
+
+== See Also
+
+== ChangeLog
+
+

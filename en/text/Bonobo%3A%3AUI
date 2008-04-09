@@ -1,0 +1,25 @@
+= module Bonobo::UI
+
+== Module Functions
+
+--- Bonobo::UI.debug_shutdown
+
+     * Returns: self: ((*FIXME*))
+
+--- Bonobo::UI.initialized?
+
+     * Returns: self: ((*FIXME*))
+
+--- Bonobo::UI.main
+
+     * Returns: self: ((*FIXME*))
+
+--- Bonobo::UI.module_info
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

@@ -1,0 +1,17 @@
+= module GLib::ChildWatch
+
+== Module Functions
+
+--- GLib::ChildWatch.add
+
+     * Returns: self: ((*FIXME*))
+
+--- GLib::ChildWatch.source_new
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

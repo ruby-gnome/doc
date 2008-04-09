@@ -1,0 +1,112 @@
+= class Gnome::DruidPageEdge
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::InitiallyUnowned
+        * Gtk::Object
+          * Gtk::Widget
+            * Gtk::Container
+              * Gtk::Bin
+                * Gnome::DruidPage
+                  * Gnome::DruidPageEdge
+
+== Class Methods
+
+--- Gnome::DruidPageEdge.new
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- bg_color=
+
+     * Returns: self: ((*FIXME*))
+
+--- logo=
+
+     * Returns: self: ((*FIXME*))
+
+--- logo_bg_color=
+
+     * Returns: self: ((*FIXME*))
+
+--- ref_accessible
+
+    See Atk::Implementor#ref_accessible.
+
+--- set_bg_color
+
+     * Returns: self: ((*FIXME*))
+
+--- set_logo
+
+     * Returns: self: ((*FIXME*))
+
+--- set_logo_bg_color
+
+     * Returns: self: ((*FIXME*))
+
+--- set_text
+
+     * Returns: self: ((*FIXME*))
+
+--- set_text_color
+
+     * Returns: self: ((*FIXME*))
+
+--- set_textbox_color
+
+     * Returns: self: ((*FIXME*))
+
+--- set_title
+
+     * Returns: self: ((*FIXME*))
+
+--- set_title_color
+
+     * Returns: self: ((*FIXME*))
+
+--- set_top_watermark
+
+     * Returns: self: ((*FIXME*))
+
+--- set_watermark
+
+     * Returns: self: ((*FIXME*))
+
+--- text=
+
+     * Returns: self: ((*FIXME*))
+
+--- text_color=
+
+     * Returns: self: ((*FIXME*))
+
+--- textbox_color=
+
+     * Returns: self: ((*FIXME*))
+
+--- title=
+
+     * Returns: self: ((*FIXME*))
+
+--- title_color=
+
+     * Returns: self: ((*FIXME*))
+
+--- top_watermark=
+
+     * Returns: self: ((*FIXME*))
+
+--- watermark=
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

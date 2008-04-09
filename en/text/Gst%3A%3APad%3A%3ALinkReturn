@@ -1,0 +1,23 @@
+= class Gst::Pad::LinkReturn
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * Gst::Pad::LinkReturn
+
+== Constants
+
+--- NOFORMAT
+--- NOSCHED
+--- OK
+--- REFUSED
+--- WAS_LINKED
+--- WRONG_DIRECTION
+--- WRONG_HIERARCHY
+
+== See Also
+
+== ChangeLog
+
+

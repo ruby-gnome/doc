@@ -1,0 +1,40 @@
+= class Gtk::GammaCurve
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::InitiallyUnowned
+        * Gtk::Object
+          * Gtk::Widget
+            * Gtk::Container
+              * Gtk::Box
+                * Gtk::VBox
+                  * Gtk::GammaCurve
+
+== Class Methods
+
+--- Gtk::GammaCurve.new
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- curve
+
+     * Returns: self: ((*FIXME*))
+
+--- gamma
+
+     * Returns: self: ((*FIXME*))
+
+--- ref_accessible
+
+    See Atk::Implementor#ref_accessible.
+
+== See Also
+
+== ChangeLog
+
+

@@ -1,0 +1,128 @@
+= class Gst::Message
+
+== Object Hierarchy
+
+* Object
+  * Gst::MiniObject
+    * Gst::Message
+
+== Class Methods
+
+--- Gst::Message.new
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- have_cond?
+
+     * Returns: self: ((*FIXME*))
+
+--- have_mutex?
+
+     * Returns: self: ((*FIXME*))
+
+--- lock
+
+     * Returns: self: ((*FIXME*))
+
+--- set_source
+
+     * Returns: self: ((*FIXME*))
+
+--- set_src
+
+     * Returns: self: ((*FIXME*))
+
+--- set_timestamp
+
+     * Returns: self: ((*FIXME*))
+
+--- set_type
+
+     * Returns: self: ((*FIXME*))
+
+--- signal
+
+     * Returns: self: ((*FIXME*))
+
+--- source
+
+     * Returns: self: ((*FIXME*))
+
+--- source=
+
+     * Returns: self: ((*FIXME*))
+
+--- src
+
+     * Returns: self: ((*FIXME*))
+
+--- src=
+
+     * Returns: self: ((*FIXME*))
+
+--- structure
+
+     * Returns: self: ((*FIXME*))
+
+--- timestamp
+
+     * Returns: self: ((*FIXME*))
+
+--- timestamp=
+
+     * Returns: self: ((*FIXME*))
+
+--- type
+
+     * Returns: self: ((*FIXME*))
+
+--- type=
+
+     * Returns: self: ((*FIXME*))
+
+--- unlock
+
+     * Returns: self: ((*FIXME*))
+
+--- valid_timestamp?
+
+     * Returns: self: ((*FIXME*))
+
+--- wait
+
+     * Returns: self: ((*FIXME*))
+
+== Constants
+
+--- ANY
+--- APPLICATION
+--- ASYNC_DONE
+--- ASYNC_START
+--- BUFFERING
+--- CLOCK_LOST
+--- CLOCK_PROVIDE
+--- DURATION
+--- ELEMENT
+--- EOS
+--- ERROR
+--- INFO
+--- LATENCY
+--- NEW_CLOCK
+--- SEGMENT_DONE
+--- SEGMENT_START
+--- STATE_CHANGED
+--- STATE_DIRTY
+--- STEP_DONE
+--- STREAM_STATUS
+--- STRUCTURE_CHANGE
+--- TAG
+--- UNKNOWN
+--- WARNING
+
+== See Also
+
+== ChangeLog
+
+

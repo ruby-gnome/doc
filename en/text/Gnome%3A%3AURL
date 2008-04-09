@@ -1,0 +1,13 @@
+= module Gnome::URL
+
+== Module Functions
+
+--- Gnome::URL.show
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

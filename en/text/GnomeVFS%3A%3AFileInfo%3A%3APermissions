@@ -1,0 +1,108 @@
+= class GnomeVFS::FileInfo::Permissions
+
+== Object Hierarchy
+
+* Object
+  * GLib::Flags
+    * GnomeVFS::FileInfo::Permissions
+
+== Instance Methods
+
+--- access_executable?
+
+     * Returns: self: ((*FIXME*))
+
+--- access_readable?
+
+     * Returns: self: ((*FIXME*))
+
+--- access_writable?
+
+     * Returns: self: ((*FIXME*))
+
+--- group_all?
+
+     * Returns: self: ((*FIXME*))
+
+--- group_exec?
+
+     * Returns: self: ((*FIXME*))
+
+--- group_read?
+
+     * Returns: self: ((*FIXME*))
+
+--- group_write?
+
+     * Returns: self: ((*FIXME*))
+
+--- other_all?
+
+     * Returns: self: ((*FIXME*))
+
+--- other_exec?
+
+     * Returns: self: ((*FIXME*))
+
+--- other_read?
+
+     * Returns: self: ((*FIXME*))
+
+--- other_write?
+
+     * Returns: self: ((*FIXME*))
+
+--- sgid?
+
+     * Returns: self: ((*FIXME*))
+
+--- sticky?
+
+     * Returns: self: ((*FIXME*))
+
+--- suid?
+
+     * Returns: self: ((*FIXME*))
+
+--- user_all?
+
+     * Returns: self: ((*FIXME*))
+
+--- user_exec?
+
+     * Returns: self: ((*FIXME*))
+
+--- user_read?
+
+     * Returns: self: ((*FIXME*))
+
+--- user_write?
+
+     * Returns: self: ((*FIXME*))
+
+== Constants
+
+--- ACCESS_EXECUTABLE
+--- ACCESS_READABLE
+--- ACCESS_WRITABLE
+--- GROUP_ALL
+--- GROUP_EXEC
+--- GROUP_READ
+--- GROUP_WRITE
+--- OTHER_ALL
+--- OTHER_EXEC
+--- OTHER_READ
+--- OTHER_WRITE
+--- SGID
+--- STICKY
+--- SUID
+--- USER_ALL
+--- USER_EXEC
+--- USER_READ
+--- USER_WRITE
+
+== See Also
+
+== ChangeLog
+
+

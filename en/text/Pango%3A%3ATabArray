@@ -1,0 +1,49 @@
+= class Pango::TabArray
+
+== Object Hierarchy
+
+* Object
+  * GLib::Boxed
+    * Pango::TabArray
+
+== Class Methods
+
+--- Pango::TabArray.new
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- get_tab
+
+     * Returns: self: ((*FIXME*))
+
+--- positions_in_pixels?
+
+     * Returns: self: ((*FIXME*))
+
+--- resize
+
+     * Returns: self: ((*FIXME*))
+
+--- set_tab
+
+     * Returns: self: ((*FIXME*))
+
+--- size
+
+     * Returns: self: ((*FIXME*))
+
+--- tabs
+
+     * Returns: self: ((*FIXME*))
+
+== Constants
+
+--- TAB_LEFT
+
+== See Also
+
+== ChangeLog
+
+

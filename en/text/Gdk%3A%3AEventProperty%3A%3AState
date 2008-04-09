@@ -1,0 +1,18 @@
+= class Gdk::EventProperty::State
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * Gdk::EventProperty::State
+
+== Constants
+
+--- DELETE
+--- NEW_VALUE
+
+== See Also
+
+== ChangeLog
+
+

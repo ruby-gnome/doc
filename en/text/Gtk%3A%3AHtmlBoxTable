@@ -1,0 +1,47 @@
+= class Gtk::HtmlBoxTable
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Gtk::HtmlBox
+        * Gtk::HtmlBoxTable
+
+== Class Methods
+
+--- Gtk::HtmlBoxTable.new
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- add_tbody
+
+     * Returns: self: ((*FIXME*))
+
+--- add_tfoot
+
+     * Returns: self: ((*FIXME*))
+
+--- add_thead
+
+     * Returns: self: ((*FIXME*))
+
+--- cell_added
+
+     * Returns: self: ((*FIXME*))
+
+--- remove_caption
+
+     * Returns: self: ((*FIXME*))
+
+--- remove_row
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

@@ -1,0 +1,20 @@
+= class GLib::Param::Boxed
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Param
+      * GLib::Param::Boxed
+
+== Class Methods
+
+--- GLib::Param::Boxed.new
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

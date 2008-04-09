@@ -1,0 +1,23 @@
+= class Pango::Context::Direction
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * Pango::Context::Direction
+
+== Constants
+
+--- LTR
+--- NEUTRAL
+--- RTL
+--- TTB_LTR
+--- TTB_RTL
+--- WEAK_LTR
+--- WEAK_RTL
+
+== See Also
+
+== ChangeLog
+
+

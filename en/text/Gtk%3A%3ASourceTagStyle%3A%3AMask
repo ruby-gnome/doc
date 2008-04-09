@@ -1,0 +1,28 @@
+= class Gtk::SourceTagStyle::Mask
+
+== Object Hierarchy
+
+* Object
+  * GLib::Flags
+    * Gtk::SourceTagStyle::Mask
+
+== Instance Methods
+
+--- use_background?
+
+     * Returns: self: ((*FIXME*))
+
+--- use_foreground?
+
+     * Returns: self: ((*FIXME*))
+
+== Constants
+
+--- USE_BACKGROUND
+--- USE_FOREGROUND
+
+== See Also
+
+== ChangeLog
+
+

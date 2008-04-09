@@ -1,0 +1,38 @@
+= class Gtk::Object::Flags
+
+== Object Hierarchy
+
+* Object
+  * GLib::Flags
+    * Gtk::Object::Flags
+
+== Instance Methods
+
+--- floating?
+
+     * Returns: self: ((*FIXME*))
+
+--- in_destruction?
+
+     * Returns: self: ((*FIXME*))
+
+--- reserved_1?
+
+     * Returns: self: ((*FIXME*))
+
+--- reserved_2?
+
+     * Returns: self: ((*FIXME*))
+
+== Constants
+
+--- FLOATING
+--- IN_DESTRUCTION
+--- RESERVED_1
+--- RESERVED_2
+
+== See Also
+
+== ChangeLog
+
+

@@ -1,0 +1,34 @@
+= class GLib::KeyFileError
+
+== Object Hierarchy
+
+* Object
+  * Exception
+    * StandardError
+      * RuntimeError
+        * GLib::KeyFileError
+
+== Instance Methods
+
+--- code
+
+     * Returns: self: ((*FIXME*))
+
+--- domain
+
+     * Returns: self: ((*FIXME*))
+
+== Constants
+
+--- GROUP_NOT_FOUND
+--- INVALID_VALUE
+--- KEY_NOT_FOUND
+--- NOT_FOUND
+--- PARSE
+--- UNKNOWN_ENCODING
+
+== See Also
+
+== ChangeLog
+
+

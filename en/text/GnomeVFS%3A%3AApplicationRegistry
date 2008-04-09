@@ -1,0 +1,85 @@
+= module GnomeVFS::ApplicationRegistry
+
+== Module Functions
+
+--- GnomeVFS::ApplicationRegistry.add_mime_type
+
+     * Returns: self: ((*FIXME*))
+
+--- GnomeVFS::ApplicationRegistry.clear_mime_types
+
+     * Returns: self: ((*FIXME*))
+
+--- GnomeVFS::ApplicationRegistry.exists?
+
+     * Returns: self: ((*FIXME*))
+
+--- GnomeVFS::ApplicationRegistry.get_applications
+
+     * Returns: self: ((*FIXME*))
+
+--- GnomeVFS::ApplicationRegistry.get_bool_value
+
+     * Returns: self: ((*FIXME*))
+
+--- GnomeVFS::ApplicationRegistry.get_keys
+
+     * Returns: self: ((*FIXME*))
+
+--- GnomeVFS::ApplicationRegistry.get_mime_application
+
+     * Returns: self: ((*FIXME*))
+
+--- GnomeVFS::ApplicationRegistry.get_mime_types
+
+     * Returns: self: ((*FIXME*))
+
+--- GnomeVFS::ApplicationRegistry.peek_value
+
+     * Returns: self: ((*FIXME*))
+
+--- GnomeVFS::ApplicationRegistry.reload
+
+     * Returns: self: ((*FIXME*))
+
+--- GnomeVFS::ApplicationRegistry.remove_application
+
+     * Returns: self: ((*FIXME*))
+
+--- GnomeVFS::ApplicationRegistry.remove_mime_type
+
+     * Returns: self: ((*FIXME*))
+
+--- GnomeVFS::ApplicationRegistry.set_bool_value
+
+     * Returns: self: ((*FIXME*))
+
+--- GnomeVFS::ApplicationRegistry.set_value
+
+     * Returns: self: ((*FIXME*))
+
+--- GnomeVFS::ApplicationRegistry.shutdown
+
+     * Returns: self: ((*FIXME*))
+
+--- GnomeVFS::ApplicationRegistry.supports_mime_type
+
+     * Returns: self: ((*FIXME*))
+
+--- GnomeVFS::ApplicationRegistry.supports_uri_scheme
+
+     * Returns: self: ((*FIXME*))
+
+--- GnomeVFS::ApplicationRegistry.sync
+
+     * Returns: self: ((*FIXME*))
+
+--- GnomeVFS::ApplicationRegistry.unset_key
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

@@ -1,0 +1,22 @@
+= class Gdk::Window::Type
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * Gdk::Window::Type
+
+== Constants
+
+--- CHILD
+--- DIALOG
+--- FOREIGN
+--- ROOT
+--- TEMP
+--- TOPLEVEL
+
+== See Also
+
+== ChangeLog
+
+
