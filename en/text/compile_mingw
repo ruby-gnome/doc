@@ -18,10 +18,10 @@ Just follow the default settings upon questions during the installation.
 At once, while installing MSYS, you will need to input where MinGW is installed (which should be c:/MinGW). 
 Notice that you need to install them in this specific order (MinGW at first, MSYS after).
 
-== Install GTK+ Libraries from ((<GLADE for Windows|URL:http://gladewin32.sourceforge.net/>)).
-Download the latest gtk-dev package from ((<GLADE for Windows|URL:http://gladewin32.sourceforge.net/modules.php?name=Downloads>)).
+== Install GTK+ Libraries from ((<GLADE for Windows|URL:http://sourceforge.net/projects/gladewin32/>)).
+Download the latest gtk-dev package from ((<GLADE for Windows|URL:http://sourceforge.net/project/showfiles.php?group_id=98754>)).
 
-* gtk-dev-2.10.6-win32-1.exe
+* gtk-dev-2.10.11-win32-1.exe
    * Installed to c:\GTK
 
 == Compile/Install Ruby
@@ -83,6 +83,8 @@ Copy c:\MinGW\lib\ruby\site_ruby\1.8\*.rb and c:\MinGW\lib\ruby\site_ruby\1.8\i3
 If you have some troubles, see also ((<Install Guide for Windows>)).
 
 == ChangeLog
+:2008-04-09 ((<Joachim Glauche>))
+  * Fixed Glade for Windows links
 :2006-12-26 ((<Masao>))
   * Revised.
 :2004-08-07 ((<Masao>))
