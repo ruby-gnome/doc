@@ -1387,5 +1387,6 @@ When it makes sense, key values can be converted to and from Unicode characters 
 == See Also
 Gdk::Keymap
 
+== ChangeLog
 
 - ((<Masao>))

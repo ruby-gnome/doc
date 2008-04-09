@@ -200,4 +200,6 @@ Gdk::Event::POINTER_MOTION_HINT_MASK is a special mask which is used to reduce t
 --- PRIORITY_REDRAW
     This is the priority that the idle handler processing window updates is given in the GLib Main Loop
 
+== ChangeLog
+
 ((<Masao>))

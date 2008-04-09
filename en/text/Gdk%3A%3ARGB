@@ -70,5 +70,7 @@
 --- DITHER_NONE
 --- DITHER_NORMAL
 
+== ChangeLog
+
 * 2003-11-08: ((<Masao>)) - Move to Gdk::RGB from Gdk. Fix some links.
 * 2003-11-03: ((<goddess101>))

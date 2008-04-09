@@ -110,6 +110,7 @@ Specifies the possible values returned by Gdk::Region#rect_in.
 == See Also
 Gdk::Rectangle, Gdk::Span
 
+== ChangeLog
 
 -((<Masao>))
 
