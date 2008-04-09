@@ -166,12 +166,10 @@ class Property
 
   def blurb
     blurb = @prop.blurb
-    if blurb
-      blurb = blurb.gsub(/TRUE/, "true")
-      blurb = blurb.gsub(/(#{Regexp.union(*@target_modules)})/, "\\1::")
-    else
-      ""
-    end
+    return nil if blurb.nil?
+
+    blurb = blurb.gsub(/TRUE/, "true")
+    blurb.gsub(/(#{Regexp.union(*@target_modules)})/, "\\1::")
   end
 
   def flags
@@ -197,12 +195,17 @@ class Property
   def methods
     prop_methods = []
     name = canonical_method(@name)
-    explanation = blurb.gsub(/^\s*the/i, "")
-    explanation.gsub!(/^\s*Whether(.*)/i, "value whether\\1 or not")
-    explanation.gsub!(/^\s*If/i, "value if")
+    if blurb
+      explanation = blurb.gsub(/^\s*the\s*/i, "")
+      explanation.gsub!(/^\s*Whether(.*)/i, "value whether\\1 or not")
+      explanation.gsub!(/^\s*If/i, "value if")
 
-    attr_explanation = blurb.gsub(/^Whether/, "true if")
-    attr_explanation.gsub!(/^If/, "true if")
+      attr_explanation = blurb.gsub(/^Whether/, "true if")
+      attr_explanation.gsub!(/^If/, "true if")
+    else
+      explanation = name
+      attr_explanation = "((*FIXME*))"
+    end
 
     if @prop.readable?
       detail = "    Gets the #{explanation}.\n" +
@@ -217,7 +220,7 @@ class Property
     if @prop.writable?
       detail = "    Sets the #{explanation}.\n" +
         "     * #{name}: #{attr_explanation}\n" +
-        "     * Returns: #{name}\n"
+        "     * Returns: #{name}"
       prop_methods << ["#{name}=", detail, "(#{name})"]
 
       detail = "    Same as #{name}=.\n" +
@@ -306,7 +309,14 @@ class UpdateRD
   end
 
   def extract_name(name)
-    name.gsub(/(?:\A\S*?[\.\#]|\[[^\]]*\]|\(.*\z|\s*\{.*\z|:.*\z)/, '')
+    name = name.gsub(/(?:\A\S*?[\.\#]| # SomeClass.xxx => xxx
+                                       # SomeClass#xxx => xxx
+                      (?!\[)[^\]]*(?=\])| # [...] => []
+                      \(.*\z| # xxx(...) => xxx
+                      \s*\{.*\z| # xxx {...} => xxx
+                      :.*\z # xxx: ... => xxx
+                     )/x, '')
+    name.gsub(/\]\s*=.*\z/, ']=') # [] = xxx => []=
   end
 
   def put_methods(title, methods, methods_info=nil, prefix="", postfix="",
@@ -405,7 +415,7 @@ class UpdateRD
     section_infos = []
 
     title, component = component.split(/\n+/, 2)
-    first_section, *sections = component.split(/^===\s+.*?/m)
+    first_section, *sections = component.split(/^===\s+/m)
     if sections.empty?
       sections = ["\n#{first_section}"] if first_section
     else
@@ -423,7 +433,7 @@ class UpdateRD
 
   def read_initial_info(klass)
     return unless File.exists?(rd_file(klass))
-    introduction, *components = File.read(rd_file(klass)).split(/^==\s+.*?/m)
+    introduction, *components = File.read(rd_file(klass)).split(/^==\s+/m)
     info = {}
 
     return unless /\A[\r\n\s]*=\s*(?:class|module)\s+(.*)\s*/ =~ introduction
