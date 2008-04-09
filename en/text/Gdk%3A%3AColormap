@@ -50,5 +50,6 @@ There are a couple of special colormaps that can be retrieved. The system colorm
 == See Also
 Gdk::Color
 
+== ChangeLog
 
 - ((<Masao>))

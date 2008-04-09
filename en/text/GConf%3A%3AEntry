@@ -48,4 +48,6 @@ A GConf::Entry pairs a relative key to its value, e.g. if the value "10" is stor
     * is_default: whether or not the value should be the default value or not
     * Returns: self
 
+== ChangeLog
+
 - ((<lone-star>))
