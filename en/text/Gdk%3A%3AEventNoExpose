@@ -14,4 +14,6 @@ Generated when the area of a Gdk::Drawable being copied, with Gdk::Drawable#draw
     * type: Gdk::Event::NO_EXPOSE
     * Returns: a new Gdk::EventNoExpose.
 
+== ChangeLog
+
 -((<Masao>))

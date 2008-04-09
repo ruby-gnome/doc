@@ -49,4 +49,6 @@ Generated when a pointer or keyboard grab is broken. On X11, this happens when t
     Same as Gdk::EventGrabBroken##grab_window=. ((*Since 2.8*))
     * Returns: self
 
+== ChangeLog
+
 -((<gc>))

@@ -37,5 +37,6 @@ Contains the fields which are common to all event structs.
     * window: a Gdk::Window which receives the event.
     * Returns: self
 
+== ChangeLog
 
 - ((<Masao>))

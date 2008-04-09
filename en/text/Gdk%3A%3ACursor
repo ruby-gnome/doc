@@ -216,5 +216,6 @@ Cursors by themselves are not very interesting, they must be be bound to a windo
 --- CURSOR_IS_PIXMAP
     type of cursors constructed with Gdk::Pixmap. 
 
+== ChangeLog
 
 - ((<Masao>))

@@ -57,6 +57,6 @@ Specifies the state of a toplevel window.
 --- BELOW
     The window is kept below other windows.
 
-
+== ChangeLog
 
 - ((<Masao>))

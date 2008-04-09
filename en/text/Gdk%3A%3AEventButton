@@ -143,5 +143,6 @@ For a double click to occur, the second button press must occur within 1/4 of a 
     * y_root: the y coordinate of the pointer relative to the root of the screen
     * Returns: self
 
+== ChangeLog
 
 - ((<Masao>))

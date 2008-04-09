@@ -78,6 +78,6 @@ Specifies the type of a Gdk::Image.
 --- FASTEST
     Specifies that Gdk::Image::SHARED should be tried first, and if that fails then Gdk::Image::NORMAL will be used.
 
-
+== ChangeLog
 
 - ((<Masao>))

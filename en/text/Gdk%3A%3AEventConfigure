@@ -63,5 +63,6 @@ Generated when a window size or position has changed.
     * val: the new height of the window. 
     * Returns: self
 
+== ChangeLog
 
 -((<Masao>))

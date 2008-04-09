@@ -120,5 +120,6 @@ Generated when the pointer moves.
     * y_root: the y coordinate of the pointer relative to the root of the screen
     * Returns: self
 
+== ChangeLog
 
 - ((<Masao>))
