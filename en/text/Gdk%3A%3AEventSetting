@@ -50,5 +50,6 @@ Specifies the kind of modification applied to a setting.
 --- DELETED
     a setting was deleted.  
 
+== ChangeLog
 
 - ((<Masao>))

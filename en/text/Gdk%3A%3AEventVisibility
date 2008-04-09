@@ -39,5 +39,6 @@ Specifies the visiblity status of a window
 --- FULLY_OBSCURED
     the window is not visible at all.  
 
+== ChangeLog
 
 - ((<Masao>))

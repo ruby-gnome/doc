@@ -59,5 +59,6 @@ Specifies the type of a property change.
 --- PROPERTY_DELETE
     The property was deleted. 
 
+== ChangeLog
 
 -((<Masao>))

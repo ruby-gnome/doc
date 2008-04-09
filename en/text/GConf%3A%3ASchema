@@ -75,4 +75,6 @@ This class should really not be used.  It should not be instantiated, and none o
     * value: the default value
     * Returns: self
 
+== ChangeLog
+
 - ((<lone-star>))

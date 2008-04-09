@@ -51,5 +51,6 @@ Information about the tooltip (if any) associated with an arbitrary widget can b
 == See Also
 * Gtk::Toolbar - Create groups of widgets with their own tooltips.
 
+== ChangeLog
 
 - ((<Masao>))

@@ -74,6 +74,6 @@ Generated when a selection is requested or ownership of a selection is taken ove
     * req: the pointer address of the native window on which to place property. 
     * Returns: self
 
-
+== ChangeLog
 
 -((<Masao>))

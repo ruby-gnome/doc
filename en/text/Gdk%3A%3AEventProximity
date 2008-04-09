@@ -38,6 +38,6 @@ Proximity events are generated when using GDK's wrapper for the XInput extension
     * device: the Gdk::Device where the event originated.
     * Returns: self
 
-
+== ChangeLog
 
 -((<Masao>))

@@ -77,5 +77,7 @@ Describes a key press or key release event.
     * Returns: self
 
 
+== ChangeLog
+
 - ((<Masao>))
 
