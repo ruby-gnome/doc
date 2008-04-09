@@ -47,5 +47,6 @@ An event sent by another client application.
     * Returns: self
 
 
+== ChangeLog
 
 -((<Masao>))

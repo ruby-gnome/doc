@@ -53,4 +53,6 @@ Generated when all or part of a window becomes visible and needs to be redrawn.
     Same as Gdk::EventExpose#count=.
     * Returns: self
 
+== ChangeLog
+
 - ((<Masao>))

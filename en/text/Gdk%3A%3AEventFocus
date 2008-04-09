@@ -27,6 +27,6 @@ Describes a change of keyboard focus.
     * val: true if the window has gained the keyboard focus, false if it has lost the focus.  
     * Returns: self
 
-
+== ChangeLog
 
 -((<Masao>))
