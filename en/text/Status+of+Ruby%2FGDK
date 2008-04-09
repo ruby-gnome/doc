@@ -27,8 +27,8 @@ Cursors|Gdk::Cursor|GdkCursor|O|O|O|O|O|O||
 Windows|Gdk::Window|GdkWindow|O|O|O|O|O|O|O|Include Some General function (pointer/keyboard)_(grab/ungrab). 
 Windows|Gdk::Geometry|GdkGeometry|O|O|O|O|O|O||
 Windows|Gdk::WindowAttr|GdkWindowAttr|O|O|O|O|O|O||
-Windows|Gdk::PointerHooks|GdkPointerHooks|-|-|-|-|-|-
-Windows||-|GdkNativeWindow|x|x|x|x|x|x|x Use Integer instead.
+Windows|Gdk::PointerHooks|GdkPointerHooks|-|-|-|-|-|-||
+Windows|-|GdkNativeWindow|x|x|x|x|x|x|x| Use Integer instead.
 Windows|-|GdkXEvent|x|x|x|x|x|x|x| Use Integer instead.
 Events|Gdk::Event|GdkEvent|O|O|O|O|O|O||
 Event Structures|Gdk::EventAny|GdkEventAny|O|O|O|O|O|O||
