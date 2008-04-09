@@ -34,12 +34,42 @@ target_libs = ["atk", "bonobo2", "bonoboui2", "gconf2", "gdk_pixbuf2",
                "gnomeprintui2", "gnomevfs", "gst", "gtk2", "gtkglext",
                "gtkhtml2", "gtkmozembed", "gtksourceview", "libart2",
                "libglade2", "pango", "poppler", "rsvg2", "vte"]
-target_modules = ["Atk", "Bonobo", "Bonobo::UI", "GConf", "Gdk::Pixbuf",
-                  "GLib", "Gnome", "Gnome::Canvas", "Gnome::Print",
-                  "Gnome::PrintUI", "GnomeVFS", "Gst",
-                  "Gtk", "Gdk", "Gtk::GL", "Gdk::GL", "Gtk::Html",
-                  "Gtk::MozEmbed", "Gtk::SourceView", "Art",
-                  "GladeXML", "Pango", "Poppler", "RSVG", "Vte",]
+target_packages = {
+  "Ruby/ATK" => ["Atk"],
+  "Ruby/Bonobo2" => ["Bonobo"],
+  "Ruby/BonoboUI2" => ["Bonobo::UI", "Bonobo::Dock", "Bonobo::Window"],
+  "Ruby/GConf2" => ["GConf"],
+  "Ruby/GdkPixbuf2" => ["Gdk::Pixbuf", "Gdk::Pixdata"],
+  "Ruby/GLib2" => ["GLib"],
+  "Ruby/GNOME2" => ["Gnome"],
+  "Ruby/GnomeCanvas2" => ["Gnome::Canvas"],
+  "Ruby/GnomePrint" => ["Gnome::Print", "Gnome::GPA"],
+  "Ruby/GnomePrintUI" => ["Gnome::PrintUI",
+                          "Gnome::FontSelection",
+                          "Gnome::FontPreview",
+                          "Gnome::FontDialog",
+                          "Gnome::PrintConfigDialog",
+                          "Gnome::PrintContentSelector",
+                          "Gnome::PrintDialog",
+                          "Gnome::PrintJobPreview",
+                          "Gnome::PaperSelector",
+                          "Gnome::PrintPreview",
+                          "Gnome::PrintUnitSelector"],
+  "Ruby/GnomeVFS" => ["GnomeVFS"],
+  "Ruby/GStreamer" => ["Gst"],
+  "Ruby/GTK2" => ["Gtk"],
+  "Ruby/GDK2" => ["Gdk"],
+  "Ruby/GtkGLExt" => ["Gtk::GL", "Gdk::GL"],
+  "Ruby/GtkHtml2" => ["Gtk::Html"],
+  "Ruby/GtkMozEmbed" => ["Gtk::Mozembed"],
+  "Ruby/GtkSourceView" => ["Gtk::SourceView"],
+  "Ruby/Libart2" => ["Art"],
+  "Ruby/Libglade2" => ["GladeXML"],
+  "Ruby/Pango" => ["Pango"],
+  "Ruby/Poppler" => ["Poppler"],
+  "Ruby/RSVG" => ["RSVG"],
+  "Ruby/VTE" => ["Vte"],
+}
 
 target_libs.each do |lib|
   begin
@@ -129,7 +159,7 @@ class Property
       when "gboolean"
 	"true or false"
       else
-	prop_name.gsub(/(#{@target_modules.join("|")})/, "\\1::")
+	prop_name.gsub(/(#{Regexp.union(*@target_modules)})/, "\\1::")
       end
     end
   end
@@ -138,7 +168,7 @@ class Property
     blurb = @prop.blurb
     if blurb
       blurb = blurb.gsub(/TRUE/, "true")
-      blurb = blurb.gsub(/(#{@target_modules.join("|")})/, "\\1::")
+      blurb = blurb.gsub(/(#{Regexp.union(*@target_modules)})/, "\\1::")
     else
       ""
     end
@@ -202,9 +232,14 @@ end
 class UpdateRD
   RETURNS = "     * Returns: self: ((*FIXME*))"
 
-  def initialize(target_modules, output_dir, replace,
+  def initialize(target_packages, output_dir, replace,
                  index_page_name_template=nil)
-    @target_modules = target_modules
+    @target_packages = target_packages
+    @target_modules = target_packages.collect do |package, modules|
+      modules
+    end.flatten.sort_by do |target_module|
+      -target_module.size
+    end
     @output_dir = output_dir
     @replace = replace
     @target_classes = []
@@ -333,7 +368,7 @@ class UpdateRD
   end
 
   def target_module?(mod)
-    /(#{@target_modules.join("|")})/ =~ mod.inspect
+    /\A(#{Regexp.union(*@target_modules)})/ =~ mod.inspect
   end
 
   def nest_classes(klass)
@@ -441,34 +476,30 @@ class UpdateRD
   end
 
   def output_indexes
-    if @target_modules.size == 1 and @index_page_name_template.nil?
+    if @target_packages.size == 1 and @index_page_name_template.nil?
       output_index("index")
     else
-      @target_modules.each do |target_module|
+      @target_packages.each do |package, target_modules|
         template = @index_page_name_template || "index-%s"
         template += "-%s" unless /%s/ =~ template
-        page_name = template % target_module.downcase.gsub(/::/, "-")
-        output_index(page_name, target_module)
+        page_name = template % package.downcase.gsub(/\//, "-")
+        output_index(page_name, package, target_modules)
       end
     end
   end
 
-  def output_index(index_page_name, target_module=nil)
-    other_modules = @target_modules - [target_module]
+  def output_index(index_page_name, package=nil, target_modules=[])
     File.open(File.join(@output_dir, index_page_name), "w") do |index|
-      if target_module
-        index.puts "= #{target_module} index"
+      if package
+        index.puts "= #{package} index"
       else
         index.puts "= Index"
       end
       index.puts
       @indexes.sort_by {|klass, info| klass.inspect}.each do |klass, info|
-        if target_module
-          next if /\A#{target_module}/ !~ klass.name
-          next if other_modules.any? do |other_module|
-            /\A#{other_module}/ =~ klass.name and
-              other_module.size > target_module.size
-          end
+        unless target_modules.empty?
+          next unless /\A(#{Regexp.union(*@target_modules)})/ =~ klass.name
+          next unless target_modules.include?($1)
         end
         index.puts "  * #{klass.inspect}"
 
@@ -680,6 +711,6 @@ class UpdateRD
   end
 end
 
-updater = UpdateRD.new(target_modules, options.output_dir,
+updater = UpdateRD.new(target_packages, options.output_dir,
                        options.replace, options.index_page_name_template)
 updater.run
