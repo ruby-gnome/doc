@@ -1,7 +1,7 @@
 = module Gdk::RGB
 ((<Gdk::RGB>)) converts RGB, grayscale, and colormapped images into the native window pixel format and displays them. It takes care of colormaps, visuals, dithering, and management of the temporary buffers.
 
-== Module Methods
+== Module Functions
 --- Gdk::RGB.colormap
     Retrieves colormap set by ((<Gdk::RGB>)).
     * Returns: The Gdk::Colormap set by ((<Gdk::RGB>)).
