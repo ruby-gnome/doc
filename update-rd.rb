@@ -415,7 +415,7 @@ class UpdateRD
     section_infos = []
 
     title, component = component.split(/\n+/, 2)
-    first_section, *sections = component.split(/^===\s+/m)
+    first_section, *sections = component.split(/^===(?!=)\s*/m)
     if sections.empty?
       sections = ["\n#{first_section}"] if first_section
     else
@@ -433,7 +433,7 @@ class UpdateRD
 
   def read_initial_info(klass)
     return unless File.exists?(rd_file(klass))
-    introduction, *components = File.read(rd_file(klass)).split(/^==\s+/m)
+    introduction, *components = File.read(rd_file(klass)).split(/^==(?!=)\s*/m)
     info = {}
 
     return unless /\A[\r\n\s]*=\s*(?:class|module)\s+(.*)\s*/ =~ introduction
@@ -447,9 +447,9 @@ class UpdateRD
         info[:description] += "\n\n== #{component.strip}"
       when /\AClass Methods/
         info[:class_methods_info] = read_sections(component)
-      when /\AModule Functions/
+      when /\AModule Functions/i
         info[:module_functions_info] = read_sections(component)
-      when /\AInstance Methods/
+      when /\AInstance Methods/i
         info[:instance_methods_info] = read_sections(component)
       when /\AConstants/
         info[:constants_info] = read_sections(component)
@@ -465,6 +465,10 @@ class UpdateRD
         title, info[:see_also] = component.split(/\n+/, 2)
       when /\AChangeLog/
         title, info[:change_log] = component.split(/\n+/, 2)
+      when /\AObject Hierarchy/
+      when /\AIncluded Modules/
+      else
+        # $stderr.puts("unknown section: #{component}")
       end
     end
     @indexes[klass].merge!(info)
