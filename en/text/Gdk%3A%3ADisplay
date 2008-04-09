@@ -145,7 +145,7 @@ Gdk::Display objects are the GDK representation of the X Display which can be de
     * Returns: true if cursors can have alpha channels.
 
 --- supports_composite?
-    Returns true if Gdk::Window#set_composited can be used to redirect drawing on the window using compositing. Currently this only works on X11 with XComposite and XDamage extensions available. ((*Since 2.12*))
+    Returns true if Gdk::Window#composited= can be used to redirect drawing on the window using compositing. Currently this only works on X11 with XComposite and XDamage extensions available. ((*Since 2.12*))
     * Returns: true if compositing is available.
 
 --- default_cursor_size
