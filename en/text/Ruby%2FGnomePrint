@@ -1,5 +1,7 @@
 = Ruby/GnomePrint API Reference
 
+((<API Index|index-ruby-gnomeprint>))
+
 * Gnome::Print
 * Gnome::PrintConfig
 * Gnome::PrintContext
