@@ -79,7 +79,7 @@ target_libs.each do |lib|
   end
 end
 
-default_output_dir = "doc"
+default_output_dir = "en/text"
 options = OpenStruct.new
 options.replace = false
 options.index_page_name_template = nil
