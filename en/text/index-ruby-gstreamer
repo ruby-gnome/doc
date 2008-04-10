@@ -178,7 +178,6 @@
   * Gst::Clock::Flags#can_set_master?
   * Gst::Clock::Flags#can_set_resolution?
   * Gst::Clock::Flags#last?
-  * Gst::Clock::Return
   * Gst::ClockEntry
   * Gst::ClockEntry.new
   * Gst::ClockEntry#clock
@@ -191,6 +190,7 @@
   * Gst::ClockEntry#unschedule
   * Gst::ClockEntry#wait
   * Gst::ClockEntry#wait_async
+  * Gst::ClockEntry::Return
   * Gst::ClockEntry::Type
   * Gst::ClockTime
   * Gst::Element

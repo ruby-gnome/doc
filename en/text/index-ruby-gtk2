@@ -413,6 +413,21 @@
   * Gtk::Box#set_spacing
   * Gtk::Box#spacing
   * Gtk::Box#spacing=
+  * Gtk::Builder
+  * Gtk::Builder.new
+  * Gtk::Builder#<<
+  * Gtk::Builder#[]
+  * Gtk::Builder#add
+  * Gtk::Builder#add_from_file
+  * Gtk::Builder#add_from_string
+  * Gtk::Builder#connect_signals
+  * Gtk::Builder#get_object
+  * Gtk::Builder#get_type
+  * Gtk::Builder#objects
+  * Gtk::Builder#set_translation_domain
+  * Gtk::Builder#translation_domain
+  * Gtk::Builder#translation_domain=
+  * Gtk::BuilderError
   * Gtk::Button
   * Gtk::Button.new
   * Gtk::Button#activate

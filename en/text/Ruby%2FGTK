@@ -248,6 +248,11 @@
   * Gtk::HRuler - A horizontal ruler.
   * Gtk::VRuler - A vertical ruler.
 
+* Interface builder
+
+  * Gtk::Buildable - Interface for objects that can be built by GtkBuilder
+  * Gtk::Builder - Build an interface from an XML UI definition
+
 * Recently Used Documents
 
   * Gtk::RecentManager - Managing Recently Used Files

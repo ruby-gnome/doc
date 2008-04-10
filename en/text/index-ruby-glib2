@@ -113,6 +113,9 @@
   * GLib::Completion#complete
   * GLib::Completion#items
   * GLib::Completion#remove_items
+  * GLib::ConnectFlags
+  * GLib::ConnectFlags#after?
+  * GLib::ConnectFlags#swapped?
   * GLib::ConvertError
   * GLib::ConvertError#code
   * GLib::ConvertError#domain
@@ -482,6 +485,21 @@
   * GLib::Signal#run_cleanup?
   * GLib::Signal#run_first?
   * GLib::Signal#run_last?
+  * GLib::SignalFlags
+  * GLib::SignalFlags#action?
+  * GLib::SignalFlags#detailed?
+  * GLib::SignalFlags#no_hooks?
+  * GLib::SignalFlags#no_recurse?
+  * GLib::SignalFlags#run_cleanup?
+  * GLib::SignalFlags#run_first?
+  * GLib::SignalFlags#run_last?
+  * GLib::SignalMatchType
+  * GLib::SignalMatchType#closure?
+  * GLib::SignalMatchType#data?
+  * GLib::SignalMatchType#detail?
+  * GLib::SignalMatchType#func?
+  * GLib::SignalMatchType#id?
+  * GLib::SignalMatchType#unblocked?
   * GLib::Source
   * GLib::Source.current
   * GLib::Source.remove

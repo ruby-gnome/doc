@@ -11,7 +11,7 @@ The Gtk::TreeStore object is a tree model for use with a Gtk::TreeView widget. I
 
 == Included Modules
 
-  * #<Module:0x2b1706c8f080>
+  * #<Module:0x2b8701187de8>
   * Gtk::TreeDragDest
   * Gtk::TreeDragSource
   * Gtk::TreeModel

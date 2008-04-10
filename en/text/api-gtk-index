@@ -21,6 +21,7 @@
 * Gtk::BindingSet - Done for 2.10.
 * Gtk::Box - Done for 2.10.
 * Gtk::Border - Done for 2.10.
+* Gtk::Builder - Done for 2.12.
 * Gtk::Button - Done for 2.10.
 * Gtk::ButtonBox - Done for 2.10.
 * Gtk::Calendar - Done for 2.10.

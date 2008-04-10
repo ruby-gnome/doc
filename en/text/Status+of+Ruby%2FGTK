@@ -207,6 +207,8 @@ Special-purpose features|Gtk::GammaCurve|GtkGammaCurve|O|O|O|O|O|O||Will this be
 Special-purpose features|Gtk::Ruler|GtkRuler|O|O|O|O|O|O||
 Special-purpose features|Gtk::HRuler|GtkHRuler|O|O|O|O|O|O||
 Special-purpose features|Gtk::VRuler|GtkVRuler|O|O|O|O|O|O||
+Interface builder|Gtk::Buildable|GtkBuildable|-|-|-|-|-|-||Since 2.12
+Interface builder|Gtk::Builder|GtkBuilder|-|-|-|-|-|-|O|Since 2.12
 Recently Used Documents|Gtk::RecentManager|GtkRecentManager|-|-|-|-|-|O||Since 2.10
 Recently Used Documents|Gtk::RecentData|GtkRecentInfo|-|-|-|-|-|O||Since 2.10
 Recently Used Documents|Gtk::RecentInfo|GtkRecentInfo|-|-|-|-|-|O||Since 2.10

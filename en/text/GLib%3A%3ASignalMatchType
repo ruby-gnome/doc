@@ -1,0 +1,49 @@
+= class GLib::SignalMatchType
+
+== Object Hierarchy
+
+* Object
+  * GLib::Flags
+    * GLib::SignalMatchType
+
+== Instance Methods
+
+--- closure?
+
+     * Returns: self: ((*FIXME*))
+
+--- data?
+
+     * Returns: self: ((*FIXME*))
+
+--- detail?
+
+     * Returns: self: ((*FIXME*))
+
+--- func?
+
+     * Returns: self: ((*FIXME*))
+
+--- id?
+
+     * Returns: self: ((*FIXME*))
+
+--- unblocked?
+
+     * Returns: self: ((*FIXME*))
+
+== Constants
+
+--- CLOSURE
+--- DATA
+--- DETAIL
+--- FUNC
+--- ID
+--- MASK
+--- UNBLOCKED
+
+== See Also
+
+== ChangeLog
+
+
