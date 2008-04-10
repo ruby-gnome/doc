@@ -11,7 +11,7 @@ The Gtk::ListStore object is a list model for use with a Gtk::TreeView widget. I
 
 == Included Modules
 
-  * #<Module:0x2b195debc840>
+  * #<Module:0x2b1706c8f080>
   * Gtk::TreeDragDest
   * Gtk::TreeDragSource
   * Gtk::TreeModel

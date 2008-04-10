@@ -254,7 +254,7 @@ Recently used files are supported since GTK+ 2.10.
 
 == See Also
 
-Gtk::RecentChooser, Gtk::Dialog 
+Gtk::RecentChooser, Gtk::Dialog
 
 == ChangeLog
 

@@ -76,8 +76,6 @@ If the property "expand" is true and the property "draw" is false, a Gtk::Separa
 Gtk::Toolbar - The toolbar widget
  
 Gtk::RadioToolButton - A toolbar item containing a radio button
- 
-
 
 == ChangeLog
 

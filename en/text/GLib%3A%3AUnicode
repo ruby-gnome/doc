@@ -24,7 +24,6 @@
 
 === Type
 
-
 These are the possible character classifications from the Unicode
 specification. See
 ((<URL:http://www.unicode.org/Public/UNIDATA/UnicodeData.html>)).
@@ -151,7 +150,6 @@ specification. See
 
 === BreakType
 
-
 These are the possible line break classifications. The five
 Hangul types were added in Unicode 4.1, so, has been
 introduced in GLib 2.10. Note that new types may be added in
@@ -197,7 +195,6 @@ GLib::Unicode::BreakType::UNKNOWN. See
 --- WORD_JOINER
 --- ZERO_WIDTH_SPACE
 === Script
-
 
 The GLib::Unicode::Script enumeration identifies different
 writing systems. The values correspond to the names as

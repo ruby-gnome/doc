@@ -32,6 +32,7 @@ The Gtk::HSeparator widget is not used as a separator within menus. To create a 
 == See Also
 
 * Gtk::VSeparator - a vertical separator.
+
 == ChangeLog
 
 

@@ -7,7 +7,6 @@
 
 === Return codes
 
-
 There are some return codes for Ruby/GnomePrint. But user
 doesn't need to care those codes. Because Ruby/GnomePrint
 raises an exception when a return code shows an error.
@@ -26,7 +25,6 @@ raises an exception when a return code shows an error.
 --- LOG_DOMAIN
 
 == See Also
-
 
 == ChangeLog
 

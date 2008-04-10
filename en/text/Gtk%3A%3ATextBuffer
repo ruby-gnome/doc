@@ -558,7 +558,6 @@ You may wish to begin by reading the ((<text widget conceptual overview>)) which
 
 Gtk::TextView, Gtk::TextIter, Gtk::TextMark
 
-
 == ChangeLog
 
 * 2005-12-17 Removed Gtk::TextBuffer#set_tag_table, #tag_table=. - ((<Masao>))

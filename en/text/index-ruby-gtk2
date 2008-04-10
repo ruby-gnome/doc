@@ -1,4 +1,4 @@
-= Ruby/GTK2 index
+= Ruby/GTK2 API Index
 
   * Gtk
   * Gtk.check_version
@@ -1106,10 +1106,8 @@
   * Gtk::Curve::Type
   * Gtk::DeleteType
   * Gtk::Dialog
-  * Gtk::Dialog.]], .....)
   * Gtk::Dialog.alternative_dialog_button_order?
   * Gtk::Dialog.new
-  * Gtk::Dialog#]], ...)
   * Gtk::Dialog#action_area
   * Gtk::Dialog#add_action_widget
   * Gtk::Dialog#add_button
@@ -1493,7 +1491,6 @@
   * Gtk::FileChooserButton#width_chars
   * Gtk::FileChooserButton#width_chars=
   * Gtk::FileChooserDialog
-  * Gtk::FileChooserDialog.]], ...)
   * Gtk::FileChooserDialog.new
   * Gtk::FileChooserDialog#action
   * Gtk::FileChooserDialog#action=
@@ -2305,63 +2302,6 @@
   * Gtk::Misc#ypad
   * Gtk::Misc#ypad=
   * Gtk::MovementStep
-  * Gtk::MozEmbed
-  * Gtk::MozEmbed.comp_path=
-  * Gtk::MozEmbed.new
-  * Gtk::MozEmbed.set_comp_path
-  * Gtk::MozEmbed.set_profile_path
-  * Gtk::MozEmbed#append_data
-  * Gtk::MozEmbed#can_go_back?
-  * Gtk::MozEmbed#can_go_forward?
-  * Gtk::MozEmbed#chrome_mask
-  * Gtk::MozEmbed#chrome_mask=
-  * Gtk::MozEmbed#chrome_mask=flags
-  * Gtk::MozEmbed#close_stream
-  * Gtk::MozEmbed#go_back
-  * Gtk::MozEmbed#go_forward
-  * Gtk::MozEmbed#js_status
-  * Gtk::MozEmbed#link_message
-  * Gtk::MozEmbed#load_url
-  * Gtk::MozEmbed#location
-  * Gtk::MozEmbed#location=
-  * Gtk::MozEmbed#location=url
-  * Gtk::MozEmbed#no_new_window
-  * Gtk::MozEmbed#on_new_window
-  * Gtk::MozEmbed#open_stream
-  * Gtk::MozEmbed#ref_accessible
-  * Gtk::MozEmbed#reload
-  * Gtk::MozEmbed#render_data
-  * Gtk::MozEmbed#set_chrome_mask
-  * Gtk::MozEmbed#set_location
-  * Gtk::MozEmbed#stop_load
-  * Gtk::MozEmbed#title
-  * Gtk::MozEmbed::ChromeFlags
-  * Gtk::MozEmbed::ChromeFlags#allchrome?
-  * Gtk::MozEmbed::ChromeFlags#centerscreen?
-  * Gtk::MozEmbed::ChromeFlags#defaultchrome?
-  * Gtk::MozEmbed::ChromeFlags#dependent?
-  * Gtk::MozEmbed::ChromeFlags#extrachromeon?
-  * Gtk::MozEmbed::ChromeFlags#locationbaron?
-  * Gtk::MozEmbed::ChromeFlags#menubaron?
-  * Gtk::MozEmbed::ChromeFlags#modal?
-  * Gtk::MozEmbed::ChromeFlags#openaschrome?
-  * Gtk::MozEmbed::ChromeFlags#openasdialog?
-  * Gtk::MozEmbed::ChromeFlags#personaltoolbaron?
-  * Gtk::MozEmbed::ChromeFlags#scrollbarson?
-  * Gtk::MozEmbed::ChromeFlags#statusbaron?
-  * Gtk::MozEmbed::ChromeFlags#titlebaron?
-  * Gtk::MozEmbed::ChromeFlags#toolbaron?
-  * Gtk::MozEmbed::ChromeFlags#windowborderson?
-  * Gtk::MozEmbed::ChromeFlags#windowcloseon?
-  * Gtk::MozEmbed::ChromeFlags#windowlowered?
-  * Gtk::MozEmbed::ChromeFlags#windowraised?
-  * Gtk::MozEmbed::ChromeFlags#windowresizeon?
-  * Gtk::MozEmbed::ReloadFlags
-  * Gtk::MozEmbed::ReloadFlags#reloadbypasscache?
-  * Gtk::MozEmbed::ReloadFlags#reloadbypassproxy?
-  * Gtk::MozEmbed::ReloadFlags#reloadbypassproxyandcache?
-  * Gtk::MozEmbed::ReloadFlags#reloadcharset?
-  * Gtk::MozEmbed::ReloadFlags#reloadnormal?
   * Gtk::Notebook
   * Gtk::Notebook.new
   * Gtk::Notebook.set_window_creation_hook
@@ -3024,7 +2964,6 @@
   * Gtk::RecentChooser#uris
   * Gtk::RecentChooser::SortType
   * Gtk::RecentChooserDialog
-  * Gtk::RecentChooserDialog.]], .....)
   * Gtk::RecentChooserDialog.new
   * Gtk::RecentChooserDialog#add_filter
   * Gtk::RecentChooserDialog#current_item
@@ -4108,7 +4047,6 @@
   * Gtk::TextAttributes#wrap_mode=
   * Gtk::TextBuffer
   * Gtk::TextBuffer.new
-  * Gtk::TextBuffer#..}
   * Gtk::TextBuffer#add_mark
   * Gtk::TextBuffer#add_selection_clipboard
   * Gtk::TextBuffer#apply_tag
@@ -4186,9 +4124,7 @@
   * Gtk::TextChildAnchor#widgets
   * Gtk::TextIter
   * Gtk::TextIter#<=>
-  * Gtk::TextIter#<=> 
   * Gtk::TextIter#==
-  * Gtk::TextIter#== 
   * Gtk::TextIter#attributes
   * Gtk::TextIter#backward_char
   * Gtk::TextIter#backward_chars

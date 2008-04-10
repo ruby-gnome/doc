@@ -1,4 +1,4 @@
-= Ruby/GtkSourceView index
+= Ruby/GtkSourceView API Index
 
   * Gtk::SourceView
   * Gtk::SourceView.new

@@ -77,7 +77,6 @@ dialog, at the cost of the portability offered by Gtk::PrintOperation.
 
 == See Also
 
-
 == ChangeLog
 
 * 2006-07-09: updated for 2.10 - ((<kou>))

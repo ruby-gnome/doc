@@ -1,4 +1,4 @@
-= Ruby/GdkPixbuf2 index
+= Ruby/GdkPixbuf2 API Index
 
   * Gdk::Pixbuf
   * Gdk::Pixbuf.cairo_available?

@@ -621,7 +621,7 @@ Used as a return value of handlers for the confirm-overwrite signal. This value 
 
 == See Also
 
-Gtk::FileChooserDialog, Gtk::FileChooserWidget, Gtk::FileChooserButton 
+Gtk::FileChooserDialog, Gtk::FileChooserWidget, Gtk::FileChooserButton
 
 == ChangeLog
 

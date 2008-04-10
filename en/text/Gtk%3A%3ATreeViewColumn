@@ -13,7 +13,7 @@ The Gtk::TreeViewColumn object is a visible column in a Gtk::TreeView widget. It
 
 == Included Modules
 
-  * #<Module:0x2b195debc840>
+  * #<Module:0x2b1706c8f080>
   * Gtk::CellLayout
 
 == Class Methods
@@ -513,7 +513,7 @@ The sizing method the column uses to determine its width. Please note that Gtk::
 
 == See Also
 
-Gtk::TreeView, Gtk::TreeSelection, Gtk::TreeModel, Gtk::TreeSortable, Gtk::TreeModelSort, Gtk::ListStore, Gtk::TreeStore, Gtk::CellRenderer, Gtk::CellEditable, Gtk::CellRendererPixbuf, Gtk::CellRendererText, Gtk::CellRendererToggle 
+Gtk::TreeView, Gtk::TreeSelection, Gtk::TreeModel, Gtk::TreeSortable, Gtk::TreeModelSort, Gtk::ListStore, Gtk::TreeStore, Gtk::CellRenderer, Gtk::CellEditable, Gtk::CellRendererPixbuf, Gtk::CellRendererText, Gtk::CellRendererToggle
 
 == ChangeLog
 

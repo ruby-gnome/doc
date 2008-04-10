@@ -198,7 +198,6 @@ the page setup dialog and receive the resulting page setup.
 
 == See Also
 
-
 == ChangeLog
 
 * 2006-11-15: Fixed API to follow Ruby-GNOME2 naming rules. - ((<kou>))

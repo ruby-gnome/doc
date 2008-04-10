@@ -150,7 +150,7 @@ The range of the spinbutton is taken from the adjustment property of the cell re
 
 == See Also
 
-Gtk::CellRendererText, Gtk::SpinButton 
+Gtk::CellRendererText, Gtk::SpinButton
 
 == ChangeLog
 

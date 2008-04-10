@@ -130,7 +130,7 @@ The Gtk::ColorButton is a button which displays the currently selected color an 
 
 == See Also
 
-Gtk::ColorSelectionDialog, Gtk::FontButton 
+Gtk::ColorSelectionDialog, Gtk::FontButton
 
 == ChangeLog
 

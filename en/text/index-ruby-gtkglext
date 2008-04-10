@@ -1,8 +1,6 @@
-= Ruby/GtkGLExt index
+= Ruby/GtkGLExt API Index
 
   * Gdk::GL
-  * Gdk::GL.] font_desc, first, count, list_base)
-  * Gdk::GL.])
   * Gdk::GL.draw_cone
   * Gdk::GL.draw_cube
   * Gdk::GL.draw_dodecahedron
@@ -19,7 +17,6 @@
   * Gdk::GL.use_pango_font
   * Gdk::GL::RenderType
   * Gdk::GLConfig
-  * Gdk::GLConfig.] attrib_list/mode)
   * Gdk::GLConfig.new
   * Gdk::GLConfig#colormap
   * Gdk::GLConfig#depth

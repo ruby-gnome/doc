@@ -63,7 +63,6 @@ Contains information found when looking up an icon in an icon theme.
 
 Gtk::IconTheme
 
-
 == ChangeLog
 
 * 2005-1-27 Added. - Masao

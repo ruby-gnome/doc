@@ -164,8 +164,7 @@ This widget is considered too specialized/little-used for GTK+, and will in the 
 
 == See Also
 
-Gtk::HRuler, Gtk::VRuler 
-
+Gtk::HRuler, Gtk::VRuler
 
 == ChangeLog
 

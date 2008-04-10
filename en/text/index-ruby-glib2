@@ -1,4 +1,4 @@
-= Ruby/GLib2 index
+= Ruby/GLib2 API Index
 
   * GLib
   * GLib.__add_one_arg_setter
@@ -168,10 +168,8 @@
   * GLib::Flags#|
   * GLib::Flags#~
   * GLib::IOChannel
-  * GLib::IOChannel.]
   * GLib::IOChannel.new
   * GLib::IOChannel.open
-  * GLib::IOChannel#..)
   * GLib::IOChannel#add_watch
   * GLib::IOChannel#buffer_condition
   * GLib::IOChannel#buffer_size
@@ -527,7 +525,6 @@
   * GLib::Timer#stop
   * GLib::Type
   * GLib::Type.[]
-  * GLib::Type.]
   * GLib::Type.new
   * GLib::Type#<
   * GLib::Type#<=

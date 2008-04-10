@@ -74,7 +74,6 @@ Gtk::TargetList, Gtk::SelectionData.
 
 Gtk::Widget - Much of the operation of selections happens via signals for Gtk::Widget. In particular, if you are using the methods in this section, you may need to pay attention to ::selection_get, ::selection_received, and :selection_clear_event signals.
 
-
 == ChangeLog
 
 - ((<Masao>))

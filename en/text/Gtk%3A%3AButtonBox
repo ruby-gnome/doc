@@ -124,7 +124,6 @@ Used to dictate the style that a Gtk::ButtonBox uses to layout the buttons it co
 
 * Gtk::VButtonBox is a Vertical sub-class of Gtk::ButtonBox.
 * Gtk::HButtonBox is a Horizontal sub-class of Gtk::ButtonBox.
- 
 
 == ChangeLog
 

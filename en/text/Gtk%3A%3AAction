@@ -28,7 +28,7 @@ Each action can have one or more proxy menu item, toolbar button or other proxy 
 
 == Included Modules
 
-  * #<Module:0x2b195debc840>
+  * #<Module:0x2b1706c8f080>
 
 == Class Methods
 
@@ -483,8 +483,7 @@ Each action can have one or more proxy menu item, toolbar button or other proxy 
 
 == See Also
 
-Gtk::ActionGroup, Gtk::UIManager 
-
+Gtk::ActionGroup, Gtk::UIManager
 
 == ChangeLog
 

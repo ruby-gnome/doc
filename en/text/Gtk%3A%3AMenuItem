@@ -171,7 +171,7 @@ As it derives from Gtk::Bin it can hold any valid child widget, altough only a f
 * Gtk::Bin for how to handle the child.
 * Gtk::Item is the abstract class for all sorts of items.
 * Gtk::MenuShell is always the parent of Gtk::MenuItem.
- 
+
 == ChangeLog
 
 - ((<Masao>))

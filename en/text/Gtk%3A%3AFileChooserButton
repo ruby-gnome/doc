@@ -432,8 +432,7 @@ The Gtk::FileChooserButton supports the Gtk::FileChooser::Action s Gtk::FileChoo
 
 == See Also
 
-Gtk::FileChooserDialog 
-
+Gtk::FileChooserDialog
 
 == ChangeLog
 

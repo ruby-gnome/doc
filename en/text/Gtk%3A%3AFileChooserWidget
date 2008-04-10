@@ -291,7 +291,7 @@ Note that Gtk::FileChooserWidget does not have any methods of its own. Instead, 
 
 == See Also
 
-Gtk::FileChooser, Gtk::FileChooserDialog 
+Gtk::FileChooser, Gtk::FileChooserDialog
 
 == ChangeLog
 

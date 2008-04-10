@@ -1,0 +1,23 @@
+= class Gst::Clock::Return
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * Gst::Clock::Return
+
+== Constants
+
+--- BADTIME
+--- BUSY
+--- EARLY
+--- ERROR
+--- OK
+--- UNSCHEDULED
+--- UNSUPPORTED
+
+== See Also
+
+== ChangeLog
+
+
