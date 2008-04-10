@@ -1,4 +1,7 @@
 = Ruby/Libglade API Reference
+
+((<API Index|index-ruby-libglade2>))
+
 * ((<GladeXML>)) - GladeXML allows dynamic loading of user interfaces from XML descriptions.
 
 * ((<Using ruby-glade-create-template|ruby-glade-create-template>))
