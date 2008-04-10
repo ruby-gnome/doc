@@ -309,14 +309,22 @@ class UpdateRD
   end
 
   def extract_name(name)
-    name = name.gsub(/(?:\A\S*?[\.\#]| # SomeClass.xxx => xxx
-                                       # SomeClass#xxx => xxx
-                      \s*[\(\{:].*\z|  # xxx(...) => xxx
-                                       # xxx {...} => xxx
-                                       # xxx: ... => xxx
-                     )/x, '')
+    name = name.gsub(/\A\S*?(?:\.|\#|(\[))/, '\\1') # SomeClass.xxx => xxx
+                                                    # SomeClass#xxx => xxx
+                                                    # SomeClass[xxx] => [xxx]
+    name = name.gsub(/\s*[\(\{:].*\z/, '') # xxx(...) => xxx
+                                           # xxx {...} => xxx
+                                           # xxx: ... => xxx
     name.gsub(/\[.*\]\s*(=)?.*\z/, '[]\1') # [xxx] => []
                                            # [xxx] = value => []=
+  end
+
+  def call_if_can(value, *args)
+    if value.respond_to?(:call)
+      value.call(*args)
+    else
+      value
+    end
   end
 
   def put_methods(title, methods, methods_info=nil, prefix="", postfix="",
@@ -332,12 +340,9 @@ class UpdateRD
     method_names = (method_names + methods).uniq
     target_methods = methods_info
     target_methods += methods.sort.collect do |name|
-      if postfix.respond_to?(:call)
-        _postfix = postfix.call(name)
-      else
-        _postfix = postfix
-      end
-      ["#{prefix}#{name}#{_postfix}"]
+      _prefix = call_if_can(prefix, name)
+      _postfix = call_if_can(postfix, name)
+      ["#{_prefix}#{name}#{_postfix}"]
     end
 
     unless target_methods.empty?
@@ -568,6 +573,17 @@ class UpdateRD
     put_change_log(klass)
   end
 
+  def class_method_prefix_generator(klass)
+    Proc.new do |name|
+      if /\A\[/ =~ name
+        klass.inspect
+      else
+        "#{klass.inspect}."
+      end
+    end
+  end
+  alias_method :module_function_prefix_generator, :class_method_prefix_generator
+
   def put_class_methods(klass)
     methods = klass.methods - klass.superclass.methods
     singleton_class = (class << klass; self; end)
@@ -578,7 +594,7 @@ class UpdateRD
     @indexes[klass][:class_methods] =
       put_methods("Class Methods", methods,
                   @indexes[klass][:class_methods_info],
-                  klass.inspect + ".", "", RETURNS)
+                  class_method_prefix_generator(klass), "", RETURNS)
   end
 
   def put_module_functions(klass)
@@ -590,7 +606,7 @@ class UpdateRD
     @indexes[klass][:module_functions] =
       put_methods("Module Functions", methods,
                   @indexes[klass][:module_functions_info],
-                  klass.inspect + ".", "", RETURNS)
+                  module_function_prefix_generator(klass), "", RETURNS)
   end
 
   def put_instance_methods(klass, properties)
