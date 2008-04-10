@@ -309,9 +309,9 @@ class UpdateRD
   end
 
   def extract_name(name)
-    name = name.gsub(/\A\S*?(?:\.|\#|(\[))/, '\\1') # SomeClass.xxx => xxx
-                                                    # SomeClass#xxx => xxx
-                                                    # SomeClass[xxx] => [xxx]
+    name = name.gsub(/\A[A-Z]\S*?(?:\.|\#|(\[))/,  # SomeClass.xxx => xxx
+                     '\\1')                        # SomeClass#xxx => xxx
+                                                   # SomeClass[xxx] => [xxx]
     name = name.gsub(/\s*[\(\{:].*\z/, '') # xxx(...) => xxx
                                            # xxx {...} => xxx
                                            # xxx: ... => xxx
