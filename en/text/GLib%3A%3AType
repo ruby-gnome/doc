@@ -17,10 +17,6 @@ The GLib::Type API is the foundation of the GObject system. It provides the faci
     * key: type identifier. should be String or Integer.
     * Returns: a new GLib::Type
 
---- GLib::Type.[]
-
-     * Returns: self: ((*FIXME*))
-
 --- GLib::Type.new
 
      * Returns: self: ((*FIXME*))
