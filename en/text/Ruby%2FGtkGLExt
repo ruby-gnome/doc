@@ -1,5 +1,7 @@
 = Ruby/GtkGLExt API Reference
 
+((<API Index|index-ruby-gtkglext>))
+
 * ((<Gdk::GL>))
 * Gdk::GLConfig
 * Gdk::GLContext

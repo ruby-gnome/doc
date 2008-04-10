@@ -1,4 +1,7 @@
 = Ruby/GStreamer API Reference
+
+((<API Index|index-ruby-gstreamer>))
+
 * ((<Gst>))
 * ((<Gst::Bin>))
 * ((<Gst::Caps>))

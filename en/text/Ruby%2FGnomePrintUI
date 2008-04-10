@@ -1,5 +1,7 @@
 = Ruby/GnomePrintUI API Reference
 
+((<API Index|index-ruby-gnomeprintui>))
+
 * Gnome::PrintConfigDialog
 * Gnome::PrintContentSelector
 * Gnome::PrintDialog

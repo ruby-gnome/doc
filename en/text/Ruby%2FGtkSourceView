@@ -1,4 +1,7 @@
 = Ruby/GtkSourceView API Reference
+
+((<API Index|index-ruby-gtksourceview>))
+
 * ((<Gtk::SourceBuffer>))
 * ((<Gtk::SourceLanguage>))
 * ((<Gtk::SourceLanguagesManager>))

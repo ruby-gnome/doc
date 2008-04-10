@@ -1,5 +1,7 @@
 = Ruby/GnomeVFS API Reference
 
+((<API Index|index-ruby-gnomevfs>))
+
 * ((<GnomeVFS>))
 * ((<GnomeVFS::ApplicationRegistry>))
 * ((<GnomeVFS::Directory>))
