@@ -215,7 +215,7 @@ Gtk::SizeGroup, Gtk::TreeView, Gtk::UIManager, Gtk::ActionGroup.
 --- <<(ui_definition)
 
     Parses a file or string containing a ((<Gtk::Builder UI
-    definition|Gtk::Builder#Gtk::Builder UI definition>))
+    Definitions|Gtk::Builder#Gtk::Builder UI Definitions>))
     and merges it with the current contents of self.
 
     If the argument starts with "<" or includes a new line,
@@ -238,7 +238,7 @@ Gtk::SizeGroup, Gtk::TreeView, Gtk::UIManager, Gtk::ActionGroup.
 --- add_from_file(filename)
 
     Parses a file containing a ((<Gtk::Builder UI
-    definition|Gtk::Builder#Gtk::Builder UI definition>))
+    Definitions|Gtk::Builder#Gtk::Builder UI Definitions>))
     and merges it with the current contents of self.
 
      * filename: the name of the file to parse
@@ -247,7 +247,7 @@ Gtk::SizeGroup, Gtk::TreeView, Gtk::UIManager, Gtk::ActionGroup.
 --- add_from_string(ui_definistion)
 
     Parses a string containing a ((<Gtk::Builder UI
-    definition|Gtk::Builder#Gtk::Builder UI definition>))
+    Definitions|Gtk::Builder#Gtk::Builder UI Definitions>))
     and merges it with the current contents of self.
 
      * ui_definistion: the string to parse
