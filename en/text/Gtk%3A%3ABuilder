@@ -54,21 +54,21 @@ in scope.
 
   <!ATTLIST interface  domain                     #IMPLIED >
   <!ATTLIST object     id                         #REQUIRED
-		       class                      #REQUIRED
-		       type-func                  #IMPLIED
-		       constructor                #IMPLIED >
+                       class                      #REQUIRED
+                       type-func                  #IMPLIED
+                       constructor                #IMPLIED >
   <!ATTLIST property   name                       #REQUIRED
-		       translatable               #IMPLIED
-		       comments                   #IMPLIED
-		       context                    #IMPLIED >
+                       translatable               #IMPLIED
+                       comments                   #IMPLIED
+                       context                    #IMPLIED >
   <!ATTLIST signal     name                       #REQUIRED
-		       handler                    #REQUIRED
-		       after                      #IMPLIED
-		       swapped                    #IMPLIED
-		       object                     #IMPLIED
-		       last_modification_time #IMPLIED >
+                       handler                    #REQUIRED
+                       after                      #IMPLIED
+                       swapped                    #IMPLIED
+                       object                     #IMPLIED
+                       last_modification_time #IMPLIED >
   <!ATTLIST child      type                       #IMPLIED
-		       internal-child             #IMPLIED >
+                       internal-child             #IMPLIED >
 
 The toplevel element is <interface>. It optionally takes a
 "domain" attribute, which will make the builder look for
@@ -161,21 +161,21 @@ widget-specific portions of UI definitions.
   <interface>
     <object class="GtkDialog" id="dialog1">
       <child internal-child="vbox">
-	<object class="GtkVBox" id="vbox1">
-	  <property name="border-width">10</property>
-	  <child internal-child="action_area">
-	    <object class="GtkHButtonBox" id="hbuttonbox1">
-	      <property name="border-width">20</property>
-	      <child>
-		<object class="GtkButton" id="ok_button">
-		  <property name="label">gtk-ok</property>
-		  <property name="use-stock">TRUE</property>
-		  <signal name="clicked" handler="ok_button_clicked"/>
-		</object>
-	      </child>
-	    </object>
-	  </child>
-	</object>
+        <object class="GtkVBox" id="vbox1">
+          <property name="border-width">10</property>
+          <child internal-child="action_area">
+            <object class="GtkHButtonBox" id="hbuttonbox1">
+              <property name="border-width">20</property>
+              <child>
+                <object class="GtkButton" id="ok_button">
+                  <property name="label">gtk-ok</property>
+                  <property name="use-stock">TRUE</property>
+                  <signal name="clicked" handler="ok_button_clicked"/>
+                </object>
+              </child>
+            </object>
+          </child>
+        </object>
       </child>
     </object>
   </interface>
