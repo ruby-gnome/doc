@@ -1,5 +1,7 @@
 = Ruby/GConf API Reference
 
+((<API Index|index-ruby-gconf2>))
+
 * ((<GConf>))
 * ((<GConf::ChangeSet>))
 * ((<GConf::Client>))
