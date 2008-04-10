@@ -1,6 +1,6 @@
 = Ruby/GdkPixbuf API Reference
 
-((<API index|index-ruby-gdkpixbuf2>))
+((<API Index|index-ruby-gdkpixbuf2>))
 
 * Gdk::Pixbuf - a class for image loading and manipulation.
 * Gdk::PixbufLoader - Application-driven progressive image loading.
