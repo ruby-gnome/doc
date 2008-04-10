@@ -1,4 +1,7 @@
 = Ruby/Libgda API Reference
+
+((<API Index|index-ruby-libgda>))
+
 * ((<Gda>))
 * ((<Gda::Client>))
 * ((<Gda::Command>))
