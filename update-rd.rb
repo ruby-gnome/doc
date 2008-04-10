@@ -61,7 +61,7 @@ target_packages = {
   "Ruby/GDK2" => ["Gdk"],
   "Ruby/GtkGLExt" => ["Gtk::GL", "Gdk::GL"],
   "Ruby/GtkHtml2" => ["Gtk::Html"],
-  "Ruby/GtkMozEmbed" => ["Gtk::Mozembed"],
+  "Ruby/GtkMozEmbed" => ["Gtk::MozEmbed"],
   "Ruby/GtkSourceView" => ["Gtk::SourceView"],
   "Ruby/Libart2" => ["Art"],
   "Ruby/Libglade2" => ["GladeXML"],
@@ -304,19 +304,19 @@ class UpdateRD
       included_modules_at.sort_by {|x| x.inspect}.each do |included_mod|
         puts "  * #{included_mod.inspect}"
       end
-      puts ""
+      puts
     end
   end
 
   def extract_name(name)
     name = name.gsub(/(?:\A\S*?[\.\#]| # SomeClass.xxx => xxx
                                        # SomeClass#xxx => xxx
-                      (?!\[)[^\]]*(?=\])| # [...] => []
-                      \(.*\z| # xxx(...) => xxx
-                      \s*\{.*\z| # xxx {...} => xxx
-                      :.*\z # xxx: ... => xxx
+                      \s*[\(\{:].*\z|  # xxx(...) => xxx
+                                       # xxx {...} => xxx
+                                       # xxx: ... => xxx
                      )/x, '')
-    name.gsub(/\]\s*=.*\z/, ']=') # [] = xxx => []=
+    name.gsub(/\[.*\]\s*(=)?.*\z/, '[]\1') # [xxx] => []
+                                           # [xxx] = value => []=
   end
 
   def put_methods(title, methods, methods_info=nil, prefix="", postfix="",
@@ -424,7 +424,7 @@ class UpdateRD
 
     sections.each do |section|
       group_info, entries = read_section(section)
-      group_title, group_description = group_info.split(/\n/, 2)
+      group_title, group_description = group_info.split(/\n+/, 2)
       entries[0][2, 0] = [group_title, group_description].compact
       section_infos.concat(entries)
     end
@@ -505,7 +505,7 @@ class UpdateRD
   def output_index(index_page_name, package=nil, target_modules=[])
     File.open(File.join(@output_dir, index_page_name), "w") do |index|
       if package
-        index.puts "= #{package} index"
+        index.puts "= #{package} API Index"
       else
         index.puts "= Index"
       end
@@ -704,9 +704,10 @@ class UpdateRD
   def put_see_also(klass)
     puts "== See Also"
     puts
-    see_also = @indexes[klass][:see_also]
-    if see_also
+    see_also = (@indexes[klass][:see_also] || '').rstrip
+    unless see_also.empty?
       puts see_also
+      puts
 #     else
 #       puts "  * Index"
 #       puts
