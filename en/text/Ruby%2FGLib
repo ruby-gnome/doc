@@ -1,5 +1,7 @@
 = Ruby/GLib API Reference
 
+((<API Index|index-ruby-glib2>))
+
 * ((<GLib>))
 * GLib::Boxed
 * GLib::Closure
