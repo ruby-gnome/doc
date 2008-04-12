@@ -205,7 +205,7 @@ Widget that displays a Gtk::TextBuffer.
     * count: number of lines to move 
     * Returns: true if iter moved and is not on the end iterator
 
---- add_child_at_anchor(child)
+--- add_child_at_anchor(child, anchor)
 
     Adds a child widget in the text buffer, at the given anchor.
     * child: a Gtk::Widget 
