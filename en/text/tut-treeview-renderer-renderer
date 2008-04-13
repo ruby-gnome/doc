@@ -59,4 +59,4 @@ Here is a silly and utterly useless little example that demonstrates this behavi
 
 {{image_right "renderer.png"}}
 
-It looks like the tree view display is partly correct and partly incomplete. On the one hand the tree view renders the the left), but it does not display any of the data that we have stored in the model. This is because we have made no connection between what the cell renderers should render and the data in the model. We have simply set some cell renderer properties on start-up, and the cell renderers adhere to those set properties meticulously.
+It looks like the tree view display is partly correct and partly incomplete. The tree view renders to the left, but it does not display any of the data that we have stored in the model. This is because we have made no connection between what the cell renderers should render and the data in the model. We have simply set some cell renderer properties on start-up, and the cell renderers adhere to those set properties meticulously.
