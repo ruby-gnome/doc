@@ -202,7 +202,7 @@ Abstract Base Classes|Gtk::WidgetAuxInfo|GtkWidgetAuxInfo|x|x|x|x|x|x|x|Use inte
 Abstract Base Classes|Gtk::WidgetShapeInfo|GtkWidgetShapeInfo|x|x|x|x|x|x|x|Use internal only. included in Gtk::Widget
 Cross-process Embedding|Gtk::Socket|GtkSocket|O|O|O|O|O|O|O|
 Cross-process Embedding|Gtk::Plug|GtkPlug|O|O|O|O|O|O|O|
-Special-purpose features|Gtk::Curve|GtkCurve|O|O|O|O|O|O|
+Special-purpose features|Gtk::Curve|GtkCurve|O|O|O|O|O|O|O|
 Special-purpose features|Gtk::GammaCurve|GtkGammaCurve|O|O|O|O|O|O|O|Will this be obsoleted by GTK+?
 Special-purpose features|Gtk::Ruler|GtkRuler|O|O|O|O|O|O|O|
 Special-purpose features|Gtk::HRuler|GtkHRuler|O|O|O|O|O|O|O|
@@ -223,7 +223,7 @@ Deprecated|Gtk::CTree|GtkCTree|x|x|x|x|x|x|x|
 Deprecated|Gtk::List|GtkList|x|x|x|x|x|x|x|
 Deprecated|Gtk::ListItem|GtkListItem|x|x|x|x|x|x|x|
 Deprecated|Gtk::Pixmap|GtkPixmap|x|x|x|x|x|x|x|
-Deprecated|Gtk::Progress|GtkProgress|O|O|O|O|O|O||Deprecated, but this used super class of Gtk::ProgressBar.
+Deprecated|Gtk::Progress|GtkProgress|O|O|O|O|O|O|O|Deprecated, but this used super class of Gtk::ProgressBar.
 Deprecated|Gtk::Preview|GtkPreview|x|x|x|x|x|x|x|
 Deprecated|Gtk::OldEditable|GtkOldEditable|x|x|x|x|x|x|x|
 Deprecated|Gtk::Text|GtkText|x|x|x|x|x|x|x|
