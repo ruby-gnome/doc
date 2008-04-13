@@ -29,6 +29,7 @@
   * Gst::Bin#get_by_interface
   * Gst::Bin#get_by_name
   * Gst::Bin#get_by_name_recurse_up
+  * Gst::Bin#get_child
   * Gst::Bin#iterate
   * Gst::Bin#length
   * Gst::Bin#messages
@@ -178,6 +179,7 @@
   * Gst::Clock::Flags#can_set_master?
   * Gst::Clock::Flags#can_set_resolution?
   * Gst::Clock::Flags#last?
+  * Gst::Clock::Return
   * Gst::ClockEntry
   * Gst::ClockEntry.new
   * Gst::ClockEntry#clock
@@ -190,7 +192,6 @@
   * Gst::ClockEntry#unschedule
   * Gst::ClockEntry#wait
   * Gst::ClockEntry#wait_async
-  * Gst::ClockEntry::Return
   * Gst::ClockEntry::Type
   * Gst::ClockTime
   * Gst::Element
@@ -198,6 +199,7 @@
   * Gst::Element.get_pad_template
   * Gst::Element.pad_templates
   * Gst::Element#>>
+  * Gst::Element#[]
   * Gst::Element#add_ghost_pad
   * Gst::Element#add_pad
   * Gst::Element#adjust_time
@@ -220,6 +222,7 @@
   * Gst::Element#get_pad_template
   * Gst::Element#get_property
   * Gst::Element#get_request_pad
+  * Gst::Element#get_state
   * Gst::Element#get_static_pad
   * Gst::Element#has_infinite_loop?
   * Gst::Element#has_new_loopfunc?
@@ -487,7 +490,9 @@
   * Gst::Object::Flags#flag_last?
   * Gst::Object::Flags#floating?
   * Gst::Pad
+  * Gst::Pad#>>
   * Gst::Pad#caps
+  * Gst::Pad#caps=
   * Gst::Pad#direction
   * Gst::Pad#disabled?
   * Gst::Pad#each_caps
@@ -497,15 +502,19 @@
   * Gst::Pad#event_masks
   * Gst::Pad#formats
   * Gst::Pad#link
+  * Gst::Pad#linked?
   * Gst::Pad#name
+  * Gst::Pad#negotiated_caps
   * Gst::Pad#negotiating?
   * Gst::Pad#pad_template
+  * Gst::Pad#peer
   * Gst::Pad#provides_event_masks?
   * Gst::Pad#provides_formats?
   * Gst::Pad#provides_query_types?
   * Gst::Pad#query
   * Gst::Pad#query_types
   * Gst::Pad#send_event
+  * Gst::Pad#set_caps
   * Gst::Pad#set_template
   * Gst::Pad#template
   * Gst::Pad#template=

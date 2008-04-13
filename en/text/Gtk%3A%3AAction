@@ -28,7 +28,7 @@ Each action can have one or more proxy menu item, toolbar button or other proxy 
 
 == Included Modules
 
-  * #<Module:0x2b8701187de8>
+  * Gtk::Buildable
 
 == Class Methods
 
@@ -402,6 +402,22 @@ Each action can have one or more proxy menu item, toolbar button or other proxy 
 
     Gets the When true, toolitem proxies for this action are represented in the toolbar overflow menu..
      * Returns: When true, toolitem proxies for this action are represented in the toolbar overflow menu.
+
+--- add_child
+
+    See Gtk::Buildable#add_child.
+
+--- construct_child
+
+    See Gtk::Buildable#construct_child.
+
+--- get_internal_child
+
+    See Gtk::Buildable#get_internal_child.
+
+--- set_buildable_property
+
+    See Gtk::Buildable#set_buildable_property.
 
 == Properties
 

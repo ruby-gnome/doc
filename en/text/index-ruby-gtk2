@@ -37,16 +37,19 @@
   * Gtk::AboutDialog.set_email_hook
   * Gtk::AboutDialog.set_url_hook
   * Gtk::AboutDialog.show
+  * Gtk::AboutDialog#add_child
   * Gtk::AboutDialog#artists
   * Gtk::AboutDialog#artists=
   * Gtk::AboutDialog#authors
   * Gtk::AboutDialog#authors=
   * Gtk::AboutDialog#comments
   * Gtk::AboutDialog#comments=
+  * Gtk::AboutDialog#construct_child
   * Gtk::AboutDialog#copyright
   * Gtk::AboutDialog#copyright=
   * Gtk::AboutDialog#documenters
   * Gtk::AboutDialog#documenters=
+  * Gtk::AboutDialog#get_internal_child
   * Gtk::AboutDialog#license
   * Gtk::AboutDialog#license=
   * Gtk::AboutDialog#logo
@@ -60,6 +63,7 @@
   * Gtk::AboutDialog#ref_accessible
   * Gtk::AboutDialog#set_artists
   * Gtk::AboutDialog#set_authors
+  * Gtk::AboutDialog#set_buildable_property
   * Gtk::AboutDialog#set_comments
   * Gtk::AboutDialog#set_copyright
   * Gtk::AboutDialog#set_documenters
@@ -125,10 +129,17 @@
   * Gtk::AccelLabel#accel_widget
   * Gtk::AccelLabel#accel_widget=
   * Gtk::AccelLabel#accel_width
+  * Gtk::AccelLabel#add_child
+  * Gtk::AccelLabel#construct_child
+  * Gtk::AccelLabel#get_internal_child
+  * Gtk::AccelLabel#name
+  * Gtk::AccelLabel#name=
   * Gtk::AccelLabel#ref_accessible
   * Gtk::AccelLabel#refetch
   * Gtk::AccelLabel#set_accel_closure
   * Gtk::AccelLabel#set_accel_widget
+  * Gtk::AccelLabel#set_buildable_property
+  * Gtk::AccelLabel#set_name
   * Gtk::AccelMap
   * Gtk::AccelMap.add_entry
   * Gtk::AccelMap.add_filter
@@ -160,15 +171,18 @@
   * Gtk::Action#action_group
   * Gtk::Action#action_group=
   * Gtk::Action#activate
+  * Gtk::Action#add_child
   * Gtk::Action#block_activate_from
   * Gtk::Action#connect_accelerator
   * Gtk::Action#connect_proxy
+  * Gtk::Action#construct_child
   * Gtk::Action#create_icon
   * Gtk::Action#create_menu
   * Gtk::Action#create_menu_item
   * Gtk::Action#create_tool_item
   * Gtk::Action#disconnect_accelerator
   * Gtk::Action#disconnect_proxy
+  * Gtk::Action#get_internal_child
   * Gtk::Action#hide_if_empty=
   * Gtk::Action#hide_if_empty?
   * Gtk::Action#icon_name
@@ -188,6 +202,7 @@
   * Gtk::Action#set_accel_group
   * Gtk::Action#set_accel_path
   * Gtk::Action#set_action_group
+  * Gtk::Action#set_buildable_property
   * Gtk::Action#set_hide_if_empty
   * Gtk::Action#set_icon_name
   * Gtk::Action#set_important
@@ -222,14 +237,18 @@
   * Gtk::ActionGroup#actions
   * Gtk::ActionGroup#add_action
   * Gtk::ActionGroup#add_actions
+  * Gtk::ActionGroup#add_child
   * Gtk::ActionGroup#add_radio_actions
   * Gtk::ActionGroup#add_toggle_actions
+  * Gtk::ActionGroup#construct_child
   * Gtk::ActionGroup#get_action
+  * Gtk::ActionGroup#get_internal_child
   * Gtk::ActionGroup#name
   * Gtk::ActionGroup#name=
   * Gtk::ActionGroup#remove_action
   * Gtk::ActionGroup#sensitive=
   * Gtk::ActionGroup#sensitive?
+  * Gtk::ActionGroup#set_buildable_property
   * Gtk::ActionGroup#set_name
   * Gtk::ActionGroup#set_sensitive
   * Gtk::ActionGroup#set_translate_func
@@ -264,17 +283,24 @@
   * Gtk::Adjustment#value_changed
   * Gtk::Alignment
   * Gtk::Alignment.new
+  * Gtk::Alignment#add_child
   * Gtk::Alignment#bottom_padding
   * Gtk::Alignment#bottom_padding=
+  * Gtk::Alignment#construct_child
+  * Gtk::Alignment#get_internal_child
   * Gtk::Alignment#left_padding
   * Gtk::Alignment#left_padding=
+  * Gtk::Alignment#name
+  * Gtk::Alignment#name=
   * Gtk::Alignment#padding
   * Gtk::Alignment#ref_accessible
   * Gtk::Alignment#right_padding
   * Gtk::Alignment#right_padding=
   * Gtk::Alignment#set
   * Gtk::Alignment#set_bottom_padding
+  * Gtk::Alignment#set_buildable_property
   * Gtk::Alignment#set_left_padding
+  * Gtk::Alignment#set_name
   * Gtk::Alignment#set_padding
   * Gtk::Alignment#set_right_padding
   * Gtk::Alignment#set_top_padding
@@ -315,23 +341,37 @@
   * Gtk::AnchorType
   * Gtk::Arrow
   * Gtk::Arrow.new
+  * Gtk::Arrow#add_child
   * Gtk::Arrow#arrow_type
   * Gtk::Arrow#arrow_type=
+  * Gtk::Arrow#construct_child
+  * Gtk::Arrow#get_internal_child
+  * Gtk::Arrow#name
+  * Gtk::Arrow#name=
   * Gtk::Arrow#ref_accessible
   * Gtk::Arrow#set
   * Gtk::Arrow#set_arrow_type
+  * Gtk::Arrow#set_buildable_property
+  * Gtk::Arrow#set_name
   * Gtk::Arrow#set_shadow_type
   * Gtk::Arrow#shadow_type
   * Gtk::Arrow#shadow_type=
   * Gtk::Arrow::Type
   * Gtk::AspectFrame
   * Gtk::AspectFrame.new
+  * Gtk::AspectFrame#add_child
+  * Gtk::AspectFrame#construct_child
+  * Gtk::AspectFrame#get_internal_child
+  * Gtk::AspectFrame#name
+  * Gtk::AspectFrame#name=
   * Gtk::AspectFrame#obey_child=
   * Gtk::AspectFrame#obey_child?
   * Gtk::AspectFrame#ratio
   * Gtk::AspectFrame#ratio=
   * Gtk::AspectFrame#ref_accessible
   * Gtk::AspectFrame#set
+  * Gtk::AspectFrame#set_buildable_property
+  * Gtk::AspectFrame#set_name
   * Gtk::AspectFrame#set_obey_child
   * Gtk::AspectFrame#set_ratio
   * Gtk::AspectFrame#set_xalign
@@ -343,9 +383,12 @@
   * Gtk::Assistant
   * Gtk::Assistant.new
   * Gtk::Assistant#add_action_widget
+  * Gtk::Assistant#add_child
   * Gtk::Assistant#append_page
+  * Gtk::Assistant#construct_child
   * Gtk::Assistant#current_page
   * Gtk::Assistant#current_page=
+  * Gtk::Assistant#get_internal_child
   * Gtk::Assistant#get_nth_page
   * Gtk::Assistant#get_page_complete
   * Gtk::Assistant#get_page_header_image
@@ -354,11 +397,15 @@
   * Gtk::Assistant#get_page_type
   * Gtk::Assistant#insert_page
   * Gtk::Assistant#n_pages
+  * Gtk::Assistant#name
+  * Gtk::Assistant#name=
   * Gtk::Assistant#prepend_page
   * Gtk::Assistant#ref_accessible
   * Gtk::Assistant#remove_action_widget
+  * Gtk::Assistant#set_buildable_property
   * Gtk::Assistant#set_current_page
   * Gtk::Assistant#set_forward_page_func
+  * Gtk::Assistant#set_name
   * Gtk::Assistant#set_page_complete
   * Gtk::Assistant#set_page_header_image
   * Gtk::Assistant#set_page_side_image
@@ -371,8 +418,15 @@
   * Gtk::AttachOptions#fill?
   * Gtk::AttachOptions#shrink?
   * Gtk::Bin
+  * Gtk::Bin#add_child
   * Gtk::Bin#child
+  * Gtk::Bin#construct_child
+  * Gtk::Bin#get_internal_child
+  * Gtk::Bin#name
+  * Gtk::Bin#name=
   * Gtk::Bin#ref_accessible
+  * Gtk::Bin#set_buildable_property
+  * Gtk::Bin#set_name
   * Gtk::BindingSet
   * Gtk::BindingSet.find
   * Gtk::BindingSet.new
@@ -399,8 +453,13 @@
   * Gtk::Border#top
   * Gtk::Border#top=
   * Gtk::Box
+  * Gtk::Box#add_child
+  * Gtk::Box#construct_child
+  * Gtk::Box#get_internal_child
   * Gtk::Box#homogeneous=
   * Gtk::Box#homogeneous?
+  * Gtk::Box#name
+  * Gtk::Box#name=
   * Gtk::Box#pack_end
   * Gtk::Box#pack_end_defaults
   * Gtk::Box#pack_start
@@ -408,11 +467,21 @@
   * Gtk::Box#query_child_packing
   * Gtk::Box#ref_accessible
   * Gtk::Box#reorder_child
+  * Gtk::Box#set_buildable_property
   * Gtk::Box#set_child_packing
   * Gtk::Box#set_homogeneous
+  * Gtk::Box#set_name
   * Gtk::Box#set_spacing
   * Gtk::Box#spacing
   * Gtk::Box#spacing=
+  * Gtk::Buildable
+  * Gtk::Buildable#add_child
+  * Gtk::Buildable#construct_child
+  * Gtk::Buildable#get_internal_child
+  * Gtk::Buildable#name
+  * Gtk::Buildable#name=
+  * Gtk::Buildable#set_buildable_property
+  * Gtk::Buildable#set_name
   * Gtk::Builder
   * Gtk::Builder.new
   * Gtk::Builder#<<
@@ -431,11 +500,14 @@
   * Gtk::Button
   * Gtk::Button.new
   * Gtk::Button#activate
+  * Gtk::Button#add_child
   * Gtk::Button#alignment
   * Gtk::Button#clicked
+  * Gtk::Button#construct_child
   * Gtk::Button#enter
   * Gtk::Button#focus_on_click=
   * Gtk::Button#focus_on_click?
+  * Gtk::Button#get_internal_child
   * Gtk::Button#image
   * Gtk::Button#image=
   * Gtk::Button#image_position
@@ -443,16 +515,20 @@
   * Gtk::Button#label
   * Gtk::Button#label=
   * Gtk::Button#leave
+  * Gtk::Button#name
+  * Gtk::Button#name=
   * Gtk::Button#pressed
   * Gtk::Button#ref_accessible
   * Gtk::Button#released
   * Gtk::Button#relief
   * Gtk::Button#relief=
   * Gtk::Button#set_alignment
+  * Gtk::Button#set_buildable_property
   * Gtk::Button#set_focus_on_click
   * Gtk::Button#set_image
   * Gtk::Button#set_image_position
   * Gtk::Button#set_label
+  * Gtk::Button#set_name
   * Gtk::Button#set_relief
   * Gtk::Button#set_use_stock
   * Gtk::Button#set_use_underline
@@ -467,33 +543,47 @@
   * Gtk::Button#yalign
   * Gtk::Button#yalign=
   * Gtk::ButtonBox
+  * Gtk::ButtonBox#add_child
+  * Gtk::ButtonBox#construct_child
   * Gtk::ButtonBox#get_child_secondary
+  * Gtk::ButtonBox#get_internal_child
   * Gtk::ButtonBox#layout_style
   * Gtk::ButtonBox#layout_style=
+  * Gtk::ButtonBox#name
+  * Gtk::ButtonBox#name=
   * Gtk::ButtonBox#ref_accessible
+  * Gtk::ButtonBox#set_buildable_property
   * Gtk::ButtonBox#set_child_secondary
   * Gtk::ButtonBox#set_layout_style
+  * Gtk::ButtonBox#set_name
   * Gtk::ButtonBox::Style
   * Gtk::Calendar
   * Gtk::Calendar.new
+  * Gtk::Calendar#add_child
   * Gtk::Calendar#clear_marks
+  * Gtk::Calendar#construct_child
   * Gtk::Calendar#date
   * Gtk::Calendar#day
   * Gtk::Calendar#day=
   * Gtk::Calendar#display_options
   * Gtk::Calendar#display_options=
   * Gtk::Calendar#freeze
+  * Gtk::Calendar#get_internal_child
   * Gtk::Calendar#mark_day
   * Gtk::Calendar#month
   * Gtk::Calendar#month=
+  * Gtk::Calendar#name
+  * Gtk::Calendar#name=
   * Gtk::Calendar#no_month_change=
   * Gtk::Calendar#no_month_change?
   * Gtk::Calendar#ref_accessible
   * Gtk::Calendar#select_day
   * Gtk::Calendar#select_month
+  * Gtk::Calendar#set_buildable_property
   * Gtk::Calendar#set_day
   * Gtk::Calendar#set_display_options
   * Gtk::Calendar#set_month
+  * Gtk::Calendar#set_name
   * Gtk::Calendar#set_no_month_change
   * Gtk::Calendar#set_show_day_names
   * Gtk::Calendar#set_show_heading
@@ -842,6 +932,7 @@
   * Gtk::CellView
   * Gtk::CellView.new
   * Gtk::CellView#add_attribute
+  * Gtk::CellView#add_child
   * Gtk::CellView#background=
   * Gtk::CellView#background_gdk
   * Gtk::CellView#background_gdk=
@@ -850,11 +941,15 @@
   * Gtk::CellView#cell_renderers
   * Gtk::CellView#clear
   * Gtk::CellView#clear_attributes
+  * Gtk::CellView#construct_child
   * Gtk::CellView#displayed_row
   * Gtk::CellView#displayed_row=
+  * Gtk::CellView#get_internal_child
   * Gtk::CellView#get_size_of_row
   * Gtk::CellView#model
   * Gtk::CellView#model=
+  * Gtk::CellView#name
+  * Gtk::CellView#name=
   * Gtk::CellView#pack_end
   * Gtk::CellView#pack_start
   * Gtk::CellView#ref_accessible
@@ -863,24 +958,40 @@
   * Gtk::CellView#set_background
   * Gtk::CellView#set_background_gdk
   * Gtk::CellView#set_background_set
+  * Gtk::CellView#set_buildable_property
   * Gtk::CellView#set_cell_data_func
   * Gtk::CellView#set_displayed_row
   * Gtk::CellView#set_model
+  * Gtk::CellView#set_name
   * Gtk::CheckButton
   * Gtk::CheckButton.new
+  * Gtk::CheckButton#add_child
+  * Gtk::CheckButton#construct_child
+  * Gtk::CheckButton#get_internal_child
+  * Gtk::CheckButton#name
+  * Gtk::CheckButton#name=
   * Gtk::CheckButton#ref_accessible
+  * Gtk::CheckButton#set_buildable_property
+  * Gtk::CheckButton#set_name
   * Gtk::CheckMenuItem
   * Gtk::CheckMenuItem.new
   * Gtk::CheckMenuItem#active=
   * Gtk::CheckMenuItem#active?
+  * Gtk::CheckMenuItem#add_child
+  * Gtk::CheckMenuItem#construct_child
   * Gtk::CheckMenuItem#draw_as_radio=
   * Gtk::CheckMenuItem#draw_as_radio?
+  * Gtk::CheckMenuItem#get_internal_child
   * Gtk::CheckMenuItem#inconsistent=
   * Gtk::CheckMenuItem#inconsistent?
+  * Gtk::CheckMenuItem#name
+  * Gtk::CheckMenuItem#name=
   * Gtk::CheckMenuItem#ref_accessible
   * Gtk::CheckMenuItem#set_active
+  * Gtk::CheckMenuItem#set_buildable_property
   * Gtk::CheckMenuItem#set_draw_as_radio
   * Gtk::CheckMenuItem#set_inconsistent
+  * Gtk::CheckMenuItem#set_name
   * Gtk::CheckMenuItem#toggled
   * Gtk::Clipboard
   * Gtk::Clipboard.get
@@ -910,13 +1021,20 @@
   * Gtk::Clipboard#wait_is_text_available?
   * Gtk::ColorButton
   * Gtk::ColorButton.new
+  * Gtk::ColorButton#add_child
   * Gtk::ColorButton#alpha
   * Gtk::ColorButton#alpha=
   * Gtk::ColorButton#color
   * Gtk::ColorButton#color=
+  * Gtk::ColorButton#construct_child
+  * Gtk::ColorButton#get_internal_child
+  * Gtk::ColorButton#name
+  * Gtk::ColorButton#name=
   * Gtk::ColorButton#ref_accessible
   * Gtk::ColorButton#set_alpha
+  * Gtk::ColorButton#set_buildable_property
   * Gtk::ColorButton#set_color
+  * Gtk::ColorButton#set_name
   * Gtk::ColorButton#set_title
   * Gtk::ColorButton#set_use_alpha
   * Gtk::ColorButton#title
@@ -928,51 +1046,72 @@
   * Gtk::ColorSelection.palette_from_string
   * Gtk::ColorSelection.palette_to_string
   * Gtk::ColorSelection.set_change_palette_hook
+  * Gtk::ColorSelection#add_child
   * Gtk::ColorSelection#adjusting?
+  * Gtk::ColorSelection#construct_child
   * Gtk::ColorSelection#current_alpha
   * Gtk::ColorSelection#current_alpha=
   * Gtk::ColorSelection#current_color
   * Gtk::ColorSelection#current_color=
+  * Gtk::ColorSelection#get_internal_child
   * Gtk::ColorSelection#has_opacity_control=
   * Gtk::ColorSelection#has_opacity_control?
   * Gtk::ColorSelection#has_palette=
   * Gtk::ColorSelection#has_palette?
+  * Gtk::ColorSelection#name
+  * Gtk::ColorSelection#name=
   * Gtk::ColorSelection#previous_alpha
   * Gtk::ColorSelection#previous_alpha=
   * Gtk::ColorSelection#previous_color
   * Gtk::ColorSelection#previous_color=
   * Gtk::ColorSelection#ref_accessible
+  * Gtk::ColorSelection#set_buildable_property
   * Gtk::ColorSelection#set_current_alpha
   * Gtk::ColorSelection#set_current_color
   * Gtk::ColorSelection#set_has_opacity_control
   * Gtk::ColorSelection#set_has_palette
+  * Gtk::ColorSelection#set_name
   * Gtk::ColorSelection#set_previous_alpha
   * Gtk::ColorSelection#set_previous_color
   * Gtk::ColorSelectionDialog
   * Gtk::ColorSelectionDialog.new
+  * Gtk::ColorSelectionDialog#add_child
   * Gtk::ColorSelectionDialog#cancel_button
   * Gtk::ColorSelectionDialog#colorsel
+  * Gtk::ColorSelectionDialog#construct_child
+  * Gtk::ColorSelectionDialog#get_internal_child
   * Gtk::ColorSelectionDialog#help_button
+  * Gtk::ColorSelectionDialog#name
+  * Gtk::ColorSelectionDialog#name=
   * Gtk::ColorSelectionDialog#ok_button
   * Gtk::ColorSelectionDialog#ref_accessible
+  * Gtk::ColorSelectionDialog#set_buildable_property
+  * Gtk::ColorSelectionDialog#set_name
   * Gtk::Combo
   * Gtk::Combo.new
+  * Gtk::Combo#add_child
   * Gtk::Combo#allow_empty=
   * Gtk::Combo#allow_empty?
   * Gtk::Combo#case_sensitive=
   * Gtk::Combo#case_sensitive?
+  * Gtk::Combo#construct_child
   * Gtk::Combo#disable_activate
   * Gtk::Combo#enable_arrow_keys=
   * Gtk::Combo#enable_arrow_keys?
   * Gtk::Combo#enable_arrows_always=
   * Gtk::Combo#enable_arrows_always?
   * Gtk::Combo#entry
+  * Gtk::Combo#get_internal_child
+  * Gtk::Combo#name
+  * Gtk::Combo#name=
   * Gtk::Combo#popdown_strings=
   * Gtk::Combo#ref_accessible
   * Gtk::Combo#set_allow_empty
+  * Gtk::Combo#set_buildable_property
   * Gtk::Combo#set_case_sensitive
   * Gtk::Combo#set_enable_arrow_keys
   * Gtk::Combo#set_enable_arrows_always
+  * Gtk::Combo#set_name
   * Gtk::Combo#set_popdown_strings
   * Gtk::Combo#set_use_arrows
   * Gtk::Combo#set_use_arrows_always
@@ -989,6 +1128,7 @@
   * Gtk::ComboBox#active_iter=
   * Gtk::ComboBox#active_text
   * Gtk::ComboBox#add_attribute
+  * Gtk::ComboBox#add_child
   * Gtk::ComboBox#add_tearoffs=
   * Gtk::ComboBox#add_tearoffs?
   * Gtk::ComboBox#append_text
@@ -996,15 +1136,19 @@
   * Gtk::ComboBox#clear_attributes
   * Gtk::ComboBox#column_span_column
   * Gtk::ComboBox#column_span_column=
+  * Gtk::ComboBox#construct_child
   * Gtk::ComboBox#editing_done
   * Gtk::ComboBox#focus_on_click=
   * Gtk::ComboBox#focus_on_click?
+  * Gtk::ComboBox#get_internal_child
   * Gtk::ComboBox#has_frame=
   * Gtk::ComboBox#has_frame?
   * Gtk::ComboBox#insert_text
   * Gtk::ComboBox#model
   * Gtk::ComboBox#model=
   * Gtk::ComboBox#move_active
+  * Gtk::ComboBox#name
+  * Gtk::ComboBox#name=
   * Gtk::ComboBox#pack_end
   * Gtk::ComboBox#pack_start
   * Gtk::ComboBox#popdown
@@ -1022,11 +1166,13 @@
   * Gtk::ComboBox#set_active_iter
   * Gtk::ComboBox#set_add_tearoffs
   * Gtk::ComboBox#set_attributes
+  * Gtk::ComboBox#set_buildable_property
   * Gtk::ComboBox#set_cell_data_func
   * Gtk::ComboBox#set_column_span_column
   * Gtk::ComboBox#set_focus_on_click
   * Gtk::ComboBox#set_has_frame
   * Gtk::ComboBox#set_model
+  * Gtk::ComboBox#set_name
   * Gtk::ComboBox#set_row_separator_func
   * Gtk::ComboBox#set_row_span_column
   * Gtk::ComboBox#set_tearoff_title
@@ -1039,16 +1185,23 @@
   * Gtk::ComboBoxEntry
   * Gtk::ComboBoxEntry.new
   * Gtk::ComboBoxEntry#add_attribute
+  * Gtk::ComboBoxEntry#add_child
   * Gtk::ComboBoxEntry#clear
   * Gtk::ComboBoxEntry#clear_attributes
+  * Gtk::ComboBoxEntry#construct_child
   * Gtk::ComboBoxEntry#editing_done
+  * Gtk::ComboBoxEntry#get_internal_child
+  * Gtk::ComboBoxEntry#name
+  * Gtk::ComboBoxEntry#name=
   * Gtk::ComboBoxEntry#pack_end
   * Gtk::ComboBoxEntry#pack_start
   * Gtk::ComboBoxEntry#ref_accessible
   * Gtk::ComboBoxEntry#remove_widget
   * Gtk::ComboBoxEntry#reorder
   * Gtk::ComboBoxEntry#set_attributes
+  * Gtk::ComboBoxEntry#set_buildable_property
   * Gtk::ComboBoxEntry#set_cell_data_func
+  * Gtk::ComboBoxEntry#set_name
   * Gtk::ComboBoxEntry#set_text_column
   * Gtk::ComboBoxEntry#start_editing
   * Gtk::ComboBoxEntry#text_column
@@ -1059,6 +1212,7 @@
   * Gtk::Container.install_child_property
   * Gtk::Container#<<
   * Gtk::Container#add
+  * Gtk::Container#add_child
   * Gtk::Container#border_width
   * Gtk::Container#border_width=
   * Gtk::Container#check_resize
@@ -1067,6 +1221,7 @@
   * Gtk::Container#child_set_property
   * Gtk::Container#child_type
   * Gtk::Container#children
+  * Gtk::Container#construct_child
   * Gtk::Container#each
   * Gtk::Container#each_forall
   * Gtk::Container#focus_chain
@@ -1076,6 +1231,9 @@
   * Gtk::Container#focus_hadjustment=
   * Gtk::Container#focus_vadjustment
   * Gtk::Container#focus_vadjustment=
+  * Gtk::Container#get_internal_child
+  * Gtk::Container#name
+  * Gtk::Container#name=
   * Gtk::Container#propagate_expose
   * Gtk::Container#reallocate_redraws=
   * Gtk::Container#ref_accessible
@@ -1085,20 +1243,25 @@
   * Gtk::Container#resize_mode
   * Gtk::Container#resize_mode=
   * Gtk::Container#set_border_width
+  * Gtk::Container#set_buildable_property
   * Gtk::Container#set_child
   * Gtk::Container#set_focus_chain
   * Gtk::Container#set_focus_child
   * Gtk::Container#set_focus_hadjustment
   * Gtk::Container#set_focus_vadjustment
+  * Gtk::Container#set_name
   * Gtk::Container#set_reallocate_redraws
   * Gtk::Container#set_resize_mode
   * Gtk::Container#unset_focus_chain
   * Gtk::CornerType
   * Gtk::Curve
   * Gtk::Curve.new
+  * Gtk::Curve#add_child
+  * Gtk::Curve#construct_child
   * Gtk::Curve#curve_type
   * Gtk::Curve#curve_type=
   * Gtk::Curve#gamma=
+  * Gtk::Curve#get_internal_child
   * Gtk::Curve#get_vector
   * Gtk::Curve#max_x
   * Gtk::Curve#max_x=
@@ -1108,14 +1271,18 @@
   * Gtk::Curve#min_x=
   * Gtk::Curve#min_y
   * Gtk::Curve#min_y=
+  * Gtk::Curve#name
+  * Gtk::Curve#name=
   * Gtk::Curve#ref_accessible
   * Gtk::Curve#reset
+  * Gtk::Curve#set_buildable_property
   * Gtk::Curve#set_curve_type
   * Gtk::Curve#set_gamma
   * Gtk::Curve#set_max_x
   * Gtk::Curve#set_max_y
   * Gtk::Curve#set_min_x
   * Gtk::Curve#set_min_y
+  * Gtk::Curve#set_name
   * Gtk::Curve#set_range
   * Gtk::Curve#set_vector
   * Gtk::Curve::Type
@@ -1127,19 +1294,26 @@
   * Gtk::Dialog#add_action_widget
   * Gtk::Dialog#add_button
   * Gtk::Dialog#add_buttons
+  * Gtk::Dialog#add_child
   * Gtk::Dialog#alternative_button_order=
   * Gtk::Dialog#close
+  * Gtk::Dialog#construct_child
   * Gtk::Dialog#default_response=
+  * Gtk::Dialog#get_internal_child
   * Gtk::Dialog#get_response
   * Gtk::Dialog#get_response_for_widget
   * Gtk::Dialog#has_separator=
   * Gtk::Dialog#has_separator?
+  * Gtk::Dialog#name
+  * Gtk::Dialog#name=
   * Gtk::Dialog#ref_accessible
   * Gtk::Dialog#response
   * Gtk::Dialog#run
   * Gtk::Dialog#set_alternative_button_order
+  * Gtk::Dialog#set_buildable_property
   * Gtk::Dialog#set_default_response
   * Gtk::Dialog#set_has_separator
+  * Gtk::Dialog#set_name
   * Gtk::Dialog#set_response_sensitive
   * Gtk::Dialog#vbox
   * Gtk::Dialog::Flags
@@ -1192,7 +1366,14 @@
   * Gtk::Drag::TargetFlags#same_widget?
   * Gtk::DrawingArea
   * Gtk::DrawingArea.new
+  * Gtk::DrawingArea#add_child
+  * Gtk::DrawingArea#construct_child
+  * Gtk::DrawingArea#get_internal_child
+  * Gtk::DrawingArea#name
+  * Gtk::DrawingArea#name=
   * Gtk::DrawingArea#ref_accessible
+  * Gtk::DrawingArea#set_buildable_property
+  * Gtk::DrawingArea#set_name
   * Gtk::Editable
   * Gtk::Editable#copy_clipboard
   * Gtk::Editable#cut_clipboard
@@ -1214,9 +1395,11 @@
   * Gtk::Entry#activate
   * Gtk::Entry#activates_default=
   * Gtk::Entry#activates_default?
+  * Gtk::Entry#add_child
   * Gtk::Entry#backspace
   * Gtk::Entry#completion
   * Gtk::Entry#completion=
+  * Gtk::Entry#construct_child
   * Gtk::Entry#copy_clipboard
   * Gtk::Entry#cursor_position
   * Gtk::Entry#cut_clipboard
@@ -1227,6 +1410,7 @@
   * Gtk::Entry#editable?
   * Gtk::Entry#editing_done
   * Gtk::Entry#get_chars
+  * Gtk::Entry#get_internal_child
   * Gtk::Entry#has_frame=
   * Gtk::Entry#has_frame?
   * Gtk::Entry#inner_border
@@ -1241,6 +1425,8 @@
   * Gtk::Entry#max_length
   * Gtk::Entry#max_length=
   * Gtk::Entry#move_cursor
+  * Gtk::Entry#name
+  * Gtk::Entry#name=
   * Gtk::Entry#paste_clipboard
   * Gtk::Entry#position
   * Gtk::Entry#position=
@@ -1251,12 +1437,14 @@
   * Gtk::Entry#selection_bound
   * Gtk::Entry#selection_bounds
   * Gtk::Entry#set_activates_default
+  * Gtk::Entry#set_buildable_property
   * Gtk::Entry#set_completion
   * Gtk::Entry#set_editable
   * Gtk::Entry#set_has_frame
   * Gtk::Entry#set_inner_border
   * Gtk::Entry#set_invisible_char
   * Gtk::Entry#set_max_length
+  * Gtk::Entry#set_name
   * Gtk::Entry#set_position
   * Gtk::Entry#set_shadow_type
   * Gtk::Entry#set_text
@@ -1282,12 +1470,15 @@
   * Gtk::EntryCompletion
   * Gtk::EntryCompletion.new
   * Gtk::EntryCompletion#add_attribute
+  * Gtk::EntryCompletion#add_child
   * Gtk::EntryCompletion#clear
   * Gtk::EntryCompletion#clear_attributes
   * Gtk::EntryCompletion#complete
   * Gtk::EntryCompletion#completion_prefix
+  * Gtk::EntryCompletion#construct_child
   * Gtk::EntryCompletion#delete_action
   * Gtk::EntryCompletion#entry
+  * Gtk::EntryCompletion#get_internal_child
   * Gtk::EntryCompletion#inline_completion=
   * Gtk::EntryCompletion#inline_completion?
   * Gtk::EntryCompletion#inline_selection=
@@ -1299,6 +1490,8 @@
   * Gtk::EntryCompletion#minimum_key_length=
   * Gtk::EntryCompletion#model
   * Gtk::EntryCompletion#model=
+  * Gtk::EntryCompletion#name
+  * Gtk::EntryCompletion#name=
   * Gtk::EntryCompletion#pack_end
   * Gtk::EntryCompletion#pack_start
   * Gtk::EntryCompletion#popup_completion=
@@ -1309,12 +1502,14 @@
   * Gtk::EntryCompletion#popup_single_match?
   * Gtk::EntryCompletion#reorder
   * Gtk::EntryCompletion#set_attributes
+  * Gtk::EntryCompletion#set_buildable_property
   * Gtk::EntryCompletion#set_cell_data_func
   * Gtk::EntryCompletion#set_inline_completion
   * Gtk::EntryCompletion#set_inline_selection
   * Gtk::EntryCompletion#set_match_func
   * Gtk::EntryCompletion#set_minimum_key_length
   * Gtk::EntryCompletion#set_model
+  * Gtk::EntryCompletion#set_name
   * Gtk::EntryCompletion#set_popup_completion
   * Gtk::EntryCompletion#set_popup_set_width
   * Gtk::EntryCompletion#set_popup_single_match
@@ -1325,24 +1520,38 @@
   * Gtk::EventBox.new
   * Gtk::EventBox#above_child=
   * Gtk::EventBox#above_child?
+  * Gtk::EventBox#add_child
+  * Gtk::EventBox#construct_child
+  * Gtk::EventBox#get_internal_child
+  * Gtk::EventBox#name
+  * Gtk::EventBox#name=
   * Gtk::EventBox#ref_accessible
   * Gtk::EventBox#set_above_child
+  * Gtk::EventBox#set_buildable_property
+  * Gtk::EventBox#set_name
   * Gtk::EventBox#set_visible_window
   * Gtk::EventBox#visible_window=
   * Gtk::EventBox#visible_window?
   * Gtk::Expander
   * Gtk::Expander.new
   * Gtk::Expander#activate
+  * Gtk::Expander#add_child
+  * Gtk::Expander#construct_child
   * Gtk::Expander#expanded=
   * Gtk::Expander#expanded?
+  * Gtk::Expander#get_internal_child
   * Gtk::Expander#label
   * Gtk::Expander#label=
   * Gtk::Expander#label_widget
   * Gtk::Expander#label_widget=
+  * Gtk::Expander#name
+  * Gtk::Expander#name=
   * Gtk::Expander#ref_accessible
+  * Gtk::Expander#set_buildable_property
   * Gtk::Expander#set_expanded
   * Gtk::Expander#set_label
   * Gtk::Expander#set_label_widget
+  * Gtk::Expander#set_name
   * Gtk::Expander#set_spacing
   * Gtk::Expander#set_use_markup
   * Gtk::Expander#set_use_underline
@@ -1433,9 +1642,11 @@
   * Gtk::FileChooserButton.width_chars=
   * Gtk::FileChooserButton#action
   * Gtk::FileChooserButton#action=
+  * Gtk::FileChooserButton#add_child
   * Gtk::FileChooserButton#add_filter
   * Gtk::FileChooserButton#add_shortcut_folder
   * Gtk::FileChooserButton#add_shortcut_folder_uri
+  * Gtk::FileChooserButton#construct_child
   * Gtk::FileChooserButton#current_folder
   * Gtk::FileChooserButton#current_folder=
   * Gtk::FileChooserButton#current_folder_uri
@@ -1454,8 +1665,11 @@
   * Gtk::FileChooserButton#filters
   * Gtk::FileChooserButton#focus_on_click=
   * Gtk::FileChooserButton#focus_on_click?
+  * Gtk::FileChooserButton#get_internal_child
   * Gtk::FileChooserButton#local_only=
   * Gtk::FileChooserButton#local_only?
+  * Gtk::FileChooserButton#name
+  * Gtk::FileChooserButton#name=
   * Gtk::FileChooserButton#preview_filename
   * Gtk::FileChooserButton#preview_uri
   * Gtk::FileChooserButton#preview_widget
@@ -1472,6 +1686,7 @@
   * Gtk::FileChooserButton#select_multiple?
   * Gtk::FileChooserButton#select_uri
   * Gtk::FileChooserButton#set_action
+  * Gtk::FileChooserButton#set_buildable_property
   * Gtk::FileChooserButton#set_current_folder
   * Gtk::FileChooserButton#set_current_folder_uri
   * Gtk::FileChooserButton#set_current_name
@@ -1481,6 +1696,7 @@
   * Gtk::FileChooserButton#set_filter
   * Gtk::FileChooserButton#set_focus_on_click
   * Gtk::FileChooserButton#set_local_only
+  * Gtk::FileChooserButton#set_name
   * Gtk::FileChooserButton#set_preview_widget
   * Gtk::FileChooserButton#set_preview_widget_active
   * Gtk::FileChooserButton#set_select_multiple
@@ -1509,9 +1725,11 @@
   * Gtk::FileChooserDialog.new
   * Gtk::FileChooserDialog#action
   * Gtk::FileChooserDialog#action=
+  * Gtk::FileChooserDialog#add_child
   * Gtk::FileChooserDialog#add_filter
   * Gtk::FileChooserDialog#add_shortcut_folder
   * Gtk::FileChooserDialog#add_shortcut_folder_uri
+  * Gtk::FileChooserDialog#construct_child
   * Gtk::FileChooserDialog#current_folder
   * Gtk::FileChooserDialog#current_folder=
   * Gtk::FileChooserDialog#current_folder_uri
@@ -1527,8 +1745,11 @@
   * Gtk::FileChooserDialog#filter
   * Gtk::FileChooserDialog#filter=
   * Gtk::FileChooserDialog#filters
+  * Gtk::FileChooserDialog#get_internal_child
   * Gtk::FileChooserDialog#local_only=
   * Gtk::FileChooserDialog#local_only?
+  * Gtk::FileChooserDialog#name
+  * Gtk::FileChooserDialog#name=
   * Gtk::FileChooserDialog#preview_filename
   * Gtk::FileChooserDialog#preview_uri
   * Gtk::FileChooserDialog#preview_widget
@@ -1545,6 +1766,7 @@
   * Gtk::FileChooserDialog#select_multiple?
   * Gtk::FileChooserDialog#select_uri
   * Gtk::FileChooserDialog#set_action
+  * Gtk::FileChooserDialog#set_buildable_property
   * Gtk::FileChooserDialog#set_current_folder
   * Gtk::FileChooserDialog#set_current_folder_uri
   * Gtk::FileChooserDialog#set_current_name
@@ -1553,6 +1775,7 @@
   * Gtk::FileChooserDialog#set_filename
   * Gtk::FileChooserDialog#set_filter
   * Gtk::FileChooserDialog#set_local_only
+  * Gtk::FileChooserDialog#set_name
   * Gtk::FileChooserDialog#set_preview_widget
   * Gtk::FileChooserDialog#set_preview_widget_active
   * Gtk::FileChooserDialog#set_select_multiple
@@ -1579,9 +1802,11 @@
   * Gtk::FileChooserWidget.new
   * Gtk::FileChooserWidget#action
   * Gtk::FileChooserWidget#action=
+  * Gtk::FileChooserWidget#add_child
   * Gtk::FileChooserWidget#add_filter
   * Gtk::FileChooserWidget#add_shortcut_folder
   * Gtk::FileChooserWidget#add_shortcut_folder_uri
+  * Gtk::FileChooserWidget#construct_child
   * Gtk::FileChooserWidget#current_folder
   * Gtk::FileChooserWidget#current_folder=
   * Gtk::FileChooserWidget#current_folder_uri
@@ -1597,8 +1822,11 @@
   * Gtk::FileChooserWidget#filter
   * Gtk::FileChooserWidget#filter=
   * Gtk::FileChooserWidget#filters
+  * Gtk::FileChooserWidget#get_internal_child
   * Gtk::FileChooserWidget#local_only=
   * Gtk::FileChooserWidget#local_only?
+  * Gtk::FileChooserWidget#name
+  * Gtk::FileChooserWidget#name=
   * Gtk::FileChooserWidget#preview_filename
   * Gtk::FileChooserWidget#preview_uri
   * Gtk::FileChooserWidget#preview_widget
@@ -1615,6 +1843,7 @@
   * Gtk::FileChooserWidget#select_multiple?
   * Gtk::FileChooserWidget#select_uri
   * Gtk::FileChooserWidget#set_action
+  * Gtk::FileChooserWidget#set_buildable_property
   * Gtk::FileChooserWidget#set_current_folder
   * Gtk::FileChooserWidget#set_current_folder_uri
   * Gtk::FileChooserWidget#set_current_name
@@ -1623,6 +1852,7 @@
   * Gtk::FileChooserWidget#set_filename
   * Gtk::FileChooserWidget#set_filter
   * Gtk::FileChooserWidget#set_local_only
+  * Gtk::FileChooserWidget#set_name
   * Gtk::FileChooserWidget#set_preview_widget
   * Gtk::FileChooserWidget#set_preview_widget_active
   * Gtk::FileChooserWidget#set_select_multiple
@@ -1659,8 +1889,10 @@
   * Gtk::FileFilter::Flags#uri?
   * Gtk::FileSelection
   * Gtk::FileSelection.new
+  * Gtk::FileSelection#add_child
   * Gtk::FileSelection#cancel_button
   * Gtk::FileSelection#complete
+  * Gtk::FileSelection#construct_child
   * Gtk::FileSelection#dir_list
   * Gtk::FileSelection#file_list
   * Gtk::FileSelection#filename
@@ -1669,14 +1901,19 @@
   * Gtk::FileSelection#fileop_del_file
   * Gtk::FileSelection#fileop_dialog
   * Gtk::FileSelection#fileop_ren_file
+  * Gtk::FileSelection#get_internal_child
   * Gtk::FileSelection#hide_fileop_buttons
   * Gtk::FileSelection#history_pulldown
+  * Gtk::FileSelection#name
+  * Gtk::FileSelection#name=
   * Gtk::FileSelection#ok_button
   * Gtk::FileSelection#ref_accessible
   * Gtk::FileSelection#select_multiple=
   * Gtk::FileSelection#select_multiple?
   * Gtk::FileSelection#selections
+  * Gtk::FileSelection#set_buildable_property
   * Gtk::FileSelection#set_filename
+  * Gtk::FileSelection#set_name
   * Gtk::FileSelection#set_select_multiple
   * Gtk::FileSelection#set_show_fileops
   * Gtk::FileSelection#show_fileop_buttons
@@ -1687,18 +1924,32 @@
   * Gtk::FileSystemError#domain
   * Gtk::Fixed
   * Gtk::Fixed.new
+  * Gtk::Fixed#add_child
+  * Gtk::Fixed#construct_child
+  * Gtk::Fixed#get_internal_child
   * Gtk::Fixed#has_window=
   * Gtk::Fixed#has_window?
   * Gtk::Fixed#move
+  * Gtk::Fixed#name
+  * Gtk::Fixed#name=
   * Gtk::Fixed#put
   * Gtk::Fixed#ref_accessible
+  * Gtk::Fixed#set_buildable_property
   * Gtk::Fixed#set_has_window
+  * Gtk::Fixed#set_name
   * Gtk::FontButton
   * Gtk::FontButton.new
+  * Gtk::FontButton#add_child
+  * Gtk::FontButton#construct_child
   * Gtk::FontButton#font_name
   * Gtk::FontButton#font_name=
+  * Gtk::FontButton#get_internal_child
+  * Gtk::FontButton#name
+  * Gtk::FontButton#name=
   * Gtk::FontButton#ref_accessible
+  * Gtk::FontButton#set_buildable_property
   * Gtk::FontButton#set_font_name
+  * Gtk::FontButton#set_name
   * Gtk::FontButton#set_show_size
   * Gtk::FontButton#set_show_style
   * Gtk::FontButton#set_title
@@ -1716,28 +1967,45 @@
   * Gtk::FontButton#use_size?
   * Gtk::FontSelection
   * Gtk::FontSelection.new
+  * Gtk::FontSelection#add_child
+  * Gtk::FontSelection#construct_child
   * Gtk::FontSelection#font_name
   * Gtk::FontSelection#font_name=
+  * Gtk::FontSelection#get_internal_child
+  * Gtk::FontSelection#name
+  * Gtk::FontSelection#name=
   * Gtk::FontSelection#preview_text
   * Gtk::FontSelection#preview_text=
   * Gtk::FontSelection#ref_accessible
+  * Gtk::FontSelection#set_buildable_property
   * Gtk::FontSelection#set_font_name
+  * Gtk::FontSelection#set_name
   * Gtk::FontSelection#set_preview_text
   * Gtk::FontSelectionDialog
   * Gtk::FontSelectionDialog.new
+  * Gtk::FontSelectionDialog#add_child
   * Gtk::FontSelectionDialog#apply_button
   * Gtk::FontSelectionDialog#cancel_button
+  * Gtk::FontSelectionDialog#construct_child
   * Gtk::FontSelectionDialog#font_name
   * Gtk::FontSelectionDialog#font_name=
   * Gtk::FontSelectionDialog#font_selection
+  * Gtk::FontSelectionDialog#get_internal_child
+  * Gtk::FontSelectionDialog#name
+  * Gtk::FontSelectionDialog#name=
   * Gtk::FontSelectionDialog#ok_button
   * Gtk::FontSelectionDialog#preview_text
   * Gtk::FontSelectionDialog#preview_text=
   * Gtk::FontSelectionDialog#ref_accessible
+  * Gtk::FontSelectionDialog#set_buildable_property
   * Gtk::FontSelectionDialog#set_font_name
+  * Gtk::FontSelectionDialog#set_name
   * Gtk::FontSelectionDialog#set_preview_text
   * Gtk::Frame
   * Gtk::Frame.new
+  * Gtk::Frame#add_child
+  * Gtk::Frame#construct_child
+  * Gtk::Frame#get_internal_child
   * Gtk::Frame#label
   * Gtk::Frame#label=
   * Gtk::Frame#label_align
@@ -1747,48 +2015,115 @@
   * Gtk::Frame#label_xalign=
   * Gtk::Frame#label_yalign
   * Gtk::Frame#label_yalign=
+  * Gtk::Frame#name
+  * Gtk::Frame#name=
   * Gtk::Frame#ref_accessible
+  * Gtk::Frame#set_buildable_property
   * Gtk::Frame#set_label
   * Gtk::Frame#set_label_align
   * Gtk::Frame#set_label_widget
   * Gtk::Frame#set_label_xalign
   * Gtk::Frame#set_label_yalign
+  * Gtk::Frame#set_name
   * Gtk::Frame#set_shadow_type
   * Gtk::Frame#shadow_type
   * Gtk::Frame#shadow_type=
   * Gtk::GammaCurve
   * Gtk::GammaCurve.new
+  * Gtk::GammaCurve#add_child
+  * Gtk::GammaCurve#construct_child
   * Gtk::GammaCurve#curve
   * Gtk::GammaCurve#gamma
+  * Gtk::GammaCurve#get_internal_child
+  * Gtk::GammaCurve#name
+  * Gtk::GammaCurve#name=
   * Gtk::GammaCurve#ref_accessible
+  * Gtk::GammaCurve#set_buildable_property
+  * Gtk::GammaCurve#set_name
   * Gtk::HBox
   * Gtk::HBox.new
+  * Gtk::HBox#add_child
+  * Gtk::HBox#construct_child
+  * Gtk::HBox#get_internal_child
+  * Gtk::HBox#name
+  * Gtk::HBox#name=
   * Gtk::HBox#ref_accessible
+  * Gtk::HBox#set_buildable_property
+  * Gtk::HBox#set_name
   * Gtk::HButtonBox
   * Gtk::HButtonBox.new
+  * Gtk::HButtonBox#add_child
+  * Gtk::HButtonBox#construct_child
+  * Gtk::HButtonBox#get_internal_child
+  * Gtk::HButtonBox#name
+  * Gtk::HButtonBox#name=
   * Gtk::HButtonBox#ref_accessible
+  * Gtk::HButtonBox#set_buildable_property
+  * Gtk::HButtonBox#set_name
   * Gtk::HPaned
   * Gtk::HPaned.new
+  * Gtk::HPaned#add_child
+  * Gtk::HPaned#construct_child
+  * Gtk::HPaned#get_internal_child
+  * Gtk::HPaned#name
+  * Gtk::HPaned#name=
   * Gtk::HPaned#ref_accessible
+  * Gtk::HPaned#set_buildable_property
+  * Gtk::HPaned#set_name
   * Gtk::HRuler
   * Gtk::HRuler.new
+  * Gtk::HRuler#add_child
+  * Gtk::HRuler#construct_child
+  * Gtk::HRuler#get_internal_child
+  * Gtk::HRuler#name
+  * Gtk::HRuler#name=
   * Gtk::HRuler#ref_accessible
+  * Gtk::HRuler#set_buildable_property
+  * Gtk::HRuler#set_name
   * Gtk::HScale
   * Gtk::HScale.new
+  * Gtk::HScale#add_child
+  * Gtk::HScale#construct_child
+  * Gtk::HScale#get_internal_child
+  * Gtk::HScale#name
+  * Gtk::HScale#name=
   * Gtk::HScale#ref_accessible
+  * Gtk::HScale#set_buildable_property
+  * Gtk::HScale#set_name
   * Gtk::HScrollbar
   * Gtk::HScrollbar.new
+  * Gtk::HScrollbar#add_child
+  * Gtk::HScrollbar#construct_child
+  * Gtk::HScrollbar#get_internal_child
+  * Gtk::HScrollbar#name
+  * Gtk::HScrollbar#name=
   * Gtk::HScrollbar#ref_accessible
+  * Gtk::HScrollbar#set_buildable_property
+  * Gtk::HScrollbar#set_name
   * Gtk::HSeparator
   * Gtk::HSeparator.new
+  * Gtk::HSeparator#add_child
+  * Gtk::HSeparator#construct_child
+  * Gtk::HSeparator#get_internal_child
+  * Gtk::HSeparator#name
+  * Gtk::HSeparator#name=
   * Gtk::HSeparator#ref_accessible
+  * Gtk::HSeparator#set_buildable_property
+  * Gtk::HSeparator#set_name
   * Gtk::HandleBox
   * Gtk::HandleBox.new
+  * Gtk::HandleBox#add_child
   * Gtk::HandleBox#child_detached?
+  * Gtk::HandleBox#construct_child
+  * Gtk::HandleBox#get_internal_child
   * Gtk::HandleBox#handle_position
   * Gtk::HandleBox#handle_position=
+  * Gtk::HandleBox#name
+  * Gtk::HandleBox#name=
   * Gtk::HandleBox#ref_accessible
+  * Gtk::HandleBox#set_buildable_property
   * Gtk::HandleBox#set_handle_position
+  * Gtk::HandleBox#set_name
   * Gtk::HandleBox#set_shadow_type
   * Gtk::HandleBox#set_snap_edge
   * Gtk::HandleBox#set_snap_edge_set
@@ -1908,18 +2243,21 @@
   * Gtk::IconView.new
   * Gtk::IconView#activate_cursor_item
   * Gtk::IconView#add_attribute
+  * Gtk::IconView#add_child
   * Gtk::IconView#clear
   * Gtk::IconView#clear_attributes
   * Gtk::IconView#column_spacing
   * Gtk::IconView#column_spacing=
   * Gtk::IconView#columns
   * Gtk::IconView#columns=
+  * Gtk::IconView#construct_child
   * Gtk::IconView#create_drag_icon
   * Gtk::IconView#cursor
   * Gtk::IconView#drag_dest_item
   * Gtk::IconView#enable_model_drag_dest
   * Gtk::IconView#enable_model_drag_source
   * Gtk::IconView#get_dest_item
+  * Gtk::IconView#get_internal_child
   * Gtk::IconView#get_item
   * Gtk::IconView#get_path
   * Gtk::IconView#get_path_at_pos
@@ -1933,6 +2271,8 @@
   * Gtk::IconView#model
   * Gtk::IconView#model=
   * Gtk::IconView#move_cursor
+  * Gtk::IconView#name
+  * Gtk::IconView#name=
   * Gtk::IconView#orientation
   * Gtk::IconView#orientation=
   * Gtk::IconView#pack_end
@@ -1955,6 +2295,7 @@
   * Gtk::IconView#selection_mode
   * Gtk::IconView#selection_mode=
   * Gtk::IconView#set_attributes
+  * Gtk::IconView#set_buildable_property
   * Gtk::IconView#set_cell_data_func
   * Gtk::IconView#set_column_spacing
   * Gtk::IconView#set_columns
@@ -1964,6 +2305,7 @@
   * Gtk::IconView#set_margin
   * Gtk::IconView#set_markup_column
   * Gtk::IconView#set_model
+  * Gtk::IconView#set_name
   * Gtk::IconView#set_orientation
   * Gtk::IconView#set_pixbuf_column
   * Gtk::IconView#set_reorderable
@@ -1988,9 +2330,12 @@
   * Gtk::IconView::Type
   * Gtk::Image
   * Gtk::Image.new
+  * Gtk::Image#add_child
   * Gtk::Image#clear
+  * Gtk::Image#construct_child
   * Gtk::Image#file
   * Gtk::Image#file=
+  * Gtk::Image#get_internal_child
   * Gtk::Image#icon_name
   * Gtk::Image#icon_name=
   * Gtk::Image#icon_set
@@ -2001,6 +2346,8 @@
   * Gtk::Image#image=
   * Gtk::Image#mask
   * Gtk::Image#mask=
+  * Gtk::Image#name
+  * Gtk::Image#name=
   * Gtk::Image#pixbuf
   * Gtk::Image#pixbuf=
   * Gtk::Image#pixbuf_animation
@@ -2011,12 +2358,14 @@
   * Gtk::Image#pixmap=
   * Gtk::Image#ref_accessible
   * Gtk::Image#set
+  * Gtk::Image#set_buildable_property
   * Gtk::Image#set_file
   * Gtk::Image#set_icon_name
   * Gtk::Image#set_icon_set
   * Gtk::Image#set_icon_size
   * Gtk::Image#set_image
   * Gtk::Image#set_mask
+  * Gtk::Image#set_name
   * Gtk::Image#set_pixbuf
   * Gtk::Image#set_pixbuf_animation
   * Gtk::Image#set_pixel_size
@@ -2028,24 +2377,52 @@
   * Gtk::Image::Type
   * Gtk::ImageMenuItem
   * Gtk::ImageMenuItem.new
+  * Gtk::ImageMenuItem#add_child
+  * Gtk::ImageMenuItem#construct_child
+  * Gtk::ImageMenuItem#get_internal_child
   * Gtk::ImageMenuItem#image
   * Gtk::ImageMenuItem#image=
+  * Gtk::ImageMenuItem#name
+  * Gtk::ImageMenuItem#name=
   * Gtk::ImageMenuItem#ref_accessible
+  * Gtk::ImageMenuItem#set_buildable_property
   * Gtk::ImageMenuItem#set_image
+  * Gtk::ImageMenuItem#set_name
   * Gtk::InitError
   * Gtk::InputDialog
   * Gtk::InputDialog.new
+  * Gtk::InputDialog#add_child
+  * Gtk::InputDialog#construct_child
+  * Gtk::InputDialog#get_internal_child
+  * Gtk::InputDialog#name
+  * Gtk::InputDialog#name=
   * Gtk::InputDialog#ref_accessible
+  * Gtk::InputDialog#set_buildable_property
+  * Gtk::InputDialog#set_name
   * Gtk::Invisible
   * Gtk::Invisible.new
+  * Gtk::Invisible#add_child
+  * Gtk::Invisible#construct_child
+  * Gtk::Invisible#get_internal_child
+  * Gtk::Invisible#name
+  * Gtk::Invisible#name=
   * Gtk::Invisible#ref_accessible
   * Gtk::Invisible#screen
   * Gtk::Invisible#screen=
+  * Gtk::Invisible#set_buildable_property
+  * Gtk::Invisible#set_name
   * Gtk::Invisible#set_screen
   * Gtk::Item
+  * Gtk::Item#add_child
+  * Gtk::Item#construct_child
   * Gtk::Item#deselect
+  * Gtk::Item#get_internal_child
+  * Gtk::Item#name
+  * Gtk::Item#name=
   * Gtk::Item#ref_accessible
   * Gtk::Item#select
+  * Gtk::Item#set_buildable_property
+  * Gtk::Item#set_name
   * Gtk::Item#toggle
   * Gtk::ItemFactory
   * Gtk::ItemFactory.from_widget
@@ -2061,14 +2438,17 @@
   * Gtk::Justification
   * Gtk::Label
   * Gtk::Label.new
+  * Gtk::Label#add_child
   * Gtk::Label#angle
   * Gtk::Label#angle=
   * Gtk::Label#attributes
   * Gtk::Label#attributes=
+  * Gtk::Label#construct_child
   * Gtk::Label#copy_clipboard
   * Gtk::Label#cursor_position
   * Gtk::Label#ellipsize
   * Gtk::Label#ellipsize=
+  * Gtk::Label#get_internal_child
   * Gtk::Label#justify
   * Gtk::Label#justify=
   * Gtk::Label#label
@@ -2082,6 +2462,8 @@
   * Gtk::Label#mnemonic_widget
   * Gtk::Label#mnemonic_widget=
   * Gtk::Label#move_cursor
+  * Gtk::Label#name
+  * Gtk::Label#name=
   * Gtk::Label#pattern=
   * Gtk::Label#ref_accessible
   * Gtk::Label#select_region
@@ -2091,12 +2473,14 @@
   * Gtk::Label#selection_bounds
   * Gtk::Label#set_angle
   * Gtk::Label#set_attributes
+  * Gtk::Label#set_buildable_property
   * Gtk::Label#set_ellipsize
   * Gtk::Label#set_justify
   * Gtk::Label#set_label
   * Gtk::Label#set_markup
   * Gtk::Label#set_max_width_chars
   * Gtk::Label#set_mnemonic_widget
+  * Gtk::Label#set_name
   * Gtk::Label#set_pattern
   * Gtk::Label#set_selectable
   * Gtk::Label#set_single_line_mode
@@ -2122,16 +2506,23 @@
   * Gtk::Label#wrap_mode=
   * Gtk::Layout
   * Gtk::Layout.new
+  * Gtk::Layout#add_child
   * Gtk::Layout#bin_window
+  * Gtk::Layout#construct_child
+  * Gtk::Layout#get_internal_child
   * Gtk::Layout#hadjustment
   * Gtk::Layout#hadjustment=
   * Gtk::Layout#height
   * Gtk::Layout#height=
   * Gtk::Layout#move
+  * Gtk::Layout#name
+  * Gtk::Layout#name=
   * Gtk::Layout#put
   * Gtk::Layout#ref_accessible
+  * Gtk::Layout#set_buildable_property
   * Gtk::Layout#set_hadjustment
   * Gtk::Layout#set_height
+  * Gtk::Layout#set_name
   * Gtk::Layout#set_scroll_adjustments
   * Gtk::Layout#set_size
   * Gtk::Layout#set_vadjustment
@@ -2144,17 +2535,27 @@
   * Gtk::LinkButton
   * Gtk::LinkButton.new
   * Gtk::LinkButton.set_uri_hook
+  * Gtk::LinkButton#add_child
+  * Gtk::LinkButton#construct_child
+  * Gtk::LinkButton#get_internal_child
+  * Gtk::LinkButton#name
+  * Gtk::LinkButton#name=
   * Gtk::LinkButton#ref_accessible
+  * Gtk::LinkButton#set_buildable_property
+  * Gtk::LinkButton#set_name
   * Gtk::LinkButton#set_uri
   * Gtk::LinkButton#uri
   * Gtk::LinkButton#uri=
   * Gtk::ListStore
   * Gtk::ListStore.new
+  * Gtk::ListStore#add_child
   * Gtk::ListStore#append
   * Gtk::ListStore#clear
+  * Gtk::ListStore#construct_child
   * Gtk::ListStore#each
   * Gtk::ListStore#flags
   * Gtk::ListStore#get_column_type
+  * Gtk::ListStore#get_internal_child
   * Gtk::ListStore#get_iter
   * Gtk::ListStore#get_value
   * Gtk::ListStore#has_default_sort_func?
@@ -2166,6 +2567,8 @@
   * Gtk::ListStore#move_after
   * Gtk::ListStore#move_before
   * Gtk::ListStore#n_columns
+  * Gtk::ListStore#name
+  * Gtk::ListStore#name=
   * Gtk::ListStore#prepend
   * Gtk::ListStore#remove
   * Gtk::ListStore#reorder
@@ -2174,8 +2577,10 @@
   * Gtk::ListStore#row_has_child_toggled
   * Gtk::ListStore#row_inserted
   * Gtk::ListStore#rows_reordered
+  * Gtk::ListStore#set_buildable_property
   * Gtk::ListStore#set_column_types
   * Gtk::ListStore#set_default_sort_func
+  * Gtk::ListStore#set_name
   * Gtk::ListStore#set_sort_column_id
   * Gtk::ListStore#set_sort_func
   * Gtk::ListStore#set_value
@@ -2190,12 +2595,17 @@
   * Gtk::Menu#accel_path=
   * Gtk::Menu#active
   * Gtk::Menu#active=
+  * Gtk::Menu#add_child
   * Gtk::Menu#attach
   * Gtk::Menu#attach_to_widget
   * Gtk::Menu#attach_widget
+  * Gtk::Menu#construct_child
   * Gtk::Menu#detach
+  * Gtk::Menu#get_internal_child
   * Gtk::Menu#monitor=
   * Gtk::Menu#move_scroll
+  * Gtk::Menu#name
+  * Gtk::Menu#name=
   * Gtk::Menu#popdown
   * Gtk::Menu#popup
   * Gtk::Menu#ref_accessible
@@ -2205,7 +2615,9 @@
   * Gtk::Menu#set_accel_group
   * Gtk::Menu#set_accel_path
   * Gtk::Menu#set_active
+  * Gtk::Menu#set_buildable_property
   * Gtk::Menu#set_monitor
+  * Gtk::Menu#set_name
   * Gtk::Menu#set_screen
   * Gtk::Menu#set_tearoff_state
   * Gtk::Menu#set_tearoff_title
@@ -2215,25 +2627,39 @@
   * Gtk::Menu#tearoff_title=
   * Gtk::MenuBar
   * Gtk::MenuBar.new
+  * Gtk::MenuBar#add_child
   * Gtk::MenuBar#child_pack_direction
   * Gtk::MenuBar#child_pack_direction=
+  * Gtk::MenuBar#construct_child
+  * Gtk::MenuBar#get_internal_child
+  * Gtk::MenuBar#name
+  * Gtk::MenuBar#name=
   * Gtk::MenuBar#pack_direction
   * Gtk::MenuBar#pack_direction=
   * Gtk::MenuBar#ref_accessible
+  * Gtk::MenuBar#set_buildable_property
   * Gtk::MenuBar#set_child_pack_direction
+  * Gtk::MenuBar#set_name
   * Gtk::MenuBar#set_pack_direction
   * Gtk::MenuBar::PackDirection
   * Gtk::MenuItem
   * Gtk::MenuItem.new
   * Gtk::MenuItem#accel_path=
   * Gtk::MenuItem#activate
+  * Gtk::MenuItem#add_child
+  * Gtk::MenuItem#construct_child
   * Gtk::MenuItem#deselect
+  * Gtk::MenuItem#get_internal_child
+  * Gtk::MenuItem#name
+  * Gtk::MenuItem#name=
   * Gtk::MenuItem#ref_accessible
   * Gtk::MenuItem#remove_submenu
   * Gtk::MenuItem#right_justified=
   * Gtk::MenuItem#right_justified?
   * Gtk::MenuItem#select
   * Gtk::MenuItem#set_accel_path
+  * Gtk::MenuItem#set_buildable_property
+  * Gtk::MenuItem#set_name
   * Gtk::MenuItem#set_right_justified
   * Gtk::MenuItem#set_submenu
   * Gtk::MenuItem#submenu
@@ -2243,19 +2669,26 @@
   * Gtk::MenuShell
   * Gtk::MenuShell#activate_current
   * Gtk::MenuShell#activate_item
+  * Gtk::MenuShell#add_child
   * Gtk::MenuShell#append
   * Gtk::MenuShell#cancel
+  * Gtk::MenuShell#construct_child
   * Gtk::MenuShell#cycle_focus
   * Gtk::MenuShell#deactivate
   * Gtk::MenuShell#deselect
   * Gtk::MenuShell#fill_menus
   * Gtk::MenuShell#find_menu_pos
+  * Gtk::MenuShell#get_internal_child
   * Gtk::MenuShell#insert
   * Gtk::MenuShell#move_current
+  * Gtk::MenuShell#name
+  * Gtk::MenuShell#name=
   * Gtk::MenuShell#prepend
   * Gtk::MenuShell#ref_accessible
   * Gtk::MenuShell#select_first
   * Gtk::MenuShell#select_item
+  * Gtk::MenuShell#set_buildable_property
+  * Gtk::MenuShell#set_name
   * Gtk::MenuShell#set_take_focus
   * Gtk::MenuShell#take_focus
   * Gtk::MenuShell#take_focus=
@@ -2263,29 +2696,43 @@
   * Gtk::MenuShell::DirectionType
   * Gtk::MenuToolButton
   * Gtk::MenuToolButton.new
+  * Gtk::MenuToolButton#add_child
+  * Gtk::MenuToolButton#construct_child
+  * Gtk::MenuToolButton#get_internal_child
   * Gtk::MenuToolButton#menu
   * Gtk::MenuToolButton#menu=
+  * Gtk::MenuToolButton#name
+  * Gtk::MenuToolButton#name=
   * Gtk::MenuToolButton#ref_accessible
   * Gtk::MenuToolButton#set_arrow_tooltip
+  * Gtk::MenuToolButton#set_buildable_property
   * Gtk::MenuToolButton#set_menu
+  * Gtk::MenuToolButton#set_name
   * Gtk::MessageDialog
   * Gtk::MessageDialog.new
+  * Gtk::MessageDialog#add_child
   * Gtk::MessageDialog#buttons=
+  * Gtk::MessageDialog#construct_child
+  * Gtk::MessageDialog#get_internal_child
   * Gtk::MessageDialog#image
   * Gtk::MessageDialog#image=
   * Gtk::MessageDialog#markup=
   * Gtk::MessageDialog#message_type
   * Gtk::MessageDialog#message_type=
+  * Gtk::MessageDialog#name
+  * Gtk::MessageDialog#name=
   * Gtk::MessageDialog#ref_accessible
   * Gtk::MessageDialog#secondary_markup=
   * Gtk::MessageDialog#secondary_text
   * Gtk::MessageDialog#secondary_text=
   * Gtk::MessageDialog#secondary_use_markup=
   * Gtk::MessageDialog#secondary_use_markup?
+  * Gtk::MessageDialog#set_buildable_property
   * Gtk::MessageDialog#set_buttons
   * Gtk::MessageDialog#set_image
   * Gtk::MessageDialog#set_markup
   * Gtk::MessageDialog#set_message_type
+  * Gtk::MessageDialog#set_name
   * Gtk::MessageDialog#set_secondary_markup
   * Gtk::MessageDialog#set_secondary_text
   * Gtk::MessageDialog#set_secondary_use_markup
@@ -2299,10 +2746,17 @@
   * Gtk::MessageDialog::Type
   * Gtk::MetricType
   * Gtk::Misc
+  * Gtk::Misc#add_child
   * Gtk::Misc#alignment
+  * Gtk::Misc#construct_child
+  * Gtk::Misc#get_internal_child
+  * Gtk::Misc#name
+  * Gtk::Misc#name=
   * Gtk::Misc#padding
   * Gtk::Misc#ref_accessible
   * Gtk::Misc#set_alignment
+  * Gtk::Misc#set_buildable_property
+  * Gtk::Misc#set_name
   * Gtk::Misc#set_padding
   * Gtk::Misc#set_xalign
   * Gtk::Misc#set_xpad
@@ -2320,12 +2774,15 @@
   * Gtk::Notebook
   * Gtk::Notebook.new
   * Gtk::Notebook.set_window_creation_hook
+  * Gtk::Notebook#add_child
   * Gtk::Notebook#append_page
   * Gtk::Notebook#append_page_menu
   * Gtk::Notebook#change_current_page
+  * Gtk::Notebook#construct_child
   * Gtk::Notebook#enable_popup=
   * Gtk::Notebook#enable_popup?
   * Gtk::Notebook#focus_tab
+  * Gtk::Notebook#get_internal_child
   * Gtk::Notebook#get_menu_label
   * Gtk::Notebook#get_menu_label_text
   * Gtk::Notebook#get_nth_page
@@ -2343,6 +2800,8 @@
   * Gtk::Notebook#insert_page_menu
   * Gtk::Notebook#move_focus_out
   * Gtk::Notebook#n_pages
+  * Gtk::Notebook#name
+  * Gtk::Notebook#name=
   * Gtk::Notebook#next_page
   * Gtk::Notebook#page
   * Gtk::Notebook#page=
@@ -2358,12 +2817,14 @@
   * Gtk::Notebook#scrollable=
   * Gtk::Notebook#scrollable?
   * Gtk::Notebook#select_page
+  * Gtk::Notebook#set_buildable_property
   * Gtk::Notebook#set_enable_popup
   * Gtk::Notebook#set_group
   * Gtk::Notebook#set_group_id
   * Gtk::Notebook#set_homogeneous
   * Gtk::Notebook#set_menu_label
   * Gtk::Notebook#set_menu_label_text
+  * Gtk::Notebook#set_name
   * Gtk::Notebook#set_page
   * Gtk::Notebook#set_scrollable
   * Gtk::Notebook#set_show_border
@@ -2405,14 +2866,21 @@
   * Gtk::Object::Flags#reserved_2?
   * Gtk::OptionMenu
   * Gtk::OptionMenu.new
+  * Gtk::OptionMenu#add_child
+  * Gtk::OptionMenu#construct_child
+  * Gtk::OptionMenu#get_internal_child
   * Gtk::OptionMenu#history
   * Gtk::OptionMenu#history=
   * Gtk::OptionMenu#menu
   * Gtk::OptionMenu#menu=
+  * Gtk::OptionMenu#name
+  * Gtk::OptionMenu#name=
   * Gtk::OptionMenu#ref_accessible
   * Gtk::OptionMenu#remove_menu
+  * Gtk::OptionMenu#set_buildable_property
   * Gtk::OptionMenu#set_history
   * Gtk::OptionMenu#set_menu
+  * Gtk::OptionMenu#set_name
   * Gtk::Orientation
   * Gtk::PackType
   * Gtk::PageSetup
@@ -2440,17 +2908,25 @@
   * Gtk::PageSetup#set_top_margin
   * Gtk::PageSetupUnixDialog
   * Gtk::PageSetupUnixDialog.new
+  * Gtk::PageSetupUnixDialog#add_child
+  * Gtk::PageSetupUnixDialog#construct_child
+  * Gtk::PageSetupUnixDialog#get_internal_child
+  * Gtk::PageSetupUnixDialog#name
+  * Gtk::PageSetupUnixDialog#name=
   * Gtk::PageSetupUnixDialog#page_setup
   * Gtk::PageSetupUnixDialog#page_setup=
   * Gtk::PageSetupUnixDialog#print_settings
   * Gtk::PageSetupUnixDialog#print_settings=
   * Gtk::PageSetupUnixDialog#ref_accessible
+  * Gtk::PageSetupUnixDialog#set_buildable_property
+  * Gtk::PageSetupUnixDialog#set_name
   * Gtk::PageSetupUnixDialog#set_page_setup
   * Gtk::PageSetupUnixDialog#set_print_settings
   * Gtk::Paned
   * Gtk::Paned#accept_position
   * Gtk::Paned#add1
   * Gtk::Paned#add2
+  * Gtk::Paned#add_child
   * Gtk::Paned#cancel_position
   * Gtk::Paned#child1
   * Gtk::Paned#child1_resize?
@@ -2458,11 +2934,15 @@
   * Gtk::Paned#child2
   * Gtk::Paned#child2_resize?
   * Gtk::Paned#child2_shrink?
+  * Gtk::Paned#construct_child
   * Gtk::Paned#cycle_child_focus
   * Gtk::Paned#cycle_handle_focus
+  * Gtk::Paned#get_internal_child
   * Gtk::Paned#max_position
   * Gtk::Paned#min_position
   * Gtk::Paned#move_handle
+  * Gtk::Paned#name
+  * Gtk::Paned#name=
   * Gtk::Paned#pack1
   * Gtk::Paned#pack2
   * Gtk::Paned#position
@@ -2470,6 +2950,8 @@
   * Gtk::Paned#position_set=
   * Gtk::Paned#position_set?
   * Gtk::Paned#ref_accessible
+  * Gtk::Paned#set_buildable_property
+  * Gtk::Paned#set_name
   * Gtk::Paned#set_position
   * Gtk::Paned#set_position_set
   * Gtk::Paned#toggle_handle_focus
@@ -2502,13 +2984,30 @@
   * Gtk::PatternTag.new
   * Gtk::Plug
   * Gtk::Plug.new
+  * Gtk::Plug#add_child
   * Gtk::Plug#construct
+  * Gtk::Plug#construct_child
   * Gtk::Plug#embedded?
+  * Gtk::Plug#get_internal_child
   * Gtk::Plug#id
+  * Gtk::Plug#name
+  * Gtk::Plug#name=
   * Gtk::Plug#ref_accessible
+  * Gtk::Plug#set_buildable_property
+  * Gtk::Plug#set_name
   * Gtk::PolicyType
   * Gtk::PositionType
   * Gtk::PrintBackend
+  * Gtk::PrintCapabilities
+  * Gtk::PrintCapabilities#collate?
+  * Gtk::PrintCapabilities#copies?
+  * Gtk::PrintCapabilities#generate_pdf?
+  * Gtk::PrintCapabilities#generate_ps?
+  * Gtk::PrintCapabilities#number_up?
+  * Gtk::PrintCapabilities#page_set?
+  * Gtk::PrintCapabilities#preview?
+  * Gtk::PrintCapabilities#reverse?
+  * Gtk::PrintCapabilities#scale?
   * Gtk::PrintContext
   * Gtk::PrintContext#cairo_context
   * Gtk::PrintContext#create_pango_context
@@ -2686,33 +3185,30 @@
   * Gtk::PrintSettings::PrintQuality
   * Gtk::PrintUnixDialog
   * Gtk::PrintUnixDialog.new
+  * Gtk::PrintUnixDialog#add_child
   * Gtk::PrintUnixDialog#add_custom_tab
+  * Gtk::PrintUnixDialog#construct_child
   * Gtk::PrintUnixDialog#current_page
   * Gtk::PrintUnixDialog#current_page=
+  * Gtk::PrintUnixDialog#get_internal_child
   * Gtk::PrintUnixDialog#manual_capability=
+  * Gtk::PrintUnixDialog#name
+  * Gtk::PrintUnixDialog#name=
   * Gtk::PrintUnixDialog#page_setup
   * Gtk::PrintUnixDialog#page_setup=
   * Gtk::PrintUnixDialog#print_settings
   * Gtk::PrintUnixDialog#print_settings=
   * Gtk::PrintUnixDialog#ref_accessible
   * Gtk::PrintUnixDialog#selected_printer
+  * Gtk::PrintUnixDialog#set_buildable_property
   * Gtk::PrintUnixDialog#set_current_page
   * Gtk::PrintUnixDialog#set_manual_capability
+  * Gtk::PrintUnixDialog#set_name
   * Gtk::PrintUnixDialog#set_page_setup
   * Gtk::PrintUnixDialog#set_print_settings
   * Gtk::PrintUnixDialog#set_settings
   * Gtk::PrintUnixDialog#settings
   * Gtk::PrintUnixDialog#settings=
-  * Gtk::PrintUnixDialog::Capabilities
-  * Gtk::PrintUnixDialog::Capabilities#collate?
-  * Gtk::PrintUnixDialog::Capabilities#copies?
-  * Gtk::PrintUnixDialog::Capabilities#generate_pdf?
-  * Gtk::PrintUnixDialog::Capabilities#generate_ps?
-  * Gtk::PrintUnixDialog::Capabilities#number_up?
-  * Gtk::PrintUnixDialog::Capabilities#page_set?
-  * Gtk::PrintUnixDialog::Capabilities#preview?
-  * Gtk::PrintUnixDialog::Capabilities#reverse?
-  * Gtk::PrintUnixDialog::Capabilities#scale?
   * Gtk::Printer
   * Gtk::Printer.each
   * Gtk::Printer.new
@@ -2743,8 +3239,15 @@
   * Gtk::Progress
   * Gtk::Progress#activity_mode=
   * Gtk::Progress#activity_mode?
+  * Gtk::Progress#add_child
+  * Gtk::Progress#construct_child
+  * Gtk::Progress#get_internal_child
+  * Gtk::Progress#name
+  * Gtk::Progress#name=
   * Gtk::Progress#ref_accessible
   * Gtk::Progress#set_activity_mode
+  * Gtk::Progress#set_buildable_property
+  * Gtk::Progress#set_name
   * Gtk::Progress#set_show_text
   * Gtk::Progress#set_text_xalign
   * Gtk::Progress#set_text_yalign
@@ -2756,18 +3259,25 @@
   * Gtk::Progress#text_yalign=
   * Gtk::ProgressBar
   * Gtk::ProgressBar.new
+  * Gtk::ProgressBar#add_child
+  * Gtk::ProgressBar#construct_child
   * Gtk::ProgressBar#ellipsize
   * Gtk::ProgressBar#ellipsize=
   * Gtk::ProgressBar#fraction
   * Gtk::ProgressBar#fraction=
+  * Gtk::ProgressBar#get_internal_child
+  * Gtk::ProgressBar#name
+  * Gtk::ProgressBar#name=
   * Gtk::ProgressBar#orientation
   * Gtk::ProgressBar#orientation=
   * Gtk::ProgressBar#pulse
   * Gtk::ProgressBar#pulse_step
   * Gtk::ProgressBar#pulse_step=
   * Gtk::ProgressBar#ref_accessible
+  * Gtk::ProgressBar#set_buildable_property
   * Gtk::ProgressBar#set_ellipsize
   * Gtk::ProgressBar#set_fraction
+  * Gtk::ProgressBar#set_name
   * Gtk::ProgressBar#set_orientation
   * Gtk::ProgressBar#set_pulse_step
   * Gtk::ProgressBar#set_text
@@ -2799,51 +3309,86 @@
   * Gtk::RC::TokenType
   * Gtk::RadioAction
   * Gtk::RadioAction.new
+  * Gtk::RadioAction#add_child
+  * Gtk::RadioAction#construct_child
   * Gtk::RadioAction#current_value
   * Gtk::RadioAction#current_value=
+  * Gtk::RadioAction#get_internal_child
   * Gtk::RadioAction#group
   * Gtk::RadioAction#group=
+  * Gtk::RadioAction#name
+  * Gtk::RadioAction#name=
+  * Gtk::RadioAction#set_buildable_property
   * Gtk::RadioAction#set_current_value
   * Gtk::RadioAction#set_group
+  * Gtk::RadioAction#set_name
   * Gtk::RadioAction#set_value
   * Gtk::RadioAction#value
   * Gtk::RadioAction#value=
   * Gtk::RadioButton
   * Gtk::RadioButton.new
+  * Gtk::RadioButton#add_child
+  * Gtk::RadioButton#construct_child
+  * Gtk::RadioButton#get_internal_child
   * Gtk::RadioButton#group
   * Gtk::RadioButton#group=
+  * Gtk::RadioButton#name
+  * Gtk::RadioButton#name=
   * Gtk::RadioButton#ref_accessible
+  * Gtk::RadioButton#set_buildable_property
   * Gtk::RadioButton#set_group
+  * Gtk::RadioButton#set_name
   * Gtk::RadioMenuItem
   * Gtk::RadioMenuItem.new
+  * Gtk::RadioMenuItem#add_child
+  * Gtk::RadioMenuItem#construct_child
+  * Gtk::RadioMenuItem#get_internal_child
   * Gtk::RadioMenuItem#group
   * Gtk::RadioMenuItem#group=
+  * Gtk::RadioMenuItem#name
+  * Gtk::RadioMenuItem#name=
   * Gtk::RadioMenuItem#ref_accessible
+  * Gtk::RadioMenuItem#set_buildable_property
   * Gtk::RadioMenuItem#set_group
+  * Gtk::RadioMenuItem#set_name
   * Gtk::RadioToolButton
   * Gtk::RadioToolButton.new
+  * Gtk::RadioToolButton#add_child
+  * Gtk::RadioToolButton#construct_child
+  * Gtk::RadioToolButton#get_internal_child
   * Gtk::RadioToolButton#group
   * Gtk::RadioToolButton#group=
+  * Gtk::RadioToolButton#name
+  * Gtk::RadioToolButton#name=
   * Gtk::RadioToolButton#ref_accessible
+  * Gtk::RadioToolButton#set_buildable_property
   * Gtk::RadioToolButton#set_group
+  * Gtk::RadioToolButton#set_name
   * Gtk::Range
+  * Gtk::Range#add_child
   * Gtk::Range#adjustment
   * Gtk::Range#adjustment=
+  * Gtk::Range#construct_child
   * Gtk::Range#fill_level
   * Gtk::Range#fill_level=
+  * Gtk::Range#get_internal_child
   * Gtk::Range#inverted=
   * Gtk::Range#inverted?
   * Gtk::Range#lower_stepper_sensitivity
   * Gtk::Range#lower_stepper_sensitivity=
   * Gtk::Range#move_slider
+  * Gtk::Range#name
+  * Gtk::Range#name=
   * Gtk::Range#ref_accessible
   * Gtk::Range#restrict_to_fill_level=
   * Gtk::Range#restrict_to_fill_level?
   * Gtk::Range#set_adjustment
+  * Gtk::Range#set_buildable_property
   * Gtk::Range#set_fill_level
   * Gtk::Range#set_increments
   * Gtk::Range#set_inverted
   * Gtk::Range#set_lower_stepper_sensitivity
+  * Gtk::Range#set_name
   * Gtk::Range#set_range
   * Gtk::Range#set_restrict_to_fill_level
   * Gtk::Range#set_show_fill_level
@@ -2887,27 +3432,34 @@
   * Gtk::RcStyle#ythickness=
   * Gtk::RecentAction
   * Gtk::RecentAction.new
+  * Gtk::RecentAction#add_child
   * Gtk::RecentAction#add_filter
+  * Gtk::RecentAction#construct_child
   * Gtk::RecentAction#current_item
   * Gtk::RecentAction#current_uri
   * Gtk::RecentAction#current_uri=
   * Gtk::RecentAction#filter
   * Gtk::RecentAction#filter=
   * Gtk::RecentAction#filters
+  * Gtk::RecentAction#get_internal_child
   * Gtk::RecentAction#items
   * Gtk::RecentAction#limit
   * Gtk::RecentAction#limit=
   * Gtk::RecentAction#local_only=
   * Gtk::RecentAction#local_only?
+  * Gtk::RecentAction#name
+  * Gtk::RecentAction#name=
   * Gtk::RecentAction#remove_filter
   * Gtk::RecentAction#select_all
   * Gtk::RecentAction#select_multiple=
   * Gtk::RecentAction#select_multiple?
   * Gtk::RecentAction#select_uri
+  * Gtk::RecentAction#set_buildable_property
   * Gtk::RecentAction#set_current_uri
   * Gtk::RecentAction#set_filter
   * Gtk::RecentAction#set_limit
   * Gtk::RecentAction#set_local_only
+  * Gtk::RecentAction#set_name
   * Gtk::RecentAction#set_select_multiple
   * Gtk::RecentAction#set_show_icons
   * Gtk::RecentAction#set_show_not_found
@@ -2980,28 +3532,35 @@
   * Gtk::RecentChooser::SortType
   * Gtk::RecentChooserDialog
   * Gtk::RecentChooserDialog.new
+  * Gtk::RecentChooserDialog#add_child
   * Gtk::RecentChooserDialog#add_filter
+  * Gtk::RecentChooserDialog#construct_child
   * Gtk::RecentChooserDialog#current_item
   * Gtk::RecentChooserDialog#current_uri
   * Gtk::RecentChooserDialog#current_uri=
   * Gtk::RecentChooserDialog#filter
   * Gtk::RecentChooserDialog#filter=
   * Gtk::RecentChooserDialog#filters
+  * Gtk::RecentChooserDialog#get_internal_child
   * Gtk::RecentChooserDialog#items
   * Gtk::RecentChooserDialog#limit
   * Gtk::RecentChooserDialog#limit=
   * Gtk::RecentChooserDialog#local_only=
   * Gtk::RecentChooserDialog#local_only?
+  * Gtk::RecentChooserDialog#name
+  * Gtk::RecentChooserDialog#name=
   * Gtk::RecentChooserDialog#ref_accessible
   * Gtk::RecentChooserDialog#remove_filter
   * Gtk::RecentChooserDialog#select_all
   * Gtk::RecentChooserDialog#select_multiple=
   * Gtk::RecentChooserDialog#select_multiple?
   * Gtk::RecentChooserDialog#select_uri
+  * Gtk::RecentChooserDialog#set_buildable_property
   * Gtk::RecentChooserDialog#set_current_uri
   * Gtk::RecentChooserDialog#set_filter
   * Gtk::RecentChooserDialog#set_limit
   * Gtk::RecentChooserDialog#set_local_only
+  * Gtk::RecentChooserDialog#set_name
   * Gtk::RecentChooserDialog#set_select_multiple
   * Gtk::RecentChooserDialog#set_show_icons
   * Gtk::RecentChooserDialog#set_show_not_found
@@ -3033,28 +3592,35 @@
   * Gtk::RecentChooserMenu.set_show_numbers
   * Gtk::RecentChooserMenu.show_numbers=
   * Gtk::RecentChooserMenu.show_numbers?
+  * Gtk::RecentChooserMenu#add_child
   * Gtk::RecentChooserMenu#add_filter
+  * Gtk::RecentChooserMenu#construct_child
   * Gtk::RecentChooserMenu#current_item
   * Gtk::RecentChooserMenu#current_uri
   * Gtk::RecentChooserMenu#current_uri=
   * Gtk::RecentChooserMenu#filter
   * Gtk::RecentChooserMenu#filter=
   * Gtk::RecentChooserMenu#filters
+  * Gtk::RecentChooserMenu#get_internal_child
   * Gtk::RecentChooserMenu#items
   * Gtk::RecentChooserMenu#limit
   * Gtk::RecentChooserMenu#limit=
   * Gtk::RecentChooserMenu#local_only=
   * Gtk::RecentChooserMenu#local_only?
+  * Gtk::RecentChooserMenu#name
+  * Gtk::RecentChooserMenu#name=
   * Gtk::RecentChooserMenu#ref_accessible
   * Gtk::RecentChooserMenu#remove_filter
   * Gtk::RecentChooserMenu#select_all
   * Gtk::RecentChooserMenu#select_multiple=
   * Gtk::RecentChooserMenu#select_multiple?
   * Gtk::RecentChooserMenu#select_uri
+  * Gtk::RecentChooserMenu#set_buildable_property
   * Gtk::RecentChooserMenu#set_current_uri
   * Gtk::RecentChooserMenu#set_filter
   * Gtk::RecentChooserMenu#set_limit
   * Gtk::RecentChooserMenu#set_local_only
+  * Gtk::RecentChooserMenu#set_name
   * Gtk::RecentChooserMenu#set_select_multiple
   * Gtk::RecentChooserMenu#set_show_icons
   * Gtk::RecentChooserMenu#set_show_not_found
@@ -3081,28 +3647,35 @@
   * Gtk::RecentChooserMenu#uris
   * Gtk::RecentChooserWidget
   * Gtk::RecentChooserWidget.new
+  * Gtk::RecentChooserWidget#add_child
   * Gtk::RecentChooserWidget#add_filter
+  * Gtk::RecentChooserWidget#construct_child
   * Gtk::RecentChooserWidget#current_item
   * Gtk::RecentChooserWidget#current_uri
   * Gtk::RecentChooserWidget#current_uri=
   * Gtk::RecentChooserWidget#filter
   * Gtk::RecentChooserWidget#filter=
   * Gtk::RecentChooserWidget#filters
+  * Gtk::RecentChooserWidget#get_internal_child
   * Gtk::RecentChooserWidget#items
   * Gtk::RecentChooserWidget#limit
   * Gtk::RecentChooserWidget#limit=
   * Gtk::RecentChooserWidget#local_only=
   * Gtk::RecentChooserWidget#local_only?
+  * Gtk::RecentChooserWidget#name
+  * Gtk::RecentChooserWidget#name=
   * Gtk::RecentChooserWidget#ref_accessible
   * Gtk::RecentChooserWidget#remove_filter
   * Gtk::RecentChooserWidget#select_all
   * Gtk::RecentChooserWidget#select_multiple=
   * Gtk::RecentChooserWidget#select_multiple?
   * Gtk::RecentChooserWidget#select_uri
+  * Gtk::RecentChooserWidget#set_buildable_property
   * Gtk::RecentChooserWidget#set_current_uri
   * Gtk::RecentChooserWidget#set_filter
   * Gtk::RecentChooserWidget#set_limit
   * Gtk::RecentChooserWidget#set_local_only
+  * Gtk::RecentChooserWidget#set_name
   * Gtk::RecentChooserWidget#set_select_multiple
   * Gtk::RecentChooserWidget#set_show_icons
   * Gtk::RecentChooserWidget#set_show_not_found
@@ -3216,50 +3789,71 @@
   * Gtk::ReliefStyle
   * Gtk::ResizeMode
   * Gtk::Ruler
+  * Gtk::Ruler#add_child
+  * Gtk::Ruler#construct_child
   * Gtk::Ruler#draw_pos
   * Gtk::Ruler#draw_ticks
+  * Gtk::Ruler#get_internal_child
   * Gtk::Ruler#lower
   * Gtk::Ruler#lower=
   * Gtk::Ruler#max_size
   * Gtk::Ruler#max_size=
   * Gtk::Ruler#metric
   * Gtk::Ruler#metric=
+  * Gtk::Ruler#name
+  * Gtk::Ruler#name=
   * Gtk::Ruler#position
   * Gtk::Ruler#position=
   * Gtk::Ruler#range
   * Gtk::Ruler#ref_accessible
+  * Gtk::Ruler#set_buildable_property
   * Gtk::Ruler#set_lower
   * Gtk::Ruler#set_max_size
   * Gtk::Ruler#set_metric
+  * Gtk::Ruler#set_name
   * Gtk::Ruler#set_position
   * Gtk::Ruler#set_range
   * Gtk::Ruler#set_upper
   * Gtk::Ruler#upper
   * Gtk::Ruler#upper=
   * Gtk::Scale
+  * Gtk::Scale#add_child
+  * Gtk::Scale#construct_child
   * Gtk::Scale#digits
   * Gtk::Scale#digits=
   * Gtk::Scale#draw_value=
   * Gtk::Scale#draw_value?
+  * Gtk::Scale#get_internal_child
   * Gtk::Scale#layout
   * Gtk::Scale#layout_offsets
+  * Gtk::Scale#name
+  * Gtk::Scale#name=
   * Gtk::Scale#ref_accessible
+  * Gtk::Scale#set_buildable_property
   * Gtk::Scale#set_digits
   * Gtk::Scale#set_draw_value
+  * Gtk::Scale#set_name
   * Gtk::Scale#set_value_pos
   * Gtk::Scale#value_pos
   * Gtk::Scale#value_pos=
   * Gtk::ScaleButton
   * Gtk::ScaleButton.new
+  * Gtk::ScaleButton#add_child
   * Gtk::ScaleButton#adjustment
   * Gtk::ScaleButton#adjustment=
+  * Gtk::ScaleButton#construct_child
+  * Gtk::ScaleButton#get_internal_child
   * Gtk::ScaleButton#icons
   * Gtk::ScaleButton#icons=
+  * Gtk::ScaleButton#name
+  * Gtk::ScaleButton#name=
   * Gtk::ScaleButton#popdown
   * Gtk::ScaleButton#popup
   * Gtk::ScaleButton#ref_accessible
   * Gtk::ScaleButton#set_adjustment
+  * Gtk::ScaleButton#set_buildable_property
   * Gtk::ScaleButton#set_icons
+  * Gtk::ScaleButton#set_name
   * Gtk::ScaleButton#set_size
   * Gtk::ScaleButton#set_value
   * Gtk::ScaleButton#size
@@ -3269,23 +3863,37 @@
   * Gtk::ScrollStep
   * Gtk::ScrollType
   * Gtk::Scrollbar
+  * Gtk::Scrollbar#add_child
+  * Gtk::Scrollbar#construct_child
+  * Gtk::Scrollbar#get_internal_child
+  * Gtk::Scrollbar#name
+  * Gtk::Scrollbar#name=
   * Gtk::Scrollbar#ref_accessible
+  * Gtk::Scrollbar#set_buildable_property
+  * Gtk::Scrollbar#set_name
   * Gtk::ScrolledWindow
   * Gtk::ScrolledWindow.new
+  * Gtk::ScrolledWindow#add_child
   * Gtk::ScrolledWindow#add_with_viewport
+  * Gtk::ScrolledWindow#construct_child
+  * Gtk::ScrolledWindow#get_internal_child
   * Gtk::ScrolledWindow#hadjustment
   * Gtk::ScrolledWindow#hadjustment=
   * Gtk::ScrolledWindow#hscrollbar
   * Gtk::ScrolledWindow#hscrollbar_policy
   * Gtk::ScrolledWindow#hscrollbar_policy=
   * Gtk::ScrolledWindow#move_focus_out
+  * Gtk::ScrolledWindow#name
+  * Gtk::ScrolledWindow#name=
   * Gtk::ScrolledWindow#placement
   * Gtk::ScrolledWindow#placement=
   * Gtk::ScrolledWindow#policy
   * Gtk::ScrolledWindow#ref_accessible
   * Gtk::ScrolledWindow#scroll_child
+  * Gtk::ScrolledWindow#set_buildable_property
   * Gtk::ScrolledWindow#set_hadjustment
   * Gtk::ScrolledWindow#set_hscrollbar_policy
+  * Gtk::ScrolledWindow#set_name
   * Gtk::ScrolledWindow#set_placement
   * Gtk::ScrolledWindow#set_policy
   * Gtk::ScrolledWindow#set_shadow_type
@@ -3340,19 +3948,40 @@
   * Gtk::SelectionData#uris=
   * Gtk::SelectionMode
   * Gtk::Separator
+  * Gtk::Separator#add_child
+  * Gtk::Separator#construct_child
+  * Gtk::Separator#get_internal_child
+  * Gtk::Separator#name
+  * Gtk::Separator#name=
   * Gtk::Separator#ref_accessible
+  * Gtk::Separator#set_buildable_property
+  * Gtk::Separator#set_name
   * Gtk::SeparatorMenuItem
   * Gtk::SeparatorMenuItem.new
+  * Gtk::SeparatorMenuItem#add_child
+  * Gtk::SeparatorMenuItem#construct_child
+  * Gtk::SeparatorMenuItem#get_internal_child
+  * Gtk::SeparatorMenuItem#name
+  * Gtk::SeparatorMenuItem#name=
   * Gtk::SeparatorMenuItem#ref_accessible
+  * Gtk::SeparatorMenuItem#set_buildable_property
+  * Gtk::SeparatorMenuItem#set_name
   * Gtk::SeparatorToolItem
   * Gtk::SeparatorToolItem.draw=
   * Gtk::SeparatorToolItem.draw?
   * Gtk::SeparatorToolItem.new
   * Gtk::SeparatorToolItem.set_draw
+  * Gtk::SeparatorToolItem#add_child
+  * Gtk::SeparatorToolItem#construct_child
   * Gtk::SeparatorToolItem#draw=
   * Gtk::SeparatorToolItem#draw?
+  * Gtk::SeparatorToolItem#get_internal_child
+  * Gtk::SeparatorToolItem#name
+  * Gtk::SeparatorToolItem#name=
   * Gtk::SeparatorToolItem#ref_accessible
+  * Gtk::SeparatorToolItem#set_buildable_property
   * Gtk::SeparatorToolItem#set_draw
+  * Gtk::SeparatorToolItem#set_name
   * Gtk::Settings
   * Gtk::Settings.default
   * Gtk::Settings.get_for_screen
@@ -3541,23 +4170,37 @@
   * Gtk::ShadowType
   * Gtk::SizeGroup
   * Gtk::SizeGroup.new
+  * Gtk::SizeGroup#add_child
   * Gtk::SizeGroup#add_widget
+  * Gtk::SizeGroup#construct_child
+  * Gtk::SizeGroup#get_internal_child
   * Gtk::SizeGroup#ignore_hidden
   * Gtk::SizeGroup#ignore_hidden=
   * Gtk::SizeGroup#ignore_hidden?
   * Gtk::SizeGroup#mode
   * Gtk::SizeGroup#mode=
+  * Gtk::SizeGroup#name
+  * Gtk::SizeGroup#name=
   * Gtk::SizeGroup#remove_widget
+  * Gtk::SizeGroup#set_buildable_property
   * Gtk::SizeGroup#set_ignore_hidden
   * Gtk::SizeGroup#set_mode
+  * Gtk::SizeGroup#set_name
   * Gtk::SizeGroup#widgets
   * Gtk::SizeGroup::Mode
   * Gtk::Socket
   * Gtk::Socket.new
+  * Gtk::Socket#add_child
   * Gtk::Socket#add_id
+  * Gtk::Socket#construct_child
+  * Gtk::Socket#get_internal_child
   * Gtk::Socket#id
+  * Gtk::Socket#name
+  * Gtk::Socket#name=
   * Gtk::Socket#plug_window
   * Gtk::Socket#ref_accessible
+  * Gtk::Socket#set_buildable_property
+  * Gtk::Socket#set_name
   * Gtk::SortType
   * Gtk::SourceBuffer
   * Gtk::SourceBuffer.new
@@ -3617,21 +4260,6 @@
   * Gtk::SourceLanguagesManager#available_languages
   * Gtk::SourceLanguagesManager#get_language
   * Gtk::SourceLanguagesManager#lang_files_dirs
-  * Gtk::SourceMarker
-  * Gtk::SourceMarker.new
-  * Gtk::SourceMarker#buffer
-  * Gtk::SourceMarker#deleted?
-  * Gtk::SourceMarker#left_gravity?
-  * Gtk::SourceMarker#line
-  * Gtk::SourceMarker#marker_type
-  * Gtk::SourceMarker#marker_type=
-  * Gtk::SourceMarker#name
-  * Gtk::SourceMarker#next
-  * Gtk::SourceMarker#prev
-  * Gtk::SourceMarker#set_marker_type
-  * Gtk::SourceMarker#set_visible
-  * Gtk::SourceMarker#visible=
-  * Gtk::SourceMarker#visible?
   * Gtk::SourcePrintJob
   * Gtk::SourcePrintJob.new
   * Gtk::SourcePrintJob#buffer
@@ -3735,12 +4363,14 @@
   * Gtk::SourceTagTable#remove_source_tags
   * Gtk::SpinButton
   * Gtk::SpinButton.new
+  * Gtk::SpinButton#add_child
   * Gtk::SpinButton#adjustment
   * Gtk::SpinButton#adjustment=
   * Gtk::SpinButton#change_value
   * Gtk::SpinButton#climb_rate
   * Gtk::SpinButton#climb_rate=
   * Gtk::SpinButton#configure
+  * Gtk::SpinButton#construct_child
   * Gtk::SpinButton#copy_clipboard
   * Gtk::SpinButton#cut_clipboard
   * Gtk::SpinButton#delete_selection
@@ -3751,8 +4381,11 @@
   * Gtk::SpinButton#editable?
   * Gtk::SpinButton#editing_done
   * Gtk::SpinButton#get_chars
+  * Gtk::SpinButton#get_internal_child
   * Gtk::SpinButton#increments
   * Gtk::SpinButton#insert_text
+  * Gtk::SpinButton#name
+  * Gtk::SpinButton#name=
   * Gtk::SpinButton#numeric=
   * Gtk::SpinButton#numeric?
   * Gtk::SpinButton#paste_clipboard
@@ -3764,10 +4397,12 @@
   * Gtk::SpinButton#select_region
   * Gtk::SpinButton#selection_bounds
   * Gtk::SpinButton#set_adjustment
+  * Gtk::SpinButton#set_buildable_property
   * Gtk::SpinButton#set_climb_rate
   * Gtk::SpinButton#set_digits
   * Gtk::SpinButton#set_editable
   * Gtk::SpinButton#set_increments
+  * Gtk::SpinButton#set_name
   * Gtk::SpinButton#set_numeric
   * Gtk::SpinButton#set_position
   * Gtk::SpinButton#set_range
@@ -3824,15 +4459,22 @@
   * Gtk::StatusIcon#visible?
   * Gtk::Statusbar
   * Gtk::Statusbar.new
+  * Gtk::Statusbar#add_child
+  * Gtk::Statusbar#construct_child
   * Gtk::Statusbar#get_context_id
+  * Gtk::Statusbar#get_internal_child
   * Gtk::Statusbar#has_resize_grip=
   * Gtk::Statusbar#has_resize_grip?
   * Gtk::Statusbar#install_menu_hints
+  * Gtk::Statusbar#name
+  * Gtk::Statusbar#name=
   * Gtk::Statusbar#pop
   * Gtk::Statusbar#push
   * Gtk::Statusbar#ref_accessible
   * Gtk::Statusbar#remove
+  * Gtk::Statusbar#set_buildable_property
   * Gtk::Statusbar#set_has_resize_grip
+  * Gtk::Statusbar#set_name
   * Gtk::Stock
   * Gtk::Stock.add
   * Gtk::Stock.ids
@@ -3933,13 +4575,16 @@
   * Gtk::SyntaxTag.string_tag_new
   * Gtk::Table
   * Gtk::Table.new
+  * Gtk::Table#add_child
   * Gtk::Table#attach
   * Gtk::Table#attach_defaults
   * Gtk::Table#column_spacings
   * Gtk::Table#column_spacings=
+  * Gtk::Table#construct_child
   * Gtk::Table#default_column_spacing
   * Gtk::Table#default_row_spacing
   * Gtk::Table#get_column_spacing
+  * Gtk::Table#get_internal_child
   * Gtk::Table#get_row_spacing
   * Gtk::Table#homogeneous=
   * Gtk::Table#homogeneous?
@@ -3947,15 +4592,19 @@
   * Gtk::Table#n_columns=
   * Gtk::Table#n_rows
   * Gtk::Table#n_rows=
+  * Gtk::Table#name
+  * Gtk::Table#name=
   * Gtk::Table#ref_accessible
   * Gtk::Table#resize
   * Gtk::Table#row_spacings
   * Gtk::Table#row_spacings=
+  * Gtk::Table#set_buildable_property
   * Gtk::Table#set_column_spacing
   * Gtk::Table#set_column_spacings
   * Gtk::Table#set_homogeneous
   * Gtk::Table#set_n_columns
   * Gtk::Table#set_n_rows
+  * Gtk::Table#set_name
   * Gtk::Table#set_row_spacing
   * Gtk::Table#set_row_spacings
   * Gtk::TargetList
@@ -3970,7 +4619,14 @@
   * Gtk::TargetList#remove
   * Gtk::TearoffMenuItem
   * Gtk::TearoffMenuItem.new
+  * Gtk::TearoffMenuItem#add_child
+  * Gtk::TearoffMenuItem#construct_child
+  * Gtk::TearoffMenuItem#get_internal_child
+  * Gtk::TearoffMenuItem#name
+  * Gtk::TearoffMenuItem#name=
   * Gtk::TearoffMenuItem#ref_accessible
+  * Gtk::TearoffMenuItem#set_buildable_property
+  * Gtk::TearoffMenuItem#set_name
   * Gtk::TextAppearance
   * Gtk::TextAppearance.new
   * Gtk::TextAppearance#bg_color
@@ -4239,6 +4895,21 @@
   * Gtk::TextIter::SourceSearchFlags#case_insensitive?
   * Gtk::TextIter::SourceSearchFlags#text_only?
   * Gtk::TextIter::SourceSearchFlags#visible_only?
+  * Gtk::TextMark
+  * Gtk::TextMark.new
+  * Gtk::TextMark#buffer
+  * Gtk::TextMark#deleted?
+  * Gtk::TextMark#left_gravity?
+  * Gtk::TextMark#line
+  * Gtk::TextMark#marker_type
+  * Gtk::TextMark#marker_type=
+  * Gtk::TextMark#name
+  * Gtk::TextMark#next
+  * Gtk::TextMark#prev
+  * Gtk::TextMark#set_marker_type
+  * Gtk::TextMark#set_visible
+  * Gtk::TextMark#visible=
+  * Gtk::TextMark#visible?
   * Gtk::TextTag
   * Gtk::TextTag.new
   * Gtk::TextTag#accumulative_margin=
@@ -4450,6 +5121,7 @@
   * Gtk::TextView.new
   * Gtk::TextView#accepts_tab=
   * Gtk::TextView#accepts_tab?
+  * Gtk::TextView#add_child
   * Gtk::TextView#add_child_at_anchor
   * Gtk::TextView#add_child_in_window
   * Gtk::TextView#backspace
@@ -4458,6 +5130,7 @@
   * Gtk::TextView#buffer
   * Gtk::TextView#buffer=
   * Gtk::TextView#buffer_to_window_coords
+  * Gtk::TextView#construct_child
   * Gtk::TextView#copy_clipboard
   * Gtk::TextView#cursor_visible=
   * Gtk::TextView#cursor_visible?
@@ -4469,6 +5142,7 @@
   * Gtk::TextView#forward_display_line
   * Gtk::TextView#forward_display_line_end
   * Gtk::TextView#get_border_window_size
+  * Gtk::TextView#get_internal_child
   * Gtk::TextView#get_iter_at_location
   * Gtk::TextView#get_iter_at_position
   * Gtk::TextView#get_iter_location
@@ -4489,6 +5163,8 @@
   * Gtk::TextView#move_mark_onscreen
   * Gtk::TextView#move_viewport
   * Gtk::TextView#move_visually
+  * Gtk::TextView#name
+  * Gtk::TextView#name=
   * Gtk::TextView#overwrite=
   * Gtk::TextView#overwrite?
   * Gtk::TextView#page_horizontally
@@ -4511,11 +5187,13 @@
   * Gtk::TextView#set_anchor
   * Gtk::TextView#set_border_window_size
   * Gtk::TextView#set_buffer
+  * Gtk::TextView#set_buildable_property
   * Gtk::TextView#set_cursor_visible
   * Gtk::TextView#set_editable
   * Gtk::TextView#set_indent
   * Gtk::TextView#set_justification
   * Gtk::TextView#set_left_margin
+  * Gtk::TextView#set_name
   * Gtk::TextView#set_overwrite
   * Gtk::TextView#set_pixels_above_lines
   * Gtk::TextView#set_pixels_below_lines
@@ -4538,33 +5216,54 @@
   * Gtk::ToggleAction.new
   * Gtk::ToggleAction#active=
   * Gtk::ToggleAction#active?
+  * Gtk::ToggleAction#add_child
+  * Gtk::ToggleAction#construct_child
   * Gtk::ToggleAction#draw_as_radio=
   * Gtk::ToggleAction#draw_as_radio?
+  * Gtk::ToggleAction#get_internal_child
+  * Gtk::ToggleAction#name
+  * Gtk::ToggleAction#name=
   * Gtk::ToggleAction#set_active
+  * Gtk::ToggleAction#set_buildable_property
   * Gtk::ToggleAction#set_draw_as_radio
+  * Gtk::ToggleAction#set_name
   * Gtk::ToggleAction#toggled
   * Gtk::ToggleButton
   * Gtk::ToggleButton.new
   * Gtk::ToggleButton#active=
   * Gtk::ToggleButton#active?
+  * Gtk::ToggleButton#add_child
+  * Gtk::ToggleButton#construct_child
   * Gtk::ToggleButton#draw_indicator=
   * Gtk::ToggleButton#draw_indicator?
+  * Gtk::ToggleButton#get_internal_child
   * Gtk::ToggleButton#inconsistent=
   * Gtk::ToggleButton#inconsistent?
   * Gtk::ToggleButton#mode=
   * Gtk::ToggleButton#mode?
+  * Gtk::ToggleButton#name
+  * Gtk::ToggleButton#name=
   * Gtk::ToggleButton#ref_accessible
   * Gtk::ToggleButton#set_active
+  * Gtk::ToggleButton#set_buildable_property
   * Gtk::ToggleButton#set_draw_indicator
   * Gtk::ToggleButton#set_inconsistent
   * Gtk::ToggleButton#set_mode
+  * Gtk::ToggleButton#set_name
   * Gtk::ToggleButton#toggled
   * Gtk::ToggleToolButton
   * Gtk::ToggleToolButton.new
   * Gtk::ToggleToolButton#active=
   * Gtk::ToggleToolButton#active?
+  * Gtk::ToggleToolButton#add_child
+  * Gtk::ToggleToolButton#construct_child
+  * Gtk::ToggleToolButton#get_internal_child
+  * Gtk::ToggleToolButton#name
+  * Gtk::ToggleToolButton#name=
   * Gtk::ToggleToolButton#ref_accessible
   * Gtk::ToggleToolButton#set_active
+  * Gtk::ToggleToolButton#set_buildable_property
+  * Gtk::ToggleToolButton#set_name
   * Gtk::ToolButton
   * Gtk::ToolButton.icon_name
   * Gtk::ToolButton.icon_name=
@@ -4585,7 +5284,10 @@
   * Gtk::ToolButton.stock_id=
   * Gtk::ToolButton.use_underline=
   * Gtk::ToolButton.use_underline?
+  * Gtk::ToolButton#add_child
   * Gtk::ToolButton#clicked
+  * Gtk::ToolButton#construct_child
+  * Gtk::ToolButton#get_internal_child
   * Gtk::ToolButton#icon_name
   * Gtk::ToolButton#icon_name=
   * Gtk::ToolButton#icon_widget
@@ -4594,11 +5296,15 @@
   * Gtk::ToolButton#label=
   * Gtk::ToolButton#label_widget
   * Gtk::ToolButton#label_widget=
+  * Gtk::ToolButton#name
+  * Gtk::ToolButton#name=
   * Gtk::ToolButton#ref_accessible
+  * Gtk::ToolButton#set_buildable_property
   * Gtk::ToolButton#set_icon_name
   * Gtk::ToolButton#set_icon_widget
   * Gtk::ToolButton#set_label
   * Gtk::ToolButton#set_label_widget
+  * Gtk::ToolButton#set_name
   * Gtk::ToolButton#set_stock_id
   * Gtk::ToolButton#set_use_underline
   * Gtk::ToolButton#stock_id
@@ -4607,22 +5313,29 @@
   * Gtk::ToolButton#use_underline?
   * Gtk::ToolItem
   * Gtk::ToolItem.new
+  * Gtk::ToolItem#add_child
+  * Gtk::ToolItem#construct_child
   * Gtk::ToolItem#expand=
   * Gtk::ToolItem#expand?
+  * Gtk::ToolItem#get_internal_child
   * Gtk::ToolItem#get_proxy_menu_item
   * Gtk::ToolItem#homogeneous=
   * Gtk::ToolItem#homogeneous?
   * Gtk::ToolItem#icon_size
   * Gtk::ToolItem#important=
   * Gtk::ToolItem#important?
+  * Gtk::ToolItem#name
+  * Gtk::ToolItem#name=
   * Gtk::ToolItem#orientation
   * Gtk::ToolItem#rebuild_menu
   * Gtk::ToolItem#ref_accessible
   * Gtk::ToolItem#relief_style
   * Gtk::ToolItem#retrieve_proxy_menu_item
+  * Gtk::ToolItem#set_buildable_property
   * Gtk::ToolItem#set_expand
   * Gtk::ToolItem#set_homogeneous
   * Gtk::ToolItem#set_important
+  * Gtk::ToolItem#set_name
   * Gtk::ToolItem#set_proxy_menu_item
   * Gtk::ToolItem#set_tooltip
   * Gtk::ToolItem#set_use_drag_window
@@ -4637,11 +5350,14 @@
   * Gtk::ToolItem#visible_vertical?
   * Gtk::Toolbar
   * Gtk::Toolbar.new
+  * Gtk::Toolbar#add_child
   * Gtk::Toolbar#append
   * Gtk::Toolbar#append_space
+  * Gtk::Toolbar#construct_child
   * Gtk::Toolbar#drop_index
   * Gtk::Toolbar#fill_toolbar
   * Gtk::Toolbar#focus_home_or_end
+  * Gtk::Toolbar#get_internal_child
   * Gtk::Toolbar#icon_size
   * Gtk::Toolbar#icon_size=
   * Gtk::Toolbar#icon_size_set=
@@ -4650,6 +5366,8 @@
   * Gtk::Toolbar#insert_space
   * Gtk::Toolbar#item_index
   * Gtk::Toolbar#n_items
+  * Gtk::Toolbar#name
+  * Gtk::Toolbar#name=
   * Gtk::Toolbar#nth_item
   * Gtk::Toolbar#orientation
   * Gtk::Toolbar#orientation=
@@ -4658,9 +5376,11 @@
   * Gtk::Toolbar#ref_accessible
   * Gtk::Toolbar#relief_style
   * Gtk::Toolbar#remove_space
+  * Gtk::Toolbar#set_buildable_property
   * Gtk::Toolbar#set_drop_highlight_item
   * Gtk::Toolbar#set_icon_size
   * Gtk::Toolbar#set_icon_size_set
+  * Gtk::Toolbar#set_name
   * Gtk::Toolbar#set_orientation
   * Gtk::Toolbar#set_show_arrow
   * Gtk::Toolbar#set_toolbar_style
@@ -4844,12 +5564,15 @@
   * Gtk::TreeSortable#sort_column_id
   * Gtk::TreeStore
   * Gtk::TreeStore.new
+  * Gtk::TreeStore#add_child
   * Gtk::TreeStore#ancestor?
   * Gtk::TreeStore#append
   * Gtk::TreeStore#clear
+  * Gtk::TreeStore#construct_child
   * Gtk::TreeStore#each
   * Gtk::TreeStore#flags
   * Gtk::TreeStore#get_column_type
+  * Gtk::TreeStore#get_internal_child
   * Gtk::TreeStore#get_iter
   * Gtk::TreeStore#get_value
   * Gtk::TreeStore#has_default_sort_func?
@@ -4862,6 +5585,8 @@
   * Gtk::TreeStore#move_after
   * Gtk::TreeStore#move_before
   * Gtk::TreeStore#n_columns
+  * Gtk::TreeStore#name
+  * Gtk::TreeStore#name=
   * Gtk::TreeStore#prepend
   * Gtk::TreeStore#remove
   * Gtk::TreeStore#reorder
@@ -4870,8 +5595,10 @@
   * Gtk::TreeStore#row_has_child_toggled
   * Gtk::TreeStore#row_inserted
   * Gtk::TreeStore#rows_reordered
+  * Gtk::TreeStore#set_buildable_property
   * Gtk::TreeStore#set_column_types
   * Gtk::TreeStore#set_default_sort_func
+  * Gtk::TreeStore#set_name
   * Gtk::TreeStore#set_sort_column_id
   * Gtk::TreeStore#set_sort_func
   * Gtk::TreeStore#set_value
@@ -4880,12 +5607,14 @@
   * Gtk::TreeStore#swap
   * Gtk::TreeView
   * Gtk::TreeView.new
+  * Gtk::TreeView#add_child
   * Gtk::TreeView#append_column
   * Gtk::TreeView#bin_window
   * Gtk::TreeView#collapse_all
   * Gtk::TreeView#collapse_row
   * Gtk::TreeView#columns
   * Gtk::TreeView#columns_autosize
+  * Gtk::TreeView#construct_child
   * Gtk::TreeView#convert_bin_window_to_tree_coords
   * Gtk::TreeView#convert_bin_window_to_widget_coords
   * Gtk::TreeView#convert_tree_to_bin_window_coords
@@ -4916,6 +5645,7 @@
   * Gtk::TreeView#get_column
   * Gtk::TreeView#get_dest_row
   * Gtk::TreeView#get_dest_row_at_pos
+  * Gtk::TreeView#get_internal_child
   * Gtk::TreeView#get_path
   * Gtk::TreeView#get_path_at_pos
   * Gtk::TreeView#hadjustment
@@ -4936,6 +5666,8 @@
   * Gtk::TreeView#model=
   * Gtk::TreeView#move_column_after
   * Gtk::TreeView#move_cursor
+  * Gtk::TreeView#name
+  * Gtk::TreeView#name=
   * Gtk::TreeView#ref_accessible
   * Gtk::TreeView#remove_column
   * Gtk::TreeView#reorderable=
@@ -4955,6 +5687,7 @@
   * Gtk::TreeView#select_cursor_parent
   * Gtk::TreeView#select_cursor_row
   * Gtk::TreeView#selection
+  * Gtk::TreeView#set_buildable_property
   * Gtk::TreeView#set_column_drag_function
   * Gtk::TreeView#set_cursor
   * Gtk::TreeView#set_cursor_on_cell
@@ -4971,6 +5704,7 @@
   * Gtk::TreeView#set_hover_selection
   * Gtk::TreeView#set_level_indentation
   * Gtk::TreeView#set_model
+  * Gtk::TreeView#set_name
   * Gtk::TreeView#set_reorderable
   * Gtk::TreeView#set_row_separator_func
   * Gtk::TreeView#set_rubber_banding
@@ -5003,6 +5737,7 @@
   * Gtk::TreeViewColumn
   * Gtk::TreeViewColumn.new
   * Gtk::TreeViewColumn#add_attribute
+  * Gtk::TreeViewColumn#add_child
   * Gtk::TreeViewColumn#alignment
   * Gtk::TreeViewColumn#alignment=
   * Gtk::TreeViewColumn#cell_data_func=
@@ -5015,16 +5750,20 @@
   * Gtk::TreeViewColumn#clickable=
   * Gtk::TreeViewColumn#clickable?
   * Gtk::TreeViewColumn#clicked
+  * Gtk::TreeViewColumn#construct_child
   * Gtk::TreeViewColumn#expand
   * Gtk::TreeViewColumn#expand=
   * Gtk::TreeViewColumn#expand?
   * Gtk::TreeViewColumn#fixed_width
   * Gtk::TreeViewColumn#fixed_width=
   * Gtk::TreeViewColumn#focus_cell
+  * Gtk::TreeViewColumn#get_internal_child
   * Gtk::TreeViewColumn#max_width
   * Gtk::TreeViewColumn#max_width=
   * Gtk::TreeViewColumn#min_width
   * Gtk::TreeViewColumn#min_width=
+  * Gtk::TreeViewColumn#name
+  * Gtk::TreeViewColumn#name=
   * Gtk::TreeViewColumn#pack_end
   * Gtk::TreeViewColumn#pack_start
   * Gtk::TreeViewColumn#queue_resize
@@ -5035,12 +5774,14 @@
   * Gtk::TreeViewColumn#resizable?
   * Gtk::TreeViewColumn#set_alignment
   * Gtk::TreeViewColumn#set_attributes
+  * Gtk::TreeViewColumn#set_buildable_property
   * Gtk::TreeViewColumn#set_cell_data_func
   * Gtk::TreeViewColumn#set_clickable
   * Gtk::TreeViewColumn#set_expand
   * Gtk::TreeViewColumn#set_fixed_width
   * Gtk::TreeViewColumn#set_max_width
   * Gtk::TreeViewColumn#set_min_width
+  * Gtk::TreeViewColumn#set_name
   * Gtk::TreeViewColumn#set_reorderable
   * Gtk::TreeViewColumn#set_resizable
   * Gtk::TreeViewColumn#set_sizing
@@ -5075,18 +5816,25 @@
   * Gtk::UIManager#[]
   * Gtk::UIManager#accel_group
   * Gtk::UIManager#action_groups
+  * Gtk::UIManager#add_child
   * Gtk::UIManager#add_tearoffs=
   * Gtk::UIManager#add_tearoffs?
   * Gtk::UIManager#add_ui
+  * Gtk::UIManager#construct_child
   * Gtk::UIManager#ensure_update
   * Gtk::UIManager#get_action
+  * Gtk::UIManager#get_internal_child
   * Gtk::UIManager#get_toplevels
   * Gtk::UIManager#get_widget
   * Gtk::UIManager#insert_action_group
+  * Gtk::UIManager#name
+  * Gtk::UIManager#name=
   * Gtk::UIManager#new_merge_id
   * Gtk::UIManager#remove_action_group
   * Gtk::UIManager#remove_ui
   * Gtk::UIManager#set_add_tearoffs
+  * Gtk::UIManager#set_buildable_property
+  * Gtk::UIManager#set_name
   * Gtk::UIManager#ui
   * Gtk::UIManager::ItemType
   * Gtk::UIManager::ItemType#accelerator?
@@ -5102,31 +5850,87 @@
   * Gtk::UpdateType
   * Gtk::VBox
   * Gtk::VBox.new
+  * Gtk::VBox#add_child
+  * Gtk::VBox#construct_child
+  * Gtk::VBox#get_internal_child
+  * Gtk::VBox#name
+  * Gtk::VBox#name=
   * Gtk::VBox#ref_accessible
+  * Gtk::VBox#set_buildable_property
+  * Gtk::VBox#set_name
   * Gtk::VButtonBox
   * Gtk::VButtonBox.new
+  * Gtk::VButtonBox#add_child
+  * Gtk::VButtonBox#construct_child
+  * Gtk::VButtonBox#get_internal_child
+  * Gtk::VButtonBox#name
+  * Gtk::VButtonBox#name=
   * Gtk::VButtonBox#ref_accessible
+  * Gtk::VButtonBox#set_buildable_property
+  * Gtk::VButtonBox#set_name
   * Gtk::VPaned
   * Gtk::VPaned.new
+  * Gtk::VPaned#add_child
+  * Gtk::VPaned#construct_child
+  * Gtk::VPaned#get_internal_child
+  * Gtk::VPaned#name
+  * Gtk::VPaned#name=
   * Gtk::VPaned#ref_accessible
+  * Gtk::VPaned#set_buildable_property
+  * Gtk::VPaned#set_name
   * Gtk::VRuler
   * Gtk::VRuler.new
+  * Gtk::VRuler#add_child
+  * Gtk::VRuler#construct_child
+  * Gtk::VRuler#get_internal_child
+  * Gtk::VRuler#name
+  * Gtk::VRuler#name=
   * Gtk::VRuler#ref_accessible
+  * Gtk::VRuler#set_buildable_property
+  * Gtk::VRuler#set_name
   * Gtk::VScale
   * Gtk::VScale.new
+  * Gtk::VScale#add_child
+  * Gtk::VScale#construct_child
+  * Gtk::VScale#get_internal_child
+  * Gtk::VScale#name
+  * Gtk::VScale#name=
   * Gtk::VScale#ref_accessible
+  * Gtk::VScale#set_buildable_property
+  * Gtk::VScale#set_name
   * Gtk::VScrollbar
   * Gtk::VScrollbar.new
+  * Gtk::VScrollbar#add_child
+  * Gtk::VScrollbar#construct_child
+  * Gtk::VScrollbar#get_internal_child
+  * Gtk::VScrollbar#name
+  * Gtk::VScrollbar#name=
   * Gtk::VScrollbar#ref_accessible
+  * Gtk::VScrollbar#set_buildable_property
+  * Gtk::VScrollbar#set_name
   * Gtk::VSeparator
   * Gtk::VSeparator.new
+  * Gtk::VSeparator#add_child
+  * Gtk::VSeparator#construct_child
+  * Gtk::VSeparator#get_internal_child
+  * Gtk::VSeparator#name
+  * Gtk::VSeparator#name=
   * Gtk::VSeparator#ref_accessible
+  * Gtk::VSeparator#set_buildable_property
+  * Gtk::VSeparator#set_name
   * Gtk::Viewport
   * Gtk::Viewport.new
+  * Gtk::Viewport#add_child
+  * Gtk::Viewport#construct_child
+  * Gtk::Viewport#get_internal_child
   * Gtk::Viewport#hadjustment
   * Gtk::Viewport#hadjustment=
+  * Gtk::Viewport#name
+  * Gtk::Viewport#name=
   * Gtk::Viewport#ref_accessible
+  * Gtk::Viewport#set_buildable_property
   * Gtk::Viewport#set_hadjustment
+  * Gtk::Viewport#set_name
   * Gtk::Viewport#set_scroll_adjustments
   * Gtk::Viewport#set_shadow_type
   * Gtk::Viewport#set_vadjustment
@@ -5137,7 +5941,14 @@
   * Gtk::Visibility
   * Gtk::VolumeButton
   * Gtk::VolumeButton.new
+  * Gtk::VolumeButton#add_child
+  * Gtk::VolumeButton#construct_child
+  * Gtk::VolumeButton#get_internal_child
+  * Gtk::VolumeButton#name
+  * Gtk::VolumeButton#name=
   * Gtk::VolumeButton#ref_accessible
+  * Gtk::VolumeButton#set_buildable_property
+  * Gtk::VolumeButton#set_name
   * Gtk::Widget
   * Gtk::Widget.default_colormap
   * Gtk::Widget.default_colormap=
@@ -5159,6 +5970,7 @@
   * Gtk::Widget#action
   * Gtk::Widget#activate
   * Gtk::Widget#add_accelerator
+  * Gtk::Widget#add_child
   * Gtk::Widget#add_events
   * Gtk::Widget#add_mnemonic_label
   * Gtk::Widget#add_popup_items
@@ -5184,6 +5996,7 @@
   * Gtk::Widget#composite_name=
   * Gtk::Widget#composited?
   * Gtk::Widget#composited_changed
+  * Gtk::Widget#construct_child
   * Gtk::Widget#create_gl_context
   * Gtk::Widget#create_pango_context
   * Gtk::Widget#create_pango_layout
@@ -5207,6 +6020,7 @@
   * Gtk::Widget#freeze_child_notify
   * Gtk::Widget#get_ancestor
   * Gtk::Widget#get_clipboard
+  * Gtk::Widget#get_internal_child
   * Gtk::Widget#get_size_request
   * Gtk::Widget#gl_capable?
   * Gtk::Widget#gl_config
@@ -5287,6 +6101,7 @@
   * Gtk::Widget#set_accel_path
   * Gtk::Widget#set_allocation
   * Gtk::Widget#set_app_paintable
+  * Gtk::Widget#set_buildable_property
   * Gtk::Widget#set_can_default
   * Gtk::Widget#set_can_focus
   * Gtk::Widget#set_child_visible
@@ -5398,6 +6213,7 @@
   * Gtk::Window#active_default
   * Gtk::Window#active_focus
   * Gtk::Window#add_accel_group
+  * Gtk::Window#add_child
   * Gtk::Window#add_mnemonic
   * Gtk::Window#allow_grow=
   * Gtk::Window#allow_grow?
@@ -5405,6 +6221,7 @@
   * Gtk::Window#allow_shrink?
   * Gtk::Window#begin_move_drag
   * Gtk::Window#begin_resize_drag
+  * Gtk::Window#construct_child
   * Gtk::Window#decorated=
   * Gtk::Window#decorated?
   * Gtk::Window#default=
@@ -5424,6 +6241,7 @@
   * Gtk::Window#focus_on_map?
   * Gtk::Window#frame_dimensions
   * Gtk::Window#fullscreen
+  * Gtk::Window#get_internal_child
   * Gtk::Window#gravity
   * Gtk::Window#gravity=
   * Gtk::Window#group
@@ -5447,6 +6265,8 @@
   * Gtk::Window#modal?
   * Gtk::Window#move
   * Gtk::Window#move_focus
+  * Gtk::Window#name
+  * Gtk::Window#name=
   * Gtk::Window#opacity
   * Gtk::Window#opacity=
   * Gtk::Window#parse_geometry
@@ -5466,6 +6286,7 @@
   * Gtk::Window#set_accept_focus
   * Gtk::Window#set_allow_grow
   * Gtk::Window#set_allow_shrink
+  * Gtk::Window#set_buildable_property
   * Gtk::Window#set_decorated
   * Gtk::Window#set_default
   * Gtk::Window#set_default_height
@@ -5486,6 +6307,7 @@
   * Gtk::Window#set_keep_below
   * Gtk::Window#set_mnemonic_modifier
   * Gtk::Window#set_modal
+  * Gtk::Window#set_name
   * Gtk::Window#set_opacity
   * Gtk::Window#set_resizable
   * Gtk::Window#set_role

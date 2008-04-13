@@ -5,6 +5,7 @@
   * Gtk::MozEmbed.new
   * Gtk::MozEmbed.set_comp_path
   * Gtk::MozEmbed.set_profile_path
+  * Gtk::MozEmbed#add_child
   * Gtk::MozEmbed#append_data
   * Gtk::MozEmbed#can_go_back?
   * Gtk::MozEmbed#can_go_forward?
@@ -12,6 +13,8 @@
   * Gtk::MozEmbed#chrome_mask=
   * Gtk::MozEmbed#chrome_mask=flags
   * Gtk::MozEmbed#close_stream
+  * Gtk::MozEmbed#construct_child
+  * Gtk::MozEmbed#get_internal_child
   * Gtk::MozEmbed#go_back
   * Gtk::MozEmbed#go_forward
   * Gtk::MozEmbed#js_status
@@ -20,14 +23,18 @@
   * Gtk::MozEmbed#location
   * Gtk::MozEmbed#location=
   * Gtk::MozEmbed#location=url
+  * Gtk::MozEmbed#name
+  * Gtk::MozEmbed#name=
   * Gtk::MozEmbed#no_new_window
   * Gtk::MozEmbed#on_new_window
   * Gtk::MozEmbed#open_stream
   * Gtk::MozEmbed#ref_accessible
   * Gtk::MozEmbed#reload
   * Gtk::MozEmbed#render_data
+  * Gtk::MozEmbed#set_buildable_property
   * Gtk::MozEmbed#set_chrome_mask
   * Gtk::MozEmbed#set_location
+  * Gtk::MozEmbed#set_name
   * Gtk::MozEmbed#stop_load
   * Gtk::MozEmbed#title
   * Gtk::MozEmbed::ChromeFlags

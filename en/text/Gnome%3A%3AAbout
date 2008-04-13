@@ -147,6 +147,22 @@
      * version: The version of the program
      * Returns: version
 
+--- add_child
+
+    See Gtk::Buildable#add_child.
+
+--- construct_child
+
+    See Gtk::Buildable#construct_child.
+
+--- get_internal_child
+
+    See Gtk::Buildable#get_internal_child.
+
+--- set_buildable_property
+
+    See Gtk::Buildable#set_buildable_property.
+
 == Properties
 
 --- authors: Array (Write)

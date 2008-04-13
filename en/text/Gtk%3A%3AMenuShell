@@ -109,6 +109,34 @@ A Gtk::MenuShell is a container of Gtk::MenuItem objects arranged in a list whic
     Gets the A boolean that determines whether the menu grabs the keyboard focus.
      * Returns: A boolean that determines whether the menu grabs the keyboard focus
 
+--- add_child
+
+    See Gtk::Buildable#add_child.
+
+--- construct_child
+
+    See Gtk::Buildable#construct_child.
+
+--- get_internal_child
+
+    See Gtk::Buildable#get_internal_child.
+
+--- name
+
+    See Gtk::Buildable#name.
+
+--- name=
+
+    See Gtk::Buildable#name=.
+
+--- set_buildable_property
+
+    See Gtk::Buildable#set_buildable_property.
+
+--- set_name
+
+    See Gtk::Buildable#set_name.
+
 == Constants
 
 === GtkMenuDirectionType

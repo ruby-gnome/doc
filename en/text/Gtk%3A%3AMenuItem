@@ -112,6 +112,34 @@ As it derives from Gtk::Bin it can hold any valid child widget, altough only a f
 
     See Atk::Implementor#ref_accessible.
 
+--- add_child
+
+    See Gtk::Buildable#add_child.
+
+--- construct_child
+
+    See Gtk::Buildable#construct_child.
+
+--- get_internal_child
+
+    See Gtk::Buildable#get_internal_child.
+
+--- name
+
+    See Gtk::Buildable#name.
+
+--- name=
+
+    See Gtk::Buildable#name=.
+
+--- set_buildable_property
+
+    See Gtk::Buildable#set_buildable_property.
+
+--- set_name
+
+    See Gtk::Buildable#set_name.
+
 == Properties
 
 --- submenu: Gtk::Menu (Read/Write)

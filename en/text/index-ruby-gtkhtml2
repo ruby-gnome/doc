@@ -112,11 +112,18 @@
   * Gtk::HtmlDocument#write_stream
   * Gtk::HtmlEmbedded
   * Gtk::HtmlEmbedded.new
+  * Gtk::HtmlEmbedded#add_child
+  * Gtk::HtmlEmbedded#construct_child
   * Gtk::HtmlEmbedded#descent
   * Gtk::HtmlEmbedded#descent=
   * Gtk::HtmlEmbedded#dom_node
+  * Gtk::HtmlEmbedded#get_internal_child
+  * Gtk::HtmlEmbedded#name
+  * Gtk::HtmlEmbedded#name=
   * Gtk::HtmlEmbedded#ref_accessible
+  * Gtk::HtmlEmbedded#set_buildable_property
   * Gtk::HtmlEmbedded#set_descent
+  * Gtk::HtmlEmbedded#set_name
   * Gtk::HtmlParser
   * Gtk::HtmlParser.new
   * Gtk::HtmlStream
@@ -131,11 +138,14 @@
   * Gtk::HtmlView
   * Gtk::HtmlView.new
   * Gtk::HtmlView#activate
+  * Gtk::HtmlView#add_child
   * Gtk::HtmlView#button_press
   * Gtk::HtmlView#button_release
+  * Gtk::HtmlView#construct_child
   * Gtk::HtmlView#document
   * Gtk::HtmlView#document=
   * Gtk::HtmlView#find_layout_box
+  * Gtk::HtmlView#get_internal_child
   * Gtk::HtmlView#jump_to_anchor
   * Gtk::HtmlView#key_press
   * Gtk::HtmlView#magnification
@@ -143,6 +153,8 @@
   * Gtk::HtmlView#mouse_move
   * Gtk::HtmlView#move_cursor
   * Gtk::HtmlView#move_focus_out
+  * Gtk::HtmlView#name
+  * Gtk::HtmlView#name=
   * Gtk::HtmlView#ref_accessible
   * Gtk::HtmlView#request_object
   * Gtk::HtmlView#scroll_to_node
@@ -150,8 +162,10 @@
   * Gtk::HtmlView#selection_set
   * Gtk::HtmlView#selection_start
   * Gtk::HtmlView#selection_update
+  * Gtk::HtmlView#set_buildable_property
   * Gtk::HtmlView#set_document
   * Gtk::HtmlView#set_magnification
+  * Gtk::HtmlView#set_name
   * Gtk::HtmlView#toggle_cursor
   * Gtk::HtmlView#zoom_in
   * Gtk::HtmlView#zoom_out

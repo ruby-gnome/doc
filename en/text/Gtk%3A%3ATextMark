@@ -1,4 +1,5 @@
 = class Gtk::TextMark
+
 A Gtk::TextMark is like a bookmark in a text buffer; it preserves a position in the text. You can convert the mark to an iterator using Gtk::TextBuffer#iter_at_mark. Unlike iterators, marks remain valid across buffer mutations, because their behavior is defined when text is inserted or deleted. When text containing a mark is deleted, the mark remains in the position originally occupied by the deleted text. When text is inserted at a mark, a mark with left gravity will be moved to the beginning of the newly-inserted text, and a mark with right gravity will be moved to the end. "left" and "right" here refer to logical direction (left is the toward the start of the buffer); in some languages such as Hebrew the logically-leftmost text is not actually on the left when displayed.
 
 Marks optionally have names; these can be convenient to avoid passing the Gtk::TextMark object around.
@@ -6,41 +7,92 @@ Marks optionally have names; these can be convenient to avoid passing the Gtk::T
 Marks are typically created using the Gtk::TextBuffer#create_mark.
 
 == Object Hierarchy
+
 * Object
   * GLib::Instantiatable
     * GLib::Object
       * Gtk::TextMark
 
+== Class Methods
+
+--- Gtk::TextMark.new
+
+     * Returns: self: ((*FIXME*))
+
 == Instance Methods
+
 --- buffer
+
     Gets the Gtk::TextBuffer this mark is located inside, or nil if the mark is deleted.
     * Returns: Gtk::TextBuffer
 
 --- deleted?
+
     Returns true if the mark has been removed from its buffer with Gtk::TextBuffer#delete_mark. Marks can't be used once deleted.
     * Returns: true or false
 
 --- left_gravity?
+
     Determines whether the mark has left gravity.
     * Returns: true if the mark has left gravity, false otherwise
 
 --- name
+
     Returns the mark name; returns nil for anonymous marks.
     * Returns:  mark name or nil
 
 --- visible?
+
     Returns true if the mark is visible (i.e. a cursor is displayed for it)
     * Returns: true or false
 
 --- visible=(setting)
+
     Sets the visibility of mark; the insertion point is normally visible, i.e. you can see it as a vertical bar. Also, the text widget uses a visible mark to indicate where a drop will occur when dragging-and-dropping text. Most other marks are not visible. Marks are not visible by default.
     * setting: visibility of mark (true or false)
     * Returns: setting
 
 --- set_visible(setting)
+
     Same as Gtk::TextMark#visible=.
     * setting: visibility of mark (true or false)
     * Returns: Gtk::TextMark
+
+--- line
+
+     * Returns: self: ((*FIXME*))
+
+--- marker_type
+
+     * Returns: self: ((*FIXME*))
+
+--- marker_type=
+
+     * Returns: self: ((*FIXME*))
+
+--- next
+
+     * Returns: self: ((*FIXME*))
+
+--- prev
+
+     * Returns: self: ((*FIXME*))
+
+--- set_marker_type
+
+     * Returns: self: ((*FIXME*))
+
+== Properties
+
+--- left-gravity: true or false (Read/Write)
+
+    Whether the mark has left gravity
+
+--- name: String (Read/Write)
+
+    Mark name
+
+== See Also
 
 == ChangeLog
 

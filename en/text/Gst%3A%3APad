@@ -141,6 +141,30 @@ The link between Gst::Element objects.
      * template: The Gst::PadTemplate of this pad
      * Returns: template
 
+--- >>
+
+     * Returns: self: ((*FIXME*))
+
+--- caps=
+
+     * Returns: self: ((*FIXME*))
+
+--- linked?
+
+     * Returns: self: ((*FIXME*))
+
+--- negotiated_caps
+
+     * Returns: self: ((*FIXME*))
+
+--- peer
+
+     * Returns: self: ((*FIXME*))
+
+--- set_caps
+
+     * Returns: self: ((*FIXME*))
+
 == Constants
 
 === GstPadDirection

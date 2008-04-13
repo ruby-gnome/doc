@@ -26,6 +26,34 @@ The Gtk::VSeparator widget is a vertical separator, used to group the widgets wi
 
     See Atk::Implementor#ref_accessible.
 
+--- add_child
+
+    See Gtk::Buildable#add_child.
+
+--- construct_child
+
+    See Gtk::Buildable#construct_child.
+
+--- get_internal_child
+
+    See Gtk::Buildable#get_internal_child.
+
+--- name
+
+    See Gtk::Buildable#name.
+
+--- name=
+
+    See Gtk::Buildable#name=.
+
+--- set_buildable_property
+
+    See Gtk::Buildable#set_buildable_property.
+
+--- set_name
+
+    See Gtk::Buildable#set_name.
+
 == See Also
 
 * Gtk::HSeparator - a horizontal separator.
