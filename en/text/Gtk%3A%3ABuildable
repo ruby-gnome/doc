@@ -1,12 +1,15 @@
 = module Gtk::Buildable
 
+((*Since 2.12*))
+
 == Description
 
 In order to allow construction from a ((<Gtk::Builder UI
-description|Gtk::Builder UI Description>)), an object class
-must implement the Gtk::Buildable interface. The interface
-includes methods for setting names and properties of
-objects, parsing custom tags, constructing child objects.
+description|Gtk::Builder#Gtk::Builder UI Descriptions>)), an
+object class must implement the Gtk::Buildable
+interface. The interface includes methods for setting names
+and properties of objects, parsing custom tags, constructing
+child objects.
 
 The Gtk::Buildable interface is implemented by all widgets
 and many of the non-widget objects that are provided by
@@ -54,8 +57,8 @@ Gtk::Buildable's functions.
     Gets the name of self.
 
     Gtk::Builder sets the name based on the ((<Gtk::Builder
-    UI definition|Gtk::Builder UI Definition>)) used to
-    construct self.
+    UI definition|Gtk::Builder#Gtk::Builder UI Definitions>))
+    used to construct self.
 
      * Returns: the name set with Gtk::Buildable#name=
 
