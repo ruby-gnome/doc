@@ -95,7 +95,7 @@ Filters can be used to limit the fonts shown. There are 2 filters in the Gtk::Fo
 
 == Properties
 
---- font: #<Class 0lxa2d3158> (Read)
+--- font: Gdk::Font (Read)
 
     The Gdk::Font that is currently selected
 

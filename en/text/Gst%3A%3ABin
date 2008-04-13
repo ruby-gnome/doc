@@ -13,8 +13,8 @@ Base container element.
 
 == Included Modules
 
-  * #<Module:0x2ab8ee2d1460>
   * Enumerable
+  * Gst::ChildProxy
 
 == Class Methods
 

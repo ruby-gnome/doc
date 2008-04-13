@@ -14,7 +14,7 @@
 
 == Included Modules
 
-  * #<Module:0x2aaaae071e48>
+  * Gtk::DomAbstractView
 
 == Class Methods
 

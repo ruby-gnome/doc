@@ -1322,6 +1322,7 @@
   * Gtk::Dialog::Flags#no_separator?
   * Gtk::Dialog::ResponseType
   * Gtk::DirectionType
+  * Gtk::DomAbstractView
   * Gtk::Drag
   * Gtk::Drag.begin
   * Gtk::Drag.dest_add_image_targets

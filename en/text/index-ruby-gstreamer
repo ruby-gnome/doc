@@ -141,6 +141,7 @@
   * Gst::Caps#to_s
   * Gst::Caps#to_string
   * Gst::Caps#union
+  * Gst::ChildProxy
   * Gst::Clock
   * Gst::Clock#==
   * Gst::Clock#active=
