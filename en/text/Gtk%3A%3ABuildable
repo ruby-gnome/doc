@@ -4,12 +4,11 @@
 
 == Description
 
-In order to allow construction from a ((<Gtk::Builder UI
-description|Gtk::Builder#Gtk::Builder UI Descriptions>)), an
-object class must implement the Gtk::Buildable
-interface. The interface includes methods for setting names
-and properties of objects, parsing custom tags, constructing
-child objects.
+In order to allow construction from a Gtk::Builder UI
+description, an object class must implement the
+Gtk::Buildable interface. The interface includes methods for
+setting names and properties of objects, parsing custom
+tags, constructing child objects.
 
 The Gtk::Buildable interface is implemented by all widgets
 and many of the non-widget objects that are provided by
