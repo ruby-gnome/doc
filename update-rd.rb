@@ -199,9 +199,11 @@ class Property
       explanation = blurb.gsub(/^\s*the\s*/i, "")
       explanation.gsub!(/^\s*Whether(.*)/i, "value whether\\1 or not")
       explanation.gsub!(/^\s*If/i, "value if")
+      explanation.gsub!(/\.\s*\z/i, "")
 
       attr_explanation = blurb.gsub(/^Whether/, "true if")
       attr_explanation.gsub!(/^If/, "true if")
+      attr_explanation.gsub!(/\.\s*\z/i, "")
     else
       explanation = name
       attr_explanation = "((*FIXME*))"
@@ -449,7 +451,8 @@ class UpdateRD
     components.each do |component|
       case component
       when /\ADescription/
-        info[:description] += "\n\n== #{component.strip}"
+        info[:description] << "\n\n" unless info[:description].empty?
+        info[:description] << "== #{component.strip}"
       when /\AClass Methods/
         info[:class_methods_info] = read_sections(component)
       when /\AModule Functions/i
@@ -517,8 +520,10 @@ class UpdateRD
       index.puts
       @indexes.sort_by {|klass, info| klass.inspect}.each do |klass, info|
         unless target_modules.empty?
-          next unless /\A(#{Regexp.union(*@target_modules)})/ =~ klass.name
-          next unless target_modules.include?($1)
+          matched_modules = @target_modules.find_all do |target_module|
+            /\A#{target_module}/ =~ klass.name
+          end
+          next unless target_modules.include?(matched_modules.first)
         end
         index.puts "  * #{klass.inspect}"
 

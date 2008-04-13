@@ -1,0 +1,63 @@
+= class Gtk::PrintCapabilities
+
+== Object Hierarchy
+
+* Object
+  * GLib::Flags
+    * Gtk::PrintCapabilities
+
+== Instance Methods
+
+--- collate?
+
+     * Returns: self: ((*FIXME*))
+
+--- copies?
+
+     * Returns: self: ((*FIXME*))
+
+--- generate_pdf?
+
+     * Returns: self: ((*FIXME*))
+
+--- generate_ps?
+
+     * Returns: self: ((*FIXME*))
+
+--- number_up?
+
+     * Returns: self: ((*FIXME*))
+
+--- page_set?
+
+     * Returns: self: ((*FIXME*))
+
+--- preview?
+
+     * Returns: self: ((*FIXME*))
+
+--- reverse?
+
+     * Returns: self: ((*FIXME*))
+
+--- scale?
+
+     * Returns: self: ((*FIXME*))
+
+== Constants
+
+--- COLLATE
+--- COPIES
+--- GENERATE_PDF
+--- GENERATE_PS
+--- NUMBER_UP
+--- PAGE_SET
+--- PREVIEW
+--- REVERSE
+--- SCALE
+
+== See Also
+
+== ChangeLog
+
+

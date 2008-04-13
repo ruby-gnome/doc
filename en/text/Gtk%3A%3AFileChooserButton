@@ -406,6 +406,34 @@ The Gtk::FileChooserButton supports the Gtk::FileChooser::Action s Gtk::FileChoo
      * width_chars: The desired width of the button widget, in characters.
      * Returns: width_chars
 
+--- add_child
+
+    See Gtk::Buildable#add_child.
+
+--- construct_child
+
+    See Gtk::Buildable#construct_child.
+
+--- get_internal_child
+
+    See Gtk::Buildable#get_internal_child.
+
+--- name
+
+    See Gtk::Buildable#name.
+
+--- name=
+
+    See Gtk::Buildable#name=.
+
+--- set_buildable_property
+
+    See Gtk::Buildable#set_buildable_property.
+
+--- set_name
+
+    See Gtk::Buildable#set_name.
+
 == Properties
 
 --- dialog: Gtk::FileChooserDialog (Write)

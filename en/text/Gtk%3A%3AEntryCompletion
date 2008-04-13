@@ -19,7 +19,7 @@ In addition to regular completion matches, which will be inserted into the entry
 
 == Included Modules
 
-  * #<Module:0x2b8701187de8>
+  * Gtk::Buildable
   * Gtk::CellLayout
 
 == Class Methods
@@ -248,6 +248,34 @@ In addition to regular completion matches, which will be inserted into the entry
     Same as inline_selection=.
      * inline_selection: Your description here
      * Returns: self
+
+--- add_child
+
+    See Gtk::Buildable#add_child.
+
+--- construct_child
+
+    See Gtk::Buildable#construct_child.
+
+--- get_internal_child
+
+    See Gtk::Buildable#get_internal_child.
+
+--- name
+
+    See Gtk::Buildable#name.
+
+--- name=
+
+    See Gtk::Buildable#name=.
+
+--- set_buildable_property
+
+    See Gtk::Buildable#set_buildable_property.
+
+--- set_name
+
+    See Gtk::Buildable#set_name.
 
 == Properties
 

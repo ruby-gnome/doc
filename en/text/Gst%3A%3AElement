@@ -553,6 +553,14 @@ Base class for all pipeline elements.
 
      * Returns: self: ((*FIXME*))
 
+--- []
+
+     * Returns: self: ((*FIXME*))
+
+--- get_state
+
+     * Returns: self: ((*FIXME*))
+
 == Constants
 
 === GstElementState

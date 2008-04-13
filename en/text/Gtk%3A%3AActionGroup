@@ -15,7 +15,7 @@ Accelerators are handled by the GTK+ accelerator map. All actions are assigned a
 
 == Included Modules
 
-  * #<Module:0x2b8701187de8>
+  * Gtk::Buildable
 
 == Class Methods
 
@@ -175,6 +175,22 @@ Accelerators are handled by the GTK+ accelerator map. All actions are assigned a
     Translates a string using the specified Gtk::ActionGroup#set_translate_func. This is mainly intended for language bindings. ((* Since 2.6 *))
     * string: a String  
     * Returns: the translation of string
+
+--- add_child
+
+    See Gtk::Buildable#add_child.
+
+--- construct_child
+
+    See Gtk::Buildable#construct_child.
+
+--- get_internal_child
+
+    See Gtk::Buildable#get_internal_child.
+
+--- set_buildable_property
+
+    See Gtk::Buildable#set_buildable_property.
 
 == Properties
 

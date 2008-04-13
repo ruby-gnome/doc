@@ -250,6 +250,34 @@ The icon of a Gtk::ToolButton is determined by the properties "icon_widget" and 
     Gets the value if set, an underline in the label property indicates that the next character should be used for the mnemonic accelerator key in the overflow menu.
      * Returns: true if set, an underline in the label property indicates that the next character should be used for the mnemonic accelerator key in the overflow menu
 
+--- add_child
+
+    See Gtk::Buildable#add_child.
+
+--- construct_child
+
+    See Gtk::Buildable#construct_child.
+
+--- get_internal_child
+
+    See Gtk::Buildable#get_internal_child.
+
+--- name
+
+    See Gtk::Buildable#name.
+
+--- name=
+
+    See Gtk::Buildable#name=.
+
+--- set_buildable_property
+
+    See Gtk::Buildable#set_buildable_property.
+
+--- set_name
+
+    See Gtk::Buildable#set_name.
+
 == Properties
 
 --- icon-widget: Gtk::Widget (Read/Write)

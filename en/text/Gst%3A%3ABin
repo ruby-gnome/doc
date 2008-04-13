@@ -13,8 +13,8 @@ Base container element.
 
 == Included Modules
 
-  * #<Module:0x2b8701005970>
   * Enumerable
+  * Gst::ChildProxy
 
 == Class Methods
 
@@ -228,6 +228,10 @@ Base container element.
      * Returns: self: ((*FIXME*))
 
 --- sources
+
+     * Returns: self: ((*FIXME*))
+
+--- get_child
 
      * Returns: self: ((*FIXME*))
 

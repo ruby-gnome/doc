@@ -17,3 +17,5 @@
   * Bonobo::I18n.gettext
   * Bonobo::I18n.gettext_noop
   * Bonobo::I18n.textdomain
+  * Bonobo::Object
+  * Bonobo::Object#poa

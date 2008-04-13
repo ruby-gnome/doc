@@ -16,6 +16,7 @@
   * Vte::Reaper#get
   * Vte::Terminal
   * Vte::Terminal.new
+  * Vte::Terminal#add_child
   * Vte::Terminal#adjustment
   * Vte::Terminal#allow_bold=
   * Vte::Terminal#allow_bold?
@@ -37,6 +38,7 @@
   * Vte::Terminal#color_foreground=
   * Vte::Terminal#color_highlight=
   * Vte::Terminal#column_count
+  * Vte::Terminal#construct_child
   * Vte::Terminal#copy_clipboard
   * Vte::Terminal#copy_primary
   * Vte::Terminal#cursor_blinks=
@@ -53,6 +55,7 @@
   * Vte::Terminal#font
   * Vte::Terminal#fork_command
   * Vte::Terminal#fork_pty
+  * Vte::Terminal#get_internal_child
   * Vte::Terminal#get_text
   * Vte::Terminal#get_text_range
   * Vte::Terminal#has_selection?
@@ -67,6 +70,8 @@
   * Vte::Terminal#match_set_cursor_type
   * Vte::Terminal#mouse_autohide=
   * Vte::Terminal#mouse_autohide?
+  * Vte::Terminal#name
+  * Vte::Terminal#name=
   * Vte::Terminal#padding
   * Vte::Terminal#paste_clipboard
   * Vte::Terminal#paste_primary
@@ -85,6 +90,7 @@
   * Vte::Terminal#set_background_tint_color
   * Vte::Terminal#set_background_transparent
   * Vte::Terminal#set_backspace_binding
+  * Vte::Terminal#set_buildable_property
   * Vte::Terminal#set_color_background
   * Vte::Terminal#set_color_bold
   * Vte::Terminal#set_color_cursor
@@ -99,6 +105,7 @@
   * Vte::Terminal#set_encoding
   * Vte::Terminal#set_font
   * Vte::Terminal#set_mouse_autohide
+  * Vte::Terminal#set_name
   * Vte::Terminal#set_pty
   * Vte::Terminal#set_scroll_background
   * Vte::Terminal#set_scroll_on_keystroke

@@ -9,17 +9,21 @@
   * Gnome.user_private_dir
   * Gnome::About
   * Gnome::About.new
+  * Gnome::About#add_child
   * Gnome::About#authors=
   * Gnome::About#comments
   * Gnome::About#comments=
+  * Gnome::About#construct_child
   * Gnome::About#copyright
   * Gnome::About#copyright=
   * Gnome::About#documenters=
+  * Gnome::About#get_internal_child
   * Gnome::About#logo=
   * Gnome::About#name
   * Gnome::About#name=
   * Gnome::About#ref_accessible
   * Gnome::About#set_authors
+  * Gnome::About#set_buildable_property
   * Gnome::About#set_comments
   * Gnome::About#set_copyright
   * Gnome::About#set_documenters
@@ -33,28 +37,34 @@
   * Gnome::About#version=
   * Gnome::App
   * Gnome::App.new
+  * Gnome::App#add_child
   * Gnome::App#add_dock_item
   * Gnome::App#add_docked
   * Gnome::App#add_toolbar
   * Gnome::App#app_id
   * Gnome::App#app_id=
+  * Gnome::App#construct_child
   * Gnome::App#contents=
   * Gnome::App#create_menus
   * Gnome::App#create_toolbar
   * Gnome::App#dock
   * Gnome::App#enable_layout_config
   * Gnome::App#get_dock_item_by_name
+  * Gnome::App#get_internal_child
   * Gnome::App#insert_menus
   * Gnome::App#install_menu_hints
   * Gnome::App#menus=
   * Gnome::App#name
+  * Gnome::App#name=
   * Gnome::App#prefix
   * Gnome::App#ref_accessible
   * Gnome::App#remove_menu_range
   * Gnome::App#remove_menus
   * Gnome::App#set_app_id
+  * Gnome::App#set_buildable_property
   * Gnome::App#set_contents
   * Gnome::App#set_menus
+  * Gnome::App#set_name
   * Gnome::App#set_statusbar
   * Gnome::App#set_statusbar_custom
   * Gnome::App#set_toolbar
@@ -65,9 +75,12 @@
   * Gnome::App::UIPixmapType
   * Gnome::AppBar
   * Gnome::AppBar.new
+  * Gnome::AppBar#add_child
   * Gnome::AppBar#clear_prompt
   * Gnome::AppBar#clear_stack
+  * Gnome::AppBar#construct_child
   * Gnome::AppBar#default=
+  * Gnome::AppBar#get_internal_child
   * Gnome::AppBar#has_progress=
   * Gnome::AppBar#has_progress?
   * Gnome::AppBar#has_status=
@@ -75,6 +88,8 @@
   * Gnome::AppBar#install_menu_hints
   * Gnome::AppBar#interactivity
   * Gnome::AppBar#interactivity=
+  * Gnome::AppBar#name
+  * Gnome::AppBar#name=
   * Gnome::AppBar#pop
   * Gnome::AppBar#progress
   * Gnome::AppBar#progress_percentage=
@@ -82,10 +97,12 @@
   * Gnome::AppBar#ref_accessible
   * Gnome::AppBar#refresh
   * Gnome::AppBar#response
+  * Gnome::AppBar#set_buildable_property
   * Gnome::AppBar#set_default
   * Gnome::AppBar#set_has_progress
   * Gnome::AppBar#set_has_status
   * Gnome::AppBar#set_interactivity
+  * Gnome::AppBar#set_name
   * Gnome::AppBar#set_progress_percentage
   * Gnome::AppBar#set_prompt
   * Gnome::AppBar#set_status
@@ -148,27 +165,34 @@
   * Gnome::Client::State
   * Gnome::ColorPicker
   * Gnome::ColorPicker.new
+  * Gnome::ColorPicker#add_child
   * Gnome::ColorPicker#alpha
   * Gnome::ColorPicker#alpha=
   * Gnome::ColorPicker#blue
   * Gnome::ColorPicker#blue=
+  * Gnome::ColorPicker#construct_child
   * Gnome::ColorPicker#d
   * Gnome::ColorPicker#dither=
   * Gnome::ColorPicker#dither?
+  * Gnome::ColorPicker#get_internal_child
   * Gnome::ColorPicker#green
   * Gnome::ColorPicker#green=
   * Gnome::ColorPicker#i16
   * Gnome::ColorPicker#i8
+  * Gnome::ColorPicker#name
+  * Gnome::ColorPicker#name=
   * Gnome::ColorPicker#red
   * Gnome::ColorPicker#red=
   * Gnome::ColorPicker#ref_accessible
   * Gnome::ColorPicker#set_alpha
   * Gnome::ColorPicker#set_blue
+  * Gnome::ColorPicker#set_buildable_property
   * Gnome::ColorPicker#set_d
   * Gnome::ColorPicker#set_dither
   * Gnome::ColorPicker#set_green
   * Gnome::ColorPicker#set_i16
   * Gnome::ColorPicker#set_i8
+  * Gnome::ColorPicker#set_name
   * Gnome::ColorPicker#set_red
   * Gnome::ColorPicker#set_title
   * Gnome::ColorPicker#set_use_alpha
@@ -233,16 +257,23 @@
   * Gnome::Config.sync_file
   * Gnome::DateEdit
   * Gnome::DateEdit.new
+  * Gnome::DateEdit#add_child
+  * Gnome::DateEdit#construct_child
   * Gnome::DateEdit#dateedit_flags
   * Gnome::DateEdit#dateedit_flags=
+  * Gnome::DateEdit#get_internal_child
   * Gnome::DateEdit#initial_time
   * Gnome::DateEdit#initial_time=
   * Gnome::DateEdit#lower_hour
   * Gnome::DateEdit#lower_hour=
+  * Gnome::DateEdit#name
+  * Gnome::DateEdit#name=
   * Gnome::DateEdit#ref_accessible
+  * Gnome::DateEdit#set_buildable_property
   * Gnome::DateEdit#set_dateedit_flags
   * Gnome::DateEdit#set_initial_time
   * Gnome::DateEdit#set_lower_hour
+  * Gnome::DateEdit#set_name
   * Gnome::DateEdit#set_popup_range
   * Gnome::DateEdit#set_time
   * Gnome::DateEdit#set_upper_hour
@@ -257,12 +288,19 @@
   * Gnome::Druid
   * Gnome::Druid.new
   * Gnome::Druid.new_with_window
+  * Gnome::Druid#add_child
   * Gnome::Druid#append_page
+  * Gnome::Druid#construct_child
+  * Gnome::Druid#get_internal_child
   * Gnome::Druid#insert_page
+  * Gnome::Druid#name
+  * Gnome::Druid#name=
   * Gnome::Druid#page=
   * Gnome::Druid#prepend_page
   * Gnome::Druid#ref_accessible
+  * Gnome::Druid#set_buildable_property
   * Gnome::Druid#set_buttons_sensitive
+  * Gnome::Druid#set_name
   * Gnome::Druid#set_page
   * Gnome::Druid#set_show_finish
   * Gnome::Druid#set_show_help
@@ -272,21 +310,35 @@
   * Gnome::Druid#show_help?
   * Gnome::DruidPage
   * Gnome::DruidPage.new
+  * Gnome::DruidPage#add_child
   * Gnome::DruidPage#back
   * Gnome::DruidPage#cancel
+  * Gnome::DruidPage#construct_child
   * Gnome::DruidPage#finish
+  * Gnome::DruidPage#get_internal_child
+  * Gnome::DruidPage#name
+  * Gnome::DruidPage#name=
   * Gnome::DruidPage#next
   * Gnome::DruidPage#prepare
   * Gnome::DruidPage#ref_accessible
+  * Gnome::DruidPage#set_buildable_property
+  * Gnome::DruidPage#set_name
   * Gnome::DruidPageEdge
   * Gnome::DruidPageEdge.new
+  * Gnome::DruidPageEdge#add_child
   * Gnome::DruidPageEdge#bg_color=
+  * Gnome::DruidPageEdge#construct_child
+  * Gnome::DruidPageEdge#get_internal_child
   * Gnome::DruidPageEdge#logo=
   * Gnome::DruidPageEdge#logo_bg_color=
+  * Gnome::DruidPageEdge#name
+  * Gnome::DruidPageEdge#name=
   * Gnome::DruidPageEdge#ref_accessible
   * Gnome::DruidPageEdge#set_bg_color
+  * Gnome::DruidPageEdge#set_buildable_property
   * Gnome::DruidPageEdge#set_logo
   * Gnome::DruidPageEdge#set_logo_bg_color
+  * Gnome::DruidPageEdge#set_name
   * Gnome::DruidPageEdge#set_text
   * Gnome::DruidPageEdge#set_text_color
   * Gnome::DruidPageEdge#set_textbox_color
@@ -303,17 +355,20 @@
   * Gnome::DruidPageEdge#watermark=
   * Gnome::DruidPageStandard
   * Gnome::DruidPageStandard.new
+  * Gnome::DruidPageStandard#add_child
   * Gnome::DruidPageStandard#append_item
   * Gnome::DruidPageStandard#background=
   * Gnome::DruidPageStandard#background_gdk
   * Gnome::DruidPageStandard#background_gdk=
   * Gnome::DruidPageStandard#background_set=
   * Gnome::DruidPageStandard#background_set?
+  * Gnome::DruidPageStandard#construct_child
   * Gnome::DruidPageStandard#contents_background=
   * Gnome::DruidPageStandard#contents_background_gdk
   * Gnome::DruidPageStandard#contents_background_gdk=
   * Gnome::DruidPageStandard#contents_background_set=
   * Gnome::DruidPageStandard#contents_background_set?
+  * Gnome::DruidPageStandard#get_internal_child
   * Gnome::DruidPageStandard#logo
   * Gnome::DruidPageStandard#logo=
   * Gnome::DruidPageStandard#logo_background=
@@ -321,10 +376,13 @@
   * Gnome::DruidPageStandard#logo_background_gdk=
   * Gnome::DruidPageStandard#logo_background_set=
   * Gnome::DruidPageStandard#logo_background_set?
+  * Gnome::DruidPageStandard#name
+  * Gnome::DruidPageStandard#name=
   * Gnome::DruidPageStandard#ref_accessible
   * Gnome::DruidPageStandard#set_background
   * Gnome::DruidPageStandard#set_background_gdk
   * Gnome::DruidPageStandard#set_background_set
+  * Gnome::DruidPageStandard#set_buildable_property
   * Gnome::DruidPageStandard#set_contents_background
   * Gnome::DruidPageStandard#set_contents_background_gdk
   * Gnome::DruidPageStandard#set_contents_background_set
@@ -332,6 +390,7 @@
   * Gnome::DruidPageStandard#set_logo_background
   * Gnome::DruidPageStandard#set_logo_background_gdk
   * Gnome::DruidPageStandard#set_logo_background_set
+  * Gnome::DruidPageStandard#set_name
   * Gnome::DruidPageStandard#set_title
   * Gnome::DruidPageStandard#set_title_foreground
   * Gnome::DruidPageStandard#set_title_foreground_gdk
@@ -350,8 +409,10 @@
   * Gnome::EdgePosition
   * Gnome::Entry
   * Gnome::Entry.new
+  * Gnome::Entry#add_child
   * Gnome::Entry#append_history
   * Gnome::Entry#clear_history
+  * Gnome::Entry#construct_child
   * Gnome::Entry#copy_clipboard
   * Gnome::Entry#cut_clipboard
   * Gnome::Entry#delete_selection
@@ -359,12 +420,15 @@
   * Gnome::Entry#editable=
   * Gnome::Entry#editable?
   * Gnome::Entry#get_chars
+  * Gnome::Entry#get_internal_child
   * Gnome::Entry#gtk_entry
   * Gnome::Entry#history_id
   * Gnome::Entry#history_id=
   * Gnome::Entry#insert_text
   * Gnome::Entry#max_saved
   * Gnome::Entry#max_saved=
+  * Gnome::Entry#name
+  * Gnome::Entry#name=
   * Gnome::Entry#paste_clipboard
   * Gnome::Entry#position
   * Gnome::Entry#position=
@@ -372,14 +436,18 @@
   * Gnome::Entry#ref_accessible
   * Gnome::Entry#select_region
   * Gnome::Entry#selection_bounds
+  * Gnome::Entry#set_buildable_property
   * Gnome::Entry#set_editable
   * Gnome::Entry#set_history_id
   * Gnome::Entry#set_max_saved
+  * Gnome::Entry#set_name
   * Gnome::Entry#set_position
   * Gnome::FileEntry
   * Gnome::FileEntry.new
+  * Gnome::FileEntry#add_child
   * Gnome::FileEntry#browse_dialog_title
   * Gnome::FileEntry#browse_dialog_title=
+  * Gnome::FileEntry#construct_child
   * Gnome::FileEntry#copy_clipboard
   * Gnome::FileEntry#cut_clipboard
   * Gnome::FileEntry#default_path
@@ -396,6 +464,7 @@
   * Gnome::FileEntry#filename=
   * Gnome::FileEntry#get_chars
   * Gnome::FileEntry#get_full_path
+  * Gnome::FileEntry#get_internal_child
   * Gnome::FileEntry#gnome_entry
   * Gnome::FileEntry#gtk_entry
   * Gnome::FileEntry#history_id
@@ -403,6 +472,8 @@
   * Gnome::FileEntry#insert_text
   * Gnome::FileEntry#modal=
   * Gnome::FileEntry#modal?
+  * Gnome::FileEntry#name
+  * Gnome::FileEntry#name=
   * Gnome::FileEntry#paste_clipboard
   * Gnome::FileEntry#position
   * Gnome::FileEntry#position=
@@ -410,6 +481,7 @@
   * Gnome::FileEntry#select_region
   * Gnome::FileEntry#selection_bounds
   * Gnome::FileEntry#set_browse_dialog_title
+  * Gnome::FileEntry#set_buildable_property
   * Gnome::FileEntry#set_default_path
   * Gnome::FileEntry#set_directory_entry
   * Gnome::FileEntry#set_editable
@@ -417,6 +489,7 @@
   * Gnome::FileEntry#set_filename
   * Gnome::FileEntry#set_history_id
   * Gnome::FileEntry#set_modal
+  * Gnome::FileEntry#set_name
   * Gnome::FileEntry#set_position
   * Gnome::FileEntry#set_title
   * Gnome::FileEntry#set_use_filechooser
@@ -425,19 +498,26 @@
   * Gnome::FileEntry#use_filechooser?
   * Gnome::FontPicker
   * Gnome::FontPicker.new
+  * Gnome::FontPicker#add_child
+  * Gnome::FontPicker#construct_child
   * Gnome::FontPicker#font
   * Gnome::FontPicker#font_name
   * Gnome::FontPicker#font_name=
+  * Gnome::FontPicker#get_internal_child
   * Gnome::FontPicker#label_font_size
   * Gnome::FontPicker#label_font_size=
   * Gnome::FontPicker#mode
   * Gnome::FontPicker#mode=
+  * Gnome::FontPicker#name
+  * Gnome::FontPicker#name=
   * Gnome::FontPicker#preview_text
   * Gnome::FontPicker#preview_text=
   * Gnome::FontPicker#ref_accessible
+  * Gnome::FontPicker#set_buildable_property
   * Gnome::FontPicker#set_font_name
   * Gnome::FontPicker#set_label_font_size
   * Gnome::FontPicker#set_mode
+  * Gnome::FontPicker#set_name
   * Gnome::FontPicker#set_preview_text
   * Gnome::FontPicker#set_show_size
   * Gnome::FontPicker#set_title
@@ -457,7 +537,14 @@
   * Gnome::GConf.get_gnome_libs_settings_relative
   * Gnome::HRef
   * Gnome::HRef.new
+  * Gnome::HRef#add_child
+  * Gnome::HRef#construct_child
+  * Gnome::HRef#get_internal_child
+  * Gnome::HRef#name
+  * Gnome::HRef#name=
   * Gnome::HRef#ref_accessible
+  * Gnome::HRef#set_buildable_property
+  * Gnome::HRef#set_name
   * Gnome::HRef#set_text
   * Gnome::HRef#set_url
   * Gnome::HRef#text
@@ -477,26 +564,35 @@
   * Gnome::I18n.push_c_numeric_locale
   * Gnome::IconEntry
   * Gnome::IconEntry.new
+  * Gnome::IconEntry#add_child
   * Gnome::IconEntry#browse_dialog_title
   * Gnome::IconEntry#browse_dialog_title=
+  * Gnome::IconEntry#construct_child
   * Gnome::IconEntry#filename
   * Gnome::IconEntry#filename=
+  * Gnome::IconEntry#get_internal_child
   * Gnome::IconEntry#history_id
   * Gnome::IconEntry#history_id=
+  * Gnome::IconEntry#name
+  * Gnome::IconEntry#name=
   * Gnome::IconEntry#pick_dialog
   * Gnome::IconEntry#pixmap_subdir
   * Gnome::IconEntry#pixmap_subdir=
   * Gnome::IconEntry#ref_accessible
   * Gnome::IconEntry#set_browse_dialog_title
+  * Gnome::IconEntry#set_buildable_property
   * Gnome::IconEntry#set_filename
   * Gnome::IconEntry#set_history_id
+  * Gnome::IconEntry#set_name
   * Gnome::IconEntry#set_pixmap_subdir
   * Gnome::IconList
   * Gnome::IconList.new
+  * Gnome::IconList#add_child
   * Gnome::IconList#append
   * Gnome::IconList#append_pixbuf
   * Gnome::IconList#clear
   * Gnome::IconList#col_spacing=
+  * Gnome::IconList#construct_child
   * Gnome::IconList#find_icon_from_data
   * Gnome::IconList#find_icon_from_filename
   * Gnome::IconList#focus_icon
@@ -506,6 +602,7 @@
   * Gnome::IconList#get_icon_filename
   * Gnome::IconList#get_icon_pixbuf_item
   * Gnome::IconList#get_icon_text_item
+  * Gnome::IconList#get_internal_child
   * Gnome::IconList#hadjustment=
   * Gnome::IconList#icon_border=
   * Gnome::IconList#icon_is_visible
@@ -515,6 +612,8 @@
   * Gnome::IconList#items_per_line
   * Gnome::IconList#move_cursor
   * Gnome::IconList#moveto
+  * Gnome::IconList#name
+  * Gnome::IconList#name=
   * Gnome::IconList#num_icons
   * Gnome::IconList#ref_accessible
   * Gnome::IconList#remove
@@ -524,11 +623,13 @@
   * Gnome::IconList#selection_mode
   * Gnome::IconList#selection_mode=
   * Gnome::IconList#separators=
+  * Gnome::IconList#set_buildable_property
   * Gnome::IconList#set_col_spacing
   * Gnome::IconList#set_hadjustment
   * Gnome::IconList#set_icon_border
   * Gnome::IconList#set_icon_data
   * Gnome::IconList#set_icon_width
+  * Gnome::IconList#set_name
   * Gnome::IconList#set_row_spacing
   * Gnome::IconList#set_selection_mode
   * Gnome::IconList#set_separators
@@ -543,14 +644,21 @@
   * Gnome::IconList::Mode
   * Gnome::IconSelection
   * Gnome::IconSelection.new
+  * Gnome::IconSelection#add_child
   * Gnome::IconSelection#add_defaults
   * Gnome::IconSelection#add_directory
   * Gnome::IconSelection#box
   * Gnome::IconSelection#clear
+  * Gnome::IconSelection#construct_child
   * Gnome::IconSelection#get_icon
+  * Gnome::IconSelection#get_internal_child
   * Gnome::IconSelection#gil
+  * Gnome::IconSelection#name
+  * Gnome::IconSelection#name=
   * Gnome::IconSelection#ref_accessible
   * Gnome::IconSelection#select_icon
+  * Gnome::IconSelection#set_buildable_property
+  * Gnome::IconSelection#set_name
   * Gnome::IconSelection#show_icons
   * Gnome::IconSelection#stop_loading
   * Gnome::IconTextItem
@@ -578,6 +686,8 @@
   * Gnome::ModuleInfo#version
   * Gnome::PixmapEntry
   * Gnome::PixmapEntry.new
+  * Gnome::PixmapEntry#add_child
+  * Gnome::PixmapEntry#construct_child
   * Gnome::PixmapEntry#copy_clipboard
   * Gnome::PixmapEntry#cut_clipboard
   * Gnome::PixmapEntry#delete_selection
@@ -588,7 +698,10 @@
   * Gnome::PixmapEntry#editable?
   * Gnome::PixmapEntry#filename
   * Gnome::PixmapEntry#get_chars
+  * Gnome::PixmapEntry#get_internal_child
   * Gnome::PixmapEntry#insert_text
+  * Gnome::PixmapEntry#name
+  * Gnome::PixmapEntry#name=
   * Gnome::PixmapEntry#paste_clipboard
   * Gnome::PixmapEntry#pixmap_subdir=
   * Gnome::PixmapEntry#position
@@ -599,8 +712,10 @@
   * Gnome::PixmapEntry#scrolled_window
   * Gnome::PixmapEntry#select_region
   * Gnome::PixmapEntry#selection_bounds
+  * Gnome::PixmapEntry#set_buildable_property
   * Gnome::PixmapEntry#set_do_preview
   * Gnome::PixmapEntry#set_editable
+  * Gnome::PixmapEntry#set_name
   * Gnome::PixmapEntry#set_pixmap_subdir
   * Gnome::PixmapEntry#set_position
   * Gnome::PixmapEntry#set_preview
@@ -608,11 +723,18 @@
   * Gnome::PopupMenu
   * Gnome::PopupMenu.new
   * Gnome::PopupMenu#accel_group
+  * Gnome::PopupMenu#add_child
   * Gnome::PopupMenu#append
   * Gnome::PopupMenu#attach
+  * Gnome::PopupMenu#construct_child
   * Gnome::PopupMenu#do_popup
   * Gnome::PopupMenu#do_popup_modal
+  * Gnome::PopupMenu#get_internal_child
+  * Gnome::PopupMenu#name
+  * Gnome::PopupMenu#name=
   * Gnome::PopupMenu#ref_accessible
+  * Gnome::PopupMenu#set_buildable_property
+  * Gnome::PopupMenu#set_name
   * Gnome::PreferencesType
   * Gnome::Program
   * Gnome::Program.get
@@ -660,7 +782,13 @@
   * Gnome::Scores
   * Gnome::Scores.display_with_pixmap
   * Gnome::Scores.new
+  * Gnome::Scores#add_child
+  * Gnome::Scores#construct_child
+  * Gnome::Scores#get_internal_child
+  * Gnome::Scores#name
+  * Gnome::Scores#name=
   * Gnome::Scores#ref_accessible
+  * Gnome::Scores#set_buildable_property
   * Gnome::Scores#set_color
   * Gnome::Scores#set_colors
   * Gnome::Scores#set_current_player
@@ -669,6 +797,7 @@
   * Gnome::Scores#set_logo_label_title
   * Gnome::Scores#set_logo_pixmap
   * Gnome::Scores#set_logo_widget
+  * Gnome::Scores#set_name
   * Gnome::Sound
   * Gnome::Sound.connection
   * Gnome::Sound.init

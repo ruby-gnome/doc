@@ -5,7 +5,7 @@
 * Object
   * GLib::Instantiatable
     * GLib::Object
-      * #<Class:0x2b870110f870>
+      * Bonobo::Object
         * Bonobo::UI::Component
 
 == Class Methods
