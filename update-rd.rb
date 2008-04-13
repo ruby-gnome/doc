@@ -517,8 +517,10 @@ class UpdateRD
       index.puts
       @indexes.sort_by {|klass, info| klass.inspect}.each do |klass, info|
         unless target_modules.empty?
-          next unless /\A(#{Regexp.union(*@target_modules)})/ =~ klass.name
-          next unless target_modules.include?($1)
+          matched_modules = @target_modules.find_all do |target_module|
+            /\A#{target_module}/ =~ klass.name
+          end
+          next unless target_modules.include?(matched_modules.first)
         end
         index.puts "  * #{klass.inspect}"
 
