@@ -738,10 +738,9 @@ class UpdateRD
   def put_change_log(klass)
     puts "== ChangeLog"
     puts
-    change_log = @indexes[klass][:change_log]
-    if change_log
+    change_log = (@indexes[klass][:change_log] || '').rstrip
+    unless change_log.empty?
       puts change_log
-    else
       puts
     end
   end
