@@ -47,7 +47,7 @@ String Utility Functions|-|-|x|x|x|x|x|x|x| Use String class of Ruby
 Character Set Conversion|-|-|#|#|#|#|#|#|#|
 Unicode Manipulation|-|-|O|O|O|O|O|O|O|
 Base64 Encoding|-|-|-|-|-|-|-|x|x| Use base64 module of Ruby
-Data Checksums|-|-|-|-|-|-|-|-|-| Use Digest module of Ruby
+Data Checksums|-|-|-|-|-|-|-|-|x| Since 2.16. Use Digest module of Ruby
 Internationalization|-|-|-|-|-|-|-|O|O| GLib.language_names only. Use Ruby-GetText-Package instead for other macros.
 Date and Time Functions|-|-|x|x|x|x|x|x|x| Use Date class of Ruby. GTimeVal as [sec, usec].
 Random Numbers|-|-|x|x|x|x|x|x|x| Use rand of Ruby
