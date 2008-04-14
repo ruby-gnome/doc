@@ -61,9 +61,11 @@ File Utilities|-|-|x|x|x|x|x|x|Use File class of Ruby
 Shell-related Utilities|GLib::Shell|-|O|O|O|O|O|O|As module
 Commandline option parser|-|-|-|-|-|-|-|-|Since 2.6
 Glob-style pattern matching|-|-|-|-|-|-|-|-|
+Perl-compatible regular expressions|-|-|-|-|-|-|-|-|Use Regex of Ruby
 Simple XML Subset Parser|-|-|-|-|-|-|-|-|
 Key-value file parser|-|-|-|O|O|O|O|O|Since 2.6
 Bookmark file parser|-|-|-|-|-|-|-|O|Since 2.6
+Testing|-|-|-|-|-|-|-|-| Use Test::Unit of Ruby
 Windows Compatibility Functions|O|O|O|O|O|O|O|O|
 Memory Chunks|-|-|x|x|x|x|x|x
 Doubly-Linked Lists|-|-|x|x|x|x|x|x|Use Array class of Ruby
