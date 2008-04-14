@@ -17,73 +17,76 @@ Closures|GLib::Closure|GClosure|#
 Value arrays|-|-
 "}}
 
-{{status "Ruby/GLib(glib)", ["2.0", "2.6", "2.8", "2.10", "2.12", "2.14"], "
-Version Information|GLib|-|O|O|O|O|O|O
-Basic Types|-|-|x|x|x|x|x|x
-Limits of Basic Types|GLib|-|O|O|O|O|O|O
-Standard Macros|GLib|-|O|O|O|O|O|O
-Type Conversion Macros|-|-|x|x|x|x|x|x
-Byte Order Macros|-|-|x|x|x|x|x|x
-Numerical Definitions|GLib|-|O|O|O|O|O|O| Defined as String constants.
-Miscellaneous Macros|-|-|x|x|x|x|x|x
-Atomic Operations|-|-|x|x|x|x|x|x
-The Main Event Loop|GLib::MainLoop|GMainLoop|O|O|O|O|O|O|G_PRIORITY_* moves to GLib module.
-The Main Event Loop|GLib::MainContext|GMainContext|#|#|#|#|#|#
-The Main Event Loop|GLib::Source|GSource|#|#|#|#|#|#|Done except useless methods and g_source_set_funcs.
-The Main Event Loop|GLib::Timeout|-|O|O|O|O|O|O| As a module.
-The Main Event Loop|GLib::Idle|-|O|O|O|O|O|O| As a module.
-The Main Event Loop|GLib::ChildWatch-|-|O|O|O|O|O|O| As a module.
-The Main Event Loop|GLib::PollFD|GPollFD|O|O|O|O|O|O|
-Threads|GLib::Thread|GThread|#|#|#|#|#|#| This may not work well with ruby-thread.
-Thread Pools|-|-|-|-|-|-|-|-|
-Asynchronous Queues|-|-|-|-|-|-|-|-|
-Dynamic Loading of Modules|-|-|-|-|-|-|-|-|
-Memory Allocation|-|-|x|x|x|x|x|x|
-IO Channels|GLib::IOChannel|GIOChannel|O|O|O|O|O|O|
-Error Reporting|-|-|x|x|x|x|x|x|
-Message Output and Debugging Functions|-|-|x|x|x|x|x|x| Don't need them.
-Message Logging|GLib::Log|-|O|O|O|O|O|O| Implemented some useful functions only.
-String Utility Functions|-|-|x|x|x|x|x|x|Use String class of Ruby
-Character Set Conversion|-|-|#|#|#|#|#|#|
-Unicode Manipulation|-|-|O|O|O|O|O|O|
-Base64 Encoding|-|-|-|-|-|-|-|x| Use base64 module of Ruby
-Internationalization|-|-|-|-|-|-|-|O| GLib.language_names only. Use Ruby-GetText-Package instead for other macros.
-Date and Time Functions|-|-|x|x|x|x|x|x|Use Date class of Ruby. GTimeVal as [sec, usec].
-Random Numbers|-|-|x|x|x|x|x|x| Use rand of Ruby
-Hook Functions|-|-|-|-|-|-|-|-|
-Miscellaneous Utility Functions|-|-|x|x|x|x|x|x|
-Lexical Scanner|-|-|-|-|-|-|-|-|
-Automatic String Completion|GLib::Completion|GCompletion|O|O|O|O|O|O| Done except g_completion_set_compare().
-Timers|GLib::Timer|GTimer|O|O|O|O|O|O
-Spawning Processes|GLib::Spawn|-|O|O|O|O|O|O|As module
-Spawning Processes|GLib::SpawnError|-|O|O|O|O|O|O|
-File Utilities|-|-|x|x|x|x|x|x|Use File class of Ruby
-Shell-related Utilities|GLib::Shell|-|O|O|O|O|O|O|As module
-Commandline option parser|-|-|-|-|-|-|-|-|Since 2.6
-Glob-style pattern matching|-|-|-|-|-|-|-|-|
-Perl-compatible regular expressions|-|-|-|-|-|-|-|-|Use Regex of Ruby
-Simple XML Subset Parser|-|-|-|-|-|-|-|-|
-Key-value file parser|-|-|-|O|O|O|O|O|Since 2.6
-Bookmark file parser|-|-|-|-|-|-|-|O|Since 2.6
-Testing|-|-|-|-|-|-|-|-| Use Test::Unit of Ruby
-Windows Compatibility Functions|O|O|O|O|O|O|O|O|
-Memory Chunks|-|-|x|x|x|x|x|x
-Doubly-Linked Lists|-|-|x|x|x|x|x|x|Use Array class of Ruby
-Singly-Linked Lists|-|-|x|x|x|x|x|x|Use Array class of Ruby
-Double-ended Queues|-|-|x|x|x|x|x|x|
-Trash Stacks|-|-|x|x|x|x|x|x
-Hash Tables|-|-|x|x|x|x|x|x|Use Hash class of Ruby
-Strings|-|-|x|x|x|x|x|x|Use String class of Ruby
-String Chunks|-|-|x|x|x|x|x|x
-Arrays|-|-|x|x|x|x|x|x
-Pointer Arrays|-|-|x|x|x|x|x|x
-Byte Arrays|-|-|x|x|x|x|x|x
-Balanced Binary Trees|-|-|x|x|x|x|x|x
-N-ary Trees|-|-|x|x|x|x|x|x
-Quarks|-|-|x|x|x|x|x|x
-Keyed Data Lists|-|-|x|x|x|x|x|x
-Datasets|-|-|x|x|x|x|x|x
-Relations and Tuples|-|-|x|x|x|x|x|x
-Caches|-|-|x|x|x|x|x|x
-Memory Allocators|-|-|x|x|x|x|x|x
+{{status "Ruby/GLib(glib)", ["2.0", "2.6", "2.8", "2.10", "2.12", "2.14", "2.16"], "
+Version Information|GLib|-|O|O|O|O|O|O|O
+Basic Types|-|-|x|x|x|x|x|x|x
+Limits of Basic Types|GLib|-|O|O|O|O|O|O|O
+Standard Macros|GLib|-|O|O|O|O|O|O|O
+Type Conversion Macros|-|-|x|x|x|x|x|x|x
+Byte Order Macros|-|-|x|x|x|x|x|x|x
+Numerical Definitions|GLib|-|O|O|O|O|O|O|O| Defined as String constants.
+Miscellaneous Macros|-|-|x|x|x|x|x|x|x
+Atomic Operations|-|-|x|x|x|x|x|x|x
+The Main Event Loop|GLib::MainLoop|GMainLoop|O|O|O|O|O|O|O| G_PRIORITY_* moves to GLib module.
+The Main Event Loop|GLib::MainContext|GMainContext|#|#|#|#|#|#|#
+The Main Event Loop|GLib::Source|GSource|#|#|#|#|#|#|#| Done except useless methods and g_source_set_funcs.
+The Main Event Loop|GLib::Timeout|-|O|O|O|O|O|O|O| As a module.
+The Main Event Loop|GLib::Idle|-|O|O|O|O|O|O|O| As a module.
+The Main Event Loop|GLib::ChildWatch-|-|O|O|O|O|O|O|O| As a module.
+The Main Event Loop|GLib::PollFD|GPollFD|O|O|O|O|O|O|O|
+Threads|GLib::Thread|GThread|#|#|#|#|#|#|#| This may not work well with ruby-thread.
+Thread Pools|-|-|-|-|-|-|-|-|-|
+Asynchronous Queues|-|-|-|-|-|-|-|-|-|
+Dynamic Loading of Modules|-|-|-|-|-|-|-|-|-|
+Memory Allocation|-|-|x|x|x|x|x|x|x|
+IO Channels|GLib::IOChannel|GIOChannel|O|O|O|O|O|O|O|
+Error Reporting|-|-|x|x|x|x|x|x|x|
+Message Output and Debugging Functions|-|-|x|x|x|x|x|x|x| Don't need them.
+Message Logging|GLib::Log|-|O|O|O|O|O|O|O| Implemented some useful functions only.
+String Utility Functions|-|-|x|x|x|x|x|x|x| Use String class of Ruby
+Character Set Conversion|-|-|#|#|#|#|#|#|#|
+Unicode Manipulation|-|-|O|O|O|O|O|O|O|
+Base64 Encoding|-|-|-|-|-|-|-|x|x| Use base64 module of Ruby
+Data Checksums|-|-|-|-|-|-|-|-|-| Use Digest module of Ruby
+Internationalization|-|-|-|-|-|-|-|O|O| GLib.language_names only. Use Ruby-GetText-Package instead for other macros.
+Date and Time Functions|-|-|x|x|x|x|x|x|x| Use Date class of Ruby. GTimeVal as [sec, usec].
+Random Numbers|-|-|x|x|x|x|x|x|x| Use rand of Ruby
+Hook Functions|-|-|-|-|-|-|-|-|-|
+Miscellaneous Utility Functions|-|-|x|x|x|x|x|x|x|
+Lexical Scanner|-|-|-|-|-|-|-|-|-|
+Automatic String Completion|GLib::Completion|GCompletion|O|O|O|O|O|O|O| Done except g_completion_set_compare().
+Timers|GLib::Timer|GTimer|O|O|O|O|O|O|O
+Spawning Processes|GLib::Spawn|-|O|O|O|O|O|O|O| As module
+Spawning Processes|GLib::SpawnError|-|O|O|O|O|O|O|O|
+File Utilities|-|-|x|x|x|x|x|x|x| Use File class of Ruby
+URI Functions|-|-|-|-|-|-|-|-|-| Since 2.16. Use URI module of Ruby
+Shell-related Utilities|GLib::Shell|-|O|O|O|O|O|O|O| As module
+Commandline option parser|-|-|-|-|-|-|-|-|-| Since 2.6
+Glob-style pattern matching|-|-|-|-|-|-|-|-|-|
+Perl-compatible regular expressions|-|-|-|-|-|-|-|-|-| Since 2.14. Use Regex of Ruby
+Simple XML Subset Parser|-|-|-|-|-|-|-|-|-|
+Key-value file parser|-|-|-|O|O|O|O|O|O| Since 2.6
+Bookmark file parser|-|-|-|-|-|-|-|O|O| Since 2.6
+Testing|-|-|-|-|-|-|-|-|-| Since 2.16. Use Test::Unit of Ruby
+Windows Compatibility Functions|O|O|O|O|O|O|O|O|O|
+Memory Chunks|-|-|x|x|x|x|x|x|x
+Doubly-Linked Lists|-|-|x|x|x|x|x|x|x| Use Array class of Ruby
+Singly-Linked Lists|-|-|x|x|x|x|x|x|x| Use Array class of Ruby
+Double-ended Queues|-|-|x|x|x|x|x|x|x|
+Sequences|-|-|-|-|-|-|-|-|-| Since 2.14. Use Array class of Ruby
+Trash Stacks|-|-|x|x|x|x|x|x|x
+Hash Tables|-|-|x|x|x|x|x|x|x| Use Hash class of Ruby
+Strings|-|-|x|x|x|x|x|x|x| Use String class of Ruby
+String Chunks|-|-|x|x|x|x|x|x|x
+Arrays|-|-|x|x|x|x|x|x|x
+Pointer Arrays|-|-|x|x|x|x|x|x|x
+Byte Arrays|-|-|x|x|x|x|x|x|x
+Balanced Binary Trees|-|-|x|x|x|x|x|x|x
+N-ary Trees|-|-|x|x|x|x|x|x|x
+Quarks|-|-|x|x|x|x|x|x|x
+Keyed Data Lists|-|-|x|x|x|x|x|x|x
+Datasets|-|-|x|x|x|x|x|x|x
+Relations and Tuples|-|-|x|x|x|x|x|x|x
+Caches|-|-|x|x|x|x|x|x|x
+Memory Allocators|-|-|x|x|x|x|x|x|x
 "}}
