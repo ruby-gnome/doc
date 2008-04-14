@@ -5,14 +5,6 @@ The socket's window ID is obtained by using Gtk::Socket#id. Before using this me
 
 == Description
 
-== Description
-
-== Description
-
-== Description
-
-== Description
-
 === Example 1. Obtaining the window ID of a socket.
   socket = Gtk::Socket.new
   socket.show
