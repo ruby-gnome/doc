@@ -1,3 +1,5 @@
+Ruby threads and Gtk (avoid seg faults!)
+
 (This page originally by Tal Liron)
 
 This is a crucial "tip," and in fact qualifies, I believe, as a major warning or fix for using Ruby with the Gtk library.
@@ -10,38 +12,38 @@ Otherwise you might have your own worker thread in the background doing some wor
 
 First, force all your your Ruby threads to start from within the main loop using the standard Gtk.init method. You can call Gtk.init as many times as necessary. For example:
 
-  Gtk.init_add do
-    DBus.start_listener
-  end
+ Gtk.init_add do
+ 	DBus.start_listener
+ end
 
-Next, queue your Gtk activities as blocks to be called in Gtk's main thread. The following code helps with this. (Based on Mathieu Blondel's suggestion. [[http://www.ruby-forum.com/topic/125038|See this topic on the Ruby Forum for a discussion.]])
+Next, queue your Gtk activities as blocks to be called in Gtk's main thread. The following code helps with this. (Based on Mathieu Blondel's suggestion. ((<See this topic on the Ruby Forum for a discussion.|URL:http://www.ruby-forum.com/topic/125038>)))
 
-  module Gtk
-    GTK_PENDING_BLOCKS = []
-    GTK_PENDING_BLOCKS_LOCK = Monitor.new
-
-    def Gtk.queue &block
-      if Thread.current == Thread.main
-        block.call
-      else
-        GTK_PENDING_BLOCKS_LOCK.synchronize do
-          GTK_PENDING_BLOCKS << block
-        end
-      end
-    end
-
-    def Gtk.main_with_queue timeout
-      Gtk.timeout_add timeout do
-        GTK_PENDING_BLOCKS_LOCK.synchronize do
-          for block in GTK_PENDING_BLOCKS
-            block.call
-          end
-          GTK_PENDING_BLOCKS.clear
-        end
-        true
-      end
-      Gtk.main
-    end
+ module Gtk
+ 	GTK_PENDING_BLOCKS = []
+ 	GTK_PENDING_BLOCKS_LOCK = Monitor.new
+ 
+ 	def Gtk.queue &block
+ 		if Thread.current == Thread.main
+ 			block.call
+ 		else
+ 			GTK_PENDING_BLOCKS_LOCK.synchronize do
+ 				GTK_PENDING_BLOCKS << block
+ 			end
+ 		end
+ 	end
+ 
+ 	def Gtk.main_with_queue timeout
+ 		Gtk.timeout_add timeout do
+ 			GTK_PENDING_BLOCKS_LOCK.synchronize do
+ 				for block in GTK_PENDING_BLOCKS
+ 					block.call
+ 				end
+ 				GTK_PENDING_BLOCKS.clear
+ 			end
+ 			true
+ 		end
+ 		Gtk.main
+ 	end
   end
 
 Usage is very simple:
@@ -50,15 +52,16 @@ Start your Gtk application by calling Gtk.main_with_queue rather than Gtk.main. 
 
 Whenever you need to queue a call, use Gtk.queue. For example:
 
-  def my_event_callback
-    Gtk.queue do
-      @image.pixbuf = Gdk::Pixbuf.new @image_path, width, height
-    end
-  end
+ def my_event_callback
+ 	Gtk.queue do
+ 		@image.pixbuf = Gdk::Pixbuf.new @image_path, width, height
+ 	end
+ end
 
 Issues:
 
 1. Keep your queued blocks lean. Do all your CPU-intensive work outside of the queued block. This will help keep Gtk responsive.
+
 2. None yet!
 
-(If you edit this wiki page, please annotate your change clearly!)
+(If you edit this wiki page, please annotate your changes clearly!)
