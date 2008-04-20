@@ -1,5 +1,6 @@
 = Ruby-GNOME2 Tips
 
+* ((<Ruby threads and Gtk (avoid seg faults!)|tips_threads>))
 * ((<How to write the non-ascii characters.|tips_i18n>))
 * ((<Investigate Signal behaviors.|tips_signals>))
 * ((<Change an icon on a button of a toolbar.|tips_toolbar_icon>))
