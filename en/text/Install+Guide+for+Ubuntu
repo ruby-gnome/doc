@@ -1,7 +1,7 @@
 {{link nil, "Install Guide", nil, nil}}
 = Install Guide for Ubuntu
 
-== Ubuntu 7.10 (Gutsy Gibbon)
+== Ubuntu 7.10 (Gutsy Gibbon) and 8.04 (Hardy Heron)
 
 === Installation 
 Since the latest bindings are already part of Gutsy, the only thing for you to do is to install them!
@@ -17,6 +17,7 @@ Report problems to ((<"Franz"|Franz>)).
 === ChangeLog
 
 * 2007/10/21 Created - ((<"Franz"|Franz>))
+* 2007/05/16 Updated - ((<"Franz"|Franz>))
 
 
 
