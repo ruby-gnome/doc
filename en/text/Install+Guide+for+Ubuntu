@@ -7,7 +7,7 @@
 
 Since the latest bindings are already part of both Hardy and Gutsy, the only thing for you to do is to install them!
 
-Selecting and installing the meta-package "ruby-gnome2" causes the complete set of the Ruby-GNOME2-bindings to be installed. Programmers should additionally install the Ruby-GNOME2 class browser rbbr, which afterwards should be updated with the latest ((<nightly tarball|URL:http://ruby-gnome2.sourceforge.jp/data/ruby-gnome2-api.tar.gz>)). To do so, simply move the content of the unpacked folder to /usr/share/rbbr/rd. Unless you need the Japanese version, you should delete the folder "ja", the latter could cause trouble otherwise.
+Selecting and installing the meta-package "ruby-gnome2" ensures that the complete set of the Ruby-GNOME2-bindings is going to be installed. Programmers should additionally install the Ruby-GNOME2 class browser rbbr, which afterwards should be updated with the latest ((<nightly tarball|URL:http://ruby-gnome2.sourceforge.jp/data/ruby-gnome2-api.tar.gz>)). Simply move the content of the unpacked folder to /usr/share/rbbr/rd. Unless you need the Japanese version, you should delete the folder "ja".
 
 
 Have fun!
