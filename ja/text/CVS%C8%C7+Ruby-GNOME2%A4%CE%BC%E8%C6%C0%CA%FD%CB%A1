@@ -1,11 +1,3 @@
 = CVS版 Ruby-GNOME2の取得方法
-Ruby-GNOME2の開発版は誰でもダウンロードできます。もちろん、安定版ではないのでat your own riskで使ってください(といってもまだRuby-GNOME2自体がunstableな状態なんであんましかわんないですけど(^^;))。
-＃詳しくはこちらを読んでください。
 
-簡単に説明すると以下のような感じです。簡単でしょ。 
-
- $cvs -d:pserver:anonymous@cvs.ruby-gnome2.sourceforge.net:/cvsroot/ruby-gnome2 login
- (Logging in to anonymous@cvs.ruby-gnome2.sourceforge.net)
- CVS password: (パスワードは何も入力せずに[Return])
- $cvs -z3 -d:pserver:anonymous@cvs.ruby-gnome2.sourceforge.net:/cvsroot/ruby-gnome2 co ruby-gnome2
-
+Subversionに移行しました。 → ((<Subversion版 Ruby-GNOME2の取得方法>))
