@@ -48,3 +48,4 @@ Libraries we still need to cover:
 * ((<libBonoboui|URL:http://developer.gnome.org/doc/API/2.0/libbonoboui/index.html>))
 * ((<libGSF|URL:http://developer.gnome.org/doc/API/2.0/libgsf/index.html>))
 * ((<GooCanvas|URL:http://sourceforge.net/projects/goocanvas>)) |((<"Ruby/GooCanvas"|URL:http://www.cozmixng.org/retro/projects/ruby-goocanvas/>))
+* GIO
