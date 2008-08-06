@@ -22,7 +22,7 @@ vboxやaction_areaはGtk::Dialog#vbox，Gtk::Dialog#action_areaで取得することができ
 
 {{image_right "dialog.png"}}
 
-vboxにはユーザへの質問や，エラーメッセージを表示する((<ラベル|gtk2-tut-label>))などの任意のウェイジェットをパックすることができる．
+vboxにはユーザへの質問や，エラーメッセージを表示する((<ラベル|gtk2-tut-label>))などの任意のウィジェットをパックすることができる．
 そしてaction_areaにOKボタンとキャンセルボタンなどのボタンをパックし，それぞれのボタンに異なったシグナルを接続しユーザが選択した操作を行うことができる．
 action_areaには、Gtk::Box#pack_startを用いてボタンを配置することも可能だが，Gtk::Dialog#add_button, Gtk::Dialog#add_buttonsを使うと簡単にボタンを配置できる．
 
