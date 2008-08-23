@@ -7,3 +7,36 @@
 
 
   uimanager = Gtk::UIManager.new
+
+UIマネージャを作成したら、次に、メニューの構成と、メニューに対応する
+アクションを設定します。
+
+  uimanager.insert_action_group(actiongroup, 0)
+  uimanager.add_ui(ui_info)
+
+Gtk::UIManagerでは、メニューの構成にXML形式を指定します。
+アクションにはGtk::ActionGroupを指定します。
+
+actiongroupには、クリック時のアクション、トグル時のアクション、ラジオボタンのような排他的チェックのアクションを追加することができます。
+
+== UIマネージャでのメニュー定義
+
+UIマネージャでメニューを定義するには、XML形式を使います。
+
+  <ui>
+    <menubar name='MenuBar'>
+      <menu action='FileMenu'>
+        <menuitem action='New'/>
+        <menuitem action='Open'/>
+        <menuitem action='Save'/>
+        <menuitem action='SaveAs'/>
+        <separator/>
+      <menuitem action='Quit'/>
+    </menu>
+    <toolbar  name='ToolBar'>
+      <toolitem action='Open'/>
+      <toolitem action='Quit'/>
+      <separator action='Sep1'/>
+      <toolitem action='Logo'/>
+    </toolbar>
+  </ui>
