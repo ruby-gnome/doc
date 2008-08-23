@@ -1,0 +1,9 @@
+= UIマネージャを使う
+
+いわゆるメニューを簡単につくるには、Gtk::ItemFactoryを使うのが定石でした。
+しかし、Gtk 2.4からは非推奨となり、かわりにGtk::UIManagerを使うことが推奨されています。
+
+まずは、UIマネージャを作成します。
+
+
+  uimanager = Gtk::UIManager.new
