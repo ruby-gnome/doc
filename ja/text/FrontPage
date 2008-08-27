@@ -8,7 +8,7 @@ Ruby-GNOME2 Projectでは現在、以下のパッケージを提供しています。
     * Ruby/GLib2, Ruby/ATK, Ruby/GdkPixbuf2, Ruby/Pango, Ruby/GTK2
 --- ruby-gnome2-all package
     ruby-gtk2の他に、次のライブラリを含みます。
-    * Ruby/GnomeCanvas2, Ruby/GNOME2, Ruby/Libart2, Ruby/Libglade2, Ruby/GConf2, Ruby/GnomeVFS, Ruby/GStreamer, Ruby/GtkHtml2, Ruby/GtkGLExt, Ruby/Libgda, Ruby/GStreamer, Ruby/GtkSourceView, Ruby/PanelApplet, Ruby/GnomePrint, Ruby/GnomePrintUI, Ruby/RSVG, Ruby/GtkMozEmbed
+    * Ruby/GnomeCanvas2, Ruby/GNOME2, Ruby/Libart2, Ruby/Libglade2, Ruby/GConf2((-Ruby/GConf2はruby-gnome2-0.16.0-1-i386-mswin32.exeには含まれていません。-)), Ruby/GnomeVFS, Ruby/GStreamer, Ruby/GtkHtml2, Ruby/GtkGLExt, Ruby/Libgda, Ruby/GStreamer, Ruby/GtkSourceView, Ruby/PanelApplet, Ruby/GnomePrint, Ruby/GnomePrintUI, Ruby/RSVG, Ruby/GtkMozEmbed
 
 --- rbbr
     Rubyクラス・モジュールブラウザです。((<英語サイト|en:rbbr>))をどうぞ。
