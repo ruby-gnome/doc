@@ -13,9 +13,10 @@
 是非、一緒にRuby-GNOME2を盛り上げていきましょう！
 
 == 本サイトのドキュメントの書き方
-ドキュメントはRDで記述します。詳しくは((<RDP|URL:http://helium.ruby-lang.org/~rubikitch/RDP.cgi?cmd=view&name=RD>))を参照してください。
+ドキュメントはRDで記述します。
+詳しくは((<RD|URL:http://www.ruby-lang.org/ja/man/html/RD.html>))を参照してください。
+いくつか参考となるリンクがあります。
 
-((<RWikiのも|URL:http://rwiki.jin.gr.jp/cgi-bin/rw-cgi.rb?cmd=view;name=RD%A4%CE%BD%F1%A4%AD%CA%FD>))わかりやすいです(他力本願(^^;))。
 
 == Hiki/RD+拡張
 === ModuleNames
