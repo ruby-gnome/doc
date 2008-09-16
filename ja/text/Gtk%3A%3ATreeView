@@ -10,7 +10,7 @@ Widget that displays any object that implements the Gtk::TreeModel interface.
           * Gtk::Container
             * Gtk::TreeView
 
-== Class Methods
+== クラスメソッド
 --- Gtk::TreeView.new(model = nil)
     Creates a new Gtk::TreeView widget with the model initialized to model or nil.
     * model: the model. 
