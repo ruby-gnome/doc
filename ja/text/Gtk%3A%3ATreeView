@@ -16,7 +16,7 @@ Widget that displays any object that implements the Gtk::TreeModel interface.
     * model: the model. 
     * Returns: A newly created Gtk::TreeView widget. 
 
-== Instance Methods
+== インスタンスメソッド
 --- model
     Returns the model the the Gtk::TreeView is based on. Returns nil if the model is unset.
     * Returns: A Gtk::TreeModel, or nil if none is currently being used. 
@@ -173,11 +173,11 @@ Widget that displays any object that implements the Gtk::TreeModel interface.
     Moves the alignments of the Gtk::TreeView to the position specified by column and path. If column is nil, then no horizontal scrolling occurs. Likewise, if path is nil no vertical scrolling occurs. At a minimum, one of column or path need to be non-nil. row_align determines where the row is placed, and col_align determines where column is placed. Both are expected to be between 0.0 and 1.0. 0.0 means left/top alignment, 1.0 means right/bottom alignment, 0.5 means center.
     If use_align is false, then the alignment arguments are ignored, and the tree does the minimum amount of work to scroll the cell onto the screen. This means that the cell will be scrolled to the edge closest to it's current position. If the cell is currently visible on the screen, nothing is done.
     This method only works if the model is set, and path is a valid row on the model. If the model changes before the Gtk::TreeView is realized, the centered path will be modified to reflect this change.
-    * path: The Gtk::TreePath of the row to move to, or nil. 
-    * column: The Gtk::TreeViewColumn to move horizontally to, or nil. 
-    * use_align: whether to use alignment arguments, or false. 
-    * row_align: The vertical alignment of the row specified by path between 0.0 and 1.0.
-    * col_align: The horizontal alignment of the column specified by column between 0.0 and 1.0.
+    * path: スクロール先の行を示す Gtk::TreePath。無指定ならnil。
+    * column: 水平方向のスクロールを示す The Gtk::TreeViewColumn。無指定ならnil。
+    * use_align: アラインメントを適用するかを示す。無指定ならfalse。
+    * row_align: 垂直方向のアラインメント。0.0 から 1.0の値を指定。
+    * col_align: 水平方向のアラインメント。0.0 から 1.0の値を指定。
     * Returns: self
 
 --- cursor
