@@ -170,7 +170,7 @@ Widget that displays any object that implements the Gtk::TreeModel interface.
     * Returns: self
 
 --- scroll_to_cell(path, column, use_align, row_align, col_align)
-    Moves the alignments of the Gtk::TreeView to the position specified by column and path. If column is nil, then no horizontal scrolling occurs. Likewise, if path is nil no vertical scrolling occurs. At a minimum, one of column or path need to be non-nil. row_align determines where the row is placed, and col_align determines where column is placed. Both are expected to be between 0.0 and 1.0. 0.0 means left/top alignment, 1.0 means right/bottom alignment, 0.5 means center.
+    columnまたはpathにより指定された位置へGtk::TreeViewのアラインメントを移動します。columnがnilの場合、水平方向へのスクロールは発生しません。同様に path がnilならば垂直方向へのスクロールは発生しません。最低限、 columnか pathいずれかが非nilである必要があります。row_alignはrowの配置を決定し、 col_align はcolumnの配置を決定します。いずれも 0.0 から 1.0の範囲の値です。0.0 は 左端/上端揃え, 1.0 は 右端/下端揃えを意味します。したがって、0.5 は中央揃えとなります。
     If use_align is false, then the alignment arguments are ignored, and the tree does the minimum amount of work to scroll the cell onto the screen. This means that the cell will be scrolled to the edge closest to it's current position. If the cell is currently visible on the screen, nothing is done.
     This method only works if the model is set, and path is a valid row on the model. If the model changes before the Gtk::TreeView is realized, the centered path will be modified to reflect this change.
     * path: スクロール先の行を示す Gtk::TreePath。無指定ならnil。
