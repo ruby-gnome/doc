@@ -21,13 +21,19 @@ glade-2を起動し、まずは、プライマリウインドウを生成します。
 :Default Width, Default Height
  最初に表示したときの画面サイズです。
 
-{{br}}
 
 === Signalsタブ
 
 {{image_right("3.png")}}
 
 ウインドウの右上にある×ボタン（「閉じる」ボタン）がクリックされたらアプリケーションを終了させることにします。
-×ボタンがクリックされると、main_windowはdestroy_eventを発生させるのでそれを捕捉してHandlerを呼び出します。Signal:にdestroy_eventを選択すると、Handlerは自動的に"on_main_window_destroy_event"という名前になります。名前を変更しても良いですが、ここではそのまま使います。
+×ボタンがクリックされると、main_windowはdelete_eventイベントを発生させるのでそれを捕捉してHandlerを呼び出します。Signal:にdelete_eventを選択すると、Handlerは自動的に"on_main_window_delete_event"という名前になります。名前を変更しても良いですが、ここではそのまま使います。Addボタンを押してリストにSignalとHandlerを追加します。
 
-＃後で、on_main_window_destroy_eventというメソッドをRubyで記述し、実際の終了コードを書きます。
+実はこのdelete_eventイベントはウィンドウの破棄が決定したことを表すのではなく、ウィンドウを破棄して良いかどうかの意思確認を意味しており、その返事に「はい」と答えた場合、つづいて本当にウィンドウが破棄されることを表すdestroyイベントが発生します。ですので、Signal:でdestroyを選択し直してこれもリストに追加します。
+
+
+＃後で、on_main_window_delete_eventとon_main_window_destroyというメソッドをRubyで記述し、実際の終了コードを書きます。
+
+ちなみにdelete_eventイベントのHandler（on_main_window_delete_event）からfalseを返すと、「ウィンドウを破棄しても良い」と答えたとみなされdestroyイベントが発生し、trueを返すと破棄が中止されます。
+
+またdestroyイベントのHandler（on_main_window_destroy）では必ずGtk.main_quitを呼び出すようにします。このモジュールメソッドは、ウィンドウがイベントを処理するためのメインループから脱け出す機能を持つので、これを呼び忘れると、GUIが消されたにもかかわらずスクリプトの実行がトップレベルに戻らずプログラムが終了できない、という状態になってしまいます。
