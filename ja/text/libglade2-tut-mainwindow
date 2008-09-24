@@ -24,13 +24,14 @@ glade-2を起動し、まずは、プライマリウインドウを生成します。
 
 === Signalsタブ
 
-{{image_right("3.png")}}
+{{image_right("ss_signals.png")}}
 
 ウインドウの右上にある×ボタン（「閉じる」ボタン）がクリックされたらアプリケーションを終了させることにします。
-×ボタンがクリックされると、main_windowはdelete_eventイベントを発生させるのでそれを捕捉してHandlerを呼び出します。Signal:にdelete_eventを選択すると、Handlerは自動的に"on_main_window_delete_event"という名前になります。名前を変更しても良いですが、ここではそのまま使います。Addボタンを押してリストにSignalとHandlerを追加します。
+×ボタンがクリックされると、main_windowはdelete_eventシグナルを発生させるのでそれを捕捉してHandlerを呼び出します。Signal:にdelete_eventを選択すると、Handlerは自動的に"on_main_window_delete_event"という名前になります。名前を変更しても良いですが、ここではそのまま使います。Addボタンを押してリストにSignalとHandlerを追加します。
 
 実はこのdelete_eventイベントはウィンドウの破棄が決定したことを表すのではなく、ウィンドウを破棄して良いかどうかの意思確認を意味しており、その返事に「はい」と答えた場合、つづいて本当にウィンドウが破棄されることを表すdestroyイベントが発生します。ですので、Signal:でdestroyを選択し直してこれもリストに追加します。
 
+{{br}}
 
 ＃後で、on_main_window_delete_eventとon_main_window_destroyというメソッドをRubyで記述し、実際の終了コードを書きます。
 
