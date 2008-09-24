@@ -24,7 +24,7 @@ glade-2を起動し、まずは、プライマリウインドウを生成します。
 
 === Signalsタブ
 
-{{image_right("ss_signals.png")}}
+{{image_right("ss_signals_luna.png")}}
 
 ウインドウの右上にある×ボタン（「閉じる」ボタン）がクリックされたらアプリケーションを終了させることにします。
 ×ボタンがクリックされると、main_windowはdelete_event Signalを発生させるのでそれを捕捉してHandlerを呼び出します。Signal:にdelete_eventを選択すると、Handlerは自動的に"on_main_window_delete_event"という名前になります。名前を変更しても良いですが、ここではそのまま使います。Addボタンを押してリストにSignalとHandlerを追加します。
