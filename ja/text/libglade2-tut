@@ -16,7 +16,7 @@ Gladeは地域化（L10n:Localization)のためのフレームワーク(GetTextベース)を持ってい
 == 目次
 === まずはGladeでGUIの雛形をつくる
 最初にGladeを使ってGUIの雛形を作ります。Gladeの使い方を知っている方はこの章を読み飛ばしていただいて構いません。
-* ((<GLadeのインストール|libglade2-tut-install>))
+* ((<Gladeのインストール|libglade2-tut-install>))
 * ((<Gladeの起動 - 英語モードで！|libglade2-tut-run>))
    * MS Windowsの場合
    * Linux/FreeBSDの場合
