@@ -51,12 +51,12 @@ Information about the tooltip (if any) associated with an arbitrary widget can b
     Allows the user to see your tooltips as they navigate your application.
     * Returns: self
 
---- set_tip
+--- set_tip(widget, text, private)
 
     Adds a tooltip containing the message tip_text to the specified Gtk::Widget. 
-    widget: the Gtk::Widget you wish to associate the tip with. 
-    tip_text: a string containing the tip itself. 
-    tip_private: a string of any further information that may be useful if the user gets stuck.
+    * widget: the Gtk::Widget you wish to associate the tip with. 
+    * text: a string containing the tip itself. 
+    * private: a string of any further information that may be useful if the user gets stuck.
 
 --- force_window
 

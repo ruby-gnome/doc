@@ -80,6 +80,9 @@
     * Creating an ItemFactory
     * Making use of the menu and its menu items
   * ((<アイテムファクトリの例|gtk2-tut-itemfactory-example>))
+  * ((<UIマネージャを使う|gtk2-tut-uimanager>))
+    * ((<UIマネージャの例|gtk2-tut-uimanager-example>))
+
 * ドキュメント化されていないウィジェット
   * Accel Label
   * Option Menu
@@ -95,7 +98,7 @@
   * Gamma Curve
   * Image
   * Plugs and Sockets
-  * Tree View
+  * ((<ツリービュー|gtk2-tut-treeview>))
   * Text View
 * ウィジェットの属性を設定する
 * タイムアウト、I/O およびアイドル関数
