@@ -37,8 +37,7 @@ Ruby/Libglade2¤Ï¹ñºİ²½¤¬Á°Äó¤Ê¤Î¤Ç((<Ruby-GetText-Package|raa:ruby-gettext>))¤¬É
       
     end
 
-path_or_data¤ÏÉ¬¿Ü¤Ç¤¹¡£Glade XML¥Õ¥¡¥¤¥ë(*.glade)¤ò»ØÄê¤¹¤ë¤«¡¢Glade XML(*.glade¤ÎÆâÍÆ)¤òÊ¸»úÎó¤È¤·¤ÆÅÏ¤·¤Æ¤¢¤²¤Ş¤¹¡£¤¿¤À¤·¡¢Ê¸»úÎó¤È¤·¤ÆÅÏ¤¹¾ì¹ç¤Ïflag = GladeXML::
-domain¤ÏRuby/Libglade¤È((<Ruby-GetText-Package|raa:ruby-gettext>))¤ÇÍÑ¤¤¤ë¥É¥á¥¤¥óÌ¾¡Ê¸À¸ì¥ê¥½¡¼¥¹Ì¾¡§mo¥Õ¥¡¥¤¥ë¤Î¸¡º÷¤ËÍÑ¤¤¤é¤ì¤ë¡Ë¤Ç¤¹¡£
+¥³¥ó¥¹¥È¥é¥¯¥¿(HweditGlade.new)¼Â¹Ô»ş¡¢path_or_data¤Î»ØÄê¤ÏÉ¬¿Ü¤Ç¤¹¡£Glade XML¥Õ¥¡¥¤¥ë(*.glade)¤ò»ØÄê¤¹¤ë¤«¡¢Glade XML(*.glade¤ÎÆâÍÆ)¤òÊ¸»úÎó¤È¤·¤ÆÅÏ¤·¤Æ¤¢¤²¤Ş¤¹¡£¤¿¤À¤·¡¢Ê¸»úÎó¤È¤·¤ÆÅÏ¤¹¾ì¹ç¤Ï¡¢flag¤ËGladeXML::BUFFER¤òÅÏ¤¹É¬Í×¤¬¤¢¤ê¤Ş¤¹¡£domain¤ÏRuby/Libglade¤È((<Ruby-GetText-Package|raa:ruby-gettext>))¤ÇÍÑ¤¤¤ë¥É¥á¥¤¥óÌ¾¡Ê¸À¸ì¥ê¥½¡¼¥¹Ì¾¡§mo¥Õ¥¡¥¤¥ë¤Î¸¡º÷¤ËÍÑ¤¤¤é¤ì¤ë¡Ë¤Ç¤¹¡£
 
   def on_save1_activate(widget)
     puts "on_save1_activate() is not implemented yet."
