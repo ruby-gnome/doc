@@ -17,18 +17,20 @@
 
 == まずはコピペ
 一番最初にhwedit_glade.rbを生成したとき、これをコピーして、（この例では）hwedit.rbという名前にします。
-次に、このファイルを編集します。以下に例を示します。
+次に、このファイルを編集します。以下に例を示します。（変更部分のみ）
 
   require 'hwedit_glade'
  
   class Hwedit < HweditGlade 
-　
+
+冒頭を、"hwedit_glade"を読み込んで実行しHweditGladeのサブクラスを定義する形に書き換えます。
+
     def initialize(path_or_data, root = nil, domain = nil, localedir = nil, flag = GladeXML::FILE)
       super(path_or_data, root, domain, localedir, flag)
       bindtextdomain(domain, localedir, nil, "UTF-8")
     end
 
-親クラスのinitializeを呼び出した後、親クラスのinitializeで実行済みのbindtextdomainを再度呼び出しています。これは"hwedit_glade.rb"を編集せずに、ローカライズ用データの出力時の文字コードを正しく指定するためです。たとえばWindowsのコマンドプロンプトに日本語を含む文字列を出力する場合、スクリプト中の"UTF-8"を"Shift-JIS"に書き換えておかないと文字化けします。ですので必要がなければ削除してしまってかまいません。
+親クラスのinitializeを呼び出した後、親クラスのinitializeで実行済みのbindtextdomainを再度呼び出しています。これは"hwedit_glade.rb"を編集せずに、ローカライズ用データの出力時の文字コードを正しく指定するためです。たとえばWindowsのコマンドプロンプトに日本語を含む文字列を出力する場合、スクリプト中の"UTF-8"を"Shift-JIS"に書き換えておかないと文字化けします。ですので必要がなければここのbindtextdomainの呼び出しは削除してしまってかまいません。
 
     def on_main_window_destroy(widget)
       Gtk.main_quit
