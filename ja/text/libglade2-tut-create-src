@@ -24,8 +24,8 @@
   class Hwedit < HweditGlade 
 ¡¡
     def initialize(path_or_data, root = nil, domain = nil, localedir = nil, flag = GladeXML::FILE)
-      GetText.bindtextdomain(domain, localedir, nil, "UTF-8")
-      super(path_or_data, root = nil, domain = nil, localedir = nil, flag = GladeXML::FILE)
+      super(path_or_data, root, domain, localedir, flag)
+      bindtextdomain(domain, localedir, nil, "UTF-8")
     end
 ¡¡
     def on_save1_activate(widget)
