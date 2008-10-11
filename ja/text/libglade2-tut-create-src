@@ -27,7 +27,9 @@
       super(path_or_data, root, domain, localedir, flag)
       bindtextdomain(domain, localedir, nil, "UTF-8")
     end
-　
+
+親クラスのinitializeを呼び出した後、親クラスのinitializeで実行済みのbindtextdomainを再度呼び出しています。これは"hwedit_glade.rb"を編集せずに、ローカライズ用データの出力時の文字コードを正しく指定するためです。たとえばWindowsのコマンドプロンプトに日本語を含む文字列を出力する場合、スクリプト中の"UTF-8"を"Shift-JIS"に書き換えておかないと文字化けします。ですので必要がなければ削除してしまってかまいません。
+
     def on_main_window_destroy(widget)
       Gtk.main_quit
     end
