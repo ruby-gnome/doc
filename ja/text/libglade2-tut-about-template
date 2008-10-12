@@ -22,6 +22,8 @@ Ruby/Libglade2を読み込みます。自動的にRuby/GTK2, Ruby/GNOME2(存在する場合)も読み
 
 Ruby/Libglade2は国際化が前提なので((<Ruby-GetText-Package|raa:ruby-gettext>))が必要です。
 しかし、この部分のように偽のGetTextモジュールを作ることで、((<Ruby-GetText-Package|raa:ruby-gettext>))が無くてもアプリケーションとしては動作するようになります（その場合英語版になります）。
+
+※　この部分はruby-gnome2-0.16.0-1-i386-mswin32版では出力されません。（最近のバージョンでは不要？）
     
   class HweditGlade
 
