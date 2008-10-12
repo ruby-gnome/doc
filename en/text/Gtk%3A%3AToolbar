@@ -2,7 +2,7 @@
 
 A toolbar is created with a call to Gtk::Toolbar.new.
 
-A toolbar can contain instances of a subclass of Gtk::ToolItem. To add a Gtk::ToolItem to the a toolbar, use Gtk::Toolbar#insert. To remove an item from the toolbar use Gtk::Toolbar#remove. To add a button to the toolbar, add an instance of Gtk::ToolButton.
+A toolbar can contain instances of a subclass of Gtk::ToolItem. To add a Gtk::ToolItem to the a toolbar, use Gtk::Toolbar#insert. To remove an item from the toolbar use Gtk::Container#remove. To add a button to the toolbar, add an instance of Gtk::ToolButton.
 
 Toolbar items can be visually grouped by adding instances of Gtk::SeparatorToolItem to the toolbar. If a Gtk::SeparatorToolItem has the "expand" property set to TRUE and the "draw" property set to FALSE the effect is to force all following items to the end of the toolbar.
 
@@ -89,7 +89,7 @@ Gtk::Toolbar implements Atk::ImplementorIface, Gtk::Buildable and Gtk::ToolShell
     The tool_item passed to this function must not be part of any widget hierarchy. When an item is set as drop highlight item it can not added to any widget hierarchy or used as highlight item for another toolbar.
     * tool_item: a GtkToolItem, or NULL to turn of highlighting 
     * index_: a position on toolbar
-    * Returns: self: ((*FIXME*))
+    * Returns: self: ((*FIXME*)) (In GTK API, the return is void.)
 
     Since 2.4.
 
