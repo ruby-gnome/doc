@@ -1,6 +1,4 @@
 = テンプレートからソースコード(Rubyスクリプト)へ
-※　このページはまだ改訂中です。
-
 さて、後はテンプレートを編集していきます。というのは半分正解で半分不正解です。
 
 前章でも
@@ -33,7 +31,7 @@
       bindtextdomain(domain, localedir, nil, "UTF-8")
     end
 
-親クラスのinitializeを呼び出した後（super）、親クラスのinitializeで実行済みのbindtextdomainを再度呼び出しています。これは"hwedit_glade.rb"を編集せずに、ローカライズ用データの出力時の文字コードを正しく指定するためです。たとえばWindowsのコマンドプロンプトに日本語を含む文字列を出力する場合、スクリプト中の"UTF-8"を"Shift-JIS"に書き換えておかないと文字化けします（ハードコーディングを避けられるのであれば、その方が望ましいでしょう）。ですので必要がなければここのbindtextdomainの呼び出しは削除してしまってかまいません。
+親クラスのinitializeを呼び出した後（super）、親クラスのinitializeで実行済みのbindtextdomainを再度呼び出しています。これは"hwedit_glade.rb"を編集せずに、ローカライズ用データの出力時の文字コードを正しく指定するためです。たとえばWindowsのコマンドプロンプトに日本語を含む文字列を出力する場合、スクリプト中の"UTF-8"を"Shift-JIS"に書き換えておかないと文字化けします。ですので必要がなければここのbindtextdomainの呼び出しは削除してしまってかまいません。
 
     def on_main_window_delete_event(widget, arg0)
       false
@@ -46,6 +44,9 @@
 
 ※　他のイベントハンドラもカスタマイズが必要になったときのために消さずに残しておきます。
 
+要はinitializeとイベントハンドラを上書きするようなサブクラスを作るわけです。
+この部分だけ、きっと手間に感じると思いますが、一度作れば後は楽チンなこと間違いなしです。
+
   end
   
   # Main program
@@ -56,9 +57,6 @@
     Hwedit.new(PROG_PATH, nil, PROG_NAME)
     Gtk.main
   end
-
-要はinitializeとイベントハンドラだけを上書きするようなサブクラスを作るわけです。
-この部分だけ、きっと手間に感じると思いますが、一度作れば後は楽チンなこと間違いなしです。
 
 PROG_PATHとPROG_NAMEは適切な値に書き直します。また、HweditGlade.newとなっている行もHwedit.newに変更します。
 
