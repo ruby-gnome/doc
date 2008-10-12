@@ -8,6 +8,8 @@ Any of Gtk::ToggleButton, Gtk::RadioButton, or an arbitrary widget can be added 
 
 Widgets can be visibly grouped by adding gaps between widgets using Gtk::Toolbar#append_space, Gtk::Toolbar#prepend_space, and Gtk::Toolbar#insert_space.
 
+The append, prepend, and insert methods that have a tooltip parameters are deprecated since Gtk 2.4.  Try using with the parameters before the first tooltip parameter.  For example, insert(position, widget) works.
+
 == Object Hierarchy
 
 * Object
