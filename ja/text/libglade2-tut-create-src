@@ -30,7 +30,7 @@
       bindtextdomain(domain, localedir, nil, "UTF-8")
     end
 
-親クラスのinitializeを呼び出した後（super）、親クラスのinitializeで実行済みのbindtextdomainを再度呼び出しています。これは"hwedit_glade.rb"を編集せずに、ローカライズ用データの出力時の文字コードを正しく指定するためです。たとえばWindowsのコマンドプロンプトに日本語を含む文字列を出力する場合、スクリプト中の"UTF-8"を"Shift-JIS"に書き換えておかないと文字化けします。ですので必要がなければここのbindtextdomainの呼び出しは削除してしまってかまいません。
+親クラスのinitializeを呼び出した後（super）、親クラスのinitializeで実行済みのbindtextdomainを再度呼び出しています。これは"hwedit_glade.rb"を編集せずに、ローカライズ用データの出力時の文字コードを正しく指定するためです。たとえばWindowsのコマンドプロンプトに日本語を含む文字列を出力する場合、スクリプト中の"UTF-8"を"Shift-JIS"に書き換えておかないと文字化けします（ハードコーディングを避けられるのであれば、その方が望ましいでしょう）。ですので必要がなければここのbindtextdomainの呼び出しは削除してしまってかまいません。
 
     def on_main_window_delete_event(widget, arg0)
       false
@@ -38,6 +38,11 @@
     def on_main_window_destroy(widget)
       Gtk.main_quit
     end
+
+"((<プライマリ（メイン）ウィンドウを作る|libglade2-tut-mainwindow>))"のページで書いたように、プログラムのウィンドウのクローズボタンをクリックしたときに正しくプログラムを終了させるのに最低限必要な処理を書きます。（今の時点ではon_main_window_delete_eventは変更しなくても動作しますが）
+
+※　他のイベントハンドラもカスタマイズが必要になったときのために消さずに残しておきます。
+
   end
   
   # Main program
