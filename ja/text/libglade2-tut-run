@@ -10,6 +10,8 @@ DOSプロンプトで、LANG=Cを設定してからglade-2.exeを起動します（PATHが正しく設定さ
   C:\>set LANG=C
   C:\>glade-2
 
+※　現在のバージョンでは"(Rubyインストールフォルダ)\bin"フォルダの"glade-2.bat"から起動することによってこの設定が自動で行われます。
+
 == Linux/FreeBSDの場合
 X上のターミナルウインドウで、LANG=Cを設定してからglade-2を起動します。
 
