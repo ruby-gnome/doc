@@ -39,7 +39,7 @@ Ruby/Libglade2д╧╣ё║▌▓╜дм┴░─єд╩д╬д╟((<Ruby-GetText-Package|raa:ruby-gettext>))дм╔
     
   end
 
-е│еєе╣е╚ещепе┐(HweditGlade.new)╝┬╣╘╗■бвpath_or_dataд╬╗╪─ъд╧╔м┐▄д╟д╣бгGlade XMLе╒ебедеы(*.glade)дЄ╗╪─ъд╣дыдлбвGlade XML(*.gladeд╬╞т═╞)дЄ╩╕╗·╬єд╚д╖д╞┼╧д╖д╞двд▓д▐д╣бгд┐д└д╖бв╩╕╗·╬єд╚д╖д╞┼╧д╣╛ь╣чд╧бвflagд╦GladeXML::BUFFERдЄ╗╪─ъд╣ды╔м═╫дмдвдъд▐д╣бгdomainд╧Ruby/Libgladeд╚((<Ruby-GetText-Package|raa:ruby-gettext>))д╟═╤дддые╔еседеє╠╛б╩╕└╕ьеъе╜б╝е╣╠╛бзmoе╒ебедеыб╩еэб╝елещеде║═╤е╟б╝е┐б╦д╬╕б║ўд╦═╤дддщдьдыбг─╠╛яд╧е╫еэе░ещер╠╛дЄ╗╪─ъд╣дыб╦д╟д╣бг
+е│еєе╣е╚ещепе┐(HweditGlade.new)╝┬╣╘╗■бвpath_or_dataд╬╗╪─ъд╧╔м┐▄д╟д╣бгGlade XMLе╒ебедеы(*.glade)д╬е╤е╣дЄ╗╪─ъд╣дыдлбвGlade XML(*.gladeд╬╞т═╞)дЄ╩╕╗·╬єд╚д╖д╞┼╧д╖д╞двд▓д▐д╣бгд┐д└д╖бв╩╕╗·╬єд╚д╖д╞┼╧д╣╛ь╣чд╧бвflagд╦GladeXML::BUFFERдЄ╗╪─ъд╣ды╔м═╫дмдвдъд▐д╣бгdomainд╧Ruby/Libgladeд╚((<Ruby-GetText-Package|raa:ruby-gettext>))д╟═╤дддые╔еседеє╠╛б╩╕└╕ьеъе╜б╝е╣╠╛бзmoе╒ебедеыб╩еэб╝елещеде║═╤е╟б╝е┐б╦д╬╕б║ўд╦═╤дддщдьдыбг─╠╛яд╧е╫еэе░ещер╠╛дЄ╗╪─ъд╣дыб╦д╟д╣бгlocaledirд╦д╧еэб╝елещеде║═╤е╟б╝е┐дЄе╟е╒ейеые╚д╬╛ь╜ъд╦├╓длд╩дд╛ь╣чд╦д╜д╬е╤е╣дЄ╗╪─ъд╖д▐д╣бг
 
   def on_open1_activate(widget)
     puts "on_open1_activate() is not implemented yet."
