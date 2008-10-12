@@ -1,0 +1,18 @@
+[core]
+        repositoryformatversion = 0
+        filemode = true
+	bare = false
+	logallrefupdates = true
+[svn-remote "svn"]
+	url = https://ruby-gnome2.svn.sourceforge.net/svnroot/ruby-gnome2
+	fetch = doc/trunk:refs/remotes/trunk
+	branches = doc/branches/*:refs/remotes/*
+	tags = doc/tags/*:refs/remotes/tags/*
+[remote "sf.jp"]
+	url = ssh://kous@shell.sourceforge.jp/home/groups/r/ru/ruby-gnome2/data/hiki-repos
+	fetch = refs/heads/*:refs/remotes/sf.jp/*
+	uploadpack = /home/groups/r/ru/ruby-gnome2/local/bin/git-upload-pack
+	receivepack = /home/groups/r/ru/ruby-gnome2/local/bin/git-receive-pack
+[branch "hiki"]
+	remote = sf.jp
+	merge = refs/heads/master
