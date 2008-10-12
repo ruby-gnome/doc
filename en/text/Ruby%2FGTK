@@ -122,6 +122,7 @@
 
   * Gtk::ComboBox - A widget used to choose from a list of items
   * Gtk::ComboBoxEntry - A text entry field with a dropdown list
+  * Gtk::ItemFactory - A factory for menus
   * Gtk::Menu - A menu widget
   * Gtk::MenuBar - A subclass widget for Gtk::MenuShell which holds Gtk::MenuItem widgets
   * Gtk::MenuItem - The widget used for item in menus

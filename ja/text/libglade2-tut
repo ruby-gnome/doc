@@ -16,7 +16,7 @@ Gladeは地域化（L10n:Localization)のためのフレームワーク(GetTextベース)を持ってい
 == 目次
 === まずはGladeでGUIの雛形をつくる
 最初にGladeを使ってGUIの雛形を作ります。Gladeの使い方を知っている方はこの章を読み飛ばしていただいて構いません。
-* ((<GLadeのインストール|libglade2-tut-install>))
+* ((<Gladeのインストール|libglade2-tut-install>))
 * ((<Gladeの起動 - 英語モードで！|libglade2-tut-run>))
    * MS Windowsの場合
    * Linux/FreeBSDの場合
@@ -63,9 +63,12 @@ Gladeは地域化（L10n:Localization)のためのフレームワーク(GetTextベース)を持ってい
    * プロジェクトの単位
 
 === 参考文献
-   * GLADEホームページのFeaturesのページ - (((<URL:http://glade.gnome.org/features.html>)))
+   * GLADEホームページのFeaturesのページ - ((<URL:http://glade.gnome.org/features.html>))
    * GNOME Human Interface Guidelines - ((<URL:http://kazehakase.sourceforge.jp/cgi-bin/hiki/hiki.cgi?GNOME_HIG>))
+   * GTK/GNOMEによるGUIプログラミング - Sugaya's PukiWiki - ((<URL:http://www.iim.ics.tut.ac.jp/~sugaya/wiki/wiki/index.php?GTK%2FGNOME%A4%CB%A4%E8%A4%EBGUI%A5%D7%A5%ED%A5%B0%A5%E9%A5%DF%A5%F3%A5%B0>))
 
 === ChangeLog
 * 2004/11/08 ((<むとう>))
    * 新規作成
+* 2008/09/24 ((<きたがわ>))
+   * 改訂・加筆開始

@@ -1,4 +1,6 @@
 = テンプレートからソースコード(Rubyスクリプト)へ
+※　このページはまだ改訂中です。
+
 さて、後はテンプレートを編集していきます。というのは半分正解で半分不正解です。
 
 前章でも
@@ -15,52 +17,36 @@
 
 == まずはコピペ
 一番最初にhwedit_glade.rbを生成したとき、これをコピーして、（この例では）hwedit.rbという名前にします。
-次に、このファイルを編集します。以下に例を示します。
+次に、このファイルを編集します。以下に例を示します。（変更部分のみ）
 
   require 'hwedit_glade'
  
   class Hwedit < HweditGlade 
-　
+  #  include GetText
+
+  #  attr :glade
+
+冒頭を、"hwedit_glade"を読み込んで実行しHweditGladeのサブクラスを定義する形に書き換えます。コメントアウトした部分は不要なので削除します。
+
     def initialize(path_or_data, root = nil, domain = nil, localedir = nil, flag = GladeXML::FILE)
-      GetText.bindtextdomain(domain, localedir, nil, "UTF-8")
-      super(path_or_data, root = nil, domain = nil, localedir = nil, flag = GladeXML::FILE)
+      super(path_or_data, root, domain, localedir, flag)
+      bindtextdomain(domain, localedir, nil, "UTF-8")
     end
-　
-    def on_save1_activate(widget)
-      puts "on_save1_activate() is not implemented yet."
-    end
-    def on_quit1_activate(widget)
-      puts "on_quit1_activate() is not implemented yet."
-    end
-    def on_cut1_activate(widget)
-      puts "on_cut1_activate() is not implemented yet."
-    end
-    def on_about1_activate(widget)
-      puts "on_about1_activate() is not implemented yet."
-    end
-    def on_open1_activate(widget)
-      puts "on_open1_activate() is not implemented yet."
-    end
-    def on_paste1_activate(widget)
-      puts "on_paste1_activate() is not implemented yet."
-    end  
-    def on_closebutton1_clicked(widget)
-  　　puts "on_closebutton1_clicked() is not implemented yet."
-    end
-    def on_new1_activate(widget)
-      puts "on_new1_activate() is not implemented yet."
-    end
-    def on_save_as1_activate(widget)
-      puts "on_save_as1_activate() is not implemented yet."
-    end
+
+親クラスのinitializeを呼び出した後（super）、親クラスのinitializeで実行済みのbindtextdomainを再度呼び出しています。これは"hwedit_glade.rb"を編集せずに、ローカライズ用データの出力時の文字コードを正しく指定するためです。たとえばWindowsのコマンドプロンプトに日本語を含む文字列を出力する場合、スクリプト中の"UTF-8"を"Shift-JIS"に書き換えておかないと文字化けします（ハードコーディングを避けられるのであれば、その方が望ましいでしょう）。ですので必要がなければここのbindtextdomainの呼び出しは削除してしまってかまいません。
+
     def on_main_window_delete_event(widget, arg0)
-      puts "on_main_window_delete_event() is not implemented yet."
+      false
     end
-    def on_copy1_activate(widget)
-      puts "on_copy1_activate() is not implemented yet."
+    def on_main_window_destroy(widget)
+      Gtk.main_quit
     end
+
+"((<プライマリ（メイン）ウィンドウを作る|libglade2-tut-mainwindow>))"のページで少し説明したように、プログラムのウィンドウのクローズボタンをクリックしたときに正しくプログラムを終了させるのに最低限必要な処理を書きます。（今の時点ではon_main_window_delete_eventは変更しなくても動作しますが）
+
+※　他のイベントハンドラもカスタマイズが必要になったときのために消さずに残しておきます。
+
   end
-  
   
   # Main program
   if __FILE__ == $0
