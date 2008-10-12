@@ -7,12 +7,12 @@
 rubyはc:\rubyにインストールされていて、hweditはc:\Projects\hweditにインストールされているとします。
 
  C:\>cd c:\Projects\hwedit
- C:\>ruby c:\ruby\bin\ruby-glade-create-template hwedit.glade > hwedit_glade.rb
+ C:\Projects\hwedit>ruby c:\ruby\bin\ruby-glade-create-template hwedit.glade > hwedit_glade.rb
 
 === (注意）上記で動作しない場合は以下のようにしてください。
 
  C:\>cd c:\Projects\hwedit
- C:\>c:\ruby\bin\ruby.exe c:\ruby\bin\ruby-glade-create-template hwedit.glade > hwedit_glade.rb
+ C:\Projects\hwedit>c:\ruby\bin\ruby.exe c:\ruby\bin\ruby-glade-create-template hwedit.glade > hwedit_glade.rb
 
 == Linux/FreeBSDの場合
 hweditは$HOME/Projects/hweditにインストールされているとします。
