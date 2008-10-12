@@ -22,6 +22,9 @@
   require 'hwedit_glade'
  
   class Hwedit < HweditGlade 
+  #  include GetText
+
+  #  attr :glade
 
 冒頭を、"hwedit_glade"を読み込んで実行しHweditGladeのサブクラスを定義する形に書き換えます。
 
