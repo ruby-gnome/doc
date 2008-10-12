@@ -48,7 +48,7 @@ Gtk::Toolbar implements Atk::ImplementorIface, Gtk::Buildable and Gtk::ToolShell
     * toolitem: a Gtk::ToolItem to add to the toolbar.
     * Returns: the new toolbar item as a Gtk::ToolItem.
 
-    Since 2.4.
+    ((*Since 2.4*))
 
 --- item_index(toolitem)
 
@@ -56,14 +56,14 @@ Gtk::Toolbar implements Atk::ImplementorIface, Gtk::Buildable and Gtk::ToolShell
     * toolitem: a Gtk::ToolItem that is a child of the toolbar.
     * Returns: the position of item on the toolbar.
 
-    Since 2.4.
+    ((*Since 2.4*))
 
 --- n_items
 
     Returns the number of items on the toolbar.
     * Returns: the number of items on the toolbar 
 
-    Since 2.4.
+    ((*Since 2.4*))
 
 --- nth_item(n)
 
@@ -71,7 +71,7 @@ Gtk::Toolbar implements Atk::ImplementorIface, Gtk::Buildable and Gtk::ToolShell
     * n: a position on the toolbar.
     * Returns: The n'th Gtk::ToolItem on toolbar, or nil if there isn't an n'th item. 
 
-    Since 2.4.
+    ((*Since 2.4*))
 
 --- drop_index(x, y)
 
@@ -80,7 +80,7 @@ Gtk::Toolbar implements Atk::ImplementorIface, Gtk::Buildable and Gtk::ToolShell
     * y: y coordinate of a point on the toolbar 
     * Returns: The position corresponding to the point (x, y) on the toolbar. 
 
-    Since 2.4.
+    ((*Since 2.4*))
 
 --- set_drop_highlight_item(tool_item, index_)
 
@@ -91,14 +91,14 @@ Gtk::Toolbar implements Atk::ImplementorIface, Gtk::Buildable and Gtk::ToolShell
     * index_: a position on toolbar
     * Returns: self: ((*FIXME*)) (In GTK API, the return is void.)
 
-    Since 2.4.
+    ((*Since 2.4*))
 
 --- show_arrow?
 
     Gets the value if an arrow should be shown if the toolbar doesn't fit.
      * Returns: true if an arrow should be shown if the toolbar doesn't fit
 
-    Since 2.4.
+    ((*Since 2.4*))
 
 --- show_arrow=(show_arrow)
 
@@ -106,7 +106,7 @@ Gtk::Toolbar implements Atk::ImplementorIface, Gtk::Buildable and Gtk::ToolShell
      * show_arrow: true if an arrow should be shown if the toolbar doesn't fit
      * Returns: show_arrow
 
-    Since 2.4.
+    ((*Since 2.4*))
 
 --- set_show_arrow(show_arrow)
 
@@ -114,7 +114,7 @@ Gtk::Toolbar implements Atk::ImplementorIface, Gtk::Buildable and Gtk::ToolShell
      * show_arrow: true if an arrow should be shown if the toolbar doesn't fit
      * Returns: self
 
-    Since 2.4.
+    ((*Since 2.4*))
 
 --- orientation
 
@@ -252,6 +252,8 @@ Gtk::Toolbar implements Atk::ImplementorIface, Gtk::Buildable and Gtk::ToolShell
 
 == Deprecated Instance Methods
 
+
+
 --- append(text, tooltip_text = nil, tooltip_private_text = nil, icon = nil) { ... }
 
     Adds a new button to the end (right or bottom edges) of the given toolbar.
@@ -262,7 +264,7 @@ Gtk::Toolbar implements Atk::ImplementorIface, Gtk::Buildable and Gtk::ToolShell
     * { ... }: the block to be executed when the button is pressed. 
     * Returns: the new toolbar item as a Gtk::Widget.
 
-    Deprecated since 2.4.
+    ((*Deprecated since 2.4*))
 
 --- append(type, widget = nil, text = nil, tooltip_text = nil, tooltip_private_text = nil, icon = nil) { ... }
 
@@ -277,7 +279,7 @@ Gtk::Toolbar implements Atk::ImplementorIface, Gtk::Buildable and Gtk::ToolShell
     * { ... }: the block to be executed when the button is pressed. 
     * Returns: the new toolbar item as a Gtk::Widget.
 
-    Deprecated since 2.4.
+    ((*Deprecated since 2.4*))
 
 --- append(widget, tooltip_text = nil, tooltip_private_text = nil)
 
@@ -287,7 +289,7 @@ Gtk::Toolbar implements Atk::ImplementorIface, Gtk::Buildable and Gtk::ToolShell
     * tooltip_private_text : used for context-sensitive help about this toolbar element. 
     * Returns: the new toolbar item as a Gtk::Widget.
 
-    Deprecated since 2.4.
+    ((*Deprecated since 2.4*))
 
 --- append(stock_id, tooltip_text = nil, tooltip_private_text = nil){ ... }
 
@@ -297,14 +299,14 @@ Gtk::Toolbar implements Atk::ImplementorIface, Gtk::Buildable and Gtk::ToolShell
     * tooltip_private_text : used for context-sensitive help about this toolbar element. 
     * Returns: the new toolbar item as a Gtk::Widget.
 
-    Deprecated since 2.4.
+    ((*Deprecated since 2.4*))
 
 --- append_space
 
     Adds a new space to the end of the toolbar.
     * Returns: self
 
-    Deprecated since 2.4.
+    ((*Deprecated since 2.4*))
 
 --- prepend(text, tooltip_text = nil, tooltip_private_text = nil, icon = nil) { ... }
 
@@ -316,7 +318,7 @@ Gtk::Toolbar implements Atk::ImplementorIface, Gtk::Buildable and Gtk::ToolShell
     * { ... }: the block to be executed when the button is pressed. 
     * Returns: the new toolbar item as a Gtk::Widget.
 
-    Deprecated since 2.4.
+    ((*Deprecated since 2.4*))
 
 --- prepend(type, widget = nil, text = nil, tooltip_text = nil, tooltip_private_text = nil, icon = nil) { ... }
 
@@ -327,11 +329,12 @@ Gtk::Toolbar implements Atk::ImplementorIface, Gtk::Buildable and Gtk::ToolShell
     * text: give your toolbar button a label. 
     * tooltip_text: a string that appears when the user holds the mouse over this item. 
     * tooltip_private_text : used for context-sensitive help about this toolbar element. 
+
     * icon: a Gtk::Widget that should be used as the button's icon. 
     * { ... }: the block to be executed when the button is pressed. 
     * Returns: the new toolbar item as a Gtk::Widget.
 
-    Deprecated since 2.4.
+    ((*Deprecated since 2.4*))
 
 --- prepend(widget, tooltip_text = nil, tooltip_private_text = nil)
 
@@ -341,7 +344,7 @@ Gtk::Toolbar implements Atk::ImplementorIface, Gtk::Buildable and Gtk::ToolShell
     * tooltip_private_text : used for context-sensitive help about this toolbar element. 
     * Returns: the new toolbar item as a Gtk::Widget.
 
-    Deprecated since 2.4.
+    ((*Deprecated since 2.4*))
 
 --- prepend(stock_id, tooltip_text = nil, tooltip_private_text = nil){ ... }
 
@@ -352,14 +355,14 @@ Gtk::Toolbar implements Atk::ImplementorIface, Gtk::Buildable and Gtk::ToolShell
     * tooltip_private_text : used for context-sensitive help about this toolbar element. 
     * Returns: the new toolbar item as a Gtk::Widget.
 
-    Deprecated since 2.4.
+    ((*Deprecated since 2.4*))
 
 --- prepend_space
 
     Adds a new space to the beginning of the toolbar.
     * Returns: self
 
-    Deprecated since 2.4.
+    ((*Deprecated since 2.4*))
 
 --- insert(position, text, tooltip_text = nil, tooltip_private_text = nil, icon = nil) { ... }
 
@@ -372,7 +375,7 @@ Gtk::Toolbar implements Atk::ImplementorIface, Gtk::Buildable and Gtk::ToolShell
     * { ... }: the block to be executed when the button is pressed. 
     * Returns: the new toolbar item as a Gtk::Widget.
 
-    Deprecated since 2.4.
+    ((*Deprecated since 2.4*))
 
 --- insert(position, type, widget = nil, text = nil, tooltip_text = nil, tooltip_private_text = nil, icon = nil) { ... }
 
@@ -388,7 +391,7 @@ Gtk::Toolbar implements Atk::ImplementorIface, Gtk::Buildable and Gtk::ToolShell
     * { ... }: the block to be executed when the button is pressed. 
     * Returns: the new toolbar item as a Gtk::Widget.
 
-    Deprecated since 2.4.
+    ((*Deprecated since 2.4*))
 
 --- insert(position, widget, tooltip_text = nil, tooltip_private_text = nil)
 
@@ -399,7 +402,7 @@ Gtk::Toolbar implements Atk::ImplementorIface, Gtk::Buildable and Gtk::ToolShell
     * tooltip_private_text : used for context-sensitive help about this toolbar element. 
     * Returns: the new toolbar item as a Gtk::Widget.
 
-    Deprecated since 2.4.
+    ((*Deprecated since 2.4*))
 
 --- insert(position, stock_id, tooltip_text = nil, tooltip_private_text = nil){ ... }
 
@@ -410,7 +413,7 @@ Gtk::Toolbar implements Atk::ImplementorIface, Gtk::Buildable and Gtk::ToolShell
     * tooltip_private_text : used for context-sensitive help about this toolbar element. 
     * Returns: the new toolbar item as a Gtk::Widget.
 
-    Deprecated since 2.4.
+    ((*Deprecated since 2.4*))
 
 --- insert_space(position)
 
@@ -418,7 +421,7 @@ Gtk::Toolbar implements Atk::ImplementorIface, Gtk::Buildable and Gtk::ToolShell
     * position: the number of widgets after which a space should be inserted.  
     * Returns: self
 
-    Deprecated since 2.4.
+    ((*Deprecated since 2.4*))
 
 --- remove_space(position)
 
@@ -426,14 +429,14 @@ Gtk::Toolbar implements Atk::ImplementorIface, Gtk::Buildable and Gtk::ToolShell
     * position: the index of the space to remove. 
     * Returns: self
 
-    Deprecated since 2.4.
+    ((*Deprecated since 2.4*))
 
 --- tooltips?
 
     Retrieves whether tooltips are enabled. See Gtk::Toolbar#tooltips=.
     * Returns: true if tooltips are enabled
 
-    Deprecated since 2.14 and should not be used in newly-written code. The toolkit-wide Gtk::Settings.properties "gtk-enable-tooltips" property is now used instead.
+    ((*Deprecated since 2.14*)) and should not be used in newly-written code. The toolkit-wide Gtk::Settings.properties "gtk-enable-tooltips" property is now used instead.
 
 --- tooltips=(enable)
 
@@ -441,7 +444,7 @@ Gtk::Toolbar implements Atk::ImplementorIface, Gtk::Buildable and Gtk::ToolShell
     * enable: set to false to disable the tooltips, or true to enable them.  
     * Returns: enable
 
-    Deprecated since 2.14 and should not be used in newly-written code. The toolkit-wide Gtk::Settings.properties "gtk-enable-tooltips" property is now used instead.
+    ((*Deprecated since 2.14*)) and should not be used in newly-written code. The toolkit-wide Gtk::Settings.properties "gtk-enable-tooltips" property is now used instead.
 
 --- set_tooltips(enable)
 
@@ -449,7 +452,7 @@ Gtk::Toolbar implements Atk::ImplementorIface, Gtk::Buildable and Gtk::ToolShell
     * enable: set to false to disable the tooltips, or true to enable them.  
     * Returns: self
 
-    Deprecated since 2.14 and should not be used in newly-written code. The toolkit-wide Gtk::Settings.properties "gtk-enable-tooltips" property is now used instead.
+    ((*Deprecated since 2.14*)) and should not be used in newly-written code. The toolkit-wide Gtk::Settings.properties "gtk-enable-tooltips" property is now used instead.
 
 == Constants
 
@@ -482,7 +485,7 @@ Used to customize the appearance of a Gtk::Toolbar. Note that setting the toolba
 
 === GtkToolbarChildType
 
-Deprecated since 2.4.
+((*Deprecated since 2.4*))
 
 GtkToolbarChildType is used to set the type of new elements that are added to a Gtk::Toolbar.
 
@@ -516,7 +519,7 @@ GtkToolbarChildType is used to set the type of new elements that are added to a 
 
     Default value: GTK::IconSize::LARGE_TOOLBAR
 
-    Since 2.10
+    ((*Since 2.10*))
 
 --- icon-size-set: true or false (Read/Write)
 
@@ -524,7 +527,7 @@ GtkToolbarChildType is used to set the type of new elements that are added to a 
 
     Default value: false
 
-    Since 2.10
+    ((*Since 2.10*))
 
 --- orientation: Gtk::Orientation (Read/Write)
 
@@ -550,7 +553,7 @@ GtkToolbarChildType is used to set the type of new elements that are added to a 
 
     Default value: TRUE
 
-    Since 2.8 
+    ((*Since 2.8*))
 
 == Style Properties
 
@@ -655,6 +658,7 @@ GtkToolbarChildType is used to set the type of new elements that are added to a 
 
 == ChangeLog
 
+* 2008-10-03 Added highlighting to "since x.x" and "deprecated x.x" phrases - royw
 * 2008-10-01 Added deprecation information - royw
 * 2005-05-07 Added Child/Style properties. - ((<Masao>))
 * 2003-05-26 Added - ((<Masao>))
