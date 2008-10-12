@@ -655,6 +655,6 @@ GtkToolbarChildType is used to set the type of new elements that are added to a 
 
 == ChangeLog
 
-* 2008-10-01 Added deprecation information - ((<Royw>))
+* 2008-10-01 Added deprecation information - royw
 * 2005-05-07 Added Child/Style properties. - ((<Masao>))
 * 2003-05-26 Added - ((<Masao>))
