@@ -75,6 +75,16 @@ PROG_PATH¤Ïhwedit.glade¤òÃÖ¤¯PATH¤Ç¤¹¡£¾åµ­Îã¤Ç¤Ï¤³¤Î¥Ä¡¼¥ë¤ò¼Â¹Ô¤¹¤ë¥Ç¥£¥ì¥¯¥È¥
 ¤µ¤Æ¡¢¸å¤Ïµ¤¤Î¸þ¤¯¤Þ¤Þ¤Ë¥·¥°¥Ê¥ë¥Ï¥ó¥É¥é¤¿¤Á¤ò¼ÂÁõ¤·¤Þ¤·¤ç¤¦¡£@glade["textview1"]¤È¤¤¤¦¤è¤¦¤Ê·Á¤Ç¤½¤ì¤¾¤ì¥¦¥£¥¸¥§¥Ã¥È¤Î¥¤¥ó¥¹¥¿¥ó¥¹¤ò¸Æ¤Ó½Ð¤¹¤³¤È¤¬¤Ç¤­¤Þ¤¹¡£"textview1"¤ÏGlade-2¾å¤ÇÀßÄê¤·¤¿¡Ê¤¢¤ë¤¤¤Ï¥Ç¥Õ¥©¥ë¥È¤Î¤Þ¤Þ¤Ç¤Ï¥¦¥£¥¸¥§¥Ã¥È + ÈÖ¹æ¤È¤¤¤¦·Á¤Ë¤Ê¤ë¡Ë¥¦¥£¥¸¥§¥Ã¥ÈÌ¾¤Ç¤¹¡£
 ¤¿¤À¡¢¤¤¤Á¤¤¤Á¤½¤Î¤è¤¦¤Ë½ñ¤¯¤Î¤â¼ê´Ö¤Ê¤Î¤ÇÎÉ¤¯»È¤¦¥¦¥£¥¸¥§¥Ã¥È¤Ï¥¤¥ó¥¹¥¿¥ó¥¹ÊÑ¿ô¤ËÂåÆþ¤·¤Æ¤ª¤¯¤ÈÊØÍø¤Ç¤¹¡£
 
-¤³¤³¤ËÎã¤òÃÖ¤¤¤Æ¤ª¤­¤Þ¤¹¡£
+Îã¤¨¤Ð¤³¤ó¤Ê´¶¤¸¤Ç¤¹¡£
 
-(¤Þ¤ÀÌ¤)
+  def initialize(path_or_data, root = nil, domain = nil, localedir = nil, flag = GladeXML::FILE)
+    super(path_or_data, root, domain, localedir, flag)
+    bindtextdomain(domain, localedir, nil, "Shift-JIS")
+    
+    @editor = @glade['textview1']
+    @filedlg = @glade['filechooser']
+    @aboutdlg = @glade['aboutdialog']
+  end
+
+
+(¤Þ¤ÀÌ¤´°À®)
