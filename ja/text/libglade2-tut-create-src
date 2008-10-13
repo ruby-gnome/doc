@@ -24,7 +24,7 @@
 
   #  attr :glade
 
-冒頭を、"hwedit_glade"を読み込んで実行しHweditGladeのサブクラスを定義する形に書き換えます。コメントアウトした部分は不要なので削除します。
+冒頭を、hwedit_glade.rbを読み込んで実行しHweditGladeのサブクラスを定義する形に書き換えます。コメントアウトした部分は不要なので削除します。
 
     def initialize(path_or_data, root = nil, domain = nil, localedir = nil, flag = GladeXML::FILE)
       super(path_or_data, root, domain, localedir, flag)
