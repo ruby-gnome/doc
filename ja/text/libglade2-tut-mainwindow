@@ -33,10 +33,8 @@ glade-2を起動し、まずは、プライマリウインドウを生成します。
 
 Gladeで"delete_event" Signalを登録せずHandlerを書かなかった場合は、必ず"destroy" Signalが発生します。）
 
-さらに"destroy" SignalのHandlerを作成するためにSignal:欄でdestroyを選択し直してこれもリストに追加します。このHandler内には本当にウィンドウを閉じる（破棄する）場合に行う処理を書くことになります。
+さらに"destroy" SignalのHandlerを作成するためにSignal:欄でdestroyを選択し直してこれもリストに追加します。このHandler（on_main_window_destroy）内には本当にウィンドウを閉じる（破棄する）場合に行う処理を書くことになります。((-Handler内では必ず"Gtk.main_quit"を呼び出すようにします。このモジュールメソッドは、アプリケーションがSignalを処理するためのメインループから脱け出す機能を持つので、これを呼び忘れると、ウィンドウが消されたにもかかわらずスクリプトの実行がトップレベルに戻らずプログラムが終了できない、という状態になってしまいます。-))
 
 {{br}}
 
 ＃後で、"on_main_window_delete_event"と"on_main_window_destroy"というメソッドをRubyで記述し、実際の終了コードを書きます。
-
-また"destroy" SignalのHandler（on_main_window_destroy）では必ず"Gtk.main_quit"を呼び出すようにします。このモジュールメソッドは、アプリケーションがSignalを処理するためのメインループから脱け出す機能を持つので、これを呼び忘れると、ウィンドウが消されたにもかかわらずスクリプトの実行がトップレベルに戻らずプログラムが終了できない、という状態になってしまいます。
