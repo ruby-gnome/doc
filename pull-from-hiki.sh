@@ -12,8 +12,8 @@ run()
 run git checkout master
 run git svn rebase
 run git checkout hiki
-run git merge master               # swap?
-run git pull --no-ff sf.jp master  # swap?
+run git merge master
+run git pull
 run git checkout master
 run git merge hiki
 run git svn dcommit

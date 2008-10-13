@@ -13,5 +13,5 @@ run git checkout master
 run git svn rebase
 run git checkout hiki
 run git merge master
-run git push --verbose sf.jp hiki:master
+run git push --verbose
 run git checkout master
