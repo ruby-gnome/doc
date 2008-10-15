@@ -28,10 +28,10 @@
 
     def initialize(path_or_data, root = nil, domain = nil, localedir = nil, flag = GladeXML::FILE)
       super(path_or_data, root, domain, localedir, flag)
-      bindtextdomain(domain, localedir, nil, "UTF-8")
+      bindtextdomain(domain, localedir, nil, "")
     end
 
-親クラスのinitializeを呼び出した後（super）、親クラスのinitializeで実行済みのbindtextdomainを再度呼び出しています。これは"hwedit_glade.rb"を編集せずに、ローカライズ用データの出力時の文字コードを正しく指定するためです。たとえばWindowsのコマンドプロンプトに日本語を含む文字列を出力する場合、スクリプト中の"UTF-8"を"Shift-JIS"に書き換えておかないと文字化けします。ですので必要がなければここのbindtextdomainの呼び出しは削除してしまってかまいません。
+親クラスのinitializeを呼び出した後（super）、親クラスのinitializeで実行済みのbindtextdomainを再度呼び出しています。これは"hwedit_glade.rb"を編集せずに、ローカライズ用データの出力時の文字コードを正しく指定するためです。上記のように文字コード名に空文字列を指定しておくと、プログラム実行時のロケールに合わせたものが自動で選択されます（MS Windowsではそのように動作しました）。文字コード無指定のbindtextdomainを実行しなかった場合、HweditGladeクラスでのbindtextdomain実行時に指定したUTF-8が有効なままになるので、たとえばMS Windowsのコンソールウィンドウにローカライズ用データ文字列を出力すると文字化けします。
 
     def on_main_window_delete_event(widget, arg0)
       false
