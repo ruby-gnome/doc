@@ -64,11 +64,14 @@ Gladeは地域化（L10n:Localization)のためのフレームワーク(GetTextベース)を持ってい
 
 === 参考文献
    * GLADEホームページのFeaturesのページ - ((<URL:http://glade.gnome.org/features.html>))
-   * GNOME Human Interface Guidelines - ((<URL:http://kazehakase.sourceforge.jp/cgi-bin/hiki/hiki.cgi?GNOME_HIG>))
-   * GTK/GNOMEによるGUIプログラミング - Sugaya's PukiWiki - ((<URL:http://www.iim.ics.tut.ac.jp/~sugaya/wiki/wiki/index.php?GTK%2FGNOME%A4%CB%A4%E8%A4%EBGUI%A5%D7%A5%ED%A5%B0%A5%E9%A5%DF%A5%F3%A5%B0>))
+   * GNOME Human Interface Guidelines - ((<URL:http://kazehakase.sourceforge.jp/cgi-bin/hiki/hiki.cgi?GNOME_HIG>)){{br}}{{br}}
+   * GTK/GNOMEによるGUIプログラミング - Sugaya's PukiWiki - ((<URL:http://www.iim.ics.tut.ac.jp/~sugaya/wiki/wiki/index.php?GTK%2FGNOME%A4%CB%A4%E8%A4%EBGUI%A5%D7%A5%ED%A5%B0%A5%E9%A5%DF%A5%F3%A5%B0>)){{br}}{{br}}
+   * Ruby-GetText-Package - よたらぼ 保管庫 - ((<URL:http://www.yotabanana.com/hiki/ja/ruby-gettext.html?ruby-gettext>))
+   * FFTT : ruby-gettext - ((<URL:http://tech.feedforce.jp/ruby-gettext.html>))
+   * (書籍)Inside Linux Software オープンソースソフトウェアのからくりとしくみ - ((<URL:http://www.seshop.com/Detail.asp?pid=7679>))
 
 === ChangeLog
 * 2004/11/08 ((<むとう>))
    * 新規作成
-* 2008/09/24 ((<きたがわ>))
-   * 改訂・加筆開始
+* 2008/09/24〜 ((<きたがわ>))
+   * 改訂・加筆
