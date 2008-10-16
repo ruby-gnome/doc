@@ -82,9 +82,11 @@ PROG_PATHд╧hwedit.gladeдЄ├╓дпPATHд╟д╣бг╛х╡н╬уд╟д╧д│д╬е─б╝еыдЄ╝┬╣╘д╣дые╟егеьепе╚е
     bindtextdomain(domain, localedir, nil, "")
     
     @editor = @glade['textview1']
-    @opendlg = @glade['filechooser']
+    @filedlg = @glade['filechooser']
     @aboutdlg = @glade['aboutdialog']
   end
+
+{{br}}
 
 ░╩▓╝бве╖е░е╩еые╧еєе╔ещд╬╝┬┴ї╬уд╟д╣бгд▐д║д╧┤╩├▒д╩╜ъд╟бв"Edit"есе╦ехб╝д╬"Cut(└┌дъ╝шдъ)"бв"Copy(е│е╘б╝)"бв"Paste(┼╜дъ╔╒д▒)"е│е▐еєе╔дЄ╝┬┴їд╖д╞д▀д▐д╣бг
 
@@ -101,6 +103,8 @@ PROG_PATHд╧hwedit.gladeдЄ├╓дпPATHд╟д╣бг╛х╡н╬уд╟д╧д│д╬е─б╝еыдЄ╝┬╣╘д╣дые╟егеьепе╚е
   end
 
 ░╩╛хб╩╛╨б╦бгGtk::TextViewд╬дкдлд▓д╟д╣бгд┴д╩д▀д╦TextViewежеге╕езе├е╚д╬▒жепеъе├епб╩е│еєе╞ене╣е╚б╦есе╦ехб╝╞тд╬е│е▐еєе╔д╧╝┬┴їд╣ды╔м═╫д╣дщдвдъд▐д╗дєбге╟е╒ейеые╚д╟╞░║юд╖д▐д╣бг
+
+{{br}}
 
 ╝бд╧бв"Help"есе╦ехб╝д╬"About"е│е▐еєе╔дЄ┴к┬Єд╖д┐╗■д╦бвGladeд╟║юд├д╞дкддд┐еве╨еже╚е└едевеэе░дЄ╔╜╝ид╣ды╬уд╟д╣бг
 
@@ -128,5 +132,30 @@ Gtk::Dialog#runд╧бве└едевеэе░╛хд╟▓┐дщдлд╬"response" Signalдм╚п└╕д╣дыд▐д╟┬╘╡бд╖бв
   end
 
 Gtk::Dialog#runд╧бвд╔д╬е▄е┐еєдЄ▓бд╖д╞дте└едевеэе░дм╩─д╕ды╜ш═¤д╬╛ь╣чд╦д╧╩╪═°д╟д╣дмбвд╜джд╟д╩дд╛ь╣чбв┬╛д╬ежеге╕езе├е╚д╚╞▒д╕╩¤╦бд╟е╖е░е╩еые╧еєе╔ещдЄ└▀─ъд╣дыд│д╚дтд╟днд▐д╣бг╛▄д╖дпд╧((<б╓Gtk2е┴ехб╝е╚еъевеыб╫д╬б╓е└едевеэе░б╫д╬е┌б╝е╕|gtk2-tut-dialog>))дЄ╕лд╞▓╝д╡ддбг
+
+{{br}}
+
+дтдж░ьд─бв"File"есе╦ехб╝д╬"Open(│лдп)"е│е▐еєе╔дЄ┴к┬Єд╖д┐╗■д╦бвGladeд╟║юд├д╞дкддд┐FileChooserDialogдЄ╗╚д├д╞бвTextViewд╦е╞ене╣е╚е╒ебедеыдЄ╞╔д▀╣■др╬уд╟д╣бг
+
+  require 'hwedit_glade'
+  require 'kconv'		# д│д╬╣╘дЄ─╔▓├
+
+д▐д║е╖е░е╩еые╧еєе╔ещ╞тд╬╩╕╗·е│б╝е╔╩╤┤╣╜ш═¤д╦╔м═╫д╩Kconvете╕ехб╝еыдЄ╞╔д▀╣■дре│б╝е╔дЄ╦┴╞мд╦─╔▓├д╖д▐д╣бге╫еэе░ещердлдщTextViewд╦е╞ене╣е╚дЄ╞■╬╧д╣ды╛ь╣чбв╩╕╗·е│б╝е╔дмUTF-8д╦д╩д├д╞ддды╔м═╫дмдвдъд▐д╣бг
+
+  def on_open1_activate(widget)
+    if @filedlg.run == Gtk::Dialog::RESPONSE_OK
+      filename  = @filedlg.filename
+      @editor.buffer.text  = ""		# е╨е├е╒ебдЄепеъев
+      File.open(filename).each do |line|	# 1╣╘д║д─╜ш═¤
+        @editor.insert_at_cursor(Kconv.toutf8(line))
+        # ╩╕╗·е│б╝е╔дЄ╩╤┤╣д╖д╞елб╝е╜еы░╠├╓(е╨е├е╒еб╦Ў╚°)д╦┴▐╞■
+      end
+      @editor.move_cursor(Gtk::MOVEMENT_BUFFER_ENDS, -1, false)	# елб╝е╜еыдЄ└ш╞мд╦░▄╞░
+      @editor.cursor_visible  = true				# елб╝е╜еыдЄ╔╜╝и
+    end
+    @filedlg.hide
+  end
+
+
 
 (д▐д└╠д┤░└о)
