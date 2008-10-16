@@ -150,7 +150,6 @@ Gtk::Dialog#runд╧бвд╔д╬е▄е┐еєдЄ▓бд╖д╞дте└едевеэе░дм╩─д╕ды╜ш═¤д╬╛ь╣чд╦д╧╩╪═°д╟д╣д
         # ╩╕╗·е│б╝е╔дЄ╩╤┤╣д╖д╞елб╝е╜еы░╠├╓(е╨е├е╒еб╦Ў╚°)д╦┴▐╞■
       end
       @editor.move_cursor(Gtk::MOVEMENT_BUFFER_ENDS, -1, false)	# елб╝е╜еыдЄ└ш╞мд╦░▄╞░
-      @editor.cursor_visible  = true				# елб╝е╜еыдЄ╔╜╝и
     end
     @filedlg.hide
   end
