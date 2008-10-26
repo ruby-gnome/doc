@@ -344,12 +344,11 @@ Gtk::TextView#move_cursor¤Ï¡¢°ÜÆ°Ã±°Ì¤È°ÜÆ°ÎÌ¤ò»ØÄê¤·¤Æ¥«¡¼¥½¥ë¤ò°ÜÆ°¤¹¤ë¥á¥½¥Ã¥
       File.open(get_platform_filename(filename), 'w') do |f| end
     rescue Errno::EINVAL => err
       p err
-      basename = File.basename(filename)
       dlg = Gtk::MessageDialog.new(
               @filedlg, Gtk::Dialog::MODAL,
               Gtk::MessageDialog::ERROR,
               Gtk::MessageDialog::BUTTONS_CLOSE,
-              basename + " is a invalid file name.")
+              File.basename(filename) + " is a invalid file name.")
       dlg.run
       dlg.destroy
       return false
