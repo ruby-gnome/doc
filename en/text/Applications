@@ -13,12 +13,30 @@ to browse them.
 :((<ChessClock|URL:http://gnomecoder.wordpress.com/chessclock/>))
 Chessclock lets a computer (ideally a laptop) replace a traditional chess clock sitting next to a chess board.
 
+:((<Don Manolo|URL:http://donmanolo2.sourceforge.net/>))
+Don Manolo is a point of sale growing to miniERP. It uses Ruby-Gnome2 and Ruby On Rails.
+
+:((<Duby|URL:http://duby.rubyforge.org>))
+Duby is a disk space explorer, showing why your newly bought huge hard disk is already full. Duby helps you find what takes the most space on your disk, visually, with a nice representation of your space as a pie, with files and directories acting as slices of that pie.
+
 :((<Fantasdic|URL:http://www.gnome.org/projects/fantasdic/>))
 Fantasdic is a versatile multi-platform dictionary application which
 allows you to look up words in a variety of dictionary sources.
 
+:((<JLDrill|URL:http://jldrill.rubyforge.org/>))
+JLDrill is a program for helping people drill various aspects of the Japanese language. Current features include a kana drill, a vocabulary drill and a dictionary cross reference tool.
+
+:((<KeepYourHead|URL:http://keepyourhead.rubyforge.org>))
+KeepYourHead is a flashcard trainer with the flashcards written in latex.
+
 :((<Luz|URL:http://gnomecoder.wordpress.com/luz/>))
 Luz is a music visualizer for VJs and creative couch potatoes.
+
+:((<Rabbit|URL:http://www.cozmixng.org/~rwiki/?cmd=view;name=Rabbit>))
+Rabbit is a presentation software. It accepts RD, Wiki format text and PDF as input and shows the input with smart user interface.
+
+:((<Rubyroom|URL:http://rubyroom.rubyforge.org>))
+Rubyroom is a full-screen text editor. Full screen gives you a complete workspace for your text, and nothing else. No IM windows popping up, no more "you got mail" small animations on the background that take away your concentration.
 
 :((<ScreenRuler|URL:http://gnomecoder.wordpress.com/screenruler/>))
 ScreenRuler lets you measure objects on your screen using six different metrics.
