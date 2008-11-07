@@ -1,8 +1,11 @@
 = Ruby/GTK API Reference
 
 * ((<Gtk>)) - 溯条窗位
+* Gtk::AboutDialog
 * Gtk::AccelGroup - 94%
 * Gtk::AccelLabel - Done.
+* Gtk::Action
+* Gtk::ActionGroup
 * Gtk::Adjustment - Done.
 * Gtk::Alignment - Done.
 * Gtk::Allocation - Done.
@@ -13,24 +16,41 @@
 * Gtk::Button - 溯条面
 * Gtk::ButtonBox - Done.
 * Gtk::Calendar - Done.
+* Gtk::CellLayout
 * Gtk::CellRenderer - Done.
+* Gtk::CellRendererCombo
 * Gtk::CellRendererPixbuf - Done.
+* Gtk::CellRendererProgress
 * Gtk::CellRendererText - Done.
 * Gtk::CellRendererToggle - Done.
+* Gtk::CellView
 * Gtk::CheckButton - Done.
 * Gtk::CheckMenuItem - Done.
+* Gtk::ColorButton
 * Gtk::Clipboard
 * Gtk::ColorSelection
 * Gtk::ColorSelectionDialog
 * Gtk::Combo
+* Gtk::ComboBox
+* Gtk::ComboBoxEntry
 * Gtk::Container
 * Gtk::Curve
 * Gtk::Dialog - Done.
 * Gtk::DrawingArea
 * Gtk::Entry - Done.
+* Gtk::EntryCompletion
 * Gtk::EventBox - Done.
+* Gtk::Expander
+* Gtk::FileChooser
+* Gtk::FileChooserButton
+* Gtk::FileChooserDialog
+* Gtk::FileChooserError
+* Gtk::FileChooserWidget
+* Gtk::FileFilter
 * Gtk::FileSelection
+* Gtk::FileSystemError
 * Gtk::Fixed
+* Gtk::FontButton
 * Gtk::FontSelection - Done.
 * Gtk::FontSelectionDialog
 * Gtk::Frame
@@ -46,9 +66,11 @@
 * Gtk::IconFactory
 * Gtk::IconSet
 * Gtk::IconSource
+* Gtk::IconView
 * Gtk::Image - Done.
 * Gtk::ImageMenuItem - Done.
 * Gtk::InputDialog
+* Gtk::Invisible
 * Gtk::Item - Done.
 * Gtk::ItemFactory
 * Gtk::Label
@@ -58,8 +80,10 @@
 * Gtk::MenuBar - Done.
 * Gtk::MenuItem - Done.
 * Gtk::MenuShell
+* Gtk::MenuToolButton
 * Gtk::MessageDialog  - Done.
 * Gtk::Misc - Done.
+* Gtk::MozEmbed
 * Gtk::Notebook
 * Gtk::NotebookPage
 * Gtk::Object
@@ -68,8 +92,10 @@
 * Gtk::Plug
 * Gtk::Progress
 * Gtk::ProgressBar
+* Gtk::RadioAction
 * Gtk::RadioButton - Done.
 * Gtk::RadioMenuItem - Done.
+* Gtk::RadioToolButton
 * Gtk::Range
 * Gtk::Ruler
 * Gtk::Scale
@@ -78,7 +104,16 @@
 * Gtk::SelectionData
 * Gtk::Separator - Done.
 * Gtk::SeparatorMenuItem - Done.
+* Gtk::SeparatorToolItem
+* Gtk::SizeGroup
 * Gtk::Socket
+* Gtk::SourceBuffer
+* Gtk::SourceLanguage
+* Gtk::SourceLanguagesManager
+* Gtk::SourceMarker
+* Gtk::SourceStyleScheme
+* Gtk::SourceTagTable
+* Gtk::SourceView
 * Gtk::SpinButton
 * Gtk::Statusbar
 * Gtk::Style
@@ -92,16 +127,25 @@
 * Gtk::TextTag
 * Gtk::TextTagTable  - Done.
 * Gtk::TextView
+* Gtk::ToggleAction
 * Gtk::ToggleButton - Done.
+* Gtk::ToggleToolButton
 * Gtk::Toolbar
+* Gtk::ToolButton
+* Gtk::ToolItem
 * Gtk::Tooltips
 * Gtk::TreeIter
+* Gtk::TreeModel
+* Gtk::TreeModelFilter
+* Gtk::TreeModelSort
 * Gtk::TreePath
 * Gtk::TreeRowReference
 * Gtk::TreeSelection
+* Gtk::TreeSortable
 * Gtk::TreeStore
 * Gtk::TreeView
 * Gtk::TreeViewColumn
+* Gtk::UIManager
 * Gtk::VBox - Done.
 * Gtk::VButtonBox - Done.
 * Gtk::VPaned
