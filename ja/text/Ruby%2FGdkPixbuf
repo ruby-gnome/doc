@@ -1,0 +1,11 @@
+= Ruby/GdkPixbuf API Reference
+
+((<API Index|index-ruby-gdkpixbuf2>))
+
+* Gdk::Pixbuf - a class for image loading and manipulation.
+* Gdk::PixbufLoader - Application-driven progressive image loading.
+* Gdk::PixbufAnimation - a class for animation images loading and manipulation.
+* Gdk::PixbufAnimationIter - provides the necessary functionality to display an animation.
+* Gdk::Pixdata - A Gdk::Pixdata contains pixbuf information in a form suitable for serialization and streaming.
+* Gdk::PixbufFormat - A Gdk::PixbufFormat contains information about the image format accepted by a module.
+* Gdk::PixbufError - An error class used for pixbuf operations
