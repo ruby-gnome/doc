@@ -2,7 +2,7 @@
 
 ((* suzuki@cis.iwate-u.ac.jp が書きかけです。線の描画，pixmapの描画と透明化は確かめました。*))
 
-((*まだRuby/GTK(1)用です*)) ((*Ruby/GTK(2)用は*))((<ウインドウへの直接描画(2) - Gdk::Drawable>))
+((*Ruby/GTK(2)用です*))
 
 Gdk::Drawableは、Gdk::Pixmap, Gdk::Windowのスーパークラスで、ウィジェット自体に直接描画する場合に使用します。
 ここでは、主にGdk::Windowを例に使っていますが、基本的にはGdk::Pixmap, Gdk::Bitmapでも同様です。
