@@ -1,5 +1,5 @@
 = ウインドウへの直接描画 - Gdk::Drawable
-((*まだRuby/GTK(1)用です*))
+((*まだRuby/GTK(1)用です*)) ((*Ruby/GTK(2)用は*))((<ウインドウへの直接描画(2) - Gdk::Drawable>))
 
 Gdk::Drawableは、Gdk::Pixmap, Gdk::Windowのスーパークラスで、ウィジェット自体に直接描画する場合に使用します。
 ここでは、主にGdk::Windowを例に使っていますが、基本的にはGdk::Pixmap, Gdk::Bitmapでも同様です。
