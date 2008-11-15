@@ -200,8 +200,7 @@ Gdk::Drawable#draw_layout(gc, x, y, layout)
 
   * gc - グラフィックコンテキスト(Gdk::GC)
   * x, y - 描画を行う左上隅の座標
-  * layout - 文字列の他にfontやスタイルを含んだウィジェット
-
+  * layout - 文字列の他にfontやスタイルを含み、パラグラフを表すPang::Layoutクラスのオブジェクト
 
 == XPM画像を描画する
 XPM画像を描画してみます。画像は<A HREF="r.xpm">こちら</A>を利用してください。
