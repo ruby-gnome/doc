@@ -3,7 +3,7 @@
 
 
 ((*Ruby/GTK(2)用です*)) 
-* ((* #suzuki@cis.iwate-u.ac.jp が書き換えました。*))
+((* #suzuki@cis.iwate-u.ac.jp が少し書き換えました。*))
 
 Gdk::Drawableは、Gdk::Pixmap, Gdk::Windowのスーパークラスで、ウィジェット自体に直接描画する場合に使用します。
 ここでは、主にGdk::Windowを例に使っていますが、基本的にはGdk::Pixmap, Gdk::Bitmapでも同様です。
@@ -175,38 +175,33 @@ Gdk::Drawable#draw_line(gc,x1,y1,x2,y2)
   colormap.alloc_color(red, false, true)
   colormap.alloc_color(blue, false, true)
 
-  font = Gdk::Font.fontset_load(
-      "-adobe-helvetica-medium-r-normal--14-*-*-*-*-*-iso8859-1, -misc-fixed-medium-r-normal--14-*-*-*-*-*-jisx0208.1983-0")
+  fontdesc = Pango::FontDescription.new
+  fontdesc.set_family("URW Gothic L")
+  fontdesc.set_style(Pango::STYLE_ITALIC)
+  fontdesc.set_weight(Pango::WEIGHT_BOLD)
+  fontdesc.set_size(25*1000)
 
- fontdesc = Pango::FontDescription.new
- fontdesc.set_family("URW Gothic L")
- fontdesc.set_style(Pango::STYLE_ITALIC)
- fontdesc.set_weight(Pango::WEIGHT_BOLD)
- fontdesc.set_size(25*1000)
+  layout = Pango::Layout.new(window.pango_context)
+  layout.font_description=fontdesc
+ 
+  window.signal_connect("expose_event") do |win, evt|
+    gc.set_foreground(red)
+    layout.text="フォントテスト\nfont test"
+    drawable.draw_layout(gc, 20, 20, layout)
+    gc.set_foreground(blue)
+    layout.text="font test"
+    drawable.draw_layout(gc, 20, 100, layout)
+  end
 
- layout = Pango::Layout.new(window.pango_context)
- layout.font_description=fontdesc
+   window.show_all
+   Gtk.main
 
- window.signal_connect("expose_event") do |win, evt|
-   gc.set_foreground(red)
-   layout.text="フォントテスト\nfont test"
-   drawable.draw_layout(gc, 20, 20, layout)
-   gc.set_foreground(blue)
-   layout.text="font test"
-   drawable.draw_layout(gc, 20, 100, layout)
- end
+Gdk::Drawable#draw_layout(gc, x, y, layout)
 
-  window.show_all
-  Gtk.main
-
-Gdk::Drawable#draw_string(font, gc, x, y, text)
-
-  * font - フォントオブジェクト(Gdk::Font)
   * gc - グラフィックコンテキスト(Gdk::GC)
   * x, y - 描画を行う左上隅の座標
-  * text - 文字列    
+  * layout - 文字列の他にfontやスタイルを含んだウィジェット
 
-ちなみに、Gdk::Drawable#draw_text()というのもあるのですが、内部的には全く同じで単なる別名です。
 
 == XPM画像を描画する
 XPM画像を描画してみます。画像は<A HREF="r.xpm">こちら</A>を利用してください。
