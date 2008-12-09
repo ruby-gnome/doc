@@ -56,7 +56,7 @@ Gtk::Table#attach has a lot of options. So, there's a shortcut:
 
 The X and Y options default to Gtk::FILL | Gtk::EXPAND, and X and Y padding are set to 0. The rest of the arguments are identical to the previous method.
 
-We also have Gtk::Table#set_row_spacing and Gtk::Table#set_col_spacing. These places spacing between the rows at the specified row or column.
+We also have Gtk::Table#set_row_spacing and Gtk::Table#set_col_spacing. These place spacing between the rows at the specified row or column.
 
   Gtk::Table#set_row_spacing(row, spacing)
   Gtk::Table#set_col_spacing(column, spacing) 
