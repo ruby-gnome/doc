@@ -170,13 +170,13 @@ Gtk::TextBufferの内容を表示するウィジェット
 
 --- forward_display_line(iter)
 #    Moves the given iter forward by one display (wrapped) line. A display line is different from a paragraph. Paragraphs are separated by newlines or other paragraph separator characters. Display lines are created by line-wrapping a paragraph. If wrapping is turned off, display lines and paragraphs will be the same. Display lines are divided differently for each view, since they depend on the view's width; paragraphs are the same in all views, since they depend on the contents of the Gtk::TextBuffer.
-    　指定されたiterを画面上（折り返された状態）の1行分だけ後ろに移動します。画面上の1行は段落（paragraph）とは異なります。段落は改行やその他の段落区切り文字列によって区切られたテキストのことです。一方、画面上の1行は段落の一部が折り返されただけのものである場合があります。折り返し（wrapping）がオフになっている場合のみ両者は一致します。画面上の1行はviewの幅によって内容が変化しますが、段落はデータそのもの（Gtk::TextBufferの中身）を指すため、そのようなことはありません。{{br}}　訳注：　実際には画面上の次の行の先頭に移動します。
+    　指定されたiterを画面上（折り返された状態）の1行分だけテキストの末尾に向かって移動します。画面上の1行は段落（paragraph）とは異なります。段落は改行やその他の段落区切り文字列によって区切られたテキストのことです。一方、画面上の1行は段落の一部が折り返されただけのものである場合があります。折り返し（wrapping）がオフになっている場合のみ両者は一致します。画面上の1行はviewの幅によって内容が変化しますが、段落はデータそのもの（Gtk::TextBufferの中身）を指すため、そのようなことはありません。{{br}}　訳注：　実際には画面上の次の行の先頭に移動します。
     * iter: Gtk::TextIter 
     * 戻り値: iterが実際に移動し、かつ、もう一度移動できる場所にある場合のみtrue（訳注：　実際の動作は「iterが実際に移動した場合true」となるようです）
 
 --- backward_display_line(iter)
 #    Moves the given iter backward by one display (wrapped) line. A display line is different from a paragraph. Paragraphs are separated by newlines or other paragraph separator characters. Display lines are created by line-wrapping a paragraph. If wrapping is turned off, display lines and paragraphs will be the same. Display lines are divided differently for each view, since they depend on the view's width; paragraphs are the same in all views, since they depend on the contents of the Gtk::TextBuffer.
-    　指定されたiterを画面上（折り返された状態）の1行分だけ手前に移動します。画面上の1行は段落（paragraph）とは異なります。段落は改行やその他の段落区切り文字列によって区切られたテキストのことです。一方、画面上の1行は段落の一部が折り返されただけのものである場合があります。折り返し（wrapping）がオフになっている場合のみ両者は一致します。画面上の1行はviewの幅によって内容が変化しますが、段落はデータそのもの（Gtk::TextBufferの中身）を指すため、そのようなことはありません。{{br}}　訳注：　実際には画面上の前の行の先頭または末尾に移動します。移動時に改行文字をまたぐかどうかによって動作が変わるようですが、どういう仕様でそうなるのかちょっと想像がつきません。
+    　指定されたiterを画面上（折り返された状態）の1行分だけテキストの先頭に向かって移動します。画面上の1行は段落（paragraph）とは異なります。段落は改行やその他の段落区切り文字列によって区切られたテキストのことです。一方、画面上の1行は段落の一部が折り返されただけのものである場合があります。折り返し（wrapping）がオフになっている場合のみ両者は一致します。画面上の1行はviewの幅によって内容が変化しますが、段落はデータそのもの（Gtk::TextBufferの中身）を指すため、そのようなことはありません。{{br}}　訳注：　実際には画面上の前の行の先頭または末尾に移動します。移動時に改行文字をまたぐかどうかによって動作が変わるようですが、どういう仕様でそうなるのかちょっと想像がつきません。
     * iter: Gtk::TextIter 
     * 戻り値: iterが実際に移動し、かつ、もう一度移動できる場所にある場合のみtrue（訳注：　実際の動作は「iterが実際に移動した場合true」となるようです）
 #true if iter was moved and is not on the end iterator 
@@ -202,7 +202,7 @@ Gtk::TextBufferの内容を表示するウィジェット
 
 --- move_visually(iter, count)
 #    Moves iter up or down by count display (wrapped) lines. See Gtk::TextView#forward_display_line for an explanation of display lines vs. paragraphs.
-    　指定されたiterをcountに等しい画面上の文字数分だけ移動します。countが正の数なら後ろに向かって、負の数なら前に向かって移動します。{{br}}　訳注：　この項目はhttp://library.gnome.org/devel/gtk/stable/GtkTextView.htmlに記述されている内容と完全に食い違っていたため、左記のページの内容を元に書きました。この翻訳の方が実際の動作と一致しています。
+    　指定されたiterをcountに等しい画面上の文字数分だけ移動します。countが正の数ならテキストの末尾に向かって、負の数ならテキストの先頭に向かって移動します。{{br}}　訳注：　この項目はhttp://library.gnome.org/devel/gtk/stable/GtkTextView.htmlに記述されている内容と完全に食い違っていたため、左記のページの内容を元に書きました。この翻訳の方が実際の動作と一致しています。
     * iter: Gtk::TextIter 
     * count: 移動したい文字数
 #number of lines to move 
