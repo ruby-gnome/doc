@@ -144,45 +144,56 @@ Gtk::TextBufferの内容を表示するウィジェット
        * buffer_y: バッファ内y座標
 
 --- get_window(win_type)
-    Retrieves the Gdk::Window corresponding to an area of the text view; possible windows include the overall widget window, child windows on the left, right, top, bottom, and the window that displays the text buffer. Windows are nil and nonexistent if their width or height is 0, and are nonexistent before the widget has been realized.
-    * win_type: a ((<GtkTextWindowType|Gtk::TextView#GtkTextWindowType>)) to get 
-    * 戻り値: a Gdk::Window, or nil 
+#    Retrieves the Gdk::Window corresponding to an area of the text view; possible windows include the overall widget window, child windows on the left, right, top, bottom, and the window that displays the text buffer. Windows are nil and nonexistent if their width or height is 0, and are nonexistent before the widget has been realized.
+    　指定したwin_typeに対応するGdk::Windowを取得します。取得できるのは、ウィジェット全体を表すウィンドウ（win_type=WINDOW_WIDGET）、上下左右の子ウィンドウ（win_type=WINDOW_TOP、win_type=WINDOW_BOTTOM、win_type=WINDOW_LEFT、win_type=WINDOW_RIGHT。border windowのこと？）、およびテキストバッファを表示するウィンドウ（win_type=WINDOW_TEXT）です。{{br}}ウィンドウの横幅あるいは縦幅が0である時はこれらのウィンドウは存在せず、nilが返ります。またウィジェットが具体化される（realized）前の状態の時も存在しません。
+    * win_type: 取得したい((<GtkTextWindowType|Gtk::TextView#GtkTextWindowType>))
+    * 戻り値: Gdk::Window または nil 
 
 --- get_window_type(window)
-    Usually used to find out which window an event corresponds to. If you connect to an event signal on Gtk::TextView, this method should be called on event.window to see which window it was.
-    * window: a window type 
-    * 戻り値: the ((<GtkTextWindowType|Gtk::TextView#GtkTextWindowType>)) 
+#    Usually used to find out which window an event corresponds to. If you connect to an event signal on Gtk::TextView, this method should be called on event.window to see which window it was.
+    　このメソッドは通常、あるイベントがどのウィンドウで起きたかを調べるために使用されます。あるイベントシグナルをGtk::TextViewにconnectしていた場合、event.window（event=イベント系シグナルのハンドラの第2引数）に対してこのメソッドを呼び出すことで、ウィンドウ（のタイプ）を知ることができます。
+    * window: Gdk::Window
+    * 戻り値: ((<GtkTextWindowType|Gtk::TextView#GtkTextWindowType>)) 
 
 --- get_border_window_size(type)
-    Gets the width of the specified border window. See Gtk::TextView#set_border_window_size.
-    * type: window to return size from 
-    * 戻り値: width of window 
+#    Gets the width of the specified border window. See Gtk::TextView#set_border_window_size.
+    　指定したタイプのborder windowの幅を取得します。下のGtk::TextView#set_border_window_sizeも参照してください。
+    * type: 幅を取得したいborder windowのタイプ（((<GtkTextWindowType|Gtk::TextView#GtkTextWindowType>))）
+    * 戻り値: ウィンドウの幅
 
 --- set_border_window_size(type, size)
-    Sets the width of Gtk::TextView::WINDOW_LEFT or Gtk::TextView::WINDOW_RIGHT, or the height of Gtk::TextView::WINDOW_TOP or Gtk::TextView::WINDOW_BOTTOM. Automatically destroys the corresponding window if the size is set to 0, and creates the window if the size is set to non-zero. This method can only be used for the "border windows," it doesn't work with Gtk::TextView::WINDOW_WIDGET, Gtk::TextView::WINDOW_TEXT, or Gtk::TextView::WINDOW_PRIVATE.
-    * type: ((<GtkTextWindowType|Gtk::TextView#GtkTextWindowType>)) to affect 
-    * size: width or height of the window 
+#    Sets the width of Gtk::TextView::WINDOW_LEFT or Gtk::TextView::WINDOW_RIGHT, or the height of Gtk::TextView::WINDOW_TOP or Gtk::TextView::WINDOW_BOTTOM. Automatically destroys the corresponding window if the size is set to 0, and creates the window if the size is set to non-zero. This method can only be used for the "border windows," it doesn't work with Gtk::TextView::WINDOW_WIDGET, Gtk::TextView::WINDOW_TEXT, or Gtk::TextView::WINDOW_PRIVATE.
+    　Gtk::TextView::WINDOW_LEFT（に対応するウィンドウ）やGtk::TextView::WINDOW_RIGHTの横幅、もしくはGtk::TextView::WINDOW_TOPやGtk::TextView::WINDOW_BOTTOMの縦幅を設定します。{{br}}　サイズを0に設定した場合、そのウィンドウは破棄されます。また、0より大きい値を設定した場合、（もしなければ）そのウィンドウが生成されます。{{br}}　このメソッドはborder windowに対してのみ使用することができ、Gtk::TextView::WINDOW_WIDGET、Gtk::TextView::WINDOW_TEXT、Gtk::TextView::WINDOW_PRIVATEに対しては動作しません。{{br}}　訳注：　border windowとは、Gtk::TextViewウィジェットの内側に、テキスト表示領域（Gtk::TextView::WINDOW_TEXT？）の四方を囲む形で表示される4つのGdk::Windowのことで、デフォルトの幅は0です（存在しない）。Gtk::TextView::WINDOW_LEFTやGtk::TextView::WINDOW_RIGHTは、Gtk::TextViewのleft_marginプロパティやrigth_marginプロパティとは関係ありません。
+    * type: 幅を変更したいウィンドウの((<GtkTextWindowType|Gtk::TextView#GtkTextWindowType>))
+    * size: 設定したい縦幅または横幅
     * 戻り値: self
 
 --- forward_display_line(iter)
-    Moves the given iter forward by one display (wrapped) line. A display line is different from a paragraph. Paragraphs are separated by newlines or other paragraph separator characters. Display lines are created by line-wrapping a paragraph. If wrapping is turned off, display lines and paragraphs will be the same. Display lines are divided differently for each view, since they depend on the view's width; paragraphs are the same in all views, since they depend on the contents of the Gtk::TextBuffer.
-    * iter: a Gtk::TextIter 
-    * 戻り値: true if iter was moved and is not on the end iterator 
+#    Moves the given iter forward by one display (wrapped) line. A display line is different from a paragraph. Paragraphs are separated by newlines or other paragraph separator characters. Display lines are created by line-wrapping a paragraph. If wrapping is turned off, display lines and paragraphs will be the same. Display lines are divided differently for each view, since they depend on the view's width; paragraphs are the same in all views, since they depend on the contents of the Gtk::TextBuffer.
+    　指定されたiterを画面上（折り返された状態）の1行分だけ後ろに移動します。画面上の1行は段落（paragraph）とは異なります。段落は改行やその他の段落区切り文字列によって区切られたテキストのことです。一方、画面上の1行は段落の一部が折り返されただけのものである場合があります。折り返し（wrapping）がオフになっている場合のみ両者は一致します。画面上の1行はviewの幅によって内容が変化しますが、段落はデータそのもの（Gtk::TextBufferの中身）を指すため、そのようなことはありません。{{br}}　訳注：　実際には画面上の次の行の先頭に移動します。
+    * iter: Gtk::TextIter 
+    * 戻り値: iterが実際に移動し、かつ、もう一度移動できる場所にある場合のみtrue（訳注：　実際の動作は「iterが実際に移動した場合true」となるようです）
 
 --- backward_display_line(iter)
-    Moves the given iter backward by one display (wrapped) line. A display line is different from a paragraph. Paragraphs are separated by newlines or other paragraph separator characters. Display lines are created by line-wrapping a paragraph. If wrapping is turned off, display lines and paragraphs will be the same. Display lines are divided differently for each view, since they depend on the view's width; paragraphs are the same in all views, since they depend on the contents of the Gtk::TextBuffer.
-    * iter: a Gtk::TextIter 
-    * 戻り値: true if iter was moved and is not on the end iterator 
+#    Moves the given iter backward by one display (wrapped) line. A display line is different from a paragraph. Paragraphs are separated by newlines or other paragraph separator characters. Display lines are created by line-wrapping a paragraph. If wrapping is turned off, display lines and paragraphs will be the same. Display lines are divided differently for each view, since they depend on the view's width; paragraphs are the same in all views, since they depend on the contents of the Gtk::TextBuffer.
+    　指定されたiterを画面上（折り返された状態）の1行分だけ手前に移動します。画面上の1行は段落（paragraph）とは異なります。段落は改行やその他の段落区切り文字列によって区切られたテキストのことです。一方、画面上の1行は段落の一部が折り返されただけのものである場合があります。折り返し（wrapping）がオフになっている場合のみ両者は一致します。画面上の1行はviewの幅によって内容が変化しますが、段落はデータそのもの（Gtk::TextBufferの中身）を指すため、そのようなことはありません。{{br}}　訳注：　実際には画面上の前の行の先頭または末尾に移動します。移動時に改行文字をまたぐかどうかによって動作が変わるようですが、どういう仕様でそうなるのかちょっと想像がつきません。
+    * iter: Gtk::TextIter 
+    * 戻り値: iterが実際に移動し、かつ、もう一度移動できる場所にある場合のみtrue（訳注：　実際の動作は「iterが実際に移動した場合true」となるようです）
+#true if iter was moved and is not on the end iterator 
 
 --- forward_display_line_end(iter)
-    Moves the given iter forward to the next display line end. A display line is different from a paragraph. Paragraphs are separated by newlines or other paragraph separator characters. Display lines are created by line-wrapping a paragraph. If wrapping is turned off, display lines and paragraphs will be the same. Display lines are divided differently for each view, since they depend on the view's width; paragraphs are the same in all views, since they depend on the contents of the Gtk::TextBuffer.
-    * iter: a Gtk::TextIter 
-    * 戻り値: true if iter was moved and is not on the end iterator 
+#    Moves the given iter forward to the next display line end. A display line is different from a paragraph. Paragraphs are separated by newlines or other paragraph separator characters. Display lines are created by line-wrapping a paragraph. If wrapping is turned off, display lines and paragraphs will be the same. Display lines are divided differently for each view, since they depend on the view's width; paragraphs are the same in all views, since they depend on the contents of the Gtk::TextBuffer.
+    　指定されたiterを画面上（折り返された状態）の行末に移動します。画面上の1行は段落（paragraph）とは異なります。段落は改行やその他の段落区切り文字列によって区切られたテキストのことです。一方、画面上の1行は段落の一部が折り返されただけのものである場合があります。折り返し（wrapping）がオフになっている場合のみ両者は一致します。画面上の1行はviewの幅によって内容が変化しますが、段落はデータそのもの（Gtk::TextBufferの中身）を指すため、そのようなことはありません。
+    * iter: Gtk::TextIter 
+    * 戻り値: iterが実際に移動し、かつ、もう一度移動できる場所にある場合のみtrue（訳注：　実際の動作は「iterが実際に移動した場合true」となるようです）
+#true if iter was moved and is not on the end iterator 
 
 --- backward_display_line_start(iter)
-    Moves the given iter backward to the next display line start. A display line is different from a paragraph. Paragraphs are separated by newlines or other paragraph separator characters. Display lines are created by line-wrapping a paragraph. If wrapping is turned off, display lines and paragraphs will be the same. Display lines are divided differently for each view, since they depend on the view's width; paragraphs are the same in all views, since they depend on the contents of the Gtk::TextBuffer.
+#    Moves the given iter backward to the next display line start. A display line is different from a paragraph. Paragraphs are separated by newlines or other paragraph separator characters. Display lines are created by line-wrapping a paragraph. If wrapping is turned off, display lines and paragraphs will be the same. Display lines are divided differently for each view, since they depend on the view's width; paragraphs are the same in all views, since they depend on the contents of the Gtk::TextBuffer.
+    　指定されたiterを画面上（折り返された状態）の行頭に移動します。画面上の1行は段落（paragraph）とは異なります。段落は改行やその他の段落区切り文字列によって区切られたテキストのことです。一方、画面上の1行は段落の一部が折り返されただけのものである場合があります。折り返し（wrapping）がオフになっている場合のみ両者は一致します。画面上の1行はviewの幅によって内容が変化しますが、段落はデータそのもの（Gtk::TextBufferの中身）を指すため、そのようなことはありません。
     * iter: a Gtk::TextIter 
-    * 戻り値: true if iter was moved and is not on the end iterator 
+    * 戻り値: iterが実際に移動し、かつ、もう一度移動できる場所にある場合のみtrue（訳注：　実際の動作は「iterが実際に移動した場合true」となるようです）
+#true if iter was moved and is not on the end iterator 
 
 --- starts_display_line(iter)
     Determines whether iter is at the start of a display line. See Gtk::TextView#forward_display_line for an explanation of display lines vs. paragraphs.
@@ -190,10 +201,13 @@ Gtk::TextBufferの内容を表示するウィジェット
     * 戻り値: true if iter begins a wrapped line 
 
 --- move_visually(iter, count)
-    Moves iter up or down by count display (wrapped) lines. See Gtk::TextView#forward_display_line for an explanation of display lines vs. paragraphs.
-    * iter: a Gtk::TextIter 
-    * count: number of lines to move 
-    * 戻り値: true if iter moved and is not on the end iterator 
+#    Moves iter up or down by count display (wrapped) lines. See Gtk::TextView#forward_display_line for an explanation of display lines vs. paragraphs.
+    　指定されたiterをcountに等しい画面上の文字数分だけ移動します。countが正の数なら後ろに向かって、負の数なら前に向かって移動します。{{br}}　訳注：　この項目はhttp://library.gnome.org/devel/gtk/stable/GtkTextView.htmlに記述されている内容と完全に食い違っていたため、左記のページの内容を元に書きました。この翻訳の方が実際の動作と一致しています。
+    * iter: Gtk::TextIter 
+    * count: 移動したい文字数
+#number of lines to move 
+    * 戻り値: iterが実際に移動し、かつ、もう一度移動できる場所にある場合のみtrue（訳注：　実際の動作は「iterが実際に移動した場合true」となるようです）
+#true if iter moved and is not on the end iterator 
 
 --- add_child_at_anchor(child)
     Adds a child widget in the text buffer, at the given anchor.
