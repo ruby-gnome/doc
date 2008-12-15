@@ -1,5 +1,4 @@
 = Gtk::TextView クラス
-((-((<原文ページ|URL:http://ruby-gnome2.sourceforge.jp/hiki.cgi?Gtk%3A%3ATextView>))-))
 Gtk::TextBufferの内容を表示するウィジェット
 
 == オブジェクト階層
@@ -533,8 +532,9 @@ The priority at which the text view validates onscreen lines in an idle job in t
      * self: the Gtk::TextView
 
 == 参照
-Gtk::TextBuffer, Gtk::TextIter
+Gtk::TextBuffer, Gtk::TextIter, ((<原文ページ|URL:http://ruby-gnome2.sourceforge.jp/hiki.cgi?Gtk%3A%3ATextView>))
 
 == ChangeLog
+* 2008-12-15 訳：　((<きたがわ>))
 * 2005-06-17 Added GTK+-2.4/2.6 methods. - ((<Masao>))
 * 2003-07-29 Added - ((<Masao>))
