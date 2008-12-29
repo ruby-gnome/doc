@@ -7,7 +7,7 @@
 You will find here some tutorials about Ruby-GNOME2 components.  It is not possible to cover Ruby-GNOME2 in a single short tutorial, since it includes several libraries.  So we decided to write tutorials for each library.
 
 === ((<"Ruby/GTK2 Tutorial"|tut-gtk>))
-Covers the Ruby/GTK2 library, the base toolkit used to build graphical user interfaces under the GNOME2 environment.  ((<"Read it now!"|tut-gtk>)).
+Covers the Ruby/GTK2 library, the base toolkit used to build fully cross-platform graphical user interfaces with the GTK+ toolkit.  ((<"Read it now!"|tut-gtk>)).
 
 ==== ((<"Ruby/GTK TreeView Tutorial"|tut-treeview>))
 This is a separated tutorial on how to use the Gtk::TreeView widget.  ((<"Read it now!"|tut-treeview>)).
