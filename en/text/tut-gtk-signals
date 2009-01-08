@@ -5,7 +5,7 @@ Before looking at the "Hello World" program in details, we should study a bit ho
 callbacks.
 
 In the same way as your system delivers a signal to processes upon shutdown
-((-Note that GTK signals are not related in any way with UNIX signals.  The GTK toolkit is independant of the underlying system. -)),  GTK sends a signal to the main loop (Gtk.main) when a 
+((-Note that GTK signals are not related in any way with UNIX signals.  The GTK toolkit is independent of the underlying system. -)),  GTK sends a signal to the main loop (Gtk.main) when a 
 special event occured.  The main loop will therefore call back the appropriate function of the widget.
 
 Until a signal is received, the main loop will sleep.
