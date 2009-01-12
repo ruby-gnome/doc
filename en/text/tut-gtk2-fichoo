@@ -1,0 +1,15 @@
+= File Chooser Interface And Widgets
+{{link "tut-gtk-events", "tut-gtk-intro", "tut-gtk", "tut-gtk-signals-more"}}
+
+== Gtk::FileChooser 
+
+Gtk::FileChooser module represents just an interface, hence we never create any FileChooser instances. The following list describes all FileChooser related classes:
+
+* Gtk::FileChooser - File chooser interface used by  Gtk::FileChooserWidget and Gtk::FileChooserDialog
+* Gtk::FileChooserButton - A button to launch a file selection dialog
+* Gtk::FileChooserDialog - A file chooser dialogue, suitable for "File/Open" or "File/Save" commands
+* Gtk::FileChooserWidget - File chooser widget that can be embedded in other widgets
+* Gtk::FileFilter - A filter for selecting a file subset
+* Gtk::FileSelection - Prompt the user for a file or directory name (obsolete use Gtk::FileChooserDialog instead)
+
+To give you an idea how all this fits together we should look at an example you can copy-and-paste into a file on your system, run it and explore the features in the code.
