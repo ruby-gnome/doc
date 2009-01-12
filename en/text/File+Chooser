@@ -1,8 +1,10 @@
-= Ruby/GTK2 FileChooser
+= File Chooser Interface And Widgets
 {{link "tut-gtk-events", "tut-gtk-intro", "tut-gtk", "tut-gtk-signals-more"}}
 {{image_right("ChooserButtons01.png")}}
 
 == File Chooser Introduction 
+
+
 
 Gtk::FileChooser module represents just an interface, hence we never create any FileChooser instances. The following list describes all FileChooser related classes:
 
