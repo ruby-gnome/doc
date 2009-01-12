@@ -1,5 +1,5 @@
 = Events
-{{link "tut-gtk-signals", "tut-gtk-intro", "tut-gtk", "tut-gtk-helloworld-details"}}
+{{link "tut-gtk-signals", "tut-gtk-intro", "tut-gtk", "tut-gtk2-fichoo"}}
 
 In addition to the above signal mechanism, events from the X Window Server are also reflected in GTK.
 
