@@ -1,0 +1,78 @@
+= Ruby/GTK2 FileChooser
+{{link "tut-gtk-events", "tut-gtk-intro", "tut-gtk", "tut-gtk-signals-more"}}
+{{image_right("ChooserButtons01.png")}}
+
+
+
+Gtk::FileChooser module represents just an interface, hence we never create any FileChooser instances. The following list describes all FileChooser related classes:
+
+* Gtk::FileChooser - File chooser interface used by  Gtk::FileChooserWidget and Gtk::FileChooserDialog
+* Gtk::FileChooserButton - A button to launch a file selection dialog
+* Gtk::FileChooserDialog - A file chooser dialogue, suitable for "File/Open" or "File/Save" commands
+* Gtk::FileChooserWidget - File chooser widget that can be embedded in other widgets
+* Gtk::FileFilter - A filter for selecting a file subset
+* Gtk::FileSelection - Prompt the user for a file or directory name (obsolete use Gtk::FileChooserDialog instead)
+
+To give you an idea how all this fits together let's look at an example you can copy-and-paste into a file on your system and run. The top window contains three widgets: (1) folder button, (2) file button, and (3) originally an empty (nil) label. Pay  attention that the example also uses a Gtk::FileChooserDialog object which is spawned when user clicks on the top "folder" button. Of course in your programs you can create a dialogue object on its own via Gtk::FileChooserDialog.new, however here these dialogues are created for you when either button in the top window is pressed. In this case I want you to pay attention to object "w" in the code spawned only when the "chooser_dir" button is pressed, this is the place where we add the extra widget to the dialog. Note also, that the 3rd object (the label) should reflect users's file selection from the FileChooserDialog spawned when user clicked the "FileChooserDialog" object and actually selected some file. That file is obtained and the label initiated in the "file_changed()" callback. Lastly, note that GLib class method is used to initialize both buttons' current folder "chooser_*.current_folder = GLib.home_dir".
+
+ #!/usr/bin/env ruby
+ require 'gtk2'
+
+ def  folder_changed(c_dir, c_file)
+   dir = c_dir.filename
+   c_file.current_folder = dir
+ end
+ def file_changed(c_file, lab)
+   file = c_file.filename
+   file = "" if file == nil
+   lab.text = file
+ end
+ window = Gtk::Window.new(Gtk::Window::TOPLEVEL)
+ window.set_title  "File Chooser Buttons"
+ window.border_width = 10
+ window.signal_connect('delete_event') { Gtk.main_quit }
+
+ label = Gtk::Label.new
+ chooser_dir  = Gtk::FileChooserButton.new(
+     "Choose a Folder", Gtk::FileChooser::ACTION_SELECT_FOLDER)
+ FileChooserDialog = Gtk::FileChooserButton.new(
+     "Choose a File", Gtk::FileChooser::ACTION_OPEN)
+
+ # Let's add an extra widget (a button) to the {{ dialog }}
+ extra_button = Gtk::Button.new("Extra button")
+ extra_button.signal_connect("clicked") do
+   puts "extra button is clicked"
+ end
+ chooser_dir.signal_connect('selection_changed') do |w|
+   # {{ w }} = {{ FileChooserDialog }}
+   w.extra_widget = extra_button
+   folder_changed(w, chooser_file)
+ end
+ chooser_file.signal_connect('selection_changed') do |w|
+   file_changed(chooser_file, label)
+ end
+ chooser_dir.current_folder  = GLib.home_dir
+ chooser_file.current_folder = GLib.home_dir
+
+ filter1 = Gtk::FileFilter.new
+ filter2 = Gtk::FileFilter.new
+
+ filter1.name = "Image Files"
+ filter2.name = "All Files"
+
+ filter1.add_pattern('*.png')
+ filter1.add_pattern('*.jpg')
+ filter1.add_pattern('*.gif')
+ filter2.add_pattern('*')
+
+ chooser_file.add_filter(filter1)
+ chooser_file.add_filter(filter2)
+
+ vbox = Gtk::VBox.new(true, 5)
+ vbox.pack_start_defaults(chooser_dir)
+ vbox.pack_start_defaults(chooser_file)
+ vbox.pack_start_defaults(label)
+
+ window.add(vbox)
+ window.show_all
+ Gtk.main
