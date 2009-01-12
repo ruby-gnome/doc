@@ -1,11 +1,14 @@
 = File Chooser Interface And Widgets
 {{link "tut-gtk-events", "tut-gtk-intro", "tut-gtk", "tut-gtk-signals-more"}}
-{{image_right("FileChooserDialog.png")}}
 
 == Gtk::FileChooserDialog 
 
-Here's a program from Ruby-GNOME2 distribution.
+Following is an example program from Ruby-GNOME2 distribution.
 
+
+{{br}}
+{{image_right("FileChooserDialog.png")}}
+{{br}}
 
 
  #!/usr/bin/env ruby
