@@ -20,7 +20,7 @@ To give you an idea how all this fits together let's look at an example you can 
 
 {{image_left("ChooseYourFile.png")}}
 {{br}}
-Here you can see the file dialog window opened after the file button was pressed in the first window above and some folder, file and filter selections were made subsequently. Filter selections are shown in the ListBox currently containing value "Image Files" - the name of filter1 (See: filter1 = "Image Files").
+Here you can see the file dialog window opened after the file button was pressed in the first window above and some folder, file and filter selections were made subsequently. Filter selections are shown in the ListBox currently containing value "Image Files" - the name of filter1 (See: filter1.name = "Image Files").
 {{br}}
 {{br}}
  #!/usr/bin/env ruby
