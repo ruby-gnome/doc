@@ -3,7 +3,7 @@
 
 == Gtk::FileChooser 
 
-Gtk::FileChooser module represents just an interface, hence we never create any FileChooser instances. The following list describes all FileChooser related classes:
+This widget is a member of the so called family of Selectors widgets. In the Gtk documentation you will find them under the heading Selectors (File/Font/Color/Input Devices). Gtk::FileChooser module represents just an interface, hence we never create any FileChooser instances. The following list describes all FileChooser related classes:
 
 * Gtk::FileChooser - File chooser interface used by  Gtk::FileChooserWidget and Gtk::FileChooserDialog
 * Gtk::FileChooserButton - A button to launch a file selection dialog
