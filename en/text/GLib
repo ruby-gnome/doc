@@ -110,9 +110,9 @@
 
      * Returns: self: ((*FIXME*))
 
---- GLib.current_dir
-
-     * Returns: self: ((*FIXME*))
+--- GLib.home_dir
+    This "GLib" class method provides a compatible way to obtain current user's home directory regardless of the operating system you are on.  
+     * Returns: a string representing current user's home directory name.
 
 --- GLib.exit_application
 
