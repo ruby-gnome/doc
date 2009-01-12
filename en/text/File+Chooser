@@ -21,7 +21,7 @@ To give you an idea how all this fits together let's look at an example you can 
 {{br}}
 {{image_left("ChooseYourFile.png")}}
 {{br}}
-The above is the file dialogue window opened after the above file button was pressed.
+Here you can see the file dialog window opened after the file button was pressed in the first window above.
 
  #!/usr/bin/env ruby
  require 'gtk2'
