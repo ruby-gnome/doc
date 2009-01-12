@@ -1,5 +1,5 @@
 = File Chooser Interface And Widgets
-{{link "File+Chooser", "tut-gtk2-fichoo", "tut-gtk", ""}}
+{{link "File+Chooser", "tut-gtk2-fichoo", "tut-gtk", "tut-gtk"}}
 
 == Gtk::FileChooserDialog 
 
