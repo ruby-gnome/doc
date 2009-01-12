@@ -12,4 +12,4 @@ Gtk::FileChooser module represents just an interface, hence we never create any 
 * Gtk::FileFilter - A filter for selecting a file subset
 * Gtk::FileSelection - Prompt the user for a file or directory name (obsolete use Gtk::FileChooserDialog instead)
 
-To give you an idea how all this fits together we should look at an example you can copy-and-paste into a file on your system, run it and explore the features in the code.
+To give you an idea how some of these fit together we should look at an example you can copy-and-paste into a file on your system, run it and explore the features in the code.
