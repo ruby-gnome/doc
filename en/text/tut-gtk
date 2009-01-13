@@ -22,6 +22,6 @@ This document covers the Ruby/GTK2 library used to ease creation of graphical us
   * ((<Packing Using Tables|tut-gtk2-packing-tables>))
   * ((<Table Packing Example|tut-gtk2-packing-tables-demo>))
 * ((<Selector And Chooser Interface And Widgets|tut-gtk2-selchoose>))
-  * ((<File Chooser intro|URL:http://ruby-gnome2.sourceforge.jp/hiki.cgi?File+Chooser>))
+  * ((<File Chooser intro|tut-gtk2-filechooser>))
   * ((<FileChooserDialog|tut-gtk2-fichoo-dialog>))
   * ((<Color Selection Dialog|tut-gtk2-colorsel-buttons>))
