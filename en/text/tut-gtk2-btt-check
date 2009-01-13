@@ -1,0 +1,62 @@
+= Buttons and Toggles
+{{link "tut-gtk2-btt-toggle", "tut-gtk2-bttns-n-tggs", "tut-gtk", "tut-gtk2-btt-radio"}}
+
+== Check Button
+{{br}}
+{{image_right("btt-check.png")}}
+{{br}}
+
+(If you are "revisiting" for either "Stock items" or Callbacks" skip to the bottom part of the page.)
+ 
+As mentioned earlier in the Toggle Button session, Gtk::CheckButton is derived from Gtk::ToggleButton. Hence we inherit all the Toggle Button functionality. There is not much new material in this example, except see that a "stock-item" is introduced. This program is also a good example to point out the important feature of Ruby's signal and/or event handling mechanism. Let's first look at the program:
+
+
+#!/usr/bin/env ruby
+
+require 'gtk2'
+def set_reset_check2(w, chk2)
+  # Gtk::Widget#sensitive=boolean |or #set_sensitive(boolean)
+  chk2.sensitive = w.active? ? true : false
+end
+
+window = Gtk::Window.new(Gtk::Window::TOPLEVEL)
+window.set_title  "Check Buttons"
+window.border_width = 10
+window.signal_connect('delete_event') { Gtk.main_quit }
+
+vbox = Gtk::VBox.new(false, 5)
+check1 = Gtk::CheckButton.new("The main option")
+check2 = Gtk::CheckButton.new("I rely on the other guy")
+close  = Gtk::Button.new(Gtk::Stock::CLOSE)
+
+check2.sensitive = false
+check1.signal_connect( "toggled" ) { |w| set_reset_check2(w, check2) }
+close.signal_connect('clicked') { Gtk.main_quit }
+
+vbox.pack_start(check1, false, true, 0)
+vbox.pack_start(check2, false, true, 0)
+vbox.pack_start(close,  false, true, 0)
+
+window.add(vbox)
+window.show_all
+Gtk.main
+
+=== Using Stock Items
+
+Stock items represent commonly-used menu or toolbar items such as "Open" or "Exit". They consist of an image and a text. You can find out more about all different stock items available in Ruby in the "module Gtk::Stock" documentation.
+  
+In Ruby it is very easy to create buttons which contain "stock-items". All you need to do is create a button with an argument of "Gtk::Stock" type. These are constants identifying different stock items (check out "module Gtk::Stock") documentation. In our example here we create the "close" button (close  = Gtk::Button.new(Gtk::Stock::CLOSE)).
+
+=== Callbacks And Event Handling Revisited - Callbacks are closures 
+
+For those of you who are familiar with C Gtk+, you may be wandering how to implement in Ruby the following code:
+
+ g_signal_connect_swapped(G_OBJECT(button), "clicked",
+                          G_CALLBACK(gtk_widget_destroy),
+                          (gpointer) window);
+
+What makes this an enigma is the "swap" feature in the above C call. Namely the callback on the "button" is swapping itself (i.e. the button) for the "window". Not only the "button" but the top "window" (containing this button) will be destroyed. If you look at our example program above, something very similar is happening in the following code segment:
+
+ check1.signal_connect( "toggled" ) { |w| set_reset_check2(w, check2) }
+
+While signal is emitted and caught by the "check1" widget (the top check-button), it changes the status of another - bottom widget or the bottom check button ("check2"). This indeed is a swap. But how does the callback know about the second (the bottom) widget. While the first widget obviously is passed in as the parameter (|w|) what about the second widget. Those not very well versed with Ruby and/or closures may think that the variable "check2" is like a global variable, hence should be visible in the block. However this is not quite true. Callbacks in Ruby are closures, and closures inherit the environment of the caller and keep it as their own. To truly understand this point you must learn about closures, but for understanding the example program it suffices if you superficially think of the variable "check2" as a global variable though it really is not a global at all!  
