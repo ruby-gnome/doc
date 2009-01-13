@@ -51,7 +51,7 @@ The above action results in changing the colour of the text on the label below.
  Gtk.main
 
 
-To modify the foreground colour for a widget you need to identify the state in which the widget is in. Our widget is Label, and most often this widget is found in normal state "Gtk::STATE_NORMAL". However "Labels" can also be selected (highlighted) by a user, in that case widget would be in "Gtk::STATE_SELECTED". As you can see in the code the colour of the text on our Label object is changed by the following code: Gtk::Widget#modify_fg(state, color). Where "state" parameter is one of the GtkStateType constants, as described earlier, and the color parameter is a "Gdk::Color" object one can obtain  by one of the following two statements:
+To modify the foreground colour of a widget you need to identify the state in which the widget is in. Our widget is Label, and most often this widget is found in normal state "Gtk::STATE_NORMAL". However "Labels" can also be selected (highlighted) by a user, in that case widget would be in "Gtk::STATE_SELECTED". As you can see in the code the colour of the text on our Label object is changed by the following code: Gtk::Widget#modify_fg(state, color). Where "state" parameter is one of the GtkStateType constants, as described earlier, and the color parameter is a "Gdk::Color" object one can obtain  by one of the following two statements:
  color = Gdk::Color.parse("#003366")
  #  or
  color = Gdk::Color.new(0, 12345, 34567)
