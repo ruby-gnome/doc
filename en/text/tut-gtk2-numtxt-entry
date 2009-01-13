@@ -54,3 +54,5 @@ You should consult the documentation (class Gtk::Entry - Properties) for full li
  window.add(vbox)
  window.show_all
  Gtk.main
+
+As you can see, we have turned our entry object into password widget by setting its "visibility" property. However I did not set my own "invisible_char" since the default on  my system is quite acceptable (see the image above).
