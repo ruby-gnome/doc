@@ -1,8 +1,6 @@
 = Gtk::TextView クラス
+((-((<原文ページ|URL:http://ruby-gnome2.sourceforge.jp/hiki.cgi?Gtk%3A%3ATextView>))-))
 Gtk::TextBufferの内容を表示するウィジェット
-#Widget that displays a Gtk::TextBuffer.
-
-（このページは((<英語版|URL:http://ruby-gnome2.sourceforge.jp/hiki.cgi?Gtk%3A%3ATextView>))を翻訳したものです。）
 
 == オブジェクト階層
 * Object
