@@ -40,3 +40,5 @@ There are two widgets derived from ToggleButton: Gtk::CheckButton and Gtk::Radio
 
 === Mnemonics
 Please pay attention to the underlined letters on the "Toggle Buttons" window image above. This is an additional feature commonly found in buttons, namely the "mnemonics". A mnemonics is a combination of keys which, when pressed, perform some type of an action. In our case a user can press the "Alt" key and the underlined letter simultaneously, i.e. "Alt + D" or more properly <Alt>+<D> would have the same effect as clicking the top button, just like the "<Alt>+<N>" combination would trigger the bottom button press action (of course the buttons have to be active to respond to either a keyboard or mouse activity). 
+
+In Ruby Gtk programs mnemonics is automatically enabled by placing an "underscore" (_) character in the label of a button when a button is created with for instance a call to  Gtk::Button.new.
