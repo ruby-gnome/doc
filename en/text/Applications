@@ -38,6 +38,10 @@ Luz is a music visualizer for VJs and creative couch potatoes.
 :((<Rabbit|URL:http://www.cozmixng.org/~rwiki/?cmd=view;name=Rabbit>))
 Rabbit is a presentation software. It accepts RD, Wiki format text and PDF as input and shows the input with smart user interface.
 
+:((Redcar|URL:http://www.redcaride.com>))
+
+Redcar is an open source textmate-compatible Ruby IDE for Gnome. Not yet released! Early days yet.
+
 :((<Rubyroom|URL:http://rubyroom.rubyforge.org>))
 Rubyroom is a full-screen text editor. Full screen gives you a complete workspace for your text, and nothing else. No IM windows popping up, no more "you got mail" small animations on the background that take away your concentration.
 
@@ -49,3 +53,6 @@ SSHMenu is a GNOME applet that allows you to organise all your regular
 SSH connections into a handy menu on your panel.  The point and click
 interface allows you to set up host connection parameters, window
 position and size, font selections and background colours.
+
+:((<Valar|URL:http://github.com/danlucraft/valar/tree/master>))
+Automatically generate Ruby bindings for Vala code.
