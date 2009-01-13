@@ -146,7 +146,7 @@ Gtk::TextBufferの内容を表示するウィジェット
 --- get_window(win_type)
 #    Retrieves the Gdk::Window corresponding to an area of the text view; possible windows include the overall widget window, child windows on the left, right, top, bottom, and the window that displays the text buffer. Windows are nil and nonexistent if their width or height is 0, and are nonexistent before the widget has been realized.
     　指定したwin_typeに対応するGdk::Windowを取得します。取得できるのは、ウィジェット全体を表すウィンドウ（win_type=WINDOW_WIDGET）、上下左右の子ウィンドウ（win_type=WINDOW_TOP、win_type=WINDOW_BOTTOM、win_type=WINDOW_LEFT、win_type=WINDOW_RIGHT。border windowのこと？）、およびテキストバッファを表示するウィンドウ（win_type=WINDOW_TEXT）です。{{br}}ウィンドウの横幅あるいは縦幅が0である時はこれらのウィンドウは存在せず、nilが返ります。またウィジェットが具体化される（realized）前の状態の時も存在しません。
-    * win_type: 取得したい((<GtkTextWindowType|Gtk::TextView#GtkTextWindowType>))
+    * win_type: 取得したいウィンドウの((<GtkTextWindowType|Gtk::TextView#GtkTextWindowType>))
     * 戻り値: Gdk::Window または nil 
 
 --- get_window_type(window)
