@@ -10,3 +10,5 @@ The following widgets can be found in Ruby Gtk documentation under the same head
     * Gtk::VScale - A vertical slider widget for selecting a value from a range
     * Gtk::SpinButton - Retrieve an integer or floating-point number from the user
     * Gtk::Editable - Interface for text-editing widgets
+
+Some (most) of the above items will be explained in the following sections.
