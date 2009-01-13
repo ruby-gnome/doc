@@ -176,13 +176,24 @@ Gdk::Drawable#draw_line(gc,x1,y1,x2,y2)
 
   font = Gdk::Font.fontset_load(
       "-adobe-helvetica-medium-r-normal--14-*-*-*-*-*-iso8859-1, -misc-fixed-medium-r-normal--14-*-*-*-*-*-jisx0208.1983-0")
- 
-  window.signal_connect("expose_event") do |win, evt|
-    gc.set_foreground(red)
-    drawable.draw_string(font, gc, 20, 20, "フォントテスト")
-    gc.set_foreground(blue)
-    drawable.draw_string(font, gc, 20, 50, "font test")
-  end
+
+ fontdesc = Pango::FontDescription.new
+ fontdesc.set_family("URW Gothic L")
+ fontdesc.set_style(Pango::STYLE_ITALIC)
+ fontdesc.set_weight(Pango::WEIGHT_BOLD)
+ fontdesc.set_size(25*1000)
+
+ layout = Pango::Layout.new(window.pango_context)
+ layout.font_description=fontdesc
+
+ window.signal_connect("expose_event") do |win, evt|
+   gc.set_foreground(red)
+   layout.text="フォントテスト\nfont test"
+   drawable.draw_layout(gc, 20, 20, layout)
+   gc.set_foreground(blue)
+   layout.text="font test"
+   drawable.draw_layout(gc, 20, 100, layout)
+ end
 
   window.show_all
   Gtk.main
