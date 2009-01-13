@@ -226,7 +226,7 @@ XPM画像を描画してみます。画像は<A HREF="r.xpm">こちら</A>を利用してください。
   window.show_all
   Gtk.main
 
-Gdk::Drawable#draw_drawablegc, pixmap, xsrc, ysrc, xdest, ydest, width, height)でPixmapを描画しますが、結構いろいろ指定する必要があります。それぞれの意味については下図を参照してください。
+Gdk::Drawable#draw_drawable(gc, pixmap, xsrc, ysrc, xdest, ydest, width, height)でPixmapを描画しますが、結構いろいろ指定する必要があります。それぞれの意味については下図を参照してください。
 なお、 width, heightにそれぞれ-1を指定すると、その画像自体の大きさが指定されます。コメントしてある(1)の記述方法が一般的だと思います。
 
 <TABLE ALIGN="CENTER" CELLSPACING=0 BORDER=1><TR><TD><IMG SRC="draw_xpm.jpg" ALT="表示イメージ"></TD></TR></TABLE>
