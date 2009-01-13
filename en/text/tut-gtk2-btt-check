@@ -2,12 +2,15 @@
 {{link "tut-gtk2-btt-toggle", "tut-gtk2-btt", "tut-gtk", "tut-gtk2-btt-radio"}}
 
 == Check Button
+=== Using Stock Items
+(If you are "revisiting" for "Stock items" skip to the bottom part of the page.)
+=== Callbacks And Event Handling Revisited - Callbacks are closures 
+(If you are "revisiting" for "Callbacks" skip to the bottom part of the page.)
 {{br}}
 {{image_right("btt-check.png")}}
 {{br}}
 
-(If you are "revisiting" for either "Stock items" or Callbacks" skip to the bottom part of the page.)
- 
+=== Check Button
 As mentioned earlier in the Toggle Button session, Gtk::CheckButton is derived from Gtk::ToggleButton. Hence we inherit all the Toggle Button functionality. There is not much new material in this example, except see that a "stock-item" is introduced. This program is also a good example to point out the important feature of Ruby's signal and/or event handling mechanism. Let's first look at the program:
 
 
