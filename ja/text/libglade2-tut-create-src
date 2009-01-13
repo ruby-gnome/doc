@@ -73,7 +73,7 @@ PROG_PATHд╧hwedit.gladeдЄ├╓дпPATHд╟д╣бг╛х╡н╬уд╟д╧д│д╬е─б╝еыдЄ╝┬╣╘д╣дые╟егеьепе╚е
 
 PROG_NAMEд╧├╧░ш▓╜═╤е╟б╝е┐д╬е╒ебедеы╠╛б╩│╚─е╗╥дЄ╜№дпб╦д╚д╖д╞░╖дядьд▐д╣бгд│д│д╟д╧е╫еэе░ещер╠╛дЄ┬х╞■д╖д╞ддд▐д╣бг
 
-=== е╖е░е╩еые╧еєе╔ещд╬╝┬┴ї
+== е╖е░е╩еые╧еєе╔ещд╬╝┬┴ї
 д╡д╞бв╕хд╧╡дд╬╕■дпд▐д▐д╦е╖е░е╩еые╧еєе╔ещд┐д┴дЄ╝┬┴їд╖д▐д╖дчджбг@glade["textview1"]д╚дддждшджд╩╖┴д╟д╜дьд╛дьежеге╕езе├е╚д╬едеєе╣е┐еєе╣дЄ╕╞д╙╜╨д╣д│д╚дмд╟днд▐д╣бг"textview1"д╧Glade-2╛хд╟└▀─ъд╖д┐б╩двдыддд╧е╟е╒ейеые╚д╬д▐д▐д╟д╧ежеге╕езе├е╚ + ╚╓╣цд╚дддж╖┴д╦д╩дыб╦ежеге╕езе├е╚╠╛д╟д╣бг
 д┐д└бвддд┴ддд┴д╜д╬дшджд╦╜ёдпд╬дт╝ъ┤╓д╩д╬д╟╬╔дп╗╚джежеге╕езе├е╚д╧едеєе╣е┐еєе╣╩╤┐Їд╦┬х╞■д╖д╞дкдпд╚╩╪═°д╟д╣бг
 
@@ -83,14 +83,17 @@ PROG_NAMEд╧├╧░ш▓╜═╤е╟б╝е┐д╬е╒ебедеы╠╛б╩│╚─е╗╥дЄ╜№дпб╦д╚д╖д╞░╖дядьд▐д╣бгд│д│д╟д╧е
     super(path_or_data, root, domain, localedir, flag)
     bindtextdomain(domain, localedir, nil, "")
     
+    @window = @glade['main_window']
     @editor = @glade['textview1']
     @filedlg = @glade['filechooser']
     @aboutdlg = @glade['aboutdialog']
   end
 
-{{br}}
+░╩▓╝бве╖е░е╩еые╧еєе╔ещд╬╝┬┴ї╬уд╟д╣бг
 
-░╩▓╝бве╖е░е╩еые╧еєе╔ещд╬╝┬┴ї╬уд╟д╣бгд▐д║д╧┤╩├▒д╩╜ъд╟бв"Edit"есе╦ехб╝д╬"Cut(└┌дъ╝шдъ)"бв"Copy(е│е╘б╝)"бв"Paste(┼╜дъ╔╒д▒)"е│е▐еєе╔дЄ╝┬┴їд╖д╞д▀д▐д╣бг
+=== "Edit"есе╦ехб╝
+
+д▐д║д╧┤╩├▒д╩╜ъд╟бв"Cut(└┌дъ╝шдъ)"бв"Copy(е│е╘б╝)"бв"Paste(┼╜дъ╔╒д▒)"е│е▐еєе╔дЄ╝┬┴їд╖д╞д▀д▐д╣бг
 
   def on_paste1_activate(widget)
     puts "on_paste1_activate"
@@ -109,9 +112,9 @@ PROG_NAMEд╧├╧░ш▓╜═╤е╟б╝е┐д╬е╒ебедеы╠╛б╩│╚─е╗╥дЄ╜№дпб╦д╚д╖д╞░╖дядьд▐д╣бгд│д│д╟д╧е
 
 ░╩╛хб╩╛╨б╦бгGtk::TextViewд╬дкдлд▓д╟д╣бгд┴д╩д▀д╦TextViewежеге╕езе├е╚д╬▒жепеъе├епб╩е│еєе╞ене╣е╚б╦есе╦ехб╝╞тд╬е│е▐еєе╔д╧╝┬┴їд╣ды╔м═╫д╣дщдвдъд▐д╗дєбге╟е╒ейеые╚д╟╞░║юд╖д▐д╣бг
 
-{{br}}
+=== "Help"есе╦ехб╝
 
-╝бд╧бв"Help"есе╦ехб╝д╬"About"е│е▐еєе╔дЄ┴к┬Єд╖д┐╗■д╦бвGladeд╟║юд├д╞дкддд┐еве╨еже╚е└едевеэе░дЄ╔╜╝ид╣ды╬уд╟д╣бг
+╝бд╧бв"About"е│е▐еєе╔дЄ┴к┬Єд╖д┐╗■д╦бвGladeд╟║юд├д╞дкддд┐еве╨еже╚е└едевеэе░дЄ╔╜╝ид╣ды╬уд╟д╣бг
 
   def on_about1_activate(widget)
     puts "on_about1_activate"
@@ -142,28 +145,216 @@ Gtk::Dialog#runд╧бвд╔д╬е▄е┐еєдЄ▓бд╖д╞дте└едевеэе░дм╩─д╕ды╜ш═¤д╬╛ь╣чд╦д╧╩╪═°д╟д╣д
 
 {{br}}
 
-дтдж░ьд─бв"File"есе╦ехб╝д╬"Open(│лдп)"е│е▐еєе╔дЄ┴к┬Єд╖д┐╗■д╦бвGladeд╟║юд├д╞дкддд┐Gtk::FileChooserDialogдЄ╗╚д├д╞бвTextViewд╦е╞ене╣е╚е╒ебедеыдЄ╞╔д▀╣■др╬уд╟д╣бг
+░╩╕хбв"File"есе╦ехб╝╞тд╬е│е▐еєе╔дЄ╝┬┴їд╖д╞ддднд▐д╣бг
+
+=== "Quit(╜к╬╗)"е│е▐еєе╔
+
+  def on_quit1_activate(widget)
+    puts "on_quit1_activate"
+    unless @window.signal_emit('delete_event', nil)
+      @window.signal_emit('destroy')
+    end
+  end
+
+"Quit(╜к╬╗)"е│е▐еєе╔дм┴к┬Єд╡дьд┐╛ь╣чбвежегеєе╔ежд╬епеэб╝е║е▄е┐еєдм▓бд╡дьд┐╗■д╦╝л╞░д╟╣╘дядьды╜ш═¤дЄ╠└╝и┼кд╦╝┬╣╘д╖д▐д╣бгд▐д║бв"delete_event"е╖е░е╩еыдЄ╝л╩мд╟╚п└╕д╡д╗бвд╜д╬╠сдъ├═дмfalseд╬╛ь╣чд╡дщд╦"destroy"е╖е░е╩еыдЄ╚п└╕д╡д╗д▐д╣бг
+
+ежегеєе╔еждЄ╩─д╕дшджд╚д╖д┐╗■дфе╫еэе░ещерд╬╜к╬╗╗■д╦╣╘ддд┐ддд│д╚д╧бв"on_main_window_delete_event"есе╜е├е╔дф"on_main_window_destroy"есе╜е├е╔╞тд╟╝┬╣╘д╖д▐д╣бг
+
+=== "New(┐╖╡м)"е│е▐еєе╔
 
   require 'hwedit_glade'
-  require 'kconv'		# д│д╬╣╘дЄ─╔▓├
+  require 'kconv'			# ─╔▓├
 
-д▐д║╩╕╗·е│б╝е╔╩╤┤╣╜ш═¤д╦╔м═╫д╩Kconvете╕ехб╝еыдЄ╞╔д▀╣■дре│б╝е╔дЄ╦┴╞мд╦─╔▓├д╖д▐д╣бге╫еэе░ещердлдщTextViewд╦е╞ене╣е╚дЄ╞■╬╧д╣ды╛ь╣чбв╩╕╗·е│б╝е╔дмUTF-8д╦д╩д├д╞ддды╔м═╫дмдвдъд▐д╣бг
+  class Hwedit < HweditGlade
+
+    DEFAULT_FILECHARSET = Kconv::SJIS	# ─╔▓├
+{{br}}
+  def on_new1_activate(widget)
+    puts "on_new1_activate"
+    @filename = nil			# ╩╘╜╕├це╞ене╣е╚д╬е╒ебедеые╤е╣╛Ё╩єдЄепеъев
+    @filecharset = DEFAULT_FILECHARSET	# ╩╘╜╕├це╞ене╣е╚д╬╩╕╗·е│б╝е╔╛Ё╩єдЄе╟е╒ейеые╚д╦╠сд╣
+    @editor.buffer.text = ""		# TextViewд╬е╟б╝е┐дЄепеъев
+    @window.title = 'Hello World Editor - ' + 'untitled'	# ежегеєе╔еже┐еде╚еы╣╣┐╖
+  end
+  
+"New(┐╖╡м)"е│е▐еєе╔д╟д╧бв╞╔д▀╣■д▀/╩▌┬╕е╒ебедеыд╦┤╪д╣ды╛Ё╩єд╚TextViewд╬╜щ┤№▓╜бвдкдшд╙ежегеєе╔еже┐еде╚еыд╬╣╣┐╖дЄ╣╘ддд▐д╣бг
+
+"DEFAULT_FILECHARSET"д╧┐╖╡м╩╕╜ёдЄ╩▌┬╕д╣дыд╚днд╬е╟е╒ейеые╚╩╕╗·е│б╝е╔д╟д╣бг├═д╦д╧бве╒ебедеы╞■╜╨╬╧д╬╗■д╩д╔д╦═°═╤д╣дыб╩═╜─ъд╬б╦Kconvете╕ехб╝еыд╬─ъ┐ЇдЄ╗╚д├д╞ддд▐д╣бге┴ехб╝е╚еъевеы═╤е╫еэе░ещерд╬╞░║ю│╬╟здЄMS Windowsд╟╣╘д├д╞дддыд╬д╟Shift-JISдЄ┴к┬Єд╖д▐д╖д┐бге╫еэе░ещерд╬ецб╝е╢дм╝л╩мд╬┤─╢нд╦╣чдяд╗д╞┼м╡╣╩╤╣╣д╣дыд╚дддж┴█─ъд╟д╣б╩╡п╞░╗■д╬е│е▐еєе╔ещедеєеке╫е╖ечеєд╟╗╪─ъд╟дндыдшджд╦д╣дыд╚╩╪═°длдтб╦бге╣епеъе╫е╚╦┴╞мд╦Kconvете╕ехб╝еыдЄ╞╔д▀╣■дре│б╝е╔дт─╔▓├д╖д▐д╣бг
+
+"@filecharset"д╧е╒ебедеы╩▌┬╕╗■д╬╩╕╗·е│б╝е╔д╟д╣бгTextViewд╧UTF-8д╬е╞ене╣е╚д╖дл╝їд▒╔╒д▒д╩ддд╬д╟бвд│д╬дшджд╩╩╤┐ЇдЄ═╤░╒д╖д╞┐╖╡м║ю└о╗■дфе╒ебедеы╞╔д▀╣■д▀╗■д╦╡н╧┐д╖д╞дкдп╔м═╫дмдвдъд▐д╣бг
+
+д│д╬е╡еєе╫еыд╟д╧бв─╛┴░д╦╩╘╜╕д╖д╞ддд┐е╞ене╣е╚дЄ╩▌┬╕д╣дыдлд╔дждлбвецб╝е╢д╦┐╥д═ды╜ш═¤д╧╛╩╬мд╖д╞ддд▐д╣бгб╩╩▌┬╕д╖д▐д╗дєб╦
+
+=== "New(┐╖╡м)"е│е▐еєе╔б╩▓■б╦
+
+╜ш═¤д╚д╖д╞д╧╛х╡нд╬─╠дъд╟ддддд╬д╟д╣дмбв"on_new1_activate"есе╜е├е╔╞тд╬е│б╝е╔д╧бве╫еэе░ещерд╬╡п╞░╗■д╦дт╝┬╣╘д╣дыдтд╬д╩д╬д╟бв╩╠есе╜е├е╔д╚д╖д╞└┌дъ╜╨д╣д│д╚д╦д╖д▐д╣бгд▐д┐ежегеєе╔еже┐еде╚еыд╬╣╣┐╖д╧╛х╡нг▓д─д╬╛ь╜ъ░╩│░д╟дт╝┬╣╘д╡дьдыд│д╚дм═╞░╫д╦┴█┴№д╟дндыд╬д╟бв╞╚╬йд╖д┐есе╜е├е╔д╦д╖д▐д╣бгд╜д╬дшджд╦╜ёдн┤╣дид┐е│б╝е╔дм░╩▓╝д╟д╣бг
+
+  def initialize(path_or_data, root = nil, domain = nil, localedir = nil, flag = GladeXML::FILE)
+    super(path_or_data, root, domain, localedir, flag)
+    bindtextdomain(domain, localedir, nil, "")
+    
+    @window = @glade['main_window']
+    @editor = @glade['textview1']
+    @filedlg = @glade['filechooser']
+    @aboutdlg = @glade['aboutdialog']
+    
+    initialize_editor	# ─╔▓├
+  end
+
+  def on_new1_activate(widget)
+    puts "on_new1_activate"
+    initialize_editor	# ├╓дн┤╣ди
+  end
+
+  def initialize_editor	# ┐╖╡м║ю└о
+    @filename = nil
+    @filecharset = DEFAULT_FILECHARSET
+    @editor.buffer.text = ""
+    update_window_title('untitled')
+  end
+
+  def update_window_title(filename)	# ┐╖╡м║ю└о
+    @window.title = 'Hello World Editor - ' + File.basename(filename)
+  end
+
+ежегеєе╔еже┐еде╚еыд╦д╧е╒ебедеые╤е╣д╟д╧д╩дпбве╒ебедеы╠╛д╬д▀╔╜╝ид╣дыдшджд╦д╖д╞д▀д▐д╖д┐бг
+
+=== "Open(│лдп)"е│е▐еєе╔
+
+╜ш═¤д╬╬одьд╚д╖д╞д╧бвGladeд╟║юд├д╞дкддд┐Gtk::FileChooserDialogдЄ╔╜╝ид╖д╞ецб╝е╢д╦е╒ебедеыдЄ┴к┬Єд╡д╗дыбвд╜д╬е╒ебедеыдЄд▐дыд┤д╚╞╔д▀╣■дєд╟TextViewд╦╔╜╝ибве╒ебедеы╠╛дЄ╗╚д├д╞ежегеєе╔еже┐еде╚еыдЄ╣╣┐╖бве└едевеэе░дЄ▒гд╣бвд╚дддж╖┴д╦д╩дъд▐д╣бг
 
   def on_open1_activate(widget)
     puts "on_open1_activate"
+    show_opendlg		# ─╔▓├
+  end
+
+  def show_opendlg	# ┐╖╡м║ю└о
+    @filedlg.action = Gtk::FileChooser::ACTION_OPEN	# е└едевеэе░дЄекб╝е╫еє═╤д╦└▀─ъ
+    @filedlg.title  = 'Open Dialog'
     if @filedlg.run == Gtk::Dialog::RESPONSE_OK
-      @editor.buffer.text  = ""			# е╨е├е╒ебдЄепеъев
-      File.open(@filedlg.filename).each do |line|	# 1╣╘д║д─╜ш═¤
-        @editor.insert_at_cursor(Kconv.toutf8(line))
-        # ╩╕╗·е│б╝е╔дЄ╩╤┤╣д╖д╞елб╝е╜еы░╠├╓(е╨е├е╒еб╦Ў╚°)д╦┴▐╞■
+      if File.exist?(get_platform_filename(@filedlg.filename))
+        @filename = @filedlg.filename		# е╒ебедеые╤е╣дЄ╡н╧┐
+        read_file(@filename)			# ┴к┬Єд╡дьд┐е╒ебедеыдЄ╞╔д▀╣■дєд╟TextViewд╦╔╜╝и
+        update_window_title(@filename)
       end
-      @editor.move_cursor(Gtk::MOVEMENT_BUFFER_ENDS, -1, false)	# елб╝е╜еыдЄ└ш╞мд╦░▄╞░
     end
     @filedlg.hide
   end
 
-╜ш═¤д╬╞т═╞д╧е│есеєе╚д╬─╠дъд╟д╣бге╡еєе╫еыд╬д┐дсбв░╩┴░д╦╔╜╝ид╡дьд╞ддд┐е╞ене╣е╚дЄ╩▌┬╕д╣дыдлд╔дждлд╬│╬╟здфбв╞╔д▀╣■дєд└е╞ене╣е╚д╬╩╕╗·е│б╝е╔д╬╡н▓▒д╩д╔д╧д╖д╞ддд▐д╗дєбг
+  def get_platform_filename(filename)	# ┐╖╡м║ю└о
+    if RUBY_PLATFORM.include?('mswin32')
+      return Kconv.tosjis(filename)
+    else
+      return Kconv.toutf8(filename)
+    end
+  end
 
-еве╨еже╚е└едевеэе░д╚╞▒д╕дшджд╦runесе╜е├е╔дЄ╗╚д├д╞ддд▐д╣дмбве╓еэе├епд╧╔╒д▒д║д╦╠сдъ├═длдщ"Open(│лдп)"е▄е┐еєдм▓бд╡дьд┐длд╔дждлдЄ╚╜─ъд╖д╞ддд▐д╣бг
+д│д╬е┴ехб╝е╚еъевеыд╬е╫еэе░ещерд╟д╧бв░ьд─д╬FileChooserDialogдЄекб╝е╫еє╗■бв╩▌┬╕╗■╬╛╩¤д╟╗╚дд▓єд╖д▐д╣д╬д╟бвд▐д║"show_opendlg"есе╜е├е╔д╬╦┴╞мд╟екб╝е╫еє═╤д╬└▀─ъдЄд╖д╞ддд▐д╣бгд╜д╬╕хе└едевеэе░дЄ╔╜╝ид╖д╞бв"OK"е▄е┐еєд╟╩─д╕дщдьбвдлд─╝ш╞└д╖д┐е╒ебедеые╤е╣дм┬╕║▀д╣ды╗■д└д▒е╒ебедеыд╬╞╔д▀╣■д▀д╚╔╜╝идЄ╣╘ддд▐д╣бг
 
-Gtk::TextView#move_cursorд╧бв░▄╞░├▒░╠д╚░▄╞░╬╠дЄ╗╪─ъд╖д╞елб╝е╜еыдЄ░▄╞░д╣дыесе╜е├е╔д╟д╣бг░▄╞░╬╠д╧е▐еде╩е╣├═дЄ╗╪─ъд╟днд▐д╣бг3╚╓╠▄д╬░·┐Їд╧бв░▄╞░┴░д╬░╠├╓длдщ░▄╞░╕хд╬░╠├╓д▐д╟д╬е╞ене╣е╚дЄ┴к┬Є╛ї┬╓д╦д╣дыдлд╔дждлдЄ╗╪─ъд╖д▐д╣бг
+еве╨еже╚е└едевеэе░д╬╬уд╚╞▒д╕дшджд╦runесе╜е├е╔дЄ╗╚д├д╞ддд▐д╣дмбве╓еэе├епд╧╔╒д▒д║д╦╠сдъ├═длдщ"OK"е▄е┐еєдм▓бд╡дьд┐длд╔дждлдЄ╚╜─ъд╖д╞ддд▐д╣бг
+
+┴к┬Єд╡дьд┐е╒ебедеыд╬┬╕║▀е┴езе├епд╟д╧"get_platform_filename"есе╜е├е╔дЄ╖╨═│д╖д┐е╤е╣дЄ╗╪─ъд╖д╞ддд▐д╣бгд│дьд╧е└едевеэе░д╟╝ш╞└д╟дндые╤е╣д╬╩╕╗·е│б╝е╔б╩UTF-8б╦д╚"File.exist"есе╜е├е╔дм╝їд▒╔╒д▒дые╤е╣д╬╩╕╗·е│б╝е╔дм░█д╩ды╛ь╣чдмдвдыд┐дсд╟д╣бг╬удид╨бвMS Windowsд╟д╧╞№╦▄╕ьд╩д╔дЄ┤▐дре╤е╣д╧Shift-JISд╟д╩д▒дьд╨д╩дъд▐д╗дєбг"get_platform_filename"есе╜е├е╔д╟е╫еще├е╚е╒ейб╝ерд╦▒■д╕д┐╩╕╗·е│б╝е╔д╦╩╤┤╣д╖д╞ддд▐д╣бгд│д╬есе╜е├е╔д╧MS Windows░╩│░д╬╛ь╣чд╬╜ш═¤д╧┼м┼Ўд╟д╣бгд┤├э░╒дпд└д╡ддбг
+
+"update_window_title"есе╜е├е╔д╧"New(┐╖╡м)"е│е▐еєе╔д╬╝┬┴ї╗■д╦║юд├д┐дтд╬д╟д╣бг
+
+▓╝д╦"read_file"есе╜е├е╔д╬е│б╝е╔дЄ╡єд▓д▐д╣бг
+
+  def read_file(filename)	# ┐╖╡м║ю└о
+    text = ""
+    File.open(get_platform_filename(filename)) do |f|
+      text = f.readlines.join		# д▐дыд┤д╚╞╔д▀╣■др
+    end
+    @filecharset = Kconv.guess(text)	# е╒ебедеы╩▌┬╕╗■д╬╩╕╗·е│б╝е╔дЄ╡н╧┐
+    if @filecharset == Kconv::UNKNOWN
+      @filecharset = DEFAULT_FILECHARSET
+    end
+    @editor.buffer.text = Kconv.kconv(text, Kconv::UTF8, @filecharset)	# TextViewд╦╔╜╝и
+    @editor.move_cursor(Gtk::MOVEMENT_BUFFER_ENDS, -1, false)		# елб╝е╜еыдЄ└ш╞мд╦░▄╞░
+  end
+
+"File.open"есе╜е├е╔д╟дт╩╕╗·е│б╝е╔дЄ╩╤┤╣д╖д┐е╤е╣дЄ╗╪─ъд╖д╞ддд▐д╣бгд▐д┐е╒ебедеыдлдщ╞╔д▀╣■дєд└е╟б╝е┐д╦д─ддд╞дт╔м═╫д╩╜ш═¤дЄд╖д╞ддд▐д╣бг╛хд╟дт╜ёднд▐д╖д┐дмбвGtk::TextViewдмUTF-8д╬е╞ене╣е╚д╖дл└╡╛яд╦╔╜╝ид╟днд╩ддд┐дсд╟д╣бг
+
+Gtk::TextView#move_cursorд╧бв░▄╞░├▒░╠д╚░▄╞░╬╠дЄ╗╪─ъд╖д╞елб╝е╜еыдЄ░▄╞░д╣дыесе╜е├е╔д╟д╣бг░▄╞░╬╠д╧е▐еде╩е╣├═дт╗╪─ъд╟днд▐д╣бг3╚╓╠▄д╬░·┐Їд╧бв░▄╞░┴░д╬░╠├╓длдщ░▄╞░╕хд╬░╠├╓д▐д╟д╬е╞ене╣е╚дЄ┴к┬Є╛ї┬╓д╦д╣дыдлд╔дждлдЄ╗╪─ъд╖д▐д╣бг
+
+=== "Save(╩▌┬╕)"е│е▐еєе╔
+
+╩▌┬╕е╒ебедеые╤е╣дм┤√д╦╖шд▐д├д╞ддды╛ь╣чб╩┤√┬╕е╒ебедеыдЄ╞╔д▀╣■дєд└бвдтд╖дпд╧╩▌┬╕║╤д▀б╦бвд╜д╬д▐д▐╩▌┬╕д╖бвд╜джд╟д╩д▒дьд╨е└едевеэе░дЄ╔╜╝ид╖д╞ецб╝е╢д╦╗╪─ъд╖д╞дтдщддд▐д╣бг"save_file"есе╜е├е╔д╧"Save As(╩╠╠╛д╟╩▌┬╕)"е│е▐еєе╔д╟дт╗╚ддд▐д╣бг"show_savedlg"есе╜е├е╔д╧"Save As(╩╠╠╛д╟╩▌┬╕)"е│е▐еєе╔д╟└т╠└д╖д▐д╣бг
+
+  def on_save1_activate(widget)
+    puts "on_save1_activate"
+    if @filename
+      save_file(@filename)
+    else
+      show_savedlg
+    end
+  end
+
+  def save_file(filename)	# ┐╖╡м║ю└о
+    File.open(get_platform_filename(filename), 'w') do |f|
+      f.write(Kconv.kconv(@editor.buffer.text, @filecharset, Kconv::UTF8))
+    end
+  end
+
+=== "Save As(╩╠╠╛д╟╩▌┬╕)"е│е▐еєе╔
+
+  def on_save_as1_activate(widget)
+    puts "on_save_as1_activate"
+    show_savedlg
+  end
+
+╛яд╦е└едевеэе░дЄ╔╜╝ид╖д╞ецб╝е╢д╦е╒ебедеы╠╛дЄ╞■╬╧д╖д╞дтдщддд▐д╣бг
+
+  def show_savedlg	# ┐╖╡м║ю└о
+    @filedlg.action = Gtk::FileChooser::ACTION_SAVE	# е└едевеэе░дЄ╩▌┬╕═╤д╦└▀─ъ
+    @filedlg.title  = 'Save Dialog'
+    loop do
+      if @filedlg.run == Gtk::Dialog::RESPONSE_OK
+        next unless @filedlg.filename			# е╒ебедеы╠╛дм╢ї
+        if File.exist?(get_platform_filename(@filedlg.filename))
+          next unless overwrite_file?(@filedlg.filename)	# ╛х╜ёдн╡ё╚▌
+        else
+          next unless filename_valid?(@filedlg.filename)	# е╒ебедеы╠╛дм╔╘└╡
+        end
+        save_file(@filedlg.filename)
+        @filename = @filedlg.filename
+        update_window_title(@filename)
+      end
+      break
+    end
+    @filedlg.hide
+  end
+
+"show_savedlg"есе╜е├е╔д╟д╧бв"Open(│лдп)"е│е▐еєе╔д╟дт╗╚д├д┐Gtk::FileChooserDialogдЄ╩▌┬╕═╤д╦╗╚ддбв╞■╬╧д╡дьд┐е╒ебедеы╠╛дм╔╘└╡д╟д╩д▒дьд╨╩▌┬╕д╖д▐д╣бгGtk::Dialog#runесе╜е├е╔д╟еье╣е▌еєе╣дЄ╩с┬кд╖д╞д╜д╬├═дЄе┴езе├епд╣дыд╬д╧"show_opendlg"есе╜е├е╔д╚╞▒д╕д╟д╣дмбвд╜д╬е╓еэе├епдЄ╠╡╕┬еыб╝е╫д╟╢┤дєд╟бв"OK"е▄е┐еєдм▓бд╡дьбвдлд─╛х╜ёдндм╡ё╚▌д╡дьд┐дъ╞■╬╧д╡дьд┐е╒ебедеы╠╛дм╔╘└╡д╟двды╛ь╣чбвд╜д╬д▐д▐е╒ебедеы╩▌┬╕е└едевеэе░дм╔╜╝ид╡дь┬│д▒дыдшджд╦д╖д╞ддд▐д╣бг
+
+  def overwrite_file?(filename)	# ┐╖╡м║ю└о
+    dlg = Gtk::MessageDialog.new(
+            @filedlg, Gtk::Dialog::MODAL,
+            Gtk::MessageDialog::QUESTION,
+            Gtk::MessageDialog::BUTTONS_OK_CANCEL,
+            filename + "\n already exists. Do you overwrite it?")
+    result = dlg.run
+    dlg.destroy
+    result == Gtk::Dialog::RESPONSE_OK
+  end
+
+"overwrite_file?"есе╜е├е╔д╟д╧бв╕╞д╙╜╨д╡дьды┼┘д╦бве╒ебедеыдЄ╛х╜ёднд╣дыдлд╔дждл│╬╟зд╣дые└едевеэе░б╩Gtk::MessageDialogб╦дЄ┐╖╡мд╦║ю└од╖д╞╔╜╝ид╖д▐д╣бг"OK"е▄е┐еєдм▓бд╡дьд┐длд╔дждлдЄ╠сдъ├═д╚д╖д╞╩╓д╖д▐д╣бг
+
+  def filename_valid?(filename)	# ┐╖╡м║ю└о
+    begin
+      File.open(get_platform_filename(filename), 'w') do |f| end
+    rescue Errno::EINVAL => err
+      p err
+      basename = File.basename(filename)
+      dlg = Gtk::MessageDialog.new(
+              @filedlg, Gtk::Dialog::MODAL,
+              Gtk::MessageDialog::ERROR,
+              Gtk::MessageDialog::BUTTONS_CLOSE,
+              basename + " is a invalid file name.")
+      dlg.run
+      dlg.destroy
+      return false
+    end
+    true
+  end
+
+"filename_valid?"есе╜е├е╔д╟д╧бве╒ебедеые╤е╣дЄе┴езе├епд╖д╞╔╘┼╘╣чдмдвдьд╨е└едевеэе░д╟╔╜╝ид╖д╞falseдЄ╩╓д╖д▐д╣бгд│д╬есе╜е├е╔д╧е╒ебедеы╩▌┬╕╜ш═¤└ь═╤д╦║юд├д┐д╬д╟бв╗юд╖д╦е╒ебедеыдЄ║юд├д╞д▀д╞е╤е╣д╬═н╕·└ндЄ│╬╟зд╖д╞ддд▐д╣б╩е╒ебедеыдмд╟днд╞д╖д▐д├д╞дт╠ф┬ъдмд╩ддб╦бге╤е╣д╦╠ф┬ъдмд╩д▒дьд╨trueдЄ╩╓д╖д▐д╣бг
