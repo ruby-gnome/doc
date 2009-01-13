@@ -85,8 +85,8 @@ PROG_NAME¤ÏÃÏ°è²½ÍÑ¥Ç¡¼¥¿¤Î¥Õ¥¡¥¤¥ëÌ¾¡Ê³ÈÄ¥»Ò¤ò½ü¤¯¡Ë¤È¤·¤Æ°·¤ï¤ì¤Þ¤¹¡£¤³¤³¤Ç¤Ï¥
     
     @window = @glade['main_window']
     @editor = @glade['textview1']
-    @filedlg = @glade['filechooser']
-    @aboutdlg = @glade['aboutdialog']
+    @filedialog = @glade['filechooser']
+    @aboutdialog = @glade['aboutdialog']
   end
 
 °Ê²¼¡¢¥·¥°¥Ê¥ë¥Ï¥ó¥É¥é¤Î¼ÂÁõÎã¤Ç¤¹¡£
@@ -118,7 +118,7 @@ PROG_NAME¤ÏÃÏ°è²½ÍÑ¥Ç¡¼¥¿¤Î¥Õ¥¡¥¤¥ëÌ¾¡Ê³ÈÄ¥»Ò¤ò½ü¤¯¡Ë¤È¤·¤Æ°·¤ï¤ì¤Þ¤¹¡£¤³¤³¤Ç¤Ï¥
 
   def on_about1_activate(widget)
     puts "on_about1_activate"
-    @aboutdlg.run do |response|
+    @aboutdialog.run do |response|
       case response
       when Gtk::Dialog::RESPONSE_DELETE_EVENT
         puts "RESPONSE_DELETE_EVENT"
@@ -126,7 +126,7 @@ PROG_NAME¤ÏÃÏ°è²½ÍÑ¥Ç¡¼¥¿¤Î¥Õ¥¡¥¤¥ëÌ¾¡Ê³ÈÄ¥»Ò¤ò½ü¤¯¡Ë¤È¤·¤Æ°·¤ï¤ì¤Þ¤¹¡£¤³¤³¤Ç¤Ï¥
         puts "RESPONSE_CLOSE"
       end
     end
-    @aboutdlg.hide
+    @aboutdialog.hide
   end
 
 Gtk::Dialog#run¤Ï¡¢¥À¥¤¥¢¥í¥°¾å¤Ç²¿¤é¤«¤Î"response" Signal¤¬È¯À¸¤¹¤ë¤Þ¤ÇÂÔµ¡¤·¡¢Signal¤ò¼õ¤±¼è¤ë¤È´ØÏ¢ÉÕ¤±¤é¤ì¤¿¥Ö¥í¥Ã¥¯¤ò¼Â¹Ô¤·¤Æ¥á¥½¥Ã¥É¤òÈ´¤±¤Þ¤¹¡£"response" Signal¤È¤Ï¡¢"response ID"¤¬ÀßÄê¤µ¤ì¤¿¥Ü¥¿¥ó¤¬²¡¤µ¤ì¤ë¤«¡¢¤Þ¤¿¤Ï¥À¥¤¥¢¥í¥°ÏÈ¤Î¥¯¥í¡¼¥º¥Ü¥¿¥ó¡Ê¤³¤ì¤ò²¡¤·¤¿¤È¤¤¤¦¥¤¥Ù¥ó¥È¤Ë¤â"response ID"¤¬ÀßÄê¤µ¤ì¤Æ¤¤¤Þ¤¹¡Ë¤¬²¡¤µ¤ì¤¿»þ¤ËÈ¯À¸¤¹¤ëSignal¤Ç¤¹¡£"response ID"¤Ï¥Ö¥í¥Ã¥¯°ú¿ô¤È¤·¤ÆÅÏ¤µ¤ì¤ë¤Î¤Ç¡¢¥Ö¥í¥Ã¥¯Æâ¤Ç¤³¤ÎÃÍ¤Ë±þ¤¸¤¿½èÍý¤ò¹Ô¤¦¤³¤È¤¬¤Ç¤­¤Þ¤¹¡£
@@ -137,8 +137,8 @@ Gtk::Dialog#run¤Ï¡¢¥À¥¤¥¢¥í¥°¾å¤Ç²¿¤é¤«¤Î"response" Signal¤¬È¯À¸¤¹¤ë¤Þ¤ÇÂÔµ¡¤·¡¢
 
   def on_about1_activate(widget)
     puts "on_about1_activate"
-    @aboutdlg.run
-    @aboutdlg.hide
+    @aboutdialog.run
+    @aboutdialog.hide
   end
 
 Gtk::Dialog#run¤Ï¡¢¤É¤Î¥Ü¥¿¥ó¤ò²¡¤·¤Æ¤â¥À¥¤¥¢¥í¥°¤¬ÊÄ¤¸¤ë½èÍý¤Î¾ì¹ç¤Ë¤ÏÊØÍø¤Ç¤¹¤¬¡¢¤½¤¦¤Ç¤Ê¤¤¾ì¹ç¡¢Â¾¤Î¥¦¥£¥¸¥§¥Ã¥È¤ÈÆ±¤¸ÊýË¡¤Ç¥·¥°¥Ê¥ë¥Ï¥ó¥É¥é¤òÀßÄê¤¹¤ë¤³¤È¤â¤Ç¤­¤Þ¤¹¡£¾Ü¤·¤¯¤Ï((<¡ÖGtk2¥Á¥å¡¼¥È¥ê¥¢¥ë¡×¤Î¡Ö¥À¥¤¥¢¥í¥°¡×¤Î¥Ú¡¼¥¸|gtk2-tut-dialog>))¤ò¸«¤Æ²¼¤µ¤¤¡£
@@ -195,8 +195,8 @@ Gtk::Dialog#run¤Ï¡¢¤É¤Î¥Ü¥¿¥ó¤ò²¡¤·¤Æ¤â¥À¥¤¥¢¥í¥°¤¬ÊÄ¤¸¤ë½èÍý¤Î¾ì¹ç¤Ë¤ÏÊØÍø¤Ç¤¹¤
     
     @window = @glade['main_window']
     @editor = @glade['textview1']
-    @filedlg = @glade['filechooser']
-    @aboutdlg = @glade['aboutdialog']
+    @filedialog = @glade['filechooser']
+    @aboutdialog = @glade['aboutdialog']
     
     initialize_editor	# ÄÉ²Ã
   end
@@ -225,20 +225,20 @@ Gtk::Dialog#run¤Ï¡¢¤É¤Î¥Ü¥¿¥ó¤ò²¡¤·¤Æ¤â¥À¥¤¥¢¥í¥°¤¬ÊÄ¤¸¤ë½èÍý¤Î¾ì¹ç¤Ë¤ÏÊØÍø¤Ç¤¹¤
 
   def on_open1_activate(widget)
     puts "on_open1_activate"
-    show_opendlg		# ÄÉ²Ã
+    show_opendialog		# ÄÉ²Ã
   end
 
-  def show_opendlg	# ¿·µ¬ºîÀ®
-    @filedlg.action = Gtk::FileChooser::ACTION_OPEN	# ¥À¥¤¥¢¥í¥°¤ò¥ª¡¼¥×¥óÍÑ¤ËÀßÄê
-    @filedlg.title  = 'Open Dialog'
-    if @filedlg.run == Gtk::Dialog::RESPONSE_OK
-      if File.exist?(get_platform_filename(@filedlg.filename))
-        @filename = @filedlg.filename		# ¥Õ¥¡¥¤¥ë¥Ñ¥¹¤òµ­Ï¿
+  def show_opendialog	# ¿·µ¬ºîÀ®
+    @filedialog.action = Gtk::FileChooser::ACTION_OPEN	# ¥À¥¤¥¢¥í¥°¤ò¥ª¡¼¥×¥óÍÑ¤ËÀßÄê
+    @filedialog.title  = 'Open Dialog'
+    if @filedialog.run == Gtk::Dialog::RESPONSE_OK
+      if File.exist?(get_platform_filename(@filedialog.filename))
+        @filename = @filedialog.filename		# ¥Õ¥¡¥¤¥ë¥Ñ¥¹¤òµ­Ï¿
         read_file(@filename)			# ÁªÂò¤µ¤ì¤¿¥Õ¥¡¥¤¥ë¤òÆÉ¤ß¹þ¤ó¤ÇTextView¤ËÉ½¼¨
         update_window_title(@filename)
       end
     end
-    @filedlg.hide
+    @filedialog.hide
   end
 
   def get_platform_filename(filename)	# ¿·µ¬ºîÀ®
@@ -249,7 +249,7 @@ Gtk::Dialog#run¤Ï¡¢¤É¤Î¥Ü¥¿¥ó¤ò²¡¤·¤Æ¤â¥À¥¤¥¢¥í¥°¤¬ÊÄ¤¸¤ë½èÍý¤Î¾ì¹ç¤Ë¤ÏÊØÍø¤Ç¤¹¤
     end
   end
 
-¤³¤Î¥Á¥å¡¼¥È¥ê¥¢¥ë¤Î¥×¥í¥°¥é¥à¤Ç¤Ï¡¢°ì¤Ä¤ÎFileChooserDialog¤ò¥ª¡¼¥×¥ó»þ¡¢ÊÝÂ¸»þÎ¾Êý¤Ç»È¤¤²ó¤·¤Þ¤¹¤Î¤Ç¡¢¤Þ¤º"show_opendlg"¥á¥½¥Ã¥É¤ÎËÁÆ¬¤Ç¥ª¡¼¥×¥óÍÑ¤ÎÀßÄê¤ò¤·¤Æ¤¤¤Þ¤¹¡£¤½¤Î¸å¥À¥¤¥¢¥í¥°¤òÉ½¼¨¤·¤Æ¡¢"OK"¥Ü¥¿¥ó¤ÇÊÄ¤¸¤é¤ì¡¢¤«¤Ä¼èÆÀ¤·¤¿¥Õ¥¡¥¤¥ë¥Ñ¥¹¤¬Â¸ºß¤¹¤ë»þ¤À¤±¥Õ¥¡¥¤¥ë¤ÎÆÉ¤ß¹þ¤ß¤ÈÉ½¼¨¤ò¹Ô¤¤¤Þ¤¹¡£
+¤³¤Î¥Á¥å¡¼¥È¥ê¥¢¥ë¤Î¥×¥í¥°¥é¥à¤Ç¤Ï¡¢°ì¤Ä¤ÎFileChooserDialog¤ò¥ª¡¼¥×¥ó»þ¡¢ÊÝÂ¸»þÎ¾Êý¤Ç»È¤¤²ó¤·¤Þ¤¹¤Î¤Ç¡¢¤Þ¤º"show_opendialog"¥á¥½¥Ã¥É¤ÎËÁÆ¬¤Ç¥ª¡¼¥×¥óÍÑ¤ÎÀßÄê¤ò¤·¤Æ¤¤¤Þ¤¹¡£¤½¤Î¸å¥À¥¤¥¢¥í¥°¤òÉ½¼¨¤·¤Æ¡¢"OK"¥Ü¥¿¥ó¤ÇÊÄ¤¸¤é¤ì¡¢¤«¤Ä¼èÆÀ¤·¤¿¥Õ¥¡¥¤¥ë¥Ñ¥¹¤¬Â¸ºß¤¹¤ë»þ¤À¤±¥Õ¥¡¥¤¥ë¤ÎÆÉ¤ß¹þ¤ß¤ÈÉ½¼¨¤ò¹Ô¤¤¤Þ¤¹¡£
 
 ¥¢¥Ð¥¦¥È¥À¥¤¥¢¥í¥°¤ÎÎã¤ÈÆ±¤¸¤è¤¦¤Ërun¥á¥½¥Ã¥É¤ò»È¤Ã¤Æ¤¤¤Þ¤¹¤¬¡¢¥Ö¥í¥Ã¥¯¤ÏÉÕ¤±¤º¤ËÌá¤êÃÍ¤«¤é"OK"¥Ü¥¿¥ó¤¬²¡¤µ¤ì¤¿¤«¤É¤¦¤«¤òÈ½Äê¤·¤Æ¤¤¤Þ¤¹¡£
 
@@ -278,14 +278,14 @@ Gtk::TextView#move_cursor¤Ï¡¢°ÜÆ°Ã±°Ì¤È°ÜÆ°ÎÌ¤ò»ØÄê¤·¤Æ¥«¡¼¥½¥ë¤ò°ÜÆ°¤¹¤ë¥á¥½¥Ã¥
 
 === "Save(ÊÝÂ¸)"¥³¥Þ¥ó¥É
 
-ÊÝÂ¸¥Õ¥¡¥¤¥ë¥Ñ¥¹¤¬´û¤Ë·è¤Þ¤Ã¤Æ¤¤¤ë¾ì¹ç¡Ê´ûÂ¸¥Õ¥¡¥¤¥ë¤òÆÉ¤ß¹þ¤ó¤À¡¢¤â¤·¤¯¤ÏÊÝÂ¸ºÑ¤ß¡Ë¡¢¤½¤Î¤Þ¤ÞÊÝÂ¸¤·¡¢¤½¤¦¤Ç¤Ê¤±¤ì¤Ð¥À¥¤¥¢¥í¥°¤òÉ½¼¨¤·¤Æ¥æ¡¼¥¶¤Ë»ØÄê¤·¤Æ¤â¤é¤¤¤Þ¤¹¡£"save_file"¥á¥½¥Ã¥É¤Ï"Save As(ÊÌÌ¾¤ÇÊÝÂ¸)"¥³¥Þ¥ó¥É¤Ç¤â»È¤¤¤Þ¤¹¡£"show_savedlg"¥á¥½¥Ã¥É¤Ï"Save As(ÊÌÌ¾¤ÇÊÝÂ¸)"¥³¥Þ¥ó¥É¤ÇÀâÌÀ¤·¤Þ¤¹¡£
+ÊÝÂ¸¥Õ¥¡¥¤¥ë¥Ñ¥¹¤¬´û¤Ë·è¤Þ¤Ã¤Æ¤¤¤ë¾ì¹ç¡Ê´ûÂ¸¥Õ¥¡¥¤¥ë¤òÆÉ¤ß¹þ¤ó¤À¡¢¤â¤·¤¯¤ÏÊÝÂ¸ºÑ¤ß¡Ë¡¢¤½¤Î¤Þ¤ÞÊÝÂ¸¤·¡¢¤½¤¦¤Ç¤Ê¤±¤ì¤Ð¥À¥¤¥¢¥í¥°¤òÉ½¼¨¤·¤Æ¥æ¡¼¥¶¤Ë»ØÄê¤·¤Æ¤â¤é¤¤¤Þ¤¹¡£"save_file"¥á¥½¥Ã¥É¤Ï"Save As(ÊÌÌ¾¤ÇÊÝÂ¸)"¥³¥Þ¥ó¥É¤Ç¤â»È¤¤¤Þ¤¹¡£"show_savedialog"¥á¥½¥Ã¥É¤Ï"Save As(ÊÌÌ¾¤ÇÊÝÂ¸)"¥³¥Þ¥ó¥É¤ÇÀâÌÀ¤·¤Þ¤¹¡£
 
   def on_save1_activate(widget)
     puts "on_save1_activate"
     if @filename
       save_file(@filename)
     else
-      show_savedlg
+      show_savedialog
     end
   end
 
@@ -299,41 +299,41 @@ Gtk::TextView#move_cursor¤Ï¡¢°ÜÆ°Ã±°Ì¤È°ÜÆ°ÎÌ¤ò»ØÄê¤·¤Æ¥«¡¼¥½¥ë¤ò°ÜÆ°¤¹¤ë¥á¥½¥Ã¥
 
   def on_save_as1_activate(widget)
     puts "on_save_as1_activate"
-    show_savedlg
+    show_savedialog
   end
 
 ¾ï¤Ë¥À¥¤¥¢¥í¥°¤òÉ½¼¨¤·¤Æ¥æ¡¼¥¶¤Ë¥Õ¥¡¥¤¥ëÌ¾¤òÆþÎÏ¤·¤Æ¤â¤é¤¤¤Þ¤¹¡£
 
-  def show_savedlg	# ¿·µ¬ºîÀ®
-    @filedlg.action = Gtk::FileChooser::ACTION_SAVE	# ¥À¥¤¥¢¥í¥°¤òÊÝÂ¸ÍÑ¤ËÀßÄê
-    @filedlg.title  = 'Save Dialog'
+  def show_savedialog	# ¿·µ¬ºîÀ®
+    @filedialog.action = Gtk::FileChooser::ACTION_SAVE	# ¥À¥¤¥¢¥í¥°¤òÊÝÂ¸ÍÑ¤ËÀßÄê
+    @filedialog.title  = 'Save Dialog'
     loop do
-      if @filedlg.run == Gtk::Dialog::RESPONSE_OK
-        next unless @filedlg.filename			# ¥Õ¥¡¥¤¥ëÌ¾¤¬¶õ
-        if File.exist?(get_platform_filename(@filedlg.filename))
-          next unless overwrite_file?(@filedlg.filename)	# ¾å½ñ¤­µñÈÝ
+      if @filedialog.run == Gtk::Dialog::RESPONSE_OK
+        next unless @filedialog.filename			# ¥Õ¥¡¥¤¥ëÌ¾¤¬¶õ
+        if File.exist?(get_platform_filename(@filedialog.filename))
+          next unless overwrite_file?(@filedialog.filename)	# ¾å½ñ¤­µñÈÝ
         else
-          next unless filename_valid?(@filedlg.filename)	# ¥Õ¥¡¥¤¥ëÌ¾¤¬ÉÔÀµ
+          next unless filename_valid?(@filedialog.filename)	# ¥Õ¥¡¥¤¥ëÌ¾¤¬ÉÔÀµ
         end
-        save_file(@filedlg.filename)
-        @filename = @filedlg.filename
+        save_file(@filedialog.filename)
+        @filename = @filedialog.filename
         update_window_title(@filename)
       end
       break
     end
-    @filedlg.hide
+    @filedialog.hide
   end
 
-"show_savedlg"¥á¥½¥Ã¥É¤Ç¤Ï¡¢"Open(³«¤¯)"¥³¥Þ¥ó¥É¤Ç¤â»È¤Ã¤¿Gtk::FileChooserDialog¤òÊÝÂ¸ÍÑ¤Ë»È¤¤¡¢ÆþÎÏ¤µ¤ì¤¿¥Õ¥¡¥¤¥ëÌ¾¤¬ÉÔÀµ¤Ç¤Ê¤±¤ì¤ÐÊÝÂ¸¤·¤Þ¤¹¡£Gtk::Dialog#run¥á¥½¥Ã¥É¤Ç¥ì¥¹¥Ý¥ó¥¹¤òÊáÂª¤·¤Æ¤½¤ÎÃÍ¤ò¥Á¥§¥Ã¥¯¤¹¤ë¤Î¤Ï"show_opendlg"¥á¥½¥Ã¥É¤ÈÆ±¤¸¤Ç¤¹¤¬¡¢¤½¤Î¥Ö¥í¥Ã¥¯¤òÌµ¸Â¥ë¡¼¥×¤Ç¶´¤ó¤Ç¡¢"OK"¥Ü¥¿¥ó¤¬²¡¤µ¤ì¡¢¤«¤Ä¾å½ñ¤­¤¬µñÈÝ¤µ¤ì¤¿¤êÆþÎÏ¤µ¤ì¤¿¥Õ¥¡¥¤¥ëÌ¾¤¬ÉÔÀµ¤Ç¤¢¤ë¾ì¹ç¡¢¤½¤Î¤Þ¤Þ¥Õ¥¡¥¤¥ëÊÝÂ¸¥À¥¤¥¢¥í¥°¤¬É½¼¨¤µ¤ìÂ³¤±¤ë¤è¤¦¤Ë¤·¤Æ¤¤¤Þ¤¹¡£
+"show_savedialog"¥á¥½¥Ã¥É¤Ç¤Ï¡¢"Open(³«¤¯)"¥³¥Þ¥ó¥É¤Ç¤â»È¤Ã¤¿Gtk::FileChooserDialog¤òÊÝÂ¸ÍÑ¤Ë»È¤¤¡¢ÆþÎÏ¤µ¤ì¤¿¥Õ¥¡¥¤¥ëÌ¾¤¬ÉÔÀµ¤Ç¤Ê¤±¤ì¤ÐÊÝÂ¸¤·¤Þ¤¹¡£Gtk::Dialog#run¥á¥½¥Ã¥É¤Ç¥ì¥¹¥Ý¥ó¥¹¤òÊáÂª¤·¤Æ¤½¤ÎÃÍ¤ò¥Á¥§¥Ã¥¯¤¹¤ë¤Î¤Ï"show_opendialog"¥á¥½¥Ã¥É¤ÈÆ±¤¸¤Ç¤¹¤¬¡¢¤½¤Î¥Ö¥í¥Ã¥¯¤òÌµ¸Â¥ë¡¼¥×¤Ç¶´¤ó¤Ç¡¢"OK"¥Ü¥¿¥ó¤¬²¡¤µ¤ì¡¢¤«¤Ä¾å½ñ¤­¤¬µñÈÝ¤µ¤ì¤¿¤êÆþÎÏ¤µ¤ì¤¿¥Õ¥¡¥¤¥ëÌ¾¤¬ÉÔÀµ¤Ç¤¢¤ë¾ì¹ç¡¢¤½¤Î¤Þ¤Þ¥Õ¥¡¥¤¥ëÊÝÂ¸¥À¥¤¥¢¥í¥°¤¬É½¼¨¤µ¤ìÂ³¤±¤ë¤è¤¦¤Ë¤·¤Æ¤¤¤Þ¤¹¡£
 
   def overwrite_file?(filename)	# ¿·µ¬ºîÀ®
-    dlg = Gtk::MessageDialog.new(
-            @filedlg, Gtk::Dialog::MODAL,
+    dialog = Gtk::MessageDialog.new(
+            @filedialog, Gtk::Dialog::MODAL,
             Gtk::MessageDialog::QUESTION,
             Gtk::MessageDialog::BUTTONS_OK_CANCEL,
             filename + "\n already exists. Do you overwrite it?")
-    result = dlg.run
-    dlg.destroy
+    result = dialog.run
+    dialog.destroy
     result == Gtk::Dialog::RESPONSE_OK
   end
 
@@ -344,13 +344,13 @@ Gtk::TextView#move_cursor¤Ï¡¢°ÜÆ°Ã±°Ì¤È°ÜÆ°ÎÌ¤ò»ØÄê¤·¤Æ¥«¡¼¥½¥ë¤ò°ÜÆ°¤¹¤ë¥á¥½¥Ã¥
       File.open(get_platform_filename(filename), 'w') do |f| end
     rescue Errno::EINVAL => err
       p err
-      dlg = Gtk::MessageDialog.new(
-              @filedlg, Gtk::Dialog::MODAL,
+      dialog = Gtk::MessageDialog.new(
+              @filedialog, Gtk::Dialog::MODAL,
               Gtk::MessageDialog::ERROR,
               Gtk::MessageDialog::BUTTONS_CLOSE,
               File.basename(filename) + " is an invalid file name.")
-      dlg.run
-      dlg.destroy
+      dialog.run
+      dialog.destroy
       return false
     end
     true
