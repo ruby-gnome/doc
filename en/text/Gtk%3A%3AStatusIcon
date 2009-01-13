@@ -4,7 +4,7 @@ The "system tray" or notification area is normally used for transient icons that
 
 A Gtk::StatusIcon object can be used to display an icon in a "system tray". The icon can have a tooltip, and the user can interact with it by activating it or popping up a context menu. Critical information should not solely be displayed in a Gtk::StatusIcon, since it may not be visible (e.g. when the user doesn't have a notification area on his panel). This can be checked with Gtk::StatusIcon#embedded?.
 
-On X11, the implementation follows the freedesktop.org "System Tray" specification. Implementations of the "tray" side of this specification can be found e.g. in the GNOME and KDE panel applications.
+On X11, the implementation follows the freedesktop.org "System Tray" specification. Implementations of the "tray" side of this specification can be found e.g. in the GNOME and KDE panel applications. It will also show up in the Dock or the System tray on Mac OSX and Windows, respectively.
 
 Note that a Gtk::StatusIcon is not a widget, but just a GLib::Object. Making it a widget would be impractical, since the system tray on Win32 doesn't allow to embed arbitrary widgets. 
 
