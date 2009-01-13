@@ -43,7 +43,7 @@ These options are:
  If the table box is larger than the widget, then this widget will expand to use all the room available.
 
 :Gtk::SHRINK
- If the table widget was allocated less space then was requested (usually by the user resizing the window), then the widgets would normally just be pushed off the bottom of the window and disappear. If Gtk::SHRINK is specified, the widgets will shrink with the table.
+ If the table widget was allocated less space than was requested (usually by the user resizing the window), then the widgets would normally just be pushed off the bottom of the window and disappear. If Gtk::SHRINK is specified, the widgets will shrink with the table.
 
 :Gtk::EXPAND
  This will cause the table to expand to use up any remaining space in the window.
