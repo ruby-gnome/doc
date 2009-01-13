@@ -1,0 +1,46 @@
+= Ruby/GLib API Reference
+
+((<API Index|index-ruby-glib2>))
+
+* ((<GLib>))
+* GLib::Boxed
+* GLib::Closure
+* GLib::ConvertError
+* GLib::Instantiatable
+* GLib::Interface
+* GLib::IOChannel
+* GLib::IOChannelError
+* GLib::Log
+* GLib::NormalizeMode
+* GLib::Object
+* GLib::Param
+* GLib::Param::Char
+* GLib::Param::UChar
+* GLib::Param::Int
+* GLib::Param::UInt
+* GLib::Param::Long
+* GLib::Param::ULong
+* GLib::Param::Int64
+* GLib::Param::UInt64
+* GLib::Param::Float
+* GLib::Param::Double
+* GLib::Param::Boolean
+* GLib::Param::UniChar
+* GLib::Param::Enum
+* GLib::Param::Flags
+* GLib::Param::String
+* GLib::Param::Param
+* GLib::Param::Boxed
+* GLib::Param::Pointer
+* GLib::Param::ValueArray
+* GLib::Param::Object
+* GLib::Signal
+* GLib::SpawnError - Done for 2.6.
+* GLib::Type
+* GLib::TypeModule
+* GLib::TypePlugin
+* GLib::UniChar
+* ((<GLib::UTF8>))
+* ((<GLib::UTF16>))
+* ((<GLib::UCS4>))
+* GLib::Unicode
