@@ -59,7 +59,7 @@ libraries.
 
 Download rcairo from http://cairographics.org/releases/ and put it in c:\msys\1.0\home\(username)\. 
 
- $ tar xvaf rcairo-1.2.0.tar.gz
+ $ tar xvzf rcairo-1.2.0.tar.gz
  $ cd rcairo-1.2.0
  $ /c/MinGW/bin/ruby.exe setup.rb
 
