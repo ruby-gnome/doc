@@ -10,6 +10,10 @@ As the title and the above image reveal a Gtk::Entry object or widget is a singl
 
 There are many properties you need to learn about in order to handle text with all bells and whistles. Here I will list just a few:
 
+* visibility:
+* editable
+* invisible_char
+* text
 
 You should consult the documentation (class Gtk::Entry - Properties) for full list.
 
