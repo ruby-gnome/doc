@@ -1,0 +1,12 @@
+= Numeric/Text Data Entry
+{{link "tut-gtk2-btt-radio", "tut-gtk2-selchoose", "tut-gtk", "tut-gtk2-entry"}}
+
+
+The following widgets can be found in Ruby Gtk documentation under the same heading as this article (Numeric/Text Data Entry):
+
+    * Gtk::Entry - A single line text entry field
+    * Gtk::EntryCompletion - Completion functionality for Gtk::Entry
+    * Gtk::HScale - A horizontal slider widget for selecting a value from a range
+    * Gtk::VScale - A vertical slider widget for selecting a value from a range
+    * Gtk::SpinButton - Retrieve an integer or floating-point number from the user
+    * Gtk::Editable - Interface for text-editing widgets
