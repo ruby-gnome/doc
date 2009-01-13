@@ -2,7 +2,7 @@
 
 == Synopsis
 
-This document covers the Ruby/GTK2 library, which can be used to build cross-platform graphical user interfaces (GUI).  The tutorial is currently being translated from the ((<Japanese version|URL:../ja/hiki.cgi?gtk2-tut>)) by ((<Laurent Sansonetti|lrz>)).
+This document covers the Ruby/GTK2 library used to ease creation of graphical user interfaces (GUIs). GTK+ is native to the GNOME Desktop but also runs great on almost any desktop environment: Linux, Windows, OSX,  FreeBSD and more! And using ruby without and modifications or recompilation! The tutorial is currently being translated from the ((<Japanese version|URL:../ja/hiki.cgi?gtk2-tut>)) by ((<Laurent Sansonetti|lrz>)).
 
 == Table of Contents
 
