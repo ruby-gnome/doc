@@ -1,5 +1,5 @@
 = File Chooser Interface And Widgets
-{{link "tut-gtk2-fichoo", "tut-gtk2-fichoo", "tut-gtk", "tut-gtk2-fichoo-dialog"}}
+{{link "tut-gtk2-selchoose", "tut-gtk2-selchoose", "tut-gtk", "tut-gtk2-fichoo-dialog"}}
 {{image_right("ChooserButtons01.png")}}
 
 == File Chooser Introduction 
