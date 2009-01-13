@@ -1,5 +1,5 @@
 = Buttons and Toggles
-{{link "tut-gtk2-btt-check", "tut-gtk2-btt", "tut-gtk", nil}}
+{{link "tut-gtk2-btt-check", "tut-gtk2-btt", "tut-gtk", "tut-gtk2-numtxt-entry"}}
 {{image_right("btt-radio.png")}}
 
 == Radio Button
