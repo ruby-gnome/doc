@@ -1,5 +1,8 @@
-= File Chooser Interface And Widgets
+= Selector/Chooser Interface And Widgets
 {{link "tut-gtk2-packing-tables-demo", "tut-gtk2-fichoo", "tut-gtk", "File+Chooser"}}
+
+
+
 
 == Gtk::FileChooser 
 
