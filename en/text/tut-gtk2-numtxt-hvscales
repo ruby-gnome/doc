@@ -21,7 +21,7 @@
  integer.value_pos = Gtk::POS_RIGHT
  float.value_pos = Gtk::POS_LEFT
 
-  vbox = Gtk::VBox.new(true, 5)
+ vbox = Gtk::VBox.new(true, 5)
  vbox.pack_start(integer, false, true, 0)
  vbox.pack_start(float,   false, true, 0)
 
