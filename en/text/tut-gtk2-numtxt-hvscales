@@ -1,0 +1,8 @@
+= Selector/Chooser Interface And Widgets
+{{link "tut-gtk2-numtxt-spinbttns", "tut-gtk2-numtxt", "tut-gtk", "tut-gtk2-filechooser"}}
+
+
+== Horizontal And Vertical Scales
+{{br}}
+{{image_right("numtxt-hvscales.png")}}
+{{br}}
