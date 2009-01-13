@@ -1,4 +1,4 @@
-= Selector/Chooser Interface And Widgets
+= Numeric/Text Data Entry
 {{link "tut-gtk2-numtxt-entry", "tut-gtk2-numtxt", "tut-gtk", "tut-gtk2-numtxt-hvscales"}}
 
 == Spin Buttons
