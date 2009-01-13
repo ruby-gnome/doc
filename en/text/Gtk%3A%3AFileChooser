@@ -81,7 +81,7 @@ To change these defaults to something else, you could include the following frag
 :The "GtkFileChooserDefault::home-folder" signal
  This is used to make the file chooser show the user's home folder in the file list. By default this is bound to Alt-Home.
 
-==== Example 5. a running Gtk::FileChooser example program
+==== Example 5. A running Gtk::FileChooser example program
 
 Gtk::FileChooser module represents just an interface, hence we never create any FileChooser instances. The following list describes all FileChooser related classes:
 
