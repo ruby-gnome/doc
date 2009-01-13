@@ -1,5 +1,5 @@
 = Selector/Chooser Interface And Widgets
-{{link "tut-gtk2-numtxt-spinbttns", "tut-gtk2-numtxt", "tut-gtk", "tut-gtk2-filechooser"}}
+{{link "tut-gtk2-numtxt-spinbttns", "tut-gtk2-numtxt", "tut-gtk", "tut-gtk2-selchoose"}}
 
 
 == Horizontal And Vertical Scales
