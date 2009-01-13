@@ -12,6 +12,35 @@ As mentioned earlier in the Toggle Button session, Gtk::CheckButton is derived f
 
 
 
+ #!/usr/bin/env ruby
+
+ require 'gtk2'
+ def set_reset_check2(w, chk2)
+
+ end
+
+ window = Gtk::Window.new(Gtk::Window::TOPLEVEL)
+ window.set_title  "Check Buttons"
+ window.border_width = 10
+ window.signal_connect('delete_event') { Gtk.main_quit }
+
+ vbox = Gtk::VBox.new(false, 5)
+ check1 = Gtk::CheckButton.new("The main option")
+ check2 = Gtk::CheckButton.new("I rely on the other guy")
+ close  = Gtk::Button.new(Gtk::Stock::CLOSE)
+
+ check2.sensitive = false
+ check1.signal_connect( "toggled" ) { |w| set_reset_check2(w, check2) }
+ close.signal_connect('clicked') { Gtk.main_quit }
+
+ vbox.pack_start(check1, false, true, 0)
+ vbox.pack_start(check2, false, true, 0)
+ vbox.pack_start(close,  false, true, 0)
+
+ window.add(vbox)
+ window.show_all
+ Gtk.main
+
 
 === Using Stock Items
 
