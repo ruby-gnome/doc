@@ -2,6 +2,36 @@
 
 Here's a list of applications using Ruby-GNOME2:
 
-* ..(todo)..
+* ((<Amigo|URL:http://gnomecoder.wordpress.com/amigo/>))
 
-...(todo)...
+Amigo instantly defines and explains any Spanish-language word that you select with your mouse.
+
+* ((<Booh|URL:http://booh.org/>))
+
+Booh is a free software static Web-Album generator for Linux. It takes
+series of photos and videos, and automatically build static web pages
+to browse them.
+
+* ((<ChessClock|URL:http://gnomecoder.wordpress.com/chessclock/>))
+
+Chessclock lets a computer (ideally a laptop) replace a traditional chess clock sitting next to a chess board.
+
+* ((<Fantasdic|URL:http://www.gnome.org/projects/fantasdic/>))
+
+Fantasdic is a versatile multi-platform dictionary application which
+allows you to look up words in a variety of dictionary sources.
+
+* ((<Luz|URL:http://gnomecoder.wordpress.com/luz/>))
+
+Luz is a music visualizer for VJs and creative couch potatoes.
+
+* ((<ScreenRuler|URL:http://gnomecoder.wordpress.com/screenruler/>))
+
+ScreenRuler lets you measure objects on your screen using six different metrics.
+
+* ((<SSHMenu|URL:http://sshmenu.sourceforge.net/>))
+
+SSHMenu is a GNOME applet that allows you to organise all your regular
+SSH connections into a handy menu on your panel.  The point and click
+interface allows you to set up host connection parameters, window
+position and size, font selections and background colours.
