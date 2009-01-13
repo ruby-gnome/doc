@@ -31,12 +31,14 @@
       bindtextdomain(domain, localedir, nil, "")
     end
 
-¿Æ¥¯¥é¥¹¤Îinitialize¤ò¸Æ¤Ó½Ð¤·¤¿¸å¡Êsuper¡Ë¡¢¿Æ¥¯¥é¥¹¤Îinitialize¤Ç¼Â¹ÔºÑ¤ß¤Îbindtextdomain¤òºÆÅÙ¸Æ¤Ó½Ð¤·¤Æ¤¤¤Þ¤¹¡£¤³¤ì¤Ï"hwedit_glade.rb"¤òÊÔ½¸¤»¤º¤Ë¡¢¥í¡¼¥«¥é¥¤¥ºÍÑ¥Ç¡¼¥¿¤Î½ÐÎÏ»þ¤ÎÊ¸»ú¥³¡¼¥É¤òÀµ¤·¤¯»ØÄê¤¹¤ë¤¿¤á¤Ç¤¹¡£¾åµ­¤Î¤è¤¦¤ËÊ¸»ú¥³¡¼¥ÉÌ¾¤Ë¶õÊ¸»úÎó¤ò»ØÄê¤·¤Æ¤ª¤¯¤È¡¢¥×¥í¥°¥é¥à¼Â¹Ô»þ¤Î¥í¥±¡¼¥ë¤Ë¹ç¤ï¤»¤¿¤â¤Î¤¬¼«Æ°¤ÇÁªÂò¤µ¤ì¤Þ¤¹¡ÊMS Windows¤Ç¤Ï¤½¤Î¤è¤¦¤ËÆ°ºî¤·¤Þ¤·¤¿¡Ë¡£Ê¸»ú¥³¡¼¥ÉÌµ»ØÄê¤Îbindtextdomain¤ò¼Â¹Ô¤·¤Ê¤«¤Ã¤¿¾ì¹ç¡¢HweditGlade¥¯¥é¥¹¤Ç¤Îbindtextdomain¼Â¹Ô»þ¤Ë»ØÄê¤·¤¿UTF-8¤¬Í­¸ú¤Ê¤Þ¤Þ¤Ë¤Ê¤ë¤Î¤Ç¡¢¤¿¤È¤¨¤ÐMS Windows¤Î¥³¥ó¥½¡¼¥ë¥¦¥£¥ó¥É¥¦¤Ë¥í¡¼¥«¥é¥¤¥ºÍÑ¥Ç¡¼¥¿Ê¸»úÎó¤ò½ÐÎÏ¤¹¤ë¤ÈÊ¸»ú²½¤±¤·¤Þ¤¹¡£
+¿Æ¥¯¥é¥¹¤Îinitialize¤ò¸Æ¤Ó½Ð¤·¤¿¸å¡Êsuper¡Ë¡¢¿Æ¥¯¥é¥¹¤Îinitialize¤Ç¼Â¹ÔºÑ¤ß¤Îbindtextdomain¤òºÆÅÙ¸Æ¤Ó½Ð¤·¤Æ¤¤¤Þ¤¹¡£¤³¤ì¤Ï"hwedit_glade.rb"¤òÊÔ½¸¤»¤º¤Ë¡¢¥í¡¼¥«¥é¥¤¥ºÍÑ¥Ç¡¼¥¿¤Î½ÐÎÏ»þ¤ÎÊ¸»ú¥³¡¼¥É¤òÀµ¤·¤¯»ØÄê¤¹¤ë¤¿¤á¤Ç¤¹¡£¾åµ­¤Î¤è¤¦¤ËÊ¸»ú¥³¡¼¥ÉÌ¾¤Ë¶õÊ¸»úÎó¤ò»ØÄê¤·¤Æ¤ª¤¯¤È¡¢¥×¥í¥°¥é¥à¼Â¹Ô»þ¤Î¥í¥±¡¼¥ë¤Ë¹ç¤ï¤»¤¿¤â¤Î¤¬¼«Æ°¤ÇÁªÂò¤µ¤ì¤Þ¤¹¡ÊMS Windows¤Ç¤Ï¤½¤Î¤è¤¦¤ËÆ°ºî¤·¤Þ¤·¤¿¡Ë¡£Ê¸»ú¥³¡¼¥ÉÌµ»ØÄê¤Îbindtextdomain¤ò¼Â¹Ô¤·¤Ê¤«¤Ã¤¿¾ì¹ç¡¢HweditGlade¥¯¥é¥¹¤Ç¤Îbindtextdomain¼Â¹Ô»þ¤Ë»ØÄê¤·¤¿UTF-8¤¬Í­¸ú¤Ê¤Þ¤Þ¤Ë¤Ê¤ë¤Î¤Ç¡¢¤¿¤È¤¨¤ÐMS Windows¤Î¥³¥ó¥½¡¼¥ë¥¦¥£¥ó¥É¥¦¤Ë¥í¡¼¥«¥é¥¤¥ºÍÑ¥Ç¡¼¥¿Ê¸»úÎó¤ò½ÐÎÏ¤¹¤ë¤ÈÊ¸»ú²½¤±¤·¤Þ¤¹¡£¤¿¤À¤·GUI¾å¤ËÉ½¼¨¤¹¤ë¤À¤±¤Ç¤¢¤ì¤Ð¡¢MS Windows¤Ç¤âUTF-8¤Î¤Þ¤Þ¤ÇÂç¾æÉ×¤Ê¤è¤¦¤Ê¤Î¤Ç¡¢É¬Í×¤Ê¤¤¤È»×¤¦¾ì¹ç¤Ï¤³¤³¤Ç¤Îbindtextdomain¸Æ¤Ó½Ð¤·¤Ï¾ÊÎ¬¤·¤Æ¤·¤Þ¤Ã¤Æ¤â¤¤¤¤¤Ç¤·¤ç¤¦¡£
 
     def on_main_window_delete_event(widget, arg0)
+      puts "on_main_window_delete_event"		# É¬Í×¤Ê¤¯¤Ê¤Ã¤¿¤é¾Ã¤¹
       false
     end
     def on_main_window_destroy(widget)
+      puts "on_main_window_destroy"
       Gtk.main_quit
     end
 
@@ -91,14 +93,17 @@ PROG_PATH¤Ïhwedit.glade¤òÃÖ¤¯PATH¤Ç¤¹¡£¾åµ­Îã¤Ç¤Ï¤³¤Î¥Ä¡¼¥ë¤ò¼Â¹Ô¤¹¤ë¥Ç¥£¥ì¥¯¥È¥
 °Ê²¼¡¢¥·¥°¥Ê¥ë¥Ï¥ó¥É¥é¤Î¼ÂÁõÎã¤Ç¤¹¡£¤Þ¤º¤Ï´ÊÃ±¤Ê½ê¤Ç¡¢"Edit"¥á¥Ë¥å¡¼¤Î"Cut(ÀÚ¤ê¼è¤ê)"¡¢"Copy(¥³¥Ô¡¼)"¡¢"Paste(Å½¤êÉÕ¤±)"¥³¥Þ¥ó¥É¤ò¼ÂÁõ¤·¤Æ¤ß¤Þ¤¹¡£
 
   def on_paste1_activate(widget)
+    puts "on_paste1_activate"
     @editor.paste_clipboard
   end
 
   def on_copy1_activate(widget)
+    puts "on_copy1_activate"
     @editor.copy_clipboard
   end
 
   def on_cut1_activate(widget)
+    puts "on_cut1_activate"
     @editor.cut_clipboard
   end
 
@@ -109,6 +114,7 @@ PROG_PATH¤Ïhwedit.glade¤òÃÖ¤¯PATH¤Ç¤¹¡£¾åµ­Îã¤Ç¤Ï¤³¤Î¥Ä¡¼¥ë¤ò¼Â¹Ô¤¹¤ë¥Ç¥£¥ì¥¯¥È¥
 ¼¡¤Ï¡¢"Help"¥á¥Ë¥å¡¼¤Î"About"¥³¥Þ¥ó¥É¤òÁªÂò¤·¤¿»þ¤Ë¡¢Glade¤Çºî¤Ã¤Æ¤ª¤¤¤¿¥¢¥Ð¥¦¥È¥À¥¤¥¢¥í¥°¤òÉ½¼¨¤¹¤ëÎã¤Ç¤¹¡£
 
   def on_about1_activate(widget)
+    puts "on_about1_activate"
     @aboutdlg.run do |response|
       case response
       when Gtk::Dialog::RESPONSE_DELETE_EVENT
@@ -127,6 +133,7 @@ Gtk::Dialog#run¤Ï¡¢¥À¥¤¥¢¥í¥°¾å¤Ç²¿¤é¤«¤Î"response" Signal¤¬È¯À¸¤¹¤ë¤Þ¤ÇÂÔµ¡¤·¡¢
 ¤¿¤À¥¢¥Ð¥¦¥È¥À¥¤¥¢¥í¥°¤Î¾ì¹ç¡¢"response ID"¤ÎÃÍ¤Ë¤è¤Ã¤Æ½èÍý¤òÊ¬¤±¤ëÉ¬Í×¤Ï¤Ê¤¤¤Î¤Ç¡¢°Ê²¼¤Î¤è¤¦¤Ê¥³¡¼¥É¤ÇºÑ¤Þ¤»¤Æ¤·¤Þ¤¦¤Î¤¬ÉáÄÌ¤Ç¤¹¡£
 
   def on_about1_activate(widget)
+    puts "on_about1_activate"
     @aboutdlg.run
     @aboutdlg.hide
   end
@@ -143,6 +150,7 @@ Gtk::Dialog#run¤Ï¡¢¤É¤Î¥Ü¥¿¥ó¤ò²¡¤·¤Æ¤â¥À¥¤¥¢¥í¥°¤¬ÊÄ¤¸¤ë½èÍý¤Î¾ì¹ç¤Ë¤ÏÊØÍø¤Ç¤¹¤
 ¤Þ¤ºÊ¸»ú¥³¡¼¥ÉÊÑ´¹½èÍý¤ËÉ¬Í×¤ÊKconv¥â¥¸¥å¡¼¥ë¤òÆÉ¤ß¹þ¤à¥³¡¼¥É¤òËÁÆ¬¤ËÄÉ²Ã¤·¤Þ¤¹¡£¥×¥í¥°¥é¥à¤«¤éTextView¤Ë¥Æ¥­¥¹¥È¤òÆþÎÏ¤¹¤ë¾ì¹ç¡¢Ê¸»ú¥³¡¼¥É¤¬UTF-8¤Ë¤Ê¤Ã¤Æ¤¤¤ëÉ¬Í×¤¬¤¢¤ê¤Þ¤¹¡£
 
   def on_open1_activate(widget)
+    puts "on_open1_activate"
     if @filedlg.run == Gtk::Dialog::RESPONSE_OK
       @editor.buffer.text  = ""			# ¥Ð¥Ã¥Õ¥¡¤ò¥¯¥ê¥¢
       File.open(@filedlg.filename).each do |line|	# 1¹Ô¤º¤Ä½èÍý
