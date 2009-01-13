@@ -56,9 +56,6 @@ Ruby/Libglade2¤Ï¹ñºÝ²½¤¬Á°Äó¤Ê¤Î¤Ç((<Ruby-GetText-Package|raa:ruby-gettext>))¤¬É
   def on_copy1_activate(widget)
     puts "on_copy1_activate() is not implemented yet."
   end
-  def on_closebutton1_clicked(widget)
-    puts "on_closebutton1_clicked() is not implemented yet."
-  end
   def on_main_window_delete_event(widget, arg0)
     puts "on_main_window_delete_event() is not implemented yet."
   end
@@ -78,7 +75,7 @@ Ruby/Libglade2¤Ï¹ñºÝ²½¤¬Á°Äó¤Ê¤Î¤Ç((<Ruby-GetText-Package|raa:ruby-gettext>))¤¬É
     puts "on_quit1_activate() is not implemented yet."
   end
 
-¤³¤ì¤é¤ÏÁ´¤Æ¥¤¥Ù¥ó¥È¥Ï¥ó¥É¥é¡Ê¥Ü¥¿¥ó¥¯¥ê¥Ã¥¯Åù¤Î¥¤¥Ù¥ó¥È¤¬È¯À¸¤·¤¿¤È¤­¤Ë¸Æ¤Ó½Ð¤µ¤ì¤ë¥á¥½¥Ã¥É¡Ë¤Ç¤¹¡£
+¤³¤ì¤é¤ÏÁ´¤Æ¥·¥°¥Ê¥ë¥Ï¥ó¥É¥é¡Ê¥Ü¥¿¥ó¥¯¥ê¥Ã¥¯Åù¤Î¥¤¥Ù¥ó¥È¤¬È¯À¸¤·¤¿¤È¤­¤Ë¸Æ¤Ó½Ð¤µ¤ì¤ë¥á¥½¥Ã¥É¡Ë¤Ç¤¹¡£
 ¥Ç¥Õ¥©¥ë¥È¤Ç¤Ï¡¢"xxxx is not implemented yet."¤ÈÉ½¼¨¤µ¤ì¤ë¤è¤¦¤Ë¤Ê¤Ã¤Æ¤¤¤Þ¤¹¤Î¤Ç¼«Ê¬¤Ç¼ÂÁõ¤·¤¿¤¤¤È¤³¤í¤«¤é½ñ¤­´¹¤¨¤Æ¹Ô¤¯¥¤¥á¡¼¥¸¤Ç¤¹¡£
 
   end
