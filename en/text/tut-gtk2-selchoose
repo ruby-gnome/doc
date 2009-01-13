@@ -29,3 +29,5 @@ Gtk::FileChooser module represents just an interface, hence we never create any 
 To give you an idea how some of these fit together we should look at an example you can copy-and-paste into a file on your system, run it and explore the features in the code.
 
 == Gtk::InputDialog - Configure devices for the XInput extension
+
+Some (most) of the above items will be explained in the following sections.
