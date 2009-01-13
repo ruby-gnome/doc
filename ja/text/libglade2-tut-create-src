@@ -233,7 +233,7 @@ Gtk::Dialog#run¤Ï¡¢¤É¤Î¥Ü¥¿¥ó¤ò²¡¤·¤Æ¤â¥À¥¤¥¢¥í¥°¤¬ÊÄ¤¸¤ë½èÍý¤Î¾ì¹ç¤Ë¤ÏÊØÍø¤Ç¤¹¤
     @filedialog.title  = 'Open Dialog'
     if @filedialog.run == Gtk::Dialog::RESPONSE_OK
       if File.exist?(get_platform_filename(@filedialog.filename))
-        @filename = @filedialog.filename		# ¥Õ¥¡¥¤¥ë¥Ñ¥¹¤òµ­Ï¿
+        @filename = @filedialog.filename	# ¥Õ¥¡¥¤¥ë¥Ñ¥¹¤òµ­Ï¿
         read_file(@filename)			# ÁªÂò¤µ¤ì¤¿¥Õ¥¡¥¤¥ë¤òÆÉ¤ß¹þ¤ó¤ÇTextView¤ËÉ½¼¨
         update_window_title
       end
@@ -315,8 +315,8 @@ Gtk::TextView#move_cursor¤Ï¡¢°ÜÆ°Ã±°Ì¤È°ÜÆ°ÎÌ¤ò»ØÄê¤·¤Æ¥«¡¼¥½¥ë¤ò°ÜÆ°¤¹¤ë¥á¥½¥Ã¥
         else
           next unless filename_valid?(@filedialog.filename)	# ¥Õ¥¡¥¤¥ëÌ¾¤¬ÉÔÀµ
         end
-        save_file(@filedialog.filename)
         @filename = @filedialog.filename
+        save_file(@filename)
         update_window_title
       end
       break
