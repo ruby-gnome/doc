@@ -25,6 +25,8 @@ This document covers the Ruby/GTK2 library used to ease creation of graphical us
   * ((<Toggle Button|tut-gtk2-btt-toggle>))
   * ((<Check Button|tut-gtk2-btt-check>))
   * ((<Radio Button|tut-gtk2-btt-radio>))
+  * ((<Revisiting: Using Stock Items|tut-gtk2-btt-check>))
+  * ((<Revisiting: Callbacks And Event Handling|tut-gtk2-btt-check>))
 * ((<Selector And Chooser Interface And Widgets|tut-gtk2-selchoose>))
   * ((<File Chooser intro|tut-gtk2-filechooser>))
   * ((<FileChooserDialog|tut-gtk2-fichoo-dialog>))
