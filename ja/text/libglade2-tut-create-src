@@ -28,10 +28,10 @@
 
     def initialize(path_or_data, root = nil, domain = nil, localedir = nil, flag = GladeXML::FILE)
       super(path_or_data, root, domain, localedir, flag)
-      bindtextdomain(domain, localedir, nil, "")
     end
 
-¿Æ¥¯¥é¥¹¤Îinitialize¤ò¸Æ¤Ó½Ð¤·¤¿¸å¡Êsuper¡Ë¡¢¿Æ¥¯¥é¥¹¤Îinitialize¤Ç¼Â¹ÔºÑ¤ß¤Îbindtextdomain¤òºÆÅÙ¸Æ¤Ó½Ð¤·¤Æ¤¤¤Þ¤¹¡£¤³¤ì¤Ï"hwedit_glade.rb"¤òÊÔ½¸¤»¤º¤Ë¡¢ÃÏ°è²½¡ÊL10n¡ËÍÑ¥Ç¡¼¥¿¤Î½ÐÎÏ»þ¤ÎÊ¸»ú¥³¡¼¥É¤òÀµ¤·¤¯»ØÄê¤¹¤ë¤¿¤á¤Ç¤¹¡£¾åµ­¤Î¤è¤¦¤ËÊ¸»ú¥³¡¼¥ÉÌ¾¤Ë¶õÊ¸»úÎó¤ò»ØÄê¤·¤Æ¤ª¤¯¤È¡¢¤³¤Î¾ðÊó¤¬É¬Í×¤Ë¤Ê¤Ã¤¿»þ¡¢¥·¥¹¥Æ¥à¤Î¥Ç¥Õ¥©¥ë¥ÈÊ¸»ú¥³¡¼¥É¤¬¼«Æ°¤Ç»ÈÍÑ¤µ¤ì¤Þ¤¹¡£Ê¸»ú¥³¡¼¥ÉÌµ»ØÄê¤Îbindtextdomain¤ò¼Â¹Ô¤·¤Ê¤«¤Ã¤¿¾ì¹ç¡¢HweditGlade¥¯¥é¥¹¤Ç¤Îbindtextdomain¼Â¹Ô»þ¤Ë»ØÄê¤·¤¿UTF-8¤¬Í­¸ú¤Ê¤Þ¤Þ¤Ë¤Ê¤ë¤Î¤Ç¡¢¤¿¤È¤¨¤ÐMS Windows¤Î¥³¥ó¥½¡¼¥ë¥¦¥£¥ó¥É¥¦¤ËÃÏ°è²½ÍÑ¥Ç¡¼¥¿Ê¸»úÎó¤ò½ÐÎÏ¤¹¤ë¤ÈÊ¸»ú²½¤±¤·¤Þ¤¹¡£¤¿¤À¤·GUI¾å¤ËÉ½¼¨¤¹¤ë¤À¤±¤Ç¤¢¤ì¤Ð¡¢MS Windows¤Ç¤âUTF-8¤Î¤Þ¤Þ¤ÇÂç¾æÉ×¤Ê¤è¤¦¤Ê¤Î¤Ç¡¢É¬Í×¤Ê¤¤¤È»×¤¦¾ì¹ç¤Ï¤³¤³¤Ç¤Îbindtextdomain¸Æ¤Ó½Ð¤·¤Ï¾ÊÎ¬¤·¤Æ¤·¤Þ¤Ã¤Æ¤â¤¤¤¤¤Ç¤·¤ç¤¦¡£
+#¿Æ¥¯¥é¥¹¤Îinitialize¤ò¸Æ¤Ó½Ð¤·¤¿¸å¡Êsuper¡Ë¡¢¿Æ¥¯¥é¥¹¤Îinitialize¤Ç¼Â¹ÔºÑ¤ß¤Îbindtextdomain¤òºÆÅÙ¸Æ¤Ó½Ð¤·¤Æ¤¤¤Þ¤¹¡£¤³¤ì¤Ï"hwedit_glade.rb"¤òÊÔ½¸¤»¤º¤Ë¡¢ÃÏ°è²½¡ÊL10n¡ËÍÑ¥Ç¡¼¥¿¤Î½ÐÎÏ»þ¤ÎÊ¸»ú¥³¡¼¥É¤òÀµ¤·¤¯»ØÄê¤¹¤ë¤¿¤á¤Ç¤¹¡£¾åµ­¤Î¤è¤¦¤ËÊ¸»ú¥³¡¼¥ÉÌ¾¤Ë¶õÊ¸»úÎó¤ò»ØÄê¤·¤Æ¤ª¤¯¤È¡¢¤³¤Î¾ðÊó¤¬É¬Í×¤Ë¤Ê¤Ã¤¿»þ¡¢¥·¥¹¥Æ¥à¤Î¥Ç¥Õ¥©¥ë¥ÈÊ¸»ú¥³¡¼¥É¤¬¼«Æ°¤Ç»ÈÍÑ¤µ¤ì¤Þ¤¹¡£Ê¸»ú¥³¡¼¥ÉÌµ»ØÄê¤Îbindtextdomain¤ò¼Â¹Ô¤·¤Ê¤«¤Ã¤¿¾ì¹ç¡¢HweditGlade¥¯¥é¥¹¤Ç¤Îbindtextdomain¼Â¹Ô»þ¤Ë»ØÄê¤·¤¿UTF-8¤¬Í­¸ú¤Ê¤Þ¤Þ¤Ë¤Ê¤ë¤Î¤Ç¡¢¤¿¤È¤¨¤ÐMS Windows¤Î¥³¥ó¥½¡¼¥ë¥¦¥£¥ó¥É¥¦¤ËÃÏ°è²½ÍÑ¥Ç¡¼¥¿Ê¸»úÎó¤ò½ÐÎÏ¤¹¤ë¤ÈÊ¸»ú²½¤±¤·¤Þ¤¹¡£¤¿¤À¤·GUI¾å¤ËÉ½¼¨¤¹¤ë¤À¤±¤Ç¤¢¤ì¤Ð¡¢MS Windows¤Ç¤âUTF-8¤Î¤Þ¤Þ¤ÇÂç¾æÉ×¤Ê¤è¤¦¤Ê¤Î¤Ç¡¢É¬Í×¤Ê¤¤¤È»×¤¦¾ì¹ç¤Ï¤³¤³¤Ç¤Îbindtextdomain¸Æ¤Ó½Ð¤·¤Ï¾ÊÎ¬¤·¤Æ¤·¤Þ¤Ã¤Æ¤â¤¤¤¤¤Ç¤·¤ç¤¦¡£
+¤³¤³¤Ï¿Æ¥¯¥é¥¹¤Îinitialize¥á¥½¥Ã¥É¤ò¸Æ¤Ó½Ð¤¹¤è¤¦¤Ë½ñ¤­´¹¤¨¤ë¤À¤±¤ÇOK¤Ç¤¹¡£
 
     def on_main_window_delete_event(widget, arg0)
       puts "on_main_window_delete_event"		# É¬Í×¤Ê¤¯¤Ê¤Ã¤¿¤é¾Ã¤¹
@@ -81,7 +81,6 @@ PROG_NAME¤ÏÃÏ°è²½ÍÑ¥Ç¡¼¥¿¤Î¥Õ¥¡¥¤¥ëÌ¾¡Ê³ÈÄ¥»Ò¤ò½ü¤¯¡Ë¤È¤·¤Æ°·¤ï¤ì¤Þ¤¹¡£¤³¤³¤Ç¤Ï¥
 
   def initialize(path_or_data, root = nil, domain = nil, localedir = nil, flag = GladeXML::FILE)
     super(path_or_data, root, domain, localedir, flag)
-    bindtextdomain(domain, localedir, nil, "")
     
     @window = @glade['main_window']
     @editor = @glade['textview1']
@@ -191,7 +190,6 @@ Gtk::Dialog#run¤Ï¡¢¤É¤Î¥Ü¥¿¥ó¤ò²¡¤·¤Æ¤â¥À¥¤¥¢¥í¥°¤¬ÊÄ¤¸¤ë½èÍý¤Î¾ì¹ç¤Ë¤ÏÊØÍø¤Ç¤¹¤
 
   def initialize(path_or_data, root = nil, domain = nil, localedir = nil, flag = GladeXML::FILE)
     super(path_or_data, root, domain, localedir, flag)
-    bindtextdomain(domain, localedir, nil, "")
     
     @window = @glade['main_window']
     @editor = @glade['textview1']
