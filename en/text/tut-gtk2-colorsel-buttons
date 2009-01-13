@@ -14,8 +14,7 @@ Gtk::ColorButton widget is a member of the so called family of Selectors widgets
 The above action results in changing the colour of the text on the label below.
 {{br}}
 {{image_left("ColorButtons02.png")}}
-
- (File/Font/Color/Input Devices) 
+{{br}}
 
  #!/usr/bin/env ruby
  require 'gtk2'
