@@ -31,7 +31,7 @@
       bindtextdomain(domain, localedir, nil, "")
     end
 
-親クラスのinitializeを呼び出した後（super）、親クラスのinitializeで実行済みのbindtextdomainを再度呼び出しています。これは"hwedit_glade.rb"を編集せずに、ローカライズ用データの出力時の文字コードを正しく指定するためです。上記のように文字コード名に空文字列を指定しておくと、プログラム実行時のロケールに合わせたものが自動で選択されます（MS Windowsではそのように動作しました）。文字コード無指定のbindtextdomainを実行しなかった場合、HweditGladeクラスでのbindtextdomain実行時に指定したUTF-8が有効なままになるので、たとえばMS Windowsのコンソールウィンドウにローカライズ用データ文字列を出力すると文字化けします。ただしGUI上に表示するだけであれば、MS WindowsでもUTF-8のままで大丈夫なようなので、必要ないと思う場合はここでのbindtextdomain呼び出しは省略してしまってもいいでしょう。
+親クラスのinitializeを呼び出した後（super）、親クラスのinitializeで実行済みのbindtextdomainを再度呼び出しています。これは"hwedit_glade.rb"を編集せずに、地域化用データの出力時の文字コードを正しく指定するためです。上記のように文字コード名に空文字列を指定しておくと、プログラム実行時のロケールに合わせたものが自動で選択されます（MS Windowsではそのように動作しました）。文字コード無指定のbindtextdomainを実行しなかった場合、HweditGladeクラスでのbindtextdomain実行時に指定したUTF-8が有効なままになるので、たとえばMS Windowsのコンソールウィンドウに地域化用データ文字列を出力すると文字化けします。ただしGUI上に表示するだけであれば、MS WindowsでもUTF-8のままで大丈夫なようなので、必要ないと思う場合はここでのbindtextdomain呼び出しは省略してしまってもいいでしょう。
 
     def on_main_window_delete_event(widget, arg0)
       puts "on_main_window_delete_event"		# 必要なくなったら消す
