@@ -9,3 +9,5 @@ In Gtk+ we can find many widgets that contain the word "Button" in their name, b
 * Gtk::RadioButton - A choice from multiple check buttons
 * Gtk::ToggleButton - Create buttons which retain their state
 * Gtk::LinkButton - Create buttons bound to a URL
+
+Some (most) of the above items will be explained in the following sections.
