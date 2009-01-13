@@ -1,5 +1,5 @@
 = Table Packing Example
-{{link "tut-gtk2-packing-tables", "tut-gtk2-packing-intro", "tut-gtk", "tut-gtk2-selchoose"}}
+{{link "tut-gtk2-packing-tables", "tut-gtk2-packing-intro", "tut-gtk", "tut-gtk2-btt"}}
 
 {{image_right("tablepack.png")}}
 
