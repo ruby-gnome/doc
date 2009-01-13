@@ -1,5 +1,5 @@
 = Numeric/Text Data Entry
-{{link "tut-gtk2-btt-radio", "tut-gtk2-selchoose", "tut-gtk", "tut-gtk2-entry"}}
+{{link "tut-gtk2-btt-radio", "tut-gtk2-numtxt-entry", "tut-gtk", "tut-gtk2-entry"}}
 
 
 The following widgets can be found in Ruby Gtk documentation under the same heading as this article (Numeric/Text Data Entry):
