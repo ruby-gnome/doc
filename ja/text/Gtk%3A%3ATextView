@@ -1,5 +1,8 @@
-= class Gtk::TextView
-Widget that displays a Gtk::TextBuffer.
+= Gtk::TextView クラス
+Gtk::TextBufferの内容を表示するウィジェット
+#Widget that displays a Gtk::TextBuffer.
+
+（このページを編集する方へ((-翻訳済みの部分も一部原文をコメントアウトの形で残してあります。修正の参考にして下さい。-))）
 
 == Object Hierarchy
 * Object
@@ -10,172 +13,193 @@ Widget that displays a Gtk::TextBuffer.
           * Gtk::Container
             * Gtk::TextView
 
-== Class Methods
+== クラスメソッド
 --- Gtk::TextView.new(buffer = nil)
-    Creates a new Gtk::TextView widget displaying the buffer. One buffer can be shared among many widgets. buffer may be nil to create a default buffer.
-    * buffer: a Gtk::TextBuffer 
-    * Returns: a new Gtk::TextView
+    　指定されたバッファの内容を表示する新しいGtk::TextViewを作成します。一つのバッファを複数のウィジェットで共有することもできます。bufferがnilの場合、自動的にデフォルトのバッファが作成されます。
+#    Creates a new Gtk::TextView widget displaying the buffer. One buffer can be shared among many widgets. buffer may be nil to create a default buffer.
+    * buffer: Gtk::TextBuffer 
+    * 戻り値: 新しいGtk::TextView
 
-== Instance Methods
+== インスタンスメソッド
 --- buffer
-    Returns the Gtk::TextBuffer being displayed by the Gtk::TextView.
-    * Returns: a Gtk::TextBuffer 
+    　Gtk::TextViewに表示されているバッファを取得します。
+#    Returns the Gtk::TextBuffer being displayed by the Gtk::TextView.
+    * 戻り値: Gtk::TextBuffer 
 --- buffer=(buffer)
-    Sets buffer as the buffer being displayed by the Gtk::TextView. 
-    * buffer: a Gtk::TextBuffer 
-    * Returns: buffer
+    　Gtk::TextViewに表示するバッファを設定します。
+#    Sets buffer as the buffer being displayed by the Gtk::TextView. 
+    * buffer: Gtk::TextBuffer 
+    * 戻り値: buffer
 --- set_buffer(buffer)
-    Same as Gtk::TextView#buffer=.
-    * buffer: a Gtk::TextBuffer 
-    * Returns: self
+    　Gtk::TextView#buffer=と同じです。
+#    Same as Gtk::TextView#buffer=.
+    * buffer: Gtk::TextBuffer 
+    * 戻り値: self
 
 --- scroll_to_mark(mark, within_margin, use_align, xalign, yalign)
-    Scrolls the Gtk::TextView so that mark is on the screen in the position indicated by xalign and yalign. An alignment of 0.0 indicates left or top, 1.0 indicates right or bottom, 0.5 means center. If use_align is false, the text scrolls the minimal distance to get the mark onscreen, possibly not scrolling at all. The effective screen for purposes of this method is reduced by a margin of size within_margin.
-    * mark: a Gtk::TextMark 
-    * within_margin: margin as a 0.0, 0.5 fraction of screen size 
-    * use_align: whether to use alignment arguments (if false, just get the mark onscreen) 
-    * xalign: horizontal alignment of mark within visible area. 
-    * yalign: vertical alignment of mark within visible area 
-    * Returns: self
+    　表示エリアのxalignとyalignが指し示す位置にmarkが来るようにGtk::TextViewをスクロールします。xalignに0.0が指定された場合、左端を意味し、1.0が指定された場合、右端を意味します。yalignに0.0が指定された場合、上端を意味し、1.0が指定された場合、下端を意味します。xalign、yalignともに、0.5の場合は中央の位置が指定されたことを意味します。{{br}}　use_alignにfalseが指定された場合、markが表示エリアに入るまでの必要最低限の距離をスクロールします, possibly not scrolling at all。{{br}}　within_marginに指定した値（0.0以上0.5未満）の分だけ有効な表示エリアが小さくなります。
+#    Scrolls the Gtk::TextView so that mark is on the screen in the position indicated by xalign and yalign. An alignment of 0.0 indicates left or top, 1.0 indicates right or bottom, 0.5 means center. If use_align is false, the text scrolls the minimal distance to get the mark onscreen, possibly not scrolling at all. The effective screen for purposes of this method is reduced by a margin of size within_margin.
+    * mark: Gtk::TextMark 
+    * within_margin: 表示エリアサイズに対するマージンの割合（0.0以上0.5未満）
+#    * within_margin: margin as a 0.0, 0.5 fraction of screen size 
+    * use_align: アラインメント引数を使用するかどうかを表す真偽値（falseの場合mark位置が表示エリアに入るまでの必要最低限の距離をスクロールします）
+    * xalign: 表示エリア内での、横方向のmarkのアラインメント
+    * yalign: 表示エリア内での、縦方向のmarkのアラインメント
+    * 戻り値: self
 
 --- scroll_to_iter(iter, within_margin, use_align, xalign, yalign)
-    Scrolls the Gtk::TextView so that iter is on the screen in the position indicated by xalign and yalign. An alignment of 0.0 indicates left or top, 1.0 indicates right or bottom, 0.5 means center. If use_align is false, the text scrolls the minimal distance to get the mark onscreen, possibly not scrolling at all. The effective screen for purposes of this method is reduced by a margin of size within_margin. NOTE: This method uses the currently-computed height of the lines in the text buffer. Note that line heights are computed in an idle handler; so this method may not have the desired effect if it's called before the height computations. To avoid oddness, consider using Gtk::TextView#scroll_to_mark which saves a point to be scrolled to after line validation.
-    * iter: a Gtk::TextIter 
-    * within_margin: margin as a 0.0, 0.5 fraction of screen size 
-    * use_align: whether to use alignment arguments (if false, just get the mark onscreen) 
-    * xalign: horizontal alignment of mark within visible area. 
-    * yalign: vertical alignment of mark within visible area 
-    * Returns: true if scrolling occurred 
+    　表示エリアのxalignとyalignが指し示す位置にiterが来るようにGtk::TextViewをスクロールします。xalignに0.0が指定された場合、左端を意味し、1.0が指定された場合、右端を意味します。yalignに0.0が指定された場合、上端を意味し、1.0が指定された場合、下端を意味します。xalign、yalignともに、0.5の場合は中央の位置が指定されたことを意味します。{{br}}　use_alignにfalseが指定された場合、iterが表示エリアに入るまでの必要最低限の距離をスクロールします, possibly not scrolling at all。{{br}}　within_marginに指定した値（0.0以上0.5未満）の分だけ有効な表示エリアが小さくなります。{{br}}　【注意】　このメソッドは、実行の直前に計算されたバッファ内の行の高さを使用します。そして行の高さはidleハンドラの中で計算されることに注意する必要があります。もし行の高さが計算される前にこのメソッドが呼び出されてしまった場合、望んだ結果にならないかもしれません。予期しない結果を避けるために、Gtk::TextView#scroll_to_mark( which saves a point to be scrolled to after line validation)を利用することを検討してください。
+#    Scrolls the Gtk::TextView so that iter is on the screen in the position indicated by xalign and yalign. An alignment of 0.0 indicates left or top, 1.0 indicates right or bottom, 0.5 means center. If use_align is false, the text scrolls the minimal distance to get the mark onscreen, possibly not scrolling at all. The effective screen for purposes of this method is reduced by a margin of size within_margin. NOTE: This method uses the currently-computed height of the lines in the text buffer. Note that line heights are computed in an idle handler; so this method may not have the desired effect if it's called before the height computations. To avoid oddness, consider using Gtk::TextView#scroll_to_mark which saves a point to be scrolled to after line validation.
+    * iter: Gtk::TextIter 
+    * within_margin: 表示エリアサイズに対するマージンの割合（0.0以上0.5未満）
+    * use_align: アラインメント引数を使用するかどうかを表す真偽値（falseの場合mark位置が表示エリアに入るまでの必要最低限の距離をスクロールします）
+    * xalign: 表示エリア内での、横方向のiterのアラインメント
+    * yalign: 表示エリア内での、縦方向のiterのアラインメント
+    * 戻り値: スクロールが行われた場合、trueが返ります。
 
 --- scroll_mark_onscreen(mark)
-    Scrolls the Gtk::TextView the minimum distance such that mark is contained within the visible area of the widget.
-    * mark: a mark in the buffer for the Gtk::TextView
-    * Returns: self
+    　指定されたmarkが表示エリアに入るまでの必要最低限だけGtk::TextViewをスクロールします。
+#    Scrolls the Gtk::TextView the minimum distance such that mark is contained within the visible area of the widget.
+    * mark: Gtk::TextViewのバッファ（Gtk::TextBuffer）内にあるmark
+    * 戻り値: self
 
 --- move_mark_onscreen(mark)
-    Moves a mark within the buffer so that it's located within the currently-visible text area.
-    * mark: a Gtk::TextMark 
-    * Returns: true if the mark moved (wasn't already onscreen) 
+    　バッファ内の指定されたmarkを現在表示されているエリアに移動します。
+#    Moves a mark within the buffer so that it's located within the currently-visible text area.
+    * mark: Gtk::TextMark 
+    * 戻り値: markが移動した場合（表示されているエリアになかった場合）、trueを返します。
 
 --- place_cursor_onscreen
-    Moves the cursor to the currently visible region of the buffer, if it isn't there already.
-    * Returns: true if the cursor had to be moved. 
+    　バッファ内のカーソルを現在表示されているエリアに移動します。（もし表示エリアになければ）
+#    Moves the cursor to the currently visible region of the buffer, if it isn't there already.
+    * 戻り値: カーソルを移動する必要があった場合、trueを返します。
 
 --- visible_rect
-    Returns the currently-visible region of the buffer, in buffer coordinates. Convert to window coordinates with Gtk::TextView#buffer_to_window_coords.
-    * Returns: Gdk::Rectangle
+    　バッファの現在表示されているエリアをバッファ内座標で取得します。バッファ内座標はGtk::TextView#buffer_to_window_coordsでウィンドウ内座標に変換することができます。
+#    Returns the currently-visible region of the buffer, in buffer coordinates. Convert to window coordinates with Gtk::TextView#buffer_to_window_coords.
+    * 戻り値: Gdk::Rectangle
 
 --- get_iter_location(iter)
-    Gets a Gdk::Rectangle which roughly contains the character at iter. The Gdk::Rectangle position is in buffer coordinates; use Gtk::TextView#buffer_to_window_coords to convert these coordinates to coordinates for one of the windows in the text view.
-    * iter : a GtkTextIter 
-    * Returns: a Gdk::Rectangle which is the bounds of the character at iter 
+    　iterの位置にある文字を、任意の座標に含むGdk::Rectangleを取得します。Gdk::Rectangleが持つ値はバッファ内座標です。バッファ内座標はGtk::TextView#buffer_to_window_coordsでウィンドウ内座標に変換することができます。
+#    Gets a Gdk::Rectangle which roughly contains the character at iter. The Gdk::Rectangle position is in buffer coordinates; use Gtk::TextView#buffer_to_window_coords to convert these coordinates to coordinates for one of the windows in the text view.
+    * iter : GtkTextIter 
+    * 戻り値: iterの位置にある文字を、任意の座標に含むGdk::Rectangle
 
 --- get_line_at_y(y)
-    Gets the Gtk::TextIter at the start of the line containing the coordinate y. y is in buffer coordinates, convert from window coordinates with Gtk::TextView#window_to_buffer_coords. If non-nil, line_top will be the coordinate of the top edge of the line.
-    * y : a y coordinate 
-    * Returns [target_iter, line_top]
-       * target_iter : a Gtk::TextIter 
-       * line_top: top coordinate of the line 
+    　座標yの位置にある行の先頭を表すGtk::TextIterを取得します。yはバッファ内座標を指定して下さい。ウィンドウ内座標からバッファ内座標を得るには、Gtk::TextView#window_to_buffer_coordsを使用して下さい。戻り値のline_topはnilでなければ、iterを取得した行の上端の座標になります。
+#    Gets the Gtk::TextIter at the start of the line containing the coordinate y. y is in buffer coordinates, convert from window coordinates with Gtk::TextView#window_to_buffer_coords. If non-nil, line_top will be the coordinate of the top edge of the line.
+    * y : y座標
+    * 戻り値: [target_iter, line_top]
+       * target_iter : Gtk::TextIter 
+       * line_top: iterを取得した行の上端の座標
 
 --- get_line_yrange(iter)
-    Gets the y coordinate of the top of the line containing iter, and the height of the line. The coordinate is a buffer coordinate; convert to window coordinates with Gtk::TextView#buffer_to_window_coords.
-    * iter : a GtkTextIter 
-    * Returns: [y, height]
-       * y: a y coordinate 
-       * height: a height 
+    　指定されたiterを含む行の上端のy座標と行の高さを取得します。取得される座標はバッファ内座標です。バッファ内座標はGtk::TextView#buffer_to_window_coordsでウィンドウ内座標に変換することができます。
+#    Gets the y coordinate of the top of the line containing iter, and the height of the line. The coordinate is a buffer coordinate; convert to window coordinates with Gtk::TextView#buffer_to_window_coords.
+    * iter : GtkTextIter 
+    * 戻り値: [y, height]
+       * y: y座標
+       * height: 行の高さ
 
 --- get_iter_at_location(x, y)
-    Retrieves the iterator at buffer coordinates x and y. Buffer coordinates are coordinates for the entire buffer, not just the currently-displayed portion. If you have coordinates from an event, you have to convert those to buffer coordinates with Gtk::TextView#window_to_buffer_coords.
-    * x: x position, in buffer coordinates 
-    * y: y position, in buffer coordinates 
-    * Returns: a Gtk::TextIter 
+    　バッファ内座標x, yの位置のGtk::TextIterを取得します。座標は表示エリアだけでなく、バッファ全体から見たものになります。指定する座標は、イベントから取得したものでない場合、Gtk::TextView#window_to_buffer_coordsでバッファ内座標に変換する必要があります。
+#    Retrieves the iterator at buffer coordinates x and y. Buffer coordinates are coordinates for the entire buffer, not just the currently-displayed portion. If you have coordinates from an event, you have to convert those to buffer coordinates with Gtk::TextView#window_to_buffer_coords.
+    * x: バッファ内x座標
+    * y: バッファ内y座標
+    * 戻り値: Gtk::TextIter 
 
 --- get_iter_at_position(x, y)
-    Retrieves the iterator pointing to the character at buffer coordinates x and y. Buffer coordinates are coordinates for the entire buffer, not just the currently-displayed portion. If you have coordinates from an event, you have to convert those to buffer coordinates with Gtk::TextView#window_to_buffer_coords.
-    Note that this is diffferent from Gtk::TextView#get_iter_at_location, which returns cursor locations, i.e. positions between characters.  ((* Since 2.6 *))
-    * x: x position, in buffer coordinates
-    * y: y position, in buffer coordinates
-    * Returns: [iter, trailing]
-       * iter: a Gtk::TextIter
+    　バッファ内の座標x, yの位置にある文字を指し示すGtk::TextIterを取得します。座標は表示エリアだけでなく、バッファ全体から見たものになります。指定する座標は、イベントから取得したものでない場合、Gtk::TextView#window_to_buffer_coordsでバッファ内座標に変換する必要があります。{{br}}　このメソッドは、カーソル位置（文字の間）を指し示すGtk::TextIterを返すGtk::TextView#get_iter_at_locationとは違うことに注意してください。((-【訳注：】　これはメソッドの動作を見た上での推測ですが、Gtk::TextView#get_iter_at_locationは、仮に座標の場所をクリックした場合にカーソルが現れる場所を表すGtk::TextIterを返すメソッドだと思われます。つまり、指定した座標がバッファ内のある文字の前半分（日本語、英語などの場合は左側）のエリアに含まれる時は、文字の手前のカーソル位置を表すGtk::TextIterが返り、座標が文字の後ろ半分（日本語、英語などの場合は右側）のエリアに含まれる時は、文字の後ろのカーソル位置を表すGtk::TextIterが返るという具合です。それに対し、get_iter_at_positionは、常に座標上にある文字の手前のカーソル位置を表すGtk::TextIterが返るようです。戻り値のtrailingは、指定した座標が文字の前半分にある時には0が返り、後ろ半分の時には1が返るようです。メソッドの説明に、文字を指し示すGtk::TextIterを返すとありますが、これは結局offsetがその文字の位置と一致するGtk::TextIterを返す、という意味ではないかと思われます。（この注は推測なので、間違っている可能性もあります）-))((* Since 2.6 *))
+#    Retrieves the iterator pointing to the character at buffer coordinates x and y. Buffer coordinates are coordinates for the entire buffer, not just the currently-displayed portion. If you have coordinates from an event, you have to convert those to buffer coordinates with Gtk::TextView#window_to_buffer_coords.
+#    Note that this is diffferent from Gtk::TextView#get_iter_at_location, which returns cursor locations, i.e. positions between characters.  ((* Since 2.6 *))
+    * x: バッファ内x座標
+#    * x: x position, in buffer coordinates
+    * y: バッファ内y座標
+#    * y: y position, in buffer coordinates
+    * 戻り値: [iter, trailing]
+       * iter: Gtk::TextIter
        * trailing: a trailing
 
 --- buffer_to_window_coords(win_type, buffer_x, buffer_y)
-    Converts coordinate (buffer_x, buffer_y) to coordinates for the window win, and stores the result in (window_x, window_y).
-    Note that you can't convert coordinates for a nonexisting window (see Gtk::TextView#set_border_window_size).
-    * win_type: a ((<GtkTextWindowType|Gtk::TextView#GtkTextWindowType>)) except Gtk::TextView::WINDOW_PRIVATE 
-    * buffer_x: buffer x coordinate 
-    * buffer_y: buffer y coordinate 
-    * Returns: [window_x, window_y]
-       * window_x: window x coordinate
-       * window_y: window y coordinate
+    　座標buffer_x, buffer_yをwin_typeのウィンドウタイプのウィンドウ内座標に変換します。戻り値はwindow_x, window_yに格納されます。{{br}}　存在しないウィンドウの座標に変換することはできないので注意して下さい。（Gtk::TextView#set_border_window_sizeを参照）
+#    Converts coordinate (buffer_x, buffer_y) to coordinates for the window win, and stores the result in (window_x, window_y).
+#    Note that you can't convert coordinates for a nonexisting window (see Gtk::TextView#set_border_window_size).
+    * win_type: ((<GtkTextWindowType|Gtk::TextView#GtkTextWindowType>)) ただし Gtk::TextView::WINDOW_PRIVATE を除く。
+#    * win_type: a ((<GtkTextWindowType|Gtk::TextView#GtkTextWindowType>)) except Gtk::TextView::WINDOW_PRIVATE 
+    * buffer_x: バッファ内x座標
+    * buffer_y: バッファ内y座標
+    * 戻り値: [window_x, window_y]
+       * window_x: ウィンドウ内x座標
+       * window_y: ウィンドウ内y座標
 
 --- window_to_buffer_coords(win_type, window_x, window_y)
-    Converts coordinates on the window identified by win to buffer coordinates, storing the result in (buffer_x,buffer_y).
-    Note that you can't convert coordinates for a nonexisting window (see Gtk::TextView#set_border_window_size).
-    * win_type : a ((<GtkTextWindowType|Gtk::TextView#GtkTextWindowType>)) except Gtk::TextView::WINDOW_PRIVATE
-    * window_x: window x coordinate 
-    * window_y: window y coordinate 
-    * Returns: [buffer_x, buffer_y]
-       * buffer_x: buffer x coordinate
-       * buffer_y: buffer y coordinate
+    　win_typeのウィンドウタイプのウィンドウ内座標をバッファ内座標に変換します。戻り値はbuffer_x, buffer_yに格納されます。{{br}}　存在しないウィンドウの座標を変換することはできないので注意して下さい。（Gtk::TextView#set_border_window_sizeを参照）
+#    Converts coordinates on the window identified by win to buffer coordinates, storing the result in (buffer_x,buffer_y).
+#    Note that you can't convert coordinates for a nonexisting window (see Gtk::TextView#set_border_window_size).
+    * win_type : ((<GtkTextWindowType|Gtk::TextView#GtkTextWindowType>)) ただし Gtk::TextView::WINDOW_PRIVATE を除く。
+    * window_x: ウィンドウ内x座標
+    * window_y: ウィンドウ内y座標
+    * 戻り値: [buffer_x, buffer_y]
+       * buffer_x: バッファ内x座標
+       * buffer_y: バッファ内y座標
 
 --- get_window(win_type)
     Retrieves the Gdk::Window corresponding to an area of the text view; possible windows include the overall widget window, child windows on the left, right, top, bottom, and the window that displays the text buffer. Windows are nil and nonexistent if their width or height is 0, and are nonexistent before the widget has been realized.
     * win_type: a ((<GtkTextWindowType|Gtk::TextView#GtkTextWindowType>)) to get 
-    * Returns: a Gdk::Window, or nil 
+    * 戻り値: a Gdk::Window, or nil 
 
 --- get_window_type(window)
     Usually used to find out which window an event corresponds to. If you connect to an event signal on Gtk::TextView, this method should be called on event.window to see which window it was.
     * window: a window type 
-    * Returns: the ((<GtkTextWindowType|Gtk::TextView#GtkTextWindowType>)) 
+    * 戻り値: the ((<GtkTextWindowType|Gtk::TextView#GtkTextWindowType>)) 
 
 --- get_border_window_size(type)
     Gets the width of the specified border window. See Gtk::TextView#set_border_window_size.
     * type: window to return size from 
-    * Returns: width of window 
+    * 戻り値: width of window 
 
 --- set_border_window_size(type, size)
     Sets the width of Gtk::TextView::WINDOW_LEFT or Gtk::TextView::WINDOW_RIGHT, or the height of Gtk::TextView::WINDOW_TOP or Gtk::TextView::WINDOW_BOTTOM. Automatically destroys the corresponding window if the size is set to 0, and creates the window if the size is set to non-zero. This method can only be used for the "border windows," it doesn't work with Gtk::TextView::WINDOW_WIDGET, Gtk::TextView::WINDOW_TEXT, or Gtk::TextView::WINDOW_PRIVATE.
     * type: ((<GtkTextWindowType|Gtk::TextView#GtkTextWindowType>)) to affect 
     * size: width or height of the window 
-    * Returns: self
+    * 戻り値: self
 
 --- forward_display_line(iter)
     Moves the given iter forward by one display (wrapped) line. A display line is different from a paragraph. Paragraphs are separated by newlines or other paragraph separator characters. Display lines are created by line-wrapping a paragraph. If wrapping is turned off, display lines and paragraphs will be the same. Display lines are divided differently for each view, since they depend on the view's width; paragraphs are the same in all views, since they depend on the contents of the Gtk::TextBuffer.
     * iter: a Gtk::TextIter 
-    * Returns: true if iter was moved and is not on the end iterator 
+    * 戻り値: true if iter was moved and is not on the end iterator 
 
 --- backward_display_line(iter)
     Moves the given iter backward by one display (wrapped) line. A display line is different from a paragraph. Paragraphs are separated by newlines or other paragraph separator characters. Display lines are created by line-wrapping a paragraph. If wrapping is turned off, display lines and paragraphs will be the same. Display lines are divided differently for each view, since they depend on the view's width; paragraphs are the same in all views, since they depend on the contents of the Gtk::TextBuffer.
     * iter: a Gtk::TextIter 
-    * Returns: true if iter was moved and is not on the end iterator 
+    * 戻り値: true if iter was moved and is not on the end iterator 
 
 --- forward_display_line_end(iter)
     Moves the given iter forward to the next display line end. A display line is different from a paragraph. Paragraphs are separated by newlines or other paragraph separator characters. Display lines are created by line-wrapping a paragraph. If wrapping is turned off, display lines and paragraphs will be the same. Display lines are divided differently for each view, since they depend on the view's width; paragraphs are the same in all views, since they depend on the contents of the Gtk::TextBuffer.
     * iter: a Gtk::TextIter 
-    * Returns: true if iter was moved and is not on the end iterator 
+    * 戻り値: true if iter was moved and is not on the end iterator 
 
 --- backward_display_line_start(iter)
     Moves the given iter backward to the next display line start. A display line is different from a paragraph. Paragraphs are separated by newlines or other paragraph separator characters. Display lines are created by line-wrapping a paragraph. If wrapping is turned off, display lines and paragraphs will be the same. Display lines are divided differently for each view, since they depend on the view's width; paragraphs are the same in all views, since they depend on the contents of the Gtk::TextBuffer.
     * iter: a Gtk::TextIter 
-    * Returns: true if iter was moved and is not on the end iterator 
+    * 戻り値: true if iter was moved and is not on the end iterator 
 
 --- starts_display_line(iter)
     Determines whether iter is at the start of a display line. See Gtk::TextView#forward_display_line for an explanation of display lines vs. paragraphs.
     * iter: a Gtk::TextIter 
-    * Returns: true if iter begins a wrapped line 
+    * 戻り値: true if iter begins a wrapped line 
 
 --- move_visually(iter, count)
     Moves iter up or down by count display (wrapped) lines. See Gtk::TextView#forward_display_line for an explanation of display lines vs. paragraphs.
     * iter: a Gtk::TextIter 
     * count: number of lines to move 
-    * Returns: true if iter moved and is not on the end iterator 
+    * 戻り値: true if iter moved and is not on the end iterator 
 
 --- add_child_at_anchor(child)
     Adds a child widget in the text buffer, at the given anchor.
     * child: a Gtk::Widget 
     * anchor: a Gtk::TextChildAnchor in the Gtk::TextBuffer for the Gtk::TextView 
-    * Returns: self
+    * 戻り値: self
 
 --- add_child_in_window(child, which_window, xpos, ypos)
     Adds a child at fixed coordinates in one of the text widget's windows. The window must have nonzero size (see Gtk::TextView#set_border_window_size). Note that the child coordinates are given relative to the Gdk::Window in question, and that these coordinates have no sane relationship to scrolling. When placing a child in Gtk::TextView::WINDOW_WIDGET, scrolling is irrelevant, the child floats above all scrollable areas. But when placing a child in one of the scrollable windows (border windows or text window), you'll need to compute the child's correct position in buffer coordinates any time scrolling occurs or buffer changes occur, and then call Gtk::TextView#move_child to update the child's position. Unfortunately there's no good way to detect that scrolling has occurred, using the current API; a possible hack would be to update all child positions when the scroll adjustments change or the text buffer changes. See bug 64518 on bugzilla.gnome.org for status of fixing this issue.
@@ -183,233 +207,233 @@ Widget that displays a Gtk::TextBuffer.
     * which_window: which window the child should appear in 
     * xpos: X position of child in window coordinates 
     * ypos: Y position of child in window coordinates 
-    * Returns: self
+    * 戻り値: self
 
 --- move_child(child, xpos, ypos)
     Updates the position of a child, as for Gtk::TextView#add_child_in_window.
     * child: child widget already added to the text view 
     * xpos: new X position in window coordinates 
     * ypos: new Y position in window coordinates 
-    * Returns: self
+    * 戻り値: self
 
 --- wrap_mode
     Gets the line wrapping for the view.
-    * Returns: the line wrap setting ((<GtkWrapMode|Gtk::TextTag#GtkWrapMode>))
+    * 戻り値: the line wrap setting ((<GtkWrapMode|Gtk::TextTag#GtkWrapMode>))
 --- wrap_mode=(wrap_mode)
     Sets the line wrapping for the view.
     * wrap_mode : a ((<GtkWrapMode|Gtk::TextTag#GtkWrapMode>)) 
-    * Returns: wrap_mode
+    * 戻り値: wrap_mode
 --- set_wrap_mode(wrap_mode)
     Same as Gtk::TextView#wrap_mode=.
     * wrap_mode : a ((<GtkWrapMode|Gtk::TextTag#GtkWrapMode>)) 
-    * Returns: self
+    * 戻り値: self
 
 --- editable?
     Returns the default editability of the Gtk::TextView. Tags in the buffer may override this setting for some ranges of text.
-    * Returns: whether text is editable by default 
+    * 戻り値: whether text is editable by default 
 --- editable=(setting)
     Sets the default editability of the Gtk::TextView. You can override this default setting with tags in the buffer, using the "editable" attribute of tags.
     * setting: true if it's editable 
-    * Returns: setting
+    * 戻り値: setting
 --- set_editable
     Same as Gtk::TextView#editable=.
     * setting: true if it's editable 
-    * Returns: self
+    * 戻り値: self
 
 --- cursor_visible?
     Find out whether the cursor is being displayed.
-    * Returns: true if the insertion mark is visible 
+    * 戻り値: true if the insertion mark is visible 
 --- cursor_visible=(setting)
     Toggles whether the insertion point is displayed. A buffer with no editable text probably shouldn't have a visible cursor, so you may want to turn the cursor off.
     * setting: true if to show the insertion cursor 
-    * Returns: setting
+    * 戻り値: setting
 --- set_cursor_visible(setting)
     Same as Gtk::TextView#cursor_visible=.
     * setting: true if to show the insertion cursor 
-    * Returns: self
+    * 戻り値: self
 
 --- overwrite?
     Returns whether the Gtk::TextView is in overwrite mode or not.   ((* Since 2.4 *)) 
-    * Returns: true if overwrite.
+    * 戻り値: true if overwrite.
 --- overwrite=(setting)
     Changes the Gtk::TextView overwrite mode. ((* Since 2.4 *))
     * setting: true if overwrite.
-    * Returns: setting
+    * 戻り値: setting
 --- set_overwrite(setting)
     Same as Gtk::TextView#overwrite=. ((* Since 2.4 *))
     * setting: true if overwrite.
-    * Returns: self
+    * 戻り値: self
 
 --- pixels_above_lines
     Gets the default number of pixels to put above paragraphs.
-    * Returns: default number of pixels above paragraphs 
+    * 戻り値: default number of pixels above paragraphs 
 --- pixels_above_lines=(pixels_above_lines)
     Sets the default number of blank pixels above paragraphs in the Gtk::TextView. Tags in the buffer for the Gtk::TextView may override the defaults.
     * pixels_above_lines: pixels above paragraphs 
-    * Returns: pixels_above_lines
+    * 戻り値: pixels_above_lines
 --- set_pixels_above_lines(pixels_above_lines)
     Same as Gtk::TextView#pixels_above_lines=.
     * pixels_above_lines: pixels above paragraphs 
-    * Returns: self
+    * 戻り値: self
 
 --- pixels_below_lines
     Gets the value set by Gtk::TextView#pixels_below_lines=.
-    * Returns: default number of blank pixels below paragraphs 
+    * 戻り値: default number of blank pixels below paragraphs 
 --- pixels_below_lines=(pixels below paragraphs)
     Sets the default number of pixels of blank space to put below paragraphs in the Gtk::TextView. May be overridden by tags applied to the Gtk::TextView's buffer.
     * pixels_below_lines: pixels below paragraphs
-    * Returns: pixels below paragraphs
+    * 戻り値: pixels below paragraphs
 --- set_pixels_below_lines(pixels_below_lines)
     Same as Gtk::TextView#pixels_below_lines=.
     * pixels_below_lines: pixels below paragraphs
-    * Returns: self
+    * 戻り値: self
 
 --- pixels_inside_wrap
     Gets the value set by Gtk::TextView#pixels_inside_wrap=.
-    * Returns: default number of pixels of blank space between wrapped lines 
+    * 戻り値: default number of pixels of blank space between wrapped lines 
 --- pixels_inside_wrap=(pixels_inside_wrap)
     Sets the default number of pixels of blank space to leave between display/wrapped lines within a paragraph. May be overridden by tags in the Gtk::TextView's buffer.
     * pixels_inside_wrap: default number of pixels between wrapped lines 
-    * Returns: pixels_inside_wrap
+    * 戻り値: pixels_inside_wrap
 --- set_pixels_inside_wrap(pixels_inside_wrap)
     Same as Gtk::TextView#pixels_inside_wrap=.
     * pixels_inside_wrap: default number of pixels between wrapped lines 
-    * Returns: self
+    * 戻り値: self
 
 --- justification
     Gets the default justification of paragraphs in the Gtk::TextView. Tags in the buffer may override the default.
-    * Returns: default justification 
+    * 戻り値: default justification 
 --- justification=(justification)
     Sets the default justification of text in the Gtk::TextView. Tags in the view's buffer may override the default.
     * justification: justification 
-    * Returns: justification
+    * 戻り値: justification
 --- set_justification(justification)
     Same as Gtk::TextView#justification=.
     * justification: justification 
-    * Returns: self
+    * 戻り値: self
 
 --- left_margin
     Gets the default left margin size of paragraphs in the Gtk::TextView. Tags in the buffer may override the default.
-    * Returns: left margin in pixels 
+    * 戻り値: left margin in pixels 
 --- left_margin=(left_margin)
     Sets the default left margin for text in the Gtk::TextView. Tags in the buffer may override the default.
     * left_margin: left margin in pixels 
-    * Returns: left_margin
+    * 戻り値: left_margin
 --- set_left_margin(left_margin)
     Same as Gtk::TextView#left_margin=.
     * left_margin: left margin in pixels 
-    * Returns: self
+    * 戻り値: self
 
 --- right_margin
     Gets the default right margin for text in the Gtk::TextView. Tags in the buffer may override the default.
-    * Returns: right margin in pixels 
+    * 戻り値: right margin in pixels 
 --- right_margin=(right_margin)
     Sets the default right margin for text in the Gtk::TextView. Tags in the buffer may override the default.
     * right_margin: right margin in pixels 
-    * Returns: right_margin
+    * 戻り値: right_margin
 --- set_right_margin(right_margin)
     Same as Gtk::TextView#right_margin=.
     * right_margin: right margin in pixels 
-    * Returns: self
+    * 戻り値: self
 
 --- indent
     Gets the default indentation of paragraphs in the Gtk::TextView. Tags in the view's buffer may override the default. The indentation may be negative.
-    * Returns: number of pixels of indentation 
+    * 戻り値: number of pixels of indentation 
 --- indent=(indent)
     Sets the default indentation for paragraphs in the Gtk::TextView. Tags in the buffer may override the default.
     * indent : indentation in pixels 
-    * Returns: indent
+    * 戻り値: indent
 --- set_indent(indent)
     Same as Gtk::TextView#indent=.
     * indent : indentation in pixels 
-    * Returns: self
+    * 戻り値: self
 
 --- tabs
     Gets the default tabs for text_view. Tags in the buffer may override the defaults. The returned array will be nil if "standard" (8-space) tabs are used.
-    * Returns: copy of default tab array, or nil if "standard" tabs are used
+    * 戻り値: copy of default tab array, or nil if "standard" tabs are used
 --- tabs=(tabs)
     Sets the default tab stops for paragraphs in the Gtk::TextView. Tags in the buffer may override the default.
     * tabs: tabs as a Pango::TabArray 
-    * Returns: tabs
+    * 戻り値: tabs
 --- set_tabs(tabs)
     Same as Gtk::TextView#tabs=.
     * tabs: tabs as a Pango::TabArray 
-    * Returns: self
+    * 戻り値: self
 
 --- accepts_tab?
     Returns whether pressing the Tab key inserts a tab characters. See Gtk::TextView#accepts_tab=.
-    * Returns: true if pressing the Tab key inserts a tab character, false if pressing the Tab key moves the keyboard focus. ((* Since 2.4 *))
+    * 戻り値: true if pressing the Tab key inserts a tab character, false if pressing the Tab key moves the keyboard focus. ((* Since 2.4 *))
 --- accepts_tab=(accepts_tab)
     Sets the behavior of the text widget when the Tab key is pressed. If accepts_tab is true a tab character is inserted. If accepts_tab is false the keyboard focus is moved to the next widget in the focus chain.
     * accepts_tab: true if pressing the Tab key should insert a tab character, false, if pressing the Tab key should move the keyboard focus. ((* Since 2.4 *))
-    * Returns: accepts_tab
+    * 戻り値: accepts_tab
 --- set_accepts_tab(accepts_tab)
     Same as Gtk::TextView#accepts_tab=. ((* Since 2.4 *))
     * accepts_tab: true if pressing the Tab key should insert a tab character, false, if pressing the Tab key should move the keyboard focus. ((* Since 2.4 *))
-    * Returns: self
+    * 戻り値: self
 
 --- default_attributes
     Returns a copy of the default text attributes. These are the attributes used for text unless a tag overrides them. You'd typically pass the default attributes in to Gtk::TextIter#attributes in order to get the attributes in effect at a given text position.
-    * Returns : a new Gtk::TextAttributes 
+    * 戻り値 : a new Gtk::TextAttributes 
 
 --- backspace
     Emits backspace signal.
-    * Returns: self
+    * 戻り値: self
 --- copy_clipboard
     Emits copy-clipboard signal.
-    * Returns: self
+    * 戻り値: self
 --- cut_clipboard
     Emits cut-clipboard signal.
-    * Returns: self
+    * 戻り値: self
 --- delete_from_cursor(type, arg2)
     Emits delete-from-cursor signal.
     * type: ((<GtkDeleteType|Gtk#GtkDeleteType>))
     * arg2: Integer
-    * Returns: self
+    * 戻り値: self
 --- insert_at_cursor(str)
     Emits insert-at-cursor signal.
     * str: a String
-    * Returns: self
+    * 戻り値: self
 --- move_cursor(step, count, textend_selection)
     Emits move-cursor signal.
     * step: ((<GtkMovementStep|Gtk#GtkMovementStep>))
     * count: the number of step units to move (Integer)
     * extend_selection: true if the move should extend the selection, otherwise false
-    * Returns: self
+    * 戻り値: self
 --- move_focus(type)
     Emits move-focus signal.
     * type: ((<GtkDirectionType|Gtk#GtkDirectionType>))
-    * Returns: self
+    * 戻り値: self
 --- move_viewport(step, arg2)
     Emits move-viewport signal.
     * step: ((<GtkScrollStep|Gtk#GtkScrollStep>))
     * arg2: Integer
-    * Returns: self
+    * 戻り値: self
 --- page_horizontally(arg1, arg2)
     Emits page-horizontally signal.
     * arg1: Integer
     * arg2: true or false
-    * Returns: self
+    * 戻り値: self
 --- paste_clipboard
     Emits paste-clipboard signal.
-    * Returns: self
+    * 戻り値: self
 --- select_all(setting)
     Emits select-all signal.
     * setting: true or false
-    * Returns: self
+    * 戻り値: self
 --- set_anchor
     Emits set-anchor signal.
-    * Returns: self
+    * 戻り値: self
 --- set_scroll_adjustments(adj1, adj2)
     Emits set-scroll-adjustments signal.
     * adj1: Gtk::Adjustment
     * adj2: Gtk::Adjustment
-    * Returns: self
+    * 戻り値: self
 --- toggle_overwrite
     Emits toggle-overwrite signal.
-    * Returns: self
+    * 戻り値: self
 
-== Constants
+== 定数
 === GtkTextWindowType
 --- WINDOW_PRIVATE
 --- WINDOW_WIDGET
@@ -423,7 +447,7 @@ Widget that displays a Gtk::TextBuffer.
 --- PRIORITY_VALIDATE
 The priority at which the text view validates onscreen lines in an idle job in the background(Gdk::PRIORITY_REDRAW + 5).
 
-== Properties
+== プロパティ
 --- accepts-tab: true or false (Read/Write)
     Whether Tab will result in a tab character being entered. ((* Since 2.4 *))
     * Default value: true
@@ -484,7 +508,7 @@ The priority at which the text view validates onscreen lines in an idle job in t
     Whether to wrap lines never, at word boundaries, or at character boundaries
     * Default value: Gtk::TextTag::WRAP_NONE
 
-== Signals
+== シグナル
 --- backspace: self
      * self: the Gtk::TextView
 --- copy-clipboard: self
@@ -532,7 +556,7 @@ The priority at which the text view validates onscreen lines in an idle job in t
 --- toggle-overwrite: self
      * self: the Gtk::TextView
 
-== See Also
+== 参照
 Gtk::TextBuffer, Gtk::TextIter
 
 == ChangeLog
