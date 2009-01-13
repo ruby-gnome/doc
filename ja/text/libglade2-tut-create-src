@@ -102,4 +102,19 @@ PROG_PATH¤Ïhwedit.glade¤òÃÖ¤¯PATH¤Ç¤¹¡£¾åµ­Îã¤Ç¤Ï¤³¤Î¥Ä¡¼¥ë¤ò¼Â¹Ô¤¹¤ë¥Ç¥£¥ì¥¯¥È¥
 
 °Ê¾å¡Ê¾Ð¡Ë¡£Gtk::TextView¤Î¤ª¤«¤²¤Ç¤¹¡£¤Á¤Ê¤ß¤ËTextView¥¦¥£¥¸¥§¥Ã¥È¤Î±¦¥¯¥ê¥Ã¥¯¡Ê¥³¥ó¥Æ¥­¥¹¥È¡Ë¥á¥Ë¥å¡¼Æâ¤Î¥³¥Þ¥ó¥É¤Ï¼ÂÁõ¤¹¤ëÉ¬Í×¤¹¤é¤¢¤ê¤Þ¤»¤ó¡£¥Ç¥Õ¥©¥ë¥È¤ÇÆ°ºî¤·¤Þ¤¹¡£
 
+¼¡¤Ï¡¢"Help"¥á¥Ë¥å¡¼¤Î"About"¥³¥Þ¥ó¥É¤òÁªÂò¤·¤¿»þ¤Ë¡¢Glade¤Çºî¤Ã¤Æ¤ª¤¤¤¿¥¢¥Ð¥¦¥È¥À¥¤¥¢¥í¥°¤òÉ½¼¨¤¹¤ëÎã¤Ç¤¹¡£
+
+  def on_about1_activate(widget)
+    @aboutdlg.run do |response|
+      case response
+      when Gtk::Dialog::RESPONSE_DELETE_EVENT
+        puts "RESPONSE_DELETE_EVENT"
+      when Gtk::Dialog::RESPONSE_CLOSE
+        puts "RESPONSE_CLOSE"
+      end
+      @aboutdlg.hide
+    end
+  end
+
+
 (¤Þ¤ÀÌ¤´°À®)
