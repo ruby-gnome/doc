@@ -1,10 +1,5 @@
 = Color Selector Widgets
 {{link "tut-gtk2-fichoo-dialog", "tut-gtk2-selchoose", "tut-gtk", nil}}
-{{image_right("FileChooserDialog.png")}}
-
-
-= Color Selector Widgets
-{{link "tut-gtk2-fichoo-dialog", "tut-gtk2-selchoose", "tut-gtk", nil}}
 {{image_right("ColorButtons01.png")}}
 
 Gtk::ColorButton widget is a member of the so called family of Selectors widgets. In the Gtk documentation you will find them under the heading Selectors (File/Font/Color/Input Devices). Gtk::ColorButton is used to interactively set foreground or background colour to widgets. Here is a Ruby version of a C Gtk+ program that allows user to dynamically change the foreground colour of the text on a label.  After clicking the blue button on "Color Buttons" window above the following "Color Dialog" window opens. User dials (selects) the colour (in our case red). After clicking on the "OK" button, the colour dialogue widget ("w" in the callback block (see "label.modify_fg(Gtk::STATE_NORMAL, w.color)")  sets the colour of the label in the calling window.  
