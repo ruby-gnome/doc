@@ -1,5 +1,5 @@
 = Selector/Chooser Interface And Widgets
-{{link "tut-gtk2-packing-tables-demo", "tut-gtk2-selchoose", "tut-gtk", "tut-gtk2-filechooser"}}
+{{link "tut-gtk2-btt-radio", "tut-gtk2-selchoose", "tut-gtk", "tut-gtk2-filechooser"}}
 
 
 All these widgets are members of the so called family of Selectors widgets. In the Gtk documentation you will find them under the heading Selectors (File/Font/Color/Input Devices). The family is divided into four groups:
