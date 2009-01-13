@@ -2,10 +2,12 @@
 {{link "tut-gtk2-btt", "tut-gtk2-btt", "tut-gtk", "tut-gtk2-btt-check"}}
 
 == Toggle Button
+=== Mnemonics
+(scroll down to the bottom of the page)
 {{br}}
 {{image_right("btt-toggle.png")}}
 {{br}}
-
+=== Toggle Button
 Toggle buttons widget is of a type Button. After it is clicked it holds its "active" or "inactive" state. The "active" state is shown as pressed down. Clicking an active toggle button will cause it to return to its normal state. As you can see from the listing the state is a property of the Widget, hence it is controlled by Widget instance method Gtk::Widget#sensitive. You can obtain a state of a Widget object (w) by querying it via "Gtk::ToggleButton#active?" method. At this point it should be clear that since ToggleButton inherits state properties from Widgets it may be prudent to check out constants that pertain to Widget state - they can be found in Gtk documentation (Gtk::Widget) under the heading GtkWidgetFlags.    
 
 There are two widgets derived from ToggleButton: Gtk::CheckButton and Gtk::RadioButton.
@@ -39,6 +41,6 @@ There are two widgets derived from ToggleButton: Gtk::CheckButton and Gtk::Radio
  Gtk.main
 
 === Mnemonics
-Please pay attention to the underlined letters on the "Toggle Buttons" window image above. This is an additional feature commonly found in buttons, namely the "mnemonics". A mnemonics is a combination of keys which, when pressed, perform some type of an action. In our case a user can press the "Alt" key and the underlined letter simultaneously, i.e. "Alt + D" or more properly <Alt>+<D> would have the same effect as clicking the top button, just like the "<Alt>+<N>" combination would trigger the bottom button press action (of course the buttons have to be active to respond to either a keyboard or mouse activity). 
+Please pay attention to the underlined letters on the "Toggle Buttons" window image above. This is an additional feature commonly found in buttons, namely the "mnemonics". The mnemonics is a combination of keys which, when pressed, perform some type of an action. In our case a user can press the "Alt" key and the underlined letter simultaneously, i.e. "Alt + D" or more properly <Alt>+<D> would have the same effect as clicking the top button, just like the "<Alt>+<N>" combination would trigger the bottom button press action (of course the buttons have to be active to respond to either a keyboard or mouse activity). 
 
 In Ruby Gtk programs mnemonics is automatically enabled by placing an "underscore" (_) character in the label of a button when a button is created with for instance a call to  Gtk::Button.new.
