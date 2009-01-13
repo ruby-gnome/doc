@@ -1,0 +1,56 @@
+= Color Selector Widgets
+{{link "tut-gtk2-fichoo-dialog", "tut-gtk2-selchoose", "tut-gtk", nil}}
+{{image_right("FileChooserDialog.png")}}
+
+
+Gtk::ColorButton widget is a member of the so called family of Selectors widgets. In the Gtk documentation you will find them under the heading Selectors (File/Font/Color/Input Devices). Gtk::ColorButton is used to interactively set foreground or background colour to widgets. Here is a Ruby version of a C Gtk+ program that allows user to dynamically change the foreground colour of the text on a label.  
+
+ (File/Font/Color/Input Devices) 
+
+ #!/usr/bin/env ruby
+ require 'gtk2'
+
+ window = Gtk::Window.new(Gtk::Window::TOPLEVEL)
+ window.set_title  "Color Buttons"
+ window.border_width = 10
+ window.signal_connect('delete_event') { Gtk.main_quit }
+ window.set_size_request(250, -1)
+
+ # Create a Gdk::Color object you use either:
+ color = Gdk::Color.parse("#003366")
+
+ cbutton = Gtk::ColorButton.new(color)
+ label   = Gtk::Label.new("Look at my color")
+ cbutton.title = "Select color for your widget"
+
+ label.modify_fg(Gtk::STATE_NORMAL, color)
+
+ # Obtain the selected color and change a desired widget
+ # (label). The {{ color_set }} signal is emitted when
+ # the user selects a color. When handling this signal,
+ # use {{ Gtk::ColorButton#color }} and
+ # {{ Gtk::ColorButton#alpha }} to find out which color
+ # was selected in the ColorSelectionDialog.
+
+ cbutton.signal_connect('color_set') do |w|
+   label.modify_fg(Gtk::STATE_NORMAL, w.color)
+ end
+
+ hbox = Gtk::HBox.new(true, 5)
+ hbox.pack_start(cbutton, false, true, 0)
+ hbox.pack_start(label,   false, true, 0)
+ vbox = Gtk::VBox.new(true, 5)
+ vbox.pack_start(hbox, false, true, 0)
+
+ window.add(vbox)
+ window.show_all
+ Gtk.main
+
+=begin
+
+To modify the foreground colour for a widget you need to identify the state in which the widget is in. Our widget is Label, and most often this widget is found in normal state "Gtk::STATE_NORMAL". However "Labels" can also be selected (highlighted) by a user, in that case widget would be in "Gtk::STATE_SELECTED". As you can see in the code the colour of the text on our Label object is changed by the following code: Gtk::Widget#modify_fg(state, color). Where "state" parameter is one of the GtkStateType constants, as described earlier, and the color parameter is a "Gdk::Color" object one can obtain  by one of the following two statements:
+ color = Gdk::Color.parse("#003366")
+ #  or
+ color = Gdk::Color.new(0, 33333, 55555)
+NOTE: red, green and blue colour values in the first class method called "parse" are  0-256, but in the constructor "new" the 
+same colour values are between 0 and 65535.
