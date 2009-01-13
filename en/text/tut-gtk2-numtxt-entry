@@ -6,7 +6,12 @@
 {{image_right("numtxt-entry.png")}}
 {{br}}
 
+As the title and the above image reveal a Gtk::Entry object or widget is a single line free-form text entry gadget. It can be used for text entry, password entry, and even number selections. As you will learn in the next session Gtk::SpinButton is derived from it. Gtk::Entry implements the Gtk::Editable interface containing methods for general text manipulation. It contains a large number of action signals used for key bindings, and several signals that an application can connect to so it can modify its behaviour. The additional functionality is needed to allow manipulation of selected (highlighted) text, delete and insert characters or strings (cut and paste), etc. 
 
+There are many properties you need to learn about in order to handle text with all bells and whistles. Here I will list just a few:
+
+
+You should consult the documentation (class Gtk::Entry - Properties) for full list.
 
  #!/usr/bin/env ruby
  require 'gtk2'
@@ -31,9 +36,8 @@
  pass = Gtk::Entry.new
  pass.visibility = false
 
- # obsolete see the image above, (black circles)
- #
- # pass.invisible_char = '*'
+ # The following property takes integer value not string character
+ # pass.invisible_char = 42           ### for instance 42=asterisk
 
  hbox = Gtk::HBox.new(false, 5)
  hbox.pack_start_defaults(entry_label)
