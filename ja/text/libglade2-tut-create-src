@@ -348,7 +348,7 @@ Gtk::TextView#move_cursor¤Ï¡¢°ÜÆ°Ã±°Ì¤È°ÜÆ°ÎÌ¤ò»ØÄê¤·¤Æ¥«¡¼¥½¥ë¤ò°ÜÆ°¤¹¤ë¥á¥½¥Ã¥
               @filedlg, Gtk::Dialog::MODAL,
               Gtk::MessageDialog::ERROR,
               Gtk::MessageDialog::BUTTONS_CLOSE,
-              File.basename(filename) + " is a invalid file name.")
+              File.basename(filename) + " is an invalid file name.")
       dlg.run
       dlg.destroy
       return false
