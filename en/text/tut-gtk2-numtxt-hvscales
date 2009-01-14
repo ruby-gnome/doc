@@ -40,7 +40,7 @@ If you've studied and tried examples in the previous session  discussing ((<Spin
 {{br}}
 {{image_right("numtxt-hvscales-v.png")}}
 
-The following example is almost identical to what you've seen above, however it uses adjustments. To learn more about Gtk::Adjustments checkout previous session discussing ((<Spin Buttons|tut-gtk2-numtxt-spinbttns>)).
+The following example is almost identical to what you've seen above, however it uses adjustments. To learn more about Gtk::Adjustment checkout previous session discussing ((<Spin Buttons|tut-gtk2-numtxt-spinbttns>)).
 {{br}}
 
  require 'gtk2'
