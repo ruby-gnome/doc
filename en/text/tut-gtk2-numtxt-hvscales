@@ -3,8 +3,14 @@
 
 
 == Horizontal And Vertical Scales
+
+
+
+=== Horizontal Scale
 {{br}}
 {{image_right("numtxt-hvscales.png")}}
+
+If you've studied and tried examples in the previous session  discussing ((<Spin Buttons|tut-gtk2-numtxt-spinbttns>)) you should have no trouble understanding examples here.
 {{br}}
 
  #!/usr/bin/env ruby
@@ -26,5 +32,39 @@
  vbox.pack_start(float,   false, true, 0)
 
  window.add(vbox)
+ window.show_all
+ Gtk.main
+
+
+=== Vertical Scale
+{{br}}
+{{image_right("numtxt-hvscales-v.png")}}
+
+The following example is almost identical to what you've seen above, however it uses adjustments. To learn more about Gtk::Adjustments checkout previous session discussing ((<Spin Buttons|tut-gtk2-numtxt-spinbttns>)).
+{{br}}
+
+ require 'gtk2'
+
+ window = Gtk::Window.new(Gtk::Window::TOPLEVEL)
+ window.set_title  "Vertical Scales"
+ window.border_width = 10
+ window.signal_connect('delete_event') { Gtk.main_quit }
+ window.set_size_request(-1, 150)
+
+ # create two adjustments
+                             # value min, max, step  pg-incr pg-size
+ int_adj   = Gtk::Adjustment.new(5.0, 0.0, 10.0, 1.0,  2.0,  0.0)
+ float_adj = Gtk::Adjustment.new(0.5, 0.0, 1.0,  0.1, 0.5,   0.0)
+
+ scale_int   = Gtk::VScale.new(int_adj)
+ scale_float = Gtk::VScale.new(float_adj)
+ scale_int.value_pos   = Gtk::POS_RIGHT
+ scale_float.value_pos = Gtk::POS_LEFT
+
+ hbox = Gtk::HBox.new(true, 5)
+ hbox.pack_start_defaults(scale_int)
+ hbox.pack_start_defaults(scale_float)
+
+ window.add(hbox)
  window.show_all
  Gtk.main
