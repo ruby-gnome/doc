@@ -2,8 +2,8 @@
 {{link "tut-gtk2-btt", "tut-gtk2-btt", "tut-gtk", "tut-gtk2-btt-check"}}
 
 == Toggle Button
-=== Mnemonics
-(scroll down to the bottom of the page)
+* ((<Mnemonics|tut-gtk2-btt-toggle#Mnemonics>)) (skip forward)
+
 {{br}}
 {{image_right("btt-toggle.png")}}
 {{br}}
