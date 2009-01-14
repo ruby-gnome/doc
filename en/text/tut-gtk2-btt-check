@@ -2,10 +2,10 @@
 {{link "tut-gtk2-btt-toggle", "tut-gtk2-btt", "tut-gtk", "tut-gtk2-btt-radio"}}
 
 == Check Button
-((<Using Stock Items|tut-gtk2-btt-check>))
+((<Using Stock Items|tut-gtk2-btt-check#Using Stock Items>))
 (If "revisiting" skip to the bottom part of the page.)
 {{br}}
-((<Callbacks And Event Handling Revisited|tut-gtk2-btt-check>))
+((<Callbacks And Event Handling Revisited|tut-gtk2-btt-check#Callbacks And Event Handling Revisited - Callbacks are closures>))
 (If "revisiting" skip to the bottom part of the page.)
 {{br}}
 {{image_right("btt-check.png")}}
