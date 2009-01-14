@@ -75,7 +75,7 @@ New adjustments are initialized with six parameters:
 * page increment
 * page size
 
-There are also two signals provided by this class
+There are also two signals provided by this class:
 
 * changed  - emitted when one or more properties except the value property have changed.
 * value-changed - emitted only when value property is altered.
