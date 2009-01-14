@@ -31,6 +31,7 @@ This document covers the Ruby/GTK2 library used to ease creation of graphical us
 * ((<Numeric - Text Data Entry|tut-gtk2-numtxt>))
   * ((<Single Line Entry Field|tut-gtk2-numtxt-entry>))
   * ((<Spin Buttons|tut-gtk2-numtxt-spinbttns>))
+  * ((<* Adjutments|tut-gtk2-numtxt-spinbttns#Adjustments>))
   * ((<Horizontal And Vertical Scales|tut-gtk2-numtxt-hvscales>))
 * ((<Selector And Chooser Interface And Widgets|tut-gtk2-selchoose>))
   * ((<File Chooser intro|tut-gtk2-filechooser>))
