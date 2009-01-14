@@ -4,7 +4,6 @@
 == Spin Buttons
 {{br}}
 {{image_right("numtxt-spinbttns.png")}}
-{{br}}
 
 Gtk::SpinButton widget is a number selection widget that can handle either integers or floating point numbers. It is derived from from Gtk::Entry widget, so it inherits all its functionality and signals. Though initially not really necessary, to understand spin buttons completely one should get also familiar with another class, namely Gtk::Adjustment. For instance in the following example we do not deal directly with Gtk::Adjustment class at all. Let's look at the program and try to understand it. Later we will dive into this parallel class, so you will get an idea how the two are related.
 
