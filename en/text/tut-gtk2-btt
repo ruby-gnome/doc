@@ -10,7 +10,7 @@
   * ((<* Using Stock Items|tut-gtk2-btt-check#Using Stock Items>))
   * ((<* Callbacks And Event Handling|tut-gtk2-btt-check#Callbacks And Event Handling Revisited - Callbacks are closures>))
 
-
+== Short Description
 
 In Gtk+ we can find many widgets that contain the word "Button" in their name, but the primary button widgets are just a few. Following is the list of those, and in Gtk documentation you will also find them under the same heading as this article (Buttons and Toggles):
 
