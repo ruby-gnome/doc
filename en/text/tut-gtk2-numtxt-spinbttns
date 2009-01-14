@@ -33,7 +33,6 @@ Gtk::SpinButton widget is a number selection widget that can handle either integ
 If you have tried out the above example you've seen that numbers can can be selected by incrementing or decrementing with the up and down arrows. It is still possible to enter a number with the keyboard, but the value is rounded to the nearest acceptable value when it is out of range.
 
 {{image_right("numtxt-spinbttns-a.png")}}
-{{br}}
 
 The following example is the the same as above only this time it is done with the adjustment. I have also changed the "step" increment for floating-point number scale to 0.01. The main difference when using adjustment however is in the behaviour not immediately apparent. First you can specify the initial value for the scale, and second the "Page Up/Down" keys work with a page increment value which makes sense for larger ranges. 
 
