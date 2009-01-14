@@ -63,7 +63,7 @@ The following example is the the same as above only this time it is done with th
 
 === Adjustments
 
-Gtk::Adjustment is one of the few classes in GTK+ that is not a Widget, because it is derived directly from Gtk::Object. It is used in several widgets such as view ports, widgets derived from Gtk::Range as well as in spin buttons.
+Gtk::Adjustment is one of the few classes in GTK+ that is not a Widget, because it is derived directly from Gtk::Object. It is used in several widgets such as view ports, widgets derived from Gtk::Range, scales, as well as in spin buttons.
 
 New adjustments are initialized with six parameters:
 
