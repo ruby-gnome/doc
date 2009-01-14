@@ -21,7 +21,7 @@ As mentioned earlier in the Toggle Button session, Gtk::CheckButton is derived f
  require 'gtk2'
  def set_reset_check2(w, chk2)
    # Gtk::Widget#sensitive=boolean |or #set_sensitive(boolean)
-   chk2.sensitive = w.active ? ? true : false
+   chk2.sensitive = w.active? ? true : false
  end
 
  window = Gtk::Window.new(Gtk::Window::TOPLEVEL)
