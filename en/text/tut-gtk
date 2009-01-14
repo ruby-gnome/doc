@@ -23,6 +23,7 @@ This document covers the Ruby/GTK2 library used to ease creation of graphical us
   * ((<Table Packing Example|tut-gtk2-packing-tables-demo>))
 * ((<Buttons And Toggles|tut-gtk2-btt>))
   * ((<Toggle Button|tut-gtk2-btt-toggle>))
+  * ((<* Mnemonics|tut-gtk2-btt-toggle#Mnemonics>))
   * ((<Check Button|tut-gtk2-btt-check>))
   * ((<Radio Button|tut-gtk2-btt-radio>))
   * ((<* Using Stock Items|tut-gtk2-btt-check#Using Stock Items>))
