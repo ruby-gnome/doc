@@ -1,20 +1,50 @@
 = Container Widgets
 {{link "tut-gtk2-contwidg-notebooks", "tut-gtk2-contwidg", "tut-gtk", "tut-gtk2-btt"}}
 
-
-= SORRY THIS PAGE IS STILL UNDER CONSTRUCTION
-
-
+== SORRY THIS PAGE IS STILL UNDER CONSTRUCTION
 
 == Even Boxes
 {{br}}
 {{image_right("contwidg-eventbox.png")}}
 {{br}}
 
-  * ((<Horizontal and Vertical Boxes|tut-gtk2-contwidg-hvbox>))
-  * ((<Tables|tut-gtk2-contwidg-tables>))
-  * ((<Fixed Containers|tut-gtk2-contwidg-fixedcont>))
-  * ((<Expanders|tut-gtk2-contwidg-expanders>))
-  * ((<Handle Boxes|tut-gtk2-contwidg-handlebox>))
-  * ((<Notebooks|tut-gtk2-contwidg-notebooks>))
-  * ((<Even Boxes|tut-gtk2-contwidg-eventbox>))
+ #!/usr/bin/env ruby
+ require 'gtk2'
+
+ def change_label(event, label)
+   if event.event_type == Gdk::Event::BUTTON2_PRESS
+     if label.text[0].chr == 'D'
+       label.text = "I Was Double-Clicked!"
+     else
+       label.text = "Double-Click Me Again!"
+     end
+   end
+ end
+ window = Gtk::Window.new(Gtk::Window::TOPLEVEL)
+
+ window.set_title  "Event Box"
+ window.border_width = 10
+ window.set_size_request(200, -1)
+
+ window.signal_connect('delete_event') { false }
+ window.signal_connect('destroy') { Gtk.main_quit }
+
+ eventbox = Gtk::EventBox.new
+ label    = Gtk::Label.new('Double-click me!')
+
+ eventbox.set_events(Gdk::Event::BUTTON_PRESS_MASK)
+
+ eventbox.add(label)
+ window.add(eventbox)
+
+ ### You need to cal {{ realize }} only after you add it to the
+ ### top (including) widget.
+ eventbox.realize
+ ### Only after the {{ EventBox eventbox }} is realized it will
+ ### have an associated {{ Gdk::Window }} (see: "window" bellow)
+ eventbox.window.set_cursor(Gdk::Cursor.new(Gdk::Cursor::HAND1))
+
+ eventbox.signal_connect('button_press_event') { |w, e| change_label(e, label) }
+
+ window.show_all
+ Gtk.main
