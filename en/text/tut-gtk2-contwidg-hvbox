@@ -49,3 +49,34 @@ There are actually exist four packing instance methods defined in the abstract b
  Gtk::Box#pack_start_defaults(child)
 
 In all of the above assigned values represent the default values.
+
+For the completeness sake let me add also one of the other variants - this time the horizontal with explicitly specified "expand", "fill", and "padding" arguments.
+
+ #!/usr/bin/env ruby
+
+ require 'gtk2'
+
+ window = Gtk::Window.new
+ window.border_width = 10
+ window.set_size_request(150, -1)
+ window.title = "H-Boxes"
+
+ window.signal_connect('delete_event') { false }
+ window.signal_connect('destroy') { Gtk.main_quit }
+
+ labels = %w[Andrew Joe Samantha Jonatan]
+
+            # homogeneous, spacing
+ hbox = Gtk::HBox.new(false, 0)
+
+ labels.each do |name|
+   btt = Gtk::Button.new(name)
+   btt.signal_connect("clicked") {btt.destroy}
+
+               # child, expand, fill, padding
+   hbox.pack_start(btt, false, false, 5)
+ end
+
+ window.add(hbox)
+ window.show_all
+ Gtk.main
