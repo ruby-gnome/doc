@@ -25,6 +25,7 @@ This document covers the Ruby/GTK2 library used to ease creation of graphical us
   * ((<* Decorator Containers|tut-gtk2-contwidg#Decorator Containers>))
   * ((<* Layout Containers|tut-gtk2-contwidg#Layout Containers>))
   * ((<Horizontal and Vertical Boxes|tut-gtk2-contwidg-hvbox>))
+  * ((<Horizontal and Vertical Panes|tut-gtk2-contwidg-hvpane>))
   * ((<Tables|tut-gtk2-contwidg-tables>))
   * ((<Fixed Containers|tut-gtk2-contwidg-fixedcont>))
   * ((<Expanders|tut-gtk2-contwidg-expanders>))
