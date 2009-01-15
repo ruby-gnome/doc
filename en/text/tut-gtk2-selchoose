@@ -1,6 +1,14 @@
 = Selector/Chooser Interface And Widgets
 {{link "tut-gtk2-numtxt-hvscales", "tut-gtk2-selchoose", "tut-gtk", "tut-gtk2-filechooser"}}
 
+== Submenues of "Selector/Chooser Interface And Widgets" sections
+
+  * ((<File Chooser intro|tut-gtk2-filechooser>))
+  * ((<FileChooserDialog|tut-gtk2-fichoo-dialog>))
+  * ((<Color Selection Dialog|tut-gtk2-colorsel-buttons>))
+
+== Short Description
+
 
 All these widgets are members of the so called family of Selectors widgets. In the Gtk documentation you will find them under the heading Selectors (File/Font/Color/Input Devices). The family is divided into four groups:
 
