@@ -1,18 +1,51 @@
 = Container Widgets
 {{link "tut-gtk2-contwidg", "tut-gtk2-contwidg", "tut-gtk", "tut-gtk2-contwidg-tables"}}
 
-= SORRY THIS PAGE IS STILL UNDER CONSTRUCTION
-
-
 == Horizontal and Vertical Boxes
 {{br}}
 {{image_right("contwidg-hwbox.png")}}
 {{br}}
 
-  * ((<Horizontal and Vertical Boxes|tut-gtk2-contwidg-hvbox>))
-  * ((<Tables|tut-gtk2-contwidg-tables>))
-  * ((<Fixed Containers|tut-gtk2-contwidg-fixedcont>))
-  * ((<Expanders|tut-gtk2-contwidg-expanders>))
-  * ((<Handle Boxes|tut-gtk2-contwidg-handlebox>))
-  * ((<Notebooks|tut-gtk2-contwidg-notebooks>))
-  * ((<Even Boxes|tut-gtk2-contwidg-eventbox>))
+
+
+ #!/usr/bin/env ruby
+
+ require 'gtk2'
+
+ window = Gtk::Window.new
+ window.border_width = 10
+ window.set_size_request(150, -1)
+ window.title = "Vd. - Boxes"
+
+ window.signal_connect('delete_event') { false }
+ window.signal_connect('destroy') { Gtk.main_quit }
+
+ labels = %w[Andrew Joe Samantha Jonatan]
+
+             # homogeneous, spacing
+ vbox = Gtk::VBox.new(false, 0)
+
+ labels.each do |name|
+   btt = Gtk::Button.new(name)
+   btt.signal_connect("clicked") {btt.destroy}
+   vbox.pack_start_defaults(btt) 
+ end
+
+ window.add(vbox)
+ window.show_all
+ Gtk.main
+
+Beside the fact that two of the programs create vertical and the other two horizontal boxes, the main difference to be noticed is in the difference how we pack the buttons. One packing instruction uses defaults, while the other takes after the child (button in our case) three additional arguments:
+
+ * expand = true; value true means the new child is to be given extra space allocated to box. The extra space will be divided evenly between all children of box that use this option.
+ * fill = true; value true means that space given to child by the expand option is actually allocated to child, rather than just padding it. This parameter has no effect if expand is set to false.
+ * padding = 0; this integer value represents extra space in pixels to put between this child and its neighbours
+
+There are actually exist four packing instance methods defined in the abstract base class Gtk::Box, from which both horizontal and vertical boxes are derived:
+
+ Gtk::Box#pack_start(child, expand = true, fill = true, padding = 0)
+ Gtk::Box#pack_end(child, expand = true, fill = true, padding = 0)
+ Gtk::Box#pack_end_defaults(child)
+ Gtk::Box#pack_start_defaults(child)
+
+In all of the above assigned values represent the default values.
