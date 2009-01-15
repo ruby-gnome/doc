@@ -37,11 +37,15 @@
  eventbox.add(label)
  window.add(eventbox)
 
- ### You need to cal {{ realize }} only after you add it to the
- ### top (including) widget.
+ # You need to cal {{ realize }} only after you add it to the
+ # top (including) widget.
+
  eventbox.realize
- ### Only after the {{ EventBox eventbox }} is realized it will
- ### have an associated {{ Gdk::Window }} (see: "window" bellow)
+
+ # Only after the {{ EventBox eventbox }} is realized it will
+ # have an associated {{ Gdk::Window }} (see: "window" bellow)
+ # (Note: GDK and not GTK)
+
  eventbox.window.set_cursor(Gdk::Cursor.new(Gdk::Cursor::HAND1))
 
  eventbox.signal_connect('button_press_event') { |w, e| change_label(e, label) }
