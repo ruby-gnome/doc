@@ -47,7 +47,7 @@ Please pay attention to the underlined letters on the "Toggle Buttons" window im
 In Ruby Gtk programs mnemonics is automatically enabled by placing an "underscore" (_) character in the label of a button when a button is created with for instance a call to  Gtk::Button.new.
 
 
-==== Following is a similar example from the Japanese tutorial page:
+=== Following is a similar example from the Japanese tutorial page:
 {{br}}
 {{image_right("btt-toggle-jp-040-00.png")}}
 {{br}}
