@@ -57,3 +57,59 @@ To modify the foreground colour of a widget you need to identify the state in wh
  color = Gdk::Color.new(0, 12345, 34567)
 NOTE: red, green and blue colour values in the first class method called "parse" are  0-256, but in the constructor "new" the 
 same colour values are between 0 and 65535.
+
+
+=== Following is a different example from the original Japanese tutorial page:
+
+{{br}}
+{{image_left("ColorButtons-jp-070-29.png")}}
+{{br}}
+
+ #!/usr/bin/env ruby
+
+ require 'gtk2'
+
+ def area_event(area, e)
+       if Gdk::EventButton === e
+              colorsel_d = Gtk::ColorSelectionDialog.new("Select background color")
+              color = area.modifier_style.bg(Gtk::STATE_NORMAL)
+              colorsel = colorsel_d.colorsel
+              colorsel.previous_color = color
+              colorsel.current_color = color
+
+              colorsel.has_palette = true
+              colorsel.has_opacity_control = true
+              colorsel.signal_connect("color_changed") do |w|
+                      ncolor = w.current_color
+                      area.modify_bg(Gtk::STATE_NORMAL, ncolor)
+              end
+              unless colorsel_d.run == Gtk::ColorSelectionDialog::RESPONSE_OK
+                      area.modify_bg(Gtk::STATE_NORMAL, color)
+              end
+              colorsel_d.destroy
+              true
+      else
+              false
+      end
+ end
+
+ window = Gtk::Window.new
+ window.title = "Color Selection test"
+ window.resizable = true
+
+ window.signal_connect("delete_event") do
+      Gtk.main_quit
+      true
+ end
+
+ drawingarea = Gtk::DrawingArea.new
+ drawingarea.modify_bg(Gtk::STATE_NORMAL, Gdk::Color.new(0, 0, 65535))
+
+ window.set_size_request(200, 200)
+ drawingarea.set_events(Gdk::Event::BUTTON_PRESS_MASK)
+ drawingarea.signal_connect("event") {|w, e| area_event(w, e)}
+
+ window.add(drawingarea)
+ window.show_all
+
+ Gtk.main
