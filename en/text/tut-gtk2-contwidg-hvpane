@@ -1,0 +1,21 @@
+= Container Widgets
+{{link "tut-gtk2-contwidg-hvbox", "tut-gtk2-contwidg", "tut-gtk", "tut-gtk2-contwidg-tables"}}
+
+
+= SORRY THIS PAGE IS STILL UNDER CONSTRUCTION
+
+
+
+== Horizontal And Vertical Panes
+{{br}}
+{{image_right("contwidg-hvpane.png")}}
+{{br}}
+
+  * ((<Horizontal and Vertical Boxes|tut-gtk2-contwidg-hvbox>))
+  * ((<Horizontal and Vertical Panes|tut-gtk2-contwidg-hvpane>))
+  * ((<Tables|tut-gtk2-contwidg-tables>))
+  * ((<Fixed Containers|tut-gtk2-contwidg-fixedcont>))
+  * ((<Expanders|tut-gtk2-contwidg-expanders>))
+  * ((<Handle Boxes|tut-gtk2-contwidg-handlebox>))
+  * ((<Notebooks|tut-gtk2-contwidg-notebooks>))
+  * ((<Even Boxes|tut-gtk2-contwidg-eventbox>))
