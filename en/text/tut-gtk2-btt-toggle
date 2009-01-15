@@ -48,7 +48,10 @@ In Ruby Gtk programs mnemonics is automatically enabled by placing an "underscor
 
 
 === Following is a similar example from the Japanese tutorial page:
-{{br}}
+
+
+Things to note are multiple mnemonic characters for the first button and how mnemonics is disabled with the Boolean value "false" for the second button.  
+
 {{image_right("btt-toggle-jp-040-00.png")}}
 {{br}}
 
