@@ -38,3 +38,5 @@ But the best thing is to look at a real life example:
  window.add(paned)
  window.show_all
  Gtk.main
+
+We will have some additional examples with these (Paned) widgets  after you will learnt about notebook widgets.
