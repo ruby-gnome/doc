@@ -17,8 +17,6 @@ To understand the Gtk::Tables you have to make this mental adjustment. Refer to 
 
 
 
-{{br}}
-
  #!/usr/bin/env ruby
 
  require 'gtk2'
