@@ -1,19 +1,110 @@
 = Container Widgets
 {{link "tut-gtk2-contwidg-tables", "tut-gtk2-contwidg", "tut-gtk", "tut-gtk2-contwidg-expanders"}}
 
-
-= SORRY THIS PAGE IS STILL UNDER CONSTRUCTION
-
-
 == Fixed Containers
 {{br}}
 {{image_right("contwidg-fixedcont.png")}}
 {{br}}
 
-  * ((<Horizontal and Vertical Boxes|tut-gtk2-contwidg-hvbox>))
-  * ((<Tables|tut-gtk2-contwidg-tables>))
-  * ((<Fixed Containers|tut-gtk2-contwidg-fixedcont>))
-  * ((<Expanders|tut-gtk2-contwidg-expanders>))
-  * ((<Handle Boxes|tut-gtk2-contwidg-handlebox>))
-  * ((<Notebooks|tut-gtk2-contwidg-notebooks>))
-  * ((<Even Boxes|tut-gtk2-contwidg-eventbox>))
+ #!/usr/bin/env ruby
+ require 'gtk2'
+
+ window = Gtk::Window.new
+ window.border_width = 10
+ window.title = "Fixed"
+ window.signal_connect('delete_event') { false }
+ window.signal_connect('destroy') { Gtk.main_quit }
+
+ fixed = Gtk::Fixed.new
+
+ # Currently you can not change font on arbitrary
+ # widgets, likr the button here. But it does work
+ # with Gtk::Label widgets.
+ #
+ # I wished to show the disadvantage of using Gtk::Fixed, 
+ # with the original example from Krause's GTK+ book,
+ # using buttons, however, as explained above in order to
+ # demonstrate that disadvantage I had to bypass the font
+ # problem with buttons by changing the top button to Label.
+ # Hence if you change the buttons to Labels or to some other
+ # editable widget the font experiment will work!
+ #
+ # label1 = Gtk::Label.new("Pixel by pixel ...")
+ # label2 = Gtk::Label.new("you choose my fate")
+
+ button1 = Gtk::Button.new("Pixel by pixel ...")
+ button2 = Gtk::Button.new("you choose my fate")
+
+ button1.signal_connect('destroy') { Gtk.main_quit }
+ button2.signal_connect('destroy') { Gtk.main_quit }
+
+ fixed.put(button1, 0, 0)
+ fixed.put(button2, 20, 30)
+
+ window.add(fixed)
+ window.show_all
+ Gtk.main
+
+
+== The disadvantage of using Fixed Containers
+
+=== First part of the experiment:
+
+{{br}}
+{{image_right("contwidg-fixedcont-01.png")}}
+{{br}}
+
+If you read the "big" comment in the first example above which implements two buttons, you would know there are currently some problems in Ruby Gtk+ working with fonts on widgets other than editable widgets. This is the reason I have changed the above program to include entry fields rather than buttons. The point I want to bring across is the problem with Gtk::Fixed, when you do not pay attention to detail such as font size. Here is the first part of the experiment using the program with normal fonts:
+
+ #!/usr/bin/env ruby
+ require 'gtk2'
+
+ window = Gtk::Window.new
+ window.border_width = 10
+ window.title = "Fixed"
+
+ window.signal_connect('delete_event') { false }
+ window.signal_connect('destroy') { Gtk.main_quit }
+
+ fixed = Gtk::Fixed.new
+ field1 = Gtk::Entry.new
+ field2 = Gtk::Entry.new
+
+ fixed.put(field1, 0, 0)
+ fixed.put(field2, 20, 30)
+
+ window.add(fixed)
+ window.show_all
+ Gtk.main
+
+=== Second part of the experiment:
+
+{{br}}
+{{image_right("contwidg-fixedcont-02.png")}}
+{{br}}
+
+And the following is the second part of the experiment using different (conflicting) font sizes. Of course you should compare the two figures associated with each listing.
+
+ #!/usr/bin/env ruby
+ require 'gtk2'
+
+ window = Gtk::Window.new
+ window.border_width = 10
+ window.title = "Fixed"
+
+ window.signal_connect('delete_event') { false }
+ window.signal_connect('destroy') { Gtk.main_quit }
+
+ fixed = Gtk::Fixed.new
+ field1 = Gtk::Entry.new
+ field2 = Gtk::Entry.new
+
+ font_desc = Pango::FontDescription.new("Sans 30")
+ field1.modify_font(font_desc)
+
+ fixed.put(field1, 0, 0)
+ fixed.put(field2, 20, 30)
+
+ window.add(fixed)
+ window.show_all
+ Gtk.main
