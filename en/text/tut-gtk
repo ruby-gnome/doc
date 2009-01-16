@@ -50,3 +50,4 @@ As of January 2009, brand new material mainly based on Andrew  Krause's book ((<
   * ((<File Chooser intro|tut-gtk2-filechooser>))
   * ((<FileChooserDialog|tut-gtk2-fichoo-dialog>))
   * ((<Color Selection Dialog|tut-gtk2-colorsel-buttons>))
+  * ((<Font Selection Button|tut-gtk2-fichoo-fontbtt>))
