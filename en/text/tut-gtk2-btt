@@ -9,7 +9,7 @@
   * ((<Radio Button|tut-gtk2-btt-radio>))
   * ((<* Using Stock Items|tut-gtk2-btt-check#Using Stock Items>))
   * ((<* Callbacks And Event Handling|tut-gtk2-btt-check#Callbacks And Event Handling Revisited - Callbacks are closures>))
-
+  * ((<Font Button|tut-gtk2-fichoo-fontbtt>))
 == Short Description
 
 In Gtk+ we can find many widgets that contain the word "Button" in their name, but the primary button widgets are just a few. Following is the list of those, and in Gtk documentation you will also find them under the same heading as this article (Buttons and Toggles):
@@ -19,6 +19,19 @@ In Gtk+ we can find many widgets that contain the word "Button" in their name, b
     * Gtk::RadioButton - A choice from multiple check buttons
     * Gtk::ToggleButton - Create buttons which retain their state
     * Gtk::LinkButton - Create buttons bound to a URL
+
+It may be beneficial to look at the button hierarchy:
+
+ GtkButton
+ |   GtkToggleButton
+ |   |   GtkCheckButton
+ |   |   |   GtkRadioButton
+ |   GtkColorButton
+ |   GtkFontButton
+ |   GtkLinkButton
+ |   GtkOptionMenu
+ |   GtkScaleButton
+ |   |   GtkVolumeButton
 
 
 Some (most) of the above items will be explained in the following sections.
