@@ -7,6 +7,9 @@
 {{br}}
 
 
+The Gtk::Box is the abstract base class which provides almost all the behavior and properties for its descendants. On the other hand the horizontal and vertical box classes Gtk::HBox and Gtk::VBox, respectively provide only the functionality to create the widgets.
+
+
 
  #!/usr/bin/env ruby
 
@@ -80,3 +83,41 @@ For the completeness sake let me add also one of the other variants - this time 
  window.add(hbox)
  window.show_all
  Gtk.main
+
+
+=== Gtk::Box functionality (behaviour)
+
+* pack_start(child, expand = true, fill = true, padding = 0) - Adds child to box, packed with reference to the start of box. The child is packed after any other child packed with reference to the start of box.
+* pack_end(child, expand = true, fill = true, padding = 0) - Adds child to box, packed with reference to the end of box. The child is packed after (away from end of) any other child packed with reference to the end of box.
+* pack_start_defaults(widget) - Adds widget to box, packed with reference to the start of box. The child is packed after any other child packed with reference to the start of box. Parameters for how to pack the child widget, expand, fill, and padding, are given their default values, true, true, and 0, respectively.
+* pack_end_defaults(widget) - Adds widget to box, packed with reference to the end of box. The child is packed after (away from end of) any other child packed with reference to the end of box. Parameters for how to pack the child widget, expand, fill, and padding, are given their default values, true, true, and 0, respectively.
+* homogeneous? - Returns whether the box is homogeneous (all children are the same size).
+* homogeneous=(homogeneous) - Sets the homogeneous field of Gtk::Box, controlling whether or not all children of box are given equal space in the box.
+* set_homogeneous(homogeneous) - Same as Gtk::Box#homogeneous=.
+* spacing - Returns the spacing.
+* spacing=(spacing) - Sets the spacing field of Gtk::Box, which is the number of pixels to place between children of box.
+* set_spacing(spacing) - Same as Gtk::Box#spacing=.
+* reorder_child(child, position) - Moves child to a new position in the list of box children. The list is the children field of Gtk::Box, and contains both widgets packed Gtk::PACK_START as well as widgets packed Gtk::PACK_END, in the order that these widgets were added to box. A widget's position in the box children list determines where the widget is packed into box. A child widget at some position in the list will be packed just after all other widgets of the same packing type that appear earlier in the list.
+* query_child_packing(child) - Returns information about how child is packed into box.
+* set_child_packing(child, expand, fill, padding, pack_type) - Sets the way child is packed into box.
+* ref_accessible - See Atk::Implementor#ref_accessible.
+* add_child - See Gtk::Buildable#add_child.
+* construct_child - See Gtk::Buildable#construct_child.
+* get_internal_child - See Gtk::Buildable#get_internal_child.
+* name - See Gtk::Buildable#name.
+* name= - See Gtk::Buildable#name=.
+* set_buildable_property - See Gtk::Buildable#set_buildable_property.
+* set_name - See Gtk::Buildable#set_name.
+
+=== Properties
+
+* homogeneous = false: true or false  - Whether the children should all be the same size
+* spacing: Integer - The amount of space between children
+
+=== Child Properties
+
+* expand = true: true or false -  Whether the child should receive extra space when the parent grows
+* fill = true: true or false - Whether extra space given to the child should be allocated to the child or used as padding
+* pack-type = Gtk::PACK_START: Gtk::PackType - A Gtk#PackType indicating whether the child is packed with reference to the start or end of the parent
+* padding: Integer -     Extra space to put between the child and its neighbors, in pixels
+* position: Integer -     The index of the child in the parent
