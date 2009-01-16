@@ -47,7 +47,57 @@ To understand the Gtk::Tables you have to make this mental adjustment. Refer to 
  Gtk.main
 
 
-=== GtkAttachOptions
+Note that the coordinate system starts in the upper left hand corner. To place a widget into a box, use the following method:
+
+  Gtk::Table#attach(child, 
+                    left_attach, right_attach, top_attach, bottom_attach, 
+                    xoptions, yoptions, 
+                    xpadding, ypadding)
+
+The first argument ("child") is the widget you wish to place in the table.
+
+The left and right attach arguments specify where to place the widget, and how many boxes to use. If you want a button in the lower right table entry of our 2x2 table, and want it to fill that entry only, left_attach would be = 1, right_attach = 2, top_attach = 1, bottom_attach = 2.
+
+Now, if you wanted a widget to take up the whole top row of our 2x2 table, you'd use left_attach = 0, right_attach = 2, top_attach = 0, bottom_attach = 1.
+
+The xoptions and yoptions are used to specify packing options and may be bitwise OR'ed together((-In Ruby, the OR operator is represented by the | (pipe) character.-)) to allow multiple options.
+
+These options are:
+
+:Gtk::FILL
+ If the table box is larger than the widget, then this widget will expand to use all the room available.
+
+:Gtk::SHRINK
+ If the table widget was allocated less space than was requested (usually by the user resizing the window), then the widgets would normally just be pushed off the bottom of the window and disappear. If Gtk::SHRINK is specified, the widgets will shrink with the table.
+
+:Gtk::EXPAND
+ This will cause the table to expand to use up any remaining space in the window.
+
+Padding is just like in Gtk::Box, creating a clear area around the widget specified in pixels.
+
+Gtk::Table#attach has a lot of options. So, there's a shortcut:
+
+  Gtk::Table#attach_defaults(widget, left_attach, right_attach, top_attach, bottom_attach)
+
+The X and Y options default to Gtk::FILL | Gtk::EXPAND, and X and Y padding are set to 0. The rest of the arguments are identical to the previous method.
+
+We also have Gtk::Table#set_row_spacing and Gtk::Table#set_col_spacing. These place spacing between the rows at the specified row or column.
+
+  Gtk::Table#set_row_spacing(row, spacing)
+  Gtk::Table#set_col_spacing(column, spacing) 
+
+Note that for columns, the space goes to the right of the column, and for rows, the space goes below the row.
+
+You can also set a consistent spacing of all rows and/or columns with:
+
+  Gtk::Table#set_row_spacings(spacing)
+  Gtk::Table#set_col_spacings(spacing) 
+
+Note that with these calls, the last row and last column do not get any spacing.
+
+
+
+=== GtkAttachOptions  (Documentation: module Gtk):
 
 Denotes the expansion properties that a widget will have when it (or it's parent) is resized.
 
