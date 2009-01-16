@@ -76,6 +76,11 @@ Let's look at the example program now:
 
 
 
+You should be able to to modify font used in most any widget with the Gtk::Widget#modify_font(font), providing font is an instance of Pango::FontDescription.
+
+== Font Manipulation Methods
+
+
 :Pango::FontDescription.new(str = nil)
     Creates a new font description from (str) - a string  representation in the form "[FAMILY-LIST] [STYLE-OPTIONS] [SIZE]", where:
 
