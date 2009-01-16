@@ -11,13 +11,12 @@ So far, with the exception of the above mentioned ((<Packing Using Tables|tut-gt
 {{br}}
 {{image_right("contwidg-table-grid-s1.png")}}
 
-This illustrates the fact that that tables allow one widget to span multiple rows and columns providing the layout is of rectangular shape. When reading the following program please pay attention to "Gtk::Table#table_attach" methods. In particular concentrate on the arguments "left", "right", "top", and "bottom"  in this order. These parameters define individual cells within the table. Indeed, the first point to understand is that (0,0) coordinates in the table identify the top-left corner. The other more disturbing point is that these arguments ("left", "right", "top", and "bottom") represent table coordinates (x1, x2) and (y1, y2) which is not the standard way to identify points on a plain as we all learnt in our basic math courses, namely (x1, y1) and (x2, y2). To understand the Gtk::Tables you have to make this mental adjustment. Refer to the above figure here on the top right, where each cell is expressed with the pairs (x1, x2) and (y1, y2) rather than with the standard math notation for (x,y) pairs of coordinates.  
+This illustrates the fact that that tables allow one widget to span multiple rows and columns providing the layout is of rectangular shape. When reading the following program please pay attention to "Gtk::Table#table_attach" methods. In particular concentrate on the arguments "left", "right", "top", and "bottom"  in this order. These parameters define individual cells within the table. Indeed, the first point to understand is that (0,0) coordinates in the table identify the top-left corner. The other more disturbing point is that these arguments ("left", "right", "top", and "bottom") represent table coordinates (x1, x2) and (y1, y2) which is not the standard way to identify points on a plain as we all learnt in our basic math courses, namely (x1, y1) and (x2, y2). 
+{{image_left("contwidg-tables.png")}}
+To understand the Gtk::Tables you have to make this mental adjustment. Refer to the above figure here on the top right, where each cell is expressed with the pairs (x1, x2) and (y1, y2) rather than with the standard math notation for (x,y) pairs of coordinates.  Following is the program that places children widgets in the same order as are depicted in the above figure.
 
 
-Following is the program that places children widgets in the same order as are depicted in the above figure.
 
-{{br}}
-{{image_right("contwidg-tables.png")}}
 {{br}}
 
  #!/usr/bin/env ruby
