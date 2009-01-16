@@ -1,7 +1,10 @@
-= File Chooser Interface And Widgets
-{{link "File+Chooser", "tut-gtk2-selchoose", "tut-gtk", "tut-gtk2-colorsel-buttons"}}
+= Selector/Chooser Interface And Widgets
+{{link "File+Chooser", "tut-gtk2-sel-choo", "tut-gtk", tut-gtk2-colorsel-buttons}}
+{{image_right("FileChooserDialog.png")}}
 
-== Gtk::FileChooserDialog 
+== File Chooser Interface And Widgets
+
+=== Gtk::FileChooserDialog 
 
 Following is an example program from Ruby-GNOME2 distribution.
 
