@@ -41,6 +41,7 @@ As of January 2009, brand new material mainly based on Andrew  Krause's book ((<
   * ((<Radio Button|tut-gtk2-btt-radio>))
   * ((<* Using Stock Items|tut-gtk2-btt-check#Using Stock Items>))
   * ((<* Callbacks And Event Handling|tut-gtk2-btt-check#Callbacks And Event Handling Revisited - Callbacks are closures>))
+  * Font Button (See: ((<Font Selection Button|tut-gtk2-fichoo-fontbtt>)))
 * ((<Numeric - Text Data Entry|tut-gtk2-numtxt>))
   * ((<Single Line Entry Field|tut-gtk2-numtxt-entry>))
   * ((<Spin Buttons|tut-gtk2-numtxt-spinbttns>))
