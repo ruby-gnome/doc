@@ -9,11 +9,6 @@
 Following is an example program from Ruby-GNOME2 distribution.
 
 
-{{br}}
-{{image_right("FileChooserDialog.png")}}
-{{br}}
-
-
  #!/usr/bin/env ruby
  =begin
    filechooser.rb - Ruby/GTK2 sample script. 
