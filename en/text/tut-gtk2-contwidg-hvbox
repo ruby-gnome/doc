@@ -116,8 +116,8 @@ For the completeness sake let me add also one of the other variants - this time 
 
 === Child Properties
 
-* expand = true: true or false -  Whether the child should receive extra space when the parent grows
-* fill = true: true or false - Whether extra space given to the child should be allocated to the child or used as padding
-* pack-type = Gtk::PACK_START: Gtk::PackType - A Gtk#PackType indicating whether the child is packed with reference to the start or end of the parent
+* expand: true or false; (defauly = true) -  Whether the child should receive extra space when the parent grows
+* fill:true or false; (defauly = true) - Whether extra space given to the child should be allocated to the child or used as padding
+* pack-type: (default = Gtk::PACK_START) - A Gtk#PackType indicating whether the child is packed with reference to the start or end of the parent
 * padding: Integer -     Extra space to put between the child and its neighbors, in pixels
 * position: Integer -     The index of the child in the parent
