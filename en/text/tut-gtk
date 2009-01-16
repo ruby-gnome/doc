@@ -4,7 +4,7 @@
 
 This document covers the Ruby/GTK2 library used to ease creation of graphical user interfaces (GUIs). GTK+ can create native application on the GNOME Desktop, and also runs great on almost any desktop environment: Linux, Windows, OSX,  FreeBSD and more; and using ruby all without and modifications or recompilation! This tutorial is currently being translated from the ((<Japanese version|URL:../ja/hiki.cgi?gtk2-tut>)) by ((<Laurent Sansonetti|lrz>)).
 
-As of January 2009, brand new material mainly based on Andrew  Krause's book ((<Foundations of GTK+ Development|URL:http://www.gtkbook.com>)) is currently being added by ((<Igor Pirnovar|igor>)).
+As of January 2009, brand new material mainly based on Andrew  Krause's book ((<Foundations of GTK+ Development|URL:http://www.gtkbook.com>)) is currently being added by ((<Igor Pirnovar|igorx>)).
 
 == Table of Contents
 
