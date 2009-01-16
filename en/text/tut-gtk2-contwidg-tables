@@ -45,3 +45,12 @@ To understand the Gtk::Tables you have to make this mental adjustment. Refer to 
  window.add(table)
  window.show_all
  Gtk.main
+
+
+=== GtkAttachOptions
+
+Denotes the expansion properties that a widget will have when it (or it's parent) is resized.
+
+* EXPAND  = 1 << 0. The widget should expand to take up any extra space in its container that has been allocated.
+* SHRINK = 1 << 1. The widget should shrink as and when possible.
+* FILL = 1 << 2. The widget should fill the space allocated to it. 
