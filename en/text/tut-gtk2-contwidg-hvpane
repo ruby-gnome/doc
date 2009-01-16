@@ -1,21 +1,40 @@
 = Container Widgets
 {{link "tut-gtk2-contwidg-hvbox", "tut-gtk2-contwidg", "tut-gtk", "tut-gtk2-contwidg-tables"}}
 
-
-= SORRY THIS PAGE IS STILL UNDER CONSTRUCTION
-
-
-
 == Horizontal And Vertical Panes
 {{br}}
 {{image_right("contwidg-hvpane.png")}}
 {{br}}
 
-  * ((<Horizontal and Vertical Boxes|tut-gtk2-contwidg-hvbox>))
-  * ((<Horizontal and Vertical Panes|tut-gtk2-contwidg-hvpane>))
-  * ((<Tables|tut-gtk2-contwidg-tables>))
-  * ((<Fixed Containers|tut-gtk2-contwidg-fixedcont>))
-  * ((<Expanders|tut-gtk2-contwidg-expanders>))
-  * ((<Handle Boxes|tut-gtk2-contwidg-handlebox>))
-  * ((<Notebooks|tut-gtk2-contwidg-notebooks>))
-  * ((<Even Boxes|tut-gtk2-contwidg-eventbox>))
+Gtk::Paned is an abstract base class widget from which horizontal and vertical panes Gtk::HPaned and Gtk::VPaned are derived. It (Gtk::Paned) is a special type of container widget that holds exactly two child widgets. A resizing handle is placed between the two. It allows the user to resize the two child widgets simultaneously by dragging the handle in either direction. When handle is moved either by programmatic means or by the user, one widget expands while other shrinks. As with boxes, the horizontal and vertical pane classes provide only the functionality to create the widgets. Since the Gtk::Paned class can only handle the two children, GTK+ provides a function for packing each child. Let's look at this functionality more closely:
+
+* add1(child) - Adds a child to the top or left pane with default parameters. This is equivalent to Gtk::Paned#pack1 (child, false, true).
+* add2(child) - Adds a child to the bottom or right pane with default parameters. This is equivalent to Gtk::Paned#pack2 (child, false, true).
+* pack1(child, resize, shrink) - Adds a child to the top or left pane, where "child" is the child to add, "resize" - true if this child should expand when the paned widget is resized, and lastly "shrink" - true if this child can be made smaller than its requisition.
+* pack2(child, resize, shrink)
+
+But the best thing is to look at a real life example:
+
+ #!/usr/bin/env ruby
+
+ require 'gtk2'
+
+ window = Gtk::Window.new(Gtk::Window::TOPLEVEL)
+ window.set_title  "Panes"
+ window.border_width = 10
+ window.set_size_request(225, 150)
+ window.signal_connect('delete_event') { Gtk.main_quit }
+
+ button1 = Gtk::Button.new("Resize")
+ button2 = Gtk::Button.new("Me")
+
+ button1.signal_connect( "clicked" ) { window.destroy }
+ button2.signal_connect( "clicked" ) { window.destroy }
+
+ paned = Gtk::VPaned.new
+ paned.add1(button1)
+ paned.add2(button2)
+
+ window.add(paned)
+ window.show_all
+ Gtk.main
