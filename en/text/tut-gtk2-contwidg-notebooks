@@ -5,7 +5,16 @@
 {{br}}
 {{image_right("contwidg-notebooks.png")}}
 
-The Gtk::Notebook widget organizes child widgets into a number of pages. The user can switch between these pages by clicking the tabs that appear along a desired edge of the widget (see:  ((<GtkPositionType|tut-gtk2-contwidg-notebooks#GtkPositionType>))).
+The Gtk::Notebook widget organizes child widgets into a number of pages. The user can switch between these pages by clicking the tabs that appear along a desired edge of the widget. You can specify the location of the tabs (see: GtkPositionType). After you create the Notebook, it is not very useful until you add a tab to the end or to the beginning of the list of tabs.
+
+ append_page(child, tab_label = nil)
+ prepend_page(child, tab_label = nil)
+
+Note tab labels do not have to be of type Gtk::Label. For instance you could as well append a Gtk::HBox that contains a label and a close button. This allows you to embed other useful widgets  such as buttons and images into the tab label.
+
+Each notebook page can only display one child widget. However, that child could be another container so the restriction of a single child per page is a really only superficial.
+
+For more information please consult the Gtk::Notebook documentation.
 
 {{br}}
  #!/usr/bin/env ruby
