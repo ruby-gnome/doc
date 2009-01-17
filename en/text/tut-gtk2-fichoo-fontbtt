@@ -31,7 +31,7 @@ Font button widgets are initialized with:
 
 The "font" parameter is provided as a string in the format suggested in the above list: Family Style Size in this order. Each of the parameters is optional, and the default fot Gtk::FontButton is Sans 12, with no style parameter.
 
-"Family" refers to the formal font name such as "Sans", "Sherif" or "Arial". Style options can vary between fonts, and normally include "Italic", "Bold", "Bold Italic" and "Regular". The latter namely the "Regular" indicates no style. The size is the point size such as "8", "9", "10", etc. 
+"Family" refers to the formal font name such as "Sans", "Sherif" or "Arial". Style options can vary between fonts, and normally include "Italic", "Bold", "Bold Italic" and "Regular". The latter, namely the "Regular" indicates no style. The size is the point size such as "8", "9", "10", etc. 
 
 Let's look at the example program now:
 
