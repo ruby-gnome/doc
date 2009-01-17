@@ -75,8 +75,7 @@ Let's look at the example program now:
  Gtk.main
 
 
-
-You should be able to to modify font used in most any widget with the Gtk::Widget#modify_font(font), providing font is an instance of Pango::FontDescription.
+You should be able to to modify font used in most any widget with the Gtk::Widget#modify_font(font), providing font is an instance of Pango::FontDescription. However currently (Ruby 1.8.6 and Ruby-GNOME2 rel 2-0.17.0-rc1) this does not seem to be the case. I was only able to manipulate fonts on Gtk::Label objects and editable objects like Gtk::Entry. I could not change font on button text or button labels. I believe this will change in the future. Those of you who wish to revisit the example programs where font is manipulated and where I discovered the font problem I suggest you visit the session ((<Fixed Containers|tut-gtk2-contwidg-fixedcont>)) and read the three short program listings (including comments).  
 
 == Font Manipulation Methods
 
