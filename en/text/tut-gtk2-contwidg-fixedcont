@@ -4,7 +4,9 @@
 == Fixed Containers
 {{br}}
 {{image_right("contwidg-fixedcont.png")}}
-{{br}}
+
+The Gtk::Fixed widget is a type of a layout container that allows you to place children in pixel coordinates. You have to have a very good reason to use this scenario, because if you do not know what effects may have user interactive or other GUI system configurations on how your widgets are rendered the outcome may be quite undesirable. Let's first look at a simple program implementing two buttons, and after that we will look at two more examples as part of the experiment, exposing most likely scenarios where things may go wrong.
+
 
  #!/usr/bin/env ruby
  require 'gtk2'
