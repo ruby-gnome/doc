@@ -16,7 +16,7 @@ Gtk::FontButton is another type of specialized button that allows you to select 
  |   Gtk::ScaleButton
  |   |   Gtk::VolumeButton
 
-There are two Font Button gadgets. The first is the Gtk::FontButton shown in the above Button hierarchy tree also seen on the first figure below on the right, and the second is the Gtk::FontSelectionDialog which opens after you click the Gtk::FontButton. You can see an example of such a dialogue below (the second figure on the left). However, you are not restricted to the use of either the Font Button or the Font Dialogue widgets to manipulate fonts, however they are a good starting point to learn the initial steps. The Font Dialogue widget displays the font options from which you can choose and immediately test your settings. These options include:
+There are two Font Button gadgets. The first is the Gtk::FontButton shown in the above Button hierarchy tree also seen on the first figure below on the right, and the second is the Gtk::FontSelectionDialog which opens after you click the Gtk::FontButton. You can see an example of such a dialogue below (the second figure on the left). However, you are not restricted to the use of either the Font Button or the Font Dialogue widgets to manipulate fonts, but they are a good starting point to learn the initial steps. The Font Dialogue widget displays the font options from which you can choose and immediately test your settings. These options include:
 
 * font name, a.k.a Family
 * font style
