@@ -1,20 +1,192 @@
 = Container Widgets
 {{link "tut-gtk2-contwidg-handlebox", "tut-gtk2-contwidg", "tut-gtk", "tut-gtk2-contwidg-eventbox"}}
 
-
-= SORRY THIS PAGE IS STILL UNDER CONSTRUCTION
-
-
-
 == Notebooks
 {{br}}
 {{image_right("contwidg-notebooks.png")}}
 {{br}}
 
-  * ((<Horizontal and Vertical Boxes|tut-gtk2-contwidg-hvbox>))
-  * ((<Tables|tut-gtk2-contwidg-tables>))
-  * ((<Fixed Containers|tut-gtk2-contwidg-fixedcont>))
-  * ((<Expanders|tut-gtk2-contwidg-expanders>))
-  * ((<Handle Boxes|tut-gtk2-contwidg-handlebox>))
-  * ((<Notebooks|tut-gtk2-contwidg-notebooks>))
-  * ((<Even Boxes|tut-gtk2-contwidg-eventbox>))
+
+ #!/usr/bin/env ruby
+ require 'gtk2'
+
+ def another_tab; puts "Switching"; end
+ def report_press(w); puts "Somebody pressed gumbek (button) w=#{w}"; end
+
+ window = Gtk::Window.new(Gtk::Window::TOPLEVEL)
+ window.set_title  "Notebook with 3 tabs"
+ window.border_width = 10
+ window.set_size_request(300, -1)
+ # The delete_event is only needed if you plan to
+ # intercept the destroy / quit with a dialog box.
+ #
+ # window.signal_connect('delete_event') { false }
+ window.signal_connect('delete_event') { Gtk.main_quit }
+
+ nb = Gtk::Notebook.new
+ label1 = Gtk::Label.new("1st Pg")
+ label2 = Gtk::Label.new("2st Pg")
+ label3 = Gtk::Label.new("3rd Pg")
+ note1  = Gtk::Label.new("Page -1-.\nCan switch to ...")
+ note2  = Gtk::Label.new("-2- page.\nSwitch to ...")
+ button = Gtk::Button.new("Gumbek")
+
+ # In Ruby Notebook works without {{ signal_connect }}.
+ # -----------------------------------------------------------------------
+ # In Ruby the following doesn't work (Label does not respond to 'clicked'
+ # note1.signal_connect('clicked') { another_tab }
+ # note2.signal_connect('clicked') { another_tab }
+
+ # However you can place a button into a notebook and klick away.
+ button.signal_connect( "clicked" ) {|w| report_press(w) }
+
+ nb.signal_connect('change-current-page') { another_tab }
+
+ nb.append_page(note1, label1)
+ nb.append_page(note2, label2)
+ nb.append_page(button,  label3)
+
+ window.add(nb)
+ window.show_all
+ Gtk.main
+
+:GtkPositionType
+
+Describes which edge of a widget a certain feature is positioned at, e.g. the tabs of a Gtk::Notebook, the handle of a Gtk::HandleBox or the label of a Gtk::Scale.
+
+* POS_LEFT - The feature is at the left edge.
+* POS_RIGHT - The feature is at the right edge.
+* POS_TOP - The feature is at the top edge.
+* POS_BOTTOM - The feature is at the bottom edge. 
+
+=== Test Your Understanding
+
+In Andrew's book ((<Foundations of GTK+ Development|URL:http://www.gtkbook.com>)), at the end of every section there is a paragraph called "Test Your Understanding" where a reader is encouraged to test their knowledge. At the end of the Container widgets there are two exercises that fit exactly this point in our tutorial. Namely, they require your understanding of most of what was said up to now here. Though we still have one more session to go, I decided to introduce the two just mentioned examples from the book. Andrew Klause introduces the exercises with the following words: "This chapter has introduced you to a number of container widgets thah are included in GTK+. The following two exercises will allow you to practise what you have learnt about a few of these new widgets."
+
+==== Exercise 1. Using Multiple Containers
+
+{{br}}
+{{image_right("contwidg-notebooks-01.png")}}
+
+One important characteristics of containers is that each container can hold other containers. In this example you will use a large number of containers. The main window will show a Gtk::Notebook and two buttons along the bottom.
+
+The notebook should have four pages. Each notebook page should hold a Gtk::Button, that moves to the next page; wrapping around from last to first page.
+
+The first button along the bottom of the window should move to the previous page also wrapping to last from first when needed, and the second button along the bottom should close the window.
+
+Though I am providing the solution immediately here below I suggest you follow Andrew's advice and try write this example alone, based on what we have learnt so far. 
+
+ #!/usr/bin/env ruby
+ require 'gtk2'
+
+ def prev_tab(notebook)
+   if notebook.page == 0
+     notebook.set_page(notebook.n_pages - 1)
+   else
+     notebook.prev_page
+   end
+ end
+ def next_tab(notebook)
+   if notebook.page == notebook.n_pages - 1
+     notebook.set_page(0)
+   else
+     notebook.next_page
+   end
+ end
+
+ window = Gtk::Window.new(Gtk::Window::TOPLEVEL)
+ window.set_title  "Notebook & Buttons"
+ window.border_width = 10
+ window.signal_connect('delete_event') { Gtk.main_quit }
+
+ notebook = Gtk::Notebook.new
+ prev_pg = Gtk::Button.new("_Previous Tab")
+ close   = Gtk::Button.new("_Close")
+ prev_pg.signal_connect( "clicked" ) { prev_tab(notebook) }
+ close.signal_connect( "clicked" ) { Gtk.main_quit }
+
+ (1..4).each do |i|
+   label = Gtk::Label.new("Tab %d" % [i])
+   button = Gtk::Button.new("_Next")
+   button.signal_connect( "clicked" ) { next_tab(notebook) }
+   notebook.append_page(button, label)
+   button.border_width = 10
+ end
+
+ hbox = Gtk::HBox.new(false, 5)
+ hbox.pack_end(close,   false, false, 0)
+ hbox.pack_end(prev_pg, false, false, 0)
+ vbox = Gtk::VBox.new(false, 5)
+ vbox.pack_start(notebook, true,  true,  0)
+ vbox.pack_start(hbox,     false, false, 0)
+
+ window.add(vbox)
+ window.show_all
+ Gtk.main
+
+
+==== Exercise 2. More Containers
+
+{{br}}
+{{image_right("contwidg-notebooks-02.png")}}
+
+
+In this exercise you will expand upon the code you wrote in Exercise #1. Instead of using a Gtk::VBox to hold the notebook and the horizontal box with the two buttons, create a Gtk::VPaned widget.
+
+In addition you should hide the Gtk::Notebook tabs, so the user is not able to switch the pages without pressing the buttons. In this case you will will have no visual clues when a page is being changed. To fix this you should include each button that is in Gtk::Notebook within its own expander, so the expander labels will help us differentiate between the notebook pages.
+
+Again I suggest you do it yourself alone, before reading the following code.
+
+
+
+ #!/usr/bin/env ruby
+ require 'gtk2'
+
+ def prev_tab(notebook)
+   if notebook.page == 0
+     notebook.set_page(notebook.n_pages - 1)
+   else
+     notebook.prev_page
+   end
+ end
+ def next_tab(notebook)
+   if notebook.page == notebook.n_pages - 1
+     notebook.set_page(0)
+   else
+     notebook.next_page
+   end
+ end
+
+ window = Gtk::Window.new(Gtk::Window::TOPLEVEL)
+ window.set_title  "Paned Notebook & Buttons"
+ window.border_width = 10
+ window.signal_connect('delete_event') { Gtk.main_quit }
+
+ notebook = Gtk::Notebook.new
+ notebook.show_tabs = false
+ prev_pg = Gtk::Button.new("_Previous Tab")
+ close   = Gtk::Button.new("_Close")
+ prev_pg.signal_connect( "clicked" ) { prev_tab(notebook) }
+ close.signal_connect( "clicked" ) { Gtk.main_quit }
+
+ (1..4).each do |i|
+   label = Gtk::Label.new("Tab %d" % [i])
+   button = Gtk::Button.new("_Next")
+   button.signal_connect( "clicked" ) { next_tab(notebook) }
+   expander = Gtk::Expander.new("You Are Viewing Tab %i" % [i])
+   expander.set_expanded(true)
+   expander.add(button)
+   notebook.append_page(expander, label)
+   expander.border_width = 10
+ end
+
+ hbox = Gtk::HBox.new(false, 5)
+ hbox.pack_end(close,   false, false, 0)
+ hbox.pack_end(prev_pg, false, false, 0)
+ paned = Gtk::VPaned.new
+ paned.pack1(notebook, false, false)
+ paned.pack2(hbox,     false, false)
+
+ window.add(paned)
+ window.show_all
+ Gtk.main
