@@ -5,7 +5,7 @@
 {{br}}
 {{image_right("contwidg-notebooks.png")}}
 
-The Gtk::Notebook widget organizes child widgets into a number of pages. The user can switch between these pages by clicking the tabs that appear along a desired edge of the widget (see:  ((<GtkPositionType|#GtkPositionType))).
+The Gtk::Notebook widget organizes child widgets into a number of pages. The user can switch between these pages by clicking the tabs that appear along a desired edge of the widget (see:  ((<GtkPositionType|tut-gtk2-contwidg-notebooks#GtkPositionType))).
 
 {{br}}
  #!/usr/bin/env ruby
