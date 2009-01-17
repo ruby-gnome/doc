@@ -4,9 +4,10 @@
 == Notebooks
 {{br}}
 {{image_right("contwidg-notebooks.png")}}
+
+The Gtk::Notebook widget organizes child widgets into a number of pages. The user can switch between these pages by clicking the tabs that appear along a desired edge of the widget (see:  ((<GtkPositionType|#GtkPositionType))).
+
 {{br}}
-
-
  #!/usr/bin/env ruby
  require 'gtk2'
 
@@ -50,7 +51,7 @@
  window.show_all
  Gtk.main
 
-:GtkPositionType
+==== GtkPositionType
 
 Describes which edge of a widget a certain feature is positioned at, e.g. the tabs of a Gtk::Notebook, the handle of a Gtk::HandleBox or the label of a Gtk::Scale.
 
