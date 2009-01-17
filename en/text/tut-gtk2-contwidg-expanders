@@ -5,7 +5,7 @@
 {{br}}
 {{image_right("contwidg-expanders.png")}}
 
-The Gtk::Expander container can have only a single child. The child can be displayed or hidden. Yo can show or hide the child by the triangle to the left of the expander's label. A before and after the click scenrios are shown on the figure.
+The Gtk::Expander container can have only a single child. The child can be displayed or hidden. You can show or hide the child by the triangle to the left of the expander's label. A before and after the click scenrios are shown on the figure.
 {{br}}
 
  #!/usr/bin/env ruby
