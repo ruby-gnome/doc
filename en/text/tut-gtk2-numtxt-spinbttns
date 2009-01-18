@@ -68,19 +68,19 @@ The following example is the the same as above only this time it is done with th
 
 Gtk::Adjustment is one of the few classes in GTK+ that is not a Widget, because it is derived directly from Gtk::Object. It is used in several widgets such as view ports, widgets derived from Gtk::Range, scales, as well as in spin buttons.
 
-New adjustments are initialized with six parameters:
+--- New adjustments are initialized with six parameters:
 
-* initial value
-* lower range
-* upper range
-* step increment
-* page increment
-* page size
+  * initial value
+  * lower range
+  * upper range
+  * step increment
+  * page increment
+  * page size
 
-There are also two signals provided by this class:
+--- There are also two signals provided by this class:
 
-* changed  - emitted when one or more properties except the value property have changed.
-* value-changed - emitted only when value property is altered.
+  * changed  - emitted when one or more properties except the value property have changed.
+  * value-changed - emitted only when value property is altered.
 
 
 === Following is a more elaborate example from the original Japanese tutorial page:
