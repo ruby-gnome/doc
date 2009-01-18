@@ -24,7 +24,7 @@ As of January 2009, brand new material mainly based on Andrew  Krause's book ((<
   * ((<Packing Using Tables|tut-gtk2-packing-tables>))
   * ((<Table Packing Example|tut-gtk2-packing-tables-demo>))
 * ((<Container Widgets|tut-gtk2-contwidg>))
-  * Container Widgets (based on Andrew  Krause's book ((<Foundations of GTK+ Development|URL:http://www.gtkbook.com>)))
+  * (based on Andrew  Krause's book ((<Foundations of GTK+ Development|URL:http://www.gtkbook.com>)))
     * ((<Decorator Containers|tut-gtk2-contwidg#Decorator Containers>))
     * ((<Layout Containers|tut-gtk2-contwidg#Layout Containers>))
   * ((<Horizontal and Vertical Boxes|tut-gtk2-contwidg-hvbox>))
