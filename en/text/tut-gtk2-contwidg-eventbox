@@ -1,12 +1,30 @@
 = Container Widgets
 {{link "tut-gtk2-contwidg-notebooks", "tut-gtk2-contwidg", "tut-gtk", "tut-gtk2-btt"}}
 
-== SORRY THIS PAGE IS STILL UNDER CONSTRUCTION
-
 == Even Boxes
 {{br}}
 {{image_right("contwidg-eventbox.png")}}
-{{br}}
+
+Various widgets including Gtk::Label do not do not respond to GDK events, because they do not have an associated Gdk::Window. To fix this GTK+ employs a Gtk::EventBox container widget. The Gtk::EventBox provides a capability that allows its child that otherwise is incapable of catching GDK events, to intercept or catch them on behalf of the child. Note these are GDK and not GTK signals!
+
+Even boxes catch events for the children widgets by providing a Gdk::Window for the object. Setting up a GDK event/signal catching mechanism, unlike in C GTK+, in Ruby does not use the usual "signal_connect" syntax. It suffices to setup events with the Gtk::Window#events= or Gtk::Window#set_events, by adding an event mask to the event box (see GdkEventMask bellow).
+
+You must call Gtk::Widget#set_events before you call Gtk::Widget#realize on the widget. However, if the widget has already been realized by GTK+, you will need to instead use the Gtk::Widget#add_events to add the event mask. Before calling Gtk::Widget#realize, your event box (eventbox = Gtk::EventBox.new), does not have the Gdk::Window and/or any other GDK widget resources associated with it. Normally, realization occurs when the parent is realized, but event boxes are an exception. When you call Gtk::Window#show_all on a widget, it is automatically realized by GTK+, but event boxes can not be realized at this point, because they are still invisible. Calling Gtk::Widget#realize on the event box is an easy way around this problem.
+
+When you realize your event box, you have to make sure that it is already added as a child to a top-level widget, or it will not work. This is because, when you realize a widget, it will automatically realize its ancestors. If it has no ancestors, GTK+ will not be happy and realization will fail.
+
+ window.add(eventbox)
+ eventbox.realize
+
+After the event box is realized, it will have an associated Gtk::Window. Unlike Gtk::Window which refers to a top-level window with the decorations, Gdk::Window is a class that refers to a rectangular region on the screen where a widget is drawn. A Gtk::Window will contain many Gdk::Window objects, one for each child widget.
+
+There is yet another issue to be mentioned here. Namely, in our example program here we allow the Gtk::Label widget to be clicked, it makes sense to change the cursor to the hand when it is hovering over the label. which is done by Gdk::Window#cursor= or Gdk::Window#set_cursor
+
+ eventbox.window.cursor = Gdk::Cursor.new(Gdk::Cursor::HAND1)
+
+But pay attention to detail here. Where did the window property came from in the above code segment? Here we obviously have something like an accessor method called "window" on Gtk::EventBox object returning a Gdk:Window instance. Though I am only guessing that is how it is done internally, it is safe to assume we are setting cursor on the GDK object, hence do not forget to check out Gdk::Cursor.
+
+
 
  #!/usr/bin/env ruby
  require 'gtk2'
@@ -25,30 +43,60 @@
  window.set_title  "Event Box"
  window.border_width = 10
  window.set_size_request(200, -1)
-
- window.signal_connect('delete_event') { false }
+ # The delete_event is only needed if you plan to
+ # intercept the destroy / quit with a dialog box.
+ #
+ # window.signal_connect('delete_event') { false }
  window.signal_connect('destroy') { Gtk.main_quit }
 
  eventbox = Gtk::EventBox.new
  label    = Gtk::Label.new('Double-click me!')
 
- eventbox.set_events(Gdk::Event::BUTTON_PRESS_MASK)
+ # eventbox.set_events(Gdk::Event::BUTTON_PRESS_MASK)
+ eventbox.events = Gdk::Event::BUTTON_PRESS_MASK
 
  eventbox.add(label)
  window.add(eventbox)
 
- # You need to cal {{ realize }} only after you add it to the
- # top (including) widget.
-
+ ### You need to cal {{ realize }} only after you add it to the
+ ### top (including) widget.
  eventbox.realize
-
- # Only after the {{ EventBox eventbox }} is realized it will
- # have an associated {{ Gdk::Window }} (see: "window" bellow)
- # (Note: GDK and not GTK)
-
- eventbox.window.set_cursor(Gdk::Cursor.new(Gdk::Cursor::HAND1))
+ ### Only after the {{ EventBox eventbox }} is realized it will
+ ### have an associated {{ Gdk::Window }} (see: "window" bellow)
+ # eventbox.window.set_cursor(Gdk::Cursor.new(Gdk::Cursor::HAND1))
+ eventbox.window.cursor = Gdk::Cursor.new(Gdk::Cursor::HAND1)
 
  eventbox.signal_connect('button_press_event') { |w, e| change_label(e, label) }
 
  window.show_all
  Gtk.main
+
+
+
+
+:GdkEventMask
+
+A set of bit-flags to indicate which events a window is to receive. Most of these masks map onto one or more of the GdkEventType event types above. Gdk::Event::POINTER_MOTION_HINT_MASK is a special mask which is used to reduce the number of Gdk::Event::MOTION_NOTIFY events received. Normally a Gdk::Event::MOTION_NOTIFY event is received each time the mouse moves. However, if the application spends a lot of time processing the event (updating the display, for example), it can easily lag behind the position of the mouse. When using the Gdk::Event::POINTER_MOTION_HINT_MASK the server will only send a single Gdk::Event::MOTION_NOTIFY event (which is marked as a hint) until the application asks for more, by calling Gdk::Window#pointer.
+
+* EXPOSURE_MASK
+* POINTER_MOTION_MASK
+* POINTER_MOTION_HINT_MASK
+* BUTTON_MOTION_MASK
+* BUTTON1_MOTION_MASK
+* BUTTON2_MOTION_MASK
+* BUTTON3_MOTION_MASK
+* BUTTON_PRESS_MASK
+* BUTTON_RELEASE_MASK
+* KEY_PRESS_MASK
+* KEY_RELEASE_MASK
+* ENTER_NOTIFY_MASK
+* LEAVE_NOTIFY_MASK
+* FOCUS_CHANGE_MASK
+* STRUCTURE_MASK
+* PROPERTY_CHANGE_MASK
+* VISIBILITY_NOTIFY_MASK
+* PROXIMITY_IN_MASK
+* PROXIMITY_OUT_MASK
+* SUBSTRUCTURE_MASK
+* SCROLL_MASK
+* ALL_EVENTS_MASK - the combination of all the above event masks.
