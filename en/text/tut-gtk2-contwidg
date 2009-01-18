@@ -4,8 +4,8 @@
 == Submenues of "Container Widgets" section
 
   * ((<Container Widgets (this page)|tut-gtk2-contwidg>))
-  * ((<* Decorator Containers|tut-gtk2-contwidg#Decorator Containers>))
-  * ((<* Layout Containers|tut-gtk2-contwidg#Layout Containers>))
+    * ((<Decorator Containers|tut-gtk2-contwidg#Decorator Containers>))
+    * ((<Layout Containers|tut-gtk2-contwidg#Layout Containers>))
   * ((<Horizontal and Vertical Boxes|tut-gtk2-contwidg-hvbox>))
   * ((<Tables|tut-gtk2-contwidg-tables>))
   * ((<Fixed Containers|tut-gtk2-contwidg-fixedcont>))
