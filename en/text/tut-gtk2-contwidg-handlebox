@@ -41,19 +41,19 @@ The Gtk::HandleBox widget is a type of Gtk::Bin container (just a reminder Gtk::
 
 :GtkShadowType
 
-Used to change the appearance of an outline typically provided by a Gtk::Frame.
+  Used to change the appearance of an outline typically provided by a Gtk::Frame.
 
-* SHADOW_NONE - No outline.
-* SHADOW_IN - The outline is bevelled inwards.
-* SHADOW_OUT - The outline is bevelled outwards like a button.
-* SHADOW_ETCHED_IN - The outline itself is an inward bevel, but the frame does
-* SHADOW_ETCHED_OUT - The outline itself is an outward bevel, but the frame does 
+  * SHADOW_NONE - No outline.
+  * SHADOW_IN - The outline is bevelled inwards.
+  * SHADOW_OUT - The outline is bevelled outwards like a button.
+  * SHADOW_ETCHED_IN - The outline itself is an inward bevel, but the frame does
+  * SHADOW_ETCHED_OUT - The outline itself is an outward bevel, but the frame does 
 
 :GtkPositionType
 
-Describes which edge of a widget a certain feature is positioned at, e.g. the tabs of a Gtk::Notebook, the handle of a Gtk::HandleBox or the label of a Gtk::Scale.
+  Describes which edge of a widget a certain feature is positioned at, e.g. the tabs of a Gtk::Notebook, the handle of a Gtk::HandleBox or the label of a Gtk::Scale.
 
-* POS_LEFT - The feature is at the left edge.
-* POS_RIGHT - The feature is at the right edge.
-* POS_TOP - The feature is at the top edge.
-* POS_BOTTOM - The feature is at the bottom edge. 
+  * POS_LEFT - The feature is at the left edge.
+  * POS_RIGHT - The feature is at the right edge.
+  * POS_TOP - The feature is at the top edge.
+  * POS_BOTTOM - The feature is at the bottom edge. 
