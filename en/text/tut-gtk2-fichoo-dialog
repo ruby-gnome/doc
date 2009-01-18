@@ -1,5 +1,5 @@
 = Selector/Chooser Interface And Widgets
-{{link "File+Chooser", "tut-gtk2-sel-choo", "tut-gtk", tut-gtk2-colorsel-buttons}}
+{{link "tut-gtk2-filechooser", "tut-gtk2-sel-choo", "tut-gtk", tut-gtk2-colorsel-buttons}}
 
 == Gtk::FileChooserDialog 
 
