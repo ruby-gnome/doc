@@ -79,13 +79,12 @@ You should be able to to modify font used in most any widget with the Gtk::Widge
 
 == Font Manipulation Methods
 
-
 :Pango::FontDescription.new(str = nil)
-    Creates a new font description from (str) - a string  representation in the form "[FAMILY-LIST] [STYLE-OPTIONS] [SIZE]", where:
+  Creates a new font description from (str) - a string  representation in the form "[FAMILY-LIST] [STYLE-OPTIONS] [SIZE]", where:
 
-* FAMILY-LIST is a comma separated list of families optionally terminated by a comma, 
-* STYLE_OPTIONS is a whitespace separated list of words where each WORD describes one of style, variant, weight, or stretch, and 
-* SIZE is an decimal number (size in points). Any one of the options may be absent. 
+  * FAMILY-LIST is a comma separated list of families optionally terminated by a comma, 
+  * STYLE_OPTIONS is a whitespace separated list of words where each WORD describes one of style, variant, weight, or stretch, and 
+  * SIZE is an decimal number (size in points). Any one of the options may be absent. 
 
 If FAMILY-LIST is absent, then the family_name field of the resulting font description will be initialized to nil. If STYLE-OPTIONS is missing, then all style options will be set to the default values. If SIZE is missing, the size in the resulting font description will be set to 0. If str is nil, creates a new font description structure with all fields unset.
 
@@ -94,4 +93,4 @@ This method returns a new Pango::FontDescription.
 
 
 :Gtk::Widget#modify_font(font_desc)
-    Sets the font to use for a widget to "font_desc" (the Pango::FontDescription to use). All other style values are left untouched. See also Gtk::Widget#modify_style.
+  Sets the font to use for a widget to "font_desc" (the Pango::FontDescription to use). All other style values are left untouched. See also Gtk::Widget#modify_style.
