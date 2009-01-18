@@ -71,9 +71,9 @@ The following example is almost identical to what you've seen above, however it 
 
 :GtkPositionType
 
-Describes which edge of a widget a certain feature is positioned at, e.g. the tabs of a Gtk::Notebook, the handle of a Gtk::HandleBox or the label of a Gtk::Scale.
+  Describes which edge of a widget a certain feature is positioned at, e.g. the tabs of a Gtk::Notebook, the handle of a Gtk::HandleBox or the label of a Gtk::Scale.
 
-* POS_LEFT - The feature is at the left edge.
-* POS_RIGHT - The feature is at the right edge.
-* POS_TOP - The feature is at the top edge.
-* POS_BOTTOM - The feature is at the bottom edge. 
+  * POS_LEFT - The feature is at the left edge.
+  * POS_RIGHT - The feature is at the right edge.
+  * POS_TOP - The feature is at the top edge.
+  * POS_BOTTOM - The feature is at the bottom edge. 
