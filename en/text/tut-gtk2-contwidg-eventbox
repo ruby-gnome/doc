@@ -5,7 +5,7 @@
 {{br}}
 {{image_right("contwidg-eventbox.png")}}
 
-Various widgets including Gtk::Label do not do not respond to GDK events, because they do not have an associated Gdk::Window. To fix this GTK+ employs a Gtk::EventBox container widget. The Gtk::EventBox provides a capability that allows its child that otherwise is incapable of catching GDK events, to intercept or catch them on behalf of the child. Note these are GDK and not GTK signals!
+Various widgets including Gtk::Label do not respond to GDK events, because they do not have an associated Gdk::Window. To fix this GTK+ employs a Gtk::EventBox container widget. The Gtk::EventBox provides a capability that allows its child that otherwise is incapable of catching GDK events, to intercept or catch them on behalf of the child. Note these are GDK and not GTK signals!
 
 Even boxes catch events for the children widgets by providing a Gdk::Window for the object. Setting up a GDK event/signal catching mechanism, unlike in C GTK+, in Ruby does not use the usual "signal_connect" syntax. It suffices to setup events with the Gtk::Window#events= or Gtk::Window#set_events, by adding an event mask to the event box (see GdkEventMask bellow).
 
