@@ -112,7 +112,7 @@ Once you created the desired file button you can initialize it as needed:
      "Select a file", Gtk::FileChooser::ACTION_SELECT_FOLDER)
  button.current_folder = GLib.home_dir
 
-Pay attention to the GLib::home_dir method, which provides a cross platform compatible way to specify user's home directory (folder). Note initializing a file button with a folder has no effect, however you can preset the file name for the file button:
+Pay attention to the GLib.home_dir function, which provides a cross platform compatible way to specify user's home directory (folder). Note initializing a file button with a folder has no effect, however you can preset the file name for the file button:
 
  chooser_file = Gtk::FileChooserButton.new(
      "Choose a File", Gtk::FileChooser::ACTION_OPEN)
