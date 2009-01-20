@@ -114,7 +114,7 @@ To give you an idea how all this fits together let's look at an example you can 
  label = Gtk::Label.new
  chooser_dir  = Gtk::FileChooserButton.new(
      "Choose a Folder", Gtk::FileChooser::ACTION_SELECT_FOLDER)
- FileChooserDialog = Gtk::FileChooserButton.new(
+ chooser_file = Gtk::FileChooserButton.new(
      "Choose a File", Gtk::FileChooser::ACTION_OPEN)
 
  # Let's add an extra widget (a button) to the {{ dialog }}
@@ -131,7 +131,8 @@ To give you an idea how all this fits together let's look at an example you can 
    file_changed(chooser_file, label)
  end
  chooser_dir.current_folder  = GLib.home_dir
- chooser_file.current_folder = GLib.home_dir
+ # setting a folder on file button has no effect
+ # chooser_file.current_folder = GLib.home_dir
 
  filter1 = Gtk::FileFilter.new
  filter2 = Gtk::FileFilter.new
