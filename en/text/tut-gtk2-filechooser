@@ -108,7 +108,7 @@ In the above program you can see that two Gtk::FileChooserButton buttons types w
     * backend: The name of the specific filesystem backend to use or nil. (e.g.) "gnome-vfs" 
     * Returns: a new Gtk::FileChooserButton widget.
 
-The Gtk::FileChooserButton supports the Gtk::FileChooser::Action s Gtk::FileChooser::ACTION_OPEN and Gtk::FileChooser::ACTION_SELECT_FOLDER. 
+The Gtk::FileChooserButton supports only two of the total of four Gtk::FileChooser::Action-s (actions), namely the Gtk::FileChooser::ACTION_OPEN and Gtk::FileChooser::ACTION_SELECT_FOLDER. Therefore with the Gtk::FileChooserButton.new we can create only ((*"folder"*)) and ((*"file"*)) buttons.
 
  chooser_dir  = Gtk::FileChooserButton.new(
      "Choose a Folder", Gtk::FileChooser::ACTION_SELECT_FOLDER)
@@ -139,7 +139,6 @@ Hence, we can now understand the following code, which is triggered every time '
    dir = chooser_dir.filename
    chooser_file.current_folder = dir
  end
-
 
 Only now can we also understand what means the following snippet of code and the  comment in it in the above example program: 
 
