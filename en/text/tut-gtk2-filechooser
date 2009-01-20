@@ -140,6 +140,7 @@ Hence, we can now understand the following code, which is triggered every time '
    chooser_file.current_folder = dir
  end
 
+Indeed the last line also makes no sense, since it will be overridden by the actions in the ((*folder_changed*)) method which is also executed immediately after our program starts to run, since at that point the "file" and "folder" buttons emit ((*'selection_changed'*)) signal to indicate the initial setting.
 
 
 === Constants
