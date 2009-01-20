@@ -8,8 +8,12 @@
 Gtk::ColorButton widget is a member of the so called family of Selectors widgets. In the Gtk documentation you will find them under the heading Selectors (File/Font/Color/Input Devices). Gtk::ColorButton is used to interactively set foreground or background colour to widgets. Here is a Ruby version of a C Gtk+ program that allows user to dynamically change the foreground colour of the text on a label.  After clicking the blue button on "Color Buttons" window above the following "Color Dialog" window opens. User dials (selects) the colour (in our case red). After clicking on the "OK" button, the colour dialogue widget ("w" in the callback block (see "label.modify_fg(Gtk::STATE_NORMAL, w.color)")  sets the colour of the label in the calling window.  
 
 
-The colour button itself displays the selected colour in a rectangular block set as a the child widget of the button. You can see an example of this in the figure above on the right, and the figure below is the dialogue that allows user to enter in the color value or browse for a choice on the colour wheel. The colour wheel is provided so the is not required to know the numeric values of the colours.
+The colour button itself displays the selected colour in a rectangular block set as a the child widget of the button. You can see an example of this in the figure above on the right, and the figure below is the dialogue that allows user to enter in the color value or browse for a choice on the colour wheel. The colour wheel is provided so the is not required to know the numeric values of the colours. Note by user we do not mean the programmer. 
 
+ color = Gdk::Color.parse("#003366")
+ cbutton = Gtk::ColorButton.new(color)
+
+More often than not you will want to set the initial colour of the Gtk::ColorButton. This is done in two steps. First you need to create a Gdk::Color object with either Gdk::Color.parse("#RRGGBB") or with  Gdk::Color.new(red, green, blue). Note that parse is a hex triple where each RR, GG, and BB can range from 00-FF, however parameters of the Gdk::Color.new(red, green, blue) can range  from 0 to 65535.
 
 {{image_left("ColorSelDialog.png")}}
 {{br}}
