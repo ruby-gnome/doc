@@ -6,6 +6,7 @@
   * ((<File Chooser Interface And Widgets|tut-gtk2-filechooser>))
   * ((<File Chooser Dialog|tut-gtk2-fichoo-dialog>))
   * ((<Color Selection Dialog|tut-gtk2-colorsel-buttons>))
+    * ((<Modifying the foreground colour of a widget|tut-gtk2-colorsel-buttons#Modifying the foreground colour of a widget>))
   * ((<Font Selection Button|tut-gtk2-fichoo-fontbtt>))
 == Short Description
 
