@@ -46,7 +46,7 @@ Here you can see the file dialog window opened after the file button was pressed
  label = Gtk::Label.new
  chooser_dir  = Gtk::FileChooserButton.new(
      "Choose a Folder", Gtk::FileChooser::ACTION_SELECT_FOLDER)
- FileChooserDialog = Gtk::FileChooserButton.new(
+ chooser_file = Gtk::FileChooserButton.new(
      "Choose a File", Gtk::FileChooser::ACTION_OPEN)
 
  # Let's add an extra widget (a button) to the {{ dialog }}
