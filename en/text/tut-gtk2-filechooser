@@ -1,11 +1,11 @@
 = Selector/Chooser Interface And Widgets
 {{link "tut-gtk2-selchoose", "tut-gtk2-selchoose", "tut-gtk", "tut-gtk2-fichoo-dialog"}}
-{{image_right("ChooserButtons01.png")}}
 
 == File Chooser Interface And Widgets
 
 === File Chooser Introduction 
 
+{{image_right("ChooserButtons01.png")}}
 
 The Gtk::FileChooserButton widget provides an easy method for you to ask users to choose a file or a folder. It implements the interface of the Gtk::FileChooser. Note that  this module represents just an interface, hence we never create any Gtk::FileChooser instances. When the user clicks a Gtk::FileChooserButton, an instance of Gtk::FileChooserDialog is opened that allows the user to browse and select one file or one folder, depending on the type of a button you created.
 
