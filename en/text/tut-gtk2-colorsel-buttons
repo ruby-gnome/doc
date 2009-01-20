@@ -70,8 +70,18 @@ To modify the foreground colour of a widget you need to identify the state in wh
 NOTE: red, green and blue colour values in the first class method called "parse" are  0-256, but in the constructor "new" the 
 same colour values are between 0 and 65535.
 
+:GtkStateType
 
-=== Following is a different example from the original Japanese tutorial page:
+  This constant indicates the current state of a widget; the state determines how the widget is drawn. The GtkStateType is also used to identify different colours in a Gtk::Style for drawing, so states can be used for sub-parts of a widget as well as entire widgets.
+
+  * STATE_NORMAL - State during normal operation.
+  * STATE_ACTIVE - State of a currently active widget, such as a depressed button.
+  * STATE_PRELIGHT - State indicating that the mouse pointer is over the widget and the widget will respond to mouse clicks.
+  * STATE_SELECTED - State of a selected item, such the selected row in a list.
+  * STATE_INSENSITIVE - State indicating that the widget is unresponsive to user actions.
+
+
+--- Following is a different example from the original Japanese tutorial page:
 
 {{br}}
 {{image_left("ColorButtons-jp-070-29.png")}}
