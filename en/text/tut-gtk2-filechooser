@@ -106,7 +106,7 @@ The Gtk::FileChooserButton supports the Gtk::FileChooser::Action s Gtk::FileChoo
  chooser_file = Gtk::FileChooserButton.new(
      "Choose a File", Gtk::FileChooser::ACTION_OPEN)
 
-Once you created the desired file button you can initialize as needed:
+Once you created the desired file button you can initialize it as needed:
 
  button = Gtk::FileChooserButton.new(
      "Select a file", Gtk::FileChooser::ACTION_SELECT_FOLDER)
