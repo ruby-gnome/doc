@@ -140,6 +140,13 @@ Hence, we can now understand the following code, which is triggered every time '
    chooser_file.current_folder = dir
  end
 
+
+Only now can we also understand what means the following snippet of code and the  comment in it in the above example program: 
+
+ chooser_dir.current_folder  = GLib.home_dir
+ chooser_file.current_folder = "/tmp"  # <--- will have no effect, since callback overrides it 
+ chooser_file.filename = "/home/iwk/wk/a_cfile.c"
+
 Indeed the last line also makes no sense, since it will be overridden by the actions in the ((*folder_changed*)) method which is also executed immediately after our program starts to run, since at that point the "file" and "folder" buttons emit ((*'selection_changed'*)) signal to indicate the initial setting.
 
 
