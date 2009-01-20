@@ -128,6 +128,13 @@ Pay attention to the GLib.home_dir function, which provides a cross platform com
  chooser_file.current_folder = "/tmp"              # <---- has no effect
  chooser_file.filename = "/home/iwk/wk/a_cfile.c"  # <---- this works
 
+Note also that we have provided file filters for the ((*"file"*)) button. Since there is no method to set "current_filter" you must pay attention to the order in which you add filters to the file button:
+
+ chooser_file.add_filter(filter2)  # All files (default)
+ chooser_file.add_filter(filter1)  # Image files
+
+The above snippet will have just the opposite effect than the order in the example program, where the "Image files" is set as the initial (default) setting.
+
 
 == Understanding the above example program
 
