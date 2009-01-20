@@ -89,7 +89,7 @@ Here you can see the file dialog window opened after the file button was pressed
  Gtk.main
 
 
-In the above program you can see that the two Gtk::FileChooserButton buttons types were created, one is a ((*"folder"*)) button and the other is a ((*"file"*)) button. The determination of the which type to create is made after inspecting the second argument ((*"action"*)):
+In the above program you can see that two Gtk::FileChooserButton buttons types were created, one is a ((*"folder"*)) button and the other is a ((*"file"*)) button. The determination of the which type to create is made after inspecting the second argument ((*"action"*)):
 
 --- Gtk::FileChooserButton.new(title, action, backend = nil)
 
