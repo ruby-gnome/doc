@@ -135,6 +135,8 @@ Note also that we have provided file filters for the ((*"file"*)) button. Since 
 
 The above snippet will have just the opposite effect than the order in the example program, where the "Image files" is set as the initial (default) setting.
 
+Of course all these are just the suggested pre-settings for the initial folder and a file, and a user may interactively change the file and folders as he or she desires, by opening the Gtk::FileChooserDialog.
+
 
 == Understanding the above example program
 
