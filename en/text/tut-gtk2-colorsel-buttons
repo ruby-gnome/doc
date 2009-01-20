@@ -67,7 +67,7 @@ To modify the foreground colour of a widget you need to identify the state in wh
  color = Gdk::Color.parse("#003366")
  #  or
  color = Gdk::Color.new(0, 12345, 34567)
-NOTE: red, green and blue colour values in the first class method called "parse" are  0-256, but in the constructor "new" the 
+NOTE: red, green and blue colour values in the first class method called "parse" are  0-256 (00-FF), but in the constructor "new" the 
 same colour values are between 0 and 65535.
 
 :GtkStateType
