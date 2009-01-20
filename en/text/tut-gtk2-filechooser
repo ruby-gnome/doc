@@ -146,7 +146,7 @@ Only now can we also understand what means the following snippet of code and the
  chooser_file.current_folder = "/tmp"  # <--- will have no effect, since callback overrides it 
  chooser_file.filename = "/home/iwk/wk/a_cfile.c"
 
-The outcome of the Gtk::FileChooser#current_folder method in the main program body will be overridden by the actions in the ((*folder_changed*)) method which is executed immediately after our program starts to run, since at that point the file chooser widgets  emit ((*'selection_changed'*)) signal to indicate the initial setting.
+The outcome of the Gtk::FileChooser#current_folder method call on the ((*"file button"*)) in the main program body will be overridden by the actions in the ((*folder_changed*)) method which is executed immediately after our program starts to run, since at that point the file chooser widgets  emit ((*'selection_changed'*)) signal to indicate the initial setting.
 
 Indeed the last line in the above snippet also makes no sense in the context of the above discussion, however, it may be beneficial to you if you need to suggest the use of a particular file to the user. If we did not provide this last line, the label on the file button would read ((*"(None)"*)), and the label below the button would be empty.
 
