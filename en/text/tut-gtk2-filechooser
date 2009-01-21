@@ -8,7 +8,7 @@
 
 {{image_right("ChooserButtons01.png")}}
 
-The Gtk::FileChooserButton widget provides an easy method for you to ask users to choose a file or a folder. It implements the interface of the Gtk::FileChooser. Note that  this module represents just an interface, hence we never create any Gtk::FileChooser instances. This means that while Gtk::FileChooserButton is not derived from the Gtk::FileChooser it does provide the functionality of that module, therefore it can be treated as if it were a Gtk::FileChooser. When the user clicks a Gtk::FileChooserButton, an instance of Gtk::FileChooserDialog is opened that allows the user to browse and select one file or one folder, depending on the type of a button you created. Actually, when when clicking on the folder button you need to select "Other" in order to open the dialogue window.
+The Gtk::FileChooserButton widget provides an easy method for you to ask users to choose a file or a folder. It implements the interface of the Gtk::FileChooser. Note that  this module represents just an interface, hence we never create any Gtk::FileChooser instances. This means that while Gtk::FileChooserButton is not derived from the Gtk::FileChooser it does provide the functionality of that module, therefore it can be treated as if it were a Gtk::FileChooser. When the user clicks a Gtk::FileChooserButton, an instance of Gtk::FileChooserDialog is opened that allows the user to browse and select one file or one folder, depending on the type of a button you created. Actually, when when clicking on the folder button you need to  additionally select "Other" in order to open the dialogue window.
 
 
 :FileChooser related classes:
