@@ -21,7 +21,7 @@ The Gtk::FileChooserButton widget provides an easy method for you to ask users t
 
 :FileChooserButton's behavour is also that of Gtk::FileChooser:
 
-  You will notice in our example program here, that Gtk::FileChooserButton is using a number of behaviours from the Gtk::FileChooser, which itself, namely the FileChooserButton widgets, are being treated as if they were  Gtk::FileChooser widgets. Let's list some of these behaviours: 
+  You will notice in our example program here, that Gtk::FileChooserButton is using a number of behaviours from the Gtk::FileChooser, which themselves, namely the FileChooserButton widgets, are being treated as if they were  Gtk::FileChooser widgets. Let's list some of these behaviours: 
 
   * Gtk::FileChooser#filename - Gets the filename for the currently selected file in the file selector.
   * Gtk::FileChooser#filename=  - Sets filename as the current filename for the the file chooser.
