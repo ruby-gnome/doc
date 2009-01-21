@@ -145,7 +145,7 @@ Pay attention to the GLib.home_dir function, which provides a cross platform com
 
 == File Filters
 
-Gtk::FileFilter objects allow you to restrict the files shown in the file chooser. For example, in our demo program, we defined two filters, one which restricts files to image files and the other that allows all types of files. File filter objects are created with Gtk::FileFilter.new, you assign them a descriptive name that will show up in the Gtk::FileChooserDialog with Gtk::FileFilter#name=, next you build a file filter with Gtk::FileFilter#add_pattern(pattern), and finally you assign the filter to the Gtk::FileChooser widget (file button) with Gtk::FileChooser#add_filter(filter). Since there is no method to set "current_filter" you must pay attention to the order in which you add filters to the file button:
+Gtk::FileFilter objects allow you to restrict the files shown in the file chooser. For example, in our demo program, we defined two filters, one which restricts files to image files and the other that allows all types of files. File filter objects are created with Gtk::FileFilter.new, you assign them a descriptive name that will show up in the Gtk::FileChooserDialog with Gtk::FileFilter#name=, next you build a file filter with Gtk::FileFilter#add_pattern(pattern), and finally you assign the filter to the Gtk::FileChooser widget (file chooser dialogue button) with Gtk::FileChooser#add_filter(filter). Since there is no method to set "current_filter" you must pay attention to the order in which you add filters to the file button:
 
  chooser_file.add_filter(filter2)  # All files (default)
  chooser_file.add_filter(filter1)  # Image files
