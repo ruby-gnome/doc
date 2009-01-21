@@ -6,8 +6,8 @@
 
   * ((<Toggle Button|tut-gtk2-btt-toggle>))
   * ((<Check Button|tut-gtk2-btt-check>))
+    * ((<Using Stock Items|tut-gtk2-btt-check#Using Stock Items>))
   * ((<Radio Button|tut-gtk2-btt-radio>))
-  * ((<* Using Stock Items|tut-gtk2-btt-check#Using Stock Items>))
   * ((<* Callbacks And Event Handling|tut-gtk2-btt-check#Callbacks And Event Handling Revisited - Callbacks are closures>))
   * ((<Font Button|tut-gtk2-fichoo-fontbtt>))
 == Short Description
