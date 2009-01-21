@@ -87,8 +87,8 @@ Here you can see the file dialog window opened after the file button was pressed
    file_changed(chooser_file, label)
  end
  chooser_dir.current_folder  = GLib.home_dir
- chooser_file.current_folder = "/tmp"  # <--- will have no effect, since callback overrides it 
- chooser_file.filename = "/home/iwk/wk/a_cfile.c"
+ # chooser_file.current_folder = "/tmp"  # <--- will have no effect, since callback overrides it 
+ # chooser_file.filename = "/home/iwk/wk/a_cfile.c" # <--- would work if file existed
 
  filter1 = Gtk::FileFilter.new
  filter2 = Gtk::FileFilter.new
