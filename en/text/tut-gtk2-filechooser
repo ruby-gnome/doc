@@ -19,18 +19,18 @@ The Gtk::FileChooserButton widget provides an easy method for you to ask users t
   * Gtk::FileFilter - A filter for selecting a file subset
   * Gtk::FileSelection - Prompt the user for a file or directory name (obsolete use Gtk::FileChooserDialog instead)
 
-You will notice in our example program here, that Gtk::FileChooserButton is using a number of behaviours from the Gtk::FileChooser, which itself, namely the FileChooserButton is being used as if it were a Gtk::FileChooser. Let's list some of these behaviours: 
+ You will notice in our example program here, that Gtk::FileChooserButton is using a number of behaviours from the Gtk::FileChooser, which itself, namely the FileChooserButton is being used as if it were a Gtk::FileChooser. Let's list some of these behaviours: 
 
-* Gtk::FileChooser#filename - Gets the filename for the currently selected file in the file selector.
-* Gtk::FileChooser#filename=  - Sets filename as the current filename for the the file chooser.
-* Gtk::FileChooser#set_filename(filename) - same as Gtk::FileChooser#filename=
-* Gtk::FileChooser#current_folder - Gets the current folder of chooser as a local filename.
-* Gtk::FileChooser#current_folder=(filename) - Sets the current folder for chooser from a local filename.
-* Gtk::FileChooser#set_current_folder(filename) - Same as Gtk::FileChooser#current_folder=.
-* Gtk::FileChooser#filter - Gets the current filter; see Gtk::FileChooser#filter=.
-* Gtk::FileChooser#filter=(filter) - Sets the current filter.
-* Gtk::FileChooser#set_filter(filter) - Same as Gtk::FileChooser#filter=.
-* Gtk::FileChooser#add_filter(filter) - Adds filter to the list of filters that the user can select between.
+  * Gtk::FileChooser#filename - Gets the filename for the currently selected file in the file selector.
+  * Gtk::FileChooser#filename=  - Sets filename as the current filename for the the file chooser.
+  * Gtk::FileChooser#set_filename(filename) - same as Gtk::FileChooser#filename=
+  * Gtk::FileChooser#current_folder - Gets the current folder of chooser as a local filename.
+  * Gtk::FileChooser#current_folder=(filename) - Sets the current folder for chooser from a local filename.
+  * Gtk::FileChooser#set_current_folder(filename) - Same as Gtk::FileChooser#current_folder=.
+  * Gtk::FileChooser#filter - Gets the current filter; see Gtk::FileChooser#filter=.
+  * Gtk::FileChooser#filter=(filter) - Sets the current filter.
+  * Gtk::FileChooser#set_filter(filter) - Same as Gtk::FileChooser#filter=.
+  * Gtk::FileChooser#add_filter(filter) - Adds filter to the list of filters that the user can select between.
 
 
 
