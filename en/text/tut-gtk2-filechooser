@@ -19,6 +19,22 @@ The Gtk::FileChooserButton widget provides an easy method for you to ask users t
   * Gtk::FileFilter - A filter for selecting a file subset
   * Gtk::FileSelection - Prompt the user for a file or directory name (obsolete use Gtk::FileChooserDialog instead)
 
+You will notice in our example program here, that Gtk::FileChooserButton is using a number of behaviours from the Gtk::FileChooser, which itself, namely the FileChooserButton is being used as if it were a Gtk::FileChooser. Let's list some of these behaviours: 
+
+* Gtk::FileChooser#filename - Gets the filename for the currently selected file in the file selector.
+* Gtk::FileChooser#filename=  - Sets filename as the current filename for the the file chooser.
+* Gtk::FileChooser#set_filename(filename) - same as Gtk::FileChooser#filename=
+* Gtk::FileChooser#current_folder - Gets the current folder of chooser as a local filename.
+* Gtk::FileChooser#current_folder=(filename) - Sets the current folder for chooser from a local filename.
+* Gtk::FileChooser#set_current_folder(filename) - Same as Gtk::FileChooser#current_folder=.
+* Gtk::FileChooser#filter - Gets the current filter; see Gtk::FileChooser#filter=.
+* Gtk::FileChooser#filter=(filter) - Sets the current filter.
+* Gtk::FileChooser#set_filter(filter) - Same as Gtk::FileChooser#filter=.
+* Gtk::FileChooser#add_filter(filter) - Adds filter to the list of filters that the user can select between.
+
+
+
+
 To give you an idea how some of these fit together let's look at an example you can copy-and-paste into a file on your system and run. The top window contains three widgets: (1) folder button, (2) file button, and (3) originally an empty (nil) label. Pay  attention that the example also uses a Gtk::FileChooserDialog object which is spawned when user clicks on the top "folder" button. Of course in your programs you can create a dialogue object on its own via Gtk::FileChooserDialog.new, however here these dialogues are created for you when either button in the top window is pressed. In this case I want you to pay attention to object "w" in the code spawned only when the "chooser_dir" button is pressed, this is the place where we add the extra widget to the dialog. Note also, that the 3rd object (the label) should reflect users's file selection from the FileChooserDialog spawned when user clicked the "FileChooserDialog" object and actually selected some file. That file is obtained and the label initiated in the "file_changed" callback. Lastly, note that GLib class method is used to initialize both buttons' current folder "chooser_*.current_folder = GLib.home_dir".
 
 
