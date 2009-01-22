@@ -31,7 +31,7 @@ A new dialogue widget is created with Gtk::Dialog#new method. Its interface look
        * button_face: Button face can be either a stock ID (Gtk::Stock constants) such as Gtk::Stock::OK, or some arbitrary text. 
        * response_id: A response ID can be any positive number, or one of the values in the ((<Gtk::Dialog#ResponseType>)) enumeration. If the user clicks one of these dialog buttons, Gtk::Dialog will emit the "response" signal with the corresponding response ID. If a Gtk::Dialog receives the "delete_event" signal, it will emit "response" with a response ID of Gtk::Dialog::RESPONSE_DELETE_EVENT. However, destroying a dialog does not emit the "response" signal; so be careful relying on "response" when using the Gtk::Dialog::DESTROY_WITH_PARENT flag. Buttons are from left to right, so the first button in the list will be the leftmost button in the dialog.
     * Returns : a new Gtk::Dialog
-
+    {{br}}
     The most intimidating is the last part where we see that there could be an undefined number of buttons present in this method invocation. Each button is defined as a pair embedded into square brackets (array). Following is a real life example defined for two buttons only: 
 
         dialog = Gtk::Dialog.new("Some dialog text", main_app_window,
