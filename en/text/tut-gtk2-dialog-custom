@@ -75,9 +75,11 @@ The first thing you need to do when the dialogue triggering button is pressed in
                    [ buton_face, response_id ],
                    ...
    )
-The dialogue will be set as the transient window of the parent window, which allows the window manager to centre the dialogue over the main window and keep it on top if required. You can set this parameter to nil if you do not want the parent window to be known or recognized by the dialogue. Next, you can specify one or more dialogue flags which are defined in Gtk::Dialog#Flags.
+The dialogue will be set as the transient window of the parent window, which allows the window manager to centre the dialogue over the main window and keep it on top if required. You can set this parameter to nil if you do not want the parent window to be known or recognized by the dialogue. Next, you can specify one or more dialogue flags which are defined at Gtk::Dialog#Flags. There are three available values:
 
-
+  * MODAL - Force the dialogue to remain in focus on top of the parent window until closed. The user will be prevented from interacting with the parent. See also Gtk::Window#set_modal(true).
+  * DESTROY_WITH_PARENT - Destroy the dialogue when the the parent parent is destroyed, but do not force the dialogue to be in focus. This will create a non-modal dialog unless you call Gtk::Dialog#run, See also: Gtk::Window#set_destroy_with_parent.
+  * NO_SEPARATOR - No separator bar above buttons.
 
 In the above program we have used a few items we have not discussed yet. They are related to Gtk::Image. While you should be familiar with the Gtk::Stock items, Gtk::IconSize is new. Short of explaining details let us have a look at the constants defined for this item:
 
