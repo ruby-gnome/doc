@@ -4,7 +4,7 @@
 
 == Creating Your Own Dialogs
 
-A dialog is a special type of Gtk::Window that is used to supplement the top-level window. Dialog widgets are split in half by horizontal separator. The top part is where you place the main part of the dialog's user interface. the bottom half, called the "action area" holds a collection of buttons. When clicked, each button will emit a unique response identifier that tells the programmer which button was pressed.
+A dialog is a special type of Gtk::Window that is used to supplement the top-level window. Dialog widgets are split in half by horizontal separator. The top half is where you place the main part of the dialog's user interface. The bottom half, called the "action area" holds a collection of buttons. When clicked, each button will emit a unique response identifier that tells the programmer which button was pressed.
 
 === Gtk::Dialog
 
