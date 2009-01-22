@@ -81,6 +81,33 @@ The dialogue will be set as the transient window of the parent window, which all
   * DESTROY_WITH_PARENT: Destroy the dialogue when the the parent parent is destroyed, but do not force the dialogue to be in focus. This will create a non-modal dialog unless you call Gtk::Dialog#run, See also: Gtk::Window#set_destroy_with_parent.
   * NO_SEPARATOR: If set, no separator bar will be placed between the buttons in the action area and the dialogue contents.
 
+=== Response Identifiers
+
+When a dialogue is fully constructed, one method of showing the dialogue is by calling Gtk::Dialog#run {...}. This method will return an integer called response identifier when complete. It will also prevent the user from interacting with anything outside the dialogue until it is either destroyed or an action area button is clicked.
+
+--- run {|response| ... }
+
+    Blocks in a recursive main loop until the dialogue either emits the response signal, or user closes the dialogue (i.e. it is destroyed) Regardless of what flags you set, the dialogue will always be modal when you call this method because it calls Gtk::Window#set_modal. If the dialogue is is manually destroyed by the user during the call to Gtk::Dialog#run, Gtk::Dialog returns Gtk::Dialog::RESPONSE_NONE. Otherwise, it returns the response ID from signal emission referring to the button that was clicked. Destroying the dialogue during Gtk::Dialog#run is a very bad idea, because your post-run code won't know whether the dialogue was destroyed or not. Before entering the recursive main loop, Gtk::Dialog#run calls Gtk::Widget#show on the dialogue for you. Note that you still need to show any children of the dialogue yourself. After Gtk::Dialog#run returns, you are responsible for hiding or destroying the dialogue if you wish to do so.
+
+    Typical usage of this method might be:
+
+      dialog.run do |response|
+        case response
+          when Gtk::Dialog::RESPONSE_ACCEPT
+            do_application_specific_something()
+          else
+            do_nothing_since_dialog_was_cancelled()
+        end
+        dialog.destroy
+      end
+
+    * {|response| ... } : A block or nothing.
+       * response: response ID.
+    * Returns : response ID
+
+
+
+
 In the above program we have used a few items we have not discussed yet. They are related to Gtk::Image. While you should be familiar with the Gtk::Stock items, Gtk::IconSize is new. Short of explaining details let us have a look at the constants defined for this item:
 
 :GtkIconSize
