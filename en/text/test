@@ -6,6 +6,7 @@ This chapter introduces you to a special type of window called a dialog. Dialogs
 
 You can do anything with a dialog,  such as display a message or prompt the user for input. The purpose of dialogues is to enhance user experience by providing some type of transient functionality.
 
+((*New*))
 
 :In this chapter you will learn the following:
 
