@@ -27,7 +27,7 @@ A new dialogue widget is created with Gtk::Dialog#new method. Its interface look
     * title : Title of the dialog, or nil
     * parent : Transient parent of the dialog, or nil
     * flags : From ((<Gtk::Dialog#Flags>)). The flags argument can be used to make the dialog modal (Gtk::Dialog::MODAL) and/or to have it destroyed along with its transient parent (Gtk::Dialog::DESTROY_WITH_PARENT).
-    * [button_face1, response_id1], [button_face2, response_id2], ...: Button face/response ID pairs should be listed.        
+    * [button_face1, response_id1], [button_face2, response_id2], ...: Button face/response ID pairs should be listed.   
        * button_face: Button face can be either a stock ID (Gtk::Stock constants) such as Gtk::Stock::OK, or some arbitrary text. 
        * response_id: A response ID can be any positive number, or one of the values in the ((<Gtk::Dialog#ResponseType>)) enumeration. If the user clicks one of these dialog buttons, Gtk::Dialog will emit the "response" signal with the corresponding response ID. If a Gtk::Dialog receives the "delete_event" signal, it will emit "response" with a response ID of Gtk::Dialog::RESPONSE_DELETE_EVENT. However, destroying a dialog does not emit the "response" signal; so be careful relying on "response" when using the Gtk::Dialog::DESTROY_WITH_PARENT flag. Buttons are from left to right, so the first button in the list will be the leftmost button in the dialog.
     * Returns : a new Gtk::Dialog
@@ -63,22 +63,23 @@ As you can see above all dialogue widgets inherit from Gtk::Dialog. This class d
 --- Flags
     Flags used to influence dialog construction.
 
-  * MODAL - Call Gtk::Window#set_modal(true). It freezes the rest of the application from user input.
-  * DESTROY_WITH_PARENT - Call Gtk::Window#set_destroy_with_parent.
-  * NO_SEPARATOR - No separator bar above buttons.
+    {{br}}
+    * MODAL: Force the dialogue to remain in focus on top of the parent window until closed. The user will be prevented from interacting with the parent. See also Gtk::Window#set_modal(true).
+    * DESTROY_WITH_PARENT: Destroy the dialogue when the the parent parent is destroyed, but do not force the dialogue to be in focus. This will create a non-modal dialog unless you call Gtk::Dialog#run, See also: Gtk::Window#set_destroy_with_parent.
+    * NO_SEPARATOR: If set, no separator bar will be placed between the buttons in the action area and the dialogue contents.
 
 --- ResponseType
     The following ((*response types*)) are returned from Ruby/GTK dialogs, and you can also use them yourself if you like. Ruby/GTK will never assign a meaning to positive response IDs; these are entirely user-defined. But for convenience, you can use the response IDs in the Gtk::Dialog#ResponseType enumeration (these all have values less than zero). If a dialog receives a delete event, the "response" signal will be emitted with a response ID of Gtk::Dialog::RESPONSE_NONE.
 
-
-  * RESPONSE_NONE - Ruby/GTK returns this if a response widget has no response_id, or if the dialog gets programmatically hidden or destroyed.
-  * RESPONSE_REJECT
-  * RESPONSE_ACCEPT
-  * RESPONSE_DELETE_EVENT - the dialog is deleted.
-  * RESPONSE_OK
-  * RESPONSE_CANCEL
-  * RESPONSE_CLOSE
-  * RESPONSE_YES
-  * RESPONSE_NO
-  * RESPONSE_APPLY
-  * RESPONSE_HELP
+    {{br}}
+    * RESPONSE_NONE - Ruby/GTK returns this if a response widget has no response_id, or if the dialog gets programmatically hidden or destroyed.
+    * RESPONSE_REJECT
+    * RESPONSE_ACCEPT
+    * RESPONSE_DELETE_EVENT - the dialog is deleted.
+    * RESPONSE_OK
+    * RESPONSE_CANCEL
+    * RESPONSE_CLOSE
+    * RESPONSE_YES
+    * RESPONSE_NO
+    * RESPONSE_APPLY
+    * RESPONSE_HELP
