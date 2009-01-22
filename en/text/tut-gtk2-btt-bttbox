@@ -34,13 +34,13 @@ In the above method calls the style argument will be one of the following:
 
 --- Gtk::ButtonBox Style
 
-  Used to dictate the style that a Gtk::ButtonBox uses to layout the buttons it contains.
+    Used to dictate the style that a Gtk::ButtonBox uses to layout the buttons it contains.
 
-  * DEFAULT_STYLE -  Default packing.
-  * SPREAD - Buttons are evenly spread across the Gtk::ButtonBox.
-  * EDGE - Buttons are placed at the edges of the Gtk::ButtonBox.
-  * START - Buttons are grouped towards the start of box, (on the left for a Gtk::HBox, or the top for a Gtk::VBox).
-  * END - Buttons are grouped towards the end of a box, (on the right for a Gtk::HBox, or the bottom for a Gtk::VBox).
-  * CENTER 
+     * DEFAULT_STYLE -  Default packing.
+     * SPREAD - Buttons are evenly spread across the Gtk::ButtonBox.
+     * EDGE - Buttons are placed at the edges of the Gtk::ButtonBox.
+     * START - Buttons are grouped towards the start of box, (on the left for a Gtk::HBox, or the top for a Gtk::VBox).
+     * END - Buttons are grouped towards the end of a box, (on the right for a Gtk::HBox, or the bottom for a Gtk::VBox).
+     * CENTER 
 
 Finally you have add buttons with Gtk::ButtonBox#add_child (See Gtk::Buildable#add_child). 
