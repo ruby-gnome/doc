@@ -1,0 +1,77 @@
+= Dialogue Widgets
+{{link "tut-gtk2-dialog", "tut-gtk2-dialog", "tut-gtk", "tut-gtk2-dialog-msg"}}
+
+
+== Creating Your Own Dialogs
+
+A dialog is a special type of Gtk::Window that is used to supplement the top-level window. Dialog widgets are split in half by horizontal separator. The top part is where you place the main part of the dialog's user interface. the bottom half, called the "action area" holds a collection of buttons. When clicked, each button will emit a unique response identifier that tells the programmer which button was pressed.
+
+=== Gtk::Dialog
+
+Dialog boxes are a convenient way to prompt the user for some input, like to display a message, ask a question, etc. Ruby/GTK treats a dialog as a window split vertically. The top section is a ((*vertical box*)), and is where widgets such as a Gtk::Label or a Gtk::Entry should be packed. The bottom area is known as the ((*action_area*)), and is generally used for packing buttons into the dialog which may perform actions such as cancel, ok, or apply. The two areas are separated by an optional Gtk::HSeparator. 
+
+Gtk::Dialog boxes are created with a call to Gtk::Dialog.new. To access the two primary areas of the dialogue you can use Gtk::Dialog#vbox and Gtk::Dialog#action_area. The action area holds all the buttons along the bottom of the dialog. Though you could manually add buttons to the Gtk::Dialog#action_area by calling Gtk::HButtonBox#add_child and Gtk::ButtonBox#Style (see: ((<Button Box|tut-gtk2-btt-bttbox>))), it is recommended that you use the methods provided by Gtk::Dialog. You can think of the Gtk::Dialog as a vertical box, where both the ((*action_area*)) and the ((*separator*)) are packed at the end, so you should use Gtk::Dialog#vbox.pack_start or Gtk::Dialog#vbox.pack_start_default to add widgets to a Gtk::Dialog. However, currently (as of Ruby 1.8.6 and Ruby-GNOME2 rel.: 2-0.17.0-rc1) there seems to be a problem in this area, and I suggest you use Gtk::Dialog#vbox.add instead, since only a single widget can ve added to the Gtk::Dialog#vbox.
+
+You add buttons to Gtk::Dialog using Gtk::Dialog.new, Gtk::Dialog#add_button, Gtk::Dialog#add_buttons, or Gtk::Dialog#add_action_widget. When clicking the button a signal called "response" with a response ID that you specified is emitted. 
+
+If you want to block waiting for a dialog to return before returning control flow to your code, you can call Gtk::Dialog#run. This function enters a recursive main loop and waits for the user to respond to the dialog, returning the response ID corresponding to the button the user clicked.
+
+Though for a simple dialog like the one in the following example, you can build your own dialogue in reality you'd probably use Gtk::MessageDialog to save yourself some work. But you'd need to create the dialog contents manually if you had more than a simple message in the dialog. 
+
+
+{{image_right("dialog-msg-01.png")}}
+
+
+ #!/usr/bin/env ruby
+ require 'gtk2'
+
+ # Create a new message dialog telling the user that button was clicked.
+ def button_clicked (parent)
+   dialog = Gtk::Dialog.new(
+       "Information",
+       parent,
+       Gtk::Dialog::MODAL,
+       [ Gtk::Stock::OK, Gtk::Dialog::RESPONSE_OK ]
+   )
+   dialog.has_separator = false
+   label = Gtk::Label.new("The button was clicked!")
+   image = Gtk::Image.new(Gtk::Stock::DIALOG_INFO, Gtk::IconSize::DIALOG)
+
+   hbox = Gtk::HBox.new(FALSE, 5)
+   hbox.border_width = 10
+   hbox.pack_start_defaults(image);
+   hbox.pack_start_defaults(label);
+
+   # Add the message in a label, and show everything we've added to the dialog.
+   # dialog.vbox.pack_start_defaults(hbox) # Also works however dialog.vbox
+                                           # limits a single item (element).
+   dialog.vbox.add(hbox)
+   dialog.show_all
+   dialog.run
+   dialog.destroy
+ end
+
+ window = Gtk::Window.new
+ window.border_width = 10
+ window.set_size_request(200, -1)
+ window.title = "Dialogs"
+ window.signal_connect('delete_event') { false }
+ window.signal_connect('destroy') { Gtk.main_quit }
+
+ button = Gtk::Button.new("_Click Me")
+ button.signal_connect('clicked') { button_clicked(window) }
+
+ window.add(button)
+ window.show_all
+ Gtk.main
+
+In the above program we have used a few items we have not discussed yet. They are related to Gtk::Image. While you should be familiar with the Gtk::Stock items, Gtk::IconSize is new. Short of explaining details let us have a look at the constants defined for this item:
+
+:GtkIconSize
+  * Gtk::IconSize::INVALID
+  * Gtk::IconSize::MENU
+  * Gtk::IconSize::SMALL_TOOLBAR
+  * Gtk::IconSize::LARGE_TOOLBAR
+  * Gtk::IconSize::BUTTON
+  * Gtk::IconSize::DND
+  * Gtk::IconSize::DIALOG
