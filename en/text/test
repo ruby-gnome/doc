@@ -1,0 +1,84 @@
+= Dialogs
+{{link "tut-gtk2-selchoo-tyu", "tut-gtk2-dialog", "tut-gtk", "tut-gtk2-dialog-custom"}}
+
+
+This chapter introduces you to a special type of window called a dialog. Dialogs are windows that supplement the top-level window. The dialog is provided by Gtk::Dialog, a class derived from Gtk::Window. Hence it inherits from the  Gtk::Window extending its behaviour with additional functionality, properties, constants and signals. This means that it is possible to implement your entire interface in one or more dialogues, while leaving the main window hidden.
+
+You can do anything with a dialog,  such as display a message or prompt the user for input. The purpose of dialogues is to enhance user experience by providing some type of transient functionality.
+
+
+:In this chapter you will learn the following:
+
+  * ((<Creating Your Own Dialogs|tut-gtk2-dialog-custom>))
+  * ((<A More Convenient Gtk_MessageDialog|tut-gtk2-dialog-msg>))
+  * ((<Provide Info About Your Ppplication|tut-gtk2-dialog-about>))
+  * ((<Types Of File Chooser Dialogues|tut-gtk2-dialog-fichoo>))
+  * ((<Collecting Information With Font And Colour Selection Dialogues|tut-gtk2-dialog-fontcolor>))
+  * ((<Dialogues With Multiple Pages Using Gtk_Assistant|tut-gtk2-dialog-assistant>))
+
+== Gtk::Dialog
+
+A new dialogue widget is created with Gtk::Dialog#new method. Its interface looks intimidating, only until you see it in live Ruby code. Following is a break down of its parameters: 
+
+--- Gtk::Dialog.new(title=nil, parent=nil, flags=nil, [button_face1, response_id1], [button_face2, response_id2], ...)
+
+    Creates a new Gtk::Dialog with title title (or nil for the default title; see 
+
+    * title : Title of the dialog, or nil
+    * parent : Transient parent of the dialog, or nil
+    * flags : From ((<Gtk::Dialog#Flags>)). The flags argument can be used to make the dialog modal (Gtk::Dialog::MODAL) and/or to have it destroyed along with its transient parent (Gtk::Dialog::DESTROY_WITH_PARENT).
+    * [button_face1, response_id1], [button_face2, response_id2], ...: Button face/response ID pairs should be listed.        
+       * button_face: Button face can be either a stock ID (Gtk::Stock constants) such as Gtk::Stock::OK, or some arbitrary text. 
+       * response_id: A response ID can be any positive number, or one of the values in the ((<Gtk::Dialog#ResponseType>)) enumeration. If the user clicks one of these dialog buttons, Gtk::Dialog will emit the "response" signal with the corresponding response ID. If a Gtk::Dialog receives the "delete_event" signal, it will emit "response" with a response ID of Gtk::Dialog::RESPONSE_DELETE_EVENT. However, destroying a dialog does not emit the "response" signal; so be careful relying on "response" when using the Gtk::Dialog::DESTROY_WITH_PARENT flag. Buttons are from left to right, so the first button in the list will be the leftmost button in the dialog.
+    * Returns : a new Gtk::Dialog
+
+    The most intimidating is the last part where we see that there could be an undefined number of buttons present in this method invocation. Each button is defined as a pair embedded into square brackets (array). Following is a real life example defined for two buttons only: 
+
+        dialog = Gtk::Dialog.new("Some dialog text", main_app_window,
+                                Gtk::Dialog::MODAL | Gtk::Dialog::DESTROY_WITH_PARENT,
+                                [Gtk::Stock::OK, Gtk::Dialog::RESPONSE_ACCEPT],
+                                [Gtk::Stock::CANCEL, Gtk::Dialog::RESPONSE_REJECT])
+
+
+At this point it should be useful to check out the hierarchy of related classes:
+ 
+--- Inheritance Hierarchies
+
+  * Gtk::Window
+    * Gtk::Dialog
+      * Gtk::AboutDialog - Display information about an application
+      * Gtk::ColorSelectionDialog
+      * Gtk::FileChooserDialog
+      * Gtk::FileSelection
+      * Gtk::FontSelectionDialog
+      * Gtk::InputDialog
+      * Gtk::MessageDialog - A convenient message window
+    * Gtk::Assistant - A widget used to guide users through multi-step operations 
+
+
+As you can see above all dialogue widgets inherit from Gtk::Dialog. This class defines a few important constants that are used when dealing with dialogues. They are:
+
+== Constants
+
+--- Flags
+    Flags used to influence dialog construction.
+
+  * MODAL - Call Gtk::Window#set_modal(true). It freezes the rest of the application from user input.
+  * DESTROY_WITH_PARENT - Call Gtk::Window#set_destroy_with_parent.
+  * NO_SEPARATOR - No separator bar above buttons.
+
+--- ResponseType
+    The following ((*response types*)) are returned from Ruby/GTK dialogs, and you can also use them yourself if you like. Ruby/GTK will never assign a meaning to positive response IDs; these are entirely user-defined. But for convenience, you can use the response IDs in the Gtk::Dialog#ResponseType enumeration (these all have values less than zero). If a dialog receives a delete event, the "response" signal will be emitted with a response ID of Gtk::Dialog::RESPONSE_NONE.
+
+
+  * RESPONSE_NONE - Ruby/GTK returns this if a response widget has no response_id, or if the dialog gets programmatically hidden or destroyed.
+  * RESPONSE_REJECT
+  * RESPONSE_ACCEPT
+  * RESPONSE_DELETE_EVENT - the dialog is deleted.
+  * RESPONSE_OK
+  * RESPONSE_CANCEL
+  * RESPONSE_CLOSE
+  * RESPONSE_YES
+  * RESPONSE_NO
+  * RESPONSE_APPLY
+  * RESPONSE_HELP
