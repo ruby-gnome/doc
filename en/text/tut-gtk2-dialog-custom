@@ -20,7 +20,7 @@ Though for a simple dialog like the one in the following example, you can build 
 
 
 {{image_right("dialog-msg-01.png")}}
-
+{{br}}
 
  #!/usr/bin/env ruby
  require 'gtk2'
