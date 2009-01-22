@@ -3,12 +3,13 @@
 
 == Submenues of "Selector/Chooser Interface And Widgets" sections
 
-  * ((<File Chooser Interface And Widgets|tut-gtk2-filechooser>))
-  * ((<File Chooser Dialog|tut-gtk2-fichoo-dialog>))
-  * ((<Color Selection Dialog|tut-gtk2-colorsel-buttons>))
-    * ((<Modifying the foreground colour of a widget|tut-gtk2-colorsel-buttons#Modifying the foreground colour of a widget>))
-  * ((<Font Selection Button|tut-gtk2-fichoo-fontbtt>))
-  * ((<Test Your Understanding|tut-gtk2-selchoo-tyu>))
+  * ((<Toggle Button|tut-gtk2-btt-toggle>))
+  * ((<Check Button|tut-gtk2-btt-check>))
+  * ((<Radio Button|tut-gtk2-btt-radio>))
+  * ((<* Using Stock Items|tut-gtk2-btt-check#Using Stock Items>))
+    * ((<Callbacks And Event Handling|tut-gtk2-btt-check#Callbacks And Event Handling Revisited - Callbacks are closures>))
+  * ((<** Not a button but vaguely related Button Box|tut-gtk2-btt-bttbox>))
+  * ((<Font Button|tut-gtk2-fichoo-fontbtt>))
 
 == Short Description
 
