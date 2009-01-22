@@ -1,5 +1,5 @@
 = Selector/Chooser Interface And Widgets
-{{link "tut-gtk2-fichoo-fontbtt", "tut-gtk2-selchoose", "tut-gtk", "tut-gtk2-numtxt-entry"}}
+{{link "tut-gtk2-fichoo-fontbtt", "tut-gtk2-selchoose", "tut-gtk", "tut-gtk2-numtxt"}}
 
 == Not a button but vaguely related Button Box
 
