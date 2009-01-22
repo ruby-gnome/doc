@@ -43,7 +43,7 @@ Though for a simple dialog like the one in the following example, you can build 
    hbox.pack_start_defaults(label);
 
    # Add the message in a label, and show everything we've added to the dialog.
-   # dialog.vbox.pack_start_defaults(hbox) # Also works however dialog.vbox
+   # dialog.vbox.pack_start_defaults(hbox) # Also works, however dialog.vbox
                                            # limits a single item (element).
    dialog.vbox.add(hbox)
    dialog.show_all
