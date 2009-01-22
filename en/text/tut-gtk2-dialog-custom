@@ -65,6 +65,20 @@ Though for a simple dialog like the one in the following example, you can build 
  window.show_all
  Gtk.main
 
+=== Creating the Dialog
+
+The first thing you need to do when the dialogue triggering button is pressed in the main window is create the Gtk::Dialog widget. The first two parameters specify the title of the dialogue window and the reference to the parent window. 
+
+   Gtk::Dialog.new(title,
+                   parent,
+                   flags,
+                   [ buton_face, response_id ],
+                   ...
+   )
+The dialogue will be set as the transient window of the parent window, which allows the window manager to centre the dialogue over the main window and keep it on top if required. You can set this parameter to nil if you do not want the parent window to be known or recognized by the dialogue. Next, you can specify one or more dialogue flags which are defined in Gtk::Dialog#Flags.
+
+
+
 In the above program we have used a few items we have not discussed yet. They are related to Gtk::Image. While you should be familiar with the Gtk::Stock items, Gtk::IconSize is new. Short of explaining details let us have a look at the constants defined for this item:
 
 :GtkIconSize
