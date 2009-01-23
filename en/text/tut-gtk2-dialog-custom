@@ -1,5 +1,5 @@
 = Dialogue Widgets
-{{link "tut-gtk2-dialog", "tut-gtk2-dialog", "tut-gtk", "tut-gtk2-dialog-msg"}}
+{{link "tut-gtk2-dialog", "tut-gtk2-dialog", "tut-gtk", "tut-gtk2-dialog-builtins"}}
 
 
 == Creating Your Own Dialogs
