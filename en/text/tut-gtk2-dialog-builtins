@@ -90,7 +90,7 @@ Compare the listing with the listings in previous session:
   * BUTTONS_YES_NO : - Yes and No buttons.
 
 
-:Warning:
+:((*Warning:*))
       As of this time (Ruby 1.8.6 and Ruby-GNOME2 rel.: 2-0.17.0-rc1) I was not able to add additional buttons to the Gtk::Dialog#action_area.
 
       {{br}}
