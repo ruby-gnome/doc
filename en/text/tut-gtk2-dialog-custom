@@ -125,7 +125,7 @@ When a dialogue is fully constructed, one method of showing the dialogue is by c
     * RESPONSE_HELP (-11) - A Gtk::Stock::HELP button was clicked in a built-in dialogue.
 
 
-=== The GtkImage Widget
+=== The Gtk::Image Widget
 
 In our example program we use another new widget, namely the Gtk::Image, we did not discussed yet. Images can be loaded in a variety of ways, but one advantage of Gtk::Image is that it will display Gtk::Stock::MISSING_IMAGE icon if the loading has failed. It is also derived from Gtk::Widget, so unlike other images such as Gdk::Pixbuf, 
 it can be added as a child of a container. In our example we created the Gtk::Image from Gtk::Stock item:
