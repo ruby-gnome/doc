@@ -40,7 +40,7 @@ Let's look at the program:
    label = Gtk::Label.new("The button was clicked!")
    image = Gtk::Image.new(Gtk::Stock::DIALOG_INFO, Gtk::IconSize::DIALOG)
 
-   hbox = Gtk::HBox.new(FALSE, 5)
+   hbox = Gtk::HBox.new(false, 5)
    hbox.border_width = 10
    hbox.pack_start_defaults(image);
    hbox.pack_start_defaults(label);
@@ -145,7 +145,7 @@ Following is our modified button_clicked function (actually it is a method too, 
    label = Gtk::Label.new("The button was clicked!")
    image = Gtk::Image.new(Gtk::Stock::DIALOG_INFO, Gtk::IconSize::DIALOG)
 
-   hbox = Gtk::HBox.new(FALSE, 5)
+   hbox = Gtk::HBox.new(false, 5)
    hbox.border_width = 10
    hbox.pack_start_defaults(image);
    hbox.pack_start_defaults(label);
