@@ -214,7 +214,7 @@ In our example we had only a single button to care about but to process multiple
    dialog.destroy
  end
 
-{{image_right("dialog-custom.png")}}
+{{image_right("dialog-custom-02.png")}}
 {{br}}
 
  #!/usr/bin/env ruby
