@@ -1,6 +1,16 @@
 = Dialogue Widgets
 {{link "tut-gtk2-dialog-custom", "tut-gtk2-dialog", "tut-gtk", "tut-gtk2-dialog-about"}}
 
+  * ((<Creating Your Own Dialogs|tut-gtk2-dialog-custom>))
+    * ((<Modal Or Nonmodal Message Dialogs|tut-gtk2-dialog-custom#Modal or Nonmodal Message Dialogs>))
+    * ((** The Gtk::Image Widget|tut-gtk2-dialog-custom#The Gtk::Image Widget))
+  * ((<Built-in Dialogues|tut-gtk2-dialog-builtins>))
+  * ((<Provide Info About Your Application|tut-gtk2-dialog-about>))
+  * ((<Types Of File Chooser Dialogues|tut-gtk2-dialog-fichoo>))
+  * ((<Collecting Information With Font And Colour Selection Dialogues|tut-gtk2-dialog-fontcolor>))
+  * ((<Dialogues With Multiple Pages Using Gtk_Assistant|tut-gtk2-dialog-assistant>))
+
+
 == Built-in Dialogues
 
 There are many types of dialogues already built into GTK+. Although we will bot cover all of them, you will get a solid grasp of how the concepts required to use any built-in dialogues. In the following articles we will cover:
@@ -26,7 +36,6 @@ Message dialogues are used to provide one of the five types of informational mes
     * message: message.
     * Returns: a new Gtk::MessageDialog
 
-
 :Message Types:
 
   The type of message being displayed in the dialogue.
@@ -37,7 +46,20 @@ Message dialogues are used to provide one of the five types of informational mes
   * WARNING : - Nonfatal warning message.
   * OTHER : - Generic type of message, that makes no assumption about the content of the message.
 
-The type of dialogue is used to to decide which icon to display, ideally what dialogue title to display and which buttons to add. The last option (OTHER), makes no assumptions about the meaning of the message and displays no icon. In most cases you will not want to use this option, since the other four provided types most likely satisfy all your needs. It is very easy to to build the widget with Gtk::MessageDialog functionality on your own from Gtk::Dialog. We did precisely that in our previous session, however Gtk::MessageDialog saves some typing. Since many applications quite often need to use simple dialogues Gtk::MessageDialog simplifies programming for such eventualities, and also provides a uniform look for all the messages across all GTK+. 
+:Button Types:
+
+  Prebuilt sets of buttons for the dialogue. If none of these choices are appropriate, simply use Gtk::MessageDialog::BUTTONS_NONE then call Gtk::Dialog#add_buttons method.
+
+  * BUTTONS_CANCEL : - the Cancel button.
+  * BUTTONS_CLOSE : - the Close button.
+  * BUTTONS_NONE : - no buttons at all.
+  * BUTTONS_OK : - the OK button.
+  * BUTTONS_OK_CANCEL : - add two buttons OK and Cancel.
+  * BUTTONS_YES_NO : - Yes and No buttons.
+
+
+
+The above message type of dialogue (ERROR, INFO, QUESTION, WARNING, OTHER) is used to to decide which icon to display, ideally what dialogue title to display and which buttons to add. The last option (OTHER), makes no assumptions about the meaning of the message and displays no icon. In most cases you will not want to use this option, since the other four provided types most likely satisfy all your needs. It is very easy to to build the widget with Gtk::MessageDialog functionality on your own from Gtk::Dialog. We did precisely that in our previous session, however Gtk::MessageDialog saves some typing. Since many applications quite often need to use simple dialogues Gtk::MessageDialog simplifies programming for such eventualities, and also provides a uniform look for all the messages across all GTK+. 
 
 The easiest way to do a modal message dialogue is to use Gtk::Dialog#run, though you can also pass in the Gtk::Dialog::MODAL flag, Gtk::Dialog#run automatically makes the dialogue modal and waits for the user to respond to it. Gtk::Dialog#run  {|response| ...} returns when any dialogue button is clicked. Checking response in adjacent block is also efective, even when user kills the window by clicking the "X" button on the window frame. 
 
@@ -56,7 +78,7 @@ Let's have a look at our simplified message dialogue:
 
 
 {{image_right("dialog-custom.png")}}
-{{br}}
+{{br}
 
  #!/usr/bin/env ruby
  require 'gtk2'
@@ -91,18 +113,6 @@ Let's have a look at our simplified message dialogue:
  Gtk.main
 
 Compare the listing with the listings in previous session:
-
-:Button Types:
-
-  Prebuilt sets of buttons for the dialogue. If none of these choices are appropriate, simply use Gtk::MessageDialog::BUTTONS_NONE then call Gtk::Dialog#add_buttons method.
-
-  * BUTTONS_CANCEL : - the Cancel button.
-  * BUTTONS_CLOSE : - the Close button.
-  * BUTTONS_NONE : - no buttons at all.
-  * BUTTONS_OK : - the OK button.
-  * BUTTONS_OK_CANCEL : - OK and Cancel buttons.
-  * BUTTONS_YES_NO : - Yes and No buttons.
-
 
 :Warning:
   As of this time (Ruby 1.8.6 and Ruby-GNOME2 rel.: 2-0.17.0-rc1) I was not able to add additional buttons to the Gtk::Dialog#action_area. The solution to this problem, indeed, is to be found in the previous session, where we have learnt to design our own custom dialogue messages!
