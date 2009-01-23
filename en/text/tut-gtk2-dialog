@@ -10,7 +10,7 @@ You can do anything with a dialog,  such as display a message or prompt the user
 :In this chapter you will learn the following:
 
   * ((<Creating Your Own Dialogs|tut-gtk2-dialog-custom>))
-    * ((<** The Gtk_Image Widget|tut-gtk2-dialog-custom#The GtkImage Widget>))
+    * ((<** The GtkImage Widget|tut-gtk2-dialog-custom#The GtkImage Widget>))
   * ((<A More Convenient Gtk_MessageDialog|tut-gtk2-dialog-msg>))
   * ((<Provide Info About Your Ppplication|tut-gtk2-dialog-about>))
   * ((<Types Of File Chooser Dialogues|tut-gtk2-dialog-fichoo>))
