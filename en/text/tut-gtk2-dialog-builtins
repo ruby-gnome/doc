@@ -94,7 +94,7 @@ Compare the listing with the listings in previous session:
 
 
 :Warning:
-  As of this time (Ruby 1.8.6 and Ruby-GNOME2 rel.: 2-0.17.0-rc1) I was not able to add additional buttons to the Gtk::Dialog#action_area. The solution to this problem indeed is to be found in the previous session, where we have learnt to design our own custom dialogue messages!
+  As of this time (Ruby 1.8.6 and Ruby-GNOME2 rel.: 2-0.17.0-rc1) I was not able to add additional buttons to the Gtk::Dialog#action_area. The solution to this problem, indeed, is to be found in the previous session, where we have learnt to design our own custom dialogue messages!
 
   {{br}}
   None of the following works:
