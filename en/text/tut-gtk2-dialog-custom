@@ -22,12 +22,12 @@ Though for a simple dialogue like the one in the following example, you can buil
 {{image_right("dialog-custom.png")}}
 
 Let's look at the program:
-{{br}}
+
 
  #!/usr/bin/env ruby
  require 'gtk2'
 
- # Create a new message dialog telling the user that button was clicked.
+ # Create a new message dialogue telling the user that button was clicked.
  def button_clicked (parent)
    dialog = Gtk::Dialog.new(
        "Information",
@@ -81,7 +81,7 @@ The first thing you need to do when the dialogue triggering button is pressed in
 The dialogue will be set as the transient window of the parent window, which allows the window manager to centre the dialogue over the main window and keep it on top if required. You can set this parameter to nil if you do not want the parent window to be known or recognized by the dialogue. Next, you can specify one or more dialogue flags which are defined at Gtk::Dialog#Flags. There are three available values:
 
   * MODAL: Force the dialogue to remain in focus on top of the parent window until closed. The user will be prevented from interacting with the parent. See also Gtk::Window#set_modal(true).
-  * DESTROY_WITH_PARENT: Destroy the dialogue when the the parent parent is destroyed, but do not force the dialogue to be in focus. This will create a non-modal dialog unless you call Gtk::Dialog#run, See also: Gtk::Window#set_destroy_with_parent.
+  * DESTROY_WITH_PARENT: Destroy the dialogue when the the parent parent is destroyed, but do not force the dialogue to be in focus. This will create a non-modal dialogue unless you call Gtk::Dialog#run, See also: Gtk::Window#set_destroy_with_parent.
   * NO_SEPARATOR: If set, no separator bar will be placed between the buttons in the action area and the dialogue contents.
 
 === Response Identifiers
@@ -125,6 +125,40 @@ When a dialogue is fully constructed, one method of showing the dialogue is by c
     * RESPONSE_HELP (-11) - A Gtk::Stock::HELP button was clicked in a built-in dialogue.
 
 
+=== Modal or Nonmodal Message Dialogs
+
+We have seen that when we create a new dialogue, the argument flags can be set to either ((*MODAL*)) or 
+((*DESTROY_WITH_PARENT*)). However, this argument alone is not the deciding factor whether a dialogue widget will be ((*modal*)) or ((*nonmodal*)). We have learnt that regardless of what you set the argument flags to, the dialogue will always be modal when you call Gtk::Dialog#run method, because it internally calls Gtk::Window#set_modal. So in order to create a nonmodal dialogue, we should do three things: first, we should  remove the call to the Gtk::Dialog#run method from our button_clicked function, and second we need to connect to Gtk::Dialog's ((*response*)) signal, and lastly we should change the flags field to DESTROY_WITH_PARENT:
+
+Following is our modified button_clicked function (actually it is a method too, only the object to which it belongs is the ultimate top-level Ruby object called Object and it only looks like a global function).
+
+ # Create a new message dialogue telling the user that button was clicked.
+ def button_clicked (parent)
+   dialog = Gtk::Dialog.new(
+       "Information",
+       parent,
+       Gtk::Dialog::DESTROY_WITH_PARENT,
+       [ Gtk::Stock::OK, Gtk::Dialog::RESPONSE_OK ]
+   )
+   dialog.has_separator = false
+   label = Gtk::Label.new("The button was clicked!")
+   image = Gtk::Image.new(Gtk::Stock::DIALOG_INFO, Gtk::IconSize::DIALOG)
+
+   hbox = Gtk::HBox.new(FALSE, 5)
+   hbox.border_width = 10
+   hbox.pack_start_defaults(image);
+   hbox.pack_start_defaults(label);
+
+   dialog.vbox.add(hbox)
+   dialog.show_all
+
+   dialog.signal_connect('response') { Gtk.widget_destroy }
+ end
+
+You should change our original example program to include this modified button_clicked method and run it. Then try clicking the the button in the main window multiple times. This will not only show you how to create multiple instances of the same dialogue but only demonstrate, that you still have access to the main window from a nonmodal dialogue.
+
+
+
 === The Gtk::Image Widget
 
 In our example program we use another new widget, namely the Gtk::Image, we did not discussed yet. Images can be loaded in a variety of ways, but one advantage of Gtk::Image is that it will display Gtk::Stock::MISSING_IMAGE icon if the loading has failed. It is also derived from Gtk::Widget, so unlike other images such as Gdk::Pixbuf, 
@@ -137,6 +171,7 @@ When loading the image we also needed the size parameter. GTK+ willautomatically
 --- GtkIconSize
     Sizes for stock Gtk::Image objects
 
+    {{br}}
     * Gtk::IconSize::INVALID: - Unspecified size
     * Gtk::IconSize::MENU: - 16x16 pixels
     * Gtk::IconSize::SMALL_TOOLBAR: - 18x18 
