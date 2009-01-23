@@ -22,7 +22,7 @@ Though for a simple dialogue like the one in the following example, you can buil
 {{image_right("dialog-msg-01.png")}}
 
 Let's look at the program:
-
+{{br}}
 
  #!/usr/bin/env ruby
  require 'gtk2'
