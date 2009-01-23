@@ -1,6 +1,16 @@
 = Dialogue Widgets
 {{link "tut-gtk2-dialog-custom", "tut-gtk2-dialog", "tut-gtk", "tut-gtk2-dialog-about"}}
 
+  * ((<Creating Your Own Dialogs|tut-gtk2-dialog-custom>))
+    * ((<Modal Or Nonmodal Message Dialogs|tut-gtk2-dialog-custom#Modal or Nonmodal Message Dialogs>))
+    * ((** The Gtk::Image Widget|tut-gtk2-dialog-custom#The Gtk::Image Widget))
+  * ((<Built-in Dialogues|tut-gtk2-dialog-builtins>))
+  * ((<Provide Info About Your Application|tut-gtk2-dialog-about>))
+  * ((<Types Of File Chooser Dialogues|tut-gtk2-dialog-fichoo>))
+  * ((<Collecting Information With Font And Colour Selection Dialogues|tut-gtk2-dialog-fontcolor>))
+  * ((<Dialogues With Multiple Pages Using Gtk_Assistant|tut-gtk2-dialog-assistant>))
+
+
 == Built-in Dialogues
 
 There are many types of dialogues already built into GTK+. Although we will bot cover all of them, you will get a solid grasp of how the concepts required to use any built-in dialogues. In the following articles we will cover:
@@ -122,3 +132,52 @@ Compare the listing with the listings in previous session:
    # dialog.action_area.pack_start_defaults(button_d)
    ###   or
    # dialog.action_area.add(button_d)
+
+For completeness let's look at a slightly modified version of the above program, so you can appreciate the variety of possibilities and different types of Gtk::MessageDialog widgets:
+
+{{image_right("dialog-builtins-01.png")}}
+{{br}}
+
+ #!/usr/bin/env ruby
+ require 'gtk2'
+
+ # Create a new message dialog telling the user
+ # that button was clicked.
+ def button_clicked (parent)
+   dialog = Gtk::MessageDialog.new(
+       parent,
+       Gtk::Dialog::MODAL,
+       Gtk::MessageDialog::QUESTION,
+       Gtk::MessageDialog::BUTTONS_OK_CANCEL,
+       "The button was clicked!"
+   )
+   dialog.secondary_text = "makes the original text bold"
+
+   button_d = Gtk::Button.new("_Click Me")
+   button_d.signal_connect('clicked') { puts "Heeeeeee,success" }
+  
+   # You should be able to manually add buttons to the Gtk::Dialog#action_area
+   # by calling Gtk::HButtonBox#add_child and Gtk::ButtonBox#Style,
+   # however this does not work in current release
+ 
+   # The following has no effect. 
+   dialog.action_area.pack_start_defaults(button_d)
+  
+   dialog.title = "Information"
+   dialog.run {|r| puts "response=%d" % [r]}
+   dialog.destroy
+ end
+
+ window = Gtk::Window.new
+ window.border_width = 10
+ window.set_size_request(200, -1)
+ window.title = "Dialogs"
+ window.signal_connect('delete_event') { false }
+ window.signal_connect('destroy') { Gtk.main_quit }
+
+ button = Gtk::Button.new("_Click Me")
+ button.signal_connect('clicked') { button_clicked(window) }
+
+ window.add(button)
+ window.show_all
+ Gtk.main
