@@ -111,7 +111,7 @@ Compare the listing with the listings in previous session:
   None of the following works:
 
    button_d = Gtk::Button.new("_Click Me")
-   button_d.signal_connect('clicked') { puts "Hiiiiiiii, success" }
+   button_d.signal_connect('clicked') { puts "Heeeeeeeeee, success" }
    dialog.action_area.add_child(button_d)
 
    ### You should be able to manually add buttons to the action_area
