@@ -200,20 +200,6 @@ There  exist a many different Gtk::Image constructors. Especially important for 
 
 So far you have created only a simple message dialogues spawned when a user clicked a dialogue triggering widget from scratch. It is time to create a more elaborate dialogue. But this time it will be without the parent window. There are also a few new minor tricks you will get acquainted with about how to obtain system information by utilizing ((*Glib*)) utilities. Of course this information is not changed, but is merely printed on the screen if user clicks the OK button. This example illustrates the fact, that regardless of the complexity of the dialogue, the basic principles of how responses are handled remain the same. Note that the dialogue is implemented as modal, but could as well be nonmodal, however this would not be of any use since the dialogue itself is the application's top-level window.
 
-In our example we had only a single button to care about but to process multiple responses would be no different:
-
- dialog.run do |response|
-   case response
-     when Gtk::Dialog::RESPONSE_REJECT
-       do_something()
-     when Gtk::Dialog::RESPONSE_ACCEPT
-       do_something_else()
-     else
-       do_nothing_since_dialog_was_cancelled()
-   end
-   dialog.destroy
- end
-
 {{image_right("dialog-custom-02.png")}}
 {{br}}
 
@@ -271,3 +257,17 @@ In our example we had only a single button to care about but to process multiple
    end
  end
  dialog.destroy
+
+In our example we had only a single button to care about but to process multiple responses would be no different:
+
+ dialog.run do |response|
+   case response
+     when Gtk::Dialog::RESPONSE_REJECT
+       do_something()
+     when Gtk::Dialog::RESPONSE_ACCEPT
+       do_something_else()
+     else
+       do_nothing_since_dialog_was_cancelled()
+   end
+   dialog.destroy
+ end
