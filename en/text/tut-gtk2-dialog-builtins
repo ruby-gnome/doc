@@ -18,7 +18,7 @@ Message dialogues are used to provide one of the five types of informational mes
 
 :Message Types:
 
-  The type of message being displayed in the dialog.
+  The type of message being displayed in the dialogue.
 
   * ERROR : - Fatal error message.
   * INFO : - Informational message.
@@ -39,10 +39,13 @@ The easiest way to do a modal message dialogue is to use Gtk::Dialog#run, though
  dialog.run  {|r| puts "response=%d" % [r]}
  dialog.destroy
 
+As you can see the image for this dialogue is the same as before, however had we provided a different message type than INFO, say ERROR, QUESTION or WARNING, the icon would be different.
+
 Let's have a look at our simplified message dialogue:
 
 
-{{image_right("dialog-msg-01.png")}}
+{{image_right("dialog-custom.png")}}
+{{br}
 
  #!/usr/bin/env ruby
  require 'gtk2'
@@ -90,21 +93,21 @@ Compare the listing with the listings in previous session:
   * BUTTONS_YES_NO : - Yes and No buttons.
 
 
-:((*Warning:*))
-      As of this time (Ruby 1.8.6 and Ruby-GNOME2 rel.: 2-0.17.0-rc1) I was not able to add additional buttons to the Gtk::Dialog#action_area.
+:Warning:
+  As of this time (Ruby 1.8.6 and Ruby-GNOME2 rel.: 2-0.17.0-rc1) I was not able to add additional buttons to the Gtk::Dialog#action_area. The solution to this problem indeed is to be found in the previous session, where we have learnt to design our own custom dialogue messages!
 
-      {{br}}
-      ((*None of the following works:*))
+  {{br}}
+  None of the following works:
 
-       button_d = Gtk::Button.new("_Click Me")
-       button_d.signal_connect('clicked') { puts "Hiiiiiiii, success" }
-       dialog.action_area.add_child(button_d)
+   button_d = Gtk::Button.new("_Click Me")
+   button_d.signal_connect('clicked') { puts "Hiiiiiiii, success" }
+   dialog.action_area.add_child(button_d)
 
-       ### You should be able to manually add buttons to the action_area
-       ### by calling Gtk::HButtonBox#add_child and Gtk::ButtonBox#Style.
-       ### In fact Gtk::HButtonBox#add_child does not seem to be implemented,
-       ### and the following two both quietly do nothing:
+   ### You should be able to manually add buttons to the action_area
+   ### by calling Gtk::HButtonBox#add_child and Gtk::ButtonBox#Style.
+   ### In fact Gtk::HButtonBox#add_child does not seem to be implemented,
+   ### and the following two both quietly do nothing:
 
-       # dialog.action_area.pack_start_defaults(button_d)
-       ###   or
-       # dialog.action_area.add(button_d)
+   # dialog.action_area.pack_start_defaults(button_d)
+   ###   or
+   # dialog.action_area.add(button_d)
