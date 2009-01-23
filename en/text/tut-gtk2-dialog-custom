@@ -16,11 +16,13 @@ You add buttons to Gtk::Dialog using Gtk::Dialog.new, Gtk::Dialog#add_button, Gt
 
 If you want to block waiting for a dialog to return before returning control flow to your code, you can call Gtk::Dialog#run. This function enters a recursive main loop and waits for the user to respond to the dialog, returning the response ID corresponding to the button the user clicked.
 
-Though for a simple dialog like the one in the following example, you can build your own dialogue in reality you'd probably use Gtk::MessageDialog to save yourself some work. But you'd need to create the dialog contents manually if you had more than a simple message in the dialog. 
+Though for a simple dialogue like the one in the following example, you can build your own dialogue in reality you'd probably use Gtk::MessageDialog to save yourself some work. But you'd need to create the dialog contents manually if you had more than a simple message in the dialog. 
 
 
 {{image_right("dialog-msg-01.png")}}
-{{br}}
+
+Let's look at the program:
+
 
  #!/usr/bin/env ruby
  require 'gtk2'
@@ -65,6 +67,7 @@ Though for a simple dialog like the one in the following example, you can build 
  window.show_all
  Gtk.main
 
+
 === Creating the Dialog
 
 The first thing you need to do when the dialogue triggering button is pressed in the main window is create the Gtk::Dialog widget. The first two parameters specify the title of the dialogue window and the reference to the parent window. 
@@ -105,16 +108,53 @@ When a dialogue is fully constructed, one method of showing the dialogue is by c
        * response: response ID.
     * Returns : response ID
 
+--- ResponseType
+    The following ((*response types*)) are returned from Ruby/GTK dialogs, and you can also use them yourself if you like. Ruby/GTK will never assign a meaning to positive response IDs; these are entirely user-defined. But for convenience, you can use the response IDs in the Gtk::Dialog#ResponseType enumeration (these all have values less than zero). If a dialog receives a delete event, the "response" signal will be emitted with a response ID of Gtk::Dialog::RESPONSE_NONE.
+
+    {{br}}
+    * RESPONSE_NONE (-1): - The dialogue was destroyed by window manager or programatically with Gtk::Widget#destroy. This is also returned if the ((*response_id*)) is not set.
+    * RESPONSE_REJECT (-2): - This identifier is not associated with buttons in built-in dialogues, but you are free to use it yourself.
+    * RESPONSE_ACCEPT (-3): - This identifier is not associated with buttons in built-in dialogues, but you are free to use it yourself.
+    * RESPONSE_DELETE_EVENT (-4): - Each dialogue is automatically connected to the delete_event signal. While Gtk::Dialog#run is running, this identifier will be returned,but the delete_event will be prevented from destroying the window as normally. 
+    * RESPONSE_OK (-5): - A Gtk::Stock::OK button was clicked in a built-in dialogue. You are free to use this button or any of the following in your own dialogues.
+    * RESPONSE_CANCEL (-6): - A Gtk::Stock::CANCEL button was clicked in a built-in dialogue.
+    * RESPONSE_CLOSE (-7): - A Gtk::Stock::CLOSE button was clicked in a built-in dialogue.
+    * RESPONSE_YES (-8): - A Gtk::Stock::YES button was clicked in a built-in dialogue.
+    * RESPONSE_NO (-9): - A Gtk::Stock::NO button was clicked in a built-in dialogue.
+    * RESPONSE_APPLY (-10) - A Gtk::Stock::APPLY button was clicked in a built-in dialogue.
+    * RESPONSE_HELP (-11) - A Gtk::Stock::HELP button was clicked in a built-in dialogue.
 
 
+=== The GtkImage Widget
 
-In the above program we have used a few items we have not discussed yet. They are related to Gtk::Image. While you should be familiar with the Gtk::Stock items, Gtk::IconSize is new. Short of explaining details let us have a look at the constants defined for this item:
+In our example program we use another new widget, namely the Gtk::Image, we did not discussed yet. Images can be loaded in a variety of ways, but one advantage of Gtk::Image is that it will display Gtk::Stock::MISSING_IMAGE icon if the loading has failed. It is also derived from Gtk::Widget, so unlike other images such as Gdk::Pixbuf, 
+it can be added as a child of a container. In our example we created the Gtk::Image from Gtk::Stock item:
 
-:GtkIconSize
-  * Gtk::IconSize::INVALID
-  * Gtk::IconSize::MENU
-  * Gtk::IconSize::SMALL_TOOLBAR
-  * Gtk::IconSize::LARGE_TOOLBAR
-  * Gtk::IconSize::BUTTON
-  * Gtk::IconSize::DND
-  * Gtk::IconSize::DIALOG
+ image = Gtk::Image.new(Gtk::Stock::DIALOG_INFO, Gtk::IconSize::DIALOG)
+
+When loading the image we also needed the size parameter. GTK+ willautomatically look for a stock icon for the given size and resize the image if one with the specified size is not found. Available size arguments are specified by the Gtk::IconSize:
+
+--- GtkIconSize
+    Sizes for stock Gtk::Image objects
+
+    * Gtk::IconSize::INVALID: - Unspecified size
+    * Gtk::IconSize::MENU: - 16x16 pixels
+    * Gtk::IconSize::SMALL_TOOLBAR: - 18x18 
+    * Gtk::IconSize::LARGE_TOOLBAR: - 24x24 pixels
+    * Gtk::IconSize::BUTTON: - 24x24 pixels
+    * Gtk::IconSize::DND: - 32x32 pixels
+    * Gtk::IconSize::DIALOG: - 48x48 pixels
+
+As you can see, stock Gtk::Image objects are usually used for smaller images, such as those that appear in buttons, menus, and dialogues, since stock images are provided in a discrete number of standard sizes. 
+
+There  exist a many different Gtk::Image constructors. Especially important for us is the Gtk::Image.new(value), which can take four differen types of arguments" nil, file-name, pixbuff and pixbuf animation. In our later examples we will often deal with images initialized from files an from pixbuf's. Initializing an image from a pixbuf creates a new Gtk::Image widget out of a previously initialized GdkPixbuf. Unlike the initialization from a file, you can use this method to easily figure out whether the image is successfully loaded, since you first have to create a Gdk::Pixbuf.
+
+
+--- Gtk::Image.new(value = nil)
+
+    Creates a new Gtk::Image.
+    * value
+       * nil - Creates a new empty Gtk::Image.
+       * filename(String) - Creates a new Gtk::Image displaying the file filename. If the file isn't found or can't be loaded, the resulting Gtk::Image will display a "broken image" icon. This function never returns nil, it always returns a valid Gtk::Image widget. If the file contains an animation, the image will contain an animation. If you need to detect failures to load the file, use Gdk::Pixbuf.new(filename) to load the file yourself, then create the Gtk::Image from the pixbuf. (Or for animations, use Gdk::PixbufAnimation.new(filenam. The storage type (Gtk::Image#storage_type) of the returned image is not defined, it will be whatever is appropriate for displaying the file.
+       * Gdk::Pixbuf - Creates a new Gtk::Image from Gdk::Pixbuf. This function just creates an Gtk::Image. The Gtk::Image created will not react to state changes. Should you want that, you should use Gtk::IconSet.
+       * Gdk::PixbufAnimation - Creates a Gtk::Image displaying the given animation. The Gtk::Image does not assume a reference to the animation; you still need to unref it if you own references. Gtk::Image will add its own reference rather than adopting yours.
