@@ -14,7 +14,18 @@ There are many types of dialogues already built into GTK+. Although we will bot 
 
 === Message Dialogue
 
-Message dialogues are used to provide one of the five types of informational messages:
+Message dialogues are used to provide one of the five types of informational messages. You create a message dialogue with Gtk::MessageDialog.new. 
+
+--- Gtk::MessageDialog.new(parent, flags, message_type, button_type, message = nil)
+
+    Creates a new message dialogue, which is a simple dialogue with an icon indicating the dialogue type and some text the user may want to see. When the user clicks a button a "response" signal is emitted with response IDs from Gtk::Dialog#ResponseType, which we have also seen in the previous session.
+    * parent: parent Gtk::Window, or nil for none.
+    * flags: Gtk::Dialog#Flags.
+    * message_type: Gtk::MessageDialog#Type. 
+    * button_type: Gtk::MessageDialog#ButtonsType.
+    * message: message.
+    * Returns: a new Gtk::MessageDialog
+
 
 :Message Types:
 
