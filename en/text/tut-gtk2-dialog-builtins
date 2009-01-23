@@ -68,7 +68,7 @@ Let's have a look at our simplified message dialogue:
 
 
 {{image_right("dialog-custom.png")}}
-{{br}
+{{br}}
 
  #!/usr/bin/env ruby
  require 'gtk2'
