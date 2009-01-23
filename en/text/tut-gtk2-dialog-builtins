@@ -1,16 +1,6 @@
 = Dialogue Widgets
 {{link "tut-gtk2-dialog-custom", "tut-gtk2-dialog", "tut-gtk", "tut-gtk2-dialog-about"}}
 
-  * ((<Creating Your Own Dialogs|tut-gtk2-dialog-custom>))
-    * ((<Modal Or Nonmodal Message Dialogs|tut-gtk2-dialog-custom#Modal or Nonmodal Message Dialogs>))
-    * ((** The Gtk::Image Widget|tut-gtk2-dialog-custom#The Gtk::Image Widget))
-  * ((<Built-in Dialogues|tut-gtk2-dialog-builtins>))
-  * ((<Provide Info About Your Application|tut-gtk2-dialog-about>))
-  * ((<Types Of File Chooser Dialogues|tut-gtk2-dialog-fichoo>))
-  * ((<Collecting Information With Font And Colour Selection Dialogues|tut-gtk2-dialog-fontcolor>))
-  * ((<Dialogues With Multiple Pages Using Gtk_Assistant|tut-gtk2-dialog-assistant>))
-
-
 == Built-in Dialogues
 
 There are many types of dialogues already built into GTK+. Although we will bot cover all of them, you will get a solid grasp of how the concepts required to use any built-in dialogues. In the following articles we will cover:
@@ -154,7 +144,7 @@ For completeness let's look at a slightly modified version of the above program,
    dialog.secondary_text = "makes the original text bold"
 
    button_d = Gtk::Button.new("_Click Me")
-   button_d.signal_connect('clicked') { puts "Heeeeeee,success" }
+   button_d.signal_connect('clicked') { puts "Heeeeeee, success" }
   
    # You should be able to manually add buttons to the Gtk::Dialog#action_area
    # by calling Gtk::HButtonBox#add_child and Gtk::ButtonBox#Style,
