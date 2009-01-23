@@ -19,7 +19,7 @@ If you want to block waiting for a dialog to return before returning control flo
 Though for a simple dialogue like the one in the following example, you can build your own dialogue in reality you'd probably use Gtk::MessageDialog to save yourself some work. But you'd need to create the dialog contents manually if you had more than a simple message in the dialog. 
 
 
-{{image_right("dialog-msg-01.png")}}
+{{image_right("dialog-custom.png")}}
 
 Let's look at the program:
 {{br}}
