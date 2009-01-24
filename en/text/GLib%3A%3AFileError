@@ -12,7 +12,7 @@
 
 --- code
 
-    Returns the error code (GLib :: FileError).
+    Returns the numeric file error code.
     * Returns: self
 
 --- domain
