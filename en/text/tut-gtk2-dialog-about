@@ -107,7 +107,7 @@ Gdk::Pixbuf is a class that contains information about an image stored in memory
 
      rescue Gdk::PixbufError => err
        if err.code == Gdk::PixbufError::CORRUPT_IMAGE
-         print "Your image in file: %s is corupted, please replace it\n" %[file]
+         print "Your image in file: %s is corupted, please replace it\n" % [file]
        end
       ...
 
