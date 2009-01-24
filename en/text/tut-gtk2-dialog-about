@@ -86,11 +86,11 @@ Gdk::Pixbuf is a class that contains information about an image stored in memory
      begin
        Gdk::Pixbuf.new("/tmp/francozi.jpg")
      rescue GLib::FileError => err
-       print "I/O ERROR (%s): %s\n" % [err.class, err]
+       print "I/O ERROR (%s): %s\n\nDomain:%s\n" % [err.class, err, err.domain]
      rescue Gdk::PixbufError => err
-       print "IMAGE ERROR (%s): %s\n" % [err.class, err]
+         print "IMAGE ERROR (%s): %s\nDomain:%s\n" % [err.class, err, err.domain]
      rescue => err # This may not be a good idea
-       print "ALL other errors: ERROR (%s): %s\n" % [err.class, err]
+       print "Undefined ERROR (%s): %s\n" % [err.class, err]
        raise   # re-raise the unexpected error
      else
        puts "All went well."
