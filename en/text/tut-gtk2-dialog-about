@@ -1,0 +1,109 @@
+= Dialogue Widgets
+{{link "tut-gtk2-dialog-builtins", "tut-gtk2-dialog", "tut-gtk", "tut-gtk2-dialog-fichoo"}}
+
+== About Dialogues
+
+With the Gtk::AboutDialog widget is a easy to provide a user with the information about the application. There are many pieces of information that you can provide about the application. These include the application name, copyright, version, license, authors, document-writers, artists and translators. However, not all applications will have all of these items. The good thing is they are optional. If you do not define them they will simply not show up.
+
+
+{{image_right("dialog-about-01.png")}}
+{{br}}
+
+ #!/usr/bin/env ruby
+ require 'gtk2'
+
+ authors = ["Author #1", "Author #2"]
+ documenters = ["Documenter #1", "Documenter #2"]
+
+ dialog = Gtk::AboutDialog.new
+
+ # We are not really handling the error here. The purpose
+ # of this blockis only to show how it could be done
+ begin
+   logo_book = Gdk::Pixbuf.new("/tmp/logo.png")
+ rescue GLib::FileError => err
+   print "I/O ERROR (%s): %s\n" % [err.class, err]
+ rescue Gdk::PixbufError => err
+   print "IMAGE ERROR (%s): %s\n" % [err.class, err]
+ rescue => err
+   print "Unexpected ERROR (%s): %s\n" % [err.class, err]
+   raise # re-raise the unexpected error
+ else
+   dialog.logo = logo_book
+ end
+
+ # Set application data that will be displayed in the
+ # main dialog.
+ dialog.name = "GtkAboutDialog"
+ dialog.version = "1.0"
+ dialog.copyright = "(C) 2007 Andrew Krause"
+ dialog.comments = "All About GtkAboutDialog"
+
+ # Set the license text, which is usually loaded from
+ # a file. Also, set the web site address and label.
+ dialog.license = "Free to all!"
+ dialog.website = "http://www.gtkbook.com"
+ dialog.website_label = "www.gtkbook.com"
+
+ # Set the application authors, documenters and translators.
+ dialog.authors = authors
+ dialog.documenters = documenters
+ dialog.translator_credits = "Translator #1\nTranslator #2"
+ # NOTE: all these properties are optional
+ # dialog.artists = ["Artist #1", "Artist #2"]
+
+ # dialog.show_all
+ dialog.run
+ dialog.destroy
+
+=== Gdk::Pixbuf
+
+Gdk::Pixbuf is a class that contains information about an image stored in memory. It allows you to build images manually by placing shapes or pixels, or load a prebuilt images from a file. We will only be discussing the latter in our tutorial. To load an image from a file you use Gdk::Pixbuf.new. If you do not specify the size, this method will load the image of with an initial size set to the actual size of the image:
+
+--- Gdk::Pixbuf.new(filename, width = nil, height = nil)
+
+    Creates a new pixbuf by loading an image from a file. The file format is detected automatically. 
+    Possible exceptions are in the Gdk::PixBufError and GLib::FileError.
+    * filename: Name of file to load
+    * width: The width the image should have or nil for default width. ((*Since 2.4*))
+    * height: The height the image should have or nil for default height. ((*Since 2.4*))
+    * Returns: A newly-created pixbuf, or raise an exception if any of several error conditions occurred:
+      * the file could not be opened, 
+      * there was no loader for the file's format, 
+      * there was not enough memory to allocate the image buffer, or 
+      * the image file contained invalid data.
+
+    As you can see this method will raise an exception if things go wrong. There are two exception types that you should be concerned about. Here is a sample of what you can do:
+
+     begin
+       Gdk::Pixbuf.new("/tmp/francozi.jpg")
+     rescue GLib::FileError => err
+       print "I/O ERROR (%s): %s\n" % [err.class, err]
+     rescue Gdk::PixbufError => err
+       print "IMAGE ERROR (%s): %s\n" % [err.class, err]
+     rescue => err # This may not be a good idea
+       print "ALL other errors: ERROR (%s): %s\n" % [err.class, err]
+       raise   # re-raise the unexpected error
+     else
+       puts "All went well."
+     end
+
+
+
+
+:GdkInterpType
+
+  This enumeration describes the different interpolation modes that can be used with the scaling functions. Gdk::Pixbuf::INTERP_NEAREST is the fastest scaling method, but has horrible quality when scaling down. Gdk::Pixbuf::BILINEAR is the best choice if you are nott sure what to choose, it has a good speed/quality balance.
+
+  Note : Cubic filtering is missing from the list; hyperbolic interpolation is just as fast and results in higher quality.
+
+  * INTERP_NEAREST : - Nearest neighbor sampling; this is the fastest and lowest quality mode. Quality is normally unacceptable when scaling down, but may be OK when scaling up.
+  * INTERP_TILES : - This is an accurate simulation of the PostScript image operator without any interpolation enabled. Each pixel is rendered as a tiny parallelogram of solid color, the edges of which are implemented with antialiasing. It resembles nearest neighbor for enlargement, and bilinear for reduction.
+  * INTERP_BILINEAR : - Best quality/speed balance; use this mode by default. Bilinear interpolation. For enlargement, it is equivalent to point-sampling the ideal bilinear-interpolated image. For reduction, it is equivalent to laying down small tiles and integrating over the coverage area.
+  * INTERP_HYPER : - This is the slowest and highest quality reconstruction function. It is derived from the hyperbolic filters in Wolberg's "Digital Image Warping", and is formally defined as the hyperbolic-filter sampling the ideal hyperbolic-filter interpolated image (the filter is designed to be idempotent for 1:1 pixel mapping). 
+
+
+--- logo=(logo)
+    Sets a pixbuf displayed as logo in the about dialogue. If this is not set, it defaults to Gtk::Window.default_icon_list. Since 2.6
+    * logo: A Gdk::Pixbuf displayed as logo for the about dialogue.
+    * Returns: logo
