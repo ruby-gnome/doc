@@ -12,7 +12,7 @@
 
 --- code
 
-    Returns the numeric file error code.
+    Returns the numeric file error code corresponding to the ((<GLib::FileError#Constants>)).
     * Returns: self
 
 --- domain
@@ -21,7 +21,7 @@
     * Returns: self
 
 
-== Constants
+=== Constants
 
 --- ACCES
 --- AGAIN
