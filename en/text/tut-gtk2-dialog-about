@@ -88,12 +88,22 @@ Gdk::Pixbuf is a class that contains information about an image stored in memory
        puts "All went well."
      end
 
+You can resize the image during or after you load its file. You may wish to resize it after reloading, because the method allowing to do it provides image quality control (see: GdkInterpType)
+
+--- scale(dest_width, dest_height, interp_type = Gdk::Pixbuf::INTERP_BILINEAR)
+
+    Create a new Gdk::Pixbuf containing a copy of src(self) scaled to dest_width x dest_height. Leaves src(self) unaffected. interp_type should be Gdk::Pixbuf::INTERP_NEAREST if you want maximum speed (but when scaling down Gdk::Pixbuf::INTERP_NEAREST is usually unusably ugly). The default interp_type should be Gdk::Pixbuf::INTERP_BILINEAR which offers reasonable quality and speed. 
+    For more complicated scaling see Gdk::Pixbuf#scale! and Gdk::Pixbuf#composite!.
+    * dest_width: the width of destination image  
+    * dest_height: the height of destination image  
+    * interp_type: the interpolation type for the transformation. (((<GdkInterpType|Gdk::Pixbuf#GdkInterpType>)) 
+    * Returns : the new Gdk::Pixbuf, or nil if not enough memory could be allocated for it.
 
 
 
 :GdkInterpType
 
-  This enumeration describes the different interpolation modes that can be used with the scaling functions. Gdk::Pixbuf::INTERP_NEAREST is the fastest scaling method, but has horrible quality when scaling down. Gdk::Pixbuf::BILINEAR is the best choice if you are nott sure what to choose, it has a good speed/quality balance.
+  This enumeration describes the different interpolation modes that can be used with the scaling functions. Gdk::Pixbuf::INTERP_NEAREST is the fastest scaling method, but has horrible quality when scaling down. Gdk::Pixbuf::BILINEAR is the best choice if you are not sure what to choose, it has a good speed/quality balance.
 
   Note : Cubic filtering is missing from the list; hyperbolic interpolation is just as fast and results in higher quality.
 
