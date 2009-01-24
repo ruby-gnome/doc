@@ -81,7 +81,12 @@ Gdk::Pixbuf is a class that contains information about an image stored in memory
       * there was not enough memory to allocate the image buffer, or 
       * the image file contained invalid data.
 
-    As you can see this method will raise an exception if things go wrong. There are two exception types that you should be concerned about. Here is a sample of what you can do:
+    As you can see this method will raise an exception if things go wrong. There are two exception types that you should be concerned about:
+      * Gdk::PixbufError
+      * GLib::FileError
+
+    {{br}}
+    Here is a sample of what you can do or how to handle pixbuf related errors:
 
      begin
        Gdk::Pixbuf.new("/tmp/francozi.jpg")
