@@ -56,6 +56,14 @@ With the Gtk::AboutDialog widget is a easy to provide a user with the informatio
  dialog.run
  dialog.destroy
 
+Before we start discussing the pixbuf let us mention the Gtk::AboutDialog#logo.
+
+--- logo=(logo)
+    Sets a pixbuf displayed as logo in the about dialogue. If this is not set, it defaults to Gtk::Window.default_icon_list. Since 2.6; (see: Gtk::AboutDialog#logo=)
+    * logo: A Gdk::Pixbuf displayed as logo for the about dialogue.
+    * Returns: logo
+
+
 === Gdk::Pixbuf
 
 Gdk::Pixbuf is a class that contains information about an image stored in memory. It allows you to build images manually by placing shapes or pixels, or load a prebuilt images from a file. We will only be discussing the latter in our tutorial. To load an image from a file you use Gdk::Pixbuf.new. If you do not specify the size, this method will load the image of with an initial size set to the actual size of the image:
@@ -111,9 +119,3 @@ You can resize the image during or after you load its file. You may wish to resi
   * INTERP_TILES : - This is an accurate simulation of the PostScript image operator without any interpolation enabled. Each pixel is rendered as a tiny parallelogram of solid color, the edges of which are implemented with antialiasing. It resembles nearest neighbor for enlargement, and bilinear for reduction.
   * INTERP_BILINEAR : - Best quality/speed balance; use this mode by default. Bilinear interpolation. For enlargement, it is equivalent to point-sampling the ideal bilinear-interpolated image. For reduction, it is equivalent to laying down small tiles and integrating over the coverage area.
   * INTERP_HYPER : - This is the slowest and highest quality reconstruction function. It is derived from the hyperbolic filters in Wolberg's "Digital Image Warping", and is formally defined as the hyperbolic-filter sampling the ideal hyperbolic-filter interpolated image (the filter is designed to be idempotent for 1:1 pixel mapping). 
-
-
---- logo=(logo)
-    Sets a pixbuf displayed as logo in the about dialogue. If this is not set, it defaults to Gtk::Window.default_icon_list. Since 2.6
-    * logo: A Gdk::Pixbuf displayed as logo for the about dialogue.
-    * Returns: logo
