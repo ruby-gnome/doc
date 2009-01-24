@@ -167,7 +167,7 @@ it can be added as a child of a container. In our example we created the Gtk::Im
 
  image = Gtk::Image.new(Gtk::Stock::DIALOG_INFO, Gtk::IconSize::DIALOG)
 
-When loading the image we also needed the size parameter. GTK+ willautomatically look for a stock icon for the given size and resize the image if one with the specified size is not found. Available size arguments are specified by the Gtk::IconSize:
+When loading the image we also needed the size parameter. GTK+ will automatically look for a stock icon for the given size and resize the image if one with the specified size is not found. Available size arguments are specified by the Gtk::IconSize:
 
 --- GtkIconSize
     Sizes for stock Gtk::Image objects
