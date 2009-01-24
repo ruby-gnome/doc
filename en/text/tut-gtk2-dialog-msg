@@ -122,7 +122,7 @@ Compare the listing with the listings in previous session:
 
 For completeness let's look at a slightly modified version of the above program, so you can appreciate the variety of possibilities and different types of Gtk::MessageDialog widgets:
 
-{{image_right("dialog-builtins-01.png")}}
+{{image_right("dialog-msg-01.png")}}
 {{br}}
 
  #!/usr/bin/env ruby
