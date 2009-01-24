@@ -91,15 +91,22 @@ Gdk::Pixbuf is a class that contains information about an image stored in memory
      begin
        Gdk::Pixbuf.new("/tmp/francozi.jpg")
      rescue GLib::FileError => err
-       print "I/O ERROR (%s): %s\n\nDomain:%s\n" % [err.class, err, err.domain]
+       print "I/O ERROR (%s): %s\nCode:%s\nDomain:%s\n" %
+            [err.class, err, err.code, err.domain]
      rescue Gdk::PixbufError => err
-         print "IMAGE ERROR (%s): %s\nDomain:%s\n" % [err.class, err, err.domain]
+         print "IMAGE ERROR (%s): %s\nCode:%s\nDomain:%s\n" %
+            [err.class, err, err.code, err.domain]
      rescue => err # This may not be a good idea
        print "Undefined ERROR (%s): %s\n" % [err.class, err]
        raise   # re-raise the unexpected error
      else
        puts "All went well."
      end
+
+    The ((*domain*)) and ((*code*)) methods of exception object should provide additional subcategories for the exception. Indeed you should be familiar with error codes, to utilize these programmatically. 
+
+
+=== Resizing and image interpolation modes
 
 You can resize the image during or after you load its file. You may wish to resize it after reloading, because the method allowing to do it provides image quality control (see: GdkInterpType)
 
