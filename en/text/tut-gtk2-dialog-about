@@ -1,7 +1,7 @@
 = Dialogue Widgets
 {{link "tut-gtk2-dialog-builtins", "tut-gtk2-dialog", "tut-gtk", "tut-gtk2-dialog-fichoo"}}
 
-== About Dialogues
+== About Dialogue
 
 With the Gtk::AboutDialog widget is a easy to provide a user with the information about the application. There are many pieces of information that you can provide about the application. These include the application name, copyright, version, license, authors, document-writers, artists and translators. However, not all applications will have all of these items. The good thing is they are optional. If you do not define them they will simply not show up.
 
