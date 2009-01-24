@@ -3,16 +3,11 @@
 
 == Submenues of "Selector/Chooser Interface And Widgets" sections
 
-  * ((<Toggle Button|tut-gtk2-btt-toggle>))
-  * ((<Check Button|tut-gtk2-btt-check>))
-  * ((<Radio Button|tut-gtk2-btt-radio>))
-  * ((<* Using Stock Items|tut-gtk2-btt-check#Using Stock Items>))
-    * ((<Callbacks And Event Handling|tut-gtk2-btt-check#Callbacks And Event Handling Revisited - Callbacks are closures>))
-  * ((<** Not a button but vaguely related Button Box|tut-gtk2-btt-bttbox>))
-  * ((<Font Button|tut-gtk2-fichoo-fontbtt>))
+  * ((<File Chooser intro|tut-gtk2-filechooser>))
+  * ((<FileChooserDialog|tut-gtk2-fichoo-dialog>))
+  * ((<Color Selection Dialog|tut-gtk2-colorsel-buttons>))
 
 == Short Description
-
 
 All these widgets are members of the so called family of Selectors widgets. In the Gtk documentation you will find them under the heading Selectors (File/Font/Color/Input Devices). The family is divided into four groups:
 
@@ -41,6 +36,3 @@ Gtk::FileChooser module represents just an interface, hence we never create any 
 To give you an idea how some of these fit together we should look at an example you can copy-and-paste into a file on your system, run it and explore the features in the code.
 
 == Gtk::InputDialog - Configure devices for the XInput extension
----------------------------------------------------------------------------
-{{br}}
-Some (most) of the above items will be explained in the following sections.
