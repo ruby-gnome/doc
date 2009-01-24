@@ -19,6 +19,7 @@
 * ((<Gdk::RGB>)) - Renders RGB, grayscale, or indexed image data to a Gdk::Drawable.
 * Gdk::Image - Images. A client-side area for bit-mapped graphics.
 * Gdk::Pixbuf - Pixbufs. Functions for rendering pixbufs on drawables.
+   * Gdk::PixbufError
 * Colormaps and Colors - Manipulation of colors and colormaps.
    * Gdk::Color
    * Gdk::Colormap
