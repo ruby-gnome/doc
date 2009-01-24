@@ -103,7 +103,14 @@ Gdk::Pixbuf is a class that contains information about an image stored in memory
        puts "All went well."
      end
 
-    The ((*domain*)) and ((*code*)) methods of exception object should provide additional subcategories for the exception. Indeed you should be familiar with error codes, to utilize these programmatically. 
+    The ((*domain*)) and ((*code*)) methods of exception object should provide additional subcategories for the exception. Indeed you should be familiar with error codes, to utilize these programmatically, for instance: 
+
+     rescue Gdk::PixbufError => err
+       if err.code == Gdk::PixbufError::CORRUPT_IMAGE
+         print "Your image in file: %s is corupted, please replace it\n" %[file]
+       end
+      ...
+
 
 
 === Resizing and image interpolation modes
