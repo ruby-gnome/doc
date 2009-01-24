@@ -10,6 +10,7 @@
 * GLib::Interface
 * GLib::IOChannel
 * GLib::IOChannelError
+* GLib::FileError
 * GLib::Log
 * GLib::NormalizeMode
 * GLib::Object
