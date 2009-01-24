@@ -1,7 +1,7 @@
 = Selector/Chooser Interface And Widgets
 {{link "tut-gtk2-colorsel-buttons", "tut-gtk2-selchoose", "tut-gtk", "tut-gtk2-selchoo-tyu"}}
 
-== Font Buttons
+== Font Buttons and Font Selection
 
 Gtk::FontButton is another type of specialized button that allows you to select font parameters for fonts which are installed on your system. Like most of the buttons this button is derived from  Gtk::Button, however it emits a special signal when clicked, namely the signal "font-set". Let's look again at the Gtk::Button hierarchy:
 
