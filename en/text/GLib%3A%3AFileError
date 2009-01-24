@@ -12,11 +12,14 @@
 
 --- code
 
-     * Returns: self: ((*FIXME*))
+    Returns the error code (GLib :: FileError).
+    * Returns: self
 
 --- domain
 
-     * Returns: self: ((*FIXME*))
+    Returns the error domain.
+    * Returns: self
+
 
 == Constants
 
@@ -48,5 +51,3 @@
 == See Also
 
 == ChangeLog
-
-
