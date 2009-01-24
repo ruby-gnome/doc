@@ -11,9 +11,6 @@ There are many types of dialogues already built into GTK+. Although we will bot 
 * Gtk::FontSelectionDialog
 * Gtk::ColorSelectionDialog
 
-
-=== Message Dialogue
-
 Message dialogues are used to provide one of the five types of informational messages. You create a message dialogue with Gtk::MessageDialog.new. 
 
 --- Gtk::MessageDialog.new(parent, flags, message_type, button_type, message = nil)
