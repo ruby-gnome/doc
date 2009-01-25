@@ -46,3 +46,40 @@ In the following figure yo can see a Gtk::FileChooserDialog widget that is used 
   * Gtk::FileChooser::ACTION_SAVE - Indicates save mode. The file chooser will let the user pick an existing file, or type in a new filename.
   * Gtk::FileChooser::ACTION_SELECT_FOLDER - Indicates an Open mode for selecting folders. The file chooser will let the user pick an existing folder.
   * Gtk::FileChooser::ACTION_CREATE_FOLDER - Indicates a mode for creating a new folder. The file chooser will let the user name an existing or new folder.
+
+ #!/usr/bin/env ruby
+ require 'gtk2'
+
+ # Allow the user to enter a new file name and location for
+ # the file and set the button to the text of the location.
+ def button_clicked (parent, btt)
+   dialog = Gtk::FileChooserDialog.new(
+       "Save File As ...",
+       parent,
+       Gtk::FileChooser::ACTION_SAVE,
+       nil,
+       [ Gtk::Stock::CANCEL, Gtk::Dialog::RESPONSE_CANCEL ],
+       [ Gtk::Stock::SAVE, Gtk::Dialog::RESPONSE_ACCEPT ]
+   )
+   dialog.run do |response|
+     if response == Gtk::Dialog::RESPONSE_ACCEPT
+       filename = dialog.filename
+       btt.label = filename
+     end
+   end
+   dialog.destroy
+ end
+
+ window = Gtk::Window.new
+ window.border_width = 10
+ window.set_size_request(200, -1)
+ window.title = "Save a File"
+ window.signal_connect('delete_event') { false }
+ window.signal_connect('destroy') { Gtk.main_quit }
+
+ button = Gtk::Button.new("Save As ...")
+ button.signal_connect('clicked') { button_clicked(window, button) }
+
+ window.add(button)
+ window.show_all
+ Gtk.main
