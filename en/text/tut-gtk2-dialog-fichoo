@@ -5,11 +5,11 @@
 
 We have already seen Gtk::FileChooser intrface and Gtk::FileChooserButton widget. GTK+ provides the following three widgets that implement Gtk::FileChooser interface:
 
-* Gtk::FileChooserButton: covered earlier (see: ((<File Chooser Interface And Widgets|tut-gtk2-filechooser>))
+* Gtk::FileChooserButton: covered earlier (see: ((<File Chooser Buttons|tut-gtk2-filechooser>))
 * Gtk::FileChooserDialog: This widget is simply a dialogue that uses Gtk::FileChooserWidget as a child. Since it implements the Gtk::FileChooser interface, you do not ever have to directly access its child widget.
 * Gtk::FileChooserWidget: This actually is a widget that allows a user to choose a file or folder. It can also facilitate the creation of a folder or saving a file.
 
-We have also already learnt about the Gtk::FileChooserButtonand have used a file chooser to open one file and/or select a folder. There are three other features provided by the file chooser widget. In the next three examples, we will learn how to:
+We have already learnt about the Gtk::FileChooserButton and have used a file chooser to open one file and/or select a folder. There are three other features provided by the file chooser widget. In the next three examples, we will learn how to:
 * save a file,
 * create a directory (folder)
 * choose multiple files
@@ -22,6 +22,7 @@ In the following figure you can see a Gtk::FileChooserDialog widget that is used
 {{image_left("dialog-fichoo-01.png")}}
 {{br}}
 
+All file chooser dialogues are created with Gtk::FileChooserDialog.new regardless of what options you choose. As with other dialogues, you begin by setting the title of the dialogue and the parent window. The parent window should always be set (should never be nil), because file chooser dialogues should be modal. 
 
 
 --- Gtk::FileChooserDialog.new(title = nil, parent = nil, action = nil, backend = nil, [button_face1, response_id1], [button_face2, response_id2], ...)
@@ -33,11 +34,11 @@ In the following figure you can see a Gtk::FileChooserDialog widget that is used
     * backend: The name of the specific filesystem backend to use or nil. (e.g.) "gnome-vfs" 
     * [button_face1, response_id1], [button_face2, response_id2], ...: Button face/response ID pairs should be listed.        
        * button_face: Button face can be either a stock ID(Gtk::Stock constants) such as Gtk::Stock::OK, or some arbitrary text. 
-       * response_id: A response ID can be any positive number, or one of the values in the ((<Gtk::Dialog#ResponseType>)) enumeration. If the user clicks one of these dialog buttons, Gtk::Dialog will emit the "response" signal with the corresponding response ID. If a Gtk::Dialog receives the "delete_event" signal, it will emit "response" with a response ID of Gtk::Dialog::RESPONSE_DELETE_EVENT. However, destroying a dialog does not emit the "response" signal; so be careful relying on "response" when using the Gtk::Dialog::DESTROY_WITH_PARENT flag. Buttons are from left to right, so the first button in the list will be the leftmost button in the dialog.
+       * response_id: A response ID can be any positive number, or one of the values in the ((<Gtk::Dialog#ResponseType>)) enumeration. If the user clicks one of these dialog buttons, Gtk::Dialog will emit the "response" signal with the corresponding response ID. If a Gtk::Dialog receives the "delete_event" signal, it will emit "response" with a response ID of Gtk::Dialog::RESPONSE_DELETE_EVENT. However, destroying a dialogue does not emit the "response" signal; so be careful relying on "response" when using the Gtk::Dialog::DESTROY_WITH_PARENT flag. Buttons are from left to right, so the first button in the list will be the leftmost button in the dialog.
     * Returns: a new Gtk::FileChooserDialog
 
+Next, as with file chooser buttons, you have to specify the action of the file chooser that will be created. Unlike before with ((<File Chooser Buttons|tut-gtk2-filechooser>)), now all four action types can be set. Following is the list of possible actions:
 
-=== Constants
 :Action
 
   Describes whether a Gtk::FileChooser is being used to open existing files or to save to a possibly new file. Since 2.4
@@ -46,6 +47,9 @@ In the following figure you can see a Gtk::FileChooserDialog widget that is used
   * Gtk::FileChooser::ACTION_SAVE - Indicates save mode. The file chooser will let the user pick an existing file, or type in a new filename.
   * Gtk::FileChooser::ACTION_SELECT_FOLDER - Indicates an Open mode for selecting folders. The file chooser will let the user pick an existing folder.
   * Gtk::FileChooser::ACTION_CREATE_FOLDER - Indicates a mode for creating a new folder. The file chooser will let the user name an existing or new folder.
+
+
+File chooser dialogues are used in the same way as the the other two dialogues we have seen so far, except you have to handle the response codes. The following program allows the user to choose a file name and sets the button's label to the selected file if the appropriate response code is received.
 
 {{image_right("dialog-fichoo-02.png")}}
 {{br}}
