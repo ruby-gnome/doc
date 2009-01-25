@@ -16,6 +16,16 @@ The colour button itself displays the selected colour in a rectangular block set
 More often than not you will want to set the initial colour of the Gtk::ColorButton. This is done in two steps. First you need to create a Gdk::Color object with either Gdk::Color.parse("#RRGGBB") or with  Gdk::Color.new(red, green, blue). Note that parse is a hex triple where each RR, GG, and BB can range from 00-FF, however parameters of the Gdk::Color.new(red, green, blue) can range  from 0 to 65535. The second step is to create the Gtk::ColorButton.new(color=nil). Nil tells us that the color object parameter is optional. In that case the rectangular widget in the Gtk::ColorButton will be black.
 
 
+In the example program we use Gdk::Color.parse, so let us briefly look at this method:
+
+--- Gdk::Color.parse(spec)
+
+    Parses a textual specification of a color and fill in the red, green, and blue fields of a Gdk::Color structure. The color is not allocated, you must call Gdk::Colormap#alloc_color yourself. The text string can be in any of the forms accepted by XParseColor; these include name for a color from rgb.txt, such as "DarkSlateGray", or a hex specification such as "#305050".
+    If spec can't be parsed, the ArgumentError will be occured.
+    * spec: the string specifying the color. 
+    * Returns: the Gdk::Color
+
+
 {{image_left("ColorSelDialog.png")}}
 {{br}}
 The above action (colour selection) results in changing the colour of the text on the label below.
