@@ -3,11 +3,12 @@
 
 == File Chooser Dialog (preliminary)
 
+We will talk about this widget more extensively in the next chapter.
+
 {{image_right("FileChooserDialog.png")}}
 {{br}}
 
 Following is an example program from Ruby-GNOME2 distribution.
-
 
 
 
