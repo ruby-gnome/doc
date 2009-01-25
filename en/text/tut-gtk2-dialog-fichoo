@@ -1,7 +1,6 @@
 = Dialogue Widgets
 {{link "tut-gtk2-dialog-about", "tut-gtk2-dialog", "tut-gtk", "tut-gtk2-dialog-fontcolor"}}
 
-
 == File Chooser Dialogues
 
 We have already seen Gtk::FileChooser intrface and Gtk::FileChooserButton widget. GTK+ provides the following three widgets that implement Gtk::FileChooser interface:
@@ -132,5 +131,60 @@ Most of all I want you to realize there are two folder concepts here: the curren
 
 == Selecting Multiple Files
 
+The following figure shows a standard file chooser dialogue that will allow the user to choose a file. The difference between Gtk::FileChooserDialod and the Gtk::FileChooserButton using the Gtk::FileChooser::ACTION_OPEN flag is that contrary to what we have seen for ((<buttons|tut-gtk2-filechooser>)) the dialogues are capable of selecting multiple files.
+
+
 {{image_right("dialog-fichoo-04.png")}}
 {{br}}
+
+ #!/usr/bin/env ruby
+ require 'gtk2'
+
+ def button_clicked (parent)
+   dialogue = Gtk::FileChooserDialog.new(
+       "Open File(s) ...",
+       parent,
+       Gtk::FileChooser::ACTION_OPEN,
+       nil,
+       [ Gtk::Stock::CANCEL, Gtk::Dialog::RESPONSE_CANCEL ],
+       [ Gtk::Stock::SAVE, Gtk::Dialog::RESPONSE_ACCEPT ]
+   )
+   # You can preset anything you have permissions for:
+   dialogue.current_folder  = "/u3/users/iwk"
+   dialogue.filename = "/u3/users/iwk/projects/tutorial.rb"
+
+   filter1 = Gtk::FileFilter.new
+   filter2 = Gtk::FileFilter.new
+   filter1.name = "Source files"
+   filter2.name = "All Files"
+   filter1.add_pattern('*.c')
+   filter1.add_pattern('*.rb')
+   filter2.add_pattern('*')
+   # order matters (I want All Files as default)
+   dialogue.add_filter(filter2)
+   dialogue.add_filter(filter1)
+  
+   dialogue.select_multiple = true
+   dialogue.run do |response|
+     if response == Gtk::Dialog::RESPONSE_ACCEPT
+       filenames = dialogue.filenames
+       puts "SELECTED FILES:"
+       filenames.each {|f| print "% 40s ..... was selected\n" % [f]}
+     end
+   end
+   dialogue.destroy
+ end
+
+ window = Gtk::Window.new(Gtk::Window::TOPLEVEL)
+ window.set_title  "Multi-file Chooser"
+ window.border_width = 10
+ window.signal_connect('delete_event') { Gtk.main_quit }
+
+ button  = Gtk::Button.new("Open Files")
+ button.signal_connect('clicked') { button_clicked(window) }
+
+ window.add(button)
+ window.show_all
+ Gtk.main
+
+Note that the dialogues here are modal, hence you are required to complete the selections and then either accept or cancel the file chooser dialogue, before you can destroy the parent window.
