@@ -47,6 +47,8 @@ In the following figure yo can see a Gtk::FileChooserDialog widget that is used 
   * Gtk::FileChooser::ACTION_SELECT_FOLDER - Indicates an Open mode for selecting folders. The file chooser will let the user pick an existing folder.
   * Gtk::FileChooser::ACTION_CREATE_FOLDER - Indicates a mode for creating a new folder. The file chooser will let the user name an existing or new folder.
 
+Let us look at the example program:
+
  #!/usr/bin/env ruby
  require 'gtk2'
 
