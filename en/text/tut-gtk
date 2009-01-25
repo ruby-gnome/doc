@@ -50,7 +50,7 @@ As of January 2009, brand new material mainly based on Andrew  Krause's book ((<
     * ((<Adjutments|tut-gtk2-numtxt-spinbttns#Adjustments>))
   * ((<Horizontal And Vertical Scales|tut-gtk2-numtxt-hvscales>))
 * ((<Selector And Chooser Interface And Widgets|tut-gtk2-selchoose>))
-  * ((<File Chooser Interface And Widgets|tut-gtk2-filechooser>))
+  * ((<File Chooser Buttons|tut-gtk2-filechooser>))
   * ((<FileChooserDialog|tut-gtk2-fichoo-dialog>))
   * ((<Color Selection Dialog|tut-gtk2-colorsel-buttons>))
     * ((<Modifying the foreground colour of a widget|tut-gtk2-colorsel-buttons#Modifying the foreground colour of a widget>))
