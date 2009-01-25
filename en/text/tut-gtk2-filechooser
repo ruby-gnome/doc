@@ -2,9 +2,7 @@
 {{link "tut-gtk2-selchoose", "tut-gtk2-selchoose", "tut-gtk", "tut-gtk2-fichoo-dialog"}}
 
 
-== File Chooser Interface And Widgets
-
-=== File Chooser Introduction 
+== File Chooser Buttons
 
 {{image_right("ChooserButtons01.png")}}
 
