@@ -1,0 +1,16 @@
+= Dialogue Widgets
+{{link "tut-gtk2-dialog-fichoo", "tut-gtk2-dialog", "tut-gtk", "tut-gtk2-dialog-assistant"}}
+
+= Sorry this page is still under construction
+
+
+== Font And Colour Selection Dialogues
+
+In the previous chapter you learnt about the Gtk::ColorButton widget, which allowed the user to select a colour. After clicking that button, the user was presented with a dialogue. Although we did not mention it at the time the dialogue was actually a Gtk::ColorButtonDialog widget.
+
+
+Just like Gtk::FileChooserDialog, 
+
+
+{{image_left("dialog-fontcolor.png")}}
+{{br}}
