@@ -3,8 +3,9 @@
 
 = Sorry this page is still under construction
 
+== Collecting Information With Font And Colour Selection Dialogue
 
-== Colour Selection Dialogues
+=== Colour Selection Dialogues
 
 In the previous chapter you learnt about the Gtk::ColorButton widget, which allowed the user to select a colour. After clicking that button, the user was presented with a dialogue. Although we did not mention it at the time the dialogue was actually a Gtk::ColorButtonDialog widget.
 
