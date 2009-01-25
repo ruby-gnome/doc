@@ -16,7 +16,7 @@ We have also already learnt about the Gtk::FileChooserButtonand have used a file
 
 === Saving Files
 
-In the following figure you can see a Gtk::FileChooserDialog widget that is used to save a file. You will notice that it is similar to the to the other figures in this article, since all file chooser dialogues implement a consistent user interface or look-and-feel to facilitate intuitive use with the emphasis on the commonalities in similar tasks. Similarly the widgets also help the programmer, as they use the same code to implement each dialogue type to minimize the amount of coding required.
+In the following figure you can see a Gtk::FileChooserDialog widget that is used to save a file. You will notice that it is similar to the other figures in this article, since all file chooser dialogues implement a consistent user interface or look-and-feel to facilitate intuitive use with the emphasis on the commonalities in similar tasks. Similarly the widgets also help the programmer, as they use the same code to implement each dialogue type to minimize the amount of coding required.
 
 
 {{image_left("dialog-fichoo-01.png")}}
