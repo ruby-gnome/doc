@@ -1,5 +1,5 @@
 = Selector/Chooser Interface And Widgets
-{{link "tut-gtk2-fichoo-dialog", "tut-gtk2-selchoose", "tut-gtk", tut-gtk2-fichoo-fontbtt}}
+{{link "tut-gtk2-filechooser", "tut-gtk2-selchoose", "tut-gtk", tut-gtk2-fichoo-fontbtt}}
 
 == Color Button
 
