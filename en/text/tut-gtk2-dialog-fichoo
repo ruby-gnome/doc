@@ -1,6 +1,7 @@
 = Dialogue Widgets
 {{link "tut-gtk2-dialog-about", "tut-gtk2-dialog", "tut-gtk", "tut-gtk2-dialog-fontcolor"}}
 
+
 == File Chooser Dialogues
 
 We have already seen Gtk::FileChooser intrface and Gtk::FileChooserButton widget. GTK+ provides the following three widgets that implement Gtk::FileChooser interface:
@@ -90,3 +91,46 @@ File chooser dialogues are used in the same way as the the other two dialogues w
  window.add(button)
  window.show_all
  Gtk.main
+
+
+== Creating a Folder
+
+GTK+ allows you not only to select a folder but also to create one. A Gtk::FileChooserDialog widget of this type (Gtk::FileChooser::ACTION_CREATE_FOLDER) can be seen on the following image:
+
+{{image_right("dialog-fichoo-03.png")}}
+{{br}}
+
+The dialogue in the following listing will handle the creation of a new folder in the current folder entered  into the name field and confirmed by the user, so you do not have to take any further actions except destroying the dialogue. Note, however, that there exists already a built in button (2) solely for folder (directory) creation, and that the way it is done in this program may be confusing to the user. The two fields namely the name field where a user is expected to enter a new folder name (1) and the field that opens when he or she clicks the button "Create Folder" (2) are internally related. Not that it is important, but this is not immediately apparent and takes some testing to realize that created folder shows up in the name field if you back up to the folder in which the new one was created. This exercise was useful only to show you the use of file chooser's action flag Gtk::FileChooser::ACTION_CREATE_FOLDER. You have to test run this program to understand what was just said!
+
+ #!/usr/bin/env ruby
+ require 'gtk2'
+
+ # Create a new GtkFileChooserDialog that will be used
+ # to create a new folder.
+ dialog = Gtk::FileChooserDialog.new(
+     "Create a Folder ...",
+     nil,
+     Gtk::FileChooser::ACTION_CREATE_FOLDER,
+     nil,
+     [ Gtk::Stock::CANCEL, Gtk::Dialog::RESPONSE_CANCEL ],
+     [ Gtk::Stock::OK, Gtk::Dialog::RESPONSE_OK ]
+ )
+ dialog.run do |response|
+   if response == Gtk::Dialog::RESPONSE_OK
+     filename = dialog.filename
+     dir = dialog.current_folder
+     print "Creating directory - [current:%s]; [new:%s]\n" % [dir, filename]
+   end
+ end
+ dialog.destroy
+ Gtk.main
+
+
+Most of all I want you to realize there are two folder concepts here: the current folder, and the folder that is being created. 
+
+
+
+== Selecting Multiple Files
+
+{{image_right("dialog-fichoo-04.png")}}
+{{br}}
