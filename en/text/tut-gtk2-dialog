@@ -20,7 +20,7 @@ You can do anything with a dialog,  such as display a message or prompt the user
     * ((<Creating a Folder|tut-gtk2-dialog-fichoo#Creating a Folder>))
     * ((<Selecting Multiple Files|tut-gtk2-dialog-fichoo#Selecting Multiple Files>))
   * ((<Collecting Information With Font And Colour Selection Dialogues|tut-gtk2-dialog-fontcolor>))
-  * ((<Dialogues With Multiple Pages Using Gtk_Assistant|tut-gtk2-dialog-assistant>))
+  * ((<Dialogues With Multiple Pages Using Gtk::Assistant|tut-gtk2-dialog-assistant>))
 
 == Gtk::Dialog
 
