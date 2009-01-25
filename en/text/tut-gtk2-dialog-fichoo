@@ -5,7 +5,7 @@
 
 We have already seen Gtk::FileChooser intrface and Gtk::FileChooserButton widget. GTK+ provides the following three widgets that implement Gtk::FileChooser interface:
 
-* Gtk::FileChooserButton: covered earlier (see: ((<File Chooser Interface And Widgets|tut-gtk2-filechooser<))
+* Gtk::FileChooserButton: covered earlier (see: ((<File Chooser Interface And Widgets|tut-gtk2-filechooser>))
 * Gtk::FileChooserDialog: This widget is simply a dialogue that uses Gtk::FileChooserWidget as a child. Since it implements the Gtk::FileChooser interface, you do not ever have to directly access its child widget.
 * Gtk::FileChooserWidget: This actually is a widget that allows a user to choose a file or folder. It can also facilitate the creation of a folder or saving a file.
 
