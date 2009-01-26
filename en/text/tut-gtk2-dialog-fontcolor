@@ -181,8 +181,8 @@ Note that in our example here we use Gtk::FontSelectionDialog as a top-level wid
 
 It would make sense to display the message in the selected font, however, that is currently not possible with dialogues:
 
-
-:Modifying font by programmatic means
+=== Modifying font by programmatic means
+:Gtk::Widget#modify_font
     Remember so far in Ruby GTK+ you can currently only change font on editable items or labels. Here is a snippet of code showing this:
 
      font = dialog.font_name
