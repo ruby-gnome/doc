@@ -53,7 +53,7 @@ As of January 2009, brand new material mainly based on Andrew  Krause's book ((<
   * ((<File Chooser Button|tut-gtk2-filechooser>))
   * ((<Colour Button|tut-gtk2-colorsel-buttons>))
     * ((<Modifying the foreground colour of a widget|tut-gtk2-colorsel-buttons#Modifying the foreground colour of a widget>))
-  * ((<Font Selection Button|tut-gtk2-fichoo-fontbtt>))
+  * ((<Font Button|tut-gtk2-fichoo-fontbtt>))
   * ((<Test Your Understanding|tut-gtk2-selchoo-tyu>))
 * ((<Dialogs|tut-gtk2-dialog>))
   * ((<Creating Your Own Dialogs|tut-gtk2-dialog-custom>))
