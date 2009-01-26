@@ -40,23 +40,18 @@ Our example program here contains a top-level window with two buttons. When the 
        dialogue.destroy
    end
  end
-
  # Create a new color selection dialog and allow the user to
  # choose a color and an opacity value.
  def run_color_selection_dialog(mod_boolean)
-   title = mod_boolean ? "Choose Color -- Modal" :
-                    "Choose Color -- Non-Modal"
+   title = mod_boolean ? "Choose Color -- Modal" : "Choose Color -- Non-Modal"
    dialogue = Gtk::ColorSelectionDialog.new(title)
    dialogue.modal = mod_boolean
    colorsel = dialogue.colorsel
    colorsel.has_opacity_control = true
    colorsel.current_color = $global_color
    colorsel.current_alpha = $global_alpha
-
    dialogue.show_all
-   dialogue.signal_connect('response') do |w, response|
-     dialog_response(w, response)
-   end
+   dialogue.signal_connect('response') { |w, response| dialog_response(w, response) }
  end
 
  window = Gtk::Window.new(Gtk::Window::TOPLEVEL)
