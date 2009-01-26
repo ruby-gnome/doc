@@ -83,7 +83,7 @@ Our example program here contains a top-level window with two buttons. When the 
  Gtk.main
 
 The only method directly provided by the Gtk::ColorSelectionDialog here is "new(title)". It returns a new colour selection dialogue object (widget) with its title set. Its important accessor is ((*colorsel*)), which
-gets the Gtk::ColorSelection widget contained within the dialogue. You use this widget's methods like Gtk::ColorSelection#current_color, Gtk::ColorSelection#current_alpha, Gtk::ColorSelection#has_opacity_control, ... to manage the dialogue. Next important thing to do is to connect the dialogue to the ((*response*)) signal. In the callback block we call the "dialog_response" method with the reference to the signal emitting dialogue widget itself, and the response code (see ((Gtk::Dialog#ResponseType|Gtk::Dialog#ResponseType))).
+gets the Gtk::ColorSelection widget contained within the dialogue. You use this widget's methods like Gtk::ColorSelection#current_color, Gtk::ColorSelection#current_alpha, Gtk::ColorSelection#has_opacity_control, ... to manage the dialogue. Next important thing to do is to connect the dialogue to the ((*response*)) signal. In the callback block we call the "dialog_response" method with the reference to the signal emitting dialogue widget itself, and the response code (see Gtk::Dialog#ResponseType).
 
 
 The following methods or their siblings are used in the above program:
