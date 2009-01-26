@@ -64,8 +64,10 @@ Our example program here contains a top-level window with two buttons. When the 
  # Loop through the parameters.  The first color name that
  # is specified and successfully parsed, it will be used as
  # the initial color of the selection.
- ARGV.each { |a| next if (color = Gdk::Color.parse(a)) }
- $global_color = color ? color : Gdk::Color.parse("#003366")
+ # parse blows up if it encounters illegal color, so we rescue
+ # that situation witth "begin ...; rescue; end"
+ ARGV.each { |a| begin next if (color = Gdk::Color.parse(a)); rescue; end }
+ $global_color = color if color
 
  modal = Gtk::Button.new("Modal")
  nonmodal = Gtk::Button.new("Non-Modal")
