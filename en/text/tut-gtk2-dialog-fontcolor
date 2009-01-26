@@ -20,7 +20,6 @@ Our example program here contains a top-level window with two buttons. When the 
 
  #!/usr/bin/env ruby
  require 'gtk2'
-
  $global_alpha = 65535
  $global_color = Gdk::Color.parse("#00ff00")
 
@@ -30,13 +29,11 @@ Our example program here contains a top-level window with two buttons. When the 
      Gtk::Dialog::RESPONSE_HELP
        puts "Read the GTK+ API documentation"
      when  Gtk::Dialog::RESPONSE_OK
-       
        colorsel = dialogue.colorsel
        alpha = colorsel.current_alpha
        color = colorsel.current_color
        print "#red=%04X green=%04X blue=%04X alpha=%04X\n" %
-              [ color.red, color.green, color.blue, alpha ]
-             
+              [ color.red, color.green, color.blue, alpha ]            
        $global_color = color
        $global_alpha = alpha      
      else
@@ -46,17 +43,13 @@ Our example program here contains a top-level window with two buttons. When the 
 
  # Create a new color selection dialog and allow the user to
  # choose a color and an opacity value.
-
- def run_color_selection_dialog(b, w, mod_yn)
-  
-   title = mod_yn ? "Choose Color -- Modal" :
+ def run_color_selection_dialog(mod_boolean)
+   title = mod_boolean ? "Choose Color -- Modal" :
                     "Choose Color -- Non-Modal"
-                   
    dialogue = Gtk::ColorSelectionDialog.new(title)
-   dialogue.modal = mod_yn
+   dialogue.modal = mod_boolean
    colorsel = dialogue.colorsel
    colorsel.has_opacity_control = true
-  
    colorsel.current_color = $global_color
    colorsel.current_alpha = $global_alpha
 
@@ -64,16 +57,6 @@ Our example program here contains a top-level window with two buttons. When the 
    dialogue.signal_connect('response') do |w, response|
      dialog_response(w, response)
    end
- end
-
- # Create a new color selection dialog that is modal.
- def modal_clicked(b, w)
-   run_color_selection_dialog(b, w, true)
- end
-
- # Create a new color selection dialog that is non-modal.
- def nonmodal_clicked(b, w)
-   run_color_selection_dialog(b, w, false)
  end
 
  window = Gtk::Window.new(Gtk::Window::TOPLEVEL)
@@ -91,16 +74,13 @@ Our example program here contains a top-level window with two buttons. When the 
 
  modal = Gtk::Button.new("Modal")
  nonmodal = Gtk::Button.new("Non-Modal")
- modal.signal_connect('clicked') { modal_clicked(window, modal) }
- nonmodal.signal_connect('clicked') { nonmodal_clicked(window, nonmodal) }
-
-             # homogenous, spacing
+ modal.signal_connect('clicked') { run_color_selection_dialog(true) }
+ nonmodal.signal_connect('clicked') { run_color_selection_dialog(false) }
  hbox = Gtk::HBox.new(true, 5)
  hbox.pack_start(modal, false, true, 0)
  hbox.pack_start(nonmodal,   false, true, 0)
  vbox = Gtk::VBox.new(true, 5)
  vbox.pack_start(hbox, false, true, 0)
-
  window.add(vbox)
  window.show_all
  Gtk.main
