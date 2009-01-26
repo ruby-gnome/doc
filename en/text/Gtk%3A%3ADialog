@@ -263,6 +263,7 @@ Flags used to influence dialog construction.
 
 === ResponseType
 
+--- Response Type
     The following ((*response types*)) are returned from Ruby/GTK dialogues, and you can also use them yourself if you like. Ruby/GTK will never assign a meaning to positive response IDs; these are entirely user-defined. But for convenience, you can use the response IDs in the Gtk::Dialog#ResponseType enumeration (these all have values less than zero). If a dialogue receives a delete event, the "response" signal will be emitted with a response ID of Gtk::Dialog::RESPONSE_NONE.
 
     {{br}}
@@ -277,6 +278,7 @@ Flags used to influence dialog construction.
     * RESPONSE_NO (-9): - A Gtk::Stock::NO button was clicked in a built-in dialogue.
     * RESPONSE_APPLY (-10) - A Gtk::Stock::APPLY button was clicked in a built-in dialogue.
     * RESPONSE_HELP (-11) - A Gtk::Stock::HELP button was clicked in a built-in dialogue.
+
 
 
 
