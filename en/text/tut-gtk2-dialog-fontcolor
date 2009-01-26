@@ -3,15 +3,144 @@
 
 = Sorry this page is still under construction
 
-== Collecting Information With Font And Colour Selection Dialogue
+== Collecting Information With Font And Colour Selection Dialogues
 
 === Colour Selection Dialogues
 
-In the previous chapter you learnt about the Gtk::ColorButton widget, which allowed the user to select a colour. After clicking that button, the user was presented with a dialogue. Although we did not mention it at the time the dialogue was actually a Gtk::ColorButtonDialog widget.
+In the previous chapter you learnt about the Gtk::ColorButton widget, which allowed the user to select a colour. After clicking that button, the user was presented with a dialogue. Although we did not mention it at the time the dialogue was actually a Gtk::ColorSelectionDialog widget.
 
 
-Just like Gtk::FileChooserDialog, 
+Just like Gtk::FileChooserDialog, the colour selection dialogue is also a Gtk::Dialog container, with Gtk::ColorSelection widget as its child. Gtk::ColorSelection can just as easily be used on its own, however, since a dialogue is a natural way of presenting the widget, GTK+ provides Gtk::ColorSelectionDialog. On the following image you can see a colour selection dialogue.
+
+Our example program here contains a top-level window with two buttons. When the first button is clicked, a modal Gtk::ColorSelectionDialog is created. the other button will create a nonmodal colour selection dialogue. This example also loops through through program arguments, setting the initial colour value if provided, demonstrating that you can set in an initial colour value when launching an application.
 
 
-{{image_left("dialog-fontcolor.png")}}
+{{image_left("dialog-fontcolor-01.png")}}
 {{br}}
+
+ #!/usr/bin/env ruby
+ require 'gtk2'
+
+ $global_alpha = 65535
+ $global_color = Gdk::Color.parse("#00ff00")
+
+ def dialog_response (dialogue, result)
+   case result
+   when 
+     Gtk::Dialog::RESPONSE_HELP
+       puts "Read the GTK+ API documentation"
+     when  Gtk::Dialog::RESPONSE_OK
+       
+       colorsel = dialogue.colorsel
+       alpha = colorsel.current_alpha
+       color = colorsel.current_color
+       print "#red=%04X green=%04X blue=%04X alpha=%04X\n" %
+              [ color.red, color.green, color.blue, alpha ]
+             
+       $global_color = color
+       $global_alpha = alpha      
+     else
+       dialogue.destroy
+   end
+ end
+
+ # Create a new color selection dialog and allow the user to
+ # choose a color and an opacity value.
+
+ def run_color_selection_dialog(b, w, mod_yn)
+  
+   title = mod_yn ? "Choose Color -- Modal" :
+                    "Choose Color -- Non-Modal"
+                   
+   dialogue = Gtk::ColorSelectionDialog.new(title)
+   dialogue.modal = mod_yn
+   colorsel = dialogue.colorsel
+   colorsel.has_opacity_control = true
+  
+   colorsel.current_color = $global_color
+   colorsel.current_alpha = $global_alpha
+
+   dialogue.show_all
+   dialogue.signal_connect('response') do |w, response|
+     dialog_response(w, response)
+   end
+ end
+
+ # Create a new color selection dialog that is modal.
+ def modal_clicked(b, w)
+   run_color_selection_dialog(b, w, true)
+ end
+
+ # Create a new color selection dialog that is non-modal.
+ def nonmodal_clicked(b, w)
+   run_color_selection_dialog(b, w, false)
+ end
+
+ window = Gtk::Window.new(Gtk::Window::TOPLEVEL)
+ window.set_title  "Color Buttons"
+ window.border_width = 10
+ window.signal_connect('delete_event') { Gtk.main_quit }
+ window.set_size_request(250, -1)
+
+ color = nil
+ # Loop through the parameters.  The first color name that
+ # is specified and successfully parsed, it will be used as
+ # the initial color of the selection.
+ ARGV.each { |a| next if (color = Gdk::Color.parse(a)) }
+ $global_color = color ? color : Gdk::Color.parse("#003366")
+
+ modal = Gtk::Button.new("Modal")
+ nonmodal = Gtk::Button.new("Non-Modal")
+ modal.signal_connect('clicked') { modal_clicked(window, modal) }
+ nonmodal.signal_connect('clicked') { nonmodal_clicked(window, nonmodal) }
+
+             # homogenous, spacing
+ hbox = Gtk::HBox.new(true, 5)
+ hbox.pack_start(modal, false, true, 0)
+ hbox.pack_start(nonmodal,   false, true, 0)
+ vbox = Gtk::VBox.new(true, 5)
+ vbox.pack_start(hbox, false, true, 0)
+
+ window.add(vbox)
+ window.show_all
+ Gtk.main
+
+The following methods or their siblings are used in the above program:
+
+--- Gdk::Color.parse(spec)
+
+    Parses a textual specification of a color and fill in the red, green, and blue fields of a Gdk::Color structure. The color is not allocated, you must call Gdk::Colormap#alloc_color yourself. The text string can be in any of the forms accepted by XParseColor; these include name for a color from rgb.txt, such as "DarkSlateGray", or a hex specification such as "#305050".
+    If spec can't be parsed, the ArgumentError will be occured.
+    * spec: the string specifying the color. 
+    * Returns: the Gdk::Color
+
+
+
+--- colorsel
+
+    Gtk::ColorSelectionDialog#colorsel gets the Gtk::ColorSelection widget contained within the dialogue. Use this widget and its Gtk::ColorSelection#current_color method to gain access to the selected colour. Connect a handler for this widget's color_changed signal to be notified when the colour changes.
+    * Returns: the colour selection widget(Gtk::ColorSelection)
+
+--- has_opacity_control=(has_opacity)
+
+    Gtk::ColorSelection#has_opacity_control= sets the colorsel to use or not use opacity.
+    * has_opacity: true if colorsel can set the opacity, false otherwise. 
+    * Returns: has_opacity
+
+
+--- current_alpha=(alpha)
+
+    Gtk::ColorSelection#current_alpha=  sets the current opacity to be alpha. The first time this is called, it will also set the original opacity to be alpha too.
+    * alpha: an integer between 0 and 65535. 
+    * Returns: alpha
+
+--- current_color
+
+    Gtk::ColorSelection#current_color   gets (???Sets???) color to be the current color in the Gtk::ColorSelection widget.
+    * Returns: a Gdk::Color to fill in with the current color.
+
+--- current_color=(color)
+
+    Gtk::ColorSelection#current_color=  sets the current color to be color. The first time this is called, it will also set the original color to be color too.
+    * color: A Gdk::Color to set the current color with.
+    * Returns: color
