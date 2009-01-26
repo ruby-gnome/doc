@@ -21,7 +21,7 @@ Our example program here contains a top-level window with two buttons. When the 
  #!/usr/bin/env ruby
  require 'gtk2'
  $global_alpha = 65535
- $global_color = Gdk::Color.parse("#00ff00")
+ $global_color = Gdk::Color.parse("#33EEFF")
 
  def dialog_response (dialogue, result)
    case result
@@ -61,12 +61,12 @@ Our example program here contains a top-level window with two buttons. When the 
  window.set_size_request(250, -1)
 
  color = nil
- # Loop through the parameters.  The first color name that
+ # Loop through the parameters.  The last color name that
  # is specified and successfully parsed, it will be used as
  # the initial color of the selection.
  # parse blows up if it encounters illegal color, so we rescue
  # that situation witth "begin ...; rescue; end"
- ARGV.each { |a| begin next if (color = Gdk::Color.parse(a)); rescue; end }
+ ARGV.each { |a| begin; color = Gdk::Color.parse(a); rescue; end }
  $global_color = color if color
 
  modal = Gtk::Button.new("Modal")
