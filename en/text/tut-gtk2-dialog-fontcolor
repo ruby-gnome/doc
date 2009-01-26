@@ -183,7 +183,7 @@ It would make sense to display the message in the selected font, however, that i
 
 === Modifying font by programmatic means
 :Mmodifying font
-    Remember so far in Ruby GTK+ you can currently only change font on editable items or labels, utilizing Gtk::Widget#modify_font. (See also: ((<Font Button|tut-gtk2-fichoo-fontbtt>))) Here is a snippet of code showing this:
+    Remember so far in Ruby GTK+ you can currently only change font on editable items or labels, utilizing Gtk::Widget#modify_font. (See also: ((<Font Button|tut-gtk2-fichoo-fontbtt>)).) Here is a snippet of code showing this:
 
      font = dialog.font_name
      desc = Pango::FontDescription.new(font)
