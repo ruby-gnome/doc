@@ -3,7 +3,315 @@
 
 = Sorry this page is still under construction
 
-== Dialogues With Multiple Pages
+== Dialogues With Multiple Pages Using Gtk_Assistant
+
+As of GTK+ 2.10, a new widget called Gtk::Asistant was introduced. This widget enables you to create dialogues with multiple stages, which split otherwise complex dialogues into steps that guide the user. You may have encountered these kinds of dialogues in various application as wizardss.
+
+This example begins by giving the user general information. The next page contains the entry field and will not allow the user to proceed until some text is entered, the third page will not allow to continue until the check button is selected. The fourth page should activate the forward button after progress bar is filled. and the last page gives the summary of what happened. This is a general flow that every Gtk::Assistant widget should follow.
 
 {{image_left("dialog-assistant.png")}}
 {{br}}
+
+#!/usr/bin/env ruby
+ require 'gtk2'
+
+ # If there is text in the GtkEntry, set the page as complete.
+ # Otherwise, stop the user from progressing the next page.
+ def entry_changed (entry, assistant)
+   text = entry.text
+   num = assistant.current_page
+   page = assistant.get_nth_page(num)
+   assistant.set_page_complete(page, (text.size > 0))
+ end
+
+ # If the check button is toggled, set the page as complete.
+ # Otherwise, stop the user from progressing the next page.
+ def button_toggled(toggle, assistant)
+   num = assistant.current_page
+   page = assistant.get_nth_page(num)
+   assistant.set_page_complete(page, toggle.active?)
+ end
+
+ # Fill up the progress bar, 10% every second when the button
+ # is clicked. Then, set the page as complete when the progress
+ # bar is filled.
+ def button_clicked (button, assistant, progress)
+   percent = 0.0
+   button.sensitive = false
+   num = assistant.current_page
+   page = assistant.get_nth_page(num)
+   while(percent <= 100.0)
+     progress.text = "%.0f%% Complete" % percent
+     progress.fraction = percent / 100.0
+     while (Gtk.events_pending?)
+       Gtk.main_iteration
+     end
+     sleep 0.1
+     percent += 5.0
+   end
+   assistant.set_page_complete(page, true)
+ end
+
+ # This function is where you would apply the changes and
+ # destroy the assistant.
+ def assistant_close (assistant)
+   puts "You would apply your changes now!\n"
+   assistant.destroy
+ end
+
+ class PageInfo
+   attr_accessor :widget, :index, :title, :type, :complete
+   def initialize(w, i, ti, ty, c)
+     @widget, @index, @title, @type, @complete = w, i, ti, ty, c
+   end
+ end
+
+ page = [
+   PageInfo.new(nil, -1, "Introduction",            Gtk::Assistant::PAGE_INTRO,    true),
+   PageInfo.new(nil, -1, "",                        Gtk::Assistant::PAGE_CONTENT,  false),
+   PageInfo.new(nil, -1, "Click the Check Button",  Gtk::Assistant::PAGE_CONTENT,  false),
+   PageInfo.new(nil, -1, "Click the Button",        Gtk::Assistant::PAGE_PROGRESS, false),
+   PageInfo.new(nil, -1, "Confirmation",            Gtk::Assistant::PAGE_CONFIRM,  true)
+ ]
+
+ # Create a new assistant widget with no pages. */
+ assistant = Gtk::Assistant.new
+ assistant.set_size_request(350, 200)   # 450, 300
+ assistant.signal_connect('destroy') { Gtk.main_quit }
+
+ page[0].widget = Gtk::Label.new(
+        "This is an example of a GtkAssistant. By\n" +
+        "clicking the forward button, you can continue\n" +
+        "to the next section!"
+       )
+ page[1].widget = Gtk::HBox.new(FALSE, 5)
+ page[2].widget = Gtk::CheckButton.new("Click Me To Continue!")
+ page[3].widget = Gtk::Alignment.new(0.5, 0.5, 0.0, 0.0)
+ page[4].widget = Gtk::Label.new(
+         "Text has been entered in the label and the\n" +
+         "combo box is clicked. If you are done, then\n" +
+         "it is time to leave!"
+       )
+ # Create the necessary widgets for the second page.
+ label = Gtk::Label.new("Your Name: ")
+ entry = Gtk::Entry.new
+ page[1].widget.pack_start(label, false, false, 5)
+ page[1].widget.pack_start(entry, false, false, 5)
+  
+ # Create the necessary widgets for the fourth page.
+ # Then, attach the progress bar to the GtkAlignment
+ # widget for later access.
+ button = Gtk::Button.new("Click me!")
+ progress = Gtk::ProgressBar.new
+ hbox = Gtk::HBox.new(false, 5)
+ hbox.pack_start(progress, true, false, 5)
+ hbox.pack_start(button,   false, false, 5)
+ page[3].widget.add(hbox)
+
+ # Add five pages to the Gtk::Assistant dialog.
+ 5.times do |i|
+   page[i].index = assistant.append_page(page[i].widget) 
+   assistant.set_page_title(page[i].widget, page[i].title)
+   assistant.set_page_type(page[i].widget, page[i].type)
+  
+   # Set the introduction and conclusion pages as complete so
+   # they can be incremented or closed.
+   assistant.set_page_complete(page[i].widget, page[i].complete)
+ end
+
+ # Update whether pages 2 through 4 are complete based upon
+ # whether there is text in the GtkEntry, the check button is
+ # active, or the progress bar is completely filled.
+
+ entry.signal_connect(         'changed') { |w| entry_changed(w, assistant) }
+ page[2].widget.signal_connect('toggled') { |w| button_toggled(w, assistant) }
+ button.signal_connect(        'clicked') { |w| button_clicked(w, assistant, progress) }
+ assistant.signal_connect(     'cancel')  { assistant.destroy }
+ assistant.signal_connect(     'close')   { |w| assistant_close(w) }
+
+ assistant.show_all
+ Gtk.main
+
+=== Creating Gtk::Assistant Pages 
+
+A Gtk::Assistant widget is a dialogue with multiple pages. However it is not derived from Gtk::Dialog. You create an empty Gtk::Assistant widget with Gtk::Assistant.new. There is no actual page widget for assistants, because each page is actually a child widget that is added by either Gtk::Assistant.append_page, Gtk::Assistant.prepend_page or Gtk::Assistant.insert_page. These methods accept a child widget that is going to became the the content of the page, returning an index (starting at 0) of the new page.
+
+:Page Properties:
+    Each page has a number of optional properties that can be set:
+    * Page title : - Every page should have a title, so that user knows what it is for.
+    * Headet image : - In the top panel, left to the title you can display an optional image.
+    * Side image : - This image can optionally be displayed along the left side of the assistant beside the page content.
+    * Page type : - The page type must always be set to one of the following four Gtk::Assistant#PageType types:
+      * PAGE_CONTENT : - The page has regular contents.
+      * PAGE_INTRO : - The page contains an introduction to the assistant task.
+      * PAGE_CONFIRM : - The page lets the user confirm or deny the changes.
+      * PAGE_SUMMARY : - The page informs the user of the changes done.
+      * PAGE_PROGRESS : - Used for tasks that take a long time to complete, blocks the assistant until the page is marked as complete.
+    NOTE: If fou do not set the last page type as Gtk::Assistant::PAGE_CONFIRM or Gtk::Assistant::PAGE_SUMMARY, your application will fail.
+
+Since Gtk::Assistant is not derived from Gtk::Dialog, you can not call Gtk::Dialog#run or any other Gtk::Dialog methods on this widget. Instead the following four signals are provided:
+* apply : - Emited when either Apply or Forward button is clicked
+* cancel : - Emited when Cancel button is clicked
+* close : - Emited when either Apply or Close button is clicked
+* prepare : - Before making the new page visible this signal is emitted so that you can do any preparation work before you make it available for the user to see.
+
+NOTE: you can still connect the widgets you have added as content to any signals they emit.
+
+On every page, a Cancel button is displayed in addition to few other buttons. Forward button is inactive if the page is set as incomplete. By default, every page is set as incomplete. You have to set it to complete by calling Gtk::Assistant#set_page_complete(page, boolean). In the example program the first and last pages were originally set as complete since they were merely informative. More interesting are the pages 2 through 4 on our example. On the second page we made page complete only after the user has modified the entry field - this is monitored via the Gtk::Editable ((*changed*)) signal. Similarly user can move forward only after toggling the check button.  The fourth page is particularly interesting because it contains two widgets we need to manipulate (1) button click and (2) progress bar. It is important to see that the progress bar widget has to be passed into the callback method so it can manipulate it! (We will have more to say about the progress bar shortly.) Also the type of this page is set to Gtk::Assistant::PAGE_PROGRESS, which disables all actions until the page is complete. This means the loop running progress bar must finish before the page is set to complete.
+
+== Progress Bar
+
+Gtk::ProgressBar widgets are a simple way to show the progression of a certain task performed by your program. They provide user with a visual clue, that the program is actually working and is not frozen.
+
+New simpler progress bar implementation was made available as of GTK+ 2.0, so be careful when reading the API documentation, because  a number of methods and properties are depreciated. 
+
+{{image_right("dialog-progressbar-01.png")}}
+{{br}}
+
+One thing to pay attention to is how the adjustments are connected with the widgets they relate to. We have seen part of this story already when we learnt about spin buttons. However, it was more clear how to bind the two there, because the Gtk::SpinButton.new method expected the adjustment object (see: ((<Spin Buttons - Adjutments|tut-gtk2-numtxt-spinbttns#Adjustments>))).
+
+--- Gtk::SpinButton.new(adjustment, climb_rate, digits)
+
+    Creates a new Gtk::SpinButton with Gtk::Adjustment.
+    * adjustment: the Gtk::Adjustment object that this spin button should use. 
+    * climb_rate: specifies how much the spin button changes when an arrow is clicked on.(Float)
+    * digits: the number of decimal places to display. (Integer)
+    * Returns: The new spin button.
+
+Here, with progression bar it is necessary that you bind them yourself with the add method. When you have multiple containers like in our example program, this becomes even more tricky. Compare the above program with the next simple progress bar example.
+
+
+
+{{image_right("dialog-progressbar-02.png")}}
+{{br}}
+
+ #!/usr/bin/env ruby
+ require 'gtk2'
+
+ # Fill up the progress bar, 10% every second when the button
+ # is clicked.
+ def button_clicked (button, progress)
+   percent = 0.0
+   button.sensitive = false;
+
+   while(percent <= 100.0)
+     progress.text = "%.0f%% Complete" % percent
+     progress.fraction = percent / 100.0
+     while (Gtk.events_pending?)
+       Gtk.main_iteration
+     end
+     sleep 0.1
+     percent += 5.0
+   end
+   button.sensitive = true;
+ end
+
+ window = Gtk::Window.new(Gtk::Window::TOPLEVEL)
+ window.resizable = true
+ window.set_title  "Progress Bar"
+ window.border_width = 10
+ window.signal_connect('delete_event') { Gtk.main_quit }
+ window.set_size_request(-1, -1)
+
+ align = Gtk::Alignment.new(0.5, 0.5, 0.0, 0.0)
+ pbar = Gtk::ProgressBar.new
+ align.add(pbar)
+
+ button = Gtk::Button.new("Click me!")
+ button.signal_connect('clicked') { |w| button_clicked(w, pbar) }
+
+ hbox = Gtk::HBox.new(false, 5)
+ hbox.border_width = 10
+
+ hbox.pack_start(align, false, false, 5)
+ hbox.pack_start(button, false, false, 5)
+
+ window.add(hbox)
+ window.show_all
+ Gtk.main
+
+=== More elaborate Progress Bar Example
+
+Following is a more elaborate progress bar program from the original Japanese page. It also implements threads, which we have not seen so far. Nevertheless I want you to run and test out this program, because it shows interesting different features that Gtk::ProgressBar offers:
+
+{{image_left("dialog-progressbar-03.png")}}
+{{br}}
+
+ #!/usr/bin/env ruby
+ require 'gtk2'
+
+ window = Gtk::Window.new
+ window.resizable = true
+ window.title = "Gtk::ProgressBar"
+ window.border_width = 0
+
+ vbox = Gtk::VBox.new(false, 5)
+ vbox.border_width = 10
+ window.add(vbox)
+
+ align = Gtk::Alignment.new(0.5, 0.5, 0, 0)
+ vbox.pack_start(align, false, false, 5)
+
+ pbar = Gtk::ProgressBar.new
+ align.add(pbar)
+
+ separator = Gtk::HSeparator.new
+ vbox.pack_start(separator, false, false, 0)
+
+ table = Gtk::Table.new(2, 3, false)
+ table.row_spacings = 5
+ table.border_width = 5
+ vbox.pack_start(table, false, true, 0)
+
+ check = Gtk::CheckButton.new("Show text")
+ table.attach_defaults(check, 0, 1, 0, 1)
+ check.signal_connect("clicked") {pbar.text = pbar.text ? nil : "some text"}
+
+ check = Gtk::CheckButton.new("Activity mode")
+ table.attach_defaults(check, 0, 1, 1, 2)
+ check.signal_connect("clicked") do
+   pbar.activity_mode = !pbar.activity_mode?
+   if pbar.activity_mode?
+     pbar.pulse
+   else
+     pbar.fraction = 0.0
+   end
+ end
+
+ check = Gtk::CheckButton.new("Right to Left")
+ table.attach_defaults(check, 0, 1, 2, 3)
+ check.signal_connect("clicked") do
+   case pbar.orientation
+   when Gtk::ProgressBar::LEFT_TO_RIGHT
+     pbar.orientation = Gtk::ProgressBar::RIGHT_TO_LEFT
+   when Gtk::ProgressBar::RIGHT_TO_LEFT
+     pbar.orientation = Gtk::ProgressBar::LEFT_TO_RIGHT
+   end
+ end
+
+ button = Gtk::Button.new("close")
+ button.signal_connect("clicked") {window.destroy}
+ vbox.pack_start(button, false, false, 0)
+ button.can_default = true
+ button.grab_default
+
+ window.show_all
+ thread = Thread.start do
+   loop {
+     if pbar.activity_mode?
+       pbar.pulse
+     else
+       new_val = pbar.fraction + 0.01
+       new_val = 0.0 if new_val > 1.0
+       pbar.fraction = new_val
+     end
+     sleep 0.1
+   }
+ end
+ window.signal_connect("destroy") do
+   thread.kill
+   Gtk.main_quit
+ end
+
+ Gtk.main
+ thread.join
