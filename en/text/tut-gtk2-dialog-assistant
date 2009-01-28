@@ -1,8 +1,6 @@
 = Dialogue Widgets
 {{link "tut-gtk2-dialog-fontcolor", "tut-gtk2-dialog", "tut-gtk", nil}}
 
-= Sorry this page is still under construction
-
 == Dialogues With Multiple Pages Using Gtk_Assistant
 
 As of GTK+ 2.10, a new widget called Gtk::Asistant was introduced. This widget enables you to create dialogues with multiple stages, which split otherwise complex dialogues into steps that guide the user. You may have encountered these kinds of dialogues in various application as wizardss.
