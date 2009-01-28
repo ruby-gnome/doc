@@ -132,7 +132,7 @@ This example begins by giving the user general information. The next page contai
  assistant.show_all
  Gtk.main
 
-=== Creating Gtk::Assistant Pages 
+=== Creating Gtk::Assistant Pages
 
 A Gtk::Assistant widget is a dialogue with multiple pages. However it is not derived from Gtk::Dialog. You create an empty Gtk::Assistant widget with Gtk::Assistant.new. There is no actual page widget for assistants, because each page is actually a child widget that is added by either Gtk::Assistant.append_page, Gtk::Assistant.prepend_page or Gtk::Assistant.insert_page. These methods accept a child widget that is going to became the the content of the page, returning an index (starting at 0) of the new page.
 
@@ -147,7 +147,7 @@ A Gtk::Assistant widget is a dialogue with multiple pages. However it is not der
       * PAGE_CONFIRM : - The page lets the user confirm or deny the changes.
       * PAGE_SUMMARY : - The page informs the user of the changes done.
       * PAGE_PROGRESS : - Used for tasks that take a long time to complete, blocks the assistant until the page is marked as complete.
-    NOTE: If fou do not set the last page type as Gtk::Assistant::PAGE_CONFIRM or Gtk::Assistant::PAGE_SUMMARY, your application will fail.
+      NOTE: If fou do not set the last page type as Gtk::Assistant::PAGE_CONFIRM or Gtk::Assistant::PAGE_SUMMARY, your application will fail.
 
 Since Gtk::Assistant is not derived from Gtk::Dialog, you can not call Gtk::Dialog#run or any other Gtk::Dialog methods on this widget. Instead the following four signals are provided:
 * apply : - Emited when either Apply or Forward button is clicked
@@ -161,28 +161,27 @@ On every page, a Cancel button is displayed in addition to few other buttons. Fo
 
 == Progress Bar
 
-Gtk::ProgressBar widgets are a simple way to show the progression of a certain task performed by your program. They provide user with a visual clue, that the program is actually working and is not frozen.
+Gtk::ProgressBar widgets are a simple way to show the progression of a certain task performed by your program. They provide a user with a visual clue, that their program is actually working and is not frozen.
 
 New simpler progress bar implementation was made available as of GTK+ 2.0, so be careful when reading the API documentation, because  a number of methods and properties are depreciated. 
 
-{{image_right("dialog-progressbar-01.png")}}
-{{br}}
+In the program above there are many new concepts and the focus is on the Gtk::Assistant so it is not very convenient to study how the progression bar is implemented. Nevertheless, one thing to pay attention to is how the adjustments are connected with the widgets they relate to. We have seen part of this story already when we learnt about spin buttons. However, it was more clear how to bind the adjustment and spin button there, because the Gtk::SpinButton.new method expected the adjustment object (see: ((<Spin Buttons - Adjutments|tut-gtk2-numtxt-spinbttns#Adjustments>))).
 
-One thing to pay attention to is how the adjustments are connected with the widgets they relate to. We have seen part of this story already when we learnt about spin buttons. However, it was more clear how to bind the two there, because the Gtk::SpinButton.new method expected the adjustment object (see: ((<Spin Buttons - Adjutments|tut-gtk2-numtxt-spinbttns#Adjustments>))).
+ Gtk::SpinButton.new(adjustment, climb_rate, digits)
 
---- Gtk::SpinButton.new(adjustment, climb_rate, digits)
+But in our examples here you can see that you need to associate the adjustment and the progression bar yourself with the ((*add*)) method. When you have multiple containers like in our example program, this becomes even more tricky. Compare the above program with the next simple progress bar example.
 
-    Creates a new Gtk::SpinButton with Gtk::Adjustment.
-    * adjustment: the Gtk::Adjustment object that this spin button should use. 
-    * climb_rate: specifies how much the spin button changes when an arrow is clicked on.(Float)
-    * digits: the number of decimal places to display. (Integer)
-    * Returns: The new spin button.
-
-Here, with progression bar it is necessary that you bind them yourself with the add method. When you have multiple containers like in our example program, this becomes even more tricky. Compare the above program with the next simple progress bar example.
-
-
+ align = Gtk::Alignment.new(0.5, 0.5, 0.0, 0.0)
+ pbar = Gtk::ProgressBar.new
+ align.add(pbar)
+   ...
+ hbox.pack_start_defaults(align)
 
 {{image_right("dialog-progressbar-02.png")}}
+
+Following program deals only with the progress bar and is included here only to study the relationship between the adjustment and the progression bar. However since the progress bar's main purpose is to run along with some other time consuming procedure you should be aware that that piece of code is not included here.
+
+
 {{br}}
 
  #!/usr/bin/env ruby
@@ -232,9 +231,12 @@ Here, with progression bar it is necessary that you bind them yourself with the 
 
 === More elaborate Progress Bar Example
 
-Following is a more elaborate progress bar program from the original Japanese page. It also implements threads, which we have not seen so far. Nevertheless I want you to run and test out this program, because it shows interesting different features that Gtk::ProgressBar offers:
-
 {{image_left("dialog-progressbar-03.png")}}
+
+Following is a more elaborate progress bar program from the original Japanese page. It also implements threads, which we have not seen so far. Nevertheless I want you to run and test out this program, because it shows interesting different features that Gtk::ProgressBar offers.
+
+Interesting is the activity_mode which if set to true turns the Gtk::Progress into activity mode, meaning that it signals something is happening, but not how much of the activity is finished. This is used when you're doing something that you don't know how long it will take. The activity mode determines how the progress bar is manipulated, namely either as ((*pulse*)) or as ((*fraction*)).
+
 {{br}}
 
  #!/usr/bin/env ruby
