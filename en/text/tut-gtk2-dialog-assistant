@@ -188,7 +188,7 @@ In the block you would set the page with Gtk::Assistant#current_page=(page_num)
       the number of pages in the assistant, nothing will be done.
     * Returns: page_num
 
-Though I believe there is a currently a problem with the way Gtk::Assistant#set_forward_page_func as well as Gtk::Assistant#current_page= are implemented in Ruby GTK+. The following program snippet will give you an idea how your own customized forwarding behaviour should be implemented within an assignment object, providing there were no problems with your Gtk::Assistant Ruby implementation:
+Though I believe there is a currently a problem with the way Gtk::Assistant#set_forward_page_func as well as Gtk::Assistant#current_page= are implemented in Ruby GTK+. The following program snippet will give you an idea how your own customized forwarding behaviour should be implemented within an assistant object, providing there were no problems with your Gtk::Assistant Ruby implementation:
 
  assistant.set_forward_page_func do |curr_pg|
    case curr_pg
