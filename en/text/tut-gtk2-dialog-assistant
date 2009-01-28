@@ -157,6 +157,52 @@ NOTE: you can still connect the widgets you have added as content to any signals
 
 On every page, a Cancel button is displayed in addition to few other buttons. Forward button is inactive if the page is set as incomplete. By default, every page is set as incomplete. You have to set it to complete by calling Gtk::Assistant#set_page_complete(page, boolean). In the example program the first and last pages were originally set as complete since they were merely informative. More interesting are the pages 2 through 4 on our example. On the second page we made page complete only after the user has modified the entry field - this is monitored via the Gtk::Editable ((*changed*)) signal. Similarly user can move forward only after toggling the check button.  The fourth page is particularly interesting because it contains two widgets we need to manipulate (1) button click and (2) progress bar. It is important to see that the progress bar widget has to be passed into the callback method so it can manipulate it! (We will have more to say about the progress bar shortly.) Also the type of this page is set to Gtk::Assistant::PAGE_PROGRESS, which disables all actions until the page is complete. This means the loop running progress bar must finish before the page is set to complete.
 
+
+=== Page Forward Functions 
+
+There are times that you may want to skip to a specific assistant pages if conditions require so. For example let us assume that you are writing a bilingual instructions and you want the assistant to jump to the selected language pages. For this to work you'd have to disable the normal Gtk::Assistant's page forwarding schema and implement your own algorithm. You do this by the method Gtk::Assistant#set_forward_page_func{|current_page| ...}:
+
+--- set_forward_page_func{|current_page| ...}
+
+    Sets the page forwarding method to be block, this
+    method will be used to determine what will be the next page
+    when the user presses the forward button. Setting page_func
+    to nil will make the assistant to use the default forward
+    function, which just goes to the next visible page. 
+
+    * {|current_page| ... }: the page forwarding block 
+      * current_page: passed argument is the page number used to calculate the next page
+      * Returns: the next page number
+    * Returns: self
+
+In the block you would set the page with Gtk::Assistant#current_page=(page_num)
+--- current_page=(page_num)
+
+    Switches the page to page_num. Note that this will only be
+    necessary in custom buttons, as the assistant flow can be set
+    with Gtk::Assistant#set_forward_page_func.
+    ((*Since 2.10*))
+
+    * page_num: index of the page to switch to, starting from 0.
+      If negative, the last page will be used. If greater than
+      the number of pages in the assistant, nothing will be done.
+    * Returns: page_num
+
+Though I believe there is a currently a problem with the way Gtk::Assistant#set_forward_page_func as well as Gtk::Assistant#current_page= are implemented in Ruby GTK+. The following program snippet will give you an idea how your own customized forwarding behaviour should be implemented within an assignment object, providing there were no problems with your Gtk::Assistant Ruby implementation:
+
+ assistant.set_forward_page_func do |curr_pg|
+   case curr_pg
+   when 0 then assistant.current_page = 1
+   when 1 then assistant.current_page = (japanese?) ? 2 : 3
+   when 2 then assistant.current_page = 5
+   when 3 then assistant.current_page = 4
+   end
+ end
+
+Also it is not clear to me how to set set_forward_page_func to nil, as suggested in Gtk::Assistant API documentation. Perhaps the author meant ((*undef*)), which also may raise suspicious scenarios if one would attempt to undef the very method, in which undef is issued, itself.
+
+
+
 == Progress Bar
 
 Gtk::ProgressBar widgets are a simple way to show the progression of a certain task performed by your program. They provide a user with a visual clue, that their program is actually working and is not frozen.
