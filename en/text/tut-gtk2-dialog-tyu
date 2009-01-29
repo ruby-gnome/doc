@@ -3,7 +3,7 @@
 
 == Test Your Understanding
 
-In the concluding exercise session on dialogue widgets, you will be creating custom dialogues of your own. Each dialogue will be implementation of different types of file chooser dialogues.  However, you will be embedding a Gtk::File chooserWidget into a Gtk::Dialog to recreate the functionality of the built-in dialogues.
+In the concluding exercise session on dialogue widgets, you will be creating custom dialogues of your own. Each dialogue will be implementation of different types of file chooser dialogues.  However, you will be embedding a Gtk::FileChooserWidget into a Gtk::Dialog to recreate the functionality of the built-in dialogues.
 
 :The Exercise:
 
