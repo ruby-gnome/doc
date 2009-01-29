@@ -17,7 +17,7 @@ In the concluding exercise session on dialogue widgets, you will be creating cus
  
 
 
-{{image_right("dialog-tyu.png")}}
+{{image_left("dialog-tyu.png")}}
 {{br}}
 
  #!/usr/bin/env ruby
