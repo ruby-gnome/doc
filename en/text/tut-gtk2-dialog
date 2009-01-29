@@ -25,6 +25,7 @@ You can do anything with a dialog,  such as display a message or prompt the user
     * ((<Modifying font by programmatic means|tut-gtk2-dialog-fontcolor#Modifying font by programmatic means>))
   * ((<Dialogues With Multiple Pages Using Gtk::Assistant|tut-gtk2-dialog-assistant>))
     * ((<Progress Bar|tut-gtk2-dialog-assistant#Progress Bar>))
+  * ((<Test Your Understanding|tut-gtk2-dialog-tyu>))
 
 == Gtk::Dialog
 
