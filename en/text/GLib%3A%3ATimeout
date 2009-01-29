@@ -2,9 +2,14 @@
 
 == Module Functions
 
---- GLib::Timeout.add
+--- GLib::Timeout.add(interval){ ... }
 
-     * Returns: self: ((*FIXME*))
+    Sets a block to be called at regular intervals, with the default priority, GLib::PRIORITY_DEFAULT. The block is called repeatedly until it returns false, at which point the timeout is automatically destroyed and the block will not be called again. The first call to the block will be at the end of the first interval. 
+    Note that timeout blocks may be delayed, due to the processing of other event sources. Thus they should not be relied on for precise timing. After each call to the timeout block, the time of the next timeout is recalculated based on the current time and the given interval (it does not try to 'catch up' time lost in delays).
+    If you want to have a timer in the "seconds" range and do not care about the exact time of the first call of the timer, use the g_timeout_add_seconds() function; this function allows for more optimizations and more efficient system power usage.
+    * interval: the time between calls to the block, in milliseconds (1/1000ths of a second)  
+    * { ... }: A block to call  
+    * Returns: self
 
 --- GLib::Timeout.add_seconds
 
@@ -22,4 +27,4 @@
 
 == ChangeLog
 
-
+  * 2009-01-29: vinc-mai: add.
