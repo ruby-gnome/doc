@@ -72,3 +72,4 @@ As of January 2009, brand new material mainly based on Andrew  Krause's book ((<
     * ((<Modifying font by programmatic means|tut-gtk2-dialog-fontcolor#Modifying font by programmatic means>))
   * ((<Dialogues With Multiple Pages Using Gtk::Assistant|tut-gtk2-dialog-assistant>))
     * ((<Progress Bar|tut-gtk2-dialog-assistant#Progress Bar>))
+  * ((<Test Your Understanding|tut-gtk2-dialog-tyu>))
