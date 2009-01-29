@@ -1,5 +1,5 @@
 = Dialogue Widgets
-{{link "tut-gtk2-dialog-fontcolor", "tut-gtk2-dialog", "tut-gtk", nil}}
+{{link "tut-gtk2-dialog-fontcolor", "tut-gtk2-dialog", "tut-gtk", "tut-gtk2-dialog-tyu"}}
 
 == Dialogues With Multiple Pages Using Gtk_Assistant
 
