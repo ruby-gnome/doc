@@ -361,3 +361,51 @@ Interesting is the activity_mode which if set to true turns the Gtk::Progress in
 
  Gtk.main
  thread.join
+
+
+= A word of caution about an adjustment and a progress bar
+
+I believe currently (Ruby 1.8.6 and Ruby-GNOME2 rel 2-0.17.0-rc1), there is something immature about the way assignment of a Gtk::ProgressBar and a Gtk::Alignment is implemented. You saw that you need to associate the adjustment and the progress bar yourself with the ((*add*)) method. Yet there exists no clear definition about this relationship, moreover in different situations it seems it done differently. Let us look again at this association between the adjustment and the progress bar in the simple scenario where the only widget you are dealing with is the progress bar packed away into a Gtk::HBox.
+
+ align = Gtk::Alignment.new(0.5, 0.5, 0.0, 0.0)
+ pbar = Gtk::ProgressBar.new
+ align.add(pbar)
+   ...
+ hbox.pack_start_defaults(align)
+
+When you have multiple containers like in our example program, this becomes more tricky.
+
+
+ page[3].widget = Gtk::Alignment.new(0.5, 0.5, 0.0, 0.0)
+ ...
+ # Create the necessary widgets for the fourth page.
+ # Then, attach the progress bar to the GtkAlignment
+ # widget for later access.
+ button = Gtk::Button.new("Click me!")
+ progress = Gtk::ProgressBar.new
+ hbox = Gtk::HBox.new(false, 5)
+ hbox.pack_start(progress, true, false, 5)
+ hbox.pack_start(button,   false, false, 5)
+ page[3].widget.add(hbox) 
+
+However, even more disturbing is the fact that if you carefully study the two program snippets here, taken from the above example programs, you can see that in each the alignment and the progress bar are assigned to each other in a different way, and that if you want to turn the order around to make the two more similar that would not work. For instance the following code that more closely mimics the first (simpler) code snippet does not work:
+
+ page[3].widget = Gtk::Alignment.new(0.5, 0.5, 0.0, 0.0)
+ progress = Gtk::ProgressBar.new
+ page[3].widget.add(progress)
+ ...
+ # Create the necessary widgets for the fourth page.
+ # Then, attach the progress bar to the GtkAlignment
+ # widget for later access.
+ button = Gtk::Button.new("Click me!")
+ hbox = Gtk::HBox.new(false, 5)
+ hbox.pack_start(progress, false, false, 5)
+ hbox.pack_start(button,   false, false, 5)
+
+You would get the following error if you run this last snippet:
+
+ assig-progBarExperiment.rb: line 3
+   Gtk-WARNING **:Attempting to add a widget with type GtkProgressBar to a 
+   container of type GtkAlignment, but the widget is already inside a 
+   container of type GtkHBox, the GTK+ FAQ at http://www.gtk.org/faq/ 
+   explains how to reparent a widget.
