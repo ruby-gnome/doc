@@ -37,6 +37,7 @@
 * GLib::Param::Object
 * GLib::Signal
 * GLib::SpawnError - Done for 2.6.
+* GLib::Timeout
 * GLib::Type
 * GLib::TypeModule
 * GLib::TypePlugin
