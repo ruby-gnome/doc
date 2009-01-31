@@ -11,7 +11,7 @@ GLib::Timer object keeps track of elapsed time in microseconds and fractions of 
 == Class Methods
 
 --- GLib::Timer.new
-    * Returns: GLib::Timer object
+
 
 == Instance Methods
 
