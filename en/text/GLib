@@ -107,8 +107,11 @@
      * Returns: self: ((*FIXME*))
 
 --- GLib.check_version?(major, minor, micro)
-
-     * Returns: true if major, minor, micro are less or equal to the GLib installed version; ((*FIXME*))
+     Check out a hypothetical version of library calls you would like to run against the GLib installed with your Ruby. For instance you would need to run GLib 2.12.3. To see if your installed GLib is younger or of the same age as what your requirements are run GLib.check_version?(2, 12, 3); - ((*FIXME ???*)) 
+     * major 
+     * minor 
+     * micro
+     * Returns: true if major, minor, micro are less or equal to the GLib installed version
 
 --- GLib.home_dir
     This "GLib" class method provides a compatible way to obtain current user's home directory regardless of the operating system you are on. (The original GLib's C function name is "g_get_home_dir()")
