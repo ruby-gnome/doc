@@ -162,9 +162,10 @@
      Obtain base name from a path i.e.: ("/aaa/bbb/ccc" -> "ccc")
      * Returns: base name (last item from the path).
 
---- GLib.path_get_dirname
+--- GLib.path_get_dirname(path)
+     Obtain the folder in which the base name from a path sits i.e.: ("/aaa/bbb/ccc" -> "/aaa/bbb")
+     * Returns: folder in which the last item from the path resides.
 
-     * Returns: self: ((*FIXME*))
 
 --- GLib.path_is_absolute?
 
