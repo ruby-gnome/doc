@@ -125,9 +125,12 @@
 
      * Returns: self: ((*FIXME*))
 
---- GLib.getenv
+--- GLib.getenv(env_var_name)
 
-     * Returns: self: ((*FIXME*))
+     Obtain the value of system environment variable. For example:
+     * env_var_name: name of the environment variable
+     * Returns: the value of the environment variable, or nil
+
 
 --- GLib.home_dir
 
@@ -205,9 +208,12 @@
 
      * Returns: self: ((*FIXME*))
 
---- GLib.unsetenv
+--- GLib.setenv(env_var_name, new_value)
 
-     * Returns: self: ((*FIXME*))
+     Sets the  environment variable <env_var_nameto> a new value <new_value>. The environment variable is set only for the current Ruby session. No system settings are effected. For example:
+     * env_var_name: name of the environment variable
+     * new_value: new value the environment variable <env_var_nameto> is to be be set to.
+     * Returns: the value of the environment variable, or nil
 
 --- GLib.user_name
 
