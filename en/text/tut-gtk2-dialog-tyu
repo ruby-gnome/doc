@@ -1,5 +1,5 @@
 = Dialogue Widgets
-{{link "tut-gtk2-dialog-assistant", "tut-gtk2-dialog", "tut-gtk", nil}}
+{{link "tut-gtk2-dialog-assistant", "tut-gtk2-dialog", "tut-gtk", "tut-gtk2-glib"}}
 
 == Test Your Understanding
 
