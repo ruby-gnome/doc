@@ -52,6 +52,9 @@ The primary purpose of this class is to keep track of the various properties of 
 
     See Atk::Implementor#ref_accessible.
 
+--- add
+    Adds a widget to the box according to Gtk::ButtonBox::Style.
+
 --- add_child
 
     See Gtk::Buildable#add_child.
