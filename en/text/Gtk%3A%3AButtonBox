@@ -91,7 +91,7 @@ Used to dictate the style that a Gtk::ButtonBox uses to layout the buttons it co
 
 --- DEFAULT_STYLE
 
-       Default packing.
+       Default packing (same as EDGE).
 
 --- SPREAD
 
