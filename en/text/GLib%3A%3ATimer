@@ -1,6 +1,6 @@
 = class GLib::Timer
 
-GLib::Timer object keeps track of elapsed time in microseconds and fractions of seconds. When you create a timer objects it automatically starts up by calling GLib::Timer#start. You can stop or continue a stopped timer with GLib::Timer#stop ant GLib::Timer#continue methods respectively. Unless you have stopped the timer, you can at any point in your application retrieve the elapsed time by calling GLib::Timer#elapsed method. Currently  (as of Ruby 1.8.6 and Ruby-GNOME2 rel.: 2-0.17.0-rc1), the GLib::Timer#destroy method is not implemented.
+GLib::Timer object keeps track of elapsed time in microseconds and fractions of a seconds. When you create a timer objects it automatically starts up by calling GLib::Timer#start. You can stop or continue a stopped timer with GLib::Timer#stop ant GLib::Timer#continue methods respectively. Unless you have stopped the timer, you can at any point in your application retrieve the elapsed time by calling GLib::Timer#elapsed method. Currently  (as of Ruby 1.8.6 and Ruby-GNOME2 rel.: 2-0.17.0-rc1), the GLib::Timer#destroy method is not implemented.
 
 == Object Hierarchy
 
