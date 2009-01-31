@@ -106,9 +106,9 @@
 
      * Returns: self: ((*FIXME*))
 
---- GLib.check_version?
+--- GLib.check_version?(major, minor, micro)
 
-     * Returns: self: ((*FIXME*))
+     * Returns: true if major, minor, micro are less or equal to the GLib installed version; ((*FIXME*))
 
 --- GLib.home_dir
     This "GLib" class method provides a compatible way to obtain current user's home directory regardless of the operating system you are on. (The original GLib's C function name is "g_get_home_dir()")
