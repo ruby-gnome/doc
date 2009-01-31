@@ -140,7 +140,7 @@
 
 --- GLib.listenv
 
-     * Returns: self: ((*FIXME*))
+     * Returns an aray containing all the available environment variables. It does not list any values associated with these variables. That you need to extract yourself.
 
 --- GLib.os_beos?
 
@@ -251,6 +251,7 @@
 --- MAXSHORT
 --- MAXSIZE
 --- MAXUINT
+
 --- MAXUINT16
 --- MAXUINT32
 --- MAXUINT64
