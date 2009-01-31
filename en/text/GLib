@@ -158,9 +158,9 @@
 
      * Returns: self: ((*FIXME*))
 
---- GLib.path_get_basename
-
-     * Returns: self: ((*FIXME*))
+--- GLib.path_get_basename(path)
+     Obtain base name from a path i.e.: ("/aaa/bbb/ccc" -> "ccc")
+     * Returns: base name (last item from the path).
 
 --- GLib.path_get_dirname
 
