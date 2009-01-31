@@ -136,7 +136,7 @@
 
 --- GLib.host_name
 
-     * Returns: self: ((*FIXME*))
+     * Returns: a string representing hostname.
 
 --- GLib.listenv
 
