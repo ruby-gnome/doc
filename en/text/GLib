@@ -140,15 +140,15 @@
 
 --- GLib.os_beos?
 
-     * Returns: self: ((*FIXME*))
+     * Returns: true if run on BeOS, otherwise false
 
 --- GLib.os_unix?
 
-     * Returns: self: ((*FIXME*))
+     * Returns: true if run on Unix-like OS, otherwise false
 
 --- GLib.os_win32?
 
-     * Returns: self: ((*FIXME*))
+     * Returns: true if run on Unix-like OS, otherwise false
 
 --- GLib.parse_debug_string
 
