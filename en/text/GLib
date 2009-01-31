@@ -212,7 +212,7 @@
 
      Sets the  environment variable <env_var_nameto> a new value <new_value>. The environment variable is set only for the current Ruby session. No system settings are effected.
      * env_var_name: name of the environment variable
-     * new_value: new value the environment variable <env_var_nameto> is to be be set to.
+     * new_value: new value the environment variable <env_var_nameto> is to be set to.
      * Returns: the value of the environment variable, or nil
 
 --- GLib.user_name
