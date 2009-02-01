@@ -194,8 +194,8 @@
      * Returns: real name of the user as opposed to "log-in name"
 
 --- GLib.set_application_name
-     Sets the application name and wipes out GLib::program name ((*FIXME*))
-     * Returns: application name:  ((*FIXME*))
+     Sets the application name and wipes out GLib::program name ((*FIXME ???*))
+     * Returns: application name:  ((*FIXME ???*))
 
 --- GLib.set_prgname
 
