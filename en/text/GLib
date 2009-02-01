@@ -212,11 +212,12 @@
 
 --- GLib.tmp_dir
 
-     * Returns: self: ((*FIXME*))
+     * Returns: temporary directory name
 
 --- GLib.user_name
 
-     * Returns: self: ((*FIXME*))
+     * Returns: user's log-in name.
+
 
 --- GLib.utf8_validate
 
