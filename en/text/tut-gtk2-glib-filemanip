@@ -3,4 +3,69 @@
 
 == File Manipulation
 
-= Sorry still under construction
+Reading and writing to and from files are very important aspects of almost every application. There are two ways in GTK+ to work with files: with file utility functions and with IO channels (GLib::IOChannel). The former - file manipulation utility functionality in Ruby ((<GLib>)), however, appears somewhat less powerful than what one finds in original "C" GLib. But that is misleading since Ruby implements GLib with is full cross platform support and functionality as part the language. While the original "C" GLib provides convenient functions (g_file_set_contents, and g_file_get_contents) to write and to read from files, an average Ruby programmer should not miss these facilities.
+
+The following program demonstrates that in Ruby we accomplish most of the file I/O tasks without ever referring to GLib methods. Also you can see that error handling is a Ruby built in feature and rarely will you need any help prom GLib, perhaps only when investigating how to port low level "C" applications into Ruby or in the opposite direction. However there is an important distinction in how errors are handled when you do not use ((<GLib>)) file and directory manipulation methods.
+
+:Important note about error handling
+
+    When you use Ruby built in file and directory manipulation functionality, you should know that they raise ((*StandardError*)) exceptions rather than GLib::FileError exceptions which are used by ((<GLib>)). This is not obvious to a novice to Ruby GTK+, especially if one gets comfortable with Ruby GTK+ API documentation. This may not be relevant until, if ever, there will be Ruby equivalents of g_file_set_contents, and g_file_get_contents functions implemented. 
+
+ #!/usr/bin/env ruby
+ require 'gtk2'
+
+ # Build a filename in the user's home directory.
+ filename = File.expand_path("wk/temp", GLib::home_dir)
+
+ tries = 0
+ begin  # Establish error handling block
+   File.open(filename, "a") do |file|   # Open for appending.
+     file.puts("Hello world!")          # Output to the file.
+   end                                  # Automatically close.
+ rescue => err
+   case err
+     when  StandardError #
+       print "I/O ERROR (%s): %s\n" %  [err.class, err]
+       case err; when Errno::EACCES, Errno::ENOENT
+         tries +=1
+         sleep 1         # This is the place for a dialogue
+         retry if tries < 3
+         exit(123)
+       end
+   else
+     print "Undefined ERROR: (%s): %s\n" %  [err.class, err]
+   end
+   else
+   puts "All went well."
+ end  # End error handling block-
+
+ if ( ! File.exists?(filename))
+   puts "File [%s] doesnt exist; ... aborting" % filename
+   exit(0)
+ end
+
+ File.open(filename, "r") do |file|   # Open for reading.
+   file.each { |line| puts line }     # Read and print all lines
+ end                                  # Automatically close.
+
+
+You must have noticed there are no GUI elements in the above program. If it wern't for the ((*GLib::home_dir*)) we could do without the ((*require 'gtk2'*)). There should be! For instance in the error handling routine you should really implement the message dialogue, to provide user with information and a possible recovery options, such as inserting a CD ROM, closing the device door, or connecting a read/write device. Also, note that in the above program the following error handling would not work:
+
+ tries = 0
+ begin  # Establish error handling block
+   File.open(filename, "a") do |file|   # Open for appending.
+     file.puts("Hello world!")          # Output to a file.
+   end 
+ rescue GLib::FileError => err
+   print "I/O ERROR (%s): %s\nCode:%s\nDomain:%s\n" %
+     [err.class, err, err.code, err.domain]
+   tries = 0
+   case err
+     when GLib::FileError::EACCES, GLib::FileError::ENOENT
+       tries +=1
+       sleep 5         # This is the place for a dialogue
+       retry if tries < 3
+   end
+ else
+   puts "All went well."
+ end  # End error handling block
