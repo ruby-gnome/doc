@@ -86,9 +86,10 @@
 
      * Returns: self: ((*FIXME*))
 
---- GLib.application_name=
+--- GLib.application_name=(new_name) 
+     Sets the application name and GLib::program name to <new_name>.
+     * Returns: application name
 
-     * Returns: self: ((*FIXME*))
 
 --- GLib.bit_nth_lsf
 
@@ -194,8 +195,8 @@
      * Returns: real name of the user as opposed to "log-in name"
 
 --- GLib.set_application_name
-     Sets the application name and wipes out GLib::program name ((*FIXME ???*))
-     * Returns: application name:  ((*FIXME ???*))
+     Sets the application name and GLib::program name to <new_name>.  - same as GLib.application_name = (new_name)
+     * Returns: application name
 
 --- GLib.set_prgname
 
