@@ -87,7 +87,7 @@
      * Returns: self: ((*FIXME*))
 
 --- GLib.application_name=(new_name) 
-     Sets the application name and GLib::program name to <new_name>.
+     Sets the application name and GLib::prgname name to <new_name>.
      * Returns: application name
 
 
