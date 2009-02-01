@@ -1,8 +1,13 @@
 = GLib Short Tutorial
-{{link "tut-gtk2-dialog-tyu", "tut-gtk2-glib", "tut-gtk", nil}}
+{{link "tut-gtk2-dialog-tyu", "tut-gtk2-glib", "tut-gtk", "tut-gtk2-glib-env"}}
 
 On the surface ((<GLib>)) in Ruby looks a bit different from what you'd find in a traditional lower level "C" implementation of GLib. The reason for this is the fact, that Ruby already utilizes some of the functionality of GLib available on that lower C level. Some typical examples of these, from Ryby implementation of GLib, "missing" features are for instance "Memory Management" methods, "Error/Message Logging" methods, and most of the file/directory handling methods. All these facilities in fact are implemented in Ruby itself, therefore nothing is really is missing.
 
 Indeed you may have noticed that some features are not yet fully documented, but let that not scare you away, because as we will see they are rarely if ever needed on the level we are dealing with in this tutorial. Such for instance is already mentioned "Error/Message" logging, for which you will find a number of ((*fixme*)) items in GLib::Log file. In Ruby most of this stuff is really rather exotic. If you need those features you are most likely not reading this tutorial, and you should get sufficient number of clues and cross references from the standard "C" GLib API documentation. In Ruby error handling with Exceptions is far superior to that implemented in standard "C" GLib API. Nevertheless, for those that deal with Exception#code and Exception#domain there are some features that could potentially improve your control, if you knew how to utilize  GLib::Log paraphernalia.
 
 From this tutorial you should not expect too much, but it should give you an idea about what to expect from the features provided by ((<GLib>)) and how to go about utilizing most of the documented features.
+
+
+== Utility Functions
+
+((<GLib>)) provides you with a very wide variety of methods. Here, we will learn about many different types of functionality provided by GLib including access to environment variables, timers, directories, and files.
