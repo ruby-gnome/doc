@@ -71,3 +71,5 @@ You must have noticed there are no GUI elements in the above program.  There sho
  else
    puts "All went well."
  end  # End error handling block
+
+Ruby has a rich set of file and directory manipulation methods. You should check out the 9th chapter covering "(9.6) Files and Directories" and "(9.7) Input/Output" in  Ruby book by D. Flanagan and Y. Matsumoto "The Ruby Programming Language" - the defacto Ruby manual (in my opinion  the best Ruby book up to date).
