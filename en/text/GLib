@@ -159,17 +159,17 @@
      * Returns: self: ((*FIXME*))
 
 --- GLib.path_get_basename(path)
-     Obtain base name from a path i.e.: ("/aaa/bbb/ccc" -> "ccc")
+     Obtain base name from a path i.e.: ("/aaa/bbb/ccc" -> "ccc"). NOTE: this function is cross platform compatible it does not care what the File::SEPARATOR is.
      * Returns: base name (last item from the path).
 
 --- GLib.path_get_dirname(path)
      Obtain the folder in which the base name from a path sits i.e.: ("/aaa/bbb/ccc" -> "/aaa/bbb")
-     * Returns: folder in which the last item from the path resides.
+     * Returns: folder in which the last item from the path resides. NOTE: this function is cross platform compatible it does not care what the File::SEPARATOR is.
 
+--- GLib.path_is_absolute?(path)
 
---- GLib.path_is_absolute?
+     * Returns: true the string in <path> represents an absolute path. NOTE: this function is cross platform compatible it does not care what the File::SEPARATOR is.
 
-     * Returns: self: ((*FIXME*))
 
 --- GLib.path_skip_root
 
