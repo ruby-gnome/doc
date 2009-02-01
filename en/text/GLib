@@ -181,23 +181,27 @@
 
 --- GLib.prgname
 
-     * Returns: self: ((*FIXME*))
+     Retrieves program name
+     * Returns: program name - (on unix-like platforms the same as 'basename($0)')
 
---- GLib.prgname=
+--- GLib.prgname=(prog_name)
 
-     * Returns: self: ((*FIXME*))
+     Sets program name to the value in <prog_name>
+     * Returns: Returns: program name - (on unix-like platforms the same as  'basename($0)')
 
 --- GLib.real_name
 
      * Returns: real name of the user as opposed to "log-in name"
 
 --- GLib.set_application_name
-
-     * Returns: self: ((*FIXME*))
+     Sets the application name and wipes out GLib::program name ((*FIXME*))
+     * Returns: application name:  ((*FIXME*))
 
 --- GLib.set_prgname
 
-     * Returns: self: ((*FIXME*))
+     Sets program name - same as GLib.prgname=(prog_name)
+     * Returns: Returns: program name - (on unix-like platforms the same as  'basename($0)')
+
 
 --- GLib.setenv(env_var_name, new_value)
 
