@@ -51,7 +51,7 @@ Here is the example program:
  end                                  # Automatically close.
 
 
-You must have noticed there are no GUI elements in the above program.  There should be! If it wern't for the GLib#home_dir we could do without the ((*require 'gtk2'.*))For instance in the error handling routine you should really implement the message dialogue, to provide user with information and a possible recovery options, such as inserting a CD ROM, closing the device door, or connecting a read/write device. Also, note that in the above program the following error handling would not work:
+You must have noticed there are no GUI elements in the above program.  There should be! If it wern't for the GLib#home_dir we could do without the ((*require 'gtk2'.*))For instance in the error handling routine you should really implement the message dialogue to provide user with information and a possible recovery options, such as inserting a CD ROM, closing the device door, or connecting a read/write device. Also, note that in the above program the following error handling would not work:
 
  tries = 0
  begin  # Establish error handling block
