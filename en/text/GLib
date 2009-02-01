@@ -171,9 +171,10 @@
      * Returns: true the string in <path> represents an absolute path. NOTE: this function is cross platform compatible it does not care what the File::SEPARATOR is.
 
 
---- GLib.path_skip_root
+--- GLib.path_skip_root(path)
 
-     * Returns: self: ((*FIXME*))
+     Removes the root directory from the path - (i.e.: "/aaa/bbb/ccc" -> "aaa/bbb/ccc")
+     * Returns: the relative path without root (/).
 
 --- GLib.prgname
 
@@ -195,9 +196,12 @@
 
      * Returns: self: ((*FIXME*))
 
---- GLib.setenv
+--- GLib.setenv(env_var_name, new_value)
 
-     * Returns: self: ((*FIXME*))
+     Sets the  environment variable <env_var_nameto> a new value <new_value>. The environment variable is set only for the current Ruby session. No system settings are effected.
+     * env_var_name: name of the environment variable
+     * new_value: new value the environment variable <env_var_nameto> is to be set to.
+     * Returns: the value of the environment variable, or nil
 
 --- GLib.spaced_primes_closest
 
@@ -206,13 +210,6 @@
 --- GLib.tmp_dir
 
      * Returns: self: ((*FIXME*))
-
---- GLib.setenv(env_var_name, new_value)
-
-     Sets the  environment variable <env_var_nameto> a new value <new_value>. The environment variable is set only for the current Ruby session. No system settings are effected.
-     * env_var_name: name of the environment variable
-     * new_value: new value the environment variable <env_var_nameto> is to be set to.
-     * Returns: the value of the environment variable, or nil
 
 --- GLib.user_name
 
