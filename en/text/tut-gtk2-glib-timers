@@ -3,4 +3,147 @@
 
 == Timers
 
-= Sorry still under construction
+In many applications, you will want to keep track of elapsed time. Such is the case when you are copying files over the Internet, or when some other intensive processing takes place and your application should repeatedly report to the user how much longer it would take for it to complete the task. GLib::Timer object keeps track of elapsed time in microseconds and fractions of seconds. When you create a timer objects it automatically starts up by calling GLib::Timer#start. You can stop or continue a stopped timer with GLib::Timer#stop ant GLib::Timer#continue methods respectively. Unless you have stopped the timer, you can at any point in your application retrieve the elapsed time by calling GLib::Timer#elapsed method. Currently  (as of Ruby 1.8.6 and Ruby-GNOME2 rel.: 2-0.17.0-rc1), the GLib::Timer#destroy method is not implemented.
+
+{{image_right("glib-timers-01.png")}}
+
+The next example offers a simple timer example, that counts the time between two button clicks:
+Since the timer is always counting it works by storing the starting and ending times when button is clicked. 
+
+{{br}}
+
+ #!/usr/bin/env ruby
+ require 'gtk2'
+
+ # In general, to use global variables is not recommended
+ # insted you should use Class variables, however 
+ $running = false
+ $start_time = $end_time = 0.0
+
+ # Count the amount of elapsed time between two button clicks.
+ def button_clicked (b, t)
+   if (!$running)
+     $start_time = t.elapsed[0]
+     b.label = "Stop Timer"
+   else
+     $end_time = t.elapsed[0]
+     b.label = "Start Timer"
+     puts "Elapsed Time: %.2f" % [ $end_time - $start_time ]
+   end
+   $running = !$running
+ end
+
+ window = Gtk::Window.new(Gtk::Window::TOPLEVEL)
+ window.resizable = true
+ window.title = "Timers"
+ window.border_width = 10
+ window.signal_connect('delete_event') { Gtk.main_quit }
+ window.set_size_request(-1, -1)
+
+ button = Gtk::Button.new("Start Timer")
+ # Initialize the timer.
+ timer = GLib::Timer.new
+ button.signal_connect('clicked') { |w| button_clicked(w, timer) }
+
+ window.add(button)
+ window.show_all
+ Gtk.main
+
+The following example tests the use of other timer features that may be of our interests. Note that its last button (((*"Destroy Timer"*))) also includes a non-functioning and currently not implemented method GLib::Timer#destroy in Ruby's ((<Glib>)), but which does exist in original "C" GLib.
+
+{{image_right("glib-timers-02.png")}}
+{{br}}
+
+ #!/usr/bin/env ruby
+ require 'gtk2'
+
+ $start_time = $end_time = 0.0
+ $running = $running_s = false
+
+ # Gtk::Timer.reset subtracts its current time from itself, hence
+ # resetting it. However the timer is not stopped, it merely
+ # restarts counting at 0. If you stop the timer before you
+ # reset it it will most likely yield a negative value.
+ def reset_timer(t)
+   $start_time = $end_time = 0.0
+   $running = $running_s = false
+  
+   t1 = t.elapsed
+   r = t.reset         # Returns Gtk::Timer object.
+   t2 = r.elapsed
+   print "Time @ reset: %f; after reset: %f; reset=" % [ t1[0], t2[0] ]
+   p r
+ end
+
+ # Stop restart the timer
+ def stop_restart (b, t)
+
+   buton_label = b.label
+   if (!$running_s)
+     ta1 = t.elapsed
+     print "stop    : %f seconds, %d microsec; Stop: " % ta1
+     ta1 = t.stop      # Returns Gtk::Timer object.
+     p ta1.elapsed     # NOTE: a few time cicles were used
+                      #       to carry out t.stop command.
+     b.label = "Start Timer"
+   else
+     ta2 = t.elapsed
+     print "restart : %f seconds, %d microsec; - Cont:" % ta2
+     ta2 = t.continue             # Returns Gtk::Timer object
+     p ta2.elapsed
+    
+     b.label = "Stop Timer"
+   end
+   $running_s = !$running_s
+   puts "%s button pressed" % buton_label
+ end
+
+
+ # Count the amount of elapsed time between two
+ # button clicks.
+ def measure_elaps_time(b, t)
+   if (!$running)
+     ta1 = t.elapsed
+     print "Elaps start : %f seconds, %d microsec\n" % ta1
+     $start_time = ta1[0]
+     b.label = "Stop Elapse"
+   else
+     ta2 = t.elapsed
+     print "Elaps stop  : %f seconds, %d microsec\n" % ta2
+     $end_time = ta2[0]
+     b.label = "Start Elapse"
+     puts "Elapsed Time: %.2f" % [ $end_time - $start_time ]
+   end
+   $running = !$running
+ end
+
+ window = Gtk::Window.new(Gtk::Window::TOPLEVEL)
+ window.resizable = true
+ window.title = "Timers"
+ window.border_width = 10
+ window.signal_connect('delete_event') { Gtk.main_quit }
+ window.set_size_request(-1, -1)
+
+ button = Gtk::Button.new("Start Elapse")
+ # Initialize the timer.
+ timer = GLib::Timer.new
+ button.signal_connect('clicked') { |w| measure_elaps_time(w, timer) } 
+
+ button_s = Gtk::Button.new("Stop Timer")
+ button_s.signal_connect('clicked') { |w| stop_restart(w, timer) }
+ button_r = Gtk::Button.new("Reset Timer")
+ button_r.signal_connect('clicked') { reset_timer(timer) }
+ button_d = Gtk::Button.new("Destroy Timer")
+ button_d.signal_connect('clicked') { timer.destroy }
+
+ hbox = Gtk::HBox.new(false, 5)
+ hbox.border_width = 0
+ hbox.pack_start(button, false, false, 5)
+ hbox.pack_start(button_s, false, false, 5)
+ hbox.pack_start(button_r, false, false, 5)
+ hbox.pack_start(button_d, false, false, 5)
+
+ puts "START TESTING TIMER"
+ window.add(hbox)
+ window.show_all
+ Gtk.main
