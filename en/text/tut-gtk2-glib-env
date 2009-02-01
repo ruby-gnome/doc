@@ -65,9 +65,9 @@ Following are a number of methods you can use to obtain and even manipulate the 
 --- GLib.setenv(env_var_name, new_value)
 
      Sets the  environment variable <env_var_nameto> a new value <new_value>. The environment variable is set only for the current Ruby session. No system settings are effected. For example:
-      home = GLib.getenv("HOME")                      -> "/users/bob
-      ok = GLib.setenv("HOME", "whatever/whereever")  -> true
-      home = GLib.getenv("HOME")                      -> "whatever/whereever"
+      home = GLib.getenv("HOME")                     # -> "/users/bob
+      ok = GLib.setenv("HOME", "whatever/whereever") # -> true
+      home = GLib.getenv("HOME")                     # -> "whatever/whereever"
      * env_var_name: name of the environment variable
      * new_value: new value the environment variable <env_var_nameto> is to be set to.
      * Returns: the value of the environment variable, or nil
