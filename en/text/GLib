@@ -189,7 +189,7 @@
 
 --- GLib.real_name
 
-     * Returns: self: ((*FIXME*))
+     * Returns: real name of the user as opposed to "log-in name"
 
 --- GLib.set_application_name
 
