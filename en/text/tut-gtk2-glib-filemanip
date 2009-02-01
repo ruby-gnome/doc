@@ -11,6 +11,8 @@ The following program demonstrates that in Ruby we accomplish most of the file I
 
     When you use Ruby built in file and directory manipulation functionality, you should know that they raise ((*StandardError*)) exceptions rather than GLib::FileError exceptions which are used by ((<GLib>)). This is not obvious to a novice to Ruby GTK+, especially if one gets comfortable with Ruby GTK+ API documentation. This may not be relevant until, if ever, there will be Ruby equivalents of g_file_set_contents, and g_file_get_contents functions implemented. 
 
+Here is the example program:
+
  #!/usr/bin/env ruby
  require 'gtk2'
 
