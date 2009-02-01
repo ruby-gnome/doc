@@ -9,7 +9,7 @@ Need I remind you we are talking about ((<GLib>)) here and not the GTK+!
 
 So far in this tutorial, we have used the GTK+'s main loop (Gtk.main) without any mentioning of the fact that internally it in really creates the GLib's main loop. In fact most of the main loop functionality is implemented in GLib. The GTK+ merely provides widget signals to the system. The GTK+ main loop also connects GDK's X server events to the GLib system.
 
-The purpose of the main loop is to sleep idle until some event has occurred. At that point, a callback function will be invoked, if available. On Linux systems GLib's main loop is implemented using the ((*poll()*)) system call. Events and signals are associated with file descriptor, which are watched using ((*poll()*)).
+The purpose of the main loop is to sleep idle until some event has occurred. At that point, a callback function will be invoked, if available. On Linux systems GLib's main loop is implemented using the ((*poll()*)) system call. Events and signals are associated with file descriptor, which are watched using ((*poll().*))
 
 The advantage of the ((*poll()*)) system call is that GLib does not have to continuously monitor for new events and can sleep away until some event or signal is emitted. By doing so your application will take almost no processor cycles.
 
