@@ -1,7 +1,7 @@
 = GLib Short Tutorial
 {{link "tut-gtk2-glib", "tut-gtk2-glib", "tut-gtk", tut-gtk2-glib-util}}
 
-= Environment Variables
+== Environment Variables
 
 If you are creating an application that is going to be run on different platforms, it can be rather difficult to deal with incompatible environment organizations and setups. GLib provides a set of methods that return values of different environment variables. Perhaps the the list interesting and the most relevant to this paragraph is the following method:
 
