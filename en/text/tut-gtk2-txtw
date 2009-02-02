@@ -5,7 +5,7 @@
 
 :Contents of this chapter:
 
-  * ((<The Text View Widget|tut-gtk2-txtw>)) (this page)
+  * ((<The Text View Widget|tut-gtk2-txtw-scrolledwin>)) (this page)
     * 1 ((<Scrolled Windows|tut-gtk2-txtw-scrolls>))
     * 2 ((<Text Views|tut-gtk2-txtw-textview>))
       * 2.1 ((<Text Buffers|tut-gtk2-txtw-textview#>))
