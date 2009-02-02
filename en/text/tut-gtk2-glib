@@ -1,5 +1,15 @@
-= GLib Short Tutorial
+= GLib Short Introduction
 {{link "tut-gtk2-dialog-tyu", "tut-gtk2-glib", "tut-gtk", "tut-gtk2-glib-env"}}
+
+:Contents of this chapter:
+
+  * ((<GLib Short Introduction|tut-gtk2-glib>))
+    * ((<Environment Variables|tut-gtk2-glib-env>))
+    * ((<Timers|tut-gtk2-glib-timers>))
+    * ((<File Manipulation|tut-gtk2-glib-filemanip>))
+    * ((<Main Loop|tut-gtk2-glib-mainloop>))
+      * ((<Error Handling|tut-gtk2-glib-mainloop#Error Handling>))
+    * ((<Input-Output Channels|tut-gtk2-glib-iochannels>))
 
 On the surface ((<GLib>)) in Ruby looks a bit different from what you'd find in a traditional lower level "C" implementation of GLib. The reason for this is the fact, that Ruby already utilizes some of the functionality of GLib available on that lower C level. Some typical examples of these, from Ryby implementation of GLib, "missing" features are for instance "Memory Management" methods, "Error/Message Logging" methods, and most of the file/directory handling methods. All these facilities in fact are implemented in Ruby itself, therefore nothing is really is missing.
 
