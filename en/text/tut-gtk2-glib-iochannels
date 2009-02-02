@@ -50,8 +50,8 @@ The following program uses creates two GLib::IOChannel objects. First, a file is
    exit(0)
  end
 
- GLib::IOChannel.open(filename, "r") do |file|   # Open for reading.
-   file.each { |line| puts line }     # Read and print all lines
+ GLib::IOChannel.open(filename, "r") do |ioc|   # Open for reading.
+   ioc.each { |line| puts line }     # Read and print all lines
  end                                  # Automatically close.
 
 Currently there's trouble in the "error handling" land. This time GLib::IOChannel uses the erors belonging to GLib::FileError. As I have already said unless GLib::IOChannel would offer some improvement or other benefit, it seems it is not worth the troubles it causes to us users as well as developers.
