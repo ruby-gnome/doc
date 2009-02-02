@@ -1,5 +1,5 @@
 = GLib Short Introduction
-{{link "tut-gtk2-glib-filemanip", "tut-gtk2-glib", "tut-gtk", nil }}
+{{link "tut-gtk2-glib-filemanip", "tut-gtk2-glib", "tut-gtk", "tut-gtk2-glib-iochannels" }}
 
 == Main Loop, Timeouts And Idle Method
 
