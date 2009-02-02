@@ -9,7 +9,7 @@ Bear in mind that while GLib::IOChannel class makes perfect sense in original "C
 
 === IOChannels And Files 
 
-Just like with File class in Ruby one way to create a new input/output channel is to use GLib::IOChannel.new(filename, mode = "r"), however, a preferable way most likely will be GLib::IOChannel.open(filename, mode = "r") [ {|channel|...} ]. These methods removes the need for Unix file descriptors, so they can safely be used on non-Unix operating systems. Both methods in fact open a new file or pipe as a GLib::IOChannel, but only the optionally latter accepts the block, and automatically closes the channel when processing in the block is finished.
+Just like with File class in Ruby one way to create a new input/output channel is to use GLib::IOChannel.new(filename, mode = "r"), however, a preferable way most likely will be GLib::IOChannel.open(filename, mode = "r") [ {|channel|...} ]. These methods remove the need for Unix file descriptors, so they can safely be used on non-Unix operating systems. Both methods in fact open a new file or pipe as a GLib::IOChannel, but only the optionally latter accepts the block, and automatically closes the channel when processing in the block is finished.
 
 The following program uses creates two GLib::IOChannel objects. First, a file is created with some initial text, second, a channel then opens the file and reads its contents. Contrast this with the program in the File Manipulation section, where we used the file utility functions.
 
