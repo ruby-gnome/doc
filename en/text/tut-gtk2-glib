@@ -3,7 +3,7 @@
 
 :Contents of this chapter:
 
-  * ((<GLib Short Introduction|tut-gtk2-glib>))
+  * ((<GLib Short Introduction|tut-gtk2-glib>)) (this page)
     * ((<Environment Variables|tut-gtk2-glib-env>))
     * ((<Timers|tut-gtk2-glib-timers>))
     * ((<File Manipulation|tut-gtk2-glib-filemanip>))
