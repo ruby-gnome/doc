@@ -46,8 +46,8 @@ The following program uses creates two GLib::IOChannel objects. First, a file is
  end  # End error handling block-
 
  if ( ! File.exists?(filename))
-   puts "File [%s] doesnt exist; ... aborting" % filename
-   exit(0)
+   puts "File [%s] doesn't exist; ... aborting" % filename
+   exit(125)
  end
 
  GLib::IOChannel.open(filename, "r") do |ioc|   # Open for reading.
