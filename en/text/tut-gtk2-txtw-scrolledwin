@@ -3,7 +3,7 @@
 
 == Scrolled Windows
 
-Before you can learn about the Gtk::TextView widget, you need to learn about two container widgets called Gtk::ScrolledWindow and Gtk::Viewport. The scrollbars allow a widget to take more space than is visible on the screen. A widget that allows a Gtk::TextView widget to contain documents larger than the screen view is called Gtk::ScrolledWindow. As you know it contains two scrollbars, both ow which have associated an Gtk::Adjustment object. The adjustment objects are used to track the current position and range of a scroll bar. Adjustments work "magically" behind the scene and in most situations one does not need to access adjustments directly.
+Before you can learn about the Gtk::TextView widget, you need to learn about two container widgets called Gtk::ScrolledWindow and Gtk::Viewport. The scrollbars allow a widget to take more space than is visible on the screen. A widget that allows a Gtk::TextView widget to contain documents larger than the screen view is called Gtk::ScrolledWindow. As you know it contains two scrollbars, both of which have associated an Gtk::Adjustment object. The adjustment objects are used to track the current position and range of a scroll bar. Adjustments work "magically" behind the scene and in most situations one does not need to access adjustments directly.
 
 A scrollbar's adjustment holds information about scroll bounds, steps, and its current position.
 
