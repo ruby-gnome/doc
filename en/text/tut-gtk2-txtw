@@ -7,7 +7,7 @@
 
   * ((<The Text View Widget|tut-gtk2-txtw>)) (this page)
     * 1 ((<Scrolled Windows|tut-gtk2-txtw-scrolledwin>))
-    * 2 ((<The Text Views|tut-gtk2-txtw-textview>))
+    * 2 ((<Text Views|tut-gtk2-txtw-textview>))
       * 2.1 ((<Text Buffers|tut-gtk2-txtw-textview#Text Buffers>))
       * 2.2 ((<Text View Properties|tut-gtk2-txtw-textview#Text View Properties>))
       * 2.3 ((<Pango Tab Arrays|tut-gtk2-txtw-textview#Pango Tab Arrays>))
