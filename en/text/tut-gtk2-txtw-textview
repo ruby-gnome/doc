@@ -95,7 +95,12 @@ Gtk::TextView widget was created to be very versatile. Because of this, many pro
  window.show_all
  Gtk.main
 
+
 The following two properties need the reference to GTK+ constants:
 
- textview.wrap_mode = Gtk::TextTag::WRAP_WORD # See: ((<Gtk::TextTag#GtkWrapMode>))
- textview.justification = Gtk:: # See: ((<Gtk#GtkJustification>))
+ textview.wrap_mode = Gtk::TextTag::WRAP_WORD
+
+You can find the constants you need at: ((<Gtk::TextTag#GtkWrapMode>))
+ textview.justification = Gtk::
+
+You can find the constants you need at: ((<Gtk#GtkJustification>))
