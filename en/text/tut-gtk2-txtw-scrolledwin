@@ -88,3 +88,9 @@ All other GTK+ widgets, such as our Gtk::Table, which do not have scrolling supp
  window.add(vbox)
  window.show_all
  Gtk.main
+
+Te scrolled window is simply a container with scrollbars. Neither the container nor the scrollbars perform any action by themselves. Scrolling is handled by the child widget, which is why the child widget must have a scrolling support. As you know by now, most GTK+ widgets originally do not include such support - we mentioned only five that do. For all others scrolling behaviour is added via portview. Adjustments are also tightly related to scrolling. When you add a child widget with scrolling support to a scrolled window adjustments for both x and y axis are added. If the child does not have scrolling capabilities nothing will happen, which is why widgets without these capabilities are first added  to a viewport. Since viewport does not have any scrollbars the adjustments must be added to it:
+
+ viewport = Gtk::Viewport.new(horizontal, vertical)
+
+The viewport relies entirely on adjustment mechanism to manage its position on the screen. When the scrollbar is dragged or clicked the value in the adjustment is changed and the 'value_changed' signal is emitted, and indeed this action will cause the the child widget to render itself accordingly. The scrollbars in Gtk::ScrolledWindow widget are used as an easy mechanism for adjusting the current value of the adjustment.
