@@ -22,7 +22,10 @@ The following listing demonstrates how to use use scrolled windows and viewports
 
 One of the decisions you have to make when setting up a scrolled window is to specify when the scrollbars will be visible. This is done with the policy arguments, which take one of the values defined in ((<GtkPolicyType|Gtk#GtkPolicyType>)). Though unlikely, another thing you may wish to set is the placement of the scrollbars. For that you have Gtk::Scrollbar#window_placement=(window_placement) method at your disposal. Lok for the correct argument values at ((<GtkCornerType|Gtk#GtkCornerType>)).
 
-After you have setup a scrolled window you should add a child widget which you intend to move around with your scrollbars. If a widget has native scrolling abilities (such widgets are: Gtk::TextView, Gtk::TreeView, Gtk::IconView, or Gtk::Layout), it can be added to the Gtk::ScrolledWindow with Gtk::Container#add. If it does not, you must first add the widget to a Gtk::Viewport, then add the Gtk::Viewport to the scrolled window. The convenience method Gtk::ScrolledWindow#add_with_viewport does exactly this, so you can ignore the presence of the viewport. 
+After you have setup a scrolled window you should add a child widget which you intend to slide around with your scrollbars. There are two possible ways of doing this, and the method is chosen based on the type of child widget. If you are adding to your scrolling window a Gtk::TextView, Gtk::TreeView, Gtk::IconView, or Gtk::Layout widget you should use Gtk::Container#add method, since all five of these containers include native scrolling support.
+
+All other GTK+ widgets, such as our Gtk::Table, which do not have scrolling support, you must first add to a Gtk::Viewport widget, and then add the Gtk::Viewport to the scrolled window. Though this longer  method of adding a widget without the scrolling support to the scrolled window, demonstrates precisely what happens, you can use a convenience method Gtk::ScrolledWindow#add_with_viewport, which does exactly what we have just described. Namely, it adds the scrolling ability to a child widget such as for instance to our table, adds it (the table) to the viewport, and finally adds this viewport with the child (table) to the scrolling window.
+
 
 
 
