@@ -1,8 +1,6 @@
 = The Text View Widget
 {{link "tut-gtk2-txtw-scrolledwin", "tut-gtk2-txtw", "tut-gtk", "tut-gtk2-txtw-itrsmrks"}}
 
-= Sorry still under construction
-
 == Text Views
 
 {{image_right("txtw-textview-01.png")}}
@@ -184,10 +182,12 @@ Following are the methods we used in order to implement our tab size altering fu
 
 
 --- Pango::TabArray#set_tab(0, Pango::TAB_LEFT, width)
-    Before applying
-    * Returns: self: FIXME
 
-    You need the only constant from ((<Pango#TabAlign>))
+    Before applying the tab array, you need to add the width.
+    * 0: refers to the first element in the Pango::TabArray, the only one that should ever exist.
+    * Pango::TAB_LEFT - must always be specified; it is the only constant in ((<Pango#TabAlign>)).
+    * width: the width of the tab in pixels.
+    * Returns: self: ((*FIXME ??? *))
 
 
 --- Gtk::TextView#tabs
