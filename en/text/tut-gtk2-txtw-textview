@@ -1,6 +1,8 @@
 = The Text View Widget
 {{link "tut-gtk2-txtw-scrolledwin", "tut-gtk2-txtw", "tut-gtk", "tut-gtk2-txtw-itrsmrks"}}
 
+= Sorry still under construction
+
 == Text Views
 
 {{image_right("txtw-textview-01.png")}}
@@ -9,7 +11,7 @@ The Gtk::TextView widget is used to display multiple lines of a text document. i
 
 At the first glance you may think that this widget may only be used  to display simple text, however that is not the case. It can also be used to display many types of rich text, and interactive documents used by a variety of different applications. This is what we will learn here in the following few articles.
 
-Let us start with a simple example of Gtk::TextView widget inside a Gtk::ScrolledWindow widget:
+Let us start with a simple example of Gtk::TextView widget inside a Gtk::ScrolledWindow widget. This listing illustrates the simplest text view example that you could create:
 
 
  #!/usr/bin/env ruby
@@ -33,3 +35,67 @@ Let us start with a simple example of Gtk::TextView widget inside a Gtk::Scrolle
  window.add(scrolled_win)
  window.show_all
  Gtk.main
+
+=== Text Buffers
+
+
+Each text view is used to display the contents of a class called Gtk::TextBuffer. Text buffers are used to store the current state of the container within the text view. You can guess this from the following line in our example program above. 
+
+ textview.buffer.text = "Your 1st Gtk::TextView widget!"
+
+Here the buffer component is the Gtk::TextBuffer. Text buffers hold text, images, child widgets, text tags and other information necessary for rendering the documents. A Gtk::TextBuffer buffer is an independent object and can be displayed by many text view widgets. However any text view has  only a single text buffer associated with it. Most programmers do not take advantage of this feature but it will become important  latter when you learn how to embed child widgets into a text buffer.
+
+Most new text views are created with the Gtk::TextView.new(buffer=nil). When using this method with the default nil argument an empty Gtk::TextBuffer is created for you. This empty text buffer can be replaced or retrieved by "Gtk::TextView#buffer=(buff)", or "buff = Gtk::TextView#buffer" respectively.
+
+When handling text buffers, you will be dealing with terms such as ((*ofset*)) and ((*index*)). As with all text widgets in GTK+, text is stored in UTF-8 strings, hence individual characters may be more than one byte long. This may effect the overall meaning or value that offset and index will represent.
+
+:CAUTION:
+   The word ((*index*)) refers to an individual byte, you need to be careful when stepping through a text buffer in later examples. In particular you can not refer to an index pointing to the position between two characters.
+
+=== Text View Properties
+
+{{image_right("txtw-textview-02.png")}}
+
+Gtk::TextView widget was created to be very versatile. Because of this, many properties are provided for the widget. Let's have a look at another example program demonstrating how properties can be used to customize the text:
+
+{{br}}
+
+ #!/usr/bin/env ruby
+ require 'gtk2'
+
+ def destroy; Gtk.main_quit; end
+
+ window = Gtk::Window.new(Gtk::Window::TOPLEVEL)
+ window.resizable = true
+ window.title = "Text View Properties"
+ window.border_width = 10
+ window.signal_connect('delete_event') { destroy }
+ window.set_size_request(250, 150)
+
+ textview = Gtk::TextView.new
+ font = Pango::FontDescription.new("Monospace Bold 10")
+ textview.modify_font(font)
+ textview.wrap_mode = Gtk::TextTag::WRAP_WORD
+ textview.justification = Gtk::JUSTIFY_RIGHT
+ textview.editable =  true
+ textview.cursor_visible =  true
+ textview.pixels_above_lines = 5
+ textview.pixels_below_lines = 5
+ textview.pixels_inside_wrap = 5
+ textview.left_margin = 10
+ textview.right_margin = 10
+ textview.buffer.text = "This is some text!\nChange me!\nPlease!"
+
+ scrolled_win = Gtk::ScrolledWindow.new
+ scrolled_win.border_width = 5
+ scrolled_win.set_policy(Gtk::POLICY_AUTOMATIC, Gtk::POLICY_ALWAYS)
+ scrolled_win.add(textview)
+
+ window.add(scrolled_win)
+ window.show_all
+ Gtk.main
+
+The following two properties need the reference to GTK+ constants:
+
+ textview.wrap_mode = Gtk::TextTag::WRAP_WORD # See: ((<Gtk::TextTag#GtkWrapMode>))
+ textview.justification = Gtk:: # See: ((<Gtk#GtkJustification>))
