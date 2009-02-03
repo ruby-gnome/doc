@@ -4,3 +4,36 @@
 = Sorry still under construction
 
 == Text Views
+
+The Gtk::TextView widget is used to display multiple lines of a text document. it provides many ways to customize the text within the widget. You can even insert Gdk::Pixbuf objects and other child widgets into a document. Gtk::TextView is the first  reasonably involved widget we've encountered so far and in this session we will explore most of its interesting features. It is a versatile widget that you will exploit in many GTK+ applications.
+
+At the first glance you may think that this widget may only be used  to display simple text, however that is not the case. It can also be used to display many types of rich text, and interactive documents used by a variety of different applications. This is what we will learn here in the following few articles.
+
+Let us start with a simple example of Gtk::TextView widget inside a Gtk::ScrolledWindow widget:
+
+{{image_right("txtw-textview-01.png")}}
+
+
+{{br}}
+
+ #!/usr/bin/env ruby
+ require 'gtk2'
+
+ window = Gtk::Window.new(Gtk::Window::TOPLEVEL)
+ window.resizable = true
+ window.title = "Text Views"
+ window.border_width = 10
+ window.signal_connect('delete_event') { Gtk.main_quit }
+ window.set_size_request(250, 150)
+
+ textview = Gtk::TextView.new
+ textview.buffer.text = "Your 1st Gtk::TextView widget!"
+
+ scrolled_win = Gtk::ScrolledWindow.new
+ scrolled_win.border_width = 5
+ scrolled_win.add(textview)
+ scrolled_win.set_policy(Gtk::POLICY_AUTOMATIC, Gtk::POLICY_ALWAYS)
+
+ window.add(scrolled_win)
+ window.show_all
+ Gtk.main
