@@ -95,7 +95,6 @@ Gtk::TextView widget was created to be very versatile. Because of this, many pro
  window.show_all
  Gtk.main
 
-
 The following two properties need the reference to GTK+ constants:
 
  textview.wrap_mode = Gtk::TextTag::WRAP_WORD
@@ -104,3 +103,106 @@ You can find the constants for the above line at: ((<Gtk::TextTag#GtkWrapMode>))
  textview.justification = Gtk::JUSTIFY_RIGHT
 
 And again, you can find the constants for the above line at: ((<Gtk#GtkJustification>))
+
+
+=== Pango Tab Arrays
+
+Tabs added to a text view are set to a default width, but there are times when this is not what you want. GTK+ provides Pango::TabArray object, which can help you define a new tab size. In order to change the tab size you must first calculate the number of horizontal pixels the tab will take up based on the current font. Let us expand our first simple example by adding a tab size altering function called ((*make_tab_array.*)) 
+
+{{image_right("txtw-textview-03.png")}}
+
+ #!/usr/bin/env ruby
+ require 'gtk2'
+
+ def make_tab_array(textview, tab_size, font_desc)
+   raise "Tab size can't be more than 20" if tab_size > 20
+   tab_string = " " * tab_size
+   layout = textview.create_pango_layout(tab_string)
+   layout.font_description = font_desc
+   width, height = layout.pixel_size
+   tab_array = Pango::TabArray.new(1, true)
+   tab_array.set_tab(0, Pango::TAB_LEFT, width)
+   textview.set_tabs(tab_array)
+ end
+
+ window = Gtk::Window.new(Gtk::Window::TOPLEVEL)
+ window.resizable = true
+ window.title = "TABs in Text Views"
+ window.border_width = 10
+ window.signal_connect('delete_event') { Gtk.main_quit }
+ window.set_size_request(250, 150)
+
+ textview = Gtk::TextView.new
+ textview.buffer.text = "Tab is now set to 15!\n" +
+                        "You can hit a TAB key\n" +
+                        "and see for yourself:\n" +
+                        "123456789012345678901234567890\n"
+
+ font = Pango::FontDescription.new("Monospace Bold 10")
+ textview.modify_font(font)
+ make_tab_array(textview, 15, font)
+
+ scrolled_win = Gtk::ScrolledWindow.new
+ scrolled_win.border_width = 5
+ scrolled_win.add(textview)
+ scrolled_win.set_policy(Gtk::POLICY_AUTOMATIC, Gtk::POLICY_ALWAYS)
+
+ window.add(scrolled_win)
+ window.show_all
+ Gtk.main
+
+Following are the methods we used in order to implement our tab size altering functionality.
+
+
+--- Gtk::Widget#create_pango_layout(text=nil)
+
+    Creates a new Pango::Layout with the appropriate colormap, font description, and base direction for drawing text for this widget.
+    If you keep a Pango::Layout created in this way around, in order notify the layout of changes to the base direction or font of this widget, you must call Pango::Layout#context_changed in response to the ::style_set and ::direction_set signals for the widget.
+    * text: text to set on the layout (can be nil) 
+    * Returns: the new Pango::Layout
+
+
+
+--- Pango::Layout#font_description
+
+    Gets the font description for the layout, if any.
+    * Returns: the layout's font description(Pango::FontDescription), or nil if the font description from the layout's context is inherited.
+
+--- Pango::Layout#font_description=(desc)
+
+    Sets the default font description for the layout. If no font description is set on the layout, the font description from the layout's context is used.
+    * desc: the new Pango::FontDescription, or nil to unset the current font description.
+    * Returns: desc
+
+
+--- Pango::Layout#pixel_size
+
+    Determines the logical width and height of a Pango::Layout in device units. (Pango::Layout#size returns the width and height in thousandths of a device unit.) This is simply a convenience method around Pango::Layout#extents.
+    * Returns: [width, height]
+       * width: the logical width
+       * height: the logical height
+
+
+--- Pango::TabArray#set_tab(0, Pango::TAB_LEFT, width)
+    Before applying
+    * Returns: self: FIXME
+
+    You need the only constant from ((<Pango#TabAlign>))
+
+
+--- Gtk::TextView#tabs
+
+    Gets the default tabs for text_view. Tags in the buffer may override the defaults. The returned array will be nil if "standard" (8-space) tabs are used.
+    * Returns: copy of default tab array, or nil if "standard" tabs are used
+
+--- Gtk::TextView#tabstabs=(tabs)
+
+    Sets the default tab stops for paragraphs in the Gtk::TextView. Tags in the buffer may override the default.
+    * tabs: tabs as a Pango::TabArray 
+    * Returns: tabs
+
+--- Gtk::TextView#tabsset_tabs(tabs)
+
+    Same as Gtk::TextView#tabs=.
+    * tabs: tabs as a Pango::TabArray 
+    * Returns: self
