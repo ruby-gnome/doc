@@ -702,7 +702,7 @@
     If you create and keep a Pango::Layout using this context, you must deal with changes to the context by calling Pango::Layout#context_changed on the layout in response to the ::style_set and ::direction_set signals for the widget.
     * Returns: the Pango::Context for the widget.
 
---- create_pango_layout
+--- create_pango_layout(text=nil)
 
     Creates a new Pango::Layout with the appropriate colormap, font description, and base direction for drawing text for this widget.
     If you keep a Pango::Layout created in this way around, in order notify the layout of changes to the base direction or font of this widget, you must call Pango::Layout#context_changed in response to the ::style_set and ::direction_set signals for the widget.
