@@ -100,7 +100,7 @@ The following two properties need the reference to GTK+ constants:
 
  textview.wrap_mode = Gtk::TextTag::WRAP_WORD
 
-You can find the constants you need at: ((<Gtk::TextTag#GtkWrapMode>))
- textview.justification = Gtk::
+You can find the constants for the above line at: ((<Gtk::TextTag#GtkWrapMode>))
+ textview.justification = Gtk::JUSTIFY_RIGHT
 
-You can find the constants you need at: ((<Gtk#GtkJustification>))
+And again, you can find the constants for the above line at: ((<Gtk#GtkJustification>))
