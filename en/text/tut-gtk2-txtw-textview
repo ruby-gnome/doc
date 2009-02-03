@@ -1,8 +1,6 @@
 = The Text View Widget
 {{link "tut-gtk2-txtw-scrolledwin", "tut-gtk2-txtw", "tut-gtk", "tut-gtk2-txtw-itrsmrks"}}
 
-= Sorry still under construction
-
 == Text Views
 
 {{image_right("txtw-textview-01.png")}}
@@ -13,10 +11,6 @@ At the first glance you may think that this widget may only be used  to display 
 
 Let us start with a simple example of Gtk::TextView widget inside a Gtk::ScrolledWindow widget:
 
-
-
-
-{{br}}
 
  #!/usr/bin/env ruby
  require 'gtk2'
