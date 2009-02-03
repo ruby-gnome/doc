@@ -26,9 +26,13 @@
 
      * Returns: self: ((*FIXME*))
 
---- set_tab
+--- set_tab(0, Pango::TAB_LEFT, width)
 
-     * Returns: self: ((*FIXME*))
+    Before applying the tab array, you need to add the width.
+    * 0: refers to the first element in the Pango::TabArray, the only one that should ever exist.
+    * Pango::TAB_LEFT - must always be specified; it is the only constant in ((<Pango#TabAlign>))
+    * width: the width of the tab in pixels
+    * Returns: self: ((*FIXME ??? *)
 
 --- size
 
@@ -45,5 +49,3 @@
 == See Also
 
 == ChangeLog
-
-
