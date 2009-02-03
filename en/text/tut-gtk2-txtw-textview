@@ -105,9 +105,12 @@ And again, you can find the constants for the above line at: ((<Gtk#GtkJustifica
 
 === Pango Tab Arrays
 
+{{image_right("txtw-textview-03.png")}}
 Tabs added to a text view are set to a default width, but there are times when this is not what you want. GTK+ provides Pango::TabArray object, which can help you define a new tab size. In order to change the tab size you must first calculate the number of horizontal pixels the tab will take up based on the current font. Let us expand our first simple example by adding a tab size altering function called ((*make_tab_array.*)) 
 
-{{image_right("txtw-textview-03.png")}}
+
+{{br}}
+
 
  #!/usr/bin/env ruby
  require 'gtk2'
