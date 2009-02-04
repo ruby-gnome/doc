@@ -12,6 +12,7 @@
       * 3.5 ((<Searching in the Text Buffer|tut-gtk2-txtw-itrsmrks#>))
       * 3.6 ((<Scrolling the Text Buffer|tut-gtk2-txtw-itrsmrks#>))
     * 4 ((<Text Tags|tut-gtk2-txtw-tags>))
+
 == Text Iterators and Marks
 
 {{image_right("txtw-itrsmrks-01.png")}}
