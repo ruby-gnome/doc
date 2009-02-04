@@ -77,7 +77,7 @@ As of January 2009, brand new material mainly based on Andrew  Krause's book ((<
       * ((<Error Handling|tut-gtk2-glib-filemanip#Error Handling>))
     * ((<Main Loop|tut-gtk2-glib-mainloop>))
     * ((<Input-Output Channels|tut-gtk2-glib-iochannels>))
-* ((<The Text View Widget|tut-gtk2-txtw>)) (this page)
+* ((<The Text View Widget|tut-gtk2-txtw>))
   * ((<Scrolled Windows|tut-gtk2-txtw-scrolledwin>))
   * ((<Text Views|tut-gtk2-txtw-textview>))
     * ((<Text Buffers|tut-gtk2-txtw-textview#Text Buffers>))
