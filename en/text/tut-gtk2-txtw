@@ -26,3 +26,23 @@
 
 
 In this chapter we will learn how to use the Gtk::TextView widget. This widget is similar to the Gtk::Entry widget, except it is capable of holding text that spans multiple lines. Scrolled windows will be used to allow the text to exist beyond the boundaries of the screen. But before we dive into the main subject of this chapter we have to introduce a few of new widgets. The first two will be scrolled windows and view ports. Scrolled windows are composed of two scrollbars that are used to scroll the child widget. There are a few widgets that support scrolling, for example Gtk::Layout, Gtk::TreeView and Gtk::TextView. For all other widgets that you want to scroll, you will need to add them first to a Gtk::Viewport object, which then provides scrolling behaviour to its child.
+
+
+:In this chapter you will learn:
+
+  * How to use the scrolled windows and viewports.
+  * How to use the Gtk::TextView widget and apply the text buffers.
+  * What is the purpose of iterators and text marks in a text buffer.
+  * Methods of applying styles to the text (document).
+  * How to cut, copy and paste to and from clipboard.
+  * How to insert images and other child widgets into a text view.
+
+Following are to our topic directly related widgets
+
+:Multiline Text Editor Widgets:
+    * Gtk::TextIter - Text buffer iterator
+    * Gtk::TextMark - A position in the buffer preserved across buffer modifications
+    * Gtk::TextBuffer - Stores attributed text for display in a Gtk::TextView
+    * Gtk::TextTag - A tag that can be applied to text in a Gtk::TextBuffer
+    * Gtk::TextTagTable - Collection of tags that can be used together
+    * Gtk::TextView - Widget that displays a Gtk::TextBuffer
