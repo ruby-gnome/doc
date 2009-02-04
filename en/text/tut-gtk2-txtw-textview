@@ -139,7 +139,9 @@ Tabs added to a text view are set to a default width, but there are times when t
                         "and see for yourself:\n" +
                         "123456789012345678901234567890\n"
 
- font = Pango::FontDescription.new("Monospace Bold 10")
+ # For font styles "Italic", "Bold", "Bold Italic" and
+ # "Regular", currently all but "Regular" does not work.
+ font = Pango::FontDescription.new("Monospace Italic 8")
  textview.modify_font(font)
  make_tab_array(textview, 15, font)
 
