@@ -1,5 +1,5 @@
 = The Text View Widget (supplemental)
-{{link "tut-gtk2-txtw-itrsmrks", "tut-gtk2-txtw", "tut-gtk", "tut-gtk2-txtw-itrsmrks"}}
+{{link "tut-gtk2-txtw-itrsmrks#Retrieving Text Iterators and Marks", "tut-gtk2-txtw", "tut-gtk", "tut-gtk2-txtw-itrsmrks#Retrieving Text Iterators and Marks"}}
 
 Return from this detour: ((<Jump Back|tut-gtk2-txtw-itrsmrks#Retrieving Text Iterators and Marks>))
 
@@ -7,9 +7,9 @@ Return from this detour: ((<Jump Back|tut-gtk2-txtw-itrsmrks#Retrieving Text Ite
 
 {{image_right("txtw-itrsmrks-01.png")}}
 
-Unfortunately Gtk::TextBuffer#get_text(start, end, show_invisible=false) currently (as of Ruby 1.8.6 and Ruby-GNOME2 rel.: 2-0.17.0-rc1) does not work, it does not retrieve only the selected text, but instead returns the entire tex buffer.
+Unfortunately Gtk::TextBuffer#get_text(start, end, show_invisible=false) currently (as of Ruby 1.8.6 and Ruby-GNOME2 rel.: 2-0.17.0-rc1) does not work, it does not retrieve only the selected text, but instead returns the entire text buffer.
 
-That there are problems in Ruby implementation
+That there are problems in Ruby implementation one can guess also from the fact that Gtk::TextBuffer#text behaves differently than the former.
 
 You can compile and run the following program to see for yourself, that the problem is not in GTK+ but rather in ...
 
