@@ -31,6 +31,7 @@ All other GTK+ widgets, such as our Gtk::Table, which do not have scrolling supp
 
 {{image_right("txtw-scrolledwin.png")}}
 {{br}}
+((*scrolledwindows.rb*))
 
  #!/usr/bin/env ruby
  require 'gtk2'
