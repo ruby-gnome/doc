@@ -112,3 +112,5 @@ Following is the promised program in C:
 
    g_print ("%s\n", text);
  }
+
+Return from this dtour: ((<Jump Back|tut-gtk2-txtw-itrsmrks#Retrieving Text Iterators and Marks>))
