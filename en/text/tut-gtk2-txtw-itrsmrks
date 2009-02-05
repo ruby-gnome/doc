@@ -43,6 +43,7 @@ GTK+ provides a wide variety of methods for retrieving text iterators as well as
 
 
 {{br}}
+((*iterators.rb*))
 
  #!/usr/bin/env ruby
  require 'gtk2'
