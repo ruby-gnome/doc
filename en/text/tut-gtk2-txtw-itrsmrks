@@ -147,12 +147,12 @@ So far we have been dealing with the contents of an entire text buffer. In fact 
 
 Subsequently we've learnt how to manipulate the entire buffer. However, it is also useful to edit just a portion of a document. There are quite a number of such methods available to you:
 
-* insert(iter, text)
-* insert(iter, text, tag1, tag2, tag3, ...)
-* insert(iter, pixbuf)
-* insert(iter, anchor)
-* insert_at_cursor(text)
-* insert_interactive(iter, text, default_editable)
-* insert_interactive_at_cursor(text, default_editable)
-* insert_range(iter, start, end)
-* insert_range_interactive(iter, start, end, default_editable)
+* Gtk::TextBuffer#insert(iter, text)
+* Gtk::TextBuffer#insert(iter, text, tag1, tag2, tag3, ...)
+* Gtk::TextBuffer#insert(iter, pixbuf)
+* Gtk::TextBuffer#insert(iter, anchor)
+* Gtk::TextBuffer#insert_at_cursor(text)
+* Gtk::TextBuffer#insert_interactive(iter, text, default_editable)
+* Gtk::TextBuffer#insert_interactive_at_cursor(text, default_editable)
+* Gtk::TextBuffer#insert_range(iter, start, end)
+* Gtk::TextBuffer#insert_range_interactive(iter, start, end, default_editable)
