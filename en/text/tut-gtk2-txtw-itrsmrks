@@ -129,7 +129,7 @@ When you have the two iterators you have to supply them to Gtk::TextBuffer#get_t
 
 {{image_right("dialog-warning.png")}}
 
-Unfortunately Gtk::TextBuffer#get_text currently does not work as expected. Those of you who wish see the identical C GTK+ program, that does work, can click on this  link ((<"C GTK+ program: Using Text Iterators"|tut-gtk2-txtw-itrsmrks-cgtk-01>)) (you will be making a short detour into C GTK+).
+Unfortunately Gtk::TextBuffer#get_text currently does not work as expected. Those of you who wish to see the identical C GTK+ program, that does work, can click on this  link ((<"C GTK+ program: Using Text Iterators"|tut-gtk2-txtw-itrsmrks-cgtk-01>)) (you will be making a short detour into C GTK+).
 
 :Caution:
     When the above Gtk::TextBuffer#get_text will work, you should be careful that there are no images or other non-textual object in the text buffer, since the character positions will because of this most likely be off. In such cases you should use Gtk::TextBuffer#get_slice instead.
