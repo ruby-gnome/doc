@@ -1,15 +1,13 @@
 = The Text View Widget
 {{link "tut-gtk2-txtw-textview", "tut-gtk2-txtw", "tut-gtk", "tut-gtk2-txtw-tags"}}
 
-= Sorry still under construction
-
 == Text Iterators and Marks
 
 When manipulating text within a Gtk::TextBuffer object, there are two different objects that can help you track the position within the buffer: Gtk::TextIter and Gtk::TextMark. Functions are provided by GTK+ to translate between these two objects.
 
 :Text Iterators
 
-    If I borrow the terminology from geometry, we can say that text iterators are used define the an interval of text in a text buffer. They are a transient or ephemeral in nature, because they are meant to be used immediately after their initialization and became invalid as soon as the text buffer is edited.
+    If I borrow the terminology from geometry, we can say that text iterators are used define the an interval of text in a text buffer. They are a transient or ephemeral in nature, because they are meant to be used immediately after their initialization and became invalid as soon as the text buffer is edited. Iterators are better than offset or byte index into a buffer, because they are guarantied to point at the beginning of an UTF-8 character, which may be a string of multiple bytes.
 
 :Text Marks
 
@@ -100,17 +98,15 @@ GTK+ provides a wide variety of methods for retrieving text iterators as well as
  hbox.pack_start_defaults(insert)
  hbox.pack_start_defaults(retrieve)
  vbox = Gtk::VBox.new(false, 5)
-
  vbox.pack_start(scrolled_win, true,  true, 0)
  vbox.pack_start(hbox,         false, true, 0)
-
  window.add(vbox)
  window.show_all
  Gtk.main
 
 It is not to be expected that serious readers of this tutorial would have any difficulty understanding the main body of this example program. You may have guessed that the most important processing is happening in two top level methods (defined for Object object) ((*insert_text*)) and  ((*retrieve_text.*))
 
-In insert_text(entry, textview) we first have to retrieve the text mark, which is next translated into text iterator, which is then in turn used to insert a string from Gtk::Entry text field into the text buffer.
+In insert_text(entry, textview) we first have to retrieve the text mark, which is next translated into text iterator, and then in turn used to insert a string from Gtk::Entry text field into the text buffer.
 
 In retrieve_text(textview) we first obtain two text iterators representing start/end positions of the selected (highlighted) text, which are subsequently used to obtain the marked (selected) text from the text buffer.
 
@@ -128,8 +124,95 @@ These methods return Gtk::TextMark object. Once we have the have a text mark, we
 
 The other method for retrieving text iterators in our function called "retrieve_text" is Gtk::TextBuffer#bounds. It returns an array with the starting and ending Gtk::TextIter objects, which identify the selected text interval in the text buffer.
 
-Unfortunately Gtk::TextBuffer#get_text(start, end, show_invisible=false) currently does not work as expected. Those of you who wish see the identical C GTK+ program, that does work, can click on this  link ((<"C GTK+ program: Using Text Iterators"|tut-gtk2-txtw-itrsmrks-cgtk-01>)) (you will be making a short detour into C GTK+).
+When you have the two iterators you have to supply them to Gtk::TextBuffer#get_text(start, end, show_invisible=false), to retrieve the selection. Unfortunately Gtk::TextBuffer#get_text currently does not work as expected. Those of you who wish see the identical C GTK+ program, that does work, can click on this  link ((<"C GTK+ program: Using Text Iterators"|tut-gtk2-txtw-itrsmrks-cgtk-01>)) (you will be making a short detour into C GTK+).
+
+:Caution:
+    When the above Gtk::TextBuffer#get_text will work, you should be careful that there are no images or other non-textual object in the text buffer, since the character positions will because of this most likely be off. In such cases you should use Gtk::TextBuffer#get_slice instead.
+
+    Also, recall that positions refer to character and not byte positions.
+
+GTK+ also provides Gtk::TextBuffer#get_iter_at_line_index(line_number, byte_index), which will choose a position of an individual byte on the specified line. You should be extremely careful when using this function, because the index must always point to the beginning of a UTF-8 character, which may be more than one byte wide.
+
+Rather than choosing a character offset (at an index), you may retrieve the first iterator on a specified line with Gtk::TextBuffer#get_iter_at_line(line_number).
 
 
+You can also get an iterator at an offset from the beginning of a line Gtk::TextBuffer#get_iter_at_line_offset(line_number, char_offset).
 
 === Changing Text Buffer Contents
+
+
+So far we have been dealing with the contents of an entire text buffer. In fact the first thing you learnt was how to reset the buffer to a new value with
+
+ Gtk::TextBuffer#.text = "Some text" 
+
+Subsequently we've learnt how to manipulate the entire buffer. However, it is also useful to edit just a portion of a document. There are quite a number of such methods available to you:
+
+--- insert(iter, text)
+
+    Inserts the text at position iter. Emits the "insert_text" signal; insertion actually occurs in the default handler for the signal. iter is invalidated when insertion occurs (because the buffer contents change), but the default signal handler revalidates it to point to the end of the inserted text.
+    * iter : a position in the buffer (Gtk::TextIter)
+    * text : UTF-8 format text to insert 
+    * Returns: self
+
+--- insert(iter, text, tag1, tag2, tag3, ...)
+
+    Inserts text into buffer at iter, applying an array of tags to the newly-inserted text. Equivalent to calling Gtk::TextBuffer#insert(iter, text), then Gtk::TextBuffer#apply_tag on the inserted text.
+    * iter: an iterator in buffer 
+    * text: UTF-8 text 
+    * tag1, tag2, tag3, ...: tags(tag name of String or Gtk::TextTag)
+    * Returns: self
+
+--- insert(iter, pixbuf)
+
+    Inserts an image into the text buffer at iter. The image will be counted as one character in character counts, and when obtaining the buffer contents as a string, will be represented by the Unicode "object replacement character" 0xFFFC. Note that the "slice" variants for obtaining portions of the buffer as a string include this character for pixbufs, but the "text" variants do not. e.g. see Gtk::TextBuffer#get_slice and Gtk::TextBuffer#get_text.
+    * iter: location to insert the pixbuf (Gtk::TextIter)
+    * pixbuf: a Gdk::Pixbuf 
+    * Returns: self
+
+--- insert(iter, anchor)
+
+    Inserts a child widget anchor into the text buffer at iter. The anchor will be counted as one character in character counts, and when obtaining the buffer contents as a string, will be represented by the Unicode "object replacement character" 0xFFFC. Note that the "slice" variants for obtaining portions of the buffer as a string include this character for child anchors, but the "text" variants do not. e.g. see Gtk::TextBuffer#get_slice and Gtk::TextBuffer#get_text. Consider Gtk::TextBuffer#create_child_anchor as a more convenient alternative to this method. The buffer will add a reference to the anchor, so you can unref it after insertion.
+    * iter: location to insert the anchor (Gtk::TextIter)
+    * anchor: a Gtk::TextChildAnchor 
+    * Returns: self
+
+--- insert_at_cursor(text)
+
+    Simply calls Gtk::TextBuffer#insert, using the current cursor position as the insertion point.
+    * text: some text in UTF-8 format 
+    * Returns: self
+
+--- insert_interactive(iter, text, default_editable)
+
+    Like Gtk::TextBuffer#insert, but the insertion will not occur if iter is at a non-editable location in the buffer. Usually you want to prevent insertions at ineditable locations if the insertion results from a user action (is interactive).
+    default_editable indicates the editability of text that doesn't have a tag affecting editability applied to it. Typically the result of Gtk::TextView#editable? is appropriate here.
+    * iter : a position in buffer (Gtk::TextIter)
+    * text : some UTF-8 text 
+    * default_editable : default editability of buffer(true or false)
+    * Returns : true if the text was actually inserted
+
+--- insert_interactive_at_cursor(text, default_editable)
+
+    Calls Gtk::TextBuffer#insert_interactive at the cursor position.
+    default_editable indicates the editability of text that doesn't have a tag affecting editability applied to it. Typically the result of Gtk::TextView#editable? is appropriate here.
+    * text : text in UTF-8 format 
+    * default_editable : default editability of buffer (true or false)
+    * Returns : true if text was actually inserted
+
+--- insert_range(iter, start, end)
+
+    Copies text, tags, and pixbufs between start and end (the order of start and end doesn't matter) and inserts the copy at iter. Used instead of simply getting/inserting text because it preserves images and tags. If start and end are in a different buffer from buffer, the two buffers must share the same tag table.
+    Implemented via emissions of the insert_text and apply_tag signals, so expect those.
+    * iter: a position in buffer (Gtk::TextIter)
+    * start: a position in a Gtk::TextBuffer (Gtk::TextIter)
+    * end: another position in the same buffer as start (Gtk::TextIter)
+    * Returns: self
+
+--- insert_range_interactive(iter, start, end, default_editable)
+
+    Same as Gtk::TextBuffer#insert_range, but does nothing if the insertion point isn't editable. The default_editable parameter indicates whether the text is editable at iter if no tags enclosing iter affect editability. Typically the result of Gtk::TextView#editable? is appropriate here.
+    * iter : a position in buffer (Gtk::TextIter)
+    * start : a position in a Gtk::TextBuffer (Gtk::TextIter)
+    * end : another position in the same buffer as start (Gtk::TextIter)
+    * default_editable : default editability of the buffer (true or false)
+    * Returns : true if an insertion was possible at iter
