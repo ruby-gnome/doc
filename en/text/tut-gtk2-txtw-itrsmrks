@@ -108,7 +108,7 @@ require 'gtk2'
  window.show_all
  Gtk.main
 
-You should have no difficulty understanding the main body of this example program. You may have guessed that the most important processing is happening in two top level methods (defined for Object object) ((*insert_text*)) and  ((*retrieve_text*)).
+It is not to be expected that serious readers of this tutorial would have any difficulty understanding the main body of this example program. You may have guessed that the most important processing is happening in two top level methods (defined for Object object) ((*insert_text*)) and  ((*retrieve_text*)).
 
 In insert_text(entry, textview) we first have to retrieve the text mark, which is next translated into text iterator, which is then in turn used to insert a string from Gtk::Entry text field into the text buffer.
 
