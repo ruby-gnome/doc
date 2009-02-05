@@ -52,7 +52,7 @@ GTK+ provides a wide variety of methods for retrieving text iterators as well as
  # Insert the text from the GtkEntry into the GtkTextView.
  def insert_text(ent, txtvu)
    mark = txtvu.buffer.selection_bound
-   iter = txtvu.buffer.get_iter_at_mark(mark);
+   iter = txtvu.buffer.get_iter_at_mark(mark)
    txtvu.buffer.insert(iter, ent.text)
  end
 
