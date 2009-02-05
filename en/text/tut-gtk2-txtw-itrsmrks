@@ -1,6 +1,18 @@
 = The Text View Widget
 {{link "tut-gtk2-txtw-textview", "tut-gtk2-txtw", "tut-gtk", "tut-gtk2-txtw-tags"}}
 
+= Sorry still under construction
+
+
+    * 3 ((<Text Iterators and Marks|tut-gtk2-txtw-itrsmrks>))
+      * 3.1 ((<Editing the Text Buffer|tut-gtk2-txtw-itrsmrks#>))
+      * 3.2 ((<Retrieving Text Iterators and Marks|tut-gtk2-txtw-itrsmrks#>))
+      * 3.3 ((<Changing Text Buffer Contents|tut-gtk2-txtw-itrsmrks#>))
+      * 3.4 ((<Cutting, Copying and Pasting|tut-gtk2-txtw-itrsmrks#>))
+      * 3.5 ((<Searching in the Text Buffer|tut-gtk2-txtw-itrsmrks#>))
+      * 3.6 ((<Scrolling the Text Buffer|tut-gtk2-txtw-itrsmrks#>))
+    * 4 ((<Text Tags|tut-gtk2-txtw-tags>))
+
 == Text Iterators and Marks
 
 When manipulating text within a Gtk::TextBuffer object, there are two different objects that can help you track the position within the buffer: Gtk::TextIter and Gtk::TextMark. Functions are provided by GTK+ to translate between these two objects.
@@ -223,4 +235,106 @@ When you right-click a Gtk::TextView widget, you are presented with a pop-up men
  window.show_all
  Gtk.main
 
+Gtk::Clipboard is the central class to or from where data can be transferred hence, shared between different applications. To retrieve a clipboard that has already been created you should use:
+
+ clipboard = Gtk::Clipboard.get(Gdk::Selection::CLIPBOARD)
+
+As you have seen the other methods  we used are Gtk::TextBuffer instance methods and are related to the three Cut, Copy and Paste behaviours we are exploring here. They are as follows:
+
+ txtvu.buffer.cut_clipboard(clipboard, true)
+ txtvu.buffer.copy_clipboard(clipboard)
+ txtvu.buffer.paste_clipboard(clipboard, nil, true)
+
+:Check out the API:
+    * Gtk::TextBuffer#paste_clipboard(clipboard, override_location, default_editable)
+    * Gtk::TextBuffer#copy_clipboard(clipboard)
+    *  Gtk::TextBuffer#cut_clipboard(clipboard, default_editable)
+
+Though it is possible to manipulate the clipboard directly, for the simplest clipboard actions such as cuting, copying and retrieving text for Gtk::TextView widget it makes more sense to use just mentioned Gtk::TextBuffer's built-in instance methods. 
+
 === Searching in the Text Buffer
+
+In most applications that use the Gtk::TextView widget, you will need to search through a text buffer. GTK+ provides two search functions, to find a string in a text buffer: Gtk::TextIter#forward_search, and Gtk::TextIter#backward_search.
+
+
+--- forward_search(str, flags, limit)
+    Searches forward for str. Any match is returned by an array of Gtk::TextIter [match_start, match_end]. ((*match_start*)) is set to the first character of the match, and ((*match_end*)) to the first character after the match. The search will not continue past limit. You may need  Gtk::TextIter flags (((<GtkTextSearchFlags|Gtk::TextIter#GtkTextSearchFlags>))). The flags are needed among other things to manage embedded pixbufs or child widgets. If these flags are not given, the match must be exact. 
+
+        * str: a search string
+        * flags: flags affecting how the search is done (((<GtkTextSearchFlags|Gtk::TextIter#GtkTextSearchFlags>)))
+        * limit: bound for the search, or nil for the end of the buffer
+        * Returns: an array of Gtk::TextIter or nil
+
+--- backward_search(str, flags, limit)
+    Same as Gtk::TextIter#forward_search, but moves backward.
+
+        * str: search string
+        * flags: bitmask of flags affecting the search (((<GtkTextSearchFlags|Gtk::TextIter#GtkTextSearchFlags>)))
+        * limit: location of last possible match_start, or nil for start of buffer
+        * Returns: an array of Gtk::TextIter or nil
+
+
+The following example demonstrates the use of the first of the above two methods to search for a text string in a Gtk::TextBuffer. The search begins when the user clicks the Gtk::Stock::FIND button. 
+
+
+{{image_right("txtw-itrsmrks-03.png")}}
+{{br}}
+
+((*find.rb*))
+
+ #!/usr/bin/env ruby
+ require 'gtk2'
+
+ # Search for the entered string within the GtkTextView.
+ # Then tell the user how many times it was found.
+ def search(ent, txtvu)
+   start = txtvu.buffer.start_iter
+   #                   forward_search(find, flags, limit=(nil==entire text buffer))
+   first, last = start.forward_search(ent.text, Gtk::TextIter::SEARCH_TEXT_ONLY, nil)
+   count = 0
+   while (first)
+     start.forward_char
+     first, last = start.forward_search(ent.text, Gtk::TextIter::SEARCH_TEXT_ONLY, nil)
+     start = first
+     count += 1
+   end
+   # Gtk::MessageDialog.new(parent, flags, message_type, button_type, message = nil)
+   dialogue = Gtk::MessageDialog.new(
+             nil,
+             Gtk::Dialog::MODAL,
+             Gtk::MessageDialog::INFO, 
+             Gtk::MessageDialog::BUTTONS_OK,
+              "The string #{ent.text} was found #{count} times!"
+   )
+   dialogue.run
+   dialogue.destroy
+ end
+
+ window = Gtk::Window.new(Gtk::Window::TOPLEVEL)
+ window.resizable = true
+ window.title = "Searching Buffers"
+ window.border_width = 10
+ window.signal_connect('delete_event') { Gtk.main_quit }
+
+ textview = Gtk::TextView.new
+
+ entry      = Gtk::Entry.new
+ entry.text = "Search for ..."
+ find       = Gtk::Button.new(Gtk::Stock::FIND)
+
+ find.signal_connect('clicked') { search(entry, textview) }
+
+ scrolled_win = Gtk::ScrolledWindow.new
+ window.set_size_request(250, 200)
+ scrolled_win.add(textview)
+ scrolled_win.set_policy(Gtk::POLICY_AUTOMATIC, Gtk::POLICY_ALWAYS)
+
+ hbox = Gtk::HBox.new(false, 5)
+ hbox.pack_start_defaults(entry)
+ hbox.pack_start_defaults(find)
+ vbox = Gtk::VBox.new(false, 5)
+ vbox.pack_start(scrolled_win, true,  true, 0)
+ vbox.pack_start(hbox,         false, true, 0)
+ window.add(vbox)
+ window.show_all
+ Gtk.main
