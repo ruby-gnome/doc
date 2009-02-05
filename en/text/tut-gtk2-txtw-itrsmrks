@@ -129,3 +129,6 @@ These methods return Gtk::TextMark object. Once we have the have a text mark, we
 The other method for retrieving text iterators in our function called "retrieve_text" is Gtk::TextBuffer#bounds. It returns an array with the starting and ending Gtk::TreeIter objects, which identify the selected text interval in the text buffer.
 
 Unfortunately Gtk::TextBuffer#get_text(start, end, show_invisible=false) currently does not work as expected. Those of you who wish see the identical C GTK+ program, that does work, can click on this  link ((<"C GTK+ program: Using Text Iterators"|tut-gtk2-txtw-itrsmrks-cgtk-01>)). You will be making a short detour into C GTK+
+
+
+=== Changing Text Buffer Contents
