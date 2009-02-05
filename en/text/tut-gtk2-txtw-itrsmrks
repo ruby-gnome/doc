@@ -1,18 +1,6 @@
 = The Text View Widget
 {{link "tut-gtk2-txtw-textview", "tut-gtk2-txtw", "tut-gtk", "tut-gtk2-txtw-tags"}}
 
-= Sorry still under construction
-
-
-    * 3 ((<Text Iterators and Marks|tut-gtk2-txtw-itrsmrks>))
-      * 3.1 ((<Editing the Text Buffer|tut-gtk2-txtw-itrsmrks#>))
-      * 3.2 ((<Retrieving Text Iterators and Marks|tut-gtk2-txtw-itrsmrks#>))
-      * 3.3 ((<Changing Text Buffer Contents|tut-gtk2-txtw-itrsmrks#>))
-      * 3.4 ((<Cutting, Copying and Pasting|tut-gtk2-txtw-itrsmrks#>))
-      * 3.5 ((<Searching in the Text Buffer|tut-gtk2-txtw-itrsmrks#>))
-      * 3.6 ((<Scrolling the Text Buffer|tut-gtk2-txtw-itrsmrks#>))
-    * 4 ((<Text Tags|tut-gtk2-txtw-tags>))
-
 == Text Iterators and Marks
 
 When manipulating text within a Gtk::TextBuffer object, there are two different objects that can help you track the position within the buffer: Gtk::TextIter and Gtk::TextMark. Functions are provided by GTK+ to translate between these two objects.
