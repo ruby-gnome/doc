@@ -47,7 +47,7 @@ GTK+ provides a wide variety of methods for retrieving text iterators as well as
 {{br}}
 
  #!/usr/bin/env ruby
-require 'gtk2'
+ require 'gtk2'
 
  # Insert the text from the GtkEntry into the GtkTextView.
  def insert_text(ent, txtvu)
