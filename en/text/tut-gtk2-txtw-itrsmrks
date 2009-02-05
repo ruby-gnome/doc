@@ -33,7 +33,7 @@ By default, text marks have ((*gravity*)) set to the right, hence a text mark wi
 
 Text marks can be accessed in two ways. You can retrieve a text mark at a specific Gtk::TextIter location. It is also possible to set up text mark with a string as its name, which makes it easy to keep track of.
 
-Two default text marks are always available by GTK+ for every Gtk::TextBuffer: ((*insert*)) and ((*selection_bound*)). The insert text mark refers to the current cursor position within the buffer. The selection_bound text mark refers to the boundary of selected (highlighted) text if there is any selected text. If there isn't any text selected these two marks will point to the same position.
+Two default text marks are always available by GTK+ for every Gtk::TextBuffer: ((*insert*)) and ((*selection_bound.*)) The insert text mark refers to the current cursor position within the buffer. The selection_bound text mark refers to the boundary of selected (highlighted) text if there is any selected text. If there isn't any text selected these two marks will point to the same position.
 
 The  ((*insert*)) and ((*selection_bound*)) text marks are extremely useful. They can be set to automatically select or deselect text within a buffer and help you figure out where text should be inserted within the buffer.
 
