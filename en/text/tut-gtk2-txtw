@@ -12,7 +12,7 @@
       * 2.2 ((<Text View Properties|tut-gtk2-txtw-textview#Text View Properties>))
       * 2.3 ((<Pango Tab Arrays|tut-gtk2-txtw-textview#Pango Tab Arrays>))
     * 3 ((<Text Iterators and Marks|tut-gtk2-txtw-itrsmrks>))
-      * 3.1 ((<Editing the Text Buffer|tut-gtk2-txtw-itrsmrks#>))
+      * 3.1 ((<Editing the Text Buffer|tut-gtk2-txtw-itrsmrks#Editing the Text Buffer>))
       * 3.2 ((<Retrieving Text Iterators and Marks|tut-gtk2-txtw-itrsmrks#>))
       * 3.3 ((<Changing Text Buffer Contents|tut-gtk2-txtw-itrsmrks#>))
       * 3.4 ((<Cutting, Copying and Pasting|tut-gtk2-txtw-itrsmrks#>))
