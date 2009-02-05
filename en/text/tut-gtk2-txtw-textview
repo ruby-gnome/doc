@@ -1,6 +1,8 @@
 = The Text View Widget
 {{link "tut-gtk2-txtw-scrolledwin", "tut-gtk2-txtw", "tut-gtk", "tut-gtk2-txtw-itrsmrks"}}
 
+= Sorry still under construction
+
 == Text Views
 
 {{image_right("txtw-textview-01.png")}}
@@ -11,6 +13,7 @@ At the first glance you may think that this widget may only be used  to display 
 
 Let us start with a simple example of Gtk::TextView widget inside a Gtk::ScrolledWindow widget. This listing illustrates the simplest text view example that you could create:
 
+((*textview.rb*))
 
  #!/usr/bin/env ruby
  require 'gtk2'
@@ -57,6 +60,8 @@ When handling text buffers, you will be dealing with terms such as ((*ofset*)) a
 Gtk::TextView widget was created to be very versatile. Because of this, many properties are provided for the widget. Let's have a look at another example program demonstrating how properties can be used to customize the text:
 
 {{br}}
+
+((*textview2.rb*))
 
  #!/usr/bin/env ruby
  require 'gtk2'
@@ -110,7 +115,7 @@ Tabs added to a text view are set to a default width, but there are times when t
 
 
 {{br}}
-
+((*textview-pango-tabs.rb*))
 
  #!/usr/bin/env ruby
  require 'gtk2'
@@ -135,7 +140,7 @@ Tabs added to a text view are set to a default width, but there are times when t
 
  textview = Gtk::TextView.new
  textview.buffer.text = "Tab is now set to 15!\n" +
-                        "You can hit a TAB key\n" +
+                        "You can hit the TAB key\n" +
                         "and see for yourself:\n" +
                         "123456789012345678901234567890\n"
 
@@ -143,7 +148,6 @@ Tabs added to a text view are set to a default width, but there are times when t
  # "Regular" currently, all except "Regular" work fine.
  # However, this is really not a Ruby but general version
  # "C" GTK+ problem!
-
  font = Pango::FontDescription.new("Monospace Italic 8")
  textview.modify_font(font)
  make_tab_array(textview, 15, font)
@@ -157,16 +161,15 @@ Tabs added to a text view are set to a default width, but there are times when t
  window.show_all
  Gtk.main
 
-The Gtk::PangoLayout object is used to represent a whole paragraph of text. Normally, Pango uses it internally for laying out text within a widget. However, it can be employed as in our example in the ((*make_tab_array*)) function to calculate the width of the tab string. Note that using tab, let alone changing it, makes sense only when you have a mono-spaced text as well when you use the same font through out the text.
+The Gtk::PangoLayout object is used to represent a whole paragraph of text. Normally, Pango uses it internally for laying out text within a widget. However, it can be employed as in our example in the ((*make_tab_array*)) function to calculate the width of the tab string. Note that using tab, let alone changing it makes sense only when you have a mono-spaced text as well when you use the same font through out the text.
 
-Following are the methods we used in order to implement our tab size altering functionality.
-
+Following are the methods we used in order to implement our tab size altering functionality:
 
 --- Gtk::Widget#create_pango_layout(text=nil)
 
     Creates a new Pango::Layout with the appropriate colormap, font description, and base direction for drawing text for this widget.
     If you keep a Pango::Layout created in this way around, in order notify the layout of changes to the base direction or font of this widget, you must call Pango::Layout#context_changed in response to the ::style_set and ::direction_set signals for the widget.
-    * text: text to set on the layout (can be nil) 
+    * text: text to set on the layout (can be nil)
     * Returns: the new Pango::Layout
 
 
@@ -195,8 +198,8 @@ Following are the methods we used in order to implement our tab size altering fu
 
     Before applying the tab array, you need to add the width.
     * 0: refers to the first element in the Pango::TabArray, the only one that should ever exist.
-    * Pango::TAB_LEFT - must always be specified; it is the only constant in ((<Pango#TabAlign>)).
-    * width: the width of the tab in pixels.
+    * Pango::TAB_LEFT - must always be specified; it is the only constant in ((<Pango#TabAlign>))
+    * width: the width of the tab in pixels
     * Returns: self: ((*FIXME ??? *))
 
 
