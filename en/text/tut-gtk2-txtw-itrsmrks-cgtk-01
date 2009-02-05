@@ -1,5 +1,5 @@
 = The Text View Widget (supplemental)
-{{link "tut-gtk2-txtw-itrsmrks#Retrieving Text Iterators and Marks", "tut-gtk2-txtw", "tut-gtk", "tut-gtk2-txtw-itrsmrks#Retrieving Text Iterators and Marks"}}
+{{link "tut-gtk2-txtw-itrsmrks", "tut-gtk2-txtw", "tut-gtk", "tut-gtk2-txtw-itrsmrks"}}
 
 Return from this detour: ((<Jump Back|tut-gtk2-txtw-itrsmrks#Retrieving Text Iterators and Marks>))
 
