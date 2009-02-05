@@ -114,133 +114,18 @@ In insert_text(entry, textview) we first have to retrieve the text mark, which i
 
 In retrieve_text(textview) we first obtain two text iterators representing start/end positions of the selected (highlighted) text, which are subsequently used to obtain the marked (selected) text from the text buffer.
 
-Unfortunately Gtk::TextBuffer#get_text(start, end, show_invisible=false) currently does not work as expected. At the end of this article I will include the identical C program, that does work as expected. But first let us look at few methods used in the above example:
 
+=== Retrieving Text Iterators and Marks
 
-
-
---- selection_bound
-
-    Returns the mark that represents the selection bound. Equivalent to calling Gtk::TextBuffer#get_mark to get the mark named "selection_bound", but slightly more efficient, and involves less typing.
-    The currently-selected text in buffer is the region between the "selection_bound" and "insert" marks. If "selection_bound" and "insert" are in the same place, then there is no current selection. Gtk::TextBuffer#selection_bounds is another convenient method for handling the selection, if you just want to know whether there's a selection and what its bounds are.
-    * Returns: selection bound mark (Gtk::TextMark)
-
-    {{br}}
-    The following two lines have identical effect and meaning:
+In the above example program we first obtain the text mark with Gtk::TextBuffer#selection_bound. Note that the following two lines have identical effect and meaning:
 
      mark = textview.buffer.selection_bound
-     mark = txtvu.buffer.get_mark("selection_bound")
+     mark = textview.buffer.get_mark("selection_bound")
 
+These methods return Gtk::TextMark object. Once we have the have a text mark, we have to translate it into text iterator with Gtk::TextBuffer#get_iter_at_mark(mark). This method returns a  Gtk::TextIter object.
 
---- get_mark(name)
+ iter = textview.buffer.get_iter_at_mark(mark)
 
-    Returns the mark named name in buffer, or nil if no such mark exists in the buffer.
-    * name: a mark name 
-    * Returns: a Gtk::TextMark, or nil
+The other method for retrieving text iterators in our function called "retrieve_text" is Gtk::TextBuffer#bounds. It returns an array with the starting and ending Gtk::TreeIter objects, which identify the selected text interval in the text buffer.
 
---- get_iter_at_mark(mark)
-
-    Gets the iter with the current position of mark.
-    * mark: a Gtk::TextMark in buffer 
-    * Returns: a Gtk::TextIter
-
---- bounds
-
-    Retrieves the first and last iterators in the buffer, i.e. the entire buffer lies within the range [start, end].
-    * Returns: [start, end]
-       * start: a Gtk::TreeIter to initialize with first position in the buffer 
-       * end: a Gtk::TreeIter to initialize with the end iterator
-
-
-As promised following is the identical C GTK+ program that does work as expected:
-
- #include <gtk/gtk.h>
- typedef struct
- {
-   GtkWidget *entry, *textview;
- } Widgets;
-
- static void insert_text (GtkButton*, Widgets*);
- static void retrieve_text (GtkButton*, Widgets*);
-
- int main (int argc,
-           char *argv[])
- {
-   GtkWidget *window, *scrolled_win, *hbox, *vbox, *insert, *retrieve;
-   Widgets *w = g_slice_new (Widgets);
-  
-   gtk_init (&argc, &argv);
-  
-   window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-   gtk_window_set_title (GTK_WINDOW (window), "Text Iterators");
-   gtk_container_set_border_width (GTK_CONTAINER (window), 10);
-   gtk_widget_set_size_request (window, -1, 200);
-  
-   g_signal_connect (G_OBJECT (window), "destroy",
-                     G_CALLBACK (gtk_main_quit), NULL);
-  
-   w->textview = gtk_text_view_new ();
-   w->entry = gtk_entry_new ();
-   insert = gtk_button_new_with_label ("Insert Text");
-   retrieve = gtk_button_new_with_label ("Get Text");
-
-   g_signal_connect (G_OBJECT (insert), "clicked",
-                     G_CALLBACK (insert_text),
-                     (gpointer) w);
-   g_signal_connect (G_OBJECT (retrieve), "clicked",
-                     G_CALLBACK (retrieve_text),
-                     (gpointer) w);
-    
-   scrolled_win = gtk_scrolled_window_new (NULL, NULL);
-   gtk_container_add (GTK_CONTAINER (scrolled_win), w->textview);
-
-   hbox = gtk_hbox_new (FALSE, 5);
-   gtk_box_pack_start_defaults (GTK_BOX (hbox), w->entry);
-   gtk_box_pack_start_defaults (GTK_BOX (hbox), insert);
-   gtk_box_pack_start_defaults (GTK_BOX (hbox), retrieve);
-
-   vbox = gtk_vbox_new (FALSE, 5);
-   gtk_box_pack_start (GTK_BOX (vbox), scrolled_win, TRUE, TRUE, 0);
-   gtk_box_pack_start (GTK_BOX (vbox), hbox, FALSE, TRUE, 0);
-  
-   gtk_container_add (GTK_CONTAINER (window), vbox);
-   gtk_widget_show_all (window);
-  
-   gtk_main();
-   return 0;
- }
-
- /* Insert the text from the GtkEntry into the GtkTextView. */
- static void 
- insert_text (GtkButton *button, 
-              Widgets *w)
- {
-   GtkTextBuffer *buffer;
-   GtkTextMark *mark;
-   GtkTextIter iter;
-   const gchar *text;
-
-   buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (w->textview));
-   text = gtk_entry_get_text (GTK_ENTRY (w->entry));
-
-   mark = gtk_text_buffer_get_insert (buffer);
-   gtk_text_buffer_get_iter_at_mark (buffer, &iter, mark);
-   gtk_text_buffer_insert (buffer, &iter, text, -1);
- }
-
- /* Retrieve the selected text from the GtkTextView and display it
-  * to the user. */
- static void 
- retrieve_text (GtkButton *button, 
-                Widgets *w)
- {
-   GtkTextBuffer *buffer;
-   GtkTextIter start, end;
-   gchar *text;
-
-   buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (w->textview));
-   gtk_text_buffer_get_selection_bounds (buffer, &start, &end);
-   text = gtk_text_buffer_get_text (buffer, &start, &end, FALSE);
-
-   g_print ("%s\n", text);
- }
+Unfortunately Gtk::TextBuffer#get_text(start, end, show_invisible=false) currently does not work as expected. Those of you who wish see the identical C GTK+ program, that does work, can click on this  link "tut-gtk2-txtw-itrsmrks-cgtk-01". You will be making a short detour into C GTK+
