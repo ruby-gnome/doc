@@ -147,11 +147,10 @@ Once you created a tag with its properties you will, later on - most likely in a
       ...
  buff.apply_tag("bold", start_iter, end_iter)
 
-NOTE: in our example program we used a trick to obtain tag property names from button labels, where they are stored as Gtk::Stock items. If you need to store some new property such as a tag value in your widgets you could simply add it to the widget class as needed. For instance you could expand the Gtk::Button class to include a new property called ((*texttag*)). At the end of this session I will include a program that utilizes just mentioned skim.
+NOTE: in our example program we used a trick to obtain tag property names from button labels, where they are stored as Gtk::Stock items. If you need to store some new property such as a tag value in your widgets you could simply add it to the widget class as needed. For instance you could expand the Gtk::Button class to include a new property called ((*texttag*)). 
 
 
-
-Following is the promised example program that modifies Gtk::Button class to include a new property to store a tag_name, used in Gtk::TextBuffer's tag table.
+Just as a picture is worth a thousand words so is perhaps a listing of an executable program. Let me repeat the above example program this time with code that modifies Gtk::Button class to include a new property to store a tag_name, used in Gtk::TextBuffer's tag table:
 
 ((*texttags-button-texttag.rb*))
 
