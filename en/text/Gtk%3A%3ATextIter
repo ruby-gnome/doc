@@ -556,7 +556,7 @@ Because of this, iterators can't be used to preserve positions across buffer mod
 --- SEARCH_VISIBLE_ONLY
     Do not search for hidden (invisible) elements.
 --- SEARCH_CASE_INSENSITIVE
-    Self-explanatory. (By default all searching is case sensitive).
+    Though the meaning is self-explanatory, this flag is not supported at this point. (By default all searching is case sensitive).
 
     ((*Ruby/GtkSouceView*))
 
