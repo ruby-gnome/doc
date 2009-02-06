@@ -326,3 +326,29 @@ The following example demonstrates the use of the first of the above two methods
  window.add(vbox)
  window.show_all
  Gtk.main
+
+
+The first thing the search procedure has to do is retrieve the lower search bound of the document with Gtk::TextBuffer#start_iter. We do not need the bounding position of the buffer because by leaving the search unbound, it will automatically set the end of the document as the limit for the search.
+
+Forward search through the buffer is performed with Gtk::TextIter#forward_search(find, flags, limit). Note difference in types (classes) of objects for instance methods  Gtk::TextBuffer#start_iter and Gtk::TextIter#forward_search. The former is performed on a text buffer while the latter operates on an iterator. When you think of it this is quite logical. You should get well acquainted with the arguments and return values of the Gtk::TextIter#forward_search:
+
+ begini, endi = start.forward_search(ent.text, Gtk::TextIter::SEARCH_TEXT_ONLY, nil)
+
+Following is a brief summary for this iterator instance method. Pay attention to return values:
+
+--- Gtk::TextIter#forward_search(str, flags, limit)
+    Searches forward for str. Any match is returned by an array of Gtk::TextIter [match_start, match_end]. match_start is set to the first character of the match and match_end to the first character after the match. The search will not continue past limit. If you specify Gtk::TextIter::SEARCH_TEXT_ONLY flag, the match may have pixbufs or child widgets mixed inside the matched range. If these flags are not given, the match must be exact.
+    * str: a search string
+    * flags: flags affecting how the search is done (((<GtkTextSearchFlags|Gtk::TextIter#GtkTextSearchFlags>)))
+    * limit: bound for the search, or nil for the end of the buffer
+    * Returns: an array of Gtk::TextIter or nil
+
+Let us revisit the ((<GtkTextSearchFlags|Gtk::TextIter#GtkTextSearchFlags>))
+:Gtk Text Search Flags
+
+    * Gtk::TextIter::SEARCH_TEXT_ONLY : - Ignore images, child widgets, or any other type of non-textual objects when searching.
+    * Gtk::TextIter::SEARCH_VISIBLE_ONLY : - Do not search for hidden (invisible) elements.
+    * Gtk::TextIter::SEARCH_CASE_INSENSITIVE : - Though the meaning is self-explanatory, this flag is not supported at this point. (By default all searching is case sensitive).
+
+    {{br}}
+    If you do not specify the Gtk::TextIter::SEARCH_TEXT_ONLY flag, you will need  to use the special ((*0xfffc*)) character to represent embedded child widgets and pixbufs. Match must be exact, so ignoring non-textual elements in the text buffer with this flag is probably a good idea.
