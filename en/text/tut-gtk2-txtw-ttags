@@ -141,7 +141,7 @@ The first argument ((*tag_name*)) is simple. It is an optional tag name. However
                    "background" => "#000000" }
  )
 
-Once you created a tag with its properties you retrieve it from the text buffer's tag table by specifying its tag_name. At the same time you apply it to a segment or portion of the text bufer defined by star and end iterators. In the following snippet of code we create a an entry in tag table for the Gtk::TextBuffer object called buff. We create tag called "bold" and add for it a property name/value pair as hash {"weight" => Pango::WEIGHT_BOLD}. Subsequently (later in the program; in our case in a callback) we extract the property value pair for this tag:
+Once you created a tag with its properties you retrieve it from the text buffer's tag table by specifying its tag_name. At the same time you apply it to a segment or portion of the text buffer defined by star and end iterators. In the following snippet of code we create a an entry in tag table for the Gtk::TextBuffer object called buff. We create tag called "bold" and add for it a property name/value pair as hash {"weight" => Pango::WEIGHT_BOLD}. Subsequently (later in the program; in our case in a callback) we extract the property value pair for this tag:
 
  buff.create_tag("bold",   {"weight" => Pango::WEIGHT_BOLD})
       ...
