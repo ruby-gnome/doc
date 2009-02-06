@@ -1,5 +1,5 @@
 = The Text View Widget
-{{link "tut-gtk2-txtw-textview", "tut-gtk2-txtw", "tut-gtk", "tut-gtk2-txtw-tags"}}
+{{link "tut-gtk2-txtw-textview", "tut-gtk2-txtw", "tut-gtk", "tut-gtk2-txtw-ttags"}}
 
 == Text Iterators and Marks
 
