@@ -89,7 +89,7 @@ As of January 2009, brand new material mainly based on Andrew  Krause's book ((<
       * ((<Text Buffers|tut-gtk2-txtw-textview#Text Buffers>))
       * ((<Text View Properties|tut-gtk2-txtw-textview#Text View Properties>))
       * ((<Pango Tab Arrays|tut-gtk2-txtw-textview#Pango Tab Arrays>))
-    *  ((<Text Iterators and Marks|tut-gtk2-txtw-itrsmrks>))
+    * ((<Text Iterators and Marks|tut-gtk2-txtw-itrsmrks>))
       * ((<Editing the Text Buffer|tut-gtk2-txtw-itrsmrks#Editing the Text Buffer>))
       * ((<Retrieving Text Iterators and Marks|tut-gtk2-txtw-itrsmrks#Retrieving Text Iterators and Marks>))
       * ((<Changing Text Buffer Contents|tut-gtk2-txtw-itrsmrks#Changing Text Buffer Contents>))
