@@ -16,7 +16,7 @@
       * 3.4 ((<Cutting, Copying and Pasting|tut-gtk2-txtw-itrsmrks#Cutting, Copying and Pasting>))
       * 3.5 ((<Searching in the Text Buffer|tut-gtk2-txtw-itrsmrks#Searching in the Text Buffer>))
       * 3.6 ((<Scrolling the Text Buffer|tut-gtk2-txtw-itrsmrks#Scrolling the Text Buffer>))
-    * 4 ((<Text Tags|tut-gtk2-txtw-tags>))
+    * 4 ((<Text Tags|tut-gtk2-txtw-ttags>))
     * 5 ((<Inserting Images|tut-gtk2-txtw-iimgs>))
     * 6 ((<Inserting Child Widgets|tut-gtk2-textview-icw>))
     * 7 ((<GtkSourceView|tut-gtk2-textview-gsw>))
