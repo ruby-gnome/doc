@@ -218,7 +218,6 @@ Just as a picture is worth a thousand words so is perhaps a listing of an execut
  clear     = Gtk::Button.new(Gtk::Stock::CLEAR);
 
  scale     = Gtk::ComboBox.new      # (text=true)
- # scale.label = "eegg" # name, title ... ???
 
  # Our little addition to the Button class, in order to
  # save what usually is stored as label, however we use
