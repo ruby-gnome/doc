@@ -510,7 +510,7 @@ Because of this, iterators can't be used to preserve positions across buffer mod
 
 --- forward_search(str, flags, limit)
 
-    Searches forward for str. Any match is returned by an array of Gtk::TextIter [match_start, match_end]. match_start is setted to the first character of the match and match_end to the first character after the match. The search will not continue past limit. Note that a search is a linear or O(n) operation, so you may wish to use limit to avoid locking up your UI on large buffers.
+    Searches forward for str. Any match is returned by an array of Gtk::TextIter [match_start, match_end]. match_start is set to the first character of the match and match_end to the first character after the match. The search will not continue past limit. Note that a search is a linear or O(n) operation, so you may wish to use limit to avoid locking up your UI on large buffers.
     If the Gtk::TextIter::SEARCH_VISIBLE_ONLY flag is present, the match may have invisible text interspersed in str. i.e. str will be a possibly-noncontiguous subsequence of the matched range. similarly, if you specify Gtk::TextIter::SEARCH_TEXT_ONLY, the match may have pixbufs or child widgets mixed inside the matched range. If these flags are not given, the match must be exact; the special 0xFFFC character in str will match embedded pixbufs or child widgets.
     * str: a search string
     * flags: flags affecting how the search is done (((<GtkTextSearchFlags|Gtk::TextIter#GtkTextSearchFlags>)))
