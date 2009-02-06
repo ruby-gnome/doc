@@ -352,3 +352,48 @@ Let us revisit the ((<GtkTextSearchFlags|Gtk::TextIter#GtkTextSearchFlags>))
 
     {{br}}
     If you do not specify the Gtk::TextIter::SEARCH_TEXT_ONLY flag, you will need  to use the special ((*0xfffc*)) character to represent embedded child widgets and pixbufs. Match must be exact, so ignoring non-textual elements in the text buffer with this flag is probably a good idea.
+
+
+=== Scrolling the Text Buffer
+
+
+When you are searching through a text buffer with either Gtk::TextIter#forward_search or Gtk::TextIter#forward_search or Gtk::TextIter#backward_search, GTK+ will not automatically scroll to search matches that you select. To do this, you need to first call Gtk::TextBuffer#create_mark to create a temporary Gtk::TextMark at the location of the found text:
+
+--- create_mark(mark_name, iter, left_gravity)
+
+    Creates a mark at position iter. If mark_name is nil, the mark is anonymous; otherwise, the mark can be retrieved by name using Gtk::TextBuffer#get_mark. If a mark has left gravity, and text is inserted at the mark's current location, the mark will be moved to the left of the newly-inserted text. If the mark has right gravity (left_gravity = false), the mark will end up on the right of newly-inserted text. The standard left-to-right cursor is a mark with right gravity (when you type, the cursor stays on the right side of the text you're typing).
+
+    {{br}}
+    Emits the "mark_set" signal as notification of the mark's initial placement.
+    * mark_name: name for mark(String), or nil 
+    * iter: location to place mark (Gtk::TextIter)
+    * left_gravity: true if the mark has left gravity, false if the mark has right gravity
+    * Returns: the new Gtk::TextMark
+
+Next you have to scroll to the mark with Gtk::TextView#scroll_mark_onscreen:
+
+--- scroll_mark_onscreen(mark)
+
+    Scrolls the Gtk::TextView the minimum distance such that mark is contained within the visible area of the widget.
+    * mark: a mark in the buffer for the Gtk::TextView
+    * Returns: self
+
+The problem with Gtk::TextView#scroll_mark_onscreen is that it will only scroll the minimum distance to show the mark on the screen. However, you may want the mark to be centred within the visible buffer. To specify the alignment parameters for where the mark appears within the visible buffer, call Gtk::TextView#scroll_to_mark:
+
+--- scroll_to_mark(mark, within_margin, use_align, xalign, yalign)
+
+    Scrolls the Gtk::TextView so that mark is on the screen in the position indicated by xalign and yalign. An alignment of 0.0 indicates left or top, 1.0 indicates right or bottom, 0.5 means center. If use_align is false, the text scrolls the minimal distance to get the mark onscreen, possibly not scrolling at all. The effective screen for purposes of this method is reduced by a margin of size within_margin.
+    * mark: a Gtk::TextMark 
+    * within_margin: margin as a 0.0, 0.5 fraction of screen size 
+    * use_align: whether to use alignment arguments (if false, just get the mark onscreen) 
+    * xalign: horizontal alignment of mark within visible area. 
+    * yalign: vertical alignment of mark within visible area 
+    * Returns: self
+
+You begin by placing a ((*margin*)), which reduces the scrollable area. The margin must be a floating-point number, to reduce the area by a factor. In most cases you will want to use 0.0 as the margin, so the area is not reduced at all. 
+
+If you set ((*use_align*)) to false, the method will scroll the minimal distance to get mark on the screen. Otherwise, the method will use the two alignment parameters as guides, which allows you to specify horizontal and vertical alignment of the mark within the visible area.
+
+An alignment ((*0.0*)) refers to the left or top, ((*1.0*)) refers to the right or bottom, and ((*0.5*)) refers to the centre.
+
+There is yet another instance method Gtk::TextView#scroll_to_iter, which behaves in a similar manner as Gtk::TextView#scroll_to_mark. The difference is obvious one receives mark the other iterator for the location. In most cases you should use mark.
