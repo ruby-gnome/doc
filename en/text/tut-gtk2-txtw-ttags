@@ -134,7 +134,7 @@ When you create a text tag, it is added to a Gtk::TextBuffer's tag table, an obj
     * properties: a hash of property names and values {name1 => value1, name2 => value2, ...}
     * Returns: a new Gtk::TextTag
 
-The first argument ((*tag_name*)) is simple. It is an optional tag name. However, the second argument is more involved. It is a hash that may contain any number of name-value pairs representing tag properties. For example you may have a tag called "colors", and two properties "background" and "foreground" with their respective values:
+The first argument ((*tag_name*)) is simple. It is an optional tag name. However, the second argument is more involved. It is a hash that may contain any number of name-value pairs representing tag's properties. For example you may have a tag called "colors", and two properties "background" and "foreground" with their respective values:
 
  buff.create_tag("colors",   
                  { "foreground" => "#FFFFFF",
