@@ -1,0 +1,12 @@
+= The Text View Widget
+{{link "tut-gtk2-txtw-iimgs", "tut-gtk2-txtw", "tut-gtk", "tut-gtk2-txtw-gsw"}}
+
+= Sorry this page is still under construction
+
+== Inserting Child Widgets
+
+
+{{image_right("txtw-icw.png")}}
+
+{{br}}
+((*childwidgets.rb*))
