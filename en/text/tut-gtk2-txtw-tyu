@@ -101,7 +101,6 @@ We again reached the end of the session. So far we have learnt a lot, and it is 
    te.textview.buffer.paste_clipboard(clipboard, nil, true)
  end
  
- # -------------------
  # Search for a text string from the current cursor position
  # if there is no selected text, or one character after the
  # cursor if there is.
