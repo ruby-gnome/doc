@@ -83,7 +83,7 @@ As of January 2009, brand new material mainly based on Andrew  Krause's book ((<
     * ((<Text Buffers|tut-gtk2-txtw-textview#Text Buffers>))
     * ((<Text View Properties|tut-gtk2-txtw-textview#Text View Properties>))
     * ((<Pango Tab Arrays|tut-gtk2-txtw-textview#Pango Tab Arrays>))
-* ((<The Text View Widget|tut-gtk2-txtw>)) (this page)
+* ((<The Text View Widget|tut-gtk2-txtw>))
     * ((<Scrolled Windows|tut-gtk2-txtw-scrolledwin>))
     * ((<Text Views|tut-gtk2-txtw-textview>))
       * ((<Text Buffers|tut-gtk2-txtw-textview#Text Buffers>))
