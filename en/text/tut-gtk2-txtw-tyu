@@ -1,0 +1,12 @@
+= The Text View Widget
+{{link "tut-gtk2-txtw-gsw", "tut-gtk2-txtw", "tut-gtk", nil}}
+
+= Sorry this page is still under construction
+
+== Test Your Understanding
+
+
+{{image_right("txtw-tyu.png")}}
+
+{{br}}
+((*childwidgets.rb*))
