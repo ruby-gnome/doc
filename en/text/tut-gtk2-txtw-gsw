@@ -1,12 +1,6 @@
 = The Text View Widget
 {{link "tut-gtk2-txtw-icw", "tut-gtk2-txtw", "tut-gtk", "tut-gtk2-txtw-tyu"}}
 
-    * 5 ((<Inserting Images|tut-gtk2-txtw-iimgs>))
-    * 6 ((<Inserting Child Widgets|tut-gtk2-textview-icw>))
-    * 7 ((<GtkSourceView|tut-gtk2-textview-gsw>))
-    * 8 ((<Test Your Understanding|tut-gtk2-textview-tyu>))
-
-
 == GtkSourceView
 
 GtkSourceView is a widget that is not actually a part of the GTK+ libraries. It is an external library used to extend the Gtk::textView widget. There is a large list of features that GtkSourceView widget adds to the text view. A list of the most notable ones follows:
