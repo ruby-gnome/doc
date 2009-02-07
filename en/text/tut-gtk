@@ -96,3 +96,8 @@ As of January 2009, brand new material mainly based on Andrew  Krause's book ((<
       * ((<Cutting, Copying and Pasting|tut-gtk2-txtw-itrsmrks#Cutting, Copying and Pasting>))
       * ((<Searching in the Text Buffer|tut-gtk2-txtw-itrsmrks#Searching in the Text Buffer>))
       * ((<Scrolling the Text Buffer|tut-gtk2-txtw-itrsmrks#Scrolling the Text Buffer>))
+    * ((<Text Tags|tut-gtk2-txtw-ttags>))
+    * ((<Inserting Images|tut-gtk2-txtw-iimgs>))
+    * ((<Inserting Child Widgets|tut-gtk2-txtw-icw>))
+    * ((<GtkSourceView|tut-gtk2-txtw-gsw>))
+    * ((<Test Your Understanding|tut-gtk2-txtw-tyu>))
