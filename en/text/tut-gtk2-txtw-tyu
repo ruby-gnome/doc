@@ -7,7 +7,7 @@ We again reached the end of the session. So far we have learnt a lot, and it is 
 
 :Specs:
 
-    Use the Gtk::Text View  widget to create a simple text editor. You should provide the ability to perform multiple text editing functions, including creating a new document, opening a file, saving a file, searching the document, cutting, copying and pasting text.
+    Use the Gtk::TextView  widget to create a simple text editor. You should provide the ability to perform multiple text editing functions, including creating a new document, opening a file, saving a file, searching the document, cutting, copying and pasting text.
 
     When creating a new document, you should make sure that this is really what user wants, because all changes will be lost, since this action should clear the screen, making it ready for new entry session.
 
