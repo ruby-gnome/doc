@@ -9,4 +9,4 @@
 {{image_right("txtw-tyu.png")}}
 
 {{br}}
-((*childwidgets.rb*))
+((*simple-text-editor.rb*))
