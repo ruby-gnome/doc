@@ -160,13 +160,13 @@ We again reached the end of the session. So far we have learnt a lot, and it is 
  paste = Gtk::Button.new(Gtk::Stock::PASTE)
  find  = Gtk::Button.new(Gtk::Stock::FIND)
  
- new.signal_connect("clicked")   { |w| new_clicked(ed) }
- open.signal_connect("clicked")  { |w| open_clicked(ed) }
- save.signal_connect("clicked")  { |w| save_clicked(ed) }
- cut.signal_connect("clicked")   { |w| cut_clicked(ed) }
- copy.signal_connect("clicked")  { |w| copy_clicked(ed) }
- paste.signal_connect("clicked") { |w| paste_clicked(ed) }
- find.signal_connect("clicked")  { |w| find_clicked(ed) }
+ new.signal_connect("clicked")   { new_clicked(ed) }
+ open.signal_connect("clicked")  { open_clicked(ed) }
+ save.signal_connect("clicked")  { save_clicked(ed) }
+ cut.signal_connect("clicked")   { cut_clicked(ed) }
+ copy.signal_connect("clicked")  { copy_clicked(ed) }
+ paste.signal_connect("clicked") { paste_clicked(ed) }
+ find.signal_connect("clicked")  { find_clicked(ed) }
  
  scrolled_win = Gtk::ScrolledWindow.new
  scrolled_win.border_width = 5
