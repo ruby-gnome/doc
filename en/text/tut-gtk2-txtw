@@ -18,9 +18,9 @@
       * 3.6 ((<Scrolling the Text Buffer|tut-gtk2-txtw-itrsmrks#Scrolling the Text Buffer>))
     * 4 ((<Text Tags|tut-gtk2-txtw-ttags>))
     * 5 ((<Inserting Images|tut-gtk2-txtw-iimgs>))
-    * 6 ((<Inserting Child Widgets|tut-gtk2-textview-icw>))
-    * 7 ((<GtkSourceView|tut-gtk2-textview-gsw>))
-    * 8 ((<Test Your Understanding|tut-gtk2-textview-tyu>))
+    * 6 ((<Inserting Child Widgets|tut-gtk2-txtw-icw>))
+    * 7 ((<GtkSourceView|tut-gtk2-txtw-gsw>))
+    * 8 ((<Test Your Understanding|tut-gtk2-txtw-tyu>))
 
 
 In this chapter we will learn how to use the Gtk::TextView widget. This widget is similar to the Gtk::Entry widget, except it is capable of holding text that spans multiple lines. Scrolled windows will be used to allow the text to exist beyond the boundaries of the screen. But before we dive into the main subject of this chapter we have to introduce a few of new widgets. The first two will be scrolled windows and view ports. Scrolled windows are composed of two scrollbars that are used to scroll the child widget. There are a few widgets that support scrolling, for example Gtk::Layout, Gtk::TreeView and Gtk::TextView. For all other widgets that you want to scroll, you will need to add them first to a Gtk::Viewport object, which then provides scrolling behaviour to its child.
