@@ -63,7 +63,6 @@ We again reached the end of the session. So far we have learnt a lot, and it is 
  
  # Save the content of the current buffer to a file.
  def save_clicked(te)
-     
    dialog = Gtk::FileChooserDialog.new(
      "Save the file ...",
      nil,
