@@ -18,4 +18,4 @@ If you ever used GEdit you wil recognize the following image, where you can see 
 {{image_right("txtw-gsw.png")}}
 
 
-The GtkSourceView library has a whole separate API documentation, which can be viewed at the ((<URL:http://GtkSourceView.sourceforge.net>)). If you would like to make this library available to Ruby GTK+, you'd have to compile the library yourself and write Ruby interface for it. To compile an application that uses this library, you need to add `pkg-config --cflags --libs gtksourceview-1.0` to the compile command.
+The GtkSourceView library has a whole separate API documentation, which can be viewed at the ((<http://GtkSourceView.sourceforge.net>)). If you would like to make this library available to Ruby GTK+, you'd have to compile the library yourself and write Ruby interface for it. To compile an application that uses this library, you need to add `pkg-config --cflags --libs gtksourceview-1.0` to the compile command.
