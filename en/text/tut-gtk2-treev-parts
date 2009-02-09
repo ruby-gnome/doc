@@ -15,7 +15,7 @@ The GTK+ provides four types of of built-in tree model classes, but in our sessi
 The Gtk::TreeModel interface provides a standard set of methods for retrieving general information about the data that is stored. For example, it allows you to get the number of rows in the tree and the number of children of a certain row. The Gtk::TreeModel also gives you a way to retrieve the data that is stored in a specific row of the store.
 
 :Note:
-    Models, renderers, and columns are referred to as objects rather than widgets, even though they are a part og GTK+ library. This distinction is important because it emphasizes the fact that they are not derived grom Gtk::Widget, hence they do not inherit Gtk::Widgets behaviour, properties nor signals.
+    Models, renderers, and columns are referred to as objects rather than widgets, even though they are a part og GTK+ library. This distinction is important because it emphasizes the fact that they are not derived from Gtk::Widget, hence they do not inherit Gtk::Widgets behaviour, properties nor signals.
 
 The model is represented as a hierarchical tree of strongly-typed, columned data. In other words, the model can be seen as a tree where every node has different values depending on which column is being queried. The type of data found in a column is determined by using Ruby Class (ie. Object, Integer, Float, String, Hash, Gdk::Pixbuf, etc.). The types are homogeneous per column across all nodes.
 
