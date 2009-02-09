@@ -36,7 +36,7 @@ Models are composed of columns that contain the same data type, and rows that ho
 
 {{image_left("treev-tabs-01.png")}}
 
-For example, a tree column may display a text string that has foreground colour defined by a model column that is not visible to to the user as data but simply is displayed as a colour of the text. Each row within a model contains one piece of data corresponding to each model column. In the figure here the left table contains a text string and a Gdk-colour value. These two values in the model are used to display the corresponding colour in the ((*tree*)) column.
+For example, a tree column may display a text string that has foreground colour defined by a model column that is not visible to the user as data but simply is displayed as a colour of the text. Each row within a model contains one piece of data corresponding to each model column. In the figure here the left table contains a text string and a Gdk-colour value. These two values in the model are used to display the corresponding colour in the ((*tree*)) column.
 
 {{br}}
 
