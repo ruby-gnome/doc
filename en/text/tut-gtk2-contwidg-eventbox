@@ -1,7 +1,7 @@
 = Container Widgets
 {{link "tut-gtk2-contwidg-notebooks", "tut-gtk2-contwidg", "tut-gtk", "tut-gtk2-btt"}}
 
-== Even Boxes
+== Event Boxes
 {{br}}
 {{image_right("contwidg-eventbox.png")}}
 
