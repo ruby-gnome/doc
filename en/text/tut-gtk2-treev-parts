@@ -245,7 +245,7 @@ Finally following is the promised list of Gtk::CellRendererText classes' instanc
  
 :Instance Methods:
 
-    The following are over 130 instance methods defined in Gtk::CellRendererText class. And over 40 methods inherited from the Gtk::CellRenderer.
+    The following are over 130 instance methods defined in Gtk::CellRendererText class and over 40 methods inherited from the Gtk::CellRenderer.
 
     * Gtk::CellRenderer#get_size(widget, cell_area)
     * Gtk::CellRenderer#render(window, widget, background_area, cell_area, expose_area, flags)
