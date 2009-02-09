@@ -1,0 +1,504 @@
+= The Tree View Widget
+{{link "tut-gtk2-treev", "tut-gtk2-treev", "tut-gtk", "tut-gtk2-treev-parts"}}
+
+= Sorry still under construction
+
+== Parts of a Tree View
+
+
+The Gtk::TreeView widget is to display data organized as a list or a tree. The data displayed in the view is organized into columns and rows. The user is able to select one or multiple rows within the tree view. All who know Linux are familiar with Nautilus file and directory browser which utilizes Gtk::TreeView widget.
+
+Gtk::TreeView widget is not only difficult to learn to use but is even more difficult to understand as a widget to program. However, time spent learning it is guarantied to be well spent, because with its almost infinite ways of customization, you will be able to apply it to a rather large variety of applications.
+
+=== Gtk::TreeModel
+
+The GTK+ provides four types of of built-in tree model classes, but in our sessions here we will cover only two - the Gtk::TreeStore and the Gtk::ListStore. The Gtk::TreeModel interface defines a generic tree interface for use by the Gtk::TreeView widget. It is an abstract interface, and is designed to be usable with any appropriate data structure. Data itself is stored within classes that implement the Gtk::TreeModel interface.
+
+The Gtk::TreeModel interface provides a standard set of methods for retrieving general information about the data that is stored. For example, it allows you to get the number of rows in the tree and the number of children of a certain row. The Gtk::TreeModel also gives you a way to retrieve the data that is stored in a specific row of the store.
+
+:Note:
+    Models, renderers, and columns are referred to as objects rather than widgets, even though they are a part og GTK+ library. This distinction is important because it emphasizes the fact that they are not derived grom Gtk::Widget, hence they do not inherit Gtk::Widgets behaviour, properties nor signals.
+
+The model is represented as a hierarchical tree of strongly-typed, columned data. In other words, the model can be seen as a tree where every node has different values depending on which column is being queried. The type of data found in a column is determined by using Ruby Class (ie. Object, Integer, Float, String, Hash, Gdk::Pixbuf, etc.). The types are homogeneous per column across all nodes.
+
+In order to make life simpler for programmers who do not need to write their own specialized model, two generic models are provided - the Gtk::TreeStore and the Gtk::ListStore. To use these, the developer simply pushes data into these models as necessary. These models provide the data structure as well as all appropriate tree interfaces. As a result, implementing drag and drop, sorting, and storing data is trivial. For the vast majority of trees and lists, these two models are sufficient.
+
+Gtk::ListStore allows you to create a list of elements with multiple columns. Each row is a child of the root node, so only one level of rows is displayed. Basically, Gtk::ListStore is a tree structure that has no hierarchy. It is only provided because faster algorithms exist for interacting with the models that do not have any children items.
+
+Gtk::TreeStore provides the sane functionality as Gtk::ListStore, except the data can be organized into a multilayered tree.
+
+White  Gtk::ListStore and Gtk::TreeStore should fit most applications, sometimes you may be better off implementing your own store objects. For instance when you need a huge number of rows creating a new model may make your application to be more efficient. However, this we will not touch until late sections, when we will learn how to create custom widgets.
+
+After you have created the tree model, the view is used to display the data. By separating the tree view and model, you are able to display the same set of data in multiple views. These views can be exact copies of each other, or the data can be displayed in varying ways. All views will be updated simultaneously as you make alterations to a model.
+
+Models are accessed on a node/column level of granularity. One can query for the value of a model at a certain node and a certain column on that node. There are two structures used to reference a particular node in a model. They are the Gtk::TreePath and the Gtk::TreeIter. Most of the interface consists of operations on a Gtk::TreeIter.
+
+Models are composed of columns that contain the same data type, and rows that hold each set of data. Each model column can hold a single type of data. A tree model column should not be confused with a tree view column, which is composed of a single header but may be rendered with with data from multiple model columns.
+
+{{image_left("treev-tabs-01.png")}}
+
+For example, a tree column may display a text string that has foreground colour defined by a model column that is not visible to to the user as data but simply is displayed as a colour of the text. Each row within a model contains one piece of data corresponding to each model column. In the figure here the left table contains a text string and a Gdk-colour value. These two values in the model are used to display the corresponding colour in the ((*tree*)) column.
+
+{{br}}
+
+== Gtk::TreeViewColumn and Gtk::CellRenderer
+
+The Gtk::TreeViewColumn object is a visible column in a Gtk::TreeView widget. It determines the geometry, type. As mentioned earlier, a tree view displays one or more Gtk::TreeViewColumn objects. Tree columns are composed of a header and the cells of data that are organized as one column.  Each tree view column also contains one or more visible columns of data. For instance, in a file browser, a tree view column may contain one column of images and one column of file names. The header of the Gtk::TreeViewColumn object contains a title that describes what data is held in the cells below. If you make the column sortable, the rows will be sorted when one of the column headers is clicked.  Gtk::TreeViewColumn objects actually do not render anything to the screen. This is done with an object derived from the Gtk::CellRenderer.
+
+The Gtk::CellRenderer is an abstract base class of a set of objects used for rendering a cell to a Gdk::Drawable. These objects are used primarily by the Gtk::TreeView widget, though they aren't tied to them in any specific way. As already mentioned, it is worth noting that Gtk::CellRenderer is not a Gtk::Widget and cannot be treated as such. 
+
+:Different types of cell renderers:
+
+    There are a number of cell renderers, all derived from the abstract base Gtk::CellRenderer class, from which you must choose when building your tree view columns:
+
+    * Gtk::CellRendererAccel - Renders a keyboard accelerator in a cell
+    * Gtk::CellRendererCombo - Renders a combobox in a cell
+    * Gtk::CellRendererPixbuf - Renders a pixbuf in a cell
+    * Gtk::CellRendererProgress - Renders numbers as progress bars
+    * Gtk::CellRendererSpin - Renders a spin button in a cell
+    * Gtk::CellRendererText - Renders text in a cell
+    * Gtk::CellRendererToggle - Renders a toggle button in a cell
+
+Cell renderers are packed into tree view columns similar to how you add widgets into h/v-boxes. Each tree view column can contain one or more cell renderers, which are used to render the data. For example, in a file browser, the image column would be rendered with the Gtk::CellRendererPixbuf and the file name with Gtk::CellRendererText. The primary use of a Gtk::CellRenderer is for drawing a certain graphical elements on a Gdk::Drawable. Typically, one cell renderer is used to draw many cells on the screen. Each cell renderer is responsible for rendering a column of cells, one for every row in the tree view. It begins with the first row, rendering its cells and then proceeding to the next row down until all that was requested or the entire column is completed.
+
+Cell renderers are composed of properties that define how each cell of data is rendered to the screen. There are a number of ways to set cell renderer properties, and it isn't expected that a CellRenderer objects keep any permanent state around. Instead, any state is set just prior their use using GLib::Object property system (see: "g_object_set()" in C GTK+ API doc). Then, the cell is measured using Gtk::CellRenderer#get_size. Finally, the cell is rendered in the correct location using Gtk::CellRenderer#render.
+
+There are a number of rules that must be followed when writing a new Gtk::CellRenderer. First and foremost, it's important that a certain set of properties will always yield a cell renderer of the same size, barring a Gtk::Style change. The Gtk::CellRenderer also has a number of generic properties that are expected to be honoured by all children.
+
+Beyond merely rendering a cell, cell renderers can optionally provide active user interface elements. A cell renderer can be set active or inactive like Gtk::CellRendererToggle, which toggles when it gets activated by a mouse click, or it can be editable like Gtk::CellRendererText, which allows the user to edit the text using a Gtk::Entry. To make a cell renderer activatable or editable, you have to implement the activate or start_editing virtual functions, respectively.
+
+
+=== Using Gtk::ListStore
+
+The Gtk::ListStore object is a list model for use with a Gtk::TreeView widget. It implements the Gtk::TreeModel interface, and can consequently use all of the methods available there. It also implements the Gtk::TreeSortable interface so you can sort the list using the view. Finally, it also implements the tree drag and drop interfaces.
+
+Gtk::ListStore is used to create lists of data that have no hierarchical relationships among rows. Following is an example "Grocery List" application, which contains three columns, all of which are built using Gtk::CellRendererText. The first column is a Boolean value displayed as true or false, that define whether or not the product should be purchased. (Later we will learn how to use Gtk::CellRendererToggle in the place of spelling out true or false. The second column is an integer, representing the quantity to purchase and the third is a text string describing the product.
+
+
+{{image_left("treev-parts-01.png")}}
+
+((*liststore.rb*))
+ #!/usr/bin/env ruby
+ 
+ require 'gtk2'
+ 
+ def setup_tree_view(treeview)
+   # Create a new GtkCellRendererText, add it to the tree
+   # view column and append the column to the tree view.
+   renderer = Gtk::CellRendererText.new
+   column = Gtk::TreeViewColumn.new("Buy", renderer, "text" => $buy_it)
+   treeview.append_column(column)
+   renderer = Gtk::CellRendererText.new
+   column = Gtk::TreeViewColumn.new("Count", renderer, "text" => $quantity)
+   treeview.append_column(column)
+   renderer = Gtk::CellRendererText.new
+   column = Gtk::TreeViewColumn.new("Product", renderer, "text" => $product)
+   treeview.append_column(column)
+ end
+ 
+ window = Gtk::Window.new(Gtk::Window::TOPLEVEL)
+ window.resizable = true
+ window.title = "Grocery List"
+ window.border_width = 10
+ 
+ window.signal_connect('delete_event') { Gtk.main_quit }
+ window.set_size_request(250, 175)
+ 
+ class GroceryItem
+   attr_accessor :buy, :quantity, :product
+   def initialize(b, q, p); @buy, @quantity, @product = b, q, p; end
+ end
+ $buy_it = 0; $quantity = 1; $product  = 2
+ 
+ list = Array.new
+ list[0] = GroceryItem.new(true,  1, "Paper Towels") 
+ list[1] = GroceryItem.new(true,  2, "Bread")
+ list[2] = GroceryItem.new(false, 1, "Butter")
+ list[3] = GroceryItem.new(true,  1, "Milk")
+ list[4] = GroceryItem.new(false, 3, "Chips")
+ list[5] = GroceryItem.new(true,  4, "Soda") 
+ 
+ treeview = Gtk::TreeView.new
+ setup_tree_view(treeview)
+   
+ # Create a new tree model with three columns, as Boolean,
+ # integer and string.
+ store = Gtk::ListStore.new(TrueClass, Integer, String)
+ 
+ # Add all of the products to the GtkListStore.
+ list.each_with_index do |e, i|
+     iter = store.append
+     store.set_value(iter, $buy_it,   list[i].buy)
+     store.set_value(iter, $quantity, list[i].quantity)
+     store.set_value(iter, $product,  list[i].product)
+ end
+ 
+ # Add the tree model to the tree view
+ treeview.model = store
+ 
+ scrolled_win = Gtk::ScrolledWindow.new
+ scrolled_win.add(treeview)
+ scrolled_win.set_policy(Gtk::POLICY_AUTOMATIC, Gtk::POLICY_AUTOMATIC)
+ 
+ window.add(scrolled_win)
+ window.show_all
+ Gtk.main
+
+
+=== Creating the Tree View
+
+Creating the tree view with Gtk::TreeView.new(model = nil) is the easiest part. Next order of business is to set up the tree view columns. In our example program we do this in our own helper method ((*setup_tree_view(treeview)*)), which deserves some explanations. Our tree view contains three columns and each has to be set up. All three columns will display text, hence we will  use the Gtk::CellRendererText cell renderer for all of them. 
+
+ renderer = Gtk::CellRendererText.new
+
+=== Renderers and Columns
+
+As we have seen, after creating the Gtk::TreeView, you have to add one or more columns to the view for it to be of any use. Each Gtk::TreeViewColumn is composed of a header displaying a short description of its content, and at least one cell renderer. All cell renderers are derived from the Gtk::CellRenderer class. Each cell renderer contains a number of properties that determine how data will  be drawn within a cell. 
+
+The Gtk::CellRenderer class provides common properties to all derived renderer classes including: background colour, size parameters, alignment, mode, visibility, sensitivity, and padding. You should check the API documentation for full list. It also provides  ((*editing_canceled*)) and ((*editing-started*)) signals the former emitted when the user cancels the process of editing a cell, and the latter emitted when a cell is started to be edited.
+
+Our example program introduces Gtk::CellRendererText class. This class provides a plethora of adittional properties and instance methods which you can use to alter the appearance of the display. So you will have an idea what instance methods, properties and signals are available to Gtk::CellRendererText objects, I will for your convenience list them at the end of this session. 
+
+ column = Gtk::TreeViewColumn.new("Buy", renderer, "text" => $buy_it)
+ treeview.append_column(column)
+
+When defining a tree view column we need to provide the text for the header, the renderer to be used on the elements (rows) of this column, and any number of attribute name/value pairs in a hash, where the name represents the attribute name and the value represents the column number. In our example we are defining a three individual single columns, so we have a single name/value pair for each attribute. Finally we have to add (append) our newly defined column to the tree view.
+
+{{image_left("dialog-warning.png")}}
+
+Following is the pertinent API documentation and an example found there, which I believe is either lacking a vital part of setup, is incorrect or there is a bug in current Ruby implementation of Gtk::TreeViewColumn.new. (It looks as if the hash was never meant to define multiple columns.)
+
+--- Gtk::TreeViewColumn.new(title = nil, cell_renderer = nil, attributes = nil)
+
+    Creates a new Gtk::TreeViewColumn with a number of default values. 
+    This is equivalent to calling Gtk::TreeViewColumn.new, Gtk::TreeViewColumn#title=, Gtk::TreeViewColumn#pack_start, and Gtk::TreeViewColumn#set_attributes on the newly created Gtk::TreeViewColumn.
+    * title: The title to set the header to. 
+    * cell_renderer: The Gtk::CellRenderer
+    * attributes: a hash of attributes.
+    * Returns : A newly created Gtk::TreeViewColumn.
+       
+    Here's a simple example:
+ 
+     TEXT_COLUMN = 0
+     COLOR_COLUMN = 1
+ 
+     renderer = Gtk::CellRendererText.new
+     column = Gtk::TreeViewColumn.new("Title", renderer, 
+                                      :text => TEXT_COLUMN,                  # ????
+                                      :foreground => COLOR_COLUMN)           # ????
+
+To fully comprehend the above Gtk::TreeViewColumn.new API fragment it is beneficial if you understand the part tels us how to implement the same functionality as that of the ((*new*)) method, manually with four simpler methods. So let us rewrite the following code fragment from of our example program to reflect what was just said:
+
+:Shorter:
+     renderer = Gtk::CellRendererText.new
+     column = Gtk::TreeViewColumn.new("Buy", renderer, "text" => $buy_it)
+:Longer:
+     renderer = Gtk::CellRendererText.new
+     column = Gtk::TreeViewColumn.new
+     column.title = "Buy"
+     column.pack_start(renderer, false)
+     column.set_attributes("text" => $buy_it)
+
+Note how renderer is packed into the column. Following is the API for this line:
+
+--- pack_start(cell, expand)
+
+    Packs the cell into the beginning of the column. If expand is false, then the cell is allocated no more space than it needs. Any unused space is divided evenly between cells for which expand is true.
+    * cell: The Gtk::CellRenderer.  
+    * expand: true if cell is to be given extra space allocated to box.  
+    * Returns: self
+
+=== Creating the Gtk::ListStore
+
+The tree view columns are now set up with the desired cell renderers, so it is time to create the tree model that will interface between the renderers and the tree view. In our example program, we used the Gtk::ListStore so that the items would be as a list of elements.
+
+First we create the list and at the same time define the data types for each column within a row, and then loop through our array of values to append them to the list. Indeed the important feature of this process is the iterator, i.e. the Gtk::TreeIter object, which is manipulated as an index into our list, however, the Gtk::ListStore#append does all the work for us. It creates a new empty list entry (record or row) and points the iterator (index) to it. We then proceed to assign values to individual columns with Gtk::ListStore#
+
+Following are the pertinent methods we use with regards to the Gtk::ListStore object:
+
+--- Gtk::ListStore.new(type1, type2, type3, ...)
+
+    Creates a new tree store as with columns each of the types passed in. As an example, Gtk::ListStore.new(Integer, String, Gdk::Pixbuf) will create a new Gtk::ListStore with three columns, of type Integer, String and Gdk::Pixbuf respectively. 
+    * type1, type2, type3, ... : Object.class value
+    * Returns: A new Gtk::ListStore
+
+--- append
+
+    Appends a new row to list_store. iter will be changed to point to this new row. The new row will be empty after this method is called. To fill in values, you need to call Gtk::TreeIter#set_value or Gtk::ListStore#set_value. 
+    * Returns: A new row(Gtk::TreeIter)
+
+--- set_value(iter, column, value)
+
+    Sets the data in the cell specified by iter and column. The type of value must be convertible to the type of the column. Use Gtk::TreeIter#set_value instead. 
+    * iter : A valid Gtk::TreeIter for the row being modified 
+    * column : A column number to modify 
+    * value : A new value for the cell 
+    * Returns: self
+
+
+{{br}}
+
+Finally following is the promised list of Gtk::CellRendererText classes' instance methods. They are listed here without the descriptions and argument specifications, so you will appreciate the sheer volume of the material at hand. Also it may give you some feeling for how things are organized and how to search for info when you need it.
+ 
+:Instance Methods:
+
+    The following are over 130 instance methods defined in Gtk::CellRendererText class. And over 40 methods inherited from the Gtk::CellRenderer.
+
+    * Gtk::CellRenderer#get_size(widget, cell_area)
+    * Gtk::CellRenderer#render(window, widget, background_area, cell_area, expose_area, flags)
+    * Gtk::CellRenderer#activate(event, widget, path, background_area, cell_area, flags)
+    * Gtk::CellRenderer#start_editing(event, widget, path, background_area, cell_area, flags)
+    * Gtk::CellRenderer#editing_canceled
+    * Gtk::CellRenderer#stop_editing(canceled)
+    * Gtk::CellRenderer#fixed_size
+    * Gtk::CellRenderer#set_fixed_size(width, height)
+    * Gtk::CellRenderer#height
+    * Gtk::CellRenderer#height=(height)
+    * Gtk::CellRenderer#set_height(height)
+    * Gtk::CellRenderer#width
+    * Gtk::CellRenderer#width=(width)
+    * Gtk::CellRenderer#set_width(width)
+    * Gtk::CellRenderer#expanded?
+    * Gtk::CellRenderer#expanded=(expanded)
+    * Gtk::CellRenderer#set_expanded(expanded)
+    * Gtk::CellRenderer#expander?
+    * Gtk::CellRenderer#expander=(expander)
+    * Gtk::CellRenderer#set_expander(expander)
+    * Gtk::CellRenderer#mode
+    * Gtk::CellRenderer#mode=(mode)
+    * Gtk::CellRenderer#set_mode(mode)
+    * Gtk::CellRenderer#visible?
+    * Gtk::CellRenderer#visible=(visible)
+    * Gtk::CellRenderer#set_visible(visible)
+    * Gtk::CellRenderer#xalign
+    * Gtk::CellRenderer#xalign=(xalign)
+    * Gtk::CellRenderer#set_xalign(xalign)
+    * Gtk::CellRenderer#yalign
+    * Gtk::CellRenderer#yalign=(yalign)
+    * Gtk::CellRenderer#set_yalign(yalign)
+    * Gtk::CellRenderer#xpad
+    * Gtk::CellRenderer#xpad=(xpad)
+    * Gtk::CellRenderer#set_xpad(xpad)
+    * Gtk::CellRenderer#ypad
+    * Gtk::CellRenderer#ypad=(ypad)
+    * Gtk::CellRenderer#set_ypad(ypad)
+    * Gtk::CellRenderer#cell_background=(colorname)
+    * Gtk::CellRenderer#set_cell_background(colorname)
+    * Gtk::CellRenderer#cell_background_gdk
+    * Gtk::CellRenderer#cell_background_gdk=(gdkcolor)
+    * Gtk::CellRenderer#set_cell_background_gdk(gdkcolor)
+    * Gtk::CellRenderer#cell_background_set?
+    * Gtk::CellRenderer#cell_background_set=(setting)
+    * Gtk::CellRenderer#set_cell_background_set(setting)
+    * Gtk::CellRenderer#sensitive?
+    * Gtk::CellRenderer#sensitive=(sensitive)
+    * Gtk::CellRenderer#set_sensitive(sensitive)
+    * Gtk::CellRendererText#alignment
+    * Gtk::CellRendererText#alignment=(alignment)
+    * Gtk::CellRendererText#set_alignment(alignment)
+    * Gtk::CellRendererText#attributes
+    * Gtk::CellRendererText#attributes=(attrlist)
+    * Gtk::CellRendererText#set_attributes
+    * Gtk::CellRendererText#background=(color_name)
+    * Gtk::CellRendererText#set_background(color_name)
+    * Gtk::CellRendererText#background_gdk
+    * Gtk::CellRendererText#background_gdk=(color)
+    * Gtk::CellRendererText#set_background_gdk(color)
+    * Gtk::CellRendererText#background_set?
+    * Gtk::CellRendererText#background_set=(value)
+    * Gtk::CellRendererText#set_background_set(value)
+    * Gtk::CellRendererText#editable?
+    * Gtk::CellRendererText#editable=(editable)
+    * Gtk::CellRendererText#set_editable(editable)
+    * Gtk::CellRendererText#editable_set?
+    * Gtk::CellRendererText#editable_set=(value)
+    * Gtk::CellRendererText#set_editable_set(value)
+    * Gtk::CellRendererText#ellipsize
+    * Gtk::CellRendererText#ellipsize=(ellipsize)
+    * Gtk::CellRendererText#set_ellipsize(ellipsize)
+    * Gtk::CellRendererText#ellipsize_set?
+    * Gtk::CellRendererText#ellipsize_set=(value)
+    * Gtk::CellRendererText#set_ellipsize_set(value)
+    * Gtk::CellRendererText#family
+    * Gtk::CellRendererText#family=(family)
+    * Gtk::CellRendererText#set_family(family)
+    * Gtk::CellRendererText#family_set?
+    * Gtk::CellRendererText#family_set=(value)
+    * Gtk::CellRendererText#set_family_set(value)
+    * Gtk::CellRendererText#fixed_height_from_font=(number_of_rows)
+    * Gtk::CellRendererText#set_fixed_height_from_font(number_of_rows)
+    * Gtk::CellRendererText#font
+    * Gtk::CellRendererText#font=(font)
+    * Gtk::CellRendererText#set_font(font)
+    * Gtk::CellRendererText#font_desc
+    * Gtk::CellRendererText#font_desc=(font_desc)
+    * Gtk::CellRendererText#set_font_desc
+    * Gtk::CellRendererText#foreground=(color_name)
+    * Gtk::CellRendererText#set_foreground(color_name)
+    * Gtk::CellRendererText#foreground_gdk
+    * Gtk::CellRendererText#foreground_gdk=(color)
+    * Gtk::CellRendererText#set_foreground_gdk(color)
+    * Gtk::CellRendererText#foreground_set?
+    * Gtk::CellRendererText#foreground_set=(value)
+    * Gtk::CellRendererText#set_foreground_set(value)
+    * Gtk::CellRendererText#language
+    * Gtk::CellRendererText#language=(language)
+    * Gtk::CellRendererText#set_language(language)
+    * Gtk::CellRendererText#language_set?
+    * Gtk::CellRendererText#language_set=(value)
+    * Gtk::CellRendererText#set_language_set(value)
+    * Gtk::CellRendererText#markup=(text)
+    * Gtk::CellRendererText#set_markup(text)
+    * Gtk::CellRendererText#rise
+    * Gtk::CellRendererText#rise=(offset)
+    * Gtk::CellRendererText#set_rise(offset)
+    * Gtk::CellRendererText#rise_set?
+    * Gtk::CellRendererText#rise_set=(value)
+    * Gtk::CellRendererText#set_rise_set(value)
+    * Gtk::CellRendererText#scale
+    * Gtk::CellRendererText#scale=(scale)
+    * Gtk::CellRendererText#set_scale(scale)
+    * Gtk::CellRendererText#scale_set?
+    * Gtk::CellRendererText#scale_set=(value)
+    * Gtk::CellRendererText#set_scale_set(value)
+    * Gtk::CellRendererText#single_paragraph_mode?
+    * Gtk::CellRendererText#single_paragraph_mode=(mode)
+    * Gtk::CellRendererText#set_single_paragraph_mode(mode)
+    * Gtk::CellRendererText#size
+    * Gtk::CellRendererText#size=(size)
+    * Gtk::CellRendererText#set_size(size)
+    * Gtk::CellRendererText#size_points
+    * Gtk::CellRendererText#size_points=(size)
+    * Gtk::CellRendererText#set_size_points(size)
+    * Gtk::CellRendererText#size_set?
+    * Gtk::CellRendererText#size_set=(value)
+    * Gtk::CellRendererText#set_size_set(value)
+    * Gtk::CellRendererText#stretch
+    * Gtk::CellRendererText#stretch=(stretch)
+    * Gtk::CellRendererText#set_stretch(stretch)
+    * Gtk::CellRendererText#stretch_set?
+    * Gtk::CellRendererText#stretch_set=(value)
+    * Gtk::CellRendererText#set_stretch_set(value)
+    * Gtk::CellRendererText#strikethrough?
+    * Gtk::CellRendererText#strikethrough=(strikethrough)
+    * Gtk::CellRendererText#set_strikethrough(strikethrough)
+    * Gtk::CellRendererText#strikethrough_set?
+    * Gtk::CellRendererText#strikethrough_set=(value)
+    * Gtk::CellRendererText#set_strikethrough_set(value)
+    * Gtk::CellRendererText#style
+    * Gtk::CellRendererText#style=(style)
+    * Gtk::CellRendererText#set_style(style)
+    * Gtk::CellRendererText#style_set?
+    * Gtk::CellRendererText#style_set=(value)
+    * Gtk::CellRendererText#set_style_set(value)
+    * Gtk::CellRendererText#text
+    * Gtk::CellRendererText#text=(text)
+    * Gtk::CellRendererText#set_text(text)
+    * Gtk::CellRendererText#underline
+    * Gtk::CellRendererText#underline=(underline)
+    * Gtk::CellRendererText#set_underline(underline)
+    * Gtk::CellRendererText#variant
+    * Gtk::CellRendererText#variant=(variant)
+    * Gtk::CellRendererText#set_variant(variant)
+    * Gtk::CellRendererText#variant_set?
+    * Gtk::CellRendererText#variant_set=(value)
+    * Gtk::CellRendererText#set_variant_set(value)
+    * Gtk::CellRendererText#weight
+    * Gtk::CellRendererText#weight=(weight)
+    * Gtk::CellRendererText#set_weight(weight)
+    * Gtk::CellRendererText#weight_set?
+    * Gtk::CellRendererText#weight_set=(value)
+    * Gtk::CellRendererText#set_weight_set(value)
+    * Gtk::CellRendererText#width_chars
+    * Gtk::CellRendererText#width_chars=(width_chars)
+    * Gtk::CellRendererText#set_width_chars(width_chars)
+    * Gtk::CellRendererText#wrap_mode
+    * Gtk::CellRendererText#wrap_mode=(wrap_mode)
+    * Gtk::CellRendererText#set_wrap_mode(wrap_mode)
+    * Gtk::CellRendererText#wrap_width
+    * Gtk::CellRendererText#wrap_width=(wrap_width)
+    * Gtk::CellRendererText#set_wrap_width(wrap_width)
+    * Gtk::CellRendererText#align_set=(align_set)
+    * Gtk::CellRendererText#align_set?
+    * Gtk::CellRendererText#set_align_set(align_set)
+    * Gtk::CellRendererText#set_underline_set(underline_set)
+    * Gtk::CellRendererText#underline_set=(underline_set)
+    * Gtk::CellRendererText#underline_set?
+
+
+:Attributes:
+
+    * alignment              -  Pango::Alignment (Read/Write)
+    * attributes             -  Pango::AttrList (Read/Write)
+    * background             -  String (Write)
+    * background-gdk         -  Gdk::Color (Read/Write)
+    * background-set         -  true or false (Read/Write)
+    * editable               -  true or false (Read/Write)
+    * editable-set           -  true or false (Read/Write)
+    * ellipsize              -  Pango::Layout::EllipsizeMode (Read/Write)
+    * ellipsize-set          -  true or false (Read/Write)
+    * family                 -  String (Read/Write)
+    * family-set             -  true or false (Read/Write)
+    * font                   -  String (Read/Write)
+    * font-desc              -  Pango::FontDescription (Read/Write)
+    * foreground             -  String (Write)
+    * foreground-gdk         -  Gdk::Color (Read/Write)
+    * foreground-set         -  true or false (Read/Write)
+    * language               -  String (Read/Write)
+    * language-set           -  true or false (Read/Write)
+    * markup                 -  String (Write)
+    * rise                   -  Integer (Read/Write)
+    * rise-set               -  true or false (Read/Write)
+    * scale                  -  Float (Read/Write)
+    * scale-set              -  true or false (Read/Write)
+    * single-paragraph-mode  -  true or false (Read/Write)
+    * size                   -  Integer (Read/Write)
+    * size-points            -  Float (Read/Write)
+    * size-set               -  true or false (Read/Write)
+    * stretch                -  Pango::FontDescription::Stretch (Read/Write)
+    * stretch-set            -  true or false (Read/Write)
+    * strikethrough          -  true or false (Read/Write)
+    * strikethrough-set      -  true or false (Read/Write)
+    * style                  -  Pango::FontDescription::Style (Read/Write)
+    * style-set              -  true or false (Read/Write)
+    * text                   -  String (Read/Write)
+    * underline              -  Pango::AttrUnderline::Underline (Read/Write)
+    * underline-set          -  true or false (Read/Write)
+    * variant                -  Pango::FontDescription::Variant (Read/Write)
+    * variant-set            -  true or false (Read/Write)
+    * weight                 -  Integer (Read/Write)
+    * weight-set             -  true or false (Read/Write)
+    * width-chars            -  Integer (Read/Write)
+    * wrap-mode              -  Pango::Layout::WrapMode (Read/Write)
+    * wrap-width             -  Integer (Read/Write)
+    * align-set              -  true or false (Read/Write)
+
+
+:Signals
+
+    * edited: self                          :-  Gtk::CellRendererText:
+    * editing-canceled: self                :- Gtk::CellRenderer
+    * editing-started: self, editable, path :- Gtk::CellRenderer
+
+--- editing-canceled: self
+
+    This signal gets emitted when the user cancels the process of editing a cell. For example, an editable cell renderer could be written to cancel editing when the user presses Escape. ((* Since 2.4 *))
+    
+    See also: Gtk::CellRenderer#editing_canceled.
+    * self: Gtk::CellRenderer
+
+--- editing-started: self, editable, path
+
+    This signal gets emitted when a cell starts to be edited. The indended use of this signal is to do special setup on editable, e.g. adding a Gtk::EntryCompletion or setting up additional columns in a Gtk::ComboBox. 
+    
+    Note that GTK+ doesn't guarantee that cell renderers will continue to use the same kind of widget for editing in future releases, therefore you should check the type of editable before doing any specific setup, as in the following example. ((* Since 2.6 *))
+    * self: Gtk::CellRenderer 
+    * editable: the Gtk::CellEditable 
+    * path: the path identifying the edited cell 
+
+     renderer.signal_connect("editing-started") do |cell, editable, path|
+       if editable.kind_of? Gtk::Entry
+          # ... create a Gtk::EntryCompletion
+          editable.completion = completion
+       end
+     end
