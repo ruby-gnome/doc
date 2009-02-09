@@ -191,9 +191,11 @@ which I believe is either lacking a vital part of setup, is incorrect or there i
 To fully comprehend the above Gtk::TreeViewColumn.new API fragment it is beneficial if you understand the part tels us how to implement the same functionality as that of the ((*new*)) method, manually with four simpler methods. So let us rewrite the following code fragment from of our example program to reflect what was just said:
 
 :Shorter:
+    These two lines are identical to the five below:
      renderer = Gtk::CellRendererText.new
      column = Gtk::TreeViewColumn.new("Buy", renderer, "text" => $buy_it)
 :Longer:
+    The following is equivalent to the above:
      renderer = Gtk::CellRendererText.new
      column = Gtk::TreeViewColumn.new
      column.title = "Buy"
