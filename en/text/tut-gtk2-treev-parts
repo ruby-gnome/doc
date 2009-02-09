@@ -168,7 +168,7 @@ Following is the pertinent API documentation and an example found there,
 
 {{image_right("dialog-warning.png")}}
 
- which I believe is either lacking a vital part of setup, is incorrect or there is a bug in current Ruby implementation of Gtk::TreeViewColumn.new. (It looks as if the hash was never meant to define multiple columns.)
+which I believe is either lacking a vital part of setup, is incorrect or there is a bug in current Ruby implementation of Gtk::TreeViewColumn.new. (It looks as if the hash was never meant to define multiple columns.)
 
 --- Gtk::TreeViewColumn.new(title = nil, cell_renderer = nil, attributes = nil)
 
