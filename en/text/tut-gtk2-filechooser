@@ -71,7 +71,9 @@ Here you can see the file dialog window opened after the file button was pressed
  chooser_file = Gtk::FileChooserButton.new(
      "Choose a File", Gtk::FileChooser::ACTION_OPEN)
 
- # IGNORE THIS I HAD TO PUT THIS IN SO THE CODE WOULD WORK AND MY INPUT WOULD NOT BE SPAM!!!
+ ### IGNORE THIS I HAD TO PUT THIS IN SO THE CODE WOULD WORK AND MY INPUT WOULD NOT BE SPAM!!!
+ ### THE OLNY REASON THIS IS IN HERE IS BECAUSE THE CODE WOULD FAIL BECAUSE ABOVE AN 'r' WAS MISSING
+ ### IT WAS chooser_file = Gtk::FileChooserButton.new("Choose a File", Gtk::FileChooser::ACTION_OPEN)
 
  # Let's add an extra widget (a button) to the {{ dialog }}
  extra_button = Gtk::Button.new("Extra button")
