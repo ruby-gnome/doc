@@ -3,17 +3,42 @@
 
 = Sorry still under construction
 
+This chapter will show you how to use the Gtk::ScrolledWindow widget in combination with another powerful widget known as Gtk::TreeView. The tree view widget can be used to display data lists or trees spanning many columns. For example applications such as file browsers or project builders and IDEs can be implemented using Gtk::TreeView widget.
+
+Gtk::TreeView is a powerful and complex feature reach widget that may be intimidating to learn. However once you get to know it enough you will be able to apply it in many applications.
+
+In this session we will enable you to mold the tree view widget to meet your needs. 
+
+
 :Contents of this chapter:
 
   * ((<The Tree View Widget|tut-gtk2-treev>)) (this page)
     * 1 ((<Parts of a Tree View|tut-gtk2-treev-parts>))
+      * 1.0 ((<xxx|tut-gtk2-treev-parts#xxx>))
+      * 1.1 ((<Gtk::TreeModel|tut-gtk2-treev-parts#Gtk::TreeModel>))
+      * 1.2 ((<Gtk::TreeViewColumn and Gtk::CellRenderer|tut-gtk2-treev-parts#Gtk::TreeViewColumn and Gtk::CellRenderer>))
+      * 1.3 ((<Using Gtk::ListStore|tut-gtk2-treev-parts#Using Gtk::ListStore>))
+      * 1.4 ((<Renderers and Columns|tut-gtk2-treev-parts#Renderers and Columns>))
+      * 1.5 ((<Creating the Gtk::ListStore|tut-gtk2-treev-parts#Creating the Gtk::ListStore>))
+    * 2 ((<Using Gtk::TreeStore|tut-gtk2-treev-parts#Using Gtk::TreeStore>))
 
-
+Creating the Gtk::ListStore
 
 :In this chapter you will learn:
 
+    * What objects are used to create a Gtk::TreeView, and how its MVC (model-view-controller) design makes it unique.
+    * How to create lists and tree structures with the Gtk::TreeView widget.
+    * When to use Gtk::TreePath, Gtk::TreeIter, and Gtk::TreeRowReference to reference rows within a Gtk::TreeView.
+    * How to create editable tree view cells or customize individual cells with cell renderer functions.
+    * The widgets you can embed within a cell, including toggle buttons, pixbufs, spin buttons, combo boxes, progress bars, and keyboard accelerator strings.
 
-Following are to our topic directly related widgets
+Following are the major classes and interfaces directly related to our topic
 
 :XXX Widgets:
-    * Gtk::XXX - Desc
+    * Gtk::TreeModel (interface)
+    * Gtk::ListStore
+    * Gtk::TreeStore
+    * Gtk::TreeIter
+    * Gtk::TreeView
+    * Gtk::TreeViewColumn
+    * Gtk::CellRenderer
