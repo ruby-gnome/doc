@@ -70,10 +70,10 @@ Beyond merely rendering a cell, cell renderers can optionally provide active use
 
 The Gtk::ListStore object is a list model for use with a Gtk::TreeView widget. It implements the Gtk::TreeModel interface, and can consequently use all of the methods available there. It also implements the Gtk::TreeSortable interface so you can sort the list using the view. Finally, it also implements the tree drag and drop interfaces.
 
+{{image_left("treev-parts-01.png")}}
 Gtk::ListStore is used to create lists of data that have no hierarchical relationships among rows. Following is an example "Grocery List" application, which contains three columns, all of which are built using Gtk::CellRendererText. The first column is a Boolean value displayed as true or false, that define whether or not the product should be purchased. (Later we will learn how to use Gtk::CellRendererToggle in the place of spelling out true or false. The second column is an integer, representing the quantity to purchase and the third is a text string describing the product.
 
 
-{{image_left("treev-parts-01.png")}}
 {{br}}
 
 ((*liststore.rb*))
