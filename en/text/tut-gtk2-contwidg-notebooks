@@ -75,7 +75,7 @@ Describes which edge of a widget a certain feature is positioned at, e.g. the ta
 
 === Test Your Understanding
 
-In Andrew's book ((<Foundations of GTK+ Development|URL:http://www.gtkbook.com>)), at the end of every section there is a paragraph called "Test Your Understanding" where a reader is encouraged to test their knowledge. At the end of the Container widgets there are two exercises that fit exactly this point in our tutorial. Namely, they require your understanding of most of what was said up to now here. Though we still have one more session to go, I decided to introduce the two just mentioned examples from the book. Andrew Klause introduces the exercises with the following words: "This chapter has introduced you to a number of container widgets thah are included in GTK+. The following two exercises will allow you to practise what you have learnt about a few of these new widgets."
+In Andrew's book ((<Foundations of GTK+ Development|URL:http://www.gtkbook.com>)), at the end of every section there is a paragraph called "Test Your Understanding" where a reader is encouraged to test their knowledge. At the end of the Container widgets there are two exercises that fit exactly this point in our tutorial. Namely, they require your understanding of most of what was said up to now here. Though we still have one more session to go, I decided to introduce the two just mentioned examples from the book. Andrew Klause introduces the exercises with the following words: "This chapter has introduced you to a number of container widgets that are included in GTK+. The following two exercises will allow you to practice what you have learnd about a few of these new widgets."
 
 ==== Exercise 1. Using Multiple Containers
 
@@ -88,7 +88,7 @@ The notebook should have four pages. Each notebook page should hold a Gtk::Butto
 
 The first button along the bottom of the window should move to the previous page also wrapping to last from first when needed, and the second button along the bottom should close the window.
 
-Though I am providing the solution immediately here below I suggest you follow Andrew's advice and try write this example alone, based on what we have learnt so far. 
+Though I am providing the solution immediately here below I suggest you follow Andrew's advice and try write this example alone, based on what we have learned so far. 
 
  #!/usr/bin/env ruby
  require 'gtk2'
