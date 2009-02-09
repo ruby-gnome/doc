@@ -10,7 +10,8 @@ Gtk::TreeView widget is not only difficult to learn to use but is even more diff
 
 === Gtk::TreeModel
 
-The GTK+ provides four types of of built-in tree model classes, but in our sessions here we will cover only two - the Gtk::TreeStore and the Gtk::ListStore. The Gtk::TreeModel interface defines a generic tree interface for use by the Gtk::TreeView widget. It is  designed to be usable with any appropriate data structure. Data itself is stored within classes that implement the Gtk::TreeModel interface.
+The GTK+ provides four types of of built-in tree model classes, but in our sessions here we will cover only two - the Gtk::TreeStore and the Gtk::ListStore. The Gtk::TreeModel interface defines a generic tree interface for use by the Gtk::TreeView widget. It is designed to be usable with any appropriate data structure. Data itself is stored in objects whose classes implement the Gtk::TreeModel interface.
+
 
 The Gtk::TreeModel interface provides a standard set of methods for retrieving general information about the data that is stored. For example, it allows you to get the number of rows in the tree and the number of children of a certain row. The Gtk::TreeModel also gives you a way to retrieve the data that is stored in a specific row of the store.
 
