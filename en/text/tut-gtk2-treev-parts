@@ -74,6 +74,7 @@ Gtk::ListStore is used to create lists of data that have no hierarchical relatio
 
 
 {{image_left("treev-parts-01.png")}}
+{{br}}
 
 ((*liststore.rb*))
  #!/usr/bin/env ruby
