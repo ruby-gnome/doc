@@ -6,7 +6,7 @@
 {{image_right("contwidg-handlebox.png")}}
 {{br}}
 
-The Gtk::HandleBox widget is a type of Gtk::Bin container (just a reminder Gtk::Bin only permits one child to exist), that allows its child to be detached from from the parent window by dragging it with the mouse. When removed the child is placed in its own window without any decorations. If there are other widgets in a window which contained the Gtk::HandleBox widget which now has a child detached, they will be resized to fill the void space if possible. This widget is mos commonly used to contain toolbars and other toolkit objects. Indeed, you can re-attach a child by dragging it back to the location of the dotted handle. Yo may have to look hard to spot the handle.
+The Gtk::HandleBox widget is a type of Gtk::Bin container (just a reminder Gtk::Bin only permits one child to exist), that allows its child to be detached from from the parent window by dragging it with the mouse. When removed the child is placed in its own window without any decorations. If there are other widgets in a window which contained the Gtk::HandleBox widget which now has a child detached, they will be resized to fill the void space if possible. This widget is most commonly used to contain toolbars and other toolkit objects. Indeed, you can re-attach a child by dragging it back to the location of the dotted handle. Yo may have to look hard to spot the handle.
 
  #!/usr/bin/env ruby
  require 'gtk2'
