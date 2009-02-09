@@ -164,10 +164,9 @@ Our example program introduces Gtk::CellRendererText class. This class provides 
 
 When defining a tree view column we need to provide the text for the header, the renderer to be used on the elements (rows) of this column, and any number of attribute name/value pairs in a hash, where the name represents the attribute name and the value represents the column number. In our example we are defining a three individual single columns, so we have a single name/value pair for each attribute. Finally we have to add (append) our newly defined column to the tree view.
 
-Following is the pertinent API documentation and an example found there,
-
 {{image_right("dialog-warning.png")}}
 
+Following is the pertinent API documentation and an example found there,
 which I believe is either lacking a vital part of setup, is incorrect or there is a bug in current Ruby implementation of Gtk::TreeViewColumn.new. (It looks as if the hash was never meant to define multiple columns.)
 
 --- Gtk::TreeViewColumn.new(title = nil, cell_renderer = nil, attributes = nil)
