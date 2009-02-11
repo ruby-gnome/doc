@@ -19,6 +19,7 @@ Our example program "treestore.rb" is a revised version of the "Grocery List" pr
 
 {{image_left("treev-trees-nok.png")}}
 
+{{br}}
 ((*treestore.rb*))
 
  #!/usr/bin/env ruby
