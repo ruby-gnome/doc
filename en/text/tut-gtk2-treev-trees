@@ -1,13 +1,116 @@
 = The Tree View Widget
-{{link "tut-gtk2-treev", "tut-gtk2-treev", "tut-gtk", "tut-gtk2-treev-trees"}}
+{{link "tut-gtk2-treev-parts", "tut-gtk2-treev", "tut-gtk", "tut-gtk2-treev-trees"}}
 
 = Sorry still under construction 
 
 == Using Gtk::TreeStore
 
-Gtk::TreeStore provides the same functionality as Gtk::ListStore, except the data can be organized into a multilayered tree.
+There is one type of built-in tree tree model called Gtk::TreeStore which provides the same functionality as Gtk::ListStore, except the data can be organized into a multilayered tree. Just like Gtk::ListStore, the Gtk::TreeStore object is a tree model for use with a Gtk::TreeView widget. It implements the Gtk::TreeModel interface, and inherits all of its methods. It also implements the Gtk::TreeSortable interface so you can sort the list using the view. Finally, it also implements the tree drag and drop interfaces.
 
-{{image_left("treev-trees-01.png")}}
+{{image_left("treev-trees-ok.png")}}
 
+Our example program "treestore.rb" is a revised version of the "Grocery List" program from the previous session, splitting the products into two categories: "Cleaning Supplies" and "Food", which both have children of their own. The quantity of each category is set initially to zero, because it is calculated during the run-time. 
+
+{{image_right("dialog-warning.png")}}
+:Caution:
+    As of Ruby 1.8.6 and Ruby-GNOME2 rel.: 2-0.17.0-rc1, there seems to be a problem with Gtk::TreeStore. This implementation does not display parent and its children. The image on the right side hand side above shows what this program should display (you can see the the C GTK+ program version that works correctly by clicking the following link ((<C GTK+ program that works|tut-gtk2-treev-trees-cgtk-01>)), and the image below on the left shows what the problematic Ruby implementation does.
 
 {{br}}
+
+{{image_left("treev-trees-nok.png")}}
+
+((*treestore.rb*))
+
+ #!/usr/bin/env ruby
+ require 'gtk2'
+ 
+ def setup_tree_view(treeview)
+   # Create a new GtkCellRendererText, add it to the tree
+   # view column and append the column to the tree view.
+   renderer = Gtk::CellRendererText.new
+   column = Gtk::TreeViewColumn.new(
+           "Buy", renderer, "text" => $buy_it)
+   treeview.append_column(column)
+   renderer = Gtk::CellRendererText.new
+   column = Gtk::TreeViewColumn.new(
+           "Count", renderer, "text" => $quantity)
+   treeview.append_column(column) 
+   renderer = Gtk::CellRendererText.new
+   column = Gtk::TreeViewColumn.new(
+           "Product", renderer, "text" => $product)
+   treeview.append_column(column)
+ end
+ 
+ window = Gtk::Window.new(Gtk::Window::TOPLEVEL)
+ window.resizable = true
+ window.title = "Grocery List"
+ window.border_width = 10
+ window.signal_connect('delete_event') { Gtk.main_quit }
+ window.set_size_request(275, 300)
+ 
+ class GroceryItem
+   attr_accessor :product_type, :buy, :quantity, :product
+   def initialize(t,b,q,p)
+     @product_type, @buy, @quantity, @product = t, b, q, p
+   end
+ end
+ $buy_it = 0; $quantity = 1; $product = 2
+ $p_category = 0; $p_child = 1
+ 
+ list = Array.new
+ list[0] = GroceryItem.new($p_category, true,  0, "Cleaning Supplies")
+ list[1] = GroceryItem.new($p_child,    true,  1, "Paper Towels")
+ list[2] = GroceryItem.new($p_child,    true,  3, "Toilet Paper")
+ list[3] = GroceryItem.new($p_category, true,  0, "Food")
+ list[4] = GroceryItem.new($p_child,    true,  2, "Bread")
+ list[5] = GroceryItem.new($p_child,    false, 1, "Butter")
+ list[6] = GroceryItem.new($p_child,    true,  1, "Milk")
+ list[7] = GroceryItem.new($p_child,    false, 3, "Chips")
+ list[8] = GroceryItem.new($p_child,    true,  4, "Soda")
+ 
+ treeview = Gtk::TreeView.new
+ setup_tree_view(treeview)
+ 
+ # Create a new tree model with three columns, as Boolean, 
+ # integer and string.
+ store = Gtk::TreeStore.new(TrueClass, Integer, String)
+ 
+ # Add all of the products to the GtkListStore.
+ list.each_with_index do |e, i|
+   print "i=#{i} "
+   # If the product type is a category, count the quantity
+   # of all of the products in the category that are going
+   # to be boughty.
+   if (e.product_type == $p_category)
+     j = i + 1
+ 
+     # Calculate how many products will be bought in
+     # the category.
+     while j < list.size && list[j].product_type != $p_category
+       list[i].quantity += list[j].quantity if list[j].buy
+       j += 1
+     end
+     
+     # Add the category as a new root element.
+     iter = store.append(nil)
+     store.set_value(iter, $buy_it,   list[i].buy)
+     store.set_value(iter, $quantity, list[i].quantity)
+     store.set_value(iter, $product,  list[i].product)
+ 
+   # Otherwise, add the product as a child of the category.
+   else
+     child = store.append(iter)
+     store.set_value(child, $buy_it,   list[i].buy)
+     store.set_value(child, $quantity, list[i].quantity)
+     store.set_value(child, $product,  list[i].product)
+   end
+ end
+ 
+ # Add the tree model to the tree view
+ treeview.model = store
+ scrolled_win = Gtk::ScrolledWindow.new
+ scrolled_win.add(treeview)
+ scrolled_win.set_policy(Gtk::POLICY_AUTOMATIC, Gtk::POLICY_AUTOMATIC)
+ window.add(scrolled_win)
+ window.show_all
+ Gtk.main
