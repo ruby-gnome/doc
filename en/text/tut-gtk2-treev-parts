@@ -64,7 +64,7 @@ Cell renderers are composed of properties that define how each cell of data is r
 
 There are a number of rules that must be followed when writing a new Gtk::CellRenderer. First and foremost, it's important that a certain set of properties will always yield a cell renderer of the same size, barring a Gtk::Style change. The Gtk::CellRenderer also has a number of generic properties that are expected to be honoured by all children.
 
-Beyond merely rendering a cell, cell renderers can optionally provide active user interface elements. A cell renderer can be set active or inactive like Gtk::CellRendererToggle, which toggles when it gets activated by a mouse click, or it can be editable like Gtk::CellRendererText, which allows the user to edit the text using a Gtk::Entry. To make a cell renderer activatable or editable, you have to implement the activate or start_editing virtual functions, respectively.
+Beyond merely rendering a cell, cell renderers can optionally provide active user interface elements. A cell renderer can be set active or inactive like Gtk::CellRendererToggle, which toggles when it gets activated by a mouse click, or it can be editable like Gtk::CellRendererText, which allows the user to edit the text using a Gtk::Entry. To make a cell renderer activatable or editable, you have to implement the ((*activate*)) or ((*start_editing*)) virtual methods, respectively.
 
 
 === Using Gtk::ListStore
