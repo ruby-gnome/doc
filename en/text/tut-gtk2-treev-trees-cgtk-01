@@ -5,9 +5,6 @@ Return from this detour: ((<Jump Back|tut-gtk2-treev-trees>))
 
 == C GTK+ version of "Using Gtk::TreeStore" example program
 
-{{image_right("treev-trees-ok.png")}}
-{{br}}
-
 Unfortunately Gtk::TreeStore currently (as of Ruby 1.8.6 and Ruby-GNOME2 rel.: 2-0.17.0-rc1) does not work.
 
 You can compile and run the following program to see for yourself, that the problem is not in GTK+ but rather in ...
@@ -19,6 +16,10 @@ You can compile this program with the following command:
  	`pkg-config --libs gtk+-2.0`
 
 Note the backticks surrounding the last two parameters which are the commands supplying flags, include options, and required libraries to gcc. Indeed you should have all this GTK+ stuff installed in order for gcc to compile this program.
+
+
+{{image_right("treev-trees-ok.png")}}
+{{br}}
 
 Following is the ((*treestore.c*)) program in C that does work:
 
