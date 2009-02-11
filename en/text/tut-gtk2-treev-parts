@@ -188,7 +188,7 @@ which I believe is either lacking a vital part of setup, is incorrect or there i
                                       :text => TEXT_COLUMN,                  # ????
                                       :foreground => COLOR_COLUMN)           # ????
 
-To fully comprehend the above Gtk::TreeViewColumn.new API fragment it is beneficial if you understand the part tels us how to implement the same functionality as that of the ((*new*)) method, manually with four simpler methods. So let us rewrite the following code fragment from of our example program to reflect what was just said:
+To fully comprehend the above Gtk::TreeViewColumn.new API fragment (not the questionable code example), it is beneficial if you understand that the fragment alludes to how to implement the same functionality as that of the ((*new*)) method, manually with four simpler methods. So let us rewrite the following code (the shorter fragment) from of our example program with a bit longer one, to reflect what was just said:
 
 :Shorter:
     These two lines are identical to the five below:
