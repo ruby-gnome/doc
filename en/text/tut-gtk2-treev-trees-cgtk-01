@@ -3,7 +3,7 @@
 
 Return from this detour: ((<Jump Back|tut-gtk2-treev-trees>))
 
-== C GTK+ version of "Using Text Iterators" example program
+== C GTK+ version of "Using Gtk::TreeStore" example program
 
 {{image_right("treev-trees-ok.png")}}
 {{br}}
