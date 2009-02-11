@@ -147,7 +147,7 @@ Gtk::ListStore is used to create lists of data that have no hierarchical relatio
 
 === Creating the Tree View
 
-Creating the tree view with Gtk::TreeView.new(model = nil) is the easiest part. Next order of business is to set up the tree view columns. In our example program we do this in our own helper method ((*setup_tree_view(treeview)*)), which deserves some explanations. Our tree view contains three columns and each has to be set up. All three columns will display text, hence we will  use the Gtk::CellRendererText cell renderer for all of them. 
+Creating the tree view with Gtk::TreeView.new(model = nil) is the easiest part. Next order of business is to set up the tree view columns. In our example program we do this in our own helper method ((*setup_tree_view(treeview),*)) which deserves some explanations. Our tree view contains three columns and each has to be set up. All three columns will display text, hence we will  use the Gtk::CellRendererText cell renderer for all of them. 
 
  renderer = Gtk::CellRendererText.new
 
