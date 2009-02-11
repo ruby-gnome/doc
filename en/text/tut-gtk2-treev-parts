@@ -213,7 +213,7 @@ Note how renderer is packed into the column. Following is the API for this line:
 
 === Creating the Gtk::ListStore
 
-The tree view columns are now set up with the desired cell renderers, so it is time to create the tree model that will interface between the renderers and the tree view. In our example program, we used the Gtk::ListStore so that the items would be as a list of elements.
+The tree view columns are now set up with the desired cell renderers, so it is time to create the tree model that will interface between the renderers and the tree view. In our example program, we used the Gtk::ListStore so that the items would be shown as a list of elements.
 
 First we create the list and at the same time define the data types for each column within a row, and then loop through our array of values to append them to the list. Indeed the important feature of this process is the iterator, i.e. the Gtk::TreeIter object, which is manipulated as an index into our list, however, the Gtk::ListStore#append does all the work for us. It creates a new empty list entry (record or row) and points the iterator (index) to it. We then proceed to assign values to individual columns with Gtk::ListStore#
 
