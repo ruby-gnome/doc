@@ -6,6 +6,7 @@ Return from this detour: ((<Jump Back|tut-gtk2-treev-trees>))
 == C GTK+ version of "Using Text Iterators" example program
 
 {{image_right("treev-trees-ok.png")}}
+{{br}}
 
 Unfortunately Gtk::TreeStore currently (as of Ruby 1.8.6 and Ruby-GNOME2 rel.: 2-0.17.0-rc1) does not work.
 
