@@ -24,7 +24,7 @@ In order to make life simpler for programmers who do not need to write their own
 
 Gtk::ListStore allows you to create a list of elements with multiple columns. Each row is a child of the root node, so only one level of rows is displayed. Basically, Gtk::ListStore is a tree structure that has no hierarchy. It is only provided because faster algorithms exist for interacting with the models that do not have any children items.
 
-Gtk::TreeStore provides the sane functionality as Gtk::ListStore, except the data can be organized into a multilayered tree.
+Gtk::TreeStore provides the same functionality as Gtk::ListStore, except the data can be organized into a multilayered tree.
 
 White  Gtk::ListStore and Gtk::TreeStore should fit most applications, sometimes you may be better off implementing your own store objects. For instance when you need a huge number of rows creating a new model may make your application to be more efficient. However, this we will not touch until late sections, when we will learn how to create custom widgets.
 
