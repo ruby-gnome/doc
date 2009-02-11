@@ -162,7 +162,7 @@ Our example program introduces Gtk::CellRendererText class. This class provides 
  column = Gtk::TreeViewColumn.new("Buy", renderer, "text" => $buy_it)
  treeview.append_column(column)
 
-When defining a tree view column we need to provide the text for the header, the renderer to be used on the elements (rows) of this column, and any number of attribute name/value pairs in a hash, where the name represents the attribute name and the value represents the column number. In our example we are defining a three individual single columns, so we have a single name/value pair for each attribute. Finally we have to add (append) our newly defined column to the tree view.
+When defining a tree view column we need to provide the text for the header, the renderer to be used on the elements (rows) of this column, and any number of attribute name/value pairs in a hash, where the name represents the attribute name and the value represents the column number. In our example we are defining three individual single columns, so we have a single name/value pair for each attribute. Finally we have to add (append) our newly defined column to the tree view.
 
 {{image_right("dialog-warning.png")}}
 
