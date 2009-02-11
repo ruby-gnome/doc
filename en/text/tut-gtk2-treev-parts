@@ -26,7 +26,7 @@ Gtk::ListStore allows you to create a list of elements with multiple columns. Ea
 
 Gtk::TreeStore provides the same functionality as Gtk::ListStore, except the data can be organized into a multilayered tree.
 
-White  Gtk::ListStore and Gtk::TreeStore should fit most applications, sometimes you may be better off implementing your own store objects. For instance when you need a huge number of rows creating a new model may make your application to be more efficient. However, this we will not touch until late sections, when we will learn how to create custom widgets.
+White  Gtk::ListStore and Gtk::TreeStore should fit most applications, sometimes you may be better off implementing your own store objects. For instance when you need a huge number of rows creating a new model may make your application to be more efficient. However, this we will not touch until late sections, when we learn how to create custom widgets.
 
 After you have created the tree model, the view is used to display the data. By separating the tree view and model, you are able to display the same set of data in multiple views. These views can be exact copies of each other, or the data can be displayed in varying ways. All views will be updated simultaneously as you make alterations to a model.
 
