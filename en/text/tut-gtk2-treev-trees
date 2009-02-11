@@ -7,10 +7,11 @@
 
 There is one type of built-in tree tree model called Gtk::TreeStore which provides the same functionality as Gtk::ListStore, except the data can be organized into a multilayered tree. Just like Gtk::ListStore, the Gtk::TreeStore object is a tree model for use with a Gtk::TreeView widget. It implements the Gtk::TreeModel interface, and inherits all of its methods. It also implements the Gtk::TreeSortable interface so you can sort the list using the view. Finally, it also implements the tree drag and drop interfaces.
 
-{{image_left("treev-trees-ok.png")}}
+{{image_right("treev-trees-ok.png")}}
 
 Our example program "treestore.rb" is a revised version of the "Grocery List" program from the previous session, splitting the products into two categories: "Cleaning Supplies" and "Food", which both have children of their own. The quantity of each category is set initially to zero, because it is calculated during the run-time. 
 
+{{br}}
 {{image_right("dialog-warning.png")}}
 :Caution:
     As of Ruby 1.8.6 and Ruby-GNOME2 rel.: 2-0.17.0-rc1, there seems to be a problem with Gtk::TreeStore. This implementation does not display parent and its children. The image on the right side hand side above shows what this program should display (you can see the the C GTK+ program version that works correctly by clicking the following link ((<C GTK+ program that works|tut-gtk2-treev-trees-cgtk-01>)), and the image below on the left shows what the problematic Ruby implementation does.
