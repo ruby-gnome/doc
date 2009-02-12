@@ -188,6 +188,7 @@ In the block you would set the page with Gtk::Assistant#current_page=(page_num)
       the number of pages in the assistant, nothing will be done.
     * Returns: page_num
 
+{{image_right("dialog-warning.png")}}
 Though, (as of  Ruby 1.8.6 and Ruby-GNOME2 rel 2-0.17.0-rc1) I believe there is  currently a problem with the way "Gtk::Assistant#set_forward_page_func" as well as "Gtk::Assistant#current_page=" are implemented in Ruby GTK+. The following program snippet will give you an idea how your own customized forwarding behaviour should be implemented within an assistant object, providing there were no problems with your Gtk::Assistant Ruby implementation:
 
  assistant.set_forward_page_func do |curr_pg|
