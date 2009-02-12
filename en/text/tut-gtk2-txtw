@@ -7,10 +7,10 @@
     * 1 ((<Scrolled Windows|tut-gtk2-txtw-scrolledwin>))
     * 2 ((<Text Views|tut-gtk2-txtw-textview>))
       * 2.1 ((<Text Buffers|tut-gtk2-txtw-textview#Text Buffers>))
-      * 2.2 ((<Text View Properties|tut-gtk2-txtw-textview#Text View Properties>))
-      * 2.3 ((<Pango Tab Arrays|tut-gtk2-txtw-textview#Pango Tab Arrays>))
-    * 3 ((<Text Iterators and Marks|tut-gtk2-txtw-itrsmrks>))
-      * 3.1 ((<Editing the Text Buffer|tut-gtk2-txtw-itrsmrks#Editing the Text Buffer>))
+      * 2.2 ((<Text View Properties|tut-gtk2-txtw-textview#Text View Properties>)){{image_right("dialog-warning-s2.png")}}
+      * 2.3 ((<Pango Tab Arrays|tut-gtk2-txtw-textview#Pango Tab Arrays>)) (!)
+    * 3 ((<Text Iterators and Marks|tut-gtk2-txtw-itrsmrks>)){{image_right("dialog-warning-s2.png")}}
+      * 3.1 ((<Editing the Text Buffer|tut-gtk2-txtw-itrsmrks#Editing the Text Buffer>)) (!)
       * 3.2 ((<Retrieving Text Iterators and Marks|tut-gtk2-txtw-itrsmrks#Retrieving Text Iterators and Marks>))
       * 3.3 ((<Changing Text Buffer Contents|tut-gtk2-txtw-itrsmrks#Changing Text Buffer Contents>))
       * 3.4 ((<Cutting, Copying and Pasting|tut-gtk2-txtw-itrsmrks#Cutting, Copying and Pasting>))
@@ -21,7 +21,6 @@
     * 6 ((<Inserting Child Widgets|tut-gtk2-txtw-icw>))
     * 7 ((<GtkSourceView|tut-gtk2-txtw-gsw>))
     * 8 ((<Test Your Understanding|tut-gtk2-txtw-tyu>))
-
 
 In this chapter we will learn how to use the Gtk::TextView widget. This widget is similar to the Gtk::Entry widget, except it is capable of holding text that spans multiple lines. Scrolled windows will be used to allow the text to exist beyond the boundaries of the screen. But before we dive into the main subject of this chapter we have to introduce a few of new widgets. The first two will be scrolled windows and view ports. Scrolled windows are composed of two scrollbars that are used to scroll the child widget. There are a few widgets that support scrolling, for example Gtk::Layout, Gtk::TreeView and Gtk::TextView. For all other widgets that you want to scroll, you will need to add them first to a Gtk::Viewport object, which then provides scrolling behaviour to its child.
 
