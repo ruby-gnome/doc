@@ -4,7 +4,7 @@
 == Submenues of "Selector/Chooser Interface And Widgets" sections
 
   * ((<File Chooser Button|tut-gtk2-filechooser>))
-    * ((**<FileChooserDialog|tut-gtk2-dialog-fichoo>)) (preliminary)
+    * ((<** FileChooserDialog|tut-gtk2-dialog-fichoo>)) (preliminary)
   * ((<Colour Button|tut-gtk2-colorsel-buttons>))
     * ((<Modifying the foreground colour of a widget|tut-gtk2-colorsel-buttons#Modifying the foreground colour of a widget>)){{image_right("dialog-warning-s2.png")}}
   * ((<Font Button|tut-gtk2-fichoo-fontbtt>)) (!)
