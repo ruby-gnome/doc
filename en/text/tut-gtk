@@ -66,11 +66,11 @@ As of January 2009, brand new material mainly based on Andrew  Krause's book ((<
     * ((<Saving Files|tut-gtk2-dialog-fichoo#Saving Files>))
     * ((<Creating a Folder|tut-gtk2-dialog-fichoo#Creating a Folder>))
     * ((<Selecting Multiple Files|tut-gtk2-dialog-fichoo#Selecting Multiple Files>))
-  * ((<Collecting Information With Font And Colour Selection Dialogues|tut-gtk2-dialog-fontcolor>)){{image_right("dialog-warning-s2.png")}}
-    * ((<Colour Selection Dialogues|tut-gtk2-dialog-fontcolor#Colour Selection Dialogues>)) (!)
+  * ((<Collecting Information With Font And Colour Selection Dialogues|tut-gtk2-dialog-fontcolor>))
+    * ((<Colour Selection Dialogues|tut-gtk2-dialog-fontcolor#Colour Selection Dialogues>))
     * ((<Font Selection Dialogues|tut-gtk2-dialog-fontcolor#Font Selection Dialogues>))
-    * ((<Modifying font by programmatic means|tut-gtk2-dialog-fontcolor#Modifying font by programmatic means>))
-  * ((<Dialogues With Multiple Pages Using Gtk::Assistant|tut-gtk2-dialog-assistant>))
+    * ((<Modifying font by programmatic means|tut-gtk2-dialog-fontcolor#Modifying font by programmatic means>)){{image_right("dialog-warning-s2.png")}}
+  * ((<Dialogues With Multiple Pages Using Gtk::Assistant|tut-gtk2-dialog-assistant>)) (!)
     * ((<Progress Bar|tut-gtk2-dialog-assistant#Progress Bar>))
   * ((<Test Your Understanding|tut-gtk2-dialog-tyu>))
 * ((<GLib Short Introduction|tut-gtk2-glib>))
