@@ -10,8 +10,7 @@
     * ((<Using Stock Items|tut-gtk2-btt-check#Using Stock Items>))
     * ((<Callbacks And Event Handling|tut-gtk2-btt-check#Callbacks And Event Handling Revisited - Callbacks are closures>))
   * ((<Radio Button|tut-gtk2-btt-radio>))
-  * ((<** Not a button but vaguely related Button Box|tut-gtk2-btt-bttbox>)){{image_right("dialog-warning-s2.png")}}
-  * ((<** Font Button|tut-gtk2-fichoo-fontbtt>)) (bellow undeer Selector And Chooser ...) (!)
+  * ((<** Not a button but vaguely related Button Box|tut-gtk2-btt-bttbox>))
 
 
 == Short Description
