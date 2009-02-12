@@ -8,9 +8,9 @@
     * 2 ((<Text Views|tut-gtk2-txtw-textview>))
       * 2.1 ((<Text Buffers|tut-gtk2-txtw-textview#Text Buffers>))
       * 2.2 ((<Text View Properties|tut-gtk2-txtw-textview#Text View Properties>)){{image_right("dialog-warning-s2.png")}}
-      * 2.3 ((<Pango Tab Arrays|tut-gtk2-txtw-textview#Pango Tab Arrays>)) (!,f)
+      * 2.3 ((<Pango Tab Arrays|tut-gtk2-txtw-textview#Pango Tab Arrays>)) (!)
     * 3 ((<Text Iterators and Marks|tut-gtk2-txtw-itrsmrks>)){{image_right("dialog-warning-s2.png")}}
-      * 3.1 ((<Editing the Text Buffer|tut-gtk2-txtw-itrsmrks#Editing the Text Buffer>)) (!)
+      * 3.1 ((<Editing the Text Buffer|tut-gtk2-txtw-itrsmrks#Editing the Text Buffer>)) (!,f)
       * 3.2 ((<Retrieving Text Iterators and Marks|tut-gtk2-txtw-itrsmrks#Retrieving Text Iterators and Marks>))
       * 3.3 ((<Changing Text Buffer Contents|tut-gtk2-txtw-itrsmrks#Changing Text Buffer Contents>))
       * 3.4 ((<Cutting, Copying and Pasting|tut-gtk2-txtw-itrsmrks#Cutting, Copying and Pasting>))
