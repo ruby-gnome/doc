@@ -20,7 +20,7 @@ In this session we will enable you to mold the tree view widget to meet your nee
       * 1.3 ((<Using Gtk::ListStore|tut-gtk2-treev-parts#Using Gtk::ListStore>))
       * 1.4 ((<Renderers and Columns|tut-gtk2-treev-parts#Renderers and Columns>))
       * 1.5 ((<Creating the Gtk::ListStore|tut-gtk2-treev-parts#Creating the Gtk::ListStore>)){{image_right("dialog-warning-s2.png")}}
-    * 2 ((<Using Gtk::TreeStore|tut-gtk2-treev-trees>)) (1)
+    * 2 ((<Using Gtk::TreeStore|tut-gtk2-treev-trees>)) (!)
 
 
 Creating the Gtk::ListStore
