@@ -13,7 +13,7 @@ Our example program "treestore.rb" is a revised version of the "Grocery List" pr
 
 {{br}}
 :Caution:
-    As of Ruby 1.8.6 and Ruby-GNOME2 rel.: 2-0.17.0-rc1, there seems to be a problem with Gtk::TreeStore. This implementation does not correctly display parent column and the expander {{image_right("dialog-warning.png")}}. The image on the right side hand side above shows what this program should display (you can see the the C GTK+ program version that works correctly by clicking the following link ((<C GTK+ program that works|tut-gtk2-treev-trees-cgtk-01>)), and the image below on the left shows what the problematic Ruby implementation does.
+    As of Ruby 1.8.6 and Ruby-GNOME2 rel.: 2-0.17.0-rc1, there seems to be a problem with Gtk::TreeStore. {{image_right("dialog-warning.png")}} This implementation does not correctly display parent column and the expander.  The image on the right side hand side above shows what this program should display (you can see the the C GTK+ program version that works correctly by clicking the following link ((<C GTK+ program that works|tut-gtk2-treev-trees-cgtk-01>)), and the image below on the left shows what the problematic Ruby implementation does.
 {{br}}
 
 {{image_left("treev-trees-nok.png")}}
