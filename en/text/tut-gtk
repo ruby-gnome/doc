@@ -52,7 +52,7 @@ As of January 2009, brand new material mainly based on Andrew  Krause's book ((<
 * ((<Selector And Chooser Interface And Widgets|tut-gtk2-selchoose>))
   * ((<File Chooser Button|tut-gtk2-filechooser>))
   * ((<Colour Button|tut-gtk2-colorsel-buttons>))
-    * ((<Modifying the foreground colour of a widget|tut-gtk2-colorsel-buttons#Modifying the foreground colour of a widget>))
+    * ((<Modifying the foreground colour of a widget|tut-gtk2-colorsel-buttons#Modifying the foreground colour of a widget>)){{image_right("dialog-warning-s2.png")}}
   * ((<Font Button|tut-gtk2-fichoo-fontbtt>))
   * ((<Test Your Understanding|tut-gtk2-selchoo-tyu>))
 * ((<Dialogs|tut-gtk2-dialog>))
