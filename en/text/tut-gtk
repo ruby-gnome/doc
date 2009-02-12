@@ -43,7 +43,7 @@ As of January 2009, brand new material mainly based on Andrew  Krause's book ((<
     * ((<Callbacks And Event Handling|tut-gtk2-btt-check#Callbacks And Event Handling Revisited - Callbacks are closures>))
   * ((<Radio Button|tut-gtk2-btt-radio>))
   * ((<** Not a button but vaguely related Button Box|tut-gtk2-btt-bttbox>)){{image_right("dialog-warning-s2.png")}}
-  * ((<** Font Button|tut-gtk2-fichoo-fontbtt>)) (bellow undeer Selector And Chooser ...)
+  * ((<** Font Button|tut-gtk2-fichoo-fontbtt>)) (bellow undeer Selector And Chooser ...) (!)
 * ((<Numeric - Text Data Entry|tut-gtk2-numtxt>))
   * ((<Single Line Entry Field|tut-gtk2-numtxt-entry>))
   * ((<Spin Buttons|tut-gtk2-numtxt-spinbttns>))
@@ -53,7 +53,7 @@ As of January 2009, brand new material mainly based on Andrew  Krause's book ((<
   * ((<File Chooser Button|tut-gtk2-filechooser>))
   * ((<Colour Button|tut-gtk2-colorsel-buttons>))
     * ((<Modifying the foreground colour of a widget|tut-gtk2-colorsel-buttons#Modifying the foreground colour of a widget>)){{image_right("dialog-warning-s2.png")}}
-  * ((<Font Button|tut-gtk2-fichoo-fontbtt>))
+  * ((<Font Button|tut-gtk2-fichoo-fontbtt>)) (!)
   * ((<Test Your Understanding|tut-gtk2-selchoo-tyu>))
 * ((<Dialogs|tut-gtk2-dialog>))
   * ((<Creating Your Own Dialogs|tut-gtk2-dialog-custom>))
@@ -67,7 +67,7 @@ As of January 2009, brand new material mainly based on Andrew  Krause's book ((<
     * ((<Creating a Folder|tut-gtk2-dialog-fichoo#Creating a Folder>))
     * ((<Selecting Multiple Files|tut-gtk2-dialog-fichoo#Selecting Multiple Files>))
   * ((<Collecting Information With Font And Colour Selection Dialogues|tut-gtk2-dialog-fontcolor>)){{image_right("dialog-warning-s2.png")}}
-  * ((<Dialogues With Multiple Pages Using Gtk_Assistant|tut-gtk2-dialog-assistant>))
+  * ((<Dialogues With Multiple Pages Using Gtk_Assistant|tut-gtk2-dialog-assistant>)) (!)
     * ((<Progress Bar|tut-gtk2-dialog-assistant#Progress Bar>))
   * ((<Test Your Understanding|tut-gtk2-dialog-tyu>))
 * ((<GLib Short Introduction|tut-gtk2-glib>))
@@ -82,9 +82,9 @@ As of January 2009, brand new material mainly based on Andrew  Krause's book ((<
   * ((<Text Views|tut-gtk2-txtw-textview>))
     * ((<Text Buffers|tut-gtk2-txtw-textview#Text Buffers>))
     * ((<Text View Properties|tut-gtk2-txtw-textview#Text View Properties>)){{image_right("dialog-warning-s2.png")}}
-    * ((<Pango Tab Arrays|tut-gtk2-txtw-textview#Pango Tab Arrays>))
+    * ((<Pango Tab Arrays|tut-gtk2-txtw-textview#Pango Tab Arrays>)) (!)
     * ((<Text Iterators and Marks|tut-gtk2-txtw-itrsmrks>)){{image_right("dialog-warning-s2.png")}}
-      * ((<Editing the Text Buffer|tut-gtk2-txtw-itrsmrks#Editing the Text Buffer>))
+      * ((<Editing the Text Buffer|tut-gtk2-txtw-itrsmrks#Editing the Text Buffer>)) (!)
       * ((<Retrieving Text Iterators and Marks|tut-gtk2-txtw-itrsmrks#Retrieving Text Iterators and Marks>))
       * ((<Changing Text Buffer Contents|tut-gtk2-txtw-itrsmrks#Changing Text Buffer Contents>))
       * ((<Cutting, Copying and Pasting|tut-gtk2-txtw-itrsmrks#Cutting, Copying and Pasting>))
