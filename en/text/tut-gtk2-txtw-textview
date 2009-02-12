@@ -164,7 +164,7 @@ The Gtk::PangoLayout object is used to represent a whole paragraph of text. Norm
 
 {{image_right("dialog-warning.png")}}
 :Warning:
-     Please note that there currently persists a bug inherited from the original C GTK+ implementation. This may simply be a release problem, nevertheless I want you to be aware of it. In the above code the problem is mentioned in the following code segment:
+    Please note that there currently persists a bug inherited from the original C GTK+ implementation. This may simply be a release problem, nevertheless I want you to be aware of it. In the above code the problem is mentioned in the following code segment:
 
      # For font styles "Italic", "Bold", "Bold Italic" and
      # "Regular" currently, all except "Regular" work fine.
