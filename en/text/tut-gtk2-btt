@@ -5,12 +5,15 @@
 == Submenues of "Buttons And Toggles" sections
 
   * ((<Toggle Button|tut-gtk2-btt-toggle>))
+    * ((<Mnemonics|tut-gtk2-btt-toggle#Mnemonics>))
   * ((<Check Button|tut-gtk2-btt-check>))
     * ((<Using Stock Items|tut-gtk2-btt-check#Using Stock Items>))
-    * ((<Callbacks And Event Handling Revisited|tut-gtk2-btt-check#Callbacks And Event Handling Revisited - Callbacks are closures>))
+    * ((<Callbacks And Event Handling|tut-gtk2-btt-check#Callbacks And Event Handling Revisited - Callbacks are closures>))
   * ((<Radio Button|tut-gtk2-btt-radio>))
-  * ((<* Callbacks And Event Handling|tut-gtk2-btt-check#Callbacks And Event Handling Revisited - Callbacks are closures>))
-  * ((<Font Button|tut-gtk2-fichoo-fontbtt>))
+  * ((<** Not a button but vaguely related Button Box|tut-gtk2-btt-bttbox>)){{image_right("dialog-warning-s2.png")}}
+  * ((<** Font Button|tut-gtk2-fichoo-fontbtt>)) (bellow undeer Selector And Chooser ...) (!)
+
+
 == Short Description
 
 In Gtk+ we can find many widgets that contain the word "Button" in their name, but the primary button widgets are just a few. Following is the list of those, and in Gtk documentation you will also find them under the same heading as this article (Buttons and Toggles):
