@@ -161,6 +161,20 @@ Tabs added to a text view are set to a default width, but there are times when t
 
 The Gtk::PangoLayout object is used to represent a whole paragraph of text. Normally, Pango uses it internally for laying out text within a widget. However, it can be employed as in our example in the ((*make_tab_array*)) function to calculate the width of the tab string. Note that using tab, let alone changing it makes sense only when you have a mono-spaced text as well when you use the same font through out the text.
 
+
+{{image_right("dialog-warning.png")}}
+:Warning:
+     Please note that there currently persists a bug inherited from the original C GTK+ implementation. This may simply be a release problem, nevertheless I want you to be aware of it. In the above code the problem is mentioned in the following code segment:
+
+     # For font styles "Italic", "Bold", "Bold Italic" and
+     # "Regular" currently, all except "Regular" work fine.
+     # However, this is really not a Ruby but general version
+     # "C" GTK+ problem!
+     font = Pango::FontDescription.new("Monospace Italic 8")
+     textview.modify_font(font)
+     make_tab_array(textview, 15, font)
+
+
 Following are the methods we used in order to implement our tab size altering functionality:
 
 --- Gtk::Widget#create_pango_layout(text=nil)
