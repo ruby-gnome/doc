@@ -1,7 +1,5 @@
 = The Tree View Widget
-{{link "tut-gtk2-treev-parts", "tut-gtk2-treev", "tut-gtk", "tut-gtk2-treev-trees"}}
-
-= Sorry still under construction 
+{{link "tut-gtk2-treev-parts", "tut-gtk2-treev", "tut-gtk", "tut-gtk2-treev-rr"}}
 
 == Using Gtk::TreeStore
 
@@ -11,9 +9,13 @@ There is one more type of built-in tree model called Gtk::TreeStore which provid
 
 Our example program "treestore.rb" is a revised version of the "Grocery List" program from the previous session, splitting the products into two categories: "Cleaning Supplies" and "Food", which both have children of their own. The quantity of each category is set initially to zero, and is calculated during the run-time, just momentarily before it is displayed as 4 and 7 respectively. {{image_left("dialog-warning.png")}} Note, there are two logical columns under the header ((*Buy.*)) The left logical column represents the parent column with a small expander triangle at the edge, slightly shifted to the right is the row of children.
 
+
 {{br}}
 :Caution:
     As of Ruby 1.8.6 and Ruby-GNOME2 rel.: 2-0.17.0-rc1, there seems to be a problem with Gtk::TreeStore. {{image_right("dialog-warning.png")}} This implementation does not correctly display parent column and the expander.  The image on the right hand side above shows what this program should display (you can see the the C GTK+ program version that works correctly by clicking the following link ((<C GTK+ program that works|tut-gtk2-treev-trees-cgtk-01>)), and the image below on the left shows what the problematic Ruby implementation does.
+
+
+
 {{br}}
 
 {{image_left("treev-trees-nok.png")}}
@@ -77,7 +79,6 @@ Our example program "treestore.rb" is a revised version of the "Grocery List" pr
  
  # Add all of the products to the GtkListStore.
  list.each_with_index do |e, i|
-   print "i=#{i} "
    # If the product type is a category, count the quantity
    # of all of the products in the category that are going
    # to be boughty.
@@ -117,10 +118,38 @@ Our example program "treestore.rb" is a revised version of the "Grocery List" pr
 
 The only difference between a Gtk::TreeView with a Gtk::TreeStore instead of a Gtk::ListStore is in the creation of the ((*store*)) - a tree model with three columns defined as Boolean, integer and a string.
 
+Adding columns and renderers renderers is performed in the same manner with both models, because columns are part of the view not the model:
+:Reminder: What is MVC
+    ((*model-view-controller*)) (MVC) desgn is a design method where the information and the way it is rendered are separated, which is similar to the relationship between Gtk::TreeView and Gtk::TreeBuffer. 
+
+
+((*Tree stores*)) are initialized with Gtk::ListStore.new.
+
  # Create a new tree model with three columns, as Boolean,
  # integer and string.
  store = Gtk::ListStore.new(TrueClass, Integer, String)
 
-Adding columns and renderers renderers is performed in the same manner with both models, because columns are part of the view not the model:
-:Reminder: What is MVC
-    ((*model-view-controller*)) (MVC) desgn is a design method where the information and the way it is rendered are separated, which is similar to the relationship between Gtk::TreeView and Gtk::TreeBuffer. 
+However the most important difference is in how iterators and parent and child columns are handled. The first change that became an important feature in the ((*store*)) data initialization process was a new attribute called "product_type" in the GroceryItem class. This attribute decides whether a data item (a row, a record, or a tuple) is a product_category designated as the parent column in our data structure, or a grocery product which in our data structure is a child column of the product_category.
+
+Hence, when we are creating rows we have to create a column of parents and a column of children. The two are created in a slightly different way. The first difference is in the argument to the row creation method Gtk::TreeStore#append(parent). Namely, if the argument here called parent is nil we are creating parent row, when it is a non-nil Gtk::TreeIter we are creating a child of the parent to which the  Gtk::TreeIter attribute points. Gtk::TreeStore#append method returns an iterator which points to the newly created empty data item (row, record, or tuple). This iterator is then used to assign values to the columns in the empty row. We add three columns, hence thre lines with the method: Gtk::TreeStore#set_value(iter, column, value). Let's look at the code fragment that illustrates the above narative.
+
+
+ # Add all of the products to the GtkListStore.
+ list.each_with_index do |e, i|
+
+   if (e.product_type == $p_category)
+        . . .
+     # Add the category as a new root element.
+     iter = store.append(nil)
+     store.set_value(iter, $buy_it,   list[i].buy)
+     store.set_value(iter, $quantity, list[i].quantity)
+     store.set_value(iter, $product,  list[i].product)
+ 
+   # Otherwise, add the product as a child of the category.
+   else
+     child = store.append(iter)
+     store.set_value(child, $buy_it,   list[i].buy)
+     store.set_value(child, $quantity, list[i].quantity)
+     store.set_value(child, $product,  list[i].product)
+   end
+ end
