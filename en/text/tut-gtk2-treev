@@ -21,7 +21,7 @@ In this session we will enable you to mold the tree view widget to meet your nee
       * 1.4 ((<Renderers and Columns|tut-gtk2-treev-parts#Renderers and Columns>))
       * 1.5 ((<Creating the Gtk::ListStore|tut-gtk2-treev-parts#Creating the Gtk::ListStore>)){{image_right("dialog-warning-s2.png")}}
     * 2 ((<Using Gtk::TreeStore|tut-gtk2-treev-trees>)) (!,f)
-
+    * 3 ((<Referencing Rows|tut-gtk2-treev-rr>))
 
 Creating the Gtk::ListStore
 
