@@ -10,7 +10,7 @@
 
 --- Gtk::TreeRowReference.new(model, path)
 
-    Creates a row reference based on path. This reference will keep pointing to the node pointed to by path, so long as it exists. It listens to all signals emitted by model, and updates it's path appropriately. If path isn't a valid path in model, then an error is occured.
+    Creates a row reference based on path. This reference will keep pointing to the node pointed to by path, so long as it exists. It listens to all signals emitted by model, and updates it's path appropriately. If path isn't a valid path in model, then an error is occurred.
     * model : A Gtk::TreeModel 
     * path : A valid Gtk::TreePath to monitor 
     * Returns : A new Gtk::TreeRowReference
