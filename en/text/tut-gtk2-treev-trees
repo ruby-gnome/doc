@@ -9,7 +9,7 @@ There is one more type of built-in tree model called Gtk::TreeStore which provid
 
 {{image_right("treev-trees-ok.png")}}
 
-Our example program "treestore.rb" is a revised version of the "Grocery List" program from the previous session, splitting the products into two categories: "Cleaning Supplies" and "Food", which both have children of their own. The quantity of each category is set initially to zero, and is calculated during the run-time, just momentarily before it is displayed as 4 and 7 respectively. {{image_left("dialog-warning.png")}} Note, there are two logical columns under the header ((*Buy.*)) The left logical column represent parent column with a small expander triangle at the edge, slightly shifted to the right is the row of children.
+Our example program "treestore.rb" is a revised version of the "Grocery List" program from the previous session, splitting the products into two categories: "Cleaning Supplies" and "Food", which both have children of their own. The quantity of each category is set initially to zero, and is calculated during the run-time, just momentarily before it is displayed as 4 and 7 respectively. {{image_left("dialog-warning.png")}} Note, there are two logical columns under the header ((*Buy.*)) The left logical column represents the parent column with a small expander triangle at the edge, slightly shifted to the right is the row of children.
 
 {{br}}
 :Caution:
