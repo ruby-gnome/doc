@@ -114,3 +114,13 @@ Our example program "treestore.rb" is a revised version of the "Grocery List" pr
  window.add(scrolled_win)
  window.show_all
  Gtk.main
+
+The only difference between a Gtk::TreeView with a Gtk::TreeStore instead of a Gtk::ListStore is in the creation of the ((*store*)) - a tree model with three columns defined as Boolean, integer and a string.
+
+ # Create a new tree model with three columns, as Boolean,
+ # integer and string.
+ store = Gtk::ListStore.new(TrueClass, Integer, String)
+
+Adding columns and renderers renderers is performed in the same manner with both models, because columns are part of the view not the model:
+:Reminder: What is MVC
+    ((*model-view-controller*)) (MVC) desgn is a design method where the information and the way it is rendered are separated, which is similar to the relationship between Gtk::TreeView and Gtk::TreeBuffer. 
