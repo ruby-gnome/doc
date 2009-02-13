@@ -24,6 +24,9 @@ Our example program "treestore.rb" is a revised version of the "Grocery List" pr
  #!/usr/bin/env ruby
  require 'gtk2'
  
+ # Add three columns to the GtkTreeView. All three of the
+ # columns will be displayed as text, although one is a boolean
+ # value and another is an integer.
  def setup_tree_view(treeview)
    # Create a new GtkCellRendererText, add it to the tree
    # view column and append the column to the tree view.
