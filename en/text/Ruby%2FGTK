@@ -117,6 +117,9 @@
   * Gtk::CellRendererToggle - Renders a toggle button in a cell
   * Gtk::ListStore - A list-like data structure that can be used with the Gtk::TreeView
   * Gtk::TreeStore - A tree-like data structure that can be used with the Gtk::TreeView
+  * Gtk::TreePath - object for referring to rows within a tree model
+  * Gtk::TreeIter - a reference to a specific node on a specific model
+  * Gtk::TreeRowReference - object that monitors a tree model for changes
 
 * Menus, Combo Box, Toolbar
 
