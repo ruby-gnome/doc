@@ -28,16 +28,13 @@ Our example program "treestore.rb" is a revised version of the "Grocery List" pr
    # Create a new GtkCellRendererText, add it to the tree
    # view column and append the column to the tree view.
    renderer = Gtk::CellRendererText.new
-   column = Gtk::TreeViewColumn.new(
-           "Buy", renderer, "text" => $buy_it)
+   column = Gtk::TreeViewColumn.new("Buy", renderer, "text" => $buy_it)
    treeview.append_column(column)
    renderer = Gtk::CellRendererText.new
-   column = Gtk::TreeViewColumn.new(
-           "Count", renderer, "text" => $quantity)
+   column = Gtk::TreeViewColumn.new("Count", renderer, "text" => $quantity)
    treeview.append_column(column) 
    renderer = Gtk::CellRendererText.new
-   column = Gtk::TreeViewColumn.new(
-           "Product", renderer, "text" => $product)
+   column = Gtk::TreeViewColumn.new("Product", renderer, "text" => $product)
    treeview.append_column(column)
  end
  
