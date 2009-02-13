@@ -8,7 +8,8 @@ The Gtk::TreeView widget is used to display data organized as a list or a tree. 
 
 Gtk::TreeView widget is not only difficult to learn to use but is even more difficult to understand as a widget to program. However, time spent learning it is guarantied to be well spent, because with its almost infinite ways of customization, you will be able to apply it to a rather large variety of applications.
 
-What makes Gtk::TreeView unique is that it follows  a design concept commonly referred to as model-view-controller (MVC) desgn. MVC is a design method where the information and the it is rendered are separated similar to the relationship between Gtk::TreeView and Gtk::TreeBuffer.
+What makes Gtk::TreeView unique is that it follows  a design concept commonly referred to as model-view-controller (MVC) desgn. MVC is a design method where the information and the way it is rendered are separated, which is similar to the relationship between Gtk::TreeView and Gtk::TreeBuffer.
+
 
 === Gtk::TreeModel
 
