@@ -69,16 +69,6 @@ There are a number of rules that must be followed when writing a new Gtk::CellRe
 Beyond merely rendering a cell, cell renderers can optionally provide active user interface elements. A cell renderer can be set active or inactive like Gtk::CellRendererToggle, which toggles when it gets activated by a mouse click, or it can be editable like Gtk::CellRendererText, which allows the user to edit the text using a Gtk::Entry. To make a cell renderer activatable or editable, you have to implement the ((*activate*)) or ((*start_editing*)) virtual methods, respectively.
 
 
-=== Tree View Look and Feel
-
-
-
-There are a couple of ways to influence the look and feel of the tree view. You can hide or show column headers with Gtk::TreeView#headers_visible=, and set them clickable or not with Gtk::TreeView#headers_clickable= (which will be done automatically for you if you enable sorting).
-
-Gtk::TreeView#rules_hint= will enable or disable ruled lines in the tree view. As the name of the method implies, this setting is only a hint; in the end it depends on the active Gtk+ theme engine if the tree view shows ruled lines or not. Users seem to have strong feelings about rules in tree views, so it is probably a good idea to provide an option somewhere to disable rule hinting if you set it on tree views (but then, people also seem to have strong feelings about options abundance and 'sensible' default options, so whatever you do will probably upset someone at some point).
-
-The expander column can be set with Gtk::TreeView#expander_column=. This is the column where child elements are indented with respect to their parents, and where rows with children have an 'expander' arrow with which a node's children can be collapsed (hidden) or expanded (shown). By default, this is the first column.
-
 
 === Using Gtk::ListStore
 
