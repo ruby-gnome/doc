@@ -15,7 +15,6 @@ What makes Gtk::TreeView unique is that it follows  a design concept commonly re
 
 The GTK+ provides four types of of built-in tree model classes, but in our sessions here we will cover only two - the Gtk::TreeStore and the Gtk::ListStore. The Gtk::TreeModel interface defines a generic tree interface for use by the Gtk::TreeView widget. It is designed to be usable with any appropriate data structure. Data itself is stored in objects whose classes implement the Gtk::TreeModel interface.
 
-
 The Gtk::TreeModel interface provides a standard set of methods for retrieving general information about the data that is stored. For example, it allows you to get the number of rows in the tree and the number of children of a certain row. The Gtk::TreeModel also gives you a way to retrieve the data that is stored in a specific row of the store.
 
 :Note:
@@ -70,6 +69,19 @@ There are a number of rules that must be followed when writing a new Gtk::CellRe
 Beyond merely rendering a cell, cell renderers can optionally provide active user interface elements. A cell renderer can be set active or inactive like Gtk::CellRendererToggle, which toggles when it gets activated by a mouse click, or it can be editable like Gtk::CellRendererText, which allows the user to edit the text using a Gtk::Entry. To make a cell renderer activatable or editable, you have to implement the ((*activate*)) or ((*start_editing*)) virtual methods, respectively.
 
 
+=== Tree View Look and Feel
+
+:See also:
+    * ((<Ruby/GTK TreeView Tutorial|http://ruby-gnome2.sourceforge.jp/hiki.cgi?tut-treeview>))
+      *((<Tree View Look and Feel|http://ruby-gnome2.sourceforge.jp/hiki.cgi?tut-treeview-view-look>))
+
+There are a couple of ways to influence the look and feel of the tree view. You can hide or show column headers with Gtk::TreeView#headers_visible=, and set them clickable or not with Gtk::TreeView#headers_clickable= (which will be done automatically for you if you enable sorting).
+
+Gtk::TreeView#rules_hint= will enable or disable ruled lines in the tree view. As the name of the method implies, this setting is only a hint; in the end it depends on the active Gtk+ theme engine if the tree view shows ruled lines or not. Users seem to have strong feelings about rules in tree views, so it is probably a good idea to provide an option somewhere to disable rule hinting if you set it on tree views (but then, people also seem to have strong feelings about options abundance and 'sensible' default options, so whatever you do will probably upset someone at some point).
+
+The expander column can be set with Gtk::TreeView#expander_column=. This is the column where child elements are indented with respect to their parents, and where rows with children have an 'expander' arrow with which a node's children can be collapsed (hidden) or expanded (shown). By default, this is the first column.
+
+
 === Using Gtk::ListStore
 
 The Gtk::ListStore object is a list model for use with a Gtk::TreeView widget. It implements the Gtk::TreeModel interface, and can consequently use all of the methods available there. It also implements the Gtk::TreeSortable interface so you can sort the list using the view. Finally, it also implements the tree drag and drop interfaces.
@@ -87,7 +99,7 @@ Gtk::ListStore is used to create lists of data that have no hierarchical relatio
 
  # Add three columns to the GtkTreeView. All three of the
  # columns will be displayed as text, although one is a boolean
- # value and another is an integer. 
+ # value and another is an integer.
  def setup_tree_view(treeview)
    # Create a new GtkCellRendererText, add it to the tree
    # view column and append the column to the tree view.
@@ -153,7 +165,7 @@ Gtk::ListStore is used to create lists of data that have no hierarchical relatio
 
 === Creating the Tree View
 
-Creating the tree view with Gtk::TreeView.new(model = nil) is the easiest part. Next order of business is to set up the tree view columns. In our example program we do this in our own helper method ((*setup_tree_view(treeview),*)) which deserves some explanations. Our tree view contains three columns and each has to be set up. All three columns will display text, hence we will  use the Gtk::CellRendererText cell renderer for all of them. 
+Creating the tree view with Gtk::TreeView.new(model = nil) is the easiest part. Next order of business is to set up the tree view columns. In our example program we do this in our own helper method ((*setup_tree_view(treeview)*,)) which deserves some explanations. Our tree view contains three columns and each has to be set up. All three columns will display text, hence we will  use the Gtk::CellRendererText cell renderer for all of them. 
 
  renderer = Gtk::CellRendererText.new
 
@@ -196,6 +208,7 @@ which I believe is either lacking a vital part of setup, is incorrect or there i
 
 To fully comprehend the above Gtk::TreeViewColumn.new API fragment just above the questionable code example, it would be beneficial if you understand that the API fragment alludes to how to implement the same functionality as that of the ((*new*)) method, manually - with four simpler methods. So let us rewrite the following code  (the shorter fragment) from of our example program with a bit longer one, to reflect what was just said:
 
+
 :Shorter:
     These two lines are identical to the five below:
      renderer = Gtk::CellRendererText.new
@@ -207,6 +220,7 @@ To fully comprehend the above Gtk::TreeViewColumn.new API fragment just above th
      column.title = "Buy"
      column.pack_start(renderer, false)
      column.set_attributes("text" => $buy_it)
+
 
 Note how renderer is packed into the column. Following is the API for this line:
 
@@ -234,7 +248,6 @@ First we create the list and at the same time define the data types for each col
      store.set_value(iter, $quantity, list[i].quantity)
      store.set_value(iter, $product,  list[i].product)
  end
-
 
 Following is the pertinent API for the methods we used when dealing with the Gtk::ListStore object in the example above:
 
