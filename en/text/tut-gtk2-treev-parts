@@ -71,7 +71,7 @@ Beyond merely rendering a cell, cell renderers can optionally provide active use
 
 === Tree View Look and Feel
 
-:See also:
+See also:
     * ((<Ruby GTK TreeView Tutorial|URL:http://ruby-gnome2.sourceforge.jp/hiki.cgi?tut-treeview>))
       * ((<Tree View Look and Feel|URL:http://ruby-gnome2.sourceforge.jp/hiki.cgi?tut-treeview-view-look>))
 
