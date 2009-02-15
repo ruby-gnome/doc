@@ -351,3 +351,7 @@ Lastly if the user checked the "Buy the product" check button, we need to recalc
    qty_value += quantity
    iter[$quantity] = qty_value
  end
+
+=== Removing Multiple Rows
+
+In this part of our application we find two remove methods. The main is the callback method called ((*remove_products*)). Though most of the actual removal processing is done by the helper method "remove_row", there are some important removal issues that need to be addressed when dealing with removing multiple rows, in the first, that is, "remove_products" method.
