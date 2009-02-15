@@ -352,6 +352,39 @@ Lastly if the user checked the "Buy the product" check button, we need to recalc
    iter[$quantity] = qty_value
  end
 
+=== Combo Box
+
+{{image_right("combo-box.png")}}
+
+Since combo boxes provide their own methods to manage additions and removal of their selectable elements, it is not immediately apparent that combo boxes are related to the tree model. Depending on how a combo box is initialized (either with Gtk::ComboBox.new(is_text_only = true) or with Gtk::ComboBox.new(model)), it can be used in two different ways, either with a custom Gtk::TreeModel or with a default model with only a single column of settings. In our example program (selections.rb) above a new Gtk::ComboBox was created with Gtk::ComboBox.new(is_text_only = true), which creates a specialized combo box that contains only one column of strings. This is simply a convenience widget, since it too internally is managed with Gtk::TreeModel. It consists of the methods Gtk::ComboBox#append_text, Gtk::ComboBox#insert_text, Gtk::ComboBox#prepend_text, Gtk::ComboBox#remove_text and Gtk::ComboBox#active_text to bypass the complexity of the tree model.
+
+But combo boxes can also be created with Gtk::ComboBox.new(model), requiring  you to create a tree model to hold the selections, which by the way can have multiple columns. This does not assume anything about the content of the tree model or the types of each column. Adding and removing elements to a combo box created with Gtk::ComboBox.new(model) is handled entirely with the tree model. As explained in the API documentation, the Gtk::ComboBox uses the model-view pattern; the list of valid choices is specified in the form of a tree model, and the display of the choices can be adapted to the data in the model by using cell renderers, as you would in a tree view. This is possible since Gtk::ComboBox implements the Gtk::CellLayout interface. The tree model holding the valid choices is not restricted to a flat list, it can be a real tree, and the popup will reflect the tree structure.
+
+Therefore, as we have seen above, the Gtk::ComboBox  in addition to the model-view API, offers a simple API which is suitable for text-only combo boxes, and hides the complexity of managing the data in a model.
+
+
 === Removing Multiple Rows
 
-In this part of our application we find two remove methods. The main is the callback method called ((*remove_products*)). Though most of the actual removal processing is done by the helper method "remove_row", there are some important removal issues that need to be addressed when dealing with removing multiple rows, in the first, that is, "remove_products" method.
+In this part of our application we find two remove methods. The main is the callback method called ((*remove_products*)). Though most of the actual removal processing is done by the helper method ((*remove_row*)), there are some important removal issues that need to be addressed when dealing with removing multiple rows, in the first, that is, "remove_products" method. Let us first look at the helper method, which is designed to remove a single row.
+
+:remove_row(ref, model):
+    The first thing to notice about this method is that it receives a reference rather than an iterator or a path to the row in the tree store, which will be removed. It then uses this reference to convert it to the iterator as well as path, first to adjust the value of the quantity total in   the parent for the value that will be removed from the selected child row. Finally, the path to the child row is converted to iterator with which the row is removed from the tree store. All these conversions from reference to iterator and path look rather convoluted, however there is a good reason for all this. Namely, passing around ephemeral iterators and "hard-coded" or "burned-in" paths could potentially spell a disaster while inserting and/or removing rows on a massive scale. 
+
+    {{br}}
+    The trouble is that as soon as we either insert or remove a row from the tree store all iterators and all paths after the inserted or removed row will be bumped up or down by one respectively. References on the other hand will not change they still point to the same records (rows), regardless of where they are in the store.
+
+:remove_products(treeview):
+
+    The main removal method has to figure out which item(s) have been selected for removal by the user. Obviously there may be multiple selections. This can be accomplished with the help of the Gtk::TreeSelection object, that is first obtained from the tree view. Next this method gathers all the selected rows and stores their references conveniently adding also the model into the collector array. Once we have references of the selected rows, nothing will change them, except removal will make them disappear. Finally we traverse the collected items passing each individual pair of relevant info to the helper method for the removal. A picture is worth a thousand words, and so is a piece of working code:
+
+     def remove_products(treeview)
+       # Gtk::TreeRowReference.new(model, path)
+       selection = treeview.selection
+ 
+       paths2rm = Array.new
+       selection.selected_each do |mod, path, iter|
+         ref = Gtk::TreeRowReference.new(mod, path)
+         paths2rm << [ref, mod]
+       end
+       paths2rm.each { |ref, mod| remove_row(ref, mod) }
+     end
