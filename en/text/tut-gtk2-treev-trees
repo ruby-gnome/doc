@@ -118,7 +118,7 @@ The only difference between a Gtk::TreeView with a Gtk::TreeStore instead of a G
 
 Adding columns and renderers renderers is performed in the same manner with both models, because columns are part of the view not the model:
 :Reminder: What is MVC
-    ((*model-view-controller*)) (MVC) desgn is a design method where the information and the way it is rendered are separated, which is similar to the relationship between Gtk::TreeView and Gtk::TreeBuffer. 
+    ((*model-view-controller*)) (MVC) design is a design method where the information and the way it is rendered are separated, which is similar to the relationship between Gtk::TreeView and Gtk::TreeBuffer. 
 
 
 ((*Tree stores*)) are initialized with Gtk::ListStore.new.
