@@ -325,4 +325,29 @@ This program is rather involved, which is true for both added functionalities th
 
 When "+Add" button is clicked ((*add_product(treeview, list)*)) method is called. In the first part of this method we build the a data entry dialogue, which allows a user to add new products under the existing product categories to the Grocery List. (Note that application as is would not allow to create a new product category.) As you probably know by now, we set up two product categories in our data array of records of type (class) "GroceyItem" called "list". We first build up the list of possible categories, which user will have to select in the Gtk::ComboBox in order to add a new item to the selected category. Then we build the data entry elements to provide the means to enter the products into the list. You shouldn't have too much trouble understanding this first part of this "add_product" method. But the second part (the dialog.run {...}) is where all the fun starts.
 
-We check if the user clicked Gtk::Stock::ADD button by testing for the Gtk::Dialog::RESPONSE_OK. First we have to make sure that all the data requirements are met. Most importantly that the items belong to an available product category. Only then we can proceed further. Otherwise we destroy the data entry dialogue and return to the main loop (Grocery List window with the ).
+We check if the user clicked Gtk::Stock::ADD button by testing for the Gtk::Dialog::RESPONSE_OK. First we have to make sure that all the data requirements are met. Most importantly that the items belong to an available product category. Only then we can proceed further. Otherwise we destroy the data entry dialogue and return to the main loop (Grocery List window with the tree view scrollbars and the two "+Add" and "-Remove" buttons).
+
+After we know we have legitimate data from the data entry dialogue, we need to prepare to traverse through our tree store searching for the matching product category. We start searching at the top of the tree store:
+
+ model = treeview.model
+ iter = model.get_iter("0")
+
+In the first line above we conveniently tuck away the model separating data store from the view (MVC). We use model to get to the starting iterator, by supplying the top-level root path "0". Then comes a tricky while loop, where we want to process the first iteration with the iter we have just obtained, while at the same time use Gtk::TreeIter#next! as the condition in the while loop. The API for Gtk::TreeIter#next! tells us that this command returns true if the iterator was successfully advanced and false otherwise. In this case (if false is returned the iterator will point again to the first item in the tree store). Of course, the most important part of this loop is the break statement, which abandons the loop leaving the iterator to point to the product category we were looking for.
+
+We save the "path" of the iterator that points to the parent (our product category), and create a new row for our new product. Adding the data to the new empty row is accomplished by:
+
+ # child[$buy_it]=buy # same as: model.set_value(child, $buy_it, buy)
+ child[$buy_it]   = buy
+ child[$quantity] = quantity
+ child[$product]  = product
+
+It is worth noticing the comment here which tells us that the Gtk::TreeIter#[column] and Gtk::TreeModel#set_value instance methods can be used interchangeably.
+
+Lastly if the user checked the "Buy the product" check button, we need to recalculate the total number of items for the parent (product category). Here we now re-use the saved "path" for this product category (parent) record, and update it with the new quantity:
+
+ if buy
+   iter = model.get_iter(path)
+   qty_value = iter[$quantity]
+   qty_value += quantity
+   iter[$quantity] = qty_value
+ end
