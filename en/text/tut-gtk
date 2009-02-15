@@ -98,7 +98,7 @@ As of January 2009, brand new material mainly based on Andrew  Krause's book ((<
     * ((<Inserting Child Widgets|tut-gtk2-txtw-icw>))
     * ((<GtkSourceView|tut-gtk2-txtw-gsw>))
     * ((<Test Your Understanding|tut-gtk2-txtw-tyu>))
-* ((<The Tree View Widget|tut-gtk2-treev>)) (this page)
+* ((<The Tree View Widget|tut-gtk2-treev>))
     * ((<Parts of a Tree View|tut-gtk2-treev-parts>))
       * ((<Gtk::TreeModel|tut-gtk2-treev-parts#Gtk::TreeModel>))
       * ((<Gtk::TreeViewColumn and Gtk::CellRenderer|tut-gtk2-treev-parts#Gtk::TreeViewColumn and Gtk::CellRenderer>))
