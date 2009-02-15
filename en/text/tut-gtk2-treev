@@ -23,6 +23,10 @@ In this session we will enable you to mold the tree view widget to meet your nee
     * 2 ((<Using Gtk::TreeStore|tut-gtk2-treev-trees>))
     * 3 ((<Referencing Rows|tut-gtk2-treev-rr>))
     * 4 ((<Adding Rows and Handling Selections|tut-gtk2-treev-addrnhs>))
+      * 4.1 ((<Single Selections|tut-gtk2-treev-parts#Single Selections>))
+      * 4.2 ((<Multiple Selections|tut-gtk2-treev-parts#Multiple Selections>))
+      * 4.3 ((<Adding New Rows|tut-gtk2-treev-parts#Adding New Rows>))
+      * 4.4 ((<Removing Multiple Rows|tut-gtk2-treev-parts#Removing Multiple Rows>))
 
 Creating the Gtk::ListStore
 
