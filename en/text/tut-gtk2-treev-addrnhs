@@ -5,5 +5,326 @@
 
 == Adding Rows and Handling Selections
 
+Both of the examples that we have encountered in the "Tree View Widget" tutorial session, define the tree model during the start-up. With the exception of the values in an existing tuple (the quantity of each category is set initially to zero, and is calculated during the run-time), the contents of the  store does not change after it is initially set. Here we will expand the Grocery List application  to allow users to add and remove products. However, before we dive into the next example,  we will learn how to handle single and multiple selections.
 
-{{image_right("treev-addrnhs-01.png")}}
+=== Single Selections
+
+Selection information is held for each tree view by a Gtk::TreeSelection object. Every tree view automatically has a Gtk::TreeSelection associated with it, and you can get it using Gtk::TreeView#selection. Selections are handled completely on the tree view side, which means that the model knows nothing about which rows are selected. 
+
+A Gtk::TreeSelection object will automatically be created for you for every Gtk::TreeView, so you will never create one by yourself, therefore it cannot exist independently of this widget. The primary reason the Gtk::TreeSelection objects exists is for cleanliness of code and API. That is, there is no conceptual reason why all these methods would not have been implemented as methods on the Gtk::TreeView widget rather than methods of a separate object.
+
+One of the important things to remember when monitoring the selection of a view is that the "changed" signal is mostly a hint, and is unreliable. That is, it may only emit one signal when a range of rows is selected. Additionally, it may on occasion emit a "changed" signal when nothing has happened (mostly as a result of programmers calling select_row on an already selected row). Therefore, it is best to use the signals provided by Gtk::TreeView for selection handling.
+
+Tree views support multiple types of selections. You can change the selection type with Gtk::TreeSelection#mode=, where the mode value (((<GtkSelectionMode|Gtk#GtkSelectionMode>))) is used to control what selections users are allowed to make, and can be one of the following:
+
+
+:Gtk Selection Mode
+    * Gtk::SELECTION_NONE : - No selection is possible.
+    * Gtk::SELECTION_SINGLE : - Zero or one element may be selected.
+    * Gtk::SELECTION_BROWSE : - The user will be able to select exactly one row.
+    * Gtk::SELECTION_MULTIPLE : - Any number of elements may be selected. Clicks toggle the state of an item.
+
+The Gtk::TreeSelection object can be obtained from a Gtk::TreeView by calling Gtk::TreeView#selection. This method will not work with the selection mode ((*Gtk::SELECTION_MULTIPLE.*)) The selection can be manipulated to check the selection status of the tree, as well as select and deselect individual rows. Selection is done completely view side. As a result, multiple views of the same model can have completely different selections. Additionally, you cannot change the selection of a row on the model that is not currently displayed by the view without expanding its parents first.
+
+=== Multiple Selections
+
+If your tree selection allows multiple rows to be selected (Gtk::SELECTION_MULTIPLE), you have two options to handle selections: (1) calling a method for every row or retrieving all of the selected rows. Following API segment will tell the whole story:
+
+--- selected
+
+    Gets iter to the currently selected node if selection is set to Gtk::SELECTION_SINGLE or Gtk::SELECTION_BROWSE. iter may be nil if you just want to test if selection has any selected nodes. This method will not work if you use selection is Gtk::SELECTION_MULTIPLE.
+    * Returns: The Gtk::TreeIter, or nil
+
+--- selected_each {|model, path, iter| ... }
+
+    Calls a block for each selected node.
+    * {|model, path, iter| ... }: The block to call for each selected node. 
+data : user data to pass to the function. 
+      * model: A Gtk::TreeModel being viewed 
+      * path: The Gtk::TreePath of the row in question 
+      * iter: A Gtk::TreeIter pointing to a selected row 
+    * Returns: self
+
+--- select_path(path)
+
+    Select the row at path.
+    * path : The Gtk::TreePath to be selected. 
+    * Returns: self
+
+== Adding New Rows
+
+
+
+{{image_left("treev-addrnhs-01.png")}}
+{{br}}
+
+Now it is time to augment our Grocery List application. The only difference in main body of the this application in comparison to the program from the earlier session is the addition of Gtk::Stock::ADD and Gtk::Stock::REMOVE buttons. Also the selection mode is changed to Gtk::SELECTION_MULTIPLE to allow users to select multiple rows at the time. The core change and the major additions to the application are in the methods called ((*add_product*)) and ((*remove_products.*)) If user clicks the "+Add" button the application presents a Gtk::Dialog that asks the user to choose a category, enter a product name and quantity of products to buy, and to select whether or not to purchase the product. 
+
+If all of the entries are valid, the row is added under the chosen category. Also if the user specifies that the product should be purchased, the quantity is added to the total quantity of the category.
+
+{{image_right("dialog-warning.png")}}
+
+On the other hand if the user clicks on the "-Remove" button, the selected items should be removed. Unfortunately there seems to be a problem with Ruby implementation of Gtk::TreeSelection#selection.selected_rows. Instead I choose to use another apparently inadequate method: Gtk::TreeSelection#selected_each, which complains with a warning but it does remove a single selection at the time.
+
+Let us look at the example:
+
+((*selections.rb*))
+
+ #!/usr/bin/env ruby
+ require 'gtk2'
+ 
+ def add_product(treeview, list)
+   # Create a dialog that will be used to create a new product.
+ 
+   dialog = Gtk::Dialog.new(
+       "Add a Product",
+       nil,
+       Gtk::Dialog::MODAL,
+       [ Gtk::Stock::ADD,    Gtk::Dialog::RESPONSE_OK ],
+       [ Gtk::Stock::CANCEL, Gtk::Dialog::RESPONSE_CANCEL ]
+   )
+ 
+   # Create widgets that will be packed into the dialog.
+   combobox = Gtk::ComboBox.new
+   entry = Gtk::Entry.new
+ 
+   #                         min, max, step
+   spin  = Gtk::SpinButton.new(0, 100, 1)
+   # Set the precision to be displayed by spin button.
+   spin.digits = 0
+   check = Gtk::CheckButton.new("_Buy the Product")
+ 
+   # Add all of the categories to the combo box.
+   list.each_with_index do |e, i|
+     combobox.append_text(list[i].product) if (e.product_type == $p_category)
+   end
+ 
+   table = Gtk::Table.new(4, 2, false)
+   table.row_spacings = 5
+   table.column_spacings = 5
+   table.border_width = 5
+ 
+   # Pack the table that will hold the dialog widgets.
+   fll_shr = Gtk::SHRINK | Gtk::FILL
+   fll_exp = Gtk::EXPAND | Gtk::FILL
+   table.attach(Gtk::Label.new("Category:"),
+                0, 1, 0, 1, fll_shr, fll_shr,  0, 0)
+   table.attach(combobox,
+                1, 2, 0, 1, fll_exp, fll_shr,  0, 0)
+   table.attach(Gtk::Label.new("Product:"),
+                0, 1, 1, 2, fll_shr, fll_shr,  0, 0)
+   table.attach(entry,
+                1, 2, 1, 2, fll_exp, fll_shr,  0, 0)
+   table.attach(Gtk::Label.new("Quantity:"),
+                0, 1, 2, 3, fll_shr, fll_shr,  0, 0)
+   table.attach(spin,
+                1, 2, 2, 3, fll_exp, fll_shr,  0, 0)
+   table.attach(check,
+                1, 2, 3, 4, fll_exp, fll_shr,  0, 0)
+   
+   dialog.vbox.pack_start_defaults(table)
+   dialog.show_all
+ 
+   dialog.run do |response|
+     # If the user presses OK, verify the entries and add the product.
+     if response == Gtk::Dialog::RESPONSE_OK
+       quantity = spin.value
+       product = entry.text
+       category = combobox.active_text
+       buy = check.active?
+ 
+       if product == "" || category == nil
+         puts "All of the fields were not correctly filled out!"
+         puts "DEBUG:  prod=(#{product}), ctg=(#{category})"
+         dialog.destroy
+       end
+     
+       model = treeview.model
+       iter = model.get_iter("0")
+ 
+       # Retrieve an iterator pointing to the selected category.
+       begin
+         name = iter[$product]
+         break if name == category
+       end while iter.next!
+     
+       # Convert the category iterator to a path so that it will not
+       # become invalid and add the new product as a child of the category.
+       path = iter.path
+       
+       child = model.append(iter)
+ 
+       # child[$buy_it]=buy # same as: model.set_value(child, $buy_it, buy)
+       child[$buy_it]   = buy
+       child[$quantity] = quantity
+       child[$product]  = product
+ 
+       # Add the quantity to the running total if it is to be purchased.
+       if buy
+         iter = model.get_iter(path)
+         qty_value = iter[$quantity]
+         qty_value += quantity
+         iter[$quantity] = qty_value
+       end
+     end
+     dialog.destroy
+   end
+ end
+ 
+ 
+ def remove_row(ref, model)
+   path = ref.path
+   iter = model.get_iter(path)
+ 
+   # Only remove the row if it is not a root row.
+   parent = iter.parent
+   if parent
+     buy       = iter[$buy_it]
+     quantity  = iter[$quantity]
+     pqty      = parent[$quantity]
+     
+     if buy
+       pqty -= quantity
+       # Gtk::TreeStore#set_value(iter, column, value)
+       parent[$quantity] = pqty
+     end
+     iter = model.get_iter(path)
+     model.remove(iter)
+   end
+ end
+ 
+ def remove_products(treeview)
+   selection = treeview.selection
+ 
+   # C GTK+ code here does the following:
+   # --------------------------------------------------------------------
+   #  model = treeview.model
+   #  rows = gtk_tree_selection_get_selected_rows (selection, &model);
+   # However, Ruby API does not explain the appropriate method,
+   # Gtk::TreeSelection#selection.selected_rows, hence I choose a
+   # rather inappropriate solution using Gtk::TreeSelection#selected_each.
+ 
+   selection.selected_each do |model, path, iter| 
+     ref = Gtk::TreeRowReference.new(model, path)
+     remove_row(ref, model)
+   end
+ end
+ 
+ # Add three columns to the GtkTreeView. All three of the
+ # columns will be displayed as text, although one is a boolean
+ # value and another is an integer.
+ def setup_tree_view(treeview)
+   # Create a new GtkCellRendererText, add it to the tree
+   # view column and append the column to the tree view.
+   renderer = Gtk::CellRendererText.new
+   column = Gtk::TreeViewColumn.new("Buy", renderer, "text" => $buy_it)
+   treeview.append_column(column)
+   renderer = Gtk::CellRendererText.new
+   column = Gtk::TreeViewColumn.new("Count", renderer, "text" => $quantity)
+   treeview.append_column(column) 
+   renderer = Gtk::CellRendererText.new
+   column = Gtk::TreeViewColumn.new("Product", renderer, "text" => $product)
+   treeview.append_column(column)
+ end
+ 
+ window = Gtk::Window.new(Gtk::Window::TOPLEVEL)
+ window.resizable = true
+ window.title = "Grocery List"
+ window.border_width = 10
+ window.signal_connect('delete_event') { Gtk.main_quit }
+ window.set_size_request(275, 300)
+ 
+ class GroceryItem
+   attr_accessor :product_type, :buy, :quantity, :product
+   def initialize(t,b,q,p)
+     @product_type, @buy, @quantity, @product = t, b, q, p
+   end
+ end
+ $buy_it = 0; $quantity = 1; $product = 2
+ $p_category = 0; $p_child = 1
+ 
+ list = Array.new
+ list[0] = GroceryItem.new($p_category, true,  0, "Cleaning Supplies")
+ list[1] = GroceryItem.new($p_child,    true,  1, "Paper Towels")
+ list[2] = GroceryItem.new($p_child,    true,  3, "Toilet Paper")
+ list[3] = GroceryItem.new($p_category, true,  0, "Food")
+ list[4] = GroceryItem.new($p_child,    true,  2, "Bread")
+ list[5] = GroceryItem.new($p_child,    false, 1, "Butter")
+ list[6] = GroceryItem.new($p_child,    true,  1, "Milk")
+ list[7] = GroceryItem.new($p_child,    false, 3, "Chips")
+ list[8] = GroceryItem.new($p_child,    true,  4, "Soda")
+ 
+ treeview = Gtk::TreeView.new
+ setup_tree_view(treeview)
+ 
+ # Create a new tree model with three columns, as Boolean, 
+ # integer and string.
+ store = Gtk::TreeStore.new(TrueClass, Integer, String)
+ 
+ # Avoid creation of iterators on every iterration, since they
+ # need to provide state information for all iterations. Hence:
+ # establish closure variables for iterators parent and child.
+ parent = child = nil
+ 
+ # Add all of the products to the GtkListStore.
+ list.each_with_index do |e, i|
+ 
+   # If the product type is a category, count the quantity
+   # of all of the products in the category that are going
+   # to be boughty.
+   if (e.product_type == $p_category)
+     j = i + 1
+ 
+     # Calculate how many products will be bought in
+     # the category.
+     while j < list.size && list[j].product_type != $p_category
+       list[i].quantity += list[j].quantity if list[j].buy
+       j += 1
+     end
+     
+     # Add the category as a new root (parent) row (element).
+     parent = store.append(nil)
+     # store.set_value(parent, $buy_it, list[i].buy # <= same as below
+     parent[$buy_it]   = list[i].buy
+     parent[$quantity] = list[i].quantity
+     parent[$product]  = list[i].product
+ 
+   # Otherwise, add the product as a child row of the category.
+   else
+     child = store.append(parent)
+     # store.set_value(child, $buy_it, list[i].buy # <= same as below
+     child[$buy_it]   = list[i].buy
+     child[$quantity] = list[i].quantity
+     child[$product]  = list[i].product
+   end
+ end
+ 
+ # Add the tree model to the tree view
+ treeview.model = store
+ 
+ # Allow multiple rows to be selected at the same time.
+ treeview.selection.mode = Gtk::SELECTION_MULTIPLE
+ 
+ scrolled_win = Gtk::ScrolledWindow.new
+ scrolled_win.add(treeview)
+ scrolled_win.set_policy(Gtk::POLICY_AUTOMATIC, Gtk::POLICY_AUTOMATIC)
+ 
+ add    = Gtk::Button.new(Gtk::Stock::ADD)
+ remove = Gtk::Button.new(Gtk::Stock::REMOVE)
+ 
+ add.signal_connect('clicked')    { add_product(treeview, list) }
+ remove.signal_connect('clicked') { remove_products(treeview) }
+ 
+ hbox = Gtk::HBox.new(true, 5)
+ hbox.pack_start(add,    false, true, 0)
+ hbox.pack_start(remove, false, true, 0)
+ 
+ vbox = Gtk::VBox.new(false, 5)
+ vbox.pack_start(scrolled_win, true,  true, 0)
+ vbox.pack_start(hbox,         false, true, 0)
+ 
+ window.add(vbox)
+ window.show_all
+ Gtk.main
+
+This program is rather involved. This is true for both new functions that user can access by clicking either button. 
