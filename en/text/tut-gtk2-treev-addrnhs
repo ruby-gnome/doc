@@ -1,8 +1,6 @@
 = The Tree View Widget
 {{link "tut-gtk2-treev-rr", "tut-gtk2-treev", "tut-gtk", "tut-gtk2-treev-addrnhs"}}
 
-= Sorry this page is still under construction
-
 == Adding Rows and Handling Selections
 
 Both of the examples that we have encountered in the "Tree View Widget" tutorial session, define the tree model during the start-up. With the exception of the values in an existing tuple (the quantity of each category is set initially to zero, and is calculated during the run-time), the contents of the  store does not change after it is initially set. Here we will expand the Grocery List application  to allow users to add and remove products. However, before we dive into the next example,  we will learn how to handle single and multiple selections.
@@ -60,11 +58,7 @@ data : user data to pass to the function.
 
 Now it is time to augment our Grocery List application. The only difference in main body of the this application in comparison to the program from the earlier session is the addition of Gtk::Stock::ADD and Gtk::Stock::REMOVE buttons. Also the selection mode is changed to Gtk::SELECTION_MULTIPLE to allow users to select multiple rows at the time. The core change and the major additions to the application are in the methods called ((*add_product*)) and ((*remove_products.*)) If user clicks the "+Add" button the application presents a Gtk::Dialog that asks the user to choose a category, enter a product name and quantity of products to buy, and to select whether or not to purchase the product. 
 
-If all of the entries are valid, the row is added under the chosen category. Also if the user specifies that the product should be purchased, the quantity is added to the total quantity of the category.
-
-{{image_right("dialog-warning.png")}}
-
-On the other hand if the user clicks on the "-Remove" button, the selected items should be removed. Unfortunately there seems to be a problem with Ruby implementation of Gtk::TreeSelection#selection.selected_rows. Instead I choose to use another apparently inadequate method: Gtk::TreeSelection#selected_each, which complains with a warning but it does remove a single selection at the time.
+If all of the entries are valid, the row is added under the chosen category. Also if the user specifies that the product should be purchased, the quantity is added to the total quantity of the category. On the other hand if the user clicks on the "-Remove" button, the selected items should be removed. 
 
 Let us look at the example:
 
@@ -83,7 +77,6 @@ Let us look at the example:
        [ Gtk::Stock::ADD,    Gtk::Dialog::RESPONSE_OK ],
        [ Gtk::Stock::CANCEL, Gtk::Dialog::RESPONSE_CANCEL ]
    )
- 
    # Create widgets that will be packed into the dialog.
    combobox = Gtk::ComboBox.new
    entry = Gtk::Entry.new
@@ -132,11 +125,12 @@ Let us look at the example:
        product = entry.text
        category = combobox.active_text
        buy = check.active?
- 
+       
        if product == "" || category == nil
          puts "All of the fields were not correctly filled out!"
          puts "DEBUG:  prod=(#{product}), ctg=(#{category})"
          dialog.destroy
+         return
        end
      
        model = treeview.model
@@ -144,8 +138,15 @@ Let us look at the example:
  
        # Retrieve an iterator pointing to the selected category.
        begin
-         name = iter[$product]
+         name = iter[$product]  #<-- same as: name=iter.get_value($product)
          break if name == category
+             
+                 # Gtk::TreeIter#next! - advances iter to point at the node
+                 # following its original position at the current level.
+                 # If there is no next iter, false is returned and iter
+                 # is set with the first iterator in the tree same as
+                 # Gtk::TreeIter#first!.
+                 # Returns: true if iter is advanced, false otherwise.
        end while iter.next!
      
        # Convert the category iterator to a path so that it will not
@@ -171,7 +172,6 @@ Let us look at the example:
    end
  end
  
- 
  def remove_row(ref, model)
    path = ref.path
    iter = model.get_iter(path)
@@ -182,10 +182,8 @@ Let us look at the example:
      buy       = iter[$buy_it]
      quantity  = iter[$quantity]
      pqty      = parent[$quantity]
-     
      if buy
        pqty -= quantity
-       # Gtk::TreeStore#set_value(iter, column, value)
        parent[$quantity] = pqty
      end
      iter = model.get_iter(path)
@@ -194,20 +192,15 @@ Let us look at the example:
  end
  
  def remove_products(treeview)
+   # Gtk::TreeRowReference.new(model, path)
    selection = treeview.selection
  
-   # C GTK+ code here does the following:
-   # --------------------------------------------------------------------
-   #  model = treeview.model
-   #  rows = gtk_tree_selection_get_selected_rows (selection, &model);
-   # However, Ruby API does not explain the appropriate method,
-   # Gtk::TreeSelection#selection.selected_rows, hence I choose a
-   # rather inappropriate solution using Gtk::TreeSelection#selected_each.
- 
-   selection.selected_each do |model, path, iter| 
-     ref = Gtk::TreeRowReference.new(model, path)
-     remove_row(ref, model)
+   paths2rm = Array.new
+   selection.selected_each do |mod, path, iter|
+     ref = Gtk::TreeRowReference.new(mod, path)
+     paths2rm << [ref, mod]
    end
+   paths2rm.each { |ref, mod| remove_row(ref, mod) }
  end
  
  # Add three columns to the GtkTreeView. All three of the
@@ -327,4 +320,9 @@ Let us look at the example:
  window.show_all
  Gtk.main
 
-This program is rather involved. This is true for both new functions that user can access by clicking either button. 
+
+This program is rather involved, which is true for both added functionalities that user can access by clicking either button "+Add" or "-Remove". Let us first look at the functionality behind the "+Add" button.
+
+When "+Add" button is clicked ((*add_product(treeview, list)*)) method is called. In the first part of this method we build the a data entry dialogue, which allows a user to add new products under the existing product categories to the Grocery List. (Note that application as is would not allow to create a new product category.) As you probably know by now, we set up two product categories in our data array of records of type (class) "GroceyItem" called "list". We first build up the list of possible categories, which user will have to select in the Gtk::ComboBox in order to add a new item to the selected category. Then we build the data entry elements to provide the means to enter the products into the list. You shouldn't have too much trouble understanding this first part of this "add_product" method. But the second part (the dialog.run {...}) is where all the fun starts.
+
+We check if the user clicked Gtk::Stock::ADD button by testing for the Gtk::Dialog::RESPONSE_OK. First we have to make sure that all the data requirements are met. Most importantly that the items belong to an available product category. Only then we can proceed further. Otherwise we destroy the data entry dialogue and return to the main loop (Grocery List window with the ).
