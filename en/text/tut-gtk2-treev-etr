@@ -9,7 +9,7 @@ It would be very helpful to allow the user to edit the contents of the tree view
 
 {{br}}
 
-{{*editable_cell.br*}}
+((*editable_cell.br*))
 
  #!/usr/bin/env ruby
  require 'gtk2'
