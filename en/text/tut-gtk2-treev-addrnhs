@@ -141,14 +141,14 @@ Let us look at the example:
  
        # Retrieve an iterator pointing to the selected category.
        begin
-         name = iter[$product]  #<-- same as: name=iter.get_value($product)
+         name = iter[$prod_index]  #<-- same as: name=iter.get_value($prod_index)
          break if name == category
              
-                 # Gtk::TreeIter#next! - advances iter to point at the node
-                 # following its original position at the current level.
-                 # If there is no next iter, false is returned and iter
-                 # is set with the first iterator in the tree same as
-                 # Gtk::TreeIter#first!.
+                 # Gtk::TreeIter#next! - advances iter to point at the
+                 # node following its original position at the current
+                 # level. If there is no next iter, false is returned
+                 # and iter is set with the first iterator in the tree
+                 # same as Gtk::TreeIter#first!.
                  # Returns: true if iter is advanced, false otherwise.
        end while iter.next!
      
@@ -158,17 +158,17 @@ Let us look at the example:
        
        child = model.append(iter)
  
-       # child[$buy_it]=buy # same as: model.set_value(child, $buy_it, buy)
-       child[$buy_it]   = buy
-       child[$quantity] = quantity
-       child[$product]  = product
+       # child[$buy_index]=buy # same as: model.set_value(child, $buy_index, buy)
+       child[$buy_index]   = buy
+       child[$qty_index] = quantity
+       child[$prod_index]  = product
  
        # Add the quantity to the running total if it is to be purchased.
        if buy
          iter = model.get_iter(path)
-         qty_value = iter[$quantity]
+         qty_value = iter[$qty_index]
          qty_value += quantity
-         iter[$quantity] = qty_value
+         iter[$qty_index] = qty_value
        end
      end
      dialog.destroy
@@ -182,12 +182,12 @@ Let us look at the example:
    # Only remove the row if it is not a root row.
    parent = iter.parent
    if parent
-     buy       = iter[$buy_it]
-     quantity  = iter[$quantity]
-     pqty      = parent[$quantity]
+     buy       = iter[$buy_index]
+     quantity  = iter[$qty_index]
+     pqty      = parent[$qty_index]
      if buy
        pqty -= quantity
-       parent[$quantity] = pqty
+       parent[$qty_index] = pqty
      end
      iter = model.get_iter(path)
      model.remove(iter)
@@ -213,13 +213,13 @@ Let us look at the example:
    # Create a new GtkCellRendererText, add it to the tree
    # view column and append the column to the tree view.
    renderer = Gtk::CellRendererText.new
-   column = Gtk::TreeViewColumn.new("Buy", renderer, "text" => $buy_it)
+   column = Gtk::TreeViewColumn.new("Buy", renderer, "text" => $buy_index)
    treeview.append_column(column)
    renderer = Gtk::CellRendererText.new
-   column = Gtk::TreeViewColumn.new("Count", renderer, "text" => $quantity)
+   column = Gtk::TreeViewColumn.new("Count", renderer, "text" => $qty_index)
    treeview.append_column(column) 
    renderer = Gtk::CellRendererText.new
-   column = Gtk::TreeViewColumn.new("Product", renderer, "text" => $product)
+   column = Gtk::TreeViewColumn.new("Product", renderer, "text" => $prod_index)
    treeview.append_column(column)
  end
  
@@ -236,7 +236,7 @@ Let us look at the example:
      @product_type, @buy, @quantity, @product = t, b, q, p
    end
  end
- $buy_it = 0; $quantity = 1; $product = 2
+ $buy_index = 0; $qty_index = 1; $prod_index = 2
  $p_category = 0; $p_child = 1
  
  list = Array.new
@@ -280,18 +280,18 @@ Let us look at the example:
      
      # Add the category as a new root (parent) row (element).
      parent = store.append(nil)
-     # store.set_value(parent, $buy_it, list[i].buy # <= same as below
-     parent[$buy_it]   = list[i].buy
-     parent[$quantity] = list[i].quantity
-     parent[$product]  = list[i].product
+     # store.set_value(parent, $buy_index, list[i].buy # <= same as below
+     parent[$buy_index]   = list[i].buy
+     parent[$qty_index] = list[i].quantity
+     parent[$prod_index]  = list[i].product
  
    # Otherwise, add the product as a child row of the category.
    else
      child = store.append(parent)
-     # store.set_value(child, $buy_it, list[i].buy # <= same as below
-     child[$buy_it]   = list[i].buy
-     child[$quantity] = list[i].quantity
-     child[$product]  = list[i].product
+     # store.set_value(child, $buy_index, list[i].buy # <= same as below
+     child[$buy_index]   = list[i].buy
+     child[$qty_index] = list[i].quantity
+     child[$prod_index]  = list[i].product
    end
  end
  
@@ -322,6 +322,7 @@ Let us look at the example:
  window.add(vbox)
  window.show_all
  Gtk.main
+
 
 
 This program is rather involved, which is true for both added functionalities that user can access by clicking either button "+Add" or "-Remove". Let us first look at the functionality behind the "+Add" button.
