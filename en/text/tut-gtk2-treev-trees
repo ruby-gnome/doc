@@ -116,6 +116,7 @@ Our example program "treestore.rb" is a revised version of the "Grocery List" pr
 
 The only difference between a Gtk::TreeView with a Gtk::TreeStore instead of a Gtk::ListStore is in the creation of the ((*store*)) - a tree model with three columns defined as Boolean, integer and a string.
 
+
 Adding columns and renderers renderers is performed in the same manner with both models, because columns are part of the view not the model:
 :Reminder: What is MVC
     ((*model-view-controller*)) (MVC) design is a design method where the information and the way it is rendered are separated, which is similar to the relationship between Gtk::TreeView and Gtk::TreeBuffer. 
@@ -147,6 +148,58 @@ Hence, when we are creating rows we have to create a column of parents and a col
    else
      child = store.append(parent)
      # store.set_value(child, $buy_index, list[i].buy # <= same as below
+     child[$buy_index]  = list[i].buy
+     child[$qty_index]  = list[i].quantity
+     child[$prod_index] = list[i].product
+   end
+ end
+
+=== Data Organization Within a Tree Store
+
+One important thing to be notice is the sequential data organization within the tree store. This may be obvious from the way we set-up our array ((*list:*))
+
+ list = Array.new
+ list[0] = GroceryItem.new($p_category, true,  0, "Cleaning Supplies")
+ list[1] = GroceryItem.new($p_child,    true,  1, "Paper Towels")
+ list[2] = GroceryItem.new($p_child,    true,  3, "Toilet Paper")
+ list[3] = GroceryItem.new($p_category, true,  0, "Food")
+ list[4] = GroceryItem.new($p_child,    true,  2, "Bread")
+ list[5] = GroceryItem.new($p_child,    false, 1, "Butter")
+ list[6] = GroceryItem.new($p_child,    true,  1, "Milk")
+ list[7] = GroceryItem.new($p_child,    false, 3, "Chips")
+ list[8] = GroceryItem.new($p_child,    true,  4, "Soda")
+
+Beside our initial setup of our array called ((*list*)) you will find numerous hints that this indeed is the case. Parent/child relationship dictates that we bundle together all children of a parent below it. When later on application inserts new rows particularly children they have to be inserted into or better immediately after the list child of such a group. This makes indices to certain rows ephemeral. For instance if you store (memorize) an index to a certain row that index will became invalid after an insertion or a deletion of a row positioned before the element (row) for which you have stored (memorized) the index. Also the orderly sequential organization of the rows in a tree store allows you to readily process the data, since you can always be sure about locations of rows and the groupings of the children can be determined in a predictable manner. In our example program we exploited this fact in the loop calculating the totals for the parents by iterating through their groups of children: 
+
+
+ list.each_with_index do |e, i|
+   # If the product type is a category, count the quantity
+   # of all of the products in the category that are going
+   # to be boughty.
+   if (e.product_type == $p_category)
+     j = i + 1
+     # Calculate how many products will be bought in
+     # the category.
+     while j < list.size && list[j].product_type != $p_category
+       list[i].quantity += list[j].quantity if list[j].buy
+       j += 1
+     end
+   . . .
+ end
+
+The same facts about the order of our data is exploited when we create parent and child columns as ordered rows:
+
+ # Add all of the products to the GtkListStore.
+ list.each_with_index do |e, i|
+   if (e.product_type == $p_category)
+     # Add the category as a new root (parent) row (element).
+     parent = store.append(nil)
+     parent[$buy_index]  = list[i].buy
+     parent[$qty_index]  = list[i].quantity
+     parent[$prod_index] = list[i].product
+   # Otherwise, add the product as a child row of the category.
+   else
+     child = store.append(parent)
      child[$buy_index]  = list[i].buy
      child[$qty_index]  = list[i].quantity
      child[$prod_index] = list[i].product
