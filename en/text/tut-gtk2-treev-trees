@@ -98,7 +98,7 @@ Our example program "treestore.rb" is a revised version of the "Grocery List" pr
    # Otherwise, add the product as a child row of the category.
    else
      child = store.append(parent)
-     # store.set_value(child, $buy_index, list[i].buy # <= same as below
+     # store.set_value(child, $buy_index, list[i].buy) # <= same as below
      child[$buy_index]  = list[i].buy
      child[$qty_index]  = list[i].quantity
      child[$prod_index] = list[i].product
