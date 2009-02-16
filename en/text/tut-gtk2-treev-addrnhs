@@ -160,7 +160,7 @@ Let us look at the example:
  
        # child[$buy_index]=buy # same as: model.set_value(child, $buy_index, buy)
        child[$buy_index]   = buy
-       child[$qty_index] = quantity
+       child[$qty_index]   = quantity
        child[$prod_index]  = product
  
        # Add the quantity to the running total if it is to be purchased.
