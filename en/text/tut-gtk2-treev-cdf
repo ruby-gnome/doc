@@ -78,20 +78,3 @@ Gtk::TreeViewColumn#set_cell_data_func(cell)
        * model: the Gtk::TreeModel
        * iter: the Gtk::TreeIter
     * Returns: self
-
-
-  # Gtk::TreeViewColumn#set_cell_data_func(cell)
-  #    {|tvc, cell, model, iter| ... }
-  #
-  #      Sets the block which is used instead of the standard 
-  #      attributes mapping for setting the column value, and 
-  #      should set the value of Gtk::TreeViewColumn's cell 
-  #      renderer as appropriate.
-  #
-  #  * cell: A Gtk::CellRenderer 
-  #  * {|tvc, cell, model, iter| ... }: the block
-  #     * tvc: the Gtk::TreeViewColumn
-  #     * cell: the Gtk::CellRenderer
-  #     * model: the Gtk::TreeModel
-  #     * iter: the Gtk::TreeIter
-  #  * Returns: self
