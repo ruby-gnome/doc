@@ -77,7 +77,7 @@ Our example program "treestore.rb" is a revised version of the "Grocery List" pr
  
    # If the product type is a category, count the quantity
    # of all of the products in the category that are going
-   # to be boughty.
+   # to be bought.
    if (e.product_type == $p_category)
      j = i + 1
  
