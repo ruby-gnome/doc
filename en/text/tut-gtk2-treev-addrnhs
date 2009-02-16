@@ -282,7 +282,7 @@ Let us look at the example:
      parent = store.append(nil)
      # store.set_value(parent, $buy_index, list[i].buy # <= same as below
      parent[$buy_index]   = list[i].buy
-     parent[$qty_index] = list[i].quantity
+     parent[$qty_index]   = list[i].quantity
      parent[$prod_index]  = list[i].product
  
    # Otherwise, add the product as a child row of the category.
@@ -290,7 +290,7 @@ Let us look at the example:
      child = store.append(parent)
      # store.set_value(child, $buy_index, list[i].buy # <= same as below
      child[$buy_index]   = list[i].buy
-     child[$qty_index] = list[i].quantity
+     child[$qty_index]   = list[i].quantity
      child[$prod_index]  = list[i].product
    end
  end
