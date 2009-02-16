@@ -23,13 +23,13 @@ Our example program "treestore.rb" is a revised version of the "Grocery List" pr
    # Create a new GtkCellRendererText, add it to the tree
    # view column and append the column to the tree view.
    renderer = Gtk::CellRendererText.new
-   column = Gtk::TreeViewColumn.new("Buy", renderer, "text" => $buy_it)
+   column = Gtk::TreeViewColumn.new("Buy", renderer, "text" => $buy_index)
    treeview.append_column(column)
    renderer = Gtk::CellRendererText.new
-   column = Gtk::TreeViewColumn.new("Count", renderer, "text" => $quantity)
+   column = Gtk::TreeViewColumn.new("Count", renderer, "text" => $qty_index)
    treeview.append_column(column) 
    renderer = Gtk::CellRendererText.new
-   column = Gtk::TreeViewColumn.new("Product", renderer, "text" => $product)
+   column = Gtk::TreeViewColumn.new("Product", renderer, "text" => $prod_index)
    treeview.append_column(column)
  end
  
@@ -46,7 +46,7 @@ Our example program "treestore.rb" is a revised version of the "Grocery List" pr
      @product_type, @buy, @quantity, @product = t, b, q, p
    end
  end
- $buy_it = 0; $quantity = 1; $product = 2
+ $buy_index = 0; $qty_index = 1; $prod_index = 2
  $p_category = 0; $p_child = 1
  
  list = Array.new
@@ -71,37 +71,37 @@ Our example program "treestore.rb" is a revised version of the "Grocery List" pr
  # need to provide state information for all iterations. Hence:
  # establish closure variables for iterators parent and child.
  parent = child = nil
-
+ 
  # Add all of the products to the GtkListStore.
  list.each_with_index do |e, i|
-
+ 
    # If the product type is a category, count the quantity
    # of all of the products in the category that are going
    # to be boughty.
    if (e.product_type == $p_category)
      j = i + 1
-
+ 
      # Calculate how many products will be bought in
      # the category.
      while j < list.size && list[j].product_type != $p_category
        list[i].quantity += list[j].quantity if list[j].buy
        j += 1
      end
-    
+     
      # Add the category as a new root (parent) row (element).
      parent = store.append(nil)
-     # store.set_value(parent, $buy_it, list[i].buy # <= same as below
-     parent[$buy_it]   = list[i].buy
-     parent[$quantity] = list[i].quantity
-     parent[$product]  = list[i].product
-
+     # store.set_value(parent, $buy_index, list[i].buy) # <= same as below
+     parent[$buy_index]  = list[i].buy
+     parent[$qty_index]  = list[i].quantity
+     parent[$prod_index] = list[i].product
+ 
    # Otherwise, add the product as a child row of the category.
    else
      child = store.append(parent)
-     # store.set_value(child, $buy_it, list[i].buy # <= same as below
-     child[$buy_it]   = list[i].buy
-     child[$quantity] = list[i].quantity
-     child[$product]  = list[i].product
+     # store.set_value(child, $buy_index, list[i].buy # <= same as below
+     child[$buy_index]  = list[i].buy
+     child[$qty_index]  = list[i].quantity
+     child[$prod_index] = list[i].product
    end
  end
  
@@ -136,17 +136,19 @@ Hence, when we are creating rows we have to create a column of parents and a col
 
    if (e.product_type == $p_category)
         . . .
-     # Add the category as a new root element.
-     iter = store.append(nil)
-     store.set_value(iter, $buy_it,   list[i].buy)
-     store.set_value(iter, $quantity, list[i].quantity)
-     store.set_value(iter, $product,  list[i].product)
+     # Add the category as a new root (parent) row (element).
+     parent = store.append(nil)
+     # store.set_value(parent, $buy_index, list[i].buy # <= same as below
+     parent[$buy_index]  = list[i].buy
+     parent[$qty_index]  = list[i].quantity
+     parent[$prod_index] = list[i].product
  
-   # Otherwise, add the product as a child of the category.
+   # Otherwise, add the product as a child row of the category.
    else
-     child = store.append(iter)
-     store.set_value(child, $buy_it,   list[i].buy)
-     store.set_value(child, $quantity, list[i].quantity)
-     store.set_value(child, $product,  list[i].product)
+     child = store.append(parent)
+     # store.set_value(child, $buy_index, list[i].buy # <= same as below
+     child[$buy_index]  = list[i].buy
+     child[$qty_index]  = list[i].quantity
+     child[$prod_index] = list[i].product
    end
  end
