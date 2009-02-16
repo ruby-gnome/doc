@@ -257,7 +257,7 @@ Let us look at the example:
  # integer and string.
  store = Gtk::TreeStore.new(TrueClass, Integer, String)
  
- # Avoid creation of iterators on every iterration, since they
+ # Avoid creation of iterators on every iteration, since they
  # need to provide state information for all iterations. Hence:
  # establish closure variables for iterators parent and child.
  parent = child = nil
