@@ -21,6 +21,7 @@ In this session we will enable you to mold the tree view widget to meet your nee
       * 1.4 ((<Renderers and Columns|tut-gtk2-treev-parts#Renderers and Columns>)) (!)
       * 1.5 ((<Creating the Gtk::ListStore|tut-gtk2-treev-parts#Creating the Gtk::ListStore>))
     * 2 ((<Using Gtk::TreeStore|tut-gtk2-treev-trees>))
+      * 2.1 ((<Data Organization Within a Tree Store|tut-gtk2-treev-trees#Data Organization Within a Tree Store>))
     * 3 ((<Referencing Rows|tut-gtk2-treev-rr>))
       * 3.1 ((<Tree Path|tut-gtk2-treev-rr#Tree Path>))
       * 3.2 ((<Tree Iterators|tut-gtk2-treev-rr#Tree Iterators>))
@@ -31,6 +32,7 @@ In this session we will enable you to mold the tree view widget to meet your nee
       * 4.3 ((<Adding New Rows|tut-gtk2-treev-addrnhs#Adding New Rows>))
       * 4.4 ((<Combo Box|tut-gtk2-treev-addrnhs#Combo Box>))
       * 4.5 ((<Removing Multiple Rows|tut-gtk2-treev-addrnhs#Removing Multiple Rows>))
+
 
 
 Creating the Gtk::ListStore
