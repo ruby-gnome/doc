@@ -91,7 +91,9 @@ Let us look at the example:
    list.each_with_index do |e, i|
      combobox.append_text(list[i].product) if (e.product_type == $p_category)
    end
-   combobox.active = 0
+   ### Usually you would set the default selection, but for the
+   ### sake of learning we leave it unset: 
+   ### combobox.active = 0
  
    table = Gtk::Table.new(4, 2, false)
    table.row_spacings = 5
