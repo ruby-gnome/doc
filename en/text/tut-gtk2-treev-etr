@@ -43,7 +43,6 @@ It would be very helpful to allow the user to edit the contents of the tree view
      iter = trvu.model.get_iter(path)
      iter[$prod_index] = str
    end
-   puts "path=[#{path}] #{path.class}, str=[#{str}] #{str.class}]"
  end
  
  window = Gtk::Window.new(Gtk::Window::TOPLEVEL)
