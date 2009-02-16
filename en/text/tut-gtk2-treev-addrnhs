@@ -297,7 +297,8 @@ Let us look at the example:
  
  # Add the tree model to the tree view
  treeview.model = store
- 
+ treeview.expand_all
+
  # Allow multiple rows to be selected at the same time.
  treeview.selection.mode = Gtk::SELECTION_MULTIPLE
  
