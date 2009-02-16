@@ -1,10 +1,97 @@
 = The Tree View Widget
-{{link "tut-gtk2-treev-etr", "tut-gtk2-treev", "tut-gtk", "tut-gtk2-treev-cdf"}}
-
-= Sorry this page is still under construction
+{{link "tut-gtk2-treev-etr", "tut-gtk2-treev", "tut-gtk", "tut-gtk2-treev-crs"}}
 
 == Cell Data Functions
 
+If you need to further customize every cell before it is rendered to the screen, you can use cell data function Gtk::TreeViewColumn#set_cell_data_func(cell) {|tvc, cell, model, iter| ... } method. This method allows you to tinker with every property for each individual cell. For example, you example you can set the background colour based on the content of the cell, or format the numeric  number to your liking, or perhaps only restricting the number of decimal places for a floating point. values. It can only be used for to set properties that are calculated during the run time. The next example will give you an idea how this can be done:
 
 {{image_left("treev-cdf-01.png")}}
 {{br}}
+
+((*celldatafunction.rb*))
+
+ #!/usr/bin/env ruby
+ 
+ require 'gtk2'
+ def setup_tree_view(trvu)
+   renderer = Gtk::CellRendererText.new
+   column = Gtk::TreeViewColumn.new("Standard Colors", renderer, "text" => 0)
+   trvu.append_column(column)
+ 
+   column.set_cell_data_func(renderer) do |tvc, cell, model, iter|
+     # Get the color string stored by the column and make
+     # it the background color, make foreground white, unless
+     # bg is also white.
+     cell.background = model.get_value(iter, 0)
+     cell.foreground = model.get_value(iter, 0) == "#FFFFFF" ?
+          "#000000" : "#ffffff"
+   end
+ end
+ 
+ window = Gtk::Window.new(Gtk::Window::TOPLEVEL)
+ window.resizable = true
+ window.title = "Color List"
+ window.border_width = 10
+ window.signal_connect('delete_event') { Gtk.main_quit }
+ window.set_size_request(200, 150)
+ 
+ treeview = Gtk::TreeView.new
+ setup_tree_view(treeview)
+ 
+ store = Gtk::ListStore.new(String)
+ 
+ # Add the colors to the Gtk::ListStore.
+ clr = ["00", "88", "FF"]
+ (0..2).each do |i|
+   (0..2).each do |j|
+     (0..2).each do |k|
+         color = "#" +  clr[i] + clr[j] +  clr[k]
+         iter = store.append
+         iter[0] = color
+         iter.next!
+     end
+   end
+ end
+ 
+ # Add the tree model to the tree view
+ treeview.model = store
+ 
+ scrolled_win = Gtk::ScrolledWindow.new
+ scrolled_win.border_width = 5
+ scrolled_win.add(treeview)
+ scrolled_win.set_policy(Gtk::POLICY_AUTOMATIC, Gtk::POLICY_ALWAYS)
+ 
+ window.add(scrolled_win)
+ window.show_all
+ Gtk.main
+
+
+
+Gtk::TreeViewColumn#set_cell_data_func(cell)
+--- set_cell_data_func(cell) {|tvc, cell, model, iter| ... }
+
+    Sets the block which is used instead of the standard attributes mapping for setting the column value, and should set the value of Gtk::TreeViewColumn's cell renderer as appropriate.
+    * cell: A Gtk::CellRenderer 
+    * {|tvc, cell, model, iter| ... }: the block
+       * tvc: the Gtk::TreeViewColumn
+       * cell: the Gtk::CellRenderer
+       * model: the Gtk::TreeModel
+       * iter: the Gtk::TreeIter
+    * Returns: self
+
+
+  # Gtk::TreeViewColumn#set_cell_data_func(cell)
+  #    {|tvc, cell, model, iter| ... }
+  #
+  #      Sets the block which is used instead of the standard 
+  #      attributes mapping for setting the column value, and 
+  #      should set the value of Gtk::TreeViewColumn's cell 
+  #      renderer as appropriate.
+  #
+  #  * cell: A Gtk::CellRenderer 
+  #  * {|tvc, cell, model, iter| ... }: the block
+  #     * tvc: the Gtk::TreeViewColumn
+  #     * cell: the Gtk::CellRenderer
+  #     * model: the Gtk::TreeModel
+  #     * iter: the Gtk::TreeIter
+  #  * Returns: self
