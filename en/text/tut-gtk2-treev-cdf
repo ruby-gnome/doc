@@ -3,9 +3,11 @@
 
 == Cell Data Functions
 
+{{image_right("treev-cdf-01.png")}}
+
 If you need to further customize every cell before it is rendered to the screen, you can use cell data function Gtk::TreeViewColumn#set_cell_data_func(cell) {|tvc, cell, model, iter| ... } method. This method allows you to tinker with every property for each individual cell. For example, you example you can set the background colour based on the content of the cell, or format the numeric  number to your liking, or perhaps only restricting the number of decimal places for a floating point. values. It can only be used for to set properties that are calculated during the run time. The next example will give you an idea how this can be done:
 
-{{image_left("treev-cdf-01.png")}}
+
 {{br}}
 
 ((*celldatafunction.rb*))
