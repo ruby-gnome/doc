@@ -10,7 +10,6 @@ If you need to further customize every cell before it is rendered to the screen,
 :Caution:
     Make sure you do not use Gtk::TreeViewColumn#set_cell_data_func if you have a large number of rows in your tree model. Cell data functions are invoked on every cell in the column before it is rendered, so they can significantly slow down tree models.
 
-
 {{br}}
 
 ((*celldatafunction.rb*))
@@ -78,8 +77,8 @@ If you need to further customize every cell before it is rendered to the screen,
  Gtk.main
 
 
-{{br}}
-Gtk::TreeViewColumn#set_cell_data_func(cell)
+In the above example program all the new stuff to learn is in the ((*setup_tree_view*)) method. Focus here is on the Gtk::TreeViewColumn#set_cell_data_func(cell) method. Note that the API designates the argument ((*cell*)) to represent a renderer. It may not be obvious from the code, that you do not need to use this cell data function to simply set a property of a cell. For instance we could set change the font for all cells to ((*bold*)) simply by sending the message ((*weight*)) without ever calling the  Gtk::TreeViewColumn#set_cell_data_func method. It only makes sense to call this method if rendering of each cell depends on some run-time value or processing. Our cells, do indeed meet this criteria. First each cell's background is rendered in a different colour, and to make it more interesting we are monitoring the brightness of the background and set accordingly the foreground colour. For your learning convenience we also dynamically alter the font's weight. Following is a segment of relevant API documentation used in our example program:
+
 --- set_cell_data_func(cell) {|tvc, cell, model, iter| ... }
 
     Sets the block which is used instead of the standard attributes mapping for setting the column value, and should set the value of Gtk::TreeViewColumn's cell renderer as appropriate.
@@ -90,3 +89,17 @@ Gtk::TreeViewColumn#set_cell_data_func(cell)
        * model: the Gtk::TreeModel
        * iter: the Gtk::TreeIter
     * Returns: self
+
+
+
+:Font Weight:
+
+    An enumeration specifying the weight (boldness) of a font. This is a numerical value ranging from 100 to 900, but there are some predefined values:
+
+    * Pango::FontDescription::WEIGHT_ULTRALIGHT : - the ultralight weight (= 200)
+    * Pango::FontDescription::WEIGHT_LIGHT      : - the light weight (=300)
+    * Pango::FontDescription::WEIGHT_NORMAL     : - the default weight (= 400)
+    * Pango::FontDescription::WEIGHT_SEMIBOLD   : - a weight intermediate between normal and bold (=600)
+    * Pango::FontDescription::WEIGHT_BOLD       : - the bold weight (= 700)
+    * Pango::FontDescription::WEIGHT_ULTRABOLD  : - the ultrabold weight (= 800)
+    * Pango::FontDescription::WEIGHT_HEAVY      : - the heavy weight (= 900)
