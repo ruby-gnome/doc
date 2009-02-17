@@ -139,6 +139,7 @@ However, currently  (as of Ruby 1.8.6 and Ruby-GNOME2 rel.: 2-0.17.0-rc1) there 
  window.show_all
  Gtk.main
 
+For your convenience I have included the two offending methods:
 
  #--- Gtk::TreeViewColumn#add_attribute(cell_renderer, attribute, column)
  #
