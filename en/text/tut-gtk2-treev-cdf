@@ -26,10 +26,17 @@ If you need to further customize every cell before it is rendered to the screen,
    column.set_cell_data_func(renderer) do |tvc, cell, model, iter|
      # Get the color string stored by the column and make
      # it the background color, make foreground white, unless
-     # bg is also white.
-     cell.background = model.get_value(iter, 0)
-     cell.foreground = model.get_value(iter, 0) == "#FFFFFF" ?
-          "#000000" : "#ffffff"
+     # bg is very bright.
+     color_v = model.get_value(iter, 0)
+     cell.background = color_v
+     color = Gdk::Color.parse(color_v)
+     if (color.red > 88 && color.green > 88)
+       cell.foreground = "#000000"
+       cell.weight = Pango::FontDescription::WEIGHT_NORMAL
+     else
+       cell.foreground = "#ffffff"
+       cell.weight = Pango::FontDescription::WEIGHT_ULTRABOLD
+     end
    end
  end
  
