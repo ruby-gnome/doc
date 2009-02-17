@@ -30,10 +30,10 @@ If you need to further customize every cell before it is rendered to the screen,
      cell.background = color_v
      color = Gdk::Color.parse(color_v)
      if (color.red > 88 && color.green > 88)
-       cell.foreground = "#000000"
+       cell.foreground = "#000000"      # "#000000" = black
        cell.weight = Pango::FontDescription::WEIGHT_NORMAL
      else
-       cell.foreground = "#ffffff"
+       cell.foreground = "white"        # white = "#ffffff"
        cell.weight = Pango::FontDescription::WEIGHT_ULTRABOLD
      end
    end
