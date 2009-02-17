@@ -8,7 +8,7 @@ Adding images in the form of Gdk::Pixbuf object as a column in the Gtk::TreeView
 You have already learnt almost everything necessary to add Gdk::Pixbuf images to the tree view in previous sections, and the following listing provides a simple example to guide you. There is no need to create a separate column header for pixbufs in most cases, hence this listing shows you how to include multiple renderers in one column. Pixbuf cell renderers are extremely useful in types of tree view implementations such as file system browsers.
 
 
-{{image_left("treev-crs-01.png")}}
+{{image_left("treev-trees-ok.png")}}
 However, currently  (as of Ruby 1.8.6 and Ruby-GNOME2 rel.: 2-0.17.0-rc1) there is a problem with Gtk::CellRendererPixbuf
 {{image_right("dialog-warning.png")}}, and it looks as a combined C GTK+ as well as Ruby GTK+ problem. I have compiled the C example from Andrew Klause's book, and it exhibits exactly the same problems as my Ruby translation. You may check it out by clicking on ((<pixbuf-rdr.c|tut-gtk2-treev-pxbr-cgtk-01>))
 
