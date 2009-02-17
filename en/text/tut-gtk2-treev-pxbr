@@ -1,8 +1,6 @@
 = The Tree View Widget
 {{link "tut-gtk2-treev-crs", "tut-gtk2-treev", "tut-gtk", "tut-gtk2-treev-spbttr"}}
 
-= Sorry this page is still under construction
-
 == Pixbuf Renderers
 
 Adding images in the form of Gdk::Pixbuf object as a column in the Gtk::TreeView is a very useful feature provided by Gtk::CellRendererPixbuf.
