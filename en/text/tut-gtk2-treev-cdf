@@ -83,7 +83,7 @@ Also pay attention to:
 
  color = Gdk::Color.parse(color_v)
 
-The parse class method takes a colour string in hex RGB format "#RRGGBB" and returns Gdk::Color object, on which you may use Gdk::Color#red, Gdk::Color#green and Gdk::Color#blue accessors to obtain numeric values rather than strings for each colour component. You need to understand that low values are generally brighter than high, however you should always test what you are getting, unless you memorized a significant number of combinations that yield bright or darker colours.
+The parse class method takes a colour string in hex RGB format "#RRGGBB" and returns Gdk::Color object, on which you may use Gdk::Color#red, Gdk::Color#green and Gdk::Color#blue accessors to obtain numeric values rather than strings for each colour component. You need to understand that low values are generally brighter than high colour values, however you should always test what you are getting, unless you memorized a significant number of combinations that yield bright or darker colours.
 
 Following is a segment of relevant API documentation used in our example program:
 
