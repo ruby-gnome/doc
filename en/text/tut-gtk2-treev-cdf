@@ -77,7 +77,15 @@ If you need to further customize every cell before it is rendered to the screen,
  Gtk.main
 
 
-In the above example program all the new stuff to learn is in the ((*setup_tree_view*)) method. Focus here is on the Gtk::TreeViewColumn#set_cell_data_func(cell) method. Note that the API designates the argument ((*cell*)) to represent a renderer. It may not be obvious from the code, that you do not need to use this cell data function to simply set a property of a cell. For instance we could set change the font for all cells to ((*bold*)) simply by sending the message ((*weight*)) without ever calling the  Gtk::TreeViewColumn#set_cell_data_func method. It only makes sense to call this method if rendering of each cell depends on some run-time value or processing. Our cells, do indeed meet this criteria. First each cell's background is rendered in a different colour, and to make it more interesting we are monitoring the brightness of the background and set accordingly the foreground colour. For your learning convenience we also dynamically alter the font's weight. Following is a segment of relevant API documentation used in our example program:
+In the above example program all the new stuff to learn is in the ((*setup_tree_view*)) method. Focus here is on the Gtk::TreeViewColumn#set_cell_data_func(cell) method. Note that the API designates the argument ((*cell*)) to represent a renderer. It may not be obvious from the code, that you do not need to use this cell data function to simply set a property of a cell. For instance we could set change the font for all cells to ((*bold*)) simply by sending the message ((*weight*)) without ever calling the  Gtk::TreeViewColumn#set_cell_data_func method. It only makes sense to call this method if rendering of each cell depends on some run-time value or processing. Our cells, do indeed meet this criteria. First each cell's background is rendered in a different colour, and to make it more interesting we are monitoring the brightness of the background and set accordingly the foreground colour. For your learning convenience we also dynamically alter the font's weight. 
+
+Also pay attention to:
+
+ color = Gdk::Color.parse(color_v)
+
+The parse class method takes a colour string in hex RGB format "#RRGGBB" and returns Gdk::Color object, on which you may use Gdk::Color#red, Gdk::Color#green and Gdk::Color#blue accessors to obtain numeric values rather than strings for each colour component. You need to understand that low values are generally brighter than high, however you should always test what you are getting, unless you memorized a significant number of combinations that yield bright or darker colours.
+
+Following is a segment of relevant API documentation used in our example program:
 
 --- set_cell_data_func(cell) {|tvc, cell, model, iter| ... }
 
