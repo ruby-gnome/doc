@@ -1,6 +1,8 @@
 = The Tree View Widget
 {{link "tut-gtk2-treev-crs", "tut-gtk2-treev", "tut-gtk", "tut-gtk2-treev-spbttr"}}
 
+= Sorry this page is still under construction
+
 == Pixbuf Renderers
 
 Adding images in the form of Gdk::Pixbuf object as a column in the Gtk::TreeView is a very useful feature provided by Gtk::CellRendererPixbuf.
@@ -9,8 +11,7 @@ You have already learnt almost everything necessary to add Gdk::Pixbuf images to
 
 
 {{image_left("treev-trees-ok.png")}}
-However, currently  (as of Ruby 1.8.6 and Ruby-GNOME2 rel.: 2-0.17.0-rc1) there is a problem with Gtk::CellRendererPixbuf
-{{image_right("dialog-warning.png")}}, and it looks as a combined C GTK+ as well as Ruby GTK+ problem. I have compiled the C example from Andrew Klause's book, and it exhibits exactly the same problems as my Ruby translation. You may check it out by clicking on ((<pixbuf-rdr.c|tut-gtk2-treev-treev-pxbr-cgtk-01>))
+As you can see there are no pixbuf objects on this image on the left. This is because of a problem in GTK+. Namely, currently  (as of Ruby 1.8.6 and Ruby-GNOME2 rel.: 2-0.17.0-rc1) {{image_right("dialog-warning.png")}}two important methods: Gtk::CellRendererPixbuf#set_attributes and Gtk::CellRendererPixbuf#set_attributes, do not work as expected. It looks that this is a combined C GTK+ as well as Ruby GTK+ problem. I have compiled the C example from Andrew Klause's book, and it exhibits exactly the same problems as my Ruby translation. You may check it out by clicking on ((<pixbuf-rdr.c|tut-gtk2-treev-treev-pxbr-cgtk-01>))
 
 {{br}}
 
@@ -139,7 +140,7 @@ However, currently  (as of Ruby 1.8.6 and Ruby-GNOME2 rel.: 2-0.17.0-rc1) there 
  window.show_all
  Gtk.main
 
-For your convenience I have included the two offending methods:
+For your convenience I have included the API documentation for the two offending methods:
 
  #--- Gtk::TreeViewColumn#add_attribute(cell_renderer, attribute, column)
  #
