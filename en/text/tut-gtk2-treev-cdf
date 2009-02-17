@@ -5,7 +5,7 @@
 
 {{image_right("treev-cdf-01.png")}}
 
-If you need to further customize every cell before it is rendered to the screen, you can use cell data function Gtk::TreeViewColumn#set_cell_data_func(cell) {|tvc, cell, model, iter| ... }. This method allows you to tinker with every property for each individual cell. For example, you can set the background colour based on the content of the cell, or format the numeric  number to your liking, or perhaps only restricting the number of decimal places for a floating point. values. It can only be used for to set properties that are calculated during the run time. The next example will give you an idea how this can be done:
+If you need to further customize every cell before it is rendered to the screen, you can use cell data function Gtk::TreeViewColumn#set_cell_data_func(cell) {|tvc, cell, model, iter| ... }. This method allows you to tinker with every property for each individual cell. For example, you can set the background colour based on the content of the cell, or format the numeric  value to your liking, or perhaps only restricting the number of decimal places for a floating point. values. It can only be used for to set properties that are calculated during the run time. The next example will give you an idea how this can be done:
 
 :Caution:
     Make sure you do not use Gtk::TreeViewColumn#set_cell_data_func if you have a large number of rows in your tree model. Cell data functions are invoked on every cell in the column before it is rendered, so they can significantly slow down tree models.
