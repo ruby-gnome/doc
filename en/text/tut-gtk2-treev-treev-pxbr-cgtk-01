@@ -5,9 +5,8 @@
 
 == C GTK+ version of "Using Gtk::TreeStore" example program
 
-Unfortunately Gtk::TreeStore currently (as of Ruby 1.8.6 and Ruby-GNOME2 rel.: 2-0.17.0-rc1) does not work.
-
-You can compile and run the following program to see for yourself, that the problem is not in GTK+ but rather in ...
+{{image_right("dialog-warning.png")}}
+Unfortunately neither GtkCellRendererPixbuf nor Gtk::CellRendererPixbuf currently (as of Ruby 1.8.6 and Ruby-GNOME2 rel.: 2-0.17.0-rc1) do not work as expected. Following is the C incarnation of this example. You can compile and run it to see for yourself, that the problem is not in GTK+ but rather in ...
 
 You can compile this program with the following command:
 
