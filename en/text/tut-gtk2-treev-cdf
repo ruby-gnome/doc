@@ -71,7 +71,7 @@ If you need to further customize every cell before it is rendered to the screen,
  Gtk.main
 
 
-
+{{br}}
 Gtk::TreeViewColumn#set_cell_data_func(cell)
 --- set_cell_data_func(cell) {|tvc, cell, model, iter| ... }
 
