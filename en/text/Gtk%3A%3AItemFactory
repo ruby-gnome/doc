@@ -2,6 +2,8 @@
 
 A factory for menus.
 
+((* Gtk::ItemFactory is deprecated since Gtk+ 2.4. Use Gtk::UIManager instead. *))
+
 == Object Hierarchy
 
 * Object
