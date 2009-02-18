@@ -7,12 +7,12 @@ In session about "Numeric/Text Data Entry" we have learnt about the Gtk::SpinBut
 
 
 {{image_left("treev-crs-01.png")}}
-Just like with the pixbuf renderer example there is a problem with the spin button renderers, you can see this from the image on the the left, where we would expect spin buttons in the Count column. Obviously there is again a problem in GTK+. As of Ruby 1.8.6 and Ruby-GNOME2 rel.: 2-0.17.0-rc1, {{image_right("dialog-warning.png")}} most of the methods in Gtk::CellRendererSpin class do not work as expected. It also looks that this is a combined C GTK+ as well as Ruby GTK+ problem. I have compiled the C example from Andrew Klause's book, and it exhibits exactly the same problems as my Ruby translation. You may check it out by clicking on ((<pixbuf-spin.c|tut-gtk2-treev-treev-spin-cgtk-01>))
+Just like with the pixbuf renderer example there is a problem with the spin button renderers, you can see this from the image on the the left, where we would expect spin buttons in the Count column. Obviously there is again a problem in GTK+. As of Ruby 1.8.6 and Ruby-GNOME2 rel.: 2-0.17.0-rc1, {{image_right("dialog-warning.png")}} most of the methods in Gtk::CellRendererSpin class do not work as expected. It also looks that this is a combined C GTK+ as well as Ruby GTK+ problem. I have compiled the C example from Andrew Klause's book, and it exhibits exactly the same problems as my Ruby translation. You may check it out by clicking on ((<treestore-spin.c|tut-gtk2-treev-treev-spin-cgtk-01>))
 
 {{br}}
 
 
-((*pixbuf-spin.rb*))
+((*treestore-spin.rb*))
 
 {{br}}
 
