@@ -13,7 +13,6 @@ In this session we will enable you to mold the tree view widget to meet your nee
 :Contents of this chapter:
   * ((<The Tree View Widget|tut-gtk2-treev>)) (this page)
     * 1 ((<Parts of a Tree View|tut-gtk2-treev-parts>))
-      * 1.0 ((<xxx|XXXXXXXXXXXXXXX#xxx>))
       * 1.1 ((<Gtk::TreeModel|tut-gtk2-treev-parts#Gtk::TreeModel>))
       * 1.2 ((<Gtk::TreeViewColumn and Gtk::CellRenderer|tut-gtk2-treev-parts#Gtk::TreeViewColumn and Gtk::CellRenderer>))
       * 1.3 ((<Using Gtk::ListStore|tut-gtk2-treev-parts#Using Gtk::ListStore>)){{image_right("dialog-warning-s2.png")}}
@@ -35,8 +34,8 @@ In this session we will enable you to mold the tree view widget to meet your nee
     * 6 ((<Cell Data Functions|tut-gtk2-treev-cdf>))
     * 7 ((<Cell Renderers|tut-gtk2-treev-crs>))
       * 7.1 ((<Toggle Button Renderers|tut-gtk2-treev-crs#Toggle Button Renderers>)){{image_right("dialog-warning-s2.png")}}
-      * 7.2 ((<Pixbuf Renderers|tut-gtk2-treev-pxbr>)) (!,f)
-      * 7.3 ((<Spin Button Renderers|tut-gtk2-treev-spbttr>))
+      * 7.2 ((<Pixbuf Renderers|tut-gtk2-treev-pxbr>)) (!,f){{image_right("dialog-warning-s2.png")}}
+      * 7.3 ((<Spin Button Renderers|tut-gtk2-treev-spbttr>)) (!,f)
       * 7.4 ((<Combo Box Renderers|tut-gtk2-treev-cbbr>))
       * 7.5 ((<Progress Bar Renderers|tut-gtk2-treev-prbrr>))
       * 7.6 ((<Keyboard Accelerator Renderers|tut-gtk2-treev-kbda>))
