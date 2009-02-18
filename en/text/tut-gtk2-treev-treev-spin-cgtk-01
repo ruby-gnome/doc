@@ -28,7 +28,7 @@ This program like our Ruby example does not display Spin Buttons! It also spits 
 
 {{br}}
 
-Following is the ((*pixbuf-spin.c*)) program in C that also does not work:
+Following is the ((*treestore-spin.c*)) program in C that also does not work:
 
  #include <gtk/gtk.h>
  
