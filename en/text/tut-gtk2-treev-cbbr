@@ -4,6 +4,8 @@
 
 == Combo Box Renderers
 
+{{image_left("treev-crs-01.png")}}
+
 
 By this time I'd be pleasantly surprised if Combo Box Renderer would be working. 
 
@@ -18,5 +20,88 @@ Due to the problems with the past few renderer examples, I first implemented the
 
 == Progress Bar Renderers
 
-{{image_right("dialog-warning.png")}}
-In the future there will perhaps also be a Gtk::CellRendererProgress example, however, at this point I will skip investigating this topic. I Invite you to update this article as soon as there will be some news from the developers about these issues.
+{{image_left("treev-cbbr-progbar.png")}}
+
+Another type of cell renderer is Gtk::CellRendererProgress, which implements the Gtk::ProgressBar widget. Gtk::CellRendererProgress is limited in one way, it does not support pulsing, it only allows you to set the current value of the progress bar. It provides two properties ((*text*)) and ((*value*))
+
+The progress bar state is defined by the value "property" which is an integer between 0 and 100. A value of 0 means empty, and 100 a full progress bar. Since the value is stored as an integer, the tree model model column corresponding to the value of the progress bar should have the type Integer. 
+
+The second property provided by the Gtk::CellRendererProgress is text. This property is a string that will be drawn over the top of the progress bar. Following is the example using progress bar renderer:
+
+((*liststore-progbarr.rb*))
+
+ #!/usr/bin/env ruby
+ require 'gtk2'
+ 
+ # Add three columns to the GtkTreeView. All three of the
+ # columns will be displayed as text, although one is a boolean
+ # value and another is an integer.
+ def setup_tree_view(treeview)
+   # Create a new GtkCellRendererText, add it to the tree
+   # view column and append the column to the tree view.
+   renderer = Gtk::CellRendererText.new
+   column = Gtk::TreeViewColumn.new("Location", renderer, "text" => $location)
+   treeview.append_column(column)
+   renderer = Gtk::CellRendererProgress.new
+   column = Gtk::TreeViewColumn.new("Progress", renderer, "value" => $action)
+   treeview.append_column(column) 
+ end
+ 
+ window = Gtk::Window.new(Gtk::Window::TOPLEVEL)
+ window.resizable = true
+ window.title = "Progress List"
+ window.border_width = 10
+ window.signal_connect('delete_event') { Gtk.main_quit }
+ window.set_size_request(250, 150)
+ 
+ class ActList
+   attr_accessor :location, :action
+   def initialize(l, a); @location, @action = l, a; end
+ end
+ $location = 0; $action = 1
+ 
+ list = Array.new
+ list[0] = ActList.new("www.alpha.net", 55) 
+ list[1] = ActList.new("www.boby.com", 15)
+ list[2] = ActList.new("turtle.on.ca", 85)
+ list[3] = ActList.new("www.kwackers.org", 30)
+ list[4] = ActList.new("www.wealthy.org", 10)
+ 
+ treeview = Gtk::TreeView.new
+ setup_tree_view(treeview)
+   
+ # Create a new tree model with two columns, as 
+ # string and integer.
+ store = Gtk::ListStore.new(String, Integer)
+ 
+ # Add all of the products to the GtkListStore.
+ list.each_with_index do |e, i|
+     iter = store.append
+     iter[$location] = list[i].location
+     iter[$action]   = list[i].action
+     iter.next!
+ end
+ 
+ thread = Thread.start do
+   new_val = 0
+   iter = store.iter_first
+   puts iter
+   loop {
+     new_val = iter[$action] + 5
+     new_val = 0 if new_val > 100
+     iter[$action] = new_val
+     sleep 0.05
+     iter.next!
+   }
+ end
+ 
+ # Add the tree model to the tree view
+ treeview.model = store
+ 
+ scrolled_win = Gtk::ScrolledWindow.new
+ scrolled_win.add(treeview)
+ scrolled_win.set_policy(Gtk::POLICY_AUTOMATIC, Gtk::POLICY_AUTOMATIC)
+ 
+ window.add(scrolled_win)
+ window.show_all
+ Gtk.main
