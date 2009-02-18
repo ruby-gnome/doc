@@ -34,6 +34,7 @@ In this session we will enable you to mold the tree view widget to meet your nee
     * 6 ((<Cell Data Functions|tut-gtk2-treev-cdf>))
     * 7 ((<Cell Renderers|tut-gtk2-treev-crs>))
       * 7.1 ((<Toggle Button Renderers|tut-gtk2-treev-crs#Toggle Button Renderers>)){{image_right("dialog-warning-s2.png")}}
+        * C GTK program available
       * 7.2 ((<Pixbuf Renderers|tut-gtk2-treev-pxbr>)) (!,f){{image_right("dialog-warning-s2.png")}}
       * 7.3 ((<Spin Button Renderers|tut-gtk2-treev-spbttr>)) (!,f)
       * 7.4 ((<Combo Box Renderers|tut-gtk2-treev-cbbr>))
