@@ -13,7 +13,7 @@ By this time I'd be pleasantly surprised if Combo Box Renderer would be working.
 
 
 {{image_right("dialog-warning.png")}}
-Due to the problems with the past few renderer examples, I first implemented the combo box cell renderer functionality into C version of ((*treestore.c.*)) Indeed, it did not work. However, it behaved better without the error/warning messages, that we experienced with all earlier renderers that did not work. You can check tis C GTK+ version of combo box renderer example by clicking on:  ((<treestore-combob.c|tut-gtk2-treev-treev-combob-cgtk-01>))
+Due to the problems with the past few renderer examples, I first implemented the combo box cell renderer functionality into C version of ((*treestore.c.*)) Indeed, it did not work. However, it behaved better without the error/warning messages, that we experienced with all earlier renderers that did not work. You can check this C GTK+ version of combo box renderer example by clicking on:  ((<treestore-combob.c|tut-gtk2-treev-treev-combob-cgtk-01>))
 
 
 
