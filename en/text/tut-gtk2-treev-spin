@@ -1,8 +1,6 @@
 = The Tree View Widget
 {{link "tut-gtk2-treev-pxbr", "tut-gtk2-treev", "tut-gtk", "tut-gtk2-treev-cbbr"}}
 
-= Sorry this page is still under construction
-
 == Spin Button Renderers
 
 In session about "Numeric/Text Data Entry" we have learnt about the Gtk::SpinButton. While Gtk::CellRendererText can display numbers, a better option is to use Gtk::CellRendererSpin. Instead of displaying a Gtk::Entry when the content is to be edited, a Gtk::CellRendererSpin is used.
