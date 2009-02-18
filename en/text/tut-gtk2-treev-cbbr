@@ -2,7 +2,7 @@
 {{link "tut-gtk2-treev-spbttr", "tut-gtk2-treev", "tut-gtk", "tut-gtk2-treev-kbda"}}
 
 
-== Combo Box Renderers
+== Combo Box & Progress Bar Renderers
 
 {{image_left("treev-crs-01.png")}}
 
