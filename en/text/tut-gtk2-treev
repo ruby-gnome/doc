@@ -40,7 +40,7 @@ In this session we will enable you to mold the tree view widget to meet your nee
         * (!) ... means trouble 
       * 7.3 ((<Spin Button Renderers|tut-gtk2-treev-spbttr>)) (!,f){{image_right("dialog-warning-s2.png")}}
       * 7.4 ((<Combo Box Renderers|tut-gtk2-treev-cbbr>)) (!,f)
-        * 7.4.1 ((<Progress Bar Renderers|tut-gtk2-treev-cbbr#Progress Bar Renderers>)) (!,f)
+        * 7.4.1 ((<Progress Bar Renderers|tut-gtk2-treev-cbbr#Progress Bar Renderers>))
       * 7.6 ((<Keyboard Accelerator Renderers|tut-gtk2-treev-kbda>))
     * 8 ((<Test Your Understanding|tut-gtk2-treev-tyu>))
 Creating the Gtk::ListStore
