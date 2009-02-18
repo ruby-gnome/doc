@@ -1,0 +1,24 @@
+= The Tree View Widget
+{{link "tut-gtk2-treev-spbttr", "tut-gtk2-treev", "tut-gtk", "tut-gtk2-treev-kbda"}}
+
+
+== Combo Box Renderers
+
+{{image_left("treev-crs-01.png")}}
+
+
+By this time I'd be pleasantly surprised if Combo Box Renderer would be working. 
+
+
+
+{{image_right("dialog-warning.png")}}
+Due to the problems with the past few renderer examples, I first implemented the combo box cell renderer functionality into C version of ((*treestore.c*)). Indeed, it did not work. However it behaved better without the error/warning messages as all earlier offenders did. You can check tis C GTK+ version of combo box renderer example by clicking on:  ((<treestore-spin.c|tut-gtk2-treev-treev-combob-cgtk-01>))
+
+
+{{br}}
+
+
+== Progress Bar Renderers
+
+{{image_right("dialog-warning.png")}}
+In the future there will perhaps also be a Gtk::CellRendererProgress example, however, at this point I will skip investigating this topic. I Invite you to update this article as soon as there will be some news from the developers about these issues.
