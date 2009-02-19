@@ -93,17 +93,17 @@ Following is the Ruby version of our combo box renderer program:
  $buy_index = 0; $qty_index = 1; $prod_index = 2
  $p_category = 0; $p_child = 1
  
- list = Array.new
- list[0] = GroceryItem.new($p_category, true,  0, "Cleaning Supplies")
- list[1] = GroceryItem.new($p_child,    true,  1, "Paper Towels")
- list[2] = GroceryItem.new($p_child,    true,  3, "Toilet Paper")
- list[3] = GroceryItem.new($p_category, true,  0, "Food")
- list[4] = GroceryItem.new($p_child,    true,  2, "Bread")
- list[5] = GroceryItem.new($p_child,    false, 1, "Butter")
- list[6] = GroceryItem.new($p_child,    true,  1, "Milk")
- list[7] = GroceryItem.new($p_child,    false, 3, "Chips")
- list[8] = GroceryItem.new($p_child,    true,  4, "Soda")
- 
+  list = [
+   GroceryItem.new($p_category, true,  0, "Cleaning Supplies"),
+   GroceryItem.new($p_child,    true,  1, "Paper Towels"),
+   GroceryItem.new($p_child,    true,  3, "Toilet Paper"),
+   GroceryItem.new($p_category, true,  0, "Food"),
+   GroceryItem.new($p_child,    true,  2, "Bread"),
+   GroceryItem.new($p_child,    false, 1, "Butter"),
+   GroceryItem.new($p_child,    true,  1, "Milk"),
+   GroceryItem.new($p_child,    false, 3, "Chips"),
+   GroceryItem.new($p_child,    true,  4, "Soda")
+ ]
  treeview = Gtk::TreeView.new
  setup_tree_view(treeview)
  
