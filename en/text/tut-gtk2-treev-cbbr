@@ -235,7 +235,8 @@ The second property provided by the Gtk::CellRendererProgress is text. This prop
    iter = store.iter_first
    loop {
      new_val = iter[ActList::ACTION] + 5
-     iter[ActList::ACTION] = new_val if new_val <= 100
+     new_val = 0 if new_val > 100
+     iter[ActList::ACTION] = new_val
      sleep 0.05
      iter.next!
    }
