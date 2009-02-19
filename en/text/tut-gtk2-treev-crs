@@ -42,28 +42,28 @@ The listing "treestore-toggle.rb" presents the Grocery List application with a t
  #!/usr/bin/env ruby
  require 'gtk2'
  
- # Add three columns to the Gtk::TreeView. All three of the
- # columns will be displayed as text, although one is a Boolean
+ # Add three columns to the GtkTreeView. All three of the
+ # columns will be displayed as text, although one is a boolean
  # value and another is an integer.
  def setup_tree_view(treeview)
-   # Create a new Gtk::CellRendererText, add it to the tree
+   # Create a new GtkCellRendererText, add it to the tree
    # view column and append the column to the tree view.
  
    renderer = Gtk::CellRendererToggle.new
-   column = Gtk::TreeViewColumn.new("Buy", renderer, "active" => $buy_index)
+   column = Gtk::TreeViewColumn.new("Buy", renderer, "active" => GItm::BUY_INDEX)
    
    renderer.activatable = true
    renderer.signal_connect('toggled') do |w, path|
      iter = treeview.model.get_iter(path)
-     iter[$buy_index] = !iter[$buy_index] if (iter)
+     iter[GItm::BUY_INDEX] = !iter[GItm::BUY_INDEX] if (iter)
    end
    treeview.append_column(column)
    
    renderer = Gtk::CellRendererText.new
-   column = Gtk::TreeViewColumn.new("Count", renderer, "text" => $qty_index)
+   column = Gtk::TreeViewColumn.new("Count", renderer, "text" => GItm::QTY_INDEX)
    treeview.append_column(column) 
    renderer = Gtk::CellRendererText.new
-   column = Gtk::TreeViewColumn.new("Product", renderer, "text" => $prod_index)
+   column = Gtk::TreeViewColumn.new("Product", renderer, "text" => GItm::PROD_INDEX)
    treeview.append_column(column)
  end
  
@@ -74,26 +74,26 @@ The listing "treestore-toggle.rb" presents the Grocery List application with a t
  window.signal_connect('delete_event') { Gtk.main_quit }
  window.set_size_request(275, 200)
  
- class GroceryItem
+ class GItm
    attr_accessor :product_type, :buy, :quantity, :product
    def initialize(t,b,q,p)
      @product_type, @buy, @quantity, @product = t, b, q, p
    end
+   BUY_INDEX = 0; QTY_INDEX = 1; PROD_INDEX = 2
+   GItm::PROD_CTG = 0; GItm::CHILD = 1
  end
- $buy_index = 0; $qty_index = 1; $prod_index = 2
- $p_category = 0; $p_child = 1
  
- list = Array.new
- list[0] = GroceryItem.new($p_category, true,  0, "Cleaning Supplies")
- list[1] = GroceryItem.new($p_child,    true,  1, "Paper Towels")
- list[2] = GroceryItem.new($p_child,    true,  3, "Toilet Paper")
- list[3] = GroceryItem.new($p_category, true,  0, "Food")
- list[4] = GroceryItem.new($p_child,    true,  2, "Bread")
- list[5] = GroceryItem.new($p_child,    false, 1, "Butter")
- list[6] = GroceryItem.new($p_child,    true,  1, "Milk")
- list[7] = GroceryItem.new($p_child,    false, 3, "Chips")
- list[8] = GroceryItem.new($p_child,    true,  4, "Soda")
- 
+ list = [
+   GItm.new(GItm::PROD_CTG, true,  0, "Cleaning Supplies"),
+   GItm.new(GItm::CHILD,    true,  1, "Paper Towels"),
+   GItm.new(GItm::CHILD,    true,  3, "Toilet Paper"),
+   GItm.new(GItm::PROD_CTG, true,  0, "Food"),
+   GItm.new(GItm::CHILD,    true,  2, "Bread"),
+   GItm.new(GItm::CHILD,    false, 1, "Butter"),
+   GItm.new(GItm::CHILD,    true,  1, "Milk"),
+   GItm.new(GItm::CHILD,    false, 3, "Chips"),
+   GItm.new(GItm::CHILD,    true,  4, "Soda")
+ ]
  treeview = Gtk::TreeView.new
  setup_tree_view(treeview)
  
@@ -101,41 +101,41 @@ The listing "treestore-toggle.rb" presents the Grocery List application with a t
  # integer and string.
  store = Gtk::TreeStore.new(TrueClass, Integer, String)
  
- # Avoid creation of iterators on every iteration, since they
+ # Avoid creation of iterators on every iterration, since they
  # need to provide state information for all iterations. Hence:
  # establish closure variables for iterators parent and child.
  parent = child = nil
  
- # Add all of the products to the Gtk::ListStore.
+ # Add all of the products to the GtkListStore.
  list.each_with_index do |e, i|
  
    # If the product type is a category, count the quantity
    # of all of the products in the category that are going
    # to be bought.
-   if (e.product_type == $p_category)
+   if (e.product_type == GItm::PROD_CTG)
      j = i + 1
  
      # Calculate how many products will be bought in
      # the category.
-     while j < list.size && list[j].product_type != $p_category
+     while j < list.size && list[j].product_type != GItm::PROD_CTG
        list[i].quantity += list[j].quantity if list[j].buy
        j += 1
      end
      
      # Add the category as a new root (parent) row (element).
      parent = store.append(nil)
-     # store.set_value(parent, $buy_index, list[i].buy) # <= same as below
-     parent[$buy_index]  = list[i].buy
-     parent[$qty_index]  = list[i].quantity
-     parent[$prod_index] = list[i].product
+     # store.set_value(parent, GItm::BUY_INDEX, list[i].buy) # <= same as below
+     parent[GItm::BUY_INDEX]  = list[i].buy
+     parent[GItm::QTY_INDEX]  = list[i].quantity
+     parent[GItm::PROD_INDEX] = list[i].product
  
    # Otherwise, add the product as a child row of the category.
    else
      child = store.append(parent)
-     # store.set_value(child, $buy_index, list[i].buy) # <= same as below
-     child[$buy_index]  = list[i].buy
-     child[$qty_index]  = list[i].quantity
-     child[$prod_index] = list[i].product
+     # store.set_value(child, GItm::BUY_INDEX, list[i].buy) # <= same as below
+     child[GItm::BUY_INDEX]  = list[i].buy
+     child[GItm::QTY_INDEX]  = list[i].quantity
+     child[GItm::PROD_INDEX] = list[i].product
    end
  end
  
@@ -150,4 +150,11 @@ The listing "treestore-toggle.rb" presents the Grocery List application with a t
  window.show_all
  Gtk.main
 
-Toggle cell renderers are created
+
+Toggle cell renderers are created with Gtk::CellRendererToggle.new. After they are created you need to need to set its ((*activatable*)) property to true, so that it can be toggled, otherwise user will not be able to check the check box. This is useful if you only wish to use the check boxes as a more convenient display feature than is string TRUE or FALSE.
+
+Next, the ((*activate*)) property should be added as a column attribute instead of ((*text*)), which was the case with Gtk::CellRendererText:
+
+ column = Gtk::TreeViewColumn.new("Buy", renderer, "active" => GItm::BUY_INDEX)
+
+You also must bind the Gtk::CellRendererToggle renderer object to ((*'toggled'*)) signal and connect it to the callback proc (block). The block receives the cell renderer and Gtk::TreePath string pointing to the row containing the toggle button.
