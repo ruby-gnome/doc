@@ -80,7 +80,7 @@ The listing "treestore-toggle.rb" presents the Grocery List application with a t
      @product_type, @buy, @quantity, @product = t, b, q, p
    end
    BUY_INDEX = 0; QTY_INDEX = 1; PROD_INDEX = 2
-   GItm::PROD_CTG = 0; GItm::CHILD = 1
+   PROD_CTG = 0; CHILD = 1
  end
  
  list = [
