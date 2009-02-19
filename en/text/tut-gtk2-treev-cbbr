@@ -14,7 +14,7 @@ Due to the problems with the past few renderer examples, I first implemented the
 
 {{image_left("treev-combo-01.png")}}
 {{image_right("dialog-warning.png")}}
-Needless to say that our Ruby combo box renderer example also does not work. The image on the left is what we get on the screen. Of course it is incorrect; there should be combo boxes in column count. Note also that data type for this column is Integer, and that we need to convert the strings from the combo box to integer values before we could update the tree store. 
+Needless to say that our Ruby combo box renderer example also does not work. The image on the left is what we get on the screen. Of course it is incorrect; there should be combo boxes in column Count. Note also that data type for this column is Integer, and that we need to convert the strings from the combo box to integer values before we could update the tree store. 
 
 Following is the Ruby version of our combo box renderer program:
 {{br}}
