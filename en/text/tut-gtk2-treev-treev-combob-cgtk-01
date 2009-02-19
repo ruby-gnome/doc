@@ -182,8 +182,6 @@ Following is the ((*treestore-combob.c*)) program in C that also does not work:
                           ("Count", renderer, "text", QUANTITY, NULL);
    gtk_tree_view_append_column (GTK_TREE_VIEW (treeview), column);
    
-   renderer = gtk_cell_renderer_spin_new ();
-   
    g_signal_connect (G_OBJECT (renderer), "edited",
                      G_CALLBACK (cell_edited),
                      (gpointer) treeview);
