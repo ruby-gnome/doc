@@ -93,7 +93,7 @@ Following is the Ruby version of our combo box renderer program:
  $buy_index = 0; $qty_index = 1; $prod_index = 2
  $p_category = 0; $p_child = 1
  
-  list = [
+ list = [
    GroceryItem.new($p_category, true,  0, "Cleaning Supplies"),
    GroceryItem.new($p_child,    true,  1, "Paper Towels"),
    GroceryItem.new($p_child,    true,  3, "Toilet Paper"),
@@ -177,17 +177,20 @@ The second property provided by the Gtk::CellRendererProgress is text. This prop
  #!/usr/bin/env ruby
  require 'gtk2'
  
- # Add three columns to the GtkTreeView. All three of the
- # columns will be displayed as text, although one is a boolean
+ # Add three columns to the Gtk::TreeView. All three of the
+ # columns will be displayed as text, although one is a Boolean
  # value and another is an integer.
  def setup_tree_view(treeview)
-   # Create a new GtkCellRendererText, add it to the tree
+   # Create a new Gtk::CellRendererText, add it to the tree
    # view column and append the column to the tree view.
    renderer = Gtk::CellRendererText.new
-   column = Gtk::TreeViewColumn.new("Location", renderer, "text" => $location)
+   column = Gtk::TreeViewColumn.new("Location", renderer, "text" => ActList::LOCATION)
    treeview.append_column(column)
+   
+   # Create a new Gtk::CellRendererProgress, add it to the tree
+   # view column and append the column to the tree view.
    renderer = Gtk::CellRendererProgress.new
-   column = Gtk::TreeViewColumn.new("Progress", renderer, "value" => $action)
+   column = Gtk::TreeViewColumn.new("Progress", renderer, "value" => ActList::ACTION)
    treeview.append_column(column) 
  end
  
@@ -201,15 +204,16 @@ The second property provided by the Gtk::CellRendererProgress is text. This prop
  class ActList
    attr_accessor :location, :action
    def initialize(l, a); @location, @action = l, a; end
+   LOCATION = 0; ACTION = 1
  end
- $location = 0; $action = 1
  
- list = Array.new
- list[0] = ActList.new("www.alpha.net", 55) 
- list[1] = ActList.new("www.boby.com", 15)
- list[2] = ActList.new("turtle.on.ca", 85)
- list[3] = ActList.new("www.kwackers.org", 30)
- list[4] = ActList.new("www.wealthy.org", 10)
+ list = [
+   ActList.new("www.alpha.net", 55),
+   ActList.new("www.boby.com", 15),
+   ActList.new("turtle.on.ca", 85),
+   ActList.new("www.kwackers.org", 30),
+   ActList.new("www.wealthy.org", 10)
+ ]
  
  treeview = Gtk::TreeView.new
  setup_tree_view(treeview)
@@ -221,19 +225,17 @@ The second property provided by the Gtk::CellRendererProgress is text. This prop
  # Add all of the products to the GtkListStore.
  list.each_with_index do |e, i|
      iter = store.append
-     iter[$location] = list[i].location
-     iter[$action]   = list[i].action
+     iter[ActList::LOCATION] = list[i].location
+     iter[ActList::ACTION]   = list[i].action
      iter.next!
  end
  
  thread = Thread.start do
    new_val = 0
    iter = store.iter_first
-   puts iter
    loop {
-     new_val = iter[$action] + 5
-     new_val = 0 if new_val > 100
-     iter[$action] = new_val
+     new_val = iter[ActList::ACTION] + 5
+     iter[ActList::ACTION] = new_val if new_val <= 100
      sleep 0.05
      iter.next!
    }
