@@ -153,7 +153,7 @@ Following is the ((*treestore-combob.c*)) program in C that also does not work:
    GtkListStore *model;
    GtkTreeIter iter;
    
-   /* CreatenGtkListStore that will be used for the combo box renderer. */
+   /* Create GtkListStore that will be used for the combo box renderer. */
    model = gtk_list_store_new (1, G_TYPE_STRING);
    
    gtk_list_store_append (model, &iter);
