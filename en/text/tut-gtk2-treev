@@ -1,8 +1,6 @@
 = The Tree View Widget
 {{link "tut-gtk2-txtw-tyu", "tut-gtk2-treev", "tut-gtk", "tut-gtk2-treev-parts"}}
 
-= Sorry still under construction
-
 This chapter will show you how to use the Gtk::ScrolledWindow widget in combination with another powerful widget known as Gtk::TreeView. The tree view widget can be used to display data lists or trees spanning many columns. For example applications such as file browsers or project builders and IDEs can be implemented using Gtk::TreeView widget.
 
 Gtk::TreeView is a powerful and complex feature reach widget that may be intimidating to learn. However once you get to know it enough you will be able to apply it in many applications.
@@ -35,15 +33,13 @@ In this session we will enable you to mold the tree view widget to meet your nee
     * 6 ((<Cell Data Functions|tut-gtk2-treev-cdf>))
     * 7 ((<Cell Renderers|tut-gtk2-treev-crs>))
       * 7.1 ((<Toggle Button Renderers|tut-gtk2-treev-crs#Toggle Button Renderers>)){{image_right("dialog-warning-s2.png")}}
-        * (!) ... means problems 
+        * (!) ... problems 
       * 7.2 ((<Pixbuf Renderers|tut-gtk2-treev-pxbr>)) (!,f){{image_right("dialog-warning-s2.png")}}
-        * (!) ... means trouble 
+        * (!) ... problems  
       * 7.3 ((<Spin Button Renderers|tut-gtk2-treev-spbttr>)) (!,f){{image_right("dialog-warning-s2.png")}}
       * 7.4 ((<Combo Box Renderers|tut-gtk2-treev-cbbr>)) (!,f)
         * 7.4.1 ((<Progress Bar Renderers|tut-gtk2-treev-cbbr#Progress Bar Renderers>))
-      * 7.6 ((<Keyboard Accelerator Renderers|tut-gtk2-treev-kbda>))
-    * 8 ((<Test Your Understanding|tut-gtk2-treev-tyu>))
-Creating the Gtk::ListStore
+      * 7.5 ((<Keyboard Accelerator Renderers|tut-gtk2-treev-kbda>))
 
 Creating the Gtk::ListStore
 
