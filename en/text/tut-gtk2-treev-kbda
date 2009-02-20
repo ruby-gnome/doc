@@ -7,7 +7,7 @@
 
 {{image_right("treev-kbda-01.png")}}
 
-Gtk::CellRendererAccel widget displays textual representation of a keyboard accelerator keys. It allows you to dynamically edit the accelerator, hence changing its binding for the application. To edit the accelerator user must click on the "Accelerator" cell. The cell will then accept a new key combination user enters. The new key code will be added, along with any mask keys such as Ctrl, 
+Gtk::CellRendererAccel widget displays textual representation of the keyboard accelerator keys. It allows you to dynamically edit the accelerator, hence changing its binding for the application. To edit the accelerator user must click on the "Accelerator" cell. The cell will then accept a new key combination user enters. The new key code will be added, along with any mask keys such as Ctrl, 
 Alt, Shift or any combination of these. In fact the new key combination the user presses will be displayed.
 
 Following is the example program:
