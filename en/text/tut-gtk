@@ -4,7 +4,7 @@
 
 This document covers the Ruby/GTK2 library used to ease creation of graphical user interfaces (GUIs). GTK+ can create native application on the GNOME Desktop, and also runs great on almost any desktop environment: Linux, Windows, OSX,  FreeBSD and more; and using ruby all without and modifications or recompilation! This tutorial is currently being translated from the ((<Japanese version|URL:../ja/hiki.cgi?gtk2-tut>)) by ((<Laurent Sansonetti|lrz>)).
 
-As of January 2009, brand new material mainly based on Andrew  Krause's book ((<Foundations of GTK+ Development|URL:http://www.gtkbook.com>)) is currently being added by ((<Igor Pirnovar|igor-info>)).
+As of January 2009, brand new material mainly based on Andrew  Krause's book ((<Foundations of GTK+ Development|URL:http://www.gtkbook.com>)) is currently being added by ((<Igor Pirnovar|igor-info>)). The numbers at the beginning of the top level lines refer to the chapters in Andrew's book, the "warning" street signs (!) mark places where there may be a problem area with the current Ruby 1.8/GNOME2  2-0.17.0-rc1 release used to test examples in this tutorial. 
 
 == Table of Contents
 
@@ -23,7 +23,7 @@ As of January 2009, brand new material mainly based on Andrew  Krause's book ((<
   * ((<Packing Demonstration Program|tut-gtk2-packing-demo>))
   * ((<Packing Using Tables|tut-gtk2-packing-tables>))
   * ((<Table Packing Example|tut-gtk2-packing-tables-demo>))
-* ((<Container Widgets|tut-gtk2-contwidg>))
+* (3) ((<Container Widgets|tut-gtk2-contwidg>))
   * (based on Andrew  Krause's book ((<Foundations of GTK+ Development|URL:http://www.gtkbook.com>)))
     * ((<Decorator Containers|tut-gtk2-contwidg#Decorator Containers>))
     * ((<Layout Containers|tut-gtk2-contwidg#Layout Containers>))
@@ -35,7 +35,7 @@ As of January 2009, brand new material mainly based on Andrew  Krause's book ((<
   * ((<Handle Boxes|tut-gtk2-contwidg-handlebox>))
   * ((<Notebooks|tut-gtk2-contwidg-notebooks>))
   * ((<Even Boxes|tut-gtk2-contwidg-eventbox>))
-* ((<Buttons and Toggles|tut-gtk2-btt>))
+* (4) ((<Buttons and Toggles|tut-gtk2-btt>))
   * ((<Toggle Button|tut-gtk2-btt-toggle>))
     * ((<Mnemonics|tut-gtk2-btt-toggle#Mnemonics>))
   * ((<Check Button|tut-gtk2-btt-check>))
@@ -44,7 +44,7 @@ As of January 2009, brand new material mainly based on Andrew  Krause's book ((<
   * ((<Radio Button|tut-gtk2-btt-radio>))
   * ((<** Not a button but vaguely related Button Box|tut-gtk2-btt-bttbox>)){{image_right("dialog-warning-s2.png")}}
   * ((<** Font Button|tut-gtk2-fichoo-fontbtt>)) (bellow undeer Selector And Chooser ...) (!)
-* ((<Numeric - Text Data Entry|tut-gtk2-numtxt>))
+* (5) ((<Numeric - Text Data Entry|tut-gtk2-numtxt>))
   * ((<Single Line Entry Field|tut-gtk2-numtxt-entry>))
   * ((<Spin Buttons|tut-gtk2-numtxt-spinbttns>))
     * ((<Adjutments|tut-gtk2-numtxt-spinbttns#Adjustments>))
@@ -55,7 +55,7 @@ As of January 2009, brand new material mainly based on Andrew  Krause's book ((<
     * ((<Modifying the foreground colour of a widget|tut-gtk2-colorsel-buttons#Modifying the foreground colour of a widget>)){{image_right("dialog-warning-s2.png")}}
   * ((<Font Button|tut-gtk2-fichoo-fontbtt>)) (!)
   * ((<Test Your Understanding|tut-gtk2-selchoo-tyu>))
-* ((<Dialogs|tut-gtk2-dialog>))
+* (6) ((<Dialogs|tut-gtk2-dialog>))
   * ((<Creating Your Own Dialogs|tut-gtk2-dialog-custom>))
     * ((<Modal Or Nonmodal Message Dialogs|tut-gtk2-dialog-custom#Modal or Nonmodal Message Dialogs>))
     * ((<** The Gtk::Image Widget|tut-gtk2-dialog-custom#The Gtk::Image Widget>))
@@ -73,14 +73,14 @@ As of January 2009, brand new material mainly based on Andrew  Krause's book ((<
   * ((<Dialogues With Multiple Pages Using Gtk::Assistant|tut-gtk2-dialog-assistant>)) (!)
     * ((<Progress Bar|tut-gtk2-dialog-assistant#Progress Bar>))
   * ((<Test Your Understanding|tut-gtk2-dialog-tyu>))
-* ((<GLib Short Introduction|tut-gtk2-glib>))
+* (7) ((<GLib Short Introduction|tut-gtk2-glib>))
     * ((<Environment Variables|tut-gtk2-glib-env>))
     * ((<Timers|tut-gtk2-glib-timers>))
     * ((<File Manipulation|tut-gtk2-glib-filemanip>))
       * ((<Error Handling|tut-gtk2-glib-filemanip#Error Handling>))
     * ((<Main Loop|tut-gtk2-glib-mainloop>))
     * ((<Input-Output Channels|tut-gtk2-glib-iochannels>))
-* ((<The Text View Widget|tut-gtk2-txtw>))
+* (8) ((<The Text View Widget|tut-gtk2-txtw>))
   * ((<Scrolled Windows|tut-gtk2-txtw-scrolledwin>))
   * ((<Text Views|tut-gtk2-txtw-textview>))
     * ((<Text Buffers|tut-gtk2-txtw-textview#Text Buffers>))
@@ -128,3 +128,5 @@ As of January 2009, brand new material mainly based on Andrew  Krause's book ((<
       * ((<Combo Box Renderers|tut-gtk2-treev-cbbr>)) (!,f)
         * ((<Progress Bar Renderers|tut-gtk2-treev-cbbr#Progress Bar Renderers>))
       * ((<Keyboard Accelerator Renderers|tut-gtk2-treev-kbda>))
+* (9) ((<Menus and Toolbars|tut-gtk2-mnstbs>))
+    * ((<Sorry still under construction|tut-gtk2-mnstbs>))
