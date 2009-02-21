@@ -1,19 +1,6 @@
 = The Tree View Widget
 {{link "tut-gtk2-txtw-tyu", "tut-gtk2-treev", "tut-gtk", "tut-gtk2-treev-parts"}}
 
-This chapter will show you how to use the Gtk::ScrolledWindow widget in combination with another powerful widget known as Gtk::TreeView. The tree view widget can be used to display data lists or trees spanning many columns. For example applications such as file browsers or project builders and IDEs can be implemented using Gtk::TreeView widget.
-
-Gtk::TreeView is a powerful and complex feature reach widget that may be intimidating to learn. However once you get to know it enough you will be able to apply it in many applications.
-
-:In this chapter you will learn:
-
-    * What objects are used to create a Gtk::TreeView, and how its MVC (model-view-controller) design makes it unique.
-    * How to create lists and tree structures with the Gtk::TreeView widget.
-    * When to use Gtk::TreePath, Gtk::TreeIter, and Gtk::TreeRowReference to reference rows within a Gtk::TreeView.
-    * How to create editable tree view cells or customize individual cells with cell renderer functions.
-    * The widgets you can embed within a cell, including toggle buttons, pixbufs, spin buttons, combo boxes, progress bars, and keyboard accelerator strings.
-
-
 :Contents of this chapter:
 
   * ((<The Tree View Widget|tut-gtk2-treev>)) (this page)
@@ -46,6 +33,19 @@ Gtk::TreeView is a powerful and complex feature reach widget that may be intimid
       * 7.4 ((<Combo Box Renderers|tut-gtk2-treev-cbbr>)) (!,f)
         * 7.4.1 ((<Progress Bar Renderers|tut-gtk2-treev-cbbr#Progress Bar Renderers>))
       * 7.5 ((<Keyboard Accelerator Renderers|tut-gtk2-treev-kbda>))
+
+
+This chapter will show you how to use the Gtk::ScrolledWindow widget in combination with another powerful widget known as Gtk::TreeView. The tree view widget can be used to display data lists or trees spanning many columns. For example applications such as file browsers or project builders and IDEs can be implemented using Gtk::TreeView widget.
+
+Gtk::TreeView is a powerful and complex feature reach widget that may be intimidating to learn. However once you get to know it enough you will be able to apply it in many applications.
+
+:In this chapter you will learn:
+
+    * What objects are used to create a Gtk::TreeView, and how its MVC (model-view-controller) design makes it unique.
+    * How to create lists and tree structures with the Gtk::TreeView widget.
+    * When to use Gtk::TreePath, Gtk::TreeIter, and Gtk::TreeRowReference to reference rows within a Gtk::TreeView.
+    * How to create editable tree view cells or customize individual cells with cell renderer functions.
+    * The widgets you can embed within a cell, including toggle buttons, pixbufs, spin buttons, combo boxes, progress bars, and keyboard accelerator strings.
 
 
 Following are the major classes and interfaces directly related to our topic
