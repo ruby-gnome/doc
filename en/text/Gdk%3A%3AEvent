@@ -70,8 +70,8 @@ Handling events from the window system.
 
 --- button
 
-    Gdk::Event#buttom method returns the button number pressed: {left=1, right=3, left+right=3} Verify this on your system, it may be system depend.
-    * Returns: buttom number pressed: 1, 2 or 3.
+    Gdk::Event#button method returns the button number pressed: {left=1, right=3, left+right=3} Verify this on your system, it may be system depend.
+    * Returns: button number pressed: 1, 2 or 3.
 
 
 --- put
