@@ -1,8 +1,6 @@
 = The Tree View Widget
 {{link "tut-gtk2-txtw-tyu", "tut-gtk2-treev", "tut-gtk", "tut-gtk2-treev-parts"}}
 
-= Sorry still under construction
-
 This chapter will show you how to use the Gtk::ScrolledWindow widget in combination with another powerful widget known as Gtk::TreeView. The tree view widget can be used to display data lists or trees spanning many columns. For example applications such as file browsers or project builders and IDEs can be implemented using Gtk::TreeView widget.
 
 Gtk::TreeView is a powerful and complex feature reach widget that may be intimidating to learn. However once you get to know it enough you will be able to apply it in many applications.
