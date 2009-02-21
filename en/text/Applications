@@ -2,6 +2,9 @@
 
 Here's a list of applications using Ruby-GNOME2:
 
+:((<Alexandria|URL:http://alexandria.rubyforge.org/>))
+Alexandria is a GNOME application to help you manage your book collection.
+
 :((<Amigo|URL:http://gnomecoder.wordpress.com/amigo/>))
 Amigo instantly defines and explains any Spanish-language word that you select with your mouse.
 
