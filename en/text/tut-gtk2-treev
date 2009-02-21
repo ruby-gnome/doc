@@ -53,7 +53,7 @@ Creating the Gtk::ListStore
 
 Following are the major classes and interfaces directly related to our topic
 
-:XXX Widgets:
+:classes and interfaces:
     * Gtk::TreeModel (interface)
     * Gtk::ListStore
     * Gtk::TreeStore
