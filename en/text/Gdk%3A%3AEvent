@@ -68,6 +68,12 @@ Handling events from the window system.
 
 == Instance Methods
 
+--- button
+
+    Gdk::Event#buttom method returns the button number pressed: {left=1, right=3, left+right=3} Verify this on your system, it may be system depend.
+    * Returns: buttom number pressed: 1, 2 or 3.
+
+
 --- put
 
     Appends a copy of the self onto the front of the event queue for Gdk::EventAny#window 's display, or the default event queue if Gdk::Event#window is nil. See Gdk::Display#put_event.
