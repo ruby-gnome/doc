@@ -1,6 +1,11 @@
 = Menus and Toolbars
 {{link "tut-gtk2-treev-kbda", "tut-gtk2-treev", "tut-gtk", "tut-gtk2-mnstbs-statb"}}
 
+    * ((<Menus and Toolbars|tut-gtk2-mnstbs>))
+        * ((<Pop-up Menus|tut-gtk2-mnstbs#Pop-up Menus>)){{image_right("dialog-warning-s2.png")}}
+          * ((<Creating Pop-up Menus|tut-gtk2-mnstbs#Creating Pop-up Menus>)) (!)
+
+
 This chapter will teach you how to create pop-up menus, menu bars, and toolbars. You will begin by creating each of them manually, so you learn how the widgets are constructed. This will give you a firm understanding of all of the concepts on which menus and toolbars rely.
 
 After you understand each widget, you will be introduced to Gtk::UIManager, which allows you to dynamically create menus and toolbars through custom XML files. A user interface file is loaded, and each element applied to a corresponding action object, which tells the item how it will be displayed and how it will act.
