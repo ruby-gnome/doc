@@ -1,130 +1,65 @@
-= Ruby/GTK2 Tutorial
+= The Tree View Widget
+{{link "tut-gtk2-txtw-tyu", "tut-gtk2-treev", "tut-gtk", "tut-gtk2-treev-parts"}}
 
-== Synopsis
+= Sorry still under construction
 
-This document covers the Ruby/GTK2 library used to ease creation of graphical user interfaces (GUIs). GTK+ can create native application on the GNOME Desktop, and also runs great on almost any desktop environment: Linux, Windows, OSX,  FreeBSD and more; and using ruby all without and modifications or recompilation! This tutorial is currently being translated from the ((<Japanese version|URL:../ja/hiki.cgi?gtk2-tut>)) by ((<Laurent Sansonetti|lrz>)).
+This chapter will show you how to use the Gtk::ScrolledWindow widget in combination with another powerful widget known as Gtk::TreeView. The tree view widget can be used to display data lists or trees spanning many columns. For example applications such as file browsers or project builders and IDEs can be implemented using Gtk::TreeView widget.
 
-As of January 2009, brand new material mainly based on Andrew  Krause's book ((<Foundations of GTK+ Development|URL:http://www.gtkbook.com>)) is currently being added by ((<Igor Pirnovar|igor-info>)).
+Gtk::TreeView is a powerful and complex feature reach widget that may be intimidating to learn. However once you get to know it enough you will be able to apply it in many applications.
 
-== Table of Contents
+In this session we will enable you to mold the tree view widget to meet your needs. 
 
-* ((<Introduction|tut-gtk-preface>))
-* ((<Getting Started|tut-gtk-intro>))
-  * ((<Hello World|tut-gtk-helloworld>))
-  * ((<Theory of Signals and Callbacks|tut-gtk-signals>))
-  * ((<Events|tut-gtk-events>))
-  * ((<Stepping Through Hello World|tut-gtk-helloworld-details>))
-* Moving On
-  * ((<More on Signals Handlers|tut-gtk-signals-more>))
-  * ((<An Upgraded Hello World|tut-gtk-helloworld2>))
-* ((<Packing Widgets|tut-gtk2-packing-intro>))
-  * ((<Theory of Packing Boxes|tut-gtk2-packing-theory>))
-  * ((<Details of Boxes|tut-gtk2-packing-box-details>))
-  * ((<Packing Demonstration Program|tut-gtk2-packing-demo>))
-  * ((<Packing Using Tables|tut-gtk2-packing-tables>))
-  * ((<Table Packing Example|tut-gtk2-packing-tables-demo>))
-* ((<Container Widgets|tut-gtk2-contwidg>))
-  * (based on Andrew  Krause's book ((<Foundations of GTK+ Development|URL:http://www.gtkbook.com>)))
-    * ((<Decorator Containers|tut-gtk2-contwidg#Decorator Containers>))
-    * ((<Layout Containers|tut-gtk2-contwidg#Layout Containers>))
-  * ((<Horizontal and Vertical Boxes|tut-gtk2-contwidg-hvbox>))
-  * ((<Horizontal and Vertical Panes|tut-gtk2-contwidg-hvpane>))
-  * ((<Tables|tut-gtk2-contwidg-tables>))
-  * ((<Fixed Containers|tut-gtk2-contwidg-fixedcont>))
-  * ((<Expanders|tut-gtk2-contwidg-expanders>))
-  * ((<Handle Boxes|tut-gtk2-contwidg-handlebox>))
-  * ((<Notebooks|tut-gtk2-contwidg-notebooks>))
-  * ((<Even Boxes|tut-gtk2-contwidg-eventbox>))
-* ((<Buttons and Toggles|tut-gtk2-btt>))
-  * ((<Toggle Button|tut-gtk2-btt-toggle>))
-    * ((<Mnemonics|tut-gtk2-btt-toggle#Mnemonics>))
-  * ((<Check Button|tut-gtk2-btt-check>))
-    * ((<Using Stock Items|tut-gtk2-btt-check#Using Stock Items>))
-    * ((<Callbacks And Event Handling|tut-gtk2-btt-check#Callbacks And Event Handling Revisited - Callbacks are closures>))
-  * ((<Radio Button|tut-gtk2-btt-radio>))
-  * ((<** Not a button but vaguely related Button Box|tut-gtk2-btt-bttbox>)){{image_right("dialog-warning-s2.png")}}
-  * ((<** Font Button|tut-gtk2-fichoo-fontbtt>)) (bellow undeer Selector And Chooser ...) (!)
-* ((<Numeric - Text Data Entry|tut-gtk2-numtxt>))
-  * ((<Single Line Entry Field|tut-gtk2-numtxt-entry>))
-  * ((<Spin Buttons|tut-gtk2-numtxt-spinbttns>))
-    * ((<Adjutments|tut-gtk2-numtxt-spinbttns#Adjustments>))
-  * ((<Horizontal And Vertical Scales|tut-gtk2-numtxt-hvscales>))
-* ((<Selector And Chooser Interface And Widgets|tut-gtk2-selchoose>))
-  * ((<File Chooser Button|tut-gtk2-filechooser>))
-  * ((<Colour Button|tut-gtk2-colorsel-buttons>))
-    * ((<Modifying the foreground colour of a widget|tut-gtk2-colorsel-buttons#Modifying the foreground colour of a widget>)){{image_right("dialog-warning-s2.png")}}
-  * ((<Font Button|tut-gtk2-fichoo-fontbtt>)) (!)
-  * ((<Test Your Understanding|tut-gtk2-selchoo-tyu>))
-* ((<Dialogs|tut-gtk2-dialog>))
-  * ((<Creating Your Own Dialogs|tut-gtk2-dialog-custom>))
-    * ((<Modal Or Nonmodal Message Dialogs|tut-gtk2-dialog-custom#Modal or Nonmodal Message Dialogs>))
-    * ((<** The Gtk::Image Widget|tut-gtk2-dialog-custom#The Gtk::Image Widget>))
-  * ((<Message Dialogues|tut-gtk2-dialog-msg>))
-  * ((<Provide Info About Your Application|tut-gtk2-dialog-about>))
-    * ((<** Pixbuf|tut-gtk2-dialog-about#Gdk::Pixbuf>))
-  * ((<Types Of File Chooser Dialogues|tut-gtk2-dialog-fichoo>))
-    * ((<Saving Files|tut-gtk2-dialog-fichoo#Saving Files>))
-    * ((<Creating a Folder|tut-gtk2-dialog-fichoo#Creating a Folder>))
-    * ((<Selecting Multiple Files|tut-gtk2-dialog-fichoo#Selecting Multiple Files>))
-  * ((<Collecting Information With Font And Colour Selection Dialogues|tut-gtk2-dialog-fontcolor>))
-    * ((<Colour Selection Dialogues|tut-gtk2-dialog-fontcolor#Colour Selection Dialogues>))
-    * ((<Font Selection Dialogues|tut-gtk2-dialog-fontcolor#Font Selection Dialogues>))
-    * ((<Modifying font by programmatic means|tut-gtk2-dialog-fontcolor#Modifying font by programmatic means>)){{image_right("dialog-warning-s2.png")}}
-  * ((<Dialogues With Multiple Pages Using Gtk::Assistant|tut-gtk2-dialog-assistant>)) (!)
-    * ((<Progress Bar|tut-gtk2-dialog-assistant#Progress Bar>))
-  * ((<Test Your Understanding|tut-gtk2-dialog-tyu>))
-* ((<GLib Short Introduction|tut-gtk2-glib>))
-    * ((<Environment Variables|tut-gtk2-glib-env>))
-    * ((<Timers|tut-gtk2-glib-timers>))
-    * ((<File Manipulation|tut-gtk2-glib-filemanip>))
-      * ((<Error Handling|tut-gtk2-glib-filemanip#Error Handling>))
-    * ((<Main Loop|tut-gtk2-glib-mainloop>))
-    * ((<Input-Output Channels|tut-gtk2-glib-iochannels>))
-* ((<The Text View Widget|tut-gtk2-txtw>))
-  * ((<Scrolled Windows|tut-gtk2-txtw-scrolledwin>))
-  * ((<Text Views|tut-gtk2-txtw-textview>))
-    * ((<Text Buffers|tut-gtk2-txtw-textview#Text Buffers>))
-    * ((<Text View Properties|tut-gtk2-txtw-textview#Text View Properties>)){{image_right("dialog-warning-s2.png")}}
-    * ((<Pango Tab Arrays|tut-gtk2-txtw-textview#Pango Tab Arrays>)) (!)
-    * ((<Text Iterators and Marks|tut-gtk2-txtw-itrsmrks>)){{image_right("dialog-warning-s2.png")}}
-      * ((<Editing the Text Buffer|tut-gtk2-txtw-itrsmrks#Editing the Text Buffer>)) (!,f)
-      * ((<Retrieving Text Iterators and Marks|tut-gtk2-txtw-itrsmrks#Retrieving Text Iterators and Marks>))
-      * ((<Changing Text Buffer Contents|tut-gtk2-txtw-itrsmrks#Changing Text Buffer Contents>))
-      * ((<Cutting, Copying and Pasting|tut-gtk2-txtw-itrsmrks#Cutting, Copying and Pasting>))
-      * ((<Searching in the Text Buffer|tut-gtk2-txtw-itrsmrks#Searching in the Text Buffer>))
-      * ((<Scrolling the Text Buffer|tut-gtk2-txtw-itrsmrks#Scrolling the Text Buffer>))
-    * ((<Text Tags|tut-gtk2-txtw-ttags>))
-    * ((<Inserting Images|tut-gtk2-txtw-iimgs>))
-    * ((<Inserting Child Widgets|tut-gtk2-txtw-icw>))
-    * ((<GtkSourceView|tut-gtk2-txtw-gsw>))
-    * ((<Test Your Understanding|tut-gtk2-txtw-tyu>))
-  * ((<The Tree View Widget|tut-gtk2-treev>))
-    * ((<Parts of a Tree View|tut-gtk2-treev-parts>))
-      * ((<Gtk::TreeModel|tut-gtk2-treev-parts#Gtk::TreeModel>))
-      * ((<Gtk::TreeViewColumn and Gtk::CellRenderer|tut-gtk2-treev-parts#Gtk::TreeViewColumn and Gtk::CellRenderer>))
-      * ((<Using Gtk::ListStore|tut-gtk2-treev-parts#Using Gtk::ListStore>)){{image_right("dialog-warning-s2.png")}}
-      * ((<Renderers and Columns|tut-gtk2-treev-parts#Renderers and Columns>)) (!)
-      * ((<Creating the Gtk::ListStore|tut-gtk2-treev-parts#Creating the Gtk::ListStore>))
-    * ((<Using Gtk::TreeStore|tut-gtk2-treev-trees>))
-      * ((<Data Organization Within a Tree Store|tut-gtk2-treev-trees#Data Organization Within a Tree Store>))
-    * ((<Referencing Rows|tut-gtk2-treev-rr>))
-      * ((<Tree Path|tut-gtk2-treev-rr#Tree Path>))
-      * ((<Tree Iterators|tut-gtk2-treev-rr#Tree Iterators>))
-      * ((<Tree Row References|tut-gtk2-treev-rr#Tree Row References>))
-    * ((<Adding Rows and Handling Selections|tut-gtk2-treev-addrnhs>))
-      * ((<Single Selections|tut-gtk2-treev-addrnhs#Single Selections>))
-      * ((<Multiple Selections|tut-gtk2-treev-addrnhs#Multiple Selections>))
-      * ((<Adding New Rows|tut-gtk2-treev-addrnhs#Adding New Rows>))
-      * ((<Combo Box|tut-gtk2-treev-addrnhs#Combo Box>))
-      * ((<Removing Multiple Rows|tut-gtk2-treev-addrnhs#Removing Multiple Rows>))
-    * ((<Editable Text Renderers|tut-gtk2-treev-etr>))
-    * ((<Cell Data Functions|tut-gtk2-treev-cdf>))
-    * ((<Cell Renderers|tut-gtk2-treev-crs>))
-      * ((<Toggle Button Renderers|tut-gtk2-treev-crs#Toggle Button Renderers>)){{image_right("dialog-warning-s2.png")}}
+
+:Contents of this chapter:
+
+  * ((<The Tree View Widget|tut-gtk2-treev>)) (this page)
+    * 1 ((<Parts of a Tree View|tut-gtk2-treev-parts>))
+      * 1.1 ((<Gtk::TreeModel|tut-gtk2-treev-parts#Gtk::TreeModel>))
+      * 1.2 ((<Gtk::TreeViewColumn and Gtk::CellRenderer|tut-gtk2-treev-parts#Gtk::TreeViewColumn and Gtk::CellRenderer>))
+      * 1.3 ((<Using Gtk::ListStore|tut-gtk2-treev-parts#Using Gtk::ListStore>)){{image_right("dialog-warning-s2.png")}}
+      * 1.4 ((<Renderers and Columns|tut-gtk2-treev-parts#Renderers and Columns>)) (!)
+      * 1.5 ((<Creating the Gtk::ListStore|tut-gtk2-treev-parts#Creating the Gtk::ListStore>))
+    * 2 ((<Using Gtk::TreeStore|tut-gtk2-treev-trees>))
+      * 2.1 ((<Data Organization Within a Tree Store|tut-gtk2-treev-trees#Data Organization Within a Tree Store>))
+    * 3 ((<Referencing Rows|tut-gtk2-treev-rr>))
+      * 3.1 ((<Tree Path|tut-gtk2-treev-rr#Tree Path>))
+      * 3.2 ((<Tree Iterators|tut-gtk2-treev-rr#Tree Iterators>))
+      * 3.3 ((<Tree Row References|tut-gtk2-treev-rr#Tree Row References>))
+    * 4 ((<Adding Rows and Handling Selections|tut-gtk2-treev-addrnhs>))
+      * 4.1 ((<Single Selections|tut-gtk2-treev-addrnhs#Single Selections>))
+      * 4.2 ((<Multiple Selections|tut-gtk2-treev-addrnhs#Multiple Selections>))
+      * 4.3 ((<Adding New Rows|tut-gtk2-treev-addrnhs#Adding New Rows>))
+      * 4.4 ((<Combo Box|tut-gtk2-treev-addrnhs#Combo Box>))
+      * 4.5 ((<Removing Multiple Rows|tut-gtk2-treev-addrnhs#Removing Multiple Rows>))
+    * 5 ((<Editable Text Renderers|tut-gtk2-treev-etr>))
+    * 6 ((<Cell Data Functions|tut-gtk2-treev-cdf>))
+    * 7 ((<Cell Renderers|tut-gtk2-treev-crs>))
+      * 7.1 ((<Toggle Button Renderers|tut-gtk2-treev-crs#Toggle Button Renderers>)){{image_right("dialog-warning-s2.png")}}
         * (!) ... problems 
-      * ((<Pixbuf Renderers|tut-gtk2-treev-pxbr>)) (!,f){{image_right("dialog-warning-s2.png")}}
+      * 7.2 ((<Pixbuf Renderers|tut-gtk2-treev-pxbr>)) (!,f){{image_right("dialog-warning-s2.png")}}
         * (!) ... problems  
-      * ((<Spin Button Renderers|tut-gtk2-treev-spbttr>)) (!,f){{image_right("dialog-warning-s2.png")}}
-      * ((<Combo Box Renderers|tut-gtk2-treev-cbbr>)) (!,f)
-        * ((<Progress Bar Renderers|tut-gtk2-treev-cbbr#Progress Bar Renderers>))
-      * ((<Keyboard Accelerator Renderers|tut-gtk2-treev-kbda>))
+      * 7.3 ((<Spin Button Renderers|tut-gtk2-treev-spbttr>)) (!,f){{image_right("dialog-warning-s2.png")}}
+      * 7.4 ((<Combo Box Renderers|tut-gtk2-treev-cbbr>)) (!,f)
+        * 7.4.1 ((<Progress Bar Renderers|tut-gtk2-treev-cbbr#Progress Bar Renderers>))
+      * 7.5 ((<Keyboard Accelerator Renderers|tut-gtk2-treev-kbda>))
+
+Creating the Gtk::ListStore
+
+:In this chapter you will learn:
+
+    * What objects are used to create a Gtk::TreeView, and how its MVC (model-view-controller) design makes it unique.
+    * How to create lists and tree structures with the Gtk::TreeView widget.
+    * When to use Gtk::TreePath, Gtk::TreeIter, and Gtk::TreeRowReference to reference rows within a Gtk::TreeView.
+    * How to create editable tree view cells or customize individual cells with cell renderer functions.
+    * The widgets you can embed within a cell, including toggle buttons, pixbufs, spin buttons, combo boxes, progress bars, and keyboard accelerator strings.
+
+Following are the major classes and interfaces directly related to our topic
+
+:XXX Widgets:
+    * Gtk::TreeModel (interface)
+    * Gtk::ListStore
+    * Gtk::TreeStore
+    * Gtk::TreeIter
+    * Gtk::TreeView
+    * Gtk::TreeViewColumn
+    * Gtk::CellRenderer
