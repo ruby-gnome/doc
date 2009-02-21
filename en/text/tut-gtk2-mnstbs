@@ -106,7 +106,7 @@ In most cases you will want to use ((*button-press-event*)) signal to detect whe
 
 Initially an empty pop-up menu is created. We use a helper method ((*create_popup_menu*)) to create and add (append) individual menu items to the menu. You could also use Gtk::MenuShell#prepend(child) or Gtk::MenuShell#insert(child, position). Finally we bind the menu items to the appropriate callback methods and the ((*activate*)) signal. 
 
-I also found it unnecessary to call Gtk::Menu#attach_to_widget(attach_widget){|attach_widgt, menu| ... } in this program example.
+I also found it unnecessary to call Gtk::Menu#attach_to_widget(attach_widget){|attach_widgt, menu| ... } in this program example, as required by the  Andrew Klause's book and the C GTK+ example there, which I translated to Ruby for us here.
 
 {{image_right("dialog-warning.png")}}
 Separators are extremely important when designing a menu structure, because they organize menu items into groups so that the user can easily find the appropriate item. However, currently this feature either is not correctly documented or does not work.
