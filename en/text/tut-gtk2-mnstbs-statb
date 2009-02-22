@@ -9,9 +9,9 @@ Usually placed along the bottom of the window, the Gtk::StatusBar widget can be 
 
 While status bar can only display one short message at the time, the widget also stores a stack of messages. The currently displayed message is on the top of the stack. When you pop a message from the stack, the previous message is displayed.If the stack is empty after you pop a message from it no message is displayed any more on the status bar.
 
-==== Status Bar Context and Message Identifiers
+=== Status Bar Context and Message Identifiers
 
-A new status bar widget is created with Gtk::StatusBar.new. Newly created status bar will have empty message stack. Before you are able add or remove a message to or from the new status bar's stack, you must retrieve a context identifier (((*context_id*))) with Gtk::StatusBar#get_context_id(context_description). The API documentation may help you see how this associations are related:
+A new status bar widget is created with Gtk::StatusBar.new. Newly created status bar will have empty message stack. Before you are able add or remove a message to or from the new status bar's stack, you must retrieve a context identifier ((*(context_id)*)) with Gtk::StatusBar#get_context_id(context_description). The API documentation may help you see how this associations are related:
 
 --- get_context_id(context_description)
 
@@ -28,7 +28,7 @@ Let's look at the API documentation:
     Pushes a new message onto a statusbar's stack.
     * context_id: the message's context id, as returned by Gtk::Statusbar#get_context_id. 
     * text: the message to add to the statusbar.  
-    * Returns: the message's new message id (((*message_id*))) for use with Gtk::Statusbar#remove.
+    * Returns: the message's new message id ((*(message_id)*)) for use with Gtk::Statusbar#remove.
 
 --- pop(context_id)
 
@@ -43,14 +43,129 @@ Let's look at the API documentation:
     * message_id: a message identifier, as returned by Gtk::Statusbar#push.  
     * Returns: self
 
+Status bar has one property that you will most likely want to set. It is Gtk::Statusbar#has_resize_grip=(Boolean). If set to true a graphic will be placed in the right corner of the status bar, allowing used to resize the window.
 
 === Menu Item Information
 
-
-
-
 {{image_right("mnstbs-statb-01.png")}}
 
+One useful role of the status bar is to gibe the user more information about the menu item the mouse cursor is hovering over. An example of this is shown in the accompanying figure to our next example program, showing the progress bar pop-up menu now with the additional status bar message. Let's look at the listing:
+
+{{image_left("mnstbs-statb-02.png")}}{{image_right("dialog-warning.png")}}
+There is a slight problem with Ruby implementation, however. Look at the two pictures. One at the top left is when we run the current C GTK+, the bottom one here on the right is Ruby version. You can see that the Ruby version does not handle multiple signals on a menu item correctly, namely the ((*enter_notify_event*)) seems to have disturbed the ((*'activate'*)) event, which in Ruby version misses the highlight on the item over which the mouse cursor hovers.
 
 {{br}}
 ((*statbhints.rb*))
+
+ #!/usr/bin/env ruby
+ require 'gtk2'
+ 
+ def statusbar_hint(menui, event, statusbar, hints)
+   cntxt_id = statusbar.get_context_id("StatBarHints")
+   if event.event_type == Gdk::Event::ENTER_NOTIFY
+     statusbar.push(cntxt_id, hints[menui.name])
+   else
+     statusbar.pop(cntxt_id)
+   end
+ end
+ 
+ # Create the poup menu with three items and a separator.
+ # Then, attach it to the progress bar and show it to the
+ # user.
+ def create_popup_menu(menu, progb, sbar)
+   pulse  = Gtk::MenuItem.new("Pulse Progress")
+   separator = Gtk::HSeparator.new
+   fill   = Gtk::MenuItem.new("Set as Complete")
+   clear  = Gtk::MenuItem.new("_Clear Progress")
+   
+   pulse.name = "pulse"
+   fill.name  = "fill"
+   clear.name = "clear"
+ 
+   smsgs = { "pulse" => "Pulse the progress bar one step.",
+             "fill"  => "Set the progress bar to 100%.",
+             "clear" => "Clear the progress bar to 0%."
+   }
+ 
+   menu.append(pulse)
+   # menu.append(separator) # <--- should probably work, but it doesn't
+   menu.append(fill)
+   menu.append(clear)
+   
+   pulse.signal_connect('enter_notify_event') { |w, e| statusbar_hint(w, e, sbar, smsgs) }
+   fill.signal_connect('enter_notify_event')  { |w, e| statusbar_hint(w, e, sbar, smsgs) }
+   clear.signal_connect('enter_notify_event') { |w, e| statusbar_hint(w, e, sbar, smsgs) }
+ 
+   pulse.signal_connect('leave_notify_event') { |w, e| statusbar_hint(w, e, sbar, smsgs) }
+   fill.signal_connect('leave_notify_event')  { |w, e| statusbar_hint(w, e, sbar, smsgs) }
+   clear.signal_connect('leave_notify_event') { |w, e| statusbar_hint(w, e, sbar, smsgs) }
+ 
+   pulse.signal_connect('activate') { |w| pulse_activated(w, progb) }
+   fill.signal_connect('activate')  { |w| fill_activated(w, progb) }
+   clear.signal_connect('activate') { |w| clear_activated(w, progb) }
+ 
+   # We do not need this method since there is no detach in our program.
+   # Also the API documentation is rather vague about its usage
+   
+ #  menu.attach_to_widget(progb) {|attach_widgt, mnu| puts "detaching" }
+   
+   menu.show_all
+ end
+ 
+ def pulse_activated(menuitem, progbar)
+   puts "pulse_activated"
+   progbar.pulse
+   progbar.text = "Pulse!"
+ end
+ 
+ def fill_activated(menuitem, progbar)
+   puts "fill_activated"
+   progbar.fraction = 1.0
+   progbar.text = "One Hundred Percent"
+ end
+ 
+ def clear_activated(menuitem, progbar)
+   puts "clear_activated"
+   progbar.fraction = 0.0
+   progbar.text = "Reset to Zero"
+ end
+ 
+ window = Gtk::Window.new(Gtk::Window::TOPLEVEL)
+ window.resizable = true
+ window.title = "Ruby: Status Bar Hints"
+ window.border_width = 10
+ window.signal_connect('delete_event') { Gtk.main_quit }
+ window.set_size_request(250, -1)
+ 
+ # Create all of the necessary widgets and initialize the popup menu.
+ menu = Gtk::Menu.new
+ eventbox = Gtk::EventBox.new
+ progress = Gtk::ProgressBar.new
+ progress.text = "Nothing yet happened"
+ progress.pulse
+ progress.pulse_step = 0.05
+ statusbar = Gtk::Statusbar.new
+ 
+ create_popup_menu(menu, progress, statusbar)
+ 
+ # gtk_event_box_set_above_child (GTK_EVENT_BOX (eventbox), FALSE);
+ 
+ eventbox = Gtk::EventBox.new
+ eventbox.events = Gdk::Event::BUTTON_PRESS_MASK
+ eventbox.signal_connect('button_press_event') do |w, event|
+   if event.event_type == Gdk::Event::BUTTON_PRESS
+     if event.button == 3   # left mouse button
+       menu.popup(nil, nil, event.button, event.time)
+     end
+   end
+ end
+ eventbox.add(progress)
+ 
+ vbox = Gtk::VBox.new(false, 5)
+ vbox.pack_start_defaults(eventbox)
+ vbox.pack_start_defaults(statusbar)
+ 
+ window.add(vbox)
+ eventbox.realize
+ window.show_all
+ Gtk.main
