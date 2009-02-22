@@ -1,0 +1,56 @@
+= Menus and Toolbars
+{{link "tut-gtk2-popup", "tut-gtk2-mnstbs", "tut-gtk", "tut-gtk2-mnstbs-mnui"}}
+
+== Status Bar Hints
+
+Usually placed along the bottom of the window, the Gtk::StatusBar widget can be used to give the user further information about what is going on in the application. A status bar can also be very useful with menus, because you can provide more information to the user about the functionality of the menu item that the mouse cursor is hovering over.
+
+=== The Status Bar Widget
+
+While status bar can only display one short message at the time, the widget also stores a stack of messages. The currently displayed message is on the top of the stack. When you pop a message from the stack, the previous message is displayed.If the stack is empty after you pop a message from it no message is displayed any more on the status bar.
+
+==== Status Bar Context and Message Identifiers
+
+A new status bar widget is created with Gtk::StatusBar.new. Newly created status bar will have empty message stack. Before you are able add or remove a message to or from the new status bar's stack, you must retrieve a context identifier (((*context_id*))) with Gtk::StatusBar#get_context_id(context_description). The API documentation may help you see how this associations are related:
+
+--- get_context_id(context_description)
+
+    Returns a new context identifier, given a description of the actual context.
+    * context_description : textual description of what context the new message is being used in. 
+    * Returns : an integer id.
+
+The context identifier is a unique integer that is associated with a context description string. This identifier will be used for all messages of a specific type, which allows you to categorize messages on the stack. For example, if your status bar will hold hyperlinks and "IP" addresses, you could create two context identifiers from the strings "URL" and "IP". When you push or pop messages to and from the stack, you have to specify a context identifier. Messages are added to the bar's stack with Gtk::Statusbar#push(context_id, text). Pushing a message onto a status bar message stack returns ((*message_id*)).  However, there are two ways to remove a message from status bar message stack. The usual way to remove currently displayed message from top of the stack with  Gtk::Statusbar#pop(context_id), or to remove a specific message from any location within the stack. The latter is accomplished with Gtk::Statusbar#remove(context_id, message_id). This status bar stack message strategy allows separate parts parts of your application to push and pop messages to or from the the status bar stack without affecting each other.
+
+Let's look at the API documentation:
+
+--- push(context_id, text)
+
+    Pushes a new message onto a statusbar's stack.
+    * context_id: the message's context id, as returned by Gtk::Statusbar#get_context_id. 
+    * text: the message to add to the statusbar.  
+    * Returns: the message's new message id (((*message_id*))) for use with Gtk::Statusbar#remove.
+
+--- pop(context_id)
+
+    Removes the message at the top of a Gtk::StatusBar's stack.
+    * context_id : a context identifier.  
+    * Returns: self
+
+--- 
+
+    Forces the removal of a message from a statusbar's stack. The exact context_id and message_id must be specified.
+    * context_id: a context identifier. 
+    * message_id: a message identifier, as returned by Gtk::Statusbar#push.  
+    * Returns: self
+
+
+=== Menu Item Information
+
+
+
+
+{{image_right("mnstbs-statb-01.png")}}
+
+
+{{br}}
+((*statbhints.rb*))
