@@ -52,7 +52,7 @@ Status bar has one property that you will most likely want to set. It is Gtk::St
 One useful role of the status bar is to give the user more information about the menu item the mouse cursor is hovering over. An example of this is shown in the accompanying figure to our next example program, showing the progress bar pop-up menu now with the additional status bar message. Let's look at the listing:
 
 {{image_left("mnstbs-statb-02.png")}}{{image_right("dialog-warning.png")}}
-There is a slight problem with Ruby implementation, however. Look at the two pictures. One at the top left is when we run the current C GTK+, the bottom one here on the right is Ruby version. You can see that the Ruby version does not handle multiple signals on a menu item correctly, namely the ((*enter_notify_event*)) seems to have disturbed the ((*'activate'*)) event, which in Ruby version misses the highlight on the item over which the mouse cursor hovers.
+There is a slight problem with Ruby implementation, however. Look at the two pictures. One at the top on the right hand side shows us what we get when we run the current C GTK+, the bottom one here on the left is the Ruby version. You can see that the Ruby version does not handle multiple signals on a menu item correctly, namely the ((*enter_notify_event*)) seems to have disturbed the ((*'activate'*)) event, which in Ruby version misses the highlight on the item over which the mouse cursor hovers.
 
 {{br}}
 ((*statbhints.rb*))
