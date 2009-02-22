@@ -1,0 +1,24 @@
+= Menus and Toolbars
+{{link "tut-gtk2-treev-kbda", "tut-gtk2-treev", "tut-gtk", "tut-gtk2-mnstbs-pop"}}
+
+:Contents of this chapter:
+
+    * 9 ((<Menus and Toolbars|tut-gtk2-mnstbs>))
+      * 1 ((<Pop-up Menus|tut-gtk2-mnstbs-popup>)){{image_right("dialog-warning-s2.png")}}
+        * 1.1 ((<Creating Pop-up Menus|tut-gtk2-mnstbs-popup#Creating Pop-up Menus>)) (!)
+          * 1.1.1 ((<Pop-up Menu Callbacks|tut-gtk2-mnstbs-popup#Pop-up Menu Callbacks>))
+      * 2 ((<Keyboard Accelerators|tut-gtk2-mnstbs-popup#Keyboard Accelerators>))
+      * 3 ((<Status Bar Hints|tut-gtk2-mnstbs-statb>))
+
+This chapter will teach you how to create pop-up menus, menu bars, and toolbars. You will begin by creating each of them manually, so you learn how the widgets are constructed. This will give you a firm understanding of all of the concepts on which menus and toolbars rely.
+
+After you understand each widget, you will be introduced to Gtk::UIManager, which allows you to dynamically create menus and toolbars through custom XML files. A user interface file is loaded, and each element applied to a corresponding action object, which tells the item how it will be displayed and how it will act.
+
+:In this chapter we will learn:
+
+    * How to create pop-up menus, menu bars, and toolbars
+    * How to apply keyboard accelerators to menu items
+    * What a Gtk::StatusBar widget is and how you can use it to provide more information to the user about a menu item
+    * What types of menus and toolbar items are provided by GTK+
+    * How to dynamically create menus and toolbars with UI files
+    * How to create custom stock items with Gtk::IconFactory
