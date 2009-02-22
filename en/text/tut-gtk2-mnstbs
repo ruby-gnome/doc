@@ -7,7 +7,7 @@
       * 1 ((<Pop-up Menus|tut-gtk2-mnstbs#Pop-up Menus>)){{image_right("dialog-warning-s2.png")}}
         * 1.1 ((<Creating Pop-up Menus|tut-gtk2-mnstbs#Creating Pop-up Menus>)) (!)
           * 1.1.1 ((<Pop-up Menu Callbacks|tut-gtk2-mnstbs#Pop-up Menu Callbacks>))
-        * 1.2 ((<Keyboard Accelerators|tut-gtk2-mnstbs#Keyboard Accelerators>))
+      * 2 ((<Keyboard Accelerators|tut-gtk2-mnstbs#Keyboard Accelerators>))
 
 This chapter will teach you how to create pop-up menus, menu bars, and toolbars. You will begin by creating each of them manually, so you learn how the widgets are constructed. This will give you a firm understanding of all of the concepts on which menus and toolbars rely.
 
