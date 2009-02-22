@@ -169,3 +169,10 @@ There is a slight problem with Ruby implementation, however. Look at the two pic
  eventbox.realize
  window.show_all
  Gtk.main
+
+
+When implementing status bar hints, you first need to figure out what signals are necessary. We want to be able to add a message to the status bar when the mouse cursor moves over the menu item, and remove it when the cursor leaves. For this scenario the ((*enter-notify-event*)) and ((*leave-notify-event*)) seem like a reasonable choice.
+
+When working with signals we usually have to be concerned about the callback block parameters that are passed along when a callback is invoked. Namely if we use a single callback method for two different signals, like our  ((*statusbar_hint*)) method, we should rely on these parameters to identify which event occurred, and most likely which device (in our case menu item) emitted it.   Both ((*'enter-notify-event'*)) and ((*'leave-notify-event'*)) pass the signal emitting widget, and the Gtk::EventCrossing object which is a descendant of Gtk::Event object that will provide us with the needed info, namely whether we are dealing with an entering or leaving cursor. For that we use the Gtk::Event#event_type accessor method retrieving either Gdk::Event::ENTER_NOTIFY or Gdk::Event::LEAVE_NOTIFY event id value.
+
+To identify the menu item, we had to do some preparation work at the time when menu items were created. We assigned them the name by calling Gtk::Widget#name=. We use this name in two places: (1) to store status messages in a hash where this widget's (menu item's) name is the key, and (2) in callback method where we use this menu item's name as a key to retrieve the appropriate message.
