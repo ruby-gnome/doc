@@ -9,6 +9,17 @@
           * 1.1.1 ((<Pop-up Menu Callbacks|tut-gtk2-mnstbs-popup#Pop-up Menu Callbacks>))
       * 2 ((<Keyboard Accelerators|tut-gtk2-mnstbs-popup#Keyboard Accelerators>))
       * 3 ((<Status Bar Hints|tut-gtk2-mnstbs-statb>))
+        * 3.1 ((<The Status Bar Widget|tut-gtk2-mnstbs-statb#The Status Bar Widget>)
+          * 3.1.1 ((<Status Bar Context Identifiers and Message Identifiers|tut-gtk2-mnstbs-statb#Status Bar Context Identifiers and Message Identifiers>)
+        * 3.2 ((<Menu Item Information|tut-gtk2-mnstbs-statb#Menu Item Information>)
+      * 4 ((<Menu Items|tut-gtk2-mnstbs-mnui>))
+        * 4.1 ((<Submenus|tut-gtk2-mnstbs-mnui#Submenus>)
+        * 4.2 ((<The Status Bar Widget|tut-gtk2-mnui-popup#The Status Bar Widget>)
+        * 4.3 ((<Check Menu Items|tut-gtk2-mnui-popup#Check Menu Items>)
+        * 4.4 ((<Radio Menu Items|tut-gtk2-mnui-popup#Radio Menu Items>)
+      * 5 ((<Menu Bars|tut-gtk2-mnstbs-mnub>))
+      * 6 ((<Tool Bars|tut-gtk2-mnstbs-tb>))
+      * 7 ((<Toolbar Items|tut-gtk2-mnstbs-tbi>))
 
 This chapter will teach you how to create pop-up menus, menu bars, and toolbars. You will begin by creating each of them manually, so you learn how the widgets are constructed. This will give you a firm understanding of all of the concepts on which menus and toolbars rely.
 
