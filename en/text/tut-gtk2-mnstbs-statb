@@ -142,7 +142,7 @@ There is a slight problem with Ruby implementation, however. Look at the two pic
  eventbox = Gtk::EventBox.new
  progress = Gtk::ProgressBar.new
  progress.text = "Nothing yet happened"
- progress.pulse
+ # progress.pulse              # <-- comment this out and see the diff.
  progress.pulse_step = 0.05
  statusbar = Gtk::Statusbar.new
  
