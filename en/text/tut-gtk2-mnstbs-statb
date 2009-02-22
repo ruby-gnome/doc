@@ -1,5 +1,5 @@
 = Menus and Toolbars
-{{link "tut-gtk2-popup", "tut-gtk2-mnstbs", "tut-gtk", "tut-gtk2-mnstbs-mnui"}}
+{{link "tut-gtk2-mnstbs-popup", "tut-gtk2-mnstbs", "tut-gtk", "tut-gtk2-mnstbs-mnui"}}
 
 == Status Bar Hints
 
