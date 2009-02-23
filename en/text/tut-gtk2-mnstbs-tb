@@ -1,0 +1,13 @@
+= Menus and Toolbars
+{{link "tut-gtk2-mnub", "tut-gtk2-mnstbs", "tut-gtk", "tut-gtk2-mnstbs-tbi"}}
+
+== Toolbars
+
+
+
+
+{{image_right("mnstbs-tb-01.png")}}
+
+
+{{br}}
+((*toolbars.rb*))
