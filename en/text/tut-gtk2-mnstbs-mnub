@@ -4,10 +4,76 @@
 == Menu Bars
 
 
-
-
 {{image_right("mnstbs-mnub-01.png")}}
 
 
+Gtk::MenuBar is a widget that organizes multiple pop-up menus into a horizontal or vertical row. Each root element is a Gtk::MenuItem that pops down into a submenu. An instance of Gtk::MenuBar is usually displayed along the top of the main application window to provide access to functionality provided by the application.
+
+In the following example program called "menubars.rb" a Gtk::MenuBar widget is created with three menus: File, Edit, and Help. Each of the menus is actually a Gtk::MenuItem with a submenu. A number of menu items are then added to each submenu.
+
 {{br}}
-((*statbhints.rb*))
+((*menubars.rb*))
+
+ #!/usr/bin/env ruby
+ require 'gtk2'
+ 
+ window = Gtk::Window.new(Gtk::Window::TOPLEVEL)
+ window.resizable = true
+ window.title = "Menu Bars"
+ window.border_width = 10
+ window.signal_connect('delete_event') { Gtk.main_quit }
+ window.set_size_request(250, -1)
+ 
+ group = Gtk::AccelGroup.new
+ menubar = Gtk::MenuBar.new
+ 
+ filemenu = Gtk::Menu.new
+ editmenu = Gtk::Menu.new
+ helpmenu = Gtk::Menu.new
+
+ file = Gtk::MenuItem.new("File")
+ edit = Gtk::MenuItem.new("Edit")
+ help = Gtk::MenuItem.new("Help")
+
+ file.submenu = filemenu
+ edit.submenu = editmenu
+ help.submenu = helpmenu
+
+ menubar.append(file)
+ menubar.append(edit)
+ menubar.append(help)
+ 
+ # Create the File menu content.
+ new = Gtk::ImageMenuItem.new(Gtk::Stock::NEW, group)
+ open = Gtk::ImageMenuItem.new(Gtk::Stock::OPEN, group)
+ filemenu.append(new)
+ filemenu.append(open)
+ 
+ # Create the Edit menu content.
+ cut   = Gtk::ImageMenuItem.new(Gtk::Stock::CUT, group);
+ copy  = Gtk::ImageMenuItem.new(Gtk::Stock::COPY, group);
+ paste = Gtk::ImageMenuItem.new(Gtk::Stock::PASTE, group);
+ editmenu.append(cut)
+ editmenu.append(copy)
+ editmenu.append(paste)
+ 
+ # Create the Help menu content.
+   
+ contents = Gtk::ImageMenuItem.new(Gtk::Stock::HELP, group)
+ about    = Gtk::ImageMenuItem.new(Gtk::Stock::ABOUT, group)
+ helpmenu.append(contents)
+ helpmenu.append(about)
+   
+ window.add_accel_group(group)
+ 
+ window.add(menubar)
+ window.show_all
+ Gtk.main
+
+A new menu bar widget is created with Gtk::MenuBar.new. This creates an empty menu shell into which you add content. After you have created a menu bar you can set a pack direction with Gtk::MenuBar#pack_direction=(pack_dir), where pack_dir is one of the constants defined in Gtk::MenuBar::PackDirection. By default pack direction is left to right (Gtk::MenuBar::PACK_DIRECTION_LTR). Gtk::MenuBar class provides also child_pack_direction=(pack_dir) instance method, which sets how widgets should be packed inside the children of a menubar.
+
+Each child item in a menu bar is actually another Gtk::MenuItem widget. It is important that you understand the structure underneath the Gtk::MenuBar. Most likely the children of menu bar will be sub-menus. However they are not added directly to the menu bar. The direct children of any menu are menu items created with Gtk::MenuItem.new. You assign your sub-menus, which you created with my_sub_menu=Gtk::Menu.new, to these menu items with Gtk::MenuItem#submenu(my_sub_menu).
+
+Since all menus are derived from Gtk::MenuShell, we assigning menu items to submenus, using Gtk::MenuShell#append(child), Note that we use the this instance method on both menu bar objects as well as on menus i.e. sub-menus.  We also have Gtk::MenuShell#prepend or Gtk::MenuShell#insert at our disposal.
+
+It is much easier to comprehend these concepts by looking at the code, so study carefully the example program in this section.
