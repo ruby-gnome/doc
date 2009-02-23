@@ -14,7 +14,7 @@ In this example, a toolbar is used to provide cut, copy paste, and select-all fu
 
 {{image_left("mnstbs-tb-02.png")}}
 {{image_right("dialog-warning.png")}}
-Again there is a minor problem here, namely the vertical ((*separator*)) is not yet supported in the current Ryby/GNOME2 (2-0.17.0-rc1) release. Nor does the instance method ((*show_arrow=true*)) yield a desired behaviour!? These are only problems in Ruby implementation, and work in C GTK+ implementation. You can see the both the separator and the arrow features on the image above, as displayed by the toolbars.c - C GTK+ version of our example program.
+Again, there is a minor problem here, namely the vertical ((*separator*)) is not yet supported in the current Ryby/GNOME2 (2-0.17.0-rc1) release. Nor does the instance method ((*show_arrow=true*)) yield a desired behaviour!? These are only problems in Ruby implementation, and work in C GTK+ implementation. You can see the both the separator and the arrow features on the image above, as displayed by the toolbars.c - C GTK+ version of our example program.
 
 {{br}}
 ((*toolbars.rb*))
