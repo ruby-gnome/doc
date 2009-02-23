@@ -1,0 +1,23 @@
+= Menus and Toolbars
+{{link "tut-gtk2-statb", "tut-gtk2-mnstbs", "tut-gtk", "tut-gtk2-mnstbs-mnub"}}
+
+== Menu Items
+
+Thus far we learnt about flat menus that displayed labels and (if all worked well in this Ruby/GNOME2 release) separator items. It is also possible to add a submenu to an existing menu item. GTK+ also provides a number of other Gtk::MenuItem objects, such as images, check and radio button menu items.
+
+=== Submenus
+
+
+
+=== Image Menu Items
+
+=== Check Menu Items
+
+=== Radio Menu Items
+
+
+{{image_right("mnstbs-mnui-01.png")}}
+
+
+{{br}}
+((*statbhints.rb*))
