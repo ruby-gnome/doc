@@ -47,6 +47,7 @@ There are a few minor problems with our program in the current Gtk/GNOME2 ( 2-0.
 
 {{image_left("mnstbs-tbi-01.png")}}
 
+{{br}}
 Following is the program example from this session, that produces the output shown on the above images:
 
 ((*toolbaritems.rb*))
