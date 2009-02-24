@@ -18,10 +18,9 @@
         * 4.2 ((<Image Menu Items|tut-gtk2-mnstbs-mnui#Image Menu Items>))
         * 4.3 ((<Check Menu Items|tut-gtk2-mnstbs-mnui#Check Menu Items>))
         * 4.4 ((<Radio Menu Items|tut-gtk2-mnstbs-mnui#Radio Menu Items>))
-      * 5 ((<Menu Bars|tut-gtk2-mnstbs-mnub>)){{image_right("dialog-warning-s2.png")}}
-      * 6 ((<Tool Bars|tut-gtk2-mnstbs-tb>)) (!)
+      * 5 ((<Menu Bars|tut-gtk2-mnstbs-mnub>))
+      * 6 ((<Tool Bars|tut-gtk2-mnstbs-tb>))
       * 7 ((<Toolbar Items|tut-gtk2-mnstbs-tbi>))
-
 
 
 
