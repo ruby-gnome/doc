@@ -49,7 +49,6 @@ Again, there is a minor problem here, namely the vertical ((*separator*)) is not
  
  # Select all of the text in the GtkEditable.
  def select_all(edit)
- # gtk_editable_select_region (entry, 0, -1);
    edit.select_region(0, -1)
  end
  
