@@ -1,5 +1,5 @@
 = Menus and Toolbars
-{{link "tut-gtk2-mnui", "tut-gtk2-mnstbs", "tut-gtk", "tut-gtk2-mnstbs-tb"}}
+{{link "tut-gtk2-mnstbs-mnui", "tut-gtk2-mnstbs", "tut-gtk", "tut-gtk2-mnstbs-tb"}}
 
 == Menu Bars
 
