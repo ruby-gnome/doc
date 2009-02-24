@@ -78,3 +78,8 @@ Gtk::Toolbar class provides a number of properties for customizing how it appear
 
    tb.show_arrow = true
    tb.toolbar_style=(Gtk::Toolbar::Style::BOTH)
+
+Just to remind you that we have included a method ((*select_region*)) defined in Gtk::Editable module
+
+:Gtk::Editable:
+    The Gtk::Editable is a module for widgets for editing text, such as Gtk::Entry. The editable class contains methods for generically manipulating an editable widget, a large number of action signals used for key bindings, and several signals that an application can connect to modify the behaviour of a widget.
