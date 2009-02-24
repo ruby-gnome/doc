@@ -13,8 +13,7 @@ In the example program here, a simple toolbar is created that that shows five to
 In this example, a toolbar is used to provide cut, copy paste, and select-all functionality to the Gtk::Entry widget. The main program line (body) creates the toolbar, packing it above the entry widget. It then calls "create_toolbar", which populates the toolbar with tool items and connects the needed signals.
 
 {{image_left("mnstbs-tb-02.png")}}
-{{image_right("dialog-warning.png")}}
-Again, there is a minor problem here, namely the vertical ((*separator*)) is not yet supported in the current Ryby/GNOME2 (2-0.17.0-rc1) release. Nor does the instance method ((*show_arrow=true*)) yield a desired behaviour!? These are only problems in Ruby implementation, and work in C GTK+ implementation. You can see the both the separator and the arrow features on the image above, as displayed by the toolbars.c - C GTK+ version of our example program.
+There are two images here so you can see all the features this toolbar provides, in particular I wanted you to see the arrow, indicating that there are additional menu items available. 
 
 {{br}}
 ((*toolbars.rb*))
@@ -25,20 +24,20 @@ Again, there is a minor problem here, namely the vertical ((*separator*)) is not
  # Create a toolbar with Cut, Copy, Paste and Select All
  # toolbar items.
  def create_toolbar(tb, ent)
-   cut = Gtk::Button.new(Gtk::Stock::CUT)
-   copy = Gtk::Button.new(Gtk::Stock::COPY)
-   paste = Gtk::Button.new(Gtk::Stock::PASTE)
-   selectall = Gtk::Button.new(Gtk::Stock::SELECT_ALL)
- #  separator = Gtk::SeparatorToolItem.new
+   cut = Gtk::ToolButton.new(Gtk::Stock::CUT)
+   copy = Gtk::ToolButton.new(Gtk::Stock::COPY)
+   paste = Gtk::ToolButton.new(Gtk::Stock::PASTE)
+   selectall = Gtk::ToolButton.new(Gtk::Stock::SELECT_ALL)
+   separator = Gtk::SeparatorToolItem.new
  
-   tb.show_arrow=(true)
+   tb.show_arrow = true
    tb.toolbar_style=(Gtk::Toolbar::Style::BOTH)
  
    # NOTE: tool-tips are only part of the deprecated interface ?!
-   tb.insert(0, cut, "Cut out the text")
+   tb.insert(0, cut)
    tb.insert(1, copy)
    tb.insert(2, paste)
- #  tb.insert(3, separator)
+   tb.insert(3, separator)
    tb.insert(4, selectall)
  
    cut.signal_connect('clicked')       { ent.cut_clipboard }
@@ -49,6 +48,7 @@ Again, there is a minor problem here, namely the vertical ((*separator*)) is not
  
  # Select all of the text in the GtkEditable.
  def select_all(edit)
+   # Gtk::Editable#select_region
    edit.select_region(0, -1)
  end
  
@@ -57,7 +57,7 @@ Again, there is a minor problem here, namely the vertical ((*separator*)) is not
  window.title = "Toolbars"
  window.border_width = 10
  window.signal_connect('delete_event') { Gtk.main_quit }
- window.set_size_request(325, -1)
+ window.set_size_request(275, -1)
  
  entry   = Gtk::Entry.new
  toolbar = Gtk::Toolbar.new
@@ -70,6 +70,7 @@ Again, there is a minor problem here, namely the vertical ((*separator*)) is not
  window.add(vbox)
  window.show_all
  Gtk.main
+
 
 
 New toolbars are created with Gtk::Toolbar.new. This creates an empty toolbar. We created our toolbar before calling our own method create_toolbar(toolbar, entry), which populates the toolbar.
