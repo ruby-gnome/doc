@@ -76,4 +76,4 @@ Each child item in a menu bar is actually another Gtk::MenuItem widget. It is im
 
 Since all menus are derived from Gtk::MenuShell abstract class, we assigning menu items to sub-menus, using Gtk::MenuShell#append(child). Note that we use the this instance method on both menu bar objects as well as on menus i.e. sub-menus.  We also have Gtk::MenuShell#prepend or Gtk::MenuShell#insert at our disposal.
 
-It is much easier to comprehend these concepts by looking at the code, so study carefully the example program in this section.
+It is much easier to comprehend these concepts by looking at the code, so review the example program above to observe the relationships between these widgets.
