@@ -175,7 +175,7 @@ Each of the menu and tool items in the application are connected to simple callb
 The first thing you need to do when using Gtk::UIManager to dynamically load menus and toolbars is to create an array of actions. Though it is possible to manually create every Gtk::Action, Gtk::ToggleAction, or Gtk::RadioAction objects, but there is a much easier way with Gtk::ActionGroup#add_actions(entries). The ((*entries*)) argument is a two dimensional array containing rows of Gtk::Action properties. Gtk::Action object holds information about how a menu or toolbar item is drawn and what callback function should be called, if any, when the item is activated.
 
 :Gtk::Action properties:
-    If you look at the code in our example program (uimanager.rb)  you will notice that we need to provide a two dimensional array of objects to the Gtk::ActionGroup. we do this as follows:
+    If you look at the code in our example program (uimanager.rb)  you will notice that we need to provide a two dimensional array of objects to the Gtk::ActionGroup. We do this as follows:
 
      group.add_actions(entries)
 
