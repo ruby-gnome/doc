@@ -124,21 +124,21 @@ Each of the menu and tool items in the application are connected to simple callb
  help      = Proc.new { puts "help" }
  about     = Proc.new { puts "about" }
 
- # name,        stock_id,           label,    accelerator,  tool-tip,   callback
+ # name,        stock_id, label, accelerator, tool-tip,    callback
  entries = [
-   ["File",      nil,              "_File",      nil,         nil,        nil ],
-   ["Open",      Gtk::Stock::OPEN,  nil, nil, "Open an existing file", open],
-   ["Save",      Gtk::Stock::SAVE,  nil, nil, "Save the document to a file", save],
-   ["Quit",      Gtk::Stock::QUIT,  nil, nil, "Quit the application", quit],
-   ["Edit",      nil, "_Edit",      nil, nil, nil],
-   ["Cut",       Gtk::Stock::CUT,   nil, nil, "Cut the selection to the clipboard", cut],
-   ["Copy",      Gtk::Stock::COPY,  nil, nil, "Copy the selection to the clipboard", copy],
-   ["Paste",     Gtk::Stock::PASTE, nil, nil, "Paste text from the clipboard", paste],
-   ["SelectAll", Gtk::Stock::SELECT_ALL, nil, nil, "Select all of the text", selectall],
-   ["Deselect",  nil, "_Deselect", "<control>d", "Deselect all of the text", deselect],
-   ["Help",      nil, "_Help",      nil, nil, nil],
-   ["Contents",  Gtk::Stock::HELP,  nil, nil, "Get help on using the application", help],
-   ["About",     Gtk::Stock::ABOUT, nil, nil, "More information about the application", about]
+   ["File",      nil,     "_File",   nil,      nil,            nil ],
+   ["Open",      Gtk::Stock::OPEN,  nil, nil, "Open a file",   open],
+   ["Save",      Gtk::Stock::SAVE,  nil, nil, "Save the doc.", save],
+   ["Quit",      Gtk::Stock::QUIT,  nil, nil, "Quit the app.", quit],
+   ["Edit",      nil, "_Edit",      nil, nil,                  nil],
+   ["Cut",       Gtk::Stock::CUT,   nil, nil, "Cut the sel.",  cut],
+   ["Copy",      Gtk::Stock::COPY,  nil, nil, "Copy the sel.", copy],
+   ["Paste",     Gtk::Stock::PASTE, nil, nil, "Paste text",    paste],
+   ["SelectAll", Gtk::Stock::SELECT_ALL, nil, nil, "Sel all",  selectall],
+   ["Deselect",  nil, "_Deselect", "<Ctl>d", "Deselect all",   deselect],
+   ["Help",      nil, "_Help",      nil, nil,                  nil],
+   ["Contents",  Gtk::Stock::HELP,  nil, nil, "Get help",      help],
+   ["About",     Gtk::Stock::ABOUT, nil, nil, "More info ...", about]
  ]
  window = Gtk::Window.new(Gtk::Window::TOPLEVEL)
  window.resizable = true
@@ -180,12 +180,14 @@ The first thing you need to do when using Gtk::UIManager to dynamically load men
      group.add_actions(entries)
 
     where each row in ((*entries*)) contains the following objects: 
-    * name,
+    * name (action string in UI file),
     * stock id,
     * label with mnemonics,
     * accelerator - (a string understood by: Gtk::Accelerator.parse(accelerator))
     * tool-tip
     * callback proc object
+
+    Notice, that the ((*name*)) above must be the value of the ((*action*)) attribute in the UI file, not the "name" attribute as you may expect! The legal values for accelerator string for example are "<Control>a", "<Shift><Control>b", "F1"... Some of the modifiers can also be abbreviated for instance <Ctl> or <Ctrl>.
 
 At this point it would be beneficial to look at the API for Gtk::ActionGroup#add_actions, where the array we just discussed is mentioned explicitly and individual elements explained:
 
