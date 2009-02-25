@@ -1,6 +1,6 @@
 = class Gtk::Action
 
-Actions represent operations that the user can be perform, along with some information how it should be presented in the interface. Each action provides methods to create icons, menu items and toolbar items representing itself. 
+Actions represent operations that the user can perform, along with some information how it should be presented in the interface. Each action provides methods to create icons, menu items and toolbar items representing itself. 
 
 As well as the callback that is called when the action gets activated, the following also gets associated with the action: 
 * a name (not translated, for path lookup)
