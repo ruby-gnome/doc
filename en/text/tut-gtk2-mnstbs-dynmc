@@ -158,7 +158,6 @@ Each of the menu and tool items in the application are connected to simple callb
  uimanager.add_ui("toolbar.ui")
  
  # Retrieve the necessary widgets and associate accelerators.
- 
  menubar = uimanager.get_widget("/MenuBar")
  toolbar = uimanager.get_widget("/Toolbar")
  
