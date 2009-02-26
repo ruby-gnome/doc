@@ -73,3 +73,15 @@ There are a few a slight problem with the way Gtk::IconFactory, Gtk::Toolbar and
  window.add(toolbar)
  window.show_all
  Gtk.main
+
+
+Images you need to run this example program:
+
+{{image_left("checklist.png")}}
+{{image_left("calculator.png")}}
+{{image_left("camera.png")}}
+{{image_left("cpu.png")}}
+{{image_left("desktop.png")}}
+{{br}}
+For those of you who would like to play with this program, and need images You should download them and put them into a directory to which you should point the following path variable (see the example program above):
+ path="/users/iwk/gtk+/c/ch09/"
