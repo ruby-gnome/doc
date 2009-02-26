@@ -29,7 +29,7 @@ You can add toolbar items to the toolbar with the Gtk::Toolbar#insert(position, 
 
 {{image_right("dialog-warning.png")}}
 :Where did the tool-tips go?
-    I noticed that tool-tips are only available in the deprecated code. This does not seem right. Perhaps there are now a property with accessor methods available to manage tool-tips.
+    I noticed that tool-tips are only available in the deprecated code. This does not seem right. Perhaps there is now a property with accessor methods available to manage tool-tips.
 
 
 === Toggle Tool Buttons
