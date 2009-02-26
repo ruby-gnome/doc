@@ -149,6 +149,6 @@ As of January 2009, brand new material mainly based on Andrew  Krause's book ((<
     * ((<Creating UI Files|tut-gtk2-mnstbs-dynmc#Creating UI Files>))
     * ((<Loading UI Files|tut-gtk2-mnstbs-dynmc#Loading UI Files>))
       * ((<Additional Action Types|tut-gtk2-mnstbs-dynmc#Additional Action Types>))
-      * ((<Placeholders|tut-gtk2-mnstbs-dynmc#Placeholders>))
-  * ((<Custom Stock Items|tut-gtk2-mnstbs-csti>))
+      * ((<Placeholders|tut-gtk2-mnstbs-dynmc#Placeholders>)){{image_right("dialog-warning-s2.png")}}
+  * ((<Custom Stock Items|tut-gtk2-mnstbs-csti>)) (!)
   * ((<Test Your Understanding|tut-gtk2-mnstbs-tyu>))
