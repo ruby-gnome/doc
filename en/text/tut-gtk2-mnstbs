@@ -1,8 +1,6 @@
 = Menus and Toolbars
 {{link "tut-gtk2-treev-kbda", "tut-gtk2-mnstbs", "tut-gtk", "tut-gtk2-mnstbs-popup"}}
 
-= Sorry, this chapter is still under construction
-
 :Contents of this chapter:
     * 9 ((<Menus and Toolbars|tut-gtk2-mnstbs>))
       * 1 ((<Pop-up Menus|tut-gtk2-mnstbs-popup>)){{image_right("dialog-warning-s2.png")}}
@@ -22,7 +20,12 @@
       * 6 ((<Tool Bars|tut-gtk2-mnstbs-tb>)){{image_right("dialog-warning-s2.png")}}
       * 7 ((<Toolbar Items|tut-gtk2-mnstbs-tbi>)) (!)
       * 8 ((<Dynamic Menu Creation|tut-gtk2-mnstbs-dynmc>))
-
+       * 8.1 ((<Creating UI Files|tut-gtk2-mnstbs-dynmc#Creating UI Files>))
+       * 8.2 ((<Loading UI Files|tut-gtk2-mnstbs-dynmc#Loading UI Files>))
+         * 8.2.1 ((<Additional Action Types|tut-gtk2-mnstbs-dynmc#Additional Action Types>))
+         * 8.2.2 ((<Placeholders|tut-gtk2-mnstbs-dynmc#Placeholders>)){{image_right("dialog-warning-s2.png")}}
+      * 9 ((<Custom Stock Items|tut-gtk2-mnstbs-csti>)) (!)
+      * 10 ((<Test Your Understanding|tut-gtk2-mnstbs-tyu>))
 
 
 
