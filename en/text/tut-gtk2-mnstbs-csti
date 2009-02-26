@@ -1,0 +1,11 @@
+= Menus and Toolbars
+{{link "tut-mnstbs-gtk2-dynmc", "tut-gtk2-mnstbs", "tut-gtk", "tut-gtk2-mnstbs-tyu"}}
+
+== Custom Stock Items
+
+{{br}}
+{{image_right("mnstbs-csi-01.png")}}
+
+{{br}}
+
+((*iconfactory.rb*))
