@@ -3,7 +3,7 @@
 
 == Custom Stock Items
 
-From the last section you should have noticed that Gtk::Action objects accept stock identifiers to add an image to the menu or toolbar items. You may not always find the appropriate icon among the predefined or by the GTK+ provided stock items. It would be nice if you would be able to create your own stock items. It turns out that exactly that can be accomplished with the Gtk::IconFactory and a few supporting classes like  Gtk::IconSource and Gtk::IconSet.
+From the last section you should have noticed that Gtk::Action objects accept stock identifiers to add an image to the menu or toolbar items. You may not always find the appropriate icon among the predefined or by the GTK+ provided stock items. It would be nice if you were able to create your own stock items. It turns out that exactly that can be accomplished with the Gtk::IconFactory and a few supporting classes like  Gtk::IconSource and Gtk::IconSet.
 
 You start out with your image which you must somehow convert to a stock item. For this you need to turn it into an Gtk::IconSource object. Once you create an Gtk::IconSource object you must pass it either an image file or a pixbuf of the image which you would like to use to create a stock item. Depending on the format of your image you would use either Gtk::IconSource#filename  or  Gtk::IconSource#pixbuf instance methods.
 
