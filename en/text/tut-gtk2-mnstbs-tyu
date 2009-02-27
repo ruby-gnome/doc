@@ -213,7 +213,7 @@ While manual toolbar creation is possible, in most applications you will want to
 
 In the next exercise, implement the same application as above, but use a menu bar instead of toolbar this time. You should continue to use the Gtk:UIManager.
 
-((*toolbar2.ui*))
+((*menu2.ui*)
 
  <ui>
    <menubar name="MenuBar">
@@ -229,6 +229,7 @@ In the next exercise, implement the same application as above, but use a menu ba
      </menu>
    </menubar>
  </ui>
+
 
 {{image_left("mnstbs-tyu2.png")}}
 
