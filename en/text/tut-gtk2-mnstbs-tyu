@@ -11,7 +11,7 @@ At the end of sessions in chapter (7) "The Text View Widget" you created a simpl
 
 While manual toolbar creation is possible, in most applications you will want to utilize the Gtk::UIManager method of toolbar creation. Therefore, use it also in this exercise. Also make use of Built-in stock items.
 
-((*toolbar2.ui*)
+((*toolbar2.ui*))
 
  <ui>
    <toolbar name="Toolbar">
@@ -213,7 +213,7 @@ While manual toolbar creation is possible, in most applications you will want to
 
 In the next exercise, implement the same application as above, but use a menu bar instead of toolbar this time. You should continue to use the Gtk:UIManager.
 
-((*toolbar2.ui*)
+((*toolbar2.ui*))
 
  <ui>
 
