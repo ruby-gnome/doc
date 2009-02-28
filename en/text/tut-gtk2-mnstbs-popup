@@ -4,8 +4,8 @@
 == Pop-up Menus
 
 :Jump ahead:
-    ((<Creating a Pop-up Menu|tut-gtk2-mnstbs-popup#Creating a Pop-up Menu>))
-    ((<Keyboard Accelerators|tut-gtk2-mnstbs-popup#Keyboard Accelerators>))
+    * ((<Creating a Pop-up Menu|tut-gtk2-mnstbs-popup#Creating a Pop-up Menu>))
+    * ((<Keyboard Accelerators|tut-gtk2-mnstbs-popup#Keyboard Accelerators>))
 
 You will begin this chapter by learning how to create a pop-up menu. A pop-up menu is a Gtk::Menu widget that is displayed to the user when the right mouse button is clicked when hovering above certain widgets. Some widgets such as Gtk::Entry and Gtk::TextView, already have a pop-up menus built into the widget by default.
 
