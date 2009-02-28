@@ -31,7 +31,7 @@ There are two images here so you can see all the features this toolbar provides,
    separator = Gtk::SeparatorToolItem.new
  
    tb.show_arrow = true
-   tb.toolbar_style=(Gtk::Toolbar::Style::BOTH)
+   tb.toolbar_style = Gtk::Toolbar::Style::BOTH
  
    # NOTE: tool-tips are only part of the deprecated interface ?!
    tb.insert(0, cut)
@@ -78,7 +78,7 @@ New toolbars are created with Gtk::Toolbar.new. This creates an empty toolbar. W
 Gtk::Toolbar class provides a number of properties for customizing how it appears and interacts with the user including the orientation, button style, and the ability to give access to items that do not fit in the toolbar. The one property managing instance method worth mentioning here is the Gtk::Toolbar#toolbar_style, because it requires you to be aware of the appropriate constants (((<GtkToolbarStyle|Gtk::Toolbar#GtkToolbarStyle>))). Also note the Gtk::Toolbar#show_arrow method
 
    tb.show_arrow = true
-   tb.toolbar_style=(Gtk::Toolbar::Style::BOTH)
+   tb.toolbar_style = Gtk::Toolbar::Style::BOTH
 
 Just to remind you that we have included a method ((*select_region*)) defined in Gtk::Editable module.
 
