@@ -98,7 +98,7 @@ Following is the program example from this session, that produces the output sho
    separator.expand = true
  
    tb.show_arrow = true
-   tb.toolbar_style=(Gtk::Toolbar::Style::BOTH)
+   tb.toolbar_style = Gtk::Toolbar::Style::BOTH
  
    # NOTE: tool-tips are only part of the deprecated interface ?!
    tb.insert(0, cut)
