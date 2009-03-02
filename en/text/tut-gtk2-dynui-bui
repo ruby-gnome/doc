@@ -37,5 +37,6 @@ As you know an empty Gtk::Window is of no use. Since our file browser will need 
 
 By default three cells are allocated to hold three children widgets, but you can change this value to any number of widgets your application requires. For our file browser application three is exactly what we need at the moment, so go ahead and press OK.
 
+{{br}}
 :Note:
     Do not worry if you are not sure how many widgets the container will hold. You can add or remove cells in the ((*General*)) tab in the widget Property window. You can change the position of a widget within a box under the  ((*Packing*)) tab and you are also able to edit the user interface with your code after it is built by Libglade.
