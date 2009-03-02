@@ -46,9 +46,9 @@ By default three cells are allocated to hold three children widgets, but you can
 
 It is usually a good idea when creating a toolbar to add it to a handle box so that the user can remove the toolbar from the window if desired. To do this you need to select the Handle Box item from the widget palette, and then click the topmost Gtk::VBox cell. Finally you add the toolbar widget to the handle box.
 
-{{image_left("glade-fig-10-05-toolbNedit.png")}}
+{{image_right("glade-fig-10-05-toolbNedit.png")}}
 
-When the toolbar widget is placed into the top cell (mesh) if you carefully looked at the Glade menu, you would notice that the Edit button appeared (see the image above). Clicking this button, or right-clickinh the toolbar item in the widget tree view above the properties, will open the ((*toolbar editor*)).
+When the toolbar widget is placed into the top cell (mesh) if you carefully looked at the Glade menu, you would notice that the Edit button appeared (see the image above). Clicking this button, or right-clickinh the toolbar item in the widget tree view above the properties, will open the ((*toolbar editor.*))
 
 {{image_left("glade-fig-10-05-toolbeditor.png")}}
 
