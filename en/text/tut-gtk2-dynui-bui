@@ -52,4 +52,4 @@ When the toolbar widget is placed into the top cell (mesh) if you carefully look
 
 {{image_left("glade-fig-10-05-toolbeditor.png")}}
 
-This ((*toolbar editor*)) creates new tool items that compose the toolbar. 
+This ((*toolbar editor*)) creates new tool items that compose the toolbar. You will have to add all the items by clicking on he Add button. This process is rather involved for a novice Glade user, and requires you to specify the type of the item you are adding, define any adornments like Stock items and most importantly define the Signal handlers.
