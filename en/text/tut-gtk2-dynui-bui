@@ -48,7 +48,7 @@ It is usually a good idea when creating a toolbar to add it to a handle box so t
 
 {{image_right("glade-fig-10-05-toolbNedit.png")}}
 
-When the toolbar widget is placed into the top cell (mesh) if you carefully looked at the Glade menu, you would notice that the Edit button appeared (see the image above). Clicking this button, or right-clickinh the toolbar item in the widget tree view above the properties, will open the ((*toolbar editor.*))
+When the toolbar widget is placed into the top cell (mesh) if you carefully looked at the Glade menu, you would notice that the Edit button appeared (see the image on the right). Clicking this button, or right-clickinh the toolbar item in the widget tree view above the properties, will open the ((*toolbar editor.*))
 
 {{image_left("glade-fig-10-05-toolbeditor.png")}}
 
