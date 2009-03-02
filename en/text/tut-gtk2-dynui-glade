@@ -235,7 +235,7 @@ By default there are four categories of widgets displayed in the palette: (1) to
 
 {{br}}
 {{image_right("glade-fig-10-00-propNtree-s1.png")}}
-To create a new top-level widget, all you need to do is click the icon of the desired widget in the Toplevels section in the palette. A new top-level widget will immediately be displayed in the middle pane and also added to the tree view above the Properties in the right hand-side pane. 
+To create a new top-level widget, all you need to do is click the icon of the desired widget in the Toplevels section in the palette. A new top-level widget will immediately be displayed in the middle pane and also added to the tree view above the Properties in the right hand-side pane.  (You can see an example of the tree view above the Properties here on the right.) 
 
 In the continuation of this session we will build an example real life UI application with Glade, so you will get acquainted with the basic Glade development features. Our application will be a file browser application. 
 
