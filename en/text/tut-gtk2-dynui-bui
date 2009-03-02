@@ -52,4 +52,7 @@ When the toolbar widget is placed into the top cell (mesh) if you carefully look
 
 {{image_left("glade-fig-10-05-toolbeditor.png")}}
 
-This ((*toolbar editor*)) creates new tool items that compose the toolbar. You will have to add all the items by clicking on he Add button. This process is rather involved for a novice Glade user, and requires you to specify the type of the item you are adding, define any adornments like Stock items and most importantly define the Signal handlers.
+
+This  creates new tool items that compose the toolbar. You will have to add all the items by clicking on he Add button. This process is rather involved for a novice Glade user, and requires you to specify the type of the item you are adding, define any adornments like Stock items and most importantly define the Signal handlers.
+
+In Glade you only define the names and signals that handlers will handle. This is what we will do shortly, however this is only the first step, namely, after your user interface will be created and you will run it through Libglade which will temporarily create dummy signal handlers for you, you will still have to implement the desired functionality for all these signal handlers in your code. So we have a lot to learn here. But not to worry, we will do it gradually, so let us role up our sleeves and start with the first step in Glade and ((*toolbar editor.*))
