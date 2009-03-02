@@ -1,0 +1,30 @@
+= Dynamic User Interfaces Built With Glade
+{{link "tut-gtk2-dynui-glade", "tut-gtk2-dynui", "tut-gtk", "tut-gtk2-dynui-xxx"}}
+
+
+== Building example UI with Glade
+
+As announced at the end of previous page, in continuation you are going to be creating a simple file browser application with Glade and Libglade. You begin by creating a new project with "File -> New" or by using an empty project created for you when you start-up the Glade application. You can also open an existing project with "File -> Open" by opening a file with ".glade" extension.
+
+
+
+=== Creating the Window
+
+After you have a blank project, you can begin by creating a new top-level Gtk::Window (note that in Glade double colons are omitted). In the new window you will see a mesh pattern in the interior of the widget. The mash pattern is indicating that the widget is a container into which you can place a child widget. You place a child widget into such an area by selecting a non-top-level widget from the widget palette and then clicking this mesh area. Note that all container widgets contain mash areas. Later on in this session we will also see how to change a button into a container to hold a label and an image. 
+
+{{br}}
+{{image_left("glade-fig-10-03-window-mesh.png")}}
+
+After you create the top-level window, you will notice changes in the content of the widget Properties window. In this window you can customize all of the properties of each widget that is supported in Glade. The widget property window contains five tabs filled with various options. 
+
+{{br}}
+{{image_right("glade-fig-10-04-prop-dialog.png")}}
+
+The ((*General*)) tab provides basic options that are  specific to the widget type that is currently selected. For example, the GtkWindow widget allows you to specify the window's type (Top Level, or Pop-Up), title, ability to be resized, default size, etc. The Name field is used to give a unique name to the widget. Glade will automatically assign a name to each widget that is unique for the current project, but these are generic names. If you plan to refer to a widget from within your application, you should give it a name that means something.
+
+The ((*Packing*)) tab provides basic information about how the widget will react to the changes in the size of its parent widget, such as expanding and filling. ((*Common*)) properties are those provided by Gtk::Widget and are available to all widgets. For example you can provide a size request in this tab.
+
+:Note:
+    Packing options are a bit unique when first working with Glade, because properties are set by the child instead of the parent container. For example, packing options for the children of a Gtk::VBox will be provided in the Packing tab of the children themselves instead of the parent container.
+
+The ((*Signals*)) tab allows you to define signals for each widget that will be connected by Libglade. Lastly the ((*Accessibility*)) tab gives the options that are used for accessibility support.
