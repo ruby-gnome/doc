@@ -217,7 +217,7 @@ When you launch Glade 3 for the first time, you will see three panes in the main
 {{image_left("glade-fig-10-00-glade-s1.png")}}
 
 {{br}}
-=== Main Glade window with its menus.
+=== Main Glade window with its menus
 
 The main window with its menu facilitates Glade project management. The menu contains standard menu options such as File, Edit, and View, which will serve you when save new or modified projects, load existing ones or use many other options that will help you when working with projects. The Project menu shows a list of currently opened projects, allowing you to switch among them. 
 
@@ -236,3 +236,9 @@ By default there are four categories of widgets displayed in the palette: (1) to
 {{br}}
 {{image_right("glade-fig-10-00-propNtree-s1.png")}}
 To create a new top-level widget, all you need to do is click the icon of the desired widget in the Toplevels section in the palette. A new top-level widget will immediately be displayed in the middle pane and also added to the tree view above the Properties in the right hand-side pane. 
+
+In the continuation of this session we will build an example real life UI application with Glade, so you will get acquainted with the basic Glade development features. Our application will be a file browser application. 
+
+:Note:
+    While Glade allows you to edit many widget properties, some actions simply have to be performed in the code. Therefore, you should not view Glade as a replacement for everything that you have learnt thus far in this tutorial. You will still be doing a lot of GTK+ development in most applications.
+ 
