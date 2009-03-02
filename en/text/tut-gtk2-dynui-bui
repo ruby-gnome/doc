@@ -28,3 +28,11 @@ The ((*Packing*)) tab provides basic information about how the widget will react
     Packing options are a bit unique when first working with Glade, because properties are set by the child instead of the parent container. For example, packing options for the children of a Gtk::VBox will be provided in the Packing tab of the children themselves instead of the parent container.
 
 The ((*Signals*)) tab allows you to define signals for each widget that will be connected by Libglade. Lastly the ((*Accessibility*)) tab gives the options that are used for accessibility support.
+
+
+
+As you know an empty Gtk::Window is of no use. Since our file browser will need multiple widgets packed one above the other into the main window, the next step will be to add into our window a vertical box container. Select the Vertical Box widget from the palette's container section and click on the mesh area of the window. You will be presented with the dialogue, like the one the left here, asking you how many items (rows in this case) your Gtk::VBox will hold.
+
+{{image_right("glade-fig-10-05-vbox-dialog.png")}}
+
+By default three cells are allocated to hold three children widgets, but you can change this value to any number of widgets your application requires. For our file browser application three is exactly what we need at the moment, so go ahead and press OK.
