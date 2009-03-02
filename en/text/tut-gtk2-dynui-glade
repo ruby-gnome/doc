@@ -214,7 +214,7 @@ Also, you should make sure to follow along and create the application, we call (
 
 When you launch Glade 3 for the first time, you will see three panes in the main window: The widget palette on the left, the canvas window on the middle, and the widget property editor on the right.
 
-{{image_left("glade-fig-10-00-glade.png")}}
+{{image_left("glade-fig-10-00-glade-s1.png")}}
 
 === Main Glade window with its menus.
 
