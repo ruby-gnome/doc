@@ -9,11 +9,11 @@ As announced at the end of previous page, in continuation you are going to be cr
 
 
 === Creating the Window
+{{br}}
+{{image_left("glade-fig-10-03-window-mesh.png")}}
 
 After you have a blank project, you can begin by creating a new top-level Gtk::Window (note that in Glade double colons are omitted). In the new window you will see a mesh pattern in the interior of the widget. The mash pattern is indicating that the widget is a container into which you can place a child widget. You place a child widget into such an area by selecting a non-top-level widget from the widget palette and then clicking this mesh area. Note that all container widgets contain mash areas. Later on in this session we will also see how to change a button into a container to hold a label and an image. 
 
-{{br}}
-{{image_left("glade-fig-10-03-window-mesh.png")}}
 
 After you create the top-level window, you will notice changes in the content of the widget Properties window. In this window you can customize all of the properties of each widget that is supported in Glade. The widget property window contains five tabs filled with various options. 
 
