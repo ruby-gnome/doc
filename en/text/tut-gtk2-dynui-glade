@@ -219,7 +219,7 @@ When you launch Glade 3 for the first time, you will see three panes in the main
 {{br}}
 === Main Glade window with its menus
 
-The main window with its menu facilitates Glade project management. The menu contains standard menu options such as File, Edit, and View, which will serve you when save new or modified projects, load existing ones or use many other options that will help you when working with projects. The Project menu shows a list of currently opened projects, allowing you to switch among them. 
+The main window with its menu facilitates Glade project management. The menu contains standard menu options such as File, Edit, and View, which will serve you when you save new or modified projects, load existing ones or use many other options that will help you when working with projects. The Project menu shows a list of currently opened projects, allowing you to switch among them. 
 
 === The Palette
 
