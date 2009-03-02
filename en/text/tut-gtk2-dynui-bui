@@ -2,7 +2,7 @@
 {{link "tut-gtk2-dynui-glade", "tut-gtk2-dynui", "tut-gtk", "tut-gtk2-dynui-xxx"}}
 
 
-== Building Example UI with Glade
+== Building Example UI With Glade
 
 As announced at the end of previous page, in continuation you are going to be creating a simple file browser application with Glade and Libglade. You begin by creating a new project with "File -> New" or by using an empty project created for you when you start-up the Glade application. You can also open an existing project with "File -> Open" by opening a file with ".glade" extension.
 
