@@ -114,12 +114,12 @@ In the entry field only click letter "o". This will give you the suggested name 
 Following is the image only after a few toolbar items have been entered. Pay attention to the way toolbar is rendered here. It takes more space than it will when we are done, and that is a  feature managed by the items on the packing tab.
 
 {{image_left("glade-fig-10-05-toolbeditor-inwks-2win.png")}}
-
+{{br}}
 
 When you are finished editing the toolbar, you will notice that the handle box always takes up exactly one third of the window vertically because, by default, widgets are set to expanded and fill. You will want to unset the expanded property of the handle box, as shown in the following figure:
 
 {{image_left("glade-fig-10-05-toolbeditor-inwks-3ed.png")}}
-
+{{br}}
 
 :Tip:
     Glade is a perfect opportunity for you to experiment with packing options to gain better understanding of how they affect the widget.
