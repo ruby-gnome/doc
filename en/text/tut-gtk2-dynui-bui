@@ -60,7 +60,7 @@ This editor helps us create new tool items that compose the toolbar. You will ha
 In Glade you only define the names and signals that handlers will handle. This is what we will do shortly, however this is only the first step, namely, after your user interface will be created and you will run it through Libglade which will temporarily create dummy signal handlers for you, you will still have to implement the desired functionality for all these signal handlers in your code. So we have a lot to learn here. But not to worry, we will do it gradually, so let us role up our sleeves and start with the first step in Glade and ((*toolbar editor.*))
 
 
-Our toolbar will contain 9 items 7 buttons and 2 separators. The first two buttons will be of type Menu which create button of type Gtk::MenuToolButton with a little arrow beside it which allows to associate with it a popup menu (see session "Toolbar Items" in chapter Menus and Toolbars). The other five buttons on this toolbar will be regular buttons. Following table lists all nine items for our toolbar (note items 3 and 7 marked as "S" are separators:
+Our toolbar will contain 9 items, 7 buttons and 2 separators. The first two buttons will be of type Menu which create button of type Gtk::MenuToolButton with a little arrow beside it which allows to associate with it a popup menu (see session "Toolbar Items" in chapter Menus and Toolbars). The other five buttons on this toolbar will be regular buttons. Following table lists all nine items for our toolbar (note items 3 and 7 marked as "S" are separators:
 
  .         1.    2.      3. 4.      5.       6.     7. 8.      9.
  -------------------------------------------------------------------------
