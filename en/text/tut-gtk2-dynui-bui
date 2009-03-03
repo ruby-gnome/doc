@@ -9,6 +9,7 @@ As announced at the end of previous page, in continuation you are going to be cr
 
 
 === Creating the Window
+
 {{br}}
 {{image_left("glade-fig-10-03-window-mesh.png")}}
 
@@ -30,16 +31,18 @@ The ((*Packing*)) tab provides basic information about how the widget will react
 The ((*Signals*)) tab allows you to define signals for each widget that will be connected by Libglade. Lastly the ((*Accessibility*)) tab gives the options that are used for accessibility support.
 
 
-
 As you know an empty Gtk::Window is of no use. Since our file browser will need multiple widgets packed one above the other into the main window, the next step will be to add into our window a vertical box container. Select the Vertical Box widget from the palette's container section and click on the mesh area of the window. You will be presented with the dialogue, like the one the left here, asking you how many items (rows in this case) your Gtk::VBox will hold.
 
 {{image_left("glade-fig-10-05-vbox-dialog.png")}}
 
 By default three cells are allocated to hold three children widgets, but you can change this value to any number of widgets your application requires. For our file browser application three is exactly what we need at the moment, so go ahead and press OK.
 
+
 {{br}}
 :Note:
     Do not worry if you are not sure how many widgets the container will hold. You can add or remove cells in the ((*General*)) tab in the widget Property window. You can change the position of a widget within a box under the  ((*Packing*)) tab and you are also able to edit the user interface with your code after it is built by Libglade.
+
+After adding the vertical box, you will see three separate empty container meshes; notice the changes in the Properties window and the widget tree view. To these meshes, we will be adding (1) a toolbar, (2) an address bar, and (3) a tree view.
 
 
 === Adding a Toolbar
@@ -52,7 +55,73 @@ When the toolbar widget is placed into the top cell (mesh) if you carefully look
 
 {{image_left("glade-fig-10-05-toolbeditor.png")}}
 
-
 This editor helps us create new tool items that compose the toolbar. You will have to add all the items by clicking on he Add button. This process is rather involved for a novice Glade user, and requires you to specify the type of the item you are adding, define any adornments like Stock items and most importantly define the Signal handlers.
 
 In Glade you only define the names and signals that handlers will handle. This is what we will do shortly, however this is only the first step, namely, after your user interface will be created and you will run it through Libglade which will temporarily create dummy signal handlers for you, you will still have to implement the desired functionality for all these signal handlers in your code. So we have a lot to learn here. But not to worry, we will do it gradually, so let us role up our sleeves and start with the first step in Glade and ((*toolbar editor.*))
+
+
+Our toolbar will contain 9 items 7 buttons and 2 separators. The first two buttons will be of type Menu which create button of type Gtk::MenuToolButton with a little arrow beside it which allows to associate with it a popup menu (see session "Toolbar Items" in chapter Menus and Toolbars). The other five buttons on this toolbar will be regular buttons. Following table lists all nine items for our toolbar (note items 3 and 7 marked as "S" are separators:
+
+ .         1.    2.      3. 4.      5.       6.     7. 8.      9.
+ -------------------------------------------------------------------------
+ Name:     back  forward S  up      refresh  home   S  delete  info
+ -------------------------------------------------------------------------
+ Type:     Menu  Menu    S  Button  Button   Button S  Button  Button
+ -------------------------------------------------------------------------
+ ImgTyp:   Stock Stock   /  Stock   Stock    Stock  /  Stock   Stock
+ -------------------------------------------------------------------------
+ StkImg:   Back  Forward /  Up      Refresh  Home   /  Delete  Information
+
+:Note:
+    You will see ((*Edit*)) button on the Glade menu only when a ((*Tool Bar*)) or a ((*Menu Bar*)) in the widget tree is selected - highlighted. (We will talk about Menu Bars at the end of this session.)
+
+We have already mentioned that when you click Edit button on the main menu of our Glade application, an empty ((*toolbar editor*)) window opens (see the last image above). To add items to the menu bar you must click the Add button. The following window appears: 
+
+{{image_left("glade-fig-10-05-toolbeditor-add.png")}}
+{{br}}
+
+This window has three parts left (current item list), right (current item properties) and the bottom (current item signal handling). Every time you press the Add button on the left you add a new item to the list. When an item is selected it is highlighted and you can change its properties on the right side of the window and signal handling part at the bottom. Looking at our list of nine items the name (black) is the first thing you will enter. For this item you will change the "Type" to "Menu".  The next entry "Image Type" should stay as is (Stock), and in Stock Item you should select the image called "Back". This concludes the right side (specification of current item's properties). We would normally continue to the bottom part now and enter the relevant info for the callback, However you can discontinue entering at any time by clicking "Close" button in the ((*toolbar editor*)). If you do so do not forget to also click "Save" on the main menu of Glade application window. To continue with the "toolbar editor" you need to highlight (select) the toolbar item in the widget tree and click "Edit". You can continue adding additional items ignoring the signals for now, since changes and additions can be done at any time.
+
+But we still need to learn how to enter the signal handler part. Actually Glade helps us here too, it suggests the name for the callback. The name it suggests is built from  three parts: "on_" + "item-name" + "_signal". So for buttons we create the suggested names will be:
+
+:Glade suggested names for our callbacks:
+    * on_back_clicked
+    * on_forward_clicked
+    * on_up_clicked
+    * on_refresh_clicked
+    * on_home_clicked
+    * on_delete_clicked
+    * on_info_clicked
+
+Now all you need to learn is to figure out how to find out where this is done. If you look at the bottom part of the "toolbar editor" window below the Add and Remove buttons you will see the heading: "Signal | Handler | User data | After". You need to select (highlight) an item from the left side in the item list. Depending on the type of the selected item different categories of signals may appear. They are as follows:
+
+:Categories of Signals:
+     * Gtk::MenuToolButton
+     * Gtk::ToolButton
+     * Gtk::ToolItem
+     * Gtk::Container
+     * Gtk::Widget
+     * Gtk::Object
+     * GObject
+
+In this session we are only concerned about the Gtk::ToolButton's clicked signal. Each signal line in the "toolbar editor" has expander triangle. Make sure your "GtkToolButton" is expanded and you see the "clicked" signal underneath. Highlight the "clicked line". On the right you will see two strings reading "<Type here>". Click on the first one under the heading "Handler". A screen similar to the following will appear:
+
+{{image_left("glade-fig-10-05-toolbeditor-inwks-1ed.png")}}
+{{br}}
+
+In the entry field only click letter "o". This will give you the suggested name for the callback on the currently selected tool item. Repeat this for all the items you have entered so far. Verify your items that they have registered all the callbacks you think you've just created. Glade is sometimes very critical of what you are doing and may not always agree with your actions!  When you are done, after clicking close in the "toolbar editor", make sure you save the changes in the main Glade window.
+
+Following is the image only after a few toolbar items have been entered. Pay attention to the way toolbar is rendered here. It takes more space than it will when we are done, and that is a  feature managed by the items on the packing tab.
+
+{{image_left("glade-fig-10-05-toolbeditor-inwks-2win.png")}}
+
+
+When you are finished editing the toolbar, you will notice that the handle box always takes up exactly one third of the window vertically because, by default, widgets are set to expanded and fill. You will want to unset the expanded property of the handle box, as shown in the following figure:
+
+{{image_left("glade-fig-10-05-toolbeditor-inwks-3ed.png")}}
+
+
+:Tip:
+    Glade is a perfect opportunity for you to experiment with packing options to gain better understanding of how they affect the widget.
+
+The packing tab also includes options to determine padding around the widget, whether the packing is from the start or from the end of the box, and to determine the widget's position within the container. These properties are exactly the same to those you use when adding children widgets to the Gtk::Box with Gtk::Box#pack_start and related instance methods.
