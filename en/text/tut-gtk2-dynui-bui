@@ -124,4 +124,4 @@ When you are finished editing the toolbar, you will notice that the handle box a
 :Tip:
     Glade is a perfect opportunity for you to experiment with packing options to gain better understanding of how they affect the widget.
 
-The packing tab also includes options to determine padding around the widget, whether the packing is from the start or from the end of the box, and to determine the widget's position within the container. These properties are exactly the same to those you use when adding children widgets to the Gtk::Box with Gtk::Box#pack_start and related instance methods.
+The packing tab also includes options to determine padding around the widget, whether the packing is from the start or from the end of the box, and to determine the widget's position within the container. These properties are exactly the same as those you use when adding children widgets to the Gtk::Box with Gtk::Box#pack_start and related instance methods.
