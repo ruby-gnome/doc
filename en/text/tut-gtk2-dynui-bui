@@ -140,3 +140,23 @@ The remaining step here is to add a Gtk::ScrolledWindow widget to the last (thir
 
 {{image_left("glade-fig-10-11-toolbeditor-browser-1.png")}}
 {{br}}
+=== Making Changes
+
+The file browser is completely designed, but now we would like to add a status bar widget at the bottom of the window. With Glade it is easy to make simple changes like this. We first have to extend the parent widget to have an additional cell. Obviously we need to add a cell to the vertical box, holding our toolbar, address bar and the scrolled text view. To do this , select the vertical box from the widget tree view. In the Properties window in General tab you should increase the "Number of items" property. This will open a new cell with mesh in it at the bottom. You can now add a status bar widget located in the "Control and Display" section of the Palette to the new empty container. If you need to reorder the children of a vertical or horizontal box, you first need to select the widget you want to move, and then under the Packing tab in the Property pane advance to the appropriate position by altering the value of the Position spin button. The position of the surrounding widgets will be automatically adjusted, and you can observe the changes on the canvas, where the changes are immediately reflected in  your creation. 
+
+Another complication may result if you decided that you needed to insert an existing widget into another more elaborate container. For instance, you may want to place the scrolled tree view into a horizontal pane to share the space with another vertical box. In order to do that you first need to select the widget (scrolled window in our case) from the widget tree view in the main window and remove it by "cutting it out" with <Ctrl+X>, which will display an empty cell with mesh in it. Now you can add a horizontal pane, and finally place (paste) the scrolled window from the clipboard into the appropriate place in the horizontal pane by pressing <Ctrl+V> or right-clicking "Paste".
+
+Making changes used to be a touchy topics with Glade 2, because it did not support undo and redo actions. Namely, during making changes it is very easy to make a mistake and if there is no way to back out this could spell a disaster. Regardless of how secure is a tool it is prudent to use project Save button as often as possible.
+
+
+=== Widget Signals
+
+{{image_left("glade-fig-10-12-gobtt-signal.png")}}
+
+The last step for this application is to set up signals for all of the widgets. The image on the left shows the Signals tab of the widget properties editor for the Go button. The Gtk::Button widget is connected  to the ((*clicked*)) signal, which will call ((*on_go_clicked*)) callback when emitted.
+
+In addition to the "clicked" signal, you need to connect to few others. We have already discussed the tool items and their signal handling options, where as we know each of the tool items, with the exception of the separators, is connected to the Gtk::ToolButton's "clicked" signal.
+
+Also you should connect the Gtk::Entry widget to "activate" signal, which will be emitted when the user presses the Enter key as entry has focus.
+
+As for the tree view, you should connect it to "row-activated" signal which will call((*on_treeview_row_activated*)) callback.
