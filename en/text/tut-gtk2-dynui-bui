@@ -160,3 +160,17 @@ In addition to the "clicked" signal, you need to connect to few others. We have 
 Also you should connect the Gtk::Entry widget to "activate" signal, which will be emitted when the user presses the Enter key as entry has focus.
 
 As for the tree view, you should connect it to "row-activated" signal which will call((*on_treeview_row_activated*)) callback.
+
+{{br}}
+
+=== Creating a Menu
+
+In addition to toolbars, it is possible to create menus in Glade 3. When you add a menu bar container from the Palette to an empty cell it will activate the Edit button on the Glade's main Menu bar. Pressing it you will open A ((*Menu Bar Editor*)) which is very similar to the "toolbar editor". To add first level widgets is straight forward, however you may find it difficult to add an additional submenu. It is not impossible, but certainly needs to be simplified in the future. What you need to do is to copy <Ctrl+C> an existing menu item with a menu in it and paste <Ctrl+V> it into a desired place.
+
+So far we have learnt, there exist three ways to create menus. Every method has its advantages and  disadvantages. Let's look at each individual method.
+
+You first learnt how to create menus manually, modelling each object to your needs. This method is good enough for smaller menus. because the code will not take up a lot of space and the implementation is located  located entirely in one place. However, if your menu grows in size or contains more than just basic items, the code will become tedious to maintain and will rapidly grow in size.
+
+Next you learnt how to use Gtk::UIManager with UI definitions to dynamically create menus. This method simplified menu creation, because you could define a large number of actions in a small amount of space. Also, since menus are constructed from UI definitions, allowing the user to edit a menu is extremely simple. This is certainly the preferred method of menu creation if you are not using Glade to design your applications.
+
+Glade also presents a very attractive method of menu creation, because after its initial design maintenance is simple. It also requires no code to create the menu, since Libglade constructs it for you. However, one problem with this method is that it is not as easy to allow the users to alter the layout of menus and toolbars as with the UI file method. You may need to resort to both  Gtk::UIManager and Glade method in cases like this. However, if you do not need to allow your users to customize your menus , it makes sense to do all menu creation through Glade.
