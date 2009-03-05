@@ -1,5 +1,5 @@
 = Dynamic User Interfaces Built With Glade
-{{link "tut-gtk2-dynui-glade", "tut-gtk2-dynui", "tut-gtk", "tut-gtk2-dynui-xxx"}}
+{{link "tut-gtk2-dynui-glade", "tut-gtk2-dynui", "tut-gtk", "tut-gtk2-dynui-libglade"}}
 
 
 == Building Example UI With Glade
