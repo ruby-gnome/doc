@@ -1,0 +1,118 @@
+= Dynamic User Interfaces Built With Glade
+{{link "tut-gtk2-dynui-bui", "tut-gtk2-dynui", "tut-gtk", nil}}
+
+== Using Libglade
+
+After you design your application in Glade, the next step is to load the user interface with Libglade. This library is used to parse the Glade user interface and create all of the necessary widgets at runtime.
+
+To create a runable application from your Glade file is run the following command:
+
+ ruby-glade-create-template browser.glade > browser.rb
+
+This step will create the following output in the "browser.rb" file: 
+
+
+((*browser.rb*))
+
+ #!/usr/bin/env ruby
+ #
+ # This file is gererated by ruby-glade-create-template 1.1.4.
+ #
+ require 'libglade2'
+ 
+ class BrowserGlade
+   include GetText
+ 
+   attr :glade
+   
+   def initialize(path_or_data, root = nil,
+                  domain = nil,
+                  localedir = nil,
+                  flag = GladeXML::FILE)
+     bindtextdomain(domain, localedir, nil, "UTF-8")
+     @glade = GladeXML.new(path_or_data,
+                           root,
+                           domain,
+                           localedir,
+                           flag) {|handler| method(handler)}
+   end
+   
+   def on_address_activate(widget)
+     puts "on_address_activate() is not implemented yet."
+   end
+   def on_forward_clicked(widget)
+     puts "on_forward_clicked() is not implemented yet."
+   end
+   def gtk_main_quit(widget)
+     puts "gtk_main_quit() is not implemented yet."
+   end
+   def on_refresh_clicked(widget)
+     puts "on_refresh_clicked() is not implemented yet."
+   end
+   def on_info_clicked(widget)
+     puts "on_info_clicked() is not implemented yet."
+   end
+   def on_go_clicked(widget)
+     puts "on_go_clicked() is not implemented yet."
+   end
+   def on_home_clicked(widget)
+     puts "on_home_clicked() is not implemented yet."
+   end
+   def on_up_clicked(widget)
+     puts "on_up_clicked() is not implemented yet."
+   end
+   def on_back_clicked(widget)
+     puts "on_back_clicked() is not implemented yet."
+   end
+   def on_delete_clicked(widget)
+     puts "on_delete_clicked() is not implemented yet."
+   end
+   def on_treeview_row_activated(widget, arg0, arg1)
+     puts "on_treeview_row_activated() is not implemented yet."
+   end
+ end
+ 
+ # Main program
+ if __FILE__ == $0
+   # Set values as your own application. 
+   PROG_PATH = "browser.glade"
+   PROG_NAME = "YOUR_APPLICATION_NAME"
+   BrowserGlade.new(PROG_PATH, nil, PROG_NAME)
+   Gtk.main
+ end
+
+:Currently there's a bug in  ruby-glade-create-template:
+    
+    I believe there is currently a bug in ((*ruby-glade-create-template*)). {{image_right("dialog-warning.png")}} The code it produces is missing the following two lines at the end of ((*initialize*)) method:
+
+     window = @glade.get_widget("window")   # <--- BUG: add these two lines
+     window.show_all                        # <--- BUG: add these two lines
+
+    Here is how ((*ruby-glade-create-template*)) creates the initialize method:
+
+     def initialize(path_or_data, root = nil, domain = nil, localedir = nil, flag = GladeXML::FILE)
+       bindtextdomain(domain, localedir, nil, "UTF-8")
+       @glade = GladeXML.new(path_or_data, root, domain, localedir, flag) {|handler| method(handler)}
+     end
+
+    You should add the two missing lines into the above ((*initialize*)) method like shown here:
+
+     def initialize(path_or_data, root = nil, domain = nil, localedir = nil, flag = GladeXML::FILE)
+       bindtextdomain(domain, localedir, nil, "UTF-8")
+       @glade = GladeXML.new(path_or_data, root, domain, localedir, flag) {|handler| method(handler)}
+
+       window = @glade.get_widget("window")   # <--- BUG: add these two lines
+       window.show_all                        # <--- BUG: add these two lines
+     end
+
+After you fix this BUG you may run your output ((*browser.rb*)) program. Indeed, you would need to implement the all the callback methods, but one should be fixed immediately, namely: 
+
+ def gtk_main_quit(widget)
+   puts "gtk_main_quit() is not implemented yet."
+ end
+
+Change it to: 
+
+ def gtk_main_quit(widget)
+   Gtk.main_quit
+ end
