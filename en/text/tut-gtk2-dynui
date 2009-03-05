@@ -12,8 +12,8 @@
       * 2.3 ((<Completing the File Browser|tut-gtk2-dynui-bui#Completing the File Browser>))
       * 2.4 ((<Making Changes|tut-gtk2-dynui-bui#Making Changes>))
       * 2.5 ((<Widget Signals|tut-gtk2-dynui-bui#Widget Signals>))
-      * 2.6 ((<Creating a Menu|tut-gtk2-dynui-bui#Creating a Menu>)) {{image_right("dialog-warning-s2.png")}} 
-    * 3 ((<Using Libglade|tut-gtk2-dynui-libglade>)) (!)
+      * 2.6 ((<Creating a Menu|tut-gtk2-dynui-bui#Creating a Menu>))
+    * 3 ((<Using Libglade|tut-gtk2-dynui-libglade>))
 
 
 By now you have learnt a great deal about GTK+ and its supporting libraries and are able to create fairly complex applications. However, manually writing all of the code to create and configure the the widgets and behaviour for these applications can quickly become tedious. The Glade User Interface builder removes the need for you to write all that code by allowing you to design your UI graphically. It supports the GTK+ library of widgets as well as various widgets from GNOME libraries. User interfaces are saved as XML files, which can be  used to dynamically build your application's user interface.
