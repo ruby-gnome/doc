@@ -152,3 +152,14 @@ As of January 2009, brand new material mainly based on Andrew  Krause's book ((<
       * ((<Placeholders|tut-gtk2-mnstbs-dynmc#Placeholders>)){{image_right("dialog-warning-s2.png")}}
   * ((<Custom Stock Items|tut-gtk2-mnstbs-csti>)) (!)
   * ((<Test Your Understanding|tut-gtk2-mnstbs-tyu>))
+* (10) ((<Dynamic User Interfaces|tut-gtk2-dynui>)) (this page)
+  * ((<The Glade User Interface Builder|tut-gtk2-dynui-glade>))
+    * ((<Main Glade window with its menus|tut-gtk2-dynui-glade#Main Glade window with its menus>))
+  * ((<Building Example UI With Glade|tut-gtk2-dynui-bui>))
+    * ((<Creating the Window|tut-gtk2-dynui-bui#Creating the Window>))
+    * ((<Adding a Toolbar|tut-gtk2-dynui-bui#Adding a Toolbar>))
+    * ((<Completing the File Browser|tut-gtk2-dynui-bui#Completing the File Browser>))
+    * ((<Making Changes|tut-gtk2-dynui-bui#Making Changes>))
+    * ((<Widget Signals|tut-gtk2-dynui-bui#Widget Signals>))
+    * ((<Creating a Menu|tut-gtk2-dynui-bui#Creating a Menu>)) {{image_right("dialog-warning-s2.png")}} 
+  * ((<Using Libglade|tut-gtk2-dynui-libglade>)) (!)
