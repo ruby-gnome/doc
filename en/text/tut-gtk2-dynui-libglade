@@ -122,3 +122,9 @@ Change it to:
  def gtk_main_quit(widget)
    Gtk.main_quit
  end
+
+:Note:
+    At first one may think that ((*ruby-glade-create-template*)) could generate the complete output, so we wouldn't have to capture (ourApplication)Glade object into a variable, and add the two lines needed to make our window visible. This would be the case if Glade application did not allow you to name the top window to something other than "window". 
+    {{br}}
+
+    After all, some reflective thinking  reveals that the way above procedures are set makes sense, namely one should be reminded from the start that there is a Ruby code hidden behind all this Glade convenience, and that you gain access to it by calling GladeXML#get_widget("widget_name"). 
