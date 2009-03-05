@@ -81,6 +81,36 @@ This step will create the following output in the "browser.rb" file:
    Gtk.main
  end
 
+However you can not yet run this program as is. You must first make your main window visible. To do this you must first capture the (YourApplication)Glade object into a variable. In our case this object is ((*BrowserGlade*)) object. In the above program you would change the following line:
+  
+   BrowserGlade.new(PROG_PATH, nil, PROG_NAME)
+
+to something like:
+
+   o = BrowserGlade.new(PROG_PATH, nil, PROG_NAME)
+
+And lastly you would add the following two lines just before the "Gtk.main" statement:
+
+   window = o.glade.get_widget("window")
+   window.show_all
+
+Hence, the last part of our ((*browser.rb*)) program now looks like the following:
+
+ # Main program
+ if __FILE__ == $0
+   # Set values as your own application. 
+   PROG_PATH = "browser.glade"
+   PROG_NAME = "YOUR_APPLICATION_NAME"
+   BrowserGlade.new(PROG_PATH, nil, PROG_NAME)
+   o = BrowserGlade.new(PROG_PATH, nil, PROG_NAME)
+   window = o.glade.get_widget("window")
+   window.show_all
+   Gtk.main
+ end
+
+After you add the above " missing" code you may run your output ((*browser.rb*)) program. Indeed, you would need to implement the all the callback methods, but one should be fixed immediately, namely: 
+
+
 After you add the necessary code mentioned above to the output ((*(browser.rb)*)) program, you may run it.  Indeed, you would need to implement the all the callback methods, but one should be fixed immediately, namely: 
 
  def gtk_main_quit(widget)
