@@ -5,7 +5,7 @@
 
 After you design your application in Glade, the next step is to load the user interface with Libglade. This library is used to parse the Glade user interface and create all of the necessary widgets at runtime.
 
-To create a runable application from your Glade file is run the following command:
+To create a runable application from your Glade file run the following command:
 
  ruby-glade-create-template browser.glade > browser.rb
 
