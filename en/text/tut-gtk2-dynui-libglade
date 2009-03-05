@@ -155,7 +155,7 @@ Loading a Glade user interface is done with GladeXML.new. This code is squirrell
                            localedir,
                            flag) {|handler| method(handler)}
 
-The return value of GladeXML.new is an GladeXML object saved in (ourApplication)Glade's attribute called ((*glade*)). This object can be viewed as an array containing all the widgets you created with Glade application. Once you have initialized the user interface by creating a new ((<GladeXML>)) object:
+The return value of GladeXML.new is an GladeXML object saved in (ourApplication)Glade's attribute called ((*glade.*)) This object can be viewed as an array containing all the widgets you created with Glade application. Once you have initialized the user interface by creating a new ((<GladeXML>)) object:
 
    o = BrowserGlade.new(program_path, nil, program_name)
 
