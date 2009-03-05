@@ -81,7 +81,8 @@ This step will create the following output in the "browser.rb" file:
    Gtk.main
  end
 
-:Currently there's a bug in  ruby-glade-create-template: {{image_right("dialog-warning.png")}} 
+{{image_right("dialog-warning.png")}} 
+:Currently there's a bug in  ruby-glade-create-template:
     
     I believe there is currently a bug in ((*ruby-glade-create-template*)).The code it produces is missing the following two lines at the end of ((*initialize*)) method:
 
