@@ -163,6 +163,6 @@ you can retrieve widgets by either of the two following methods:
 
    widget = o.glade.get_widget("widget_name")
 or
-   widget = o.glade.["widget_name"]
+   widget = o.glade["widget_name"]
 
 The widget returned above is already set up with all of the properties that you set up in Glade. You can use this widget like any other Gtk::Widget that was created in your applications using methods provided by Ruby GTK+ (Ruby/GNOME2). This shows one of the main advantages of Libglade - you do not have to provide all the monotonous code for setting up the user interface and can quickly get to developing more interesting aspects of the application.
