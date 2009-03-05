@@ -81,32 +81,7 @@ This step will create the following output in the "browser.rb" file:
    Gtk.main
  end
 
-{{image_right("dialog-warning.png")}} 
-:Currently there's a bug in  ruby-glade-create-template:
-    
-    I believe there is currently a bug in ((*ruby-glade-create-template.*)) The code it produces is missing the following two lines at the end of ((*initialize*)) method:
-
-     window = @glade.get_widget("window")   # <--- BUG: add these two lines
-     window.show_all                        # <--- BUG: add these two lines
-
-    Here is how ((*ruby-glade-create-template*)) creates the initialize method:
-
-     def initialize(path_or_data, root = nil, domain = nil, localedir = nil, flag = GladeXML::FILE)
-       bindtextdomain(domain, localedir, nil, "UTF-8")
-       @glade = GladeXML.new(path_or_data, root, domain, localedir, flag) {|handler| method(handler)}
-     end
-
-    You should add the two missing lines into the above ((*initialize*)) method like shown here:
-
-     def initialize(path_or_data, root = nil, domain = nil, localedir = nil, flag = GladeXML::FILE)
-       bindtextdomain(domain, localedir, nil, "UTF-8")
-       @glade = GladeXML.new(path_or_data, root, domain, localedir, flag) {|handler| method(handler)}
-
-       window = @glade.get_widget("window")   # <--- BUG: add these two lines
-       window.show_all                        # <--- BUG: add these two lines
-     end
-
-After you fix this BUG you may run your output ((*browser.rb*)) program. Indeed, you would need to implement the all the callback methods, but one should be fixed immediately, namely: 
+After you add the necessary code mentioned above to the output ((*(browser.rb)*)) program, you may run it.  Indeed, you would need to implement the all the callback methods, but one should be fixed immediately, namely: 
 
  def gtk_main_quit(widget)
    puts "gtk_main_quit() is not implemented yet."
