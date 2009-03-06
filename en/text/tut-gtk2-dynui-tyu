@@ -614,3 +614,12 @@ And here is the Ruby end result:
    window.show_all
    Gtk.main
  end
+
+
+=== The Issues With Flexible Menu Designs
+
+One disadvantage of designing menus with Glade is that it is not easy to modify existing design. If your users do need a capability to customize menus, one way to do this is by packing all of your widgets with respect to the end of the vertical box or whatever container you use as the child of the main window. Then when your application loads, you can simply pack the menu created by Gtk::UIManager into the window with ((*pack_start*)) method. You may also need to experiment and change the position property in the Packing tab of the widget properties editor for some widgets within the vertical box. 
+
+Mixing the Glade and Gtk::UIManager techniques also does not come easy since you may need to convert for Gtk::UIManager more natural designs using Proc callbacks to method callbacks. The two strategies are sufficiently different that we do not like to mix them. My preference in this case is to use only method calls for all the callbacks and employ more unified method of data sharing, with a class as is our ((*TextEditor*)) class used only to pass data parameters around. 
+
+This last example highlighted some of the issues or concerns that may arise when more elaborate, flexible and customizable GUI designs are needed. In particular you should be aware of the three different GUI design methods and what are the drawbacks and advantage of each. Moreover sometimes a combination of the three is the best solution, and that may be more than you've bargained for. 
