@@ -8,7 +8,8 @@ This exercise is especially important for you to become a proficient Ruby GTK+ d
 === Exercise #1:
 
 {{image_left("mnstbs-tyu1.png")}}
-In this exercise implement the text editor from the 1st exercise in chapter (9), or as we call it "Menus and Toolbars" session, where we used the simple text editor example from an even earlier chapter (7) and implemented it there with Gtk::UIManager. Here we will use Glade to do the same. The toolbar in the text editor should be now implemented completely in Glade. This exercise should not require much extra coding if you use the solution from the previous chapter. However there are few important small differences. In chapter (9) most of the callbacks were implemented as Procs which inherit variables from the environment in which they are defined. Here, however, they are all methods. This calls for a different approach to pass in the variables tucked into the TextEditor class.
+In this exercise implement the text editor from the 1st exercise in chapter (9), or as we call it "Menus and Toolbars" session, where we used the simple text editor example from an even earlier chapter (7) where we programmed it manually, but implemented it in chapter 9 with Gtk::UIManager. Here we will use Glade to do the same. The toolbar in the text editor should be now implemented completely in Glade. This exercise should not require much extra coding if you use the solution from the previous chapter. However there are few important small differences. In chapter (9) most of the callbacks were implemented as Procs which inherit variables from the environment in which they are defined. Here, however, they are all methods. This calls for a different approach to pass in the variables tucked into the TextEditor class.
+
 
 
 Again, for your convenience I will include the ((*ex10-1-editor-tb.glade*)) file, so you can verify your work. 
