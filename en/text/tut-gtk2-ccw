@@ -1,0 +1,4 @@
+= Creating Custom GTK+ Widgets
+{{link "tut-gtk2-dynui-tyu", "tut-gtk2-ccw", "tut-gtk", "tut-gtk2-agtkw"}}
+
+This page only exists for the mapping to chapter 11 in Andrew Klauses's Book "Foundations of GTK+ development". The contents of that chapter is not applicable to Ruby implementation in the form in which I planed to represent this tutorial to Ruby users.  
