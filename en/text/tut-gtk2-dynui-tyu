@@ -134,7 +134,7 @@ Again, for your convenience I will include the ((*ex10-1-editor-tb.glade*)) file
  </glade-interface>
 
 
-Indeed, the above file or better your own Glade creation's output has to be first processed with ((*ruby-glade-create-template*)) command, and then all the missing code added to it. I hope after skimming through what we have here you will have no trouble building this yourself. Remember that by just reading the code here you will most likely miss many little things that matter. I urge you to study and play with this code until you are absolutely confident you understand how it came to being. 
+Indeed, the above file or better your own Glade creation's output has to be first processed with ((*ruby-glade-create-template*)) command, and then all the missing code added to it. I hope after skimming through what we have here you will have no trouble building this yourself. Remember that by just reading the code here you will most likely miss many little things that matter. I urge you to study and play with this code until you are absolutely confident you understand how it came into being. 
 
 Following is the Ruby program where all the callbacks are implemented.
 
