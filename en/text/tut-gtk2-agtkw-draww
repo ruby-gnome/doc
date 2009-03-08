@@ -169,7 +169,12 @@ You should notice a few things in the above listing. First, a ((*parray*)) is us
 
 {{image_right("agtkw-02-drawingareas.png")}}
 
-My first image above suffered due to the just described problem with the ((*expose_event*)), and here on the right hand side image we can see that there is a solution to this problem. To fix it we need to place the our shape drawing instance methods or algorithms into the callback triggered by the offending ((*expose_event*)) event:
+My first image above suffered due to the just described problem with the ((*expose_event*)), and here on the right hand side image we can see that there is a solution to this problem. To fix it we need to place the our shape drawing instance methods or algorithms into the callback triggered by the offending ((*expose_event*)) event.
+
+However, I would like to add that the solution I provide here is extremely inefficient, first, I bundled the drawing methods within the each loop to prevent a random ((*expose_event*)) to trigger what was intended to be done by the user when he or she pressed the "+" key, and also the drawing methods reside in two places now. All this is to satisfy the programming environment - I believed this is turned on its head, namely the programming environment should support you the programmer!!! 
+
+Following is the awkward fix:
+
 
 {{br}}
 
