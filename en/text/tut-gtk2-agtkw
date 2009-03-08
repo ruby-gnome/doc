@@ -5,3 +5,17 @@
 
   * 12 ((<Additional GTK+ Widgets|tut-gtk2-agtkw>)) (this page){{image_right("dialog-warning-s2.png")}}
     * 1 ((<Drawing Widgets|tut-gtk2-agtkw-draww>)) (!)
+    * 2.1 ((<Calendars|tut-gtk2-agtkw-cal>))
+    * 2.2 ((<Status Icons|tut-gtk2-agtkw-cal#Status Icons>))
+
+
+By now, you have learnt Ruby equivalent of almost everything Andrew Klause's book has to teach you. However, there are a number of widgets that did not quite fit into previous chapters and sessions. We will deal with those here.
+
+The first two widgets are used for drawing and are named Gtk::DrawingArea and Gtk::Layout. These two widgets are very similar except the Gtk::Layout widget allows you to embed arbitrary widgets into it in addition to using functions for drawing. In addition, you will learn about Gtk::Entry widgets that support automatic completion and calendars. Lastly, you will be introduced to widgets that were added in GTK+ 2.10 including status icons, printing support, and recent file managers.
+
+:In this chapter you will learn the following:
+
+    * How to use the drawing widgets Gtk::DrawingArea and Gtk::Layout
+    * How to use the Gtk::Calendar widget to track information about months and the year
+    * How to use widgets introduced in GTK+ 2.10 that provide recent file tracking, printing support, and status icons
+    * How to implement automatic completion in Gtk::Entry widget by applying a Gtk::EntryCompletion object
