@@ -1,6 +1,34 @@
 {{link nil, "Install Guide", nil, nil}}
 = Install Guide for Ubuntu
 
+== Ubuntu 8.10 (Intrepid Ibex)
+
+=== Installation 
+There are two possibilities to install Ruby-GNOME2 in Ubuntu 8.10. 
+
+--- 1. Version 0.17.0 from the standard repository
+      Just install the meta-package ruby-gnome2.
+
+--- 2. Version 0.18.1 from the HOB-Bruneck repository
+
+      Based on the work from Arnaud Cornet we have repackaged the up to date bindings for Ubuntu 8.10. To install them, you have to ((<add|URL:https://help.ubuntu.com/community/Repositories/Ubuntu/>)) the following repository:
+
+       deb http://franz.hob-bruneck.info/downloads/ intrepid/
+      
+      Now install the meta-package ruby-gnome2.
+
+Have fun!
+
+
+=== Bugs
+
+Report problems to ((<"Franz"|Franz>)).
+
+=== ChangeLog
+
+* 2009/03/08 Created - ((<"Franz"|Franz>))
+
+
 == Ubuntu 7.10 (Gutsy Gibbon) and 8.04 (Hardy Heron)
 
 === Installation 
