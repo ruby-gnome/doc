@@ -138,3 +138,37 @@ You can resize the image during or after you load its file. You may wish to resi
   * INTERP_TILES : - This is an accurate simulation of the PostScript image operator without any interpolation enabled. Each pixel is rendered as a tiny parallelogram of solid color, the edges of which are implemented with antialiasing. It resembles nearest neighbor for enlargement, and bilinear for reduction.
   * INTERP_BILINEAR : - Best quality/speed balance; use this mode by default. Bilinear interpolation. For enlargement, it is equivalent to point-sampling the ideal bilinear-interpolated image. For reduction, it is equivalent to laying down small tiles and integrating over the coverage area.
   * INTERP_HYPER : - This is the slowest and highest quality reconstruction function. It is derived from the hyperbolic filters in Wolberg's "Digital Image Warping", and is formally defined as the hyperbolic-filter sampling the ideal hyperbolic-filter interpolated image (the filter is designed to be idempotent for 1:1 pixel mapping). 
+
+== Help Menu Option
+
+The About Dialogue usually appears an a Help Menu, which makes this point as good as any to mention how to handle Help menu option itself. We will not talk about the complete solution here, because menus will not be covered until chapter (9) "Menus and Toolbars". What is worth mentioning here is that help can come in many text formats which on top of that are handled on different platforms with different applications. 
+
+Let me start with an oxymoron: In order to handle "Help" in a platform independent manner we need to figure out on which platform our application is running. If we are interested only in the major three OS families such as Unix/Linux, OS X, and Microsoft Windows we can pull it off with something like the following code:
+
+ class DisplayHelp
+   def self.print(file)
+     case RUBY_PLATFORM
+       when /ix/i, /ux/i, /gnu/i, /sysv/i, /solaris/i, /sunos/, /bsd/i
+         system "xdg-open #{file}"   # Unix/Linux
+       when /win/i, /ming/i
+         system "start #{file}"      # Microsoft Windows
+       when /universal-darwin/
+         system "open #{file}"       # Apple's osx
+       else
+         raise "Unknown operating system: [#{RUBY_PLATFORM}]"
+     end
+   end
+ end
+
+ # Main program
+ if __FILE__ == $0
+   DisplayHelp.print("test.pdf")
+ end
+
+The above code opens any reasonable file format even images and text files with os-specific application. The following table may give you a better idea:
+
+ O.S.     | Command             *.txt, *.html, *.pdf, *.png, ...
+ ---------+---------------------------------------------------------------
+ Windows  | start   ..... start index.html,       or:   start some.pdf
+ OSX      | open ........ open index.html,        or:   open some.pdf
+ Linux    | xdg-open .... xdg-open index.html,    or:   xdg-open some.pdf
