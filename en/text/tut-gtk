@@ -62,7 +62,7 @@ As of January 2009, brand new material mainly based on Andrew  Krause's book ((<
   * ((<Message Dialogues|tut-gtk2-dialog-msg>))
   * ((<Provide Info About Your Application|tut-gtk2-dialog-about>))
     * ((<** Pixbuf|tut-gtk2-dialog-about#Gdk::Pixbuf>))
-    * ((<Provide Info About Your Application|tut-gtk2-dialog-about>))
+    * ((<Help Menu Option|tut-gtk2-dialog-about#Help Menu Option>))
   * ((<Types Of File Chooser Dialogues|tut-gtk2-dialog-fichoo>))
     * ((<Saving Files|tut-gtk2-dialog-fichoo#Saving Files>))
     * ((<Creating a Folder|tut-gtk2-dialog-fichoo#Creating a Folder>))
