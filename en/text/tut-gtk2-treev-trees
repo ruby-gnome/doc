@@ -175,7 +175,7 @@ Beside our initial setup of our array called ((*list*)) you will find numerous h
  list.each_with_index do |e, i|
    # If the product type is a category, count the quantity
    # of all of the products in the category that are going
-   # to be boughty.
+   # to be bought.
    if (e.product_type == $p_category)
      j = i + 1
      # Calculate how many products will be bought in
@@ -205,3 +205,131 @@ The same facts about the order of our data is exploited when we create parent an
      child[$prod_index] = list[i].product
    end
  end
+
+== Multidimensional Tree Store
+
+Recently I was inspired by a discussion on Ruby Forum to write a more elaborate  Tree Store  example implementing a multidimensional array with categories and subcategories, to reveal the mechanics behind it. It may not be immediately apparent how to create a deeper hierarchy of categories and subcategories. We learnt so far that Gtk::TreeStore#append(nil) creates a parent row. For instance we have a table with the following data:
+
+ [ INDEX ] [ PARENT ] [ DATA ]
+   0,        0,       "food"          >> ROOT Category
+   1,        0,       "cheeses"       >> Sub-Category
+   2,        1,       "cheddar"       >> Item 1
+   3,        1,       "brie"          >> Item 2
+   4,        0,       "beverages"     >> ROOT Category
+   5,        4,       "non-alcohol"   >> Sub-Category
+   6,        5,       "pepsi"         >> Item 1
+   7,        5,       "coke"          >> Item 2 
+   8,        4,       "alcoholic"     >> Sub-Category
+   9,        8,       "wine"          >> Item 1
+  10,        8,       "brandy"        >> Item 2 
+
+are the Sub-Categories also created by passing argument nil to the append method? Is there a requirement that the rows be ordered in a certain way. Can we append to the above table another food category for instance bread, after the non-food categories? How are the rows categories, subcategories and individual items related? 
+
+{{image_right("treestore-multi-dim.png")}}
+
+It turns out that only top-level parents are created by the call to append with the nil argument. How is then the grouping accomplished? All these issues are addressed in the following example. Note also that we also append the bred sub-category as mentioned above - apparently out of order - i.e. after the beverages.  
+
+
+
+((*treestore-multi-dim.rb*))
+
+ #!/usr/bin/env ruby
+ require 'gtk2'
+ 
+ class FoodItem
+   attr_accessor :index, :parent, :desc, :qty, :measure, :price
+   def initialize(i, p, d, q, m, pr)
+     @index, @parent, @desc, @qty, @measure, @price = i, p, d, q, m, pr
+   end
+   DESC = 0; QTY = 1; PRC=2
+ end
+ 
+ class MultiColTreeStore
+   attr_accessor :list, :treestore
+ 
+   def initialize
+     @list = [   # index  parent description    qty  measure prc 
+       FoodItem.new( 0,  0,     "food",          0,  nil,   0.0),
+       FoodItem.new( 1,  0,     "cheeses",       0,  nil,   0.0),
+       FoodItem.new( 2,  1,     "cheddar",      10,  "lb",  2.5),
+       FoodItem.new( 3,  1,     "brie",          5,  "lb",  5.0),
+       FoodItem.new( 4,  0,     "beverages",     0,  nil,   0.0),
+       FoodItem.new( 5,  4,     "non-alcohol",   0,  nil,   0.0),
+       FoodItem.new( 6,  5,     "pepsi",        60,  "oz",  0.95),
+       FoodItem.new( 7,  5,     "coke",         70,  "oz",  0.95),
+       FoodItem.new( 8,  4,     "alcoholic",     0,  nil,   0.0),
+       FoodItem.new( 9,  8,     "wine",         20,  "oz",  2.0),
+       FoodItem.new(10,  8,     "brandy",        7,  "oz",  3.5),
+       FoodItem.new(11,  0,     "breads",        0,  nil,   0.0),
+       FoodItem.new(12, 11,     "white grain", 700,  "g",   3.75),
+       FoodItem.new(13, 11,     "rye",          65,  "g",   2.5),
+       FoodItem.new(14, 11,     "bagel",        30,  "g",   0.5)
+     ]
+ 
+     # Create a new tree model with three columns, as Boolean, 
+     # integer and string.
+     @treestore = Gtk::TreeStore.new(String, String, String)
+ 
+     window = Gtk::Window.new(Gtk::Window::TOPLEVEL)
+     window.resizable = true
+     window.title = "Multi-dim Tree Store"
+     window.border_width = 10
+     window.signal_connect('delete_event') { Gtk.main_quit }
+     window.set_size_request(275, 300)
+ 
+ 
+     treeview = Gtk::TreeView.new
+     setup_tree_view(treeview)
+ 
+     # Populate trestore
+     food      = fill_row(nil,       0)
+     cheese    = fill_row(food,      1)
+     item      = fill_row(cheese,    2)
+     item      = fill_row(cheese,    3)
+     beverage  = fill_row(nil,       4)
+     nalcho    = fill_row(beverage,  5)
+     item      = fill_row(nalcho,    6)
+     item      = fill_row(nalcho,    7)
+     alcho     = fill_row(beverage,  8)
+     item      = fill_row(alcho,     9)
+     item      = fill_row(alcho,    10)
+     bread     = fill_row(food,     11)
+     item      = fill_row(bread,    12)
+     item      = fill_row(bread,    13)
+     item      = fill_row(bread,    14)
+ 
+     # Add the tree model to the tree view
+     treeview.model = treestore
+     scrolled_win = Gtk::ScrolledWindow.new
+     scrolled_win.add(treeview)
+     scrolled_win.set_policy(Gtk::POLICY_AUTOMATIC, Gtk::POLICY_AUTOMATIC)
+     window.add(scrolled_win)
+     window.show_all
+   end
+ 
+   # Add three columns to the GtkTreeView. Both columns will 
+   # be displayed as text.
+   def setup_tree_view(treeview)
+     renderer = Gtk::CellRendererText.new
+     column = Gtk::TreeViewColumn.new("Description", renderer, "text" => FoodItem::DESC)
+     treeview.append_column(column)
+     renderer = Gtk::CellRendererText.new
+     column = Gtk::TreeViewColumn.new("Quantity", renderer, "text" => FoodItem::QTY)
+     treeview.append_column(column) 
+     renderer = Gtk::CellRendererText.new
+     column = Gtk::TreeViewColumn.new("Price", renderer, "text" => FoodItem::PRC)
+     treeview.append_column(column) 
+   end
+ 
+   def fill_row(iter, i)
+     row = treestore.append(iter)
+     row[FoodItem::DESC] =  list[i].desc 
+     row[FoodItem::QTY]  = list[i].measure ? "%02d %s" % [list[i].qty, list[i].measure] : ""
+     row[FoodItem::PRC]  = list[i].measure ? "$ %02.2f" % [list[i].price] : ""
+     row
+   end
+ end 
+ 
+ MultiColTreeStore.new
+ 
+ Gtk.main
