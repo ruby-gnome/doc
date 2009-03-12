@@ -230,7 +230,7 @@ are the Sub-Categories also created by passing argument nil to the append method
 It turns out that only top-level parents are created by the call to append with the nil argument. How is then the grouping accomplished? All these issues are addressed in the following example. Note also that we also append the bred sub-category as mentioned above - apparently out of order - i.e. after the beverages.  
 
 
-
+{{br}}
 ((*treestore-multi-dim.rb*))
 
  #!/usr/bin/env ruby
