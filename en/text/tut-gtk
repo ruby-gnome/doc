@@ -108,6 +108,7 @@ As of January 2009, brand new material mainly based on Andrew  Krause's book ((<
       * ((<Creating the Gtk::ListStore|tut-gtk2-treev-parts#Creating the Gtk::ListStore>))
     * ((<Using Gtk::TreeStore|tut-gtk2-treev-trees>))
       * ((<Data Organization Within a Tree Store|tut-gtk2-treev-trees#Data Organization Within a Tree Store>))
+      * ((<Multidimensional Tree Store|tut-gtk2-treev-trees#Multidimensional Tree Store>))
     * ((<Referencing Rows|tut-gtk2-treev-rr>))
       * ((<Tree Path|tut-gtk2-treev-rr#Tree Path>))
       * ((<Tree Iterators|tut-gtk2-treev-rr#Tree Iterators>))
