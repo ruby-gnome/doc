@@ -1,1 +1,75 @@
-bGKmEN  <a href="http://lhbqdmuukazs.com/">lhbqdmuukazs</a>, [url=http://zuieuoaccpwq.com/]zuieuoaccpwq[/url], [link=http://aaobvdvissqz.com/]aaobvdvissqz[/link], http://kqepbilsndtl.com/
+= rbbr - Ruby Browser
+rbbr is an application to browse modules/classes hierarchy and their constants and methods.
+
+== Screen Shots
+* Main Window - {{attach_anchor("rbbr.jpg")}}
+* Stock Item and Icon Browser - {{attach_anchor("rbbr_stock.jpg")}}
+
+== Download
+See ((<URL:http://sourceforge.net/project/showfiles.php?group_id=53614>))
+
+== Requirements
+* ruby 1.8.x, 1.9.x
+* Ruby/GTK2 0.9.1(older versions can't work this rbbr)
+* (option) Ruby-GNOME2 API Documents in RD+((<URL:http://ruby-gnome2.sourceforge.jp/data/ruby-gnome2-api.tar.gz>)). The rbbr-withapi package includes them. 
+* (option) ri 0.8a ((<URL:http://raa.ruby-lang.org/list.rhtml?name=ri>)). 
+   * On ruby-1.8.x or later, you don't need to install this.
+* (option) ReFe 0.8.0 or later (Japanese only) ((<URL:http://www.loveruby.net/en/refe.html>))
+* (option) Ruby-GetText-Package 0.5.5 or later for L10n menus/labels((<URL:http://ponx.s5.xrea.com/hiki/ruby-gettext.html>))
+   * Ruby-GetText-Package 0.5.4 has a bug. You need the latest version of this.
+   * Also you need Racc-1.4.3 or later to install this package. ((<URL:http://www.ruby-lang.org/raa/list.rhtml?name=racc>))
+
+== Install
+(1)Install Racc, Ruby-GetText-Package, ri, ReFe. (Optional)
+(2)De-Compress ruby-gnome2-api.tar.gz(Optional) and rbbr's archive
+(3)Copy ruby-gnome2-api/* to (rbbr's top directory)/data/rbbr/rd/*(Optional)
+(4)Go to rbbr's top directory and type:
+
+ $ ruby install.rb config
+ $ ruby install.rb setup
+ ($ su)
+ $ ruby install.rb install
+
+You can also install files in your favorite directory by
+supplying install.rb some options. Try "ruby install.rb --help".
+
+== How to get Ruby-GNOME2 API Reference
+You can get the newest(nightly) archive from:
+
+((<URL:http://ruby-gnome2.sourceforge.jp/data/ruby-gnome2-api.tar.gz>))
+
+And you can use it to overwrite the old data which was installed in (shared-data-dir)/rbbr/rd/.
+
+== Usage
+=== Runs rbbr
+:Linux, *BSD, Cygwin
+  Run the following command:
+
+  $ rbbr
+                                                                                
+:MS Windows(except Cygwin)
+  (Double or Single)Click ruby-install-dir\bin\rbbr.rbw from Explorer.
+
+If you get an error of ri/rdoc, you need to make document files for ri.
+
+  $ rdoc --ri
+
+Run "rdoc --help" for more details.
+
+=== How to find classes/modules
+==== Basic Search
+Enter "gtk::widget" to the search text box and click "Search" button.
+Then you can find Gtk::Widget, Gtk::Widget::Flags, Gtk::Widget::HelpType, .....
+
+Cases are ignored.
+
+==== Regular expressions
+You can use regular expressions as the search words.
+For example, you want to find "Gtk::Widget" only, enter "Gtk::Widget$" to the text box.
+
+==== Method Search
+You can find a class/module with a method. 
+e.g.) "Gtk.main", "Gtk main" "Gtk#main"   #=> Find Gtk.main
+
+== License
+This program is free software. You can distribute/modify this program under the terms of the Ruby Distribute License.
