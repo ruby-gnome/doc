@@ -1,1 +1,168 @@
-XlYniE  <a href="http://nmjkomgcgmhe.com/">nmjkomgcgmhe</a>, [url=http://lrnsxicjxowd.com/]lrnsxicjxowd[/url], [link=http://tbwqsvzlzplk.com/]tbwqsvzlzplk[/link], http://gncbrbbbodbq.com/
+= Menus and Toolbars
+{{link "tut-gtk2-mnstbs-tb", "tut-gtk2-mnstbs", "tut-gtk", "tut-gtk2-mnstbs-dynmc"}}
+
+== Toolbar Items
+
+The listing (toolbars.rb) in the previous session introduced a new widget Gtk::Toolbar. There are also data (class) types like Gtk::ToolItem, Gtk::ToolButton, and Gtk::SeparatorToolItem:
+
+:Toolbar item widgets:
+    * Gtk::ToolItem - The base class of widgets that can be added to Gtk::Toolbar
+    * Gtk::ToolButton - A Gtk::ToolItem subclass that displays buttons
+    * Gtk::SeparatorToolItem - A toolbar item that separates groups of other toolbar items
+
+You should note that these are all toolbar widgets - they all include word "Tool" in their name. I mention this because you could also build toolbar with ordinary buttons, and perhaps also a Gtk::VSeparator, however, then features like the arrow would not work in current release.
+
+
+Note that there now exists a draw accessor method (Gtk::SeparatorToolItem#draw=) which sets the draw property to true or false, indicating whether you want the separator to appear as a vertical line or an empty space. If you set separator's draw property to false and expand property to true, you will force all items after the separator to the right hand side of the toolbar.
+
+ separator.draw = false
+ separator.expand = true
+
+You can add toolbar items to the toolbar with the Gtk::Toolbar#insert(position, toolitem) instance method. Note that there are a number of deprecated insert methods. You should use the current insert method:
+
+--- insert(position, toolitem)
+
+    Inserts a toolitem in the toolbar at the given position.
+    * position: the number of widgets to insert this item after. 
+    * toolitem: a Gtk::ToolItem to add to the toolbar.
+    * Returns: the new toolbar item as a Gtk::ToolItem.
+
+{{image_right("dialog-warning.png")}}
+:Where did the tool-tips go?
+    I noticed that tool-tips are only available in the deprecated code. This does not seem right. Perhaps there is now a property with accessor methods available to manage tool-tips.
+
+
+=== Toggle Tool Buttons
+
+A Gtk::ToggleToolButton is a Gtk::ToolItem that contains a toggle button, therefore it implements initialization and toggle facilities itself. Toggle tool buttons include ((*active*)) property and ((*toggled*)) signal. If active is set to true the button is depressed.
+
+=== Radio Tool Buttons
+
+Gtk::RadioToolButton is derived from Gtk::ToggleToolButton, so it inherits the ((*active*)) property and ((*toggled*)) signal.
+
+=== Menu Tool Buttons
+
+Gtk::MenuToolButton is derived from Gtk::ToolButton. In fact a Gtk::MenuToolButton is a Gtk::ToolItem that contains a button and a small additional button with an arrow. When clicked, the arrow button pops up a drop-down menu.
+
+{{image_left("mnstbs-tbi-02.png")}}{{image_right("dialog-warning.png")}}
+There are a few minor problems with our program in the current Gtk/GNOME2 ( 2-0.17.0-rc1) release. The radio buttons do not behave all too well - more precisely, rendering of radio buttons is rather faulty. From programming perspective as far as toggling the active state goes, they do work as expected, however, the fact that they do not accept the label at the time of initialization makes them practically useless for the user who, because of this, can not distinguish between them. Also, to aggravate the situation even further the little circles do not show up either on the toolbar, however they appear on the pop-up menu when toolbar does not fit into the window. You can see all this on the two images accompanying this example.
+
+
+{{image_left("mnstbs-tbi-01.png")}}
+
+{{br}}
+Following is the program example from this session, that produces the output shown on the above images:
+
+((*toolbaritems.rb*))
+
+ #!/usr/bin/env ruby
+ require 'gtk2'
+ 
+ def item_cb(iid)
+   puts "Item ##{iid} selected."
+ end
+ 
+ # Create a toolbar with Cut, Copy, Paste and Select All
+ # toolbar items.
+ def create_toolbar(tb, ent)
+   cut = Gtk::ToolButton.new(Gtk::Stock::CUT)
+   copy = Gtk::ToolButton.new(Gtk::Stock::COPY)
+   paste = Gtk::ToolButton.new(Gtk::Stock::PASTE)
+   selectall = Gtk::ToolButton.new(Gtk::Stock::SELECT_ALL)
+   separator = Gtk::SeparatorToolItem.new
+ 
+   toggle = Gtk::ToggleToolButton.new(Gtk::Stock::HOME)
+   radio1 = Gtk::RadioToolButton.new("Sellect")
+   radio2 = Gtk::RadioToolButton.new(radio1, "_Un-sellect")
+   toggle.active = true
+ 
+   menu_btt = Gtk::MenuToolButton.new(Gtk::Stock::OPEN)
+ 
+   ilist = [ Gtk::MenuItem.new("Item 1"),
+             Gtk::MenuItem.new("Item 2"),
+             Gtk::MenuItem.new("Item 2")
+   ]
+   ilist[0].signal_connect('activate') { item_cb(1) }
+   ilist[1].signal_connect('activate') { item_cb(2) }
+   ilist[2].signal_connect('activate') { item_cb(3) }
+ 
+   file_list_mn = Gtk::Menu.new
+   file_list_mn.append(ilist[0])
+   file_list_mn.append(ilist[1])
+   file_list_mn.append(ilist[2])
+   file_list_mn.show_all
+ 
+   menu_btt.menu = file_list_mn
+ 
+   separator.draw = false
+   separator.expand = true
+ 
+   tb.show_arrow = true
+   tb.toolbar_style = Gtk::Toolbar::Style::BOTH
+ 
+   # NOTE: tool-tips are only part of the deprecated interface ?!
+   tb.insert(0, cut)
+   tb.insert(1, copy)
+   tb.insert(2, paste)
+   tb.insert(3, selectall)
+   tb.insert(4, separator)
+   
+   tb.insert(5, menu_btt)
+   tb.insert(6, radio1)
+   tb.insert(7, toggle)
+   tb.insert(8, radio2)
+ 
+   cut.signal_connect('clicked')       { ent.cut_clipboard }
+   copy.signal_connect('clicked')      { ent.copy_clipboard }
+   paste.signal_connect('clicked')     { ent.paste_clipboard }
+   selectall.signal_connect('clicked') { select_all(ent) }
+ end
+ 
+ # Select all of the text in the GtkEditable.
+ def select_all(edit)
+   # Gtk::Editable#select_region
+   edit.select_region(0, -1)
+ end
+ 
+ window = Gtk::Window.new(Gtk::Window::TOPLEVEL)
+ window.resizable = true
+ window.title = "Toolbars"
+ window.border_width = 10
+ window.signal_connect('delete_event') { Gtk.main_quit }
+ window.set_size_request(375, -1)
+ 
+ entry   = Gtk::Entry.new
+ toolbar = Gtk::Toolbar.new
+ create_toolbar(toolbar, entry)
+   
+ vbox = Gtk::VBox.new(false, 5)
+ vbox.pack_start_defaults(toolbar)
+ vbox.pack_start_defaults(entry)
+ 
+ window.add(vbox)
+ window.show_all
+ Gtk.main
+
+:Gtk::MenuToolButton
+
+    Let us revisit the more involved part of the menu tool button. By now, you must have realized that this widget contains two buttons. The first button contains the label and the Gtk::Stock item (image), and next to it on the right is the second arrow button, which opens a submenu you supplied. We have first encountered this menu feature in the ((<Creating Pop-up Menus|tut-gtk2-mnstbs-popup#Creating Pop-up Menus>)) session. There it may have been a bit obscured due to the fact that we used it on a progress bar with the help of the Gtk::EventBox widget. In our example program here we again create an item menu. You have to grasp the relationships between these widgets.
+
+     menu_btt = Gtk::MenuToolButton.new(Gtk::Stock::OPEN)
+
+     ilist = [ Gtk::MenuItem.new("Item 1"),
+               Gtk::MenuItem.new("Item 2"),
+               Gtk::MenuItem.new("Item 2")
+     ]
+     ilist[0].signal_connect('activate') { item_cb(1) }
+     ilist[1].signal_connect('activate') { item_cb(2) }
+     ilist[2].signal_connect('activate') { item_cb(3) }
+
+     file_list_mn = Gtk::Menu.new
+     file_list_mn.append(ilist[0])
+     file_list_mn.append(ilist[1])
+     file_list_mn.append(ilist[2])
+     file_list_mn.show_all
+
+     menu_btt.menu = file_list_mn
+
+    Also pay attention to the ((*show_all*)) instruction ("method" or "message" sent to file_list_mn object).
