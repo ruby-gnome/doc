@@ -260,7 +260,7 @@ It turns out that only top-level parents are created by the call to append with 
        FoodItem.new( 8,  4,     "alcoholic",     0,  nil,   0.0),
        FoodItem.new( 9,  8,     "wine",         20,  "oz",  2.0),
        FoodItem.new(10,  8,     "brandy",        7,  "oz",  3.5),
-       FoodItem.new(11,  0,     "breads",        0,  nil,   0.0),
+       FoodItem.new(11,  1,     "breads",        0,  nil,   0.0),
        FoodItem.new(12, 11,     "white grain", 700,  "g",   3.75),
        FoodItem.new(13, 11,     "rye",          65,  "g",   2.5),
        FoodItem.new(14, 11,     "bagel",        30,  "g",   0.5)
