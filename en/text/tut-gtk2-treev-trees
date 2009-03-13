@@ -248,7 +248,7 @@ It turns out that only top-level parents are created by the call to append with 
    attr_accessor :list, :treestore
  
    def initialize
-     @list = [     # description    qty  measure prc      index  parent
+     @list = [     # description   qty  measure prc       index  parent
        FoodItem.new("food",          0,  nil,   0.0),     #  0,   0
        FoodItem.new("cheeses",       0,  nil,   0.0),     #  1,   0
        FoodItem.new("cheddar",      10,  "lb",  2.5),     #  2,   1
