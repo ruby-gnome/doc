@@ -248,22 +248,22 @@ It turns out that only top-level parents are created by the call to append with 
    attr_accessor :list, :treestore
  
    def initialize
-     @list = [     # description   qty  measure prc       index  parent
-       FoodItem.new("food",          0,  nil,   0.0),     #  0,   0
-       FoodItem.new("cheeses",       0,  nil,   0.0),     #  1,   0
-       FoodItem.new("cheddar",      10,  "lb",  2.5),     #  2,   1
-       FoodItem.new("brie",          5,  "lb",  5.0),     #  3,   1,     
-       FoodItem.new("beverages",     0,  nil,   0.0),     #  4,   0,     
-       FoodItem.new("non-alcohol",   0,  nil,   0.0),     #  5,   4,     
-       FoodItem.new("pepsi",        60,  "oz",  0.95),    #  6,   5,     
-       FoodItem.new("coke",         70,  "oz",  0.95),    #  7,   5,     
-       FoodItem.new("alcoholic",     0,  nil,   0.0),     #  8,   4,     
-       FoodItem.new("wine",         20,  "oz",  2.0),     #  9,   8,     
-       FoodItem.new("brandy",        7,  "oz",  3.5),     # 10,   8,     
-       FoodItem.new("breads",        0,  nil,   0.0),     # 11,   1,     
-       FoodItem.new("white grain", 700,  "g",   3.75),    # 12,  11,     
-       FoodItem.new("rye",          65,  "g",   2.5),     # 13,  11,     
-       FoodItem.new("bagel",        30,  "g",   0.5)      # 14,  11,     
+     @list = [     # description   qty  measure price     # index  parent
+       FoodItem.new("food",          0,  nil,   0.0),     #  0,    0
+       FoodItem.new("cheeses",       0,  nil,   0.0),     #  1,    0
+       FoodItem.new("cheddar",      10,  "lb",  2.5),     #  2,    1
+       FoodItem.new("brie",          5,  "lb",  5.0),     #  3,    1,     
+       FoodItem.new("beverages",     0,  nil,   0.0),     #  4,    0,     
+       FoodItem.new("non-alcohol",   0,  nil,   0.0),     #  5,    4,     
+       FoodItem.new("pepsi",        60,  "oz",  0.95),    #  6,    5,     
+       FoodItem.new("coke",         70,  "oz",  0.95),    #  7,    5,     
+       FoodItem.new("alcoholic",     0,  nil,   0.0),     #  8,    4,     
+       FoodItem.new("wine",         20,  "oz",  2.0),     #  9,    8,     
+       FoodItem.new("brandy",        7,  "oz",  3.5),     # 10,    8,     
+       FoodItem.new("breads",        0,  nil,   0.0),     # 11,    1,     
+       FoodItem.new("white grain", 700,  "g",   3.75),    # 12,   11,     
+       FoodItem.new("rye",          65,  "g",   2.5),     # 13,   11,     
+       FoodItem.new("bagel",        30,  "g",   0.5)      # 14,   11,     
      ]
      # Create a new tree model with three columns, as Boolean, 
      # integer and string.
