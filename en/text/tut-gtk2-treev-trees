@@ -237,9 +237,9 @@ It turns out that only top-level parents are created by the call to append with 
  require 'gtk2'
  
  class FoodItem
-   attr_accessor :index, :parent, :desc, :qty, :measure, :price
-   def initialize(i, p, d, q, m, pr)
-     @index, @parent, @desc, @qty, @measure, @price = i, p, d, q, m, pr
+   attr_accessor :desc, :qty, :measure, :price
+   def initialize(d, q, m, pr)
+     @desc, @qty, @measure, @price = d, q, m, pr
    end
    DESC = 0; QTY = 1; PRC=2
  end
@@ -248,24 +248,23 @@ It turns out that only top-level parents are created by the call to append with 
    attr_accessor :list, :treestore
  
    def initialize
-     @list = [   # index  parent description    qty  measure prc 
-       FoodItem.new( 0,  0,     "food",          0,  nil,   0.0),
-       FoodItem.new( 1,  0,     "cheeses",       0,  nil,   0.0),
-       FoodItem.new( 2,  1,     "cheddar",      10,  "lb",  2.5),
-       FoodItem.new( 3,  1,     "brie",          5,  "lb",  5.0),
-       FoodItem.new( 4,  0,     "beverages",     0,  nil,   0.0),
-       FoodItem.new( 5,  4,     "non-alcohol",   0,  nil,   0.0),
-       FoodItem.new( 6,  5,     "pepsi",        60,  "oz",  0.95),
-       FoodItem.new( 7,  5,     "coke",         70,  "oz",  0.95),
-       FoodItem.new( 8,  4,     "alcoholic",     0,  nil,   0.0),
-       FoodItem.new( 9,  8,     "wine",         20,  "oz",  2.0),
-       FoodItem.new(10,  8,     "brandy",        7,  "oz",  3.5),
-       FoodItem.new(11,  1,     "breads",        0,  nil,   0.0),
-       FoodItem.new(12, 11,     "white grain", 700,  "g",   3.75),
-       FoodItem.new(13, 11,     "rye",          65,  "g",   2.5),
-       FoodItem.new(14, 11,     "bagel",        30,  "g",   0.5)
+     @list = [     # description    qty  measure prc      index  parent
+       FoodItem.new("food",          0,  nil,   0.0),     #  0,   0
+       FoodItem.new("cheeses",       0,  nil,   0.0),     #  1,   0
+       FoodItem.new("cheddar",      10,  "lb",  2.5),     #  2,   1
+       FoodItem.new("brie",          5,  "lb",  5.0),     #  3,   1,     
+       FoodItem.new("beverages",     0,  nil,   0.0),     #  4,   0,     
+       FoodItem.new("non-alcohol",   0,  nil,   0.0),     #  5,   4,     
+       FoodItem.new("pepsi",        60,  "oz",  0.95),    #  6,   5,     
+       FoodItem.new("coke",         70,  "oz",  0.95),    #  7,   5,     
+       FoodItem.new("alcoholic",     0,  nil,   0.0),     #  8,   4,     
+       FoodItem.new("wine",         20,  "oz",  2.0),     #  9,   8,     
+       FoodItem.new("brandy",        7,  "oz",  3.5),     # 10,   8,     
+       FoodItem.new("breads",        0,  nil,   0.0),     # 11,   1,     
+       FoodItem.new("white grain", 700,  "g",   3.75),    # 12,  11,     
+       FoodItem.new("rye",          65,  "g",   2.5),     # 13,  11,     
+       FoodItem.new("bagel",        30,  "g",   0.5)      # 14,  11,     
      ]
- 
      # Create a new tree model with three columns, as Boolean, 
      # integer and string.
      @treestore = Gtk::TreeStore.new(String, String, String)
@@ -276,7 +275,6 @@ It turns out that only top-level parents are created by the call to append with 
      window.border_width = 10
      window.signal_connect('delete_event') { Gtk.main_quit }
      window.set_size_request(275, 300)
- 
  
      treeview = Gtk::TreeView.new
      setup_tree_view(treeview)
@@ -323,7 +321,7 @@ It turns out that only top-level parents are created by the call to append with 
  
    def fill_row(iter, i)
      row = treestore.append(iter)
-     row[FoodItem::DESC] =  list[i].desc 
+     row[FoodItem::DESC] = list[i].desc 
      row[FoodItem::QTY]  = list[i].measure ? "%02d %s" % [list[i].qty, list[i].measure] : ""
      row[FoodItem::PRC]  = list[i].measure ? "$ %02.2f" % [list[i].price] : ""
      row
