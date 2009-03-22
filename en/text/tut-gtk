@@ -34,7 +34,7 @@ As of January 2009, brand new material mainly based on Andrew  Krause's book ((<
   * ((<Expanders|tut-gtk2-contwidg-expanders>))
   * ((<Handle Boxes|tut-gtk2-contwidg-handlebox>))
   * ((<Notebooks|tut-gtk2-contwidg-notebooks>))
-  * ((<Even Boxes|tut-gtk2-contwidg-eventbox>))
+  * ((<Event Boxes|tut-gtk2-contwidg-eventbox>))
 * (4) ((<Basic Widgets|tut-gtk2-btt>))
   * ((<Toggle Button|tut-gtk2-btt-toggle>))
     * ((<Mnemonics|tut-gtk2-btt-toggle#Mnemonics>))
