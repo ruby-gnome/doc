@@ -167,7 +167,7 @@ As of January 2009, brand new material mainly based on Andrew  Krause's book ((<
   * ((<Using Libglade|tut-gtk2-dynui-libglade>))
   * ((<Test Your Understanding|tut-gtk2-dynui-tyu>))
     * ((<The Issues With Flexible Menu Designs|tut-gtk2-dynui-tyu#The Issues With Flexible Menu Designs>))
-* (12) ((<Additional GTK+ Widgets|tut-gtk2-agtkw>)) (this page){{image_right("dialog-warning-s2.png")}}
+* (12) ((<Additional GTK+ Widgets|tut-gtk2-agtkw>)) {{image_right("dialog-warning-s2.png")}}
     * ((<Drawing Widgets|tut-gtk2-agtkw-draww>)) (!)
     * ((<Calendars|tut-gtk2-agtkw-cal>))
     * ((<Status Icons|tut-gtk2-agtkw-cal#Status Icons>))
