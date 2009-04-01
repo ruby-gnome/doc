@@ -29,6 +29,16 @@
 
 --- LOG_DOMAIN
 
+If you require to use poppler without a running Xorgserver,
+try the following code:
+
+  begin
+    require 'gtk2'
+    require 'poppler'
+  rescue Gtk::InitError
+  end
+
+
 == See Also
 
 * Poppler::Action
