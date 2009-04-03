@@ -28,7 +28,7 @@ nilを指定するか省略した場合，スケールウィジェット自身が((<アジャストメント|gtk2-
   Gtk::Scale#set_draw_value(draw_value)
   Gtk::Scale#draw_value=(drwa_value)
 
-ご想像通り，引数はtrueまはfalseで結果も予想通りである．
+ご想像通り，引数はtrueまたはfalseで結果も予想通りである．
 
 スケールウィジェットによって表示される値は，アジャトメントのvalue値で，デフォルトでその値は小数点以下1桁に丸められる．
 次のメソッドで桁数を変更できる：
