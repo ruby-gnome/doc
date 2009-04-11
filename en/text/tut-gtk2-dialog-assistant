@@ -3,7 +3,7 @@
 
 == Dialogues With Multiple Pages Using Gtk_Assistant
 
-As of GTK+ 2.10, a new widget called Gtk::Asistant was introduced. This widget enables you to create dialogues with multiple stages, which split otherwise complex dialogues into steps that guide the user. You may have encountered these kinds of dialogues in various application as wizardss.
+As of GTK+ 2.10, a new widget called Gtk_Assistant was introduced. This widget enables you to create dialogues with multiple stages, which split otherwise complex dialogues into steps that guide the user. You may have encountered these kinds of dialogues in various application as wizardss.
 
 This example begins by giving the user general information. The next page contains the entry field and will not allow the user to proceed until some text is entered, the third page will not allow to continue until the check button is selected. The fourth page should activate the forward button after progress bar is filled. and the last page gives the summary of what happened. This is a general flow that every Gtk::Assistant widget should follow.
 
