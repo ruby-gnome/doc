@@ -15,7 +15,7 @@ You can choose between two different methods to installing Ruby-GNOME2 in Ubuntu
 
        deb http://franz.hob-bruneck.info/downloads/ jaunty/
       
-      Now install the meta-package ruby-gnome2. At for now the packages are available for the i686 architecture only.
+      Now install the meta-package ruby-gnome2. As for now the packages are available for the i686 architecture only.
 
 Have fun!
 
