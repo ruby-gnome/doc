@@ -11,7 +11,7 @@ You can choose between two different methods to installing Ruby-GNOME2 in Ubuntu
 
 --- 2. Version 0.18.1 from our repository
 
-      Based on the work of Arnaud Cornet we have repackaged the up to date bindings for Ubuntu 9.04. To install them you have to ((<add|URL:https://help.ubuntu.com/community/Repositories/Ubuntu/>)) the following repository:
+      Based on the work of Arnaud Cornet we have repackaged the up-to-date bindings for Ubuntu 9.04. To install them you have to ((<add|URL:https://help.ubuntu.com/community/Repositories/Ubuntu/>)) the following repository:
 
        deb http://franz.hob-bruneck.info/downloads/ jaunty/
       
@@ -43,7 +43,7 @@ There are two possibilities to installing Ruby-GNOME2 in Ubuntu 8.10.
 
 --- 2. Version 0.18.1 from our repository
 
-      Based on the work of Arnaud Cornet we have repackaged the up to date bindings for Ubuntu 8.10. To install them you have to ((<add|URL:https://help.ubuntu.com/community/Repositories/Ubuntu/>)) the following repository:
+      Based on the work of Arnaud Cornet we have repackaged the up-to-date bindings for Ubuntu 8.10. To install them you have to ((<add|URL:https://help.ubuntu.com/community/Repositories/Ubuntu/>)) the following repository:
 
        deb http://franz.hob-bruneck.info/downloads/ intrepid/
       
@@ -93,7 +93,7 @@ There are two possibilities to install Ruby-GNOME2 in Ubuntu 7.04.
 
 --- 2. Version 0.16.0 from the HOB-Bruneck repository (i386 and amd64)
 
-      Based on the work of Arnaud Cornet we have repackaged the up to date bindings for Ubuntu 7.04. To install them, you have to ((<add|URL:https://help.ubuntu.com/community/Repositories/Ubuntu/>)) the following repository:
+      Based on the work of Arnaud Cornet we have repackaged the up-to-date bindings for Ubuntu 7.04. To install them, you have to ((<add|URL:https://help.ubuntu.com/community/Repositories/Ubuntu/>)) the following repository:
 
        deb http://franz.hob-bruneck.info/downloads/ feisty/
       
