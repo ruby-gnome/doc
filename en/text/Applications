@@ -58,3 +58,6 @@ position and size, font selections and background colours.
 
 :((<Valar|URL:http://github.com/danlucraft/valar/tree/master>))
 Automatically generate Ruby bindings for Vala code.
+
+:((<Xmp Manager|URL:http://grigio.org/xmp_manager>))
+Xmp Manager is a Gui to write xmp metadata on .png, .jpeg files.
