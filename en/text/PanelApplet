@@ -42,8 +42,7 @@ Foreword
 
     Gets the panels background type and its background.
 
-    * Returns: an array with two values, with the current ((<Background Type|PanelApplet#BackgroundType>)) at first.
-    The second value comes after this rules:
+    * Returns: an array with two values, with the current ((<Background Type|PanelApplet#BackgroundType>)) at first. The second value comes after this rules:
 
     PanelApplet::BackgroundType::NO_BACKGROUND => nil
 
@@ -214,30 +213,30 @@ Foreword
 
 ==== BackgroundType
 
---- PanelApplet::BackgroundType::NO_BACKGROUND
+--- BackgroundType::NO_BACKGROUND
     no background is set to the panel
---- PanelApplet::BackgroundType::COLOR_BACKGROUND
+--- BackgroundType::COLOR_BACKGROUND
     the background of the panel is colored
---- PanelApplet::BackgroundType::PIXMAP_BACKGROUND
+--- BackgroundType::PIXMAP_BACKGROUND
     the panel has a Gdk::Pixmap as background
 
 ==== Orientation
 
---- PanelApplet::ORIENT_UP
---- PanelApplet::ORIENT_DOWN
---- PanelApplet::ORIENT_LEFT
---- PanelApplet::ORIENT_RIGHT
+--- ORIENT_UP
+--- ORIENT_DOWN
+--- ORIENT_LEFT
+--- ORIENT_RIGHT
 
 
 === Flags
 
---- PanelApplet::FLAGS_NONE
+--- FLAGS_NONE
     No flags are to be associated with the applet.
---- PanelApplet::EXPAND_MAJOR
+--- EXPAND_MAJOR
     The applet should expand horizontally on an horizontal panel and vertically on a vertical panel.
---- PanelApplet::EXPAND_MINOR
+--- EXPAND_MINOR
     The applet should expand vertically on an horizontal panel and horizontally on a vertical panel.
---- PanelApplet::HAS_HANDLE
+--- HAS_HANDLE
     The panel should draw a grab handle on one side of the applet.
 
 == See Also
