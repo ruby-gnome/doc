@@ -43,9 +43,12 @@ Foreword
     Gets the panels background type and its background.
 
     * Returns: an array with two values, with the current PanelApplet::BackgroundType at first. The second value comes after this rules:
-        PanelApplet::BackgroundType::NO_BACKGROUND => nil
-        PanelApplet::BackgroundType::COLOR_BACKGROUND => a Gdk::Color which contains the panels background color
-        PanelApplet::BackgroundType::PIXMAP_BACKGROUND => a Gdk::Pixmap with a copy of the area, the applet covers in the panel
+
+    PanelApplet::BackgroundType::NO_BACKGROUND => nil
+
+    PanelApplet::BackgroundType::COLOR_BACKGROUND => a Gdk::Color which contains the panels background color
+
+    PanelApplet::BackgroundType::PIXMAP_BACKGROUND => a Gdk::Pixmap with a copy of the area, the applet covers in the panel
 
 --- size
 
@@ -53,18 +56,14 @@ Foreword
 
 --- orient
 
-    Gets the current orientation of the applet.
+    Gets the current ((<orientation|PanelApplet#Orientation>)) of the applet.
     
     * Returns: depending on the direction, the panel expands to one of the following values.
 
-        PanelApplet::ORIENT_UP
-        PanelApplet::ORIENT_DOWN
-        PanelApplet::ORIENT_LEFT
-        PanelApplet::ORIENT_RIGHT
 
 --- get_flags()
 
-    The ((<Flags>)) associated with the applet are boolean flags which the panel may read in order to
+    The ((<Flags|PanelApplet#Flags>)) associated with the applet are boolean flags which the panel may read in order to
     figure out how to handle the applet.
     
     Returns: the requested flags
@@ -72,7 +71,7 @@ Foreword
 
 --- set_flags(flags)
 
-    Set the flags to the PanelApplet
+    Set the ((<Flags|PanelApplet#Flags>)) to the PanelApplet
 
     * flags: the flags to set
     * Returns: self
@@ -210,24 +209,36 @@ Foreword
     Returns: the configuration value if the key is found, otherwise nil
 
 
-
 == Constants
+
+--- PanelApplet::BackgroundType::NO_BACKGROUND
+    no background is set to the panel
+--- PanelApplet::BackgroundType::COLOR_BACKGROUND
+    the background of the panel is colored
+--- PanelApplet::BackgroundType::PIXMAP_BACKGROUND
+    the panel has a Gdk::Pixmap as background
+
+==== Orientation
+
+--- PanelApplet::ORIENT_UP
+--- PanelApplet::ORIENT_DOWN
+--- PanelApplet::ORIENT_LEFT
+--- PanelApplet::ORIENT_RIGHT
+
 
 === Flags
 
-    PanelApplet::FLAGS_NONE No flags are to be associated with the applet.
-    PanelApplet::EXPAND_MAJOR The applet should expand horizontally on an horizontal panel and vertically on a vertical panel.
-    PanelApplet::EXPAND_MINOR The applet should expand vertically on an horizontal panel and horizontally on a vertical panel.
-    PanelApplet::HAS_HANDLE The panel should draw a grab handle on one side of the applet.
-
-
---- FOOBLA
-
-    Call PanelApplet#foobla(true).
-
+--- PanelApplet::FLAGS_NONE
+    No flags are to be associated with the applet.
+--- PanelApplet::EXPAND_MAJOR
+    The applet should expand horizontally on an horizontal panel and vertically on a vertical panel.
+--- PanelApplet::EXPAND_MINOR
+    The applet should expand vertically on an horizontal panel and horizontally on a vertical panel.
+--- PanelApplet::HAS_HANDLE
+    The panel should draw a grab handle on one side of the applet.
 
 == See Also
-
+Gtk::StatusIcon
 == ChangeLog
 
 * 2009-05-26 Create this page. - Detlef
