@@ -122,8 +122,6 @@ Foreword
           @applet.set_menu xml, [['about', Proc.new{callback_about}],
                                  ['pref',  Proc.new{callback_preferences}]]
 
-
-
 --- gconf_set_bool(key, value)
     
     Sets a boolean value in the Applets GConf configuration
@@ -159,6 +157,42 @@ Foreword
     * value: the string value to set
     
     * Returns: self
+
+--- gconf_get_bool(key)
+    
+    Gets a boolean value from the Applets GConf configuration. If the type of the requested value is not a boolean,
+    an exception will be raised.
+    
+    * key: the key of the value to get
+    
+    Returns: the configuration value if the key is found, otherwise false
+
+--- gconf_get_int(key)
+    
+    Gets an integer value from the Applets GConf configuration. If the type of the requested value is not an integer,
+    an exception will be raised.
+    
+    * key: the key of the value to get
+    
+    Returns: the configuration value if the key is found, otherwise 0
+
+--- gconf_get_float(key)
+    
+    Gets a float value from the Applets GConf configuration. If the type of the requested value is not a float,
+    an exception will be raised.
+    
+    * key: the key of the value to get
+    
+    Returns: the configuration value if the key is found, otherwise 0.0
+
+--- gconf_get_string(key)
+    
+    Gets a string from the Applets GConf configuration. If the type of the requested value is not a string,
+    an exception will be raised.
+    
+    * key: the key of the value to get
+    
+    Returns: the configuration value if the key is found, otherwise nil
 
 
 
