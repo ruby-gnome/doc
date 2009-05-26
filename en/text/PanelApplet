@@ -54,6 +54,9 @@ Foreword
 
     Returns a size hint for the applet. From the Gtk+ docs this methode is mostly useless.
 
+--- set_size_hints(size_hints, base_size)
+    ((*TODO*))
+
 --- orient
 
     Gets the current ((<orientation|PanelApplet#Orientation>)) of the applet.
@@ -76,11 +79,11 @@ Foreword
     * flags: the flags to set
     * Returns: self
 
---- control
+--- request_focus
 
-    Gets the bonobo contol of the applet.
-    
-    * Returns the bonobo control
+    Sets the keyboard focus to the applet. This is needed if the applet in example shall contain a Gtk::Entry
+
+    * Returns: self
 
 --- set_menu(xml, [[verb, proc], ...])
 
@@ -135,6 +138,31 @@ Foreword
 
           @applet.set_menu xml, [['about', Proc.new{callback_about}],
                                  ['pref',  Proc.new{callback_preferences}]]
+
+--- add_preferences(schema_dir)
+    
+    Associates each schema in schema_dir with a key in the applet's preferences directory.
+
+    * schemas: The GConf path where the applet's schemas are installed
+    * Returns: self
+
+--- control
+
+    Gets the bonobo contol of the applet.
+    
+    * Returns: the bonobo control
+
+--- popup_component
+
+    Gets the Bonobo::UI::Componet, that is used for the popup menu.
+
+    * Returns: the Bonobo::UI::Componet
+
+--- preferences_key
+
+    Returns the GConf path to the directory containing the applet's per-instance preference keys. Using this you may construct the full path for the applet's preference keys.
+
+    * Returns: a string with the GConf path
 
 --- gconf_set_bool(key, value)
     
@@ -238,6 +266,9 @@ Foreword
     The applet should expand vertically on an horizontal panel and horizontally on a vertical panel.
 --- HAS_HANDLE
     The panel should draw a grab handle on one side of the applet.
+
+== Signals
+((*The PanelApplet signals are not bound yet*))
 
 == See Also
 Gtk::StatusIcon
