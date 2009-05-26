@@ -75,6 +75,8 @@ Foreword
 
     * xml: is the XML description for the menu entries
     * [[verb, proc], ...] are pairs of menu verbs an Proc objects
+
+    * Returns: self
     
     The XML description consists of a startline
 
@@ -119,6 +121,46 @@ Foreword
 
           @applet.set_menu xml, [['about', Proc.new{callback_about}],
                                  ['pref',  Proc.new{callback_preferences}]]
+
+
+
+--- gconf_set_bool(key, value)
+    
+    Sets a boolean value in the Applets GConf configuration
+    
+    * key: the key of the value to set
+    * value: the boolean value to set
+    
+    * Returns: self
+
+--- gconf_set_int(key, value)
+    
+    Sets an integer value in the Applets GConf configuration
+    
+    * key: the key of the value to set
+    * value: the inter value to set
+    
+    * Returns: self
+
+--- gconf_set_float(key, value)
+    
+    Sets a float value in the Applets GConf configuration
+    
+    * key: the key of the value to set
+    * value: the float value to set
+    
+    * Returns: self
+
+--- gconf_set_string(key, value)
+    
+    Sets a string in the Applets GConf configuration
+    
+    * key: the key of the value to set
+    * value: the string value to set
+    
+    * Returns: self
+
+
 
 == Constants
 
