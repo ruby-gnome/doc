@@ -42,7 +42,7 @@ Foreword
 
     Gets the panels background type and its background.
 
-    * Returns: an array with two values, with the current ((<Backgroun Type|PanelApplet::BackgroundType>)) at first.
+    * Returns: an array with two values, with the current ((<Background Type|PanelApplet#BackgroundType>)) at first.
     The second value comes after this rules:
 
     PanelApplet::BackgroundType::NO_BACKGROUND => nil
@@ -211,6 +211,8 @@ Foreword
 
 
 == Constants
+
+==== BackgroundType
 
 --- PanelApplet::BackgroundType::NO_BACKGROUND
     no background is set to the panel
