@@ -218,7 +218,7 @@
   * Gtk::IMContextSimple - An input method context supporting table-based input methods
   * Gtk::IMMulticontext - An input method context supporting multiple, loadable input methods
   * Gtk::SizeGroup - Grouping widgets so they request the same size
-  * Gtk::Tooltips - Add tips to your widgets
+  * Gtk::Tooltip - Add tips to your widgets
   * Gtk::Viewport - An adapter which makes widgets scrollable
   * Gtk::Accessible - Accessibility support for widgets
 
