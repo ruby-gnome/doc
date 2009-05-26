@@ -62,6 +62,21 @@ Foreword
         PanelApplet::ORIENT_LEFT
         PanelApplet::ORIENT_RIGHT
 
+--- get_flags()
+
+    The ((<Flags>)) associated with the applet are boolean flags which the panel may read in order to
+    figure out how to handle the applet.
+    
+    Returns: the requested flags
+
+
+--- set_flags(flags)
+
+    Set the flags to the PanelApplet
+
+    * flags: the flags to set
+    * Returns: self
+
 --- control
 
     Gets the bonobo contol of the applet.
@@ -200,7 +215,11 @@ Foreword
 
 === Flags
 
-Flags used to influence something.
+    PanelApplet::FLAGS_NONE No flags are to be associated with the applet.
+    PanelApplet::EXPAND_MAJOR The applet should expand horizontally on an horizontal panel and vertically on a vertical panel.
+    PanelApplet::EXPAND_MINOR The applet should expand vertically on an horizontal panel and horizontally on a vertical panel.
+    PanelApplet::HAS_HANDLE The panel should draw a grab handle on one side of the applet.
+
 
 --- FOOBLA
 
