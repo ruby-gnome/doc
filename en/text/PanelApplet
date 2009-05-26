@@ -42,7 +42,8 @@ Foreword
 
     Gets the panels background type and its background.
 
-    * Returns: an array with two values, with the current PanelApplet::BackgroundType at first. The second value comes after this rules:
+    * Returns: an array with two values, with the current ((<Backgroun Type|PanelApplet::BackgroundType>)) at first.
+    The second value comes after this rules:
 
     PanelApplet::BackgroundType::NO_BACKGROUND => nil
 
