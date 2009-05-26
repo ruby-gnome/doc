@@ -37,6 +37,89 @@ Foreword
 
 == Instance Methods
 
+
+--- background
+
+    Gets the panels background type and its background.
+
+    * Returns: an array with two values, with the current PanelApplet::BackgroundType at first. The second value comes after this rules:
+        PanelApplet::BackgroundType::NO_BACKGROUND => nil
+        PanelApplet::BackgroundType::COLOR_BACKGROUND => a Gdk::Color which contains the panels background color
+        PanelApplet::BackgroundType::PIXMAP_BACKGROUND => a Gdk::Pixmap with a copy of the area, the applet covers in the panel
+
+--- size
+
+    Returns a size hint for the applet. From the Gtk+ docs this methode is mostly useless.
+
+--- orient
+
+    Gets the current orientation of the applet.
+    
+    * Returns: depending on the direction, the panel expands to one of the following values.
+
+        PanelApplet::ORIENT_UP
+        PanelApplet::ORIENT_DOWN
+        PanelApplet::ORIENT_LEFT
+        PanelApplet::ORIENT_RIGHT
+
+--- control
+
+    Gets the bonobo contol of the applet.
+    
+    * Returns the bonobo control
+
+--- set_menu(xml, [[verb, proc], ...])
+
+    Sets the right click context menu of the panel. 
+
+
+    * xml: is the XML description for the menu entries
+    * [[verb, proc], ...] are pairs of menu verbs an Proc objects
+    
+    The XML description consists of a startline
+
+        "<popup name=\"button3\">"
+
+    
+    none or more menu items
+
+        "  <menuitem name=\"Item 1\" verb=\"about\" _label=\"About\" pixtype=\"stock\" pixname=\"gtk-about\"/>"
+
+    
+    none or more separators
+
+        "  <separator/>"
+
+    
+    and and endline
+
+        "</popup>"
+    
+    
+    in the menu item is
+    * name: an uniq name
+    * verb: an uniq name, that reffers to the first parameter of each verb <=> Proc object pair
+    * _label: the label to display in the menu
+    * pixtype: the type of the pixmap, that shall be displayed beside of the label
+    * pixname: the name of the pixmap
+    (fixme: what types are possible and how to reffer to non stock items?)
+    
+    In the verb <=> Proc object pair is
+    *verb: a name, that refers to a menu item
+    *proc: a Proc object, that will be called if the menu item gets activated
+
+    So a menu with an about and a preferences entry can look like this:
+
+          xml = "<popup name=\"button3\">" +
+          "  <menuitem name=\"Item 1\" verb=\"about\" _label=\"About\"" +
+          "     pixtype=\"stock\" pixname=\"gtk-about\"/>" +
+          "  <menuitem name=\"Item 2\" verb=\"pref\" _label=\"Preferences\"" +
+          "     pixtype=\"stock\" pixname=\"gtk-properties\"/>" +
+          "</popup>\n"
+
+          @applet.set_menu xml, [['about', Proc.new{callback_about}],
+                                 ['pref',  Proc.new{callback_preferences}]]
+
 == Constants
 
 === Flags
