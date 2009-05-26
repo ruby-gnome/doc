@@ -1,0 +1,55 @@
+= class PanelApplet
+
+((*This page is work in progress*))
+
+Foreword
+
+    # Example
+    code
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::InitiallyUnowned
+        * Gtk::Object
+          * Gtk::Widget
+            * Gtk::Container
+              * Gtk::Bin
+                * Gtk::EventBox
+                  * PanelApplet
+== Class Methods
+
+--- PanelApplet.new
+
+    Creates a new PanelApplet
+
+    Before you can create a new PanelApplet object, you have to call PanelApplet.main, to initialize Bonobo.
+
+    * Returns : a new PanelApplet
+
+--- PanelApplet.need_gnome?
+
+    Returns true if the GNOME desktop environment is needed to creat panel applets.
+
+    * Returns: whether the GNOME desktop environment is needed
+
+== Instance Methods
+
+== Constants
+
+=== Flags
+
+Flags used to influence something.
+
+--- FOOBLA
+
+    Call PanelApplet#foobla(true).
+
+
+== See Also
+
+== ChangeLog
+
+* 2009-05-26 Create this page. - Detlef
