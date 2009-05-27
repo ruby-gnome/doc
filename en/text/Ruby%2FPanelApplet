@@ -1,0 +1,277 @@
+= class PanelApplet
+
+((*This page is work in progress*))
+
+Foreword
+
+    # Example
+    code
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::InitiallyUnowned
+        * Gtk::Object
+          * Gtk::Widget
+            * Gtk::Container
+              * Gtk::Bin
+                * Gtk::EventBox
+                  * PanelApplet
+== Class Methods
+
+--- PanelApplet.new
+
+    Creates a new PanelApplet
+
+    You normaly wouldn't use this method, as the PanelApplet will be created by the PanelApplet Factory.
+
+    * Returns : a new PanelApplet
+
+--- PanelApplet.need_gnome?
+
+    Returns true if the GNOME desktop environment is needed to creat panel applets.
+
+    * Returns: whether the GNOME desktop environment is needed
+
+== Instance Methods
+
+
+--- background
+
+    Gets the panels background type and its background.
+
+    * Returns: an array with two values, with the current ((<Background Type|PanelApplet#BackgroundType>)) at first. The second value comes after this rules:
+
+    PanelApplet::BackgroundType::NO_BACKGROUND => nil
+
+    PanelApplet::BackgroundType::COLOR_BACKGROUND => a Gdk::Color which contains the panels background color
+
+    PanelApplet::BackgroundType::PIXMAP_BACKGROUND => a Gdk::Pixmap with a copy of the area, the applet covers in the panel
+
+--- size
+
+    Returns a size hint for the applet. From the Gtk+ docs this methode is mostly useless.
+
+--- set_size_hints(size_hints, base_size)
+    ((*TODO*))
+
+--- orient
+
+    Gets the current ((<orientation|PanelApplet#Orientation>)) of the applet.
+    
+    * Returns: depending on the direction, the panel expands to one of the following values.
+
+
+--- get_flags()
+
+    The ((<Flags|PanelApplet#Flags>)) associated with the applet are boolean flags which the panel may read in order to
+    figure out how to handle the applet.
+    
+    Returns: the requested flags
+
+
+--- set_flags(flags)
+
+    Set the ((<Flags|PanelApplet#Flags>)) to the PanelApplet
+
+    * flags: the flags to set
+    * Returns: self
+
+--- request_focus
+
+    Sets the keyboard focus to the applet. This is needed if the applet in example shall contain a Gtk::Entry
+
+    * Returns: self
+
+--- set_menu(xml, [[verb, proc], ...])
+
+    Sets the right click context menu of the panel. 
+
+
+    * xml: is the XML description for the menu entries
+    * [[verb, proc], ...] are pairs of menu verbs an Proc objects
+
+    * Returns: self
+    
+    The XML description consists of a startline
+
+        "<popup name=\"button3\">"
+
+    
+    none or more menu items
+
+        "  <menuitem name=\"Item 1\" verb=\"about\" _label=\"About\" pixtype=\"stock\" pixname=\"gtk-about\"/>"
+
+    
+    none or more separators
+
+        "  <separator/>"
+
+    
+    and and endline
+
+        "</popup>"
+    
+    
+    in the menu item is
+    * name: an uniq name
+    * verb: an uniq name, that reffers to the first parameter of each verb <=> Proc object pair
+    * _label: the label to display in the menu
+    * pixtype: the type of the pixmap, that shall be displayed beside of the label
+    * pixname: the name of the pixmap
+    (fixme: what types are possible and how to reffer to non stock items?)
+    
+    In the verb <=> Proc object pair is
+    *verb: a name, that refers to a menu item
+    *proc: a Proc object, that will be called if the menu item gets activated
+
+    So a menu with an about and a preferences entry can look like this:
+
+          xml = "<popup name=\"button3\">" +
+          "  <menuitem name=\"Item 1\" verb=\"about\" _label=\"About\"" +
+          "     pixtype=\"stock\" pixname=\"gtk-about\"/>" +
+          "  <menuitem name=\"Item 2\" verb=\"pref\" _label=\"Preferences\"" +
+          "     pixtype=\"stock\" pixname=\"gtk-properties\"/>" +
+          "</popup>\n"
+
+          @applet.set_menu xml, [['about', Proc.new{callback_about}],
+                                 ['pref',  Proc.new{callback_preferences}]]
+
+--- add_preferences(schema_dir)
+    
+    Associates each schema in schema_dir with a key in the applet's preferences directory.
+
+    * schemas: The GConf path where the applet's schemas are installed
+    * Returns: self
+
+--- control
+
+    Gets the bonobo contol of the applet.
+    
+    * Returns: the bonobo control
+
+--- popup_component
+
+    Gets the Bonobo::UI::Componet, that is used for the popup menu.
+
+    * Returns: the Bonobo::UI::Componet
+
+--- preferences_key
+
+    Returns the GConf path to the directory containing the applet's per-instance preference keys. Using this you may construct the full path for the applet's preference keys.
+
+    * Returns: a string with the GConf path
+
+--- gconf_set_bool(key, value)
+    
+    Sets a boolean value in the Applets GConf configuration
+    
+    * key: the key of the value to set
+    * value: the boolean value to set
+    
+    * Returns: self
+
+--- gconf_set_int(key, value)
+    
+    Sets an integer value in the Applets GConf configuration
+    
+    * key: the key of the value to set
+    * value: the inter value to set
+    
+    * Returns: self
+
+--- gconf_set_float(key, value)
+    
+    Sets a float value in the Applets GConf configuration
+    
+    * key: the key of the value to set
+    * value: the float value to set
+    
+    * Returns: self
+
+--- gconf_set_string(key, value)
+    
+    Sets a string in the Applets GConf configuration
+    
+    * key: the key of the value to set
+    * value: the string value to set
+    
+    * Returns: self
+
+--- gconf_get_bool(key)
+    
+    Gets a boolean value from the Applets GConf configuration. If the type of the requested value is not a boolean,
+    an exception will be raised.
+    
+    * key: the key of the value to get
+    
+    Returns: the configuration value if the key is found, otherwise false
+
+--- gconf_get_int(key)
+    
+    Gets an integer value from the Applets GConf configuration. If the type of the requested value is not an integer,
+    an exception will be raised.
+    
+    * key: the key of the value to get
+    
+    Returns: the configuration value if the key is found, otherwise 0
+
+--- gconf_get_float(key)
+    
+    Gets a float value from the Applets GConf configuration. If the type of the requested value is not a float,
+    an exception will be raised.
+    
+    * key: the key of the value to get
+    
+    Returns: the configuration value if the key is found, otherwise 0.0
+
+--- gconf_get_string(key)
+    
+    Gets a string from the Applets GConf configuration. If the type of the requested value is not a string,
+    an exception will be raised.
+    
+    * key: the key of the value to get
+    
+    Returns: the configuration value if the key is found, otherwise nil
+
+
+== Constants
+
+==== BackgroundType
+
+--- BackgroundType::NO_BACKGROUND
+    no background is set to the panel
+--- BackgroundType::COLOR_BACKGROUND
+    the background of the panel is colored
+--- BackgroundType::PIXMAP_BACKGROUND
+    the panel has a Gdk::Pixmap as background
+
+==== Orientation
+
+--- ORIENT_UP
+--- ORIENT_DOWN
+--- ORIENT_LEFT
+--- ORIENT_RIGHT
+
+
+=== Flags
+
+--- FLAGS_NONE
+    No flags are to be associated with the applet.
+--- EXPAND_MAJOR
+    The applet should expand horizontally on an horizontal panel and vertically on a vertical panel.
+--- EXPAND_MINOR
+    The applet should expand vertically on an horizontal panel and horizontally on a vertical panel.
+--- HAS_HANDLE
+    The panel should draw a grab handle on one side of the applet.
+
+== Signals
+((*The PanelApplet signals are not bound yet*))
+
+== See Also
+Gtk::StatusIcon
+== ChangeLog
+
+* 2009-05-26 Create this page. - Detlef
