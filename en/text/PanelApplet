@@ -25,7 +25,7 @@ Foreword
 
     Creates a new PanelApplet
 
-    Before you can create a new PanelApplet object, you have to call PanelApplet.main, to initialize Bonobo.
+    You normaly wouldn't use this method, as the PanelApplet will be created by the PanelApplet Factory.
 
     * Returns : a new PanelApplet
 
