@@ -31,12 +31,12 @@ In the example three pop-up menu items are used to pulse the progress bar, set i
  # user.
  def create_popup_menu(menu, progb)
    pulse  = Gtk::MenuItem.new("Pulse Progress")
-   separator = Gtk::HSeparator.new
+   separator = Gtk::MenuItem.new
    fill   = Gtk::MenuItem.new("Set as Complete")
    clear  = Gtk::MenuItem.new("_Clear Progress")
   
    menu.append(pulse)
-   # menu.append(separator) # <--- should probably work, but it doesn't
+   menu.append(separator)
    menu.append(fill)
    menu.append(clear)
   
@@ -100,7 +100,7 @@ Initially an empty pop-up menu is created. We use a helper method ((*create_popu
 I also found it unnecessary to call Gtk::Menu#attach_to_widget(attach_widget){|attach_widgt, menu| ... } in this program example, as required by the  Andrew Klause's book and the C GTK+ example there, which I translated to Ruby for us here.
 
 {{image_right("dialog-warning.png")}}
-Separators are extremely important when designing a menu structure, because they organize menu items into groups so that the user can easily find the appropriate item. However, currently this feature either is not correctly documented or does not work.
+Separators are extremely important when designing a menu structure, because they organize menu items into groups so that the user can easily find the appropriate item. However, currently this feature either is badly documented (use a MenuItem with no label).
 
 === Pop-up Menu Callbacks
 
@@ -131,12 +131,12 @@ When creating a menu, one of the most important things to do is to set up keyboa
  # user.
  def create_popup_menu(menu, progb, window)
    pulse  = Gtk::MenuItem.new("Pulse Progress")
-   separator = Gtk::HSeparator.new
+   separator = Gtk::MenuItem.new
    fill   = Gtk::MenuItem.new("Set as Complete")
    clear  = Gtk::MenuItem.new("_Clear Progress")
    
    menu.append(pulse)
-   # menu.append(separator) # <--- should probably work, but it doesn't
+   menu.append(separator)
    menu.append(fill)
    menu.append(clear)
  
