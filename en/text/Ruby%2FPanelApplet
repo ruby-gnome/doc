@@ -25,7 +25,7 @@ Foreword
 
     Creates a new PanelApplet
 
-    You normaly wouldn't use this method, as the PanelApplet will be created by the PanelApplet Factory.
+    You normally wouldn't use this method, as the PanelApplet will be created by the PanelApplet Factory.
 
     * Returns : a new PanelApplet
 
