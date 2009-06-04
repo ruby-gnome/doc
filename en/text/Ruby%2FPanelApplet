@@ -179,7 +179,7 @@ The relevant parameters are:
 
     Sets the keyboard focus to the applet. This is needed if the applet in example shall contain a Gtk::Entry
 
-    * time_stamp: the timestamp of the event (Gdk::EventButton.time)
+    * time_stamp: the timestamp of the event (Gdk::EventButton#time)
     * Returns: self
 
 --- set_menu(xml, [[verb, proc], ...])
