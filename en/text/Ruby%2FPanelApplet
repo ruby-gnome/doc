@@ -1,11 +1,107 @@
 = class PanelApplet
 
-((*This page is work in progress*))
+The PanelApplet is a an object in the GNOME panel. It is a Gtk::Container, that can hold a single Gtk::Widget.
 
-Foreword
+=== The Factory description
 
-    # Example
-    code
+
+To create a PanelApplet, you have to provide a factory description. The discription is an XML document of the following format. It has to be stored under #{prefix}/lib/bonobo/servers/OAFIID:GNOME_ExampleApplet_Factory.server, where the ExampleApplet-part has to be the same as the OAFIID.
+
+        <oaf_info>
+        <oaf_server iid="OAFIID:GNOME_ExampleApplet_Factory"
+          type="exe"
+          location="/usr/bin/example_applet">
+          <oaf_attribute name="repo_ids" type="stringv">
+            <item value="IDL:Bonobo/GenericFactory:1.0"/>
+            <item value="IDL:Bonobo/Unknown:1.0"/>
+          </oaf_attribute>
+          <oaf_attribute name="name" type="string" value="Example Applet Factory"/>
+          <oaf_attribute name="description" type="string" value="Example Applet Factory"/>
+        </oaf_server>
+        <oaf_server iid="OAFIID:GNOME_ExampleApplet"
+          type="factory" 
+          location="OAFIID:GNOME_ExampleApplet_Factory">
+          <oaf_attribute name="repo_ids" type="stringv">
+            <item value="IDL:GNOME/Vertigo/PanelAppletShell:1.0"/>
+            <item value="IDL:Bonobo/Control:1.0"/>
+            <item value="IDL:Bonobo/Unknown:1.0"/>
+          </oaf_attribute>
+          <oaf_attribute name="name" type="string" value="Exmaple"/>
+          <oaf_attribute name="description" type="string" value="This is an panel applet example"/>
+          <oaf_attribute name="name-de" type="string" value="Beispiel"/>
+          <oaf_attribute name="description-de" type="string" value="Dies ist ein panel applet Beispiel"/>
+          <oaf_attribute name="panel:icon" type="string" value="exampleimage"/>
+          <oaf_attribute name="panel:category" type="string" value="Accessories"/>
+        </oaf_server>
+        </oaf_info>
+
+
+The parts in detail (only relevant parts are discribed):
+
+        <oaf_server iid="OAFIID:GNOME_ExampleApplet_Factory"
+        type="exe"
+        location="/usr/bin/example_applet">
+    * iid: a uniq name for the factory object, that is the same as the filename without the ".server".
+    * location: the path to the file, that will generate the content of the applet.
+.
+        <oaf_attribute name="name" type="string" value="Example Applet Factory"/>
+        <oaf_attribute name="description" type="string" value="Example Applet Factory"/>
+    * name and description: it is common to use the applets name + Factory. AFAIK this values are unused.
+.
+        <oaf_server iid="OAFIID:GNOME_ExampleApplet"
+        type="factory" 
+        location="OAFIID:GNOME_ExampleApplet_Factory">
+    * iid: a uniq name for the applet, that is the same as used for the factory object without the "_Factory".
+    * location: the factories iid from above.
+.
+        <oaf_attribute name="name" type="string" value="Exmaple"/>
+        <oaf_attribute name="description" type="string" value="This is an panel applet example"/>
+    * name and decription: the name and a description of the applet. This will be shown in the dialog, where applets can be choosen for addition to the panel. To localize (translate) these entries, the ISO country code of the language has to be appended on the name and/or description elements, separated by a minus. The value then contains the translated name and description, like shown for German in the example.
+.
+        <oaf_attribute name="panel:icon" type="string" value="exampleimage"/>
+    * panel:icon: the name of the icon without the filetype (i.e. .png), that shall be displayed in the applet chooser dialog. The icon has to be located in #{datadir}/icons/hicolor/*size*/apps/exampleimage.png. *size* are the different icon sizes. Because the size may depend on the used theme, it is secure to place scaled icons in all of the 16x16, 22x22, 24x24, 32x32 and 48x48 folders
+((*FIXME: is this true, or is always a fixed size used?*)).
+
+
+=== Applet initialization
+
+
+The applets "binary" that in this example is stored under /usr/bin/example_applet has the following content.
+
+        require 'panelapplet2'
+
+        OAFIID = "OAFIID:GNOME_ExampleApplet_Factory"
+        oafiid = OAFIID
+
+        init = proc do |applet, iid|
+          applet.add_preferences '/schemas/apps/example_applet/prefs'
+          applet.set_flags PanelApplet::EXPAND_MINOR
+          gui = MyApplet.new applet
+          applet << gui
+          applet.show_all
+          true
+        end
+
+        PanelApplet.main oafiid, "ExampleApplet", "0.1", &init
+
+
+The relevant parameters are:
+
+        OAFIID
+* has to match factory description in the server file.
+.
+        applet.add_preferences '/schemas/apps/example_applet/prefs'
+* add a GConf path, that points to the applets preferences
+.
+        gui = MyApplet.new applet
+* here the applets content is generated. How that will look like, is on you.
+.
+        applet << gui
+* the applets content is packed into the applet container.
+.
+        PanelApplet.main oafiid, "ExampleApplet", "0.1", &init
+* Tis call glues it all together.
+
 
 == Object Hierarchy
 
@@ -274,4 +370,5 @@ Foreword
 Gtk::StatusIcon
 == ChangeLog
 
+* 2009-06-04 Add factory description and Applet initialization ((<Detlef>))
 * 2009-05-26 Create this page. - ((<Detlef>))
