@@ -56,12 +56,12 @@ Describes a key press or key release event.
 
 --- keyval
 
-    Gets the GDK key code that was pressed or released.
+    Gets the ((<GDK key code|Gdk::Keyval#GdkKeyvals>)) that was pressed or released.
     * Returns: GDK key code
 
 --- keyval=(keyval)
 
-    Sets the GDK key code.
+    Sets the ((<GDK key code|Gdk::Keyval#GdkKeyvals>)).
     * keyval: GDK key code
     * Returns: self
 
@@ -110,4 +110,3 @@ Describes a key press or key release event.
 == ChangeLog
 
 - ((<Masao>))
-
