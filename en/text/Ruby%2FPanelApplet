@@ -177,9 +177,9 @@ The relevant parameters are:
 
 --- request_focus(time_stamp)
 
-    Sets the keyboard focus to the applet. This is needed if the applet in example shall contain a Gtk::Entry
+    Sets the keyboard focus to the applet. This is needed if the applet shall contain a Gtk::Entry or a Gtk::ComboBoxEntry. This method has to be connected to the enter_notify_event of a GTk::EventBox that contains the entry or to the button_press_event of the Gtk::Entry or Gtk::ComboBoxEntry.child. With the first, the Entry gets the focus if the pointer enters the applet, with the second, the user has to click into the entry.
 
-    * time_stamp: the timestamp of the event (Gdk::EventButton#time)
+    * time_stamp: the timestamp of the event (Gdk::EventButton#time or Gdk::EventCrossing#time)
     * Returns: self
 
 --- set_menu(xml, [[verb, proc], ...])
