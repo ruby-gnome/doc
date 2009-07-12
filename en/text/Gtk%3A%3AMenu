@@ -26,6 +26,11 @@ Applications can display a Gtk::Menu as a popup menu by calling the Gtk::Menu#po
     end	
   end
   window.set_default_size(300, 100).show_all
+
+  window.signal_connect('delete_event') {
+    menu.destroy # ruby 1.9.1p129 gets segmentation fault without this line
+    Gtk.main_quit
+  }
   
   Gtk.main
 
