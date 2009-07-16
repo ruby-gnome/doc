@@ -67,7 +67,7 @@ Following is the Ruby version of our combo box renderer program:
            when "Dozen";        12
            when "Two Dozen";    24
          end
-         iter[$qty_index] = new_i
+         iter[$qty_index] = new_i unless !new_i
        end
      end
    end
