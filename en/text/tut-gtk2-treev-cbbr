@@ -59,7 +59,7 @@ Following is the Ruby version of our combo box renderer program:
    
    renderer.signal_connect('edited') do |w, path, new_text|
      if path != ""
-       if (iter = treview.model.get_iter(path))
+       if (iter = treeview.model.get_iter(path))
          new_i = case new_text
            when "None";          0
            when "One";           1
