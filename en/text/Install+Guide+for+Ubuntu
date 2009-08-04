@@ -15,7 +15,15 @@ You can choose between two different methods to installing Ruby-GNOME2 in Ubuntu
 
        deb http://franz.hob-bruneck.info/downloads/ jaunty/
       
-      Now install the meta-package ruby-gnome2.
+      Install the meta-package ruby-gnome2.
+
+--- 3. Version 0.19.1 from our repository (recommended)
+
+      Based on the work of Arnaud Cornet we have repackaged the up-to-date bindings for Ubuntu 9.04. To install them you have to ((<add|URL:https://help.ubuntu.com/community/Repositories/Ubuntu/>)) the following repository:
+
+       deb http://franz.hob-bruneck.info/downloads/ jaunty0191/
+      
+      Install the meta-package ruby-gnome2.
 Have fun!
 
 
@@ -27,6 +35,7 @@ Report problems to ((<"Franz"|Franz>)).
 
 * 2009/04/25 Created - ((<"Franz"|Franz>))
 * 2009/05/08 packages for x86_64 added - ((<"Franz"|Franz>))
+* 2009/08/04 updated to newest bindings - ((<"Franz"|Franz>))
 
 
 == Ubuntu 8.10 (Intrepid Ibex)
