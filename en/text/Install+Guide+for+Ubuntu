@@ -11,7 +11,7 @@ You can choose between two different methods to installing Ruby-GNOME2 in Ubuntu
 
 --- 2. Version 0.18.1 from our repository
 
-      Based on the work of Arnaud Cornet we have repackaged newer bindings for Ubuntu 9.04. To install them you have to ((<add|URL:https://help.ubuntu.com/community/Repositories/Ubuntu/>)) the following repository:
+      Based on the work of Arnaud Cornet we have repackaged the bindings 0.18.1 for Ubuntu 9.04. To install them you have to ((<add|URL:https://help.ubuntu.com/community/Repositories/Ubuntu/>)) the following repository:
 
        deb http://franz.hob-bruneck.info/downloads/ jaunty/
       
