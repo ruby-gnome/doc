@@ -7,7 +7,7 @@
 
 Various widgets including Gtk::Label do not respond to GDK events, because they do not have an associated Gdk::Window. To fix this GTK+ employs a Gtk::EventBox container widget. The Gtk::EventBox provides a capability that allows its child that otherwise is incapable of catching GDK events, to intercept or catch them on behalf of the child. Note these are GDK and not GTK signals!
 
-Even boxes catch events for the children widgets by providing a Gdk::Window for the object. Setting up a GDK event/signal catching mechanism, unlike in C GTK+, in Ruby does not use the usual "signal_connect" syntax. It suffices to setup events with the Gtk::Window#events= or Gtk::Window#set_events, by adding an event mask to the event box (see GdkEventMask bellow).
+Event boxes catch events for the children widgets by providing a Gdk::Window for the object. Setting up a GDK event/signal catching mechanism, unlike in C GTK+, in Ruby does not use the usual "signal_connect" syntax. It suffices to setup events with the Gtk::Window#events= or Gtk::Window#set_events, by adding an event mask to the event box (see GdkEventMask bellow).
 
 You must call Gtk::Widget#set_events before you call Gtk::Widget#realize on the widget. However, if the widget has already been realized by GTK+, you will need to instead use the Gtk::Widget#add_events to add the event mask. Before calling Gtk::Widget#realize, your event box (eventbox = Gtk::EventBox.new), does not have the Gdk::Window and/or any other GDK widget resources associated with it. Normally, realization occurs when the parent is realized, but event boxes are an exception. When you call Gtk::Window#show_all on a widget, it is automatically realized by GTK+, but event boxes can not be realized at this point, because they are still invisible. Calling Gtk::Widget#realize on the event box is an easy way around this problem.
 
@@ -58,7 +58,7 @@ But pay attention to detail here. Where did the window property came from in the
  eventbox.add(label)
  window.add(eventbox)
 
- ### You need to cal {{ realize }} only after you add it to the
+ ### You need to call {{ realize }} only after you add it to the
  ### top (including) widget.
  eventbox.realize
  ### Only after the {{ EventBox eventbox }} is realized it will
