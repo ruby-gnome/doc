@@ -3,7 +3,7 @@
 
 == The Glade User Interface Builder
 
-One factor that can make or break a GUI toolkit is weather it can be used to rapidly deploy applications. While the user interface is extremely important to the success of an application, it should not represent the most consuming aspect of the development process.
+One factor that can make or break a GUI toolkit is whether it can be used to rapidly deploy applications. While the user interface is extremely important to the success of an application, it should not represent the most consuming aspect of the development process.
 
 {{image_left("glade-logo.png")}}
 
