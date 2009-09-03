@@ -1,1 +1,220 @@
-every dofuser needs [url=http://www.bawwgt.com]dofus kamas[/url], but most of them can't find a good [url=http://www.bawwgt.com]cheap dofus kamas[/url] provider, so it's a problem is they want to [url=http://www.bawwgt.com]buy cheap dofus kamas[/url].now bawwgt will be your best choice on [url=http://www.bawwgt.com]dofus[/url]
+= class Gtk::Clipboard
+
+The Gtk::Clipboard object represents a clipboard of data shared between different processes or between different widgets in the same process. Each clipboard is identified by a name encoded as a Gdk::Atom. (Conversion to and from strings can be done with Gdk::Atom#intern and Gdk::Atom#name.) The default clipboard corresponds to the "CLIPBOARD" atom; another commonly used clipboard is the "PRIMARY" clipboard, which, in X, traditionally contains the currently selected text. 
+
+To support having a number of different formats on the clipboard at the same time, the clipboard mechanism allows providing callbacks instead of the actual data. When you set the contents of the clipboard, you can either supply the data directly (via methods like Gtk::Clipboard#set_text), or you can supply a callback to be called at a later time when the data is needed (via Gtk::Clipboard#set_with_data) Providing a callback also avoids having to make copies of the data when it is not needed. 
+
+Requesting the data from the clipboard is essentially asynchronous. If the contents of the clipboard are provided within the same process, then a direct method call will be made to retrieve the data, but if they are provided by another process, then the data needs to be retrieved from the other process, which may take some time. To avoid blocking the user interface, the call to request the selection, Gtk::Clipboard#request_contents takes a callback that will be called when the contents are received (or when the request fails.) If you don't want to deal with providing a separate callback, you can also use Gtk::Clipboard#wait_for_contents(). What this does is run the GLib main loop recursively waiting for the contents. This can simplify the code flow, but you still have to be aware that other callbacks in your program can be called while this recursive mainloop is running. 
+
+Along with the methods to get the clipboard contents as an arbitrary data chunk, there are also methods to retrieve it as text, Gtk::Clipboard#request_text and Gtk::Clipboard#wait_for_text. These methods take care of determining which formats are advertised by the clipboard provider, asking for the clipboard in the best available format and converting the results into the UTF-8 encoding. (The standard form for representing strings in GTK+.)
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Gtk::Clipboard
+
+== Class Methods
+
+--- Gtk::Clipboard.get(selection)
+
+    Returns the clipboard object for the given selection. 
+    * selection : a Gdk::Atom which identifies the clipboard to use.  
+    * Returns : the appropriate clipboard object. If no clipboard already exists, a new one will be created. Once a clipboard object has been created, it is persistent for all time and cannot be freed.  
+    * Returns: self
+
+--- Gtk::Clipboard.get(display, selection)
+
+    Cut/copy/paste menu items and keyboard shortcuts should use the default clipboard, returned by passing Gdk::Selection::CLIPBOARD for selection. The currently-selected object or text should be provided on the clipboard identified by Gdk::Selection::PRIMARY. Cut/copy/paste menu items conceptually copy the contents of the Gdk::Selection::PRIMARY clipboard to the default clipboard, i.e. they copy the selection to what the user sees as the clipboard. 
+    (See http://www.freedesktop.org/standards/clipboards.txt for a detailed discussion of the "CLIPBOARD" vs. "PRIMARY" selections under the X window system. On Win32 the Gdk::Selection::PRIMARY clipboard is essentially ignored.) 
+    It's possible to have arbitrary named clipboards; if you do invent new clipboards, you should prefix the selection name with an underscore (because the ICCCM requires that nonstandard atoms are underscore-prefixed), and namespace it as well. For example, if your application called "Foo" has a special-purpose clipboard, you might call it "_FOO_SPECIAL_CLIPBOARD".
+    ((* Since 2.2 *)) 
+    * display: the display for which the clipboard is to be retrieved or created  
+    * selection: a Gdk::Atom which identifies the clipboard to use.  
+    * Returns: the appropriate clipboard object. If no clipboard already exists, a new one will be created. Once a clipboard object has been created, it is persistent for all time and cannot be freed.
+
+== Instance Methods
+
+--- display
+
+    Gets the Gdk::Display associated with clipboard. ((* Since 2.2 *)) 
+    * Returns: the Gdk::Display associated with clipboard
+
+--- set(targets){|clipboard, selection_data| ... }
+
+    Virtually sets the contents of the specified clipboard by providing a list of supported formats for the clipboard data.
+    * targets: [[target1, flags1, info1], [target2, flags2, info2], ...]: an array containing information about the available forms for the clipboard data
+       * target: the drag type (String)
+       * flags: Gtk::Drag#TargetFlags
+       * info: an application assigned integer ID. 
+    * { |clipboard, selection_data| ... }: A block that will be called to provide the contents of the selection. If multiple types of data were advertised, the requested type can be determined from the info parameter or by checking the target field of selection_data. If the data could successfully be converted into then it should be stored into the selection_data object by calling Gtk::Selection#set (or related functions such as Gtk::Selection#text=). If no data is set, the requestor will be informed that the attempt to get the data failed. 
+       * clipboard: the Gtk::Clipboard
+       * selection_data: a Gtk::SelectionData argument in which the requested data should be stored. 
+       * info: the info field corresponding to the requested target from the target array passed to Gtk::Clipboard#set. 
+    * Returns: true if setting the clipboard data succeeded. If setting the clipboard data failed the provided callback functions will be ignored.
+
+--- clear
+
+    Clears the contents of the clipboard. 
+    * Returns: self
+
+--- text=(text)
+
+    Sets the contents of the clipboard to the given UTF-8 string. GTK+ will make a copy of the text and take responsibility for responding for requests for the text, and for converting the text into the requested format.
+    * text: a UTF-8 string.  
+    * Returns: text
+
+--- set_text(text)
+
+    Same as Gtk::Clipboard#text=.
+    * text: a UTF-8 string.  
+    * Returns: self
+
+--- image=(pixbuf)
+
+    Sets the contents of the clipboard to the given Gdk::Pixbuf. GTK+ will take responsibility for responding for requests for the image, and for converting the image into the requested format. ((* Since 2.6 *))
+    * pixbuf: a Gdk::Pixbuf  
+    * Returns: pixbuf
+
+--- set_image(pixbuf)
+
+    Same as Gtk::Clipboard#image=.
+    * pixbuf: a Gdk::Pixbuf  
+    * Returns: self
+
+--- request_contents(target){|clipboard, selection_data| ... }
+
+    Requests the contents of clipboard as the given target. When the results of the result are later received the supplied callback will be called.
+    * target: an Gdk::Atom representing the form into which the clipboard owner should convert the selection. 
+    * {|clipboard, selection_data| ... }: A block to call when the results are received (or the retrieval fails). If the retrieval fails the length field of selection_data will be negative. 
+       * clipboard: the Gtk::Clipboard
+       * selection_data: a Gtk::SelectionData argument in which the requested data should be stored. 
+    * Returns: self
+
+--- request_text{|clipboard, text| ... }
+
+    Requests the contents of the clipboard as text. When the text is later received, it will be converted to UTF-8 if necessary, and the block will be called. 
+    The text parameter to the block will contain the resulting text if the request succeeded, or nil if it failed. This could happen for various reasons, in particular if the clipboard was empty or if the contents of the clipboard could not be converted into text form.
+    * {|clipboard, text| ... }: a block to call when the text is received, or the retrieval fails. (It will always be called one way or the other.) 
+       * clipboard: the Gtk::Clipboard
+       * text: the text received, as a UTF-8 encoded string, or nil if retrieving the data failed.
+    * Returns: self
+
+--- request_image{|clipboard, pixbuf| ... }
+
+    Requests the contents of the clipboard as image. When the image is later received, it will be converted to a Gdk::Pixbuf, and the block will be called. 
+    The pixbuf parameter to the block will contain the resulting Gdk::Pixbuf if the request succeeded, or nil if it failed. This could happen for various reasons, in particular if the clipboard was empty or if the contents of the clipboard could not be converted into an image. ((* Since 2.6 *))
+    * {|clipboard, pixbuf| ... }: a block to call when the image is received, or the retrieval fails. (It will always be called one way or the other.) 
+       * clipboard: the Gtk::Clipboard
+       * pixbuf: the received image, as a Gdk::Pixbuf, or nil if retrieving the data failed.
+    * Returns: self
+
+--- request_targets{|clipboard, atoms| ... }
+
+    Requests the contents of the clipboard as list of supported targets. When the list is later received, the block will be called. 
+    The targets parameter to the block will contain the resulting targets if the request succeeded. ((* Since 2.4 *))
+    * {|clipboard, atoms| ... }: a block to call when the atoms are received, or the retrieval fails. (It will always be called one way or the other.) 
+       * clipboard: the Gtk::Clipboard
+       * atoms: the received atoms, as an Array.
+    * Returns: self
+
+--- request_rich_text(buffer){|clipboard, format, text| ... }
+
+    Requests the contents of the clipboard as rich text. When the rich text is later received, callback will be called.
+    The text parameter to callback will contain the resulting rich text if the request succeeded, or nil if it failed. This method can fail for various reasons, in particular if the clipboard was empty or if the contents of the clipboard could not be converted into rich text form. ((* Since 2.10 *))
+    * buffer: a Gtk::TextBuffer
+    * {|clipboard, format, text| ... }: a block to call when the text is received, or the retrieval fails. (It will always be called one way or the other.)
+       * clipboard: the Gtk::Clipboard
+       * format: the text format(Gdk::Atom)
+       * text: the resulting rich text if the request succeeded, or nil if it failed.
+    * Returns: self
+
+--- wait_for_contents(target)
+
+    Requests the contents of the clipboard using the given target. This method waits for the data to be received using the main loop, so events, timeouts, etc, may be dispatched during the wait.
+    * target: an Gdk::Atom representing the form into which the clipboard owner should convert the selection. 
+    * Returns: a new Gtk::SelectionData object or nil if retrieving the given target failed.
+
+--- wait_for_text
+
+    Requests the contents of the clipboard as text and converts the result to UTF-8 if necessary. This method waits for the data to be received using the main loop, so events, timeouts, etc, may be dispatched during the wait.
+    * Returns : a new UTF-8 string, or nil if retrieving the selection data failed. (This could happen for various reasons, in particular if the clipboard was empty or if the contents of the clipboard could not be converted into text form.)
+
+--- wait_for_image
+
+    Requests the contents of the clipboard as image and converts the result to a Gdk::Pixbuf. This method waits for the data to be received using the main loop, so events, timeouts, etc, may be dispatched during the wait.
+    * Returns: a new Gdk::Pixbuf, or nil if retrieving the selection data failed. (This could happen for various reasons, in particular if the clipboard was empty or if the contents of the clipboard could not be converted into an image.)  ((* Since 2.6 *))
+
+--- wait_for_rich_text(buffer, format, length)
+
+    Requests the contents of the clipboard as rich text. This method waits for the data to be received using the main loop, so events, timeouts, etc, may be dispatched during the wait. ((* Since 2.10 *))
+    * buffer: a Gtk::TextBuffer
+    * Returns: [data, format]
+       * data: binary block of data as String, or nil if retrieving the selection data failed.  (This could happen for various reasons, in particular if the clipboard was empty or if the contents of the clipboard could not be converted into text form.)
+       * format: format(Gdk::Atom)
+
+--- wait_for_targets
+
+    Returns a list of targets that are present on the clipboard, or nil if there aren't any targets available. This method waits for the data to be received using the main loop, so events, timeouts, etc, may be dispatched during the wait. ((* Since 2.4 *))
+    * Returns: an Array of targets(Gdk::Atom) if any targets are present on the clipboard, otherwise nil.
+
+--- wait_is_text_available?
+
+    Test to see if there is text available to be pasted This is done by requesting the TARGETS atom and checking if it contains any of the names: STRING, TEXT, COMPOUND_TEXT, UTF8_STRING. This method waits for the data to be received using the main loop, so events, timeouts, etc, may be dispatched during the wait.
+    * This method is a little faster than calling Gtk::Clipboard#wait_for_text since it doesn't need to retrieve the actual text.
+    * Returns: true is there is text available, false otherwise.
+
+--- wait_is_image_available?
+
+    Test to see if there is an image available to be pasted This is done by requesting the TARGETS atom and checking if it contains any of the supported image targets. This method waits for the data to be received using the main loop, so events, timeouts, etc, may be dispatched during the wait. 
+    This method is a little faster than calling Gtk::Clipboard#wait_for_image since it doesn't need to retrieve the actual image data. ((* Since 2.6 *))
+    * Returns: true is there is an image available, false otherwise.
+
+--- wait_is_target_available?(target)
+
+    Checks if a clipboard supports pasting data of a given type. This method can be used to determine if a "Paste" menu item should be insensitive or not. 
+    If you want to see if there's text available on the clipboard, use Gtk::Clipboard#wait_is_text_available? instead. ((* Since 2.6 *))
+    * target: A Gdk::Atom indicating which target to look for.  
+    * Returns: true if the target is available, false otherwise.
+
+--- wait_is_rich_text_available?(buffer)
+
+    Test to see if there is rich text available to be pasted This is done by requesting the TARGETS atom and checking if it contains any of the supported rich text targets. This method waits for the data to be received using the main loop, so events, timeouts, etc, may be dispatched during the wait.
+    This method is a little faster than calling Gtk::Clipboard#wait_for_rich_text since it doesn't need to retrieve the actual text. ((* Since 2.10 *))
+    * buffer: a Gtk::TextBuffer
+    * Returns: true is there is rich text available, false otherwise.
+
+--- can_store=(targets)
+
+    Hints that the clipboard data should be stored somewhere when the application exits or when Gtk::Clipboard#store is called. 
+    This value is reset when the clipboard owner changes. Where the clipboard data is stored is platform dependent, see Gdk::Display#store_clipboard for more information. ((* Since 2.6 *))
+    * targets: an Array containing information about which forms should be stored or nil to indicate that all forms should be stored.  
+    * Returns: targets
+
+--- set_can_store(targets)
+
+    Same as Gtk::Clipboard#can_store=. ((* Since 2.6 *))
+    * targets: an Array containing information about which forms should be stored or nil to indicate that all forms should be stored.  
+    * Returns: self
+
+--- store
+
+    Stores the current clipboard data somewhere so that it will stay around after the application has quit. ((* Since 2.6 *))
+    * Returns: self
+
+== Signals
+
+--- owner-change: self, event
+
+     * self: Gtk::Clipboard
+     * event: Gdk::Event
+
+== See Also
+
+* Gtk::Selection - Gtk::Clipboard provides a high-level wrapper around the lower level routines that deal with X selections. It is also possibly to directly manipulate the X selections, though it is seldom necessary to do so.
+
+== ChangeLog
+
+* 2007-02-08 Apply 2.10. - ((<Masao>))
+* 2006-02-01 Apply 2.6 methods, Revised - ((<Masao>))
