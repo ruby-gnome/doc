@@ -1,3 +1,5 @@
+= class Gtk::Clipboard
+
 The Gtk::Clipboard object represents a clipboard of data shared between different processes or between different widgets in the same process. Each clipboard is identified by a name encoded as a Gdk::Atom. (Conversion to and from strings can be done with Gdk::Atom#intern and Gdk::Atom#name.) The default clipboard corresponds to the "CLIPBOARD" atom; another commonly used clipboard is the "PRIMARY" clipboard, which, in X, traditionally contains the currently selected text. 
 
 To support having a number of different formats on the clipboard at the same time, the clipboard mechanism allows providing callbacks instead of the actual data. When you set the contents of the clipboard, you can either supply the data directly (via methods like Gtk::Clipboard#set_text), or you can supply a callback to be called at a later time when the data is needed (via Gtk::Clipboard#set_with_data) Providing a callback also avoids having to make copies of the data when it is not needed. 
