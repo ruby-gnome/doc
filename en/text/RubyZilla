@@ -1,1 +1,13 @@
-From the mid-1990s to the early 2000s, few liberal talk hosts had national exposure. , 
+= RubyZilla
+This is a simple demo flash movie to create a WWW browser using Ruby-GNOME2(Ruby/GTK, Ruby/Libglade, Ruby/GtkMozEmbed) and Glade2.
+
+((*NOTICE*)) Ruby-GNOME2-0.14.0 or later are required.
+
+* ((<Flash movie(10min, 11MB)|URL:/data/rubyzilla.html>))
+  - created with ((<vnc2swf|URL:http://www.unixuser.org/~euske/vnc2swf/>))
+* {{attach_anchor("rubyzilla.glade")}}
+* {{attach_anchor("rubyzilla.rb")}}
+
+{{image_right("rubyzilla.jpg")}}
+
+{{br}}
