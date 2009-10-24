@@ -153,7 +153,7 @@
 
 --- GLib.os_win32?
 
-     * Returns: true if run on Unix-like OS, otherwise false
+     * Returns: true if run on Windows, otherwise false
 
 --- GLib.parse_debug_string
 
