@@ -30,7 +30,7 @@ GTK+の各ウィジェットはGdk::Drawableにあるメソッドを使用して描画を行います(実際は
   gc = Gdk::GC.new(drawable)               #(5)
 
   green = Gdk::Color.new(0, 65535, 0)      #(6)
-  colormap = Gdk::Colormap.get_system      #(7)
+  colormap = Gdk::Colormap.system          #(7)
   colormap.alloc_color(green, false, true) #(8)
 
   window.signal_connect("expose_event") do |win, evt|   #(9)
