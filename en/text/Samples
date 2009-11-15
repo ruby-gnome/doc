@@ -38,3 +38,9 @@ Ruby/GtkMozEmbed, Ruby/GTK2
 
 == ((<RubyZilla - A demo flash movie|RubyZilla>))
 Ruby/GtkMozEmbed, Ruby/Libglade2, Ruby/GTK2 and Glade2
+
+== ((<panorama (left/right) meter for audio files|panorama>))
+Ruby/GStreamer
+
+== ((<sound level meter for audio files|level>))
+Ruby/GStreamer
