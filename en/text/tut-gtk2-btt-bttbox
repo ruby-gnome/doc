@@ -20,7 +20,7 @@ As the title above suggests this widget does not really belong between the butto
  Gtk::Box
  |   Gtk::ButtonBox
  |   |   Gtk::HButtonBox
- |   |   Gtk::HButtonBox
+ |   |   Gtk::VButtonBox
 
 The above hierarchy clearly shows two distinct hierarchies. What makes the two related is the fact that these boxes are used to pack buttons. The primary purpose of Gtk::ButtonBox class is to keep track of the various properties of Gtk::HButtonBox and Gtk::VButtonBox widgets. 
 
