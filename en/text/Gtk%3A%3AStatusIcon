@@ -277,7 +277,7 @@ Note that a Gtk::StatusIcon is not a widget, but just a GLib::Object. Making it 
 
     The scroll-event signal is emitted when a button in the 4 to 7 range is pressed. Wheel mice are usually configured to generate button press events for buttons 4 and 5 when the wheel is turned. Whether this event is emitted is platform-dependent.
     * self: the Gtk::StatusIcon
-    * event: the new size
+    * event: the Gdk::EventScroll which triggered this signal 
     * Returns:
 
 --- size-changed: self, size (Run last)
