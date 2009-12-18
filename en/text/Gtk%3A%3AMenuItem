@@ -22,7 +22,7 @@ As it derives from Gtk::Bin it can hold any valid child widget, altough only a f
 --- Gtk::MenuItem.new(label = nil, use_underline = true)
 
     Creates a new Gtk::MenuItem. 
-    * label: the text label to display next to the radio button. If nil, will act as a menu separator (inert horizontal line). 
+    * label: the text label to display next to the radio button. If nil, will act as a menu separator (insert horizontal line). 
     * use_underline: true if the label will be created underscores in label indicate the mnemonic for radio button. 
     * Returns: a new Gtk::MenuItem.
 
