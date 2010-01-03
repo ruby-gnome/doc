@@ -1,0 +1,21 @@
+=StatusIcon example
+
+A small script to show how to create and interact with a icon on the "system tray".
+
+==Download
+{{attach_anchor("si.tar.gz")}}
+
+==Usage
+$ ruby si.rb
+
+
+==License
+GPL v2
+
+==Author
+((<vinc-mai>))
+
+{{br}}
+===Changelog
+:2010-01-03
+Initial upload
