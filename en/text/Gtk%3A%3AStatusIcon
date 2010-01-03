@@ -6,7 +6,9 @@ A Gtk::StatusIcon object can be used to display an icon in a "system tray". The 
 
 On X11, the implementation follows the freedesktop.org "System Tray" specification. Implementations of the "tray" side of this specification can be found e.g. in the GNOME and KDE panel applications. It will also show up in the Dock or the System tray on Mac OSX and Windows, respectively.
 
-Note that a Gtk::StatusIcon is not a widget, but just a GLib::Object. Making it a widget would be impractical, since the system tray on Win32 doesn't allow to embed arbitrary widgets. 
+Note that a Gtk::StatusIcon is not a widget, but just a GLib::Object. Making it a widget would be impractical, since the system tray on Win32 doesn't allow to embed arbitrary widgets.
+
+An ((<example|StatusIcon example>)) is disponible.
 
 ((*Since 2.10*))
 
@@ -292,4 +294,5 @@ Note that a Gtk::StatusIcon is not a widget, but just a GLib::Object. Making it 
 == ChangeLog
 
 * 2007-02-14 Added. - ((<Masao>))
-* 2009-12-08 Add scroll-vent signam. ((<vinc-mai>))
+* 2009-12-08 Add scroll-event signal. ((<vinc-mai>))
+* 2010-01-03 Add a link to sample script. ((<vinc-mai>))
