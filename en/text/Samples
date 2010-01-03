@@ -47,3 +47,6 @@ Ruby/GStreamer
 
 == ((<sound level meter for audio files|level>))
 Ruby/GStreamer
+
+== ((<StatusIcon example>))
+Ruby/Gtk2
