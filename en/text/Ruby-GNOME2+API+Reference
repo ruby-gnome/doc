@@ -33,7 +33,7 @@ These documents are the Ruby version of the ((<GNOME 2.0 API Reference|URL:http:
 :((<"Ruby/GnomeVFS">))
  letting applications seamlessly access remote and local files
 
-:((<"Ruby/GStreamer">)) (not available)
+:((<"Ruby/GStreamer">))
  mulimedia framework for Audio/Video
 
 :((<"Ruby/GtkHtml2">))
