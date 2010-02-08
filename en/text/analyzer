@@ -7,7 +7,8 @@ It's extremely slow so treat that just as a proof-of-concept code that shows how
 This script draws first n pixels (equal to the value of @samples), not the whole image, but it could be easily modified to draw all samples.
 
 ==Download
-{{attach_anchor("analyzer.rb")}}
+ * {{attach_anchor("analyzer.rb")}}
+ * {{attach_anchor("analyzer2.rb")}} (slightly optimized version, faster, cleaner code, but generates less accurate images)
 
 ==Requirements
 * gems:
