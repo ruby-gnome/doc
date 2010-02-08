@@ -39,14 +39,11 @@ Ruby/GtkMozEmbed, Ruby/GTK2
 == ((<RubyZilla - A demo flash movie|RubyZilla>))
 Ruby/GtkMozEmbed, Ruby/Libglade2, Ruby/GTK2 and Glade2
 
-== ((<all-to-MP3 converter|mp3converter>))
-Ruby/GStreamer
-
-== ((<panorama meter for audio files|panorama>))
-Ruby/GStreamer
-
-== ((<sound level meter for audio files|level>))
-Ruby/GStreamer
+== GStreamer 
+ * ((<all-to-MP3 converter|mp3converter>))
+ * ((<Panorama meter for audio files|panorama>))
+ * ((<Sound level meter for audio files|level>))
+ * ((<Analyzer for sound files that can draw an image of the sound|analyzer>))
 
 == ((<StatusIcon example>))
 Ruby/Gtk2
