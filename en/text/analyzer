@@ -1,3 +1,5 @@
+=analyzer
+
 This script draws an image of the sound (similar to attached below) with Ruby and GStreamer.
 
 It's extremely slow so treat that just as a proof-of-concept code that shows how to use appsink. About 60% of CPU usage is now taken by drawing PNG file, but even if you disable it, it still remains slow. Propably the reason is that in Ruby you cannot just cast buffer to integer or float as you can do in C, so it takes a lot of computing power to convert every frame (that is actually a String) to anything reasonable.
