@@ -1,0 +1,23 @@
+=gst-duration-seek-position
+
+Proof-of-concept Ruby/GStreamer application that could be used to query total duration of an audio file, current position and peform seeking.
+
+==Download
+{{attach_anchor("duration.rb")}}
+
+==Screenshot
+{{image "duration-screenshot.png"}}
+
+==Usage
+$ ruby duration.rb AUDIO_FILE_NAME
+
+==License
+Ruby's
+
+==Author
+Marcin Lewandowski
+
+{{br}}
+===Changelog
+:2010-03-27
+Initial release
