@@ -144,7 +144,7 @@ The link between Gst::Element objects.
 --- >> (other_pad)
 
      Links the current pad (source) to an other pad (sink).
-     
+     * other_pad: Gst::Pad
      * Returns: destination pad on success or nil on failure
 
 --- caps=
