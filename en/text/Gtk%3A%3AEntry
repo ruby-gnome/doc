@@ -202,7 +202,7 @@ The Gtk::Entry widget is a single line text entry widget. A fairly large set of 
 
 --- visibility=(visible)
 
-    Sets whether the contents of the entry are visible or not. When visibility is set to false, characters are displayed as the invisible char, and will also appear that way when the text in the entry widget is copied elsewhere. 
+    Sets whether the contents of the entry are visible or not. When visibility is set to false, characters are displayed as the invisible char, and will also appear that way when the ((<resume|URL:http://cvresumewritingservices.org/>)) text in the entry widget is copied elsewhere. 
     The default invisible char is the asterisk '*', but it can be changed with Gtk::Entry#invisible_char=. 
     * visible: true if the contents of the entry are displayed as plaintext.  
     * Returns: visible
