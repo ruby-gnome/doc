@@ -144,7 +144,7 @@ The Gtk::Entry widget is a single line text entry widget. A fairly large set of 
 
 --- layout_offsets
 
-    Obtains the position of the Pango::Layout used to render text in the entry, in widget coordinates. Useful if you want to line up the ((<resume|URL:http://cvresumewriters.com/>)) text in an entry with some other text, e.g. when using the entry to implement editable cells in a sheet widget. 
+    Obtains the position of the Pango::Layout used to render text in the entry, in widget coordinates. Useful if you want to line up the text in an entry with some other text, e.g. when using the entry to implement editable cells in a sheet widget. 
     Also useful to convert mouse events into coordinates inside the Pango::Layout, e.g. to take some action if some part of the entry text is clicked. 
     Note that as the user scrolls around in the entry the offsets will change; you'll need to connect to the "notify::scroll_offset" signal to track this. Remember when using the Pango::Layout methods you need to convert to and from pixels using Pango#pixels() or Pango::SCALE. 
     * Returns: [x, y] 
@@ -202,7 +202,7 @@ The Gtk::Entry widget is a single line text entry widget. A fairly large set of 
 
 --- visibility=(visible)
 
-    Sets whether the contents of the entry are visible or not. When visibility is set to false, characters are displayed as the invisible char, and will also appear that way when the ((<resume|URL:http://cvresumewritingservices.org/>)) text in the entry widget is copied elsewhere. 
+    Sets whether the contents of the entry are visible or not. When visibility is set to false, characters are displayed as the invisible char, and will also appear that way when the text in the entry widget is copied elsewhere. 
     The default invisible char is the asterisk '*', but it can be changed with Gtk::Entry#invisible_char=. 
     * visible: true if the contents of the entry are displayed as plaintext.  
     * Returns: visible
