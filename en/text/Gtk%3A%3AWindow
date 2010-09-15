@@ -1167,7 +1167,7 @@ In particular, do not use Gtk::Window::POPUP just to turn off the window borders
      * self: Gtk::Window
 
 --- frame-event: self, event
-
+    The "frame-event" signal is emitted when an event other than key press or release or focus change is received on the window's frame.
      * self: Gtk::Window
      * event: Gdk::Event
 
