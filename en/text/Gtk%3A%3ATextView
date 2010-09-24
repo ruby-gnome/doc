@@ -728,6 +728,14 @@ Widget that displays a Gtk::TextBuffer.
 
      * self: the Gtk::TextView
 
+--- preedit-changed: self, preedit
+
+    If an input method is used, the typed text will not immediately be committed to the buffer. So if you are interested in the text, connect to this signal.
+
+    This signal is only emitted if the text at the given position is actually editable.
+     * self: the Gtk::TextView
+     * preedit: the current preedit string
+
 --- populate-popup: self, menu
 
      * self: the Gtk::TextView
