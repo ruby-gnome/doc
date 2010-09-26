@@ -8,6 +8,7 @@ This is the spot where you find out the status of all the work being done on, or
 
 == Status
 * ((<"Ruby/GLib"|"Status of Ruby/GLib">)) - Masahiro Sakai
+* ((<"Ruby/GIO"|"Status of Ruby/GIO">)) - Nikolai Weibull
 * ((<"Ruby/ATK"|"Status of Ruby/ATK">)) - Masao Mutoh
 * ((<"Ruby/Pango"|"Status of Ruby/Pango">))- Masao Mutoh
 * ((<"Ruby/GdkPixbuf"|"Status of Ruby/GdkPixbuf">))- Masao Mutoh
@@ -15,11 +16,11 @@ This is the spot where you find out the status of all the work being done on, or
 * ((<"Ruby/GTK"|"Status of Ruby/GTK">)) - Masao Mutoh
 * ((<"Ruby/GNOME"|"Status of Ruby/GNOME">)) - KUBO Takehiro
 * ((<"Ruby/GStreamer"|"Status of Ruby/GStreamer">)) - Laurent Sansonetti
-* ((<"Ruby/GConf"|"Status of Ruby/GConf">)) - Nikolai :: lone-star :: Weibull
+* ((<"Ruby/GConf"|"Status of Ruby/GConf">)) - Nikolai Weibull
 * ((<"Ruby/GnomeCanvas"|"Status of Ruby/GnomeCanvas">)) - KUBO Takehiro
 * ((<"Ruby/GnomePrint"|"Status of Ruby/GnomePrint">)) - Kouhei Sutou
 * ((<"Ruby/GnomePrintUI"|"Status of Ruby/GnomePrintUI">)) - Kouhei Sutou
-* ((<"Ruby/GnomeVFS"|"Status of Ruby/GnomeVFS">)) - Nikolai :: lone-star :: Weibull
+* ((<"Ruby/GnomeVFS"|"Status of Ruby/GnomeVFS">)) - Nikolai Weibull
 * ((<"Ruby/GtkGLExt"|"Status of Ruby/GtkGLExt">)) - Vincent Isambart
 * ((<"Ruby/GtkHtml2"|"Status of Ruby/GtkHtml2">)) - Martin Povolny
 * ((<"Ruby/GtkMozEmbed"|"Status of Ruby/GtkMozEmbed">)) - Mirko Maischberger
@@ -48,4 +49,3 @@ Libraries we still need to cover:
 * ((<libBonoboui|URL:http://developer.gnome.org/doc/API/2.0/libbonoboui/index.html>))
 * ((<libGSF|URL:http://developer.gnome.org/doc/API/2.0/libgsf/index.html>))
 * ((<GooCanvas|URL:http://sourceforge.net/projects/goocanvas>)) |((<"Ruby/GooCanvas"|URL:http://www.cozmixng.org/retro/projects/ruby-goocanvas/>))
-* ((<GIO|URL:http://library.gnome.org/devel/gio/unstable/index.html>))
