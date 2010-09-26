@@ -6,9 +6,9 @@ File Operations|GLib::FileAttribute|GFileAttribute|O
 File Operations|GLib::FileAttribute::Info|GFileAttributeInfo|*
 File Operations|GLib::FileAttribute::Info::List|GFileAttributeInfoList|*
 File Operations|GLib::FileAttributeMatcher|GFileAttributeMatcher|*
-File Operations|GLib::FileInfo|GFileInfo|O|Some TODOs
+File Operations|GLib::FileInfo|GFileInfo|O|Three TODOs
 File Operations|GLib::FileEnumerator|GFileEnumerator|O
-File Operations|GLib::IO::Error|GIOError|*|Some TODOs
+File Operations|GLib::IO::Error|GIOError|*
 File Operations|GLib::MountOperation|GMountOperation|O|One TODO
 File System Monitoring|GLib::FileMonitor|GFileMonitor|O|One TODO
 Asynchronous API|GLib::Cancellable|GCancellable|O|One TODO
