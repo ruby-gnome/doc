@@ -61,3 +61,7 @@ Automatically generate Ruby bindings for Vala code.
 
 :((<Xmp Manager|URL:http://grigio.org/xmp_manager>))
 Xmp Manager is a Gui to write xmp metadata on .png, .jpeg files.
+
+:((<ZiK|URL:http://zik.rubyforge.org/>))
+ZiK is an audio player based on gstreamer.
+No music library is used instead user directly browses through audio files.
