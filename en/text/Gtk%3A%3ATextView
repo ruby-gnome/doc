@@ -470,11 +470,11 @@ Widget that displays a Gtk::TextBuffer.
     Emits cut-clipboard signal.
     * Returns: self
 
---- delete_from_cursor(type, arg2)
+--- delete_from_cursor(type, count)
 
     Emits delete-from-cursor signal.
     * type: ((<GtkDeleteType|Gtk#GtkDeleteType>))
-    * arg2: the number of deletions to do
+    * count: the number of deletions to do
     * Returns: self
 
 --- insert_at_cursor(str)
