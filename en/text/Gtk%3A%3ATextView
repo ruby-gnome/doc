@@ -474,7 +474,7 @@ Widget that displays a Gtk::TextBuffer.
 
     Emits delete-from-cursor signal.
     * type: ((<GtkDeleteType|Gtk#GtkDeleteType>))
-    * arg2: Integer
+    * arg2: the number of deletions to do
     * Returns: self
 
 --- insert_at_cursor(str)
