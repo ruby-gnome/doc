@@ -460,8 +460,12 @@ class UpdateRD
         info[:module_functions_info] = read_sections(component)
       when /\AInstance Methods/i
         info[:instance_methods_info] = read_sections(component)
+      when /\ADeprecated Instance Methods/i
+        info[:deprecated_instance_methods_info] = read_sections(component)
       when /\AConstants/
         info[:constants_info] = read_sections(component)
+      when /\ADeprecated Constants/
+        info[:deprecated_constants_info] = read_sections(component)
       when /\AProperties/
         info[:properties_info] = read_sections(component)
       when /\AStyle Properties/
@@ -650,11 +654,27 @@ class UpdateRD
         included_module_descriptions[name] ||
         RETURNS
     end
+
+    deprecated_instance_methods_info =
+      @indexes[klass][:deprecated_instance_methods_info] || []
+    deprecated_instance_methods = deprecated_instance_methods_info.collect do |info|
+      signature = info.first
+      signature.split(/\A([\w\d_]+(?:!\?)?)/, 3)[1]
+    end
+    instance_methods -= deprecated_instance_methods
+
+    postfix = Proc.new {|name| property_postfixes[name] || ""}
     @indexes[klass][:instance_methods] =
       put_methods("Instance Methods", instance_methods,
                   @indexes[klass][:instance_methods_info],
                   "",
-                  Proc.new {|name| property_postfixes[name] || ""},
+                  postfix,
+                  default_descriptions)
+    @indexes[klass][:deprecated_instance_methods] =
+      put_methods("Deprecated Instance Methods", deprecated_instance_methods,
+                  deprecated_instance_methods_info,
+                  "",
+                  postfix,
                   default_descriptions)
   end
 
@@ -663,8 +683,18 @@ class UpdateRD
     klass.constants_at.each do |const|
       constants << const unless @indexes.has_key?(klass.const_get(const))
     end
+
+    deprecated_constants_info = @indexes[klass][:deprecated_constants_info] || []
+    deprecated_constants = deprecated_constants_info.collect do |info|
+      name = info.first
+      name
+    end.compact
+    constants -= deprecated_constants
     @indexes[klass][:constants] =
       put_methods("Constants", constants, @indexes[klass][:constants_info])
+    @indexes[klass][:deprecated_constants] =
+      put_methods("Deprecated Constants", deprecated_constants,
+                  deprecated_constants_info)
   end
 
   def find_properties(klass, parent, prefix)
