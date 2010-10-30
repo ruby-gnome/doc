@@ -191,6 +191,30 @@ The Pango::Context object stores global information used to control the itemizat
     ((* Deprecated *)) Same as Pango::Context#colormap=.  
     * Returns: self
 
+--- base_gravity
+
+     * Returns: self: ((*FIXME*))
+
+--- base_gravity=
+
+     * Returns: self: ((*FIXME*))
+
+--- gravity_hint
+
+     * Returns: self: ((*FIXME*))
+
+--- gravity_hint=
+
+     * Returns: self: ((*FIXME*))
+
+--- set_base_gravity
+
+     * Returns: self: ((*FIXME*))
+
+--- set_gravity_hint
+
+     * Returns: self: ((*FIXME*))
+
 == Constants
 
 === Direction

@@ -1071,6 +1071,125 @@ Sharing settings between applications.
      * gtk_touchscreen_mode: When true, there are no motion notify events delivered on this screen
      * Returns: self
 
+--- gtk_auto_mnemonics=(gtk_auto_mnemonics)
+
+    Sets the value whether mnemonics should be automatically shown and hidden when the user presses the mnemonic activator. or not.
+     * gtk_auto_mnemonics: true if mnemonics should be automatically shown and hidden when the user presses the mnemonic activator
+     * Returns: gtk_auto_mnemonics
+
+--- gtk_auto_mnemonics?
+
+    Gets the value whether mnemonics should be automatically shown and hidden when the user presses the mnemonic activator. or not.
+     * Returns: true if mnemonics should be automatically shown and hidden when the user presses the mnemonic activator
+
+--- gtk_enable_event_sounds=(gtk_enable_event_sounds)
+
+    Sets the value whether to play any event sounds at all or not.
+     * gtk_enable_event_sounds: true if to play any event sounds at all
+     * Returns: gtk_enable_event_sounds
+
+--- gtk_enable_event_sounds?
+
+    Gets the value whether to play any event sounds at all or not.
+     * Returns: true if to play any event sounds at all
+
+--- gtk_enable_input_feedback_sounds=(gtk_enable_input_feedback_sounds)
+
+    Sets the value whether to play event sounds as feedback to user input or not.
+     * gtk_enable_input_feedback_sounds: true if to play event sounds as feedback to user input
+     * Returns: gtk_enable_input_feedback_sounds
+
+--- gtk_enable_input_feedback_sounds?
+
+    Gets the value whether to play event sounds as feedback to user input or not.
+     * Returns: true if to play event sounds as feedback to user input
+
+--- gtk_enable_tooltips=(gtk_enable_tooltips)
+
+    Sets the value whether tooltips should be shown on widgets or not.
+     * gtk_enable_tooltips: true if tooltips should be shown on widgets
+     * Returns: gtk_enable_tooltips
+
+--- gtk_enable_tooltips?
+
+    Gets the value whether tooltips should be shown on widgets or not.
+     * Returns: true if tooltips should be shown on widgets
+
+--- gtk_fontconfig_timestamp
+
+    Gets the Timestamp of current fontconfig configuration.
+     * Returns: Timestamp of current fontconfig configuration
+
+--- gtk_fontconfig_timestamp=(gtk_fontconfig_timestamp)
+
+    Sets the Timestamp of current fontconfig configuration.
+     * gtk_fontconfig_timestamp: Timestamp of current fontconfig configuration
+     * Returns: gtk_fontconfig_timestamp
+
+--- gtk_recent_files_max_age
+
+    Gets the Maximum age of recently used files, in days.
+     * Returns: Maximum age of recently used files, in days
+
+--- gtk_recent_files_max_age=(gtk_recent_files_max_age)
+
+    Sets the Maximum age of recently used files, in days.
+     * gtk_recent_files_max_age: Maximum age of recently used files, in days
+     * Returns: gtk_recent_files_max_age
+
+--- gtk_sound_theme_name
+
+    Gets the XDG sound theme name.
+     * Returns: XDG sound theme name
+
+--- gtk_sound_theme_name=(gtk_sound_theme_name)
+
+    Sets the XDG sound theme name.
+     * gtk_sound_theme_name: XDG sound theme name
+     * Returns: gtk_sound_theme_name
+
+--- set_gtk_auto_mnemonics(gtk_auto_mnemonics)
+
+    Same as gtk_auto_mnemonics=.
+     * gtk_auto_mnemonics: true if mnemonics should be automatically shown and hidden when the user presses the mnemonic activator
+     * Returns: self
+
+--- set_gtk_enable_event_sounds(gtk_enable_event_sounds)
+
+    Same as gtk_enable_event_sounds=.
+     * gtk_enable_event_sounds: true if to play any event sounds at all
+     * Returns: self
+
+--- set_gtk_enable_input_feedback_sounds(gtk_enable_input_feedback_sounds)
+
+    Same as gtk_enable_input_feedback_sounds=.
+     * gtk_enable_input_feedback_sounds: true if to play event sounds as feedback to user input
+     * Returns: self
+
+--- set_gtk_enable_tooltips(gtk_enable_tooltips)
+
+    Same as gtk_enable_tooltips=.
+     * gtk_enable_tooltips: true if tooltips should be shown on widgets
+     * Returns: self
+
+--- set_gtk_fontconfig_timestamp(gtk_fontconfig_timestamp)
+
+    Same as gtk_fontconfig_timestamp=.
+     * gtk_fontconfig_timestamp: Timestamp of current fontconfig configuration
+     * Returns: self
+
+--- set_gtk_recent_files_max_age(gtk_recent_files_max_age)
+
+    Same as gtk_recent_files_max_age=.
+     * gtk_recent_files_max_age: Maximum age of recently used files, in days
+     * Returns: self
+
+--- set_gtk_sound_theme_name(gtk_sound_theme_name)
+
+    Same as gtk_sound_theme_name=.
+     * gtk_sound_theme_name: XDG sound theme name
+     * Returns: self
+
 == Properties
 
 --- gtk-alternative-button-order: true or false (Read/Write)
@@ -1351,6 +1470,34 @@ Sharing settings between applications.
 --- gtkhtml-minimum-font-size: Float (Read/Write)
 
     The minimum font size used when rendering text
+
+--- gtk-auto-mnemonics: true or false (Read/Write)
+
+    Whether mnemonics should be automatically shown and hidden when the user presses the mnemonic activator.
+
+--- gtk-enable-event-sounds: true or false (Read/Write)
+
+    Whether to play any event sounds at all
+
+--- gtk-enable-input-feedback-sounds: true or false (Read/Write)
+
+    Whether to play event sounds as feedback to user input
+
+--- gtk-enable-tooltips: true or false (Read/Write)
+
+    Whether tooltips should be shown on widgets
+
+--- gtk-fontconfig-timestamp: Integer (Read/Write)
+
+    Timestamp of current fontconfig configuration
+
+--- gtk-recent-files-max-age: Integer (Read/Write)
+
+    Maximum age of recently used files, in days
+
+--- gtk-sound-theme-name: String (Read/Write)
+
+    XDG sound theme name
 
 == See Also
 

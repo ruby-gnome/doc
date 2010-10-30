@@ -1,0 +1,16 @@
+= class GLib::IO::NotMountableFileError
+
+== Object Hierarchy
+
+* Object
+  * Exception
+    * StandardError
+      * IOError
+        * GLib::IO::Error
+          * GLib::IO::NotMountableFileError
+
+== See Also
+
+== ChangeLog
+
+

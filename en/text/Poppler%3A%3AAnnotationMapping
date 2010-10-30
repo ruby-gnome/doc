@@ -1,0 +1,45 @@
+= class Poppler::AnnotationMapping
+
+== Object Hierarchy
+
+* Object
+  * GLib::Boxed
+    * Poppler::AnnotationMapping
+
+== Class Methods
+
+--- Poppler::AnnotationMapping.new
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- annotation
+
+     * Returns: self: ((*FIXME*))
+
+--- annotation=
+
+     * Returns: self: ((*FIXME*))
+
+--- area
+
+     * Returns: self: ((*FIXME*))
+
+--- area=
+
+     * Returns: self: ((*FIXME*))
+
+--- set_annotation
+
+     * Returns: self: ((*FIXME*))
+
+--- set_area
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

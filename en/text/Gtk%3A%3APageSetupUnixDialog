@@ -103,6 +103,18 @@ dialog, at the cost of the portability offered by Gtk::PrintOperation.
 
     See Gtk::Buildable#set_name.
 
+--- builder_name
+
+    See Gtk::Buildable#builder_name.
+
+--- builder_name=
+
+    See Gtk::Buildable#builder_name=.
+
+--- set_builder_name
+
+    See Gtk::Buildable#set_builder_name.
+
 == See Also
 
 == ChangeLog

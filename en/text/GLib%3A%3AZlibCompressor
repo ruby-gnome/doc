@@ -1,0 +1,54 @@
+= class GLib::ZlibCompressor
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::ZlibCompressor
+
+== Included Modules
+
+  * GLib::Converter
+
+== Class Methods
+
+--- GLib::ZlibCompressor.new
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- convert
+
+    See GLib::Converter#convert.
+
+--- format
+
+    Gets the format of the compressed data.
+     * Returns: The format of the compressed data
+
+--- level
+
+    Gets the level of compression from 0 (no compression) to 9 (most compression), -1 for the default level.
+     * Returns: The level of compression from 0 (no compression) to 9 (most compression), -1 for the default level
+
+--- reset
+
+    See GLib::Converter#reset.
+
+== Properties
+
+--- format: GZlibCompressorFormat (Read/Write)
+
+    The format of the compressed data
+
+--- level: Integer (Read/Write)
+
+    The level of compression from 0 (no compression) to 9 (most compression), -1 for the default level
+
+== See Also
+
+== ChangeLog
+
+

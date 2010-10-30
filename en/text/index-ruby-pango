@@ -51,6 +51,10 @@
   * Pango::AttrFontDescription#value
   * Pango::AttrForeground
   * Pango::AttrForeground.new
+  * Pango::AttrGravity
+  * Pango::AttrGravity.new
+  * Pango::AttrGravityHint
+  * Pango::AttrGravityHint.new
   * Pango::AttrInt
   * Pango::AttrInt#value
   * Pango::AttrIterator
@@ -107,7 +111,11 @@
   * Pango::Attribute.type_register
   * Pango::Attribute#==
   * Pango::Attribute#end_index
+  * Pango::Attribute#end_index=
+  * Pango::Attribute#set_end_index
+  * Pango::Attribute#set_start_index
   * Pango::Attribute#start_index
+  * Pango::Attribute#start_index=
   * Pango::Attribute::Type
   * Pango::CairoFontMap
   * Pango::CairoFontMap.create
@@ -134,6 +142,8 @@
   * Pango::Context.new
   * Pango::Context#base_dir
   * Pango::Context#base_dir=
+  * Pango::Context#base_gravity
+  * Pango::Context#base_gravity=
   * Pango::Context#colormap=
   * Pango::Context#families
   * Pango::Context#font_description
@@ -143,6 +153,8 @@
   * Pango::Context#font_options
   * Pango::Context#font_options=
   * Pango::Context#get_metrics
+  * Pango::Context#gravity_hint
+  * Pango::Context#gravity_hint=
   * Pango::Context#itemize
   * Pango::Context#language
   * Pango::Context#language=
@@ -154,10 +166,12 @@
   * Pango::Context#resolution
   * Pango::Context#resolution=
   * Pango::Context#set_base_dir
+  * Pango::Context#set_base_gravity
   * Pango::Context#set_colormap
   * Pango::Context#set_font_description
   * Pango::Context#set_font_map
   * Pango::Context#set_font_options
+  * Pango::Context#set_gravity_hint
   * Pango::Context#set_language
   * Pango::Context#set_matrix
   * Pango::Context#set_resolution
@@ -187,11 +201,14 @@
   * Pango::FontDescription#better_match
   * Pango::FontDescription#family
   * Pango::FontDescription#family=
+  * Pango::FontDescription#gravity
+  * Pango::FontDescription#gravity=
   * Pango::FontDescription#hash
   * Pango::FontDescription#merge
   * Pango::FontDescription#set_absolute_size
   * Pango::FontDescription#set_family
   * Pango::FontDescription#set_fields
+  * Pango::FontDescription#set_gravity
   * Pango::FontDescription#set_size
   * Pango::FontDescription#set_stretch
   * Pango::FontDescription#set_style
@@ -280,6 +297,11 @@
   * Pango::GlyphString#size=
   * Pango::GlyphString#width
   * Pango::GlyphString#x_to_index
+  * Pango::Gravity
+  * Pango::Gravity.to_rotation
+  * Pango::Gravity.vertical?
+  * Pango::Gravity::Gravity
+  * Pango::Gravity::Hint
   * Pango::Item
   * Pango::Item.new
   * Pango::Item#analysis
@@ -296,6 +318,7 @@
   * Pango::Item#set_offset
   * Pango::Item#split
   * Pango::Language
+  * Pango::Language.default
   * Pango::Language.new
   * Pango::Language.to_string
   * Pango::Language#includes_script
@@ -447,6 +470,7 @@
   * Pango::Matrix.new
   * Pango::Matrix#concat!
   * Pango::Matrix#font_scale_factor
+  * Pango::Matrix#gravity
   * Pango::Matrix#rotate!
   * Pango::Matrix#scale!
   * Pango::Matrix#set_x0
@@ -507,6 +531,7 @@
   * Pango::Renderer::Part
   * Pango::Script
   * Pango::Script.for_unichar
+  * Pango::Script#get_gravity
   * Pango::Script#sample_language
   * Pango::ScriptIter
   * Pango::ScriptIter.new

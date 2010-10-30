@@ -1,0 +1,97 @@
+= class GLib::SocketListener
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::SocketListener
+
+== Class Methods
+
+--- GLib::SocketListener.new
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- accept
+
+     * Returns: self: ((*FIXME*))
+
+--- accept_async
+
+     * Returns: self: ((*FIXME*))
+
+--- accept_finish
+
+     * Returns: self: ((*FIXME*))
+
+--- accept_socket
+
+     * Returns: self: ((*FIXME*))
+
+--- accept_socket_async
+
+     * Returns: self: ((*FIXME*))
+
+--- accept_socket_finish
+
+     * Returns: self: ((*FIXME*))
+
+--- add_address
+
+     * Returns: self: ((*FIXME*))
+
+--- add_any_inet_port
+
+     * Returns: self: ((*FIXME*))
+
+--- add_inet_port
+
+     * Returns: self: ((*FIXME*))
+
+--- add_socket
+
+     * Returns: self: ((*FIXME*))
+
+--- backlog=
+
+     * Returns: self: ((*FIXME*))
+
+--- close
+
+     * Returns: self: ((*FIXME*))
+
+--- listen_backlog
+
+    Gets the outstanding connections in the listen queue.
+     * Returns: outstanding connections in the listen queue
+
+--- listen_backlog=(listen_backlog)
+
+    Sets the outstanding connections in the listen queue.
+     * listen_backlog: outstanding connections in the listen queue
+     * Returns: listen_backlog
+
+--- set_backlog
+
+     * Returns: self: ((*FIXME*))
+
+--- set_listen_backlog(listen_backlog)
+
+    Same as listen_backlog=.
+     * listen_backlog: outstanding connections in the listen queue
+     * Returns: self
+
+== Properties
+
+--- listen-backlog: Integer (Read/Write)
+
+    outstanding connections in the listen queue
+
+== See Also
+
+== ChangeLog
+
+

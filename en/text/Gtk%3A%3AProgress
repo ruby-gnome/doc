@@ -114,6 +114,18 @@ A Gtk::Progress is the abstract base class used to derive a Gtk::ProgressBar whi
 
     See Gtk::Buildable#set_name.
 
+--- builder_name
+
+    See Gtk::Buildable#builder_name.
+
+--- builder_name=
+
+    See Gtk::Buildable#builder_name=.
+
+--- set_builder_name
+
+    See Gtk::Buildable#set_builder_name.
+
 == Properties
 
 --- activity-mode: true or false (Read/Write)

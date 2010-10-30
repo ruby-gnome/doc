@@ -1,0 +1,20 @@
+= class Gst::EventFlushStart
+
+== Object Hierarchy
+
+* Object
+  * Gst::MiniObject
+    * Gst::Event
+      * Gst::EventFlushStart
+
+== Class Methods
+
+--- Gst::EventFlushStart.new
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

@@ -1,0 +1,17 @@
+= module GLib::FileDescriptorBased
+
+== Included Modules
+
+  * GLib::Interface
+
+== Instance Methods
+
+--- fd
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

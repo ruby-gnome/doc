@@ -36,6 +36,10 @@ The GStreamer module.
     	p Gst.version.join('.')
     * Returns: an Array of 3 fixnums (major, minor and macro numbers).
 
+--- Gst.check_version?
+
+     * Returns: self: ((*FIXME*))
+
 == Constants
 
 --- MSECOND

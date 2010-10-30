@@ -1,0 +1,25 @@
+= module GLib::LoadableIcon
+
+== Included Modules
+
+  * GLib::Interface
+
+== Instance Methods
+
+--- load
+
+     * Returns: self: ((*FIXME*))
+
+--- load_async
+
+     * Returns: self: ((*FIXME*))
+
+--- load_finish
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

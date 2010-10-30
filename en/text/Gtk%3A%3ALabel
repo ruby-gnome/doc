@@ -437,6 +437,39 @@ Gtk::Label#justify= sets how the lines in a label align with one another. If you
 
     See Gtk::Buildable#set_name.
 
+--- activate_current_link
+
+     * Returns: self: ((*FIXME*))
+
+--- builder_name
+
+    See Gtk::Buildable#builder_name.
+
+--- builder_name=
+
+    See Gtk::Buildable#builder_name=.
+
+--- set_builder_name
+
+    See Gtk::Buildable#set_builder_name.
+
+--- set_track_visited_links(track_visited_links)
+
+    Same as track_visited_links=.
+     * track_visited_links: true if visited links should be tracked
+     * Returns: self
+
+--- track_visited_links=(track_visited_links)
+
+    Sets the value whether visited links should be tracked or not.
+     * track_visited_links: true if visited links should be tracked
+     * Returns: track_visited_links
+
+--- track_visited_links?
+
+    Gets the value whether visited links should be tracked or not.
+     * Returns: true if visited links should be tracked
+
 == Properties
 
 --- angle: Float (Read/Write)
@@ -532,6 +565,10 @@ Gtk::Label#justify= sets how the lines in a label align with one another. If you
 
     If wrap is set, controls how linewrapping is done
 
+--- track-visited-links: true or false (Read/Write)
+
+    Whether visited links should be tracked
+
 == Signals
 
 --- copy-clipboard: self
@@ -546,6 +583,14 @@ Gtk::Label#justify= sets how the lines in a label align with one another. If you
 
      * self: Gtk::Label
      * arg1: Gtk::Menu
+
+--- activate-current-link: self
+
+     * self: Gtk::Label: ((*FIXME*))
+
+--- activate-link: self
+
+     * self: Gtk::Label: ((*FIXME*))
 
 == See Also
 

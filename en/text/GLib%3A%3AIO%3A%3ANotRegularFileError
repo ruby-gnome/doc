@@ -1,0 +1,16 @@
+= class GLib::IO::NotRegularFileError
+
+== Object Hierarchy
+
+* Object
+  * Exception
+    * StandardError
+      * IOError
+        * GLib::IO::Error
+          * GLib::IO::NotRegularFileError
+
+== See Also
+
+== ChangeLog
+
+

@@ -1,0 +1,41 @@
+= class GLib::ThreadedSocketService
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::SocketListener
+        * GLib::SocketService
+          * GLib::ThreadedSocketService
+
+== Class Methods
+
+--- GLib::ThreadedSocketService.new
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- max_threads
+
+    Gets the max number of threads handling clients for this service.
+     * Returns: The max number of threads handling clients for this service
+
+== Properties
+
+--- max-threads: Integer (Read/Write)
+
+    The max number of threads handling clients for this service
+
+== Signals
+
+--- run: self
+
+     * self: GLib::ThreadedSocketService: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

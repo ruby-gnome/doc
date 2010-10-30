@@ -23,14 +23,27 @@
   * Vte::Terminal#audible_bell=
   * Vte::Terminal#audible_bell?
   * Vte::Terminal#background_image=
+  * Vte::Terminal#background_image_file
+  * Vte::Terminal#background_image_file=
+  * Vte::Terminal#background_image_pixbuf
+  * Vte::Terminal#background_image_pixbuf=
+  * Vte::Terminal#background_opacity
+  * Vte::Terminal#background_opacity=
+  * Vte::Terminal#background_saturation
   * Vte::Terminal#background_saturation=
+  * Vte::Terminal#background_tint_color
   * Vte::Terminal#background_tint_color=
   * Vte::Terminal#background_transparent=
+  * Vte::Terminal#background_transparent?
+  * Vte::Terminal#backspace_binding
   * Vte::Terminal#backspace_binding=
+  * Vte::Terminal#builder_name
+  * Vte::Terminal#builder_name=
   * Vte::Terminal#char_ascent
   * Vte::Terminal#char_descent
   * Vte::Terminal#char_height
   * Vte::Terminal#char_width
+  * Vte::Terminal#child_exit_status
   * Vte::Terminal#color_background=
   * Vte::Terminal#color_bold=
   * Vte::Terminal#color_cursor=
@@ -41,9 +54,14 @@
   * Vte::Terminal#construct_child
   * Vte::Terminal#copy_clipboard
   * Vte::Terminal#copy_primary
+  * Vte::Terminal#cursor_blink_mode
+  * Vte::Terminal#cursor_blink_mode=
   * Vte::Terminal#cursor_blinks=
   * Vte::Terminal#cursor_position
+  * Vte::Terminal#cursor_shape
+  * Vte::Terminal#cursor_shape=
   * Vte::Terminal#default_emulation
+  * Vte::Terminal#delete_binding
   * Vte::Terminal#delete_binding=
   * Vte::Terminal#emulation
   * Vte::Terminal#emulation=
@@ -53,6 +71,8 @@
   * Vte::Terminal#feed_child
   * Vte::Terminal#feed_child_binary
   * Vte::Terminal#font
+  * Vte::Terminal#font_desc
+  * Vte::Terminal#font_desc=
   * Vte::Terminal#fork_command
   * Vte::Terminal#fork_pty
   * Vte::Terminal#get_internal_child
@@ -75,22 +95,33 @@
   * Vte::Terminal#padding
   * Vte::Terminal#paste_clipboard
   * Vte::Terminal#paste_primary
+  * Vte::Terminal#pointer_autohide=
+  * Vte::Terminal#pointer_autohide?
+  * Vte::Terminal#pty
   * Vte::Terminal#pty=
   * Vte::Terminal#ref_accessible
   * Vte::Terminal#reset
   * Vte::Terminal#row_count
   * Vte::Terminal#scroll_background=
+  * Vte::Terminal#scroll_background?
   * Vte::Terminal#scroll_on_keystroke=
+  * Vte::Terminal#scroll_on_keystroke?
   * Vte::Terminal#scroll_on_output=
+  * Vte::Terminal#scroll_on_output?
+  * Vte::Terminal#scrollback_lines
   * Vte::Terminal#scrollback_lines=
   * Vte::Terminal#set_allow_bold
   * Vte::Terminal#set_audible_bell
   * Vte::Terminal#set_background_image
+  * Vte::Terminal#set_background_image_file
+  * Vte::Terminal#set_background_image_pixbuf
+  * Vte::Terminal#set_background_opacity
   * Vte::Terminal#set_background_saturation
   * Vte::Terminal#set_background_tint_color
   * Vte::Terminal#set_background_transparent
   * Vte::Terminal#set_backspace_binding
   * Vte::Terminal#set_buildable_property
+  * Vte::Terminal#set_builder_name
   * Vte::Terminal#set_color_background
   * Vte::Terminal#set_color_bold
   * Vte::Terminal#set_color_cursor
@@ -98,14 +129,18 @@
   * Vte::Terminal#set_color_foreground
   * Vte::Terminal#set_color_highlight
   * Vte::Terminal#set_colors
+  * Vte::Terminal#set_cursor_blink_mode
   * Vte::Terminal#set_cursor_blinks
+  * Vte::Terminal#set_cursor_shape
   * Vte::Terminal#set_default_colors
   * Vte::Terminal#set_delete_binding
   * Vte::Terminal#set_emulation
   * Vte::Terminal#set_encoding
   * Vte::Terminal#set_font
+  * Vte::Terminal#set_font_desc
   * Vte::Terminal#set_mouse_autohide
   * Vte::Terminal#set_name
+  * Vte::Terminal#set_pointer_autohide
   * Vte::Terminal#set_pty
   * Vte::Terminal#set_scroll_background
   * Vte::Terminal#set_scroll_on_keystroke
@@ -120,6 +155,7 @@
   * Vte::Terminal#visible_bell?
   * Vte::Terminal#window_title
   * Vte::Terminal#word_char?
+  * Vte::Terminal#word_chars
   * Vte::Terminal#word_chars=
   * Vte::TerminalAccessible
   * Vte::TerminalAccessible.new
@@ -149,6 +185,7 @@
   * Vte::TerminalAccessible#get_text_before_offset
   * Vte::TerminalAccessible#grab_focus
   * Vte::TerminalAccessible#layer
+  * Vte::TerminalAccessible#mdi_zorder
   * Vte::TerminalAccessible#n_actions
   * Vte::TerminalAccessible#n_selections
   * Vte::TerminalAccessible#position
@@ -163,4 +200,6 @@
   * Vte::TerminalAccessible#set_size
   * Vte::TerminalAccessible#size
   * Vte::TerminalAntiAlias
+  * Vte::TerminalCursorBlinkMode
+  * Vte::TerminalCursorShape
   * Vte::TerminalEraseBinding

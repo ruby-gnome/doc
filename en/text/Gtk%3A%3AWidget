@@ -1289,6 +1289,22 @@
 
     See Gtk::Buildable#set_buildable_property.
 
+--- builder_name
+
+    See Gtk::Buildable#builder_name.
+
+--- builder_name=
+
+    See Gtk::Buildable#builder_name=.
+
+--- set_builder_name
+
+    See Gtk::Buildable#set_builder_name.
+
+--- set_scroll_adjustments
+
+     * Returns: self: ((*FIXME*))
+
 == Constants
 
 === GtkTextDirection
@@ -1460,6 +1476,14 @@ Tells about certain properties of the widget.
 --- tooltip-text: String (Read/Write)
 
     The contents of the tooltip for this widget
+
+--- double-buffered: true or false (Read/Write)
+
+    Whether or not the widget is double buffered
+
+--- window: Gdk::Window (Read)
+
+    The widget's window if it is realized
 
 == Signals
 
@@ -1800,6 +1824,10 @@ Tells about certain properties of the widget.
      * self: Gtk::Widget: ((*FIXME*))
 
 --- screen-changed: self
+
+     * self: Gtk::Widget: ((*FIXME*))
+
+--- damage-event: self
 
      * self: Gtk::Widget: ((*FIXME*))
 

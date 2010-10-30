@@ -1,0 +1,16 @@
+= class GLib::IO::NotEmptyError
+
+== Object Hierarchy
+
+* Object
+  * Exception
+    * StandardError
+      * IOError
+        * GLib::IO::Error
+          * GLib::IO::NotEmptyError
+
+== See Also
+
+== ChangeLog
+
+

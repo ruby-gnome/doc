@@ -1,0 +1,58 @@
+= class GLib::NetworkAddress
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::NetworkAddress
+
+== Included Modules
+
+  * GLib::SocketConnectable
+
+== Class Methods
+
+--- GLib::NetworkAddress.new
+
+     * Returns: self: ((*FIXME*))
+
+--- GLib::NetworkAddress.parse
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- each
+
+    See GLib::SocketConnectable#each.
+
+--- enumerate
+
+    See GLib::SocketConnectable#enumerate.
+
+--- hostname
+
+    Gets the Hostname to resolve.
+     * Returns: Hostname to resolve
+
+--- port
+
+    Gets the Network port.
+     * Returns: Network port
+
+== Properties
+
+--- hostname: String (Read/Write)
+
+    Hostname to resolve
+
+--- port: Integer (Read/Write)
+
+    Network port
+
+== See Also
+
+== ChangeLog
+
+

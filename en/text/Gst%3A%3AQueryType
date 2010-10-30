@@ -63,6 +63,9 @@ Dynamically register new query types.
 --- FORMATS
 --- SEEKING
 --- SEGMENT
+--- BUFFERING
+--- CUSTOM
+--- URI
 
 == See Also
 

@@ -1,0 +1,16 @@
+= class GLib::IO::BusyError
+
+== Object Hierarchy
+
+* Object
+  * Exception
+    * StandardError
+      * IOError
+        * GLib::IO::Error
+          * GLib::IO::BusyError
+
+== See Also
+
+== ChangeLog
+
+

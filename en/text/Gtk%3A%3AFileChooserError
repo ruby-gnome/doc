@@ -35,6 +35,7 @@ These identify the various errors that can occur while calling Gtk::FileChooser 
     Indicates a malformed filename.
 
 --- ALREADY_EXISTS
+--- INCOMPLETE_HOSTNAME
 
 == See Also
 

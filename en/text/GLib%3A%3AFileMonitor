@@ -1,0 +1,72 @@
+= class GLib::FileMonitor
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::FileMonitor
+
+== Instance Methods
+
+--- cancel
+
+     * Returns: self: ((*FIXME*))
+
+--- cancelled?
+
+    Gets the value whether the monitor has been cancelled or not.
+     * Returns: true if the monitor has been cancelled
+
+--- rate_limit
+
+    Gets the limit of the monitor to watch for changes, in milliseconds.
+     * Returns: The limit of the monitor to watch for changes, in milliseconds
+
+--- rate_limit=(rate_limit)
+
+    Sets the limit of the monitor to watch for changes, in milliseconds.
+     * rate_limit: The limit of the monitor to watch for changes, in milliseconds
+     * Returns: rate_limit
+
+--- set_rate_limit(rate_limit)
+
+    Same as rate_limit=.
+     * rate_limit: The limit of the monitor to watch for changes, in milliseconds
+     * Returns: self
+
+== Constants
+
+--- EVENT_ATTRIBUTE_CHANGED
+--- EVENT_CHANGED
+--- EVENT_CHANGES_DONE_HINT
+--- EVENT_CREATED
+--- EVENT_DELETED
+--- EVENT_MOVED
+--- EVENT_PRE_UNMOUNT
+--- EVENT_UNMOUNTED
+--- NONE
+--- SEND_MOVED
+--- WATCH_MOUNTS
+
+== Properties
+
+--- cancelled: true or false (Read)
+
+    Whether the monitor has been cancelled
+
+--- rate-limit: Integer (Read/Write)
+
+    The limit of the monitor to watch for changes, in milliseconds
+
+== Signals
+
+--- changed: self
+
+     * self: GLib::FileMonitor: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

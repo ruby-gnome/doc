@@ -191,6 +191,18 @@ As of GTK+ 2.4, Gtk::Combo has been deprecated in favor of Gtk::ComboBox.
 
     See Gtk::Buildable#set_name.
 
+--- builder_name
+
+    See Gtk::Buildable#builder_name.
+
+--- builder_name=
+
+    See Gtk::Buildable#builder_name=.
+
+--- set_builder_name
+
+    See Gtk::Buildable#set_builder_name.
+
 == Properties
 
 --- allow-empty: true or false (Read/Write)

@@ -1,0 +1,12 @@
+= class GLib::InputStream::ReadAsyncResult
+
+== Object Hierarchy
+
+* Object
+  * GLib::InputStream::ReadAsyncResult
+
+== See Also
+
+== ChangeLog
+
+

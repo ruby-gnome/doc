@@ -143,6 +143,18 @@ To simply switch the state of a toggle button, use Gtk::ToggleButton#toggled.
 
     See Gtk::Buildable#set_name.
 
+--- builder_name
+
+    See Gtk::Buildable#builder_name.
+
+--- builder_name=
+
+    See Gtk::Buildable#builder_name=.
+
+--- set_builder_name
+
+    See Gtk::Buildable#set_builder_name.
+
 == Properties
 
 --- active: true or false (Read/Write)
@@ -172,4 +184,3 @@ To simply switch the state of a toggle button, use Gtk::ToggleButton#toggled.
 == ChangeLog
 
 - ((<Masao>))
-

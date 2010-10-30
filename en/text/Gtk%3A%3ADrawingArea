@@ -83,6 +83,18 @@ To receive mouse events on a drawing area, you will need to enable them with Gtk
 
     See Gtk::Buildable#set_name.
 
+--- builder_name
+
+    See Gtk::Buildable#builder_name.
+
+--- builder_name=
+
+    See Gtk::Buildable#builder_name=.
+
+--- set_builder_name
+
+    See Gtk::Buildable#set_builder_name.
+
 == See Also
 
 Sometimes Gtk::Image is a useful alternative to a drawing area. You can put a Gdk::Pixmap in the Gtk::Image and draw to the Gdk::Pixmap, calling Gtk::Widget#queue_draw on the Gtk::Image when you want to refresh to the screen.

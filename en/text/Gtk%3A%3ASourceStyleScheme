@@ -1,15 +1,11 @@
-= module Gtk::SourceStyleScheme
+= class Gtk::SourceStyleScheme
 
-== Included Modules
+== Object Hierarchy
 
-  * GLib::Interface
-
-== Module Functions
-
---- Gtk::SourceStyleScheme.default
-
-    Gets the default style scheme.
-    * Returns: a Gtk::SourceStyleScheme
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Gtk::SourceStyleScheme
 
 == Instance Methods
 
@@ -23,6 +19,47 @@
 
     Gets the name of the given style scheme.
     * Returns: the name of the sytle scheme.
+
+--- authors
+
+     * Returns: self: ((*FIXME*))
+
+--- description
+
+    Gets the Style scheme description.
+     * Returns: Style scheme description
+
+--- filename
+
+    Gets the Style scheme filename.
+     * Returns: Style scheme filename
+
+--- get_style
+
+     * Returns: self: ((*FIXME*))
+
+--- id
+
+    Gets the Style scheme id.
+     * Returns: Style scheme id
+
+== Properties
+
+--- description: String (Read)
+
+    Style scheme description
+
+--- filename: String (Read)
+
+    Style scheme filename
+
+--- id: String (Read/Write)
+
+    Style scheme id
+
+--- name: String (Read)
+
+    Style scheme name
 
 == Signals
 

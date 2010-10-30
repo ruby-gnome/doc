@@ -1,0 +1,53 @@
+= class GLib::File::CopyFlags
+
+== Object Hierarchy
+
+* Object
+  * GLib::Flags
+    * GLib::File::CopyFlags
+
+== Instance Methods
+
+--- all_metadata?
+
+     * Returns: self: ((*FIXME*))
+
+--- backup?
+
+     * Returns: self: ((*FIXME*))
+
+--- no_fallback_for_move?
+
+     * Returns: self: ((*FIXME*))
+
+--- nofollow_symlinks?
+
+     * Returns: self: ((*FIXME*))
+
+--- none?
+
+     * Returns: self: ((*FIXME*))
+
+--- overwrite?
+
+     * Returns: self: ((*FIXME*))
+
+--- target_default_perms?
+
+     * Returns: self: ((*FIXME*))
+
+== Constants
+
+--- ALL_METADATA
+--- BACKUP
+--- NOFOLLOW_SYMLINKS
+--- NONE
+--- NO_FALLBACK_FOR_MOVE
+--- OVERWRITE
+--- TARGET_DEFAULT_PERMS
+
+== See Also
+
+== ChangeLog
+
+

@@ -1,0 +1,33 @@
+= class GLib::OutputStream::SpliceFlags
+
+== Object Hierarchy
+
+* Object
+  * GLib::Flags
+    * GLib::OutputStream::SpliceFlags
+
+== Instance Methods
+
+--- close_source?
+
+     * Returns: self: ((*FIXME*))
+
+--- close_target?
+
+     * Returns: self: ((*FIXME*))
+
+--- none?
+
+     * Returns: self: ((*FIXME*))
+
+== Constants
+
+--- CLOSE_SOURCE
+--- CLOSE_TARGET
+--- NONE
+
+== See Also
+
+== ChangeLog
+
+

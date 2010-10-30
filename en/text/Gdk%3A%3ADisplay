@@ -313,6 +313,10 @@ Gdk::Display objects are the GDK representation of the X Display which can be de
 
      * Returns: self: ((*FIXME*))
 
+--- startup_notification_id
+
+     * Returns: self: ((*FIXME*))
+
 == Signals
 
 --- closed: self, is_error

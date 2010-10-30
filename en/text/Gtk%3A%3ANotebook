@@ -448,6 +448,18 @@ There are many configuration options for Gtk::Notebook. Among other things, you 
 
     See Gtk::Buildable#set_name.
 
+--- builder_name
+
+    See Gtk::Buildable#builder_name.
+
+--- builder_name=
+
+    See Gtk::Buildable#builder_name=.
+
+--- set_builder_name
+
+    See Gtk::Buildable#set_builder_name.
+
 == Constants
 
 === GtkNotebookTab

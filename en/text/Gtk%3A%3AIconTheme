@@ -157,6 +157,14 @@ In many cases, named themes are used indirectly, via Gtk::Image or stock items, 
     Checks to see if the icon theme has changed; if it has, any currently cached information is discarded and will be reloaded next time icon_theme is accessed. ((* Since 2.4 *))
     * Returns: true if the icon theme has changed and needed to be reloaded.
 
+--- choose_icon
+
+     * Returns: self: ((*FIXME*))
+
+--- contexts
+
+     * Returns: self: ((*FIXME*))
+
 == Constants
 
 === GtkIconLookupFlags
@@ -176,6 +184,7 @@ Used to specify options for Gtk::IconTheme#lookup_icon. ((* Since 2.4 *))
     When passed to Gtk::IconTheme#lookup_icon includes builtin icons as well as files. For a builtin icon, Gtk::IconInfo#filename returns nil and you need to call Gtk::IconInfo#builtin_pixbuf.  ((* Since 2.4 *))
 
 --- LOOKUP_GENERIC_FALLBACK
+--- LOOKUP_FORCE_SIZE
 
 == Signals
 

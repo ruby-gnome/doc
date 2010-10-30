@@ -73,7 +73,6 @@ Handling events from the window system.
     Gdk::Event#button method returns the mouse button number pressed: {left=1, right=3, left+right=3} Verify this on your system, it may be system depend.
     * Returns: mouse button number pressed: 1, 2 or 3.
 
-
 --- put
 
     Appends a copy of the self onto the front of the event queue for Gdk::EventAny#window 's display, or the default event queue if Gdk::Event#window is nil. See Gdk::Display#put_event.
@@ -319,6 +318,9 @@ Gdk::Event::POINTER_MOTION_HINT_MASK is a special mask which is used to reduce t
 --- PRIORITY_REDRAW
 
     This is the priority that the idle handler processing window updates is given in the GLib Main Loop
+
+--- DAMAGE
+--- EVENT_LAST
 
 == See Also
 

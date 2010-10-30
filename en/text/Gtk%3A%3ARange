@@ -10,6 +10,10 @@
           * Gtk::Widget
             * Gtk::Range
 
+== Included Modules
+
+  * #<Module:0x7fd7f0567618>
+
 == Instance Methods
 
 --- adjustment
@@ -213,6 +217,18 @@
 
     See Gtk::Buildable#set_name.
 
+--- builder_name
+
+    See Gtk::Buildable#builder_name.
+
+--- builder_name=
+
+    See Gtk::Buildable#builder_name=.
+
+--- set_builder_name
+
+    See Gtk::Buildable#set_builder_name.
+
 == Constants
 
 === SensitivityType
@@ -319,6 +335,10 @@ Determines how GTK+ handles the sensitivity of stepper arrows at the end of rang
 
     Whether to draw trought for full length of range or exclude the steppers and spacing ((* Since 2.10 *))
     * Default value: true
+
+--- arrow-scaling: Float (Read)
+
+    Arrow scaling with regard to scroll button size
 
 == Signals
 

@@ -1,0 +1,156 @@
+= class GLib::SocketClient
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::SocketClient
+
+== Class Methods
+
+--- GLib::SocketClient.new
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- connect
+
+     * Returns: self: ((*FIXME*))
+
+--- connect_async
+
+     * Returns: self: ((*FIXME*))
+
+--- connect_finish
+
+     * Returns: self: ((*FIXME*))
+
+--- connect_to_host
+
+     * Returns: self: ((*FIXME*))
+
+--- connect_to_host_async
+
+     * Returns: self: ((*FIXME*))
+
+--- connect_to_host_finish
+
+     * Returns: self: ((*FIXME*))
+
+--- connect_to_service
+
+     * Returns: self: ((*FIXME*))
+
+--- connect_to_service_async
+
+     * Returns: self: ((*FIXME*))
+
+--- connect_to_service_finish
+
+     * Returns: self: ((*FIXME*))
+
+--- family
+
+    Gets the sockets address family to use for socket construction.
+     * Returns: The sockets address family to use for socket construction
+
+--- family=(family)
+
+    Sets the sockets address family to use for socket construction.
+     * family: The sockets address family to use for socket construction
+     * Returns: family
+
+--- local_address
+
+    Gets the local address constructed sockets will be bound to.
+     * Returns: The local address constructed sockets will be bound to
+
+--- local_address=(local_address)
+
+    Sets the local address constructed sockets will be bound to.
+     * local_address: The local address constructed sockets will be bound to
+     * Returns: local_address
+
+--- protocol
+
+    Gets the protocol to use for socket construction, or 0 for default.
+     * Returns: The protocol to use for socket construction, or 0 for default
+
+--- protocol=(protocol)
+
+    Sets the protocol to use for socket construction, or 0 for default.
+     * protocol: The protocol to use for socket construction, or 0 for default
+     * Returns: protocol
+
+--- set_family(family)
+
+    Same as family=.
+     * family: The sockets address family to use for socket construction
+     * Returns: self
+
+--- set_local_address(local_address)
+
+    Same as local_address=.
+     * local_address: The local address constructed sockets will be bound to
+     * Returns: self
+
+--- set_protocol(protocol)
+
+    Same as protocol=.
+     * protocol: The protocol to use for socket construction, or 0 for default
+     * Returns: self
+
+--- set_socket_type
+
+     * Returns: self: ((*FIXME*))
+
+--- set_type(type)
+
+    Same as type=.
+     * type: The sockets type to use for socket construction
+     * Returns: self
+
+--- socket_type
+
+     * Returns: self: ((*FIXME*))
+
+--- socket_type=
+
+     * Returns: self: ((*FIXME*))
+
+--- type
+
+    Gets the sockets type to use for socket construction.
+     * Returns: The sockets type to use for socket construction
+
+--- type=(type)
+
+    Sets the sockets type to use for socket construction.
+     * type: The sockets type to use for socket construction
+     * Returns: type
+
+== Properties
+
+--- family: GSocketFamily (Read/Write)
+
+    The sockets address family to use for socket construction
+
+--- local-address: GSocketAddress (Read/Write)
+
+    The local address constructed sockets will be bound to
+
+--- protocol: GSocketProtocol (Read/Write)
+
+    The protocol to use for socket construction, or 0 for default
+
+--- type: GSocketType (Read/Write)
+
+    The sockets type to use for socket construction
+
+== See Also
+
+== ChangeLog
+
+

@@ -1,0 +1,28 @@
+= class GLib::Mount::UnmountFlags
+
+== Object Hierarchy
+
+* Object
+  * GLib::Flags
+    * GLib::Mount::UnmountFlags
+
+== Instance Methods
+
+--- force?
+
+     * Returns: self: ((*FIXME*))
+
+--- none?
+
+     * Returns: self: ((*FIXME*))
+
+== Constants
+
+--- FORCE
+--- NONE
+
+== See Also
+
+== ChangeLog
+
+

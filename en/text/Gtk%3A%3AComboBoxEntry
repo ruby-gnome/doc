@@ -127,6 +127,30 @@ In contrast to a Gtk::ComboBox, the underlying model of a Gtk::ComboBoxEntry mus
 
     See Gtk::Buildable#set_name.
 
+--- builder_name
+
+    See Gtk::Buildable#builder_name.
+
+--- builder_name=
+
+    See Gtk::Buildable#builder_name=.
+
+--- editing_canceled=
+
+    See Gtk::CellEditable#editing_canceled=.
+
+--- editing_canceled?
+
+    See Gtk::CellEditable#editing_canceled?.
+
+--- set_builder_name
+
+    See Gtk::Buildable#set_builder_name.
+
+--- set_editing_canceled
+
+    See Gtk::CellEditable#set_editing_canceled.
+
 == Properties
 
 --- text-column: Integer (Read/Write)

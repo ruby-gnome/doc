@@ -1,0 +1,77 @@
+= class GLib::Emblem
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::Emblem
+
+== Included Modules
+
+  * GLib::Icon
+
+== Class Methods
+
+--- GLib::Emblem.new
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- ==
+
+    See GLib::Icon#==.
+
+--- eql?
+
+    See GLib::Icon#eql?.
+
+--- hash
+
+    See GLib::Icon#hash.
+
+--- icon
+
+    Gets the actual icon of the emblem.
+     * Returns: The actual icon of the emblem
+
+--- origin
+
+    Gets the Tells which origin the emblem is derived from.
+     * Returns: Tells which origin the emblem is derived from
+
+--- to_s
+
+    See GLib::Icon#to_s.
+
+--- to_str
+
+    See GLib::Icon#to_str.
+
+--- to_string
+
+    See GLib::Icon#to_string.
+
+== Constants
+
+--- ORIGIN_DEVICE
+--- ORIGIN_LIVEMETADATA
+--- ORIGIN_TAG
+--- ORIGIN_UNKNOWN
+
+== Properties
+
+--- icon: GObject (Read/Write)
+
+    The actual icon of the emblem
+
+--- origin: GEmblemOrigin (Read/Write)
+
+    Tells which origin the emblem is derived from
+
+== See Also
+
+== ChangeLog
+
+

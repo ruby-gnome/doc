@@ -575,6 +575,39 @@ Widget that displays a Gtk::TextBuffer.
 
     See Gtk::Buildable#set_name.
 
+--- builder_name
+
+    See Gtk::Buildable#builder_name.
+
+--- builder_name=
+
+    See Gtk::Buildable#builder_name=.
+
+--- im_module
+
+    Gets the Which IM module should be used.
+     * Returns: Which IM module should be used
+
+--- im_module=(im_module)
+
+    Sets the Which IM module should be used.
+     * im_module: Which IM module should be used
+     * Returns: im_module
+
+--- preedit_changed
+
+     * Returns: self: ((*FIXME*))
+
+--- set_builder_name
+
+    See Gtk::Buildable#set_builder_name.
+
+--- set_im_module(im_module)
+
+    Same as im_module=.
+     * im_module: Which IM module should be used
+     * Returns: self
+
 == Constants
 
 === GtkTextWindowType
@@ -667,6 +700,10 @@ Widget that displays a Gtk::TextBuffer.
 
     Whether to wrap lines never, at word boundaries, or at character boundaries
     * Default value: Gtk::TextTag::WRAP_NONE
+
+--- im-module: String (Read/Write)
+
+    Which IM module should be used
 
 == Style Properties
 

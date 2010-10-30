@@ -11,26 +11,39 @@ GLib::Timer object keeps track of elapsed time in microseconds and fractions of 
 == Class Methods
 
 --- GLib::Timer.new
+
     Creates a new timer object
     * Returns: self
 
 == Instance Methods
 
 --- continue
+
     Wakes up (restarts) previously stopped timer.
     * Returns: self
 
 --- destroy
+
     Currently  (as of Ruby 1.8.6 and Ruby-GNOME2 rel.: 2-0.17.0-rc1), the GLib::Timer#destroy method is not implemented.
     * N/A
 
 --- elapsed
+
     Retrieve the elapsed time in the form of [ seconds, microseconds ]
     * Returns: the array [ seconds, microseconds ].
 
 --- stop
+
     Stops the timer.
     * Returns: self
+
+--- reset
+
+     * Returns: self: ((*FIXME*))
+
+--- start
+
+     * Returns: self: ((*FIXME*))
 
 == See Also
 

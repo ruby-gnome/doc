@@ -1,0 +1,33 @@
+= class GLib::AppInfo::CreateFlags
+
+== Object Hierarchy
+
+* Object
+  * GLib::Flags
+    * GLib::AppInfo::CreateFlags
+
+== Instance Methods
+
+--- needs_terminal?
+
+     * Returns: self: ((*FIXME*))
+
+--- none?
+
+     * Returns: self: ((*FIXME*))
+
+--- supports_uris?
+
+     * Returns: self: ((*FIXME*))
+
+== Constants
+
+--- NEEDS_TERMINAL
+--- NONE
+--- SUPPORTS_URIS
+
+== See Also
+
+== ChangeLog
+
+

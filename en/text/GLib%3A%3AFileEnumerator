@@ -1,0 +1,74 @@
+= class GLib::FileEnumerator
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::FileEnumerator
+
+== Instance Methods
+
+--- close
+
+     * Returns: self: ((*FIXME*))
+
+--- close_async
+
+     * Returns: self: ((*FIXME*))
+
+--- close_finish
+
+     * Returns: self: ((*FIXME*))
+
+--- closed?
+
+     * Returns: self: ((*FIXME*))
+
+--- container
+
+     * Returns: self: ((*FIXME*))
+
+--- each
+
+     * Returns: self: ((*FIXME*))
+
+--- each_async
+
+     * Returns: self: ((*FIXME*))
+
+--- has_pending?
+
+     * Returns: self: ((*FIXME*))
+
+--- next_file
+
+     * Returns: self: ((*FIXME*))
+
+--- next_files_async
+
+     * Returns: self: ((*FIXME*))
+
+--- next_files_finish
+
+     * Returns: self: ((*FIXME*))
+
+--- pending=
+
+     * Returns: self: ((*FIXME*))
+
+--- set_pending
+
+     * Returns: self: ((*FIXME*))
+
+== Properties
+
+--- container: GFile (Write)
+
+    The container that is being enumerated
+
+== See Also
+
+== ChangeLog
+
+

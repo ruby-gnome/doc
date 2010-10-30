@@ -1,0 +1,46 @@
+= class GLib::UnixFDMessage
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::SocketControlMessage
+        * GLib::UnixFDMessage
+
+== Class Methods
+
+--- GLib::UnixFDMessage.new
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- <<
+
+     * Returns: self: ((*FIXME*))
+
+--- append_fd
+
+     * Returns: self: ((*FIXME*))
+
+--- fd_list
+
+    Gets the GUnixFDList object to send with the message.
+     * Returns: The GUnixFDList object to send with the message
+
+--- steal_fds
+
+     * Returns: self: ((*FIXME*))
+
+== Properties
+
+--- fd-list: GUnixFDList (Read/Write)
+
+    The GUnixFDList object to send with the message
+
+== See Also
+
+== ChangeLog
+
+

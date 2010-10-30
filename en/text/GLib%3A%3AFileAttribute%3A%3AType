@@ -1,0 +1,26 @@
+= class GLib::FileAttribute::Type
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * GLib::FileAttribute::Type
+
+== Constants
+
+--- BOOLEAN
+--- BYTE_STRING
+--- INT32
+--- INT64
+--- INVALID
+--- OBJECT
+--- STRING
+--- STRINGV
+--- UINT32
+--- UINT64
+
+== See Also
+
+== ChangeLog
+
+

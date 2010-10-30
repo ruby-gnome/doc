@@ -87,6 +87,10 @@ A path is essentially a potential node. It is a location on a model that may or 
 
      * Returns: self: ((*FIXME*))
 
+--- ==
+
+     * Returns: self: ((*FIXME*))
+
 == See Also
 
   * Gtk::TreeModel

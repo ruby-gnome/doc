@@ -150,6 +150,18 @@ There is quite a bit of flexibility provided to control the appearance of the Gt
 
     See Gtk::Buildable#set_name.
 
+--- builder_name
+
+    See Gtk::Buildable#builder_name.
+
+--- builder_name=
+
+    See Gtk::Buildable#builder_name=.
+
+--- set_builder_name
+
+    See Gtk::Buildable#set_builder_name.
+
 == Constants
 
 === GtkProgressBarOrientation
@@ -221,6 +233,22 @@ There is quite a bit of flexibility provided to control the appearance of the Gt
 --- yspacing: Integer (Read/Write)
 
     Extra spacing applied to the height of a progress bar.
+
+--- min-horizontal-bar-height: Integer (Read/Write)
+
+    Minimum horizontal height of the progress bar
+
+--- min-horizontal-bar-width: Integer (Read/Write)
+
+    The minimum horizontal width of the progress bar
+
+--- min-vertical-bar-height: Integer (Read/Write)
+
+    The minimum vertical height of the progress bar
+
+--- min-vertical-bar-width: Integer (Read/Write)
+
+    The minimum vertical width of the progress bar
 
 == See Also
 

@@ -1,0 +1,57 @@
+= class GLib::FileIOStream
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::IOStream
+        * GLib::FileIOStream
+
+== Included Modules
+
+  * GLib::Seekable
+
+== Instance Methods
+
+--- can_seek?
+
+    See GLib::Seekable#can_seek?.
+
+--- can_truncate?
+
+    See GLib::Seekable#can_truncate?.
+
+--- etag
+
+     * Returns: self: ((*FIXME*))
+
+--- query_info
+
+     * Returns: self: ((*FIXME*))
+
+--- query_info_async
+
+     * Returns: self: ((*FIXME*))
+
+--- query_info_finish
+
+     * Returns: self: ((*FIXME*))
+
+--- seek
+
+    See GLib::Seekable#seek.
+
+--- tell
+
+    See GLib::Seekable#tell.
+
+--- truncate
+
+    See GLib::Seekable#truncate.
+
+== See Also
+
+== ChangeLog
+
+

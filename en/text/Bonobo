@@ -30,6 +30,10 @@
 
      * Returns: self: ((*FIXME*))
 
+== Constants
+
+--- BUILD_VERSION
+
 == See Also
 
 == ChangeLog

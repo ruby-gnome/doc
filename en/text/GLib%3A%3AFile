@@ -1,0 +1,489 @@
+= module GLib::File
+
+== Included Modules
+
+  * GLib::Interface
+
+== Module Functions
+
+--- GLib::File.new_for_commandline_arg
+
+     * Returns: self: ((*FIXME*))
+
+--- GLib::File.new_for_path
+
+     * Returns: self: ((*FIXME*))
+
+--- GLib::File.new_for_uri
+
+     * Returns: self: ((*FIXME*))
+
+--- GLib::File.parse_name
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- ==
+
+     * Returns: self: ((*FIXME*))
+
+--- append_to
+
+     * Returns: self: ((*FIXME*))
+
+--- append_to_async
+
+     * Returns: self: ((*FIXME*))
+
+--- append_to_finish
+
+     * Returns: self: ((*FIXME*))
+
+--- attributes_from_info=
+
+     * Returns: self: ((*FIXME*))
+
+--- basename
+
+     * Returns: self: ((*FIXME*))
+
+--- copy
+
+     * Returns: self: ((*FIXME*))
+
+--- copy_async
+
+     * Returns: self: ((*FIXME*))
+
+--- copy_attributes
+
+     * Returns: self: ((*FIXME*))
+
+--- copy_finish
+
+     * Returns: self: ((*FIXME*))
+
+--- create
+
+     * Returns: self: ((*FIXME*))
+
+--- create_async
+
+     * Returns: self: ((*FIXME*))
+
+--- create_finish
+
+     * Returns: self: ((*FIXME*))
+
+--- create_readwrite
+
+     * Returns: self: ((*FIXME*))
+
+--- create_readwrite_async
+
+     * Returns: self: ((*FIXME*))
+
+--- create_readwrite_finish
+
+     * Returns: self: ((*FIXME*))
+
+--- delete
+
+     * Returns: self: ((*FIXME*))
+
+--- display_name=
+
+     * Returns: self: ((*FIXME*))
+
+--- dup
+
+     * Returns: self: ((*FIXME*))
+
+--- each
+
+     * Returns: self: ((*FIXME*))
+
+--- each_async
+
+     * Returns: self: ((*FIXME*))
+
+--- eject_mountable_with_operation
+
+     * Returns: self: ((*FIXME*))
+
+--- eject_mountable_with_operation_finish
+
+     * Returns: self: ((*FIXME*))
+
+--- enumerate_children
+
+     * Returns: self: ((*FIXME*))
+
+--- enumerate_children_async
+
+     * Returns: self: ((*FIXME*))
+
+--- enumerate_children_finish
+
+     * Returns: self: ((*FIXME*))
+
+--- eql?
+
+     * Returns: self: ((*FIXME*))
+
+--- exists?
+
+     * Returns: self: ((*FIXME*))
+
+--- find_enclosing_mount
+
+     * Returns: self: ((*FIXME*))
+
+--- find_enclosing_mount_async
+
+     * Returns: self: ((*FIXME*))
+
+--- find_enclosing_mount_finish
+
+     * Returns: self: ((*FIXME*))
+
+--- get_child
+
+     * Returns: self: ((*FIXME*))
+
+--- get_child_for_display_name
+
+     * Returns: self: ((*FIXME*))
+
+--- get_relative_path
+
+     * Returns: self: ((*FIXME*))
+
+--- has_parent?
+
+     * Returns: self: ((*FIXME*))
+
+--- has_prefix?
+
+     * Returns: self: ((*FIXME*))
+
+--- has_uri_scheme?
+
+     * Returns: self: ((*FIXME*))
+
+--- hash
+
+     * Returns: self: ((*FIXME*))
+
+--- load_contents
+
+     * Returns: self: ((*FIXME*))
+
+--- load_contents_async
+
+     * Returns: self: ((*FIXME*))
+
+--- load_contents_finish
+
+     * Returns: self: ((*FIXME*))
+
+--- load_partial_contents_async
+
+     * Returns: self: ((*FIXME*))
+
+--- load_partial_contents_finish
+
+     * Returns: self: ((*FIXME*))
+
+--- make_directory
+
+     * Returns: self: ((*FIXME*))
+
+--- make_directory_with_parents
+
+     * Returns: self: ((*FIXME*))
+
+--- make_symbolic_link
+
+     * Returns: self: ((*FIXME*))
+
+--- monitor
+
+     * Returns: self: ((*FIXME*))
+
+--- monitor_directory
+
+     * Returns: self: ((*FIXME*))
+
+--- monitor_file
+
+     * Returns: self: ((*FIXME*))
+
+--- mount_enclosing_volume
+
+     * Returns: self: ((*FIXME*))
+
+--- mount_enclosing_volume_finish
+
+     * Returns: self: ((*FIXME*))
+
+--- mount_mountable
+
+     * Returns: self: ((*FIXME*))
+
+--- mount_mountable_finish
+
+     * Returns: self: ((*FIXME*))
+
+--- move
+
+     * Returns: self: ((*FIXME*))
+
+--- native?
+
+     * Returns: self: ((*FIXME*))
+
+--- open_readwrite
+
+     * Returns: self: ((*FIXME*))
+
+--- open_readwrite_async
+
+     * Returns: self: ((*FIXME*))
+
+--- open_readwrite_finish
+
+     * Returns: self: ((*FIXME*))
+
+--- parent
+
+     * Returns: self: ((*FIXME*))
+
+--- parse_name
+
+     * Returns: self: ((*FIXME*))
+
+--- path
+
+     * Returns: self: ((*FIXME*))
+
+--- poll_mountable
+
+     * Returns: self: ((*FIXME*))
+
+--- poll_mountable_finish
+
+     * Returns: self: ((*FIXME*))
+
+--- query_default_handler
+
+     * Returns: self: ((*FIXME*))
+
+--- query_exists?
+
+     * Returns: self: ((*FIXME*))
+
+--- query_file_type
+
+     * Returns: self: ((*FIXME*))
+
+--- query_filesystem_info
+
+     * Returns: self: ((*FIXME*))
+
+--- query_filesystem_info_async
+
+     * Returns: self: ((*FIXME*))
+
+--- query_filesystem_info_finish
+
+     * Returns: self: ((*FIXME*))
+
+--- query_info
+
+     * Returns: self: ((*FIXME*))
+
+--- query_info_async
+
+     * Returns: self: ((*FIXME*))
+
+--- query_info_finish
+
+     * Returns: self: ((*FIXME*))
+
+--- query_settable_attributes
+
+     * Returns: self: ((*FIXME*))
+
+--- query_writable_namespaces
+
+     * Returns: self: ((*FIXME*))
+
+--- read
+
+     * Returns: self: ((*FIXME*))
+
+--- read_async
+
+     * Returns: self: ((*FIXME*))
+
+--- read_finish
+
+     * Returns: self: ((*FIXME*))
+
+--- replace
+
+     * Returns: self: ((*FIXME*))
+
+--- replace_async
+
+     * Returns: self: ((*FIXME*))
+
+--- replace_contents
+
+     * Returns: self: ((*FIXME*))
+
+--- replace_contents_async
+
+     * Returns: self: ((*FIXME*))
+
+--- replace_contents_finish
+
+     * Returns: self: ((*FIXME*))
+
+--- replace_finish
+
+     * Returns: self: ((*FIXME*))
+
+--- replace_readwrite
+
+     * Returns: self: ((*FIXME*))
+
+--- replace_readwrite_async
+
+     * Returns: self: ((*FIXME*))
+
+--- replace_readwrite_finish
+
+     * Returns: self: ((*FIXME*))
+
+--- resolve_relative_path
+
+     * Returns: self: ((*FIXME*))
+
+--- set_attribute
+
+     * Returns: self: ((*FIXME*))
+
+--- set_attribute_byte_string
+
+     * Returns: self: ((*FIXME*))
+
+--- set_attribute_int32
+
+     * Returns: self: ((*FIXME*))
+
+--- set_attribute_int64
+
+     * Returns: self: ((*FIXME*))
+
+--- set_attribute_string
+
+     * Returns: self: ((*FIXME*))
+
+--- set_attribute_uint32
+
+     * Returns: self: ((*FIXME*))
+
+--- set_attribute_uint64
+
+     * Returns: self: ((*FIXME*))
+
+--- set_attributes_async
+
+     * Returns: self: ((*FIXME*))
+
+--- set_attributes_finish
+
+     * Returns: self: ((*FIXME*))
+
+--- set_attributes_from_info
+
+     * Returns: self: ((*FIXME*))
+
+--- set_display_name
+
+     * Returns: self: ((*FIXME*))
+
+--- set_display_name_async
+
+     * Returns: self: ((*FIXME*))
+
+--- set_display_name_finish
+
+     * Returns: self: ((*FIXME*))
+
+--- start_mountable
+
+     * Returns: self: ((*FIXME*))
+
+--- start_mountable_finish
+
+     * Returns: self: ((*FIXME*))
+
+--- stop_mountable
+
+     * Returns: self: ((*FIXME*))
+
+--- stop_mountable_finish
+
+     * Returns: self: ((*FIXME*))
+
+--- supports_thread_contexts?
+
+     * Returns: self: ((*FIXME*))
+
+--- trash
+
+     * Returns: self: ((*FIXME*))
+
+--- unmount_mountable_with_operation
+
+     * Returns: self: ((*FIXME*))
+
+--- unmount_mountable_with_operation_finish
+
+     * Returns: self: ((*FIXME*))
+
+--- uri
+
+     * Returns: self: ((*FIXME*))
+
+--- uri_scheme
+
+     * Returns: self: ((*FIXME*))
+
+== Constants
+
+--- COPY_ALL_METADATA
+--- COPY_BACKUP
+--- COPY_NOFOLLOW_SYMLINKS
+--- COPY_NONE
+--- COPY_NO_FALLBACK_FOR_MOVE
+--- COPY_OVERWRITE
+--- COPY_TARGET_DEFAULT_PERMS
+--- CREATE_NONE
+--- CREATE_PRIVATE
+--- CREATE_REPLACE_DESTINATION
+--- MONITOR_NONE
+--- MONITOR_SEND_MOVED
+--- MONITOR_WATCH_MOUNTS
+--- QUERY_INFO_NOFOLLOW_SYMLINKS
+--- QUERY_INFO_NONE
+
+== See Also
+
+== ChangeLog
+
+

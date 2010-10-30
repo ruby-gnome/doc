@@ -1,0 +1,36 @@
+= class GLib::SocketConnection
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::IOStream
+        * GLib::SocketConnection
+
+== Instance Methods
+
+--- local_address
+
+     * Returns: self: ((*FIXME*))
+
+--- remote_address
+
+     * Returns: self: ((*FIXME*))
+
+--- socket
+
+    Gets the underlying GSocket.
+     * Returns: The underlying GSocket
+
+== Properties
+
+--- socket: GSocket (Read/Write)
+
+    The underlying GSocket
+
+== See Also
+
+== ChangeLog
+
+

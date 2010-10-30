@@ -1,0 +1,13 @@
+= module GLib::SocketConnectionFactory
+
+== Module Functions
+
+--- GLib::SocketConnectionFactory.create_connection
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

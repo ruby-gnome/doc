@@ -206,6 +206,91 @@ An ((<example|StatusIcon example>)) is disponible.
      * screen: The screen where this status icon will be displayed
      * Returns: self
 
+--- gicon
+
+    Gets the GIcon being displayed.
+     * Returns: The GIcon being displayed
+
+--- gicon=(gicon)
+
+    Sets the GIcon being displayed.
+     * gicon: The GIcon being displayed
+     * Returns: gicon
+
+--- has_tooltip=(has_tooltip)
+
+    Sets the value whether this tray icon has a tooltip or not.
+     * has_tooltip: true if this tray icon has a tooltip
+     * Returns: has_tooltip
+
+--- has_tooltip?
+
+    Gets the value whether this tray icon has a tooltip or not.
+     * Returns: true if this tray icon has a tooltip
+
+--- set_gicon(gicon)
+
+    Same as gicon=.
+     * gicon: The GIcon being displayed
+     * Returns: self
+
+--- set_has_tooltip(has_tooltip)
+
+    Same as has_tooltip=.
+     * has_tooltip: true if this tray icon has a tooltip
+     * Returns: self
+
+--- set_title(title)
+
+    Same as title=.
+     * title: The title of this tray icon
+     * Returns: self
+
+--- set_tooltip_markup(tooltip_markup)
+
+    Same as tooltip_markup=.
+     * tooltip_markup: The contents of the tooltip for this tray icon
+     * Returns: self
+
+--- set_tooltip_text(tooltip_text)
+
+    Same as tooltip_text=.
+     * tooltip_text: The contents of the tooltip for this widget
+     * Returns: self
+
+--- title
+
+    Gets the title of this tray icon.
+     * Returns: The title of this tray icon
+
+--- title=(title)
+
+    Sets the title of this tray icon.
+     * title: The title of this tray icon
+     * Returns: title
+
+--- tooltip_markup
+
+    Gets the contents of the tooltip for this tray icon.
+     * Returns: The contents of the tooltip for this tray icon
+
+--- tooltip_markup=(tooltip_markup)
+
+    Sets the contents of the tooltip for this tray icon.
+     * tooltip_markup: The contents of the tooltip for this tray icon
+     * Returns: tooltip_markup
+
+--- tooltip_text
+
+    Gets the contents of the tooltip for this widget.
+     * Returns: The contents of the tooltip for this widget
+
+--- tooltip_text=(tooltip_text)
+
+    Sets the contents of the tooltip for this widget.
+     * tooltip_text: The contents of the tooltip for this widget
+     * Returns: tooltip_text
+
 == Properties
 
 --- blinking: true or false (Read/Write)
@@ -260,6 +345,26 @@ An ((<example|StatusIcon example>)) is disponible.
 
     The screen where this status icon will be displayed
 
+--- gicon: GIcon (Read/Write)
+
+    The GIcon being displayed
+
+--- has-tooltip: true or false (Read/Write)
+
+    Whether this tray icon has a tooltip
+
+--- title: String (Read/Write)
+
+    The title of this tray icon
+
+--- tooltip-markup: String (Read/Write)
+
+    The contents of the tooltip for this tray icon
+
+--- tooltip-text: String (Read/Write)
+
+    The contents of the tooltip for this widget
+
 == Signals
 
 --- activate: self (Run first / Action)
@@ -288,6 +393,18 @@ An ((<example|StatusIcon example>)) is disponible.
     * self: the Gtk::StatusIcon
     * size: the new size
     * Returns: true if the icon was updated for the new size. Otherwise, GTK+ will scale the icon as necessary.
+
+--- button-press-event: self
+
+     * self: Gtk::StatusIcon: ((*FIXME*))
+
+--- button-release-event: self
+
+     * self: Gtk::StatusIcon: ((*FIXME*))
+
+--- query-tooltip: self
+
+     * self: Gtk::StatusIcon: ((*FIXME*))
 
 == See Also
 

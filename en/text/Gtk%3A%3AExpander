@@ -177,6 +177,18 @@ There there are situations in which you may prefer to show and hide the expanded
 
     See Gtk::Buildable#set_name.
 
+--- builder_name
+
+    See Gtk::Buildable#builder_name.
+
+--- builder_name=
+
+    See Gtk::Buildable#builder_name=.
+
+--- set_builder_name
+
+    See Gtk::Buildable#set_builder_name.
+
 == Properties
 
 --- expanded: true or false (Read/Write)

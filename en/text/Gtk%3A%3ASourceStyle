@@ -1,0 +1,148 @@
+= class Gtk::SourceStyle
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Gtk::SourceStyle
+
+== Instance Methods
+
+--- background
+
+    Gets the Background color.
+     * Returns: Background color
+
+--- background_set?
+
+    Gets the value whether background color is set or not.
+     * Returns: true if background color is set
+
+--- bold?
+
+    Gets the Bold.
+     * Returns: Bold
+
+--- bold_set?
+
+    Gets the value whether bold attribute is set or not.
+     * Returns: true if bold attribute is set
+
+--- copy
+
+     * Returns: self: ((*FIXME*))
+
+--- foreground
+
+    Gets the Foreground color.
+     * Returns: Foreground color
+
+--- foreground_set?
+
+    Gets the value whether foreground color is set or not.
+     * Returns: true if foreground color is set
+
+--- italic?
+
+    Gets the Italic.
+     * Returns: Italic
+
+--- italic_set?
+
+    Gets the value whether italic attribute is set or not.
+     * Returns: true if italic attribute is set
+
+--- line_background
+
+    Gets the Line background color.
+     * Returns: Line background color
+
+--- line_background_set?
+
+    Gets the value whether line background color is set or not.
+     * Returns: true if line background color is set
+
+--- strikethrough?
+
+    Gets the Strikethrough.
+     * Returns: Strikethrough
+
+--- strikethrough_set?
+
+    Gets the value whether strikethrough attribute is set or not.
+     * Returns: true if strikethrough attribute is set
+
+--- underline?
+
+    Gets the Underline.
+     * Returns: Underline
+
+--- underline_set?
+
+    Gets the value whether underline attribute is set or not.
+     * Returns: true if underline attribute is set
+
+== Properties
+
+--- background: String (Read/Write)
+
+    Background color
+
+--- background-set: true or false (Read/Write)
+
+    Whether background color is set
+
+--- bold: true or false (Read/Write)
+
+    Bold
+
+--- bold-set: true or false (Read/Write)
+
+    Whether bold attribute is set
+
+--- foreground: String (Read/Write)
+
+    Foreground color
+
+--- foreground-set: true or false (Read/Write)
+
+    Whether foreground color is set
+
+--- italic: true or false (Read/Write)
+
+    Italic
+
+--- italic-set: true or false (Read/Write)
+
+    Whether italic attribute is set
+
+--- line-background: String (Read/Write)
+
+    Line background color
+
+--- line-background-set: true or false (Read/Write)
+
+    Whether line background color is set
+
+--- strikethrough: true or false (Read/Write)
+
+    Strikethrough
+
+--- strikethrough-set: true or false (Read/Write)
+
+    Whether strikethrough attribute is set
+
+--- underline: true or false (Read/Write)
+
+    Underline
+
+--- underline-set: true or false (Read/Write)
+
+    Whether underline attribute is set
+
+== See Also
+
+== ChangeLog
+
+

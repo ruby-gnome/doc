@@ -1,0 +1,16 @@
+= class GLib::IO::HostNotFoundError
+
+== Object Hierarchy
+
+* Object
+  * Exception
+    * StandardError
+      * IOError
+        * GLib::IO::Error
+          * GLib::IO::HostNotFoundError
+
+== See Also
+
+== ChangeLog
+
+

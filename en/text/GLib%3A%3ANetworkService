@@ -1,0 +1,63 @@
+= class GLib::NetworkService
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::NetworkService
+
+== Included Modules
+
+  * GLib::SocketConnectable
+
+== Class Methods
+
+--- GLib::NetworkService.new
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- domain
+
+    Gets the Network domain, eg, "example.com".
+     * Returns: Network domain, eg, "example.com"
+
+--- each
+
+    See GLib::SocketConnectable#each.
+
+--- enumerate
+
+    See GLib::SocketConnectable#enumerate.
+
+--- protocol
+
+    Gets the Network protocol, eg "tcp".
+     * Returns: Network protocol, eg "tcp"
+
+--- service
+
+    Gets the Service name, eg "ldap".
+     * Returns: Service name, eg "ldap"
+
+== Properties
+
+--- domain: String (Read/Write)
+
+    Network domain, eg, "example.com"
+
+--- protocol: String (Read/Write)
+
+    Network protocol, eg "tcp"
+
+--- service: String (Read/Write)
+
+    Service name, eg "ldap"
+
+== See Also
+
+== ChangeLog
+
+

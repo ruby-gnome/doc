@@ -441,6 +441,10 @@
 
     See Atk::EditableText#text_contents=.
 
+--- mdi_zorder
+
+    See Atk::Component#mdi_zorder.
+
 == See Also
 
 == ChangeLog

@@ -1,0 +1,76 @@
+= class GLib::Cancellable
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::Cancellable
+
+== Class Methods
+
+--- GLib::Cancellable.current
+
+     * Returns: self: ((*FIXME*))
+
+--- GLib::Cancellable.new
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- cancel
+
+     * Returns: self: ((*FIXME*))
+
+--- cancelled?
+
+     * Returns: self: ((*FIXME*))
+
+--- connect
+
+     * Returns: self: ((*FIXME*))
+
+--- disconnect
+
+     * Returns: self: ((*FIXME*))
+
+--- fd
+
+     * Returns: self: ((*FIXME*))
+
+--- make_pollfd
+
+     * Returns: self: ((*FIXME*))
+
+--- pop_current
+
+     * Returns: self: ((*FIXME*))
+
+--- push_current
+
+     * Returns: self: ((*FIXME*))
+
+--- raise_error_if_cancelled
+
+     * Returns: self: ((*FIXME*))
+
+--- release_fd
+
+     * Returns: self: ((*FIXME*))
+
+--- reset
+
+     * Returns: self: ((*FIXME*))
+
+== Signals
+
+--- cancelled: self
+
+     * self: GLib::Cancellable: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

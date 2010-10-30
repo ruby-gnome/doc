@@ -554,6 +554,10 @@ You may wish to begin by reading the ((<text widget conceptual overview>)) which
      * iter1: Gtk::TextIter
      * iter2: Gtk::TextIter
 
+--- paste-done: self
+
+     * self: Gtk::TextBuffer: ((*FIXME*))
+
 == See Also
 
 Gtk::TextView, Gtk::TextIter, Gtk::TextMark

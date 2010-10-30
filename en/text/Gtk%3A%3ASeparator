@@ -12,6 +12,10 @@ The Gtk::Separator widget is an abstract class, used only for deriving the subcl
           * Gtk::Widget
             * Gtk::Separator
 
+== Included Modules
+
+  * #<Module:0x7fd7f0567618>
+
 == Instance Methods
 
 --- ref_accessible
@@ -45,6 +49,18 @@ The Gtk::Separator widget is an abstract class, used only for deriving the subcl
 --- set_name
 
     See Gtk::Buildable#set_name.
+
+--- builder_name
+
+    See Gtk::Buildable#builder_name.
+
+--- builder_name=
+
+    See Gtk::Buildable#builder_name=.
+
+--- set_builder_name
+
+    See Gtk::Buildable#set_builder_name.
 
 == See Also
 

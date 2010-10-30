@@ -98,6 +98,18 @@ The Gtk::EventBox widget is a subclass of Gtk::Bin which also has its own window
 
     See Gtk::Buildable#set_name.
 
+--- builder_name
+
+    See Gtk::Buildable#builder_name.
+
+--- builder_name=
+
+    See Gtk::Buildable#builder_name=.
+
+--- set_builder_name
+
+    See Gtk::Buildable#set_builder_name.
+
 == Properties
 
 --- above-child: true or false (Read/Write)

@@ -250,6 +250,69 @@ If performing many 'mark' operations, the calendar can be frozen to prevent flic
 
     See Gtk::Buildable#set_name.
 
+--- builder_name
+
+    See Gtk::Buildable#builder_name.
+
+--- builder_name=
+
+    See Gtk::Buildable#builder_name=.
+
+--- detail_height_rows
+
+    Gets the Details height in rows.
+     * Returns: Details height in rows
+
+--- detail_height_rows=(detail_height_rows)
+
+    Sets the Details height in rows.
+     * detail_height_rows: Details height in rows
+     * Returns: detail_height_rows
+
+--- detail_width_chars
+
+    Gets the Details width in characters.
+     * Returns: Details width in characters
+
+--- detail_width_chars=(detail_width_chars)
+
+    Sets the Details width in characters.
+     * detail_width_chars: Details width in characters
+     * Returns: detail_width_chars
+
+--- set_builder_name
+
+    See Gtk::Buildable#set_builder_name.
+
+--- set_detail_height_rows(detail_height_rows)
+
+    Same as detail_height_rows=.
+     * detail_height_rows: Details height in rows
+     * Returns: self
+
+--- set_detail_width_chars(detail_width_chars)
+
+    Same as detail_width_chars=.
+     * detail_width_chars: Details width in characters
+     * Returns: self
+
+--- set_show_details(show_details)
+
+    Same as show_details=.
+     * show_details: true if true, details are shown
+     * Returns: self
+
+--- show_details=(show_details)
+
+    Sets the value if true, details are shown.
+     * show_details: true if true, details are shown
+     * Returns: show_details
+
+--- show_details?
+
+    Gets the value if true, details are shown.
+     * Returns: true if true, details are shown
+
 == Constants
 
 === DisplayOptions
@@ -275,6 +338,8 @@ These options can be used to influence the display and behaviour of a Gtk::Calen
 --- WEEK_START_MONDAY
 
     Since GTK+ 2.4, this option is deprecated and ignored by GTK+. The information on which day the calendar week starts is derived from the locale.
+
+--- SHOW_DETAILS
 
 == Properties
 
@@ -315,6 +380,18 @@ These options can be used to influence the display and behaviour of a Gtk::Calen
     The selected year.
     * Allowed values: >= 0
     * Default value: 0
+
+--- detail-height-rows: Integer (Read/Write)
+
+    Details height in rows
+
+--- detail-width-chars: Integer (Read/Write)
+
+    Details width in characters
+
+--- show-details: true or false (Read/Write)
+
+    If true, details are shown
 
 == Signals
 

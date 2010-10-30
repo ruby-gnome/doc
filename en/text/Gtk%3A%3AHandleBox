@@ -129,6 +129,18 @@ To make detaching and reattaching the handlebox as minimally confusing as possib
 
     See Gtk::Buildable#set_name.
 
+--- builder_name
+
+    See Gtk::Buildable#builder_name.
+
+--- builder_name=
+
+    See Gtk::Buildable#builder_name=.
+
+--- set_builder_name
+
+    See Gtk::Buildable#set_builder_name.
+
 == Properties
 
 --- handle-position: Integer (Read/Write)
@@ -150,6 +162,10 @@ To make detaching and reattaching the handlebox as minimally confusing as possib
 --- snap-edge-set: true or false (Read/Write)
 
     Whether to use the value from the snap_edge property or a value derived from handle_position
+
+--- child-detached: true or false (Read)
+
+    A boolean value indicating whether the handlebox's child is attached or detached.
 
 == Signals
 

@@ -1,0 +1,43 @@
+= module GLib::Icon
+
+== Included Modules
+
+  * GLib::Interface
+
+== Module Functions
+
+--- GLib::Icon.new_for_string
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- ==
+
+     * Returns: self: ((*FIXME*))
+
+--- eql?
+
+     * Returns: self: ((*FIXME*))
+
+--- hash
+
+     * Returns: self: ((*FIXME*))
+
+--- to_s
+
+     * Returns: self: ((*FIXME*))
+
+--- to_str
+
+     * Returns: self: ((*FIXME*))
+
+--- to_string
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

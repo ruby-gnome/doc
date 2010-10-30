@@ -1,0 +1,26 @@
+= class Gst::EventNewSegment
+
+== Object Hierarchy
+
+* Object
+  * Gst::MiniObject
+    * Gst::Event
+      * Gst::EventNewSegment
+
+== Class Methods
+
+--- Gst::EventNewSegment.new
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- parse
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

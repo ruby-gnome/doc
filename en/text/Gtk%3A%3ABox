@@ -31,6 +31,10 @@ Use Gtk::Box#set_child_packing to reset the expand, fill, and padding attributes
             * Gtk::Container
               * Gtk::Box
 
+== Included Modules
+
+  * #<Module:0x7fd7f0567618>
+
 == Instance Methods
 
 --- pack_start(child, expand = true, fill = true, padding = 0)
@@ -152,6 +156,18 @@ Use Gtk::Box#set_child_packing to reset the expand, fill, and padding attributes
 --- set_name
 
     See Gtk::Buildable#set_name.
+
+--- builder_name
+
+    See Gtk::Buildable#builder_name.
+
+--- builder_name=
+
+    See Gtk::Buildable#builder_name=.
+
+--- set_builder_name
+
+    See Gtk::Buildable#set_builder_name.
 
 == Properties
 

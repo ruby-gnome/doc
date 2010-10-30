@@ -1,0 +1,28 @@
+= module Pango::Gravity
+
+== Module Functions
+
+--- Pango::Gravity.to_rotation
+
+     * Returns: self: ((*FIXME*))
+
+--- Pango::Gravity.vertical?
+
+     * Returns: self: ((*FIXME*))
+
+== Constants
+
+--- AUTO
+--- EAST
+--- HINT_LINE
+--- HINT_NATURAL
+--- HINT_STRONG
+--- NORTH
+--- SOUTH
+--- WEST
+
+== See Also
+
+== ChangeLog
+
+

@@ -1,0 +1,33 @@
+= class GLib::File::MonitorFlags
+
+== Object Hierarchy
+
+* Object
+  * GLib::Flags
+    * GLib::File::MonitorFlags
+
+== Instance Methods
+
+--- none?
+
+     * Returns: self: ((*FIXME*))
+
+--- send_moved?
+
+     * Returns: self: ((*FIXME*))
+
+--- watch_mounts?
+
+     * Returns: self: ((*FIXME*))
+
+== Constants
+
+--- NONE
+--- SEND_MOVED
+--- WATCH_MOUNTS
+
+== See Also
+
+== ChangeLog
+
+

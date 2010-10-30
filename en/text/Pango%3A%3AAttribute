@@ -36,6 +36,22 @@ The Pango::Attribute class represents the common portions of all attributes. Par
     Gets the end index of the range (in bytes). 
     * Returns: the end index
 
+--- end_index=
+
+     * Returns: self: ((*FIXME*))
+
+--- set_end_index
+
+     * Returns: self: ((*FIXME*))
+
+--- set_start_index
+
+     * Returns: self: ((*FIXME*))
+
+--- start_index=
+
+     * Returns: self: ((*FIXME*))
+
 == Constants
 
 === Type

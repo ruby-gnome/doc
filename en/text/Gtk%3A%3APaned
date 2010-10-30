@@ -42,6 +42,10 @@ The application can set the position of the slider as if it were set by the user
             * Gtk::Container
               * Gtk::Paned
 
+== Included Modules
+
+  * #<Module:0x7fd7f0567618>
+
 == Instance Methods
 
 --- add1(child)
@@ -208,6 +212,18 @@ The application can set the position of the slider as if it were set by the user
 --- set_name
 
     See Gtk::Buildable#set_name.
+
+--- builder_name
+
+    See Gtk::Buildable#builder_name.
+
+--- builder_name=
+
+    See Gtk::Buildable#builder_name=.
+
+--- set_builder_name
+
+    See Gtk::Buildable#set_builder_name.
 
 == Properties
 

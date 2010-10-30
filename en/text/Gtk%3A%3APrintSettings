@@ -516,6 +516,14 @@ document between systems still works.
      Same as #use_color=.
      * Returns: self
 
+--- to_file
+
+     * Returns: self: ((*FIXME*))
+
+--- to_key_file
+
+     * Returns: self: ((*FIXME*))
+
 == Constants
 
 --- COLLATE
@@ -600,6 +608,7 @@ document between systems still works.
 --- USE_COLOR
 --- WIN32_DRIVER_EXTRA
 --- WIN32_DRIVER_VERSION
+--- PAGES_SELECTION
 
 == See Also
 

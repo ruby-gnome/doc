@@ -61,6 +61,18 @@ The Gtk::Item widget is an abstract base class for Gtk::MenuItem.
 
     See Gtk::Buildable#set_name.
 
+--- builder_name
+
+    See Gtk::Buildable#builder_name.
+
+--- builder_name=
+
+    See Gtk::Buildable#builder_name=.
+
+--- set_builder_name
+
+    See Gtk::Buildable#set_builder_name.
+
 == Signals
 
 --- select: self

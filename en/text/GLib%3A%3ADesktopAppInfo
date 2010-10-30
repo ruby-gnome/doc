@@ -1,0 +1,138 @@
+= class GLib::DesktopAppInfo
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::DesktopAppInfo
+
+== Included Modules
+
+  * GLib::AppInfo
+
+== Class Methods
+
+--- GLib::DesktopAppInfo.desktop_env=
+
+     * Returns: self: ((*FIXME*))
+
+--- GLib::DesktopAppInfo.new
+
+     * Returns: self: ((*FIXME*))
+
+--- GLib::DesktopAppInfo.new_from_filename
+
+     * Returns: self: ((*FIXME*))
+
+--- GLib::DesktopAppInfo.new_from_keyfile
+
+     * Returns: self: ((*FIXME*))
+
+--- GLib::DesktopAppInfo.set_desktop_env
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- add_supports_type
+
+    See GLib::AppInfo#add_supports_type.
+
+--- can_delete?
+
+    See GLib::AppInfo#can_delete?.
+
+--- can_remove_supports_type?
+
+    See GLib::AppInfo#can_remove_supports_type?.
+
+--- commandline
+
+    See GLib::AppInfo#commandline.
+
+--- delete
+
+    See GLib::AppInfo#delete.
+
+--- description
+
+    See GLib::AppInfo#description.
+
+--- display_name
+
+    See GLib::AppInfo#display_name.
+
+--- dup
+
+    See GLib::AppInfo#dup.
+
+--- equal?
+
+    See GLib::AppInfo#equal?.
+
+--- executable
+
+    See GLib::AppInfo#executable.
+
+--- filename
+
+     * Returns: self: ((*FIXME*))
+
+--- hidden?
+
+     * Returns: self: ((*FIXME*))
+
+--- icon
+
+    See GLib::AppInfo#icon.
+
+--- id
+
+    See GLib::AppInfo#id.
+
+--- launch
+
+    See GLib::AppInfo#launch.
+
+--- launch_uris
+
+    See GLib::AppInfo#launch_uris.
+
+--- name
+
+    See GLib::AppInfo#name.
+
+--- remove_supports_type
+
+    See GLib::AppInfo#remove_supports_type.
+
+--- set_as_default_for_extension
+
+    See GLib::AppInfo#set_as_default_for_extension.
+
+--- set_as_default_for_type
+
+    See GLib::AppInfo#set_as_default_for_type.
+
+--- should_show?
+
+    See GLib::AppInfo#should_show?.
+
+--- supports_files?
+
+    See GLib::AppInfo#supports_files?.
+
+--- supports_uris?
+
+    See GLib::AppInfo#supports_uris?.
+
+== Constants
+
+--- LOOKUP_EXTENSION_POINT_NAME
+
+== See Also
+
+== ChangeLog
+
+

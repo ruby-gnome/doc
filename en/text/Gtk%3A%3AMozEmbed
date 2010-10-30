@@ -256,6 +256,18 @@ Please see the sample application ruby-gecko and ((<RubyGecko>)) for more.
 
     See Gtk::Buildable#set_name.
 
+--- builder_name
+
+    See Gtk::Buildable#builder_name.
+
+--- builder_name=
+
+    See Gtk::Buildable#builder_name=.
+
+--- set_builder_name
+
+    See Gtk::Buildable#set_builder_name.
+
 == Constants
 
 === ChromeFlags
@@ -294,6 +306,44 @@ Please see the sample application ruby-gecko and ((<RubyGecko>)) for more.
 
 --- LOG_DOMAIN
 --- RELOADCHARSETCHANGE
+--- ALL_CHROME
+--- CENTER_SCREEN
+--- DEFAULT_CHROME
+--- EXTRA_CHROME_ON
+--- FAILED_CONNECT
+--- FAILED_DNS
+--- FAILED_TIMEOUT
+--- FAILED_USERCANCELED
+--- FAILED_USER_CANCELED
+--- IS_DOCUMENT
+--- IS_NETWORK
+--- IS_REQUEST
+--- IS_WINDOW
+--- LOCATIONBAR_ON
+--- MENU_BARON
+--- NEGOTIATING
+--- OPEN_AS_CHROME
+--- OPEN_AS_DIALOG
+--- PERSONAL_TOOLBAR_ON
+--- REDIRECTING
+--- RELOAD_BYPASS_CACHE
+--- RELOAD_BYPASS_PROXY
+--- RELOAD_BYPASS_PROXY_AND_CACHE
+--- RELOAD_CHARSET_CHANGE
+--- RELOAD_NORMAL
+--- RESTORING
+--- SCROLLBARS_ON
+--- START
+--- STATUSBAR_ON
+--- STOP
+--- TITLEBAR_ON
+--- TOOLBAR_ON
+--- TRANSFERRING
+--- WINDOW_BORDERS_ON
+--- WINDOW_CLOSE_ON
+--- WINDOW_LOWERED
+--- WINDOW_RAISED
+--- WINDOW_RESIZE_ON
 
 == Signals
 

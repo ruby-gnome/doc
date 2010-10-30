@@ -235,6 +235,22 @@ Base container element.
 
      * Returns: self: ((*FIXME*))
 
+--- children_recurse
+
+     * Returns: self: ((*FIXME*))
+
+--- each_recurse
+
+     * Returns: self: ((*FIXME*))
+
+--- to_dot_file
+
+     * Returns: self: ((*FIXME*))
+
+--- to_dot_file_with_ts
+
+     * Returns: self: ((*FIXME*))
+
 == Constants
 
 === GstBinFlags
@@ -245,6 +261,11 @@ Base container element.
 --- SELF_SCHEDULABLE
 --- STATE_LOCKED
 --- FLAG_LAST
+--- SHOW_ALL
+--- SHOW_CAPS_DETAILS
+--- SHOW_MEDIA_TYPE
+--- SHOW_NON_DEFAULT_PARAMS
+--- SHOW_STATES
 
 == Properties
 
@@ -257,6 +278,9 @@ Base container element.
 --- element-added
 --- element-removed
 --- iterate
+--- do-latency: self
+
+     * self: Gst::Bin: ((*FIXME*))
 
 == See Also
 

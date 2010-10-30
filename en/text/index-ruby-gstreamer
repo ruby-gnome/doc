@@ -1,6 +1,7 @@
 = Ruby/GStreamer API Index
 
   * Gst
+  * Gst.check_version?
   * Gst.has_threads?
   * Gst.init
   * Gst.use_threads
@@ -17,6 +18,7 @@
   * Gst::Bin#child_state_change
   * Gst::Bin#children
   * Gst::Bin#children_cookie
+  * Gst::Bin#children_recurse
   * Gst::Bin#clear
   * Gst::Bin#clock
   * Gst::Bin#clock_dirty?
@@ -24,6 +26,7 @@
   * Gst::Bin#each
   * Gst::Bin#each_by_interface
   * Gst::Bin#each_element
+  * Gst::Bin#each_recurse
   * Gst::Bin#elements
   * Gst::Bin#get_all_by_interface
   * Gst::Bin#get_by_interface
@@ -44,6 +47,8 @@
   * Gst::Bin#size
   * Gst::Bin#sources
   * Gst::Bin#sync_children_state
+  * Gst::Bin#to_dot_file
+  * Gst::Bin#to_dot_file_with_ts
   * Gst::Bin#use_clock
   * Gst::Bin::Flags
   * Gst::Bin::Flags#last?
@@ -100,6 +105,9 @@
   * Gst::Buffer::Flags#gap?
   * Gst::Buffer::Flags#in_caps?
   * Gst::Buffer::Flags#last?
+  * Gst::Buffer::Flags#media1?
+  * Gst::Buffer::Flags#media2?
+  * Gst::Buffer::Flags#media3?
   * Gst::Buffer::Flags#preroll?
   * Gst::Buffer::Flags#readonly?
   * Gst::Bus
@@ -277,6 +285,7 @@
   * Gst::Element#thread_suggested?
   * Gst::Element#time
   * Gst::Element#time=
+  * Gst::Element#unlink
   * Gst::Element#unlink_pads
   * Gst::Element#use_threadsafe_properties?
   * Gst::Element#wait
@@ -298,6 +307,38 @@
   * Gst::ElementFactory#long_name
   * Gst::ElementFactory#pad_templates
   * Gst::ElementFactory#to_s
+  * Gst::Event
+  * Gst::Event.new
+  * Gst::Event#get_type
+  * Gst::Event#src
+  * Gst::Event#timestamp
+  * Gst::EventBufferSize
+  * Gst::EventBufferSize.new
+  * Gst::EventBufferSize#parse
+  * Gst::EventEOS
+  * Gst::EventEOS.new
+  * Gst::EventFlushStart
+  * Gst::EventFlushStart.new
+  * Gst::EventFlushStop
+  * Gst::EventFlushStop.new
+  * Gst::EventLatency
+  * Gst::EventLatency.new
+  * Gst::EventLatency#parse
+  * Gst::EventNavigation
+  * Gst::EventNavigation.new
+  * Gst::EventNewSegment
+  * Gst::EventNewSegment.new
+  * Gst::EventNewSegment#parse
+  * Gst::EventQOS
+  * Gst::EventQOS.new
+  * Gst::EventQOS#parse
+  * Gst::EventSeek
+  * Gst::EventSeek.new
+  * Gst::EventSeek#parse
+  * Gst::EventTag
+  * Gst::EventTag.new
+  * Gst::EventTag#parse
+  * Gst::EventType
   * Gst::Format
   * Gst::Format.each
   * Gst::Format.find
@@ -322,6 +363,8 @@
   * Gst::FractionRange#set_min
   * Gst::FractionRange#to_a
   * Gst::FractionRange#to_s
+  * Gst::GhostPad
+  * Gst::GhostPad.new
   * Gst::Index
   * Gst::Index.new
   * Gst::Index#add
@@ -406,11 +449,14 @@
   * Gst::Message::Type#latency?
   * Gst::Message::Type#name
   * Gst::Message::Type#new_clock?
+  * Gst::Message::Type#qos?
+  * Gst::Message::Type#request_state?
   * Gst::Message::Type#segment_done?
   * Gst::Message::Type#segment_start?
   * Gst::Message::Type#state_changed?
   * Gst::Message::Type#state_dirty?
   * Gst::Message::Type#step_done?
+  * Gst::Message::Type#step_start?
   * Gst::Message::Type#stream_status?
   * Gst::Message::Type#structure_change?
   * Gst::Message::Type#tag?
@@ -464,6 +510,7 @@
   * Gst::MessageStreamStatus
   * Gst::MessageStructureChange
   * Gst::MessageTag
+  * Gst::MessageTag#parse
   * Gst::MessageUnknown
   * Gst::MessageWarning
   * Gst::MessageWarning#parse
@@ -492,6 +539,7 @@
   * Gst::Object::Flags#floating?
   * Gst::Pad
   * Gst::Pad#>>
+  * Gst::Pad#active=
   * Gst::Pad#caps
   * Gst::Pad#caps=
   * Gst::Pad#direction
@@ -515,6 +563,7 @@
   * Gst::Pad#query
   * Gst::Pad#query_types
   * Gst::Pad#send_event
+  * Gst::Pad#set_active
   * Gst::Pad#set_caps
   * Gst::Pad#set_template
   * Gst::Pad#template
@@ -537,6 +586,7 @@
   * Gst::PadTemplate#has_caps?
   * Gst::PadTemplate#have_caps?
   * Gst::PadTemplate#name
+  * Gst::PadTemplate#name_template
   * Gst::PadTemplate#presence
   * Gst::PadTemplate::Flags
   * Gst::PadTemplate::Flags#fixed?
@@ -580,6 +630,28 @@
   * Gst::PluginFeature#rank=
   * Gst::PluginFeature#set_rank
   * Gst::PluginFeature#unload_thyself
+  * Gst::Query
+  * Gst::QueryConvert
+  * Gst::QueryConvert.new
+  * Gst::QueryConvert#parse
+  * Gst::QueryDuration
+  * Gst::QueryDuration.new
+  * Gst::QueryDuration#parse
+  * Gst::QueryFormats
+  * Gst::QueryFormats.new
+  * Gst::QueryFormats#parse
+  * Gst::QueryLatency
+  * Gst::QueryLatency.new
+  * Gst::QueryLatency#parse
+  * Gst::QueryPosition
+  * Gst::QueryPosition.new
+  * Gst::QueryPosition#parse
+  * Gst::QuerySeeking
+  * Gst::QuerySeeking.new
+  * Gst::QuerySeeking#parse
+  * Gst::QuerySegment
+  * Gst::QuerySegment.new
+  * Gst::QuerySegment#parse
   * Gst::QueryType
   * Gst::QueryType.each
   * Gst::QueryType.find
@@ -626,6 +698,15 @@
   * Gst::Registry#unload
   * Gst::Registry#unload_plugin
   * Gst::Registry#update_plugin
+  * Gst::Seek
+  * Gst::SeekFlags
+  * Gst::SeekFlags#accurate?
+  * Gst::SeekFlags#flush?
+  * Gst::SeekFlags#key_unit?
+  * Gst::SeekFlags#none?
+  * Gst::SeekFlags#segment?
+  * Gst::SeekFlags#skip?
+  * Gst::SeekType
   * Gst::State
   * Gst::StateChange
   * Gst::StateChangeReturn
@@ -676,6 +757,9 @@
   * Gst::Structure#to_string
   * Gst::SystemClock
   * Gst::SystemClock.obtain
+  * Gst::SystemClock#clock_type
+  * Gst::SystemClock#clock_type=
+  * Gst::SystemClock#set_clock_type
   * Gst::Tag
   * Gst::Tag.exists?
   * Gst::Tag.fixed?
@@ -703,4 +787,5 @@
   * Gst::XOverlay#expose
   * Gst::XOverlay#got_xwindow_id
   * Gst::XOverlay#set_xwindow_id
+  * Gst::XOverlay#set_xwindow_id_with_buswatch
   * Gst::XOverlay#xwindow_id=

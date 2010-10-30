@@ -114,6 +114,18 @@ The Gtk::Scale widget is an abstract class, used only for deriving the subclasse
 
     See Gtk::Buildable#set_name.
 
+--- builder_name
+
+    See Gtk::Buildable#builder_name.
+
+--- builder_name=
+
+    See Gtk::Buildable#builder_name=.
+
+--- set_builder_name
+
+    See Gtk::Buildable#set_builder_name.
+
 == Properties
 
 --- digits: Integer (Read/Write)

@@ -1,0 +1,26 @@
+= class GLib::UnixConnection
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::IOStream
+        * GLib::SocketConnection
+          * GLib::UnixConnection
+
+== Instance Methods
+
+--- receive_fd
+
+     * Returns: self: ((*FIXME*))
+
+--- send_fd
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

@@ -3,6 +3,7 @@
 == Module Functions
 
 --- GLib::Idle.add{...}
+
     Adds a block to be called whenever there are no higher priority events pending to the default main loop. The block is given the default idle priority, GLib::PRIORITY_DEFAULT_IDLE. If the block returns FALSE it is automatically removed from the list of event sources and will not be called again.
     * {...}: a block to call
      * Returns: a Fixnum

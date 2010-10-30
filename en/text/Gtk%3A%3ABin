@@ -53,6 +53,18 @@ Many Ruby/GTK widgets are subclasses of Gtk::Bin, including Gtk::Window, Gtk::Bu
 
     See Gtk::Buildable#set_name.
 
+--- builder_name
+
+    See Gtk::Buildable#builder_name.
+
+--- builder_name=
+
+    See Gtk::Buildable#builder_name=.
+
+--- set_builder_name
+
+    See Gtk::Buildable#set_builder_name.
+
 == See Also
 
 == ChangeLog

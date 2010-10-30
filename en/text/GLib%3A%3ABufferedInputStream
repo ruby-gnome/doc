@@ -1,0 +1,75 @@
+= class GLib::BufferedInputStream
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::InputStream
+        * GLib::FilterInputStream
+          * GLib::BufferedInputStream
+
+== Class Methods
+
+--- GLib::BufferedInputStream.new
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- available
+
+     * Returns: self: ((*FIXME*))
+
+--- buffer_size
+
+    Gets the size of the backend buffer.
+     * Returns: The size of the backend buffer
+
+--- buffer_size=(buffer_size)
+
+    Sets the size of the backend buffer.
+     * buffer_size: The size of the backend buffer
+     * Returns: buffer_size
+
+--- fill
+
+     * Returns: self: ((*FIXME*))
+
+--- fill_async
+
+     * Returns: self: ((*FIXME*))
+
+--- fill_finish
+
+     * Returns: self: ((*FIXME*))
+
+--- peek
+
+     * Returns: self: ((*FIXME*))
+
+--- peek_buffer
+
+     * Returns: self: ((*FIXME*))
+
+--- read_byte
+
+     * Returns: self: ((*FIXME*))
+
+--- set_buffer_size(buffer_size)
+
+    Same as buffer_size=.
+     * buffer_size: The size of the backend buffer
+     * Returns: self
+
+== Properties
+
+--- buffer-size: Integer (Read/Write)
+
+    The size of the backend buffer
+
+== See Also
+
+== ChangeLog
+
+

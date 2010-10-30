@@ -157,6 +157,23 @@ The Gtk::CellRendererPixbuf is used for rendering a cell to a Gdk::Drawable with
     * stock_size: The Gtk::IconSize value that specifies the size of the rendered icon
     * Returns: self
 
+--- gicon
+
+    Gets the GIcon being displayed.
+     * Returns: The GIcon being displayed
+
+--- gicon=(gicon)
+
+    Sets the GIcon being displayed.
+     * gicon: The GIcon being displayed
+     * Returns: gicon
+
+--- set_gicon(gicon)
+
+    Same as gicon=.
+     * gicon: The GIcon being displayed
+     * Returns: self
+
 == Properties
 
 --- follow-state: true or false (Read/Write)
@@ -194,6 +211,10 @@ The Gtk::CellRendererPixbuf is used for rendering a cell to a Gdk::Drawable with
 --- stock-size: Integer (Read/Write)
 
     The Gtk::IconSize value that specifies the size of the rendered icon.
+
+--- gicon: GIcon (Read/Write)
+
+    The GIcon being displayed
 
 == See Also
 

@@ -269,6 +269,18 @@ The behaviour is chosen based on the "is_important" property of the action to wh
 
     See Gtk::Buildable#set_name.
 
+--- builder_name
+
+    See Gtk::Buildable#builder_name.
+
+--- builder_name=
+
+    See Gtk::Buildable#builder_name=.
+
+--- set_builder_name
+
+    See Gtk::Buildable#set_builder_name.
+
 == Constants
 
 === GtkUIManagerItemType
@@ -314,6 +326,8 @@ These enumeration values are used by Gtk::UIManager#add_ui to determine what UI 
 --- ACCELERATOR
 
     Install an accelerator.
+
+--- POPUP_WITH_ACCELS
 
 == Properties
 

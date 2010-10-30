@@ -169,6 +169,18 @@
 
      * Returns: self: ((*FIXME*))
 
+--- annotation_mapping
+
+     * Returns: self: ((*FIXME*))
+
+--- get_image
+
+     * Returns: self: ((*FIXME*))
+
+--- render_for_printing
+
+     * Returns: self: ((*FIXME*))
+
 == Properties
 
 --- label: String (Read)

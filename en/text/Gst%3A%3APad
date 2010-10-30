@@ -167,6 +167,14 @@ The link between Gst::Element objects.
 
      * Returns: self: ((*FIXME*))
 
+--- active=
+
+     * Returns: self: ((*FIXME*))
+
+--- set_active
+
+     * Returns: self: ((*FIXME*))
+
 == Constants
 
 === GstPadDirection

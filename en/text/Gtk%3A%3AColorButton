@@ -127,6 +127,18 @@ The Gtk::ColorButton is a button which displays the currently selected color an 
 
     See Gtk::Buildable#set_name.
 
+--- builder_name
+
+    See Gtk::Buildable#builder_name.
+
+--- builder_name=
+
+    See Gtk::Buildable#builder_name=.
+
+--- set_builder_name
+
+    See Gtk::Buildable#set_builder_name.
+
 == Properties
 
 --- alpha: Integer (Read/Write)

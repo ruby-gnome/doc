@@ -1,0 +1,21 @@
+= class GLib::Drive::StartStopType
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * GLib::Drive::StartStopType
+
+== Constants
+
+--- MULTIDISK
+--- NETWORK
+--- PASSWORD
+--- SHUTDOWN
+--- UNKNOWN
+
+== See Also
+
+== ChangeLog
+
+

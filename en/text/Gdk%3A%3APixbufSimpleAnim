@@ -28,6 +28,29 @@
     * pixbuf: the Gdk::Pixbuf to add
     * Returns: self
 
+--- loop=(loop)
+
+    Sets the value whether the animation should loop when it reaches the end or not.
+     * loop: true if the animation should loop when it reaches the end
+     * Returns: loop
+
+--- loop?
+
+    Gets the value whether the animation should loop when it reaches the end or not.
+     * Returns: true if the animation should loop when it reaches the end
+
+--- set_loop(loop)
+
+    Same as loop=.
+     * loop: true if the animation should loop when it reaches the end
+     * Returns: self
+
+== Properties
+
+--- loop: true or false (Read/Write)
+
+    Whether the animation should loop when it reaches the end
+
 == See Also
 
 Gdk::PixbufAnimation

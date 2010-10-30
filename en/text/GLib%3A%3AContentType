@@ -1,0 +1,49 @@
+= module GLib::ContentType
+
+== Module Functions
+
+--- GLib::ContentType.can_be_executable?
+
+     * Returns: self: ((*FIXME*))
+
+--- GLib::ContentType.equals?
+
+     * Returns: self: ((*FIXME*))
+
+--- GLib::ContentType.from_mime_type
+
+     * Returns: self: ((*FIXME*))
+
+--- GLib::ContentType.get_description
+
+     * Returns: self: ((*FIXME*))
+
+--- GLib::ContentType.get_icon
+
+     * Returns: self: ((*FIXME*))
+
+--- GLib::ContentType.get_mime_type
+
+     * Returns: self: ((*FIXME*))
+
+--- GLib::ContentType.guess
+
+     * Returns: self: ((*FIXME*))
+
+--- GLib::ContentType.guess_for_tree
+
+     * Returns: self: ((*FIXME*))
+
+--- GLib::ContentType.registered
+
+     * Returns: self: ((*FIXME*))
+
+--- GLib::ContentType.unknown?
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

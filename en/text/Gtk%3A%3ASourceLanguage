@@ -100,6 +100,50 @@ Source language.
     This method returns a list of tags for the given language, as an array of Gtk::SourceTag objects.
     * Returns: a list of tags for the given language, as an array of Gtk::SourceTag objects.
 
+--- get_metadata
+
+     * Returns: self: ((*FIXME*))
+
+--- get_style_name
+
+     * Returns: self: ((*FIXME*))
+
+--- globs
+
+     * Returns: self: ((*FIXME*))
+
+--- hidden?
+
+    Gets the value whether the language should be hidden from the user or not.
+     * Returns: true if the language should be hidden from the user
+
+--- id
+
+    Gets the Language id.
+     * Returns: Language id
+
+--- style_ids
+
+     * Returns: self: ((*FIXME*))
+
+== Properties
+
+--- hidden: true or false (Read)
+
+    Whether the language should be hidden from the user
+
+--- id: String (Read)
+
+    Language id
+
+--- name: String (Read)
+
+    Language name
+
+--- section: String (Read)
+
+    Language section
+
 == Signals
 
 --- tag-style-changed

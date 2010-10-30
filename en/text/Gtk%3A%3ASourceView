@@ -253,9 +253,177 @@ A view on a source.
 
     See Gtk::Buildable#set_name.
 
+--- builder_name
+
+    See Gtk::Buildable#builder_name.
+
+--- builder_name=
+
+    See Gtk::Buildable#builder_name=.
+
+--- completion
+
+    Gets the completion object associated with the view.
+     * Returns: The completion object associated with the view
+
+--- draw_spaces
+
+    Gets the Set if and how the spaces should be visualized.
+     * Returns: Set if and how the spaces should be visualized
+
+--- draw_spaces=(draw_spaces)
+
+    Sets the Set if and how the spaces should be visualized.
+     * draw_spaces: Set if and how the spaces should be visualized
+     * Returns: draw_spaces
+
+--- get_mark_category_background
+
+     * Returns: self: ((*FIXME*))
+
+--- get_mark_category_pixbuf
+
+     * Returns: self: ((*FIXME*))
+
+--- get_mark_category_priority
+
+     * Returns: self: ((*FIXME*))
+
+--- indent_width
+
+    Gets the Number of spaces to use for each step of indent.
+     * Returns: Number of spaces to use for each step of indent
+
+--- indent_width=(indent_width)
+
+    Sets the Number of spaces to use for each step of indent.
+     * indent_width: Number of spaces to use for each step of indent
+     * Returns: indent_width
+
+--- move_lines
+
+     * Returns: self: ((*FIXME*))
+
+--- right_margin_position
+
+    Gets the Position of the right margin.
+     * Returns: Position of the right margin
+
+--- right_margin_position=(right_margin_position)
+
+    Sets the Position of the right margin.
+     * right_margin_position: Position of the right margin
+     * Returns: right_margin_position
+
+--- set_builder_name
+
+    See Gtk::Buildable#set_builder_name.
+
+--- set_draw_spaces(draw_spaces)
+
+    Same as draw_spaces=.
+     * draw_spaces: Set if and how the spaces should be visualized
+     * Returns: self
+
+--- set_indent_width(indent_width)
+
+    Same as indent_width=.
+     * indent_width: Number of spaces to use for each step of indent
+     * Returns: self
+
+--- set_mark_category_background
+
+     * Returns: self: ((*FIXME*))
+
+--- set_mark_category_pixbuf
+
+     * Returns: self: ((*FIXME*))
+
+--- set_mark_category_priority
+
+     * Returns: self: ((*FIXME*))
+
+--- set_right_margin_position(right_margin_position)
+
+    Same as right_margin_position=.
+     * right_margin_position: Position of the right margin
+     * Returns: self
+
+--- set_show_line_marks(show_line_marks)
+
+    Same as show_line_marks=.
+     * show_line_marks: true if to display line mark pixbufs
+     * Returns: self
+
+--- set_show_right_margin(show_right_margin)
+
+    Same as show_right_margin=.
+     * show_right_margin: true if to display the right margin
+     * Returns: self
+
+--- set_tab_width(tab_width)
+
+    Same as tab_width=.
+     * tab_width: Width of a tab character expressed in spaces
+     * Returns: self
+
+--- show_completion
+
+     * Returns: self: ((*FIXME*))
+
+--- show_line_marks=(show_line_marks)
+
+    Sets the value whether to display line mark pixbufs or not.
+     * show_line_marks: true if to display line mark pixbufs
+     * Returns: show_line_marks
+
+--- show_line_marks?
+
+    Gets the value whether to display line mark pixbufs or not.
+     * Returns: true if to display line mark pixbufs
+
+--- show_right_margin=(show_right_margin)
+
+    Sets the value whether to display the right margin or not.
+     * show_right_margin: true if to display the right margin
+     * Returns: show_right_margin
+
+--- show_right_margin?
+
+    Gets the value whether to display the right margin or not.
+     * Returns: true if to display the right margin
+
+--- smart_home_end
+
+    Gets the HOME and END keys move to first/last non whitespace characters on line before going to the start/end of the line.
+     * Returns: HOME and END keys move to first/last non whitespace characters on line before going to the start/end of the line
+
+--- tab_width
+
+    Gets the Width of a tab character expressed in spaces.
+     * Returns: Width of a tab character expressed in spaces
+
+--- tab_width=(tab_width)
+
+    Sets the Width of a tab character expressed in spaces.
+     * tab_width: Width of a tab character expressed in spaces
+     * Returns: tab_width
+
 == Constants
 
 --- BUILD_VERSION
+--- DRAW_SPACES_ALL
+--- DRAW_SPACES_LEADING
+--- DRAW_SPACES_NBSP
+--- DRAW_SPACES_NEWLINE
+--- DRAW_SPACES_SPACE
+--- DRAW_SPACES_TAB
+--- DRAW_SPACES_TEXT
+--- DRAW_SPACES_TRAILING
+--- SMART_HOME_END_AFTER
+--- SMART_HOME_END_ALWAYS
+--- SMART_HOME_END_BEFORE
+--- SMART_HOME_END_DISABLED
 
 == Properties
 
@@ -299,6 +467,34 @@ A view on a source.
 
     Whether to indent the selected text when the tab key is pressed
 
+--- completion: Gtk::SourceCompletion (Read)
+
+    The completion object associated with the view
+
+--- draw-spaces: Gtk::SourceDrawSpacesFlags (Read/Write)
+
+    Set if and how the spaces should be visualized
+
+--- indent-width: Integer (Read/Write)
+
+    Number of spaces to use for each step of indent
+
+--- right-margin-position: Integer (Read/Write)
+
+    Position of the right margin
+
+--- show-line-marks: true or false (Read/Write)
+
+    Whether to display line mark pixbufs
+
+--- show-right-margin: true or false (Read/Write)
+
+    Whether to display the right margin
+
+--- tab-width: Integer (Read/Write)
+
+    Width of a tab character expressed in spaces
+
 == Style Properties
 
 --- right-margin-line-alpha: Integer (Read)
@@ -325,6 +521,17 @@ A view on a source.
 
 --- redo
 --- undo
+--- line-mark-activated: self
+
+     * self: Gtk::SourceView: ((*FIXME*))
+
+--- move-lines: self
+
+     * self: Gtk::SourceView: ((*FIXME*))
+
+--- show-completion: self
+
+     * self: Gtk::SourceView: ((*FIXME*))
 
 == See Also
 

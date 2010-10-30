@@ -155,6 +155,18 @@ The frame widget is a Gtk::Bin that surrounds its child with a decorative frame 
 
     See Gtk::Buildable#set_name.
 
+--- builder_name
+
+    See Gtk::Buildable#builder_name.
+
+--- builder_name=
+
+    See Gtk::Buildable#builder_name=.
+
+--- set_builder_name
+
+    See Gtk::Buildable#set_builder_name.
+
 == Properties
 
 --- label: String (Read/Write)

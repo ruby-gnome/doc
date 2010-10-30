@@ -1,0 +1,41 @@
+= class GLib::TcpConnection
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::IOStream
+        * GLib::SocketConnection
+          * GLib::TcpConnection
+
+== Instance Methods
+
+--- graceful_disconnect=(graceful_disconnect)
+
+    Sets the value whether or not close does a graceful disconnect or not.
+     * graceful_disconnect: true if or not close does a graceful disconnect
+     * Returns: graceful_disconnect
+
+--- graceful_disconnect?
+
+    Gets the value whether or not close does a graceful disconnect or not.
+     * Returns: true if or not close does a graceful disconnect
+
+--- set_graceful_disconnect(graceful_disconnect)
+
+    Same as graceful_disconnect=.
+     * graceful_disconnect: true if or not close does a graceful disconnect
+     * Returns: self
+
+== Properties
+
+--- graceful-disconnect: true or false (Read/Write)
+
+    Whether or not close does a graceful disconnect
+
+== See Also
+
+== ChangeLog
+
+

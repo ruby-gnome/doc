@@ -1,0 +1,51 @@
+= class GLib::InetSocketAddress
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::Socket
+        * GLib::InetSocketAddress
+
+== Class Methods
+
+--- GLib::InetSocketAddress.new
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- address
+
+    Gets the address.
+     * Returns: The address
+
+--- each
+
+    See GLib::SocketConnectable#each.
+
+--- enumerate
+
+    See GLib::SocketConnectable#enumerate.
+
+--- port
+
+    Gets the port.
+     * Returns: The port
+
+== Properties
+
+--- address: GInetAddress (Read/Write)
+
+    The address
+
+--- port: Integer (Read/Write)
+
+    The port
+
+== See Also
+
+== ChangeLog
+
+

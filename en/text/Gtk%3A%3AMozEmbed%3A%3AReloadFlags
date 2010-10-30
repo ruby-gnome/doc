@@ -28,6 +28,26 @@
 
      * Returns: self: ((*FIXME*))
 
+--- bypasscache?
+
+     * Returns: self: ((*FIXME*))
+
+--- bypassproxy?
+
+     * Returns: self: ((*FIXME*))
+
+--- bypassproxyandcache?
+
+     * Returns: self: ((*FIXME*))
+
+--- charsetchange?
+
+     * Returns: self: ((*FIXME*))
+
+--- normal?
+
+     * Returns: self: ((*FIXME*))
+
 == Constants
 
 --- RELOADBYPASSCACHE
@@ -35,6 +55,11 @@
 --- RELOADBYPASSPROXYANDCACHE
 --- RELOADCHARSET
 --- RELOADNORMAL
+--- BYPASSCACHE
+--- BYPASSPROXY
+--- BYPASSPROXYANDCACHE
+--- CHARSETCHANGE
+--- NORMAL
 
 == See Also
 

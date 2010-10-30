@@ -45,6 +45,8 @@
 --- UNMAP
 --- VISIBILITY_NOTIFY
 --- WINDOW_STATE
+--- DAMAGE
+--- EVENT_LAST
 
 == See Also
 

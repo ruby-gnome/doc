@@ -108,6 +108,18 @@
 
      * Returns: self: ((*FIXME*))
 
+--- qos?
+
+     * Returns: self: ((*FIXME*))
+
+--- request_state?
+
+     * Returns: self: ((*FIXME*))
+
+--- step_start?
+
+     * Returns: self: ((*FIXME*))
+
 == Constants
 
 --- ANY
@@ -134,6 +146,9 @@
 --- TAG
 --- UNKNOWN
 --- WARNING
+--- QOS
+--- REQUEST_STATE
+--- STEP_START
 
 == See Also
 

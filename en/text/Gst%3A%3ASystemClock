@@ -19,6 +19,31 @@ using the system time.
     This method returns a handle to the default system clock, as a reference to a Gst::SystemClock object.
     * Returns: a handle to the default system clock, as a reference to a Gst::SystemClock object.
 
+== Instance Methods
+
+--- clock_type
+
+    Gets the type of underlying clock implementation used.
+     * Returns: The type of underlying clock implementation used
+
+--- clock_type=(clock_type)
+
+    Sets the type of underlying clock implementation used.
+     * clock_type: The type of underlying clock implementation used
+     * Returns: clock_type
+
+--- set_clock_type(clock_type)
+
+    Same as clock_type=.
+     * clock_type: The type of underlying clock implementation used
+     * Returns: self
+
+== Properties
+
+--- clock-type: Gst::ClockType (Read/Write)
+
+    The type of underlying clock implementation used
+
 == See Also
 
   * ((<Gst>))

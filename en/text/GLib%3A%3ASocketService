@@ -1,0 +1,41 @@
+= class GLib::SocketService
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::SocketListener
+        * GLib::SocketService
+
+== Class Methods
+
+--- GLib::SocketService.new
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- active?
+
+     * Returns: self: ((*FIXME*))
+
+--- start
+
+     * Returns: self: ((*FIXME*))
+
+--- stop
+
+     * Returns: self: ((*FIXME*))
+
+== Signals
+
+--- incoming: self
+
+     * self: GLib::SocketService: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

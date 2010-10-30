@@ -1,0 +1,23 @@
+= class GLib::FileType
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * GLib::FileType
+
+== Constants
+
+--- DIRECTORY
+--- MOUNTABLE
+--- REGULAR
+--- SHORTCUT
+--- SPECIAL
+--- SYMBOLIC_LINK
+--- UNKNOWN
+
+== See Also
+
+== ChangeLog
+
+

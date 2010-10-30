@@ -419,6 +419,52 @@ Each action can have one or more proxy menu item, toolbar button or other proxy 
 
     See Gtk::Buildable#set_buildable_property.
 
+--- always_show_image=(always_show_image)
+
+    Sets the value whether the image will always be shown or not.
+     * always_show_image: true if the image will always be shown
+     * Returns: always_show_image
+
+--- always_show_image?
+
+    Gets the value whether the image will always be shown or not.
+     * Returns: true if the image will always be shown
+
+--- builder_name
+
+    See Gtk::Buildable#builder_name.
+
+--- builder_name=
+
+    See Gtk::Buildable#builder_name=.
+
+--- gicon
+
+    Gets the GIcon being displayed.
+     * Returns: The GIcon being displayed
+
+--- gicon=(gicon)
+
+    Sets the GIcon being displayed.
+     * gicon: The GIcon being displayed
+     * Returns: gicon
+
+--- set_always_show_image(always_show_image)
+
+    Same as always_show_image=.
+     * always_show_image: true if the image will always be shown
+     * Returns: self
+
+--- set_builder_name
+
+    See Gtk::Buildable#set_builder_name.
+
+--- set_gicon(gicon)
+
+    Same as gicon=.
+     * gicon: The GIcon being displayed
+     * Returns: self
+
 == Properties
 
 --- action-group: Gtk::ActionGroup (Read/Write)
@@ -489,6 +535,14 @@ Each action can have one or more proxy menu item, toolbar button or other proxy 
 
     Whether the toolbar item is visible when the toolbar is in a vertical orientation. ((* Since 2.4 *))
     * Default value: true
+
+--- always-show-image: true or false (Read/Write)
+
+    Whether the image will always be shown
+
+--- gicon: GIcon (Read/Write)
+
+    The GIcon being displayed
 
 == Signals
 

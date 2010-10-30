@@ -39,4 +39,3 @@ Error codes for Gtk::IconTheme operations. ((* Since 2.4 *))
 == ChangeLog
 
 * 2005-03-07 Added. - ((<Masao>))
-

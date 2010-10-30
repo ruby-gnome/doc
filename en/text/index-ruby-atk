@@ -15,6 +15,7 @@
   * Atk::Component#get_extents
   * Atk::Component#grab_focus
   * Atk::Component#layer
+  * Atk::Component#mdi_zorder
   * Atk::Component#position
   * Atk::Component#ref_accessible_at_point
   * Atk::Component#remove_focus_handler
@@ -134,6 +135,7 @@
   * Atk::NoOpObject#link_index
   * Atk::NoOpObject#locale
   * Atk::NoOpObject#max
+  * Atk::NoOpObject#mdi_zorder
   * Atk::NoOpObject#min
   * Atk::NoOpObject#n_actions
   * Atk::NoOpObject#n_columns

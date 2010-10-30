@@ -1,0 +1,19 @@
+= class Vte::TerminalCursorShape
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * Vte::TerminalCursorShape
+
+== Constants
+
+--- BLOCK
+--- IBEAM
+--- UNDERLINE
+
+== See Also
+
+== ChangeLog
+
+

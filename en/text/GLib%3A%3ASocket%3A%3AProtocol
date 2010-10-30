@@ -1,0 +1,21 @@
+= class GLib::Socket::Protocol
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * GLib::Socket::Protocol
+
+== Constants
+
+--- DEFAULT
+--- SCTP
+--- TCP
+--- UDP
+--- UNKNOWN
+
+== See Also
+
+== ChangeLog
+
+

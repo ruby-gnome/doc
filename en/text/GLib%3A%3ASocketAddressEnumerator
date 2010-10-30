@@ -1,0 +1,28 @@
+= class GLib::SocketAddressEnumerator
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::SocketAddressEnumerator
+
+== Instance Methods
+
+--- next
+
+     * Returns: self: ((*FIXME*))
+
+--- next_async
+
+     * Returns: self: ((*FIXME*))
+
+--- next_finish
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

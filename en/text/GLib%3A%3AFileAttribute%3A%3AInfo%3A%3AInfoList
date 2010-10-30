@@ -1,0 +1,45 @@
+= class GLib::FileAttribute::Info::InfoList
+
+== Object Hierarchy
+
+* Object
+  * GLib::Boxed
+    * GLib::FileAttribute::Info::InfoList
+
+== Included Modules
+
+  * Enumerable
+
+== Class Methods
+
+--- GLib::FileAttribute::Info::InfoList.new
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- []
+
+     * Returns: self: ((*FIXME*))
+
+--- add
+
+     * Returns: self: ((*FIXME*))
+
+--- dup
+
+     * Returns: self: ((*FIXME*))
+
+--- each
+
+     * Returns: self: ((*FIXME*))
+
+--- lookup
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

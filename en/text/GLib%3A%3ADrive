@@ -1,0 +1,136 @@
+= module GLib::Drive
+
+== Included Modules
+
+  * GLib::Interface
+
+== Instance Methods
+
+--- can_eject?
+
+     * Returns: self: ((*FIXME*))
+
+--- can_poll_for_media?
+
+     * Returns: self: ((*FIXME*))
+
+--- can_start?
+
+     * Returns: self: ((*FIXME*))
+
+--- can_start_degraded?
+
+     * Returns: self: ((*FIXME*))
+
+--- can_stop?
+
+     * Returns: self: ((*FIXME*))
+
+--- eject_with_operation
+
+     * Returns: self: ((*FIXME*))
+
+--- eject_with_operation_finish
+
+     * Returns: self: ((*FIXME*))
+
+--- enumerate_identifiers
+
+     * Returns: self: ((*FIXME*))
+
+--- get_identifier
+
+     * Returns: self: ((*FIXME*))
+
+--- has_media?
+
+     * Returns: self: ((*FIXME*))
+
+--- has_volumes?
+
+     * Returns: self: ((*FIXME*))
+
+--- icon
+
+     * Returns: self: ((*FIXME*))
+
+--- identifiers
+
+     * Returns: self: ((*FIXME*))
+
+--- media_check_automatic?
+
+     * Returns: self: ((*FIXME*))
+
+--- media_removable?
+
+     * Returns: self: ((*FIXME*))
+
+--- name
+
+     * Returns: self: ((*FIXME*))
+
+--- poll_for_media
+
+     * Returns: self: ((*FIXME*))
+
+--- poll_for_media_finish
+
+     * Returns: self: ((*FIXME*))
+
+--- start
+
+     * Returns: self: ((*FIXME*))
+
+--- start_finish
+
+     * Returns: self: ((*FIXME*))
+
+--- start_stop_type
+
+     * Returns: self: ((*FIXME*))
+
+--- stop
+
+     * Returns: self: ((*FIXME*))
+
+--- stop_finish
+
+     * Returns: self: ((*FIXME*))
+
+--- volumes
+
+     * Returns: self: ((*FIXME*))
+
+== Constants
+
+--- START_NONE
+--- START_STOP_TYPE_MULTIDISK
+--- START_STOP_TYPE_NETWORK
+--- START_STOP_TYPE_PASSWORD
+--- START_STOP_TYPE_SHUTDOWN
+--- START_STOP_TYPE_UNKNOWN
+
+== Signals
+
+--- changed: self
+
+     * self: GLib::Drive: ((*FIXME*))
+
+--- disconnected: self
+
+     * self: GLib::Drive: ((*FIXME*))
+
+--- eject-button: self
+
+     * self: GLib::Drive: ((*FIXME*))
+
+--- stop-button: self
+
+     * self: GLib::Drive: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

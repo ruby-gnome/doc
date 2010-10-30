@@ -1,0 +1,68 @@
+= class GLib::UnixSocketAddress
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::Socket
+        * GLib::UnixSocketAddress
+
+== Class Methods
+
+--- GLib::UnixSocketAddress.abstract_names_supported?
+
+     * Returns: self: ((*FIXME*))
+
+--- GLib::UnixSocketAddress.new
+
+     * Returns: self: ((*FIXME*))
+
+--- GLib::UnixSocketAddress.new_abstract
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- abstract?
+
+    Gets the value whether or not this is an abstract address or not.
+     * Returns: true if or not this is an abstract address
+
+--- each
+
+    See GLib::SocketConnectable#each.
+
+--- enumerate
+
+    See GLib::SocketConnectable#enumerate.
+
+--- path
+
+    Gets the UNIX socket path.
+     * Returns: UNIX socket path
+
+--- path_as_array
+
+    Gets the UNIX socket path, as byte array.
+     * Returns: UNIX socket path, as byte array
+
+== Properties
+
+--- abstract: true or false (Read/Write)
+
+    Whether or not this is an abstract address
+
+--- path: String (Read/Write)
+
+    UNIX socket path
+
+--- path-as-array: GByteArray (Read/Write)
+
+    UNIX socket path, as byte array
+
+== See Also
+
+== ChangeLog
+
+

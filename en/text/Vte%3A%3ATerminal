@@ -993,6 +993,228 @@
 
     See Gtk::Buildable#set_name.
 
+--- background_image_file
+
+    Gets the background_image_file.
+     * Returns: ((*FIXME*))
+
+--- background_image_file=(background_image_file)
+
+    Sets the background_image_file.
+     * background_image_file: ((*FIXME*))
+     * Returns: background_image_file
+
+--- background_image_pixbuf
+
+    Gets the background_image_pixbuf.
+     * Returns: ((*FIXME*))
+
+--- background_image_pixbuf=(background_image_pixbuf)
+
+    Sets the background_image_pixbuf.
+     * background_image_pixbuf: ((*FIXME*))
+     * Returns: background_image_pixbuf
+
+--- background_opacity
+
+    Gets the background_opacity.
+     * Returns: ((*FIXME*))
+
+--- background_opacity=(background_opacity)
+
+    Sets the background_opacity.
+     * background_opacity: ((*FIXME*))
+     * Returns: background_opacity
+
+--- background_saturation
+
+    Gets the background_saturation.
+     * Returns: ((*FIXME*))
+
+--- background_tint_color
+
+    Gets the background_tint_color.
+     * Returns: ((*FIXME*))
+
+--- background_transparent?
+
+    Gets the background_transparent.
+     * Returns: ((*FIXME*))
+
+--- backspace_binding
+
+    Gets the backspace_binding.
+     * Returns: ((*FIXME*))
+
+--- builder_name
+
+    See Gtk::Buildable#builder_name.
+
+--- builder_name=
+
+    See Gtk::Buildable#builder_name=.
+
+--- child_exit_status
+
+     * Returns: self: ((*FIXME*))
+
+--- cursor_blink_mode
+
+    Gets the cursor_blink_mode.
+     * Returns: ((*FIXME*))
+
+--- cursor_blink_mode=(cursor_blink_mode)
+
+    Sets the cursor_blink_mode.
+     * cursor_blink_mode: ((*FIXME*))
+     * Returns: cursor_blink_mode
+
+--- cursor_shape
+
+    Gets the cursor_shape.
+     * Returns: ((*FIXME*))
+
+--- cursor_shape=(cursor_shape)
+
+    Sets the cursor_shape.
+     * cursor_shape: ((*FIXME*))
+     * Returns: cursor_shape
+
+--- delete_binding
+
+    Gets the delete_binding.
+     * Returns: ((*FIXME*))
+
+--- font_desc
+
+    Gets the font_desc.
+     * Returns: ((*FIXME*))
+
+--- font_desc=(font_desc)
+
+    Sets the font_desc.
+     * font_desc: ((*FIXME*))
+     * Returns: font_desc
+
+--- pointer_autohide=(pointer_autohide)
+
+    Sets the pointer_autohide.
+     * pointer_autohide: ((*FIXME*))
+     * Returns: pointer_autohide
+
+--- pointer_autohide?
+
+    Gets the pointer_autohide.
+     * Returns: ((*FIXME*))
+
+--- pty
+
+    Gets the pty.
+     * Returns: ((*FIXME*))
+
+--- scroll_background?
+
+    Gets the scroll_background.
+     * Returns: ((*FIXME*))
+
+--- scroll_on_keystroke?
+
+    Gets the scroll_on_keystroke.
+     * Returns: ((*FIXME*))
+
+--- scroll_on_output?
+
+    Gets the scroll_on_output.
+     * Returns: ((*FIXME*))
+
+--- scrollback_lines
+
+    Gets the scrollback_lines.
+     * Returns: ((*FIXME*))
+
+--- set_background_image_file(background_image_file)
+
+    Same as background_image_file=.
+     * background_image_file: ((*FIXME*))
+     * Returns: self
+
+--- set_background_image_pixbuf(background_image_pixbuf)
+
+    Same as background_image_pixbuf=.
+     * background_image_pixbuf: ((*FIXME*))
+     * Returns: self
+
+--- set_background_opacity(background_opacity)
+
+    Same as background_opacity=.
+     * background_opacity: ((*FIXME*))
+     * Returns: self
+
+--- set_builder_name
+
+    See Gtk::Buildable#set_builder_name.
+
+--- set_cursor_blink_mode(cursor_blink_mode)
+
+    Same as cursor_blink_mode=.
+     * cursor_blink_mode: ((*FIXME*))
+     * Returns: self
+
+--- set_cursor_shape(cursor_shape)
+
+    Same as cursor_shape=.
+     * cursor_shape: ((*FIXME*))
+     * Returns: self
+
+--- set_font_desc(font_desc)
+
+    Same as font_desc=.
+     * font_desc: ((*FIXME*))
+     * Returns: self
+
+--- set_pointer_autohide(pointer_autohide)
+
+    Same as pointer_autohide=.
+     * pointer_autohide: ((*FIXME*))
+     * Returns: self
+
+--- word_chars
+
+    Gets the word_chars.
+     * Returns: ((*FIXME*))
+
+== Properties
+
+--- allow-bold: true or false (Read/Write)
+--- audible-bell: true or false (Read/Write)
+--- background-image-file: String (Read/Write)
+--- background-image-pixbuf: Gdk::Pixbuf (Read/Write)
+--- background-opacity: Float (Read/Write)
+--- background-saturation: Float (Read/Write)
+--- background-tint-color: Gdk::Color (Read/Write)
+--- background-transparent: true or false (Read/Write)
+--- backspace-binding: Vte::TerminalEraseBinding (Read/Write)
+--- cursor-blink-mode: Vte::TerminalCursorBlinkMode (Read/Write)
+--- cursor-shape: Vte::TerminalCursorShape (Read/Write)
+--- delete-binding: Vte::TerminalEraseBinding (Read/Write)
+--- emulation: String (Read/Write)
+--- encoding: String (Read/Write)
+--- font-desc: Pango::FontDescription (Read/Write)
+--- icon-title: String (Read)
+--- pointer-autohide: true or false (Read/Write)
+--- pty: Integer (Read/Write)
+--- scroll-background: true or false (Read/Write)
+--- scroll-on-keystroke: true or false (Read/Write)
+--- scroll-on-output: true or false (Read/Write)
+--- scrollback-lines: Integer (Read/Write)
+--- visible-bell: true or false (Read/Write)
+--- window-title: String (Read)
+--- word-chars: String (Read/Write)
+
+== Style Properties
+
+--- inner-border: Gtk::Border (Read)
+
 == Signals
 
 --- char-size-changed: self
@@ -1108,6 +1330,14 @@
      * self: Vte::Terminal: ((*FIXME*))
 
 --- paste-clipboard: self
+
+     * self: Vte::Terminal: ((*FIXME*))
+
+--- beep: self
+
+     * self: Vte::Terminal: ((*FIXME*))
+
+--- set-scroll-adjustments: self
 
      * self: Vte::Terminal: ((*FIXME*))
 

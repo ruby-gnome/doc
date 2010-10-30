@@ -1,0 +1,314 @@
+= class GLib::FileInfo
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::FileInfo
+
+== Class Methods
+
+--- GLib::FileInfo.new
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- []
+
+     * Returns: self: ((*FIXME*))
+
+--- attribute_mask=
+
+     * Returns: self: ((*FIXME*))
+
+--- attributes
+
+     * Returns: self: ((*FIXME*))
+
+--- backup?
+
+     * Returns: self: ((*FIXME*))
+
+--- clear_status
+
+     * Returns: self: ((*FIXME*))
+
+--- content_type
+
+     * Returns: self: ((*FIXME*))
+
+--- content_type=
+
+     * Returns: self: ((*FIXME*))
+
+--- copy_into
+
+     * Returns: self: ((*FIXME*))
+
+--- directory?
+
+     * Returns: self: ((*FIXME*))
+
+--- display_name
+
+     * Returns: self: ((*FIXME*))
+
+--- display_name=
+
+     * Returns: self: ((*FIXME*))
+
+--- dup
+
+     * Returns: self: ((*FIXME*))
+
+--- edit_name
+
+     * Returns: self: ((*FIXME*))
+
+--- edit_name=
+
+     * Returns: self: ((*FIXME*))
+
+--- etag
+
+     * Returns: self: ((*FIXME*))
+
+--- file_type
+
+     * Returns: self: ((*FIXME*))
+
+--- file_type=
+
+     * Returns: self: ((*FIXME*))
+
+--- get_attribute_as_string
+
+     * Returns: self: ((*FIXME*))
+
+--- get_attribute_boolean
+
+     * Returns: self: ((*FIXME*))
+
+--- get_attribute_byte_string
+
+     * Returns: self: ((*FIXME*))
+
+--- get_attribute_data
+
+     * Returns: self: ((*FIXME*))
+
+--- get_attribute_int32
+
+     * Returns: self: ((*FIXME*))
+
+--- get_attribute_int64
+
+     * Returns: self: ((*FIXME*))
+
+--- get_attribute_object
+
+     * Returns: self: ((*FIXME*))
+
+--- get_attribute_status
+
+     * Returns: self: ((*FIXME*))
+
+--- get_attribute_string
+
+     * Returns: self: ((*FIXME*))
+
+--- get_attribute_stringv
+
+     * Returns: self: ((*FIXME*))
+
+--- get_attribute_type
+
+     * Returns: self: ((*FIXME*))
+
+--- get_attribute_uint32
+
+     * Returns: self: ((*FIXME*))
+
+--- get_attribute_uint64
+
+     * Returns: self: ((*FIXME*))
+
+--- get_attribute_value
+
+     * Returns: self: ((*FIXME*))
+
+--- has_attribute?
+
+     * Returns: self: ((*FIXME*))
+
+--- has_namespace?
+
+     * Returns: self: ((*FIXME*))
+
+--- hidden=
+
+     * Returns: self: ((*FIXME*))
+
+--- hidden?
+
+     * Returns: self: ((*FIXME*))
+
+--- icon
+
+     * Returns: self: ((*FIXME*))
+
+--- icon=
+
+     * Returns: self: ((*FIXME*))
+
+--- modification_time
+
+     * Returns: self: ((*FIXME*))
+
+--- modification_time=
+
+     * Returns: self: ((*FIXME*))
+
+--- name
+
+     * Returns: self: ((*FIXME*))
+
+--- name=
+
+     * Returns: self: ((*FIXME*))
+
+--- remove_attribute
+
+     * Returns: self: ((*FIXME*))
+
+--- set_attribute_boolean
+
+     * Returns: self: ((*FIXME*))
+
+--- set_attribute_byte_string
+
+     * Returns: self: ((*FIXME*))
+
+--- set_attribute_int32
+
+     * Returns: self: ((*FIXME*))
+
+--- set_attribute_int64
+
+     * Returns: self: ((*FIXME*))
+
+--- set_attribute_mask
+
+     * Returns: self: ((*FIXME*))
+
+--- set_attribute_object
+
+     * Returns: self: ((*FIXME*))
+
+--- set_attribute_status
+
+     * Returns: self: ((*FIXME*))
+
+--- set_attribute_string
+
+     * Returns: self: ((*FIXME*))
+
+--- set_attribute_uint32
+
+     * Returns: self: ((*FIXME*))
+
+--- set_attribute_uint64
+
+     * Returns: self: ((*FIXME*))
+
+--- set_content_type
+
+     * Returns: self: ((*FIXME*))
+
+--- set_display_name
+
+     * Returns: self: ((*FIXME*))
+
+--- set_edit_name
+
+     * Returns: self: ((*FIXME*))
+
+--- set_file_type
+
+     * Returns: self: ((*FIXME*))
+
+--- set_hidden
+
+     * Returns: self: ((*FIXME*))
+
+--- set_icon
+
+     * Returns: self: ((*FIXME*))
+
+--- set_modification_time
+
+     * Returns: self: ((*FIXME*))
+
+--- set_name
+
+     * Returns: self: ((*FIXME*))
+
+--- set_size
+
+     * Returns: self: ((*FIXME*))
+
+--- set_sort_order
+
+     * Returns: self: ((*FIXME*))
+
+--- set_symlink
+
+     * Returns: self: ((*FIXME*))
+
+--- set_symlink_target
+
+     * Returns: self: ((*FIXME*))
+
+--- size
+
+     * Returns: self: ((*FIXME*))
+
+--- size=
+
+     * Returns: self: ((*FIXME*))
+
+--- sort_order
+
+     * Returns: self: ((*FIXME*))
+
+--- sort_order=
+
+     * Returns: self: ((*FIXME*))
+
+--- symlink=
+
+     * Returns: self: ((*FIXME*))
+
+--- symlink?
+
+     * Returns: self: ((*FIXME*))
+
+--- symlink_target
+
+     * Returns: self: ((*FIXME*))
+
+--- symlink_target=
+
+     * Returns: self: ((*FIXME*))
+
+--- unset_attribute_mask
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

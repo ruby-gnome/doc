@@ -16,6 +16,10 @@
 
      * Returns: self: ((*FIXME*))
 
+--- Pango::Language.default
+
+     * Returns: self: ((*FIXME*))
+
 == Instance Methods
 
 --- includes_script

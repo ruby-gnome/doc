@@ -1,0 +1,44 @@
+= class GLib::FilenameCompleter
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::FilenameCompleter
+
+== Class Methods
+
+--- GLib::FilenameCompleter.new
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- dirs_only=
+
+     * Returns: self: ((*FIXME*))
+
+--- get_completion_suffix
+
+     * Returns: self: ((*FIXME*))
+
+--- get_completions
+
+     * Returns: self: ((*FIXME*))
+
+--- set_dirs_only
+
+     * Returns: self: ((*FIXME*))
+
+== Signals
+
+--- got-completion-data: self
+
+     * self: GLib::FilenameCompleter: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

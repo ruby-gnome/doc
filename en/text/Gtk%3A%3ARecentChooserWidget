@@ -241,6 +241,18 @@ Recently used files are supported since GTK+ 2.10.
 
     See Gtk::Buildable#set_name.
 
+--- builder_name
+
+    See Gtk::Buildable#builder_name.
+
+--- builder_name=
+
+    See Gtk::Buildable#builder_name=.
+
+--- set_builder_name
+
+    See Gtk::Buildable#set_builder_name.
+
 == See Also
 
 Gtk::RecentChooser, Gtk::RecentChooserDialog

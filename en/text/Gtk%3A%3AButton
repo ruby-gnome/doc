@@ -18,6 +18,10 @@ The Gtk::Button widget can hold any valid child widget. That is it can hold most
               * Gtk::Bin
                 * Gtk::Button
 
+== Included Modules
+
+  * #<Module:0x7fd7f0570268>
+
 == Class Methods
 
 --- Gtk::Button.new
@@ -266,6 +270,18 @@ The Gtk::Button widget can hold any valid child widget. That is it can hold most
 --- set_name
 
     See Gtk::Buildable#set_name.
+
+--- builder_name
+
+    See Gtk::Buildable#builder_name.
+
+--- builder_name=
+
+    See Gtk::Buildable#builder_name=.
+
+--- set_builder_name
+
+    See Gtk::Buildable#set_builder_name.
 
 == Properties
 

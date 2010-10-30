@@ -1,0 +1,66 @@
+= class GLib::EmblemedIcon
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::EmblemedIcon
+
+== Included Modules
+
+  * GLib::Icon
+
+== Class Methods
+
+--- GLib::EmblemedIcon.new
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- <<
+
+     * Returns: self: ((*FIXME*))
+
+--- ==
+
+    See GLib::Icon#==.
+
+--- add_emblem
+
+     * Returns: self: ((*FIXME*))
+
+--- emblems
+
+     * Returns: self: ((*FIXME*))
+
+--- eql?
+
+    See GLib::Icon#eql?.
+
+--- hash
+
+    See GLib::Icon#hash.
+
+--- icon
+
+     * Returns: self: ((*FIXME*))
+
+--- to_s
+
+    See GLib::Icon#to_s.
+
+--- to_str
+
+    See GLib::Icon#to_str.
+
+--- to_string
+
+    See GLib::Icon#to_string.
+
+== See Also
+
+== ChangeLog
+
+

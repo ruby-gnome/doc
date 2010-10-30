@@ -519,6 +519,35 @@ Gtk::IconView provides an alternative view on a list model. It displays the mode
 
     See Gtk::Buildable#set_name.
 
+--- builder_name
+
+    See Gtk::Buildable#builder_name.
+
+--- builder_name=
+
+    See Gtk::Buildable#builder_name=.
+
+--- item_padding
+
+    Gets the Padding around icon view items.
+     * Returns: Padding around icon view items
+
+--- item_padding=(item_padding)
+
+    Sets the Padding around icon view items.
+     * item_padding: Padding around icon view items
+     * Returns: item_padding
+
+--- set_builder_name
+
+    See Gtk::Buildable#set_builder_name.
+
+--- set_item_padding(item_padding)
+
+    Same as item_padding=.
+     * item_padding: Padding around icon view items
+     * Returns: self
+
 == Constants
 
 === GtkIconViewDropPosition
@@ -593,6 +622,10 @@ Gtk::IconView provides an alternative view on a list model. It displays the mode
 --- tooltip-column: Integer (Read/Write)
 
     The column in the model containing the tooltip texts for the items
+
+--- item-padding: Integer (Read/Write)
+
+    Padding around icon view items
 
 == Style Properties
 

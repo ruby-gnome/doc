@@ -1,0 +1,78 @@
+= class GLib::SimpleAsyncResult
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::SimpleAsyncResult
+
+== Included Modules
+
+  * GLib::AsyncResult
+
+== Class Methods
+
+--- GLib::SimpleAsyncResult.new
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- complete
+
+     * Returns: self: ((*FIXME*))
+
+--- complete_in_idle
+
+     * Returns: self: ((*FIXME*))
+
+--- handle_cancellation=
+
+     * Returns: self: ((*FIXME*))
+
+--- op_res_gboolean
+
+     * Returns: self: ((*FIXME*))
+
+--- op_res_gboolean=
+
+     * Returns: self: ((*FIXME*))
+
+--- op_res_gssize
+
+     * Returns: self: ((*FIXME*))
+
+--- op_res_gssize=
+
+     * Returns: self: ((*FIXME*))
+
+--- set_handle_cancellation
+
+     * Returns: self: ((*FIXME*))
+
+--- set_op_res_gboolean
+
+     * Returns: self: ((*FIXME*))
+
+--- set_op_res_gssize
+
+     * Returns: self: ((*FIXME*))
+
+--- source_object
+
+    See GLib::AsyncResult#source_object.
+
+--- source_tag
+
+     * Returns: self: ((*FIXME*))
+
+--- valid?
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

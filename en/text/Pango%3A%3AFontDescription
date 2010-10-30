@@ -191,6 +191,18 @@ The Pango::FontDescription class represents the description of an ideal font. Th
     Creates a filename representation of a font description. The filename is identical to the result from calling Pango::FontDescription#to_s, but with underscores instead of characters that are untypical in filenames, and in lower case only.
     * Returns: a filename representation of a font description.
 
+--- gravity
+
+     * Returns: self: ((*FIXME*))
+
+--- gravity=
+
+     * Returns: self: ((*FIXME*))
+
+--- set_gravity
+
+     * Returns: self: ((*FIXME*))
+
 == Constants
 
 You can omit "FontDescription::" like as Pango::FONT_MASK_FAMILY instead of Pango::FontDescription::FONT_MASK_FAMILY.
@@ -300,6 +312,10 @@ An enumeration specifying the weight (boldness) of a font. This is a numerical v
     the heavy weight (= 900)
 
 --- FONT_MASK_GRAVITY
+--- WEIGHT_BOOK
+--- WEIGHT_MEDIUM
+--- WEIGHT_THIN
+--- WEIGHT_ULTRAHEAVY
 
 == See Also
 

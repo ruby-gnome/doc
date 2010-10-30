@@ -1,0 +1,63 @@
+= class GLib::UnixMountPoint
+
+== Object Hierarchy
+
+* Object
+  * GLib::Boxed
+    * GLib::UnixMountPoint
+
+== Included Modules
+
+  * Comparable
+
+== Instance Methods
+
+--- <=>
+
+     * Returns: self: ((*FIXME*))
+
+--- compare
+
+     * Returns: self: ((*FIXME*))
+
+--- device_path
+
+     * Returns: self: ((*FIXME*))
+
+--- fs_type
+
+     * Returns: self: ((*FIXME*))
+
+--- guess_can_eject?
+
+     * Returns: self: ((*FIXME*))
+
+--- guess_icon
+
+     * Returns: self: ((*FIXME*))
+
+--- guess_name
+
+     * Returns: self: ((*FIXME*))
+
+--- loopback?
+
+     * Returns: self: ((*FIXME*))
+
+--- mount_path
+
+     * Returns: self: ((*FIXME*))
+
+--- readonly?
+
+     * Returns: self: ((*FIXME*))
+
+--- user_mountable?
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

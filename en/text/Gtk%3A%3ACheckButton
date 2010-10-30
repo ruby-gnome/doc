@@ -67,6 +67,18 @@ The important signal ('toggled') is also inherited from Gtk::ToggleButton.
 
     See Gtk::Buildable#set_name.
 
+--- builder_name
+
+    See Gtk::Buildable#builder_name.
+
+--- builder_name=
+
+    See Gtk::Buildable#builder_name=.
+
+--- set_builder_name
+
+    See Gtk::Buildable#set_builder_name.
+
 == Style Properties
 
 --- indicator-size: Integer (Read)

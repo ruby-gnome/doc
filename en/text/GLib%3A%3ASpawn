@@ -22,6 +22,10 @@
 
      * Returns: self: ((*FIXME*))
 
+--- GLib::Spawn.close_pid
+
+     * Returns: self: ((*FIXME*))
+
 == Constants
 
 --- CHILD_INHERITS_STDIN

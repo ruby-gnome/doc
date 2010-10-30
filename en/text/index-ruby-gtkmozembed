@@ -7,6 +7,8 @@
   * Gtk::MozEmbed.set_profile_path
   * Gtk::MozEmbed#add_child
   * Gtk::MozEmbed#append_data
+  * Gtk::MozEmbed#builder_name
+  * Gtk::MozEmbed#builder_name=
   * Gtk::MozEmbed#can_go_back?
   * Gtk::MozEmbed#can_go_forward?
   * Gtk::MozEmbed#chrome_mask
@@ -32,6 +34,7 @@
   * Gtk::MozEmbed#reload
   * Gtk::MozEmbed#render_data
   * Gtk::MozEmbed#set_buildable_property
+  * Gtk::MozEmbed#set_builder_name
   * Gtk::MozEmbed#set_chrome_mask
   * Gtk::MozEmbed#set_location
   * Gtk::MozEmbed#set_name
@@ -58,9 +61,30 @@
   * Gtk::MozEmbed::ChromeFlags#windowlowered?
   * Gtk::MozEmbed::ChromeFlags#windowraised?
   * Gtk::MozEmbed::ChromeFlags#windowresizeon?
+  * Gtk::MozEmbed::ProgressFlags
+  * Gtk::MozEmbed::ProgressFlags#is_document?
+  * Gtk::MozEmbed::ProgressFlags#is_network?
+  * Gtk::MozEmbed::ProgressFlags#is_request?
+  * Gtk::MozEmbed::ProgressFlags#is_window?
+  * Gtk::MozEmbed::ProgressFlags#negotiating?
+  * Gtk::MozEmbed::ProgressFlags#redirecting?
+  * Gtk::MozEmbed::ProgressFlags#restoring?
+  * Gtk::MozEmbed::ProgressFlags#start?
+  * Gtk::MozEmbed::ProgressFlags#stop?
+  * Gtk::MozEmbed::ProgressFlags#transferring?
   * Gtk::MozEmbed::ReloadFlags
+  * Gtk::MozEmbed::ReloadFlags#bypasscache?
+  * Gtk::MozEmbed::ReloadFlags#bypassproxy?
+  * Gtk::MozEmbed::ReloadFlags#bypassproxyandcache?
+  * Gtk::MozEmbed::ReloadFlags#charsetchange?
+  * Gtk::MozEmbed::ReloadFlags#normal?
   * Gtk::MozEmbed::ReloadFlags#reloadbypasscache?
   * Gtk::MozEmbed::ReloadFlags#reloadbypassproxy?
   * Gtk::MozEmbed::ReloadFlags#reloadbypassproxyandcache?
   * Gtk::MozEmbed::ReloadFlags#reloadcharset?
   * Gtk::MozEmbed::ReloadFlags#reloadnormal?
+  * Gtk::MozEmbed::StatusFlags
+  * Gtk::MozEmbed::StatusFlags#connect?
+  * Gtk::MozEmbed::StatusFlags#dns?
+  * Gtk::MozEmbed::StatusFlags#timeout?
+  * Gtk::MozEmbed::StatusFlags#usercanceled?

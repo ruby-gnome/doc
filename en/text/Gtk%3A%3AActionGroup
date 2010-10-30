@@ -192,6 +192,18 @@ Accelerators are handled by the GTK+ accelerator map. All actions are assigned a
 
     See Gtk::Buildable#set_buildable_property.
 
+--- builder_name
+
+    See Gtk::Buildable#builder_name.
+
+--- builder_name=
+
+    See Gtk::Buildable#builder_name=.
+
+--- set_builder_name
+
+    See Gtk::Buildable#set_builder_name.
+
 == Properties
 
 --- name: String (Read/Write/Construct Only)

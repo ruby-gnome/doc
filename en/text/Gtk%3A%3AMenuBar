@@ -85,6 +85,18 @@ The Gtk::MenuBar is a subclass of Gtk::MenuShell which contains one to many Gtk:
 
     See Gtk::Buildable#set_name.
 
+--- builder_name
+
+    See Gtk::Buildable#builder_name.
+
+--- builder_name=
+
+    See Gtk::Buildable#builder_name=.
+
+--- set_builder_name
+
+    See Gtk::Buildable#set_builder_name.
+
 == Constants
 
 === PackDirection

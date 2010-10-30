@@ -172,6 +172,10 @@ Generated when the pointer moves.
 
      * Returns: self: ((*FIXME*))
 
+--- request
+
+     * Returns: self: ((*FIXME*))
+
 == See Also
 
 == ChangeLog

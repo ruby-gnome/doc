@@ -56,6 +56,18 @@ A button box should be used to provide a consistent layout of buttons throughout
 
     See Gtk::Buildable#set_name.
 
+--- builder_name
+
+    See Gtk::Buildable#builder_name.
+
+--- builder_name=
+
+    See Gtk::Buildable#builder_name=.
+
+--- set_builder_name
+
+    See Gtk::Buildable#set_builder_name.
+
 == See Also
 
 * Gtk::Box - Used to pack widgets into button boxes.

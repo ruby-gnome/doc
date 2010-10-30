@@ -1,0 +1,20 @@
+= class GLib::Socket::MsgFlags
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * GLib::Socket::MsgFlags
+
+== Constants
+
+--- DONTROUTE
+--- NONE
+--- OOB
+--- PEEK
+
+== See Also
+
+== ChangeLog
+
+

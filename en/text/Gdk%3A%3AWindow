@@ -869,6 +869,11 @@ A Gdk::Window is a rectangular region on the screen. It's a low-level object, us
 
      * Returns: self: ((*FIXME*))
 
+--- cursor
+
+    Gets the Cursor.
+     * Returns: Cursor
+
 == Constants
 
 === GdkWindowType
@@ -1271,6 +1276,27 @@ These are hints originally defined by the Motif toolkit. The window manager can 
 --- TYPE_HINT_POPUP_MENU
 --- TYPE_HINT_TOOLTIP
 --- WA_TYPE_HINT
+--- OFFSCREEN
+
+== Properties
+
+--- cursor: Gdk::Cursor (Read/Write)
+
+    Cursor
+
+== Signals
+
+--- from-embedder: self
+
+     * self: Gdk::Window: ((*FIXME*))
+
+--- pick-embedded-child: self
+
+     * self: Gdk::Window: ((*FIXME*))
+
+--- to-embedder: self
+
+     * self: Gdk::Window: ((*FIXME*))
 
 == See Also
 

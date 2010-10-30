@@ -1,0 +1,33 @@
+= class GLib::IOSchedulerJob
+
+== Object Hierarchy
+
+* Object
+  * GLib::Boxed
+    * GLib::IOSchedulerJob
+
+== Class Methods
+
+--- GLib::IOSchedulerJob.cancel_all_jobs
+
+     * Returns: self: ((*FIXME*))
+
+--- GLib::IOSchedulerJob.push_job
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- send_to_mainloop
+
+     * Returns: self: ((*FIXME*))
+
+--- send_to_mainloop_async
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

@@ -1,0 +1,82 @@
+= class GLib::ThemedIcon
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::ThemedIcon
+
+== Included Modules
+
+  * GLib::Icon
+
+== Class Methods
+
+--- GLib::ThemedIcon.new
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- ==
+
+    See GLib::Icon#==.
+
+--- append_name
+
+     * Returns: self: ((*FIXME*))
+
+--- eql?
+
+    See GLib::Icon#eql?.
+
+--- hash
+
+    See GLib::Icon#hash.
+
+--- names
+
+    Gets the An array containing the icon names.
+     * Returns: An array containing the icon names
+
+--- prepend_name
+
+     * Returns: self: ((*FIXME*))
+
+--- to_s
+
+    See GLib::Icon#to_s.
+
+--- to_str
+
+    See GLib::Icon#to_str.
+
+--- to_string
+
+    See GLib::Icon#to_string.
+
+--- use_default_fallbacks?
+
+    Gets the value whether to use default fallbacks found by shortening the name at '-' characters. Ignores names after the first if multiple names are given. or not.
+     * Returns: true if to use default fallbacks found by shortening the name at '-' characters. Ignores names after the first if multiple names are given
+
+== Properties
+
+--- name: String (Write)
+
+    The name of the icon
+
+--- names: Array (Read/Write)
+
+    An array containing the icon names
+
+--- use-default-fallbacks: true or false (Read/Write)
+
+    Whether to use default fallbacks found by shortening the name at '-' characters. Ignores names after the first if multiple names are given.
+
+== See Also
+
+== ChangeLog
+
+

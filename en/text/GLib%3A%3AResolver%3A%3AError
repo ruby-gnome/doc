@@ -1,0 +1,15 @@
+= class GLib::Resolver::Error
+
+== Object Hierarchy
+
+* Object
+  * Exception
+    * StandardError
+      * IOError
+        * GLib::Resolver::Error
+
+== See Also
+
+== ChangeLog
+
+

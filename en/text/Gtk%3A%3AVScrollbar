@@ -56,6 +56,18 @@ The Gtk::VScrollbar widget is a widget arranged vertically creating a scrollbar.
 
     See Gtk::Buildable#set_name.
 
+--- builder_name
+
+    See Gtk::Buildable#builder_name.
+
+--- builder_name=
+
+    See Gtk::Buildable#builder_name=.
+
+--- set_builder_name
+
+    See Gtk::Buildable#set_builder_name.
+
 == See Also
 
 Gtk::Scrollbar, Gtk::ScrolledWindow

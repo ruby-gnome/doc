@@ -1,0 +1,137 @@
+= class GLib::DataInputStream
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::InputStream
+        * GLib::FilterInputStream
+          * GLib::BufferedInputStream
+            * GLib::DataInputStream
+
+== Class Methods
+
+--- GLib::DataInputStream.new
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- byte_order
+
+    Gets the byte order.
+     * Returns: The byte order
+
+--- byte_order=(byte_order)
+
+    Sets the byte order.
+     * byte_order: The byte order
+     * Returns: byte_order
+
+--- each
+
+     * Returns: self: ((*FIXME*))
+
+--- each_async
+
+     * Returns: self: ((*FIXME*))
+
+--- each_line
+
+     * Returns: self: ((*FIXME*))
+
+--- each_line_async
+
+     * Returns: self: ((*FIXME*))
+
+--- newline_type
+
+    Gets the accepted types of line ending.
+     * Returns: The accepted types of line ending
+
+--- newline_type=(newline_type)
+
+    Sets the accepted types of line ending.
+     * newline_type: The accepted types of line ending
+     * Returns: newline_type
+
+--- read_byte
+
+     * Returns: self: ((*FIXME*))
+
+--- read_int16
+
+     * Returns: self: ((*FIXME*))
+
+--- read_int32
+
+     * Returns: self: ((*FIXME*))
+
+--- read_int64
+
+     * Returns: self: ((*FIXME*))
+
+--- read_line
+
+     * Returns: self: ((*FIXME*))
+
+--- read_line_async
+
+     * Returns: self: ((*FIXME*))
+
+--- read_line_finish
+
+     * Returns: self: ((*FIXME*))
+
+--- read_uint16
+
+     * Returns: self: ((*FIXME*))
+
+--- read_uint32
+
+     * Returns: self: ((*FIXME*))
+
+--- read_uint64
+
+     * Returns: self: ((*FIXME*))
+
+--- read_until
+
+     * Returns: self: ((*FIXME*))
+
+--- read_until_async
+
+     * Returns: self: ((*FIXME*))
+
+--- read_until_finish
+
+     * Returns: self: ((*FIXME*))
+
+--- set_byte_order(byte_order)
+
+    Same as byte_order=.
+     * byte_order: The byte order
+     * Returns: self
+
+--- set_newline_type(newline_type)
+
+    Same as newline_type=.
+     * newline_type: The accepted types of line ending
+     * Returns: self
+
+== Properties
+
+--- byte-order: GDataStreamByteOrder (Read/Write)
+
+    The byte order
+
+--- newline-type: GDataStreamNewlineType (Read/Write)
+
+    The accepted types of line ending
+
+== See Also
+
+== ChangeLog
+
+

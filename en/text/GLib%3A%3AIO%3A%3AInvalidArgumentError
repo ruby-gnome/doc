@@ -1,0 +1,16 @@
+= class GLib::IO::InvalidArgumentError
+
+== Object Hierarchy
+
+* Object
+  * Exception
+    * StandardError
+      * IOError
+        * GLib::IO::Error
+          * GLib::IO::InvalidArgumentError
+
+== See Also
+
+== ChangeLog
+
+

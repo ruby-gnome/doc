@@ -134,6 +134,7 @@
   * Gdk::Display#set_cursor_theme
   * Gdk::Display#set_double_click_distance
   * Gdk::Display#set_double_click_time
+  * Gdk::Display#startup_notification_id
   * Gdk::Display#store_clipboard
   * Gdk::Display#supports_clipboard_persistence?
   * Gdk::Display#supports_composite?
@@ -226,6 +227,7 @@
   * Gdk::Event.setting_get
   * Gdk::Event.show_events=
   * Gdk::Event.show_events?
+  * Gdk::Event#button
   * Gdk::Event#coords
   * Gdk::Event#event_type
   * Gdk::Event#get_axis
@@ -418,6 +420,7 @@
   * Gdk::EventMotion#device=
   * Gdk::EventMotion#hint=
   * Gdk::EventMotion#hint?
+  * Gdk::EventMotion#request
   * Gdk::EventMotion#set_axes
   * Gdk::EventMotion#set_device
   * Gdk::EventMotion#set_hint
@@ -677,6 +680,7 @@
   * Gdk::Keymap#direction
   * Gdk::Keymap#get_entries_for_keycode
   * Gdk::Keymap#get_entries_for_keyval
+  * Gdk::Keymap#have_bidi_layouts?
   * Gdk::Keymap#lookup_key
   * Gdk::Keymap#translate_keyboard_state
   * Gdk::Keyval
@@ -691,6 +695,9 @@
   * Gdk::Keyval.upper?
   * Gdk::Pango
   * Gdk::Pango.context
+  * Gdk::PangoAttrEmbossColor
+  * Gdk::PangoAttrEmbossColor.new
+  * Gdk::PangoAttrEmbossColor#value
   * Gdk::PangoAttrEmbossed
   * Gdk::PangoAttrEmbossed.new
   * Gdk::PangoAttrEmbossed#value
@@ -898,6 +905,7 @@
   * Gdk::Window#clear_area
   * Gdk::Window#composited=
   * Gdk::Window#configure_finished
+  * Gdk::Window#cursor
   * Gdk::Window#cursor=
   * Gdk::Window#decorations
   * Gdk::Window#decorations=

@@ -201,6 +201,18 @@ A Gtk::CellView displays a single row of a Gtk::TreeModel, using cell renderers 
 
     See Gtk::Buildable#set_name.
 
+--- builder_name
+
+    See Gtk::Buildable#builder_name.
+
+--- builder_name=
+
+    See Gtk::Buildable#builder_name=.
+
+--- set_builder_name
+
+    See Gtk::Buildable#set_builder_name.
+
 == Properties
 
 --- background: String (Write)

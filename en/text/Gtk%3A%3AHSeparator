@@ -57,6 +57,18 @@ The Gtk::HSeparator widget is not used as a separator within menus. To create a 
 
     See Gtk::Buildable#set_name.
 
+--- builder_name
+
+    See Gtk::Buildable#builder_name.
+
+--- builder_name=
+
+    See Gtk::Buildable#builder_name=.
+
+--- set_builder_name
+
+    See Gtk::Buildable#set_builder_name.
+
 == See Also
 
 * Gtk::VSeparator - a vertical separator.

@@ -1,0 +1,164 @@
+= class GLib::InetAddress
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::InetAddress
+
+== Class Methods
+
+--- GLib::InetAddress.new_any
+
+     * Returns: self: ((*FIXME*))
+
+--- GLib::InetAddress.new_from_bytes
+
+     * Returns: self: ((*FIXME*))
+
+--- GLib::InetAddress.new_from_string
+
+     * Returns: self: ((*FIXME*))
+
+--- GLib::InetAddress.new_loopback
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- any?
+
+    Gets the value whether this is the "any" address for its family or not.
+     * Returns: true if this is the "any" address for its family
+
+--- bytes
+
+    Gets the raw address data.
+     * Returns: The raw address data
+
+--- family
+
+    Gets the address family (IPv4 or IPv6).
+     * Returns: The address family (IPv4 or IPv6)
+
+--- get_native_size
+
+     * Returns: self: ((*FIXME*))
+
+--- link_local?
+
+    Gets the value whether this is a link-local address or not.
+     * Returns: true if this is a link-local address
+
+--- loopback?
+
+    Gets the value whether this is the loopback address for its family or not.
+     * Returns: true if this is the loopback address for its family
+
+--- mc_global?
+
+    Gets the value whether this is a global multicast address or not.
+     * Returns: true if this is a global multicast address
+
+--- mc_link_local?
+
+    Gets the value whether this is a link-local multicast address or not.
+     * Returns: true if this is a link-local multicast address
+
+--- mc_node_local?
+
+    Gets the value whether this is a node-local multicast address or not.
+     * Returns: true if this is a node-local multicast address
+
+--- mc_org_local?
+
+    Gets the value whether this is an organization-local multicast address or not.
+     * Returns: true if this is an organization-local multicast address
+
+--- mc_site_local?
+
+    Gets the value whether this is a site-local multicast address or not.
+     * Returns: true if this is a site-local multicast address
+
+--- multicast?
+
+    Gets the value whether this is a multicast address or not.
+     * Returns: true if this is a multicast address
+
+--- site_local?
+
+    Gets the value whether this is a site-local address or not.
+     * Returns: true if this is a site-local address
+
+--- to_bytes
+
+     * Returns: self: ((*FIXME*))
+
+--- to_s
+
+     * Returns: self: ((*FIXME*))
+
+--- to_str
+
+     * Returns: self: ((*FIXME*))
+
+--- to_string
+
+     * Returns: self: ((*FIXME*))
+
+== Properties
+
+--- bytes: gpointer (Read/Write)
+
+    The raw address data
+
+--- family: GSocketFamily (Read/Write)
+
+    The address family (IPv4 or IPv6)
+
+--- is-any: true or false (Read)
+
+    Whether this is the "any" address for its family
+
+--- is-link-local: true or false (Read)
+
+    Whether this is a link-local address
+
+--- is-loopback: true or false (Read)
+
+    Whether this is the loopback address for its family
+
+--- is-mc-global: true or false (Read)
+
+    Whether this is a global multicast address
+
+--- is-mc-link-local: true or false (Read)
+
+    Whether this is a link-local multicast address
+
+--- is-mc-node-local: true or false (Read)
+
+    Whether this is a node-local multicast address
+
+--- is-mc-org-local: true or false (Read)
+
+    Whether this is an organization-local multicast address
+
+--- is-mc-site-local: true or false (Read)
+
+    Whether this is a site-local multicast address
+
+--- is-multicast: true or false (Read)
+
+    Whether this is a multicast address
+
+--- is-site-local: true or false (Read)
+
+    Whether this is a site-local address
+
+== See Also
+
+== ChangeLog
+
+

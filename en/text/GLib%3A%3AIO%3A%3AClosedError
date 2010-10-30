@@ -1,0 +1,16 @@
+= class GLib::IO::ClosedError
+
+== Object Hierarchy
+
+* Object
+  * Exception
+    * StandardError
+      * IOError
+        * GLib::IO::Error
+          * GLib::IO::ClosedError
+
+== See Also
+
+== ChangeLog
+
+

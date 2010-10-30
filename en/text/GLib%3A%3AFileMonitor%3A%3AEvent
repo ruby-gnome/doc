@@ -1,0 +1,24 @@
+= class GLib::FileMonitor::Event
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * GLib::FileMonitor::Event
+
+== Constants
+
+--- ATTRIBUTE_CHANGED
+--- CHANGED
+--- CHANGES_DONE_HINT
+--- CREATED
+--- DELETED
+--- MOVED
+--- PRE_UNMOUNT
+--- UNMOUNTED
+
+== See Also
+
+== ChangeLog
+
+

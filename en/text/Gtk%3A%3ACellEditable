@@ -26,6 +26,18 @@ It is implemented by Gtk::Entry, Gtk::ComboBox, Gtk::SpinButton and Gtk::ComboBo
     Emits the "remove_widget" signal. This signal is meant to indicate that the cell is finished editing, and the widget may now be destroyed.
     * Returns: self
 
+--- editing_canceled=
+
+     * Returns: self: ((*FIXME*))
+
+--- editing_canceled?
+
+     * Returns: self: ((*FIXME*))
+
+--- set_editing_canceled
+
+     * Returns: self: ((*FIXME*))
+
 == Signals
 
 --- editing-done: self

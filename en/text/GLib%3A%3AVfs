@@ -1,0 +1,50 @@
+= class GLib::Vfs
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::Vfs
+
+== Class Methods
+
+--- GLib::Vfs.default
+
+     * Returns: self: ((*FIXME*))
+
+--- GLib::Vfs.local
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- active?
+
+     * Returns: self: ((*FIXME*))
+
+--- file_for_path
+
+     * Returns: self: ((*FIXME*))
+
+--- file_for_uri
+
+     * Returns: self: ((*FIXME*))
+
+--- parse_name
+
+     * Returns: self: ((*FIXME*))
+
+--- supported_uri_schemes
+
+     * Returns: self: ((*FIXME*))
+
+== Constants
+
+--- EXTENSION_POINT_NAME
+
+== See Also
+
+== ChangeLog
+
+

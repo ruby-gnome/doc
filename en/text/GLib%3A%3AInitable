@@ -1,0 +1,17 @@
+= module GLib::Initable
+
+== Included Modules
+
+  * GLib::Interface
+
+== Instance Methods
+
+--- init
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

@@ -1,0 +1,76 @@
+= class GLib::InputStream
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::InputStream
+
+== Instance Methods
+
+--- clear_pending
+
+     * Returns: self: ((*FIXME*))
+
+--- close
+
+     * Returns: self: ((*FIXME*))
+
+--- close_async
+
+     * Returns: self: ((*FIXME*))
+
+--- close_finish
+
+     * Returns: self: ((*FIXME*))
+
+--- closed?
+
+     * Returns: self: ((*FIXME*))
+
+--- has_pending?
+
+     * Returns: self: ((*FIXME*))
+
+--- pending=
+
+     * Returns: self: ((*FIXME*))
+
+--- read
+
+     * Returns: self: ((*FIXME*))
+
+--- read_all
+
+     * Returns: self: ((*FIXME*))
+
+--- read_async
+
+     * Returns: self: ((*FIXME*))
+
+--- read_finish
+
+     * Returns: self: ((*FIXME*))
+
+--- set_pending
+
+     * Returns: self: ((*FIXME*))
+
+--- skip
+
+     * Returns: self: ((*FIXME*))
+
+--- skip_async
+
+     * Returns: self: ((*FIXME*))
+
+--- skip_finish
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

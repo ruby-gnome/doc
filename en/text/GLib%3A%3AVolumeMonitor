@@ -1,0 +1,96 @@
+= class GLib::VolumeMonitor
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::VolumeMonitor
+
+== Class Methods
+
+--- GLib::VolumeMonitor.get
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- connected_drives
+
+     * Returns: self: ((*FIXME*))
+
+--- get_mount_for_uuid
+
+     * Returns: self: ((*FIXME*))
+
+--- get_volume_for_uuid
+
+     * Returns: self: ((*FIXME*))
+
+--- mounts
+
+     * Returns: self: ((*FIXME*))
+
+--- volumes
+
+     * Returns: self: ((*FIXME*))
+
+== Constants
+
+--- EXTENSION_POINT_NAME
+
+== Signals
+
+--- drive-changed: self
+
+     * self: GLib::VolumeMonitor: ((*FIXME*))
+
+--- drive-connected: self
+
+     * self: GLib::VolumeMonitor: ((*FIXME*))
+
+--- drive-disconnected: self
+
+     * self: GLib::VolumeMonitor: ((*FIXME*))
+
+--- drive-eject-button: self
+
+     * self: GLib::VolumeMonitor: ((*FIXME*))
+
+--- drive-stop-button: self
+
+     * self: GLib::VolumeMonitor: ((*FIXME*))
+
+--- mount-added: self
+
+     * self: GLib::VolumeMonitor: ((*FIXME*))
+
+--- mount-changed: self
+
+     * self: GLib::VolumeMonitor: ((*FIXME*))
+
+--- mount-pre-unmount: self
+
+     * self: GLib::VolumeMonitor: ((*FIXME*))
+
+--- mount-removed: self
+
+     * self: GLib::VolumeMonitor: ((*FIXME*))
+
+--- volume-added: self
+
+     * self: GLib::VolumeMonitor: ((*FIXME*))
+
+--- volume-changed: self
+
+     * self: GLib::VolumeMonitor: ((*FIXME*))
+
+--- volume-removed: self
+
+     * self: GLib::VolumeMonitor: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

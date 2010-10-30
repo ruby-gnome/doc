@@ -1,0 +1,27 @@
+= class GLib::FileAttribute::Info
+
+== Object Hierarchy
+
+* Object
+  * GLib::Boxed
+    * GLib::FileAttribute::Info
+
+== Instance Methods
+
+--- flags
+
+     * Returns: self: ((*FIXME*))
+
+--- name
+
+     * Returns: self: ((*FIXME*))
+
+--- type
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

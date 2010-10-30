@@ -11,6 +11,8 @@
   * Gnome::Canvas.polygon_to_point
   * Gnome::Canvas#aa?
   * Gnome::Canvas#add_child
+  * Gnome::Canvas#builder_name
+  * Gnome::Canvas#builder_name=
   * Gnome::Canvas#c2w
   * Gnome::Canvas#center_scroll_region=
   * Gnome::Canvas#center_scroll_region?
@@ -33,6 +35,7 @@
   * Gnome::Canvas#scroll_region
   * Gnome::Canvas#scroll_to
   * Gnome::Canvas#set_buildable_property
+  * Gnome::Canvas#set_builder_name
   * Gnome::Canvas#set_center_scroll_region
   * Gnome::Canvas#set_dither
   * Gnome::Canvas#set_focused_item

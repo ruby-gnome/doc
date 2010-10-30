@@ -313,6 +313,18 @@ To set the value of a child property, use Gtk::Container#child_set_property. To 
 
     See Gtk::Buildable#set_name.
 
+--- builder_name
+
+    See Gtk::Buildable#builder_name.
+
+--- builder_name=
+
+    See Gtk::Buildable#builder_name=.
+
+--- set_builder_name
+
+    See Gtk::Buildable#set_builder_name.
+
 == Properties
 
 --- border-width: Integer (Read/Write)

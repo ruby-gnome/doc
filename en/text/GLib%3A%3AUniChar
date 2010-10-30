@@ -259,6 +259,18 @@
      * unichar: a Unicode character as Integer
      * Returns: a UTF-8 encoded String
 
+--- GLib::UniChar.combining_class
+
+     * Returns: self: ((*FIXME*))
+
+--- GLib::UniChar.mark?
+
+     * Returns: self: ((*FIXME*))
+
+--- GLib::UniChar.zero_width?
+
+     * Returns: self: ((*FIXME*))
+
 == See Also
 
 == ChangeLog

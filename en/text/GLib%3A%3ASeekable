@@ -1,0 +1,33 @@
+= module GLib::Seekable
+
+== Included Modules
+
+  * GLib::Interface
+
+== Instance Methods
+
+--- can_seek?
+
+     * Returns: self: ((*FIXME*))
+
+--- can_truncate?
+
+     * Returns: self: ((*FIXME*))
+
+--- seek
+
+     * Returns: self: ((*FIXME*))
+
+--- tell
+
+     * Returns: self: ((*FIXME*))
+
+--- truncate
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

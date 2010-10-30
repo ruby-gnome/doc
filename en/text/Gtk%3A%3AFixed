@@ -98,6 +98,18 @@ If you know none of these things are an issue for your application, and prefer t
 
     See Gtk::Buildable#set_name.
 
+--- builder_name
+
+    See Gtk::Buildable#builder_name.
+
+--- builder_name=
+
+    See Gtk::Buildable#builder_name=.
+
+--- set_builder_name
+
+    See Gtk::Buildable#set_builder_name.
+
 == Child Properties
 
 --- x: Integer (Read/Write)

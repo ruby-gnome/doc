@@ -449,6 +449,18 @@ The Gtk::TreeViewColumn object is a visible column in a Gtk::TreeView widget. It
 
     See Gtk::Buildable#set_name.
 
+--- builder_name
+
+    See Gtk::Buildable#builder_name.
+
+--- builder_name=
+
+    See Gtk::Buildable#builder_name=.
+
+--- set_builder_name
+
+    See Gtk::Buildable#set_builder_name.
+
 == Constants
 
 === GtkTreeViewColumnSizing
@@ -532,6 +544,10 @@ The sizing method the column uses to determine its width. Please note that Gtk::
 --- spacing: Integer (Read/Write)
 
     Space which is inserted between cells
+
+--- sort-column-id: Integer (Read/Write)
+
+    Logical sort column ID this column sorts on when selected for sorting
 
 == Signals
 

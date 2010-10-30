@@ -1,0 +1,16 @@
+= class GLib::Resolver::NotFoundError
+
+== Object Hierarchy
+
+* Object
+  * Exception
+    * StandardError
+      * IOError
+        * GLib::Resolver::Error
+          * GLib::Resolver::NotFoundError
+
+== See Also
+
+== ChangeLog
+
+

@@ -35,7 +35,6 @@ An error code in the Gdk::PixbufError. Many gdk-pixbuf operations can cause erro
   * (3) - UNKNOWN_TYPE
   * (4) - UNSUPPORTED_OPERATION
 
-
 --- CORRUPT_IMAGE
 
     An image file was broken somehow.

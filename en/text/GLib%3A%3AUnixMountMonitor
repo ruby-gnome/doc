@@ -1,0 +1,40 @@
+= class GLib::UnixMountMonitor
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::UnixMountMonitor
+
+== Class Methods
+
+--- GLib::UnixMountMonitor.new
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- rate_limit=
+
+     * Returns: self: ((*FIXME*))
+
+--- set_rate_limit
+
+     * Returns: self: ((*FIXME*))
+
+== Signals
+
+--- mountpoints-changed: self
+
+     * self: GLib::UnixMountMonitor: ((*FIXME*))
+
+--- mounts-changed: self
+
+     * self: GLib::UnixMountMonitor: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

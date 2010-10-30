@@ -210,6 +210,22 @@ The Gtk::ListStore object is a list model for use with a Gtk::TreeView widget. I
 
     See Gtk::Buildable#set_name.
 
+--- builder_name
+
+    See Gtk::Buildable#builder_name.
+
+--- builder_name=
+
+    See Gtk::Buildable#builder_name=.
+
+--- set_builder_name
+
+    See Gtk::Buildable#set_builder_name.
+
+--- set_values
+
+     * Returns: self: ((*FIXME*))
+
 == See Also
 
 == ChangeLog

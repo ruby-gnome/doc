@@ -1,0 +1,38 @@
+= class GLib::SocketControlMessage
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::SocketControlMessage
+
+== Class Methods
+
+--- GLib::SocketControlMessage.deserialize
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- level
+
+     * Returns: self: ((*FIXME*))
+
+--- msg_type
+
+     * Returns: self: ((*FIXME*))
+
+--- serialize
+
+     * Returns: self: ((*FIXME*))
+
+--- size
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

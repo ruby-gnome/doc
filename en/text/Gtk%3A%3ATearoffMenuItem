@@ -59,6 +59,18 @@ When its menu is shown as a tearoff menu, the Gtk::TearoffMenuItem is drawn as a
 
     See Gtk::Buildable#set_name.
 
+--- builder_name
+
+    See Gtk::Buildable#builder_name.
+
+--- builder_name=
+
+    See Gtk::Buildable#builder_name=.
+
+--- set_builder_name
+
+    See Gtk::Buildable#set_builder_name.
+
 == See Also
 
 Gtk::Menu for further discussion of menus in Ruby/GTK.

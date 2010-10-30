@@ -1,0 +1,186 @@
+= class GLib::MountOperation
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::MountOperation
+
+== Class Methods
+
+--- GLib::MountOperation.new
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- anonymous
+
+     * Returns: self: ((*FIXME*))
+
+--- anonymous=(anonymous)
+
+    Sets the value whether to use an anonymous user or not.
+     * anonymous: true if to use an anonymous user
+     * Returns: anonymous
+
+--- anonymous?
+
+    Gets the value whether to use an anonymous user or not.
+     * Returns: true if to use an anonymous user
+
+--- choice
+
+    Gets the users choice.
+     * Returns: The users choice
+
+--- choice=(choice)
+
+    Sets the users choice.
+     * choice: The users choice
+     * Returns: choice
+
+--- domain
+
+    Gets the domain of the mount operation.
+     * Returns: The domain of the mount operation
+
+--- domain=(domain)
+
+    Sets the domain of the mount operation.
+     * domain: The domain of the mount operation
+     * Returns: domain
+
+--- password
+
+    Gets the password.
+     * Returns: The password
+
+--- password=(password)
+
+    Sets the password.
+     * password: The password
+     * Returns: password
+
+--- password_save
+
+    Gets the How passwords should be saved.
+     * Returns: How passwords should be saved
+
+--- password_save=(password_save)
+
+    Sets the How passwords should be saved.
+     * password_save: How passwords should be saved
+     * Returns: password_save
+
+--- reply
+
+     * Returns: self: ((*FIXME*))
+
+--- set_anonymous(anonymous)
+
+    Same as anonymous=.
+     * anonymous: true if to use an anonymous user
+     * Returns: self
+
+--- set_choice(choice)
+
+    Same as choice=.
+     * choice: The users choice
+     * Returns: self
+
+--- set_domain(domain)
+
+    Same as domain=.
+     * domain: The domain of the mount operation
+     * Returns: self
+
+--- set_password(password)
+
+    Same as password=.
+     * password: The password
+     * Returns: self
+
+--- set_password_save(password_save)
+
+    Same as password_save=.
+     * password_save: How passwords should be saved
+     * Returns: self
+
+--- set_username(username)
+
+    Same as username=.
+     * username: The user name
+     * Returns: self
+
+--- username
+
+    Gets the user name.
+     * Returns: The user name
+
+--- username=(username)
+
+    Sets the user name.
+     * username: The user name
+     * Returns: username
+
+== Constants
+
+--- ABORTED
+--- HANDLED
+--- UNHANDLED
+
+== Properties
+
+--- anonymous: true or false (Read/Write)
+
+    Whether to use an anonymous user
+
+--- choice: Integer (Read/Write)
+
+    The users choice
+
+--- domain: String (Read/Write)
+
+    The domain of the mount operation
+
+--- password: String (Read/Write)
+
+    The password
+
+--- password-save: GPasswordSave (Read/Write)
+
+    How passwords should be saved
+
+--- username: String (Read/Write)
+
+    The user name
+
+== Signals
+
+--- aborted: self
+
+     * self: GLib::MountOperation: ((*FIXME*))
+
+--- ask-password: self
+
+     * self: GLib::MountOperation: ((*FIXME*))
+
+--- ask-question: self
+
+     * self: GLib::MountOperation: ((*FIXME*))
+
+--- reply: self
+
+     * self: GLib::MountOperation: ((*FIXME*))
+
+--- show-processes: self
+
+     * self: GLib::MountOperation: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

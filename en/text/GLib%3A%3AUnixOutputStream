@@ -1,0 +1,55 @@
+= class GLib::UnixOutputStream
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::OutputStream
+        * GLib::UnixOutputStream
+
+== Class Methods
+
+--- GLib::UnixOutputStream.new
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- close_fd=(close_fd)
+
+    Sets the value whether to close the file descriptor when the stream is closed or not.
+     * close_fd: true if to close the file descriptor when the stream is closed
+     * Returns: close_fd
+
+--- close_fd?
+
+    Gets the value whether to close the file descriptor when the stream is closed or not.
+     * Returns: true if to close the file descriptor when the stream is closed
+
+--- fd
+
+    Gets the file descriptor to write to.
+     * Returns: The file descriptor to write to
+
+--- set_close_fd(close_fd)
+
+    Same as close_fd=.
+     * close_fd: true if to close the file descriptor when the stream is closed
+     * Returns: self
+
+== Properties
+
+--- close-fd: true or false (Read/Write)
+
+    Whether to close the file descriptor when the stream is closed
+
+--- fd: Integer (Read/Write)
+
+    The file descriptor to write to
+
+== See Also
+
+== ChangeLog
+
+

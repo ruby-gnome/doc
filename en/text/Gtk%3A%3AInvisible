@@ -71,6 +71,18 @@ It is used for reliable pointer grabs and selection handling in the code for dra
 
     See Gtk::Buildable#set_name.
 
+--- builder_name
+
+    See Gtk::Buildable#builder_name.
+
+--- builder_name=
+
+    See Gtk::Buildable#builder_name=.
+
+--- set_builder_name
+
+    See Gtk::Buildable#set_builder_name.
+
 == Properties
 
 --- screen: Gdk::Screen (Read/Write)

@@ -1,0 +1,37 @@
+= class GLib::SrvTarget
+
+== Object Hierarchy
+
+* Object
+  * GLib::Boxed
+    * GLib::SrvTarget
+
+== Class Methods
+
+--- GLib::SrvTarget.new
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- hostname
+
+     * Returns: self: ((*FIXME*))
+
+--- port
+
+     * Returns: self: ((*FIXME*))
+
+--- priority
+
+     * Returns: self: ((*FIXME*))
+
+--- weight
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

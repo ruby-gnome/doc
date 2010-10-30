@@ -134,6 +134,26 @@ that accelerators are different from mnemonics. Accelerators are shortcuts for a
     * accel_key: key value of the accelerator (Gdk::Keyval) 
     * accel_mods: modifier combination of the accelerator  (((<GdkModifierType|Gdk::Window#GdkModifierType>)))
 
+--- locked?
+
+    Gets the Is the accel group locked.
+     * Returns: Is the accel group locked
+
+--- modifier_mask
+
+    Gets the Modifier Mask.
+     * Returns: Modifier Mask
+
+== Properties
+
+--- is-locked: true or false (Read)
+
+    Is the accel group locked
+
+--- modifier-mask: Gdk::ModifierType (Read)
+
+    Modifier Mask
+
 == Signals
 
 --- accel-activate: self, arg1, accel_key, accel_mods

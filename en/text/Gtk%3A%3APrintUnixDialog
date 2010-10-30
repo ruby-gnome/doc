@@ -172,6 +172,86 @@ Gtk:PrintUnixDialog uses the following response values:
 
     See Gtk::Buildable#set_name.
 
+--- builder_name
+
+    See Gtk::Buildable#builder_name.
+
+--- builder_name=
+
+    See Gtk::Buildable#builder_name=.
+
+--- embed_page_setup=(embed_page_setup)
+
+    Sets the true if page setup combos are embedded in Gtk::PrintUnixDialog.
+     * embed_page_setup: true if page setup combos are embedded in Gtk::PrintUnixDialog
+     * Returns: embed_page_setup
+
+--- embed_page_setup?
+
+    Gets the true if page setup combos are embedded in Gtk::PrintUnixDialog.
+     * Returns: true if page setup combos are embedded in Gtk::PrintUnixDialog
+
+--- has_selection=(has_selection)
+
+    Sets the value whether the application has a selection or not.
+     * has_selection: true if the application has a selection
+     * Returns: has_selection
+
+--- has_selection?
+
+    Gets the value whether the application has a selection or not.
+     * Returns: true if the application has a selection
+
+--- manual_capabilities
+
+    Gets the Capabilities the application can handle.
+     * Returns: Capabilities the application can handle
+
+--- manual_capabilities=(manual_capabilities)
+
+    Sets the Capabilities the application can handle.
+     * manual_capabilities: Capabilities the application can handle
+     * Returns: manual_capabilities
+
+--- set_builder_name
+
+    See Gtk::Buildable#set_builder_name.
+
+--- set_embed_page_setup(embed_page_setup)
+
+    Same as embed_page_setup=.
+     * embed_page_setup: true if page setup combos are embedded in Gtk::PrintUnixDialog
+     * Returns: self
+
+--- set_has_selection(has_selection)
+
+    Same as has_selection=.
+     * has_selection: true if the application has a selection
+     * Returns: self
+
+--- set_manual_capabilities(manual_capabilities)
+
+    Same as manual_capabilities=.
+     * manual_capabilities: Capabilities the application can handle
+     * Returns: self
+
+--- set_support_selection(support_selection)
+
+    Same as support_selection=.
+     * support_selection: true if the dialog supports selection
+     * Returns: self
+
+--- support_selection=(support_selection)
+
+    Sets the value whether the dialog supports selection or not.
+     * support_selection: true if the dialog supports selection
+     * Returns: support_selection
+
+--- support_selection?
+
+    Gets the value whether the dialog supports selection or not.
+     * Returns: true if the dialog supports selection
+
 == Constants
 
 === Capabilities
@@ -193,6 +273,7 @@ An enum for specifying which features the print dialog should offer. I neither G
 
 --- CAPABILITY_PREVIEW
 --- CAPABILITY_NUMBER_UP
+--- CAPABILITY_NUMBER_UP_LAYOUT
 
 == Properties
 
@@ -211,6 +292,22 @@ An enum for specifying which features the print dialog should offer. I neither G
 --- selected-printer: Gtk::Printer (Read)
 
     The Gtk::Printer which is selected
+
+--- embed-page-setup: true or false (Read/Write)
+
+    true if page setup combos are embedded in Gtk::PrintUnixDialog
+
+--- has-selection: true or false (Read/Write)
+
+    Whether the application has a selection
+
+--- manual-capabilities: Gtk::PrintCapabilities (Read/Write)
+
+    Capabilities the application can handle
+
+--- support-selection: true or false (Read/Write)
+
+    Whether the dialog supports selection
 
 == See Also
 

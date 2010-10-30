@@ -115,6 +115,18 @@ To change the text which is shown in the preview area, use Gtk::FontSelectionDia
 
     See Gtk::Buildable#set_name.
 
+--- builder_name
+
+    See Gtk::Buildable#builder_name.
+
+--- builder_name=
+
+    See Gtk::Buildable#builder_name=.
+
+--- set_builder_name
+
+    See Gtk::Buildable#set_builder_name.
+
 == See Also
 
 Gtk::FontSelection - the underlying widget for selecting fonts.

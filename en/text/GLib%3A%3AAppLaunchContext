@@ -1,0 +1,34 @@
+= class GLib::AppLaunchContext
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::AppLaunchContext
+
+== Class Methods
+
+--- GLib::AppLaunchContext.new
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- get_display
+
+     * Returns: self: ((*FIXME*))
+
+--- get_startup_notify_id
+
+     * Returns: self: ((*FIXME*))
+
+--- launch_failed
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

@@ -338,6 +338,18 @@ To make constructing a Gtk::AboutDialog as convenient as possible, you can use t
 
     See Gtk::Buildable#set_buildable_property.
 
+--- builder_name
+
+    See Gtk::Buildable#builder_name.
+
+--- builder_name=
+
+    See Gtk::Buildable#builder_name=.
+
+--- set_builder_name
+
+    See Gtk::Buildable#set_builder_name.
+
 == Properties
 
 --- artists: Array (Read/Write)

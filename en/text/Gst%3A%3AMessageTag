@@ -7,6 +7,12 @@
     * Gst::Message
       * Gst::MessageTag
 
+== Instance Methods
+
+--- parse
+
+     * Returns: self: ((*FIXME*))
+
 == See Also
 
 == ChangeLog

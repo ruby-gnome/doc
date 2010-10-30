@@ -22,6 +22,10 @@ To respond to a changed value:
                 * Gtk::Button
                   * Gtk::ScaleButton
 
+== Included Modules
+
+  * #<Module:0x7fd7f0567618>
+
 == Class Methods
 
 --- Gtk::ScaleButton.new
@@ -137,6 +141,18 @@ To respond to a changed value:
 --- set_name
 
     See Gtk::Buildable#set_name.
+
+--- builder_name
+
+    See Gtk::Buildable#builder_name.
+
+--- builder_name=
+
+    See Gtk::Buildable#builder_name=.
+
+--- set_builder_name
+
+    See Gtk::Buildable#set_builder_name.
 
 == Properties
 

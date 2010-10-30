@@ -405,6 +405,452 @@ The Gtk::Entry widget is a single line text entry widget. A fairly large set of 
 
     See Gtk::Buildable#set_name.
 
+--- buffer
+
+    Gets the Text buffer object which actually stores entry text.
+     * Returns: Text buffer object which actually stores entry text
+
+--- buffer=(buffer)
+
+    Sets the Text buffer object which actually stores entry text.
+     * buffer: Text buffer object which actually stores entry text
+     * Returns: buffer
+
+--- builder_name
+
+    See Gtk::Buildable#builder_name.
+
+--- builder_name=
+
+    See Gtk::Buildable#builder_name=.
+
+--- caps_lock_warning=(caps_lock_warning)
+
+    Sets the value whether password entries will show a warning when Caps Lock is on or not.
+     * caps_lock_warning: true if password entries will show a warning when Caps Lock is on
+     * Returns: caps_lock_warning
+
+--- caps_lock_warning?
+
+    Gets the value whether password entries will show a warning when Caps Lock is on or not.
+     * Returns: true if password entries will show a warning when Caps Lock is on
+
+--- cursor_hadjustment
+
+     * Returns: self: ((*FIXME*))
+
+--- cursor_hadjustment=
+
+     * Returns: self: ((*FIXME*))
+
+--- editing_canceled=
+
+    See Gtk::CellEditable#editing_canceled=.
+
+--- editing_canceled?
+
+    See Gtk::CellEditable#editing_canceled?.
+
+--- im_module
+
+    Gets the Which IM module should be used.
+     * Returns: Which IM module should be used
+
+--- im_module=(im_module)
+
+    Sets the Which IM module should be used.
+     * im_module: Which IM module should be used
+     * Returns: im_module
+
+--- invisible_char_set=(invisible_char_set)
+
+    Sets the value whether the invisible char has been set or not.
+     * invisible_char_set: true if the invisible char has been set
+     * Returns: invisible_char_set
+
+--- invisible_char_set?
+
+    Gets the value whether the invisible char has been set or not.
+     * Returns: true if the invisible char has been set
+
+--- overwrite_mode=(overwrite_mode)
+
+    Sets the value whether new text overwrites existing text or not.
+     * overwrite_mode: true if new text overwrites existing text
+     * Returns: overwrite_mode
+
+--- overwrite_mode?
+
+    Gets the value whether new text overwrites existing text or not.
+     * Returns: true if new text overwrites existing text
+
+--- preedit_changed
+
+     * Returns: self: ((*FIXME*))
+
+--- primary_icon_activatable=(primary_icon_activatable)
+
+    Sets the value whether the primary icon is activatable or not.
+     * primary_icon_activatable: true if the primary icon is activatable
+     * Returns: primary_icon_activatable
+
+--- primary_icon_activatable?
+
+    Gets the value whether the primary icon is activatable or not.
+     * Returns: true if the primary icon is activatable
+
+--- primary_icon_gicon
+
+    Gets the GIcon for primary icon.
+     * Returns: GIcon for primary icon
+
+--- primary_icon_gicon=(primary_icon_gicon)
+
+    Sets the GIcon for primary icon.
+     * primary_icon_gicon: GIcon for primary icon
+     * Returns: primary_icon_gicon
+
+--- primary_icon_name
+
+    Gets the Icon name for primary icon.
+     * Returns: Icon name for primary icon
+
+--- primary_icon_name=(primary_icon_name)
+
+    Sets the Icon name for primary icon.
+     * primary_icon_name: Icon name for primary icon
+     * Returns: primary_icon_name
+
+--- primary_icon_pixbuf
+
+    Gets the Primary pixbuf for the entry.
+     * Returns: Primary pixbuf for the entry
+
+--- primary_icon_pixbuf=(primary_icon_pixbuf)
+
+    Sets the Primary pixbuf for the entry.
+     * primary_icon_pixbuf: Primary pixbuf for the entry
+     * Returns: primary_icon_pixbuf
+
+--- primary_icon_sensitive=(primary_icon_sensitive)
+
+    Sets the value whether the primary icon is sensitive or not.
+     * primary_icon_sensitive: true if the primary icon is sensitive
+     * Returns: primary_icon_sensitive
+
+--- primary_icon_sensitive?
+
+    Gets the value whether the primary icon is sensitive or not.
+     * Returns: true if the primary icon is sensitive
+
+--- primary_icon_stock
+
+    Gets the Stock ID for primary icon.
+     * Returns: Stock ID for primary icon
+
+--- primary_icon_stock=(primary_icon_stock)
+
+    Sets the Stock ID for primary icon.
+     * primary_icon_stock: Stock ID for primary icon
+     * Returns: primary_icon_stock
+
+--- primary_icon_storage_type
+
+    Gets the representation being used for primary icon.
+     * Returns: The representation being used for primary icon
+
+--- primary_icon_tooltip_markup
+
+    Gets the contents of the tooltip on the primary icon.
+     * Returns: The contents of the tooltip on the primary icon
+
+--- primary_icon_tooltip_markup=(primary_icon_tooltip_markup)
+
+    Sets the contents of the tooltip on the primary icon.
+     * primary_icon_tooltip_markup: The contents of the tooltip on the primary icon
+     * Returns: primary_icon_tooltip_markup
+
+--- primary_icon_tooltip_text
+
+    Gets the contents of the tooltip on the primary icon.
+     * Returns: The contents of the tooltip on the primary icon
+
+--- primary_icon_tooltip_text=(primary_icon_tooltip_text)
+
+    Sets the contents of the tooltip on the primary icon.
+     * primary_icon_tooltip_text: The contents of the tooltip on the primary icon
+     * Returns: primary_icon_tooltip_text
+
+--- progress_fraction
+
+    Gets the current fraction of the task that's been completed.
+     * Returns: The current fraction of the task that's been completed
+
+--- progress_fraction=(progress_fraction)
+
+    Sets the current fraction of the task that's been completed.
+     * progress_fraction: The current fraction of the task that's been completed
+     * Returns: progress_fraction
+
+--- progress_pulse_step
+
+    Gets the fraction of total entry width to move the progress bouncing block for each call to gtk_entry_progress_pulse().
+     * Returns: The fraction of total entry width to move the progress bouncing block for each call to gtk_entry_progress_pulse()
+
+--- progress_pulse_step=(progress_pulse_step)
+
+    Sets the fraction of total entry width to move the progress bouncing block for each call to gtk_entry_progress_pulse().
+     * progress_pulse_step: The fraction of total entry width to move the progress bouncing block for each call to gtk_entry_progress_pulse()
+     * Returns: progress_pulse_step
+
+--- secondary_icon_activatable=(secondary_icon_activatable)
+
+    Sets the value whether the secondary icon is activatable or not.
+     * secondary_icon_activatable: true if the secondary icon is activatable
+     * Returns: secondary_icon_activatable
+
+--- secondary_icon_activatable?
+
+    Gets the value whether the secondary icon is activatable or not.
+     * Returns: true if the secondary icon is activatable
+
+--- secondary_icon_gicon
+
+    Gets the GIcon for secondary icon.
+     * Returns: GIcon for secondary icon
+
+--- secondary_icon_gicon=(secondary_icon_gicon)
+
+    Sets the GIcon for secondary icon.
+     * secondary_icon_gicon: GIcon for secondary icon
+     * Returns: secondary_icon_gicon
+
+--- secondary_icon_name
+
+    Gets the Icon name for secondary icon.
+     * Returns: Icon name for secondary icon
+
+--- secondary_icon_name=(secondary_icon_name)
+
+    Sets the Icon name for secondary icon.
+     * secondary_icon_name: Icon name for secondary icon
+     * Returns: secondary_icon_name
+
+--- secondary_icon_pixbuf
+
+    Gets the Secondary pixbuf for the entry.
+     * Returns: Secondary pixbuf for the entry
+
+--- secondary_icon_pixbuf=(secondary_icon_pixbuf)
+
+    Sets the Secondary pixbuf for the entry.
+     * secondary_icon_pixbuf: Secondary pixbuf for the entry
+     * Returns: secondary_icon_pixbuf
+
+--- secondary_icon_sensitive=(secondary_icon_sensitive)
+
+    Sets the value whether the secondary icon is sensitive or not.
+     * secondary_icon_sensitive: true if the secondary icon is sensitive
+     * Returns: secondary_icon_sensitive
+
+--- secondary_icon_sensitive?
+
+    Gets the value whether the secondary icon is sensitive or not.
+     * Returns: true if the secondary icon is sensitive
+
+--- secondary_icon_stock
+
+    Gets the Stock ID for secondary icon.
+     * Returns: Stock ID for secondary icon
+
+--- secondary_icon_stock=(secondary_icon_stock)
+
+    Sets the Stock ID for secondary icon.
+     * secondary_icon_stock: Stock ID for secondary icon
+     * Returns: secondary_icon_stock
+
+--- secondary_icon_storage_type
+
+    Gets the representation being used for secondary icon.
+     * Returns: The representation being used for secondary icon
+
+--- secondary_icon_tooltip_markup
+
+    Gets the contents of the tooltip on the secondary icon.
+     * Returns: The contents of the tooltip on the secondary icon
+
+--- secondary_icon_tooltip_markup=(secondary_icon_tooltip_markup)
+
+    Sets the contents of the tooltip on the secondary icon.
+     * secondary_icon_tooltip_markup: The contents of the tooltip on the secondary icon
+     * Returns: secondary_icon_tooltip_markup
+
+--- secondary_icon_tooltip_text
+
+    Gets the contents of the tooltip on the secondary icon.
+     * Returns: The contents of the tooltip on the secondary icon
+
+--- secondary_icon_tooltip_text=(secondary_icon_tooltip_text)
+
+    Sets the contents of the tooltip on the secondary icon.
+     * secondary_icon_tooltip_text: The contents of the tooltip on the secondary icon
+     * Returns: secondary_icon_tooltip_text
+
+--- set_buffer(buffer)
+
+    Same as buffer=.
+     * buffer: Text buffer object which actually stores entry text
+     * Returns: self
+
+--- set_builder_name
+
+    See Gtk::Buildable#set_builder_name.
+
+--- set_caps_lock_warning(caps_lock_warning)
+
+    Same as caps_lock_warning=.
+     * caps_lock_warning: true if password entries will show a warning when Caps Lock is on
+     * Returns: self
+
+--- set_cursor_hadjustment
+
+     * Returns: self: ((*FIXME*))
+
+--- set_editing_canceled
+
+    See Gtk::CellEditable#set_editing_canceled.
+
+--- set_im_module(im_module)
+
+    Same as im_module=.
+     * im_module: Which IM module should be used
+     * Returns: self
+
+--- set_invisible_char_set(invisible_char_set)
+
+    Same as invisible_char_set=.
+     * invisible_char_set: true if the invisible char has been set
+     * Returns: self
+
+--- set_overwrite_mode(overwrite_mode)
+
+    Same as overwrite_mode=.
+     * overwrite_mode: true if new text overwrites existing text
+     * Returns: self
+
+--- set_primary_icon_activatable(primary_icon_activatable)
+
+    Same as primary_icon_activatable=.
+     * primary_icon_activatable: true if the primary icon is activatable
+     * Returns: self
+
+--- set_primary_icon_gicon(primary_icon_gicon)
+
+    Same as primary_icon_gicon=.
+     * primary_icon_gicon: GIcon for primary icon
+     * Returns: self
+
+--- set_primary_icon_name(primary_icon_name)
+
+    Same as primary_icon_name=.
+     * primary_icon_name: Icon name for primary icon
+     * Returns: self
+
+--- set_primary_icon_pixbuf(primary_icon_pixbuf)
+
+    Same as primary_icon_pixbuf=.
+     * primary_icon_pixbuf: Primary pixbuf for the entry
+     * Returns: self
+
+--- set_primary_icon_sensitive(primary_icon_sensitive)
+
+    Same as primary_icon_sensitive=.
+     * primary_icon_sensitive: true if the primary icon is sensitive
+     * Returns: self
+
+--- set_primary_icon_stock(primary_icon_stock)
+
+    Same as primary_icon_stock=.
+     * primary_icon_stock: Stock ID for primary icon
+     * Returns: self
+
+--- set_primary_icon_tooltip_markup(primary_icon_tooltip_markup)
+
+    Same as primary_icon_tooltip_markup=.
+     * primary_icon_tooltip_markup: The contents of the tooltip on the primary icon
+     * Returns: self
+
+--- set_primary_icon_tooltip_text(primary_icon_tooltip_text)
+
+    Same as primary_icon_tooltip_text=.
+     * primary_icon_tooltip_text: The contents of the tooltip on the primary icon
+     * Returns: self
+
+--- set_progress_fraction(progress_fraction)
+
+    Same as progress_fraction=.
+     * progress_fraction: The current fraction of the task that's been completed
+     * Returns: self
+
+--- set_progress_pulse_step(progress_pulse_step)
+
+    Same as progress_pulse_step=.
+     * progress_pulse_step: The fraction of total entry width to move the progress bouncing block for each call to gtk_entry_progress_pulse()
+     * Returns: self
+
+--- set_secondary_icon_activatable(secondary_icon_activatable)
+
+    Same as secondary_icon_activatable=.
+     * secondary_icon_activatable: true if the secondary icon is activatable
+     * Returns: self
+
+--- set_secondary_icon_gicon(secondary_icon_gicon)
+
+    Same as secondary_icon_gicon=.
+     * secondary_icon_gicon: GIcon for secondary icon
+     * Returns: self
+
+--- set_secondary_icon_name(secondary_icon_name)
+
+    Same as secondary_icon_name=.
+     * secondary_icon_name: Icon name for secondary icon
+     * Returns: self
+
+--- set_secondary_icon_pixbuf(secondary_icon_pixbuf)
+
+    Same as secondary_icon_pixbuf=.
+     * secondary_icon_pixbuf: Secondary pixbuf for the entry
+     * Returns: self
+
+--- set_secondary_icon_sensitive(secondary_icon_sensitive)
+
+    Same as secondary_icon_sensitive=.
+     * secondary_icon_sensitive: true if the secondary icon is sensitive
+     * Returns: self
+
+--- set_secondary_icon_stock(secondary_icon_stock)
+
+    Same as secondary_icon_stock=.
+     * secondary_icon_stock: Stock ID for secondary icon
+     * Returns: self
+
+--- set_secondary_icon_tooltip_markup(secondary_icon_tooltip_markup)
+
+    Same as secondary_icon_tooltip_markup=.
+     * secondary_icon_tooltip_markup: The contents of the tooltip on the secondary icon
+     * Returns: self
+
+--- set_secondary_icon_tooltip_text(secondary_icon_tooltip_text)
+
+    Same as secondary_icon_tooltip_text=.
+     * secondary_icon_tooltip_text: The contents of the tooltip on the secondary icon
+     * Returns: self
+
+--- text_length
+
+    Gets the Length of the text currently in the entry.
+     * Returns: Length of the text currently in the entry
+
 == Properties
 
 --- activates-default: true or false (Read/Write)
@@ -486,11 +932,131 @@ The Gtk::Entry widget is a single line text entry widget. A fairly large set of 
 
     Which kind of shadow to draw around the entry when has-frame is set
 
+--- buffer: Gtk::EntryBuffer (Read/Write)
+
+    Text buffer object which actually stores entry text
+
+--- caps-lock-warning: true or false (Read/Write)
+
+    Whether password entries will show a warning when Caps Lock is on
+
+--- im-module: String (Read/Write)
+
+    Which IM module should be used
+
+--- invisible-char-set: true or false (Read/Write)
+
+    Whether the invisible char has been set
+
+--- overwrite-mode: true or false (Read/Write)
+
+    Whether new text overwrites existing text
+
+--- primary-icon-activatable: true or false (Read/Write)
+
+    Whether the primary icon is activatable
+
+--- primary-icon-gicon: GIcon (Read/Write)
+
+    GIcon for primary icon
+
+--- primary-icon-name: String (Read/Write)
+
+    Icon name for primary icon
+
+--- primary-icon-pixbuf: Gdk::Pixbuf (Read/Write)
+
+    Primary pixbuf for the entry
+
+--- primary-icon-sensitive: true or false (Read/Write)
+
+    Whether the primary icon is sensitive
+
+--- primary-icon-stock: String (Read/Write)
+
+    Stock ID for primary icon
+
+--- primary-icon-storage-type: Gtk::ImageType (Read)
+
+    The representation being used for primary icon
+
+--- primary-icon-tooltip-markup: String (Read/Write)
+
+    The contents of the tooltip on the primary icon
+
+--- primary-icon-tooltip-text: String (Read/Write)
+
+    The contents of the tooltip on the primary icon
+
+--- progress-fraction: Float (Read/Write)
+
+    The current fraction of the task that's been completed
+
+--- progress-pulse-step: Float (Read/Write)
+
+    The fraction of total entry width to move the progress bouncing block for each call to gtk_entry_progress_pulse()
+
+--- secondary-icon-activatable: true or false (Read/Write)
+
+    Whether the secondary icon is activatable
+
+--- secondary-icon-gicon: GIcon (Read/Write)
+
+    GIcon for secondary icon
+
+--- secondary-icon-name: String (Read/Write)
+
+    Icon name for secondary icon
+
+--- secondary-icon-pixbuf: Gdk::Pixbuf (Read/Write)
+
+    Secondary pixbuf for the entry
+
+--- secondary-icon-sensitive: true or false (Read/Write)
+
+    Whether the secondary icon is sensitive
+
+--- secondary-icon-stock: String (Read/Write)
+
+    Stock ID for secondary icon
+
+--- secondary-icon-storage-type: Gtk::ImageType (Read)
+
+    The representation being used for secondary icon
+
+--- secondary-icon-tooltip-markup: String (Read/Write)
+
+    The contents of the tooltip on the secondary icon
+
+--- secondary-icon-tooltip-text: String (Read/Write)
+
+    The contents of the tooltip on the secondary icon
+
+--- text-length: Integer (Read)
+
+    Length of the text currently in the entry
+
 == Style Properties
 
 --- inner-border: Gtk::Border (Read)
 
     Border between text and frame. ((* Since 2.10 *))
+
+--- icon-prelight: true or false (Read)
+
+    Whether activatable icons should prelight when hovered
+
+--- invisible-char: Integer (Read)
+
+    The character to use when masking entry contents (in "password mode")
+
+--- progress-border: Gtk::Border (Read)
+
+    Border around the progress bar
+
+--- state-hint: true or false (Read)
+
+    Whether to pass a proper state when drawing shadow or background
 
 == Signals
 
@@ -541,6 +1107,18 @@ The Gtk::Entry widget is a single line text entry widget. A fairly large set of 
      * self: Gtk::Entry
 
 --- backspace: self
+
+     * self: Gtk::Entry: ((*FIXME*))
+
+--- icon-press: self
+
+     * self: Gtk::Entry: ((*FIXME*))
+
+--- icon-release: self
+
+     * self: Gtk::Entry: ((*FIXME*))
+
+--- preedit-changed: self
 
      * self: Gtk::Entry: ((*FIXME*))
 

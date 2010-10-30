@@ -1,0 +1,35 @@
+= class GLib::ConverterOutputStream
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::OutputStream
+        * GLib::FilterOutputStream
+          * GLib::ConverterOutputStream
+
+== Class Methods
+
+--- GLib::ConverterOutputStream.new
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- converter
+
+    Gets the converter object.
+     * Returns: The converter object
+
+== Properties
+
+--- converter: GConverter (Read/Write)
+
+    The converter object
+
+== See Also
+
+== ChangeLog
+
+

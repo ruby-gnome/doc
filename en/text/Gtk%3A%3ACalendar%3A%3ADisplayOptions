@@ -28,6 +28,10 @@
 
      * Returns: self: ((*FIXME*))
 
+--- show_details?
+
+     * Returns: self: ((*FIXME*))
+
 == Constants
 
 --- NO_MONTH_CHANGE
@@ -35,6 +39,7 @@
 --- SHOW_HEADING
 --- SHOW_WEEK_NUMBERS
 --- WEEK_START_MONDAY
+--- SHOW_DETAILS
 
 == See Also
 

@@ -1,0 +1,33 @@
+= class GLib::FileAttribute::InfoFlags
+
+== Object Hierarchy
+
+* Object
+  * GLib::Flags
+    * GLib::FileAttribute::InfoFlags
+
+== Instance Methods
+
+--- copy_when_moved?
+
+     * Returns: self: ((*FIXME*))
+
+--- copy_with_file?
+
+     * Returns: self: ((*FIXME*))
+
+--- none?
+
+     * Returns: self: ((*FIXME*))
+
+== Constants
+
+--- COPY_WHEN_MOVED
+--- COPY_WITH_FILE
+--- NONE
+
+== See Also
+
+== ChangeLog
+
+

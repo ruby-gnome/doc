@@ -1,0 +1,25 @@
+= module GLib::AsyncInitable
+
+== Included Modules
+
+  * GLib::Interface
+
+== Instance Methods
+
+--- init_async
+
+     * Returns: self: ((*FIXME*))
+
+--- init_finish
+
+     * Returns: self: ((*FIXME*))
+
+--- initialize_finish
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

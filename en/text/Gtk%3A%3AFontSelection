@@ -93,6 +93,18 @@ Filters can be used to limit the fonts shown. There are 2 filters in the Gtk::Fo
 
     See Gtk::Buildable#set_name.
 
+--- builder_name
+
+    See Gtk::Buildable#builder_name.
+
+--- builder_name=
+
+    See Gtk::Buildable#builder_name=.
+
+--- set_builder_name
+
+    See Gtk::Buildable#set_builder_name.
+
 == Properties
 
 --- font: Gdk::Font (Read)

@@ -24,12 +24,17 @@
 
      * Returns: self: ((*FIXME*))
 
+--- force_size?
+
+     * Returns: self: ((*FIXME*))
+
 == Constants
 
 --- FORCE_SVG
 --- GENERIC_FALLBACK
 --- NO_SVG
 --- USE_BUILTIN
+--- FORCE_SIZE
 
 == See Also
 

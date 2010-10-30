@@ -1,0 +1,17 @@
+= module GLib::AsyncResult
+
+== Included Modules
+
+  * GLib::Interface
+
+== Instance Methods
+
+--- source_object
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

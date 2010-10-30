@@ -1,0 +1,18 @@
+= class Poppler::AnnotationMarkupReplyType
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * Poppler::AnnotationMarkupReplyType
+
+== Constants
+
+--- GROUP
+--- R
+
+== See Also
+
+== ChangeLog
+
+

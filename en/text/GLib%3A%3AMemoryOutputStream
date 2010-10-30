@@ -1,0 +1,94 @@
+= class GLib::MemoryOutputStream
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::OutputStream
+        * GLib::MemoryOutputStream
+
+== Included Modules
+
+  * GLib::Seekable
+
+== Class Methods
+
+--- GLib::MemoryOutputStream.new
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- can_seek?
+
+    See GLib::Seekable#can_seek?.
+
+--- can_truncate?
+
+    See GLib::Seekable#can_truncate?.
+
+--- data
+
+    Gets the Pointer to buffer where data will be written.
+     * Returns: Pointer to buffer where data will be written
+
+--- data_size
+
+    Gets the Size of data written to the buffer.
+     * Returns: Size of data written to the buffer
+
+--- destroy_function
+
+    Gets the Function called with the buffer as argument when the stream is destroyed.
+     * Returns: Function called with the buffer as argument when the stream is destroyed
+
+--- realloc_function
+
+    Gets the Function with realloc semantics called to enlarge the buffer.
+     * Returns: Function with realloc semantics called to enlarge the buffer
+
+--- seek
+
+    See GLib::Seekable#seek.
+
+--- size
+
+    Gets the Current size of the data buffer.
+     * Returns: Current size of the data buffer
+
+--- tell
+
+    See GLib::Seekable#tell.
+
+--- truncate
+
+    See GLib::Seekable#truncate.
+
+== Properties
+
+--- data: gpointer (Read/Write)
+
+    Pointer to buffer where data will be written.
+
+--- data-size: Integer (Read)
+
+    Size of data written to the buffer.
+
+--- destroy-function: gpointer (Read/Write)
+
+    Function called with the buffer as argument when the stream is destroyed.
+
+--- realloc-function: gpointer (Read/Write)
+
+    Function with realloc semantics called to enlarge the buffer.
+
+--- size: Integer (Read/Write)
+
+    Current size of the data buffer.
+
+== See Also
+
+== ChangeLog
+
+

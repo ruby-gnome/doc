@@ -54,6 +54,10 @@
 
      * Returns: self: ((*FIXME*))
 
+--- mdi_zorder
+
+     * Returns: self: ((*FIXME*))
+
 == Signals
 
 --- bounds-changed: self

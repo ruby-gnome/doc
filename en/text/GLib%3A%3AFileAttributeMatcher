@@ -1,0 +1,41 @@
+= class GLib::FileAttributeMatcher
+
+== Object Hierarchy
+
+* Object
+  * GLib::Boxed
+    * GLib::FileAttributeMatcher
+
+== Class Methods
+
+--- GLib::FileAttributeMatcher.new
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- =~
+
+     * Returns: self: ((*FIXME*))
+
+--- enumerate_namespace
+
+     * Returns: self: ((*FIXME*))
+
+--- enumerate_next
+
+     * Returns: self: ((*FIXME*))
+
+--- matches?
+
+     * Returns: self: ((*FIXME*))
+
+--- matches_only?
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

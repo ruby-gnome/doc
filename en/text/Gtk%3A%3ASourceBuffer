@@ -266,6 +266,102 @@ Text buffer object for Gtk::SourceView.
      * max_undo_levels: Number of undo levels for the buffer
      * Returns: self
 
+--- backward_iter_to_source_mark
+
+     * Returns: self: ((*FIXME*))
+
+--- create_source_mark
+
+     * Returns: self: ((*FIXME*))
+
+--- ensure_highlight
+
+     * Returns: self: ((*FIXME*))
+
+--- forward_iter_to_source_mark
+
+     * Returns: self: ((*FIXME*))
+
+--- get_source_marks_at_iter
+
+     * Returns: self: ((*FIXME*))
+
+--- get_source_marks_at_line
+
+     * Returns: self: ((*FIXME*))
+
+--- highlight_matching_brackets=(highlight_matching_brackets)
+
+    Sets the value whether to highlight matching brackets or not.
+     * highlight_matching_brackets: true if to highlight matching brackets
+     * Returns: highlight_matching_brackets
+
+--- highlight_matching_brackets?
+
+    Gets the value whether to highlight matching brackets or not.
+     * Returns: true if to highlight matching brackets
+
+--- highlight_syntax=(highlight_syntax)
+
+    Sets the value whether to highlight syntax in the buffer or not.
+     * highlight_syntax: true if to highlight syntax in the buffer
+     * Returns: highlight_syntax
+
+--- highlight_syntax?
+
+    Gets the value whether to highlight syntax in the buffer or not.
+     * Returns: true if to highlight syntax in the buffer
+
+--- remove_source_marks
+
+     * Returns: self: ((*FIXME*))
+
+--- set_highlight_matching_brackets(highlight_matching_brackets)
+
+    Same as highlight_matching_brackets=.
+     * highlight_matching_brackets: true if to highlight matching brackets
+     * Returns: self
+
+--- set_highlight_syntax(highlight_syntax)
+
+    Same as highlight_syntax=.
+     * highlight_syntax: true if to highlight syntax in the buffer
+     * Returns: self
+
+--- set_style_scheme(style_scheme)
+
+    Same as style_scheme=.
+     * style_scheme: Style scheme
+     * Returns: self
+
+--- set_undo_manager(undo_manager)
+
+    Same as undo_manager=.
+     * undo_manager: The buffer undo manager
+     * Returns: self
+
+--- style_scheme
+
+    Gets the Style scheme.
+     * Returns: Style scheme
+
+--- style_scheme=(style_scheme)
+
+    Sets the Style scheme.
+     * style_scheme: Style scheme
+     * Returns: style_scheme
+
+--- undo_manager
+
+    Gets the buffer undo manager.
+     * Returns: The buffer undo manager
+
+--- undo_manager=(undo_manager)
+
+    Sets the buffer undo manager.
+     * undo_manager: The buffer undo manager
+     * Returns: undo_manager
+
 == Properties
 
 --- check-brackets: true or false (Read/Write)
@@ -288,12 +384,47 @@ Text buffer object for Gtk::SourceView.
 
     Number of undo levels for the buffer.
 
+--- can-redo: true or false (Read)
+
+    Whether Redo operation is possible
+
+--- can-undo: true or false (Read)
+
+    Whether Undo operation is possible
+
+--- highlight-matching-brackets: true or false (Read/Write)
+
+    Whether to highlight matching brackets
+
+--- highlight-syntax: true or false (Read/Write)
+
+    Whether to highlight syntax in the buffer
+
+--- style-scheme: Gtk::SourceStyleScheme (Read/Write)
+
+    Style scheme
+
+--- undo-manager: Gtk::SourceUndoManager (Read/Write)
+
+    The buffer undo manager
+
 == Signals
 
 --- can-redo
 --- can-undo
 --- highlight-updated
 --- marker-updated
+--- redo: self
+
+     * self: Gtk::SourceBuffer: ((*FIXME*))
+
+--- source-mark-updated: self
+
+     * self: Gtk::SourceBuffer: ((*FIXME*))
+
+--- undo: self
+
+     * self: Gtk::SourceBuffer: ((*FIXME*))
 
 == See Also
 

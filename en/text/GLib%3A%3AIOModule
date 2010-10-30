@@ -1,0 +1,39 @@
+= class GLib::IOModule
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::TypeModule
+        * GLib::IOModule
+
+== Class Methods
+
+--- GLib::IOModule.load_all_in_directory
+
+     * Returns: self: ((*FIXME*))
+
+--- GLib::IOModule.new
+
+     * Returns: self: ((*FIXME*))
+
+--- GLib::IOModule.scan_all_in_directory
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- unuse
+
+    See GLib::TypePlugin#unuse.
+
+--- use
+
+    See GLib::TypePlugin#use.
+
+== See Also
+
+== ChangeLog
+
+

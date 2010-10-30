@@ -1,0 +1,16 @@
+= class GLib::IO::ExistsError
+
+== Object Hierarchy
+
+* Object
+  * Exception
+    * StandardError
+      * IOError
+        * GLib::IO::Error
+          * GLib::IO::ExistsError
+
+== See Also
+
+== ChangeLog
+
+

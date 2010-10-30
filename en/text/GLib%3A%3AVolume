@@ -1,0 +1,91 @@
+= module GLib::Volume
+
+== Included Modules
+
+  * GLib::Interface
+
+== Instance Methods
+
+--- activation_root
+
+     * Returns: self: ((*FIXME*))
+
+--- can_eject?
+
+     * Returns: self: ((*FIXME*))
+
+--- can_mount?
+
+     * Returns: self: ((*FIXME*))
+
+--- drive
+
+     * Returns: self: ((*FIXME*))
+
+--- eject_with_operation
+
+     * Returns: self: ((*FIXME*))
+
+--- eject_with_operation_finish
+
+     * Returns: self: ((*FIXME*))
+
+--- enumerate_identifiers
+
+     * Returns: self: ((*FIXME*))
+
+--- get_identifier
+
+     * Returns: self: ((*FIXME*))
+
+--- icon
+
+     * Returns: self: ((*FIXME*))
+
+--- identifiers
+
+     * Returns: self: ((*FIXME*))
+
+--- mount
+
+     * Returns: self: ((*FIXME*))
+
+--- mount_finish
+
+     * Returns: self: ((*FIXME*))
+
+--- name
+
+     * Returns: self: ((*FIXME*))
+
+--- should_automount?
+
+     * Returns: self: ((*FIXME*))
+
+--- uuid
+
+     * Returns: self: ((*FIXME*))
+
+== Constants
+
+--- IDENTIFIER_KIND_HAL_UDI
+--- IDENTIFIER_KIND_LABEL
+--- IDENTIFIER_KIND_NFS_MOUNT
+--- IDENTIFIER_KIND_UNIX_DEVICE
+--- IDENTIFIER_KIND_UUID
+
+== Signals
+
+--- changed: self
+
+     * self: GLib::Volume: ((*FIXME*))
+
+--- removed: self
+
+     * self: GLib::Volume: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

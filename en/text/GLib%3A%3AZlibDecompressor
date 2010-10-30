@@ -1,0 +1,45 @@
+= class GLib::ZlibDecompressor
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::ZlibDecompressor
+
+== Included Modules
+
+  * GLib::Converter
+
+== Class Methods
+
+--- GLib::ZlibDecompressor.new
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- convert
+
+    See GLib::Converter#convert.
+
+--- format
+
+    Gets the format of the compressed data.
+     * Returns: The format of the compressed data
+
+--- reset
+
+    See GLib::Converter#reset.
+
+== Properties
+
+--- format: GZlibCompressorFormat (Read/Write)
+
+    The format of the compressed data
+
+== See Also
+
+== ChangeLog
+
+

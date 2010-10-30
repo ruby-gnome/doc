@@ -1,0 +1,20 @@
+= class Gst::EventEOS
+
+== Object Hierarchy
+
+* Object
+  * Gst::MiniObject
+    * Gst::Event
+      * Gst::EventEOS
+
+== Class Methods
+
+--- Gst::EventEOS.new
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

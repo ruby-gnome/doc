@@ -13,6 +13,9 @@
 --- ok_to_copy?
 --- ok_to_modify?
 --- ok_to_print?
+--- ok_to_fill_form?
+
+     * Returns: self: ((*FIXME*))
 
 == Constants
 
@@ -21,6 +24,7 @@
 --- OK_TO_COPY
 --- OK_TO_MODIFY
 --- OK_TO_PRINT
+--- OK_TO_FILL_FORM
 
 == See Also
 

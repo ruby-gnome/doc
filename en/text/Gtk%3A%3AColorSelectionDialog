@@ -80,6 +80,41 @@ The Gtk::ColorSelectionDialog provides a standard dialog which allows the user t
 
     See Gtk::Buildable#set_name.
 
+--- builder_name
+
+    See Gtk::Buildable#builder_name.
+
+--- builder_name=
+
+    See Gtk::Buildable#builder_name=.
+
+--- color_selection
+
+    Gets the color selection embedded in the dialog.
+     * Returns: The color selection embedded in the dialog
+
+--- set_builder_name
+
+    See Gtk::Buildable#set_builder_name.
+
+== Properties
+
+--- cancel-button: Gtk::Widget (Read)
+
+    The cancel button of the dialog.
+
+--- color-selection: Gtk::Widget (Read)
+
+    The color selection embedded in the dialog.
+
+--- help-button: Gtk::Widget (Read)
+
+    The help button of the dialog.
+
+--- ok-button: Gtk::Widget (Read)
+
+    The OK button of the dialog.
+
 == See Also
 
 == ChangeLog

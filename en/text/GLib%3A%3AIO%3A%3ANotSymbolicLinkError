@@ -1,0 +1,16 @@
+= class GLib::IO::NotSymbolicLinkError
+
+== Object Hierarchy
+
+* Object
+  * Exception
+    * StandardError
+      * IOError
+        * GLib::IO::Error
+          * GLib::IO::NotSymbolicLinkError
+
+== See Also
+
+== ChangeLog
+
+

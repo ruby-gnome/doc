@@ -1,0 +1,21 @@
+= module GLib::Converter
+
+== Included Modules
+
+  * GLib::Interface
+
+== Instance Methods
+
+--- convert
+
+     * Returns: self: ((*FIXME*))
+
+--- reset
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

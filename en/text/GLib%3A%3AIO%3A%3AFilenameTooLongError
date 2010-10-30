@@ -1,0 +1,16 @@
+= class GLib::IO::FilenameTooLongError
+
+== Object Hierarchy
+
+* Object
+  * Exception
+    * StandardError
+      * IOError
+        * GLib::IO::Error
+          * GLib::IO::FilenameTooLongError
+
+== See Also
+
+== ChangeLog
+
+

@@ -75,6 +75,18 @@ A Gtk::ToggleToolButton is a Gtk::ToolItem that contains a toggle button.
 
     See Gtk::Buildable#set_name.
 
+--- builder_name
+
+    See Gtk::Buildable#builder_name.
+
+--- builder_name=
+
+    See Gtk::Buildable#builder_name=.
+
+--- set_builder_name
+
+    See Gtk::Buildable#set_builder_name.
+
 == Properties
 
 --- active: true or false (Read/Write)

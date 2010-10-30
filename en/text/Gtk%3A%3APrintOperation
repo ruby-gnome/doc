@@ -333,6 +333,62 @@ Then you start the print operation by calling Gtk::PrintOperation#run. It will t
 
     See Gtk::PrintOperationPreview#selected?.
 
+--- embed_page_setup=(embed_page_setup)
+
+    Sets the true if page setup combos are embedded in Gtk::PrintDialog.
+     * embed_page_setup: true if page setup combos are embedded in Gtk::PrintDialog
+     * Returns: embed_page_setup
+
+--- embed_page_setup?
+
+    Gets the true if page setup combos are embedded in Gtk::PrintDialog.
+     * Returns: true if page setup combos are embedded in Gtk::PrintDialog
+
+--- has_selection=(has_selection)
+
+    Sets the true if a selecion exists.
+     * has_selection: true if a selecion exists
+     * Returns: has_selection
+
+--- has_selection?
+
+    Gets the true if a selecion exists.
+     * Returns: true if a selecion exists
+
+--- n_pages_to_print
+
+    Gets the number of pages that will be printed.
+     * Returns: The number of pages that will be printed
+
+--- set_embed_page_setup(embed_page_setup)
+
+    Same as embed_page_setup=.
+     * embed_page_setup: true if page setup combos are embedded in Gtk::PrintDialog
+     * Returns: self
+
+--- set_has_selection(has_selection)
+
+    Same as has_selection=.
+     * has_selection: true if a selecion exists
+     * Returns: self
+
+--- set_support_selection(support_selection)
+
+    Same as support_selection=.
+     * support_selection: true if the print operation will support print of selection
+     * Returns: self
+
+--- support_selection=(support_selection)
+
+    Sets the true if the print operation will support print of selection.
+     * support_selection: true if the print operation will support print of selection
+     * Returns: support_selection
+
+--- support_selection?
+
+    Gets the true if the print operation will support print of selection.
+     * Returns: true if the print operation will support print of selection
+
 == Constants
 
 === Action
@@ -472,6 +528,22 @@ The status gives a rough indication of the completion of a running print operati
 --- use-full-page: true or false (Read/Write)
 
     true if the the origin of the context should be at the corner of the page and not the corner of the imageable area ((* Since 2.10 *))
+
+--- embed-page-setup: true or false (Read/Write)
+
+    true if page setup combos are embedded in Gtk::PrintDialog
+
+--- has-selection: true or false (Read/Write)
+
+    true if a selecion exists.
+
+--- n-pages-to-print: Integer (Read)
+
+    The number of pages that will be printed.
+
+--- support-selection: true or false (Read/Write)
+
+    true if the print operation will support print of selection.
 
 == Signals
 
@@ -636,6 +708,10 @@ The status gives a rough indication of the completion of a running print operati
      status. ((* Since 2.10 *))
 
      * self: the Gtk::PrintOperation on which the signal was emitted
+
+--- update-custom-widget: self
+
+     * self: Gtk::PrintOperation: ((*FIXME*))
 
 == See Also
 

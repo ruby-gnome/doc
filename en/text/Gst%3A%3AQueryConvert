@@ -1,0 +1,26 @@
+= class Gst::QueryConvert
+
+== Object Hierarchy
+
+* Object
+  * Gst::MiniObject
+    * Gst::Query
+      * Gst::QueryConvert
+
+== Class Methods
+
+--- Gst::QueryConvert.new
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- parse
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

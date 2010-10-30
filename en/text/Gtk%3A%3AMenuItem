@@ -17,6 +17,10 @@ As it derives from Gtk::Bin it can hold any valid child widget, altough only a f
                 * Gtk::Item
                   * Gtk::MenuItem
 
+== Included Modules
+
+  * #<Module:0x7fd7f0570268>
+
 == Class Methods
 
 --- Gtk::MenuItem.new(label = nil, use_underline = true)
@@ -140,11 +144,78 @@ As it derives from Gtk::Bin it can hold any valid child widget, altough only a f
 
     See Gtk::Buildable#set_name.
 
+--- accel_path
+
+    Gets the Sets the accelerator path of the menu item.
+     * Returns: Sets the accelerator path of the menu item
+
+--- builder_name
+
+    See Gtk::Buildable#builder_name.
+
+--- builder_name=
+
+    See Gtk::Buildable#builder_name=.
+
+--- label
+
+    Gets the text for the child label.
+     * Returns: The text for the child label
+
+--- label=(label)
+
+    Sets the text for the child label.
+     * label: The text for the child label
+     * Returns: label
+
+--- set_builder_name
+
+    See Gtk::Buildable#set_builder_name.
+
+--- set_label(label)
+
+    Same as label=.
+     * label: The text for the child label
+     * Returns: self
+
+--- set_use_underline(use_underline)
+
+    Same as use_underline=.
+     * use_underline: true if set, an underline in the text indicates the next character should be used for the mnemonic accelerator key
+     * Returns: self
+
+--- use_underline=(use_underline)
+
+    Sets the value if set, an underline in the text indicates the next character should be used for the mnemonic accelerator key.
+     * use_underline: true if set, an underline in the text indicates the next character should be used for the mnemonic accelerator key
+     * Returns: use_underline
+
+--- use_underline?
+
+    Gets the value if set, an underline in the text indicates the next character should be used for the mnemonic accelerator key.
+     * Returns: true if set, an underline in the text indicates the next character should be used for the mnemonic accelerator key
+
 == Properties
 
 --- submenu: Gtk::Menu (Read/Write)
 
     The submenu attached to the menu item, or NULL if it has none
+
+--- accel-path: String (Read/Write)
+
+    Sets the accelerator path of the menu item
+
+--- label: String (Read/Write)
+
+    The text for the child label
+
+--- right-justified: true or false (Read/Write)
+
+    Sets whether the menu item appears justified at the right side of a menu bar
+
+--- use-underline: true or false (Read/Write)
+
+    If set, an underline in the text indicates the next character should be used for the mnemonic accelerator key
 
 == Style Properties
 
@@ -163,6 +234,14 @@ As it derives from Gtk::Bin it can hold any valid child widget, altough only a f
 --- toggle-spacing: Integer (Read)
 
     Space between icon and label
+
+--- arrow-scaling: Float (Read)
+
+    Amount of space used up by arrow, relative to the menu item's font size
+
+--- width-chars: Integer (Read)
+
+    The minimum desired width of the menu item in characters
 
 == Signals
 

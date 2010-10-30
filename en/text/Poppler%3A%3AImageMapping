@@ -32,6 +32,18 @@
 
      * Returns: self: ((*FIXME*))
 
+--- image_id
+
+     * Returns: self: ((*FIXME*))
+
+--- image_id=
+
+     * Returns: self: ((*FIXME*))
+
+--- set_image_id
+
+     * Returns: self: ((*FIXME*))
+
 == See Also
 
 == ChangeLog

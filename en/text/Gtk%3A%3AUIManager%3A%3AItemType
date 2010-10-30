@@ -48,6 +48,10 @@
 
      * Returns: self: ((*FIXME*))
 
+--- popup_with_accels?
+
+     * Returns: self: ((*FIXME*))
+
 == Constants
 
 --- ACCELERATOR
@@ -60,6 +64,7 @@
 --- SEPARATOR
 --- TOOLBAR
 --- TOOLITEM
+--- POPUP_WITH_ACCELS
 
 == See Also
 

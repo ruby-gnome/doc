@@ -53,6 +53,7 @@ The primary purpose of this class is to keep track of the various properties of 
     See Atk::Implementor#ref_accessible.
 
 --- add(widget)
+
     Adds a widget to the box according to Gtk::ButtonBox::Style.
     * widget: the name of this class suggests a button, however anything reasonable can be added. Note: the largest widget decides the size of all widgets in the button box.
     * Returns: self
@@ -84,6 +85,18 @@ The primary purpose of this class is to keep track of the various properties of 
 --- set_name
 
     See Gtk::Buildable#set_name.
+
+--- builder_name
+
+    See Gtk::Buildable#builder_name.
+
+--- builder_name=
+
+    See Gtk::Buildable#builder_name=.
+
+--- set_builder_name
+
+    See Gtk::Buildable#set_builder_name.
 
 == Constants
 

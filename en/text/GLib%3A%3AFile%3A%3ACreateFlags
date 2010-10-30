@@ -1,0 +1,33 @@
+= class GLib::File::CreateFlags
+
+== Object Hierarchy
+
+* Object
+  * GLib::Flags
+    * GLib::File::CreateFlags
+
+== Instance Methods
+
+--- none?
+
+     * Returns: self: ((*FIXME*))
+
+--- private?
+
+     * Returns: self: ((*FIXME*))
+
+--- replace_destination?
+
+     * Returns: self: ((*FIXME*))
+
+== Constants
+
+--- NONE
+--- PRIVATE
+--- REPLACE_DESTINATION
+
+== See Also
+
+== ChangeLog
+
+

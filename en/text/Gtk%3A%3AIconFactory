@@ -13,6 +13,10 @@ To display an icon, always use Gtk::Style#lookup_icon_set on the widget that wil
     * GLib::Object
       * Gtk::IconFactory
 
+== Included Modules
+
+  * Gtk::Buildable
+
 == Class Methods
 
 --- Gtk::IconFactory.new
@@ -50,6 +54,34 @@ To display an icon, always use Gtk::Style#lookup_icon_set on the widget that wil
 
     Removes the icon factory from the list of default icon factories. Not normally used; you might use it for a library that can be unloaded or shut down.
     * Returns: self
+
+--- add_child
+
+    See Gtk::Buildable#add_child.
+
+--- builder_name
+
+    See Gtk::Buildable#builder_name.
+
+--- builder_name=
+
+    See Gtk::Buildable#builder_name=.
+
+--- construct_child
+
+    See Gtk::Buildable#construct_child.
+
+--- get_internal_child
+
+    See Gtk::Buildable#get_internal_child.
+
+--- set_buildable_property
+
+    See Gtk::Buildable#set_buildable_property.
+
+--- set_builder_name
+
+    See Gtk::Buildable#set_builder_name.
 
 == See Also
 

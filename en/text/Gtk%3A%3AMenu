@@ -244,6 +244,57 @@ Applications can display a Gtk::Menu as a popup menu by calling the Gtk::Menu#po
 
     See Gtk::Buildable#set_name.
 
+--- accel_path
+
+    Gets the An accel path used to conveniently construct accel paths of child items.
+     * Returns: An accel path used to conveniently construct accel paths of child items
+
+--- attach_widget=(attach_widget)
+
+    Sets the widget the menu is attached to.
+     * attach_widget: The widget the menu is attached to
+     * Returns: attach_widget
+
+--- builder_name
+
+    See Gtk::Buildable#builder_name.
+
+--- builder_name=
+
+    See Gtk::Buildable#builder_name=.
+
+--- monitor
+
+    Gets the monitor the menu will be popped up on.
+     * Returns: The monitor the menu will be popped up on
+
+--- reserve_toggle_size=(reserve_toggle_size)
+
+    Sets the A boolean that indicates whether the menu reserves space for toggles and icons.
+     * reserve_toggle_size: A boolean that indicates whether the menu reserves space for toggles and icons
+     * Returns: reserve_toggle_size
+
+--- reserve_toggle_size?
+
+    Gets the A boolean that indicates whether the menu reserves space for toggles and icons.
+     * Returns: A boolean that indicates whether the menu reserves space for toggles and icons
+
+--- set_attach_widget(attach_widget)
+
+    Same as attach_widget=.
+     * attach_widget: The widget the menu is attached to
+     * Returns: self
+
+--- set_builder_name
+
+    See Gtk::Buildable#set_builder_name.
+
+--- set_reserve_toggle_size(reserve_toggle_size)
+
+    Same as reserve_toggle_size=.
+     * reserve_toggle_size: A boolean that indicates whether the menu reserves space for toggles and icons
+     * Returns: self
+
 == Properties
 
 --- tearoff-title: String (Read/Write)
@@ -253,6 +304,30 @@ Applications can display a Gtk::Menu as a popup menu by calling the Gtk::Menu#po
 --- tearoff-state: true or false (Read/Write)
 
     A boolean that indicates whether the menu is torn-off
+
+--- accel-group: Gtk::AccelGroup (Read/Write)
+
+    The accel group holding accelerators for the menu
+
+--- accel-path: String (Read/Write)
+
+    An accel path used to conveniently construct accel paths of child items
+
+--- active: Integer (Read/Write)
+
+    The currently selected menu item
+
+--- attach-widget: Gtk::Widget (Read/Write)
+
+    The widget the menu is attached to
+
+--- monitor: Integer (Read/Write)
+
+    The monitor the menu will be popped up on
+
+--- reserve-toggle-size: true or false (Read/Write)
+
+    A boolean that indicates whether the menu reserves space for toggles and icons
 
 == Style Properties
 
@@ -275,6 +350,14 @@ Applications can display a Gtk::Menu as a popup menu by calling the Gtk::Menu#po
 --- vertical-padding: Integer (Read)
 
     Extra space at the top and bottom of the menu
+
+--- arrow-placement: Gtk::ArrowPlacement (Read)
+
+    Indicates where scroll arrows should be placed
+
+--- arrow-scaling: Float (Read)
+
+    Arbitrary constant to scale down the size of the scroll arrow
 
 == Child Properties
 

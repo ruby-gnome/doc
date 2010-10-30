@@ -1,0 +1,72 @@
+= class GLib::BufferedOutputStream
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::OutputStream
+        * GLib::FilterOutputStream
+          * GLib::BufferedOutputStream
+
+== Class Methods
+
+--- GLib::BufferedOutputStream.new
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- auto_grow
+
+     * Returns: self: ((*FIXME*))
+
+--- auto_grow=(auto_grow)
+
+    Sets the value whether the buffer should automatically grow or not.
+     * auto_grow: true if the buffer should automatically grow
+     * Returns: auto_grow
+
+--- auto_grow?
+
+    Gets the value whether the buffer should automatically grow or not.
+     * Returns: true if the buffer should automatically grow
+
+--- buffer_size
+
+    Gets the size of the backend buffer.
+     * Returns: The size of the backend buffer
+
+--- buffer_size=(buffer_size)
+
+    Sets the size of the backend buffer.
+     * buffer_size: The size of the backend buffer
+     * Returns: buffer_size
+
+--- set_auto_grow(auto_grow)
+
+    Same as auto_grow=.
+     * auto_grow: true if the buffer should automatically grow
+     * Returns: self
+
+--- set_buffer_size(buffer_size)
+
+    Same as buffer_size=.
+     * buffer_size: The size of the backend buffer
+     * Returns: self
+
+== Properties
+
+--- auto-grow: true or false (Read/Write)
+
+    Whether the buffer should automatically grow
+
+--- buffer-size: Integer (Read/Write)
+
+    The size of the backend buffer
+
+== See Also
+
+== ChangeLog
+
+

@@ -344,6 +344,30 @@ Warning, there are some ((<encoding issues|Gtk::FileChooser#File+Names+and+Encod
 
     See Gtk::Buildable#set_name.
 
+--- builder_name
+
+    See Gtk::Buildable#builder_name.
+
+--- builder_name=
+
+    See Gtk::Buildable#builder_name=.
+
+--- create_folders=
+
+    See Gtk::FileChooser#create_folders=.
+
+--- create_folders?
+
+    See Gtk::FileChooser#create_folders?.
+
+--- set_builder_name
+
+    See Gtk::Buildable#set_builder_name.
+
+--- set_create_folders
+
+    See Gtk::FileChooser#set_create_folders.
+
 == See Also
 
 Gtk::FileChooser, Gtk::Dialog

@@ -1,0 +1,73 @@
+= class GLib::UnixMount
+
+== Object Hierarchy
+
+* Object
+  * GLib::Boxed
+    * GLib::UnixMount
+
+== Included Modules
+
+  * Comparable
+
+== Class Methods
+
+--- GLib::UnixMount.mount_path_system_internal?
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- <=>
+
+     * Returns: self: ((*FIXME*))
+
+--- at
+
+     * Returns: self: ((*FIXME*))
+
+--- compare
+
+     * Returns: self: ((*FIXME*))
+
+--- device_path
+
+     * Returns: self: ((*FIXME*))
+
+--- fs_type
+
+     * Returns: self: ((*FIXME*))
+
+--- guess_can_eject?
+
+     * Returns: self: ((*FIXME*))
+
+--- guess_icon
+
+     * Returns: self: ((*FIXME*))
+
+--- guess_name
+
+     * Returns: self: ((*FIXME*))
+
+--- guess_should_display?
+
+     * Returns: self: ((*FIXME*))
+
+--- mount_path
+
+     * Returns: self: ((*FIXME*))
+
+--- readonly?
+
+     * Returns: self: ((*FIXME*))
+
+--- system_internal?
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

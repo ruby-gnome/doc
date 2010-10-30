@@ -282,6 +282,10 @@ Note that a screen may consist of multiple monitors which are merged to form a l
 
      * self: Gdk::Screen: ((*FIXME*))
 
+--- monitors-changed: self
+
+     * self: Gdk::Screen: ((*FIXME*))
+
 == See Also
 
 == ChangeLog

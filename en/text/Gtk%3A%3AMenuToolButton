@@ -92,6 +92,18 @@ Use Gtk::MenuToolButton.new to create a new Gtk::MenuToolButton. Use Gtk::MenuTo
 
     See Gtk::Buildable#set_name.
 
+--- builder_name
+
+    See Gtk::Buildable#builder_name.
+
+--- builder_name=
+
+    See Gtk::Buildable#builder_name=.
+
+--- set_builder_name
+
+    See Gtk::Buildable#set_builder_name.
+
 == Properties
 
 --- menu: Gtk::Menu (Read/Write)
@@ -115,4 +127,3 @@ The parent class of Gtk::MenuToolButton. The properties "label_widget", "label",
 == ChangeLog
 
 * 2005-05-06 Added - ((<Masao>))
-

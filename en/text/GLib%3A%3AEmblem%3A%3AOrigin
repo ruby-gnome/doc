@@ -1,0 +1,20 @@
+= class GLib::Emblem::Origin
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * GLib::Emblem::Origin
+
+== Constants
+
+--- DEVICE
+--- LIVEMETADATA
+--- TAG
+--- UNKNOWN
+
+== See Also
+
+== ChangeLog
+
+

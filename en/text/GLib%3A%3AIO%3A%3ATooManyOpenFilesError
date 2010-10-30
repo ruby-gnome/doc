@@ -1,0 +1,16 @@
+= class GLib::IO::TooManyOpenFilesError
+
+== Object Hierarchy
+
+* Object
+  * Exception
+    * StandardError
+      * IOError
+        * GLib::IO::Error
+          * GLib::IO::TooManyOpenFilesError
+
+== See Also
+
+== ChangeLog
+
+

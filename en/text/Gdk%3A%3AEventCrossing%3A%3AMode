@@ -11,6 +11,9 @@
 --- GRAB
 --- NORMAL
 --- UNGRAB
+--- GTK_GRAB
+--- GTK_UNGRAB
+--- STATE_CHANGED
 
 == See Also
 

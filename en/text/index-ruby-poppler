@@ -36,6 +36,74 @@
   * Poppler::ActionUri#set_uri
   * Poppler::ActionUri#uri
   * Poppler::ActionUri#uri=
+  * Poppler::Annotation
+  * Poppler::Annotation#color
+  * Poppler::Annotation#contents
+  * Poppler::Annotation#flags
+  * Poppler::Annotation#modified
+  * Poppler::Annotation#name
+  * Poppler::Annotation#type
+  * Poppler::AnnotationCalloutLine
+  * Poppler::AnnotationCalloutLine.new
+  * Poppler::AnnotationCalloutLine#inspect
+  * Poppler::AnnotationCalloutLine#multiline=
+  * Poppler::AnnotationCalloutLine#multiline?
+  * Poppler::AnnotationCalloutLine#set_multiline
+  * Poppler::AnnotationCalloutLine#set_x1
+  * Poppler::AnnotationCalloutLine#set_x2
+  * Poppler::AnnotationCalloutLine#set_x3
+  * Poppler::AnnotationCalloutLine#set_y1
+  * Poppler::AnnotationCalloutLine#set_y2
+  * Poppler::AnnotationCalloutLine#set_y3
+  * Poppler::AnnotationCalloutLine#to_a
+  * Poppler::AnnotationCalloutLine#x1
+  * Poppler::AnnotationCalloutLine#x1=
+  * Poppler::AnnotationCalloutLine#x2
+  * Poppler::AnnotationCalloutLine#x3
+  * Poppler::AnnotationCalloutLine#y1
+  * Poppler::AnnotationCalloutLine#y1=
+  * Poppler::AnnotationCalloutLine#y2
+  * Poppler::AnnotationCalloutLine#y3
+  * Poppler::AnnotationExternalDataType
+  * Poppler::AnnotationFlag
+  * Poppler::AnnotationFlag#hidden?
+  * Poppler::AnnotationFlag#invisible?
+  * Poppler::AnnotationFlag#locked?
+  * Poppler::AnnotationFlag#locked_contents?
+  * Poppler::AnnotationFlag#no_rotate?
+  * Poppler::AnnotationFlag#no_view?
+  * Poppler::AnnotationFlag#no_zoom?
+  * Poppler::AnnotationFlag#print?
+  * Poppler::AnnotationFlag#read_only?
+  * Poppler::AnnotationFlag#toggle_no_view?
+  * Poppler::AnnotationFlag#unknown?
+  * Poppler::AnnotationFreeText
+  * Poppler::AnnotationFreeText#callout_line
+  * Poppler::AnnotationFreeText#quadding
+  * Poppler::AnnotationFreeTextQuadding
+  * Poppler::AnnotationMapping
+  * Poppler::AnnotationMapping.new
+  * Poppler::AnnotationMapping#annotation
+  * Poppler::AnnotationMapping#annotation=
+  * Poppler::AnnotationMapping#area
+  * Poppler::AnnotationMapping#area=
+  * Poppler::AnnotationMapping#set_annotation
+  * Poppler::AnnotationMapping#set_area
+  * Poppler::AnnotationMarkup
+  * Poppler::AnnotationMarkup#date
+  * Poppler::AnnotationMarkup#external_data
+  * Poppler::AnnotationMarkup#label
+  * Poppler::AnnotationMarkup#opacity
+  * Poppler::AnnotationMarkup#popup_is_open?
+  * Poppler::AnnotationMarkup#reply_to
+  * Poppler::AnnotationMarkup#subject
+  * Poppler::AnnotationMarkupReplyType
+  * Poppler::AnnotationText
+  * Poppler::AnnotationText#icon
+  * Poppler::AnnotationText#open?
+  * Poppler::AnnotationText#state
+  * Poppler::AnnotationTextState
+  * Poppler::AnnotationType
   * Poppler::Attachment
   * Poppler::Attachment#checksum
   * Poppler::Attachment#ctime
@@ -67,6 +135,19 @@
   * Poppler::ChoiceField#toggle
   * Poppler::ChoiceField#type
   * Poppler::ChoiceField#unselect_all
+  * Poppler::Color
+  * Poppler::Color.new
+  * Poppler::Color#blue
+  * Poppler::Color#blue=
+  * Poppler::Color#green
+  * Poppler::Color#green=
+  * Poppler::Color#inspect
+  * Poppler::Color#red
+  * Poppler::Color#red=
+  * Poppler::Color#set_blue
+  * Poppler::Color#set_green
+  * Poppler::Color#set_red
+  * Poppler::Color#to_a
   * Poppler::Dest
   * Poppler::Dest#bottom
   * Poppler::Dest#change_left
@@ -91,6 +172,8 @@
   * Poppler::Document#find_dest
   * Poppler::Document#font_info
   * Poppler::Document#format
+  * Poppler::Document#format_major
+  * Poppler::Document#format_minor
   * Poppler::Document#get_destination
   * Poppler::Document#get_form_field
   * Poppler::Document#get_page
@@ -108,6 +191,7 @@
   * Poppler::Document#permissions
   * Poppler::Document#producer
   * Poppler::Document#save
+  * Poppler::Document#save_a_copy
   * Poppler::Document#size
   * Poppler::Document#subject
   * Poppler::Document#title
@@ -146,8 +230,11 @@
   * Poppler::ImageMapping#area=
   * Poppler::ImageMapping#image
   * Poppler::ImageMapping#image=
+  * Poppler::ImageMapping#image_id
+  * Poppler::ImageMapping#image_id=
   * Poppler::ImageMapping#set_area
   * Poppler::ImageMapping#set_image
+  * Poppler::ImageMapping#set_image_id
   * Poppler::IndexIter
   * Poppler::IndexIter.new
   * Poppler::IndexIter#action
@@ -170,10 +257,12 @@
   * Poppler::PSFile#set_duplex
   * Poppler::PSFile#set_paper_size
   * Poppler::Page
+  * Poppler::Page#annotation_mapping
   * Poppler::Page#crop_box
   * Poppler::Page#duration
   * Poppler::Page#find_text
   * Poppler::Page#form_field_mapping
+  * Poppler::Page#get_image
   * Poppler::Page#get_selection_region
   * Poppler::Page#get_text
   * Poppler::Page#image_mapping
@@ -181,6 +270,7 @@
   * Poppler::Page#label
   * Poppler::Page#link_mapping
   * Poppler::Page#render
+  * Poppler::Page#render_for_printing
   * Poppler::Page#render_selection
   * Poppler::Page#size
   * Poppler::Page#thumbnail
@@ -218,6 +308,7 @@
   * Poppler::Permissions#full?
   * Poppler::Permissions#ok_to_add_notes?
   * Poppler::Permissions#ok_to_copy?
+  * Poppler::Permissions#ok_to_fill_form?
   * Poppler::Permissions#ok_to_modify?
   * Poppler::Permissions#ok_to_print?
   * Poppler::Rectangle

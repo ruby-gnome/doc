@@ -3,6 +3,8 @@
   * Gnome::FontDialog
   * Gnome::FontDialog.new
   * Gnome::FontDialog#add_child
+  * Gnome::FontDialog#builder_name
+  * Gnome::FontDialog#builder_name=
   * Gnome::FontDialog#construct_child
   * Gnome::FontDialog#fontsel
   * Gnome::FontDialog#get_internal_child
@@ -11,10 +13,13 @@
   * Gnome::FontDialog#preview
   * Gnome::FontDialog#ref_accessible
   * Gnome::FontDialog#set_buildable_property
+  * Gnome::FontDialog#set_builder_name
   * Gnome::FontDialog#set_name
   * Gnome::FontPreview
   * Gnome::FontPreview.new
   * Gnome::FontPreview#add_child
+  * Gnome::FontPreview#builder_name
+  * Gnome::FontPreview#builder_name=
   * Gnome::FontPreview#color=
   * Gnome::FontPreview#construct_child
   * Gnome::FontPreview#font=
@@ -24,6 +29,7 @@
   * Gnome::FontPreview#phrase=
   * Gnome::FontPreview#ref_accessible
   * Gnome::FontPreview#set_buildable_property
+  * Gnome::FontPreview#set_builder_name
   * Gnome::FontPreview#set_color
   * Gnome::FontPreview#set_font
   * Gnome::FontPreview#set_name
@@ -31,6 +37,8 @@
   * Gnome::FontSelection
   * Gnome::FontSelection.new
   * Gnome::FontSelection#add_child
+  * Gnome::FontSelection#builder_name
+  * Gnome::FontSelection#builder_name=
   * Gnome::FontSelection#construct_child
   * Gnome::FontSelection#face
   * Gnome::FontSelection#font
@@ -40,6 +48,7 @@
   * Gnome::FontSelection#name=
   * Gnome::FontSelection#ref_accessible
   * Gnome::FontSelection#set_buildable_property
+  * Gnome::FontSelection#set_builder_name
   * Gnome::FontSelection#set_font
   * Gnome::FontSelection#set_name
   * Gnome::FontSelection#size
@@ -47,6 +56,8 @@
   * Gnome::PaperSelector::Flags
   * Gnome::PaperSelector.new
   * Gnome::PaperSelector#add_child
+  * Gnome::PaperSelector#builder_name
+  * Gnome::PaperSelector#builder_name=
   * Gnome::PaperSelector#config
   * Gnome::PaperSelector#config=
   * Gnome::PaperSelector#construct_child
@@ -56,6 +67,7 @@
   * Gnome::PaperSelector#name=
   * Gnome::PaperSelector#ref_accessible
   * Gnome::PaperSelector#set_buildable_property
+  * Gnome::PaperSelector#set_builder_name
   * Gnome::PaperSelector#set_config
   * Gnome::PaperSelector#set_name
   * Gnome::PaperSelector#width
@@ -67,16 +79,21 @@
   * Gnome::PrintConfigDialog.print_config=
   * Gnome::PrintConfigDialog.set_print_config
   * Gnome::PrintConfigDialog#add_child
+  * Gnome::PrintConfigDialog#builder_name
+  * Gnome::PrintConfigDialog#builder_name=
   * Gnome::PrintConfigDialog#construct_child
   * Gnome::PrintConfigDialog#get_internal_child
   * Gnome::PrintConfigDialog#name
   * Gnome::PrintConfigDialog#name=
   * Gnome::PrintConfigDialog#ref_accessible
   * Gnome::PrintConfigDialog#set_buildable_property
+  * Gnome::PrintConfigDialog#set_builder_name
   * Gnome::PrintConfigDialog#set_name
   * Gnome::PrintContentSelector
   * Gnome::PrintContentSelector.new
   * Gnome::PrintContentSelector#add_child
+  * Gnome::PrintContentSelector#builder_name
+  * Gnome::PrintContentSelector#builder_name=
   * Gnome::PrintContentSelector#construct_child
   * Gnome::PrintContentSelector#current
   * Gnome::PrintContentSelector#current=
@@ -85,6 +102,7 @@
   * Gnome::PrintContentSelector#name=
   * Gnome::PrintContentSelector#ref_accessible
   * Gnome::PrintContentSelector#set_buildable_property
+  * Gnome::PrintContentSelector#set_builder_name
   * Gnome::PrintContentSelector#set_current
   * Gnome::PrintContentSelector#set_name
   * Gnome::PrintContentSelector#set_total
@@ -97,6 +115,8 @@
   * Gnome::PrintDialog::Response
   * Gnome::PrintDialog.new
   * Gnome::PrintDialog#add_child
+  * Gnome::PrintDialog#builder_name
+  * Gnome::PrintDialog#builder_name=
   * Gnome::PrintDialog#config
   * Gnome::PrintDialog#construct_child
   * Gnome::PrintDialog#construct_range_any
@@ -120,6 +140,7 @@
   * Gnome::PrintDialog#ref_accessible
   * Gnome::PrintDialog#run
   * Gnome::PrintDialog#set_buildable_property
+  * Gnome::PrintDialog#set_builder_name
   * Gnome::PrintDialog#set_content_selector
   * Gnome::PrintDialog#set_copies
   * Gnome::PrintDialog#set_flags
@@ -148,6 +169,8 @@
   * Gnome::PrintJobPreview.set_nx
   * Gnome::PrintJobPreview.set_ny
   * Gnome::PrintJobPreview#add_child
+  * Gnome::PrintJobPreview#builder_name
+  * Gnome::PrintJobPreview#builder_name=
   * Gnome::PrintJobPreview#construct_child
   * Gnome::PrintJobPreview#get_internal_child
   * Gnome::PrintJobPreview#job
@@ -159,6 +182,7 @@
   * Gnome::PrintJobPreview#ny=
   * Gnome::PrintJobPreview#ref_accessible
   * Gnome::PrintJobPreview#set_buildable_property
+  * Gnome::PrintJobPreview#set_builder_name
   * Gnome::PrintJobPreview#set_name
   * Gnome::PrintJobPreview#set_nx
   * Gnome::PrintJobPreview#set_ny
@@ -185,6 +209,8 @@
   * Gnome::PrintUnitSelector#add_adjustment
   * Gnome::PrintUnitSelector#add_child
   * Gnome::PrintUnitSelector#bases=
+  * Gnome::PrintUnitSelector#builder_name
+  * Gnome::PrintUnitSelector#builder_name=
   * Gnome::PrintUnitSelector#construct_child
   * Gnome::PrintUnitSelector#get_internal_child
   * Gnome::PrintUnitSelector#name
@@ -193,6 +219,7 @@
   * Gnome::PrintUnitSelector#remove_adjustment
   * Gnome::PrintUnitSelector#set_bases
   * Gnome::PrintUnitSelector#set_buildable_property
+  * Gnome::PrintUnitSelector#set_builder_name
   * Gnome::PrintUnitSelector#set_name
   * Gnome::PrintUnitSelector#set_unit
   * Gnome::PrintUnitSelector#unit

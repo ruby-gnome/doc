@@ -92,6 +92,12 @@ The combo cell renderer takes care of adding a text cell renderer to the combo b
     * Allowed values: >= -1
     * Default value: -1
 
+== Signals
+
+--- changed: self
+
+     * self: Gtk::CellRendererCombo: ((*FIXME*))
+
 == See Also
 
 == ChangeLog

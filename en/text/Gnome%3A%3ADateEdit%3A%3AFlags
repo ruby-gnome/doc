@@ -20,11 +20,16 @@
 
      * Returns: self: ((*FIXME*))
 
+--- display_seconds?
+
+     * Returns: self: ((*FIXME*))
+
 == Constants
 
 --- SHOW_TIME
 --- USE_24_HR
 --- WEEK_STARTS_ON_MONDAY
+--- DISPLAY_SECONDS
 
 == See Also
 

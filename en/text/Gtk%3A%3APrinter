@@ -179,6 +179,16 @@ Printing support was added in GTK+ 2.10.
     Gets the String giving the current state of the printer. ((* Since 2.10 *))
      * Returns: String giving the current state of the printer
 
+--- accepting_jobs?
+
+    Gets the true if this printer is accepting new jobs.
+     * Returns: true if this printer is accepting new jobs
+
+--- paused?
+
+    Gets the true if this printer is paused.
+     * Returns: true if this printer is paused
+
 == Properties
 
 --- accepts-pdf: true or false (Read/Write)
@@ -216,6 +226,14 @@ Printing support was added in GTK+ 2.10.
 --- state-message: String (Read)
 
     String giving the current state of the printer ((* Since 2.10 *))
+
+--- accepting-jobs: true or false (Read)
+
+    true if this printer is accepting new jobs
+
+--- paused: true or false (Read)
+
+    true if this printer is paused
 
 == Signals
 

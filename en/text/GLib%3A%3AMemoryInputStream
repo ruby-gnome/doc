@@ -1,0 +1,51 @@
+= class GLib::MemoryInputStream
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::InputStream
+        * GLib::MemoryInputStream
+
+== Included Modules
+
+  * GLib::Seekable
+
+== Class Methods
+
+--- GLib::MemoryInputStream.new
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- add_data
+
+     * Returns: self: ((*FIXME*))
+
+--- can_seek?
+
+    See GLib::Seekable#can_seek?.
+
+--- can_truncate?
+
+    See GLib::Seekable#can_truncate?.
+
+--- seek
+
+    See GLib::Seekable#seek.
+
+--- tell
+
+    See GLib::Seekable#tell.
+
+--- truncate
+
+    See GLib::Seekable#truncate.
+
+== See Also
+
+== ChangeLog
+
+

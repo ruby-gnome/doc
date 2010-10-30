@@ -185,6 +185,18 @@ The Gtk::ColorSelection is a widget that is used to select a color. It consists 
 
     See Gtk::Buildable#set_name.
 
+--- builder_name
+
+    See Gtk::Buildable#builder_name.
+
+--- builder_name=
+
+    See Gtk::Buildable#builder_name=.
+
+--- set_builder_name
+
+    See Gtk::Buildable#set_builder_name.
+
 == Properties
 
 --- current-alpha: Integer (Read/Write)

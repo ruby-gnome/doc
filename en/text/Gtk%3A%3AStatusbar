@@ -113,6 +113,18 @@ The message at the top of the stack can be removed using Gtk::Statusbar#pop. A m
 
     See Gtk::Buildable#set_name.
 
+--- builder_name
+
+    See Gtk::Buildable#builder_name.
+
+--- builder_name=
+
+    See Gtk::Buildable#builder_name=.
+
+--- set_builder_name
+
+    See Gtk::Buildable#set_builder_name.
+
 == Properties
 
 --- has-resize-grip: true or false (Read/Write)

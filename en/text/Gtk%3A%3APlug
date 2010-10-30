@@ -72,11 +72,32 @@ Together with Gtk::Socket, Gtk::Plug provides the ability to embed widgets from 
 
     See Gtk::Buildable#set_name.
 
+--- builder_name
+
+    See Gtk::Buildable#builder_name.
+
+--- builder_name=
+
+    See Gtk::Buildable#builder_name=.
+
+--- set_builder_name
+
+    See Gtk::Buildable#set_builder_name.
+
+--- socket_window
+
+    Gets the window of the socket the plug is embedded in.
+     * Returns: The window of the socket the plug is embedded in
+
 == Properties
 
 --- embedded: true or false (Read)
 
     Whether or not the plug is embedded
+
+--- socket-window: Gdk::Window (Read)
+
+    The window of the socket the plug is embedded in
 
 == Signals
 

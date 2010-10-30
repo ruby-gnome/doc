@@ -218,6 +218,18 @@ Gtk::Table#homogeneous=, can be used to set whether all cells in the table will 
 
     See Gtk::Buildable#set_name.
 
+--- builder_name
+
+    See Gtk::Buildable#builder_name.
+
+--- builder_name=
+
+    See Gtk::Buildable#builder_name=.
+
+--- set_builder_name
+
+    See Gtk::Buildable#set_builder_name.
+
 == Properties
 
 --- column-spacing: Integer (Read/Write)

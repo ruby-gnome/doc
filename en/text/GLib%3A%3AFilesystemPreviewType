@@ -1,0 +1,19 @@
+= class GLib::FilesystemPreviewType
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * GLib::FilesystemPreviewType
+
+== Constants
+
+--- IF_ALWAYS
+--- IF_LOCAL
+--- NEVER
+
+== See Also
+
+== ChangeLog
+
+

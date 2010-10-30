@@ -11,6 +11,7 @@
 == Instance Methods
 
 --- add_watch(priority = G_PRIORITY_DEFAULT, &block)
+
      Adds a bus watch to the default main context. This block is used to receive asynchronous messages in the main loop.
      There can only be a single bus watch per bus, you must remove it before you can set a new one.The watch can be removed using GLib::Source.remove or by returning FALSE from block.
      * priority: priority of the watch. G_PRIORITY_DEFAULT by default.
@@ -30,3 +31,5 @@
 == See Also
 
 == ChangeLog
+
+

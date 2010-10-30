@@ -443,6 +443,12 @@ Each stock ID can be associated with a stock item, which contains the user-visib
 
 --- DIRECTORY
 --- DISCARD
+--- CAPS_LOCK_WARNING
+--- PAGE_SETUP
+--- PRINT_ERROR
+--- PRINT_PAUSED
+--- PRINT_REPORT
+--- PRINT_WARNING
 
 == See Also
 

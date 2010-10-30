@@ -561,6 +561,10 @@ Base class for all pipeline elements.
 
      * Returns: self: ((*FIXME*))
 
+--- unlink
+
+     * Returns: self: ((*FIXME*))
+
 == Constants
 
 === GstElementState

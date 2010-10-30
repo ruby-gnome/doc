@@ -1,0 +1,16 @@
+= class GLib::IO::FailedHandledError
+
+== Object Hierarchy
+
+* Object
+  * Exception
+    * StandardError
+      * IOError
+        * GLib::IO::Error
+          * GLib::IO::FailedHandledError
+
+== See Also
+
+== ChangeLog
+
+

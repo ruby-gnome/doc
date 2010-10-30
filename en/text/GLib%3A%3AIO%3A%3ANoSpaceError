@@ -1,0 +1,16 @@
+= class GLib::IO::NoSpaceError
+
+== Object Hierarchy
+
+* Object
+  * Exception
+    * StandardError
+      * IOError
+        * GLib::IO::Error
+          * GLib::IO::NoSpaceError
+
+== See Also
+
+== ChangeLog
+
+

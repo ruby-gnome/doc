@@ -1,0 +1,33 @@
+= class GLib::UserDirectory
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * GLib::UserDirectory
+
+== Constants
+
+--- DESKTOP
+--- DIRECTORY_DESKTOP
+--- DIRECTORY_DOCUMENTS
+--- DIRECTORY_DOWNLOAD
+--- DIRECTORY_MUSIC
+--- DIRECTORY_PICTURES
+--- DIRECTORY_PUBLIC_SHARE
+--- DIRECTORY_TEMPLATES
+--- DIRECTORY_VIDEOS
+--- DOCUMENTS
+--- DOWNLOAD
+--- MUSIC
+--- N_DIRECTORIES
+--- PICTURES
+--- PUBLIC_SHARE
+--- TEMPLATES
+--- VIDEOS
+
+== See Also
+
+== ChangeLog
+
+

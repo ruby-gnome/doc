@@ -1,0 +1,16 @@
+= class GLib::IO::WouldRecurseError
+
+== Object Hierarchy
+
+* Object
+  * Exception
+    * StandardError
+      * IOError
+        * GLib::IO::Error
+          * GLib::IO::WouldRecurseError
+
+== See Also
+
+== ChangeLog
+
+

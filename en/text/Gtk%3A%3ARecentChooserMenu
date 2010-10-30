@@ -23,6 +23,7 @@ Recently used files are supported since GTK+ 2.10.
 
 == Included Modules
 
+  * #<Module:0x7fd7f0570268>
   * Gtk::RecentChooser
 
 == Class Methods
@@ -269,6 +270,18 @@ Recently used files are supported since GTK+ 2.10.
 --- set_name
 
     See Gtk::Buildable#set_name.
+
+--- builder_name
+
+    See Gtk::Buildable#builder_name.
+
+--- builder_name=
+
+    See Gtk::Buildable#builder_name=.
+
+--- set_builder_name
+
+    See Gtk::Buildable#set_builder_name.
 
 == Properties
 

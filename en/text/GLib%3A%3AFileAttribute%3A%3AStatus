@@ -1,0 +1,19 @@
+= class GLib::FileAttribute::Status
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * GLib::FileAttribute::Status
+
+== Constants
+
+--- ERROR_SETTING
+--- SET
+--- UNSET
+
+== See Also
+
+== ChangeLog
+
+

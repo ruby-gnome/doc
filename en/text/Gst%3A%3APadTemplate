@@ -48,10 +48,33 @@ Describe the media type of a Gst::Pad.
 
      * Returns: self: ((*FIXME*))
 
+--- name_template
+
+    Gets the name template of the pad template.
+     * Returns: The name template of the pad template
+
 == Constants
 
 --- FIXED
 --- FLAG_LAST
+
+== Properties
+
+--- caps: Gst::Caps (Read/Write)
+
+    The capabilities of the pad described by the pad template
+
+--- direction: Gst::PadDirection (Read/Write)
+
+    The direction of the pad described by the pad template
+
+--- name-template: String (Read/Write)
+
+    The name template of the pad template
+
+--- presence: Gst::PadPresence (Read/Write)
+
+    When the pad described by the pad template will become available
 
 == Signals
 

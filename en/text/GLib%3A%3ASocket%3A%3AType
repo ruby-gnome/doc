@@ -1,0 +1,20 @@
+= class GLib::Socket::Type
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * GLib::Socket::Type
+
+== Constants
+
+--- DATAGRAM
+--- INVALID
+--- SEQPACKET
+--- STREAM
+
+== See Also
+
+== ChangeLog
+
+

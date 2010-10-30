@@ -1,0 +1,17 @@
+= class GLib::Drive::StartFlags
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * GLib::Drive::StartFlags
+
+== Constants
+
+--- NONE
+
+== See Also
+
+== ChangeLog
+
+

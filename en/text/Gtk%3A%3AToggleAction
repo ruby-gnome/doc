@@ -90,6 +90,18 @@ A Gtk::ToggleAction corresponds roughly to a Gtk::CheckMenuItem. It has an "acti
 
     See Gtk::Buildable#set_name.
 
+--- builder_name
+
+    See Gtk::Buildable#builder_name.
+
+--- builder_name=
+
+    See Gtk::Buildable#builder_name=.
+
+--- set_builder_name
+
+    See Gtk::Buildable#set_builder_name.
+
 == Properties
 
 --- draw-as-radio: true or false (Read/Write)

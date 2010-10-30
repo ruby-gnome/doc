@@ -85,6 +85,18 @@ A radio menu item is a check menu item that belongs to a group. At each instant 
 
     See Gtk::Buildable#set_name.
 
+--- builder_name
+
+    See Gtk::Buildable#builder_name.
+
+--- builder_name=
+
+    See Gtk::Buildable#builder_name=.
+
+--- set_builder_name
+
+    See Gtk::Buildable#set_builder_name.
+
 == Properties
 
 --- group: Gtk::RadioMenuItem (Write)

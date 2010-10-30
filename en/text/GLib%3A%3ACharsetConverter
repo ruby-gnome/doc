@@ -1,0 +1,84 @@
+= class GLib::CharsetConverter
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::CharsetConverter
+
+== Included Modules
+
+  * GLib::Converter
+  * GLib::Initable
+
+== Class Methods
+
+--- GLib::CharsetConverter.new
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- convert
+
+    See GLib::Converter#convert.
+
+--- from_charset
+
+    Gets the character encoding to convert from.
+     * Returns: The character encoding to convert from
+
+--- init
+
+    See GLib::Initable#init.
+
+--- num_fallbacks
+
+     * Returns: self: ((*FIXME*))
+
+--- reset
+
+    See GLib::Converter#reset.
+
+--- set_use_fallback(use_fallback)
+
+    Same as use_fallback=.
+     * use_fallback: Use fallback (of form \<hexval>) for invalid bytes
+     * Returns: self
+
+--- to_charset
+
+    Gets the character encoding to convert to.
+     * Returns: The character encoding to convert to
+
+--- use_fallback=(use_fallback)
+
+    Sets the Use fallback (of form \<hexval>) for invalid bytes.
+     * use_fallback: Use fallback (of form \<hexval>) for invalid bytes
+     * Returns: use_fallback
+
+--- use_fallback?
+
+    Gets the Use fallback (of form \<hexval>) for invalid bytes.
+     * Returns: Use fallback (of form \<hexval>) for invalid bytes
+
+== Properties
+
+--- from-charset: String (Read/Write)
+
+    The character encoding to convert from
+
+--- to-charset: String (Read/Write)
+
+    The character encoding to convert to
+
+--- use-fallback: true or false (Read/Write)
+
+    Use fallback (of form \<hexval>) for invalid bytes
+
+== See Also
+
+== ChangeLog
+
+

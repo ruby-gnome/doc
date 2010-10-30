@@ -149,4 +149,3 @@ Gtk::TreeView, Gtk::TreeStore, Gtk::ListStore, Gtk::TreeSortable
 == ChangeLog
 
 -((<Masao>))
-

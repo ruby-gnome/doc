@@ -347,6 +347,35 @@ When handling events on the event box, keep in mind that coordinates in the imag
 
     See Gtk::Buildable#set_name.
 
+--- builder_name
+
+    See Gtk::Buildable#builder_name.
+
+--- builder_name=
+
+    See Gtk::Buildable#builder_name=.
+
+--- gicon
+
+    Gets the GIcon being displayed.
+     * Returns: The GIcon being displayed
+
+--- gicon=(gicon)
+
+    Sets the GIcon being displayed.
+     * gicon: The GIcon being displayed
+     * Returns: gicon
+
+--- set_builder_name
+
+    See Gtk::Buildable#set_builder_name.
+
+--- set_gicon(gicon)
+
+    Same as gicon=.
+     * gicon: The GIcon being displayed
+     * Returns: self
+
 == Constants
 
 === Type
@@ -384,6 +413,8 @@ Describes the image data representation used by a Gtk::Image. If you want to get
 --- ICON_NAME
 
     ((*Since 2.6*))
+
+--- GICON
 
 == Properties
 
@@ -441,6 +472,10 @@ Describes the image data representation used by a Gtk::Image. If you want to get
 
     The representation being used for image data
     * Default value: Gtk::Image::EMPTY
+
+--- gicon: GIcon (Read/Write)
+
+    The GIcon being displayed
 
 == See Also
 

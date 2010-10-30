@@ -85,11 +85,81 @@ Note that the user can disable display of menu icons, so make sure to still fill
 
     See Gtk::Buildable#set_name.
 
+--- accel_group=(accel_group)
+
+    Sets the Accel Group to use for stock accelerator keys.
+     * accel_group: The Accel Group to use for stock accelerator keys
+     * Returns: accel_group
+
+--- always_show_image=(always_show_image)
+
+    Sets the value whether the image will always be shown or not.
+     * always_show_image: true if the image will always be shown
+     * Returns: always_show_image
+
+--- always_show_image?
+
+    Gets the value whether the image will always be shown or not.
+     * Returns: true if the image will always be shown
+
+--- builder_name
+
+    See Gtk::Buildable#builder_name.
+
+--- builder_name=
+
+    See Gtk::Buildable#builder_name=.
+
+--- set_accel_group(accel_group)
+
+    Same as accel_group=.
+     * accel_group: The Accel Group to use for stock accelerator keys
+     * Returns: self
+
+--- set_always_show_image(always_show_image)
+
+    Same as always_show_image=.
+     * always_show_image: true if the image will always be shown
+     * Returns: self
+
+--- set_builder_name
+
+    See Gtk::Buildable#set_builder_name.
+
+--- set_use_stock(use_stock)
+
+    Same as use_stock=.
+     * use_stock: true if to use the label text to create a stock menu item
+     * Returns: self
+
+--- use_stock=(use_stock)
+
+    Sets the value whether to use the label text to create a stock menu item or not.
+     * use_stock: true if to use the label text to create a stock menu item
+     * Returns: use_stock
+
+--- use_stock?
+
+    Gets the value whether to use the label text to create a stock menu item or not.
+     * Returns: true if to use the label text to create a stock menu item
+
 == Properties
 
 --- image: Gtk::Widget (Read/Write)
 
     Child widget to appear next to the menu text
+
+--- accel-group: Gtk::AccelGroup (Write)
+
+    The Accel Group to use for stock accelerator keys
+
+--- always-show-image: true or false (Read/Write)
+
+    Whether the image will always be shown
+
+--- use-stock: true or false (Read/Write)
+
+    Whether to use the label text to create a stock menu item
 
 == See Also
 

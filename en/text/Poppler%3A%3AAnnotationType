@@ -1,0 +1,42 @@
+= class Poppler::AnnotationType
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * Poppler::AnnotationType
+
+== Constants
+
+--- CARET
+--- CIRCLE
+--- FILE_ATTACHMENT
+--- FREE_TEXT
+--- HIGHLIGHT
+--- INK
+--- LINE
+--- LINK
+--- MOVIE
+--- POLYGON
+--- POLY_LINE
+--- POPUP
+--- PRINTER_MARK
+--- SCREEN
+--- SOUND
+--- SQUARE
+--- SQUIGGLY
+--- STAMP
+--- STRIKE_OUT
+--- TEXT
+--- TRAP_NET
+--- TYPE_3D
+--- UNDERLINE
+--- UNKNOWN
+--- WATERMARK
+--- WIDGET
+
+== See Also
+
+== ChangeLog
+
+

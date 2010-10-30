@@ -1,0 +1,117 @@
+= module GLib::Mount
+
+== Included Modules
+
+  * GLib::Interface
+
+== Instance Methods
+
+--- can_eject?
+
+     * Returns: self: ((*FIXME*))
+
+--- can_unmount?
+
+     * Returns: self: ((*FIXME*))
+
+--- default_location
+
+     * Returns: self: ((*FIXME*))
+
+--- drive
+
+     * Returns: self: ((*FIXME*))
+
+--- eject_with_operation
+
+     * Returns: self: ((*FIXME*))
+
+--- eject_with_operation_finish
+
+     * Returns: self: ((*FIXME*))
+
+--- guess_content_type
+
+     * Returns: self: ((*FIXME*))
+
+--- guess_content_type_finish
+
+     * Returns: self: ((*FIXME*))
+
+--- guess_content_type_sync
+
+     * Returns: self: ((*FIXME*))
+
+--- icon
+
+     * Returns: self: ((*FIXME*))
+
+--- name
+
+     * Returns: self: ((*FIXME*))
+
+--- remount
+
+     * Returns: self: ((*FIXME*))
+
+--- remount_finish
+
+     * Returns: self: ((*FIXME*))
+
+--- root
+
+     * Returns: self: ((*FIXME*))
+
+--- shadow
+
+     * Returns: self: ((*FIXME*))
+
+--- shadowed?
+
+     * Returns: self: ((*FIXME*))
+
+--- unmount_with_operation
+
+     * Returns: self: ((*FIXME*))
+
+--- unmount_with_operation_finish
+
+     * Returns: self: ((*FIXME*))
+
+--- unshadow
+
+     * Returns: self: ((*FIXME*))
+
+--- uuid
+
+     * Returns: self: ((*FIXME*))
+
+--- volume
+
+     * Returns: self: ((*FIXME*))
+
+== Constants
+
+--- MOUNT_NONE
+--- UNMOUNT_FORCE
+--- UNMOUNT_NONE
+
+== Signals
+
+--- changed: self
+
+     * self: GLib::Mount: ((*FIXME*))
+
+--- pre-unmount: self
+
+     * self: GLib::Mount: ((*FIXME*))
+
+--- unmounted: self
+
+     * self: GLib::Mount: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

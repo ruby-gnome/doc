@@ -1,0 +1,16 @@
+= class GLib::IO::IsDirectoryError
+
+== Object Hierarchy
+
+* Object
+  * Exception
+    * StandardError
+      * IOError
+        * GLib::IO::Error
+          * GLib::IO::IsDirectoryError
+
+== See Also
+
+== ChangeLog
+
+

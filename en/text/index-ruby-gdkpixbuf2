@@ -94,6 +94,9 @@
   * Gdk::PixbufSimpleAnim
   * Gdk::PixbufSimpleAnim.new
   * Gdk::PixbufSimpleAnim#add_frame
+  * Gdk::PixbufSimpleAnim#loop=
+  * Gdk::PixbufSimpleAnim#loop?
+  * Gdk::PixbufSimpleAnim#set_loop
   * Gdk::Pixdata
   * Gdk::Pixdata.deserialize
   * Gdk::Pixdata.from_pixbuf

@@ -320,6 +320,11 @@ Beyond merely rendering a cell, cell renderers can optionally provide active use
     * sensitive: Display the cell sensitive (true or false)
     * Returns: self
 
+--- editing?
+
+    Gets the value whether the cell renderer is currently in editing mode or not.
+     * Returns: true if the cell renderer is currently in editing mode
+
 == Constants
 
 === State
@@ -434,6 +439,10 @@ Identifies how the user can interact with a particular cell.
 
     The ypad
     * Default value: 0
+
+--- editing: true or false (Read)
+
+    Whether the cell renderer is currently in editing mode
 
 == Signals
 

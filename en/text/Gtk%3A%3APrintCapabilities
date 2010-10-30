@@ -44,6 +44,10 @@
 
      * Returns: self: ((*FIXME*))
 
+--- number_up_layout?
+
+     * Returns: self: ((*FIXME*))
+
 == Constants
 
 --- COLLATE
@@ -55,6 +59,7 @@
 --- PREVIEW
 --- REVERSE
 --- SCALE
+--- NUMBER_UP_LAYOUT
 
 == See Also
 

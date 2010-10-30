@@ -1,0 +1,19 @@
+= class Pango::Gravity::Hint
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * Pango::Gravity::Hint
+
+== Constants
+
+--- LINE
+--- NATURAL
+--- STRONG
+
+== See Also
+
+== ChangeLog
+
+

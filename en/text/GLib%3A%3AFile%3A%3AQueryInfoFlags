@@ -1,0 +1,28 @@
+= class GLib::File::QueryInfoFlags
+
+== Object Hierarchy
+
+* Object
+  * GLib::Flags
+    * GLib::File::QueryInfoFlags
+
+== Instance Methods
+
+--- nofollow_symlinks?
+
+     * Returns: self: ((*FIXME*))
+
+--- none?
+
+     * Returns: self: ((*FIXME*))
+
+== Constants
+
+--- NOFOLLOW_SYMLINKS
+--- NONE
+
+== See Also
+
+== ChangeLog
+
+

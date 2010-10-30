@@ -180,4 +180,3 @@ Gtk::RcStyle is used to represent a set of information about the appearance of a
 
 * 2005-06-15: Fixed wrong explanations of set_(fg|bg|text|base) [bug:1219911] y ((<Masao>))
 * 2005-03-29: Added. - ((<Masao>))
-

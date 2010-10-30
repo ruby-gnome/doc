@@ -36,6 +36,18 @@
 
      * Returns: self: ((*FIXME*))
 
+--- media1?
+
+     * Returns: self: ((*FIXME*))
+
+--- media2?
+
+     * Returns: self: ((*FIXME*))
+
+--- media3?
+
+     * Returns: self: ((*FIXME*))
+
 == Constants
 
 --- DELTA_UNIT
@@ -45,6 +57,9 @@
 --- LAST
 --- PREROLL
 --- READONLY
+--- MEDIA1
+--- MEDIA2
+--- MEDIA3
 
 == See Also
 

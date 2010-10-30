@@ -84,6 +84,18 @@ Gtk::Buildable's functions.
      * name: name to set.
      * Returns: self
 
+--- builder_name
+
+     * Returns: self: ((*FIXME*))
+
+--- builder_name=
+
+     * Returns: self: ((*FIXME*))
+
+--- set_builder_name
+
+     * Returns: self: ((*FIXME*))
+
 == See Also
 
   * Gtk::Builder

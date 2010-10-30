@@ -1,0 +1,79 @@
+= class GLib::DataOutputStream
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::OutputStream
+        * GLib::FilterOutputStream
+          * GLib::DataOutputStream
+
+== Class Methods
+
+--- GLib::DataOutputStream.new
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- byte_order
+
+    Gets the byte order.
+     * Returns: The byte order
+
+--- byte_order=(byte_order)
+
+    Sets the byte order.
+     * byte_order: The byte order
+     * Returns: byte_order
+
+--- put_byte
+
+     * Returns: self: ((*FIXME*))
+
+--- put_int16
+
+     * Returns: self: ((*FIXME*))
+
+--- put_int32
+
+     * Returns: self: ((*FIXME*))
+
+--- put_int64
+
+     * Returns: self: ((*FIXME*))
+
+--- put_string
+
+     * Returns: self: ((*FIXME*))
+
+--- put_uint16
+
+     * Returns: self: ((*FIXME*))
+
+--- put_uint32
+
+     * Returns: self: ((*FIXME*))
+
+--- put_uint64
+
+     * Returns: self: ((*FIXME*))
+
+--- set_byte_order(byte_order)
+
+    Same as byte_order=.
+     * byte_order: The byte order
+     * Returns: self
+
+== Properties
+
+--- byte-order: GDataStreamByteOrder (Read/Write)
+
+    The byte order
+
+== See Also
+
+== ChangeLog
+
+

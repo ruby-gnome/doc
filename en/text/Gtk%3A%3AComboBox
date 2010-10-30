@@ -353,6 +353,47 @@ In addition to the model-view API, Gtk::ComboBox offers a simple API which is su
 
     See Gtk::Buildable#set_name.
 
+--- builder_name
+
+    See Gtk::Buildable#builder_name.
+
+--- builder_name=
+
+    See Gtk::Buildable#builder_name=.
+
+--- button_sensitivity
+
+    Gets the value whether the dropdown button is sensitive when the model is empty or not.
+     * Returns: true if the dropdown button is sensitive when the model is empty
+
+--- button_sensitivity=(button_sensitivity)
+
+    Sets the value whether the dropdown button is sensitive when the model is empty or not.
+     * button_sensitivity: true if the dropdown button is sensitive when the model is empty
+     * Returns: button_sensitivity
+
+--- editing_canceled=
+
+    See Gtk::CellEditable#editing_canceled=.
+
+--- editing_canceled?
+
+    See Gtk::CellEditable#editing_canceled?.
+
+--- set_builder_name
+
+    See Gtk::Buildable#set_builder_name.
+
+--- set_button_sensitivity(button_sensitivity)
+
+    Same as button_sensitivity=.
+     * button_sensitivity: true if the dropdown button is sensitive when the model is empty
+     * Returns: self
+
+--- set_editing_canceled
+
+    See Gtk::CellEditable#set_editing_canceled.
+
 == Properties
 
 --- active: Integer (Read/Write)
@@ -410,6 +451,10 @@ In addition to the model-view API, Gtk::ComboBox offers a simple API which is su
     If wrap-width is set to a positive value, the list will be displayed in multiple columns, the number of columns is determined by wrap-width. ((* Since 2.4 *))
     * Allowed values: >= 0
     * Default value: 0
+
+--- button-sensitivity: Gtk::SensitivityType (Read/Write)
+
+    Whether the dropdown button is sensitive when the model is empty
 
 == Style Properties
 

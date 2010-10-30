@@ -157,8 +157,6 @@ To give you an idea how all this fits together let's look at an example you can 
  window.show_all
  Gtk.main
 
-
-
 == Included Modules
 
   * GLib::Interface
@@ -539,6 +537,18 @@ To give you an idea how all this fits together let's look at an example you can 
 
     Queries whether a file chooser is set to confirm for overwriting when the user types a file name that already exists. ((*Since 2.8*))
     * Returns: true if the file chooser will present a confirmation dialog; false otherwise.
+
+--- create_folders=
+
+     * Returns: self: ((*FIXME*))
+
+--- create_folders?
+
+     * Returns: self: ((*FIXME*))
+
+--- set_create_folders
+
+     * Returns: self: ((*FIXME*))
 
 == Constants
 

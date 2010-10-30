@@ -1,0 +1,16 @@
+= class GLib::IO::NotSupportedError
+
+== Object Hierarchy
+
+* Object
+  * Exception
+    * StandardError
+      * IOError
+        * GLib::IO::Error
+          * GLib::IO::NotSupportedError
+
+== See Also
+
+== ChangeLog
+
+

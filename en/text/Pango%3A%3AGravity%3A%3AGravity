@@ -1,0 +1,21 @@
+= class Pango::Gravity::Gravity
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * Pango::Gravity::Gravity
+
+== Constants
+
+--- AUTO
+--- EAST
+--- NORTH
+--- SOUTH
+--- WEST
+
+== See Also
+
+== ChangeLog
+
+

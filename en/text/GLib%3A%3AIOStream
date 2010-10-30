@@ -1,0 +1,85 @@
+= class GLib::IOStream
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::IOStream
+
+== Instance Methods
+
+--- clear_pending
+
+     * Returns: self: ((*FIXME*))
+
+--- close
+
+     * Returns: self: ((*FIXME*))
+
+--- close_async
+
+     * Returns: self: ((*FIXME*))
+
+--- close_finish
+
+     * Returns: self: ((*FIXME*))
+
+--- closed=(closed)
+
+    Sets the Is the stream closed.
+     * closed: Is the stream closed
+     * Returns: closed
+
+--- closed?
+
+    Gets the Is the stream closed.
+     * Returns: Is the stream closed
+
+--- has_pending?
+
+     * Returns: self: ((*FIXME*))
+
+--- input_stream
+
+    Gets the GInputStream to read from.
+     * Returns: The GInputStream to read from
+
+--- output_stream
+
+    Gets the GOutputStream to write to.
+     * Returns: The GOutputStream to write to
+
+--- pending=
+
+     * Returns: self: ((*FIXME*))
+
+--- set_closed(closed)
+
+    Same as closed=.
+     * closed: Is the stream closed
+     * Returns: self
+
+--- set_pending
+
+     * Returns: self: ((*FIXME*))
+
+== Properties
+
+--- closed: true or false (Read/Write)
+
+    Is the stream closed
+
+--- input-stream: GInputStream (Read)
+
+    The GInputStream to read from
+
+--- output-stream: GOutputStream (Read)
+
+    The GOutputStream to write to
+
+== See Also
+
+== ChangeLog
+
+

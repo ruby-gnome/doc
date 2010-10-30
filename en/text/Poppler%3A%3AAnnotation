@@ -1,0 +1,40 @@
+= class Poppler::Annotation
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Poppler::Annotation
+
+== Instance Methods
+
+--- color
+
+     * Returns: self: ((*FIXME*))
+
+--- contents
+
+     * Returns: self: ((*FIXME*))
+
+--- flags
+
+     * Returns: self: ((*FIXME*))
+
+--- modified
+
+     * Returns: self: ((*FIXME*))
+
+--- name
+
+     * Returns: self: ((*FIXME*))
+
+--- type
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

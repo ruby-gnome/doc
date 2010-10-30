@@ -97,6 +97,18 @@ Using a Gtk::OptionMenu is simple; build a Gtk::Menu, by calling Gtk::Menu.new, 
 
     See Gtk::Buildable#set_name.
 
+--- builder_name
+
+    See Gtk::Buildable#builder_name.
+
+--- builder_name=
+
+    See Gtk::Buildable#builder_name=.
+
+--- set_builder_name
+
+    See Gtk::Buildable#set_builder_name.
+
 == Properties
 
 --- menu: Gtk::Menu (Read/Write)

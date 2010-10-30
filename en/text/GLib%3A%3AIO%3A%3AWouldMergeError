@@ -1,0 +1,16 @@
+= class GLib::IO::WouldMergeError
+
+== Object Hierarchy
+
+* Object
+  * Exception
+    * StandardError
+      * IOError
+        * GLib::IO::Error
+          * GLib::IO::WouldMergeError
+
+== See Also
+
+== ChangeLog
+
+

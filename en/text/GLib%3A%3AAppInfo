@@ -1,0 +1,133 @@
+= module GLib::AppInfo
+
+== Included Modules
+
+  * GLib::Interface
+
+== Module Functions
+
+--- GLib::AppInfo.all
+
+     * Returns: self: ((*FIXME*))
+
+--- GLib::AppInfo.create_from_commandline
+
+     * Returns: self: ((*FIXME*))
+
+--- GLib::AppInfo.get_all_for_type
+
+     * Returns: self: ((*FIXME*))
+
+--- GLib::AppInfo.get_default_for_type
+
+     * Returns: self: ((*FIXME*))
+
+--- GLib::AppInfo.get_default_for_uri_scheme
+
+     * Returns: self: ((*FIXME*))
+
+--- GLib::AppInfo.launch_default_for_uri
+
+     * Returns: self: ((*FIXME*))
+
+--- GLib::AppInfo.reset_type_associations
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- add_supports_type
+
+     * Returns: self: ((*FIXME*))
+
+--- can_delete?
+
+     * Returns: self: ((*FIXME*))
+
+--- can_remove_supports_type?
+
+     * Returns: self: ((*FIXME*))
+
+--- commandline
+
+     * Returns: self: ((*FIXME*))
+
+--- delete
+
+     * Returns: self: ((*FIXME*))
+
+--- description
+
+     * Returns: self: ((*FIXME*))
+
+--- display_name
+
+     * Returns: self: ((*FIXME*))
+
+--- dup
+
+     * Returns: self: ((*FIXME*))
+
+--- equal?
+
+     * Returns: self: ((*FIXME*))
+
+--- executable
+
+     * Returns: self: ((*FIXME*))
+
+--- icon
+
+     * Returns: self: ((*FIXME*))
+
+--- id
+
+     * Returns: self: ((*FIXME*))
+
+--- launch
+
+     * Returns: self: ((*FIXME*))
+
+--- launch_uris
+
+     * Returns: self: ((*FIXME*))
+
+--- name
+
+     * Returns: self: ((*FIXME*))
+
+--- remove_supports_type
+
+     * Returns: self: ((*FIXME*))
+
+--- set_as_default_for_extension
+
+     * Returns: self: ((*FIXME*))
+
+--- set_as_default_for_type
+
+     * Returns: self: ((*FIXME*))
+
+--- should_show?
+
+     * Returns: self: ((*FIXME*))
+
+--- supports_files?
+
+     * Returns: self: ((*FIXME*))
+
+--- supports_uris?
+
+     * Returns: self: ((*FIXME*))
+
+== Constants
+
+--- CREATE_NEEDS_TERMINAL
+--- CREATE_NONE
+--- CREATE_SUPPORTS_URIS
+
+== See Also
+
+== ChangeLog
+
+

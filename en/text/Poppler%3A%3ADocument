@@ -192,6 +192,20 @@
 
      * Returns: self: ((*FIXME*))
 
+--- format_major
+
+    Gets the PDF major version number of the document.
+     * Returns: The PDF major version number of the document
+
+--- format_minor
+
+    Gets the PDF minor version number of the document.
+     * Returns: The PDF minor version number of the document
+
+--- save_a_copy
+
+     * Returns: self: ((*FIXME*))
+
 == Properties
 
 --- author: String (Read)
@@ -253,6 +267,14 @@
 --- metadata: String (Read)
 
     Embedded XML metadata
+
+--- format-major: Integer (Read)
+
+    The PDF major version number of the document
+
+--- format-minor: Integer (Read)
+
+    The PDF minor version number of the document
 
 == See Also
 

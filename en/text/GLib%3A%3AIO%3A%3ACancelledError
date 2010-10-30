@@ -1,0 +1,16 @@
+= class GLib::IO::CancelledError
+
+== Object Hierarchy
+
+* Object
+  * Exception
+    * StandardError
+      * IOError
+        * GLib::IO::Error
+          * GLib::IO::CancelledError
+
+== See Also
+
+== ChangeLog
+
+

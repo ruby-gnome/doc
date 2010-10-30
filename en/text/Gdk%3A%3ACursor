@@ -386,6 +386,8 @@ Cursors by themselves are not very interesting, they must be be bound to a windo
 
     type of cursors constructed with Gdk::Pixmap.
 
+--- BLANK_CURSOR
+
 == See Also
 
 == ChangeLog

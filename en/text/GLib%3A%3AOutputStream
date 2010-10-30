@@ -1,0 +1,98 @@
+= class GLib::OutputStream
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::OutputStream
+
+== Instance Methods
+
+--- clear_pending
+
+     * Returns: self: ((*FIXME*))
+
+--- close
+
+     * Returns: self: ((*FIXME*))
+
+--- close_async
+
+     * Returns: self: ((*FIXME*))
+
+--- close_finish
+
+     * Returns: self: ((*FIXME*))
+
+--- closed?
+
+     * Returns: self: ((*FIXME*))
+
+--- closing?
+
+     * Returns: self: ((*FIXME*))
+
+--- flush
+
+     * Returns: self: ((*FIXME*))
+
+--- flush_async
+
+     * Returns: self: ((*FIXME*))
+
+--- flush_finish
+
+     * Returns: self: ((*FIXME*))
+
+--- has_pending?
+
+     * Returns: self: ((*FIXME*))
+
+--- pending=
+
+     * Returns: self: ((*FIXME*))
+
+--- set_pending
+
+     * Returns: self: ((*FIXME*))
+
+--- splice
+
+     * Returns: self: ((*FIXME*))
+
+--- splice_async
+
+     * Returns: self: ((*FIXME*))
+
+--- splice_finish
+
+     * Returns: self: ((*FIXME*))
+
+--- write
+
+     * Returns: self: ((*FIXME*))
+
+--- write_all
+
+     * Returns: self: ((*FIXME*))
+
+--- write_async
+
+     * Returns: self: ((*FIXME*))
+
+--- write_finish
+
+     * Returns: self: ((*FIXME*))
+
+== Constants
+
+--- SPLICE_CLOSE_SOURCE
+--- SPLICE_CLOSE_TARGET
+--- SPLICE_NONE
+
+== See Also
+
+== ChangeLog
+
+

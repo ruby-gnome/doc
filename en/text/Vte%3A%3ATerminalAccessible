@@ -182,6 +182,10 @@
 
     See Atk::Component#size.
 
+--- mdi_zorder
+
+    See Atk::Component#mdi_zorder.
+
 == See Also
 
 == ChangeLog

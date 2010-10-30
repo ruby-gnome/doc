@@ -16,6 +16,10 @@ This widget is considered too specialized/little-used for GTK+, and will in the 
           * Gtk::Widget
             * Gtk::Ruler
 
+== Included Modules
+
+  * #<Module:0x7fd7f0567618>
+
 == Instance Methods
 
 --- metric
@@ -163,6 +167,18 @@ This widget is considered too specialized/little-used for GTK+, and will in the 
 --- set_name
 
     See Gtk::Buildable#set_name.
+
+--- builder_name
+
+    See Gtk::Buildable#builder_name.
+
+--- builder_name=
+
+    See Gtk::Buildable#builder_name=.
+
+--- set_builder_name
+
+    See Gtk::Buildable#set_builder_name.
 
 == Properties
 

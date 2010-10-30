@@ -1,0 +1,13 @@
+= class Gst::Query
+
+== Object Hierarchy
+
+* Object
+  * Gst::MiniObject
+    * Gst::Query
+
+== See Also
+
+== ChangeLog
+
+

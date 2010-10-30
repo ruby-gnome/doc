@@ -1,0 +1,22 @@
+= module GLib::SocketConnectable
+
+== Included Modules
+
+  * Enumerable
+  * GLib::Interface
+
+== Instance Methods
+
+--- each
+
+     * Returns: self: ((*FIXME*))
+
+--- enumerate
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+
