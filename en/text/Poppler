@@ -1,20 +1,26 @@
 = module Poppler
 
+If you require to use poppler without a running Xorgserver,
+try the following code:
+
+  begin
+    require 'gtk2'
+  rescue Gtk::InitError
+  end
+  require 'poppler'
+
 == Module Functions
 
 --- Poppler.backend
 
-     
      * Returns: Poppler::Backend
 
 --- Poppler.cairo_available?
 
-     
      * Returns: true if rcairo is avilable, otherwise false
 
 --- Poppler.version
 
-     
      * Returns: Poppler version as String
 
 == Constants

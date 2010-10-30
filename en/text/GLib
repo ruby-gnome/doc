@@ -83,12 +83,13 @@
      * Returns: self: ((*FIXME*))
 
 --- GLib.application_name
+     Retrieves the application name.
+     * Returns: application name
 
-     * Returns: self: ((*FIXME*))
+--- GLib.application_name=(new_name) 
+     Sets the application name and GLib.prgname name to <new_name>.
+     * Returns: application name
 
---- GLib.application_name=
-
-     * Returns: self: ((*FIXME*))
 
 --- GLib.bit_nth_lsf
 
@@ -106,13 +107,13 @@
 
      * Returns: self: ((*FIXME*))
 
---- GLib.check_version?
+--- GLib.check_version?(major, minor, micro)
+     Check out a hypothetical version of library calls you would like to run against the GLib installed with your Ruby. For instance you would need to run GLib 2.12.3. To see if your installed GLib is younger or of the same age as what your requirements are run GLib.check_version?(2, 12, 3); - ((*FIXME ???*)) 
+     * major 
+     * minor 
+     * micro
+     * Returns: true if major, minor, micro are less or equal to the GLib installed version
 
-     * Returns: self: ((*FIXME*))
-
---- GLib.home_dir
-    This "GLib" class method provides a compatible way to obtain current user's home directory regardless of the operating system you are on. (The original GLib's C function name is "g_get_home_dir()")
-     * Returns: a string representing current user's home directory name.
 
 --- GLib.exit_application
 
@@ -122,77 +123,93 @@
 
      * Returns: self: ((*FIXME*))
 
---- GLib.getenv
+--- GLib.getenv(env_var_name)
 
-     * Returns: self: ((*FIXME*))
+     Obtain the value of system environment variable.
+     * env_var_name: name of the environment variable
+     * Returns: the value of the environment variable, or nil
+
 
 --- GLib.home_dir
+    This "GLib" class method provides a compatible way to obtain current user's home directory regardless of the operating system you are on. (The original GLib's C function name is "g_get_home_dir()")
+     * Returns: a string representing current user's home directory name.
 
-     * Returns: self: ((*FIXME*))
 
 --- GLib.host_name
 
-     * Returns: self: ((*FIXME*))
+     * Returns: a string representing hostname.
 
 --- GLib.listenv
 
-     * Returns: self: ((*FIXME*))
+     * Returns an aray containing all the available environment variables. It does not list any values associated with these variables. That you need to extract yourself.
 
 --- GLib.os_beos?
 
-     * Returns: self: ((*FIXME*))
+     * Returns: true if run on BeOS, otherwise false
 
 --- GLib.os_unix?
 
-     * Returns: self: ((*FIXME*))
+     * Returns: true if run on Unix-like OS, otherwise false
 
 --- GLib.os_win32?
 
-     * Returns: self: ((*FIXME*))
+     * Returns: true if run on Windows, otherwise false
 
 --- GLib.parse_debug_string
 
      * Returns: self: ((*FIXME*))
 
---- GLib.path_get_basename
+--- GLib.path_get_basename(path)
+     Obtain base name from a path i.e.: ("/aaa/bbb/ccc" -> "ccc"). NOTE: this function is cross platform compatible it does not care what the File::SEPARATOR is.
+     * A string representing either an absolute or a relative the directory path.
+     * Returns: base name (last item from the path).
 
-     * Returns: self: ((*FIXME*))
+--- GLib.path_get_dirname(path)
+     Obtain the folder in which the base name from a path sits i.e.: ("/aaa/bbb/ccc" -> "/aaa/bbb")
+     * path: a string representing either an absolute or a relative the directory path.
+     * Returns: folder in which the last item from the path resides. NOTE: this function is cross platform compatible it does not care what the File::SEPARATOR is.
 
---- GLib.path_get_dirname
+--- GLib.path_is_absolute?(path)
 
-     * Returns: self: ((*FIXME*))
+     * path: a string representing either an absolute or a relative the directory path.
+     * Returns: true the string in <path> represents an absolute path. NOTE: this function is cross platform compatible it does not care what the File::SEPARATOR is.
 
---- GLib.path_is_absolute?
+--- GLib.path_skip_root(path)
 
-     * Returns: self: ((*FIXME*))
-
---- GLib.path_skip_root
-
-     * Returns: self: ((*FIXME*))
+     * path: a string representing either an absolute or a relative the directory path.
+     Removes the root directory from the path - (i.e.: "/aaa/bbb/ccc" -> "aaa/bbb/ccc")
+     * Returns: the relative path without root (/).
 
 --- GLib.prgname
 
-     * Returns: self: ((*FIXME*))
+     Retrieves program name
+     * Returns: program name - (on unix-like platforms the same as 'basename($0)')
 
---- GLib.prgname=
+--- GLib.prgname=(prog_name)
 
-     * Returns: self: ((*FIXME*))
+     Sets program name to the value in <prog_name>
+     * Returns: Returns: program name - (on unix-like platforms the same as  'basename($0)')
 
 --- GLib.real_name
 
-     * Returns: self: ((*FIXME*))
+     * Returns: real name of the user as opposed to "log-in name"
 
 --- GLib.set_application_name
-
-     * Returns: self: ((*FIXME*))
+     Sets the application name and GLib::program name to <new_name>.  - same as GLib.application_name = (new_name)
+     * Returns: application name
 
 --- GLib.set_prgname
 
-     * Returns: self: ((*FIXME*))
+     Sets program name - same as GLib.prgname=(prog_name)
+     * Returns: Returns: program name - (on unix-like platforms the same as  'basename($0)')
 
---- GLib.setenv
 
-     * Returns: self: ((*FIXME*))
+--- GLib.setenv(env_var_name, new_value)
+
+     Sets the  environment variable <env_var_nameto> a new value <new_value>. The environment variable is set only for the current Ruby session. No system settings are effected.
+     * env_var_name: name of the environment variable
+     * new_value: new value the environment variable <env_var_nameto> is to be set to.
+     * Returns: the value of the environment variable, or nil
 
 --- GLib.spaced_primes_closest
 
@@ -200,15 +217,12 @@
 
 --- GLib.tmp_dir
 
-     * Returns: self: ((*FIXME*))
-
---- GLib.unsetenv
-
-     * Returns: self: ((*FIXME*))
+     * Returns: temporary directory name
 
 --- GLib.user_name
 
-     * Returns: self: ((*FIXME*))
+     * Returns: user's log-in name.
+
 
 --- GLib.utf8_validate
 
@@ -244,6 +258,7 @@
 --- MAXSHORT
 --- MAXSIZE
 --- MAXUINT
+
 --- MAXUINT16
 --- MAXUINT32
 --- MAXUINT64

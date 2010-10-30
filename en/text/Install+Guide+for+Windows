@@ -71,7 +71,7 @@
     According to ((<Bug 1381072|URL:http://sourceforge.net/tracker/index.php?func=detail&aid=1381072&group_id=53614&atid=470969>)), xmlparse.dll(and xmltok.dll) are duplicated on your system. So remove(rename) these dll first except GTK dlls(Ex: c:\ruby\lib\GTK\bin). 
 
 === Author
-* Joao Pedrosa - joaopedrosa at yahoo dot com
+* Joao Pedrosa - joaopedrosa@yahoo.com
 
 === ChangeLog
 :2007-02-12 Masao Mutoh

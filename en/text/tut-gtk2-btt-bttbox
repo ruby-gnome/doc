@@ -1,0 +1,46 @@
+= Selector/Chooser Interface And Widgets
+{{link "tut-gtk2-fichoo-fontbtt", "tut-gtk2-selchoose", "tut-gtk", "tut-gtk2-numtxt"}}
+
+== Not a button but vaguely related Button Box
+
+As the title above suggests this widget does not really belong between the buttons, however there are a few features included with it that prompted its inclusion in this batch of sessions dealing with buttons. 
+ 
+ Gtk::Bin
+ |   Gtk::Window
+ |   |   Gtk::Button
+ |   |   |   Gtk::ToggleButton
+ |   |   |   |   Gtk::CheckButton
+ |   |   |   |   |   Gtk::RadioButton
+ |   |   |   Gtk::ColorButton
+ |   |   |   Gtk::FontButton
+ |   |   |   Gtk::LinkButton
+ |   |   |   Gtk::OptionMenu
+ |   |   |   Gtk::ScaleButton
+ |   |   |   |   Gtk::VolumeButton
+ Gtk::Box
+ |   Gtk::ButtonBox
+ |   |   Gtk::HButtonBox
+ |   |   Gtk::VButtonBox
+
+The above hierarchy clearly shows two distinct hierarchies. What makes the two related is the fact that these boxes are used to pack buttons. The primary purpose of Gtk::ButtonBox class is to keep track of the various properties of Gtk::HButtonBox and Gtk::VButtonBox widgets. 
+
+Once a button box is created with either Gtk::HButtonBox.new or Gtk::HButtonBox.new, you may be required to set up the layout style for the buttons within the box. You accomplish this with the following methods:
+
+* Gtk::ButtonBox#layout_style - Retrieves the method being used to arrange the buttons in a button box.
+* Gtk::ButtonBox#layout_style=(style) - Changes the way buttons are arranged in their container.
+* Gtk::ButtonBox#set_layout_style(style) - Same as Gtk::ButtonBox#layout_style=.
+
+In the above method calls the style argument will be one of the following:
+
+--- Gtk::ButtonBox Style
+
+    Used to dictate the style that a Gtk::ButtonBox uses to layout the buttons it contains.
+
+     * DEFAULT_STYLE -  Default packing.
+     * SPREAD - Buttons are evenly spread across the Gtk::ButtonBox.
+     * EDGE - Buttons are placed at the edges of the Gtk::ButtonBox.
+     * START - Buttons are grouped towards the start of box, (on the left for a Gtk::HBox, or the top for a Gtk::VBox).
+     * END - Buttons are grouped towards the end of a box, (on the right for a Gtk::HBox, or the bottom for a Gtk::VBox).
+     * CENTER 
+
+Finally you have add buttons with Gtk::ButtonBox#add_child (See Gtk::Buildable#add_child). 

@@ -53,7 +53,7 @@
 
 == See Also
 
-Gtk::Window#add_accel_group, Gtk::AccepMap.change_entry, Gtk::ItemFactory.new, Gtk::Label.new
+Gtk::Window#add_accel_group, Gtk::AccelMap.change_entry, Gtk::ItemFactory.new, Gtk::Label.new
 
 == ChangeLog
 

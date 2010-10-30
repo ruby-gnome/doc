@@ -14,7 +14,7 @@ Gdk::Pixbuf is a class for image loading and manipulation.
 --- Gdk::Pixbuf.new(filename, width = nil, height = nil)
 
     Creates a new pixbuf by loading an image from a file. The file format is detected automatically. 
-    Possible exceptions are in the Gdk::PixBufError and GLib::FileError.
+    Possible exceptions are in the Gdk::PixbufError and GLib::FileError.
     * filename: Name of file to load
     * width: The width the image should have or nil for default width. ((*Since 2.4*))
     * height: The height the image should have or nil for default height. ((*Since 2.4*))

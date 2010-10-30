@@ -1,6 +1,15 @@
 = Selector/Chooser Interface And Widgets
 {{link "tut-gtk2-numtxt-hvscales", "tut-gtk2-selchoose", "tut-gtk", "tut-gtk2-filechooser"}}
 
+== Submenues of "Selector/Chooser Interface And Widgets" sections
+
+  * ((<File Chooser Button|tut-gtk2-filechooser>))
+  * ((<Colour Button|tut-gtk2-colorsel-buttons>))
+    * ((<Modifying the foreground colour of a widget|tut-gtk2-colorsel-buttons#Modifying the foreground colour of a widget>)){{image_right("dialog-warning-s2.png")}}
+  * ((<Font Button|tut-gtk2-fichoo-fontbtt>)) (!)
+  * ((<Test Your Understanding|tut-gtk2-selchoo-tyu>))
+
+== Short Description
 
 All these widgets are members of the so called family of Selectors widgets. In the Gtk documentation you will find them under the heading Selectors (File/Font/Color/Input Devices). The family is divided into four groups:
 
@@ -28,7 +37,5 @@ Gtk::FileChooser module represents just an interface, hence we never create any 
 
 To give you an idea how some of these fit together we should look at an example you can copy-and-paste into a file on your system, run it and explore the features in the code.
 
-== Gtk::InputDialog - Configure devices for the XInput extension
----------------------------------------------------------------------------
-{{br}}
-Some (most) of the above items will be explained in the following sections.
+== Gtk::InputDialog 
+Configure devices for the XInput extension

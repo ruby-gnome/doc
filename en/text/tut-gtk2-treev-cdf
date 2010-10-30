@@ -1,0 +1,113 @@
+= The Tree View Widget
+{{link "tut-gtk2-treev-etr", "tut-gtk2-treev", "tut-gtk", "tut-gtk2-treev-crs"}}
+
+== Cell Data Functions
+
+{{image_right("treev-cdf-01.png")}}
+
+If you need to further customize every cell before it is rendered to the screen, you can use cell data function Gtk::TreeViewColumn#set_cell_data_func(cell) {|tvc, cell, model, iter| ... }. This method allows you to tinker with every property for each individual cell. For example, you can set the background colour based on the content of the cell, or format the numeric  value to your liking, or perhaps only restricting the number of decimal places for a floating point. It can also be used to set properties that are calculated during the run time. The next example will give you an idea how this can be done:
+
+:Caution:
+    Make sure you do not use Gtk::TreeViewColumn#set_cell_data_func if you have a large number of rows in your tree model. Cell data functions are invoked on every cell in the column before it is rendered, so they can significantly slow down tree models.
+
+{{br}}
+
+((*celldatafunction.rb*))
+
+ #!/usr/bin/env ruby
+ 
+ require 'gtk2'
+ def setup_tree_view(trvu)
+   renderer = Gtk::CellRendererText.new
+   column = Gtk::TreeViewColumn.new("Standard Colors", renderer, "text" => 0)
+   trvu.append_column(column)
+ 
+   column.set_cell_data_func(renderer) do |tvc, cell, model, iter|
+     # Get the color string stored by the column and make
+     # it the background color, make foreground white, unless
+     # bg is very bright.
+     color_v = model.get_value(iter, 0)
+     cell.background = color_v
+     color = Gdk::Color.parse(color_v)
+     if (color.red > 88 && color.green > 88)
+       cell.foreground = "#000000"      # "#000000" = black
+       cell.weight = Pango::FontDescription::WEIGHT_NORMAL
+     else
+       cell.foreground = "white"        # white = "#ffffff"
+       cell.weight = Pango::FontDescription::WEIGHT_ULTRABOLD
+     end
+   end
+ end
+ 
+ window = Gtk::Window.new(Gtk::Window::TOPLEVEL)
+ window.resizable = true
+ window.title = "Color List"
+ window.border_width = 10
+ window.signal_connect('delete_event') { Gtk.main_quit }
+ window.set_size_request(200, 150)
+ 
+ treeview = Gtk::TreeView.new
+ setup_tree_view(treeview)
+ 
+ store = Gtk::ListStore.new(String)
+ 
+ # Add the colors to the Gtk::ListStore.
+ clr = ["00", "88", "FF"]
+ (0..2).each do |i|
+   (0..2).each do |j|
+     (0..2).each do |k|
+         color = "#" +  clr[i] + clr[j] +  clr[k]
+         iter = store.append
+         iter[0] = color
+         iter.next!
+     end
+   end
+ end
+ 
+ # Add the tree model to the tree view
+ treeview.model = store
+ 
+ scrolled_win = Gtk::ScrolledWindow.new
+ scrolled_win.border_width = 5
+ scrolled_win.add(treeview)
+ scrolled_win.set_policy(Gtk::POLICY_AUTOMATIC, Gtk::POLICY_ALWAYS)
+ 
+ window.add(scrolled_win)
+ window.show_all
+ Gtk.main
+
+
+In the above example program all the new stuff to learn is in the ((*setup_tree_view*)) method. Focus here is on the Gtk::TreeViewColumn#set_cell_data_func(cell) method. Note that the API designates the argument ((*cell*)) to represent a renderer. It may not be obvious from the code, that you do not need to use this cell data function to simply set a property of a cell. For instance we could set change the font for all cells to ((*bold*)) simply by sending the message ((*weight*)) without ever calling the  Gtk::TreeViewColumn#set_cell_data_func method. It only makes sense to call this method if rendering of each cell depends on some run-time value or processing. Our cells, do indeed meet this criteria. First each cell's background is rendered in a different colour, and to make it more interesting we are monitoring the brightness of the background and set accordingly the foreground colour. For your learning convenience we also dynamically alter the font's weight. 
+
+Also pay attention to:
+
+ color = Gdk::Color.parse(color_v)
+
+The parse class method takes a colour string in hex RGB format "#RRGGBB" and returns Gdk::Color object, on which you may use Gdk::Color#red, Gdk::Color#green and Gdk::Color#blue accessors to obtain numeric values rather than strings for each colour component. You need to understand that low values are generally brighter than high colour values, however you should always test what you are getting, unless you memorized a significant number of combinations that yield bright or darker colours.
+
+Following is a segment of relevant API documentation used in our example program:
+
+--- set_cell_data_func(cell) {|tvc, cell, model, iter| ... }
+
+    Sets the block which is used instead of the standard attributes mapping for setting the column value, and should set the value of Gtk::TreeViewColumn's cell renderer as appropriate.
+    * cell: A Gtk::CellRenderer 
+    * {|tvc, cell, model, iter| ... }: the block
+       * tvc: the Gtk::TreeViewColumn
+       * cell: the Gtk::CellRenderer
+       * model: the Gtk::TreeModel
+       * iter: the Gtk::TreeIter
+    * Returns: self
+
+
+
+:Font Weight:
+
+    An enumeration specifying the weight (boldness) of a font. This is a numerical value ranging from 100 to 900, but there are some predefined values:
+
+    * Pango::FontDescription::WEIGHT_ULTRALIGHT : - the ultralight weight (= 200)
+    * Pango::FontDescription::WEIGHT_LIGHT      : - the light weight (=300)
+    * Pango::FontDescription::WEIGHT_NORMAL     : - the default weight (= 400)
+    * Pango::FontDescription::WEIGHT_SEMIBOLD   : - a weight intermediate between normal and bold (=600)
+    * Pango::FontDescription::WEIGHT_BOLD       : - the bold weight (= 700)
+    * Pango::FontDescription::WEIGHT_ULTRABOLD  : - the ultrabold weight (= 800)
+    * Pango::FontDescription::WEIGHT_HEAVY      : - the heavy weight (= 900)

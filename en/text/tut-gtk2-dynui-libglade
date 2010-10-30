@@ -1,0 +1,168 @@
+= Dynamic User Interfaces Built With Glade
+{{link "tut-gtk2-dynui-bui", "tut-gtk2-dynui", "tut-gtk", "tut-gtk2-dynui-tyu"}}
+
+== Using Libglade
+
+After you design your application in Glade, the next step is to load the user interface with Libglade. This library is used to parse the Glade user interface and create all of the necessary widgets at runtime.
+
+To create a runable application from your Glade file run the following command:
+
+ ruby-glade-create-template browser.glade > browser.rb
+
+This step will create the following output in the "browser.rb" file: 
+
+
+((*browser.rb*))
+
+ #!/usr/bin/env ruby
+ #
+ # This file is gererated by ruby-glade-create-template 1.1.4.
+ #
+ require 'libglade2'
+ 
+ class BrowserGlade
+   include GetText
+ 
+   attr :glade
+   
+   def initialize(path_or_data, 
+                  root = nil,
+                  domain = nil,
+                  localedir = nil,
+                  flag = GladeXML::FILE)
+     bindtextdomain(domain, localedir, nil, "UTF-8")
+     @glade = GladeXML.new(path_or_data,
+                           root,
+                           domain,
+                           localedir,
+                           flag) {|handler| method(handler)}
+   end
+   
+   def on_address_activate(widget)
+     puts "on_address_activate() is not implemented yet."
+   end
+   def on_forward_clicked(widget)
+     puts "on_forward_clicked() is not implemented yet."
+   end
+   def gtk_main_quit(widget)
+     puts "gtk_main_quit() is not implemented yet."
+   end
+   def on_refresh_clicked(widget)
+     puts "on_refresh_clicked() is not implemented yet."
+   end
+   def on_info_clicked(widget)
+     puts "on_info_clicked() is not implemented yet."
+   end
+   def on_go_clicked(widget)
+     puts "on_go_clicked() is not implemented yet."
+   end
+   def on_home_clicked(widget)
+     puts "on_home_clicked() is not implemented yet."
+   end
+   def on_up_clicked(widget)
+     puts "on_up_clicked() is not implemented yet."
+   end
+   def on_back_clicked(widget)
+     puts "on_back_clicked() is not implemented yet."
+   end
+   def on_delete_clicked(widget)
+     puts "on_delete_clicked() is not implemented yet."
+   end
+   def on_treeview_row_activated(widget, arg0, arg1)
+     puts "on_treeview_row_activated() is not implemented yet."
+   end
+ end
+ 
+ # Main program
+ if __FILE__ == $0
+   # Set values as your own application. 
+   PROG_PATH = "browser.glade"
+   PROG_NAME = "YOUR_APPLICATION_NAME"
+   BrowserGlade.new(PROG_PATH, nil, PROG_NAME)
+   Gtk.main
+ end
+
+
+However you can not yet run this program as is. You must first make your main window visible. To do this you must first capture the (YourApplication)Glade object into a variable. In our case this object is ((*BrowserGlade*)) object. In the above program you would change the following line:
+  
+   BrowserGlade.new(PROG_PATH, nil, PROG_NAME)
+
+to something like:
+
+   o = BrowserGlade.new(PROG_PATH, nil, PROG_NAME)
+
+And lastly you would add the following two lines just before the "Gtk.main" statement:
+
+   window = o.glade.get_widget("window")
+   window.show_all
+
+Hence, the last part of our ((*browser.rb*)) program now looks like the following:
+
+ # Main program
+ if __FILE__ == $0
+   # Set values as your own application. 
+   PROG_PATH = "browser.glade"
+   PROG_NAME = "YOUR_APPLICATION_NAME"
+   BrowserGlade.new(PROG_PATH, nil, PROG_NAME)
+   o = BrowserGlade.new(PROG_PATH, nil, PROG_NAME)
+   window = o.glade.get_widget("window")
+   window.show_all
+   Gtk.main
+ end
+
+or the equivalent:
+
+ # Main program
+ if __FILE__ == $0
+   # Set values as your own application. 
+   PROG_PATH = "browser.glade"
+   PROG_NAME = "YOUR_APPLICATION_NAME"
+   o = BrowserGlade.new(PROG_PATH, nil, PROG_NAME)
+   o.glade["window"].show_all
+   Gtk.main
+ end
+
+After you add the above " missing" code you may run your output ((*browser.rb*)) program. Indeed, you would need to implement the all the callback methods, but one should be fixed immediately, namely: 
+
+ def gtk_main_quit(widget)
+   puts "gtk_main_quit() is not implemented yet."
+ end
+
+Change it to: 
+
+ def gtk_main_quit(widget)
+   Gtk.main_quit
+ end
+
+:Note:
+    At first one may think that ((*ruby-glade-create-template*)) could generate the complete output, so we wouldn't have to capture (ourApplication)Glade object into a variable, and add the two lines needed to make our window visible. This would be the case if Glade application did not allow you to name the top window to something other than "window". 
+    {{br}}
+
+    After all, some reflective thinking  reveals that the way above procedures are set makes sense, namely one should be reminded from the start that there is a Ruby code hidden behind all this Glade convenience, and that you gain access to it by calling GladeXML#get_widget("widget_name"). 
+
+=== Loading a User Interface
+
+Libglade provides the ((<GladeXML>)) object that is used to create and hold the user interface from an XML file. It is also be used to connect signals added in the Glade file to callback methods within your application.
+
+An advantage of Libglade is that a minimal overhead to your application is added only during the application start-up, and is negligible in comparison to an equivalent application created directly from the Ruby code. After the start-up there is virtually no overhead added to the application. For example, GladeXML connects the signal handlers in the same way as your own code, so this too requires no extra processing. Since Libglade handles all of the widget initialization and the layout was already designed in Glade 3, the length of your code base can be significantly reduced.  
+
+
+Loading a Glade user interface is done with GladeXML.new. This code is squirrelled away in (ourApplication)Glade object. GladeXML.new parses the user interface provided by the XML file, creates all the necessary widgets, and provides facilities for translation.
+
+     @glade = GladeXML.new(path_or_data,
+                           root,
+                           domain,
+                           localedir,
+                           flag) {|handler| method(handler)}
+
+The return value of GladeXML.new is an GladeXML object saved in (ourApplication)Glade's attribute called ((*glade.*)) This object can be viewed as an array containing all the widgets you created with Glade application. Once you have initialized the user interface by creating a new ((<GladeXML>)) object:
+
+   o = BrowserGlade.new(program_path, nil, program_name)
+
+you can retrieve widgets by either of the two following methods:
+
+   widget = o.glade.get_widget("widget_name")
+or
+   widget = o.glade["widget_name"]
+
+The widget returned above is already set up with all of the properties that you set up in Glade. You can use this widget like any other Gtk::Widget that was created in your applications using methods provided by Ruby GTK+ (Ruby/GNOME2). This shows one of the main advantages of Libglade - you do not have to provide all the monotonous code for setting up the user interface and can quickly get to developing more interesting aspects of the application.

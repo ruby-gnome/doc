@@ -1,0 +1,161 @@
+= Dialogue Widgets
+{{link "tut-gtk2-dialog-assistant", "tut-gtk2-dialog", "tut-gtk", "tut-gtk2-glib"}}
+
+== Test Your Understanding
+
+In the concluding exercise session on dialogue widgets, you will be creating custom dialogues of your own. Each dialogue will be implementation of different types of file chooser dialogues.  However, you will be embedding a Gtk::FileChooserWidget into a Gtk::Dialog to recreate the functionality of the built-in dialogues.
+
+:The Exercise:
+
+    In this exercise, create a window with four buttons. Each button, when clicked, will open a different dialogue that implements one of the four file chooser actions. You should use Gtk::FileChooserWidget added to a Gtk::Dialog instead of the prebuilt Gtk::FileChooserDialog.
+    {{br}}
+
+    (1) Your dialogue will implement  Gtk::FileChooser::ACTION_SAVE file chooser dialogue. The chosen file should be printed on the console screen.
+    (2) Your dialogue will implement   Gtk::FileChooser::ACTION_CREATE_FOLDER file chooser dialogue.  The new folder name should be printed on the console screen.
+    (3) Your dialogue will implement   Gtk::FileChooser::ACTION_OPEN file chooser dialogue.  The chosen files should be printed on the console screen.
+    (4) Your dialogue will implement   Gtk::FileChooser::ACTION_SELECT_FOLDER file chooser dialogue.  The chosen folder paath should be printed on the console screen.
+ 
+
+
+{{image_left("dialog-tyu.png")}}
+{{br}}
+
+ #!/usr/bin/env ruby
+ require 'gtk2'
+
+ def save_clicked
+   dialogue = Gtk::Dialog.new(
+       "Save File As ...",
+       nil,
+       Gtk::Dialog::NO_SEPARATOR,
+       [ Gtk::Stock::CANCEL, Gtk::Dialog::RESPONSE_CANCEL ],
+       [ Gtk::Stock::SAVE, Gtk::Dialog::RESPONSE_APPLY ]
+   )
+   dialogue.border_width = 10
+   dialogue.set_size_request(500, -1);
+  
+   # Create a file chooser dialog that is used to save a file.
+   chooser = Gtk::FileChooserWidget.new(Gtk::FileChooser::ACTION_SAVE);
+
+   dialogue.vbox.pack_start_defaults(chooser)
+   dialogue.show_all
+  
+   dialogue.run do |response|
+     if response == Gtk::Dialog::RESPONSE_APPLY
+       filename = chooser.filename
+       print "%s ..... was selected\n" % [filename]
+     end
+   end
+   dialogue.destroy
+ end
+
+
+ # Note: unlike with Gtk:FileChooserDialog where folders are 
+ # automatically created for you with the Gtk::FileChooserWidget
+ # you need to create directories yourself.
+ def create_folder_clicked
+   dialogue = Gtk::Dialog.new(
+       "Create a Folder ...",
+       nil,
+       Gtk::Dialog::NO_SEPARATOR,
+       [ Gtk::Stock::CANCEL, Gtk::Dialog::RESPONSE_CANCEL ],
+       [ Gtk::Stock::OK, Gtk::Dialog::RESPONSE_OK ]
+   )
+   dialogue.border_width = 10
+   dialogue.set_size_request(500, -1);
+  
+   # Create a file chooser dialog that is used to create a folder.
+   chooser = Gtk::FileChooserWidget.new(Gtk::FileChooser::ACTION_CREATE_FOLDER);
+
+   dialogue.vbox.pack_start_defaults(chooser)
+   dialogue.show_all
+  
+   dialogue.run do |response|
+     if response == Gtk::Dialog::RESPONSE_OK
+       filename = chooser.filename
+       print "Creating directory .... %s\n" % [filename]
+       File.umask(027)
+       Dir.mkdir(filename)
+     end
+   end
+   dialogue.destroy
+ end
+
+ def open_clicked
+   dialogue = Gtk::Dialog.new(
+       "Open File(s) ...",
+       nil,
+       Gtk::Dialog::NO_SEPARATOR,
+       [ Gtk::Stock::CANCEL, Gtk::Dialog::RESPONSE_CANCEL ],
+       [ Gtk::Stock::OPEN, Gtk::Dialog::RESPONSE_ACCEPT ]
+   )
+   dialogue.border_width = 10
+   dialogue.set_size_request(500, -1);
+  
+   # Create a file chooser dialog that is used to select multiple files.
+   chooser = Gtk::FileChooserWidget.new(Gtk::FileChooser::ACTION_OPEN);
+   chooser.select_multiple = true
+  
+   dialogue.vbox.pack_start_defaults(chooser)
+   dialogue.show_all
+
+   dialogue.run do |response|
+     if response == Gtk::Dialog::RESPONSE_ACCEPT
+       filenames = chooser.filenames
+       puts "SELECTED FILES:"
+       filenames.each {|f| print "%s .............. was selected\n" % [f]}
+     end
+   end
+   dialogue.destroy
+ end
+
+ def select_folder_clicked
+   dialogue = Gtk::Dialog.new(
+       "Select Folder ...",
+       nil,
+       Gtk::Dialog::NO_SEPARATOR,
+       [ Gtk::Stock::CANCEL, Gtk::Dialog::RESPONSE_CANCEL ],
+       [ Gtk::Stock::OK, Gtk::Dialog::RESPONSE_OK ]
+   )
+   dialogue.border_width = 10
+   dialogue.set_size_request(500, -1);
+  
+   # Create a file chooser dialog that is used to select a folder.
+   chooser = Gtk::FileChooserWidget.new(Gtk::FileChooser::ACTION_SELECT_FOLDER);
+
+   dialogue.vbox.pack_start_defaults(chooser)
+   dialogue.show_all
+  
+   dialogue.run do |response|
+     if response == Gtk::Dialog::RESPONSE_OK
+       filename = chooser.filename
+       print "Selected folder: .... %s\n" % [filename]
+     end
+   end
+   dialogue.destroy
+ end
+
+ window = Gtk::Window.new(Gtk::Window::TOPLEVEL)
+ window.set_title  "Excercise Dialog Widg."
+ window.border_width = 10
+ window.signal_connect('delete_event') { Gtk.main_quit }
+
+ save   = Gtk::Button.new("Save a File")
+ create = Gtk::Button.new("Create a New Folder")
+ open   = Gtk::Button.new("Open One or More Files")
+ select = Gtk::Button.new("Select a Folder")
+
+ save  .signal_connect("clicked") { save_clicked }
+ create.signal_connect("clicked") { create_folder_clicked }
+ open  .signal_connect("clicked") { open_clicked }
+ select.signal_connect("clicked") { select_folder_clicked }
+
+ vbox = Gtk::VBox.new(true, 0)
+ vbox.pack_start_defaults(save)
+ vbox.pack_start_defaults(create)
+ vbox.pack_start_defaults(open) 
+ vbox.pack_start_defaults(select)
+
+ window.add(vbox)
+ window.show_all
+ Gtk.main

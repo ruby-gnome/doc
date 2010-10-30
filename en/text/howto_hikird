@@ -25,6 +25,30 @@ Modules names written in ((<ModuleNames>)) will be linked properly, so it is not
 
 Before you use this, be sure that the module you need to refer is on the ((<ModuleNames>)) page.
 
+=== Class ancestry
+To generate the class ancestry you can use the following script. Before use, you have to change the require and the cls values at the top of the script to your needs.
+
+    #!/usr/bin/ruby
+    require 'panelapplet2'
+    cls = PanelApplet
+
+    classes = []
+    classes << cls.to_s
+    while true
+        cls = cls.superclass
+        break unless cls
+        classes << cls.to_s
+    end
+    classes.reverse!
+
+    i = 0
+    classes.each do |cls|
+        indent = '  '  * i
+        i += 1
+        printf "%s* %s\n", indent, cls
+    end
+
+
 === Auto-generated anchor
 ==== RD style
 
@@ -136,3 +160,5 @@ Here are the steps:
 Train yourself on the ((<Practice Page>))!
 
 - ((<Masao>))
+
+- last edited 2009-06-04 ((<Detlef>))

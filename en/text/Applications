@@ -2,6 +2,9 @@
 
 Here's a list of applications using Ruby-GNOME2:
 
+:((<Alexandria|URL:http://alexandria.rubyforge.org/>))
+Alexandria is a GNOME application to help you manage your book collection.
+
 :((<Amigo|URL:http://gnomecoder.wordpress.com/amigo/>))
 Amigo instantly defines and explains any Spanish-language word that you select with your mouse.
 
@@ -55,3 +58,10 @@ position and size, font selections and background colours.
 
 :((<Valar|URL:http://github.com/danlucraft/valar/tree/master>))
 Automatically generate Ruby bindings for Vala code.
+
+:((<Xmp Manager|URL:http://grigio.org/xmp_manager>))
+Xmp Manager is a Gui to write xmp metadata on .png, .jpeg files.
+
+:((<ZiK|URL:http://zik.rubyforge.org/>))
+ZiK is an audio player based on gstreamer.
+No music library is used instead user directly browses through audio files.

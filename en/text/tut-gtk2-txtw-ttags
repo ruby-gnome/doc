@@ -1,0 +1,267 @@
+= The Text View Widget
+{{link "tut-gtk2-txtw-itrsmrks", "tut-gtk2-txtw", "tut-gtk", "tut-gtk2-txtw-iimgs"}}
+
+== Text Tags
+
+There are many methods provided for changing properties of the entire text within the text buffer. But as already mentioned, it is also possible to change the display properties only of a portion of text in the text buffer. You do this with a new class Gtk::TextTag. 
+
+Text tag objects allow you to create documents with varying styles in different parts of the text, which is commonly known as rich text editing. Text tags are very simple context to apply. The following listing represents an application where multiple styles can be added or removed all together from the selection.
+
+{{br}}
+{{image_left("txtw-ttags.png")}}
+
+
+{{br}}
+((*texttags.rb*))
+
+ #!/usr/bin/env ruby
+ require 'gtk2'
+
+ # Retrieve the tag from the "tag" object data and apply it
+ # to the selection.
+ def format(b, txtvu)
+   s, e = txtvu.buffer.selection_bounds
+
+   # Our buttons contain Gtk::Stock#Items. Their label values
+   # begin with "gtk-", ie: gtk-bold, gtk-italic, ... We need
+   # the word after "gtk-" ie.: bold, italic ... which are used
+   # as tag property names; Hence Ruby's gsub (sub-string) 
+   # extracts the 2nd string
+   tag_property_name = b.label.gsub(/(gtk-)([a-z]+)/, '\2')
+
+   txtvu.buffer.apply_tag(tag_property_name, s, e)
+ end
+
+ # Apply the selected text size property as the tag.
+ def scale_changed(combo, txtvu)
+   return if combo.active == -1
+   s, e = txtvu.buffer.selection_bounds
+   txtvu.buffer.apply_tag(combo.active_text, s, e)
+   combo.active = -1
+ end
+
+ # Remove all of the tags from the selected text.
+ def clear_clicked(txtvu) 
+   s, e = txtvu.buffer.selection_bounds
+   txtvu.buffer.remove_all_tags(s, e)
+ end
+
+ class TextToDouble
+   attr_accessor :str, :scale
+   def initialize(str, scale)
+     @str, @scale = str, scale
+   end
+ end
+
+ ts = Array.new
+ ts[0] = TextToDouble.new("Quarter Sized",      0.25)
+ ts[1] = TextToDouble.new("Double Extra Small", Pango::SCALE_XX_SMALL)
+ ts[2] = TextToDouble.new("Extra Small",        Pango::SCALE_X_SMALL)
+ ts[3] = TextToDouble.new("Small",              Pango::SCALE_SMALL)
+ ts[4] = TextToDouble.new("Medium",             Pango::SCALE_MEDIUM)
+ ts[5] = TextToDouble.new("Large",              Pango::SCALE_LARGE)
+ ts[6] = TextToDouble.new("Extra Large",        Pango::SCALE_X_LARGE)
+ ts[7] = TextToDouble.new("Double Extra Large", Pango::SCALE_XX_LARGE)
+ ts[8] = TextToDouble.new("Double Sized",       2.0)
+
+ window = Gtk::Window.new(Gtk::Window::TOPLEVEL)
+ window.resizable = true
+ window.title = "Text Tags"
+ window.border_width = 10
+ window.signal_connect('delete_event') { Gtk.main_quit }
+ window.set_size_request(500, -1)
+
+ textview = Gtk::TextView.new
+
+ buffer = textview.buffer
+
+ # Note: the tag names are stored with buttons in their labels, where
+ # each label has string form "gtk-bold", "gtk-italic", ...
+ buffer.create_tag("bold",          {"weight"        => Pango::WEIGHT_BOLD})
+ buffer.create_tag("italic",        {"style"         => Pango::STYLE_ITALIC})
+ buffer.create_tag("strikethrough", {"strikethrough" => true})
+ buffer.create_tag("underline",     {"underline"     => Pango::UNDERLINE_SINGLE})
+
+ bold      = Gtk::Button.new(Gtk::Stock::BOLD)
+ italic    = Gtk::Button.new(Gtk::Stock::ITALIC)
+ underline = Gtk::Button.new(Gtk::Stock::UNDERLINE)
+ strike    = Gtk::Button.new(Gtk::Stock::STRIKETHROUGH)
+ clear     = Gtk::Button.new(Gtk::Stock::CLEAR)
+ scale     = Gtk::ComboBox.new      # (text=true)
+
+ # Add choices to the GtkComboBox widget.
+ ts.each do |e|
+   scale.append_text(e.str)
+   buffer.create_tag(e.str, { "scale" => e.scale } )
+ end
+
+ # Connect each of the buttons and the combo box to the necessary signals.
+ bold.signal_connect("clicked")      { |w| format(w, textview) }
+ italic.signal_connect("clicked")    { |w| format(w, textview) }
+ underline.signal_connect("clicked") { |w| format(w, textview) }
+ strike.signal_connect("clicked")    { |w| format(w, textview) }
+ scale.signal_connect("changed")     { |w| scale_changed(w, textview) }
+ clear.signal_connect("clicked")     {     clear_clicked(textview) }
+
+ # Pack the widgets into a GtkVBox, GtkHBox, and then into the window. */
+ vbox = Gtk::VBox.new(true, 5)
+ vbox.pack_start(bold,      false, false, 0)
+ vbox.pack_start(italic,    false, false, 0)
+ vbox.pack_start(underline, false, false, 0)
+ vbox.pack_start(strike,    false, false, 0)
+ vbox.pack_start(scale,     false, false, 0)
+ vbox.pack_start(clear,     false, false, 0)
+
+ scrolled_win = Gtk::ScrolledWindow.new
+ scrolled_win.border_width = 5
+ scrolled_win.add(textview)
+ scrolled_win.set_policy(Gtk::POLICY_AUTOMATIC, Gtk::POLICY_ALWAYS)
+
+ hbox = Gtk::HBox.new(false, 5)
+ hbox.pack_start(scrolled_win, true,  true, 0)
+ hbox.pack_start(vbox,         false, true, 0)
+
+ window.add(hbox)
+ window.show_all
+ Gtk.main
+
+When you create a text tag, it is added to a Gtk::TextBuffer's tag table, an object that holds all the text buffer's tags. This happens behind the scene, when you execute Gtk::TextBuffer#create_tag command. This command has two arguments: ((*tag_name, properties.*)) The tag_name can be either a string or nil. If tag_name is nil, the tag is anonymous.
+
+--- create_tag(tag_name, properties)
+
+    Creates a tag and adds it to the tag table for buffer. If tag_name is non-nil, a tag called tag_name must not already exist in the tag table for this buffer. 
+    * tag_name: name of the new tag, or nil
+    * properties: a hash of property names and values {name1 => value1, name2 => value2, ...}
+    * Returns: a new Gtk::TextTag
+
+The first argument ((*tag_name*)) is simple. It is an optional tag name. However, the second argument is more involved. It is a hash that may contain any number of name-value pairs representing tag's properties. For example you may have a tag called "colors", and two properties "background" and "foreground" with their respective values:
+
+ buff.create_tag("colors",   
+                 { "foreground" => "#FFFFFF",
+                   "background" => "#000000" }
+ )
+
+Once you created a tag with its properties you will, later on - most likely in a callback, need to retrieve it from the text buffer's tag table by specifying its tag_name. At the same time you apply it to a segment or portion of the text buffer defined by start and end iterators. In the following snippet of code we create a an entry in tag table for the Gtk::TextBuffer object called buff. We create tag called "bold" and add for it a property name/value pair as hash {"weight" => Pango::WEIGHT_BOLD}. Subsequently (later in the program; in our case in a callback) we extract and apply the property value pair for this tag:
+
+ buff.create_tag("bold",   {"weight" => Pango::WEIGHT_BOLD})
+      ...
+ buff.apply_tag("bold", start_iter, end_iter)
+
+NOTE: in our example program we used a trick to obtain tag property names from button labels, where they are stored as Gtk::Stock items. If you need to store some new property such as a tag value in your widgets you could simply add it to the widget class as needed. For instance you could expand the Gtk::Button class to include a new property called ((*texttag.*))
+
+
+Just as a picture is worth a thousand words so is perhaps a listing of an executable program. Let me repeat the above example program this time with code that modifies Gtk::Button class to include a new property to store a tag_name, used in Gtk::TextBuffer's tag table:
+
+((*texttags-button-texttag.rb*))
+
+ #!/usr/bin/env ruby
+ require 'gtk2'
+
+ # Retrieve the tag from the "tag" object data and apply it
+ # to the selection.
+ def format(b, txtvu)
+   s, e = txtvu.buffer.selection_bounds
+   txtvu.buffer.apply_tag(b.texttag, s, e)
+ end
+ 
+ # Apply the selected text size property as the tag.
+ def scale_changed(combo, txtvu)
+   return if combo.active == -1
+   s, e = txtvu.buffer.selection_bounds
+   txtvu.buffer.apply_tag(combo.active_text, s, e)
+   combo.active = -1
+ end 
+
+ # Remove all of the tags from the selected text.
+ def clear_clicked(txtvu)
+   s, e = txtvu.buffer.selection_bounds
+   txtvu.buffer.remove_all_tags(s, e)
+ end
+
+ class TextToDouble
+   attr_accessor :str, :scale
+   def initialize(str, scale)
+     @str, @scale = str, scale
+   end
+ end
+
+ ts = Array.new
+ ts[0] = TextToDouble.new("Quarter Sized",      0.25)
+ ts[1] = TextToDouble.new("Double Extra Small", Pango::SCALE_XX_SMALL)
+ ts[2] = TextToDouble.new("Extra Small",        Pango::SCALE_X_SMALL)
+ ts[3] = TextToDouble.new("Small",              Pango::SCALE_SMALL)
+ ts[4] = TextToDouble.new("Medium",             Pango::SCALE_MEDIUM)
+ ts[5] = TextToDouble.new("Large",              Pango::SCALE_LARGE)
+ ts[6] = TextToDouble.new("Extra Large",        Pango::SCALE_X_LARGE)
+ ts[7] = TextToDouble.new("Double Extra Large", Pango::SCALE_XX_LARGE)
+ ts[8] = TextToDouble.new("Double Sized",       2.0)
+
+ window = Gtk::Window.new(Gtk::Window::TOPLEVEL)
+ window.resizable = true
+ window.title = "Text Tags"
+ window.border_width = 10
+ window.signal_connect('delete_event') { Gtk.main_quit }
+ window.set_size_request(500, -1)
+
+ textview = Gtk::TextView.new
+
+ buffer = textview.buffer
+ buffer.create_tag("bold",          {"weight"        => Pango::WEIGHT_BOLD})
+ buffer.create_tag("italic",        {"style"         => Pango::STYLE_ITALIC})
+ buffer.create_tag("strikethrough", {"strikethrough" => true})
+ buffer.create_tag("underline",     {"underline"     => Pango::UNDERLINE_SINGLE})
+
+ bold      = Gtk::Button.new(Gtk::Stock::BOLD);
+ italic    = Gtk::Button.new(Gtk::Stock::ITALIC);
+ underline = Gtk::Button.new(Gtk::Stock::UNDERLINE);
+ strike    = Gtk::Button.new(Gtk::Stock::STRIKETHROUGH);
+ clear     = Gtk::Button.new(Gtk::Stock::CLEAR);
+
+ scale     = Gtk::ComboBox.new      # (text=true)
+
+ # Our little addition to the Button class, in order to
+ # save what usually is stored as label, however we use
+ # stock item rather than a label.
+ class Gtk::Button; attr_accessor :texttag; end
+
+ # Add the name of the text tag as a data parameter of the object.
+ bold.texttag      = "bold"
+ italic.texttag    = "italic"
+ underline.texttag = "underline"
+ strike.texttag    = "strikethrough"
+
+ # Add choices to the GtkComboBox widget.
+ ts.each do |e|
+   scale.append_text(e.str)
+   buffer.create_tag(e.str, { "scale" => e.scale } )
+ end
+
+ # Connect each of the buttons and the combo box to the necessary signals.
+ bold.signal_connect("clicked")      { |w| format(w, textview) }
+ italic.signal_connect("clicked")    { |w| format(w, textview) }
+ underline.signal_connect("clicked") { |w| format(w, textview) }
+ strike.signal_connect("clicked")    { |w| format(w, textview) }
+ scale.signal_connect("changed")     { |w| scale_changed(w, textview) }
+ clear.signal_connect("clicked")     {     clear_clicked(textview) }
+
+ # Pack the widgets into a GtkVBox, GtkHBox, and then into the window. */
+ vbox = Gtk::VBox.new(true, 5)
+ vbox.pack_start(bold,      false, false, 0)
+ vbox.pack_start(italic,    false, false, 0)
+ vbox.pack_start(underline, false, false, 0)
+ vbox.pack_start(strike,    false, false, 0)
+ vbox.pack_start(scale,     false, false, 0)
+ vbox.pack_start(clear,     false, false, 0)
+
+ scrolled_win = Gtk::ScrolledWindow.new
+ scrolled_win.border_width = 5
+ scrolled_win.add(textview)
+ scrolled_win.set_policy(Gtk::POLICY_AUTOMATIC, Gtk::POLICY_ALWAYS)
+
+ hbox = Gtk::HBox.new(false, 5)
+ hbox.pack_start(scrolled_win, true,  true, 0)
+ hbox.pack_start(vbox,         false, true, 0)
+
+ window.add(hbox)
+ window.show_all
+ Gtk.main

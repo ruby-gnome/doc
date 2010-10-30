@@ -1,0 +1,97 @@
+= The Tree View Widget
+{{link "tut-gtk2-treev-cbbr", "tut-gtk2-treev", "tut-gtk", "tut-gtk2-mnstbs"}}
+
+
+== Keyboard Accelerator Renderers
+
+
+{{image_right("treev-kbda-01.png")}}
+
+Gtk::CellRendererAccel widget displays textual representation of the keyboard accelerator keys. It allows you to dynamically edit the accelerator, hence changing its binding for the application. To edit the accelerator user must click on the "Accelerator" cell. The cell will then accept a new key combination user enters. The new key code will be added, along with any mask keys such as Ctrl, 
+Alt, Shift or any combination of these. In fact the new key combination the user presses will be displayed.
+
+Following is the example program:
+
+{{br}}
+((*accelerators.rb*))
+
+ #!/usr/bin/env ruby
+ require 'gtk2'
+ 
+ # Add three columns to the Gtk::TreeView. All three of the
+ # columns will be displayed as text, although one is a Boolean
+ # value and another is an integer.
+ def setup_tree_view(treeview)
+   # Create a new GtkCellRendererText, add it to the tree
+   # view column and append the column to the tree view.
+   renderer = Gtk::CellRendererText.new
+   column = Gtk::TreeViewColumn.new("Action", renderer, "text" => Accl::ACTION)
+   treeview.append_column(column)
+   renderer = Gtk::CellRendererAccel.new
+   column = Gtk::TreeViewColumn.new(
+                 "Accelerator", renderer,
+                 "accel_mods" => Accl::MASK,
+                 "accel_key" => Accl::VALUE
+   )
+   # BUG: Gtk::CellRendererAccel::MODE_GTK is undefined
+   # renderer.accel_mode = Gtk::CellRendererAccel::MODE_GTK 
+   renderer.accel_mode = 0 # BUG: Gtk::CellRendererAccel::MODE_GTK is undefined
+   renderer.editable = true
+   
+   treeview.append_column(column) 
+   renderer.signal_connect('accel_edited') do |w, path, accl_k, mask, hw_k|
+     if (iter = treeview.model.get_iter(path))
+       iter[Accl::MASK] = mask
+       iter[Accl::VALUE] = accl_k
+     end
+   end
+ end
+ 
+ window = Gtk::Window.new(Gtk::Window::TOPLEVEL)
+ window.resizable = true
+ window.title = "Accelerator Keys"
+ window.border_width = 10
+ window.signal_connect('delete_event') { Gtk.main_quit }
+ window.set_size_request(250, 175)
+ 
+ class Accl
+   attr_accessor :action, :mask, :value
+   def initialize(a, m, v); @action, @mask, @value = a, m, v; end
+   ACTION = 0; MASK = 1; VALUE = 2
+ end
+ 
+ list = [
+   Accl.new("Cut",   Gdk::Window::CONTROL_MASK, Gdk::Keyval::GDK_X),
+   Accl.new("Copy",  Gdk::Window::CONTROL_MASK, Gdk::Keyval::GDK_C),
+   Accl.new("Paste", Gdk::Window::CONTROL_MASK, Gdk::Keyval::GDK_V),
+   Accl.new("New",   Gdk::Window::CONTROL_MASK, Gdk::Keyval::GDK_N),
+   Accl.new("Open",  Gdk::Window::CONTROL_MASK, Gdk::Keyval::GDK_O),
+   Accl.new("Print", Gdk::Window::CONTROL_MASK, Gdk::Keyval::GDK_P),
+ ]
+ 
+ treeview = Gtk::TreeView.new
+ setup_tree_view(treeview)
+   
+ # Create a new tree model with three columns, as Boolean,
+ # integer and string.
+ store = Gtk::ListStore.new(String, Integer, Integer)
+ 
+ # Add all of the products to the GtkListStore.
+ list.each_with_index do |e, i|
+     iter = store.append
+     store.set_value(iter, Accl::ACTION, list[i].action)
+     store.set_value(iter, Accl::MASK,   list[i].mask)
+     store.set_value(iter, Accl::VALUE,  list[i].value)
+     iter.next!
+ end
+ 
+ # Add the tree model to the tree view
+ treeview.model = store
+ 
+ scrolled_win = Gtk::ScrolledWindow.new
+ scrolled_win.add(treeview)
+ scrolled_win.set_policy(Gtk::POLICY_AUTOMATIC, Gtk::POLICY_AUTOMATIC)
+ 
+ window.add(scrolled_win)
+ window.show_all
+ Gtk.main

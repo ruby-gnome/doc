@@ -99,8 +99,8 @@ The Gtk::ColorSelection is a widget that is used to select a color. It consists 
 
 --- current_color
 
-    Sets color to be the current color in the Gtk::ColorSelection widget.
-    * Returns: a Gdk::Color to fill in with the current color.
+    Gtk::ColorSelection#current_color   gets the current color in the Gtk::ColorSelection widget.
+    * Returns: a Gdk::Color (the current color).
 
 --- current_color=(color)
 

@@ -6,7 +6,8 @@ This is a sample application for Ruby/GNOME2, Ruby/Libglade2.
 * {{attach_anchor("simple-editor.rb")}}
 * {{attach_anchor("simple-editor.glade")}}
 
-(Save simple-editor.[rb|glade] to same directory.)
+Save simple-editor.[rb|glade] to same directory. If you use the Opera browser, simple-editor.glade will accidentally be saved as simple-editor.xml. So you have to rename it.
+
 
 == Requirements
 Developed environments are:

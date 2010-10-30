@@ -33,7 +33,7 @@ These documents are the Ruby version of the ((<GNOME 2.0 API Reference|URL:http:
 :((<"Ruby/GnomeVFS">))
  letting applications seamlessly access remote and local files
 
-:((<"Ruby/GStreamer">)) (not available)
+:((<"Ruby/GStreamer">))
  mulimedia framework for Audio/Video
 
 :((<"Ruby/GtkHtml2">))
@@ -57,8 +57,8 @@ These documents are the Ruby version of the ((<GNOME 2.0 API Reference|URL:http:
 :((<"Ruby/Libglade">))
  gives applications the ability to load user interfaces from XML files at runtime. the XML files are created with GLADE user interface builder. 
 
-:((<"Ruby/PanelApplet">)) (deprecated)
- panel applets library for the GNOME panel. Deprecated. Use Gtk::StatusIcon in Ruby/GTK instead.
+:((<"Ruby/PanelApplet">))
+ panel applets library for the GNOME panel. As an alternativ Gtk::StatusIcon in Ruby/GTK may be used.
 
 :((<"Ruby/GnomePrint">))
  printing

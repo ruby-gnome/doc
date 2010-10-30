@@ -10,6 +10,7 @@
 * GLib::Interface
 * GLib::IOChannel
 * GLib::IOChannelError
+* GLib::FileError
 * GLib::Log
 * GLib::NormalizeMode
 * GLib::Object
@@ -36,6 +37,8 @@
 * GLib::Param::Object
 * GLib::Signal
 * GLib::SpawnError - Done for 2.6.
+* GLib::Timeout
+* GLib::Timer
 * GLib::Type
 * GLib::TypeModule
 * GLib::TypePlugin

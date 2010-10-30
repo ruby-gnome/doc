@@ -1,0 +1,44 @@
+= The Text View Widget
+{{link "tut-gtk2-txtw-ttags", "tut-gtk2-txtw", "tut-gtk", "tut-gtk2-txtw-icw"}}
+
+
+== Inserting Images
+
+In some applications, you may want to insert images into a text buffer. This can easily be done with the Gtk::Pixbuf objects. Adding a pixbuf to a Gtk::TextBuffer is performed in three steps. First, you must create the pixbuf object, next you need to retrieve the Gtk::TextIter where it will be inserted. Then, you can use Gtk::IextBuffer#insert_pixbuf to add it to the buffer.
+
+
+{{image_right("txtw-iimgs.png")}}
+
+{{br}}
+((*images.rb*))
+
+ #!/usr/bin/env ruby
+ require 'gtk2'
+
+ window = Gtk::Window.new(Gtk::Window::TOPLEVEL)
+ window.resizable = true
+ window.title = "Pixbufs"
+ window.border_width = 10
+ window.signal_connect('delete_event') { Gtk.main_quit }
+ window.set_size_request(200, 150)
+
+ textview = Gtk::TextView.new
+ textview.buffer.text = " Undo\n Redo"
+
+ # Create two images and insert them into the text buffer.
+ undo_pb = Gdk::Pixbuf.new("undo.png");
+ iter = textview.buffer.get_iter_at_line(0)
+ textview.buffer.insert_pixbuf(iter, undo_pb)
+ redo_pb = Gdk::Pixbuf.new("redo.png");
+ iter = textview.buffer.get_iter_at_line(1)
+ textview.buffer.insert_pixbuf(iter, redo_pb)
+
+ scrolled_win = Gtk::ScrolledWindow.new
+ scrolled_win.border_width = 5
+ scrolled_win.add(textview)
+ scrolled_win.set_policy(Gtk::POLICY_AUTOMATIC, Gtk::POLICY_ALWAYS)
+ window.add(scrolled_win)
+ window.show_all
+ Gtk.main
+
+Pixbufs are handled differently by various methods. For example, Gtk::TextBuffer#get_slice. will lace the ((*0xfffc*)) character where a pixbuf is located. However, the 0xFFFC  character can be be a legitimate text character in the text buffer, therefore this is not a reliable method for identifying a pixbuf location. On the other hand  Gtk::TextBuffer#get_text will completely ignore all non-textual elements in the text buffer.

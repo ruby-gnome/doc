@@ -28,6 +28,14 @@ Error class used for pixbuf operations.
 
 An error code in the Gdk::PixbufError. Many gdk-pixbuf operations can cause errors in this class, or in the GLib::FileError class.
 
+:Pixbu Error Codes:
+  * (0) - CORRUPT_IMAGE
+  * (1) - INSUFFICIENT_MEMORY
+  * (2) - BAD_OPTION
+  * (3) - UNKNOWN_TYPE
+  * (4) - UNSUPPORTED_OPERATION
+
+
 --- CORRUPT_IMAGE
 
     An image file was broken somehow.

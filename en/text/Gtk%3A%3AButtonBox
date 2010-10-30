@@ -52,6 +52,11 @@ The primary purpose of this class is to keep track of the various properties of 
 
     See Atk::Implementor#ref_accessible.
 
+--- add(widget)
+    Adds a widget to the box according to Gtk::ButtonBox::Style.
+    * widget: the name of this class suggests a button, however anything reasonable can be added. Note: the largest widget decides the size of all widgets in the button box.
+    * Returns: self
+
 --- add_child
 
     See Gtk::Buildable#add_child.
@@ -88,7 +93,7 @@ Used to dictate the style that a Gtk::ButtonBox uses to layout the buttons it co
 
 --- DEFAULT_STYLE
 
-       Default packing.
+       Default packing (same as EDGE).
 
 --- SPREAD
 

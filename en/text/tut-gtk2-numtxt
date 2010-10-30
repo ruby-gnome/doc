@@ -1,5 +1,14 @@
 = Numeric/Text Data Entry
-{{link "tut-gtk2-btt-radio", "tut-gtk2-numtxt", "tut-gtk", "tut-gtk2-numtxt-entry"}}
+{{link "tut-gtk2-btt-bttbox", "tut-gtk2-numtxt", "tut-gtk", "tut-gtk2-numtxt-entry"}}
+
+== Submenues of "Numeric/Text Data Entry" sections
+
+  * ((<Single Line Entry Field|tut-gtk2-numtxt-entry>))
+  * ((<Spin Buttons|tut-gtk2-numtxt-spinbttns>))
+  * ((<* Adjutments|tut-gtk2-numtxt-spinbttns#Adjustments>))
+  * ((<Horizontal And Vertical Scales|tut-gtk2-numtxt-hvscales>))
+
+== Short Description
 
 
 The following widgets can be found in Ruby Gtk documentation under the same heading as this article (Numeric/Text Data Entry)

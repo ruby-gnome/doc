@@ -12,7 +12,7 @@ The Gtk::FileChooserButton is a widget that lets the user select a file. It incl
 The Gtk::FileChooserButton supports the Gtk::FileChooser::Action s Gtk::FileChooser::ACTION_OPEN and Gtk::FileChooser::ACTION_SELECT_FOLDER. 
 
 :Important
- The Gtk::FileChooserButton will ellipsize the label, and thus will thus request little horizontal space. To give the button more space, you should call Gtk::Widget#size_request, Gtk::FileChooserButton#width_chars=, or pack the button in such a way that other interface elements give space to the widget.
+ The Gtk::FileChooserButton will ellipsize the label, and thus will request little horizontal space. To give the button more space, you should call Gtk::Widget#size_request, Gtk::FileChooserButton#width_chars=, or pack the button in such a way that other interface elements give space to the widget.
 
 == Object Hierarchy
 

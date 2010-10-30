@@ -5,7 +5,7 @@ It creates a skelton .rb file from a .glade file.
 
  $ ruby-glade-create-template yourgladefile.glade > yourapp.rb
 
-You can test it how it works.
+You can test it how it works. (notice: Application will start, but you won't see any window. Look into end of file and after window creation run on it function show_all)
 
  $ ruby yourapp.rb
 

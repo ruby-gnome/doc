@@ -470,11 +470,11 @@ Widget that displays a Gtk::TextBuffer.
     Emits cut-clipboard signal.
     * Returns: self
 
---- delete_from_cursor(type, arg2)
+--- delete_from_cursor(type, count)
 
     Emits delete-from-cursor signal.
     * type: ((<GtkDeleteType|Gtk#GtkDeleteType>))
-    * arg2: Integer
+    * count: the number of deletions to do
     * Returns: self
 
 --- insert_at_cursor(str)
@@ -727,6 +727,14 @@ Widget that displays a Gtk::TextBuffer.
 --- paste-clipboard: self
 
      * self: the Gtk::TextView
+
+--- preedit-changed: self, preedit
+
+    If an input method is used, the typed text will not immediately be committed to the buffer. So if you are interested in the text, connect to this signal.
+
+    This signal is only emitted if the text at the given position is actually editable.
+     * self: the Gtk::TextView
+     * preedit: the current preedit string
 
 --- populate-popup: self, menu
 

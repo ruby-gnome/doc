@@ -12,13 +12,43 @@
 
 --- code
 
-     * Returns: self: ((*FIXME*))
+    Returns the numeric file error code corresponding to the ((<GLib::FileError#File Error Codes>)).
+    * Returns: self
 
 --- domain
 
-     * Returns: self: ((*FIXME*))
+    Returns the error domain.
+    * Returns: self
 
-== Constants
+== File Error Codes
+
+:GLib::FileError
+  
+  * (00) - EXIST
+  * (01) - ISDIR
+  * (02) - ACCES
+  * (03) - NAMETOOLONG
+  * (04) - NOENT
+  * (05) - NOTDIR
+  * (06) - NXIO
+  * (07) - NODEV
+  * (08) - ROFS
+  * (09) - TXTBSY
+  * (10) - FAULT
+  * (11) - LOOP
+  * (12) - NOSPC
+  * (13) - NOMEM
+  * (14) - MFILE
+  * (15) - NFILE
+  * (16) - BADF
+  * (17) - INVAL
+  * (18) - PIPE
+  * (19) - AGAIN
+  * (20) - INTR
+  * (21) - IO
+  * (22) - PERM
+  * (24) - FAILED
+=== Constants
 
 --- ACCES
 --- AGAIN
@@ -48,5 +78,3 @@
 == See Also
 
 == ChangeLog
-
-

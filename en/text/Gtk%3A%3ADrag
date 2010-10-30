@@ -64,7 +64,7 @@ GTK+ has a rich set of methods for doing inter-process communication via the dra
     * widget: a Gtk::Widget that's a drag destination  
     * Returns: self
 
---- Gtk::Drag.dest_add_uri_targets
+--- Gtk::Drag.dest_add_uri_targets(widget)
 
     Add the URI targets supported by Gtk::Selection to the target list of the drag destination. The targets are added with info = 0. If you need another value, use Gtk::TargetList#add_uri_targets and Gtk::Drag.dest_set_target_list. ((* Since 2.6 *))
     * widget: a Gtk::Widget that's a drag destination  

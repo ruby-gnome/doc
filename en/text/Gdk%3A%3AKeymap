@@ -45,7 +45,7 @@ Note that Gdk::Keymap#translate_keyboard_state also returns the keyval, i.e. it 
 
     Translates the contents of a Gdk::EventKey into a keyval, effective group, and level. Modifiers that affected the translation and are thus unavailable for application use are returned in consumed_modifiers. The effective_group is the group that was actually used for the translation; some keys such as Enter are not affected by the active keyboard group. The level is derived from state. For convenience, Gdk::EventKey already contains the translated keyval, so this method isn't as useful as you might think. 
     * hardware_keycode: a keycode  
-    * state: a modifier state (((<GdkModifierType|Gdk#GdkModifierType>)))
+    * state: a modifier state (((<GdkModifierType|Gdk::Window#GdkModifierType>)))
     * group: active keyboard group  
     * Returns: [keyval, effective_group, level, consumed_modifiers] or nil if there was no keyval bound to the keycode/state/group
        * keyval : the keyval  

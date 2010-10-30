@@ -299,8 +299,8 @@ You may wish to begin by reading the ((<text widget conceptual overview>)) which
 
     Retrieves the first and last iterators in the buffer, i.e. the entire buffer lies within the range [start, end].
     * Returns: [start, end]
-       * start: a Gtk::TreeIter to initialize with first position in the buffer 
-       * end: a Gtk::TreeIter to initialize with the end iterator
+       * start: a Gtk::TextIter to initialize with first position in the buffer 
+       * end: a Gtk::TextIter to initialize with the end iterator
 
 --- modified?
 

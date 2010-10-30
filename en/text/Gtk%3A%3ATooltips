@@ -1,5 +1,7 @@
 = class Gtk::Tooltips
 
+((* Gtk::Tooltips is deprecated since Gtk+ 2.12. Use Gtk::Tooltip and the tooltip_* methodes in Gtk::Widget instead. *))
+
 Tooltips are the messages that appear next to a widget when the mouse pointer is held over it for a short amount of time. They are especially helpful for adding more verbose descriptions of things such as buttons in a toolbar.
 
 An individual tooltip belongs to a group of tooltips. A group is created with a call to Gtk::Tooltips.new. Every tooltip in the group can then be turned off with a call to Gtk::Tooltips#disable and enabled with Gtk::Tooltips#enable.

@@ -1,5 +1,5 @@
 = Gtk::HScrollbar クラス
-Gtk::HScrollbar は、垂直スクロールバーのウィジェットです。
+Gtk::HScrollbar は、水平スクロールバーのウィジェットです。
 スクロールバーの詳細については、Gtk::Scrollbar をご覧下さい。
 スクロールバーの位置調整には、Gtk::Adjustment を使用します。
 別途位置調整を行う場合には、引数にnilを指定してください。

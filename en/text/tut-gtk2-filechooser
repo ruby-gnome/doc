@@ -1,21 +1,39 @@
-= File Chooser Interface And Widgets
-{{link "tut-gtk2-selchoose", "tut-gtk2-selchoose", "tut-gtk", "tut-gtk2-fichoo-dialog"}}
+= Selector/Chooser Interface And Widgets
+{{link "tut-gtk2-selchoose", "tut-gtk2-selchoose", "tut-gtk", "tut-gtk2-colorsel-buttons"}}
+
+
+== File Chooser Buttons
+
 {{image_right("ChooserButtons01.png")}}
 
-== File Chooser Introduction 
+The Gtk::FileChooserButton widget provides an easy method for you to ask users to choose a file or a folder. It implements the interface of the Gtk::FileChooser. Note that  this module represents just an interface, hence we never create any Gtk::FileChooser instances. This means that while Gtk::FileChooserButton is not derived from the Gtk::FileChooser it does provide the functionality of that module, therefore it can be treated as if it were a Gtk::FileChooser. When the user clicks a Gtk::FileChooserButton, an instance of Gtk::FileChooserDialog is opened that allows the user to browse and select one file or one folder, depending on the type of a button you created. Actually, when when clicking on the folder button you need to  additionally select "Other" in order to open the dialogue window.
 
 
+:FileChooser related classes:
 
-Gtk::FileChooser module represents just an interface, hence we never create any FileChooser instances. The following list describes all FileChooser related classes:
+  * Gtk::FileChooser - File chooser interface used by  Gtk::FileChooserWidget and Gtk::FileChooserDialog
+  * Gtk::FileChooserButton - A button to launch a file selection dialog
+  * Gtk::FileChooserDialog - A file chooser dialogue, suitable for "File/Open" or "File/Save" commands
+  * Gtk::FileChooserWidget - File chooser widget that can be embedded in other widgets
+  * Gtk::FileFilter - A filter for selecting a file subset
+  * Gtk::FileSelection - Prompt the user for a file or directory name (obsolete use Gtk::FileChooserDialog instead)
 
-* Gtk::FileChooser - File chooser interface used by  Gtk::FileChooserWidget and Gtk::FileChooserDialog
-* Gtk::FileChooserButton - A button to launch a file selection dialog
-* Gtk::FileChooserDialog - A file chooser dialogue, suitable for "File/Open" or "File/Save" commands
-* Gtk::FileChooserWidget - File chooser widget that can be embedded in other widgets
-* Gtk::FileFilter - A filter for selecting a file subset
-* Gtk::FileSelection - Prompt the user for a file or directory name (obsolete use Gtk::FileChooserDialog instead)
+:FileChooserButton's behavour is also that of Gtk::FileChooser:
 
-To give you an idea how some of these fit together let's look at an example you can copy-and-paste into a file on your system and run. The top window contains three widgets: (1) folder button, (2) file button, and (3) originally an empty (nil) label. Pay  attention that the example also uses a Gtk::FileChooserDialog object which is spawned when user clicks on the top "folder" button. Of course in your programs you can create a dialogue object on its own via Gtk::FileChooserDialog.new, however here these dialogues are created for you when either button in the top window is pressed. In this case I want you to pay attention to object "w" in the code spawned only when the "chooser_dir" button is pressed, this is the place where we add the extra widget to the dialog. Note also, that the 3rd object (the label) should reflect users's file selection from the FileChooserDialog spawned when user clicked the "FileChooserDialog" object and actually selected some file. That file is obtained and the label initiated in the "file_changed" callback. Lastly, note that GLib class method is used to initialize both buttons' current folder "chooser_*.current_folder = GLib.home_dir".
+  You will notice in our example program here, that Gtk::FileChooserButton is using a number of behaviours from the Gtk::FileChooser, which themselves, namely the FileChooserButton widgets, are being treated as if they were  Gtk::FileChooser widgets. Let's list some of these behaviours: 
+
+  * Gtk::FileChooser#filename - Gets the filename for the currently selected file in the file selector.
+  * Gtk::FileChooser#filename=  - Sets filename as the current filename for the the file chooser.
+  * Gtk::FileChooser#set_filename(filename) - same as Gtk::FileChooser#filename=
+  * Gtk::FileChooser#current_folder - Gets the current folder of chooser as a local filename.
+  * Gtk::FileChooser#current_folder=(filename) - Sets the current folder for chooser from a local filename.
+  * Gtk::FileChooser#set_current_folder(filename) - Same as Gtk::FileChooser#current_folder=.
+  * Gtk::FileChooser#filter - Gets the current filter; see Gtk::FileChooser#filter=.
+  * Gtk::FileChooser#filter=(filter) - Sets the current filter.
+  * Gtk::FileChooser#set_filter(filter) - Same as Gtk::FileChooser#filter=.
+  * Gtk::FileChooser#add_filter(filter) - Adds filter to the list of filters that the user can select between.
+
+To give you an idea how some of these fit together let's look at the example you can copy-and-paste into a file on your system and run. The top window contains three widgets: (1) folder button, (2) file button, and (3) originally an empty (nil) label. Pay  attention that the example also uses a Gtk::FileChooserDialog object which is spawned when user clicks on the top "folder" button. Of course in your programs you can create a dialogue object on its own via Gtk::FileChooserDialog.new, however in our example program these dialogues are created for you when either button in the top window is pressed. In this case I want you to pay attention to the object "w" in the signal handling callback, activated when ((*'selection_changed'*)) signal is emitted normally after the "chooser_dir"  button is pressed and a new or different folder is selected, this is the place where we add the extra widget to the Gtk::FileChooserDialog widget. This object ("w") is actually a file chooser button widget, however as you can see, through it we add the extra button to the Gtk::FileChooserDialog widget. This magic happens via Gtk::FileChooser#extra_widget=, since both file chooser button an dialogue implement Gtk::FileChooser interface and can therefore be used interchangeably. Note also, that in the window with the two file chooser buttons the 3rd object (the label) reflects users's file selection from the FileChooserDialog spawned when user clicked the "FileChooserDialog" object and actually selected some file. That file is obtained and the label initialized in the "file_changed" callback. Lastly, note that GLib class method is used to initialize both buttons' current folder "chooser_*.current_folder = GLib.home_dir".
 
 
 {{image_left("ChooseYourFile.png")}}
@@ -26,10 +44,17 @@ Here you can see the file dialog window opened after the file button was pressed
  #!/usr/bin/env ruby
  require 'gtk2'
 
+ # It is imperative to understand what is happening in "folder_changed"
+ # First note, that both "folder" (dir) and "file" buttons are passed
+ # into the method. This is because that we want the two buttons to
+ # be related. The first "folder" button should provide the directory
+ # from which the second button should by default pick a file.
+
  def  folder_changed(c_dir, c_file)
    dir = c_dir.filename
    c_file.current_folder = dir
  end
+
  def file_changed(c_file, lab)
    file = c_file.filename
    file = "" if file == nil
@@ -43,8 +68,12 @@ Here you can see the file dialog window opened after the file button was pressed
  label = Gtk::Label.new
  chooser_dir  = Gtk::FileChooserButton.new(
      "Choose a Folder", Gtk::FileChooser::ACTION_SELECT_FOLDER)
- FileChooserDialog = Gtk::FileChooserButton.new(
+ chooser_file = Gtk::FileChooserButton.new(
      "Choose a File", Gtk::FileChooser::ACTION_OPEN)
+
+ ### IGNORE THIS I HAD TO PUT THIS IN SO THE CODE WOULD WORK AND MY INPUT WOULD NOT BE SPAM!!!
+ ### THE OLNY REASON THIS IS IN HERE IS BECAUSE THE CODE WOULD FAIL BECAUSE ABOVE AN 'r' WAS MISSING
+ ### IT WAS chooser_file = Gtk::FileChooserButton.new("Choose a File", Gtk::FileChooser::ACTION_OPEN)
 
  # Let's add an extra widget (a button) to the {{ dialog }}
  extra_button = Gtk::Button.new("Extra button")
@@ -60,7 +89,8 @@ Here you can see the file dialog window opened after the file button was pressed
    file_changed(chooser_file, label)
  end
  chooser_dir.current_folder  = GLib.home_dir
- chooser_file.current_folder = GLib.home_dir
+ # chooser_file.current_folder = "/tmp"  # <--- will have no effect, since callback overrides it 
+ # chooser_file.filename = "/home/iwk/wk/a_cfile.c" # <--- would work if file existed
 
  filter1 = Gtk::FileFilter.new
  filter2 = Gtk::FileFilter.new
@@ -84,3 +114,95 @@ Here you can see the file dialog window opened after the file button was pressed
  window.add(vbox)
  window.show_all
  Gtk.main
+
+
+In the above program you can see that two Gtk::FileChooserButton buttons types were created, one is  ((*"folder"*)) button and the other is ((*"file"*)) button. The determination of which type to create is made after inspecting the second argument ((*"action"*)):
+
+--- Gtk::FileChooserButton.new(title, action, backend = nil)
+
+    Creates a new file-selecting button widget. ((* Since 2.6 *))
+    * title: the title of the browse dialog.  
+    * action: the open mode for the widget. (Gtk::FileChooser::Action) 
+    * backend: The name of the specific filesystem backend to use or nil. (e.g.) "gnome-vfs" 
+    * Returns: a new Gtk::FileChooserButton widget.
+
+The Gtk::FileChooserButton supports only two of the total of four Gtk::FileChooser::Action-s (actions), namely the Gtk::FileChooser::ACTION_OPEN and Gtk::FileChooser::ACTION_SELECT_FOLDER. Therefore with the Gtk::FileChooserButton.new we can create only ((*"folder"*)) and ((*"file"*)) buttons.
+
+ chooser_dir  = Gtk::FileChooserButton.new(
+     "Choose a Folder", Gtk::FileChooser::ACTION_SELECT_FOLDER)
+ chooser_file = Gtk::FileChooserButton.new(
+     "Choose a File", Gtk::FileChooser::ACTION_OPEN)
+
+Once you created the desired file button you can initialize it as needed:
+
+ button = Gtk::FileChooserButton.new(
+     "Select a file", Gtk::FileChooser::ACTION_SELECT_FOLDER)
+ button.current_folder = GLib.home_dir
+
+Pay attention to the GLib.home_dir function, which provides a cross platform compatible way to specify user's home directory (folder). With instance method Gtk::FileChooser#current_folder= we can set the path of the either  ((*"folder"*)) and ((*"file"*)) buttons. After a user clicks on a button the contents of that folder will be shown in accordance with the filters in the Gtk::FileChooserDialog window. Note that in our example program, initializing a file button with a folder has no effect, because it is overridden in the ((*"folder_changed(c_dir, c_file)"*)) during the callback on the ((*"folder"*)) button. However, you can preset the file name for the file button:
+
+ chooser_file = Gtk::FileChooserButton.new(
+     "Choose a File", Gtk::FileChooser::ACTION_OPEN)
+ chooser_file.current_folder = "/tmp"              # <---- has no effect
+ chooser_file.filename = "/home/iwk/wk/a_cfile.c"  # <---- this works
+
+== File Filters
+
+Gtk::FileFilter objects allow you to restrict the files shown in the file chooser. For example, in our demo program, we defined two filters, one which restricts files to image files and the other that allows all types of files. File filter objects are created with Gtk::FileFilter.new, you assign them a descriptive name that will show up in the Gtk::FileChooserDialog with Gtk::FileFilter#name=, next you build a file filter with Gtk::FileFilter#add_pattern(pattern), and finally you assign the filter to the Gtk::FileChooser widget (file chooser dialogue button) with Gtk::FileChooser#add_filter(filter). Since there is no method to set "current_filter" you must pay attention to the order in which you add filters to the file button:
+
+ chooser_file.add_filter(filter2)  # All files (default)
+ chooser_file.add_filter(filter1)  # Image files
+
+The above snippet will have just the opposite effect than the order in the example program, where the "Image files" is set as the initial (default) setting.
+
+Of course all these are just the suggested pre-settings for the initial folder and a file, and a user may interactively change the file and folders as he or she desires, by opening the Gtk::FileChooserDialog.
+
+
+== Understanding the above example program
+
+For understanding this example completely it is imperative to understand what is happening in the ((*"folder_changed"*)) method, which we create in the top Object class. This method is called in our signal handling callback. First note, that both ((*"folder"*)) (directory) and the ((*"file"*)) buttons are passed into the method. This is because we want the two buttons to be related. Namely, the first "folder" button should provide the directory from which the second button should by default pick a file. Indeed, this can again be overridden by the user in the Gtk::FileChooserDialog and the file can be chosen from a different folder than that selected in the "folder" button, nevertheless, in GUI the widgets should behave the closest to user intuition, and it makes sense that the two buttons are related in the way just described. Hence, we need to set things up so that before user starts picking and choosing his or her selections, the initial directory points to the same folder for either button.
+
+We can now understand the following code, which is triggered every time ((*'selection_changed'*)) signal is emitted, as establishing the above relationships. First a folder path is obtained from the folder button, and next the file button and its dialogue box is set to this path: 
+
+ def  folder_changed(chooser_dir, chooser_file)
+   dir = chooser_dir.filename
+   chooser_file.current_folder = dir
+ end
+
+Only now can we also understand what means the following snippet of code and the  comment in it in the above example program: 
+
+ chooser_dir.current_folder  = GLib.home_dir
+ chooser_file.current_folder = "/tmp"  # <--- will have no effect, since callback overrides it 
+ chooser_file.filename = "/home/iwk/wk/a_cfile.c"
+
+The outcome of the Gtk::FileChooser#current_folder method call on the ((*"file button"*)) in the main program body will be overridden by the actions in the ((*folder_changed*)) method which is executed immediately after our program starts to run, since at that point the file chooser widgets  emit ((*'selection_changed'*)) signal to indicate the initial setting.
+
+Indeed the last line in the above snippet also makes no sense in the context of the above discussion, however, it may be beneficial to you if you need to suggest the use of a particular file to the user. If we did not provide this last line, the label on the file button would read ((*"(None)"*)), and the label below the button would be empty.
+
+=== Constants
+:Action
+
+  Describes whether a Gtk::FileChooser is being used to open existing files or to save to a possibly new file. Since 2.4
+
+  * Gtk::FileChooser::ACTION_OPEN - Indicates open mode. The file chooser will only let the user pick an existing file.
+  * Gtk::FileChooser::ACTION_SAVE - Indicates save mode. The file chooser will let the user pick an existing file, or type in a new filename.
+  * Gtk::FileChooser::ACTION_SELECT_FOLDER - Indicates an Open mode for selecting folders. The file chooser will let the user pick an existing folder.
+  * Gtk::FileChooser::ACTION_CREATE_FOLDER - Indicates a mode for creating a new folder. The file chooser will let the user name an existing or new folder.
+
+:Confirmation
+
+  Used as a return value of handlers for the confirm-overwrite signal. This value determines whether the file chooser will present the stock confirmation dialog, accept the user's choice of a file-name, or let the user choose another file-name. Since 2.8
+
+  * Gtk::FileChooser::CONFIRMATION_CONFIRM - The file chooser will present its stock dialog to confirm about overwriting an existing file.
+  * Gtk::FileChooser::CONFIRMATION_ACCEPT_FILENAME - The file chooser will terminate and accept the user's choice of a file name.
+  * Gtk::FileChooser::CONFIRMATION_SELECT_AGAIN - The file chooser will continue running, so as to let the user select another file name.
+
+:Signals
+
+  * ((*current-folder-changed*)) - This signal is emitted when the current folder in a Gtk::FileChooser changes.
+  * ((*file-activated*)) - This signal is emitted when the user "activates" a file in the file chooser.
+  * ((*selection-changed*)) - This signal is emitted when there is a change in the set of selected files in a Gtk::FileChooser.
+  * ((*update-preview*)) - This signal is emitted when the preview in a file chooser should be regenerated.
+  * ((*confirm-overwrite*)) - This signal gets emitted whenever it is appropriate to present a confirmation dialog when the user has selected a file name that already exists.
+
+  For more complete description see the topics "Signal" in the Gtk::FileChooser documentatiom

@@ -1,0 +1,233 @@
+= Menus and Toolbars
+{{link "tut-gtk2-mnstbs", "tut-gtk2-mnstbs", "tut-gtk", "tut-gtk2-mnstbs-statb"}}
+
+== Pop-up Menus
+
+:Jump ahead:
+    * ((<Creating a Pop-up Menu|tut-gtk2-mnstbs-popup#Creating a Pop-up Menu>))
+    * ((<Keyboard Accelerators|tut-gtk2-mnstbs-popup#Keyboard Accelerators>))
+
+You will begin this chapter by learning how to create a pop-up menu. A pop-up menu is a Gtk::Menu widget that is displayed to the user when the right mouse button is clicked when hovering above certain widgets. Some widgets such as Gtk::Entry and Gtk::TextView, already have a pop-up menus built into the widget by default.
+
+If you want to change the pop-up menu of a widget that offers one by default, you should edit the supplied Gtk::Menu widget in the pop-up callback proc or method. For example, both Gtk::Entry and Gtk::TextView have a ((*populate-popoup*)) signal, which receives the Gtk::Menu that is going to be displayed. You can edit this menu in any way you see fit before displaying it to the user.
+
+=== Creating a Pop-up Menu
+
+
+{{image_right("mnstbs-popup-01.png")}}
+
+For most widgets you will need to create your own pop-up menu. In this section you are going to learn how to supply a pop-up menu to a Gtk::ProgressBar widget. You can see the pop-up menu we are going to implement in the picture on the right presented in 
+
+In the example three pop-up menu items are used to pulse the progress bar, set it as 100 percent complete, and to clear it. You will notice that the progress bar is contained in an event box. This is because like a Gtk::Label, which we made click-able way back in this tutorial, is not capable of intercepting GDK events by itself. Let's look at the program: 
+
+{{br}}
+((*popupmenus.rb*))
+
+ #!/usr/bin/env ruby
+ require 'gtk2'
+ 
+ # Create the poup menu with three items and a separator.
+ # Then, attach it to the progress bar and show it to the
+ # user.
+ def create_popup_menu(menu, progb)
+   pulse  = Gtk::MenuItem.new("Pulse Progress")
+   separator = Gtk::MenuItem.new
+   fill   = Gtk::MenuItem.new("Set as Complete")
+   clear  = Gtk::MenuItem.new("_Clear Progress")
+  
+   menu.append(pulse)
+   menu.append(separator)
+   menu.append(fill)
+   menu.append(clear)
+  
+   pulse.signal_connect('activate') { |w| pulse_activated(w, progb) }
+   fill.signal_connect('activate')  { |w| fill_activated(w,  progb) }
+   clear.signal_connect('activate') { |w| clear_activated(w, progb) }
+   menu.show_all
+ end
+ 
+ def pulse_activated(menuitem, progbar)
+   progbar.pulse
+   progbar.text = "Pulse!"
+ end
+ 
+ def fill_activated(menuitem, progbar)
+   progbar.fraction = 1.0
+   progbar.text = "One Hundred Percent"
+ end
+ 
+ def clear_activated(menuitem, progbar)
+   progbar.fraction = 0.0
+   progbar.text = "Reset to Zero"
+ end
+ 
+ window = Gtk::Window.new(Gtk::Window::TOPLEVEL)
+ window.resizable = true
+ window.title = "Popup Menus"
+ window.border_width = 10
+ window.signal_connect('delete_event') { Gtk.main_quit }
+ window.set_size_request(250, -1)
+ 
+ # Create all of the necessary widgets and initialize the popup menu.
+ menu = Gtk::Menu.new
+ eventbox = Gtk::EventBox.new
+ progress = Gtk::ProgressBar.new
+ progress.text = "Nothing yet happened"
+ progress.pulse
+ progress.pulse_step = 0.05
+ 
+ create_popup_menu(menu, progress)
+  
+ eventbox = Gtk::EventBox.new
+ eventbox.events = Gdk::Event::BUTTON_PRESS_MASK
+ eventbox.signal_connect('button_press_event') do |w, event|
+   if event.event_type == Gdk::Event::BUTTON_PRESS
+     if event.button == 3   # left mouse button
+       menu.popup(nil, nil, event.button, event.time)
+     end
+   end
+ end
+ eventbox.add(progress)
+ window.add(eventbox)
+ eventbox.realize
+ window.show_all
+ Gtk.main
+
+In most cases you will want to use ((*button-press-event*)) signal to detect when the user wants the pop-up menu to be shown. At this point you may also check whether the right mouse button (event.button == 3) was clicked.
+
+Initially an empty pop-up menu is created. We use a helper method ((*create_popup_menu*)) to create and add (append) individual menu items to the menu. You could also use Gtk::MenuShell#prepend(child) or Gtk::MenuShell#insert(child, position). Finally we bind the menu items to the appropriate callback methods and the ((*activate*)) signal. 
+
+I also found it unnecessary to call Gtk::Menu#attach_to_widget(attach_widget){|attach_widgt, menu| ... } in this program example, as required by the  Andrew Klause's book and the C GTK+ example there, which I translated to Ruby for us here.
+
+{{image_right("dialog-warning.png")}}
+Separators are extremely important when designing a menu structure, because they organize menu items into groups so that the user can easily find the appropriate item. However, currently this feature either is badly documented (use a MenuItem with no label).
+
+=== Pop-up Menu Callbacks
+
+After creating the necessary widgets, you need to handle the  ((*button-press-event*)) signal. In our example the pop-up menu is displayed every time the right mouse button is clicked while hovering over the progress bar. We use Gtk::Menu#popup(parent_menu_shell, parent_menu_item, button, activate_time){|menu, x, y, push_in| ... } to display the menu on the screen.
+
+ menu.popup(nil, nil, event.button, event.time)
+
+We had all the parameters except the button and activate_time set to nil. If the pop-up menu was activated by something other than a mouse button click, you should supply 0 to the button parameter.
+
+:Note:
+    If the action was invoked by a ((*popup-menu*)) signal, the event time would not be available. You would need to provide the time value yourself.
+
+== Keyboard Accelerators
+
+{{image_right("mnstbs-popup-02.png")}}
+
+When creating a menu, one of the most important things to do is to set up keyboard accelerators. A keyboard accelerator is a key combination created from one accelerator key and one or more modifiers like Ctrl, Alt and Shift. When the user presses the key combination, the appropriate signal is emitted. Let's look at the example:
+
+((*accelerators.rb*))
+
+{{br}}
+
+ #!/usr/bin/env ruby
+ require 'gtk2'
+ 
+ # Create the poup menu with three items and a separator.
+ # Then, attach it to the progress bar and show it to the
+ # user.
+ def create_popup_menu(menu, progb, window)
+   pulse  = Gtk::MenuItem.new("Pulse Progress")
+   separator = Gtk::MenuItem.new
+   fill   = Gtk::MenuItem.new("Set as Complete")
+   clear  = Gtk::MenuItem.new("_Clear Progress")
+   
+   menu.append(pulse)
+   menu.append(separator)
+   menu.append(fill)
+   menu.append(clear)
+ 
+   # Create a keyboard accelerator group for the application.
+   group = Gtk::AccelGroup.new
+   window.add_accel_group(group)
+   menu.accel_group=(group)
+ 
+   # Add the necessary keyboard accelerators.
+   # pulse.add_accelerator('activate', group, accel_key, accel_mods, accel_flags)
+   pulse.add_accelerator('activate', group, Gdk::Keyval::GDK_P,
+         Gdk::Window::CONTROL_MASK, Gtk::ACCEL_VISIBLE)
+   fill.add_accelerator('activate', group, Gdk::Keyval::GDK_F,
+         Gdk::Window::CONTROL_MASK, Gtk::ACCEL_VISIBLE)
+   clear.add_accelerator('activate', group, Gdk::Keyval::GDK_C,
+         Gdk::Window::CONTROL_MASK, Gtk::ACCEL_VISIBLE)
+ 
+   pulse.signal_connect('activate') { |w| pulse_activated(w, progb) }
+   fill.signal_connect('activate')  { |w| fill_activated(w, progb) }
+   clear.signal_connect('activate') { |w| clear_activated(w, progb) }
+ 
+   # We do not need this method since there is no detach in our program.
+   # Also the API documentation is rather vague about its usage
+   menu.attach_to_widget(progb) {|attach_widgt, mnu| puts "detaching" }
+   menu.show_all
+ end
+ 
+ def pulse_activated(menuitem, progbar)
+   puts "pulse_activated"
+   progbar.pulse
+   progbar.text = "Pulse!"
+ end
+ 
+ def fill_activated(menuitem, progbar)
+   puts "fill_activated"
+   progbar.fraction = 1.0
+   progbar.text = "One Hundred Percent"
+ end
+ 
+ def clear_activated(menuitem, progbar)
+   puts "clear_activated"
+   progbar.fraction = 0.0
+   progbar.text = "Reset to Zero"
+ end
+ 
+ window = Gtk::Window.new(Gtk::Window::TOPLEVEL)
+ window.resizable = true
+ window.title = "Accelerators"
+ window.border_width = 10
+ window.signal_connect('delete_event') { Gtk.main_quit }
+ window.set_size_request(250, -1)
+ 
+ # Create all of the necessary widgets and initialize the popup menu.
+ menu = Gtk::Menu.new
+ eventbox = Gtk::EventBox.new
+ progress = Gtk::ProgressBar.new
+ progress.text = "Nothing yet happened"
+ progress.pulse
+ progress.pulse_step = 0.05
+ 
+ create_popup_menu(menu, progress, window)
+  
+ eventbox = Gtk::EventBox.new
+ eventbox.events = Gdk::Event::BUTTON_PRESS_MASK
+ eventbox.signal_connect('button_press_event') do |w, event|
+   if event.event_type == Gdk::Event::BUTTON_PRESS
+     if event.button == 3   # left mouse button
+       menu.popup(nil, nil, event.button, event.time)
+     end
+   end
+ end
+ eventbox.add(progress)
+ window.add(eventbox)
+ eventbox.realize
+ window.show_all
+ Gtk.main
+
+
+To create this example program we have used the previous "popupmenus.rb" program, beside a trivial change  in it's name label, the only important difference can be found in the ((*create_popup_menu*)) method. There are quite a few things there that require our attention. First is the creation of the accelerator group Gtk::AccelGroup object. That is the object in which keyboard accelerators are stored. In order to implement accelerators in your application you need to create a new accelerator group. This group must be added to the Gtk::Window, where the menu will appear for it to take effect. It must also be associated with any menus that will take advantage of its accelerators. After the creation of accelerator group instance, the rest of what was just mentioned is accomplished with Gtk::Window#add_accel_group(group) and Gtk::MenuItem#.accel_group=(group). But the most involved is the method Gtk::Widget#add_accelerator#add_accelerator. You can better understand its many parameters by reading the API segment that describes it:
+
+
+--- add_accelerator(accel_signal, accel_group, accel_key, accel_mods, accel_flags)
+
+    Installs an accelerator for this widget in accel_group that causes accel_signal to be emitted if the accelerator is activated. The accel_group needs to be added to the widget's toplevel via Gtk::Window#add_accel_group. Accelerators added through this function are not user changeable during run-time. If you want to support accelerators that can be changed by the user, use Gtk::AccelMap#add_entry and Gtk::Widget#set_accel_path or Gtk::MenuItem#accel_path= instead.
+    * accel_signal: widget signal to emit on accelerator activation (String) 
+    * accel_group: a Gtk::AccelGroup for this widget, added to its toplevel 
+    * accel_key: GDK keyval of the accelerator(Gdk::Keyval)
+    * accel_mods: modifier key combination of the accelerator(((<GdkModifierType|Gdk::Window#GdkModifierType>)))
+    * accel_flags: flag accelerators(((<GtkAccelFlags|Gtk#GtkAccelFlags>))), e.g. Gtk::ACCEL_VISIBLE
+    * Returns: self
+
+To add an accelerator to a widget, you can use Gtk::Widget#add_accelerator#add_accelerator method, which will emit the signal specified by the "accel_signal" parameter on the widget, when the user presses the key combination. Indeed for this to work, the accelerator group must be associated with the window and the menu items as mentioned earlier. The modifiers  are specified in (((<GdkModifierType|Gdk::Window#GdkModifierType>))). Most often used modifiers are Gdk::Window::SHIFT, Gdk::Window::CONTROL_MASK, and Gdk::Window::MOD1_MASK, which correspond to Shift, Ctrl, and Alt keys respectively. The last parameter accel_flags (Gtk::ACCEL_VISIBLE) will make the accelerator visible in the label, Gtk::ACCEL_LOCKED will prevent the user from modifying the accelerator, Gtk::ACCEL_MASK will set both flags for the widget accelerator.
+
+It is possible to manually create keyboard accelerators with Gtk::AccelMap, but in most cases the Gtk::Widget#add_accelerator#add_accelerator will provide all the necessary functionality.

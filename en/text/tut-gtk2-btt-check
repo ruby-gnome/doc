@@ -2,10 +2,11 @@
 {{link "tut-gtk2-btt-toggle", "tut-gtk2-btt", "tut-gtk", "tut-gtk2-btt-radio"}}
 
 == Check Button
-=== Using Stock Items
-(If you are "revisiting" for "Stock items" skip to the bottom part of the page.)
-=== Callbacks And Event Handling Revisited - Callbacks are closures 
-(If you are "revisiting" for "Callbacks" skip to the bottom part of the page.)
+
+If "revisiting" skip to the bottom part of the page.
+ * ((<Using Stock Items|tut-gtk2-btt-check#Using Stock Items>))
+ * ((<Callbacks And Event Handling Revisited|tut-gtk2-btt-check#Callbacks And Event Handling Revisited - Callbacks are closures>))
+
 {{br}}
 {{image_right("btt-check.png")}}
 {{br}}
@@ -20,7 +21,7 @@ As mentioned earlier in the Toggle Button session, Gtk::CheckButton is derived f
  require 'gtk2'
  def set_reset_check2(w, chk2)
    # Gtk::Widget#sensitive=boolean |or #set_sensitive(boolean)
-   chk2.sensitive = w.active ? ? true : false
+   chk2.sensitive = w.active? ? true : false
  end
 
  window = Gtk::Window.new(Gtk::Window::TOPLEVEL)

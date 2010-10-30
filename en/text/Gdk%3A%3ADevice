@@ -10,8 +10,7 @@
 == Class Methods
 
 --- Gdk::Device.core_pointer
-
-     * Returns: self: ((*FIXME*))
+     * Returns: the device that is used as the core pointer
 
 --- Gdk::Device.list
 
@@ -27,17 +26,19 @@
 
      * Returns: self: ((*FIXME*))
 
---- get_axis
-
-     * Returns: self: ((*FIXME*))
+--- get_axis(axes, use)
+     * axes: a sequence of axes values
+     * use: the axis use to match
+     * Returns: the axis value from axes that matches the use type or nil if there is no match.
 
 --- get_history
 
      * Returns: self: ((*FIXME*))
 
---- get_state
-
-     * Returns: self: ((*FIXME*))
+--- get_state(window)
+    The get_state method returns a tuple containing: a tuple containing the axes data, the bitmask containing the set of key modifiers in effect. The state information is relative to the Gdk::Window specified by window.
+     * window: a Gdk::Window
+     * Returns: a tuple containing: a tuple containing the axes data; and, the modifiers in effect.
 
 --- has_cursor?
 
@@ -107,5 +108,3 @@
 == See Also
 
 == ChangeLog
-
-

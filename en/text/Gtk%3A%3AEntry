@@ -515,7 +515,7 @@ The Gtk::Entry widget is a single line text entry widget. A fairly large set of 
 
 --- insert-at-cursor: self, text
 
-    Doesn't this work?
+    Doesn't this work? (insert_text seems to do the job)
 
 --- move-cursor: self, step, count, extend_selection
 

@@ -102,10 +102,10 @@ data. ((*Since 2.10*))
     method will be used to determine what will be the next page
     when the user presses the forward button. Setting page_func
     to nil will make the assistant to use the default forward
-    function, which just goes to the next visible page. 
+    function, which just goes to the next visible page.
     ((*Since 2.10*))
 
-    * {|current_page| ... }: the page forwarding block 
+    * {|current_page| ... }: the page forwarding block
       * current_page: passed argument is the page number used to calculate the next page
       * Returns: the next page number
     * Returns: self
@@ -194,7 +194,7 @@ data. ((*Since 2.10*))
     ((*Since 2.10*))
 
     * page: a page of assistant (Gtk::Widget)
-    * complete:	the completeness status of the page (true or false)
+    * complete:        the completeness status of the page (true or false)
     * Returns: self
 
 --- get_page_complete(page)

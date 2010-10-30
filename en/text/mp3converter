@@ -1,0 +1,20 @@
+=mp3converter
+
+Simple script that allows you to convert any GStreamer-supported file to MP3. Example how to use decodebin.
+
+==Download
+{{attach_anchor("mp3.rb")}}
+
+==Usage
+$ ruby mp3.rb INFILE OUTFILE.mp3
+
+==License
+Ruby's
+
+==Author
+Marcin Lewandowski
+
+{{br}}
+===Changelog
+:2009-11-15
+Initial release

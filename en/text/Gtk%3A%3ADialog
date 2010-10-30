@@ -263,6 +263,25 @@ Flags used to influence dialog construction.
 
 === ResponseType
 
+--- Response Type
+    The following ((*response types*)) are returned from Ruby/GTK dialogues, and you can also use them yourself if you like. Ruby/GTK will never assign a meaning to positive response IDs; these are entirely user-defined. But for convenience, you can use the response IDs in the Gtk::Dialog#ResponseType enumeration (these all have values less than zero). If a dialogue receives a delete event, the "response" signal will be emitted with a response ID of Gtk::Dialog::RESPONSE_NONE.
+
+    {{br}}
+    * RESPONSE_NONE (-1): - The dialogue was destroyed by window manager or programatically with Gtk::Widget#destroy. This is also returned if the ((*response_id*)) is not set.
+    * RESPONSE_REJECT (-2): - This identifier is not associated with buttons in built-in dialogues, but you are free to use it yourself.
+    * RESPONSE_ACCEPT (-3): - This identifier is not associated with buttons in built-in dialogues, but you are free to use it yourself.
+    * RESPONSE_DELETE_EVENT (-4): - Each dialogue is automatically connected to the delete_event signal. While Gtk::Dialog#run is running, this identifier will be returned,but the delete_event will be prevented from destroying the window as normally. 
+    * RESPONSE_OK (-5): - A Gtk::Stock::OK button was clicked in a built-in dialogue. You are free to use this button or any of the following in your own dialogues.
+    * RESPONSE_CANCEL (-6): - A Gtk::Stock::CANCEL button was clicked in a built-in dialogue.
+    * RESPONSE_CLOSE (-7): - A Gtk::Stock::CLOSE button was clicked in a built-in dialogue.
+    * RESPONSE_YES (-8): - A Gtk::Stock::YES button was clicked in a built-in dialogue.
+    * RESPONSE_NO (-9): - A Gtk::Stock::NO button was clicked in a built-in dialogue.
+    * RESPONSE_APPLY (-10) - A Gtk::Stock::APPLY button was clicked in a built-in dialogue.
+    * RESPONSE_HELP (-11) - A Gtk::Stock::HELP button was clicked in a built-in dialogue.
+
+
+
+
 These are returned from Ruby/GTK dialogs, and you can also use them yourself if you like.
 
 --- RESPONSE_NONE

@@ -20,7 +20,7 @@ A Gst::Bin that will become a thread.
     If element name is ommited (or nil), then the thread will receive a guaranteed
     unique name, consisting of the "thread" string and a number.
     If name is given, it will be given the name supplied.
-    * name: a name which will be attributed to the thread.  
+    * name: a name which will be attributed to the thread.
     * Returns: a newly created Gst::Thread object.
 
 == Constants

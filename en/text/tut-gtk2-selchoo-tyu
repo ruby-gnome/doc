@@ -1,0 +1,122 @@
+= Selector/Chooser Interface And Widgets
+{{link "tut-gtk2-fichoo-fontbtt", "tut-gtk2-selchoose", "tut-gtk", "tut-gtk2-dialog"}}
+
+
+== Test Your Understanding
+
+In the sessions under the title "Selector/Chooser Interface And Widgets" you have learnt about a number of basic widgets. In the following two exercises you will have a chance to practise using some of these widgets. As always at the end of a learning unit I will suggest you try to write these exercises on your own.
+
+=== Exercise #1
+
+{{image_right("filechoo-rename-ex1.png")}}
+
+In this exercise, use a Gtk::FileChooserButton widget to allow the user to choose a file on their system. Next, you should provide a user to rename the selected file. In order to do this use a Gtk::Entry widget giving the user a way to enter a new name for the selected file. When ready the user should click the Apply button to rename the selected file. 
+
+If the file was successfully renamed, the entry field and the button should be disabled until the user chooses a new file. If the user does not have the permissions to modify (rename) the file the button and entry widget should also be disabled.
+
+In his book "Foundations of GTK+ Development" Andrew Krause directs the reader to GLib library where C programmers can find file utility functions. In Ruby however, this functionality is built into the language and available as File module. So for instance you will use File::rename(old, new) instead of g_rename(), or File::writable?(filename) instead of the g_access() as they are known in "C GTK+". It is fair to say that this "C GTK+" GLib file utility functionality is working for you underneath Ruby, and that Ruby itself takes care of cross platform independence in this area.
+
+
+
+ #!/usr/bin/env ruby
+ require 'gtk2'
+
+ def  file_changed(chooser_b, entry_field, apply_btt)
+   old_filename = chooser_b.filename
+   mode = File::writable?(chooser_b.filename) if chooser_b.filename
+   entry_field.sensitive = mode
+   apply_btt.sensitive = mode
+ end
+
+ def rename_clicked(chooser_b, entry_field, apply_btt)
+   old_filename = chooser_b.filename
+   location = chooser_b.current_folder
+   new_file = location + "/" + entry_field.text
+   File::rename(old_filename, new_file)
+   entry_field.sensitive = false
+   apply_btt.sensitive = false
+ end
+
+ window = Gtk::Window.new(Gtk::Window::TOPLEVEL)
+ window.set_title  "Rename File Exercise"
+ window.border_width = 10
+ window.signal_connect('delete_event') { Gtk.main_quit }
+
+ rename_button = Gtk::Button.new(Gtk::Stock::APPLY)
+ file_name_entry = Gtk::Entry.new
+ rename_button.sensitive = false
+ file_name_entry.sensitive = false
+
+ chooser_btt  = Gtk::FileChooserButton.new(
+   "Choose your File", Gtk::FileChooser::ACTION_OPEN)
+ chooser_btt.current_folder  = GLib.home_dir
+
+ chooser_btt.signal_connect('selection_changed') do |w|
+   file_changed(w, file_name_entry, rename_button)
+ end
+ rename_button.signal_connect('clicked') do
+   rename_clicked(chooser_btt, file_name_entry, rename_button)
+ end
+
+ filter1 = Gtk::FileFilter.new
+ filter1.add_pattern('*')
+ chooser_btt.add_filter(filter1)
+
+ hbox = Gtk::HBox.new(true, 5)
+ hbox.pack_start_defaults(file_name_entry)
+ hbox.pack_start_defaults(rename_button)                
+ vbox = Gtk::VBox.new(true, 5)
+ vbox.pack_start_defaults(chooser_btt)
+ vbox.pack_start_defaults(hbox)
+
+ window.add(vbox)
+ window.show_all
+ Gtk.main
+
+=== Exercise #2
+
+{{image_right("filechoo-sync-spin-scale-ex2.png")}}
+
+In this exercise, create three widgets: a spin button, horizontal scale, and a check button. The spin button and horizontal scale should be set  with the same initial value and bounds. If the check button is checked, the two adjustments should be synchronized to the same value. This means that when a user changes the value of one widget, the other will be adjusted correspondingly. 
+
+
+ #!/usr/bin/env ruby
+ require 'gtk2'
+
+ def value_changed(widget, spin, scale, check)
+   if check.active? && scale.value != spin.value
+     if widget.class == Gtk::SpinButton
+       scale.value = spin.value
+     else
+       spin.value = scale.value
+     end
+   end
+ end
+
+ window = Gtk::Window.new(Gtk::Window::TOPLEVEL)
+ window.set_title  "Sync Spin & Scale"
+ window.border_width = 10
+ window.signal_connect('delete_event') { Gtk.main_quit }
+ window.set_size_request(250, -1)
+
+ # create two adjustments
+                        # value, min, max,  step, pg-incr, pg-size
+ adj1 = Gtk::Adjustment.new(0.5, 0.0, 1.0,  0.01, 0.02,    0.02)
+ adj2 = Gtk::Adjustment.new(0.5, 0.0, 1.02, 0.1,  0.02,    0.02)
+
+ spin  = Gtk::SpinButton.new(adj1, 0.01, 2)
+ scale = Gtk::HScale.new(adj2)
+ check = Gtk::CheckButton.new("Syncronize Spin and Scale")
+ scale.value_pos   = Gtk::POS_RIGHT
+
+ spin.signal_connect('value_changed') {|w| value_changed(w, spin, scale, check)}
+ scale.signal_connect('value_changed') {|w| value_changed(w, spin, scale, check)}
+
+ vbox = Gtk::VBox.new(true, 5)
+ vbox.pack_start_defaults(spin)
+ vbox.pack_start_defaults(scale)
+ vbox.pack_start_defaults(check)
+
+ window.add(vbox)
+ window.show_all
+ Gtk.main

@@ -1,0 +1,625 @@
+= Dynamic User Interfaces Built With Glade
+{{link "tut-gtk2-dynui-libglade", "tut-gtk2-dynui", "tut-gtk", "tut-gtk2-ccw"}}
+
+== Test Your Understanding
+
+This exercise is especially important for you to become a proficient Ruby GTK+ developer. It is not practical to manually design every aspect of a large GUI application because it simply takes too long. Instead you should be using Glade to design the user interface and Libglade to load that design and connect signals. By doing this, you will be able to quickly finish the graphical aspects of your applications and get to the back-end code that makes your applications work.
+
+=== Exercise #1:
+
+{{image_left("mnstbs-tyu1.png")}}
+In this exercise implement the text editor from the 1st exercise in chapter (9), or as we call it "Menus and Toolbars" session, where we used the simple text editor example from an even earlier chapter (7) where we programmed it manually, but implemented it in chapter 9 with Gtk::UIManager. Here we will use Glade to do the same. The toolbar in the text editor should be now implemented completely in Glade. This exercise should not require much extra coding if you use the solution from the previous chapter. However there are few important small differences. In chapter (9) most of the callbacks were implemented as Procs which inherit variables from the environment in which they are defined. Here, however, they are all methods. This calls for a different approach to pass in the variables tucked into the TextEditor class.
+
+
+
+Again, for your convenience I will include the ((*ex10-1-editor-tb.glade*)) file, so you can verify your work. 
+
+((*ex10-1-editor-tb.glade*))
+
+ <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+ <!DOCTYPE glade-interface SYSTEM "glade-2.0.dtd">
+ <!--Generated with glade3 3.0.2 on Fri Dec  8 17:54:41 2006 by user@chewy-->
+ <glade-interface>
+   <widget class="GtkWindow" id="window">
+     <property name="default_width">600</property>
+     <property name="default_height">450</property>
+     <signal name="destroy" handler="gtk_main_quit"/>
+     <child>
+       <widget class="GtkVBox" id="vbox1">
+         <property name="visible">True</property>
+         <child>
+           <widget class="GtkToolbar" id="toolbar1">
+             <property name="visible">True</property>
+             <child>
+               <widget class="GtkToolButton" id="toolbutton1">
+                 <property name="visible">True</property>
+                 <property name="stock_id">gtk-new</property>
+                 <signal name="clicked" handler="new_clicked"/>
+               </widget>
+             </child>
+             <child>
+               <widget class="GtkToolButton" id="toolbutton2">
+                 <property name="visible">True</property>
+                 <property name="stock_id">gtk-open</property>
+                 <signal name="clicked" handler="open_clicked"/>
+               </widget>
+             </child>
+             <child>
+               <widget class="GtkToolButton" id="toolbutton3">
+                 <property name="visible">True</property>
+                 <property name="stock_id">gtk-save</property>
+                 <signal name="clicked" handler="save_clicked"/>
+               </widget>
+             </child>
+             <child>
+               <widget class="GtkSeparatorToolItem" id="separatortoolitem1">
+                 <property name="visible">True</property>
+               </widget>
+             </child>
+             <child>
+               <widget class="GtkToolButton" id="toolbutton4">
+                 <property name="visible">True</property>
+                 <property name="stock_id">gtk-cut</property>
+                 <signal name="clicked" handler="cut_clicked"/>
+               </widget>
+             </child>
+             <child>
+               <widget class="GtkToolButton" id="toolbutton5">
+                 <property name="visible">True</property>
+                 <property name="stock_id">gtk-copy</property>
+                 <signal name="clicked" handler="copy_clicked"/>
+               </widget>
+             </child>
+             <child>
+               <widget class="GtkToolButton" id="toolbutton6">
+                 <property name="visible">True</property>
+                 <property name="stock_id">gtk-paste</property>
+                 <signal name="clicked" handler="paste_clicked"/>
+               </widget>
+             </child>
+           </widget>
+           <packing>
+             <property name="expand">False</property>
+           </packing>
+         </child>
+         <child>
+           <widget class="GtkScrolledWindow" id="scrolledwindow1">
+             <property name="visible">True</property>
+             <child>
+               <widget class="GtkTextView" id="textview">
+                 <property name="visible">True</property>
+               </widget>
+             </child>
+           </widget>
+           <packing>
+             <property name="position">1</property>
+           </packing>
+         </child>
+         <child>
+           <widget class="GtkHBox" id="hbox">
+             <property name="visible">True</property>
+             <property name="spacing">5</property>
+             <child>
+               <widget class="GtkEntry" id="entry1">
+                 <property name="width_request">250</property>
+                 <property name="visible">True</property>
+                 <property name="text" translatable="yes">Search for ...</property>
+               </widget>
+               <packing>
+                 <property name="expand">False</property>
+               </packing>
+             </child>
+             <child>
+               <widget class="GtkButton" id="button1">
+                 <property name="visible">True</property>
+                 <property name="label" translatable="yes">gtk-find</property>
+                 <property name="use_stock">True</property>
+                 <signal name="clicked" handler="find_clicked"/>
+               </widget>
+               <packing>
+                 <property name="expand">False</property>
+                 <property name="position">1</property>
+               </packing>
+             </child>
+           </widget>
+           <packing>
+             <property name="expand">False</property>
+             <property name="padding">5</property>
+             <property name="position">2</property>
+           </packing>
+         </child>
+       </widget>
+     </child>
+   </widget>
+ </glade-interface>
+
+
+Indeed, the above file or better your own Glade creation's output has to be first processed with ((*ruby-glade-create-template*)) command, and then all the missing code added to it. I hope after skimming through what we have here you will have no trouble building this yourself. Remember that by just reading the code here you will most likely miss many little things that matter. I urge you to study and play with this code until you are absolutely confident you understand how it came into being. 
+
+Following is the Ruby program where all the callbacks are implemented.
+
+((*ex10-1-editor-tb.rb*))
+
+ #!/usr/bin/env ruby
+ #
+ # This file is gererated by ruby-glade-create-template 1.1.4.
+ #
+ require 'libglade2'
+ 
+ class TextEditor
+   attr_accessor :textview, :search
+ end
+ 
+ class Ex101EditorTbGlade
+   include GetText
+ 
+   attr :glade, :texteditor
+   
+   def initialize(path_or_data,
+                  root = nil,
+                  domain = nil,
+                  localedir = nil,
+                  flag = GladeXML::FILE)
+     bindtextdomain(domain, localedir, nil, "UTF-8")
+     @glade = GladeXML.new(path_or_data,
+                           root,
+                           domain,
+                           localedir,
+                           flag) {|handler| method(handler)}
+     @texteditor = TextEditor.new
+     @texteditor.textview = @glade["textview"]
+     @texteditor.search   = @glade["entry1"]
+   end
+  
+   def gtk_main_quit(widget)
+     Gtk.main_quit
+   end
+ 
+   # Verify that the user want to create a new document.
+   # If so, delete all of the text from the buffer.
+   def new_clicked(widget)
+     dialog = Gtk::MessageDialog.new(
+         nil,
+         Gtk::Dialog::MODAL,
+         Gtk::MessageDialog::QUESTION,
+         Gtk::MessageDialog::BUTTONS_YES_NO,
+         "All changes will be lost. Do you want to continue?"
+     )
+     dialog.title = "Information"
+     dialog.run do |r|
+       @texteditor.textview.buffer.text = "" if r == Gtk::Dialog::RESPONSE_YES
+     end
+     dialog.destroy
+   end
+ 
+   # Replace the content of the current buffer with the
+   # content of a file.
+   def open_clicked(widget)
+     dialog = Gtk::FileChooserDialog.new(
+       "Choose a file ...",
+       nil,
+       Gtk::FileChooser::ACTION_OPEN,
+       nil,
+       [ Gtk::Stock::CANCEL, Gtk::Dialog::RESPONSE_CANCEL ],
+       [ Gtk::Stock::APPLY, Gtk::Dialog::RESPONSE_APPLY ]
+     )
+     dialog.run do |response|
+       if response == Gtk::Dialog::RESPONSE_APPLY
+         file = dialog.filename
+         content = IO.readlines(file)
+         @texteditor.textview.buffer.text = content.to_s
+       end
+     end
+     dialog.destroy
+   end
+ 
+   # Copy the selected text to the clipboard.
+   def copy_clicked(widget)
+     clipboard = Gtk::Clipboard.get(Gdk::Selection::CLIPBOARD)
+     @texteditor.textview.buffer.copy_clipboard(clipboard)
+   end
+ 
+   # Search for a text string from the current cursor position
+   # if there is no selected text, or one character after the
+   # cursor if there is.
+   def find_clicked(widget)
+     find =  @texteditor.search.text
+     first, last, success =  @texteditor.textview.buffer.selection_bounds
+   
+     first =  @texteditor.textview.buffer.start_iter unless success
+   
+     #                   forward_search(find, flags,    limit=(nil==entire text buffer))
+     first, last = first.forward_search(find, Gtk::TextIter::SEARCH_TEXT_ONLY, last)
+ 
+     # Select the instance on the screen if the string is found. 
+     # Otherwise, tell the user it has failed.
+     if (first)
+       mark =  @texteditor.textview.buffer.create_mark(nil, first, false)
+       # Scrolls the Gtk::TextView the minimum distance so
+       # that mark is contained within the visible area. 
+        @texteditor.textview.scroll_mark_onscreen(mark)
+ 
+        @texteditor.textview.buffer.delete_mark(mark)
+        @texteditor.textview.buffer.select_range(first, last)
+     else
+       # Gtk::MessageDialog.new(parent, flags, message_type, button_type, message = nil)
+       dialogue = Gtk::MessageDialog.new(
+               nil,
+               Gtk::Dialog::MODAL,
+               Gtk::MessageDialog::INFO, 
+               Gtk::MessageDialog::BUTTONS_OK,
+               "The text was not found!"
+       )
+       dialogue.run
+       dialogue.destroy
+     end
+     first = last = nil # cancel any previous selections
+   end
+   
+   # Delete any selected text and insert the clipboard
+   # content into the document.
+   def paste_clicked(widget)
+     clipboard = Gtk::Clipboard.get(Gdk::Selection::CLIPBOARD)
+     @texteditor.textview.buffer.paste_clipboard(clipboard, nil, true)
+   end
+   
+   # Save the content of the current buffer to a file.
+   def save_clicked(widget)
+     dialog = Gtk::FileChooserDialog.new(
+       "Save the file ...",
+       nil,
+       Gtk::FileChooser::ACTION_SAVE,
+       nil,
+       [ Gtk::Stock::CANCEL, Gtk::Dialog::RESPONSE_CANCEL ],
+       [ Gtk::Stock::SAVE, Gtk::Dialog::RESPONSE_APPLY ]
+     )
+     dialog.run do |response|
+       if response == Gtk::Dialog::RESPONSE_APPLY 
+         file = dialog.filename
+         content = @texteditor.textview.buffer.text
+         # Open for writing, write and close.
+         File.open(file, "w") { |f| f <<  content } 
+       end
+     end
+     dialog.destroy
+   end
+ 
+   # Copy the selected text to the clipboard and remove it from the buffer.
+   def cut_clicked(widget)
+     clipboard = Gtk::Clipboard.get(Gdk::Selection::CLIPBOARD)
+     @texteditor.textview.buffer.cut_clipboard(clipboard, true)
+   end
+ end
+ 
+ # Main program
+ if __FILE__ == $0
+   # Set values as your own application. 
+   PROG_PATH = "ex10-1-editor-tb.glade"
+   PROG_NAME = "YOUR_APPLICATION_NAME"
+   o = Ex101EditorTbGlade.new(PROG_PATH, nil, PROG_NAME)
+   o.glade["window"].show_all
+   Gtk.main
+ end
+
+
+
+
+
+=== Exercise #2:
+
+{{image_left("dynui-exno2.png")}}
+
+In this exercise you should implement the same text editor with a menu bar rather than a toolbar. However, this implementation will be done partly with Glade and partly with Gtk::UIManager. First thing we need to do is design a new Glade layout. The fastest it will be to copy the earlier "ex10-1-editor-tb.glade" file into a new "ex10-2-editor-mb-ui.glade" file and remove the toolbar so the first cell of the vertical box (vbox1) will be empty (mesh). Another change we have to do in "vbox1" is to change the packing order of the children widgets, namely of the "scrolledwindow1" and the "hbox", from "start" to "end". It is premature to explain this now but it is worth drawing your attention in this direction. The next thing we need is our "menu2.ui" file where we have the required menu layout design. Yet another issue that you have to be concerned with is the fact that in Gtk::UIManager designs we prefer Proc callbacks over functions or methods. Again for the reasons likely not yet clear to you, I suggest you believe me that it is best if you  try to turn this around, namely use methods for callbacks that used to be Procs.
+
+
+Well, you must now have enough hints and information to try to re-write the output of ((*ruby-glade-create-template*)) into a Ruby application that will use both (.glade) file and the (.ui) files. Indeed, you should try to tackle all of these issues on your own. I have to warn you it will not be as easy as it may sound, but do not give up too soon. Regardless of which studying technique you choose in either case, whether studying the solutions provided here or doing it yourself, your aim should be complete understanding of the issues involved.
+
+First let me provide the Glade output file for you to download and use for "verification" of your own creation:
+
+((*ex10-2-editor-mb-ui.glade*))
+
+ <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+ <!DOCTYPE glade-interface SYSTEM "glade-2.0.dtd">
+ <!--Generated with glade3 3.4.5 on Thu Mar  5 20:03:09 2009 -->
+ <glade-interface>
+   <widget class="GtkWindow" id="window">
+     <property name="default_width">600</property>
+     <property name="default_height">450</property>
+     <signal name="destroy" handler="gtk_main_quit"/>
+     <child>
+       <widget class="GtkVBox" id="vbox1">
+         <property name="visible">True</property>
+         <child>
+           <placeholder/>
+         </child>
+         <child>
+           <widget class="GtkScrolledWindow" id="scrolledwindow1">
+             <property name="visible">True</property>
+             <property name="can_focus">False</property>
+             <child>
+               <widget class="GtkTextView" id="textview">
+                 <property name="visible">True</property>
+               </widget>
+             </child>
+           </widget>
+           <packing>
+             <property name="pack_type">GTK_PACK_END</property>
+             <property name="position">2</property>
+           </packing>
+         </child>
+         <child>
+           <widget class="GtkHBox" id="hbox">
+             <property name="visible">True</property>
+             <property name="spacing">5</property>
+             <child>
+               <widget class="GtkEntry" id="entry1">
+                 <property name="width_request">250</property>
+                 <property name="visible">True</property>
+                 <property name="text" translatable="yes">Search for ...</property>
+               </widget>
+               <packing>
+                 <property name="expand">False</property>
+               </packing>
+             </child>
+             <child>
+               <widget class="GtkButton" id="button1">
+                 <property name="visible">True</property>
+                 <property name="label" translatable="yes">gtk-find</property>
+                 <property name="use_stock">True</property>
+                 <property name="response_id">0</property>
+                 <signal name="clicked" handler="find_clicked"/>
+               </widget>
+               <packing>
+                 <property name="expand">False</property>
+                 <property name="position">1</property>
+               </packing>
+             </child>
+           </widget>
+           <packing>
+             <property name="expand">False</property>
+             <property name="padding">5</property>
+             <property name="pack_type">GTK_PACK_END</property>
+             <property name="position">1</property>
+           </packing>
+         </child>
+       </widget>
+     </child>
+   </widget>
+ </glade-interface>
+
+
+
+Following is the menu file:
+
+((*menu2.ui*))
+ <ui>
+   <menubar name="MenuBar">
+     <menu name="FileMenu" action="File">
+       <menuitem name="FileNew" action="New"/>
+       <menuitem name="FileOpen" action="Open"/>
+       <menuitem name="FileSave" action="Save"/>
+     </menu>
+     <menu name="EditMenu" action="Edit">
+       <menuitem name="EditCut" action="Cut"/>
+       <menuitem name="EditCopy" action="Copy"/>
+       <menuitem name="EditPaste" action="Paste"/>
+     </menu>
+   </menubar>
+ </ui>
+
+And here is the Ruby end result:
+
+((*ex10-2-editor-mb-ui.rb*))
+
+ #!/usr/bin/env ruby
+ #
+ # This file is gererated by ruby-glade-create-template 1.1.4.
+ #
+ require 'libglade2'
+ 
+ # Make sure "texteditor" will be part of the closures
+ class TexEditor
+   attr_accessor :textview, :search
+ end
+ 
+ class Ex102EditorMbUiGlade
+   include GetText
+ 
+   attr :glade
+   attr_accessor :texteditor, :entries
+   
+   def initialize(path_or_data, root = nil, domain = nil, localedir = nil, flag = GladeXML::FILE)
+     bindtextdomain(domain, localedir, nil, "UTF-8")
+     @glade = GladeXML.new(path_or_data, root, domain, localedir, flag) {|handler| method(handler)}
+ 
+     @texteditor = TexEditor.new
+     
+     @entries = [
+       [ "File",  nil,              "_File", nil, nil,         nil ],
+       [ "Edit",  nil,              "_Edit", nil, nil,         nil ],
+       [ "New",   Gtk::Stock::NEW,   nil,    nil, "Create a new file",     nil ],
+       [ "Open",  Gtk::Stock::OPEN,  nil,    nil, "Open an existing file", nil ],
+       [ "Save",  Gtk::Stock::SAVE,  nil,    nil, "Save the document to a file",  nil ],
+       [ "Cut",   Gtk::Stock::CUT,   nil,    nil, "Cut the selection to the clipboard", nil ],
+       [ "Copy",  Gtk::Stock::COPY,  nil,    nil, "Copy the selection to the clipboard", nil ],
+       [ "Paste", Gtk::Stock::PASTE, nil,    nil, "Paste text from the clipboard", nil ]
+     ] 
+   end
+  
+   def gtk_main_quit
+     Gtk.main_quit
+   end
+ 
+   # Verify that the user want to create a new document.
+   # If so, delete all of the text from the buffer.
+   def new_clicked
+      dialog = Gtk::MessageDialog.new(
+         nil,
+         Gtk::Dialog::MODAL,
+         Gtk::MessageDialog::QUESTION,
+         Gtk::MessageDialog::BUTTONS_YES_NO,
+         "All changes will be lost. Do you want to continue?"
+     )
+     dialog.title = "Information"
+     dialog.run do |r|
+       @texteditor.textview.buffer.text = "" if r == Gtk::Dialog::RESPONSE_YES
+     end
+     dialog.destroy
+   end
+ 
+   # Replace the content of the current buffer with the
+   # content of a file.
+   def open_clicked
+     dialog = Gtk::FileChooserDialog.new(
+       "Choose a file ...",
+       nil,
+       Gtk::FileChooser::ACTION_OPEN,
+       nil,
+       [ Gtk::Stock::CANCEL, Gtk::Dialog::RESPONSE_CANCEL ],
+       [ Gtk::Stock::APPLY, Gtk::Dialog::RESPONSE_APPLY ]
+     )
+     dialog.run do |response|
+       if response == Gtk::Dialog::RESPONSE_APPLY
+         file = dialog.filename
+         content = IO.readlines(file)
+         @texteditor.textview.buffer.text = content.to_s
+       end
+     end
+     dialog.destroy
+   end
+ 
+   # Save the content of the current buffer to a file.
+   def save_clicked
+     
+     dialog = Gtk::FileChooserDialog.new(
+       "Save the file ...",
+       nil,
+       Gtk::FileChooser::ACTION_SAVE,
+       nil,
+       [ Gtk::Stock::CANCEL, Gtk::Dialog::RESPONSE_CANCEL ],
+       [ Gtk::Stock::SAVE, Gtk::Dialog::RESPONSE_APPLY ]
+     )
+     dialog.run do |response|
+       if response == Gtk::Dialog::RESPONSE_APPLY
+         file = dialog.filename
+         content = @texteditor.textview.buffer.text
+         # Open for writing, write and close.
+         File.open(file, "w") { |f| f <<  content } 
+       end
+     end
+     dialog.destroy
+   end
+ 
+   # Copy the selected text to the clipboard and remove it from the buffer.
+   def cut_clicked
+     clipboard = Gtk::Clipboard.get(Gdk::Selection::CLIPBOARD)
+     @texteditor.textview.buffer.cut_clipboard(clipboard, true)
+   end
+ 
+   # Copy the selected text to the clipboard.
+   def copy_clicked
+     clipboard = Gtk::Clipboard.get(Gdk::Selection::CLIPBOARD)
+     @texteditor.textview.buffer.copy_clipboard(clipboard)
+   end
+ 
+   # Delete any selected text and insert the clipboard
+   # content into the document.
+   def paste_clicked
+     clipboard = Gtk::Clipboard.get(Gdk::Selection::CLIPBOARD)
+     @texteditor.textview.buffer.paste_clipboard(clipboard, nil, true)
+   end
+ 
+   # Search for a text string from the current cursor position
+   # if there is no selected text, or one character after the
+   # cursor if there is.
+   def find_clicked
+     find = @texteditor.search.text
+     first, last, success = @texteditor.textview.buffer.selection_bounds
+     first = @texteditor.textview.buffer.start_iter unless success
+   
+     #                   forward_search(find, flags,    limit=(nil==entire text buffer))
+     first, last = first.forward_search(find, Gtk::TextIter::SEARCH_TEXT_ONLY, last)
+ 
+     # Select the instance on the screen if the string is found. 
+     # Otherwise, tell the user it has failed.
+     if (first)
+       mark = @texteditor.textview.buffer.create_mark(nil, first, false)
+       # Scrolls the Gtk::TextView the minimum distance so
+       # that mark is contained within the visible area. 
+       @texteditor.textview.scroll_mark_onscreen(mark)
+ 
+       @texteditor.textview.buffer.delete_mark(mark)
+       @texteditor.textview.buffer.select_range(first, last)
+     else
+       # Gtk::MessageDialog.new(parent, flags, message_type, button_type, message = nil)
+       dialogue = Gtk::MessageDialog.new(
+               nil,
+               Gtk::Dialog::MODAL,
+               Gtk::MessageDialog::INFO, 
+               Gtk::MessageDialog::BUTTONS_OK,
+               "The text was not found!"
+       )
+       dialogue.run
+       dialogue.destroy
+     end
+     first = last = nil # camcel any previous selections
+   end
+ end
+ 
+ # Main program
+ if __FILE__ == $0
+   # Set values as your own application. 
+   PROG_PATH = "ex10-2-editor-mb-ui.glade"
+   PROG_NAME = "YOUR_APPLICATION_NAME"
+   o = Ex102EditorMbUiGlade.new(PROG_PATH, nil, PROG_NAME)
+   window = o.glade["window"]
+   window.title = "Text Editor - UI & Glade"
+   
+   o.texteditor.textview = o.glade["textview"]
+   o.texteditor.search   = o.glade["entry1"]
+   
+   o.texteditor.search.text = "Search for ..."
+   find  = Gtk::Button.new(Gtk::Stock::FIND)
+   
+   # Create a new action group and add all of the actions to it.
+   group = Gtk::ActionGroup.new("MainActionGroup")
+   group.add_actions(o.entries)
+ 
+   # Create a new UI manager and build the menu bar and toolbar.
+   uimanager = Gtk::UIManager.new
+   uimanager.insert_action_group(group, 0);
+   uimanager.add_ui("menu2.ui")
+ 
+   # Retrieve the necessary widgets and associate accelerators.
+   menubar = uimanager.get_widget("/MenuBar")
+   window.add_accel_group(uimanager.accel_group)
+ 
+   new   = uimanager.get_widget("/MenuBar/FileMenu/FileNew")
+   open  = uimanager.get_widget("/MenuBar/FileMenu/FileOpen")
+   save  = uimanager.get_widget("/MenuBar/FileMenu/FileSave")
+   cut   = uimanager.get_widget("/MenuBar/EditMenu/EditCut")
+   copy  = uimanager.get_widget("/MenuBar/EditMenu/EditCopy")
+   paste = uimanager.get_widget("/MenuBar/EditMenu/EditPaste")
+
+   new.signal_connect("activate")   { o.new_clicked }
+   open.signal_connect("activate")  { o.open_clicked }
+   save.signal_connect("activate")  { o.save_clicked }
+   cut.signal_connect("activate")   { o.cut_clicked }
+   copy.signal_connect("activate")  { o.copy_clicked }
+   paste.signal_connect("activate") { o.paste_clicked }
+ 
+   vbox = o.glade["vbox1"]
+   vbox.pack_start(menubar, false, false, 0)
+ 
+   window.show_all
+   Gtk.main
+ end
+
+
+=== The Issues With Flexible Menu Designs
+
+One disadvantage of designing menus with Glade is that it is not easy to modify existing design. If your users do need a capability to customize menus, one way to do this is by packing all of your widgets with respect to the end of the vertical box or whatever container you use as the child of the main window. Then when your application loads, you can simply pack the menu created by Gtk::UIManager into the window with ((*pack_start*)) method. You may also need to experiment and change the position property in the Packing tab of the widget properties editor for some widgets within the vertical box. 
+
+Mixing the Glade and Gtk::UIManager techniques also does not come easy since you may need to convert for Gtk::UIManager more natural designs using Proc callbacks to method callbacks. The two strategies are sufficiently different that we do not like to mix them. My preference in this case is to use only method calls for all the callbacks and employ more unified method of data sharing, with a class as is our ((*TextEditor*)) class used only to pass data parameters around. 
+
+This last example highlighted some of the issues or concerns that may arise when more elaborate, flexible and customizable GUI designs are needed. In particular you should be aware of the three different GUI design methods and what are the drawbacks and advantage of each. Moreover sometimes a combination of the three is the best solution, and that may be more than you've bargained for. 

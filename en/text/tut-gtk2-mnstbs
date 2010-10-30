@@ -1,0 +1,43 @@
+= Menus and Toolbars
+{{link "tut-gtk2-treev-kbda", "tut-gtk2-mnstbs", "tut-gtk", "tut-gtk2-mnstbs-popup"}}
+
+:Contents of this chapter:
+    * 9 ((<Menus and Toolbars|tut-gtk2-mnstbs>))
+      * 1 ((<Pop-up Menus|tut-gtk2-mnstbs-popup>)){{image_right("dialog-warning-s2.png")}}
+        * 1.1 ((<Creating Pop-up Menus|tut-gtk2-mnstbs-popup#Creating Pop-up Menus>)) (!)
+          * 1.1.1 ((<Pop-up Menu Callbacks|tut-gtk2-mnstbs-popup#Pop-up Menu Callbacks>))
+      * 2 ((<Keyboard Accelerators|tut-gtk2-mnstbs-popup#Keyboard Accelerators>))
+      * 3 ((<Status Bar Hints|tut-gtk2-mnstbs-statb>))
+        * 3.1 ((<The Status Bar Widget|tut-gtk2-mnstbs-statb#The Status Bar Widget>))
+          * 3.1.1 ((<Status Bar Context and Message Identifiers|tut-gtk2-mnstbs-statb#Status Bar Context and Message Identifiers>)){{image_right("dialog-warning-s2.png")}}
+        * 3.2 ((<Menu Item Information|tut-gtk2-mnstbs-statb#Menu Item Information>)) (!)
+      * 4 ((<Menu Items|tut-gtk2-mnstbs-mnui>))
+        * 4.1 ((<Submenus|tut-gtk2-mnstbs-mnui#Submenus>))
+        * 4.2 ((<Image Menu Items|tut-gtk2-mnstbs-mnui#Image Menu Items>))
+        * 4.3 ((<Check Menu Items|tut-gtk2-mnstbs-mnui#Check Menu Items>))
+        * 4.4 ((<Radio Menu Items|tut-gtk2-mnstbs-mnui#Radio Menu Items>))
+      * 5 ((<Menu Bars|tut-gtk2-mnstbs-mnub>))
+      * 6 ((<Tool Bars|tut-gtk2-mnstbs-tb>)){{image_right("dialog-warning-s2.png")}}
+      * 7 ((<Toolbar Items|tut-gtk2-mnstbs-tbi>)) (!)
+      * 8 ((<Dynamic Menu Creation|tut-gtk2-mnstbs-dynmc>))
+        * 8.1 ((<Creating UI Files|tut-gtk2-mnstbs-dynmc#Creating UI Files>))
+        * 8.2 ((<Loading UI Files|tut-gtk2-mnstbs-dynmc#Loading UI Files>))
+          * 8.2.1 ((<Additional Action Types|tut-gtk2-mnstbs-dynmc#Additional Action Types>))
+          * 8.2.2 ((<Placeholders|tut-gtk2-mnstbs-dynmc#Placeholders>)){{image_right("dialog-warning-s2.png")}}
+      * 9 ((<Custom Stock Items|tut-gtk2-mnstbs-csti>)) (!)
+      * 10 ((<Test Your Understanding|tut-gtk2-mnstbs-tyu>))
+
+
+
+This chapter will teach you how to create pop-up menus, menu bars, and toolbars. You will begin by creating each of them manually, so you learn how the widgets are constructed. This will give you a firm understanding of all of the concepts on which menus and toolbars rely.
+
+After you understand each widget, you will be introduced to Gtk::UIManager, which allows you to dynamically create menus and toolbars through custom XML files. A user interface file is loaded, and each element applied to a corresponding action object, which tells the item how it will be displayed and how it will act.
+
+:In this chapter we will learn:
+
+    * How to create pop-up menus, menu bars, and toolbars
+    * How to apply keyboard accelerators to menu items
+    * What a Gtk::StatusBar widget is and how you can use it to provide more information to the user about a menu item
+    * What types of menus and toolbar items are provided by GTK+
+    * How to dynamically create menus and toolbars with UI files
+    * How to create custom stock items with Gtk::IconFactory

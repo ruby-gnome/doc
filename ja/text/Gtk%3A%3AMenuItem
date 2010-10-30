@@ -119,4 +119,3 @@ As it derives from Gtk::Bin it can hold any valid child widget, altough only a f
 * Gtk::MenuShell is always the parent of Gtk::MenuItem.
  
 - ((<Masao>))
-

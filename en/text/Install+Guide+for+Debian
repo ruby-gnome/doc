@@ -5,8 +5,7 @@
 
 === Installing
 
-Currently, official packages exist only for the testing and unstable distributions of
-Debian. Each binding is available as a separate package. For example,the GTK+
+Official packages are available for stable, testing and unstable Debian. Each binding is available as a separate package. For example,the GTK+
 binding is available as libgtk2-ruby. You can install all the packages by
 installing the ruby-gnome2 package, which depends on all the others. Running
 "apt-get install ruby-gnome2" as root should do the trick.
@@ -14,21 +13,14 @@ installing the ruby-gnome2 package, which depends on all the others. Running
 Make sure you read the README.Debian file, which is available in
 /usr/share/doc/<package>.
 
-There is also ((<Dafydd's personal APT repository|URL:http://muse.19inch.net/~daf/debian/>)).
-
-Packages in Debian testing may be older than those in unstable, which may in turn be older than those in Dafydd's personal APT repository.
-
-RBBR is not currently an official package, but will hopefully be uploaded
-soon. In the meantime, it is available from Dafydd's repository.
-
 === Bugs in Packages
 
 Bugs in the packages should be filed as normal in the ((<Debian Bug Tracking
-System|URL:http://bugs.debian.org>)). Questions about the packages should be
-directed to the maintainer, Dafydd Harries <daf@muse.19inch.net>.
+System|URL:http://bugs.debian.org>)).
 
 === ChangeLog
 
+* 2009/02/16 Drop all out of date information (Arnaud Cornet)
 * 2004/04/22 The packages are now available for the testing distribution - ((<Dafydd>)).
 * 2004/03/31 0.9.1 is now in sid, buildable on more architectures - ((<Dafydd>))
 * 2004/03/14 Updated to reflect new official packages - ((<Dafydd>))
