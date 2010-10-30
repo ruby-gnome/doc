@@ -10,7 +10,7 @@ run()
 }
 
 run git checkout master
-run git svn rebase
+run git pull --rebase
 run git checkout hiki
 run git merge master
 run git push --verbose
