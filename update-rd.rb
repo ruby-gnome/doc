@@ -532,7 +532,8 @@ class UpdateRD
         end
         index.puts "  * #{klass.inspect}"
 
-        info[:constants].sort.each do |name, desc|
+        constants = info[:constants] + info[:deprecated_constants]
+        constants.sort.each do |name, desc|
           begin
             next unless klass.const_defined?(name)
           rescue NameError
@@ -548,7 +549,9 @@ class UpdateRD
           index.puts "  * #{klass.inspect}.#{name}"
         end
 
-        info[:instance_methods].sort.each do |name, desc|
+        instance_methods =
+          info[:instance_methods] + info[:deprecated_instance_methods]
+        instance_methods.sort.each do |name, desc|
           index.puts "  * #{klass.inspect}\##{name}"
         end
       end
