@@ -30,7 +30,7 @@ ENV["LANG"] = "C"
 # Set targets.
 #
 target_libs = ["atk", "bonobo2", "bonoboui2", "gconf2", "gdk_pixbuf2",
-               "glib2", "gnome2", "gnomecanvas2", "gnomeprint2",
+               "glib2", "gio2", "gnome2", "gnomecanvas2", "gnomeprint2",
                "gnomeprintui2", "gnomevfs", "gst", "gtk2", "gtkglext",
                "gtkhtml2", "gtkmozembed", "gtksourceview", "libart2",
                "libglade2", "pango", "poppler", "rsvg2", "vte"]
@@ -41,6 +41,7 @@ target_packages = {
   "Ruby/GConf2" => ["GConf"],
   "Ruby/GdkPixbuf2" => ["Gdk::Pixbuf", "Gdk::Pixdata"],
   "Ruby/GLib2" => ["GLib"],
+  "Ruby/GIO2" => ["GLib"],
   "Ruby/GNOME2" => ["Gnome"],
   "Ruby/GnomeCanvas2" => ["Gnome::Canvas"],
   "Ruby/GnomePrint" => ["Gnome::Print", "Gnome::GPA"],
@@ -739,10 +740,7 @@ class UpdateRD
     puts "== ChangeLog"
     puts
     change_log = (@indexes[klass][:change_log] || '').rstrip
-    unless change_log.empty?
-      puts change_log
-      puts
-    end
+    puts change_log
   end
 end
 
