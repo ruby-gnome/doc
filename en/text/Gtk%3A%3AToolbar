@@ -1,14 +1,16 @@
 = class Gtk::Toolbar
 
+== Description
+
 A toolbar is created with a call to Gtk::Toolbar.new.
 
 A toolbar can contain instances of a subclass of Gtk::ToolItem. To add a Gtk::ToolItem to the a toolbar, use Gtk::Toolbar#insert. To remove an item from the toolbar use Gtk::Container#remove. To add a button to the toolbar, add an instance of Gtk::ToolButton.
 
 Toolbar items can be visually grouped by adding instances of Gtk::SeparatorToolItem to the toolbar. If a Gtk::SeparatorToolItem has the "expand" property set to TRUE and the "draw" property set to FALSE the effect is to force all following items to the end of the toolbar.
 
-Creating a context menu for the toolbar can be done by connecting to the "popup-context-menu" signal. 
+Creating a context menu for the toolbar can be done by connecting to the "popup-context-menu" signal.
 
-== Deprecated since 2.4 Usage
+=== Deprecated since 2.4 Usage
 
 Gtk::Toolbar is a bar of buttons and other widgets.
 
