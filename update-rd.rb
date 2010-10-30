@@ -32,8 +32,8 @@ ENV["LANG"] = "C"
 target_libs = ["atk", "bonobo2", "bonoboui2", "gconf2", "gdk_pixbuf2",
                "glib2", "gio2", "gnome2", "gnomecanvas2", "gnomeprint2",
                "gnomeprintui2", "gnomevfs", "gst", "gtk2", "gtkglext",
-               "gtkhtml2", "gtkmozembed", "gtksourceview", "libart2",
-               "libglade2", "pango", "poppler", "rsvg2", "vte"]
+               "gtkhtml2", "gtkmozembed", "gtksourceview", "gtksourceview2",
+               "libart2", "libglade2", "pango", "poppler", "rsvg2", "vte"]
 target_packages = {
   "Ruby/ATK" => ["Atk"],
   "Ruby/Bonobo2" => ["Bonobo"],
