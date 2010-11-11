@@ -1,5 +1,7 @@
 = class GLib::CharsetConverter
 
+GLib::CharsetConverter is an implementation of GLib::Converter based on GLib::IConv. 
+
 == Object Hierarchy
 
 * Object
@@ -14,19 +16,27 @@
 
 == Class Methods
 
---- GLib::CharsetConverter.new
+--- GLib::CharsetConverter.new(to, from)
 
-     * Returns: self: ((*FIXME*))
+     Creates a new GLib::CharsetConverter.
+
+     A GLib::IO::Error will be raised if either character encoding is
+     unsupported.
+
+     * to: Destination character encoding name
+     * from: Destination character encoding name
+     * Returns: A new GLib::CharsetConverter
 
 == Instance Methods
 
---- convert
+--- convert(input, flags = GLib::Converter::NO_FLAGS)
 
     See GLib::Converter#convert.
 
 --- from_charset
 
     Gets the character encoding to convert from.
+
      * Returns: The character encoding to convert from
 
 --- init
@@ -35,7 +45,13 @@
 
 --- num_fallbacks
 
-     * Returns: self: ((*FIXME*))
+     Gets the number of fallbacks that this GLib::CharsetConverter has applied
+     so far.
+
+     Since 2.24
+
+     * converter: A GLib::CharsetConverter
+     * Returns: The Number of fallbacks that ((|converter|)) has applied
 
 --- reset
 
@@ -43,25 +59,29 @@
 
 --- set_use_fallback(use_fallback)
 
-    Same as use_fallback=.
-     * use_fallback: Use fallback (of form \<hexval>) for invalid bytes
-     * Returns: self
+    Sets the fallback character to use (of form “\<hexval>”) for invalid bytes.
+
+     * use_fallback: Fallback character to use (of form “\<hexval>”) for
+       invalid bytes
+     Returns: self
 
 --- to_charset
 
     Gets the character encoding to convert to.
+
      * Returns: The character encoding to convert to
 
 --- use_fallback=(use_fallback)
 
-    Sets the Use fallback (of form \<hexval>) for invalid bytes.
-     * use_fallback: Use fallback (of form \<hexval>) for invalid bytes
-     * Returns: use_fallback
+     Same as GLib::CharsetConverter#set_use_fallback.
+
+     Returns: ((|use_fallback|))
 
 --- use_fallback?
 
-    Gets the Use fallback (of form \<hexval>) for invalid bytes.
-     * Returns: Use fallback (of form \<hexval>) for invalid bytes
+    Gets the fallback character used (of form “\<hexval>”) for invalid bytes.
+
+     * Returns: Fallback character used (of form “\<hexval>”) for invalid bytes
 
 == Properties
 
@@ -75,7 +95,7 @@
 
 --- use-fallback: true or false (Read/Write)
 
-    Use fallback (of form \<hexval>) for invalid bytes
+    Fallback character used (of form “\<hexval>”) for invalid bytes
 
 == See Also
 

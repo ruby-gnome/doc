@@ -1,5 +1,17 @@
 = class GLib::UnixSocketAddress
 
+Support for Unix domain (also known as local) sockets.
+
+Unix domain sockets are generally visible in the filesystem. However, some
+systems support abstract socket names which are not visible in the filesystem
+and not affected by the filesystem permissions, visibility, etc. Currently this
+is only supported under Linux. If you attempt to use abstract sockets on other
+systems, function calls may raise GLib::IO::NotSupportedError. You can use
+GLib::UnixSocketAddress.abstract_names_supported? to see if abstract names are
+supported.
+
+Note that GLib::UnixSocketAddress belongs to the Unix-specific GIO interfaces.
+
 == Object Hierarchy
 
 * Object
@@ -14,20 +26,23 @@
 
      * Returns: self: ((*FIXME*))
 
---- GLib::UnixSocketAddress.new
+--- GLib::UnixSocketAddress.new(path)
 
-     * Returns: self: ((*FIXME*))
+     Creates a new GLib::UnixSocketAddress for ((|path|)).
 
---- GLib::UnixSocketAddress.new_abstract
+     To create abstract socket addresses, on systems that support that, use
+     GLib::UnixSocketAddress.new_with_type.
 
-     * Returns: self: ((*FIXME*))
+     * Returns: a new GLib::UnixSocketAddress
+
 
 == Instance Methods
 
 --- abstract?
 
-    Gets the value whether or not this is an abstract address or not.
-     * Returns: true if or not this is an abstract address
+    Checks whether or not this is an abstract address.
+
+     * Returns: true if this is an abstract address
 
 --- each
 
@@ -39,13 +54,15 @@
 
 --- path
 
-    Gets the UNIX socket path.
-     * Returns: UNIX socket path
+    Gets the Unix socket path.
+
+     * Returns: The Unix socket path
 
 --- path_as_array
 
-    Gets the UNIX socket path, as byte array.
-     * Returns: UNIX socket path, as byte array
+    Gets the Unix socket path, as byte array.
+
+     * Returns: The Unix socket path, as byte array
 
 == Properties
 
@@ -55,11 +72,11 @@
 
 --- path: String (Read/Write)
 
-    UNIX socket path
+    The Unix socket path
 
---- path-as-array: GByteArray (Read/Write)
+--- path-as-array: GLib::ByteArray (Read/Write)
 
-    UNIX socket path, as byte array
+    The Unix socket path, as byte array
 
 == See Also
 

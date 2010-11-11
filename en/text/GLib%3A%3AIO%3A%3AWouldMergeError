@@ -1,5 +1,7 @@
 = class GLib::IO::WouldMergeError
 
+The operation would merge files. 
+
 == Object Hierarchy
 
 * Object

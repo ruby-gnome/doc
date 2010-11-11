@@ -1,5 +1,41 @@
 = module GLib::Volume
 
+The GLib::Volume interface represents user-visible objects that can be mounted.
+Note, when porting from GnomeVFS, GLib::Volume is the moral equivalent of
+GnomeVFS::Drive.
+
+Mounting a GLib::Volume instance is an asynchronous operation. For more
+information about asynchronous operations, see GLib::AsyncReady and
+GLib::SimpleAsyncReady. To mount a GLib::Volume, first call Glib::Volume#mount,
+optionally with a GLib::MountOperation object and a block.
+
+Typically, one will only want to pass nil for the GLib::MountOperation if
+automounting all volumes when a desktop session starts since it’s not desirable
+to put up a lot of dialogs asking for credentials.
+
+The callback will be fired when the operation has resolved (either with success
+or failure), and a GLib::AsyncReady object will be passed to the callback. That
+callback should then call GLib::Volume#mount_finish with the GLib::Volume
+instance and the GLib::AsyncReady data to see if the operation was completed
+successfully. If an error is present when GLib::Volume#mount_finish is called,
+then it will be raised.
+
+It is sometimes necessary to directly access the underlying operating system
+object behind a volume (for example, for passing a volume to an application via
+the commandline). For this purpose, GIO allows to obtain an “identifier” for
+the volume. There can be different kinds of identifiers, such as Hal UDIs,
+filesystem labels, traditional Unix devices (for example, (({/dev/sda2}))),
+uuids. GIO uses predefind strings as names for the different kinds of
+identifiers: GLib::Volume::IDENTIFIER_KIND_HAL_UDI,
+GLib::Volume::IDENTIFIER_KIND_LABEL, etc. Use GLib::Volume#identifier to obtain
+an identifier for a volume.
+
+Note that GLib::Volume#IDENTIFIER_KIND_HAL_UDI will only be available when the
+gvfs hal volume monitor is in use. Other volume monitors will generally be able
+to provide the GLib::Volume#IDENTIFIER_KIND_UNIX_DEVICE identifier, which can
+be used to obtain a hal device by means of
+libhal_manger_find_device_string_match.
+
 == Included Modules
 
   * GLib::Interface
@@ -8,81 +44,177 @@
 
 --- activation_root
 
-     * Returns: self: ((*FIXME*))
+     Gets the activation root for this GLib::Volume if it is known ahead of
+     mount time. Returns nil otherwise. If not nil and if the volume is
+     mounted, then the result of GLib::Mount#root on the GLib::Mount object
+     obtained from GLib::Volume#mount will always either be equal to or a
+     prefix of what this function returns. In other words the code
+
+          volume.activation_root.has_prefix? mount.root or
+            volume.activation_root == mount.root
+     
+     will always be true.
+
+     Activation roots are typically used in GLib::VolumeMonitor implementations
+     to find the underlying mount to shadow, see GLib::Mount#shadowed? for more
+     details.
+
+     Since 2.18
+
+     * Returns: The activation root as a GLib::File of this GLib::Volume, or
+       nil
 
 --- can_eject?
 
-     * Returns: self: ((*FIXME*))
+     Checks if a volume can be ejected.
+
+     * Returns: true if this GLib::Volume can be ejected
 
 --- can_mount?
 
-     * Returns: self: ((*FIXME*))
+     Checks if a volume can be mounted.
+
+     * Returns: true if the volume can be mounted
 
 --- drive
 
-     * Returns: self: ((*FIXME*))
+     Gets the drive for a volume.
 
---- eject_with_operation
+     * Returns: A GLib::Drive, or nil if the volume is not associated with a
+       drive
 
-     * Returns: self: ((*FIXME*))
+--- eject_with_operation(flags = GLib::Mount::UNMOUNT_NONE, mount_operation = nil, cancellable = nil){ |result| … }
 
---- eject_with_operation_finish
+     Ejects a volume. This is an asynchronous operation, and is
+     finished by calling GLib::Volume#eject_with_operation_finish.
 
-     * Returns: self: ((*FIXME*))
+     Since 2.22
+
+     * flags: Flags affecting the unmount, if required for eject
+     * mount_operation: A GLib::MountOperation, or nil to avoid user interaction
+     * cancellable: Optional GLib::Cancellable object, nil to ignore
+     * result: A GLib::AsyncResult
+     * Returns: self
+
+--- eject_with_operation_finish(result)
+
+     Finishes ejecting a volume.
+
+     A GLib::IO::Error is raised if this volume couldn’t be ejected.
+
+     Since 2.22
+
+     * result: A GLib::AsyncResult
+     * Returns: self
 
 --- enumerate_identifiers
 
-     * Returns: self: ((*FIXME*))
+     Same As GLib::Volume#identifiers.
 
---- get_identifier
+--- get_identifier(kind)
 
-     * Returns: self: ((*FIXME*))
+     Gets the identifier of the given kind for this volume.
+     See the introduction for more information about volume identifiers.
+
+     * kind: The kind of identifier to return
+     * Returns: A String containing the requested identfier, or nil if the GLib::Volume
+       doesn’t have this kind of identifier
 
 --- icon
 
-     * Returns: self: ((*FIXME*))
+     Gets the icon for this volume.
+
+     * Returns: A GLib::Icon
 
 --- identifiers
 
+     Gets the kinds of identifiers that this volume has. Use
+     GLib::Volume#get_identifier to obtain the identifiers themselves.
+
+     * Returns: An Array of Strings containing the kinds of identifiers
+
+--- mount(flags = GLib::Mount::MOUNT_NONE, mount_operation = nil, cancellable = nil){ |result| … }
+
+     Mounts a volume. This is an asynchronous operation, and is finished by
+     calling GLib::Volume#mount_finish in the block.
+
+     * flags: Flags affecting the mount
+     * mount_operation: A GLib::MountOperation, or nil to avoid user interaction
+     * cancellable: Optional GLib::Cancellable object, nil to ignore
+     * result: A GLib::AsyncResult
      * Returns: self: ((*FIXME*))
 
---- mount
+--- mount_finish(result)
 
-     * Returns: self: ((*FIXME*))
+     Finishes mounting a volume. If any errors occured during the operation,
+     ((|error|)) will be set to contain the errors and false will be returned.
 
---- mount_finish
+     If the mount operation succeeded, GLib::Volume#mount on ((|volume|))
+     is guaranteed to return the mount right after calling this
+     function; there's no need to listen for the 'mount-added' signal on
+     GLib::VolumeMonitor.
 
-     * Returns: self: ((*FIXME*))
+     * result: A GLib::AsyncResult
+     * Returns: self
 
 --- name
 
-     * Returns: self: ((*FIXME*))
+     Gets the name of this volume.
+
+     * Returns: The name of this volume
 
 --- should_automount?
 
-     * Returns: self: ((*FIXME*))
+     Checks if the volume should be automatically mounted.
+
+     * Returns: true if the volume should be automatically mounted
 
 --- uuid
 
-     * Returns: self: ((*FIXME*))
+     Gets the UUID for this volume. The reference is typically based on the
+     file system UUID for the volume in question and should be considered an
+     opaque String. Returns nil if there is no UUID available.
+
+     * Returns: The UUID for this volume, or nil if no UUID can be computed
 
 == Constants
 
 --- IDENTIFIER_KIND_HAL_UDI
+
+     The string used to obtain a Hal UDI with GLib::Volume#get_identifier. 
+
 --- IDENTIFIER_KIND_LABEL
+
+     The string used to obtain a filesystem label with
+     GLib::Volume#get_identifier. 
+
 --- IDENTIFIER_KIND_NFS_MOUNT
+
+     The string used to obtain a NFS mount with GLib::Volume#get_identifier. 
+
 --- IDENTIFIER_KIND_UNIX_DEVICE
+
+     The string used to obtain a Unix device path with
+     GLib::Volume#get_identifier. 
+
 --- IDENTIFIER_KIND_UUID
+
+     The string used to obtain a Unix device path with
+     GLib::Volume#get_identifier. 
 
 == Signals
 
 --- changed: self
 
-     * self: GLib::Volume: ((*FIXME*))
+     This signal is emitted when the volume has changed.
+
+     * self: The GLib::Volume that is emitting this signal
 
 --- removed: self
 
-     * self: GLib::Volume: ((*FIXME*))
+     This signal is emitted when the volume has been removed.
+
+     * self: The GLib::Volume that is emitting this signal
 
 == See Also
 

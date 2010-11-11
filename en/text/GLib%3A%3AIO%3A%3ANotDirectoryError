@@ -1,5 +1,7 @@
 = class GLib::IO::NotDirectoryError
 
+The file isn’t a directory.
+
 == Object Hierarchy
 
 * Object

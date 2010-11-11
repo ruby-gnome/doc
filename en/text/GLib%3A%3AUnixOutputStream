@@ -1,5 +1,11 @@
 = class GLib::UnixOutputStream
 
+GLib::UnixOutputStream implements GLib::OutputStream for writing to a Unix file
+descriptor, including asynchronous operations. The file descriptor must be
+selectable, so it doesn’t work with opened files.
+
+Note that Glib::UnixOutputStream belongs to the Unix-specific GIO interfaces.
+
 == Object Hierarchy
 
 * Object
@@ -10,43 +16,58 @@
 
 == Class Methods
 
---- GLib::UnixOutputStream.new
+--- GLib::UnixOutputStream.new(fd, close_fd = false)
 
-     * Returns: self: ((*FIXME*))
+     Creates a new GLib::UnixOutputStream for the given ((|fd|)).
+
+     If ((|close_fd|)) is true, the file descriptor will be closed when the
+     stream is closed.
+
+     * fd: the file descriptor
+     * close_fd: Whether or not the file descriptor should be closed when the
+       stream is closed
+     * Returns: a new GLib::UnixOutputStream
 
 == Instance Methods
 
 --- close_fd=(close_fd)
 
-    Sets the value whether to close the file descriptor when the stream is closed or not.
-     * close_fd: true if to close the file descriptor when the stream is closed
-     * Returns: close_fd
+     Same as GLib::UnixInputStream#set_close_fd.
+
+     * Returns: ((|close_fd|))
 
 --- close_fd?
 
-    Gets the value whether to close the file descriptor when the stream is closed or not.
-     * Returns: true if to close the file descriptor when the stream is closed
+     Checks if the file descriptor should be closed when the stream is closed.
+
+     * Returns: true if the file descriptor should be closed when the stream is
+       closed
 
 --- fd
 
-    Gets the file descriptor to write to.
-     * Returns: The file descriptor to write to
+     Gets the file descriptor to read from.
+
+     * Returns: The file descriptor to read from
 
 --- set_close_fd(close_fd)
 
-    Same as close_fd=.
-     * close_fd: true if to close the file descriptor when the stream is closed
+     Sets whether or not the file descriptor should be closed when the stream
+     is closed.
+
+     * close_fd: true if file descriptor should be closed when the stream is closed
      * Returns: self
 
 == Properties
 
 --- close-fd: true or false (Read/Write)
 
-    Whether to close the file descriptor when the stream is closed
+     Whether or not the file descriptor should be closed when the stream is
+     closed
+
 
 --- fd: Integer (Read/Write)
 
-    The file descriptor to write to
+    The file descriptor to read from
 
 == See Also
 

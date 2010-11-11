@@ -1,5 +1,8 @@
 = class GLib::UnixMountPoint
 
+Defines a Unix mount point (for example, (({/dev}))). This corresponds roughly
+to a fstab entry.
+
 == Object Hierarchy
 
 * Object
@@ -13,48 +16,70 @@
 == Instance Methods
 
 --- <=>
+     
+     Same as GLib::UnixMountPoint#compare.
 
-     * Returns: self: ((*FIXME*))
+--- compare(other)
 
---- compare
+     Compares this Unix mount point to another.
 
-     * Returns: self: ((*FIXME*))
+     * other: a GLib::UnixMount
+     * Returns: 1, 0, or -1
 
 --- device_path
 
-     * Returns: self: ((*FIXME*))
+     Gets the device path for the Unix mount point.
+
+     * Returns: A String containing the device path
 
 --- fs_type
 
-     * Returns: self: ((*FIXME*))
+     Gets the filesystem type of the Unix mount point.
+
+     * Returns: A String containing the filesystem type
 
 --- guess_can_eject?
 
-     * Returns: self: ((*FIXME*))
+     Guesses whether or not the Unix mount can be ejected.
+
+     * Returns: true if the Unix mount can be ejected
 
 --- guess_icon
 
-     * Returns: self: ((*FIXME*))
+     Guesses the icon of the Unix mount point.
+
+     * Returns: the guessed GLib::Icon of the Unix mount point
 
 --- guess_name
 
-     * Returns: self: ((*FIXME*))
+     Guesses the name of the Unix mount point.  The result is a translated
+     String.
+
+     * Returns: the guessed translated String name of the Unix mount point
 
 --- loopback?
 
-     * Returns: self: ((*FIXME*))
+     Checks if a Unix mount point is a loopback device.
+
+     * Returns: true if a Unix mount point is a loopback device
 
 --- mount_path
 
-     * Returns: self: ((*FIXME*))
+     Gets the mount path of the Unix mount point.
+
+     * Returns: The mount path as a String
 
 --- readonly?
 
-     * Returns: self: ((*FIXME*))
+     Checks if the Unix mount point is mounted read-only.
+
+     * Returns: true if the Unix mount point is mounted read-only
 
 --- user_mountable?
 
-     * Returns: self: ((*FIXME*))
+     Checks if a Unix mount point is mountable by the user.
+
+     * Returns: true if the Unix mount point is mountable by the user
 
 == See Also
 

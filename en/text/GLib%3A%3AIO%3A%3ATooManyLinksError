@@ -1,5 +1,7 @@
 = class GLib::IO::TooManyLinksError
 
+The file contains too many symbolic links. 
+
 == Object Hierarchy
 
 * Object

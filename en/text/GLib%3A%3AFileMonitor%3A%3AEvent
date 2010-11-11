@@ -1,5 +1,7 @@
 = class GLib::FileMonitor::Event
 
+Specifies what type of event a monitor event is.
+
 == Object Hierarchy
 
 * Object
@@ -9,13 +11,36 @@
 == Constants
 
 --- ATTRIBUTE_CHANGED
+
+     A file’s attributes has changed.
+
 --- CHANGED
+
+     A file has changed.
+
 --- CHANGES_DONE_HINT
+
+     A hint that this was probably the last change in a set of changes.
+
 --- CREATED
+
+     A file was created.
+
 --- DELETED
+
+     A file was deleted.
+
 --- MOVED
+
+     A file wast moved.
+
 --- PRE_UNMOUNT
+
+     A file location will soon be unmounted.
+
 --- UNMOUNTED
+
+     A file location was unmounted.
 
 == See Also
 

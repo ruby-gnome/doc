@@ -1,5 +1,8 @@
 = class GLib::FileAttribute::Info::InfoList
 
+Acts as a lightweight registry for possible valid file attributes. The registry
+stores key-value pair formats as GLib::FileAttribute::Infos.
+
 == Object Hierarchy
 
 * Object
@@ -14,29 +17,47 @@
 
 --- GLib::FileAttribute::Info::InfoList.new
 
-     * Returns: self: ((*FIXME*))
+     Creates a new file attribute info list.
+
+     * Returns: A GLib::FileAttribute::Info::InfoList
 
 == Instance Methods
 
---- []
+--- [](name)
 
-     * Returns: self: ((*FIXME*))
+     Same as GLib::FileAttribute::Info::InfoList#lookup.
 
---- add
+     * Returns: A GLib::FileAttribute::Info
 
-     * Returns: self: ((*FIXME*))
+--- add(name, type, flags = GLib::FileAttribute::INFO_NONE)
+
+     Adds a new attribute with ((|name|)) to this file attribute info list,
+     settings its ((|type|)) and ((|flags|)).
+
+     * name: The String name of the attribute 
+     * type: The GLib::FileAttribute::Type of the attribute
+     * flags: The GLib::FileAttribute::InfoFlags of the attribute
+     * Returns: self
 
 --- dup
 
-     * Returns: self: ((*FIXME*))
+     Duplicate this file attribute info list.
+
+     * Returns: A GLib::FileAttribute::Info::InfoList
 
 --- each
 
-     * Returns: self: ((*FIXME*))
+     Iterate over each GLib::FileAttribute::Info in this file attribute info
+     list.
 
---- lookup
+     * Returns: self
 
-     * Returns: self: ((*FIXME*))
+--- lookup(name)
+
+     Gets the file attribute with the name ((|name|)).
+
+     * name: The String name of the attribute
+     * Returns: A GLib::FileAttribute::Info
 
 == See Also
 

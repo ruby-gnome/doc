@@ -1,5 +1,7 @@
 = class GLib::IO::NotMountedError
 
+The file isn’t mounted.
+
 == Object Hierarchy
 
 * Object

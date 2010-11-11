@@ -1,5 +1,12 @@
 = class GLib::SocketListener
 
+A GLib::SocketListener is an object that keeps track of a set of server sockets
+and helps you accept sockets from any of the socket, either sync or async.
+
+If you want to implement a network server, also look at GLib::SocketService and
+GLib::ThreadedSocketService which are subclass of GLib::SocketListener that
+makes this even easier. 
+
 == Object Hierarchy
 
 * Object
@@ -11,84 +18,231 @@
 
 --- GLib::SocketListener.new
 
-     * Returns: self: ((*FIXME*))
+     Creates a new GLib::SocketListener with no sockets to listen for. New
+     listeners can be added with, for example, GLib::SocketListener#add_address
+     or GLib::SocketListener#add_inet_port.
+
+     * Returns: a new Glib::SocketListener
 
 == Instance Methods
 
---- accept
+--- accept(cancellable = nil)
 
-     * Returns: self: ((*FIXME*))
+     Blocks waiting for a client to connect to any of the sockets added
+     to the listener. Returns a GLib::SocketConnection for the socket that was
+     accepted.
 
---- accept_async
+     If ((|cancellable|)) is not nil, then the operation can be cancelled by
+     triggering the cancellable object from another thread. If the operation
+     was cancelled, GLib::IO::CancelledError will be raised.
 
-     * Returns: self: ((*FIXME*))
+     Since 2.22
 
---- accept_finish
+     * cancellable: Optional GLib::Cancellable object, nil to ignore
+     * Returns: An Array containing the GLib::SocketConnection and the
+       source GLib::Object specified when the corresponding socket or address
+       was added to the listener.
 
-     * Returns: self: ((*FIXME*))
+--- accept_async(cancellable = nil){ |result| … }
 
---- accept_socket
+     This is the asynchronous version of GLib::SocketListener#accept.
 
-     * Returns: self: ((*FIXME*))
+     When the operation is finished, a GLib::AsyncResult is yielded.  You can
+     then call GLib::SocketListener#accept_socket to get the result of the
+     operation.
 
---- accept_socket_async
+     Since 2.22
 
-     * Returns: self: ((*FIXME*))
+     * cancellable: A GLib::Cancellable, or nil
+     * result: A GLib::AsyncResult
+     * Returns: self
 
---- accept_socket_finish
+--- accept_finish(result)
 
-     * Returns: self: ((*FIXME*))
+     Finishes an async accept operation. See GLib::SocketListener#accept_async.
 
---- add_address
+     Since 2.22
 
-     * Returns: self: ((*FIXME*))
+     * result: A GLib::AsyncResult
+     * source_object: Optional GLib::Object identifying this source
+     * Returns: An Array containing the GLib::SocketConnection and the
+       source GLib::Object specified when the corresponding socket or address
+       was added to the listener.
 
---- add_any_inet_port
+--- accept_socket(cancellable = nil)
 
-     * Returns: self: ((*FIXME*))
+     Blocks waiting for a client to connect to any of the sockets added to the
+     listener. Returns the GLib::SocketAddress that was accepted, along with
+     the source GLib::Object.
 
---- add_inet_port
+     If you want to accept the high-level GLib::SocketConnection, not a
+     GLib::SocketAddress, which is often the case, then you should use
+     GLib::SocketListener#accept instead.
 
-     * Returns: self: ((*FIXME*))
+     If ((|cancellable|)) is not nil, then the operation can be cancelled by
+     triggering the cancellable object from another thread. If the operation
+     was cancelled, GLib::IO::CancelledError will be raised.
 
---- add_socket
+     Since 2.22
 
-     * Returns: self: ((*FIXME*))
+     * source_object: Location where GLib::Object pointer will be stored, or nil
+     * cancellable: Optional GLib::Cancellable object, nil to ignore
+     * Returns: An Array containing the GLib::SocketAddress and source
+       GLib::Object specified when the corresponding socket or address was
+       added to the listener
 
---- backlog=
+--- accept_socket_async(cancellable = nil){ |result| … }
 
-     * Returns: self: ((*FIXME*))
+     This is the asynchronous version of GLib::SocketListener#accept_socket.
+
+     When the operation is finished, a GLib::AsyncResult is yielded.  You can
+     then call GLib::SocketListener#accept_socket_finish to get the result of
+     the operation.
+
+     Since 2.22
+
+     * cancellable: A GLib::Cancellable, or nil
+     * result: A GLib::AsyncResult
+     * Returns: self
+
+--- accept_socket_finish(result, *source_object)
+
+     Finishes an async accept operation. See GLib::SocketListener#accept_socket_async
+
+     Since 2.22
+
+     * result: A GLib::AsyncResult
+     * source_object: Optional GLib::Object identifying this source
+     * Returns: An Array containing the GLib::SocketAddress and source
+       GLib::Object specified when the corresponding socket or address was
+       added to the listener
+
+--- add_address(address, type, protocol = GLib::Socket::PROTOCOL_DEFAULT, source_object = nil)
+
+     Creates a socket of type ((|type|)) and protocol ((|protocol|)), binds it
+     to ((|address|)) and adds it to the set of sockets we’re accepting sockets
+     from.
+
+     Note that adding an IPv6 address, depending on the platform, may or may
+     not result in a listener that also accepts IPv4 connections.  For more
+     determinstic behaviour, see GLib::SocketListener#add_inet_port.
+
+     ((|Source_object|)) will be passed out in the various calls to accept to
+     identify this particular source, which is useful if you’re listening on
+     multiple addresses and do different things depending on what address is
+     connected to.
+
+     The address that the binding actually occured at will be returned. This is
+     helpful for determining the port number that was used for when requesting
+     a binding to port 0 (that is, “any port”).  This address, if requested,
+     belongs to the caller and must be freed.
+
+     Since 2.22
+
+     * address: A GLib::SocketAddress
+     * type: A GLib::SocketAddress::Type
+     * protocol: A GLib::SocketAddress::Protocol
+     * source_object: Optional GLib::Object identifying this source
+     * Returns: The address that was bound to, or nil
+
+--- add_any_inet_port(source_object = nil)
+
+     Listens for TCP connections on any available port number for both IPv6 and
+     IPv4 (if each are available).
+
+     This is useful if you need to have a socket for incoming connections but
+     don’t care about the specific port number.
+
+     ((|Source_object|)) will be passed out in the various calls to accept to
+     identify this particular source, which is useful if you’re listening on
+     multiple addresses and do different things depending on what address is
+     connected to.
+
+     Since 2.24
+
+     * source_object: Optional GLib::Object identifying this source
+     * Returns: The port number
+
+--- add_inet_port(port, source_object = nil)
+
+     Helper function for GLib::SocketListener#add_address that creates a TCP/IP
+     socket listening on IPv4 and IPv6 (if supported) on the specified port on
+     all interfaces.
+
+     ((|Source_object|)) will be passed out in the various calls to accept to
+     identify this particular source, which is useful if you’re listening on
+     multiple addresses and do different things depending on what address is
+     connected to.
+
+     Since 2.22
+
+     * port: An IP port number (non-zero)
+     * source_object: Optional GLib::Object identifying this source
+     * Returns: self
+
+--- add_socket(socket, source_object = nil)
+
+     Adds ((|socket|)) to the set of sockets that we try to accept new clients
+     from. The socket must be bound to a local address and listened to.
+
+     ((|Source_object|)) will be passed out in the various calls to accept to
+     identify this particular source, which is useful if you’re listening on
+     multiple addresses and do different things depending on what address is
+     connected to.
+
+     Since 2.22
+
+     * socket: A listening GLib::SocketAddress
+     * source_object: Optional GLib::Object identifying this source
+     * Returns: self
+
+--- backlog=(listen_backlog)
+
+     Same as GLib::SocketListener#set_backlog.
+
+     * Returns: ((|listen_backlog|))
 
 --- close
 
-     * Returns: self: ((*FIXME*))
+     Closes all the sockets in the listener.
+
+     Since 2.22
+
+     * Returns: self
+
 
 --- listen_backlog
 
-    Gets the outstanding connections in the listen queue.
-     * Returns: outstanding connections in the listen queue
+     Gets the outstanding connections in the listen queue.
+
+     * Returns: Outstanding connections in the listen queue
 
 --- listen_backlog=(listen_backlog)
 
-    Sets the outstanding connections in the listen queue.
-     * listen_backlog: outstanding connections in the listen queue
-     * Returns: listen_backlog
+     Same as GLib::SocketListener#set_listen_backlog.
 
---- set_backlog
+     * Returns: ((|listen_backlog|))
 
-     * Returns: self: ((*FIXME*))
+--- set_backlog(listen_backlog)
+
+     Sets the listen backlog on the sockets in the listener.
+
+     See GLib::SocketAddress#listen_backlog= for details.
+
+     Since 2.22
+
+     * listen_backlog: An integer
+     * Returns: self
 
 --- set_listen_backlog(listen_backlog)
 
-    Same as listen_backlog=.
-     * listen_backlog: outstanding connections in the listen queue
-     * Returns: self
+     Same as GLib::SocketListener#set_backlog.
 
 == Properties
 
 --- listen-backlog: Integer (Read/Write)
 
-    outstanding connections in the listen queue
+    Outstanding connections in the listen queue
 
 == See Also
 

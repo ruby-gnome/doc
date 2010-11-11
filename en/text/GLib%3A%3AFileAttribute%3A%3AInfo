@@ -1,5 +1,7 @@
 = class GLib::FileAttribute::Info
 
+Information about a specific attribute. 
+
 == Object Hierarchy
 
 * Object
@@ -10,15 +12,21 @@
 
 --- flags
 
-     * Returns: self: ((*FIXME*))
+     Gets a set of GLib::FileAttribute::InfoFlags.
+
+     * Returns: A set of GLib::FileAttribute::InfoFlags
 
 --- name
 
-     * Returns: self: ((*FIXME*))
+     Gets the name of this attribute.
+
+     * Returns: The name of this attribute
 
 --- type
+     
+     Gets The GLib::FileAttribute::Type of this attribute.
 
-     * Returns: self: ((*FIXME*))
+     * Returns: The GLib::FileAttribute::Type of this attribute
 
 == See Also
 

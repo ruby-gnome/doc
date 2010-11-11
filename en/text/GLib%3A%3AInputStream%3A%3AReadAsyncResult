@@ -1,5 +1,7 @@
 = class GLib::InputStream::ReadAsyncResult
 
+GLib::AsyncResult used for GLib::InputStream#read_async.
+
 == Object Hierarchy
 
 * Object

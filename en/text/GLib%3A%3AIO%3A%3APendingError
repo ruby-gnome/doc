@@ -1,5 +1,7 @@
 = class GLib::IO::PendingError
 
+Operations are still pending.
+
 == Object Hierarchy
 
 * Object

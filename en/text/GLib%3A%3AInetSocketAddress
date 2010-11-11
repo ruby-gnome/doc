@@ -1,25 +1,31 @@
 = class GLib::InetSocketAddress
 
+An IPv4 or IPv6 socket address; that is, the combination of a GLib::InetAddress
+and a port number. 
+
 == Object Hierarchy
 
 * Object
   * GLib::Instantiatable
     * GLib::Object
-      * GLib::Socket
+      * GLib::SocketAddress
         * GLib::InetSocketAddress
 
 == Class Methods
 
---- GLib::InetSocketAddress.new
+--- GLib::InetSocketAddress.new(address, port)
 
-     * Returns: self: ((*FIXME*))
+     Creates a new GLib::InetSocketAddress for ((|address|)) and ((|port|)).
+
+     * Returns: A new GLib::InetSocketAddress
 
 == Instance Methods
 
 --- address
 
     Gets the address.
-     * Returns: The address
+
+     * Returns: The GLib::InetAddress
 
 --- each
 
@@ -32,11 +38,12 @@
 --- port
 
     Gets the port.
+
      * Returns: The port
 
 == Properties
 
---- address: GInetAddress (Read/Write)
+--- address: GLib::InetAddress (Read/Write)
 
     The address
 

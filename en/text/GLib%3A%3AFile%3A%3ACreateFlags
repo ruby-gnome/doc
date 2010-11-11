@@ -1,5 +1,7 @@
 = class GLib::File::CreateFlags
 
+Flags used when an operation may create a file.
+
 == Object Hierarchy
 
 * Object
@@ -10,21 +12,46 @@
 
 --- none?
 
-     * Returns: self: ((*FIXME*))
+     Checks whether or not any flags have been set
+
+     * Returns: true if no flags have been set
 
 --- private?
 
-     * Returns: self: ((*FIXME*))
+     Checks whether or not a file that can only be accessed by the current
+     user is created
+
+     * Returns: true if a file that can only be accessed by the current user is
+       created
 
 --- replace_destination?
 
-     * Returns: self: ((*FIXME*))
+     Checks whether or not the destination is replaced as if it didn’t exist
+     before.
+
+     * Returns: true if the destination is replaced as if it didn’t exist
+       before
 
 == Constants
 
 --- NONE
+
+     No flags set
+
 --- PRIVATE
+
+     Create a file that can only be accessed by the current user
+
 --- REPLACE_DESTINATION
+
+     Replace the destination as if it didn’t exist before. Don’t try to keep
+     any old permissions, replace instead of following links. This is generally
+     useful if you’re doing a “copy over” rather than a “save new version of”
+     replace operation. You can think of it as “unlink destination” before
+     writing to it, although the implementation may not be exactly like that.
+
+     Since 2.20 
+
 
 == See Also
 

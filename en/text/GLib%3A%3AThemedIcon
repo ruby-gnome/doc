@@ -1,5 +1,12 @@
 = class GLib::ThemedIcon
 
+GLib::ThemedIcon is an implementation of GLib::Icon that supports icon themes.
+GLib::ThemedIcon contains a list of all of the icons present in an icon theme,
+so that icons can be looked up quickly. GLib::ThemedIcon does not provide
+actual pixmaps for icons, just the icon names. Ideally something like
+Gtk::IconTheme#choose_icon should be used to resolve the list of names so that
+fallback icons work nicely with themes that inherit other themes.
+
 == Object Hierarchy
 
 * Object
@@ -13,19 +20,23 @@
 
 == Class Methods
 
---- GLib::ThemedIcon.new
+--- GLib::ThemedIcon.new(iconname)
 
-     * Returns: self: ((*FIXME*))
+     Creates a new themed icon for ((|iconname|)).
+
+     * Returns: a new GLib::ThemedIcon
 
 == Instance Methods
 
---- ==
+--- ==(other)
 
     See GLib::Icon#==.
 
---- append_name
+--- append_name(iconname)
 
-     * Returns: self: ((*FIXME*))
+     Append a name to the list of icons from within this icon.
+
+     * iconname: Name of icon to append to list of icons from within this icon
 
 --- eql?
 
@@ -37,12 +48,17 @@
 
 --- names
 
-    Gets the An array containing the icon names.
-     * Returns: An array containing the icon names
+    Gets An Array containing the icon names.
 
---- prepend_name
+     * Returns: An Array containing the icon names
 
-     * Returns: self: ((*FIXME*))
+--- prepend_name(iconname)
+
+     Prepend a name to the list of icons from within this icon.
+
+     Since 2.18
+
+     * iconname: Name of icon to prepend to list of icons from within this icon
 
 --- to_s
 
@@ -58,8 +74,12 @@
 
 --- use_default_fallbacks?
 
-    Gets the value whether to use default fallbacks found by shortening the name at '-' characters. Ignores names after the first if multiple names are given. or not.
-     * Returns: true if to use default fallbacks found by shortening the name at '-' characters. Ignores names after the first if multiple names are given
+    Checks whether or not to use default fallbacks found by shortening the name
+    at '-' characters. Ignores names after the first if multiple names are
+    given. or not.
+
+     * Returns: true if the default fallbacks found by shortening the name at
+       '-' characters should be used
 
 == Properties
 
@@ -69,11 +89,12 @@
 
 --- names: Array (Read/Write)
 
-    An array containing the icon names
+    An Array containing the icon names
 
 --- use-default-fallbacks: true or false (Read/Write)
 
-    Whether to use default fallbacks found by shortening the name at '-' characters. Ignores names after the first if multiple names are given.
+    Whether or not to use default fallbacks found by shortening the name at '-'
+    characters. Ignores names after the first if multiple names are given
 
 == See Also
 

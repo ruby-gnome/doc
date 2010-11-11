@@ -1,5 +1,10 @@
 = class GLib::DesktopAppInfo
 
+GLib::DesktopAppInfo is an implementation of GLib::AppInfo based on desktop
+files.
+
+Note that GLib::DesktopAppInfo belongs to the Unix-specific GIO interfaces.
+
 == Object Hierarchy
 
 * Object
@@ -13,25 +18,61 @@
 
 == Class Methods
 
---- GLib::DesktopAppInfo.desktop_env=
+--- GLib::DesktopAppInfo.desktop_env=(desktop_env)
 
-     * Returns: self: ((*FIXME*))
+     Same as GLib::DesktopAppInfo#set_desktop_env.
 
---- GLib::DesktopAppInfo.new
+     * Returns: ((|desktop_env|))
 
-     * Returns: self: ((*FIXME*))
+--- GLib::DesktopAppInfo.new(desktop_id)
 
---- GLib::DesktopAppInfo.new_from_filename
+     Creates a new GLib::DesktopAppInfo based on a desktop file ID.
 
-     * Returns: self: ((*FIXME*))
+     A desktop file ID is the basename of the desktop file, including the
+     .desktop extension. GIO is looking for a desktop file with this name in
+     the applications subdirectories of the XDG data directories (that is, the
+     directories specified in the (({XDG_DATA_HOME})) and (({XDG_DATA_DIRS}))
+     environment variables). GIO also supports the prefix-to-subdirectory
+     mapping that is described in the Menu Spec (that is, a desktop ID of
+     kde-foo.desktop will match (({/usr/share/applications/kde/foo.desktop}})). 
 
---- GLib::DesktopAppInfo.new_from_keyfile
+     * desktop_id: The desktop file ID
+     * Returns: A new GLib::DesktopAppInfo, or nil if no desktop file with that
+       ID exists
 
-     * Returns: self: ((*FIXME*))
+--- GLib::DesktopAppInfo.new_from_filename(filename)
 
---- GLib::DesktopAppInfo.set_desktop_env
+     Creates a new GLib::DesktopAppInfo.
 
-     * Returns: self: ((*FIXME*))
+     * filename: The path of a desktop file, in the GLib filename encoding
+     * Returns: a new GLib::DesktopAppInfo, or nil on error
+
+--- GLib::DesktopAppInfo.new_from_keyfile(keyfile)
+
+     Creates a new GLib::DesktopAppInfo.
+
+     * keyfile: an opened GLib::KeyFile
+     * Returns: a new GLib::DesktopAppInfo, or nil on error
+
+--- GLib::DesktopAppInfo.set_desktop_env(desktop_env)
+
+     Sets the name of the desktop that the application is running in. This is
+     used by GLib::AppInfo#should_show? to evaluate the (({OnlyShowIn})) and
+     (({NotShowIn})) desktop entry fields.
+
+     The Desktop Menu specification recognizes the following values for
+     ((|desktop_env|)):
+
+     * GNOME
+     * KDE
+     * ROX
+     * XFCE
+     * Old
+
+     This method should only be called once; subsequent calls are ignored. 
+
+     * desktop_env: A String specifying what desktop this is
+     * Returns: self
 
 == Instance Methods
 
@@ -77,11 +118,21 @@
 
 --- filename
 
-     * Returns: self: ((*FIXME*))
+     When this GLib::DesktopAppInfo was created from a known filename, return
+     it. In some situations such as the GLib::DesktopAppInfo returned from
+     GLib::DesktopAppInfo.new_from_keyfile, this function will return nil.
+
+     * Returns: The full path to the file for this GLib::DesktopAppInfo, or nil
+       if not known
 
 --- hidden?
 
-     * Returns: self: ((*FIXME*))
+     Checks if this GLib::DesktopAppInfo is hidden.
+
+     A desktop file is hidden if the (({Hidden})) key in it is set to
+     (({True}).
+
+     * Returns: true if this GLib::DesktopAppInfo is hidden
 
 --- icon
 
@@ -126,10 +177,6 @@
 --- supports_uris?
 
     See GLib::AppInfo#supports_uris?.
-
-== Constants
-
---- LOOKUP_EXTENSION_POINT_NAME
 
 == See Also
 

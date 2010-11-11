@@ -2,13 +2,20 @@
 
 == Module Functions
 
---- GLib::UnixMountPoints.changed_since?
+--- GLib::UnixMountPoints.changed_since?(time)
 
-     * Returns: self: ((*FIXME*))
+     Checks if the Unix mount points have changed since a given Unix time.
+
+     * Returns: true if the Unix mount points have changed since ((|time|))
 
 --- GLib::UnixMountPoints.get
 
-     * Returns: self: ((*FIXME*))
+     Gets an Array of an Array of GLib::UnixMountPoint objects and a Unix mount
+     timestamp.  The timestamp may be used to check for changes in mounts with
+     GLib::UnixMountPoints.changed_since?.
+
+     * Returns: An Array of an Array of GLib::UnixMountPoint objects and a Unix mount
+       timestamp
 
 == See Also
 

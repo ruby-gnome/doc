@@ -1,5 +1,8 @@
 = class GLib::MemoryOutputStream
 
+GLib::MemoryOutputStream is a class for using arbitrary memory chunks as output
+for GIO streaming output operations. 
+
 == Object Hierarchy
 
 * Object
@@ -16,7 +19,9 @@
 
 --- GLib::MemoryOutputStream.new
 
-     * Returns: self: ((*FIXME*))
+     Creates a new GLib::MemoryOutputStream.
+
+     * Returns: a new GLib::MemoryOutputStream
 
 == Instance Methods
 
@@ -30,23 +35,15 @@
 
 --- data
 
-    Gets the Pointer to buffer where data will be written.
-     * Returns: Pointer to buffer where data will be written
+     Gets the written data.
+
+     * Returns: A String containing the written data
 
 --- data_size
 
-    Gets the Size of data written to the buffer.
-     * Returns: Size of data written to the buffer
+    Gets the number of bytes of written data.
 
---- destroy_function
-
-    Gets the Function called with the buffer as argument when the stream is destroyed.
-     * Returns: Function called with the buffer as argument when the stream is destroyed
-
---- realloc_function
-
-    Gets the Function with realloc semantics called to enlarge the buffer.
-     * Returns: Function with realloc semantics called to enlarge the buffer
+     * Returns: The number of bytes of written data
 
 --- seek
 
@@ -54,8 +51,9 @@
 
 --- size
 
-    Gets the Current size of the data buffer.
-     * Returns: Current size of the data buffer
+    Gets the number of bytes currently available to write data into.
+
+     * Returns: The number of bytes currently available to write data into.
 
 --- tell
 
@@ -67,25 +65,17 @@
 
 == Properties
 
---- data: gpointer (Read/Write)
+--- data: String (Read/Write)
 
-    Pointer to buffer where data will be written.
+     A String containing the written data
 
 --- data-size: Integer (Read)
 
-    Size of data written to the buffer.
-
---- destroy-function: gpointer (Read/Write)
-
-    Function called with the buffer as argument when the stream is destroyed.
-
---- realloc-function: gpointer (Read/Write)
-
-    Function with realloc semantics called to enlarge the buffer.
+    The number of bytes of written data
 
 --- size: Integer (Read/Write)
 
-    Current size of the data buffer.
+    The number of bytes currently available to write data into
 
 == See Also
 

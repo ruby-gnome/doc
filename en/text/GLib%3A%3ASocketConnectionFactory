@@ -2,9 +2,11 @@
 
 == Module Functions
 
---- GLib::SocketConnectionFactory.create_connection
+--- GLib::SocketConnectionFactory.create_connection(socket)
 
-     * Returns: self: ((*FIXME*))
+     Creates a GLib::SocketConnection subclass of the right type for socket.
+
+     * Returns: a new Glib::SocketConnection
 
 == See Also
 

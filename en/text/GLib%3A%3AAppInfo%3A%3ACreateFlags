@@ -1,5 +1,7 @@
 = class GLib::AppInfo::CreateFlags
 
+Flags used when creating a GLib::AppInfo.
+
 == Object Hierarchy
 
 * Object
@@ -10,21 +12,47 @@
 
 --- needs_terminal?
 
-     * Returns: self: ((*FIXME*))
+     Checks if the application opens in a terminal window.
+
+     * Returns: true if the application opens in a terminal window
 
 --- none?
 
-     * Returns: self: ((*FIXME*))
+     Checks if any flags have been set.
+
+     * Returns: true if no flags have been set
+
+--- supports_startup_notification?
+
+     Checks if the application supports startup notification.
+
+     * Returns: true if the application supports startup notification
 
 --- supports_uris?
 
-     * Returns: self: ((*FIXME*))
+     Checks if the application supports URI arguments.
+
+     * Returns: true if the application supports URI arguments
 
 == Constants
 
 --- NEEDS_TERMINAL
+
+     The application opens in a terminal window
+
 --- NONE
+
+     No flags set
+
+--- SUPPORTS_STARTUP_NOTIFICATION
+
+     The application supports startup notification
+
+     Since 2.26
+
 --- SUPPORTS_URIS
+
+     The application supports URI arguments
 
 == See Also
 

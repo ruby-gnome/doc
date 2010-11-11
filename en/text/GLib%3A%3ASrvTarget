@@ -1,5 +1,19 @@
 = class GLib::SrvTarget
 
+SRV (service) records are used by some network protocols to provide
+service-specific aliasing and load-balancing. For example, XMPP (Jabber) uses
+SRV records to locate the XMPP server for a domain; rather than connecting
+directly to “example.com” or assuming a specific server hostname like
+“xmpp.example.com”, an XMPP client would look up the “xmpp-client” SRV record
+for “example.com”, and then connect to whatever host was pointed to by that
+record.
+
+You can use GLib::Resolver#lookup_service or
+Glib::Resolver#lookup_service_async to find the GLib::SrvTarget objects for a
+given service. However, if you are simply planning to connect to the remote
+service, you can use GLib::NetworkService’s GLib::SocketConnectable interface
+and not need to worry about GLib::SrvTarget at all. 
+
 == Object Hierarchy
 
 * Object
@@ -8,27 +22,58 @@
 
 == Class Methods
 
---- GLib::SrvTarget.new
+--- GLib::SrvTarget.new(hostname, port, priority, weight)
 
-     * Returns: self: ((*FIXME*))
+     Creates a new GLib::SrvTarget with the given parameters.
+
+     You should not need to use this; normally GLib::SrvTarget objects are
+     created by GLib::Resolver. 
+
+     * hostname: The host that the service is running on
+     * port: The port that the service is running on
+     * priority: The target’s priority
+     * weight: The target’s weight
+     * Returns: a new GLib::SrvTarget
 
 == Instance Methods
 
 --- hostname
 
-     * Returns: self: ((*FIXME*))
+     Gets the hostname (in ASCII form; if you are going to present this to the
+     user, you should use Glib.hostname_is_ascii_encoded?
+     to check if it contains encoded Unicode segments, and use
+     GLib.hostname_to_unicode to convert it if it does.)
+
+     Since 2.22
+
+     * Returns: The hostname
 
 --- port
 
-     * Returns: self: ((*FIXME*))
+     Gets the port
+
+     Since 2.22
+
+     * Returns: The port
 
 --- priority
 
-     * Returns: self: ((*FIXME*))
+     Gets the priority. You should not need to look at this; GLib::Resolver
+     already sorts the targets according to the algorithm in RFC 2782.
+
+     Since 2.22
+
+     * Returns: The priority
 
 --- weight
 
-     * Returns: self: ((*FIXME*))
+     Gets thei weight. You should not need to look at this; GLib::Resolver
+     already sorts the targets according to the algorithm in RFC 2782.
+
+     Since 2.22
+
+     * Returns: The weight
+
 
 == See Also
 

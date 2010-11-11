@@ -1,5 +1,7 @@
 = class GLib::IO::AlreadyMountedError
 
+The file is already mounted.
+
 == Object Hierarchy
 
 * Object

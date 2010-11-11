@@ -1,5 +1,13 @@
 = class GLib::UnixConnection
 
+This is the subclass of GLib::SocketConnection that is created for Unix domain
+sockets.
+
+It contains functions to do some of the Unix socket specific functionality like
+passing file descriptors.
+
+Note that GLib::UnixConnection belongs to the Unix-specific GIO interfaces.
+
 == Object Hierarchy
 
 * Object
@@ -13,11 +21,29 @@
 
 --- receive_fd
 
-     * Returns: self: ((*FIXME*))
+     Receives a file descriptor from the sending end of the connection. The
+     sending end has to call GLib::UnixConnection#send_fd for this to work.
 
---- send_fd
+     As well as reading the fd this also reads a single byte from the stream,
+     as this is required for fd passing to work on some implementations. 
 
-     * Returns: self: ((*FIXME*))
+     A GLib::IO::Error is raised if the file descriptor can’t be received.
+
+     * Returns: A file descriptor
+
+--- send_fd(fd)
+
+     Passes a file descriptor to the recieving side of the connection. The
+     recieving end has to call GLib::UnixConnection#receive_fd to accept the
+     file descriptor.
+
+     As well as sending the fd this also writes a single byte to the stream, as
+     this is required for fd passing to work on some implementations. 
+
+     A GLib::IO::Error is raised if the file descriptor can’t be sent.
+
+     * fd: A file descriptor
+     * Returns: self
 
 == See Also
 

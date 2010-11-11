@@ -1,5 +1,17 @@
 = class GLib::FileMonitor
 
+Monitors a file or directory for changes.
+
+To obtain a GLib::FileMonitor for a file or directory, use GLib::File#monitor,
+GLib::File#monitor_file, or GLib::File#monitor_directory.
+
+To get informed about changes to the file or directory you are monitoring,
+connect to the “changed” signal. The signal will be emitted in the
+thread-default main context of the thread that the monitor was created in
+(though if the global default main context is blocked, this may cause
+notifications to be blocked even if the thread-default context is still
+running).
+
 == Object Hierarchy
 
 * Object
@@ -11,59 +23,106 @@
 
 --- cancel
 
-     * Returns: self: ((*FIXME*))
+     Cancels a file monitor.
+
+     * Returns: true if monitor was cancelled
 
 --- cancelled?
 
-    Gets the value whether the monitor has been cancelled or not.
+     Returns whether or not the monitor has been cancelled.
+
      * Returns: true if the monitor has been cancelled
 
 --- rate_limit
 
-    Gets the limit of the monitor to watch for changes, in milliseconds.
+     Gets the limit of the monitor to watch for changes, in milliseconds.
+
      * Returns: The limit of the monitor to watch for changes, in milliseconds
 
 --- rate_limit=(rate_limit)
 
-    Sets the limit of the monitor to watch for changes, in milliseconds.
-     * rate_limit: The limit of the monitor to watch for changes, in milliseconds
-     * Returns: rate_limit
+     Same as GLib::FileMonitor#set_rate_limit.
+
+     * Returns: ((|rate_limit|))
 
 --- set_rate_limit(rate_limit)
 
-    Same as rate_limit=.
+    Sets the limit of the monitor to watch for changes, in milliseconds.
+
      * rate_limit: The limit of the monitor to watch for changes, in milliseconds
      * Returns: self
 
 == Constants
 
 --- EVENT_ATTRIBUTE_CHANGED
+
+     A file’s attributes has changed.
+
 --- EVENT_CHANGED
+
+     A file has changed.
+
 --- EVENT_CHANGES_DONE_HINT
+
+     A hint that this was probably the last change in a set of changes.
+
 --- EVENT_CREATED
+
+     A file was created.
+
 --- EVENT_DELETED
+
+     A file was deleted.
+
 --- EVENT_MOVED
+
+     A file wast moved.
+
 --- EVENT_PRE_UNMOUNT
+
+     A file location will soon be unmounted.
+
 --- EVENT_UNMOUNTED
+
+     A file location was unmounted.
+
 --- NONE
+
+     No flags set
+
 --- SEND_MOVED
+
+     Pair GLib::FileMonitor::EVENT_DELETED and GLib::FileMonitor::EVENT_CREATED
+     events caused by file renames (moves) and send a single
+     GLib::FileMonitor::EVENT_MOVED event instead. (Nota bene: not supported on
+     all backends; the default behaviour – without specifying this flag – is to
+     send single GLib::FileMonitor::EVENT_DELETED and
+     GLib::FileMonitor::EVENT_CREATED events.)
+
 --- WATCH_MOUNTS
+
+     Watch for mount events
 
 == Properties
 
 --- cancelled: true or false (Read)
 
-    Whether the monitor has been cancelled
+     Whether or not the monitor has been cancelled.
 
 --- rate-limit: Integer (Read/Write)
 
-    The limit of the monitor to watch for changes, in milliseconds
+     The limit of the monitor to watch for changes, in milliseconds.
 
 == Signals
 
---- changed: self
+--- changed: self, file, other_file, event_type
 
-     * self: GLib::FileMonitor: ((*FIXME*))
+     This signal is emitted when a file has been changed.
+
+     * self: The GLib::FileMonitor emitting the event
+     * file: A GLib::File
+     * other_file: A GLib::File
+     * event_type: A Glib::FileMonitor::Event
 
 == See Also
 

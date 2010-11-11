@@ -1,5 +1,14 @@
 = class GLib::InetAddress
 
+GLib::InetAddress represents an IPv4 or IPv6 internet address. Use
+GLib::Resolver#lookup_by_name or GLib::Resolver#lookup_by_name_async to look up
+the GLib::InetAddress for a hostname. Use GLib::Resolver#lookup_by_address or
+GLib::Resolver#lookup_by_address_async to look up the hostname for a
+GLib::InetAddress.
+
+To actually connect to a remote host, you will need a GLib::InetSocketAddress
+(which includes a GLib::InetAddress as well as a port number).
+
 == Object Hierarchy
 
 * Object
@@ -9,153 +18,198 @@
 
 == Class Methods
 
---- GLib::InetAddress.new_any
+--- GLib::InetAddress.new_any(family)
 
-     * Returns: self: ((*FIXME*))
+    Creates a GLib::InetAddress for the “any” address (unassigned/“don’t care”)
+    for ((|family|)). 
 
---- GLib::InetAddress.new_from_bytes
+     * family: The GLib::Socket::Family
+     * Returns: A new GLib::InetAddress corresponding to the “any” address of
+       ((|family|))
 
-     * Returns: self: ((*FIXME*))
+--- GLib::InetAddress.new_from_bytes(bytes, family)
 
---- GLib::InetAddress.new_from_string
+     Creates a new GLib::InetAddress from the given family and bytes. bytes
+     should be 4 bytes for GLib::Socket::FAMILY_IPV4 and 16 bytes for
+     GLib::Socket::FAMILY_IPV6.
 
-     * Returns: self: ((*FIXME*))
+     * bytes: Raw address data
+     * family: The GLib::Socket::Family
+     * Returns: A new GLib::InetAddress corresponding to ((|family|)) and
+       ((|bytes|))
 
---- GLib::InetAddress.new_loopback
+--- GLib::InetAddress.new_from_string(string)
 
-     * Returns: self: ((*FIXME*))
+     Parses ((|string|)) as an IP address and creates a new GLib::InetAddress.
+
+     * string: A String representation of an IP address
+     * Returns: a new GLib::InetAddress corresponding to ((|string|)), or nil
+       if ((|string|)) couldn’t be parsed
+
+--- GLib::InetAddress.new_loopback(family)
+
+     Creates a GLib::InetAddress for the loopback address for ((|family|))
+
+     * Returns: a new GLib::InetAddress corresponding to the loopback address
+     * for ((|family|))
 
 == Instance Methods
 
 --- any?
 
-    Gets the value whether this is the "any" address for its family or not.
-     * Returns: true if this is the "any" address for its family
+     Checks whether or not this is the “any” address for its family.
+
+     * Returns: true if this is the “any” address for its family
 
 --- bytes
 
-    Gets the raw address data.
+     Gets the raw address data.
+
      * Returns: The raw address data
 
 --- family
 
-    Gets the address family (IPv4 or IPv6).
-     * Returns: The address family (IPv4 or IPv6)
+     Gets the address family (IPv4 or IPv6).
+
+     * Returns: The GLib::Socket::Family
 
 --- get_native_size
 
-     * Returns: self: ((*FIXME*))
+     Gets the size of the native raw binary address for this address. This
+     is the size of the data that you get from GLib::InetAddress#to_bytes.
+
+     Since 2.22
+
+     * Returns: The number of bytes used for the native version of this address
 
 --- link_local?
 
-    Gets the value whether this is a link-local address or not.
+     Checks whether or not this is a link-local address.
+
      * Returns: true if this is a link-local address
 
 --- loopback?
 
-    Gets the value whether this is the loopback address for its family or not.
+     Checks whether or not this is the loopback address for its family.
+
      * Returns: true if this is the loopback address for its family
 
 --- mc_global?
 
-    Gets the value whether this is a global multicast address or not.
+     Checks whether or not this is a global multicast address.
+
      * Returns: true if this is a global multicast address
 
 --- mc_link_local?
 
-    Gets the value whether this is a link-local multicast address or not.
+     Checks whether or not this is a link-local multicast address.
+
      * Returns: true if this is a link-local multicast address
 
 --- mc_node_local?
 
-    Gets the value whether this is a node-local multicast address or not.
+    Checks whether or not this is a node-local multicast address.
+
      * Returns: true if this is a node-local multicast address
 
 --- mc_org_local?
 
-    Gets the value whether this is an organization-local multicast address or not.
+    Checks whether or not this is an organization-local multicast address.
+
      * Returns: true if this is an organization-local multicast address
 
 --- mc_site_local?
 
-    Gets the value whether this is a site-local multicast address or not.
+    Checks whether or not this is a site-local multicast address.
+
      * Returns: true if this is a site-local multicast address
 
 --- multicast?
 
-    Gets the value whether this is a multicast address or not.
+    Checks whether or not this is a multicast address.
+
      * Returns: true if this is a multicast address
 
 --- site_local?
 
-    Gets the value whether this is a site-local address or not.
+    Checks whether or not this is a site-local address.
+
      * Returns: true if this is a site-local address
 
 --- to_bytes
 
-     * Returns: self: ((*FIXME*))
+     Gets the raw binary address data from this address.
+
+     Since 2.22
+
+     * Returns: A String containing the bytes in this address
 
 --- to_s
 
-     * Returns: self: ((*FIXME*))
+     Same as GLib::InetAddress#to_string.
 
 --- to_str
 
-     * Returns: self: ((*FIXME*))
+     Same as GLib::InetAddress#to_string.
 
 --- to_string
 
-     * Returns: self: ((*FIXME*))
+     Converts this address to String form.
+
+     Since 2.22
+
+     * Returns: A representation of this address as a String
+
 
 == Properties
 
---- bytes: gpointer (Read/Write)
+--- bytes: String (Read/Write)
 
     The raw address data
 
---- family: GSocketFamily (Read/Write)
+--- family: GLib::SocketFamily (Read/Write)
 
     The address family (IPv4 or IPv6)
 
 --- is-any: true or false (Read)
 
-    Whether this is the "any" address for its family
+    Whether or not this is the "any" address for its family
 
 --- is-link-local: true or false (Read)
 
-    Whether this is a link-local address
+    Whether or not this is a link-local address
 
 --- is-loopback: true or false (Read)
 
-    Whether this is the loopback address for its family
+    Whether or not this is the loopback address for its family
 
 --- is-mc-global: true or false (Read)
 
-    Whether this is a global multicast address
+    Whether or not this is a global multicast address
 
 --- is-mc-link-local: true or false (Read)
 
-    Whether this is a link-local multicast address
+    Whether or not this is a link-local multicast address
 
 --- is-mc-node-local: true or false (Read)
 
-    Whether this is a node-local multicast address
+    Whether or not this is a node-local multicast address
 
 --- is-mc-org-local: true or false (Read)
 
-    Whether this is an organization-local multicast address
+    Whether or not this is an organization-local multicast address
 
 --- is-mc-site-local: true or false (Read)
 
-    Whether this is a site-local multicast address
+    Whether or not this is a site-local multicast address
 
 --- is-multicast: true or false (Read)
 
-    Whether this is a multicast address
+    Whether or not this is a multicast address
 
 --- is-site-local: true or false (Read)
 
-    Whether this is a site-local address
+    Whether or not this is a site-local address
 
 == See Also
 

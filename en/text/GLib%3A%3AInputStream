@@ -1,5 +1,14 @@
 = class GLib::InputStream
 
+GLib::InputStream has functions to read from a stream (Glib::InputStream#read),
+to close a stream (GLib::InputStream#close), and to skip some content
+(GLib::InputStream#skip).
+
+To copy the content of an input stream to an output stream without manually
+handling the reads and writes, use GLib::OutputStream#splice.
+
+All of these functions have async variants too. 
+
 == Object Hierarchy
 
 * Object
@@ -7,67 +16,251 @@
     * GLib::Object
       * GLib::InputStream
 
+== Known Subclasses
+
+     * GLib::FilterInputStream
+     * GLib::FileInputStream
+     * GLib::MemoryInputStream
+     * GLib::UnixInputStream
+
 == Instance Methods
 
 --- clear_pending
 
-     * Returns: self: ((*FIXME*))
+     Clears the pending flag on this GLib::InputStream.
 
---- close
+     * Returns: self
 
-     * Returns: self: ((*FIXME*))
+--- close(cancellable = nil)
 
---- close_async
+     Closes the stream, releasing resources related to it.
 
-     * Returns: self: ((*FIXME*))
+     Once the stream is closed, further operations will raise
+     GLib::IO::ClosedError, though closing a stream multiple times won’t result
+     an error.
 
---- close_finish
+     Streams will be automatically closed when the last reference is dropped,
+     but you might want to call this function to make sure resources are
+     released as early as possible.
 
-     * Returns: self: ((*FIXME*))
+     Some streams might keep the backing store of the stream (for example, a
+     file descriptor) open after the stream is closed. See the documentation
+     for the individual stream for details.
+
+     On failure the first error that happened will be raised, but the close
+     operation will finish as much as possible. A stream that failed to
+     close will still raise GLib::IO::ClosedError for all further operations.
+     Still, it is important to check and report the error to the user.
+
+     If ((|cancellable|)) is not nil, then the operation can be cancelled by
+     triggering the cancellable object from another thread. If the operation
+     was cancelled, GLib::IO::CancelledError will be raised.  Cancelling a
+     close will still leave the stream closed, but some streams can use a
+     faster close that doesn’t block to, for example, check for errors.
+
+     * cancellable: Optional GLib::Cancellable object, nil to ignore
+     * Returns: self
+
+--- close_async(io_priority = GLib::PRIORITY_DEFAULT, cancellable = nil){ |result| … }
+
+     Requests an asynchronous closes of the stream, releasing resources related
+     to it.  When the operation is finished, a GLib::AsyncResult will be
+     yielded.  You can then call GLib::InputStream#close_finish to get the
+     result of the operation.
+
+     For behaviour details, see GLib::InputStream#close.
+
+     The asyncronous methods have a default fallback that uses threads to
+     implement asynchronicity, so they are optional for inheriting classes.
+     However, if you override one you must override all.
+
+     * stream: A GLib::InputStream
+     * io_priority: The I/O priority of the request
+     * cancellable: Optional cancellable object
+     * result: A GLib::AsyncResult
+     * Returns: self
+
+--- close_finish(result)
+
+     Finishes closing a stream asynchronously, started from
+     GLib::InputStream#close_async.
+
+     A GLib::IO::Error is raised if any errors occurred during closing of the
+     input stream.
+
+     * result: A GLib::AsyncResult
+     * Returns: self
 
 --- closed?
 
-     * Returns: self: ((*FIXME*))
+     Checks if an input stream is closed.
+
+     * Returns: true if the stream is closed
 
 --- has_pending?
 
-     * Returns: self: ((*FIXME*))
+     Checks if an input stream has pending actions.
 
---- pending=
+     * Returns: true if the stream has pending actions
 
-     * Returns: self: ((*FIXME*))
+--- read(count, cancellable = nil)
 
---- read
+     Tries to read ((|count|)) bytes from the stream. Will block during this
+     read.
 
-     * Returns: self: ((*FIXME*))
+     If count is zero returns zero and does nothing. A value of ((|count|))
+     larger than GLib::MAXSSIZE will raise GLib::IO::InvalidArgumentError.
 
---- read_all
+     On success, a String is returned.  It is not an error if this String does
+     not contain as many bytes as ((|count|)), as it can happen, for example,
+     near the end of a file. An empty string is returned on end of file (or if
+     ((|count|)) is zero),  but never otherwise.
 
-     * Returns: self: ((*FIXME*))
+     If ((|cancellable|)) is not nil, then the operation can be cancelled by
+     triggering the cancellable object from another thread. If the operation
+     was cancelled, GLib::IO::CancelledError will be raised.  If an operation
+     was partially finished when the operation was cancelled the partial result
+     will be returned, without an error.
 
---- read_async
+     * count: The number of bytes that will be read from the stream
+     * cancellable: Optional GLib::Cancellable object, nil to ignore
+     * Returns: A String containing the bytes read
 
-     * Returns: self: ((*FIXME*))
+--- read_all(count, cancellable = nil)
 
---- read_finish
+     Tries to read ((|count|)) bytes from the stream into the buffer starting
+     at ((|buffer|)). Will block during this read.
 
-     * Returns: self: ((*FIXME*))
+     This function is similar to GLib::InputStream#read, except it tries to
+     read as many bytes as requested, only stopping on an error or end of
+     stream.
+
+     On a successful read of ((|count|)) bytes, or if we reached the end of the
+     stream,  a String containing the read bytes is returned.
+
+     If there is an error during the operation a GLib::IO::Error is raised.
+
+     * count: The number of bytes that will be read from the stream
+     * cancellable: Optional GLib::Cancellable object, nil to ignore
+     * Returns: A String containing the bytes read
+
+--- read_async(count, io_priority = GLib::PRIORITY_DEFAULT, cancellable = nil){ |result| … }
+
+     Request an asynchronous read of ((|count|)) bytes from the stream. When
+     the operation is finished, a GLib::AsyncResult will be yielded.  You can
+     then call GLib::InputStream#read_finish to get the result of the
+     operation.
+
+     During an async request no other sync and async calls are allowed on
+     this GLib::InputStream, and will raise GLib::IO::PendingError.
+
+     A value of ((|count|)) larger than GLib::MAXSSIZE will raise
+     GLib::IO::InvalidArgumentError.
+
+     On success, the a String containing the read bytes will be passed to the
+     block inside a GLib::AsyncResult. It is not an error if this is not the
+     same as the requested size, as it can happen, for example, near the end of
+     a file, but generally we try to read as many bytes as requested. An empty
+     String is returned on end of file (or if ((|count|)) is zero),  but never
+     otherwise.
+
+     Any outstanding I/O request with higher priority (lower numerical value)
+     will be executed before an outstanding request with lower priority.
+     Default priority is GLib::PRIORITY_DEFAULT.
+
+     The asyncronous methods have a default fallback that uses threads to
+     implement asynchronicity, so they are optional for inheriting classes.
+     However, if you override one you must override all.
+
+     * count: The number of bytes that will be read from the stream
+     * io_priority: The I/O priority of the request
+     * cancellable: Optional GLib::Cancellable object, nil to ignore
+     * result: A GLib::InputStream::ReadAsyncResult
+     * Returns: self
+
+--- read_finish(result)
+
+     Finishes an asynchronous stream read operation.
+
+     A GLib::IO::Error is raised if any errors occurred during reading.
+
+     * stream: A GLib::InputStream
+     * result: A GLib::AsyncResult
+     * Returns: A String containing the read bytes.
 
 --- set_pending
 
-     * Returns: self: ((*FIXME*))
+     Sets this stream to have actions pending. If the pending flag is
+     already set or this stream is closed, a GLib::IO::Error will be raised.
 
---- skip
+     * stream: Input stream
+     * Returns: true if pending was previously unset and is now set
 
-     * Returns: self: ((*FIXME*))
+--- skip(count, cancellable = nil)
 
---- skip_async
+     Tries to skip ((|count|)) bytes from the stream. Will block during the
+     operation.
 
-     * Returns: self: ((*FIXME*))
+     This is identical to GLib::InputStream#read, from a behaviour standpoint,
+     but the bytes that are skipped are not returned to the user. Some streams
+     have an implementation that is more efficient than reading the data.
 
---- skip_finish
+     This function is optional for inherited classes, as the default
+     implementation emulates it using read.
 
-     * Returns: self: ((*FIXME*))
+     If ((|cancellable|)) is not nil, then the operation can be cancelled by
+     triggering the cancellable object from another thread. If the operation
+     was cancelled, GLib::IO::CancelledError will be raised. If an operation
+     was partially finished when the operation was cancelled the partial result
+     will be returned, without an error.
+
+     * stream: A GLib::InputStream
+     * count: The number of bytes that will be skipped from the stream
+     * cancellable: Optional GLib::Cancellable object, nil to ignore
+     * Returns: The number of bytes skipped
+
+--- skip_async(count, io_priority = GLib::PRIORITY_DEFAULT, cancellable = nil){ |result| … }
+
+     Request an asynchronous skip of ((|count|)) bytes from the stream.  When
+     the operation is finished, a GLib::AsyncResult will be yielded.  You can
+     then call GLib::InputStream#skip_finish to get the result of the
+     operation.
+
+     During an async request no other sync and async calls are allowed, and
+     will raise GLib::IO::PendingError.
+
+     A value of ((|count|)) larger than GLib::MAXSSIZE will cause a
+     GLib::IO::InvalidArgumentError error.
+
+     On success, the number of bytes skipped will be passed to the callback
+     inside a GLib::AsyncResult.  It is not an error if this is not the same as
+     the requested size, as it can happen, for example, near the end of a file,
+     but generally we try to skip as many bytes as requested. Zero is returned
+     on end of file (or if ((|count|)) is zero), but never otherwise.
+
+     Any outstanding I/O request with higher priority (lower numerical value)
+     will be executed before an outstanding request with lower priority.
+     Default priority is GLib::PRIORITY_DEFAULT.
+
+     The asynchronous methods have a default fallback that uses threads to
+     implement asynchronicity, so they are optional for inheriting classes.
+     However, if you override one, you must override all.
+
+     * count: The number of bytes that will be skipped from the stream
+     * io_priority: The I/O priority of the request
+     * cancellable: Optional GLib::Cancellable object, nil to ignore
+     * result: A GLib::AsyncResult
+     * Returns: self
+
+--- skip_finish(result)
+
+     Finishes a stream skip operation.
+
+     A GLib::IO::Error is raised if any errors occurred during skipping.
+
+     * result: A GLib::AsyncResult
+     * Returns: The number of bytes skipped
+
 
 == See Also
 

@@ -1,5 +1,7 @@
 = class GLib::Vfs
 
+Entry point for using GIO functionality.
+
 == Object Hierarchy
 
 * Object
@@ -11,37 +13,63 @@
 
 --- GLib::Vfs.default
 
-     * Returns: self: ((*FIXME*))
+     Gets the default Glib::Vfs for the system.
+
+     * Returns: The default GLib::Vfs
 
 --- GLib::Vfs.local
 
-     * Returns: self: ((*FIXME*))
+     Gets the local GLib::Vfs for the system. 
+
+     * Returns: The default local GLib::Vfs
 
 == Instance Methods
 
 --- active?
 
-     * Returns: self: ((*FIXME*))
+     Checks if the VFS is active.
 
---- file_for_path
+     * Returns: true if construction of the vfs was successful and it is now active
 
-     * Returns: self: ((*FIXME*))
+--- file_for_path(path)
 
---- file_for_uri
+     Gets a GLib::File for ((|path|)).
 
-     * Returns: self: ((*FIXME*))
+     * path: A String containing a VFS path
+     * Returns: A GLib::File
 
---- parse_name
+--- file_for_uri(uri)
 
-     * Returns: self: ((*FIXME*))
+     Gets a GLib::File for ((|uri|)).
+
+     This operation never fails, but the returned object might not support any
+     I/O operation if the URI is malformed or if the URI scheme is not
+     supported.
+
+     * uri: A String containing a URI
+     * Returns: A GLib::File
+
+--- parse_name(parse_name)
+
+     This operation never fails, but the returned object might not support any
+     I/O operations if the ((|parse_name|)) cannot be parsed by the GLib::Vfs
+     module.
+
+     * parse_name: A String to be parsed by the VFS module
+     * Returns: A GLib::File for the given ((|parse_name|))
 
 --- supported_uri_schemes
 
-     * Returns: self: ((*FIXME*))
+     Gets a list of URI schemes supported by ((|vfs|)).
+
+     * Returns: An Array of Strings containing URI schemes
+
 
 == Constants
 
 --- EXTENSION_POINT_NAME
+
+     Extension point for GLib::Vfs functionality.
 
 == See Also
 

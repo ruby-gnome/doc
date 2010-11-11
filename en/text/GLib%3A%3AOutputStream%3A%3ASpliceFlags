@@ -1,5 +1,7 @@
 = class GLib::OutputStream::SpliceFlags
 
+GLib::OutputStream::SpliceFlags determine how streams should be spliced.
+
 == Object Hierarchy
 
 * Object
@@ -10,21 +12,36 @@
 
 --- close_source?
 
-     * Returns: self: ((*FIXME*))
+     Checks if the source stream should be closed after the splice
+
+     * Returns: true if the source stream should be closed after the splice
 
 --- close_target?
 
-     * Returns: self: ((*FIXME*))
+     Checks if the target stream should be closed after the splice
+
+     * Returns: true if the target stream should be closed after the splice
 
 --- none?
 
-     * Returns: self: ((*FIXME*))
+     Checks if neither stream should be closed after the splice
+
+     * Returns: true if neither stream should be closed after the splice
 
 == Constants
 
 --- CLOSE_SOURCE
+
+     Close the source stream after the splice
+
 --- CLOSE_TARGET
+
+     Close the target stream after the splice
+
 --- NONE
+
+     Don’t close either stream
+
 
 == See Also
 

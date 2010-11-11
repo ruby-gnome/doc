@@ -1,5 +1,8 @@
 = class GLib::FileAttributeMatcher
 
+GLib::FileAttributeMatcher allows for searching through a GLib::FileInfo for
+attributes. 
+
 == Object Hierarchy
 
 * Object
@@ -8,31 +11,54 @@
 
 == Class Methods
 
---- GLib::FileAttributeMatcher.new
+--- GLib::FileAttributeMatcher.new(attributes)
 
-     * Returns: self: ((*FIXME*))
+     * Returns: A Glib::FileAttributeMatcher
 
 == Instance Methods
 
---- =~
+--- =~(attribute)
 
-     * Returns: self: ((*FIXME*))
+     Same as GLib::FileAttributeMatcher#matches?.
 
---- enumerate_namespace
+--- enumerate_namespace(namespace){ |match| … }
 
-     * Returns: self: ((*FIXME*))
+     If a block is given, yield each matched attribute.  Otherwise, return true
+     if this GLib::FileAttributeMatcher will match all of the keys in
+     ((|namespace|)).
+
+     * namespace: A String containing a file attribute namespace
+     * Returns: self, if a block was given, otherwise true if this
+       GLib::FileAttributeMatcher will match all of the keys in
+       ((|namespace|)), false otherwise
 
 --- enumerate_next
 
-     * Returns: self: ((*FIXME*))
+     Gets the next matched attribute from a GLib::FileAttributeMatcher.
 
---- matches?
+     * Returns: A String containing the next attribute, or nil if no more
+       attributes exist
 
-     * Returns: self: ((*FIXME*))
+--- matches?(attribute)
 
---- matches_only?
+     Checks if an attribute will be matched by this GLib::FileAttributeMatcher.
+     If the matcher was created with the '*' matching string, this method
+     will always return true. 
 
-     * Returns: self: ((*FIXME*))
+     * attribute: a file attribute key
+     * Returns: true if ((|attribute|)) is matched by this
+       GLib::FileAttributeMatcher, false otherwise
+
+--- matches_only?(attribute)
+
+     Checks if this GLib::FileAttributeMatcher only matches ((|attribute|)).
+     If the matcher was created with the '*' matching string, this method will
+     always return false. 
+
+     * attribute: a file attribute key
+     * Returns: true if this GLib::FileAttributeMatcher only matches
+       ((|attribute|)), false otherwise
+
 
 == See Also
 

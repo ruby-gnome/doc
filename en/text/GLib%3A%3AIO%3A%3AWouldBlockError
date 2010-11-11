@@ -1,5 +1,7 @@
 = class GLib::IO::WouldBlockError
 
+The operation would block.
+
 == Object Hierarchy
 
 * Object

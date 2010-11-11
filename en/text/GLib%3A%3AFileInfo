@@ -1,5 +1,27 @@
 = class GLib::FileInfo
 
+Functionality for manipulating basic metadata for files. GLib::FileInfo
+implements methods for getting information that all files should contain, and
+allows for manipulation of extended attributes.
+
+See GLib::FileAttribute for more information on how GIO handles file
+attributes.
+
+To obtain a GLib::FileInfo for a GLib::File, use Glib::File#query_info (or its
+async variant). To obtain a GLib::FileInfo for a file input or output stream,
+use GLib::FileInputStream#query_info or GLib::FileOutputStream#query_info (or
+their async variants).
+
+To change the actual attributes of a file, you should then set the attribute
+in the GLib::FileInfo and call GLib::File#set_attributes_from_info or
+Glib::File#set_attributes_async on a GLib::File.
+
+However, not all attributes can be changed in the file. For instance, the
+actual size of a file cannot be changed via GLib::FileInfo#set_size. You may
+call GLib::File#query_settable_attributes() and
+GLib::File#query_writable_namespaces to discover the settable attributes of a
+particular file at runtime.
+
 == Object Hierarchy
 
 * Object
@@ -11,301 +33,562 @@
 
 --- GLib::FileInfo.new
 
-     * Returns: self: ((*FIXME*))
+     Creates a new GLib::FileInfo
+
+     * Returns: a GLib::FileInfo
 
 == Instance Methods
 
---- []
+--- [](attribute)
 
-     * Returns: self: ((*FIXME*))
+     Same as GLib::FileInfo#get_attribute_value.
 
---- attribute_mask=
+     * Returns: The value of ((|attribute|))
 
-     * Returns: self: ((*FIXME*))
+--- attribute_mask=(mask)
 
---- attributes
+     Same as GLib::FileInfo#set_attribute_mask.
 
-     * Returns: self: ((*FIXME*))
+     Returns: ((|mask|))
+
+--- attributes(namespace)
+
+     Same As GLib::FileInfo#list_attributes.
 
 --- backup?
 
-     * Returns: self: ((*FIXME*))
+     Checks if a file is a backup file.
+
+     * Returns: true if file is a backup file, false otherwise
 
 --- clear_status
 
-     * Returns: self: ((*FIXME*))
+     Clears the status information in this GLib::FileInfo.
+
+     * Returns: self
 
 --- content_type
 
-     * Returns: self: ((*FIXME*))
+     Gets the file’s content type.
 
---- content_type=
+     * Returns: A String containing the file’s content type
 
-     * Returns: self: ((*FIXME*))
+--- content_type=(content_type)
+
+     Same as GLib::FileInfo#set_content_type.
+
+     * Returns: ((|content_type|))
 
 --- copy_into
 
-     * Returns: self: ((*FIXME*))
+     Copies all of the GLib::FileAttributes in this GLib::FileInfo into
+     ((|dest_info|)).
+
+     * info: Destination to copy attributes to
+     * Returns: self
 
 --- directory?
 
-     * Returns: self: ((*FIXME*))
+     Checks if a file is a directory.
+
+     * Returns: true if file is a directory, false otherwise
 
 --- display_name
 
-     * Returns: self: ((*FIXME*))
+     Gets a display name for a file.
 
---- display_name=
+     * Returns: A String containing the display name
 
-     * Returns: self: ((*FIXME*))
+--- display_name=(display_name)
+
+     Same as GLib::FileInfo#set_display_name.
+
+     * Returns: ((|display_name|))
 
 --- dup
 
-     * Returns: self: ((*FIXME*))
+     Duplicates a file info structure.
+
+     * Returns: A duplicate GLib::FileInfo of this GLib::FileInfo
 
 --- edit_name
 
-     * Returns: self: ((*FIXME*))
+     Gets the edit name for a file.
 
---- edit_name=
+     * Returns: A String containing the edit name
 
-     * Returns: self: ((*FIXME*))
+--- edit_name=(edit_name)
+
+     Same as GLib::FileInfo#set_edit_name.
+
+     * Returns: ((|edit_name|))
 
 --- etag
 
-     * Returns: self: ((*FIXME*))
+     Gets the entity tag for a given GLib::FileInfo. See
+     GLib::FileAttribute::ETAG_VALUE.
+
+     * Returns: A String containing the value of the “etag:value” attribute
 
 --- file_type
 
-     * Returns: self: ((*FIXME*))
+     Gets a file’s type (whether it is a regular file, symlink, etc.).  This is
+     different from the file's content type, see GLib::FileInfo#content_type.
 
---- file_type=
+     * Returns: A GLib::FileType for the given file
 
-     * Returns: self: ((*FIXME*))
+--- file_type=(type)
 
---- get_attribute_as_string
+     Same as GLib::FileInfo#set_file_type.
 
-     * Returns: self: ((*FIXME*))
+     * Returns: ((|type|))
 
---- get_attribute_boolean
+--- get_attribute_as_string(attribute)
 
-     * Returns: self: ((*FIXME*))
+     Gets the value of a attribute, formatted as a String.  This escapes things
+     as needed to make the String valid UTF-8.
 
---- get_attribute_byte_string
+     * attribute: A file attribute key
+     * Returns: A UTF-8 String associated with the given ((|attribute|))
 
-     * Returns: self: ((*FIXME*))
+--- get_attribute_boolean(attribute)
 
---- get_attribute_data
+     Gets the value of a Boolean attribute. If the attribute does not contain a
+     Boolean value, false will be returned.
 
-     * Returns: self: ((*FIXME*))
+     * attribute: A file attribute key
+     * Returns: The Boolean value contained within the attribute
 
---- get_attribute_int32
+--- get_attribute_byte_string(attribute)
 
-     * Returns: self: ((*FIXME*))
+     Gets the value of a byte String attribute. If the attribute does
+     not contain a byte String, nil will be returned.
 
---- get_attribute_int64
+     * attribute: A file attribute key
+     * Returns: The contents of the ((|attribute|)) value as a byte String, or
+       nil otherwise
 
-     * Returns: self: ((*FIXME*))
+--- get_attribute_data(attribute)
 
---- get_attribute_object
+     Gets the attribute type, value and status for an attribute key.
 
-     * Returns: self: ((*FIXME*))
+     * attribute: A file attribute key
+     * Returns: An Array containing the attribute type, value, and status, or
+       nil if this GLib::FileInfo doesn’t have an attribute named
+       ((|attribute|))
 
---- get_attribute_status
+--- get_attribute_int32(attribute)
 
-     * Returns: self: ((*FIXME*))
+     Gets a signed 32-bit integer contained within the attribute. If the
+     attribute does not contain a signed 32-bit integer, or is invalid, 0 will
+     be returned.
 
---- get_attribute_string
+     * attribute: A file attribute key
+     * Returns: A Fixnum from the attribute
 
-     * Returns: self: ((*FIXME*))
+--- get_attribute_int64(attribute)
 
---- get_attribute_stringv
+     Gets a signed 64-bit integer contained within the attribute. If the
+     attribute does not contain an signed 64-bit integer, or is invalid, 0 will
+     be returned.
 
-     * Returns: self: ((*FIXME*))
+     * attribute: A file attribute key
+     * Returns: A Fixnum or Bignum from the attribute
 
---- get_attribute_type
+--- get_attribute_object(attribute)
 
-     * Returns: self: ((*FIXME*))
+     Gets the value of a GLib::Object attribute. If the attribute does not
+     contain a GLib::Object, nil will be returned.
 
---- get_attribute_uint32
+     * attribute: A file attribute key
+     * Returns: A GLib::Object associated with the given ((|attribute|)), or
+       nil otherwise
 
-     * Returns: self: ((*FIXME*))
+--- get_attribute_status(attribute)
 
---- get_attribute_uint64
+     Gets the attribute status for an attribute key.
 
-     * Returns: self: ((*FIXME*))
+     * attribute: A file attribute key
+     * Returns: A GLib::FileAttribute::Status for the given ((|attribute|)), or
+       GLib::FileAttribute::STATUS_UNSET if the key is invalid
 
---- get_attribute_value
+--- get_attribute_string(attribute)
 
-     * Returns: self: ((*FIXME*))
+     Gets the value of a String attribute. If the attribute does not contain a
+     String, nil will be returned.
 
---- has_attribute?
+     * attribute: A file attribute key
+     * Returns: The contents of the ((|attribute|)) value as a String, or
+       nil otherwise
 
-     * Returns: self: ((*FIXME*))
+--- get_attribute_stringv(attribute)
 
---- has_namespace?
+     Gets the value of a stringv attribute. If the attribute does not contain a
+     stringv, nil will be returned.
 
-     * Returns: self: ((*FIXME*))
+     Since 2.22
 
---- hidden=
+     * attribute: A file attribute key
+     * Returns: The contents of the ((|attribute|)) value as an Array of
+       Strings, or nil otherwise. Do not free
 
-     * Returns: self: ((*FIXME*))
+--- get_attribute_type(attribute)
+
+     Gets the attribute type for an attribute key.
+
+     * attribute: A file attribute key
+     * Returns: A GLib::FileAttribute::Type for the given ((|attribute|)), or
+       GLib::FileAttribute::TYPE_INVALID if the key is not set
+
+--- get_attribute_uint32(attribute)
+
+     Gets an unsigned 32-bit integer contained within the attribute. If the
+     attribute does not contain an unsigned 32-bit integer, or is invalid,
+     0 will be returned.
+
+     * attribute: A file attribute key
+     * Returns: A Fixnum or Bignum from the attribute
+
+--- get_attribute_uint64(attribute)
+
+     Gets a unsigned 64-bit integer contained within the attribute. If the
+     attribute does not contain an unsigned 64-bit integer, or is invalid,
+     0 will be returned.
+
+     * attribute: A file attribute key
+     * Returns: A Fixnum or Bignum from the attribute
+
+--- get_attribute_value(attribute)
+
+     Get the value of an attribute
+
+     * attribute: A file attribute key
+     * Returns: the value of ((|attribute|))
+
+--- has_attribute?(attribute)
+
+     Checks if a file info structure has an attribute named ((|attribute|)).
+
+     * attribute: A file attribute key
+     * Returns: true if this GLib::FileInfo has an attribute named
+       ((|attribute|)), false otherwise
+
+--- has_namespace?(namespace)
+
+     Checks if a file info structure has an attribute in the specified
+     ((|namespace|)).
+
+     Since 2.22
+
+     * namespace: A file attribute namespace
+     * Returns: true if GLib::FileInfo has an attribute in ((|namespace|)),
+       false otherwise
+
+--- hidden=(hidden)
+
+     Same as GLib::FileInfo::set_hidden.
+
+     * Returns: ((|hidden|))
 
 --- hidden?
 
-     * Returns: self: ((*FIXME*))
+     Checks if a file is hidden.
+
+     * Returns: true if the file is a hidden file, false otherwise
 
 --- icon
 
-     * Returns: self: ((*FIXME*))
+     Gets the icon for a file.
 
---- icon=
+     * Returns: A GLib::Icon for this GLib::FileInfo
 
-     * Returns: self: ((*FIXME*))
+--- icon=(icon)
+
+     Same as GLib::FileInfo#set_icon.
+
+     * Returns: ((|icon|))
+
+--- list_attributes(namespace)
+
+     Lists the file info structure’s attributes.
+
+     * namespace: A String containing the file attribute key’s namespace
+     * Returns: An array of Strings of all the possible attribute types for the
+       given ((|namespace|)) or nil on error
 
 --- modification_time
 
-     * Returns: self: ((*FIXME*))
+     Gets the modification time of this GLib::FileInfo.
 
---- modification_time=
+     * Returns: a Time object
 
-     * Returns: self: ((*FIXME*))
+--- modification_time=(mtime)
+
+     Same as GLib::FileInfo#set_modification_time.
+
+     * Returns: ((|mtime|))
 
 --- name
 
-     * Returns: self: ((*FIXME*))
+     Gets the name of a file.
 
---- name=
+     * Returns: A String containing the file name
 
-     * Returns: self: ((*FIXME*))
+--- name=(name)
 
---- remove_attribute
+     Same as GLib::FileInfo#set_name.
 
-     * Returns: self: ((*FIXME*))
+     * Returns: ((|name|))
 
---- set_attribute_boolean
+--- remove_attribute(attribute)
 
-     * Returns: self: ((*FIXME*))
+     Removes all cases of ((|attribute|)) from this GLib::FileInfo.
 
---- set_attribute_byte_string
+     * attribute: A file attribute key
 
-     * Returns: self: ((*FIXME*))
+--- set_attribute_boolean(attribute, value)
 
---- set_attribute_int32
+     Sets the ((|attribute|)) to contain the given ((|value|)), if
+     possible.
 
-     * Returns: self: ((*FIXME*))
+     * attribute: A file attribute key
+     * value: A boolean value
+     * Returns: self
 
---- set_attribute_int64
+--- set_attribute_byte_string(attribute, value)
 
-     * Returns: self: ((*FIXME*))
+     Sets the ((|attribute|)) to contain the given ((|value|)),
+     if possible.
 
---- set_attribute_mask
+     * attribute: A file attribute key
+     * value: A byte String
+     * Returns: self
 
-     * Returns: self: ((*FIXME*))
+--- set_attribute_int32(attribute, value)
 
---- set_attribute_object
+     Sets the ((|attribute|)) to contain the given ((|value|)),
+     if possible.
 
-     * Returns: self: ((*FIXME*))
+     * attribute: A file attribute key
+     * value: A Fixnum
+     * Returns: self
 
---- set_attribute_status
+--- set_attribute_int64(attribute, value)
 
-     * Returns: self: ((*FIXME*))
+     Sets the ((|attribute|)) to contain the given ((|value|)),
+     if possible.
 
---- set_attribute_string
+     * attribute: Attribute name to set
+     * value: A Fixnum or Bignum to set attribute to
+     * Returns: self
 
-     * Returns: self: ((*FIXME*))
+--- set_attribute_mask(mask)
 
---- set_attribute_uint32
+     Sets ((|mask|)) on this GLib::FileInfo to match specific attribute types.
 
-     * Returns: self: ((*FIXME*))
+     * mask: A GLib::FileAttributeMatcher
+     * Returns: self
 
---- set_attribute_uint64
+--- set_attribute_object(attribute, value)
 
-     * Returns: self: ((*FIXME*))
+     Sets the ((|attribute|)) to contain the given ((|value|)),
+     if possible.
 
---- set_content_type
+     * attribute: A file attribute key
+     * value: A GLib::Object
+     * Returns: self
 
-     * Returns: self: ((*FIXME*))
+--- set_attribute_status(attribute, status)
 
---- set_display_name
+     Sets the attribute status for an attribute key. This is only
+     needed by external code that implement GLib::File#attributes_from_info=
+     or similar functions.
 
-     * Returns: self: ((*FIXME*))
+     The attribute must exist in this GLib::FileInfo for this to work.
+     Otherwise false is returned and ((|info|)) is unchanged.
 
---- set_edit_name
+     Since 2.22
 
-     * Returns: self: ((*FIXME*))
+     * attribute: A file attribute key
+     * status: A GLib::FileAttribute::Status
+     * Returns: true if the status was changed, false if the key was not set
 
---- set_file_type
+--- set_attribute_string(attribute, value)
 
-     * Returns: self: ((*FIXME*))
+     Sets the ((|attribute|)) to contain the given ((|value|)), if possible.
 
---- set_hidden
+     * attribute: A file attribute key
+     * value: A String
+     * Returns: self
 
-     * Returns: self: ((*FIXME*))
+--- set_attribute_uint32(attribute, value)
 
---- set_icon
+     Sets the ((|attribute|)) to contain the given ((|value|)), if possible.
 
-     * Returns: self: ((*FIXME*))
+     * attribute: A file attribute key
+     * value: A Fixnum or Bignum to set attribute to
+     * Returns: self
 
---- set_modification_time
+--- set_attribute_uint64(attribute, value)
 
-     * Returns: self: ((*FIXME*))
+     Sets the ((|attribute|)) to contain the given ((|value|)), if possible.
 
---- set_name
+     * attribute: A file attribute key
+     * value: A Fixnum or Bignum to set attribute to
+     * Returns: self
 
-     * Returns: self: ((*FIXME*))
+--- set_content_type(content_type)
 
---- set_size
+     Sets the content type attribute for a given GLib::FileInfo.  See
+     GLib::FileAttribute::STANDARD_CONTENT_TYPE.
 
-     * Returns: self: ((*FIXME*))
+     * content_type: A content type; see GLib::ContentType
+     * Returns: self
 
---- set_sort_order
+--- set_display_name(display_name)
 
-     * Returns: self: ((*FIXME*))
+     Sets the display name for the current GLib::FileInfo.  See
+     GLib::FileAttribute::STANDARD_DISPLAY_NAME.
 
---- set_symlink
+     * display_name: A String containing a display name
+     * Returns: self
 
-     * Returns: self: ((*FIXME*))
+--- set_edit_name(edit_name)
 
---- set_symlink_target
+     Sets the edit name for the current file.  See
+     GLib::FileAttribute::STANDARD_EDIT_NAME.
 
-     * Returns: self: ((*FIXME*))
+     * edit_name: A String containing an edit name
+     * Returns: self
+
+--- set_file_type(type)
+
+     Sets the file type of this GLib::FileInfo to ((|type|)).  See
+     GLib::FileAttribute::STANDARD_TYPE.
+
+     * type: A GLib::FileType
+     * Returns: self
+
+--- set_hidden(hidden)
+
+     Sets the “is_hidden” attribute of this GLib::FileInfo according to
+     ((|hidden|)). See GLib::FileAttribute::STANDARD_IS_HIDDEN. 
+
+     * hidden: A Boolean
+     * Returns: self
+
+--- set_icon(icon)
+
+     Sets the icon for a given GLib::FileInfo.  See
+     GLib::FileAttribute::STANDARD_ICON.
+
+     * icon: A GLib::Icon
+     * Returns: self
+
+--- set_modification_time(mtime)
+
+     Sets the GLib::FileAttribute::TIME_MODIFIED attribute in the file info to
+     the given time value.
+
+     * mtime: An object that responds to #tv_sec and, optionally, #tv_usec, or
+       an object that responds to #to_ary and #to_ary returns an array of one
+       or two Fixnums or Bignums, or a Fixnum or Bignum
+     * Returns: self
+
+--- set_name(name)
+
+     Sets the name attribute for the current GLib::FileInfo.  See
+     GLib::FileAttribute::STANDARD_NAME.
+
+     * name: A String containing a name
+     * Returns: self
+
+--- set_size(size)
+
+     Sets the GLib::FileAttribute::STANDARD_SIZE attribute in the file info to
+     the given size.
+
+     * size: A Fixnum or Bignum containing the file’s size
+     * Returns: self
+
+--- set_sort_order(sort_order)
+
+     Sets the sort order attribute in the file info structure. See
+     GLib::FileAttribute::STANDARD_SORT_ORDER.
+
+     * sort_order: A sort order Fixnum
+     * Returns: self
+
+--- set_symlink(symlink)
+
+     Sets the “is_symlink” attribute of this GLib::FileInfo according to
+     ((|symlink|)). See GLib::FileAttribute::STANDARD_IS_SYMLINK.
+
+     * symlink: A Boolean
+     * Returns: self
+
+--- set_symlink_target(symlink_target)
+
+     Sets the GLib::FileAttribute::STANDARD_SYMLINK_TARGET attribute in the file info
+     to the given symlink target.
+
+     * symlink_target: A String containing a path to a symlink target
+     * Returns: self
 
 --- size
 
-     * Returns: self: ((*FIXME*))
+     Gets the file’s size.
 
---- size=
+     * Returns: A Fixnum or Bignum containing the file’s size
 
-     * Returns: self: ((*FIXME*))
+--- size=(size)
+
+     Same as GLib::FileInfo#set_size.
+
+     * Returns: ((|size|))
 
 --- sort_order
 
-     * Returns: self: ((*FIXME*))
+     Gets the value of the sort_order attribute from the GLib::FileInfo.
+     See GLib::FileAttribute::STANDARD_SORT_ORDER.
 
---- sort_order=
+     * Returns: A Fixnum containing the value of the “standard::sort_order”
+       attribute
 
-     * Returns: self: ((*FIXME*))
+--- sort_order=(sort_order)
 
---- symlink=
+     Same as GLib::FileInfo#set_sort_order.
 
-     * Returns: self: ((*FIXME*))
+--- symlink=(symlink)
+
+     Same as GLib::FileInfo#set_symlink.
+
+     * Returns: ((|symlink|))
 
 --- symlink?
 
-     * Returns: self: ((*FIXME*))
+     Checks if a file is a symlink.
+
+     * Returns: true if file is a symlink file, false otherwise
 
 --- symlink_target
 
-     * Returns: self: ((*FIXME*))
+     Gets the symlink target for this GLib::FileInfo.
 
---- symlink_target=
+     * Returns: A String containing the symlink target
 
-     * Returns: self: ((*FIXME*))
+--- symlink_target=(symlink_target)
+
+     Same as GLib::FileInfo#set_symlink_target
+
+     * Returns: ((|symlink_target|))
 
 --- unset_attribute_mask
 
-     * Returns: self: ((*FIXME*))
+     Unsets a mask set by GLib::FileInfo#attribute_mask=, if one is set.
+
+     * Returns: self
+
 
 == See Also
 

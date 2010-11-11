@@ -1,5 +1,38 @@
 = module GLib::IOModules
 
+Provides an interface and default functions for loading and unloading modules.
+This is used internally to make GIO extensible, but can also be used by others
+to implement module loading. 
+
+== Class Methods
+
+--- GLib::IOModules.load_all_in_directory(dirname)
+
+Loads all the modules in the specified directory.
+
+If don’t require all modules to be initialized (and thus registering all
+GLib::Types) then you can use GLib::IOModules.scan_all_in_directory, which
+allows delayed/lazy loading of modules. 
+
+     * dirname: TPathname for a directory containing modules to load
+     * Returns: An Array of GLib::IOModules loaded from the directory
+
+--- GLib::IOModules.scan_all_in_directory(dirname)
+
+Scans all the modules in the specified directory, ensuring that any extension
+point implemented by a module is registered.
+
+This may not actually load and initialize all the types in each module, some
+modules may be lazily loaded and initialized when an extension point it
+implementes is used with, for example, GLib::IOExtensionPoint#get_extensions or
+GLib::IOExtensionPoint#get_extension_by_name.
+
+If you need to guarantee that all types are loaded in all the modules, use
+GLib::IOModules.load_all_in_directory.
+
+     * dirname: TPathname for a directory containing modules to load
+     * Returns: self
+
 == See Also
 
 == ChangeLog

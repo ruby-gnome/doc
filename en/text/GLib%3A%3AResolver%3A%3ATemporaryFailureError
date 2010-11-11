@@ -1,5 +1,8 @@
 = class GLib::Resolver::TemporaryFailureError
 
+The requested information couldn’t be looked up due to a network error or
+similar problem
+
 == Object Hierarchy
 
 * Object

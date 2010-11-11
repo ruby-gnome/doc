@@ -1,5 +1,7 @@
 = class GLib::IO::FailedError
 
+A generic error condition for when any operation fails. 
+
 == Object Hierarchy
 
 * Object

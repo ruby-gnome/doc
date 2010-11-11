@@ -1,5 +1,11 @@
 = class GLib::NetworkAddress
 
+GLib::NetworkAddress provides an easy way to resolve a hostname and then
+attempt to connect to that host, handling the possibility of multiple IP
+addresses and multiple address families.
+
+See GLib::SocketConnectable for and example of using the connectable interface. 
+
 == Object Hierarchy
 
 * Object
@@ -13,13 +19,40 @@
 
 == Class Methods
 
---- GLib::NetworkAddress.new
+--- GLib::NetworkAddress.new(hostname, port)
 
-     * Returns: self: ((*FIXME*))
+     Creates a new GLib::SocketConnectable for connecting to the given
+     (({hostname})) and (({port})).
 
---- GLib::NetworkAddress.parse
+     * hostname: The hostname
+     * port: The port
+     * Returns: A new GLib::NetworkAddress
 
-     * Returns: self: ((*FIXME*))
+--- GLib::NetworkAddress.parse(host_and_port, default_port)
+
+     Creates a new GLib::NetworkAddress for connecting to the given hostname
+     and port. May fail and raise an error, in case parsing ((|host_and_port|))
+     fails.
+
+     ((|Host_and_port|)) may be in any of a number of recognised formats: an
+     IPv6 address, an IPv4 address, or a domain name (in which case a DNS
+     lookup is performed). Quoting with [] is supported for all address types.
+     A port override may be specified in the usual way with a colon. Ports may
+     be given as decimal numbers or symbolic names (in which case an
+     (({/etc/services})) lookup is performed).
+
+     If no port is specified in ((|host_and_port|)) then ((|default_port|))
+     will be used as the port number to connect to.
+
+     In general, ((|host_and_port|)) is expected to be provided by the user
+     (allowing them to give the hostname, and a port overide if necessary) and
+     ((|default_port|)) is expected to be provided by the application. 
+
+     Since 2.22
+
+     * host_and_port: The hostname and optionally a port
+     * default_port: The default port if not in ((|host_and_port|))
+     * Returns: The new GLib::NetworkAddress
 
 == Instance Methods
 
@@ -33,23 +66,35 @@
 
 --- hostname
 
-    Gets the Hostname to resolve.
-     * Returns: Hostname to resolve
+    Gets the hostname to resolve.
+
+     * Returns: The Hostname to resolve
 
 --- port
 
-    Gets the Network port.
-     * Returns: Network port
+    Gets the network port.
+
+     * Returns: The Network port
+
+--- scheme
+
+    Gets the URI Scheme.
+
+     * Returns: The URI Scheme
 
 == Properties
 
 --- hostname: String (Read/Write)
 
-    Hostname to resolve
+    The hostname to resolve
 
 --- port: Integer (Read/Write)
 
-    Network port
+    The network port
+
+--- scheme: String (Read/Write)
+
+    The URI Scheme
 
 == See Also
 

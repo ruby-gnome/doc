@@ -1,5 +1,7 @@
 = class GLib::IO::WouldRecurseError
 
+The operation would be recursive.
+
 == Object Hierarchy
 
 * Object

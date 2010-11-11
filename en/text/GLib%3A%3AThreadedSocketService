@@ -1,5 +1,20 @@
 = class GLib::ThreadedSocketService
 
+A GLib::ThreadedSocketService is a simple subclass of GLib::SocketService that
+handles incoming connections by creating a worker thread and dispatching the
+connection to it by emitting the ::run signal in the new thread.
+
+The signal handler may perform blocking I/O and need not return until the
+connection is closed.
+
+The service is implemented using a thread pool, so there is a limited amount of
+threads availible to serve incomming requests. The service automatically stops
+the GLib::SocketService from accepting new connections when all threads are
+busy.
+
+As with GLib::SocketService, you may connect to “run”, or subclass and override
+the default handler. 
+
 == Object Hierarchy
 
 * Object
@@ -11,28 +26,46 @@
 
 == Class Methods
 
---- GLib::ThreadedSocketService.new
+--- GLib::ThreadedSocketService.new(max_threads = 10)
 
-     * Returns: self: ((*FIXME*))
+     Creates a new GThreadedSocketService with no listeners. Listeners must be
+     added with Glib::SocketService#add_listeners.
+
+     * max_threads: the maximum number of threads to execute, concurrently
+       handling incoming clients (-1 for no limit)
+     * Returns: a new GLib::ThreadedSocketService
 
 == Instance Methods
 
 --- max_threads
 
-    Gets the max number of threads handling clients for this service.
-     * Returns: The max number of threads handling clients for this service
+     Gets the maximum number of threads handling clients for this service.
+
+     * Returns: The maximum number of threads handling clients for this service
 
 == Properties
 
 --- max-threads: Integer (Read/Write)
 
-    The max number of threads handling clients for this service
+    The maximum number of threads handling clients for this service
+
+    Allowed values: ≥ 0
+
+    Default value: 10
 
 == Signals
 
---- run: self
+--- run: self, connection, source_object
 
-     * self: GLib::ThreadedSocketService: ((*FIXME*))
+     The ::run signal is emitted in a worker thread in response to an incoming
+     connection. This thread is dedicated to handling connection and may
+     perform blocking IO. The signal handler need not return until the
+     connection is closed. 
+
+     * self: The GLib::ThreadedSocketService that is emitting this signal
+     * connection: A new Glib::SocketConnection
+     * source_object: The source object passed to
+       GLib::SocketListener#add_address
 
 == See Also
 

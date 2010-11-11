@@ -1,5 +1,7 @@
 = class GLib::FileAttribute::Type
 
+The data types for file attributes.
+
 == Object Hierarchy
 
 * Object
@@ -9,15 +11,44 @@
 == Constants
 
 --- BOOLEAN
+
+     A Boolean
+
 --- BYTE_STRING
+
+     A String of non-zero bytes
+
 --- INT32
+
+     A Fixnum
+
 --- INT64
+
+     A Fixnum or Bignum
+
 --- INVALID
+
+     Indicates an invalid or uninitialized type
+
 --- OBJECT
---- STRING
+
+     A GLib::Object
+
+--- String
+
+     A UTF-8-encoded String
+
 --- STRINGV
+
+     An Array of Strings
+
 --- UINT32
+
+     A Fixnum or Bignum
+
 --- UINT64
+
+     A Fixnum or Bignum
 
 == See Also
 

@@ -1,5 +1,7 @@
 = class GLib::IO::ExistsError
 
+The file already exists error.
+
 == Object Hierarchy
 
 * Object

@@ -1,5 +1,7 @@
 = class GLib::Resolver::Error
 
+Base class for errors related to GLib::Resolver.
+
 == Object Hierarchy
 
 * Object

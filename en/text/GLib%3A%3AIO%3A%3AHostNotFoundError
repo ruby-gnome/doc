@@ -1,5 +1,7 @@
 = class GLib::IO::HostNotFoundError
 
+The host couldn’t be found (for remote operations).
+
 == Object Hierarchy
 
 * Object

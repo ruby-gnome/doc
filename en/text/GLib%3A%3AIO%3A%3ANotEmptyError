@@ -1,5 +1,7 @@
 = class GLib::IO::NotEmptyError
 
+The file is a directory that isn’t empty.
+
 == Object Hierarchy
 
 * Object

@@ -1,5 +1,9 @@
 = class GLib::FilterInputStream
 
+Base class for input stream implementations that perform some kind of filtering
+operation on a base stream. Typical examples of filtering operations are
+character set conversion, compression and byte order flipping. 
+
 == Object Hierarchy
 
 * Object
@@ -8,39 +12,50 @@
       * GLib::InputStream
         * GLib::FilterInputStream
 
+== Known Subclasses
+
+     * GLib::BufferedInputStream
+     * GLib::ConverterInputStream
+
 == Instance Methods
 
 --- base_stream
 
-    Gets the underlying base stream on which the io ops will be done.
-     * Returns: The underlying base stream on which the io ops will be done
+     Gets the underlying base stream on which the I/O operations will be done.
+
+     * Returns: The underlying base stream on which the I/O operations will be done
 
 --- close_base_stream=(close_base_stream)
 
-    Sets the value if the base stream should be closed when the filter stream is closed.
-     * close_base_stream: true if the base stream should be closed when the filter stream is closed
-     * Returns: close_base_stream
+     Same as GLib::FilterInputStream#set_close_base_stream.
+     Returns: ((|close_base_stream|))
 
 --- close_base_stream?
 
-    Gets the value if the base stream should be closed when the filter stream is closed.
-     * Returns: true if the base stream should be closed when the filter stream is closed
+     Checks if the base stream should be closed when the filter stream is closed.
+
+     * Returns: true if the base stream should be closed when the filter stream
+       is closed
 
 --- set_close_base_stream(close_base_stream)
 
-    Same as close_base_stream=.
-     * close_base_stream: true if the base stream should be closed when the filter stream is closed
+     Sets whether or not the base stream should be closed when the filter
+     stream is closed.
+
+     * close_base_stream: true if the base stream should be closed when the
+       filter stream is closed
      * Returns: self
 
 == Properties
 
---- base-stream: GInputStream (Read/Write)
+--- base-stream: GLib::InputStream (Read/Write)
 
-    The underlying base stream on which the io ops will be done.
+     The underlying base stream on which the I/O operations will be done.
 
 --- close-base-stream: true or false (Read/Write)
 
-    If the base stream should be closed when the filter stream is closed.
+     Whether or not the base stream should be closed when the filter stream is
+     closed.
 
 == See Also
 

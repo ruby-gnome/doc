@@ -1,5 +1,7 @@
 = class GLib::IO::NoSpaceError
 
+No space left on drive.
+
 == Object Hierarchy
 
 * Object

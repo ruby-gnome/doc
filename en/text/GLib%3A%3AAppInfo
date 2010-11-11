@@ -1,130 +1,340 @@
 = module GLib::AppInfo
 
+GLib::AppInfo and GLib::AppLaunchContext are used for describing and launching
+applications installed on the system.
+
+As of GLib 2.20, URIs will always be converted to POSIX paths (using
+Glib::File#path) when using GLib::AppInfo#launch even if the application
+requested an URI and not a POSIX path. For example for an desktop-file based
+application with (({Exec})) key totem (({%U})) and a single URI,
+(({sftp://foo/file.avi})), then (({/home/user/.gvfs/sftp})) on
+(({foo/file.avi})) will be passed. This will only work if a set of suitable GIO
+extensions (such as gvfs 2.26 compiled with FUSE support), is available and
+operational; if this is not the case, the URI will be passed unmodified to the
+application. Some URIs, such as (({mailto:})), of course cannot be mapped to a
+POSIX path (in gvfs there’s no FUSE mount for it); such URIs will be passed
+unmodified to the application.
+
+Specifically for gvfs 2.26 and later, the POSIX URI will be mapped back to the
+GIO URI in the GLib::File constructors (since gvfs implements the GLib::Vfs
+extension point). As such, if the application needs to examine the URI, it
+needs to use GLib::File#uri or similar on GLib::File. In other words, an
+application cannot assume that the URI passed to, for example,
+Glib::File.new_for_commandline_arg is equal to the result of GLib::#file#uri.
+The following snippet illustrates this: 
+
+file = Glib::File.new_for_commandline_arg(uri_from_commandline)
+(file.uri <=> uri_from_commandline) == 0 # ⇒ false
+
+if file.has_uri_scheme? 'cdda'
+  # Do something special with uri
+end
+
+This code will work when both (({cdda://sr0/Track 1.wav}}) and
+(({/home/user/.gvfs/cdda on sr0/Track 1.wav})) is passed to the application.
+It should be noted that it’s generally not safe for applications to rely on the
+format of a particular URIs.  Different launcher applications (for example,
+file managers) may have different ideas of what a given URI means. 
+
 == Included Modules
 
   * GLib::Interface
+
+== Known Implementations
+
+     * GLib::DesktopAppInfo
 
 == Module Functions
 
 --- GLib::AppInfo.all
 
-     * Returns: self: ((*FIXME*))
+     Gets a list of all of the applications currently registered on this
+     system.
 
---- GLib::AppInfo.create_from_commandline
+     For desktop files, this includes applications that have
+     (({NoDisplay=true}}) set
+     or are excluded from display by means of (({OnlyShowIn})) or
+     (({NotShowIn})). See GLib::AppInfo#should_show?. The returned list does
+     not include applications which have the (({Hidden})) key set. 
 
-     * Returns: self: ((*FIXME*))
+     * Returns: An Array of GLib::AppInfo objects
 
---- GLib::AppInfo.get_all_for_type
+--- GLib::AppInfo.create_from_commandline(commandline, application_name = nil, flags = GLib::Appinfo::CREATE_NONE)
 
-     * Returns: self: ((*FIXME*))
+     Creates a new GLib::Appinfo from the given information.
 
---- GLib::AppInfo.get_default_for_type
+     A GLib::IO::Error is raised if a GLib::AppInfo can’t be created from the
+     given information.
 
-     * Returns: self: ((*FIXME*))
+     * commandline: The commandline to use
+     * application_name: The application name, or nil to use ((|commandline|))
+     * flags: A set of GLib::Appinfo::CreateFlags
+     * Returns: A new GLib::AppInfo
 
---- GLib::AppInfo.get_default_for_uri_scheme
+--- GLib::AppInfo.get_all_for_type(content_type)
 
-     * Returns: self: ((*FIXME*))
+     Gets an Array of all GLib::AppInfo objects for a given content type.
 
---- GLib::AppInfo.launch_default_for_uri
+     * content_type: The content type to find GLib::AppInfo objects for
+     * Returns: An Array of GLib::AppInfo objects, or nil on error
 
-     * Returns: self: ((*FIXME*))
+--- GLib::AppInfo.get_default_for_type(content_type, must_support_uris = false)
+
+     Gets the GLib::AppInfo that corresponds to a given content type.
+
+     * content_type: The content type to find a GLib::AppInfo for
+     * must_support_uris: if true, the GLib::AppInfo is expected to support
+       URIs
+     * Returns: A GLib::AppInfo for the given ((|content_type|)), or nil on
+       error
+
+--- GLib::AppInfo.get_default_for_uri_scheme(uri_scheme)
+
+     Gets the default application for launching applications using this URI
+     scheme.  A URI scheme is the initial part of the URI, up to but not
+     including the ‘:’, for example, “http”, “ftp” or “sip”. 
+
+     * uri_scheme: A String containing a URI scheme
+     * Returns: A GLib::AppInfo for the given ((|uri_scheme|)), or nil on error
+
+--- GLib::AppInfo.launch_default_for_uri(uri, launch_context = nil)
+
+     Utility function that launches the default application registered to
+     handle the specified ((|uri|)). Synchronous I/O is done on the URI to
+     detect the type of the file if required. 
+
+     A GLib::IO::Error is raised if a GLib::AppInfo can’t be launched.
+
+     * uri: The URI to launch
+     * launch_context: An optional GLib::AppLaunchContext
+     * Returns: self
 
 --- GLib::AppInfo.reset_type_associations
 
-     * Returns: self: ((*FIXME*))
+     Removes all changes to the type associations done by
+     GLib::AppInfo#set_as_default_for_type,
+     GLib::AppInfo#set_as_default_for_extension,
+     GLib::AppInfo#add_supports_type, and GLib::AppInfo#remove_supports_type.
+
+     * Returns: self
 
 == Instance Methods
 
---- add_supports_type
+--- add_supports_type(content_type)
 
-     * Returns: self: ((*FIXME*))
+     Adds a content type to the application information to indicate the
+     application is capable of opening files with the given content type.
+
+     A GLib::IO::Error is raised if the content type can’t be added.
+
+     * content_type: A content type String
+     * Returns: self
 
 --- can_delete?
 
-     * Returns: self: ((*FIXME*))
+     Checks if the GLib::AppInfo can be deleted.  See GLib::AppInfo#delete.
+
+     Since 2.20
+
+     * Returns: true if the GLib::AppInfo can be deleted
 
 --- can_remove_supports_type?
 
-     * Returns: self: ((*FIXME*))
+     Checks if a supported content type can be removed from an application.
+
+     * Returns: true if it is possible to remove supported
+       content types from a the GLib::AppInfo
 
 --- commandline
 
-     * Returns: self: ((*FIXME*))
+     Gets the commandline with which the application will be started.
+
+     Since 2.20
+
+     * Returns: A String containing the GLib::AppInfo’s commandline,
+       or nil if this information is not available
 
 --- delete
 
-     * Returns: self: ((*FIXME*))
+     Tries to delete a GLib::AppInfo.
+
+     On some platforms, there may be a difference between user-defined
+     GLib::AppInfos, which can be deleted, and system-wide ones, which can’t be
+     deleted; see GLib::AppInfo#can_delete?.
+
+
+     Since 2.20
+
+     * appinfo: A GLib::AppInfo
+     * Returns: true if the GLib::Appinfo has been deleted
 
 --- description
 
-     * Returns: self: ((*FIXME*))
+     Gets a human-readable description of an installed application.
+
+     * Returns: A String containing a description of the application, or nil if
+       none
 
 --- display_name
 
-     * Returns: self: ((*FIXME*))
+     Gets the display name of the application. The display name is often more
+     descriptive to the user than the name itself.
+
+     Since 2.24
+
+     * appinfo: A GLib::AppInfo
+     * Returns: The display name of the application, or the name if no display
+       name is available
 
 --- dup
 
-     * Returns: self: ((*FIXME*))
+     Creates a duplicate of this GLib::AppInfo.
 
---- equal?
+     * Returns: A duplicate of this GLib::AppInfo
 
-     * Returns: self: ((*FIXME*))
+--- equal?(other)
+
+     Checks if this GLib::AppInfo is equal to another.
+
+     * other: The GLib::AppInfo to compare this one to
+     * Returns: true if this GLib::AppInfo is equal to ((|other|))
 
 --- executable
 
-     * Returns: self: ((*FIXME*))
+     Gets the executable’s name for the installed application.
+
+     * Returns: A String containing the application binaries’ name
 
 --- icon
 
-     * Returns: self: ((*FIXME*))
+     Gets the icon for the application.
+
+     * Returns: The default GLib::Icon for the application
 
 --- id
 
-     * Returns: self: ((*FIXME*))
+     Gets the ID of an application. An id is a String that identifies the
+     application. The exact format of the id is platform dependent. For
+     instance, on Unix this is the desktop file id from the xdg menu
+     specification.
 
---- launch
+     Note that the returned ID may be nil, depending on how the ((|appinfo|))
+     has been constructed.
 
-     * Returns: self: ((*FIXME*))
+     * appinfo: A GLib::AppInfo
+     * Returns: A String containing the application’s ID
 
---- launch_uris
+--- launch(files, launch_context = nil)
 
-     * Returns: self: ((*FIXME*))
+     Launches the application. Passes ((|files|)) to the launched application
+     as arguments, using the optional ((|launch_context|)) to get information
+     about the details of the launcher (like what screen it is on). If any
+     errors occur, a GLib::IO::Error will be raised.
+
+     To launch the application without arguments pass a nil ((|files|)) list.
+
+     Note that even if the launch is successful the application launched can
+     fail to start if it runs into problems during startup. There is no way to
+     detect this.
+
+     Some URIs can be changed when passed through a GLib::File (for instance
+     unsupported uris with strange formats like (({mailto:}))), so if you have
+     a textual uri you want to pass in as argument, consider using
+     GLib::AppInfo#launch_uris instead.
+
+     On Unix, this function sets the environment variable with the path of the
+     launched desktop file and to the process id of the launched process. This
+     can be used to ignore , should it be inherited by further processes. The
+     and environment variables are also set, based on information provided in
+     ((|launch_context|)).
+
+     * files: An Array of GLib::File objects
+     * launch_context: A optional GLib::AppLaunchContext, or nil
+     * Returns: self
+
+--- launch_uris(uris, launch_context = nil)
+
+     Launches the application. Passes ((|uris|)) to the launched application as
+     arguments, using the optional ((|launch_context|)) to get information
+     about the details of the launcher (like what screen it is on).  If any
+     errors occur, a GLib::IO::Error will be raised.
+
+     To lauch the application without arguments pass a nil ((|uris|)) list.
+
+     Note that even if the launch is successful the application launched can
+     fail to start if it runs into problems during startup. There is no way to
+     detect this.
+
+     * uris: An Array containing String URIs to launch
+     * launch_context: An optional GLib::AppLaunchContext, or nil
+     * Returns: self
 
 --- name
 
-     * Returns: self: ((*FIXME*))
+     Gets the installed name of the application.
 
---- remove_supports_type
+     * Returns: The name of the application
 
-     * Returns: self: ((*FIXME*))
+--- remove_supports_type(content_type)
 
---- set_as_default_for_extension
+     Removes a supported type from an application, if possible.
 
-     * Returns: self: ((*FIXME*))
+     * content_type: A content type String
+     * Returns: true on success, false on error
 
---- set_as_default_for_type
+--- set_as_default_for_extension(extension)
 
-     * Returns: self: ((*FIXME*))
+     Sets the application as the default handler for the given file extension.
+
+     * extension: A String containing the file extension (without the dot)
+     * Returns: true on success, false on error
+
+--- set_as_default_for_type(content_type)
+
+     Sets the application as the default handler for a given type.
+
+     * content_type: The content type String
+     * Returns: true on success, false on error
 
 --- should_show?
 
-     * Returns: self: ((*FIXME*))
+     Checks if the application info should be shown in menus that list
+     available applications.
+
+     * Returns: true if this GLib::AppInfo should be shown
 
 --- supports_files?
 
-     * Returns: self: ((*FIXME*))
+     Checks if the application accepts files as arguments.
+
+     * Returns: true if this GLib::AppInfo supports files
 
 --- supports_uris?
 
-     * Returns: self: ((*FIXME*))
+     Checks if the application supports reading files and directories from URIs.
+
+     * Returns: true if this GLib::AppInfo supports URIs
+
 
 == Constants
 
 --- CREATE_NEEDS_TERMINAL
+
+     The application opens in a terminal window
+
 --- CREATE_NONE
+
+     No flags set
+
+--- CREATE_SUPPORTS_STARTUP_NOTIFICATION
+
+     The application supports startup notification
+
+     Since 2.26
+
 --- CREATE_SUPPORTS_URIS
+
+     The application supports URI arguments
 
 == See Also
 

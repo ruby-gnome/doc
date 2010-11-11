@@ -1,5 +1,7 @@
 = class GLib::IO::PermissionDeniedError
 
+Permission was denied.
+
 == Object Hierarchy
 
 * Object

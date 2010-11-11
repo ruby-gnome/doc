@@ -1,5 +1,8 @@
 = class GLib::ConverterInputStream
 
+GLib::ConverterInputStream implements GLib::InputStream and allows conversion
+of data of various types during reading.
+
 == Object Hierarchy
 
 * Object
@@ -11,22 +14,28 @@
 
 == Class Methods
 
---- GLib::ConverterInputStream.new
+--- GLib::ConverterInputStream.new(base_stream, converter)
 
-     * Returns: self: ((*FIXME*))
+     Creates a new GLib::ConverterInputStream for ((|base_stream|)), using
+     ((|converter|)) for conversions.
+
+     * base_stream: A Glib::InputStream
+     * converter: A GLib::Converter
+     * Returns: a new GLib::ConverterInputStream
 
 == Instance Methods
 
 --- converter
 
-    Gets the converter object.
-     * Returns: The converter object
+     Gets the GLib::Converter that is used for conversions.
+
+     * Returns: The GLib::Converter that is used for conversions
 
 == Properties
 
---- converter: GConverter (Read/Write)
+--- converter: GLib::Converter (Read/Write)
 
-    The converter object
+     The GLib::Converter that is used for conversions
 
 == See Also
 

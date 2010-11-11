@@ -1,22 +1,43 @@
 = module GLib::LoadableIcon
 
+Extends the GLib::Icon interface and adds the ability to load icons from
+streams. 
+
 == Included Modules
 
   * GLib::Interface
 
 == Instance Methods
 
---- load
+--- load(size, cancellable = nil)
 
-     * Returns: self: ((*FIXME*))
+     Loads a loadable icon. For the asynchronous version of this function, see
+     GLib::LoadableIcon#load_async.
 
---- load_async
+     * size: An integer
+     * cancellable: Optional GLib::Cancellable object, nil to ignore
+     * Returns: An Array containing a GLib::InputStream to read the icon from
+       and a String containing the type of the loaded icon
 
-     * Returns: self: ((*FIXME*))
+--- load_async(size, cancellable = nil){ |result| … }
 
---- load_finish
+     Loads an icon asynchronously. To finish this function, see
+     GLib::LoadableIcon#load_finish. For the synchronous, blocking version of
+     this function, see GLib::LoadableIcon#load.
 
-     * Returns: self: ((*FIXME*))
+     * size: An integer
+     * cancellable: Optional GLib::Cancellable object, nil to ignore
+     * result: A GLib::AsyncResult
+     * Returns: self
+
+--- load_finish(icon, res, *type)
+
+     Finishes an asynchronous icon load started in GLib::LoadableIcon#load_async.
+
+     * result: A GLib::AsyncResult
+     * Returns: An Array containing a GLib::InputStream to read the icon from
+       and a String containing the type of the loaded icon
+
 
 == See Also
 

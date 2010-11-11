@@ -1,5 +1,7 @@
 = class GLib::FileAttribute::Status
 
+Used by Glib::File#set_attributes_from_info when setting file attributes.
+
 == Object Hierarchy
 
 * Object
@@ -9,8 +11,16 @@
 == Constants
 
 --- ERROR_SETTING
+
+     Indicates an error in setting the value
+
 --- SET
+
+     Attribute value is set
+
 --- UNSET
+
+     Attribute value is unset (empty)
 
 == See Also
 

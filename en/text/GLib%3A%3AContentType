@@ -2,44 +2,93 @@
 
 == Module Functions
 
---- GLib::ContentType.can_be_executable?
+--- GLib::ContentType.can_be_executable?(type)
 
-     * Returns: self: ((*FIXME*))
+     * type: A content type String
+     * Returns: true if the file type corresponds to a type that can be
+       executeable
 
---- GLib::ContentType.equals?
+--- GLib::ContentType.equals?(type1, type2)
 
-     * Returns: self: ((*FIXME*))
+     Checks if two content types are equal.
 
---- GLib::ContentType.from_mime_type
+     * type1: A content type String
+     * type2: A content type String
+     * Returns: true if ((|type1|)) and ((|type2|)) are equal
 
-     * Returns: self: ((*FIXME*))
+--- GLib::ContentType.from_mime_type(mime_type)
 
---- GLib::ContentType.get_description
+     Tries to find a content type based on the mime type name.
 
-     * Returns: self: ((*FIXME*))
+     * mime_type: A mime type String
+     * Returns: A String containing the content type, or nil if no content type
+       exists
 
---- GLib::ContentType.get_icon
+--- GLib::ContentType.get_description(type)
 
-     * Returns: self: ((*FIXME*))
+     Gets the human readable description of the content type.
 
---- GLib::ContentType.get_mime_type
+     * type: A content type String
+     * Returns: A short description of the content type ((|type|))
 
-     * Returns: self: ((*FIXME*))
+--- GLib::ContentType.get_icon(type)
 
---- GLib::ContentType.guess
+     Gets the icon for a content type.
 
-     * Returns: self: ((*FIXME*))
+     * type: A content type String
+     * Returns: A GLib::Icon corresponding to the content type
 
---- GLib::ContentType.guess_for_tree
+--- GLib::ContentType.get_mime_type(type)
 
-     * Returns: self: ((*FIXME*))
+     Gets the mime type for the content type, if one is registered.
+
+     * type: A content type String
+     * Returns: The registered mime type for the given ((|type|))
+
+--- GLib::ContentType.guess(filename = nil, data = nil)
+
+     Guesses the content type based on example data. Also returns whether or
+     not the result is certain.  Either ((|filename|)) or ((|data|) may be nil,
+     but not both.
+
+     * filename: A String containing a filename to determine the content type
+       from, or nil
+     * data: A String of data to determine the content type from, or nil
+     * Returns: An Array containing a String indicating a guess for a content
+       type and a Boolean stating whether or not the result is certain
+
+--- GLib::ContentType.guess_for_tree(root)
+
+     Tries to guess the type of the tree with root ((|root|)), by looking at
+     the files it contains. The result is an Array of content type Strings,
+     with the best guess coming first.
+
+     The types returned all have the form “x-content/foo”, for example,
+     “x-content/audio-cdda” (for audio CDs) or “x-content/image-dcf” (for a
+     camera memory card). See the shared-mime-info specification for more on
+     x-content types.
+
+     This function is useful in the implementation of
+     GLib::Mount#guess_content_type.
+
+     * root: A GLib::File that points to the root of the tree to guess a
+       content type for
+     * Returns: An Array of zero or more content type Strings, with the best
+       guess coming first
 
 --- GLib::ContentType.registered
 
-     * Returns: self: ((*FIXME*))
+     Gets an Array of content type Strings that are known to the system.
 
---- GLib::ContentType.unknown?
+     * Returns: An Array of content type Strings that are known to the system.
 
+--- GLib::ContentType.unknown?(type)
+
+     Checks if the content type ((|type|)) is the generic “unknown” type.  On
+     Unix this is the “application/octet-stream” mime type, while on Windows
+     it’s “*”.
+
+     * type: A content type String
      * Returns: self: ((*FIXME*))
 
 == See Also

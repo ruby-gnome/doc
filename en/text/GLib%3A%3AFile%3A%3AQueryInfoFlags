@@ -1,5 +1,7 @@
 = class GLib::File::QueryInfoFlags
 
+Flags used when querying a GFileInfo.
+
 == Object Hierarchy
 
 * Object
@@ -10,16 +12,25 @@
 
 --- nofollow_symlinks?
 
-     * Returns: self: ((*FIXME*))
+     Checks whether or not to follow symlinks
+
+     * Returns: true if symlinks are followed
 
 --- none?
 
-     * Returns: self: ((*FIXME*))
+     Checks whether or not any flags have been set.
+
+     * Returns: true if no flags have been set
 
 == Constants
 
 --- NOFOLLOW_SYMLINKS
+
+     Don’t follow symlinks
+
 --- NONE
+
+     No flags set
 
 == See Also
 

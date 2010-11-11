@@ -1,5 +1,7 @@
 = class GLib::Drive::StartFlags
 
+Flags used when starting a drive.
+
 == Object Hierarchy
 
 * Object
@@ -9,6 +11,8 @@
 == Constants
 
 --- NONE
+
+     No flags set
 
 == See Also
 

@@ -1,5 +1,7 @@
 = class GLib::Resolver::NotFoundError
 
+The requested name/address/service wasn’t found
+
 == Object Hierarchy
 
 * Object

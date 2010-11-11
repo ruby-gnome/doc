@@ -1,5 +1,8 @@
 = class GLib::DataOutputStream
 
+Data output stream implements GLib::OutputStream and includes functions for
+writing data directly to an output stream. 
+
 == Object Hierarchy
 
 * Object
@@ -11,66 +14,108 @@
 
 == Class Methods
 
---- GLib::DataOutputStream.new
+--- GLib::DataOutputStream.new(base_stream, byte_order = GLib::DATA_STREAM_BYTE_ORDER_BIG_ENDIAN)
 
-     * Returns: self: ((*FIXME*))
+     Creates a new data output stream ((|base_stream|)) with the given
+     ((|byte_order|)).
+
+     * Returns: a new GLib::DataOutputStream
 
 == Instance Methods
 
 --- byte_order
 
     Gets the byte order.
-     * Returns: The byte order
+
+     * Returns: The byte order as a GLib::DataStreamByteOrder
 
 --- byte_order=(byte_order)
 
-    Sets the byte order.
-     * byte_order: The byte order
-     * Returns: byte_order
+     Same as GLib::DataInputStream#set_byte_order.
 
---- put_byte
+     * Returns: ((|byte_order|))
 
-     * Returns: self: ((*FIXME*))
+--- put_byte(data, cancellable = nil)
 
---- put_int16
+     Puts a byte into the output stream.
 
-     * Returns: self: ((*FIXME*))
+     A GLib::IO::Error is raised if the byte can’t be output.
 
---- put_int32
+     * data: A Fixnum
+     * cancellable: Optional GLib::Cancellable object, nil to ignore
+     * Returns: self
 
-     * Returns: self: ((*FIXME*))
+--- put_int16(data, cancellable = nil)
 
---- put_int64
+     Puts a signed 16-bit integer into the output stream.
 
-     * Returns: self: ((*FIXME*))
+     * data: A Fixnum
+     * cancellable: Optional GLib::Cancellable object, nil to ignore
+     * Returns: self
 
---- put_string
+--- put_int32(data, cancellable = nil)
 
-     * Returns: self: ((*FIXME*))
+     Puts a signed 32-bit integer into the output stream.
 
---- put_uint16
+     * data: A Fixnum
+     * cancellable: Optional GLib::Cancellable object, nil to ignore
+     * Returns: self
 
-     * Returns: self: ((*FIXME*))
+--- put_int64(data, cancellable = nil)
 
---- put_uint32
+     Puts a signed 64-bit integer into the stream.
 
-     * Returns: self: ((*FIXME*))
+     * data: A Fixnum or Bignum
+     * cancellable: Optional GLib::Cancellable object, nil to ignore
+     * Returns: self
 
---- put_uint64
+--- put_string(str, cancellable = nil)
 
-     * Returns: self: ((*FIXME*))
+     Puts a String into the output stream.
+
+     * str: A String
+     * cancellable: Optional GLib::Cancellable object, nil to ignore
+     * Returns: self
+
+--- put_uint16(data, cancellable = nil)
+
+     Puts an unsigned 16-bit integer into the output stream.
+
+     * data: A Fixnum
+     * cancellable: Optional GLib::Cancellable object, nil to ignore
+     * Returns: self
+
+--- put_uint32(data, cancellable = nil)
+
+     Puts an unsigned 32-bit integer into the stream.
+
+     * data: A Fixnum or Bignum
+     * cancellable: Optional GLib::Cancellable object, nil to ignore
+     * Returns: self
+
+--- put_uint64(data, cancellable = nil)
+
+     Puts an unsigned 64-bit integer into the stream.
+
+     * data: A Fixnum or Bignum
+     * cancellable: Optional GLib::Cancellable object, nil to ignore
+     * Returns: self
 
 --- set_byte_order(byte_order)
 
-    Same as byte_order=.
-     * byte_order: The byte order
+     Sets the byte order.
+
+     * byte_order: The GLib::DataStreamByteOrder
      * Returns: self
 
 == Properties
 
---- byte-order: GDataStreamByteOrder (Read/Write)
+--- byte-order: GLib::DataStreamByteOrder (Read/Write)
 
     The byte order
+
+    Default value: GLib::DATA_STREAM_BYTE_ORDER_BIG_ENDIAN
+
 
 == See Also
 

@@ -1,5 +1,7 @@
 = class GLib::IOModule
 
+Opaque module base class for extending GIO. 
+
 == Object Hierarchy
 
 * Object
@@ -10,17 +12,13 @@
 
 == Class Methods
 
---- GLib::IOModule.load_all_in_directory
+--- GLib::IOModule.new(filename)
 
-     * Returns: self: ((*FIXME*))
+     Creates a new GLib::IOModule that will load the specific shared library
+     when in use. 
 
---- GLib::IOModule.new
-
-     * Returns: self: ((*FIXME*))
-
---- GLib::IOModule.scan_all_in_directory
-
-     * Returns: self: ((*FIXME*))
+     * filename: Filename of the shared library module
+     * Returns: A new GLib::IOModule
 
 == Instance Methods
 

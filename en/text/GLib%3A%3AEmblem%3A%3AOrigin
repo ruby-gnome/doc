@@ -1,5 +1,8 @@
 = class GLib::Emblem::Origin
 
+GLib::Emblem::Origin is used to add information about the origin of the emblem
+to GLib::Emblem. 
+
 == Object Hierarchy
 
 * Object
@@ -9,9 +12,21 @@
 == Constants
 
 --- DEVICE
+
+     The emblem adds device-specific information
+
 --- LIVEMETADATA
+
+     The emblem depicts live meta-data, such as “read only”
+
 --- TAG
+
+     The emblem comes from a user-defined tag, for example, set by Nautilus (in
+     the future)
+
 --- UNKNOWN
+
+     The emblem is of unknown origin
 
 == See Also
 

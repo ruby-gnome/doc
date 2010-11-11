@@ -1,5 +1,7 @@
 = class GLib::UnixMountMonitor
 
+Watches GLib::UnixMounts for changes. 
+
 == Object Hierarchy
 
 * Object
@@ -11,27 +13,40 @@
 
 --- GLib::UnixMountMonitor.new
 
-     * Returns: self: ((*FIXME*))
+     Creates a new GLib::UnixMountMonitor. The default rate limit for which the
+     monitor will report consecutive changes for the mount and mount point
+     entry files is the default for a GLib::FileMonitor. Use
+     GLib::UnixMountMonitor#rate_limit= to change this.
+
+     * Returns: A new GLib::UnixMountMonitor
 
 == Instance Methods
 
---- rate_limit=
+--- rate_limit=(limit_msec)
 
-     * Returns: self: ((*FIXME*))
+     Same as GLib::UnixMountMonitor#set_rate_limit.
 
---- set_rate_limit
+     * Returns: ((|limit_msec|))
 
-     * Returns: self: ((*FIXME*))
+--- set_rate_limit(limit_msec)
+     Sets the rate limit to which this mount monitor will report consecutive
+     change events to the mount and mount point entry files. 
+
+     * Returns: self
 
 == Signals
 
 --- mountpoints-changed: self
 
-     * self: GLib::UnixMountMonitor: ((*FIXME*))
+     This signal is emitted when the Unix mount points have changed.
+
+     * self: The GLib::UnixMountMonitor that is emitting the signal
 
 --- mounts-changed: self
 
-     * self: GLib::UnixMountMonitor: ((*FIXME*))
+     This signal is emitted when the Unix mounts have changed.
+
+     * self: The GLib::UnixMountMonitor that is emitting the signal
 
 == See Also
 

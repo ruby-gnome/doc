@@ -1,5 +1,12 @@
 = class GLib::EmblemedIcon
 
+GLib::EmblemedIcon is an implementation of GLib::Icon that supports adding an
+emblem to an icon. Adding multiple emblems to an icon is ensured via
+GLib::EmblemedIcon#add_emblem.
+
+Note that GLib::EmblemedIcon allows no control over the position of the
+emblems. See also GLib::Emblem for more information. 
+
 == Object Hierarchy
 
 * Object
@@ -13,29 +20,39 @@
 
 == Class Methods
 
---- GLib::EmblemedIcon.new
+--- GLib::EmblemedIcon.new(icon, emblem)
 
-     * Returns: self: ((*FIXME*))
+     Creates a new emblemed icon for ((|icon|)) with the emblem ((|emblem|)).
+
+     * Returns: a new GLib::EmblemedIcon
 
 == Instance Methods
 
---- <<
+--- <<(emblem)
 
-     * Returns: self: ((*FIXME*))
+     Same as GLib::EmblemedIcon#add_emblem.
 
---- ==
+--- ==(other)
 
     See GLib::Icon#==.
 
---- add_emblem
+--- add_emblem(emblem)
 
-     * Returns: self: ((*FIXME*))
+     Adds ((|emblem|)) to the list of GLib::Emblems.
+
+     Since 2.18
+
+     * emblem: A GLib::Emblem
 
 --- emblems
 
-     * Returns: self: ((*FIXME*))
+     Gets an Array of emblems for the icon.
 
---- eql?
+     Since 2.18
+
+     * Returns: An Array of GLib::Emblems that are owned by the icon
+
+--- eql?(other)
 
     See GLib::Icon#eql?.
 
@@ -45,7 +62,11 @@
 
 --- icon
 
-     * Returns: self: ((*FIXME*))
+     Gets the main icon for the emblemed icon.
+
+     Since 2.18
+
+     * Returns: A GLib::Icon that is owned by the emblemed icon
 
 --- to_s
 

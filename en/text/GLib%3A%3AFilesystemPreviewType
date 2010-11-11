@@ -1,5 +1,9 @@
 = class GLib::FilesystemPreviewType
 
+Indicates a hint from the file system whether files should be previewed in a
+file manager. Returned as the value of the key
+GLib::FileAttribute::FILESYSTEM_USE_PREVIEW. 
+
 == Object Hierarchy
 
 * Object
@@ -9,8 +13,16 @@
 == Constants
 
 --- IF_ALWAYS
+
+     Only preview files if user has explicitly requested it
+
 --- IF_LOCAL
+
+     Preview files if user has requested preview of “local” files
+
 --- NEVER
+
+     Never preview files
 
 == See Also
 

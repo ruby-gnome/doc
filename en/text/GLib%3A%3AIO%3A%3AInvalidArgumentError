@@ -1,5 +1,7 @@
 = class GLib::IO::InvalidArgumentError
 
+The argument is invalid.
+
 == Object Hierarchy
 
 * Object

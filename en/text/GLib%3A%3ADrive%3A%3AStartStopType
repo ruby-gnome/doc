@@ -1,5 +1,7 @@
 = class GLib::Drive::StartStopType
 
+Enumeration describing how a drive can be started/stopped. 
+
 == Object Hierarchy
 
 * Object
@@ -9,10 +11,28 @@
 == Constants
 
 --- MULTIDISK
+
+     The start/stop methods will assemble/disassemble a virtual drive from
+     several physcal drives
+
 --- NETWORK
+
+     The start/stop methods are used for connecting to/disconnecting from the
+     drive over the networ
+
 --- PASSWORD
+
+     The start/stop methods will lock/unlock the disk (for example, using the
+     ATA “SECURITY UNLOCK DEVICE” command)
+
 --- SHUTDOWN
+
+     The stop method will physically shut down the drive and, for example,
+     powwer down the port the drive is attached to
+
 --- UNKNOWN
+
+     Unknown, or drive doesn’t support start/stop
 
 == See Also
 

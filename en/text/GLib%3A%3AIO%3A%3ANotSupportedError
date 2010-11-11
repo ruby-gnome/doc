@@ -1,5 +1,7 @@
 = class GLib::IO::NotSupportedError
 
+The operation is not supported by the current backend.
+
 == Object Hierarchy
 
 * Object

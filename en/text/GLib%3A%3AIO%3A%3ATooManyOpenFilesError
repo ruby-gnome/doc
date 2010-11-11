@@ -1,5 +1,8 @@
 = class GLib::IO::TooManyOpenFilesError
 
+The current process has too many files open and can’t open any more. Note that
+duplicate descriptors do count toward this limit.
+
 == Object Hierarchy
 
 * Object
@@ -8,6 +11,8 @@
       * IOError
         * GLib::IO::Error
           * GLib::IO::TooManyOpenFilesError
+
+Since 2.20
 
 == See Also
 

@@ -1,5 +1,8 @@
 = class GLib::MountOperation::Result
 
+GLib::MountOperation::Result is returned as a result when a request for
+information is send by the mounting operation. 
+
 == Object Hierarchy
 
 * Object
@@ -9,8 +12,16 @@
 == Constants
 
 --- ABORTED
+
+     The user requested that the mount operation be aborted
+
 --- HANDLED
+
+     The request was fulfilled and the user-specified data is now available
+
 --- UNHANDLED
+
+     The request was unhandled, that is, not implemented.
 
 == See Also
 

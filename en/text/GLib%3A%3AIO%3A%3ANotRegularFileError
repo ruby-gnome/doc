@@ -1,5 +1,7 @@
 = class GLib::IO::NotRegularFileError
 
+The file is not a regular file.
+
 == Object Hierarchy
 
 * Object

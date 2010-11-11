@@ -1,5 +1,7 @@
 = class GLib::Mount::UnmountFlags
 
+Flags used when an unmounting a mount. 
+
 == Object Hierarchy
 
 * Object
@@ -10,16 +12,28 @@
 
 --- force?
 
-     * Returns: self: ((*FIXME*))
+     Checks if an unmount should be done even if there are outstanding file
+     operations on the mount.
+
+     * Returns: true if an unmount should be done even if there are outstanding
+       file operations on the mount
 
 --- none?
 
-     * Returns: self: ((*FIXME*))
+     Checks if any flags have been set.
+
+     * Returns: true if no flags have been set
 
 == Constants
 
---- FORCE
---- NONE
+--- UNMOUNT_FORCE
+
+     Unmount even if there are outstanding file operations on the mount
+
+--- UNMOUNT_NONE
+
+     No flags set
+
 
 == See Also
 

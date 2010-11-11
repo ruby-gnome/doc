@@ -1,5 +1,7 @@
 = class GLib::Resolver::InternalError
 
+Unknown error
+
 == Object Hierarchy
 
 * Object

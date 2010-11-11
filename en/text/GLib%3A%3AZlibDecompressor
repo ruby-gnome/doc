@@ -1,5 +1,8 @@
 = class GLib::ZlibDecompressor
 
+GLib::ZlibDecompressor is an implementation of GLib::Converter that
+decompresses data compressed with zlib.
+
 == Object Hierarchy
 
 * Object
@@ -13,20 +16,35 @@
 
 == Class Methods
 
---- GLib::ZlibDecompressor.new
+--- GLib::ZlibDecompressor.new(format = GLib::ZlibCompressor::FORMAT_ZLIB)
 
-     * Returns: self: ((*FIXME*))
+     Creates a new GLib::ZlibDecompressor.
+
+     * format: The format of the compressed data
+     * Returns: A new GLib::ZlibDecompressor
 
 == Instance Methods
 
---- convert
+--- convert(input, flags = GLib::Converter::NO_FLAGS)
 
     See GLib::Converter#convert.
 
+--- file_info
+
+     Gets the GLib::FileInfo constructed from the GZIP header data of
+     compressed data processed by this decompressor, or nil if this
+     decompressor’s format isn’t GLib::ZlibDecompressor::FORMAT_GZIP, or the
+     header data hasn’t been fully processed yet, or no such data is present.
+
+     Since 2.26
+
+     * Returns: a GLib::FileInfo, or nil
+
 --- format
 
-    Gets the format of the compressed data.
-     * Returns: The format of the compressed data
+    Gets the GLib::ZlibCompressor::Format of the compressed data.
+
+     * Returns: The GLib::ZlibCompressor::Format of the compressed data
 
 --- reset
 
@@ -34,9 +52,21 @@
 
 == Properties
 
---- format: GZlibCompressorFormat (Read/Write)
+--- file-info: GLib::FileInfo (Read)
+
+     Gets the GLib::FileInfo constructed from the GZIP header data of
+     compressed data processed by this decompressor, or nil if this
+     decompressor’s format isn’t GLib::ZlibDecompressor::FORMAT_GZIP, or the
+     header data hasn’t been fully processed yet, or no such data is present.
+
+     Since 2.26
+
+
+--- format: GLib::ZlibCompressor::Format (Read/Write)
 
     The format of the compressed data
+
+    Default value: GLib::ZlibCompressor::FORMAT_ZLIB
 
 == See Also
 

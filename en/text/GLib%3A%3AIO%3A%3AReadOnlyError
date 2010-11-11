@@ -1,5 +1,7 @@
 = class GLib::IO::ReadOnlyError
 
+The file is read only.
+
 == Object Hierarchy
 
 * Object

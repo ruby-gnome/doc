@@ -1,5 +1,7 @@
 = class GLib::FileAttribute::InfoFlags
 
+Flags specifying the behaviour of an attribute. 
+
 == Object Hierarchy
 
 * Object
@@ -10,21 +12,36 @@
 
 --- copy_when_moved?
 
-     * Returns: self: ((*FIXME*))
+     Checks whether or not the attribute values are copied when the file is
+     moved.
+
+     * Returns: true if the attribute values are copied when the file is moved
 
 --- copy_with_file?
 
-     * Returns: self: ((*FIXME*))
+     Checks whether or not attribute values are copied when the file is copied.
+
+     * Returns: true if the attribute values are copied when the file is copied
 
 --- none?
 
-     * Returns: self: ((*FIXME*))
+     Checks whether or not any flags are set.
+
+     * Returns: true if no flags have been set
 
 == Constants
 
 --- COPY_WHEN_MOVED
+
+     Copy the attribute values when the file is moved
+
 --- COPY_WITH_FILE
+
+     Copy the attribute values when the file is copied
+
 --- NONE
+
+     No flags set
 
 == See Also
 

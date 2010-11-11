@@ -1,5 +1,7 @@
 = class GLib::IO::BusyError
 
+The file is busy.
+
 == Object Hierarchy
 
 * Object

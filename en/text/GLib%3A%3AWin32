@@ -1,0 +1,51 @@
+= module GLib::Win32
+
+== Module Functions
+
+here
+
+--- GLib::Win32.error_message
+
+     * Returns: self: ((*FIXME*))
+
+here
+
+--- GLib::Win32.get_package_installation_directory
+
+     * Returns: self: ((*FIXME*))
+
+here
+
+--- GLib::Win32.get_package_installation_directory_of_module
+
+     * Returns: self: ((*FIXME*))
+
+here
+
+--- GLib::Win32.get_package_installation_subdirectory
+
+     * Returns: self: ((*FIXME*))
+
+here
+
+--- GLib::Win32.locale
+
+     * Returns: self: ((*FIXME*))
+
+here
+
+--- GLib::Win32.locale_filename_from_utf8
+
+     * Returns: self: ((*FIXME*))
+
+here
+
+--- GLib::Win32.version
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

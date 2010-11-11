@@ -1,5 +1,7 @@
 = class GLib::IO::Error
 
+Base class for GLib I/O errors.
+
 == Object Hierarchy
 
 * Object

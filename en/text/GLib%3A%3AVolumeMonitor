@@ -1,5 +1,12 @@
 = class GLib::VolumeMonitor
 
+GLib::VolumeMonitor is for listing the user interesting devices and volumes on
+the computer. In other words, what a file selector or file manager would show
+in a sidebar.
+
+GLib::VolumeMonitor is not thread-default-context aware, and so should not be
+used other than from the main thread, with no thread-default-context active. 
+
 == Object Hierarchy
 
 * Object
@@ -11,83 +18,136 @@
 
 --- GLib::VolumeMonitor.get
 
-     * Returns: self: ((*FIXME*))
+     Gets the volume monitor used by GIO.
+
+     * Returns: The GLib::VolumeMonitor used by GIO
 
 == Instance Methods
 
 --- connected_drives
 
-     * Returns: self: ((*FIXME*))
+     Gets an Array of drives connected to the system.
 
---- get_mount_for_uuid
+     * Returns: An Array of connected GLib::Drive objects
 
-     * Returns: self: ((*FIXME*))
+--- get_mount_for_uuid(uuid)
 
---- get_volume_for_uuid
+     Finds a GLib::Mount object by its UUID (see GLib::Mount#uuid).
 
-     * Returns: self: ((*FIXME*))
+     * uuid: The UUID to look for
+     * Returns: A GLib::Mount, or nil if no such mount is available
+
+--- get_volume_for_uuid(uuid)
+
+     Finds a GLib::Volume object by its UUID (see GLib::Volume#uuid).
+
+     * uuid: The UUID to look for
+     * Returns: A GLib::Volume, or nil if no such volume is available
 
 --- mounts
 
-     * Returns: self: ((*FIXME*))
+     Gets an Array of the mounts on the system.
+
+     * Returns: An Array of GLib::Mount objects
 
 --- volumes
 
-     * Returns: self: ((*FIXME*))
+     Gets an array of the volumes on the system.
+
+     * Returns: An Array of GLib::Volume objects
+
 
 == Constants
 
 --- EXTENSION_POINT_NAME
 
+     Extension point for volume monitor functionality. See Extending GIO. 
+
 == Signals
 
---- drive-changed: self
+--- drive-changed: self, drive
 
-     * self: GLib::VolumeMonitor: ((*FIXME*))
+     This signal is emitted when a drive changes.
 
---- drive-connected: self
+     * self: The GLib::VolumeMonitor that’s emitting the signal
+     * drive: The GLib::Drive that changed 
 
-     * self: GLib::VolumeMonitor: ((*FIXME*))
+--- drive-connected: self, drive
 
---- drive-disconnected: self
+     This signal is emitted when a drive is connected.
 
-     * self: GLib::VolumeMonitor: ((*FIXME*))
+     * self: The GLib::VolumeMonitor that’s emitting the signal
+     * drive: The GLib::Drive that was connected
 
---- drive-eject-button: self
+--- drive-disconnected: self, drive
 
-     * self: GLib::VolumeMonitor: ((*FIXME*))
+     This signal is emitted when a drive is disconnected.
 
---- drive-stop-button: self
+     * self: The GLib::VolumeMonitor that’s emitting the signal
+     * drive: The GLib::Drive that was discconnected
 
-     * self: GLib::VolumeMonitor: ((*FIXME*))
+--- drive-eject-button: self, drive
 
---- mount-added: self
+     This signal is emitted when a drive’s eject button is pressed.
 
-     * self: GLib::VolumeMonitor: ((*FIXME*))
+     * self: The GLib::VolumeMonitor that’s emitting the signal
+     * drive: The GLib::Drive whose eject button was pressed
 
---- mount-changed: self
+--- drive-stop-button: self, drive
 
-     * self: GLib::VolumeMonitor: ((*FIXME*))
+     This signal is emitted when a drive’s stop button is pressed.
 
---- mount-pre-unmount: self
+     * self: The GLib::VolumeMonitor that’s emitting the signal
+     * drive: The GLib::Drive whose stop button was pressed
 
-     * self: GLib::VolumeMonitor: ((*FIXME*))
+--- mount-added: self, mount
 
---- mount-removed: self
+     This signal is emitted when a mount is added.
 
-     * self: GLib::VolumeMonitor: ((*FIXME*))
+     * self: The GLib::VolumeMonitor that’s emitting the signal
+     * mount: The GLib::Mount that was added
 
---- volume-added: self
+--- mount-changed: self, mount
 
-     * self: GLib::VolumeMonitor: ((*FIXME*))
+     This signal is emitted when a mount is changed.
 
---- volume-changed: self
+     * self: The GLib::VolumeMonitor that’s emitting the signal
+     * mount: The GLib::Mount that was changed
 
-     * self: GLib::VolumeMonitor: ((*FIXME*))
+--- mount-pre-unmount: self, mount
 
---- volume-removed: self
+     This signal is emitted when a mount is about to be removed.
 
-     * self: GLib::VolumeMonitor: ((*FIXME*))
+     * self: The GLib::VolumeMonitor that’s emitting the signal
+     * mount: The GLib::Mount that is being unmounted
+
+--- mount-removed: self, mount
+
+     This signal is emitted when a mount is removed.
+
+     * self: The GLib::VolumeMonitor that’s emitting the signal
+     * mount: The GLib::Mount that was removed
+
+--- volume-added: self, volume
+
+     This signal is emitted when a volue is added.
+
+     * self: The GLib::VolumeMonitor that’s emitting the signal
+     * volume: The GLib::Volume that was added
+
+--- volume-changed: self, volume
+
+     This signal is emitted when a volue is changed.
+
+     * self: The GLib::VolumeMonitor that’s emitting the signal
+     * volume: The GLib::Volume that was changed
+
+--- volume-removed: self, volume
+
+     This signal is emitted when a volue is removed.
+
+     * self: The GLib::VolumeMonitor that’s emitting the signal
+     * volume: The GLib::Volume that was removed
 
 == See Also
 

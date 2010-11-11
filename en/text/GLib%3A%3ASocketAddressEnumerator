@@ -1,5 +1,7 @@
 = class GLib::SocketAddressEnumerator
 
+Enumerator type for objects that contain or generate GLib::SocketAddresses. 
+
 == Object Hierarchy
 
 * Object
@@ -9,17 +11,41 @@
 
 == Instance Methods
 
---- next
+--- next(cancellable = nil)
 
-     * Returns: self: ((*FIXME*))
+     Retrieves the next GLib::SocketAddress from enumerator. Note that this may
+     block for some amount of time. (For example, a GLib::NetworkAddress may
+     need to do a DNS lookup before it can return an address.) Use
+     Glib::SocketAddressEnumerator#next_async if you need to avoid blocking.
 
---- next_async
+     If enumerator is expected to yield addresses, but for some reason is
+     unable to (for example, because of a DNS error), then the first call to
+     GLib::SocketAddressEnumerator#next will raise an appropriate error.
+     However, if the first call to GLib::SocketAddressEnumerator#next succeeds,
+     then any further internal errors (other than cancellable being triggered)
+     will be ignored. 
 
-     * Returns: self: ((*FIXME*))
+     * cancellable: Optional GLib::Cancellable object, nil to ignore
+     * Returns: A GLib::SocketAddress, or nil if there are no more addresses
 
---- next_finish
+--- next_async(cancellable = nil){ |result| … }
 
-     * Returns: self: ((*FIXME*))
+     Asynchronously retrieves the next GLib::SocketAddress from enumerator and then calls
+     the passed block, which must call Glib::SocketAddress#next_finish to get
+     the result. 
+
+     * cancellable: Optional GLib::Cancellable object, nil to ignore
+     * result: A GLib::AsyncResult
+     * Returns: self
+
+--- next_finish(result)
+
+     Retrieves the result of a completed call to
+     GLib::SocketAddressEnumerator#next_async. See
+     GLib::SocketAddressEnumerator#next for more information about error
+     handling. 
+
+     * Returns: A GLib::SocketAddress, or nil if there are no more addresses
 
 == See Also
 

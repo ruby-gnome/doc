@@ -1,18 +1,38 @@
 = module GLib::Converter
 
+GLib::Converter is implemented by objects that convert binary data in various
+ways.  The conversion can be stateful and may fail at any place.
+
+Some example conversions are: character set conversion, compression,
+decompression and regular expression replace. 
+
 == Included Modules
 
   * GLib::Interface
 
+== Known Implementations
+
+     * GLib::CharsetConverter
+     * GLib::ZlibCompressor
+     * GLib::ZLibDecompressor
+
 == Instance Methods
 
---- convert
+--- convert(input, flags = GLib::Converter::NO_FLAGS)
 
-     * Returns: self: ((*FIXME*))
+     ((* FIXME: This method isn’t implemented correctly. *))
+
+     Since 2.24
 
 --- reset
 
-     * Returns: self: ((*FIXME*))
+     Resets all internal state in the converter, making it behave as if it was
+     just created. If the converter has any internal state that would produce
+     output then that output is lost.
+
+     Since 2.24
+
+     * Returns: self
 
 == See Also
 
