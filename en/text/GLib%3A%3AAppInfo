@@ -30,7 +30,7 @@ if file.has_uri_scheme? 'cdda'
   # Do something special with uri
 end
 
-This code will work when both (({cdda://sr0/Track 1.wav}}) and
+This code will work when both (({cdda://sr0/Track 1.wav})) and
 (({/home/user/.gvfs/cdda on sr0/Track 1.wav})) is passed to the application.
 It should be noted that it’s generally not safe for applications to rely on the
 format of a particular URIs.  Different launcher applications (for example,
@@ -52,7 +52,7 @@ file managers) may have different ideas of what a given URI means.
      system.
 
      For desktop files, this includes applications that have
-     (({NoDisplay=true}}) set
+     (({NoDisplay=true})) set
      or are excluded from display by means of (({OnlyShowIn})) or
      (({NotShowIn})). See GLib::AppInfo#should_show?. The returned list does
      not include applications which have the (({Hidden})) key set. 
