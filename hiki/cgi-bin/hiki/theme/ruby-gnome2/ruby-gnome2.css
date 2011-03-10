@@ -1,0 +1,517 @@
+/*
+   CSS of Hiki/RD+ for Ruby-GNOME2 
+                    by Masao Mutoh.
+
+   Original file: ruby-lang.css
+      tDiary theme for ruby-lang.org.
+         by TADA Tadahi <sho@spc.gr.jp>
+*/
+
+body {
+  margin: 0px;
+  padding: 0px;
+  color: #000;
+  background-color: #fff;
+  font-family: sans-serif;
+  line-height: 1.5em;
+}
+
+.language, .referer {
+  font-family: times;
+  font-size: 8pt;
+}
+
+a {
+  color: #003399;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a:visited {
+  color: #002288;
+  background-color: transparent;
+}
+
+a:hover {
+  color: #0055bb;
+  background-color: transparent;
+}
+
+em {
+  color: #006600;
+  font-weight: bold;
+  padding-left: 0.5em;
+  padding-right: 0.7em;
+}
+
+div.attached, div.referer, div.refererlist, div.day div.form {
+  font-size: 90%;
+  margin-left: 3em;
+  border-style: dashed;
+  border-color: #ff9999;
+  border-width: 1px;
+  margin-bottom: 0.5em;
+  padding: 0.5em;
+}
+div.attached {
+  margin-top: 2em;
+}
+
+div.day div.field {
+  display: inline;
+  margin-right: 1em;
+}
+
+textarea {
+	width:100%;
+	height:50em
+}
+
+img.icon {
+  float: right;
+  margin-left: 0.5em;
+  border: none;
+}
+
+img.ext {
+  border: none;
+}
+
+img.right {
+  float: right;
+  padding: 0.5em;
+  border: none;
+}
+
+img.left {
+  float: left;
+  padding: 0.5em;
+  border: none;
+}
+
+div.adminmenu {
+  text-align: right;
+  font-size: 10px;
+}
+
+span.adminmenu {
+  background-color: #fff1ec;
+  color: #000;
+  border-style: solid;
+  border-color: #fff1ec #eee1dc #eee1dc #fff1ec;
+  border-width: 1px;
+  padding: 2px;
+  margin: 0px;
+}
+
+h1.header { 
+  display: none
+}
+
+/* main */
+div.main {
+  margin-left: 200px;
+  margin-right: 0.6em;
+  margin-bottom: 0px;
+}
+
+div.main hr {
+  color: #a11;
+  background-color: transparent;
+}
+
+div.main hr.sep {
+  display: none;
+  margin: 0px;
+}
+
+div.main div.day {
+  margin-right: 0em;
+  margin-bottom: 2em;
+  margin-left: 1.5em;
+}
+
+div.main div.body {
+}
+
+div.main div.section {
+  margin-left: 5px;
+}
+
+div.main div.lm {
+  float: right;
+  margin-top: 0em;
+  margin-bottom: 0em;
+  margin-right: 1em;
+  text-align: right;
+  font-size: 75%;
+  border-style: dashed;
+  border-color: #ff9999;
+  border-width: 1px 0px 0px 0px;
+}
+
+div.main h1 {
+  color: #ffffff;
+  background-color: #7e1000;
+  text-align: left;
+  clear: both;
+  padding:0.5em;
+  border:solid thin;
+  border-color: #eecccc;
+  border-width: 5px;
+  padding-left:2em;
+  font-size: x-large;
+  margin-top:2px;
+  margin-left:0px;
+}
+
+div.main h1 a, div.main h1 a:link, div.main h1 a:visited {
+  color: white;
+  background-color: transparent;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+div.main h2 {
+  margin: 0px;
+  font-size: large;
+  font-weight: bold;
+  padding: 0.5em;
+  padding-left: 1em;
+  border-style: dashed;
+  border-width: 0px;
+  border-top-width: 1px;
+  border-bottom-width: 1px;
+  border-color: #ff9999;
+  margin:1em;
+  margin-left: 0px;
+}
+
+div.main h3 {
+  margin:1em;
+  margin-bottom: 0.5em;
+  margin-top: 1.5em;
+  padding: 0.1em;
+  padding-top: 0;
+  padding-left: 0.5em;
+  font-size: medium;
+  border-style: dashed;
+  border-width: 0px 0px 1px 1px;
+  border-color: #ff9999;
+}
+
+div.main h4{
+  margin:1em;
+  margin-bottom: 0.1em;
+  margin-top: 1.5em;
+  padding: 0.1em;
+  padding-top: 0;
+  padding-bottom: 0.2pt;
+  padding-left: 0.5em;
+  color: #003399;
+  font-size: medium;
+  text-decoration: underline;
+}
+
+div.main p {
+  padding-left: 1em;
+  padding-right: 1em;
+  margin-top: 0px;
+  margin-left: 1em;
+  margin-right: 1em;
+  margin-bottom: 0.5em;
+}
+
+div.main ul, div.main dl {
+  margin-top: 0.2em;
+  margin-left: 3em;
+  padding-left: 0em;
+}
+
+div.main li {
+  margin-top: 0.2em;
+  margin-left: 0em;
+  padding-left: 0em;
+  line-height: 1.2em;
+}
+
+div.main dt {
+  margin-top: 1em;
+  margin-bottom: 0px;
+  margin-right: 2em;
+  padding-right: 1em;
+  color: black;
+  font-size: medium;
+  font-weight: bold;
+  border-style: dashed;
+  border-width: 0px;
+  border-top-width: 0px;
+  border-bottom-width: 1px;
+  border-color: #ff9999;
+}
+
+div.main dd {
+  margin-left: 0em;
+  padding-left: 1em;
+  padding-right: 2em;
+}
+
+pre {
+  background-color: #ddeeff;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #3399cc;
+  padding: 0.5em;
+  margin-left: 2em;
+  margin-right: 2em;
+}
+
+div.form {
+  clear: right;
+}
+
+span.corres {
+  font-weight: lighter;
+}
+
+/* sidebar */
+div.sidebar {
+  position: absolute;
+  top: 0px;
+  left: 2px;
+  width: 200px;
+  color: #8e2400;
+  background-color: #fff1ec;
+  padding-top: 1em;
+  padding-bottom: 5em;
+  border-style: dashed;
+  border-color: #ff9999;
+  margin-bottom: 0px;
+  border-width: 0px 1px 0px 0px;
+  padding: 2px 2px 100% 10px;
+}
+
+div.sidebar div.menu {
+  font-size: 90%;
+  font-weight: bold;
+  padding-left: 4px;
+}
+
+div.sidebar ul {
+  list-style-type: none;
+  margin: 0px;
+  margin-left: 1em;
+  padding: 0em;;
+  padding-right: 4px;
+  line-height: 0em;
+}
+
+div.sidebar li {
+  font-size: 90%;
+  margin: 0px;
+  text-indent: 0px;
+  padding:0px;
+  padding-bottom: 0.1em;
+  padding-left: 1ex;
+  line-height: 1.2em;
+}
+
+div.sidebar hr {
+  color: #fff;
+  background-color: transparent;
+  width: 80%;
+  margin-bottom: 1em;
+}
+
+div.sidebar form {
+  margin-top: 0em;
+  margin-left: 0.5em;
+  margin-right: 4px;
+  font-size: 60%;
+  line-height: 100%;
+}
+
+div.sidebar a {
+  color: #ea3a00;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+div.sidebar a:visited {
+  color: #c63200;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+div.sidebar a:hover {
+  color: #ff794d;
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+/* rightbar */
+div.rightbar {
+  float: right;
+  margin-top: 1em;
+  margin-left: 1em;
+  margin-right: 0.2em;
+  padding-bottom: 100%;
+  width: 130px;
+}
+
+div.rightbar a {
+  color: #ea3a00;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+div.rightbar a:visited {
+  color: #c63200;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+div.rightbar a:hover {
+  color: #ff794d;
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+div.rightbaritem {
+  color: #000;
+  background-color: transparent;
+  border-style: solid;
+  border-color: #fcc;
+  border-width: 1px;
+  margin-bottom: 1em;
+}
+
+div.rightbartitle {
+  color: #8e2400;
+  background-color: #fff1ec;
+  border-style: solid;
+  border-color: #fcc;
+  border-width: 1px;
+  padding-left: 4px;
+}
+
+div.rightbaritem ul {
+  list-style-type: none;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  margin-left: 0.5em;
+  padding-left: 0em;
+}
+
+div.rightbaritem li {
+  font-size: 90%;
+  text-indent: -1.5ex;
+  padding-left: 1.5ex;
+}
+
+div.sidebar h1 a{
+  color: #5e1000;
+}
+
+div.sidebar h1 a.hover{
+  color: #5e1000;
+}
+
+div.sidebar h2 a{
+  color: #5e1000;
+  font-size: medium;
+}
+
+div.sidebar h2 a.hover{
+  color: #5e1000;
+}
+
+div.sidebar h1 {
+  margin:0px;
+  margin-bottom:1em;
+  padding:0px;
+  color: #721000;
+  background-color: transparent;
+  text-align: left;
+  font-size: larger;
+  padding:0px;
+  border:none;
+  padding-left:0px;
+  margin-top:0px;
+  margin-left:0px;
+}
+
+div.sidebar h2 {
+  margin:0px;
+  padding:0px;
+  margin-top:1em;
+}
+
+div.sidebar h4 {
+  color: black;
+  padding:0px;
+  margin:0px;
+  margin-top:0.5em;
+}
+
+div.comment {
+  padding-top: 0.5em;
+  padding-left: 1em;
+  margin-left: 2em;
+  border-style: dashed;
+  border-color: #ff9999;
+  border-width: 1px 0px 0px 0px;
+}
+div.footer {
+  font-size: 90%;
+  text-decoration: none;
+  text-align: right;
+  margin-right: 1em;
+  clear: both;
+}
+
+table {
+  width:100%;
+  border-color: #3399cc;
+}
+  
+th, tr, td {
+  padding-left: 2px;
+}
+
+th {
+  background-color: #ddeeff;
+}
+
+td.done {
+  background-color: #eeffff;
+}
+
+td.obsolete {
+  text-decoration: line-through;
+  color: gray;
+}
+  
+.link {
+  text-align: center;
+  padding:1em;
+  padding-bottom: 2em;
+  padding-top: 0pt;
+}
+
+.link-previous, .link-next, .link-top, .link-home {
+  padding:2em;
+  padding-bottom: 2em;
+  padding-top: 0pt;
+}
+
+/*
+   for printer
+*/
+   @media print {
+  div.main { margin-left: 0.6em; }
+  div.adminmenu { display: none; }
+  div.sidebar { display: none; }
+  div.rightbar { display: none; }
+}
+

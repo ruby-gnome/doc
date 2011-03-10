@@ -1,0 +1,1 @@
+../../hiki-ext/hiki/plugin/trap_filter.rb

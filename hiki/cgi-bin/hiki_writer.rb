@@ -4,7 +4,7 @@ require 'optparse'
 require 'hiki/hiki/page'
 
 paths = [
-  '/Users/takkanm/work/hiki/ruby-gnome2-sf-jp/cgi-bin/hiki/hiki',
+  File.expand_path(File.join(File.dirname(__FILE__), "hiki"))
 ]
 
 paths.each do |path|

@@ -1,0 +1,8 @@
+Options +ExecCGI
+
+AddHandler cgi-script .cgi
+DirectoryIndex hiki.cgi
+
+<Files "hikiconf.rb">
+	deny from all
+</Files>

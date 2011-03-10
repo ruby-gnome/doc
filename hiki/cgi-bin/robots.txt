@@ -1,0 +1,29 @@
+User-Agent: ia_archiver
+Disallow: /
+
+User-Agent: fast
+Disallow: /
+
+User-Agent: ZyBorg
+Disallow: /
+
+User-Agent: ArchitextSpider
+Disallow: /
+
+User-agent: DiaGem
+Disallow: /
+
+User-agent: SlySearch
+Disallow: /
+
+User-Agent: nabot
+Disallow: /
+
+User-Agent: sitecheck.internetseer.com
+Disallow: /
+
+User-agent: http://www.almaden.ibm.com/cs/crawler 
+Disallow: /
+
+User-Agent: Openbot
+Disallow: /

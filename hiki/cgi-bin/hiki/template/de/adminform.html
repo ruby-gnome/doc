@@ -1,0 +1,91 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+    "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="de">
+<head id="header">
+</head>
+
+<body>
+<div class="hiki">
+  <div class="adminmenu" id="tools"></div>
+<h1>Hiki Konfigurationen</h1>
+
+<form method="post" action="@cgi_name">
+  <input type="hidden" value="admin" name="c">
+  <p id="msg"></p>
+  <div class="conf day">
+    <h2><span class="title">Grundeinstellungen</span></h2>
+    <div class="body">
+      <h3 class="subtitle">Seitennamen</h3>
+      <p>Geben Sie den Namen Ihrer Seite ein, der als Titel angezeigt werden soll.</p>
+      <p><input name="site_name" value="@site_name" size="40"></p>
+      <h3 class="subtitle">Autor</h3>
+      <p>Geben Sie Ihren Namen ein.</p>
+      <p><input name="author_name" value="@author_name" size="40"></p>
+      <h3 class="subtitle">Email-Adresse</h3>
+      <p>Geben Sie Ihre Email-Adresse ein.</p>
+      <p><input name="mail" value="@mail" size="40"></p>
+      <p><input type="submit" name="saveconf" value="OK"></p>
+    </div>
+  </div>
+
+  <div class="conf day">
+    <h2><span class="title">Administrator-Optionen</span></h2>
+    <div class="body">
+      <h3 class="password">Kennwort</h3>
+      <p>Benutzen Sie die folgenden Felder nur, wenn Sie Ihr derzeitiges Kennwort &auml;ndern m&ouml;chten.</p>
+      <p>Aktuelles Kennwort: <input type="password" name="old_password" size="40"></p>
+      <p>Neues Kennwort: <input type="password" name="password1" size="40"></p>
+      <p>Neues Kennwort (best&auml;tigen): <input type="password" name="password2" size="40"></p>
+
+      <h3 class="subtitle">Per Email &uuml;ber &Auml;nderungen informieren.</h3>
+      <p>Wenn diese Option aktiviert ist, eine Benachrichtigungs-Email wird an "Email-Adresse" über den SMTP-Server (eingestellt in config.rb) gesendet, sobald eine Seite aktualisiert wurde. Wenn diese Option deaktiviert ist, wird keine Email gesendet.</p>
+      <p><select name="mail_on_update">
+         <option id="mail_on_update" value="true">AKTIVIERT</option>
+         <option id="no_mail" value="false">DEAKTIVIERT</option>
+         </select></p>
+      <p><input type="submit" name="saveconf" value="OK"></p>
+    </div>
+  </div>
+
+  <div class="conf day">
+    <h2><span class="title">Erscheinung</span></h2>
+    <div class="body">
+      <h3 class="subtitle">Theme</h3>
+      <p>W&auml;hlen Sie ein Theme aus.
+      <p><select name="theme">
+         <option id="theme"></option></select></p>
+      <h3 class="subtitle">Theme-URL</h3>
+      <p>Geben Sie die URL des Themes ein.</p>
+      <p><input name="theme_url" value="@theme_url" size="60"></p>
+      <h3 class="subtitle">Theme-Verzeichnis</h3>
+      <p>Geben Sie das Verzeichnis des Themes ein.</p>
+      <p><input name="theme_path" value="@theme_path" size="60"></p>
+      <h3 class="subtitle">Seitenleiste</h3>
+      <p>Aktiviert, wenn die Seitenleiste angezeigt werden soll. Wenn Sie ein Theme benutzen m&ouml;chten, das keine Seitenleiste unterst&uuml;tzt, deaktivieren Sie diese Option bitte.</p>
+      <p><select name="sidebar">
+         <option id="use_sidebar" value="true">AKTIVIERT</option>
+         <option id="no_sidebar" value="false">DEAKTIVIEREN</option>
+         </select></p>
+      <h3 class="subtitle">Klassenname des Hauptbereiches (CSS)</h3>
+      <p>Geben Sie den Klassennamen des Hauptbereiches ein (Standard: 'main').</p>
+      <p><input name="main_class" value="@main_class" size="20"></p>
+      <h3 class="subtitle">Klassenname der Seitenleiste (CSS)</h3>
+      <p>Geben Sie den Klassennamen der Seitenleiste ein (Standard: 'sidebar').</p>
+      <p><input name="sidebar_class" value="@sidebar_class" size="20"></p>
+      <h3 class="subtitle">Auto-Link</h3>
+      <p>Wenn Sie die Auto-Link-Funktion benutzen m&ouml;chten, aktivieren Sie diese hier.</p>
+      <p><select name="auto_link">
+         <option id="use_auto_link" value="true">AKTIVIERT</option>
+         <option id="no_auto_link" value="false">DEAKTIVIERT</option>
+         </select></p>
+      <p><input type="submit" name="saveconf" value="OK"></p>
+    </div>
+  </div>
+
+</form>
+</div>
+
+<div class="footer" id="footer"></div>
+</body>
+</html>
