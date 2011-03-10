@@ -1,0 +1,29 @@
+= Retrieving Row Data
+{{link "tut-treeview-model-manipulate", "tut-treeview-model", "tut-treeview", "tut-treeview-model-remove"}}
+
+Storing data is not very useful if it cannot be retrieved again. This is done using Gtk::TreeIter#[], which retrieves the value in the given column from the row the TreeIter points to.
+
+Here is the previous example extended to traverse the list store and print out the data stored. As an extra, we use Gtk::TreeModel#each to traverse the store and retrieve the row number from the Gtk::TreePath passed to us in the code block:
+
+  # Create a store for first name, last name, and year born
+  liststore = Gtk::ListStore.new(String, String, Integer)
+
+  # Append an empty row and fill in some data
+  iter = liststore.append
+
+  iter[0] = "Joe"
+  iter[1] = "Average"
+  iter[2] = 1970
+
+  # Append another row and fill in some data
+  iter = liststore.append
+
+  iter[0] = "Jane"
+  iter[1] = "Common"
+  iter[2] = 1967
+
+  liststore.each do |model,path,iter|
+    printf("Row %s: %s %s, born %i\n", path.to_str, iter[0], iter[1], iter[2]);
+  end
+
+One thing worth pointing out: means that we need to free it once we are done with it; the second is that all fields of a row are set to a default nil value appropriate for the data type in question. A field of type Integer will contain the value 0 until it is set to a new value, and strings and all kind of pointer types will be nil until set to something else. Run the above program with an additional empty row and look at the output to see this in effect.

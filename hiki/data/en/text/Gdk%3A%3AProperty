@@ -1,0 +1,47 @@
+= module Gdk::Property
+
+== Module Functions
+
+--- Gdk::Property.change
+
+     * Returns: self: ((*FIXME*))
+
+--- Gdk::Property.delete
+
+     * Returns: self: ((*FIXME*))
+
+--- Gdk::Property.get
+
+     * Returns: self: ((*FIXME*))
+
+--- Gdk::Property.string_to_compound_text
+
+     * Returns: self: ((*FIXME*))
+
+--- Gdk::Property.text_property_to_text_list
+
+     * Returns: self: ((*FIXME*))
+
+--- Gdk::Property.text_property_to_utf8_list
+
+     * Returns: self: ((*FIXME*))
+
+--- Gdk::Property.utf8_to_compound_text
+
+     * Returns: self: ((*FIXME*))
+
+--- Gdk::Property.utf8_to_string_target
+
+     * Returns: self: ((*FIXME*))
+
+== Constants
+
+--- MODE_APPEND
+--- MODE_PREPEND
+--- MODE_REPLACE
+
+== See Also
+
+== ChangeLog
+
+

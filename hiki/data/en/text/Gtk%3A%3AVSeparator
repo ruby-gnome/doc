@@ -1,0 +1,75 @@
+= class Gtk::VSeparator
+
+The Gtk::VSeparator widget is a vertical separator, used to group the widgets within a window. It displays a vertical line with a shadow to make it appear sunken into the interface.
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::InitiallyUnowned
+        * Gtk::Object
+          * Gtk::Widget
+            * Gtk::Separator
+              * Gtk::VSeparator
+
+== Class Methods
+
+--- Gtk::VSeparator.new
+
+    Creates a new Gtk::VSeparator.
+    * Returns: a new Gtk::VSeparator.
+
+== Instance Methods
+
+--- ref_accessible
+
+    See Atk::Implementor#ref_accessible.
+
+--- add_child
+
+    See Gtk::Buildable#add_child.
+
+--- construct_child
+
+    See Gtk::Buildable#construct_child.
+
+--- get_internal_child
+
+    See Gtk::Buildable#get_internal_child.
+
+--- name
+
+    See Gtk::Buildable#name.
+
+--- name=
+
+    See Gtk::Buildable#name=.
+
+--- set_buildable_property
+
+    See Gtk::Buildable#set_buildable_property.
+
+--- set_name
+
+    See Gtk::Buildable#set_name.
+
+--- builder_name
+
+    See Gtk::Buildable#builder_name.
+
+--- builder_name=
+
+    See Gtk::Buildable#builder_name=.
+
+--- set_builder_name
+
+    See Gtk::Buildable#set_builder_name.
+
+== See Also
+
+* Gtk::HSeparator - a horizontal separator.
+
+== ChangeLog
+
+- ((<Masao>))

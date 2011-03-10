@@ -1,0 +1,24 @@
+= Links
+
+== General
+
+:((<Ruby Home Page|URL:http://www.ruby-lang.org/>))
+ Ruby homepage. Good jump-off for ruby releated projects and info.
+
+:((<GTK+ - The GIMP Toolkit|URL:http://www.gtk.org/>))
+ GTK+ website. Good tutorial and excellent API refs at a C level.
+
+:((<GNOME - Computing made easy|URL:http://www.gnome.org/>))
+ Website for the GNOME project. Lots of info on GNOME and GTK+.
+
+:((<gtk2 on cygwin|URL:http://web.sfc.keio.ac.jp/~s01397ms/cygwin/index.html.en>))
+ Cygwin binaries of GTK+, GNOME and other libraries. And also Ruby-GNOME2 binaries for cygwin.
+
+:((<GTK+ and GIMP for Windows|URL:http://www.gimp.org/~tml/gimp/win32/>))
+ You'll need these if you want the native Win32 GTK+ dll files.
+
+:((<GLADE for Windows|URL:http://gladewin32.sourceforge.net/>))
+ Yet another website which provide Win32 GTK+ binaries with a very nice installer.
+
+:((<Ruby-GNOME2 RPMS by Vee Satayamas|URL:http://linux.thai.net/plone/Members/vee/coding/ruby_gnome2/>))
+ This is a private RPMS for Ruby-GNOME2.

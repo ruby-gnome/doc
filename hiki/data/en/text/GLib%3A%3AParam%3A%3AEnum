@@ -1,0 +1,20 @@
+= class GLib::Param::Enum
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Param
+      * GLib::Param::Enum
+
+== Class Methods
+
+--- GLib::Param::Enum.new
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

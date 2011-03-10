@@ -1,0 +1,20 @@
+= class Gst::MessageEos
+
+== Object Hierarchy
+
+* Object
+  * Gst::MiniObject
+    * Gst::Message
+      * Gst::MessageEos
+
+== Class Methods
+
+--- Gst::MessageEos.new
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

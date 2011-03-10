@@ -1,0 +1,17 @@
+= module Gnome::GPARoot
+
+It is for getting available printers.
+
+== Module Functions
+
+--- printers
+
+     * Returns: available printers. It's an array of Gnome::GPAPrinter.
+
+== See Also
+
+Gnome::GPAPrinter
+
+== ChangeLog
+
+- kou

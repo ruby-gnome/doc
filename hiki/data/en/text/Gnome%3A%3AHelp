@@ -1,0 +1,21 @@
+= module Gnome::Help
+
+== Module Functions
+
+--- Gnome::Help.display_desktop
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::Help.display_uri
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::Help.display_with_doc_id
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

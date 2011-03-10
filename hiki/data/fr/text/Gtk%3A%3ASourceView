@@ -1,0 +1,67 @@
+= class Gtk::SourceView
+A view on a source.
+
+== Object Hierarchy
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Gtk::Object
+        * Gtk::Widget
+          * Gtk::Container
+            * Gtk::TextView
+              * Gtk::SourceView
+
+== Class Methods
+--- Gtk::SourceView.new(buffer=nil)
+    Creates a new Gtk::SourceView.  If buffer is not provided or nil, an empty
+    buffer will be created for you.  Note that one buffer can be shared among
+    many widgets.
+    * buffer: a Gtk::SourceBuffer object.  
+    * Returns: a newly created Gtk::SourceView object.
+
+== Instance Methods
+--- get_marker_type(marker_type)
+    Gets the pixbuf which is associated with the given marker_type.
+    * marker_type: a marker type (as a string).  
+    * Returns: a Gdk::Pixbuf object if found, or nil if not found.
+
+--- set_marker_pixbuf(marker_type, pixbuf)
+    Associates a given pixbuf with a given marker_type.
+    * pixbuf: a Gdk::Pixbuf object.  
+    * marker_type: a marker type (as a string). 
+    * Returns: self.
+
+== Properties
+--- auto-indent: true or false (Read/Write)
+    Whether to enable auto indentation.
+
+--- insert-spaces-instead-of-tabs: true or false (Read/Write)
+    Whether to insert spaces instead of tabs.
+
+--- margin: Integer (Read/Write)
+    Position of the right margin.
+
+--- show-line-markers: true or false (Read/Write)
+    Whether to display line marker pixbufs.
+
+--- show-line-numbers: true or false (Read/Write)
+    Whether to display line numbers.
+
+--- show-margin: true or false (Read/Write)
+    Whether to display the right margin.
+
+--- smart-home-end: true or false (Read/Write)
+    HOME and END keys move to first/last characters on line first before going to the start/end of the line.
+
+--- tabs-width: Integer (Read/Write)
+    Tabs Width.
+
+== Signals
+--- redo
+
+--- undo
+
+== See Also
+((<Gtk>)).
+
+- ((<lrz>))

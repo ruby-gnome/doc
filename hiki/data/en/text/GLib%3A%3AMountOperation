@@ -1,0 +1,293 @@
+= class GLib::MountOperation
+
+GLib::MountOperation provides a mechanism for interacting with the user. It can
+be used for authenticating mountable operations, such as loop mounting files,
+hard drive partitions or server locations. It can also be used to ask the user
+questions or show a list of applications preventing unmount or eject operations
+from completing.
+
+Note that GLib::MountOperation is used for more than just GLib::Mount objects –
+for example it is also used in GLib::Drive#start and GLib::Drive#stop.
+
+Users should instantiate a subclass of this that implements all the various
+callbacks to show the required dialogs, such as Gtk::MountOperation. If no user
+interaction is desired (for example, when automounting filesystems at login
+time), usually nil can be passed; see each method taking a GLib::MountOperation
+for details. 
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::MountOperation
+
+== Class Methods
+
+--- GLib::MountOperation.new
+
+     Creates a new mount operation.
+
+     * Returns: a GLib::MountOperation
+
+== Instance Methods
+
+--- anonymous=(anonymous)
+
+     Same as GLib::MountOperation#set_anonymous.
+
+     * Returns: ((|anonymous|))
+
+--- anonymous?
+
+     Check to see whether the mount operation is being used
+     for an anonymous user.
+
+     * Returns: true if mount operation is anonymous
+
+--- choice
+
+     Gets the choice from the mount operation.
+
+     * Returns: A Fixnum containing an index of the user’s choice from the
+       choices list, or 0
+
+--- choice=(choice)
+
+     Same as GLib::MountOperation#set_choice.
+
+     * Returns: ((|choice|))
+
+--- domain
+
+     Gets the domain of the mount operation.
+
+     * Returns: A String containing the domain 
+
+--- domain=(domain)
+
+     Same as GLib::MountOperation#set_domain
+
+     * Returns: ((|domain|))
+
+--- password
+
+     Gets the password of the mount operation.
+
+     * Returns: A String containing the password 
+
+--- password=(password)
+
+     Same as GLib::MountOperation#set_password
+
+     * Returns: ((|password|))
+
+--- password_save
+
+     Gets the state of saving passwords for the mount operation
+
+     * Returns: A set of GLib::PasswordSave flags
+
+--- password_save=(password_save)
+
+     Same as Glib::MountOperation#set_password_save
+
+     * Returns: ((|password_save|))
+
+--- reply(result)
+
+     Emits the GLib::MountOperation#reply:+self signal.
+
+     * result: A GLib::MountOperation::Result
+     * Returns: self
+
+--- set_anonymous(anonymous)
+
+     Sets whether the mount operation should use an anonymous user.
+
+     * anonymous: true to use an anonymous user
+     * Returns: self
+
+--- set_choice(choice)
+
+     Sets a default choice for the mount operation.
+
+     * choice: A Fixnum containing an index of the default choice from the
+       choices list
+     * Returns: self
+
+--- set_domain(domain)
+
+     Sets the domain of the mount operation.
+
+     * domain: A String containing the domain
+     * Returns: self
+
+--- set_password(password)
+
+     Sets the mount operation’s password to ((|password|))
+
+     * password: A String containing the password
+     * Returns: self
+
+--- set_password_save(password_save)
+     
+     Sets the state of saving passwords for the mount operation.
+
+     * password_save: A set of GLib::PasswordSave flags
+     * Returns: self
+
+--- set_username(username)
+
+     Sets the username for the mount operation.
+
+     * username: A String containing the username.
+     * Returns: self
+
+--- username
+
+     Gets the username from the mount operation
+
+     * Returns: A String containing the username
+
+--- username=(username)
+
+     Same as GLib::MountOperation#set_username.
+
+     * Returns: ((|username|))
+
+== Constants
+
+--- ABORTED
+
+     The user requested that the mount operation be aborted
+
+--- HANDLED
+
+     The request was fulfilled and the user-specified data is now available
+
+--- UNHANDLED
+
+     The request was unhandled, that is, not implemented.
+
+== Properties
+
+--- anonymous: true or false (Read/Write)
+
+    Whether or not to use an anonymous user when authenticating.
+
+    Default value: false
+
+--- choice: Integer (Read/Write)
+
+    The index of the user’s choice when a question is asked during the mount
+    operation. See the
+    GLib::MountOperation#ask-question:+self,+message,+choices signal.
+
+    Allowed values: ≥ 0
+
+    Default value: 0
+
+--- domain: String (Read/Write)
+
+    The domain to use for the mount operation.
+
+    Default value: nil
+
+--- password: String (Read/Write)
+
+    The password that is used for authentication when carrying out the mount
+    operation.
+
+    Default value: nil
+
+--- password-save: GLib::PasswordSave (Read/Write)
+
+     Determines if and how the password information should be saved.
+
+     Default value: GLib::PasswordSave::NEVER
+
+--- username: String (Read/Write)
+
+    The username that is used for authentication when carrying out the mount
+    operation.
+
+    Default value: nil
+
+== Signals
+
+--- aborted: self
+
+     Emitted by the backend when, for example, a device becomes unavailable
+     while a mount operation is in progress.
+
+     Implementations of GLib::MountOperation should handle this signal by
+     dismissing open password dialogs. 
+
+     Implementations of GLib::MountOperation should handle this signal by
+     dismissing open password dialogs. 
+
+     * self: The GLib::MountOperation emitting the signal
+
+--- ask-password: self, message, default_user, default_domain, flags
+
+     Emitted when a mount operation asks the user for a password.
+
+     If the message contains a line break, the first line should be presented
+     as a heading. For example, it may be used as the primary text in a
+     Gtk::MessageDialog.
+
+     * self: The GLib::MountOperation emitting the signal
+     * message: A String containing a message to display to the user.
+     * default_user: A String containing the default user name
+     * default_domain: A String containing the default domain
+     * flags: A set of GLib::AskPasswordFlags
+
+--- ask-question: self, message, choices
+
+     Emitted when asking the user a question and gives a list of choices for
+     the user to choose from.
+
+     If the message contains a line break, the first line should be presented
+     as a heading. For example, it may be used as the primary text in a
+     Gtk::MessageDialog.
+
+     * self: The GLib::MountOperation emitting the signal
+     * message: A String containing a message to display to the user.
+     * choices: An Array of Strings for each possible choice
+
+--- reply: self, result
+
+     Emitted when the user has replied to the mount operation.
+
+     * self: The GLib::MountOperation emitting the signal
+     * result: A GLib::MountOperation::Result indicating how the rquest was
+       handled
+
+--- show-processes: self, message, processes, choices
+
+     Emitted when one or more processes are blocking an operation, for example,
+     unmounting/ejecting a GLib::Mount or stopping a GLib::Drive.
+
+     Note that this signal may be emitted several times to update the list of
+     blocking processes as processes close files. The application should only
+     respond with GLib::MountOperation#reply to the latest signal (setting
+     “choice” to the choice the user made).
+
+     If the message contains a line break, the first line should be presented
+     as a heading. For example, it may be used as the primary text in a
+     Gtk::MessageDialog.
+
+     Since 2.22
+
+     * self: The GLib::MountOperation emitting the signal
+     * message: A String containing a message to display to the user.
+     * processes: An Array of Fixnum process ids of processes
+       blocking the operation
+     * choices: An Array of Strings for each possible choice
+
+== See Also
+
+== ChangeLog
+
+

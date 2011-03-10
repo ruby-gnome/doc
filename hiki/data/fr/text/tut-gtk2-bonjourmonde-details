@@ -1,0 +1,81 @@
+= Ruby/GTK2 Bonjour Monde (commenté)
+
+Maintenant que nous venons de voir la théorie des signaux et des événements, nous sommes enfin prêts à regarder en détail le programme "Bonjour Monde".
+
+Premièrement, il initialise Ruby/GTK2. Ce code est requis pour tous les programmes Ruby/GTK2.
+
+  #!/usr/bin/env ruby
+  =begin
+    helloworld.rb - Ruby/GTK first sample script.
+
+    Copyright (c) 2002,2003 Ruby-GNOME2 Project Team
+    This program is licenced under the same licence as Ruby-GNOME2.
+
+    $Id: helloworld.rb,v 1.4 2003/02/01 16:46:22 mutoh Exp $
+  =end
+
+  require 'gtk2'
+
+Ici nous créons un bouton "Bonjour Monde". Gtk::Button.new crée un nouveau bouton GTK et ajuste son étiquette avec la chaîne de caractères que nous lui donnons. A ce moment, le bouton ne fait pas encore partie d'une fenêtre GTK, et il n'est pas encore visible à l'écran.
+
+  button = Gtk::Button.new("Bonjour Monde")
+
+Le code suivant affichera à l'écran le message "Bonjour Monde" chaque fois que le bouton est actionné.
+
+Ce comportement est produit en connectant un bloc de code qui affiche notre message au signal "clicked" du bouton.
+
+  button.signal_connect("clicked") {
+    puts "Bonjour Monde"
+  }
+
+Maintenant il est temps de créer la fenêtre. Comme le bouton, elle n'est pas encore visible à l'écran.
+
+  window = Gtk::Window.new
+
+Nous décidons ici de connecter plusieurs gestionnaire de signaux sur notre fenêtre:
+
+* "delete_event" sera envoyé lorsque la fenêtre sera tuée par le gestionnaire de fenêtre((-En anglais, ((*window manager*)).-)) (en général, quand l'utilisateur la fermera manuellement). Notez que nous retournons une valeur false dans le bloc de code; ça signifie que le traitement de l'événement n'est pas encore terminé. GTK enverra alors un autre signal, "destroy".
+* "destroy" sera émit juste après "delete_event". Dans ce bloc de code, nous fermons l'application en appelant Gtk.main_quit.
+
+Deux messages seront affichés lorsque l'utilisateur fermera la fenêtre:
+
+(1) "Evénement 'delete' produit."
+(2) "Evénement 'destroy' produit."
+
+  window.signal_connect("delete_event") {
+    puts "Evénement 'delete' produit."
+    #true
+    false
+  }
+
+  window.signal_connect("destroy") {
+    puts "Evénement 'destroy' produit."
+    Gtk.main_quit
+  }
+
+Ici nous ajustons la largeur de la bordure de 10 pixels. Qu'est-ce que cela signifie?
+
+Les fenêtres GTK sont en fait des conteneurs. Un conteneur est un composant qui peut héberger un ou plusieurs autres composants. Notre fenêtre affichera ici une bordure de 10 pixels autour du composant hébergé.
+
+  window.border_width = 10
+
+C'est le moment d'emballer le bouton dans la fenêtre.
+
+  window.add(button)
+
+La prochaine étape consiste à afficher notre travail à l'écran. Nous avons besoin d'afficher deux composants: le bouton et la fenêtre.
+
+Nous aurions pu écrire ceci:
+
+  button.show
+  window.show
+
+Mais comme le bouton est ajouté dans la fenêtre, nous pouvons alors appeler Gtk::Widget#show_all sur cette dernière. Cette méthode appelera Gtk::Widget#show sur la fenêtre et sur chaque composant interne (ici il n'y en a qu'un seul: le bouton).
+
+  window.show_all
+
+Finalement, il ne reste plus qu'à entrer dans la boucle principale, en appelant Gtk.main. Le programme va à ce moment dormir jursqu'à ce qu'un événement se produira. Notez que l'appel à Gtk.main ne retournera jamais. Le code écrit après cet appel ne se produira donc jamais non plus.
+
+Mais l'utilisateur sera toujours capable de fermer le programme, parce que nous appelons Gtk.main_quit lors de la réception du signal "destroy". 
+
+  Gtk.main

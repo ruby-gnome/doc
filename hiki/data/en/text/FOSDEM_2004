@@ -1,0 +1,60 @@
+= FOSDEM 2004
+
+{{image_left("promo_fosdem.png")}}
+{{br}}
+
+This page is a draft the tutorial session we presented at the ((<FOSDEM|URL:http://www.fosdem.org>)) 2004 edition, the 21 February in Brussels (Belgium).
+
+== Abstract
+
+This tutorial was dedicated to the design and implementation of a very, very small audio player for the GNOME desktop, using the Glade GTK+/GNOME interface builder and some Ruby-GNOME2 libraries such as Ruby/Libglade, Ruby/GTK and Ruby/GStreamer.
+
+== Content
+
+* Sources: {{attach_anchor("fosdem_2004.tar.gz")}}
+* PDF: {{attach_anchor("slides.pdf")}}
+
+== Speakers
+
+* ((<Laurent Sansonetti|lrz>))
+* ((<Nikolai Weibull|lone-star>))
+
+== ChangeLog
+:2004-02-22
+ Now finished. Thanks for coming.
+
+:2004-02-20
+ Added slides for the multimedia design, implementation and questions sections.
+
+:2004-02-17
+ Added slides for the UI-design section.
+ Added .glade file and Ruby source file.
+
+:2004-02-14
+ Added initial slides.  
+
+:2004-02-12 
+ Fixed library names (Ruby/Gtk -> Ruby/GTK, Ruby/Glade -> Ruby/Libglade) ;) ((<Masao>))
+
+:2004-02-10
+ Our tutorial ((<has been scheduled|URL:http://www.fosdem.org/2004/index/schedule>)) on 21st (Saturday) at 3PM.
+
+:2004-01-08
+ Raphael confirmed the duration (50 minutes).
+
+:2004-01-08
+ Nikolai confirmed that we will speak.  Wrote our first ideas about the presentation.
+
+:2003-11-17
+ Raphael Bauduin (of the FOSDEM team) accepted our request.
+ Our presentation will take place in the tutorials room.
+ No idea yet for the schedule.
+
+:2003-11-15
+ The draft has been proposed to the FOSDEM crew.
+
+:2003-11-10
+ This page was created after having discussed its content on IRC.
+
+:2003-11-05
+ First talk about this on the mailing list.

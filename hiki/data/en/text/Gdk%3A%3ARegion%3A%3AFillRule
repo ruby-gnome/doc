@@ -1,0 +1,18 @@
+= class Gdk::Region::FillRule
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * Gdk::Region::FillRule
+
+== Constants
+
+--- EVEN_ODD_RULE
+--- WINDING_RULE
+
+== See Also
+
+== ChangeLog
+
+

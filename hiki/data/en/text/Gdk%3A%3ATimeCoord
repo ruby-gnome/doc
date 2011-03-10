@@ -1,0 +1,66 @@
+= class Gdk::TimeCoord
+
+The Gdk::TimeCoord class stores a single event in a motion history.
+
+== Object Hierarchy
+
+* Object
+  * GLib::Boxed
+    * Gdk::TimeCoord
+
+== Class Methods
+
+--- Gdk::TimeCoord.new(time, axes)
+
+    Creates a new Gdk::TimeCoord
+    * time: A timestamp for this event (Integer)
+    * axes: An Array of the device's axes(Array of Floats).
+    * Returns: a newly created Gdk::TimeCoord.
+
+== Instance Methods
+
+--- time
+
+    Gets the timestamp for this event.
+    * Returns: The timestamp for this event
+
+--- time=(time)
+
+    Sets a timestamp for this event.
+    * time: A timestamp for this event (Integer)
+    * Returns: time
+
+--- set_time(time)
+
+    Same as Gdk::TimeCoord#time=.
+    * time: A timestamp for this event (Integer)
+    * Returns: self
+
+--- axes
+
+    Gets the Array of the device's axes.
+    * Returns: axes
+
+--- axes=(axes)
+
+    Sets an Array of the device's axes.
+    * axes: An Array of the device's axes(Array of Floats).
+    * Returns: self
+
+--- set_axes(axes)
+
+    Same as Gdk::TimeCoord#axes=.
+    * axes: An Array of the device's axes(Array of Floats).
+    * Returns: self
+
+== Constants
+
+--- MAX_AXES
+
+    Max timecoord axes size.
+
+== See Also
+
+== ChangeLog
+
+* 2005-05-14 Added. - ((<Masao>))

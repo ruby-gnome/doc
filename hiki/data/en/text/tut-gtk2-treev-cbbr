@@ -1,0 +1,254 @@
+= The Tree View Widget
+{{link "tut-gtk2-treev-spbttr", "tut-gtk2-treev", "tut-gtk", "tut-gtk2-treev-kbda"}}
+
+
+== Combo Box Renderers
+
+
+By this time I'd be pleasantly surprised if Combo Box Renderer would be working. 
+
+
+
+{{image_right("dialog-warning.png")}}
+Due to the problems with the past few renderer examples, I first implemented the combo box cell renderer functionality into C version of ((*treestore.c.*)) Indeed, it did not work. However, it behaved better without the error/warning messages, that we experienced with all earlier renderers that did not work. You can check this C GTK+ version of combo box renderer example by clicking on:  ((<treestore-combob.c|tut-gtk2-treev-treev-combob-cgtk-01>))
+
+{{image_left("treev-combo-01.png")}}
+{{image_right("dialog-warning.png")}}
+Needless to say that our Ruby combo box renderer example also does not work. The image on the left is what we get on the screen. Of course it is incorrect; there should be combo boxes in column Count. Note also that data type for this column is Integer, and that we need to convert the strings from the combo box to integer values before we could update the tree store. 
+
+Following is the Ruby version of our combo box renderer program:
+{{br}}
+
+ #!/usr/bin/env ruby
+ require 'gtk2'
+ 
+ # Add three columns to the GtkTreeView. All three of the
+ # columns will be displayed as text, although one is a boolean
+ # value and another is an integer.
+ def setup_tree_view(treeview)
+ 
+   # Create a Gtk::ListStore that will be used for the
+   # combo box renderer.
+   model = Gtk::ListStore.new(String)
+   iter = model.append
+   iter[0] = "None"
+   iter = model.append
+   iter[0] = "One"
+   iter = model.append
+   iter[0] = "Half a Dozen"
+   iter = model.append
+   iter[0] = "Dozen"
+   iter = model.append
+   iter[0] = "Two Dozen"
+   
+   renderer = Gtk::CellRendererText.new
+   column = Gtk::TreeViewColumn.new("Buy", renderer, "text" => $buy_index)
+   treeview.append_column(column)
+ 
+   # Create the GtkCellRendererCombo and add the tree model.
+   # Then add the renderer to a new column and add the column
+   # to the GtkTreeView
+   
+   renderer = Gtk::CellRendererCombo.new
+   column = Gtk::TreeViewColumn.new("Count", renderer, "text" => $qty_index)
+   renderer.text_column = 0
+   renderer.has_entry = true
+   renderer.editable = true
+   renderer.model = model
+   treeview.append_column(column)
+   
+   renderer.signal_connect('edited') do |w, path, new_text|
+     if path != ""
+       if (iter = treeview.model.get_iter(path))
+         new_i = case new_text
+           when "None";          0
+           when "One";           1
+           when "Half a Dozen";  6
+           when "Dozen";        12
+           when "Two Dozen";    24
+         end
+         iter[$qty_index] = new_i unless !new_i
+       end
+     end
+   end
+   
+   renderer = Gtk::CellRendererText.new
+   column = Gtk::TreeViewColumn.new("Product", renderer, "text" => $prod_index)
+   treeview.append_column(column)
+ end
+ 
+ window = Gtk::Window.new(Gtk::Window::TOPLEVEL)
+ window.resizable = true
+ window.title = "Grocery List"
+ window.border_width = 10
+ window.signal_connect('delete_event') { Gtk.main_quit }
+ window.set_size_request(275, 200)
+ 
+ class GroceryItem
+   attr_accessor :product_type, :buy, :quantity, :product
+   def initialize(t,b,q,p)
+     @product_type, @buy, @quantity, @product = t, b, q, p
+   end
+ end
+ $buy_index = 0; $qty_index = 1; $prod_index = 2
+ $p_category = 0; $p_child = 1
+ 
+ list = [
+   GroceryItem.new($p_category, true,  0, "Cleaning Supplies"),
+   GroceryItem.new($p_child,    true,  1, "Paper Towels"),
+   GroceryItem.new($p_child,    true,  3, "Toilet Paper"),
+   GroceryItem.new($p_category, true,  0, "Food"),
+   GroceryItem.new($p_child,    true,  2, "Bread"),
+   GroceryItem.new($p_child,    false, 1, "Butter"),
+   GroceryItem.new($p_child,    true,  1, "Milk"),
+   GroceryItem.new($p_child,    false, 3, "Chips"),
+   GroceryItem.new($p_child,    true,  4, "Soda")
+ ]
+ treeview = Gtk::TreeView.new
+ setup_tree_view(treeview)
+ 
+ # Create a new tree model with three columns, as Boolean, 
+ # integer and string.
+ store = Gtk::TreeStore.new(TrueClass, Integer, String)
+ 
+ # Avoid creation of iterators on every iterration, since they
+ # need to provide state information for all iterations. Hence:
+ # establish closure variables for iterators parent and child.
+ parent = child = nil
+ 
+ # Add all of the products to the GtkListStore.
+ list.each_with_index do |e, i|
+ 
+   # If the product type is a category, count the quantity
+   # of all of the products in the category that are going
+   # to be bought.
+   if (e.product_type == $p_category)
+     j = i + 1
+ 
+     # Calculate how many products will be bought in
+     # the category.
+     while j < list.size && list[j].product_type != $p_category
+       list[i].quantity += list[j].quantity if list[j].buy
+       j += 1
+     end
+     
+     # Add the category as a new root (parent) row (element).
+     parent = store.append(nil)
+     # store.set_value(parent, $buy_index, list[i].buy) # <= same as below
+     parent[$buy_index]  = list[i].buy
+     parent[$qty_index]  = list[i].quantity
+     parent[$prod_index] = list[i].product
+ 
+   # Otherwise, add the product as a child row of the category.
+   else
+     child = store.append(parent)
+     # store.set_value(child, $buy_index, list[i].buy) # <= same as below
+     child[$buy_index]  = list[i].buy
+     child[$qty_index]  = list[i].quantity
+     child[$prod_index] = list[i].product
+   end
+ end
+ 
+ # Add the tree model to the tree view
+ treeview.model = store
+ treeview.expand_all
+ scrolled_win = Gtk::ScrolledWindow.new
+ scrolled_win.add(treeview)
+ scrolled_win.set_policy(Gtk::POLICY_AUTOMATIC, Gtk::POLICY_AUTOMATIC)
+ window.add(scrolled_win)
+ window.show_all
+ Gtk.main
+
+
+
+
+== Progress Bar Renderers
+
+{{image_left("treev-cbbr-progbar.png")}}
+
+Another type of cell renderer is Gtk::CellRendererProgress, which implements the Gtk::ProgressBar widget. Gtk::CellRendererProgress is limited in one way, it does not support pulsing, it only allows you to set the current value of the progress bar. It provides two properties ((*text*)) and ((*value*))
+
+The progress bar state is defined by the value "property" which is an integer between 0 and 100. A value of 0 means empty, and 100 a full progress bar. Since the value is stored as an integer, the tree model model column corresponding to the value of the progress bar should have the type Integer. 
+
+The second property provided by the Gtk::CellRendererProgress is text. This property is a string that will be drawn over the top of the progress bar. Following is the example using progress bar renderer:
+
+((*liststore-progbarr.rb*))
+
+ #!/usr/bin/env ruby
+ require 'gtk2'
+ 
+ # Add three columns to the Gtk::TreeView. All three of the
+ # columns will be displayed as text, although one is a Boolean
+ # value and another is an integer.
+ def setup_tree_view(treeview)
+   # Create a new Gtk::CellRendererText, add it to the tree
+   # view column and append the column to the tree view.
+   renderer = Gtk::CellRendererText.new
+   column = Gtk::TreeViewColumn.new("Location", renderer, "text" => ActList::LOCATION)
+   treeview.append_column(column)
+   
+   # Create a new Gtk::CellRendererProgress, add it to the tree
+   # view column and append the column to the tree view.
+   renderer = Gtk::CellRendererProgress.new
+   column = Gtk::TreeViewColumn.new("Progress", renderer, "value" => ActList::ACTION)
+   treeview.append_column(column) 
+ end
+ 
+ window = Gtk::Window.new(Gtk::Window::TOPLEVEL)
+ window.resizable = true
+ window.title = "Progress List"
+ window.border_width = 10
+ window.signal_connect('delete_event') { Gtk.main_quit }
+ window.set_size_request(250, 150)
+ 
+ class ActList
+   attr_accessor :location, :action
+   def initialize(l, a); @location, @action = l, a; end
+   LOCATION = 0; ACTION = 1
+ end
+ 
+ list = [
+   ActList.new("www.alpha.net", 55),
+   ActList.new("www.boby.com", 15),
+   ActList.new("turtle.on.ca", 85),
+   ActList.new("www.kwackers.org", 30),
+   ActList.new("www.wealthy.org", 10)
+ ]
+ 
+ treeview = Gtk::TreeView.new
+ setup_tree_view(treeview)
+   
+ # Create a new tree model with two columns, as 
+ # string and integer.
+ store = Gtk::ListStore.new(String, Integer)
+ 
+ # Add all of the products to the GtkListStore.
+ list.each_with_index do |e, i|
+     iter = store.append
+     iter[ActList::LOCATION] = list[i].location
+     iter[ActList::ACTION]   = list[i].action
+     iter.next!
+ end
+ 
+ thread = Thread.start do
+   new_val = 0
+   iter = store.iter_first
+   loop {
+     new_val = iter[ActList::ACTION] + 5
+     new_val = 0 if new_val > 100
+     iter[ActList::ACTION] = new_val
+     sleep 0.05
+     iter.next!
+   }
+ end
+ 
+ # Add the tree model to the tree view
+ treeview.model = store
+ 
+ scrolled_win = Gtk::ScrolledWindow.new
+ scrolled_win.add(treeview)
+ scrolled_win.set_policy(Gtk::POLICY_AUTOMATIC, Gtk::POLICY_AUTOMATIC)
+ 
+ window.add(scrolled_win)
+ window.show_all
+ Gtk.main

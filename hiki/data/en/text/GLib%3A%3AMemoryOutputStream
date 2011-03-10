@@ -1,0 +1,84 @@
+= class GLib::MemoryOutputStream
+
+GLib::MemoryOutputStream is a class for using arbitrary memory chunks as output
+for GIO streaming output operations. 
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::OutputStream
+        * GLib::MemoryOutputStream
+
+== Included Modules
+
+  * GLib::Seekable
+
+== Class Methods
+
+--- GLib::MemoryOutputStream.new
+
+     Creates a new GLib::MemoryOutputStream.
+
+     * Returns: a new GLib::MemoryOutputStream
+
+== Instance Methods
+
+--- can_seek?
+
+    See GLib::Seekable#can_seek?.
+
+--- can_truncate?
+
+    See GLib::Seekable#can_truncate?.
+
+--- data
+
+     Gets the written data.
+
+     * Returns: A String containing the written data
+
+--- data_size
+
+    Gets the number of bytes of written data.
+
+     * Returns: The number of bytes of written data
+
+--- seek
+
+    See GLib::Seekable#seek.
+
+--- size
+
+    Gets the number of bytes currently available to write data into.
+
+     * Returns: The number of bytes currently available to write data into.
+
+--- tell
+
+    See GLib::Seekable#tell.
+
+--- truncate
+
+    See GLib::Seekable#truncate.
+
+== Properties
+
+--- data: String (Read/Write)
+
+     A String containing the written data
+
+--- data-size: Integer (Read)
+
+    The number of bytes of written data
+
+--- size: Integer (Read/Write)
+
+    The number of bytes currently available to write data into
+
+== See Also
+
+== ChangeLog
+
+

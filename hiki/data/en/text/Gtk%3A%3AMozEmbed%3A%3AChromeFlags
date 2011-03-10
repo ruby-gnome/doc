@@ -1,0 +1,118 @@
+= class Gtk::MozEmbed::ChromeFlags
+
+== Object Hierarchy
+
+* Object
+  * GLib::Flags
+    * Gtk::MozEmbed::ChromeFlags
+
+== Instance Methods
+
+--- allchrome?
+
+     * Returns: self: ((*FIXME*))
+
+--- centerscreen?
+
+     * Returns: self: ((*FIXME*))
+
+--- defaultchrome?
+
+     * Returns: self: ((*FIXME*))
+
+--- dependent?
+
+     * Returns: self: ((*FIXME*))
+
+--- extrachromeon?
+
+     * Returns: self: ((*FIXME*))
+
+--- locationbaron?
+
+     * Returns: self: ((*FIXME*))
+
+--- menubaron?
+
+     * Returns: self: ((*FIXME*))
+
+--- modal?
+
+     * Returns: self: ((*FIXME*))
+
+--- openaschrome?
+
+     * Returns: self: ((*FIXME*))
+
+--- openasdialog?
+
+     * Returns: self: ((*FIXME*))
+
+--- personaltoolbaron?
+
+     * Returns: self: ((*FIXME*))
+
+--- scrollbarson?
+
+     * Returns: self: ((*FIXME*))
+
+--- statusbaron?
+
+     * Returns: self: ((*FIXME*))
+
+--- titlebaron?
+
+     * Returns: self: ((*FIXME*))
+
+--- toolbaron?
+
+     * Returns: self: ((*FIXME*))
+
+--- windowborderson?
+
+     * Returns: self: ((*FIXME*))
+
+--- windowcloseon?
+
+     * Returns: self: ((*FIXME*))
+
+--- windowlowered?
+
+     * Returns: self: ((*FIXME*))
+
+--- windowraised?
+
+     * Returns: self: ((*FIXME*))
+
+--- windowresizeon?
+
+     * Returns: self: ((*FIXME*))
+
+== Constants
+
+--- ALLCHROME
+--- CENTERSCREEN
+--- DEFAULTCHROME
+--- DEPENDENT
+--- EXTRACHROMEON
+--- LOCATIONBARON
+--- MENUBARON
+--- MODAL
+--- OPENASCHROME
+--- OPENASDIALOG
+--- PERSONALTOOLBARON
+--- SCROLLBARSON
+--- STATUSBARON
+--- TITLEBARON
+--- TOOLBARON
+--- WINDOWBORDERSON
+--- WINDOWCLOSEON
+--- WINDOWLOWERED
+--- WINDOWRAISED
+--- WINDOWRESIZEON
+
+== See Also
+
+== ChangeLog
+
+

@@ -1,0 +1,54 @@
+= class Poppler::PSFile
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Poppler::PSFile
+
+== Class Methods
+
+--- Poppler::PSFile.new(document, filename, first_page, n_pages)
+
+     
+     Create a new postscript file to render to
+
+     * document: a Poppler::Document
+     * filename: the path of the output filename
+     * first_page: the first page to print
+     * n_pages: the number of pages to print
+     * Returns: a Poppler::PSFile
+
+== Instance Methods
+
+--- set_paper_size(width, height)
+
+     
+    Set the output paper size. These values will end up in
+    the DocumentMedia, the BoundingBox DSC comments and
+    other places in the generated PostScript.
+
+     * width: the paper width in 1/72 inch
+     * height: the paper height in 1/72 inch
+     * Returns: nil
+
+--- set_duplex(duplex)
+
+    Enable or disable Duplex printing.
+     
+     * duplex: whether to force duplex printing (on printers which support this)
+     * Returns: self
+
+--- duplex=(duplex)
+
+     
+     Same as #set_duplex but returns self.
+
+== See Also
+
+== ChangeLog
+
+* 2006-05-19 ((<kou>)): completed.
+
+- ((<kou>))

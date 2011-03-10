@@ -1,0 +1,128 @@
+= class Gdk::Event::Mask
+
+== Object Hierarchy
+
+* Object
+  * GLib::Flags
+    * Gdk::Event::Mask
+
+== Instance Methods
+
+--- all_events_mask?
+
+     * Returns: self: ((*FIXME*))
+
+--- button1_motion_mask?
+
+     * Returns: self: ((*FIXME*))
+
+--- button2_motion_mask?
+
+     * Returns: self: ((*FIXME*))
+
+--- button3_motion_mask?
+
+     * Returns: self: ((*FIXME*))
+
+--- button_motion_mask?
+
+     * Returns: self: ((*FIXME*))
+
+--- button_press_mask?
+
+     * Returns: self: ((*FIXME*))
+
+--- button_release_mask?
+
+     * Returns: self: ((*FIXME*))
+
+--- enter_notify_mask?
+
+     * Returns: self: ((*FIXME*))
+
+--- exposure_mask?
+
+     * Returns: self: ((*FIXME*))
+
+--- focus_change_mask?
+
+     * Returns: self: ((*FIXME*))
+
+--- key_press_mask?
+
+     * Returns: self: ((*FIXME*))
+
+--- key_release_mask?
+
+     * Returns: self: ((*FIXME*))
+
+--- leave_notify_mask?
+
+     * Returns: self: ((*FIXME*))
+
+--- pointer_motion_hint_mask?
+
+     * Returns: self: ((*FIXME*))
+
+--- pointer_motion_mask?
+
+     * Returns: self: ((*FIXME*))
+
+--- property_change_mask?
+
+     * Returns: self: ((*FIXME*))
+
+--- proximity_in_mask?
+
+     * Returns: self: ((*FIXME*))
+
+--- proximity_out_mask?
+
+     * Returns: self: ((*FIXME*))
+
+--- scroll_mask?
+
+     * Returns: self: ((*FIXME*))
+
+--- structure_mask?
+
+     * Returns: self: ((*FIXME*))
+
+--- substructure_mask?
+
+     * Returns: self: ((*FIXME*))
+
+--- visibility_notify_mask?
+
+     * Returns: self: ((*FIXME*))
+
+== Constants
+
+--- ALL_EVENTS_MASK
+--- BUTTON1_MOTION_MASK
+--- BUTTON2_MOTION_MASK
+--- BUTTON3_MOTION_MASK
+--- BUTTON_MOTION_MASK
+--- BUTTON_PRESS_MASK
+--- BUTTON_RELEASE_MASK
+--- ENTER_NOTIFY_MASK
+--- EXPOSURE_MASK
+--- FOCUS_CHANGE_MASK
+--- KEY_PRESS_MASK
+--- KEY_RELEASE_MASK
+--- LEAVE_NOTIFY_MASK
+--- POINTER_MOTION_HINT_MASK
+--- POINTER_MOTION_MASK
+--- PROPERTY_CHANGE_MASK
+--- PROXIMITY_IN_MASK
+--- PROXIMITY_OUT_MASK
+--- SCROLL_MASK
+--- STRUCTURE_MASK
+--- SUBSTRUCTURE_MASK
+--- VISIBILITY_NOTIFY_MASK
+
+== See Also
+
+== ChangeLog
+
+

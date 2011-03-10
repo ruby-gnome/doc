@@ -1,0 +1,85 @@
+= Hello Worldの詳細 
+背景にある動作原理は紹介したので、このhelloworldプログラムを詳しくみてみよう。 
+
+まずはRuby/GTK2の初期化を行う．
+これは全てのRuby/GTK2スクリプトに必要な処理である．
+
+  require 'gtk2'
+
+次に新しいボタンを作ろう．
+Gtk::Button.newの引数に指定したStringがこのボタンのラベルになる．
+このボタンは，次に作るウィンドウ内にパックされGtk::Widget#showメソッドが実行されるまで表示されない．
+  
+  button = Gtk::Button.new("Hello World")
+
+ボタンが押された時に何か処理を実行させるには，"clicked"シグナルにコールバックブロックを接続しよう．
+
+  button.signal_connect("clicked") {
+    puts "Hello World"
+  }
+
+次に新しくウィンドウを作ろう．
+このウィンドウは，プログラムの最後の方でGtk::Widget#show_allメソッドを呼び出すまで表示されない．
+  
+  window = Gtk::Window.new
+
+このウィンドウには複数のシグナルハンドラを接続することにする．
+
+"delete_event"はウィンドウマネージャからウィンドウをkillした際に発行されるイベントである．
+"delete_event"のコールバックブロックの値には重要な意味があって，
+trueは「このイベントに対する処理はこのブロックで行ないましたよ」を，
+falseは「このイベントの処理に対する処理はまだ終わっていません」を意味している．
+
+この例ではfalseを返しているため，"delete_event"に対する処理はまだ終わっていないことになる．
+するとGTKが自動的に"destory"シグナルを発行することになっている．
+従ってウィンドウを閉じるためにcloseボタンを押すと，
+"delete_event"と"destroy"シグナルのコールバックブロックが実行され2種類のメッセージが出力されることになる．
+
+"destroy"シグナルは，windowのdestroyメソッドを呼出しても発行される．
+
+  window.signal_connect("delete_event") {
+    puts "delete event occurred"
+    #true
+    false
+  }
+  
+  window.signal_connect("destroy") {
+    puts "destroy event occurred"
+    Gtk.main_quit
+  }
+
+なお，通常のアプリケーションでは"delete_event"と"destroy"シグナルのどちらかを利用してGtk.main_quitやそのウインドウをクローズさせる際の処理を記述することになる（両方記述する必要はない場合が多い）．
+
+次のメソッドではコンテナオブジェクト
+((-内部に別のウィジェットを格納できるウィジェットのこと．この場合はウィンドウ-))
+の属性を設定している．
+この例では，何もウィジェットが置かれない空白のエリアを、ウィンドウの内側に10ピクセルずつとるように設定している。
+他の同様の関数については((<ウィジェットの属性を設定する>))で紹介する。
+
+  window.border_width = 10
+
+次にパッキングを行う．
+詳しくは((<ウィジェットのパッキング>))で説明するが、この例は非常に簡単なのですぐに理解できると思う．
+単に、ボタンが表示されるウィンドウの中にボタンを置くと指定しているだけだ。
+GTKのコンテナは中に一つのウィジェットしか入らないことに注意しよう。
+複数のウィジェットを様々な方法でレイアウトできるウィジェットもあるので後で紹介する．
+
+  window.add(button)
+
+Gtk::Widget#show_allメソッドは内側のウィジェット全てと自分自身を表示するメソッドである．
+
+  window.show_all
+
+この例では
+
+  button.show
+  window.show
+
+としても同じ効果が得られるが，Gtk::Widget#show_allの方がお手軽である．
+
+そして、もちろん、Gtk.mainを呼んで、Xサーバから来るイベントを待ち、イベントが到着したらウィジェットがシグナルを発行するように要求する。
+一回Gtk.mainでイベントループに入ると，Gtk.main_quitが呼び出されるまでイベントループから抜け出すことはない．
+
+ウィンドウを閉じるためにcloseボタンを押すと，"delete_event"，"destory"シグナルの順に発行され，"destroy"シグナルのコールバックブロックの最後のGtk.main_quit呼び出しによってこのGtk.mainから抜け出すことになる．
+
+  Gtk.main

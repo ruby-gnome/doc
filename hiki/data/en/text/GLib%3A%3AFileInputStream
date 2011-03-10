@@ -1,0 +1,93 @@
+= class GLib::FileInputStream
+
+GLib::FileInputStream provides input streams that take their content from a
+file.
+
+GLib::FileInputStream implements GLib::Seekable, which allows the input stream
+to jump to arbitrary positions in the file, provided the filesystem of the file
+allows it.  To find the position of a file input stream, use
+GLib::Seekable#tell.  To find out if a file input stream supports seeking, use
+GLib::Seekable#can_seek?. To position a file input stream, use
+GLib::Seekable#seek.
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::InputStream
+        * GLib::FileInputStream
+
+== Included Modules
+
+  * GLib::Seekable
+
+== Instance Methods
+
+--- can_seek?
+
+    See GLib::Seekable#can_seek?.
+
+--- can_truncate?
+
+    See GLib::Seekable#can_truncate?.
+
+--- query_info(attributes, cancellable = nil)
+
+     Queries a file input stream for the given ((|attributes|)). This function
+     blocks while querying the stream. For the asynchronous (non-blocking)
+     version of this function, see GLib::FileInputStream#query_info_async.
+     While the stream is blocked, the stream will set the pending flag
+     internally, and any other operations on the stream will raise
+     GLib::IO::PendingError.
+
+     * attributes: A file attribute query String
+     * cancellable: Optional GLib::Cancellable object, nil to ignore
+     * Returns: A GLib::FileInfo
+
+--- query_info_async(attributes, io_priority = GLib::PRIORITY_DEFAULT, cancellable = nil){ |result| … }
+
+     Queries the stream information asynchronously.  When the operation is
+     finished, a GLib::AsyncResult is yielded. You can then call
+     GLib::FileInputStream#query_info_finish to get the result of the
+     operation.
+
+     For the synchronous version of this function, see
+     GLib::FileInputStream#query_info.
+
+     If ((|cancellable|)) is not nil, then the operation can be cancelled by
+     triggering the cancellable object from another thread. If the operation
+     was cancelled, GLib::IO::CancelledError will be raised.
+
+     * attributes: A file attribute query String
+     * io_priority: The I/O priority of the request
+     * cancellable: Optional GLib::Cancellable object, nil to ignore
+     * result: A GLib::AsyncResult
+     * Returns: self
+
+--- query_info_finish(result)
+
+     Finishes an asynchronous info query operation.
+
+     A GLib::IO::Error is raised if the GLib::FileInfo couldn’t be retrieved.
+
+     * result: A GLib::AsyncResult
+     * Returns: GLib::FileInfo
+
+--- seek
+
+    See GLib::Seekable#seek.
+
+--- tell
+
+    See GLib::Seekable#tell.
+
+--- truncate
+
+    See GLib::Seekable#truncate.
+
+== See Also
+
+== ChangeLog
+
+

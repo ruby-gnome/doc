@@ -1,0 +1,26 @@
+= Über Hiki/RD+
+((<Hiki>)) ist ein Wiki-Klon von TAKEUCHI Hitoshi.
+Es ist ein sparsamer und einfacher, aber cooler Wiki, geschrieben in ((<Ruby>)) mit der ((<Amrita|URL:http://www.brain-tokyo.jp/research/amrita/>))-Bibliothek.
+
+Hiki/RD+ ist ein auf Hiki basierender Wiki-Klon, der sich jedoch der Syntax (und Semantik) von RD bedient.
+Er bietet auch einige Verbesserungen, was das Schreiben von API-Referenz angeht.
+
+Hiki/RD+ existiert seit Hiki-0.5 als "style" für Hiki.
+
+=== Features
+--- ModuleNames
+    ModuleNames ist eine Modulliste für die automatische Generierung von Verweisen.
+
+--- Bilder
+    Bilder-URLs (mit der Endung png, jpg, jpeg oder gif) betten Bilder in die Seite ein.
+
+--- InterWiki+ (InterWiki Erweiterung)
+    InterWiki ist ein Mechanismus, um Verweise automatisch zu generieren. Das Verlinken anderer Sites wurde vereinfacht.
+
+Siehe ((<"Diese Seiten bearbeiten - aber wie?"|How to write this site>)) für Einzelheiten.
+
+== Versionsinformationen
+* ruby {{ruby_version_info}}
+* Hiki {{hiki_version_info}}
+
+- ((<Masao>)), Übersetzung: ((<Malte>))

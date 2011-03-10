@@ -1,0 +1,18 @@
+= class GLib::IO::WrongEtagError
+
+The file’s entity tag was incorrect.
+
+== Object Hierarchy
+
+* Object
+  * Exception
+    * StandardError
+      * IOError
+        * GLib::IO::Error
+          * GLib::IO::WrongEtagError
+
+== See Also
+
+== ChangeLog
+
+

@@ -1,0 +1,98 @@
+= class GLib::Emblem
+
+GLib::Emblem is an implementation of GLib::Icon that supports having an emblem,
+which is an icon with additional properties. It can than be added to a
+GLib::EmblemedIcon.
+
+Currently, only meta-information about the emblem’s origin is supported. More
+may be added in the future. 
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::Emblem
+
+== Included Modules
+
+  * GLib::Icon
+
+== Class Methods
+
+--- GLib::Emblem.new
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- ==
+
+    See GLib::Icon#==.
+
+--- eql?
+
+    See GLib::Icon#eql?.
+
+--- hash
+
+    See GLib::Icon#hash.
+
+--- icon
+
+    Gets the actual icon of the emblem.
+
+     * Returns: The actual icon of the emblem
+
+--- origin
+
+    Gets the GLib::EmblemOrigin that the emblem is derived from.
+
+     * Returns: The GLib::EmblemOrigin that the emblem is derived from
+
+--- to_s
+
+    See GLib::Icon#to_s.
+
+--- to_str
+
+    See GLib::Icon#to_str.
+
+--- to_string
+
+    See GLib::Icon#to_string.
+
+== Constants
+
+--- ORIGIN_DEVICE
+
+     The emblem adds device-specific information
+
+--- ORIGIN_LIVEMETADATA
+
+     The emblem depicts live meta-data, such as “read only”
+
+--- ORIGIN_TAG
+
+     The emblem comes from a user-defined tag, for example, set by Nautilus (in
+     the future)
+
+--- ORIGIN_UNKNOWN
+
+     The emblem is of unknown origin
+
+== Properties
+
+--- icon: GObject (Read/Write)
+
+    The actual icon of the emblem
+
+--- origin: GLib::EmblemOrigin (Read/Write)
+
+    The origin that the emblem is derived from
+
+== See Also
+
+== ChangeLog
+
+

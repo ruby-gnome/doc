@@ -1,0 +1,78 @@
+= class GLib::FileAttributeInfo
+
+Information about a specific attribute. 
+
+== Object Hierarchy
+
+* Object
+  * GLib::Boxed
+    * GLib::FileAttributeInfo
+
+== Instance Methods
+
+--- flags
+
+     Gets a set of GLib::FileAttributeInfo::Flags.
+
+     * Returns: A set of GLib::FileAttributeInfo::Flags
+
+--- name
+
+     Gets the name of this attribute.
+
+     * Returns: The name of this attribute
+
+--- type
+     
+     Gets The GLib::FileAttribute::Type of this attribute.
+
+     * Returns: The GLib::FileAttribute::Type of this attribute
+
+= class GLib::FileAttributeInfo::Flags
+
+Flags specifying the behaviour of an attribute. 
+
+== Object Hierarchy
+
+* Object
+  * GLib::Flags
+    * GLib::FileAttributeInfo::Flags
+
+== Instance Methods
+
+--- copy_when_moved?
+
+     Checks whether or not the attribute values are copied when the file is
+     moved.
+
+     * Returns: true if the attribute values are copied when the file is moved
+
+--- copy_with_file?
+
+     Checks whether or not attribute values are copied when the file is copied.
+
+     * Returns: true if the attribute values are copied when the file is copied
+
+--- none?
+
+     Checks whether or not any flags are set.
+
+     * Returns: true if no flags have been set
+
+== Constants
+
+--- COPY_WHEN_MOVED
+
+     Copy the attribute values when the file is moved
+
+--- COPY_WITH_FILE
+
+     Copy the attribute values when the file is copied
+
+--- NONE
+
+     No flags set
+
+== See Also
+
+== ChangeLog

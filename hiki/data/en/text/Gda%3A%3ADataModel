@@ -1,0 +1,239 @@
+= class Gda::DataModel
+Basic data model class.
+
+== Object Hierarchy
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Gda::DataModel
+
+== Instance Methods
+--- append_column(attributes)
+    Appends a column to the data model.
+    * attributes: a Gda::FieldAttributes object describing the column to add.  
+    * Returns: true if successful, false otherwise.
+
+--- append_row(*values)
+    Their length must match model's
+    column count.
+    Appends a row to the data model.
+    * values: a list of Gda::Value objects. 
+    * Returns: the added row, as a Gda::Row object, on success, nil on errors.
+
+--- begin_update
+    Starts update of this data model. This method should be the
+    first called when modifying the data model.
+    * Returns: true on success, false if there was an error.
+
+--- cancel_update
+    Cancels update of this data model. This means that all changes
+    will be discarded, and the old data put back in the model.
+    * Returns: true on success, false if there was an error.
+
+--- columns
+    This method returns a list of all column titles in the model, as an Array of strings.
+    * Returns: a list of all column titles in the model, as an Array of strings.
+
+--- command_text
+    Gets the text of command that generated this data model.
+    * Returns: a string with the command issued.
+
+--- command_text=(text)
+    Sets the command text of this data model.
+    * text: the command text.  
+    * Returns: the given parameter 'text'.
+
+--- command_type
+    This method returns the command type of this data model (see ((<GdaCommandType|Gda::Command#GdaCommandType>))).
+    * Returns: the command type of this data model (see ((<GdaCommandType|Gda::Command#GdaCommandType>))).
+
+--- command_type=(type)
+    Sets the command type of this data model.
+    * type: the command type (see ((<GdaCommandType|Gda::Command#GdaCommandType>))).  
+    * Returns: the given parameter 'type'.
+
+--- describe_column(colnum)
+    Queries the underlying data model implementation for a description of a
+    given column. That description is returned in the form of a 
+    Gda::FieldAttributes object, which contains all the information about the
+    given column in the data model.
+    * colnum: a column number.  
+    * Returns: the description of the column, as a Gda::FieldAttributes object.
+
+--- each_column { |col_title| ... }
+    Calls the block for each column title in the model, passing a reference
+    to a String object as parameter.
+    * Returns: always nil.
+
+--- each_row { |row| ... }
+    Calls the block for each row in the data model, passing a reference to a
+    Gda::Row object as parameter.
+    * Returns: always nil.
+
+--- emit_changed
+    Notifies listeners of the given data model object of changes in the
+    underlying data. Listeners usually will connect themselves to the "changed"
+    signal in the Gda::DataModel class, thus being notified of any new data
+    being appended or removed from the data model.
+    * Returns: self.
+
+--- emit_column_inserted(colnum)
+    Emits the 'column_inserted' and 'changed' signals on the model.
+    * colnum: a column number.  
+    * Returns: self.
+
+--- emit_column_removed(colnum)
+    Emits the 'column_removed' and 'changed' signals on the model.
+    * colnum: a column number.  
+    * Returns: self.
+
+--- emit_column_updated(colnum)
+    Emits the 'column_updated' and 'changed' signals on the model.
+    * colnum: a column number.  
+    * Returns: self.
+
+--- emit_row_inserted(rownum)
+    Emits the 'row_inserted' and 'changed' signals on the model.
+    * rownum: a row number.  
+    * Returns: self.
+
+--- emit_row_removed(rownum)
+    Emits the 'row_removed' and 'changed' signals on the model.
+    * rownum: a row number.  
+    * Returns: self.
+
+--- emit_row_updated(rownum)
+    Emits the 'row_updated' and 'changed' signals on the model.
+    * rownum: a row number.  
+    * Returns: self.
+
+--- end_update
+    Approves all modifications and send them to the underlying
+    data source/store.
+    * Returns: true on success, false if there was an error.
+
+--- freeze!
+    Disables notifications of changes on the data model. To re-enable
+    notifications again, you should call the Gda::DataModel#thaw method.
+    * Returns: self.
+
+--- get_column_pos(col_title)
+    Gets the position of a column on the data model, based on the column's title.
+    * col_title: a column title.  
+    * Returns: the position of the column in the data model, or -1 if the column could not be found.
+
+--- get_column_title(colnum)
+    This method returns the title for the given column in the model.
+    * colnum: a column number.  
+    * Returns: the title for the given column in the model.
+
+--- get_row(rownum)
+    Retrieves a given row from the data model.
+    * rownum: a row number.  
+    * Returns: the row, as a Gda::Row object, or nil if the given row number is invalid.
+
+--- get_value_at(colnum, rownum)
+    Retrieves the data stored in the given position in the data model.
+    This is the main function for accessing data in a model.
+    ..).
+    * rownum: a row number.  
+    * colnum: a column number. 
+    * Returns: a Ruby object according to the type of the column is successful, nil otherwise (out-of-bound position, etc.
+
+--- has_changed?
+    Checks whether this data model is in updating mode or not. Updating
+    mode is set to true when Gda::DataModel#begin_update has been
+    called successfully, and is not set back to false until either
+    Gda::DataModel#cancel_update or Gda::DataModel#end_update have been called.
+    * Returns: true if updating mode, false otherwise.
+
+--- n_columns
+    This method returns the number of columns in the model.
+    * Returns: the number of columns in the model.
+
+--- n_rows
+    This method returns the number of rows in the data model.
+    * Returns: the number of rows in the data model.
+
+--- remove_column(column_id)
+    Removes an existing column in the data model.
+    * column_id: the number of the column to be updated.  
+    * Returns: true if successful, false otherwise.
+
+--- remove_row(row)
+    Removes a row from the data model. This results in the underlying database
+    row being removed in the database.
+    * row: a Gda::Row object.  
+    * Returns: true if successful, false otherwise.
+
+--- rows
+    This method returns a list of all the rows in the data model, as an Array of Gda::Row objects.
+    * Returns: a list of all the rows in the data model, as an Array of Gda::Row objects.
+
+--- set_command_text(text)
+    Sets the command text of this data model.
+    * text: the command text.  
+    * Returns: self.
+
+--- set_command_type(type)
+    Sets the command type of this data model.
+    * type: the command type (see ((<GdaCommandType|Gda::Command#GdaCommandType>))).  
+    * Returns: self.
+
+--- thaw!
+    Re-enables notifications of changes on the given data model.
+    * Returns: self.
+
+--- to_comma_separated
+    Converts the given model into a comma-separated series of rows.
+    * Returns: the string representation of the model.
+
+--- to_tab_separated
+    Converts the given model into a tab-separated series of rows.
+    * Returns: the string representation of the model.
+
+--- to_xml(standalone=false)
+    Converts the given model into a XML representation.
+    * Returns: the string representation of the model.
+
+--- updatable?
+    This method returns true if the model can be updated, false otherwise.
+    * Returns: true if the model can be updated, false otherwise.
+
+--- update_column(column_id, attributes)
+    Updates an existing column in the data model.
+    * attributes: a Gda::FieldAttributes object describing the column to update.  
+    * column_id: the number of the column to be updated. 
+    * Returns: true if successful, false otherwise.
+
+--- update_row(row)
+    Updates a row data model. This results in the underlying database row's
+    values being changed.
+    * row: a Gda::Row object.  
+    * Returns: true if successful, false otherwise.
+
+== Signals
+--- begin-update
+
+--- cancel-update
+
+--- changed
+
+--- column-inserted
+
+--- column-removed
+
+--- column-updated
+
+--- end-update
+
+--- row-inserted
+
+--- row-removed
+
+--- row-updated
+
+== See Also
+((<Gda::DataModelArray>)), ((<Gda::DataModelHash>)), ((<Gda::DataModelList>)), ((<Gda>)).
+
+- ((<lrz>))

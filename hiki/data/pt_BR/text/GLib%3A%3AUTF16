@@ -1,0 +1,28 @@
+= module GLib::UTF16
+
+== Module Functions
+
+--- GLib::UTF16.to_ucs4(utf16)
+     Convert a string from UTF-16 to UCS-4. If the
+     conversion is not successful, it causes
+     GLib::ConvertError.
+
+     * utf16: a UTF-16 encoded String
+     * Returns: a UCS-4 encoded String
+
+--- GLib::UTF16.to_utf8(utf16)
+     Convert a string from UTF-16 to UTF-8. If the
+     conversion is not successful, it causes
+     GLib::ConvertError.
+
+     Note that the input is expected to be already in native
+     endianness, an initial byte-order-mark character is not
+     handled specially. GLib.convert can be used to convert a
+     byte buffer of UTF-16 data of ambiguous endianess.
+
+     * utf16: a UTF-16 encoded String
+     * Returns: a UTF-8 encoded String
+
+== ChangeLog
+
+  * 2006-12-10: moved from GLib. - ((<kou>))

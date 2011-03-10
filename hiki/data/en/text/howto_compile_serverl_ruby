@@ -1,0 +1,19 @@
+= How to compile Ruby-GNOME2 with several ruby binaries
+Sometimes you want to compile libraries under several ruby version.
+
+You can compile Ruby-GNOME2 in separate directories.
+
+ % mkdir build-ruby18
+ % cd build-ruby18
+ % ruby (Ruby-GNOME2 directory)/extconf.rb
+ % make 
+ % cd ..
+ % mkdir build-ruby19
+ % cd build-ruby19
+ % ruby19 (Ruby-GNOME2 directory)/extconf.rb
+ % make 
+ % cd ..
+ % mkdir build-yarv
+ % cd build-yarv
+ % ruby-yarv (Ruby-GNOME2 directory)/extconf.rb
+ % make

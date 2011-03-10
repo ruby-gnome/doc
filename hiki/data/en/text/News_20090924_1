@@ -1,0 +1,51 @@
+= News (2009-09-24)
+== Ruby-GNOME2 0.19.2 released
+((*Posted by kou on 2009-09-24 (Thu) 11:39:28*))
+
+Ruby-GNOME2 0.19.2 is out. Enjoy!
+
+This release is a bug fix release of 0.19.1.
+
+== Downloads
+
+: ((<ruby-gtk2-0.19.2.tar.gz|URL:http://downloads.sourceforge.net/ruby-gnome2/ruby-gtk2-0.19.2.tar.gz>))
+  The minimum package which includes Ruby/GLib2, Ruby/ATK, Ruby/GdkPixbuf2, Ruby/Pango, Ruby/GTK2.
+
+: ((<ruby-gnome2-all-0.19.2.tar.gz|URL:http://downloads.sourceforge.net/ruby-gnome2/ruby-gnome2-all-0.19.2.tar.gz>))
+   All of Ruby-GNOME2 libraries.
+
+== Changes
+
+=== Ruby/GLib2
+
+  * Bug fixes:
+    * empty $(vendorarchdir) related build problem on CentOS 5.3 x86_64.
+      [Toshiyuki Suzumura, Kouhei Sutou]
+    * [#2862022] fix multi thread blocking with Ruby
+      1.8.6-p368 or later and 1.8.7-p173 or later.
+      [Roy Wright, Andrea Dallera, Kouhei Sutou]
+    * [Debian #502262] work Ruby thread with GTK+.
+      [Johan Walles, Kouhei Sutou]
+
+=== Ruby/GTK2
+
+  * Bug fixes:
+    * [#2679744] fix a typo:
+      Gtk::Widget#set_scroll_adjustment ->
+      Gtk::Widget#set_scroll_adjustments.
+      [Kentaro Fukuchi, Kouhei Sutou]
+
+=== Ruby/GtkMozEmbed
+
+  * Bug fixes:
+    * fix .pc detection.
+      [OBATA Akio, Kouhei Sutou]
+
+== Thanks
+
+  * OBATA Akio
+  * Toshiyuki Suzumura
+  * Roy Wright
+  * Andrea Dallera
+  * Johan Walles
+  * Kentaro Fukuchi

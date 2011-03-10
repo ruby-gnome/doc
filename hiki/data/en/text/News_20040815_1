@@ -1,0 +1,14 @@
+= News (2004-08-15)
+== Ruby-GNOME2-0.10.1
+((*Posted by Masao on 2004-08-15 (Sun) 15:32:54*))
+
+Ruby-GNOME2-0.10.1 is now available.
+This fixed some serious bugs of Ruby-GNOME2-0.10.0.
+
+* Ruby/GTK: Fix compiling error under GTK+-2.0.x.
+* Ruby/GtkSourceView: Fix compiling error.
+* Ruby/GdkPixbuf: Fix some bugs.
+
+You don't need to upgrade your Ruby-GNOME2-0.10.0 unless any problems.
+
+Have fun.

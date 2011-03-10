@@ -1,0 +1,98 @@
+= module Gtk::Editable
+The Gtk::Editable is a module for widgets for editing text, such as Gtk::Entry. The editable class contains methods for generically manipulating an editable widget, a large number of action signals used for key bindings, and several signals that an application can connect to modify the behavior of a widget. 
+
+As an example of the latter usage, by connecting the following handler to "insert_text", an application can convert all entry into a widget into uppercase. 
+
+== Included Modules
+* GLib::Interface
+
+== Instance Methods
+--- select_region(start, end)
+    Selects a region of text. The characters that are selected are those characters at positions from start_pos up to, but not including end_pos. If end_pos is negative, then the the characters selected will be those characters from start_pos to the end of the text.
+    * start: the starting position. 
+    * end: the end position.  
+    * Returns: self
+
+--- selection_bounds
+    Gets the current selection bounds, if there is a selection.
+    * Returns: [start, end] or nil
+        * start: location to store the starting position, or nil. 
+        * end: location to store the end position, or nil. 
+
+--- insert_text(new_text, position)
+    Inserts text at a given position.
+    * new_text: the text to insert
+    * position: the position at which to insert the text
+    * Returns: a new position
+
+--- delete_text(start_pos, end_pos)
+    Deletes a sequence of characters. The characters that are deleted are those characters at positions from start_pos up to, but not including end_pos. If end_pos is negative, then the the characters deleted will be those characters from start_pos to the end of the text.
+    * start_pos: the starting position
+    * end_pos: the end position
+    * Returns: self
+
+--- get_chars(start_pos, end_pos)
+    Retrieves a sequence of characters. The characters that are retrieved are those characters at positions from start_pos up to, but not including end_pos. If end_pos is negative, then the the characters retrieved will be those characters from start_pos to the end of the text.
+    * start_pos: the starting position. 
+    * end_pos: the end position. 
+    * Returns: the String in the indicated region. 
+
+--- cut_clipboard
+    Causes the characters in the current selection to be copied to the clipboard and then deleted from the widget.
+    * Returns: self
+--- copy_clipboard
+    Causes the characters in the current selection to be copied to the clipboard.
+    * Returns: self
+--- paste_clipboard
+    Causes the contents of the clipboard to be pasted into the given widget at the current cursor position.
+    * Returns: self
+
+--- delete_selection
+    Deletes the current contents of the widget's selection and disclaims the selection.
+    * Returns: self
+
+--- position
+    Retrieves the current cursor position.
+    * Returns: the position of the cursor. The cursor is displayed before the character with the given (base 0) index in the widget. The value will be less than or equal to the number of characters in the widget. Note that this position is in characters, not in bytes.  
+--- position=(position)
+    Sets the cursor position.
+    * position: the position of the cursor. The cursor is displayed before the character with the given (base 0) index in the widget. The value must be less than or equal to the number of characters in the widget. A value of -1 indicates that the position should be set after the last character in the entry. Note that this position is in characters, not in bytes.  
+    * Returns: position
+--- set_position(position)
+    Same as Gtk::Editable#position=.
+    * position: the position of the cursor. The cursor is displayed before the character with the given (base 0) index in the widget. The value must be less than or equal to the number of characters in the widget. A value of -1 indicates that the position should be set after the last character in the entry. Note that this position is in characters, not in bytes.  
+    * Returns: self
+
+--- editable?
+    Retrieves whether editable is editable. See gtk_editable_set_editable().
+    * Returns: true if editable.
+--- editable=(is_editable)
+    Determines if the user can edit the text in the editable widget or not.
+    * is_editable: true if the user is allowed to edit the text in the widget.  
+    * Returns: is_editable
+--- set_editable(is_editable)
+    Same as Gtk::Editable#editable=.
+    * is_editable: true if the user is allowed to edit the text in the widget.  
+    * Returns: is_editable
+    * Returns: self
+
+== Signals
+--- changed: self
+    Indicates that the user has changed the contents of the widget. 
+    * self: the Gtk::Editable
+
+--- delete-text: self, start_pos, end_pos
+    This signal is emitted when text is deleted from the widget by the user. The default handler for this signal will normally be responsible for inserting the text, so by connecting to this signal and then stopping the signal with GLib::Instantiatable#signal_emit_stop, it is possible to modify the inserted text, or prevent it from being inserted entirely. The start_pos and end_pos parameters are interpreted as for Gtk::Editable#delete_text. 
+    * self: Gtk::Editable
+    * start_pos: the starting position
+    * end_pos: the end position
+
+--- insert-text: self, text, bytes, position 
+    This signal is emitted when text is inserted into the widget by the user. The default handler for this signal will normally be responsible for inserting the text, so by connecting to this signal and then stopping the signal with GLib::Instantiatable#signal_emit_stop, it is possible to modify the inserted text, or prevent it from being inserted entirely. 
+    * self: Gtk::Editable
+    * text: Inserted text
+    * bytes: the size of Inserted text
+    * position: the position, in characters, at which to insert the new text. this is an in-out parameter. After the signal emission is finished, it should point after the newly inserted text.  
+
+== ChangeLog
+* 2006-02-02 Revised. - ((<Masao>))

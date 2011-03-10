@@ -1,0 +1,65 @@
+= イベント
+上のシグナルメカニズムに加えて、GTKにはXのイベントメカニズムを反映した"イベント"がある。
+コールバック関数はこのイベントに対しても接続できる。
+イベントには以下のものがある。
+
+* event
+* button_press_event
+* button_release_event
+* scroll_event
+* motion_notify_event
+* delete_event
+* destroy_event
+* expose_event
+* key_press_event
+* key_release_event
+* enter_notify_event
+* leave_notify_event
+* configure_event
+* focus_in_event
+* focus_out_event
+* map_event
+* unmap_event
+* property_notify_event
+* selection_clear_event
+* selection_request_event
+* selection_notify_event
+* proximity_in_event
+* proximity_out_event
+* visibility_notify_event
+* client_event
+* no_expose_event
+* window_state_event
+
+コールバック関数をこのイベントに接続するには、先のようにGLib::Instantiatable#signal_connectを使い、"シグナル名"の代わりに上記の"イベント名"を指定する。
+
+  GLib::Instantiatable#signal_connect("イベント名") do
+    # "イベント名"に対する処理
+  end
+
+イベント用のコールバックブロックは2つ引数を取ることができる．
+
+  GLib::Instantiatable#signal_connect("イベント名") do |w, e|
+    # "イベント名"に対する処理
+  end
+
+(({w}))にはウィジェットが，(({e}))にはイベントが代入される．
+
+イベントのコールバックブロックの値で、GTKのイベントハンドリング機構に今のイベントを更に伝播すべきかどうかを指示する。
+trueを返すと、今のイベントは処理されたので、これ以上伝播しなくてもよいことを意味する。
+falseを返すと、通常のイベントハンドリングを続行することになる。
+このイベントの伝播処理の詳細については((<上級イベントとシグナル処理>))を参照してほしい。 
+
+GDKのセレクションとドラッグアンドドロップAPIもいくつかのイベントを発行するが，これらもGTKのシグナル機構に反映されている．
+以下のシグナルについての詳細は((<ドラッグアンドドロップ>))を参照
+((-というかドラッグアンドドロップについては要確認です．-))．
+
+* selection_received
+* selection_get
+* drag_begin_event
+* drag_end_event
+* drag_data_delete
+* drag_motion
+* drag_drop
+* drag_data_get
+* drag_data_received

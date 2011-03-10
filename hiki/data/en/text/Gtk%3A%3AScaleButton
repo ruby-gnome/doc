@@ -1,0 +1,193 @@
+= class Gtk::ScaleButton
+
+Gtk::ScaleButton provides a button which pops up a scale widget if clicked.
+This scale widget then allows you to set its value.
+
+Gtk::ScaleButton is commonly used for volume controls in multimedia applications.
+
+To respond to a changed value:
+  scale_button = Gtk::ScaleButton.new(Gtk::IconSize::BUTTON) 
+  scale_button.signal_connect(:value_changed) { |widget, value| puts "value changed: #{value}" }
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::InitiallyUnowned
+        * Gtk::Object
+          * Gtk::Widget
+            * Gtk::Container
+              * Gtk::Bin
+                * Gtk::Button
+                  * Gtk::ScaleButton
+
+== Included Modules
+
+  * #<Module:0x7fd7f0567618>
+
+== Class Methods
+
+--- Gtk::ScaleButton.new
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- adjustment
+
+    Gets the Gtk::Adjustment that contains the current value of this scale button object.
+     * Returns: The Gtk::Adjustment that contains the current value of this scale button object
+
+--- adjustment=(adjustment)
+
+    Sets the Gtk::Adjustment that contains the current value of this scale button object.
+     * adjustment: The Gtk::Adjustment that contains the current value of this scale button object
+     * Returns: adjustment
+
+--- icons
+
+    Gets the List of icon names.
+     * Returns: List of icon names
+
+--- icons=(icons)
+
+    Sets the List of icon names.
+     * icons: List of icon names
+     * Returns: icons
+
+--- popdown
+
+     * Returns: self: ((*FIXME*))
+
+--- popup
+
+     * Returns: self: ((*FIXME*))
+
+--- ref_accessible
+
+    See Atk::Implementor#ref_accessible.
+
+--- set_adjustment(adjustment)
+
+    Same as adjustment=.
+     * adjustment: The Gtk::Adjustment that contains the current value of this scale button object
+     * Returns: self
+
+--- set_icons(icons)
+
+    Same as icons=.
+     * icons: List of icon names
+     * Returns: self
+
+--- set_size(size)
+
+    Same as size=.
+     * size: The icon size
+     * Returns: self
+
+--- set_value(value)
+
+    Same as value=.
+     * value: The value of the scale
+     * Returns: self
+
+--- size
+
+    Gets the icon size.
+     * Returns: The icon size
+
+--- size=(size)
+
+    Sets the icon size.
+     * size: The icon size
+     * Returns: size
+
+--- value
+
+    Gets the value of the scale.
+     * Returns: The value of the scale
+
+--- value=(value)
+
+    Sets the value of the scale.
+     * value: The value of the scale
+     * Returns: value
+
+--- add_child
+
+    See Gtk::Buildable#add_child.
+
+--- construct_child
+
+    See Gtk::Buildable#construct_child.
+
+--- get_internal_child
+
+    See Gtk::Buildable#get_internal_child.
+
+--- name
+
+    See Gtk::Buildable#name.
+
+--- name=
+
+    See Gtk::Buildable#name=.
+
+--- set_buildable_property
+
+    See Gtk::Buildable#set_buildable_property.
+
+--- set_name
+
+    See Gtk::Buildable#set_name.
+
+--- builder_name
+
+    See Gtk::Buildable#builder_name.
+
+--- builder_name=
+
+    See Gtk::Buildable#builder_name=.
+
+--- set_builder_name
+
+    See Gtk::Buildable#set_builder_name.
+
+== Properties
+
+--- adjustment: Gtk::Adjustment (Read/Write)
+
+    The Gtk::Adjustment that contains the current value of this scale button object
+
+--- icons: Array (Read/Write)
+
+    List of icon names
+
+--- size: Gtk::IconSize (Read/Write)
+
+    The icon size
+
+--- value: Float (Read/Write)
+
+    The value of the scale
+
+== Signals
+
+--- popdown: self
+
+     * self: Gtk::ScaleButton: ((*FIXME*))
+
+--- popup: self
+
+     * self: Gtk::ScaleButton: ((*FIXME*))
+
+--- value-changed: self
+
+     * self: Gtk::ScaleButton: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

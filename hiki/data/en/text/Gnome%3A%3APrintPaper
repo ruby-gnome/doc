@@ -1,0 +1,84 @@
+= class Gnome::PrintPaper
+
+== Object Hierarchy
+
+* Object
+  * GLib::Boxed
+    * Gnome::PrintPaper
+
+== Class Methods
+
+--- Gnome::PrintPaper.default
+
+    
+     Get the default paper for the system.
+
+     * Returns: the default Gnome::PrintPaper
+
+--- Gnome::PrintPaper.get(name)
+
+    
+     Gets the paper represented by name ((|name|)), for
+     example: "A4".
+
+     * name: The name of the paper to get
+     * Returns: the Gnome::PrintPaper, (({nil})) if not found.
+
+--- Gnome::PrintPaper.get(width, height)
+
+     Gets the paper with width ((|width|)) and height
+     ((|height|)).
+
+     * width: The width of the paper
+     * height: The width of the paper
+     * Returns: the Gnome::PrintPaper, (({nil})) if not found.
+
+--- Gnome::PrintPaper.get(width, height, must_fit)
+
+     Gets the paper with dimensions closest to width
+     ((|width|)) and height ((|height|)). If ((|must_fit|))
+     is (({true})) then width and height must fit within the
+     dimensions of the returned paper.
+
+     * width: The width of the paper
+     * height: The width of the paper
+     * must_fit: Should ((|width|)) and ((|height|)) fit
+       within paper
+     * Returns: the Gnome::PrintPaper, (({nil})) if not found.
+
+--- Gnome::PrintPaper.list
+
+     
+     Get an array of all the papers available on the system.
+
+     * Returns: The array of papers
+
+== Instance Methods
+
+--- height
+
+     
+     * Returns: height of the paper
+
+--- name
+
+     
+     * Returns: name of the paper
+
+--- version
+
+     
+     * Returns: version of the paper
+
+--- width
+
+     
+     * Returns: width of the paper
+
+== See Also
+
+== ChangeLog
+
+* 2005-06-09 ((<kou>)): completed
+
+- ((<kou>))

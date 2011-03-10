@@ -1,0 +1,248 @@
+= class Gst::Clock
+
+Abstract class for global clocks.
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Gst::Object
+        * Gst::Clock
+
+== Instance Methods
+
+--- ==(clock)
+
+    This method returns true if two Gst::Clock objects are synchronized on the same time, false otherwise.
+    * clock: a Gst::Clock object.  
+    * Returns: true if two Gst::Clock objects are synchronized on the same time, false otherwise.
+
+--- active=(state)
+
+    Activates or deactivates the clock based on the active parameter. 
+    As soon as the clock is activated, the time will start ticking.
+    * state: a boolean value.  
+    * Returns: the given parameter 'state'.
+
+--- active?
+
+    This method returns true if the clock is active, false otherwise.
+    * Returns: true if the clock is active, false otherwise.
+
+--- event_time
+
+    Gets the "event time" of a given clock. An event on the clock happens 
+    whenever this method is called. This ensures that multiple events that 
+    happen shortly after each other are treated as if they happened at the same 
+    time. GStreamer uses to keep state changes of multiple elements in sync.
+    * Returns: the time of the event (in nanoseconds).
+
+--- get_event_time_delay(delay)
+
+    Gets the "event time" of a given clock. An event on the clock happens 
+    whenever this method is called. This ensures that multiple events that 
+    happen shortly after each other are treated as if they happened at the same 
+    time. GStreamer uses to keep state changes of multiple elements in sync.
+    When calling this method, the specified delay will be added to the current 
+    time to produce the event time. This can be used for events that are 
+    scheduled to happen at some point in the future.
+    * delay: time before the event actually occurs (in nanoseconds).  
+    * Returns: the time of the event (in nanoseconds).
+
+--- handle_discont(time)
+
+    Notifies the clock of a discontinuity in time (nanoseconds).
+    It is possible that the clock was not updated by this call because only 
+    the first discontinuitity in the pipeline is honoured.
+    * time: time in nanoseconds.  
+    * Returns: true if the clock was updated, otherwise false.
+
+--- next_entry
+
+    Synonym for Gst::Clock#next_id.
+    * Returns: the clock ID of the next event, or nil is no event is pending.
+
+--- next_id
+
+    Gets the clock ID of the next event.
+    * Returns: the clock ID of the next event, or nil is no event is pending.
+
+--- reset!
+
+    Reset the clock to time 0.
+    * Returns: self.
+
+--- resolution
+
+    This method returns the accuracy of the clock.
+    * Returns: the accuracy of the clock.
+
+--- resolution=(resolution)
+
+    Sets the accuracy of the clock.
+    * resolution: the accurary of the clock.  
+    * Returns: the given parameter 'resolution'.
+
+--- set_active(state)
+
+    Activates or deactivates the clock based on the active parameter. 
+    As soon as the clock is activated, the time will start ticking.
+    * state: a boolean value.  
+    * Returns: self.
+
+--- set_resolution(resolution)
+
+    Sets the accuracy of the clock.
+    * resolution: the accurary of the clock.  
+    * Returns: self.
+
+--- set_speed(speed)
+
+    Sets the speed of the clock.
+    1.0 is the default speed.
+    * speed: the speed of the clock.  
+    * Returns: self.
+
+--- speed
+
+    This method returns the speed of the clock.
+    * Returns: the speed of the clock.
+
+--- speed=(speed)
+
+    Sets the speed of the clock.
+    1.0 is the default speed.
+    * speed: the speed of the clock.  
+    * Returns: the given parameter 'speed'.
+
+--- time
+
+    This method returns the time of the clock (in nanoseconds).
+    * Returns: the time of the clock (in nanoseconds).
+
+--- set_stats(stats)
+
+    Same as stats=.
+     * stats: Enable clock stats (unimplemented)
+     * Returns: self
+
+--- set_timeout(timeout)
+
+    Same as timeout=.
+     * timeout: The amount of time, in nanoseconds, to sample master and slave clocks
+     * Returns: self
+
+--- set_window_size(window_size)
+
+    Same as window_size=.
+     * window_size: The size of the window used to calculate rate and offset
+     * Returns: self
+
+--- set_window_threshold(window_threshold)
+
+    Same as window_threshold=.
+     * window_threshold: The threshold to start calculating rate and offset
+     * Returns: self
+
+--- stats=(stats)
+
+    Sets the Enable clock stats (unimplemented).
+     * stats: Enable clock stats (unimplemented)
+     * Returns: stats
+
+--- stats?
+
+    Gets the Enable clock stats (unimplemented).
+     * Returns: Enable clock stats (unimplemented)
+
+--- timeout
+
+    Gets the amount of time, in nanoseconds, to sample master and slave clocks.
+     * Returns: The amount of time, in nanoseconds, to sample master and slave clocks
+
+--- timeout=(timeout)
+
+    Sets the amount of time, in nanoseconds, to sample master and slave clocks.
+     * timeout: The amount of time, in nanoseconds, to sample master and slave clocks
+     * Returns: timeout
+
+--- window_size
+
+    Gets the size of the window used to calculate rate and offset.
+     * Returns: The size of the window used to calculate rate and offset
+
+--- window_size=(window_size)
+
+    Sets the size of the window used to calculate rate and offset.
+     * window_size: The size of the window used to calculate rate and offset
+     * Returns: window_size
+
+--- window_threshold
+
+    Gets the threshold to start calculating rate and offset.
+     * Returns: The threshold to start calculating rate and offset
+
+--- window_threshold=(window_threshold)
+
+    Sets the threshold to start calculating rate and offset.
+     * window_threshold: The threshold to start calculating rate and offset
+     * Returns: window_threshold
+
+== Constants
+
+=== GstClockFlags
+
+--- FLAG_CAN_DO_PERIODIC_ASYNC
+--- FLAG_CAN_DO_PERIODIC_SYNC
+--- FLAG_CAN_DO_SINGLE_ASYNC
+--- FLAG_CAN_DO_SINGLE_SYNC
+--- FLAG_CAN_SET_RESOLUTION
+--- FLAG_CAN_SET_SPEED
+=== GstClockReturn
+
+--- EARLY
+--- ERROR
+--- STOPPED
+--- TIMEOUT
+--- UNSUPPORTED
+--- BADTIME
+--- BUSY
+--- FLAG_CAN_SET_MASTER
+--- FLAG_LAST
+--- OK
+--- UNSCHEDULED
+
+== Properties
+
+--- event-diff: Integer (Read/Write)
+
+    The amount of time that may elapse until 2 events are treated as happening at different times.
+
+--- max-diff: Integer (Read/Write)
+
+    The maximum amount of time to wait in nanoseconds.
+
+--- stats: true or false (Read/Write)
+
+    Enable clock stats.
+
+--- timeout: Integer (Read/Write)
+
+    The amount of time, in nanoseconds, to sample master and slave clocks
+
+--- window-size: Integer (Read/Write)
+
+    The size of the window used to calculate rate and offset
+
+--- window-threshold: Integer (Read/Write)
+
+    The threshold to start calculating rate and offset
+
+== See Also
+
+((<Gst::SystemClock>)), ((<Gst>)).
+
+== ChangeLog
+
+- ((<lrz>))

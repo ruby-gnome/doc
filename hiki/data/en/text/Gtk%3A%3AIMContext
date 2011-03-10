@@ -1,0 +1,98 @@
+= class Gtk::IMContext
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Gtk::IMContext
+
+== Instance Methods
+
+--- client_window=
+
+     * Returns: self: ((*FIXME*))
+
+--- cursor_location=
+
+     * Returns: self: ((*FIXME*))
+
+--- delete_surrounding
+
+     * Returns: self: ((*FIXME*))
+
+--- filter_keypress
+
+     * Returns: self: ((*FIXME*))
+
+--- focus_in
+
+     * Returns: self: ((*FIXME*))
+
+--- focus_out
+
+     * Returns: self: ((*FIXME*))
+
+--- preedit_string
+
+     * Returns: self: ((*FIXME*))
+
+--- reset
+
+     * Returns: self: ((*FIXME*))
+
+--- set_client_window
+
+     * Returns: self: ((*FIXME*))
+
+--- set_cursor_location
+
+     * Returns: self: ((*FIXME*))
+
+--- set_surrounding
+
+     * Returns: self: ((*FIXME*))
+
+--- set_use_preedit
+
+     * Returns: self: ((*FIXME*))
+
+--- surrounding
+
+     * Returns: self: ((*FIXME*))
+
+--- use_preedit=
+
+     * Returns: self: ((*FIXME*))
+
+== Signals
+
+--- commit: self
+
+     * self: Gtk::IMContext: ((*FIXME*))
+
+--- delete-surrounding: self
+
+     * self: Gtk::IMContext: ((*FIXME*))
+
+--- preedit-changed: self
+
+     * self: Gtk::IMContext: ((*FIXME*))
+
+--- preedit-end: self
+
+     * self: Gtk::IMContext: ((*FIXME*))
+
+--- preedit-start: self
+
+     * self: Gtk::IMContext: ((*FIXME*))
+
+--- retrieve-surrounding: self
+
+     * self: Gtk::IMContext: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

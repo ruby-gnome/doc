@@ -1,0 +1,131 @@
+= class Gdk::Pixmap
+
+Pixmaps are offscreen drawables. They can be drawn upon with the standard drawing primitives, then copied to another drawable (such as a Gdk::Window) with Gdk::Drawable#draw_drawable. The depth of a pixmap is the number of bits per pixels. Bitmaps are simply pixmaps with a depth of 1. (That is, they are monochrome bitmaps - each pixel can be either on or off).
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Gdk::Drawable
+        * Gdk::Pixmap
+
+== Class Methods
+
+--- Gdk::Pixmap.new(window, width, height, depth)
+
+    Create a new pixmap with a given size and depth.
+    * window: a Gdk::Window, used to determine default values for the new pixmap. Can be nil if depth is specified.
+    * width: The width of the new pixmap in pixels.
+    * height: The height of the new pixmap in pixels. 
+    * depth: The depth (number of bits per pixel) of the new pixmap. If -1, and window is not nil, the depth of the new pixmap will be equal to that of window. 
+    * Returns: the new Gdk::Pixmap
+
+--- Gdk::Pixmap.create_from_data(window, data, width, height, depth = nil, fg = nil, bg = nil)
+
+    Creates a new pixmap/bitmap(depth=nil) from data in XBM format.
+    * window: a Gdk::Window, used to determine default values for the new pixmap. Can be nil, in which case the root window is used. 
+    * data: a String containing the XBM data. 
+    * width: the width of the new pixmap in pixels. 
+    * height: the height of the new pixmap in pixels. 
+    * depth: the depth (number of bits per pixel) of the new pixmap, or nil for the bitmap. 
+    * fg: the foreground color(Gdk::Color), or nil for the bitmap.
+    * bg: the background color(Gdk::Color), or nil for the bitmap.
+    * Returns : the new Gdk::Pixmap
+
+--- Gdk::Pixmap.create_from_xpm(window, transparent_color, filename)
+
+    Create a pixmap from a XPM file.
+    * window: a Gdk::Window, used to determine default values for the new pixmap. 
+    * transparent_color: the Gdk::Color to be used for the pixels that are transparent in the input file. Can be nil, in which case a default color will be used. 
+    * filename: the filename of a file containing XPM data. 
+    * Returns: [pixmap, mask]
+       * pixmap: a new Gdk::Pixmap
+       * mask: a new Gdk::Pixmap of a bitmap representing the transparency mask of the XPM file.
+
+--- Gdk::Pixmap.colormap_create_from_xpm(window, colormap, transparent_color, filename)
+
+    Create a pixmap from a XPM file using a particular colormap.
+    * window: a Gdk::Window, used to determine default values for the new pixmap. Can be nil if colormap is given. 
+    * colormap: the Gdk::Colormap that the new pixmap will be use. If nil, the colormap for window will be used. 
+    * transparent_color: the color to be used for the pixels that are transparent in the input file. Can be nil, in which case a default color will be used. 
+    * filename: the filename of a file containing XPM data. 
+    * Returns: [pixmap, mask]
+       * pixmap: a new Gdk::Pixmap
+       * mask: a new Gdk::Pixmap of a bitmap representing the transparency mask of the XPM file.
+
+--- Gdk::Pixmap.create_from_xpm_d(window, transparent_color, data)
+
+    Create a pixmap from data in XPM format.
+    * window: a Gdk::Window, used to determine default values for the new pixmap. 
+    * transparent_color: This color will be used for the pixels that are transparent in the input file. Can be nil in which case a default color will be used. 
+    * data: a String containing the XPM data. 
+    * Returns: [pixmap, mask]
+       * pixmap: a new Gdk::Pixmap
+       * mask: a new Gdk::Pixmap of a bitmap representing the transparency mask of the XPM file.
+
+--- Gdk::Pixmap.colormap_create_from_xpm_d(window, colormap, transparent_color, data)
+
+    Create a pixmap from data in XPM format using a particular colormap.
+    * window: a Gdk::Window, used to determine default values for the new pixmap. Can be nil if colormap is given. 
+    * colormap: the Gdk::Colormap that the new pixmap will be use. If nil, the colormap for window will be used. 
+    * transparent_color: the color to be used for the pixels that are transparent in the input file. Can be nil, in which case a default color will be used. 
+    * Returns: [pixmap, mask]
+       * pixmap: a new Gdk::Pixmap
+       * mask: a new Gdk::Pixmap of a bitmap representing the transparency mask of the XPM file.
+
+--- Gdk::Pixmap.create_from_xbm(window, filename)
+
+    Create a pixmap from data in XBM format. ((* X11 version only *))
+    * window: a Gdk::Window, used to determine default values for the new pixmap. Can be nil, in which case the root window is used. 
+    * filename: the filename of a file containing XBM data. 
+    * Returns: a new Gdk::Pixmap
+
+--- Gdk::Pixmap.foreign_new
+
+     * Returns: self: ((*FIXME*))
+
+--- Gdk::Pixmap.lookup
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- gl_capable?
+
+    ((*Ruby/GtkGlExt*)) Returns whether the pixmap is OpenGL-capable.
+    * Returns: true if the pixmap is OpenGL-capable, false otherwise.
+
+--- gl_drawable
+
+    ((*Ruby/GtkGlExt*)) Returns the Gdk::GLDrawable held by the pixmap. In fact, this is a macro that casts the result of Gdk::Pixmap#gl_pixmap to Gdk::GLDrawable.
+    * Returns: the Gdk::GLDrawable.
+
+--- gl_pixmap
+
+    ((*Ruby/GtkGlExt*)) Returns the Gdk::GLPixmap held by the pixmap.
+    * Returns: the Gdk::GLPixmap.
+
+--- set_gl_capability(glconfig)
+
+    ((*Ruby/GtkGlExt*)) Set the OpenGL-capability to the pixmap. This function creates a new Gdk::GLPixmap held by the pixmap.
+    * glconfig: a Gdk::GLConfig.
+    * Returns: the Gdk::GLPixmap used by the pixmap if it is successful, nil otherwise.
+
+--- unset_gl_capability
+
+    ((*Ruby/GtkGlExt*)) Unset the OpenGL-capability of the pixmap. This function destroys the Gdk::GLPixmap held by the pixmap.
+    * Returns: self
+
+* ((<Scritch>)) - Add a part of Ruby/GtkGlExt
+* ((<Masao>)) - Add a part of Ruby/GTK
+
+--- gl_capability=
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

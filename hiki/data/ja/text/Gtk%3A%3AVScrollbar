@@ -1,0 +1,33 @@
+= Gtk::VScrollbar クラス
+Gtk::VScrollbar は、垂直スクロールバーのウィジェットです。
+スクロールバーの詳細については、Gtk::Scrollbar をご覧下さい。
+スクロールバーの位置調整には、Gtk::Adjustment を使用します。
+別途位置調整を行う場合には、引数にnilを指定してください。
+詳細は Gtk::Adjustment を参照。
+
+== オブジェクト階層
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Gtk::Object
+        * Gtk::Widget
+          * Gtk::Range
+            * Gtk::Scrollbar
+              * Gtk::VScrollbar
+
+== クラスメソッド
+--- Gtk::VScrollbar.new(adjustment = nil)
+    新しい垂直スクロールバーを生成します。
+    * adjustment: Gtk::Adjustment のインスタンスを指定します。
+      別途ウィジェットを生成し、その中で Gtk::Adjustment のインスタンスを
+      指定するようなときは nil を指定します。
+      (Gtk::ScrolledWindow、Gtk::Viewport など参照のこと）
+    * 戻り値: Gtk::VScrollbar のインスタンス
+
+== 参照
+Gtk::Scrollbar, Gtk::ScrolledWindow 
+
+== ChangeLog
+* 2005-10-19 adjustmentのnil指定を修正 ((<高木喬>))
+* 2005-10-18 和訳 - ((<高木喬>))
+((<Masao>))

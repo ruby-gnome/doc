@@ -1,0 +1,117 @@
+= class Atk::Object::Role
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * Atk::Object::Role
+
+== Class Methods
+
+--- Atk::Object::Role.for_name
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- localized_name
+
+     * Returns: self: ((*FIXME*))
+
+== Constants
+
+--- ACCEL_LABEL
+--- ALERT
+--- ANIMATION
+--- APPLICATION
+--- ARROW
+--- AUTOCOMPLETE
+--- CALENDAR
+--- CANVAS
+--- CAPTION
+--- CHART
+--- CHECK_BOX
+--- CHECK_MENU_ITEM
+--- COLOR_CHOOSER
+--- COLUMN_HEADER
+--- COMBO_BOX
+--- DATE_EDITOR
+--- DESKTOP_FRAME
+--- DESKTOP_ICON
+--- DIAL
+--- DIALOG
+--- DIRECTORY_PANE
+--- DOCUMENT_FRAME
+--- DRAWING_AREA
+--- EDITBAR
+--- EMBEDDED
+--- ENTRY
+--- FILE_CHOOSER
+--- FILLER
+--- FONT_CHOOSER
+--- FOOTER
+--- FORM
+--- FRAME
+--- GLASS_PANE
+--- HEADER
+--- HEADING
+--- HTML_CONTAINER
+--- ICON
+--- IMAGE
+--- INPUT_METHOD_WINDOW
+--- INTERNAL_FRAME
+--- INVALID
+--- LABEL
+--- LAST_DEFINED
+--- LAYERED_PANE
+--- LINK
+--- LIST
+--- LIST_ITEM
+--- MENU
+--- MENU_BAR
+--- MENU_ITEM
+--- OPTION_PANE
+--- PAGE
+--- PAGE_TAB
+--- PAGE_TAB_LIST
+--- PANEL
+--- PARAGRAPH
+--- PASSWORD_TEXT
+--- POPUP_MENU
+--- PROGRESS_BAR
+--- PUSH_BUTTON
+--- RADIO_BUTTON
+--- RADIO_MENU_ITEM
+--- REDUNDANT_OBJECT
+--- ROOT_PANE
+--- ROW_HEADER
+--- RULER
+--- SCROLL_BAR
+--- SCROLL_PANE
+--- SECTION
+--- SEPARATOR
+--- SLIDER
+--- SPIN_BUTTON
+--- SPLIT_PANE
+--- STATUSBAR
+--- TABLE
+--- TABLE_CELL
+--- TABLE_COLUMN_HEADER
+--- TABLE_ROW_HEADER
+--- TEAR_OFF_MENU_ITEM
+--- TERMINAL
+--- TEXT
+--- TOGGLE_BUTTON
+--- TOOL_BAR
+--- TOOL_TIP
+--- TREE
+--- TREE_TABLE
+--- UNKNOWN
+--- VIEWPORT
+--- WINDOW
+
+== See Also
+
+== ChangeLog
+
+

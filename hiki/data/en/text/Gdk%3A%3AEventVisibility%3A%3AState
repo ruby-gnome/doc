@@ -1,0 +1,19 @@
+= class Gdk::EventVisibility::State
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * Gdk::EventVisibility::State
+
+== Constants
+
+--- FULLY_OBSCURED
+--- PARTIAL
+--- UNOBSCURED
+
+== See Also
+
+== ChangeLog
+
+

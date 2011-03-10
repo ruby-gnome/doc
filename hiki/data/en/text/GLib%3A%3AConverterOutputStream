@@ -1,0 +1,44 @@
+= class GLib::ConverterOutputStream
+
+GLib::ConverterOutputStream implements GLib::OutputStream and allows conversion
+of data of various types during writing.
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::OutputStream
+        * GLib::FilterOutputStream
+          * GLib::ConverterOutputStream
+
+== Class Methods
+
+--- GLib::ConverterOutputStream.new(base_stream, converter)
+
+     Creates a new GLib::ConverterOutputStream for ((|base_stream|)), using
+     ((|converter|)) for conversions.
+
+     * base_stream: A Glib::OutputStream
+     * converter: A GLib::Converter
+     * Returns: a new GLib::ConverterOutputStream
+
+== Instance Methods
+
+--- converter
+
+     Gets the GLib::Converter that is used for conversions.
+
+     * Returns: The GLib::Converter that is used for conversions
+
+== Properties
+
+--- converter: GLib::Converter (Read/Write)
+
+     The GLib::Converter that is used for conversions
+
+== See Also
+
+== ChangeLog
+
+

@@ -1,0 +1,18 @@
+= class GLib::IO::NoSpaceError
+
+No space left on drive.
+
+== Object Hierarchy
+
+* Object
+  * Exception
+    * StandardError
+      * IOError
+        * GLib::IO::Error
+          * GLib::IO::NoSpaceError
+
+== See Also
+
+== ChangeLog
+
+

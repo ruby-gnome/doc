@@ -1,0 +1,20 @@
+= class Gtk::Toolbar::Style
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * Gtk::Toolbar::Style
+
+== Constants
+
+--- BOTH
+--- BOTH_HORIZ
+--- ICONS
+--- TEXT
+
+== See Also
+
+== ChangeLog
+
+

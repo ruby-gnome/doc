@@ -1,0 +1,158 @@
+= class Gtk::Expander
+A Gtk::Expander allows the user to hide or show its child by clicking on an expander triangle similar to the triangles used in a Gtk::TreeView. 
+
+Normally you use an expander as you would use any other descendant of Gtk::Bin; you create the child widget and use Gtk::Container#add to add it to the expander. When the expander is toggled, it will take care of showing and hiding the child automatically. 
+
+==== Special Usage
+There there are situations in which you may prefer to show and hide the expanded widget yourself, such as when you want to actually create the widget at expansion time. In this case, create a Gtk::Expander but do not add a child to it. The expander widget has an expanded property which can be used to monitor its expansion state. You should watch this property with a signal connection as follows: 
+
+ expander = Gtk::Expander.new("_More Options", true)
+ expander.signal_connect("notify::expanded"){
+   if expander.expanded?
+      puts "Show or create widgets"
+   else
+      puts "Hide or destroy widgets"
+   end
+ }
+
+
+== Object Hierarchy
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::InitiallyUnowned
+        * Gtk::Object
+          * Gtk::Widget
+            * Gtk::Container
+              * Gtk::Bin
+                * Gtk::Expander
+
+== Class Methods
+--- Gtk::Expander.new(label, with_markup = false)
+    Creates a new expander using label as the text of the label. If with_markup is true and the characters in label are preceded by an underscore, they are underlined. If you need a literal underscore character in a label, use '__' (two underscores). The first underlined character represents a keyboard accelerator called a mnemonic. Pressing Alt and that key activates the button. If with_markup is false, they aren't underlined. ((* Since 2.4 *))
+    * label: the text of the label with an underscore in front of the mnemonic character or text without underscore.
+    * Returns: a new Gtk::Expander widget.  
+
+== Instance Methods
+--- expanded?
+    Queries a Gtk::Expander and returns its current state. Returns true if the child widget is revealed. See Gtk::Expander#expanded=. ((* Since 2.4 *))
+    * Returns: the current state of the expander. 
+--- expanded=(expanded)
+    Sets the state of the expander. Set to true, if you want the child widget to be revealed, and false if you want the child widget to be hidden. ((* Since 2.4 *))
+    * expanded: true if the child widget is revealed, otherwise false
+    * Returns: expanded
+--- set_expanded(expanded)
+    Same as Gtk::Expander#expanded=. ((* Since 2.4 *))
+    * expanded: true if the child widget is revealed, otherwise false
+    * Returns: self
+
+--- spacing
+    Gets the value set by Gtk::Expander#spacing=. ((* Since 2.4 *))
+    * Returns: spacing between the expander and child.  
+--- spacing=(spacing)
+    Sets the spacing field of expander, which is the number of pixels to place between expander and the child. ((* Since 2.4 *))
+    * spacing : distance between the expander and child in pixels.(Integer) 
+    * Returns: spacing
+--- set_spacing(spacing)
+    Same as Gtk::Expander#spacing=. ((* Since 2.4 *))
+    * spacing : distance between the expander and child in pixels.(Integer) 
+    * Returns: self
+
+--- label
+    Fetches the text from the label of the expander, as set by Gtk::Expander#label=. If the label text has not been set the return value will be nil. This will be the case if you create an empty button with Gtk::Button.new to use as a container. ((* Since 2.4 *))
+    * Returns: The text of the label widget
+--- label=(label)
+    Sets the text of the label of the expander to label. This will also clear any previously set labels.
+    * label: a String  
+    * Returns: label
+--- set_label(label)
+    Same as Gtk::Expander#label=. ((* Since 2.4 *))
+    * label: a String  
+    * Returns: self
+
+--- use_underline?
+    Returns whether an embedded underline in the expander label indicates a mnemonic. See Gtk::Expander#use_underline=. ((* Since 2.4 *))
+    * Returns: true if an embedded underline in the expander label indicates the mnemonic accelerator keys.
+--- use_underline=(use_underline)
+    If true, an underline in the text of the expander label indicates the next character should be used for the mnemonic accelerator key. ((* Since 2.4 *))
+    * use_underline: true if underlines in the text indicate mnemonics 
+    * Returns: use_underline
+--- set_use_underline(use_underline)
+    Same as Gtk::Expander#use_underline=. ((* Since 2.4 *))
+    * use_underline: true if underlines in the text indicate mnemonics 
+    * Returns: self
+
+--- use_markup?
+    Returns whether the label's text is interpreted as marked up with the Pango text markup language. See Gtk::Expander#use_markup=. ((* Since 2.4 *))
+    * Returns: The text of the label includes XML markup. See Pango.parse_markup
+--- use_markup=(use_markup)
+    Sets whether the text of the label contains markup in Pango's text markup language. See Gtk::Label#markup=. ((* Since 2.4 *))
+    * use_markup: true if the label's text should be parsed for markup 
+    * Returns: use_markup
+--- set_use_markup(use_markup)
+    Same as Gtk::Expander#use_markup=. ((* Since 2.4 *))
+    * use_markup: true if the label's text should be parsed for markup 
+    * Returns: self
+
+--- label_widget
+    Retrieves the label widget for the frame. See Gtk::Expander#label_widget=. ((* Since 2.4 *))
+    * Returns : the label widget, or nil if there is none.  
+--- label_widget=(label_widget)
+    Set the label widget for the expander. This is the widget that will appear embedded alongside the expander arrow. ((* Since 2.4 *))
+    * label_widget: the new label widget (Gtk::Widget)
+    * Returns: label_widget
+--- set_label_widget(label_widget)
+    Same as Gtk::Expander#label_widget=. ((* Since 2.4 *))
+    * label_widget: the new label widget (Gtk::Widget)
+    * Returns: self
+
+--- activate
+    Emits an "activate" signal. ((* Since 2.4 *))
+    * Returns: self
+
+
+== Properties
+--- expanded: true or false (Read/Write)
+    Whether the expander has been opened to reveal the child widget. ((* Since 2.4 *))
+    * Default value: false
+
+--- label: String (Read/Write)
+    Text of the expander's label ((* Since 2.4 *))
+    * Default value: nil
+
+--- label-widget: Gtk::Widget (Read/Write)
+    A widget to display in place of the usual expander label. ((* Since 2.4 *))
+
+--- spacing: Integer (Read/Write)
+    Space to put between the label and the child. ((* Since 2.4 *))
+    * Allowed values: >= 0
+    * Default value: 0
+
+--- use-markup: true or false (Read/Write)
+    The text of the label includes XML markup. See Pango.parse_markup. ((* Since 2.4 *))
+    * Default value: false
+
+--- use-underline: true or false (Read/Write)
+    If set, an underline in the text indicates the next character should be used for the mnemonic accelerator key. ((* Since 2.4 *))
+    * Default value: false
+
+== Style Properties
+--- expander-size: Integer (Read)
+    Size of the expander arrow. ((* Since 2.4 *))
+    * Allowed values: >= 0
+    * Default value: 10
+
+--- expander-spacing: Integer (Read)
+    Spacing around expander arrow. ((* Since 2.4 *))
+    * Allowed values: >= 0
+    * Default value: 2
+
+
+== Signals
+--- activate: self
+    The signal which occurs the widget is activated. ((* Since 2.4 *))
+     * self: the Gtk::Expander
+
+== ChangeLog
+* 2007-03-01 Apply GTK+-2.10 - ((<Masao>))
+* 2004-12-15 Initial release - ((<Masao>))

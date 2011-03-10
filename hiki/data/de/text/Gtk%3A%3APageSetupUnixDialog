@@ -1,0 +1,70 @@
+= class Gtk::PageSetupUnixDialog
+
+A page setup dialog.
+
+Gtk::PageSetupUnixDialog implements a page setup dialog for
+platforms which don't provide a native page setup dialog,
+like Unix. It can be used very much like any other GTK+
+dialog, at the cost of the portability offered by Gtk::PrintOperation.
+
+== Object Hierarchy
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::InitiallyUnowned
+        * Gtk::Object
+          * Gtk::Widget
+            * Gtk::Container
+              * Gtk::Bin
+                * Gtk::Window
+                  * Gtk::Dialog
+                    * Gtk::PageSetupUnixDialog
+
+== Class Methods
+--- Gtk::PageSetupUnixDialog.new(title=nil, parent=nil)
+     Creates a new page setup dialog.
+
+     * title: the title of the dialog, or nil
+     * parent: transient parent of the dialog, or nil
+     * Returns: the new Gtk::PageSetupUnixDialog
+
+== Instance Methods
+--- page_setup
+     Gets the currently selected page setup from the dialog.
+
+     * Returns: the current page setup
+
+--- page_setup=(page_setup)
+     Sets the #GtkPageSetup from which the page setup
+     dialog takes its values.
+
+     * page_setup: a Gtk::PageSetup
+     * Returns: self
+
+--- set_page_setup(page_setup)
+     Same as page_setup= but returns nil.
+     * Returns: nil
+
+--- print_settings
+     Gets the current print settings from the dialog.
+
+     * Returns: the current print settings
+
+--- print_settings=(print_settings)
+     Sets the Gtk::PrintSettings from which the page setup dialog
+     takes its values.
+
+     * print_settings: a Gtk::PrintSettings
+     * Returns: self
+
+--- set_print_settings
+     Same as set_print_setup= but returns nil.
+     * Returns: nil
+
+== See Also
+
+== ChangeLog
+
+* 2006-07-09: updated for 2.10 - ((<kou>))
+
+- ((<kou>))

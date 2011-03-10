@@ -1,0 +1,31 @@
+= module Atk::Hypertext
+
+== Included Modules
+
+  * GLib::Interface
+
+== Instance Methods
+
+--- get_link
+
+     * Returns: self: ((*FIXME*))
+
+--- link_index
+
+     * Returns: self: ((*FIXME*))
+
+--- n_links
+
+     * Returns: self: ((*FIXME*))
+
+== Signals
+
+--- link-selected: self
+
+     * self: Atk::Hypertext: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

@@ -1,0 +1,26 @@
+= class Pango::AttrFontDescription
+
+== Object Hierarchy
+
+* Object
+  * Data
+    * Pango::Attribute
+      * Pango::AttrFontDescription
+
+== Class Methods
+
+--- Pango::AttrFontDescription.new
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- value
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

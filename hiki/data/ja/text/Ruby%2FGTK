@@ -1,0 +1,159 @@
+= Ruby/GTK API Reference
+
+* ((<Gtk>)) - 溯条窗位
+* Gtk::AboutDialog
+* Gtk::AccelGroup - 94%
+* Gtk::AccelLabel - Done.
+* Gtk::Action
+* Gtk::ActionGroup
+* Gtk::Adjustment - Done.
+* Gtk::Alignment - Done.
+* Gtk::Allocation - Done.
+* Gtk::Arrow - Done.
+* Gtk::AspectFrame - Done.
+* Gtk::Bin - Done.
+* Gtk::Box - Done.
+* Gtk::Button - 溯条面
+* Gtk::ButtonBox - Done.
+* Gtk::Calendar - Done.
+* Gtk::CellLayout
+* Gtk::CellRenderer - Done.
+* Gtk::CellRendererCombo
+* Gtk::CellRendererPixbuf - Done.
+* Gtk::CellRendererProgress
+* Gtk::CellRendererText - Done.
+* Gtk::CellRendererToggle - Done.
+* Gtk::CellView
+* Gtk::CheckButton - Done.
+* Gtk::CheckMenuItem - Done.
+* Gtk::ColorButton
+* Gtk::Clipboard
+* Gtk::ColorSelection
+* Gtk::ColorSelectionDialog
+* Gtk::Combo
+* Gtk::ComboBox
+* Gtk::ComboBoxEntry
+* Gtk::Container
+* Gtk::Curve
+* Gtk::Dialog - Done.
+* Gtk::DrawingArea
+* Gtk::Entry - Done.
+* Gtk::EntryCompletion
+* Gtk::EventBox - Done.
+* Gtk::Expander
+* Gtk::FileChooser
+* Gtk::FileChooserButton
+* Gtk::FileChooserDialog
+* Gtk::FileChooserError
+* Gtk::FileChooserWidget
+* Gtk::FileFilter
+* Gtk::FileSelection
+* Gtk::FileSystemError
+* Gtk::Fixed
+* Gtk::FontButton
+* Gtk::FontSelection - Done.
+* Gtk::FontSelectionDialog
+* Gtk::Frame
+* Gtk::GammaCurve
+* Gtk::HBox - Done.
+* Gtk::HButtonBox - Done.
+* Gtk::HPaned
+* Gtk::HRuler
+* Gtk::HScale
+* Gtk::HScrollbar - 溯条窗位
+* Gtk::HSeparator - Done.
+* Gtk::HandleBox
+* Gtk::IconFactory
+* Gtk::IconSet
+* Gtk::IconSource
+* Gtk::IconView
+* Gtk::Image - Done.
+* Gtk::ImageMenuItem - Done.
+* Gtk::InputDialog
+* Gtk::Invisible
+* Gtk::Item - Done.
+* Gtk::ItemFactory
+* Gtk::Label
+* Gtk::Layout
+* Gtk::ListStore
+* Gtk::Menu
+* Gtk::MenuBar - Done.
+* Gtk::MenuItem - Done.
+* Gtk::MenuShell
+* Gtk::MenuToolButton
+* Gtk::MessageDialog  - Done.
+* Gtk::Misc - Done.
+* Gtk::MozEmbed
+* Gtk::Notebook
+* Gtk::NotebookPage
+* Gtk::Object
+* Gtk::OptionMenu
+* Gtk::Paned
+* Gtk::Plug
+* Gtk::Progress
+* Gtk::ProgressBar
+* Gtk::RadioAction
+* Gtk::RadioButton - Done.
+* Gtk::RadioMenuItem - Done.
+* Gtk::RadioToolButton
+* Gtk::Range
+* Gtk::Ruler
+* Gtk::Scale
+* Gtk::Scrollbar - 溯条窗位
+* Gtk::ScrolledWindow - 溯条面10%
+* Gtk::SelectionData
+* Gtk::Separator - Done.
+* Gtk::SeparatorMenuItem - Done.
+* Gtk::SeparatorToolItem
+* Gtk::SizeGroup
+* Gtk::Socket
+* Gtk::SourceBuffer
+* Gtk::SourceLanguage
+* Gtk::SourceLanguagesManager
+* Gtk::SourceMarker
+* Gtk::SourceStyleScheme
+* Gtk::SourceTagTable
+* Gtk::SourceView
+* Gtk::SpinButton
+* Gtk::Statusbar
+* Gtk::Style
+* Gtk::Table
+* Gtk::TearoffMenuItem - Done.
+* Gtk::TextAttributes
+* Gtk::TextBuffer - 5%
+* Gtk::TextChildAnchor
+* Gtk::TextIter - 95%
+* Gtk::TextMark - Done.
+* Gtk::TextTag
+* Gtk::TextTagTable  - Done.
+* Gtk::TextView - ほぼ溯条窗位
+* Gtk::ToggleAction
+* Gtk::ToggleButton - Done.
+* Gtk::ToggleToolButton
+* Gtk::Toolbar
+* Gtk::ToolButton
+* Gtk::ToolItem
+* Gtk::Tooltips
+* Gtk::TreeIter
+* Gtk::TreeModel
+* Gtk::TreeModelFilter
+* Gtk::TreeModelSort
+* Gtk::TreePath
+* Gtk::TreeRowReference
+* Gtk::TreeSelection
+* Gtk::TreeSortable
+* Gtk::TreeStore
+* Gtk::TreeView
+* Gtk::TreeViewColumn
+* Gtk::UIManager
+* Gtk::VBox - Done.
+* Gtk::VButtonBox - Done.
+* Gtk::VPaned
+* Gtk::VRuler
+* Gtk::VScale
+* Gtk::VScrollbar - 溯条窗位
+* Gtk::VSeparator - Done.
+* Gtk::Viewport - Done.
+* Gtk::Widget
+* Gtk::Window - 溯条面5%
+* Gtk::WindowGroup - Done.

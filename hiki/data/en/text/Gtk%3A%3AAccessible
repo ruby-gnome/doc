@@ -1,0 +1,22 @@
+= class Gtk::Accessible
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Atk::Object
+        * Gtk::Accessible
+
+== Instance Methods
+
+--- connect_widget_destroyed
+
+    This function specifies the callback function to be called when the widget corresponding to a Gtk::Accessible is destroyed.
+    * Returns: self
+
+== See Also
+
+== ChangeLog
+
+- ((<Masao>))

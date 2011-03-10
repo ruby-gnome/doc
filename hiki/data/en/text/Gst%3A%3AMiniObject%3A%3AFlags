@@ -1,0 +1,28 @@
+= class Gst::MiniObject::Flags
+
+== Object Hierarchy
+
+* Object
+  * GLib::Flags
+    * Gst::MiniObject::Flags
+
+== Instance Methods
+
+--- last?
+
+     * Returns: self: ((*FIXME*))
+
+--- readonly?
+
+     * Returns: self: ((*FIXME*))
+
+== Constants
+
+--- LAST
+--- READONLY
+
+== See Also
+
+== ChangeLog
+
+

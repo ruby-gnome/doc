@@ -1,0 +1,39 @@
+= module Pango::CairoFontMap
+
+== Included Modules
+
+  * GLib::Interface
+
+== Module Functions
+
+--- Pango::CairoFontMap.create
+
+     * Returns: self: ((*FIXME*))
+
+--- Pango::CairoFontMap.default
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- create_context
+
+     * Returns: self: ((*FIXME*))
+
+--- resolution
+
+     * Returns: self: ((*FIXME*))
+
+--- resolution=
+
+     * Returns: self: ((*FIXME*))
+
+--- set_resolution
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

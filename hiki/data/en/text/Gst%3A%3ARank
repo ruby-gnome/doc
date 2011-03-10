@@ -1,0 +1,20 @@
+= class Gst::Rank
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * Gst::Rank
+
+== Constants
+
+--- MARGINAL
+--- NONE
+--- PRIMARY
+--- SECONDARY
+
+== See Also
+
+== ChangeLog
+
+

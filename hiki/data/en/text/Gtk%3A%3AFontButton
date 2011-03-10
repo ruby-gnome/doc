@@ -1,0 +1,219 @@
+= class Gtk::FontButton
+
+The Gtk::FontButton is a button which displays the currently selected font an allows to open a font selection dialog to change the font. It is suitable widget for selecting a font in a preference dialog.
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::InitiallyUnowned
+        * Gtk::Object
+          * Gtk::Widget
+            * Gtk::Container
+              * Gtk::Bin
+                * Gtk::Button
+                  * Gtk::FontButton
+
+== Class Methods
+
+--- Gtk::FontButton.new(fontname = nil)
+
+    Creates a new font picker widget. ((* Since 2.4 *))
+    * fontname: Name of font to display in font selection dialog  
+    * Returns: a new font picker widget
+
+== Instance Methods
+
+--- font_name
+
+    Retrieves the name of the currently selected font. ((* Since 2.4 *))
+    * Returns: The name of the selected font
+
+--- font_name=(font_name)
+
+    Sets or updates the currently-displayed font in font picker dialog. ((* Since 2.4 *))
+    * font_name: Name of font to display in font selection dialog 
+    * Returns: font_name
+
+--- set_font_name(font_name)
+
+    Same as Gtk::FontButton#font_name=. ((* Since 2.4 *))
+    * font_name: Name of font to display in font selection dialog 
+    * Returns: self
+
+--- show_style?
+
+    Returns whether the name of the font style will be shown in the label. ((* Since 2.4 *))
+    * Returns: true if the selected font style is shown in the label
+
+--- show_style=(show_style)
+
+    If show_style is true, the font style will be displayed along with name of the selected font. ((* Since 2.4 *))
+    * show_style: true if font style should be displayed in label
+    * Returns: show_style
+
+--- set_show_style(show_style)
+
+    Same as Gtk::FontButton#show_style=. ((* Since 2.4 *))
+    * show_style: true if font style should be displayed in label
+    * Returns: self
+
+--- show_size?
+
+    Returns whether the font size will be shown in the label. ((* Since 2.4 *))
+    * Returns: true if selected font size is shown in the label, otherwise false.
+
+--- show_size=(show_size)
+
+    If show_size is true, the font size will be displayed along with the name of the selected font. ((* Since 2.4 *))
+    * show_size: true if font size should be displayed in dialog.  
+    * Returns: show_size
+
+--- set_show_size(show_size)
+
+    Same as Gtk::FontButton#show_size=. ((* Since 2.4 *))
+    * show_size: true if selected font size is shown in the label
+    * Returns: self
+
+--- use_font?
+
+    Returns whether the selected font is used in the label. ((* Since 2.4 *))
+    * Returns: true if the selected font is used in the label, otherwise false
+
+--- use_font=(use_font)
+
+    If use_font is true, the font name will be written using the selected font. ((* Since 2.4 *))
+    * use_font: true if true, font name will be written using font chosen.  
+    * Returns: use_font
+
+--- set_use_font(use_font)
+
+    Same as Gtk::FontButton#use_font=. ((* Since 2.4 *))
+    * use_font: true if true, font name will be written using font chosen.  
+    * Returns: self
+
+--- use_size?
+
+    Returns whether the selected size is used in the label. ((* Since 2.4 *))
+    * Returns: true if the selected size is used in the label.
+
+--- use_size=(use_size)
+
+    If use_size is true, the font name will be written using the selected size. ((* Since 2.4 *))
+    * use_size: If true, font name will be written using the selected size.  
+    * Returns: use_size
+
+--- set_use_size(use_size)
+
+    Same as Gtk::FontButton#use_size=. ((* Since 2.4 *))
+    * use_size: If true, font name will be written using the selected size.  
+    * Returns: self
+
+--- title
+
+    Retrieves the title of the font selection dialog. ((* Since 2.4 *))
+    * Returns: The title of the font selection dialog
+
+--- title=(title)
+
+    Sets the title for the font selection dialog. ((* Since 2.4 *))
+    * title: a string containing the font selection dialog title  
+    * Returns: title
+
+--- set_title(title)
+
+    Same as Gtk::FontButton#title=. ((* Since 2.4 *))
+    * title: a string containing the font selection dialog title  
+    * Returns: self
+
+--- ref_accessible
+
+    See Atk::Implementor#ref_accessible.
+
+--- add_child
+
+    See Gtk::Buildable#add_child.
+
+--- construct_child
+
+    See Gtk::Buildable#construct_child.
+
+--- get_internal_child
+
+    See Gtk::Buildable#get_internal_child.
+
+--- name
+
+    See Gtk::Buildable#name.
+
+--- name=
+
+    See Gtk::Buildable#name=.
+
+--- set_buildable_property
+
+    See Gtk::Buildable#set_buildable_property.
+
+--- set_name
+
+    See Gtk::Buildable#set_name.
+
+--- builder_name
+
+    See Gtk::Buildable#builder_name.
+
+--- builder_name=
+
+    See Gtk::Buildable#builder_name=.
+
+--- set_builder_name
+
+    See Gtk::Buildable#set_builder_name.
+
+== Properties
+
+--- font-name: String (Read/Write)
+
+    The name of the currently selected font. ((* Since 2.4 *))
+    * Default value: "Sans 12"
+
+--- show-size: true or false (Read/Write)
+
+    If this property is set to true, the selected font size will be shown in the label. For a more WYSIWIG way to show the selected size, see the ::use-size property. ((* Since 2.4 *))
+    * Default value: true
+
+--- show-style: true or false (Read/Write)
+
+    If this property is set to true, the name of the selected font style will be shown in the label. For a more WYSIWIG way to show the selected style, see the ::use-font property. ((* Since 2.4 *))
+    * Default value: true
+
+--- title: String (Read/Write)
+
+    The title of the font selection dialog. ((* Since 2.4 *))
+    * Default value: "Pick a Font"
+
+--- use-font: true or false (Read/Write)
+
+    If this property is set to true, the label will be drawn in the selected font. ((* Since 2.4 *))
+    * Default value: false
+
+--- use-size: true or false (Read/Write)
+
+    If this property is set to true, the label will be drawn with the selected font size. ((* Since 2.4 *))
+    * Default value: false
+
+== Signals
+
+--- font-set: self
+
+    The ::font-set signal is emitted when the user selects a font. When handling this signal, use Gtk::FontButton#font_name to find out which font was just selected. ((* Since 2.4 *))
+     * self: Gtk::FontButton
+
+== See Also
+
+Gtk::FontSelectionDialog, Gtk::ColorButton.
+
+== ChangeLog
+
+- ((<Masao>))

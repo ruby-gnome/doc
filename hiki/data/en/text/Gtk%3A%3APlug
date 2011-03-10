@@ -1,0 +1,118 @@
+= class Gtk::Plug
+
+Together with Gtk::Socket, Gtk::Plug provides the ability to embed widgets from one process into another process in a fashion that is transparent to the user. One process creates a Gtk::Socket widget and, passes the ID of that widgets window to the other process, which then creates a Gtk::Plug with that window ID. Any widgets contained in the Gtk::Plug then will appear inside the first applications window.
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::InitiallyUnowned
+        * Gtk::Object
+          * Gtk::Widget
+            * Gtk::Container
+              * Gtk::Bin
+                * Gtk::Window
+                  * Gtk::Plug
+
+== Class Methods
+
+--- Gtk::Plug.new
+
+    Creates a new plug widget inside the Gtk::Socket identified by socket_id. If socket_id is 0, the plug is left "unplugged" and can later be plugged into a Gtk::Socket by Gtk::Socket#add_id.
+    * Returns: the new Gtk::Plug widget.
+
+== Instance Methods
+
+--- construct(socket_id)
+
+    Finishes the creation of a GtkPlug widget. This function will generally only be used by classes deriving from Gtk::Plug.
+    * socket_id: the window ID of the socket.  
+    * Returns: self
+
+--- id
+
+    Gets the window ID of a Gtk::Plug widget, which can then be used to embed this window inside another window, for instance with Gtk::Socket#add_id.
+    * Returns: the window ID for the plug
+
+--- embedded?
+
+    Gets the value whether or not the plug is embedded or not.
+     * Returns: true if or not the plug is embedded
+
+--- ref_accessible
+
+    See Atk::Implementor#ref_accessible.
+
+--- add_child
+
+    See Gtk::Buildable#add_child.
+
+--- construct_child
+
+    See Gtk::Buildable#construct_child.
+
+--- get_internal_child
+
+    See Gtk::Buildable#get_internal_child.
+
+--- name
+
+    See Gtk::Buildable#name.
+
+--- name=
+
+    See Gtk::Buildable#name=.
+
+--- set_buildable_property
+
+    See Gtk::Buildable#set_buildable_property.
+
+--- set_name
+
+    See Gtk::Buildable#set_name.
+
+--- builder_name
+
+    See Gtk::Buildable#builder_name.
+
+--- builder_name=
+
+    See Gtk::Buildable#builder_name=.
+
+--- set_builder_name
+
+    See Gtk::Buildable#set_builder_name.
+
+--- socket_window
+
+    Gets the window of the socket the plug is embedded in.
+     * Returns: The window of the socket the plug is embedded in
+
+== Properties
+
+--- embedded: true or false (Read)
+
+    Whether or not the plug is embedded
+
+--- socket-window: Gdk::Window (Read)
+
+    The window of the socket the plug is embedded in
+
+== Signals
+
+--- embeded: self
+
+     * self: Gtk::Plug
+
+--- embedded: self
+
+     * self: Gtk::Plug: ((*FIXME*))
+
+== See Also
+
+Gtk::Socket - the widget that a Gtk::Plug plugs into.
+
+== ChangeLog
+
+- ((<Masao>))

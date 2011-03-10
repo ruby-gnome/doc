@@ -1,0 +1,31 @@
+= class Vte::CharAttributes
+
+== Object Hierarchy
+
+* Object
+  * Vte::CharAttributes
+
+== Class Methods
+
+--- Vte::CharAttributes.new
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- back
+--- background
+--- column
+--- fore
+--- foreground
+--- row
+--- strikethrough?
+--- underline?
+
+== See Also
+
+== ChangeLog
+
+* 2006-05-18 ((<kou>)): compeleted.
+
+- ((<kou>))

@@ -1,0 +1,34 @@
+= class GLib::Param::Long
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Param
+      * GLib::Param::Long
+
+== Class Methods
+
+--- GLib::Param::Long.new
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- maximum
+
+     * Returns: self: ((*FIXME*))
+
+--- minimum
+
+     * Returns: self: ((*FIXME*))
+
+--- range
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

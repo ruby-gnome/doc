@@ -1,0 +1,26 @@
+= class Gst::QuerySeeking
+
+== Object Hierarchy
+
+* Object
+  * Gst::MiniObject
+    * Gst::Query
+      * Gst::QuerySeeking
+
+== Class Methods
+
+--- Gst::QuerySeeking.new
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- parse
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

@@ -1,0 +1,80 @@
+= 各種ダイアログを追加する
+ファイルの保存・オープン用のファイル選択ダイアログと、Aboutダイアログを追加します。
+ダイアログはプライマリウインドウとは別のウインドウです。ウィジェットパレットウインドウでアイコンをクリックするだけで新規作成されます。
+
+== ファイル選択ダイアログ
+ファイル選択ダイアログはGtk::FileSelectionとGtk::FileChooserDialogの2種類があります。Gtk::FileSelectionはGTK+-2.0からのウィジェット、Gtk::FileChooserDialogはGTK+2.4以降のウィジェットです。
+新しもの好きなのでここでは、Gtk::FileChooserDialogを使ってみましょう。
+
+glade-2の使い方には慣れてきたと思うので若干手順を端折りますね。ウィジェットパレットウインドウでFile Chooser Dialogをクリックするとファイル選択ダイアログが表示されます。
+
+{{image_right("1.png")}}
+{{br}}
+
+プロパティは以下のように変更します。
+
+:Name
+ デフォルトのままだと長いので、filechooserにします。
+:Position
+ 表示されるポジションです。親ウインドウの中央に表示されるように"Center on Parent"を選択します。これでうまく表示されない時は、"Center"にしてみてください。
+:Modal
+ モーダルとはこのウインドウが表示されているとき別のウインドウ（親ウインドウ）を操作できなくするというオプションです。((-ただし常に親ウインドウより前面に表示されることは保証されないようです。-))ここでは、Yesにします。
+:Skip Taskbar/Pager
+ タスクバーやページャ((-加筆者注：　ワークスペースを切り替える機能のこと？-))にこのウインドウを表示させるかどうかの設定です。両方Yes(表示しない)にします。
+ ただし、ウインドウマネージャによっては有効にならないときがあるかもしれません。
+
+また、Commonタブの"Visible"プロパティは"No"にします。起動時は非表示状態にしておくためです。
+
+次にダイアログ上の"Open(開く)"ボタンを選択して、プロパティの"Stock Button"を"gtk-open"から"gtk-ok"に変更します。保存ダイアログとして使用する時でもおかしくない表現に変えるためです。
+
+そうそう、書き忘れましたが、追加したダイアログ（ウインドウも）はGladeのメインウインドウに表示されます。Glade上で選択したり表示／非表示にする場合はメインウインドウから選択します。
+
+== Aboutダイアログ
+AboutダイアログはRuby/GNOME2を使うと一発なのですが、ここでは練習ということで自前で簡単なAboutダイアログを作ることにします。
+
+ウィジェットパレットウインドウでDialogをクリックするとダイアログのボタン数を選択するダイアログが表示されます。
+
+{{image_right("2.png")}}
+{{br}}
+今回は、クローズボタンだけのダイアログでよいので、「Standard Button Layout」→「Close」を選択し、OKボタンをクリックします。
+
+プロパティは以下のように変更します。
+
+:Name
+ "aboutdialog"とします。
+:Title
+ "About ... "とします。
+:Position
+ こちらも親ウインドウの中央に表示されるように"Center on Parent"を選択します。これでうまく表示されない時は、"Center"にしてみてください。
+:Skip Taskbar/Pager
+ タスクバーやページャにこのウインドウを表示させるかどうかの設定です。両方Yes(表示しない)にします。
+ ただし、ウインドウマネージャによっては有効にならないときがあるかもしれません。
+
+こちらも、Commonタブの"Visible"プロパティはは"No"にします。
+
+次にラベルを貼り付けてそこに情報を書き込みます。
+
+{{image_right("3.png")}}
+{{br}}
+
+:Label
+ ちょっと長いです。Pango Text Attribute Markupを使って色をつけてみます。Pango MarkupについてはPango APIリファレンスにある((<Pango Text Attribute Markup|URL:http://developer.gnome.org/doc/API/2.0/pango/PangoMarkupFormat.html>))を参照してください（環境によっては使用できない（変化しない）項目もあります）。
+
+  
+  <span color="red">hwedit - Hello World Editor</span>
+  <span color="darkgreen">This is a sample application for Ruby/Libglade2</span>
+  Ruby/Glade2 is a part of Ruby-GNOME2.
+  Copyright (c) 2004 Ruby-GNOME2 Project Team
+
+:Use Markup
+ "Yes"を指定します。これをYesにすることで前述のPango Markupが有効になります。Noの場合は、Markupも通常の文字列として認識されます。
+:Justify
+ "Center"を指定し中央寄せで表示します。
+
+#最後に、Closeボタンを選択してボタンがクリックされたときのイベント(clicked)に対しシグナルハンドラを追加します。デフォルトのままで「on_closebutton1_clicked」という名前になります。後でこのボタンがクリックされたらウインドウを閉じるようにしましょう。
+基本的にダイアログ上に作られたボタンに対してシグナルハンドラを設定する必要はありません。詳しくは後のページの「((<テンプレートからソースコード(Rubyスクリプト)へ|libglade2-tut-create-src>))」で説明します。
+
+さて、ここまででAboutダイアログは以下のように表示されます。Pango Markupを使うことで様々な属性を持った文字列を簡単に扱うことができることがわかると思います。
+
+{{image_right("4.png")}}
+{{br}}

@@ -1,0 +1,29 @@
+= Investigue que tecla está pressionada
+{{link nil, "Ruby-GNOME2+Tips", nil, nil}}
+
+Execute este script e pressione a tecla que deseja investigar. Você pode obter o valor da tecla e a constante Gdk::Keyval facilmente.
+
+ require 'gtk2'
+ 
+ window = Gtk::Window.new
+ window.add_events(Gdk::Event::KEY_PRESS)
+ window.add(Gtk::Label.new("Pressione uma Tecla!"))
+ 
+ window.signal_connect("key-press-event") do |w, e|
+   p "#{e.keyval}, Gdk::Keyval::GDK_#{Gdk::Keyval.to_name(e.keyval)}"
+ end
+ 
+ window.set_default_size(100, 100).show_all
+ 
+ Gtk.main
+
+P.S.
+
+Por favor perceba que este script pode obter o valor da tecla no seu ambiente apenas.
+Alguns valores de teclas tem valores diferentes em cada ambiente.
+
+== Log de Alterações
+:2003-10-12 ((<Masao>))
+ Versão inicial.
+
+Autor da Tradução para Português: ((<Joao Pedrosa|jpedrosa>))

@@ -1,0 +1,108 @@
+= Numeric/Text Data Entry
+{{link "tut-gtk2-numtxt", "tut-gtk2-numtxt", "tut-gtk", "tut-gtk2-numtxt-spinbttns"}}
+
+== Single Line Text Entry Field
+{{br}}
+{{image_right("numtxt-entry.png")}}
+{{br}}
+
+As the title and the above image reveal a Gtk::Entry object or widget is a single line free-form text entry gadget. It can be used for text entry, password entry, and even number selections. As you will learn in the next session Gtk::SpinButton is derived from it. Gtk::Entry implements the Gtk::Editable interface containing methods for general text manipulation. It contains a large number of action signals used for key bindings, and several signals that an application can connect to so it can modify its behaviour. The additional functionality is needed to allow manipulation of selected (highlighted) text, delete and insert characters or strings (cut and paste), etc. 
+
+There are many properties you need to learn about in order to handle text with all bells and whistles. Here I will list just a few:
+
+* visibility
+* editable
+* invisible_char
+* text
+etc
+
+You should consult the documentation (class Gtk::Entry - Properties) for full list.
+
+ #!/usr/bin/env ruby
+ require 'gtk2'
+
+ # etc/Etc are Unix/Linux feature if you do not have this feature,
+ # you should replace the [getlogin] below with something reasonable.
+ #
+ require 'etc'
+ include Etc
+
+ window = Gtk::Window.new(Gtk::Window::TOPLEVEL)
+ window.set_title  "Password?"
+ window.border_width = 10
+ window.signal_connect('delete_event') { Gtk.main_quit }
+
+ # Note "getlogin" is Unix/Linux feature if you do not have it,
+ # you should replace the [getlogin] below with something reasonable.
+ #
+ question  = Gtk::Label.new("What is %s's password?" % [getlogin])
+ entry_label = Gtk::Label.new("Password:")
+
+ pass = Gtk::Entry.new
+ pass.visibility = false
+
+ # The following property takes integer value not string character
+ # pass.invisible_char = 42           ### for instance 42=asterisk
+
+ hbox = Gtk::HBox.new(false, 5)
+ hbox.pack_start_defaults(entry_label)
+ hbox.pack_start_defaults(pass)
+ vbox = Gtk::VBox.new(false, 5)
+ vbox.pack_start_defaults(question)
+ vbox.pack_start_defaults(hbox)
+
+ window.add(vbox)
+ window.show_all
+ Gtk.main
+
+As you can see, we have turned our entry object into password widget by setting its "visibility" property. However I did not set my own "invisible_char" since the default on  my system is quite acceptable (see the image above).
+
+=== Following is a more elaborate example from the original Japanese tutorial page:
+
+You can dynamically change entry properties. Of course you will understand the program better if you try it out.
+
+{{br}}
+{{image_right("numtxt-entry-jp-070-54.png")}}
+{{br}}
+
+ #!/usr/bin/env ruby
+
+ require 'gtk2'
+
+ window = Gtk::Window.new
+ window.set_size_request(200, 100)
+ window.title = "GTK Entry"
+ window.signal_connect("destroy") {Gtk.main_quit}
+
+ vbox = Gtk::VBox.new(false, 0)
+ window.add(vbox)
+
+ entry = Gtk::Entry.new
+ entry.max_length = 50
+ entry.signal_connect("activate") {puts "Entry contents: #{entry.text}"}
+ entry.text = "hello"
+ entry.text += " world"
+ entry.select_region(0, -1)
+ vbox.pack_start(entry, true, true, 0)
+
+ hbox = Gtk::HBox.new(false, 0)
+ vbox.add(hbox)
+
+ check = Gtk::CheckButton.new("Editable")
+ check.signal_connect("toggled") {|w| entry.editable = w.active?}
+ check.active = entry.editable?
+ hbox.pack_start(check, true, true, 0)
+
+ check = Gtk::CheckButton.new("Visible")
+ check.signal_connect("toggled") {|w| entry.visibility = w.active?}
+ check.active = entry.visibility?
+ hbox.pack_start(check, true, true, 0)
+
+ button = Gtk::Button.new("Close")
+ button.signal_connect("clicked") {Gtk.main_quit}
+ vbox.pack_start(button, true, true, 0)
+ button.can_default = true
+ button.grab_default
+
+ window.show_all
+ Gtk.main

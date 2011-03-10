@@ -1,0 +1,43 @@
+= class GLib::Socket::Protocol
+
+A protocol identifier is specified when creating a GLib::Socket, which is a
+family/type specific identifier, where 0 means the default protocol for the
+particular family/type.
+
+This enum contains a set of commonly available and used protocols. You can also
+pass any other identifiers handled by the platform in order to use protocols
+not listed here. 
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * GLib::Socket::Protocol
+
+== Constants
+
+--- DEFAULT
+
+        The default protocol for the family/type
+
+--- SCTP
+
+        SCTP over IP
+
+--- TCP
+
+        TCP over IP
+
+--- UDP
+
+        UDP over IP
+
+--- UNKNOWN
+
+        The protocol type is unknown
+
+== See Also
+
+== ChangeLog
+
+

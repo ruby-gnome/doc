@@ -1,0 +1,115 @@
+= module Gnome::PrintPango
+
+Using gnome-print with Pango. This module is included in
+Gnome::PrintContext.
+
+== Module Functions
+
+--- Gnome::PrintPango.create_context(fontmap)
+
+     Creates a new PangoContext object for the specified
+     ((|fontmap|)).
+     
+     * fontmap: a Pango::FontMap from
+       Gnome::PrintPango.default_font_map or
+       Gnome::PrintPango.font_map_new
+     * Returns: a newly created Pango::Context object
+
+--- Gnome::PrintPango.default_font_map
+
+     Gets a singleton Pango::FontMap object suitable for use
+     with gnome-print.
+     
+     * Returns: the default Pango::FontMap object for
+       gnome-print. The returned object is owned by
+       gnome-print and should not be modified. (If you need to
+       set custom options, create a new font map with
+       Gnome::PrintPango.font_map_new.)
+
+--- Gnome::PrintPango.font_map_new
+
+     Creates a new Pango::FontMap object suitable for use
+     with gnome-print. In most cases, you probably want to
+     use Gnome::PrintPango.default_font_map instead.
+
+     * Returns: a newly created Pango::FontMap object
+
+== Instance Methods
+
+--- create_layout
+
+     Convenience function that creates a new Pango::Context,
+     updates it for rendering to (({self})), and then
+     creates a Pango::Layout for that
+     Pango::Context. Generally this function suffices for
+     most usage of gnome-print with Pango and you don't need
+     to deal with the Pango::Context directly.
+     
+     * Returns: the newly created Pango::Layout
+
+--- glyph_string(font, glyphs)
+
+     Draws the glyphs in ((|glyphs|)) into the
+     (({self})). Positioning information in ((|glyphs|)) is
+     transformed by the current transformation matrix, the
+     glyphs are drawn in the current color, and the glyphs
+     are positioned so that the left edge of the baseline is
+     at the current point.
+     
+     * font: the Pango::Font that the glyphs in ((|glyphs|)) are from
+     * glyphs: a Pango::GlyphString
+     * Returns: (({nil}))
+
+--- layout(layout)
+
+     Draws the text in layout into (({self})). The text is
+     drawn in the current color unless that has been
+     overridden by attributes set on the layout and the
+     glyphs are positioned so that the left edge of the
+     baseline is at the current point.
+
+     * layout: a Pango::Layout
+     * Returns: (({nil}))
+
+--- layout_line(line)
+
+     Draws the text in line into (({self})). The text is
+     drawn in the current color unless that has been
+     overridden by attributes set on the layout and the
+     glyphs are positioned so that the left edge of the
+     baseline is at the current point.
+
+     * line: a Pango::LayoutLine     
+     * Returns: (({nil}))
+
+--- update_context(context)
+
+     Update a context so that layout done with it reflects
+     the current state of (({self})). In general, every time
+     you use a Pango::Context with a different
+     Gnome::PrintContext, or you change the transformation
+     matrix of the Gnome::PrintContext (other than pure
+     translations) you should call this function. You also
+     need to call Pango::Layout#context_changed for any
+     Pango::Layout objects that exit for the Pango::Context.
+
+     This function currently does nothing and that isn't
+     expected to change for gnome-print. The main benefit of
+     calling it is that your code will be properly prepared
+     for conversion to use with future rendering systems
+     such as Cairo where the corresponding operation will
+     actually do something.
+
+     * context: a Pango::Context from
+       Gnome::PrintPango.create_context
+     * Returns: (({nil}))
+
+== See Also
+
+Gnome::PrintContext
+
+== ChangeLog
+
+* 2005-06-08 ((<kou>)): completed.
+
+- ((<kou>))

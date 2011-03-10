@@ -1,0 +1,32 @@
+= Links
+
+:((<オブジェクト指向スクリプト言語Ruby|URL:http://www.ruby-lang.org/ja/>))
+ オブジェクト指向スクリプト言語Rubyのウェブサイトです。
+
+:((<GTK+ - The GIMP Toolkit|URL:http://www.gtk.org/>))
+ GTK+プロジェクトのウェブサイトです（英語）。
+
+:((<GNOME - Computing made easy|URL:http://www.gnome.org/>))
+ GNOMEプロジェクトのウェブサイトです（英語）。
+
+:((<日本ＧＮＯＭＥユーザー会|URL:http://www.gnome.gr.jp/index.html>))
+ ドキュメントの日本語訳や ML アーカイブなどが公開されてます。
+
+:((<gtk2 on cygwin|URL:http://web.sfc.keio.ac.jp/~s01397ms/cygwin/index.html.ja>))
+ GTK+, GNOME他のCygwin向けバイナリが配布されています。Ruby-GNOME2のバイナリもあります。
+
+:((<GTK+ and GIMP for Windows|URL:http://www.gimp.org/~tml/gimp/win32/>))
+ MS Windows用GTK+のバイナリが配布されています（英語）。
+
+:((<GTK+ for Windows|URL:http://www.dropline.net/gtk/>))
+ もうひとつの Windows用GTK+のバイナリです（英語）。インストーラで簡単です。
+
+:((<Dropline GNOME|URL:http://www.dropline.net/gnome/>))
+ ((<Slackware|URL:http://www.slackware.com>)) Linux用のオンラインアップデート可能な GNOME2 です（英語）。
+
+:((<Ruby-GNOME2 RPMS by Vee Satayamas|URL:http://linux.thai.net/plone/Members/vee/coding/ruby_gnome2/>))
+ 個人的に Ruby-GNOME2 の redhat Linux用のRPM を提供してくれてます（英語）。
+
+:((<ROX-Ruby - Using Ruby to write programs for the ROX Desktop|URL:http://rox-ruby.sourceforge.net/>))
+ ((<ROX|URL:http://rox.sourceforge.net/>))というデスクトップシステムのサンプルと Rubyからそれを作るためのライブラリです（英語）。彼が、この素敵なRuby-GNOME2のアイコンを提供してくれました。
+

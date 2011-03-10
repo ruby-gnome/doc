@@ -1,0 +1,152 @@
+=How to use the mouse to move widgets in a Layout container
+{{link nil, "Ruby-GNOME2+Tips", nil, nil}}
+
+Most of the layout containers have the responsibility of positioning the widgets that are put into them. But there is an exception: the Gtk::Layout container. With a Gtk::Layout container, you can determine the x,y coordinates of the widget. Thus, by using the mouse and its x,y pointer, it's possible to position the widget wherever you want it inside the Gtk::Layout container.
+
+Not all widgets can receive mouse events by default. Those that can, have a window handle. If a widget does not have a window handle, and you want it to receive some events that it doesn't, then you should put the widget in an Gtk::EventBox, and use that as the source of the events. An Gtk::EventBox does have a window handle.
+
+If the widget that has a window handle isn't receiving the events, then the following method call on it should make it receive them.
+
+ set_events(Gdk::Event::ALL_EVENTS_MASK)
+
+This is a screenshot of this example:
+
+{{image_left "layout_example.png"}}
+
+{{br}}
+
+Usage: double click to create a new Note Window. Click on the Note Window and drag it wherever you want it.
+
+This is the code for this example:
+
+  require 'gtk2'
+  include Gtk
+  
+  class NoteLayout < Layout
+    attr_reader :widgets
+    def initialize
+      super()
+      @widgets = {}
+    end
+    def put widget, x, y
+      super(widget, x, y)
+      @widgets[widget] = [x,y]
+    end
+    def move widget, x, y
+      super(widget, x, y)
+      @widgets[widget] = [x,y]
+    end
+    def [] widget
+      @widgets[widget]
+    end
+  end
+  
+  class NoteWindow < EventBox
+    def initialize
+      super()
+      @vbox = VBox.new
+      add @vbox
+      @title_box = Frame.new()
+      @vbox.pack_start evbox_title = EventBox.new.add(@title_box), true, false, 0
+      @title_box.add @label = Label.new("Hi!")
+      @tv = TextView.new
+      tv_scroll = ScrolledWindow.new
+      tv_scroll.set_policy(POLICY_AUTOMATIC, POLICY_AUTOMATIC)
+      tv_scroll.add_with_viewport @tv
+      @vbox.pack_start tv_scroll, true, true, 0
+      set_size_request 200,100
+      #@title_box.set_events(Gdk::Event::ALL_EVENTS_MASK)
+      signal_connect('button-press-event'){|owner, ev|
+        if @clicked_block != nil
+          @clicked_block.call(owner, ev)
+        end
+        true
+      }
+      evbox_title.signal_connect('button-press-event'){|owner, ev|
+        if @clicked_block != nil
+          @clicked_block.call(owner, ev)
+        end
+        true
+      }
+      @tv.signal_connect('button-press-event'){|owner, ev|
+        if @clicked_block != nil
+          @clicked_block.call(owner, ev)
+        end
+        true
+      }
+    end
+    def title= v
+      @label.text = v
+    end
+    def on_clicked &block
+      @clicked_block = block
+    end
+    def grab_focus
+      @tv.grab_focus
+    end
+  end
+  
+  def create_note x,y, title = nil
+    @layout.put(nw = NoteWindow.new, x, y)
+    if title != nil
+      nw.title = title
+    end
+    nw.on_clicked{|owner, ev|
+      @note_being_dragged = nw
+      handle_layout_click owner,  ev
+    }
+    #@layout.put(NoteWindow.new, 200, 10)
+    nw.show_all
+    nw
+  end
+  
+  def get_note_pointer nw = nil
+    if @note_being_dragged != nil
+      @layout[@note_being_dragged]
+    else
+      [0,0]
+    end
+  end
+  
+  def handle_layout_click owner,  ev
+    if ev.event_type == Gdk::Event::Type::BUTTON2_PRESS
+      @note_counter += 1
+      x,y = @layout.pointer
+      create_note(x,y, "Note#{@note_counter}")
+    else
+      @xp, @yp = @layout.pointer
+      @wx, @wy = get_note_pointer
+      @wx = @xp - @wx
+      @wy = @yp - @wy
+      Gtk.grab_add(@layout)
+    end
+  end
+  
+  w = Window.new
+  w.title = 'Layout Example'
+  w.set_size_request 500,400
+  w.signal_connect('destroy'){Gtk.main_quit}
+  w.add @layout = NoteLayout.new
+  @note_counter = 0
+  @layout.set_events(Gdk::Event::ALL_EVENTS_MASK)
+  @layout.signal_connect('button-press-event'){|owner, ev| handle_layout_click owner,  ev  }
+  @layout.signal_connect('button-release-event'){
+    if @note_being_dragged != nil
+      Gtk.grab_remove(@layout)
+      nxp, nyp = @layout.pointer
+      @layout.move(@note_being_dragged, nxp - @wx, nyp - @wy)
+      @note_being_dragged.grab_focus
+    end
+    @note_being_dragged = nil
+  }
+  w.show_all
+  Gtk.main 
+
+== Author
+Joao Pedrosa - joaopedrosa at yahoo dot com
+
+== ChangeLog
+:2004-05-25 Masao
+ Some modified.
+:2004-05-24 Joao Pedrosa
+ Initial release

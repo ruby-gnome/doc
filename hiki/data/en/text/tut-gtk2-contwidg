@@ -1,0 +1,67 @@
+= Container Widgets
+{{link "tut-gtk2-packing-tables-demo", "tut-gtk2-contwidg", "tut-gtk", "tut-gtk2-contwidg-hvbox"}}
+
+== Submenues of "Container Widgets" section
+
+  * ((<Container Widgets (this page)|tut-gtk2-contwidg>))
+    * ((<Decorator Containers|tut-gtk2-contwidg#Decorator Containers>))
+    * ((<Layout Containers|tut-gtk2-contwidg#Layout Containers>))
+  * ((<Horizontal and Vertical Boxes|tut-gtk2-contwidg-hvbox>))
+  * ((<Tables|tut-gtk2-contwidg-tables>))
+  * ((<Fixed Containers|tut-gtk2-contwidg-fixedcont>))
+  * ((<Expanders|tut-gtk2-contwidg-expanders>))
+  * ((<Handle Boxes|tut-gtk2-contwidg-handlebox>))
+  * ((<Notebooks|tut-gtk2-contwidg-notebooks>))
+  * ((<Even Boxes|tut-gtk2-contwidg-eventbox>))
+
+== Short Description
+
+We cover here two types of container widgets: decorators and layout containers. Then we will describe other important container widgets as mentioned on the above list.
+
+== Container Widget
+
+Gtk::Container class is an abstract base class for all GTK+ widgets. It introduces style properties and basic behaviour (functionality) needed by all Widgets. Container class is direct descendant of the Gtk::Widget class, hence all the Container objects are also Widgets. This is important to know because when you will have hard time finding an appropriate feature for your object it is likely that it is provided by the Widget class, which contains a large number of methods (behaviour or functionality), properties as well as signals. Nevertheless, we are here concerned only with the Container widgets.
+
+
+== Decorator Containers
+
+In every program so far you have encountered Gtk::Window class, a widget derived from Gtk::Bin. Bin class is a type of the container class that can hold only a single child widget. Widgets derived from this class are called decorator containers. They add some type of functionality to the child. For instance, a Gtk::Window is provides its child with the functionality of being placed in a top-level widget, a Gtk::Button makes its child into a clickable entity, a Gtk::Frame class draws a frame around its child, a Gtk::EventBox allows its child that otherwise is incapable of catching GDK events, to catch them for its child, or a Gtk::Expander hides or shows its child from users.
+
+Following is a list of classes (decorators) derived from Gtk::Bin:
+
+  * Gtk::Window
+  * Gtk::Alignment
+  * Gtk::Frame
+  * Gtk::Button
+  * Gtk::Item
+  * Gtk::ComboBox
+  * Gtk::EventBox
+  * Gtk::Expander
+  * Gtk::HandleBox
+  * Gtk::ToolItem
+  * Gtk::ScrolledWindow
+  * Gtk::Viewport
+
+== Layout Containers
+
+    * Gtk::Alignment - A widget which controls the alignment and size of its child
+    * Gtk::AspectFrame - A frame that constrains its child to a particular aspect ratio
+    * Gtk::HBox - A horizontal container box
+    * Gtk::VBox - A vertical container box
+    * Gtk::HButtonBox - A container for arranging buttons horizontally
+    * Gtk::VButtonBox - A container for arranging buttons vertically
+    * Gtk::Fixed - A container which allows you to position widgets at fixed coordinates
+    * Gtk::HPaned - A container with two panes arranged horizontally
+    * Gtk::VPaned - A container with two panes arranged vertically
+    * Gtk::Layout - Infinite scrollable area containing child widgets and/or custom drawing
+    * Gtk::Notebook - A tabbed notebook container
+    * Gtk::Table - Pack widgets in regular patterns
+    * Gtk::Expander - A container which can hide its child
+
+
+=== Container signals
+
+* add
+* check-resize
+* remove
+* set-focus-child

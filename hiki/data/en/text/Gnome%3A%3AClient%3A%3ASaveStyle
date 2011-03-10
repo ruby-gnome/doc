@@ -1,0 +1,19 @@
+= class Gnome::Client::SaveStyle
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * Gnome::Client::SaveStyle
+
+== Constants
+
+--- BOTH
+--- GLOBAL
+--- LOCAL
+
+== See Also
+
+== ChangeLog
+
+

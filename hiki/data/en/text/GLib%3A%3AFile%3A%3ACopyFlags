@@ -1,0 +1,96 @@
+= class GLib::File::CopyFlags
+
+Flags used when copying or moving files.
+
+== Object Hierarchy
+
+* Object
+  * GLib::Flags
+    * GLib::File::CopyFlags
+
+== Instance Methods
+
+--- all_metadata?
+
+     Checks whether or not to copy all file metadata instead of just default
+     set used for copy (see GLib::FileInfo).
+
+     * Returns: true if all file metadata should be copied
+
+--- backup?
+
+     Checks whether or not a backup of any existing files should be made
+        
+     * Returns: true if a backup of any existing files should be made
+
+--- no_fallback_for_move?
+
+     Checks whether or not to use copy and delete fallback if native move isn’t
+     supported.
+
+     * Returns: true if copy and delete fallback if native move isn’t shouldn’t
+       be used
+
+--- nofollow_symlinks?
+
+     Checks whether or not to follow symlinks.
+
+     * Returns: true if symlinks should be followed
+
+--- none?
+
+     Checks whether or not any flags are set.
+
+     * Returns: true if no flags are set
+
+--- overwrite?
+
+     Checks whether or not any existing files should be overwritten.
+
+     * Returns: true if existing files should be overwritten
+
+--- target_default_perms?
+
+     Checks whether or not to leave target file with default permissions,
+     instead of setting the source file permissions
+
+     * Returns: true if default permissions should be left for target file
+
+== Constants
+
+--- ALL_METADATA
+
+     Copy all file metadata instead of just default set used for copy (see
+     GLib::FileInfo)
+
+--- BACKUP
+
+     Make a backup of any existing files
+
+--- NOFOLLOW_SYMLINKS
+
+     Don’t follow symlinks
+
+--- NONE
+
+     No flags set
+
+--- NO_FALLBACK_FOR_MOVE
+
+     Don’t use copy and delete fallback if native move isn’t supported
+
+--- OVERWRITE
+
+     Overwrite any existing files
+
+--- TARGET_DEFAULT_PERMS
+
+     Leaves target file with default permissions, instead of setting the source
+     file permissions
+
+
+== See Also
+
+== ChangeLog
+
+

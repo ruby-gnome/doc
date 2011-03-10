@@ -1,0 +1,343 @@
+= class Gtk::ToolButton
+
+((<Gtk::ToolButton>))s are ((<Gtk::ToolItem>))s containing buttons.
+
+The label of a Gtk::ToolButton is determined by the properties "label_widget", "label", and "stock_id". If "label_widget" is non-nil, then that widget is used as the label. Otherwise, if "label" is non-nil, that string is used as the label. Otherwise, if "stock_id" is non-nil, the label is determined by the stock item. Otherwise, the button does not have a label.
+
+The icon of a Gtk::ToolButton is determined by the properties "icon_widget" and "stock_id". If "icon_widget" is non-nil, then that widget is used as the icon. Otherwise, if "stock_id" is non-nil, the icon is determined by the stock item. Otherwise, the button does not have a label.
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::InitiallyUnowned
+        * Gtk::Object
+          * Gtk::Widget
+            * Gtk::Container
+              * Gtk::Bin
+                * Gtk::ToolItem
+                  * Gtk::ToolButton
+
+== Class Methods
+
+--- Gtk::ToolButton.new(icon_widget = nil, label = nil)
+
+    Creates a new Gtk::ToolButton using icon_widget as icon and label as label. ((* Since 2.4 *))
+    * icon_widget: a Gtk::Widget that will be used as icon widget, or nil
+    * label: a String that will be used as label, or nil
+    * Returns: A new Gtk::ToolButton
+
+--- Gtk::ToolButton.new(stock_id)
+
+    Creates a new Gtk::ToolButton containing the image and text from a stock item of Gtk::Stock. ((* Since 2.4 *))
+    It is an error if stock_id is not a name of a stock item.
+    * stock_id: the name of a stock item(a constant variable of Gtk::Stock)
+    * Returns: the new Gtk::ToolButton
+
+--- label
+
+    Returns the label used by the tool button, or nil if the tool button doesn't have a label. or uses a the label from a stock item. The returned string is owned by GTK+, and must not be modified or freed. ((* Since 2.4 *))
+    * Returns: The label, or nil
+
+--- label=(label)
+
+    Sets label as the label used for the tool button. The "label" property only has an effect if not overridden by a non-nil "label_widget" property. If both the "label_widget" and "label" properties are nil, the label is determined by the "stock_id" property. If the "stock_id" property is also nil, button will not have a label. ((* Since 2.4 *))
+    * label: A String that will be used as label, or nil.
+    * Returns: label
+
+--- set_label(label)
+
+    Same as Gtk::ToolButton.label=. ((* Since 2.4 *))
+    * label: A String that will be used as label, or nil.
+    * Returns: self
+
+--- use_underline?
+
+    Returns whether underscores in the label property are used as mnemonics on menu items on the overflow menu. See Gtk::ToolButton#use_underline=. ((* Since 2.4 *))
+    * Returns: true if underscores in the label property are used as mnemonics on menu items on the overflow menu.
+
+--- use_underline=(use_underline)
+
+    If set, an underline in the label property indicates that the next character should be used for the mnemonic accelerator key in the overflow menu. For example, if the label property is "_Open" and use_underline is true, the label on the tool button will be "Open" and the item on the overflow menu will have an underlined 'O'.
+    Labels shown on tool buttons never have mnemonics on them; this property only affects the menu item on the overflow menu.
+    Gets the value if set, an underline in the label property indicates that the next character should be used for the mnemonic accelerator key in the overflow menu. ((* Since 2.4 *))
+    * use_underline: true if the button label has the form "_Open", othewise false.
+    * Returns: use_underline
+
+--- set_use_underline(use_underline)
+
+    Same as Gtk::ToolButton.use_underline=. ((* Since 2.4 *))
+    * use_underline: true if the button label has the form "_Open", othewise false.
+    * Returns: self
+
+--- stock_id
+
+    Gets the  stock icon displayed on the item. ((* Since 2.4 *))
+    * Returns: The stock icon displayed on the item
+
+--- stock_id=(stock_id)
+
+    Sets the name of the stock item. The stock_id property only has an effect if not overridden by non-nil "label" and "icon_widget" properties. ((* Since 2.4 *))
+    * stock_id: The stock icon displayed on the item (an constant variable of Gtk::Stock)
+    * Returns: stock_id
+
+--- set_stock_id(stock_id)
+
+    Same as Gtk::ToolButton.stock_id=. ((* Since 2.4 *))
+    * stock_id: The stock icon displayed on the item (an constant variable of Gtk::Stock)
+    * Returns: self
+
+--- icon_widget
+
+    Return the widget used as icon widget on button. See Gtk::ToolButton#icon_widget=. ((* Since 2.4 *))
+    * Returns: Icon widget to display in the item
+
+--- icon_widget=(icon_widget)
+
+    Sets icon as the widget used as icon on button. If icon_widget is nil the icon is determined by the "stock_id" property. If the "stock_id" property is also nil, button will not have an icon. ((* Since 2.4 *))
+    * icon_widget: A Gtk::Widget used as icon, or nil
+    * Returns: icon_widget
+
+--- set_icon_widget(icon_widget)
+
+    Same as Gtk::ToolButton.icon_widget=. ((* Since 2.4 *))
+    * icon_widget: A Gtk::Widget used as icon, or nil
+    * Returns: self
+
+--- label_widget
+
+    Returns the widget used as label on button. See Gtk::ToolButton#label_widget=. ((* Since 2.4 *))
+    * Returns: the Gtk::Widget used as label on button, or nil
+
+--- label_widget=(label_widget)
+
+    Sets label_widget as the widget that will be used as the label for button. If label_widget is nil the "label" property is used as label. If "label" is also nil, the label in the stock item determined by the "stock_id" property is used as label. If "stock_id" is also nil, button does not have a label. ((* Since 2.4 *))
+    * label_widget: A Gtk::Widget used as label, or nil
+    * Returns: label_widget
+
+--- set_label_widget(label_widget)
+
+    Same as Gtk::ToolButton.label_widget=.
+    * label_widget: A Gtk::Widget used as label, or nil
+    * Returns: self
+
+--- icon_name
+
+    Returns the name of the themed icon for the tool button, see Gtk::ToolButton#icon_name=(icon_name). ((*Since 2.8*))
+
+--- icon_name=(icon_name)
+
+    Sets the icon for the tool button from a named themed icon. See the docs for Gtk::IconTheme for more details. The :icon-name property only has an effect if not overridden by non-nil "label", "icon-widget" and "stock-id" properties. ((*Since 2.8*))
+    * icon_name: the name of the themed icon
+    * Returns: icon_name
+
+--- set_icon_name=(icon_name)
+
+    Same as Gtk::ToolButton#icon_name=(icon_name). ((*Since 2.8*))
+    * icon_name: the name of the themed icon
+    * Returns: icon_name
+
+== Instance Methods
+
+--- clicked
+
+     * Returns: self: ((*FIXME*))
+
+--- icon_name
+
+    Gets the name of the themed icon displayed on the item.
+     * Returns: The name of the themed icon displayed on the item
+
+--- icon_name=(icon_name)
+
+    Sets the name of the themed icon displayed on the item.
+     * icon_name: The name of the themed icon displayed on the item
+     * Returns: icon_name
+
+--- icon_widget
+
+    Gets the Icon widget to display in the item.
+     * Returns: Icon widget to display in the item
+
+--- icon_widget=(icon_widget)
+
+    Sets the Icon widget to display in the item.
+     * icon_widget: Icon widget to display in the item
+     * Returns: icon_widget
+
+--- label
+
+    Gets the Text to show in the item..
+     * Returns: Text to show in the item.
+
+--- label=(label)
+
+    Sets the Text to show in the item..
+     * label: Text to show in the item.
+     * Returns: label
+
+--- label_widget
+
+    Gets the Widget to use as the item label.
+     * Returns: Widget to use as the item label
+
+--- label_widget=(label_widget)
+
+    Sets the Widget to use as the item label.
+     * label_widget: Widget to use as the item label
+     * Returns: label_widget
+
+--- ref_accessible
+
+    See Atk::Implementor#ref_accessible.
+
+--- set_icon_name(icon_name)
+
+    Same as icon_name=.
+     * icon_name: The name of the themed icon displayed on the item
+     * Returns: self
+
+--- set_icon_widget(icon_widget)
+
+    Same as icon_widget=.
+     * icon_widget: Icon widget to display in the item
+     * Returns: self
+
+--- set_label(label)
+
+    Same as label=.
+     * label: Text to show in the item.
+     * Returns: self
+
+--- set_label_widget(label_widget)
+
+    Same as label_widget=.
+     * label_widget: Widget to use as the item label
+     * Returns: self
+
+--- set_stock_id(stock_id)
+
+    Same as stock_id=.
+     * stock_id: The stock icon displayed on the item
+     * Returns: self
+
+--- set_use_underline(use_underline)
+
+    Same as use_underline=.
+     * use_underline: true if set, an underline in the label property indicates that the next character should be used for the mnemonic accelerator key in the overflow menu
+     * Returns: self
+
+--- stock_id
+
+    Gets the stock icon displayed on the item.
+     * Returns: The stock icon displayed on the item
+
+--- stock_id=(stock_id)
+
+    Sets the stock icon displayed on the item.
+     * stock_id: The stock icon displayed on the item
+     * Returns: stock_id
+
+--- use_underline=(use_underline)
+
+    Sets the value if set, an underline in the label property indicates that the next character should be used for the mnemonic accelerator key in the overflow menu.
+     * use_underline: true if set, an underline in the label property indicates that the next character should be used for the mnemonic accelerator key in the overflow menu
+     * Returns: use_underline
+
+--- use_underline?
+
+    Gets the value if set, an underline in the label property indicates that the next character should be used for the mnemonic accelerator key in the overflow menu.
+     * Returns: true if set, an underline in the label property indicates that the next character should be used for the mnemonic accelerator key in the overflow menu
+
+--- add_child
+
+    See Gtk::Buildable#add_child.
+
+--- construct_child
+
+    See Gtk::Buildable#construct_child.
+
+--- get_internal_child
+
+    See Gtk::Buildable#get_internal_child.
+
+--- name
+
+    See Gtk::Buildable#name.
+
+--- name=
+
+    See Gtk::Buildable#name=.
+
+--- set_buildable_property
+
+    See Gtk::Buildable#set_buildable_property.
+
+--- set_name
+
+    See Gtk::Buildable#set_name.
+
+--- builder_name
+
+    See Gtk::Buildable#builder_name.
+
+--- builder_name=
+
+    See Gtk::Buildable#builder_name=.
+
+--- set_builder_name
+
+    See Gtk::Buildable#set_builder_name.
+
+== Properties
+
+--- icon-widget: Gtk::Widget (Read/Write)
+
+    Icon widget to display in the item ((* Since 2.4 *))
+
+--- label: String (Read/Write)
+
+    Text to show in the item. ((* Since 2.4 *))
+    * Default value: nil
+
+--- label-widget: Gtk::Widget (Read/Write)
+
+    Widget to use as the item label ((* Since 2.4 *))
+
+--- stock-id: String or Symbol (Read/Write)
+
+    The stock icon displayed on the item ((* Since 2.4 *))
+
+--- use-underline: true or false (Read/Write)
+
+    If set, an underline in the label property indicates that the next character should be used for the mnemonic accelerator key in the overflow menu ((* Since 2.4 *))
+
+--- icon-name: String (Read/Write)
+
+    The name of the themed icon displayed on the item. This property only has an effect if not overridden by "label", "icon-widget" or "stock-id" properties. Default value: nil. ((*Since 2.8*))
+
+== Style Properties
+
+--- icon-spacing: Integer (Read/Write)
+
+    Spacing in pixels between the icon and label
+
+== Signals
+
+--- clicked: self
+
+    This signal is emitted when the tool button is clicked with the mouse or activated with the keyboard. ((* Since 2.4 *))
+     * self: Gtk::ToolButton
+
+== See Also
+
+* Gtk::Toolbar - The toolbar widget
+* Gtk::MenuToolButton - A subclass of Gtk::ToolButton that displays on the toolbar a button with an additional dropdown menu
+* Gtk::ToggleToolButton - A subclass of Gtk::ToolButton that displays toggle buttons on the toolbar 
+* Gtk::RadioToolButton - A subclass of Gtk::ToolButton that displays radio buttons on the toolbar
+* Gtk::SeparatorToolItem - A subclass of Gtk::ToolItem that separates groups of items on a toolbar
+
+== ChangeLog
+
+* 2005-05-06 Added ((<Masao>))

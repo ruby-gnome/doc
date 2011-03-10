@@ -1,0 +1,242 @@
+= class Gtk::Dialog
+Dialog boxes are a convenient way to prompt the user for a small amount of input, eg. to display a message, ask a question, or anything else that does not require extensive effort on the user's part.
+
+Ruby/GTK treats a dialog as a window split vertically. The top section is a Gtk::VBox, and is where widgets such as a Gtk::Label or a Gtk::Entry should be packed. The bottom area is known as the action_area. This is generally used for packing buttons into the dialog which may perform functions such as cancel, ok, or apply. The two areas are separated by a Gtk::HSeparator.
+
+Gtk::Dialog boxes are created with a call to Gtk::Dialog.new.
+
+If 'dialog' is a newly created dialog, the two primary areas of the window can be accessed as Gtk::Dialog#vbox and Gtk::Dialog#action_area, as can be seen from the example, below.
+
+A 'modal' dialog (that is, one which freezes the rest of the application from user input), can be created by calling Gtk::Window#set_modal on the dialog. When using Gtk::Dialog.new you can also pass the Gtk::Dialog::MODAL flag to make a dialog modal.
+
+If you add buttons to Gtk::Dialog using Gtk::Dialog.new, Gtk::Dialog#add_button, Gtk::Dialog#add_buttons, or Gtk::Dialog#add_action_widget, clicking the button will emit a signal called "response" with a response ID that you specified. Ruby/GTK will never assign a meaning to positive response IDs; these are entirely user-defined. But for convenience, you can use the response IDs in the ((<Gtk::Dialog#ResponseType>)) enumeration (these all have values less than zero). If a dialog receives a delete event, the "response" signal will be emitted with a response ID of Gtk::Dialog::RESPONSE_NONE.
+
+If you want to block waiting for a dialog to return before returning control flow to your code, you can call Gtk::Dialog#run. This function enters a recursive main loop and waits for the user to respond to the dialog, returning the response ID corresponding to the button the user clicked.
+
+For the simple dialog in the following example, in reality you'd probably use Gtk::MessageDialog to save yourself some effort. But you'd need to create the dialog contents manually if you had more than a simple message in the dialog. 
+
+    # Function to open a dialog box displaying the message provided.
+    def quick_message(message)
+        # Create the dialog
+        dialog = Gtk::Dialog.new("Message",
+                                 $main_application_window,
+                                 Gtk::Dialog::DESTROY_WITH_PARENT,
+                                 [ Gtk::Stock::OK, Gtk::Dialog::RESPONSE_NONE ])
+    
+        # Ensure that the dialog box is destroyed when the user responds.
+        dialog.signal_connect('response') { dialog.destroy }
+    
+        # Add the message in a label, and show everything we've added to the dialog.
+        dialog.vbox.add(Gtk::Label.new(message))
+        dialog.show_all
+    end
+
+== Object Hierarchy
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::InitiallyUnowned
+        * Gtk::Object
+          * Gtk::Widget
+            * Gtk::Container
+              * Gtk::Bin
+                * Gtk::Window
+                  * Gtk::Dialog
+
+== Class Methods
+--- Gtk::Dialog.new(title = nil, parent = nil, flags = nil, [button_face1, response_id1], [button_face2, response_id2], .....)
+    Creates a new Gtk::Dialog with title title (or nil for the default title; see 
+
+    * title : Title of the dialog, or nil
+    * parent : Transient parent of the dialog, or nil
+    * flags : From ((<Gtk::Dialog#Flags>)). The flags argument can be used to make the dialog modal (Gtk::Dialog::MODAL) and/or to have it destroyed along with its transient parent (Gtk::Dialog::DESTROY_WITH_PARENT).
+    * [button_face1, response_id1], [button_face2, response_id2], ...: Button face/response ID pairs should be listed.        
+       * button_face: Button face can be either a stock ID (Gtk::Stock constants) such as Gtk::Stock::OK, or some arbitrary text. 
+       * response_id: A response ID can be any positive number, or one of the values in the ((<Gtk::Dialog#ResponseType>)) enumeration. If the user clicks one of these dialog buttons, Gtk::Dialog will emit the "response" signal with the corresponding response ID. If a Gtk::Dialog receives the "delete_event" signal, it will emit "response" with a response ID of Gtk::Dialog::RESPONSE_DELETE_EVENT. However, destroying a dialog does not emit the "response" signal; so be careful relying on "response" when using the Gtk::Dialog::DESTROY_WITH_PARENT flag. Buttons are from left to right, so the first button in the list will be the leftmost button in the dialog.
+    * Returns : a new Gtk::Dialog
+
+       dialog = Gtk::Dialog.new("My dialog", main_app_window,
+                                Gtk::Dialog::MODAL | Gtk::Dialog::DESTROY_WITH_PARENT,
+                                [Gtk::Stock::OK, Gtk::Dialog::RESPONSE_ACCEPT],
+                                [Gtk::Stock::CANCEL, Gtk::Dialog::RESPONSE_REJECT])
+
+--- Gtk::Dialog.alternative_dialog_button_order?(screen)
+    Returns true if dialogs are expected to use an alternative button order on the specified screen. See Gtk::Dialog#set_alternative_button_order for more details about alternative button order. If you need to use this function, you should probably connect to the ::notify:gtk-alternative-button-order signal on the Gtk::Settings object associated to the screen, in order to be notified if the button order setting changes. ((*Since 2.6*))
+    * screen: a Gdk::Screen, or nil to use the default screen
+    * Returns: whether the alternative button order should be used
+
+== Instance Methods
+--- run {|response| ... }
+    Blocks in a recursive main loop until the dialog either emits the response signal, or is destroyed. If the dialog is destroyed during the call to Gtk::Dialog#run, Gtk::Dialog returns Gtk::Dialog::RESPONSE_NONE. Otherwise, it returns the response ID from the "response" signal emission. Before entering the recursive main loop, Gtk::Dialog#run calls Gtk::Widget#show on the dialog for you. Note that you still need to show any children of the dialog yourself.
+    During Gtk::Dialog#run, the default behavior of "delete_event" is disabled; if the dialog receives "delete_event", it will not be destroyed as windows usually are, and Gtk::Dialog#run will return Gtk::Dialog#RESPONSE_DELETE_EVENT. Also, during Gtk::Dialog#run the dialog will be modal. You can force Gtk::Dialog#run to return at any time by calling Gtk::Dialog#response to emit the "response" signal. Destroying the dialog during Gtk::Dialog#run is a very bad idea, because your post-run code won't know whether the dialog was destroyed or not.
+    After Gtk::Dialog#run returns, you are responsible for hiding or destroying the dialog if you wish to do so.
+
+    Typical usage of this method might be:
+
+      dialog.run do |response|
+        case response
+          when Gtk::Dialog::RESPONSE_ACCEPT
+            do_application_specific_something()
+          else
+            do_nothing_since_dialog_was_cancelled()
+        end
+        dialog.destroy
+      end
+
+    * {|response| ... } : A block or nothing.
+       * response: response ID.
+    * Returns : response ID
+
+--- response(response_id)
+    Emits the "response" signal with the given response ID. Used to indicate that the user has responded to the dialog in some way; typically either you or Gtk::Dialog#run will be monitoring the "response" signal and take appropriate action.
+    * response_id : response ID
+    * Returns: self
+
+--- add_button(button_face, response_id)
+    Adds a button with the given text (or a stock button, if button_face is a stock ID<Gtk::Stock constants)) and sets things up so that clicking the button will emit the "response" signal with the given response_id. The button is appended to the end of the dialog's action area. The button widget is returned, but usually you don't need it.
+    * button_face: text of button, or stock ID
+    * response_id: response ID for the button
+    * Returns : the button widget that was added
+
+--- add_buttons([button_face1, response_id1], [button_face2, response_id2], ...)
+    Adds more buttons, same as calling Gtk::Dialog#add_button repeatedly. 
+    * button_face: text of button, or stock ID
+    * response_id: response ID for the button
+    * Returns: self
+
+--- add_action_widget(child, response_id)
+    Adds an activatable widget to the action area of a Gtk::Dialog, connecting a signal handler that will emit the "response" signal on the dialog when the widget is activated. The widget is appended to the end of the dialog's action area. If you want to add a non-activatable widget, simply pack it into the action_area field of the Gtk::Dialog struct.
+    * child: an activatable widget
+    * response_id: response ID for child
+    * Returns: self.
+
+--- has_separator?
+    Accessor for whether the dialog has a separator.
+    * Returns: true if the dialog has a separator
+
+
+--- has_separator=(setting)
+    Sets whether the dialog has a separator above the buttons. true by default.
+    * setting: true to have a separator
+    * Returns: setting
+
+--- set_has_separator(setting)
+    Same as Gtk::Dialog#has_separator=.
+    * setting: true to have a separator
+    * Returns: self
+
+--- set_response_sensitive(response_id, setting)
+    Calls Gtk::Widget#set_sensitive for each widget in the dialog's action area with the given response_id. A convenient way to sensitize/desensitize dialog buttons.
+    * response_id : a response ID
+    * setting: true for sensitive
+    * Returns: self
+
+--- default_response=(response_id)
+    Sets the last widget in the dialog's action area with the given response_id as the     default widget for the dialog. Pressing "Enter" normally activates the default widget.
+    * response_id: a response ID
+    * Returns: response_id
+
+--- set_default_response(response_id)
+    Same as Gtk::Dialog#default_response=.
+    * response_id: a response ID
+    * Returns: self
+
+--- vbox
+    vbox is a Gtk::VBox - the main part of the dialog box.
+    * Returns: vbox
+
+--- action_area
+    action_area is a Gtk::HButtonBox packed below the dividing Gtk::HSeparator in the dialog. It is treated exactly the same as any other.
+    * Returns: action_area
+
+--- alternative_button_order=(new_order)
+    Sets an alternative button order. If the gtk-alternative-button-order setting is set to true, the dialog buttons are reordered according to the order of the response ids passed to this function. By default, GTK+ dialogs use the button order advocated by the Gnome Human Interface Guidelines with the affirmative button at the far right, and the cancel button left of it. But the builtin GTK+ dialogs and Gtk::MessageDialog do provide an alternative button order, which is more suitable on some platforms, e.g. Windows. Use this function after adding all the buttons to your dialog, as the following example shows:
+
+      cancel_button = dialog.add_button(Gtk::Stock::CANCEL, Gtk::Dialog::RESPONSE_CANCEL)
+      ok_button = dialog.add_button(Gtk::Stock::OK, Gtk::Dialog::RESPONSE_OK)
+      ok_button.grab_default
+  
+      help_button = dialog.add_button(Gtk::Stock::HELP, Gtk::Dialog::RESPONSE_HELP)
+      dialog.set_alternative_button_order([ Gtk::Dialog::RESPONSE_OK,
+                                            Gtk::Dialog::RESPONSE_CANCEL,
+                                            Gtk::Dialog::RESPONSE_HELP ])
+
+    ((*Since 2.6*))
+
+    * new_order: an Array of response ids of dialog buttons (Array)
+    * Returns: self
+
+--- set_alternative_button_order(new_order)
+    Same as Gtk::Dialog#alternative_button_order=. ((* Since 2.6 *))
+    * new_order: an Array of response ids of dialog buttons
+    * Returns: self
+
+--- get_response(widget)
+--- get_response_for_widget(widget)
+    Gets the response id of a widget in the action area of the dialog. ((*Since 2.8*))
+    * widget: a widget in the action area the dialog (Gtk::Widget)
+    * Returns: the response id of widget, or Gtk::Dialog::RESPONSE_NONE if the widget doesn't have a response id set.
+
+--- close
+    Emits "close" signal.
+    * Returns: self
+
+== Constants
+=== Flags
+Flags used to influence dialog construction. 
+--- MODAL
+    Call Gtk::Window#set_modal(true).
+--- DESTROY_WITH_PARENT
+    Call Gtk::Window#set_destroy_with_parent.
+--- NO_SEPARATOR
+    No separator bar above buttons.
+
+=== ResponseType
+These are returned from Ruby/GTK dialogs, and you can also use them yourself if you like.
+--- RESPONSE_NONE
+    Ruby/GTK returns this if a response widget has no response_id, or if the dialog gets programmatically hidden or destroyed.
+--- RESPONSE_REJECT
+--- RESPONSE_ACCEPT
+--- RESPONSE_DELETE_EVENT
+    the dialog is deleted.
+--- RESPONSE_OK
+--- RESPONSE_CANCEL
+--- RESPONSE_CLOSE
+--- RESPONSE_YES
+--- RESPONSE_NO
+--- RESPONSE_APPLY
+--- RESPONSE_HELP
+
+== Properties
+--- has-separator: true or false (Read/Write)
+    The dialog has a separator bar above its buttons.
+    * Default value: true
+
+== Style Properties
+--- action-area-border: Integer (Read)
+    Width of border around the button area at the bottom of the dialog.
+    * Allowed values: >= 0
+    * Default value: 5
+
+--- button-spacing: Integer (Read)
+    Spacing between buttons.
+    * Allowed values: >= 0
+    * Default value: 10
+
+--- content-area-border: Integer (Read)
+    Width of border around the main dialog area
+    * Allowed values: >= 0
+    * Default value: 2
+
+== Signals
+--- close: self (Run last / Action)
+     * self: Gtk::Dialog
+
+--- response: self, response_id (Run last)
+    Emitted when an action widget is clicked, the dialog receives a delete event, or the application programmer calls Gtk::Dialog#response. On a delete event, the response ID is Gtk::Dialog::RESPONSE_NONE. Otherwise, it depends on which action widget was clicked. 
+     * self: Gtk::Dialog
+     * response_id: the response_id
+
+== ChangeLog
+* 2007-02-14 Apply 2.10 - ((<Masao>))
+* 2006-02-01 Add Style Properties. Revised. - ((<Masao>))

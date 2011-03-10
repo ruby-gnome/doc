@@ -1,0 +1,71 @@
+= Obteniendo puertos de un elemento
+{{link("tut-gst-plugins", nil, "tut-gst", "tut-gst-pads-caps")}}
+
+Como hemos visto en el capítulo anterior (Gst::Element), los puertos (Gst::Pad) son el enlace de los elementos con el mundo exterior.
+
+El tipo específico de medio que un elemento puede manejat es mostrado en los puertos. La descripción de este tipo de medio se hace a través de capacidades (Gst::Caps).
+
+Una vez que hemos creado un elemento, podemos obtener uno de sus puertos con:
+
+  src_pad = element.get_pad("src")
+
+Este método devuelve el puerto llamado "src" del elemento dado.
+
+De forma alternativa, puedes pedir la lista de puertos de un elemento. El siguiente código imprime los nombre de todos los puertos de un elemento.
+
+  element.each_pad do |pad|
+    puts "pad name: " + pad.name
+  end
+
+== Puertos dinámicos
+
+Algunos elementod pueden no tener sus puertos cuando son creados. Esto ocurre, por ejemplo, con un demultiplexador MPEG2. El demultiplexador creará sus puertos en tiempo de ejecución cuando detecte los diferentes streams básicos en el sistema de stream MPEG2.
+
+Ejecutando (({gst-inspect mpegdemux})) se muestra que el elemento tiene solo un puerto: un puerto fuente llamado 'sink'. Los demás puertos están "dormidos" como se puede ver en la propiedad 'Exist: Sometimes'. Los puestos son creados dependiendo del tipo de archivo MPEG2 que reproduzcas. Más adelante veremos que esto es muy importante a la hora de crear tuberías dinámicas.
+
+Puedes conectar una señal a un elemento para que te informe cuando el elemento crea un nuevo puerto a partir de una de sus plantillas. El siguiente fragmento de código muestra como hacerlo:
+
+  # crea la tubería y hace algo útil
+  pipeline = Gst::Pipeline.new
+  ...
+
+  mpeg2parser = Gst::ElementFactory.make("mpegdemux")
+  mpeg2parser.signal_connect("new_pad") do |parser, pad|
+      puts "un nuevo puerto #{pad.name} ha sido creado!"
+      pipeline.pause
+      if pad.name == "private_stream_1.0"
+          # configura unaa tubería para un decodificador AC3
+          ...
+
+          # enlaza el puerto a la tubería del decodificador AC3
+          ...
+      end
+  end
+
+  # start the pipeline
+  pipeline.play
+  ...
+
+== Puertos bajo demanda
+
+Un elemento puede tener también puertos bajo demanda. Estos puertos no son creados automáticamente, sino que son creados bajo demanda. Esto es muy útil para multiplexadores, agregadores y elementos tee.
+
+Un elemento tee, por ejemplo, tiene un puerto de entrada y una plantilla de puerto bajo demanda para las salidas. Cada vez que un elemento quiere obtener un puerto de salida del elemento tee, tiene que pedir el puerto.
+
+El siguiente código puede ser usado para obtener un puerto del elemento tee. Tras solicitar el puerto, se puede usar para enlazarle a otro elemento.
+
+  element = Gst::ElementFactory.make("tee")
+  pad = element.request_pad("src%d")
+  puts "new pad: " + pad.name
+
+El método Gst::Element#request_pad puede ser usado para conseguir un puerto del elemento basado en la plantilla de nombre (name_template) o en la plantilla de puerto (pad_template)
+
+También es posible obtener un puerto que sea compatible con otra plantilla de puerto. Es muy útil si se quiere enlazar un elemento a un elemento multiplexador y se necesita un puerto que sea compatible. Para pedir un puerto compatible se usa el método Gst::Element#get_compatible_pad, como se ve en el siguiente ejemplo.
+
+  element = Gst::ElementFactory.make("tee")
+  mad = Gst::ElementFactory.make("mad")
+
+  templ = mad.get_pad_template_by_name("sink")
+
+  pad = element.get_compatible_pad(templ)
+  puts "new pad: " = pad.name

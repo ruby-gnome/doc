@@ -1,0 +1,20 @@
+= class Gtk::FileChooser::Action
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * Gtk::FileChooser::Action
+
+== Constants
+
+--- CREATE_FOLDER
+--- OPEN
+--- SAVE
+--- SELECT_FOLDER
+
+== See Also
+
+== ChangeLog
+
+

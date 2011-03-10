@@ -1,0 +1,31 @@
+= class Pango::AttrScale
+
+== Object Hierarchy
+
+* Object
+  * Data
+    * Pango::Attribute
+      * Pango::AttrFloat
+        * Pango::AttrScale
+
+== Class Methods
+
+--- Pango::AttrScale.new
+
+     * Returns: self: ((*FIXME*))
+
+== Constants
+
+--- LARGE
+--- MEDIUM
+--- SMALL
+--- XX_LARGE
+--- XX_SMALL
+--- X_LARGE
+--- X_SMALL
+
+== See Also
+
+== ChangeLog
+
+

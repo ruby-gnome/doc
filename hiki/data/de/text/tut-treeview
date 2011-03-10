@@ -1,0 +1,51 @@
+= Ruby/GTK TreeView-Tutorial 
+ 
+== Synopsis 
+ 
+Dies ist eine Anleitung, die das Gtk:TreeView-Widget erklären soll. Sie wurde von ((<Matthew Berg|galt>)) aus der für C verfassten ((<Originalversion|URL:http://scentric.net/temp/tutorial/>)) von Tim-Philipp Müller übernommen und angepasst.
+Im Augenblick wird diese Anleitung aus dem Englischen übersetzt.
+ 
+== Inhaltsverzeichnis
+ 
+* ((<Einleitung|tut-treeview-intro>))
+* ((<Komponenten: Model, Renderer, Column, View|tut-treeview-components>))
+* ((<Gtk::TreeModels zum Speichern von Daten: Gtk::ListStore und Gtk::TreeStore|tut-treeview-model>))
+  * ((<Wie die Daten in einem Store aufgebaut sind|tut-treeview-model-data>))
+  * ((<Zeilen ansprechen: GtkTreeIter, GtkTreePath, GtkTreeRowReference|tut-treeview-model-reference>))
+  * ((<Adding Rows to a Store|tut-treeview-model-add>))
+  * ((<Manipulating Row Data|tut-treeview-model-manipulate>))
+  * ((<Retrieving Row Data|tut-treeview-model-retrieve>))
+  * ((<Removing Rows|tut-treeview-model-remove>))
+* ((<Creating a Tree View|tut-treeview-view>))
+  * ((<Connecting Tree View and Model|tut-treeview-view-connect>))
+  * ((<Tree View Look and Feel|tut-treeview-view-look>))
+* ((<Mapping Data to the Screen: GtkTreeViewColumn and GtkCellRenderer|tut-treeview-renderer>))
+  * ((<Cell Renderers|tut-treeview-renderer-renderer>)) 
+  * ((<Attributes|tut-treeview-renderer-attributes>))
+  * ((<Cell Data Functions|tut-treeview-renderer-celldatafunc>))
+  * ((<GtkCellRendererText and Integer, TrueClass and Float Types|tut-treeview-renderer-types>))
+  * ((<GtkCellRendererText, UTF8, and pango markup|tut-treeview-renderer-pango>))
+  * ((<A Working Example|tut-treeview-renderer-example>))
+  * ((<How to Make a Whole Row Bold or Coloured|tut-treeview-renderer-bold>))
+* Selections, Double-Clicks and Context Menus
+  * ((<Handling Selections|tut-treeview-selection-handle>)) 
+  * ((<Double-Clicks on a Row|tut-treeview-selection-doubleclick>)) 
+  * ((<Context Menus|tut-treeview-selection-contextmenu>)) 
+* ((<Sorting|tut-treeview-sorting>)) 
+  * ((<GtkTreeSortable|tut-treeview-sorting-treesortable>)) 
+  * ((<GtkTreeModelSort|tut-treeview-sorting-treemodelsort>)) 
+  * ((<Sorting and Tree View Column Headers|tut-treeview-sorting-headers>)) 
+  * ((<Case-insensitive String Comparing|tut-treeview-sorting-nocase>)) 
+* ((<Editable Cells|tut-treeview-editable>)) 
+  * ((<Editable Text Cells|tut-treeview-editable-text>)) 
+  * ((<Editable Toggle and Radio Button Cells|tut-treeview-editable-tottle>)) 
+  * ((<Editable Spin Button Cells|tut-treeview-editable-spin>)) 
+* ((<Miscellaneous Tree View Tips'n'Tricks|tut-treeview-tips>)) 
+  * ((<Getting the Column Number from a Tree View Column Widget|tut-treeview-tips-index>)) 
+  * ((<Column Expander Visibility|tut-treeview-tips-visibility>))  
+  * ((<Getting the Cell Renderer a Click Event Happened On|tut-treeview-tips-getrenderer>)) 
+* ((<Other Resources|tut-treeview-resources>)) 
+* Copyright, License, and Credits  
+  * ((<Copyright and License|tut-treeview-license-copyright>))  
+  * ((<Credits|tut-treeview-license-credits>)) 
+* ((<Changelog|tut-treeview-changelog>)) 

@@ -1,0 +1,105 @@
+= class Art::Affine
+
+== Object Hierarchy
+
+* Object
+  * Data
+    * Art::Affine
+
+== Class Methods
+
+--- Art::Affine.identity
+
+     * Returns: self: ((*FIXME*))
+
+--- Art::Affine.new
+
+     * Returns: self: ((*FIXME*))
+
+--- Art::Affine.rotate
+
+     * Returns: self: ((*FIXME*))
+
+--- Art::Affine.scale
+
+     * Returns: self: ((*FIXME*))
+
+--- Art::Affine.shear
+
+     * Returns: self: ((*FIXME*))
+
+--- Art::Affine.translate
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- *
+
+     * Returns: self: ((*FIXME*))
+
+--- ==
+
+     * Returns: self: ((*FIXME*))
+
+--- []
+
+     * Returns: self: ((*FIXME*))
+
+--- act
+
+     * Returns: self: ((*FIXME*))
+
+--- call
+
+     * Returns: self: ((*FIXME*))
+
+--- expansion
+
+     * Returns: self: ((*FIXME*))
+
+--- flip
+
+     * Returns: self: ((*FIXME*))
+
+--- flip!
+
+     * Returns: self: ((*FIXME*))
+
+--- inverse
+
+     * Returns: self: ((*FIXME*))
+
+--- inverse!
+
+     * Returns: self: ((*FIXME*))
+
+--- invert
+
+     * Returns: self: ((*FIXME*))
+
+--- invert!
+
+     * Returns: self: ((*FIXME*))
+
+--- point
+
+     * Returns: self: ((*FIXME*))
+
+--- rectiliner
+
+     * Returns: self: ((*FIXME*))
+
+--- to_a
+
+     * Returns: self: ((*FIXME*))
+
+--- to_s
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

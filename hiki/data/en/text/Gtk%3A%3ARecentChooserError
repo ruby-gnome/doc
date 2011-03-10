@@ -1,0 +1,30 @@
+= class Gtk::RecentChooserError
+
+== Object Hierarchy
+
+* Object
+  * Exception
+    * StandardError
+      * RuntimeError
+        * Gtk::RecentChooserError
+
+== Instance Methods
+
+--- code
+
+     * Returns: self: ((*FIXME*))
+
+--- domain
+
+     * Returns: self: ((*FIXME*))
+
+== Constants
+
+--- INVALID_URI
+--- NOT_FOUND
+
+== See Also
+
+== ChangeLog
+
+

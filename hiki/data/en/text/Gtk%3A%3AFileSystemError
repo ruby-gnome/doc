@@ -1,0 +1,40 @@
+= class Gtk::FileSystemError
+
+This is a "semi-private" class. It is meant only for alternate Gtk::FileChooser backend modules; no stability guarantees are made at this point. So if you need to rescue Gtk::FileSystemError, use RuntimeError instead for portability.
+
+== Object Hierarchy
+
+* Object
+  * Exception
+    * StandardError
+      * RuntimeError
+        * Gtk::FileSystemError
+
+== Instance Methods
+
+--- code
+
+    Returns the error code (((<Gtk::FileSystemError|Gtk::FileSystemError#GtkFileSystemError>))). 
+    * Returns: the error code
+
+--- domain
+
+    Returns the error domain. 
+    * Returns: the error domain
+
+== Constants
+
+=== GtkFileSystemError
+
+--- ALREADY_EXSITS
+--- BAD_FILENAME
+--- FAILED
+--- INVALID_URI
+--- NONEXISTENT
+--- NOT_FOLDER
+
+== See Also
+
+== ChangeLog
+
+-((<Masao>))

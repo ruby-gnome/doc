@@ -1,0 +1,17 @@
+= class Poppler::ActionMovie
+
+== Object Hierarchy
+
+* Object
+  * GLib::Boxed
+    * Poppler::Action
+      * Poppler::ActionAny
+        * Poppler::ActionMovie
+
+== See Also
+
+== ChangeLog
+
+* 2006-05-18 ((<kou>)): completed.
+
+- ((<kou>))

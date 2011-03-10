@@ -1,0 +1,12 @@
+= Double-Clicks on a Row
+{{link "tut-treeview-selection-handle", nil, "tut-treeview", "tut-treeview-selection-contextmenu"}}
+
+Catching double-clicks on a row is quite easy and is done by connecting to a tree view's "row-activated" signal, like this:
+
+  view.signal_connect("row-activated") do |view, path, column|
+    puts "Row #{path.to_str} was clicked!"
+
+    if iter = view.model.get_iter(path)
+      puts "Double-clicked row contains name #{iter[0]}!"
+    end
+  end

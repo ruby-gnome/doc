@@ -1,0 +1,38 @@
+= class GLib::Param::Float
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Param
+      * GLib::Param::Float
+
+== Class Methods
+
+--- GLib::Param::Float.new
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- epsilon
+
+     * Returns: self: ((*FIXME*))
+
+--- maximum
+
+     * Returns: self: ((*FIXME*))
+
+--- minimum
+
+     * Returns: self: ((*FIXME*))
+
+--- range
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

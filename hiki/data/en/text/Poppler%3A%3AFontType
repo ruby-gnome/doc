@@ -1,0 +1,30 @@
+= class Poppler::FontType
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * Poppler::FontType
+
+== Constants
+
+--- CID_TYPE0
+--- CID_TYPE0C
+--- CID_TYPE2
+--- TRUETYPE
+--- TYPE1
+--- TYPE1C
+--- TYPE3
+--- UNKNOWN
+--- CID_TYPE0COT
+--- CID_TYPE2OT
+--- TRUETYPEOT
+--- TYPE1COT
+
+== See Also
+
+== ChangeLog
+
+* 2006-05-18 ((<kou>)): completed.
+
+- ((<kou>))

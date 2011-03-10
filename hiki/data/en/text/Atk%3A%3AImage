@@ -1,0 +1,33 @@
+= module Atk::Image
+
+== Included Modules
+
+  * GLib::Interface
+
+== Instance Methods
+
+--- image_description
+
+     * Returns: self: ((*FIXME*))
+
+--- image_description=
+
+     * Returns: self: ((*FIXME*))
+
+--- image_position
+
+     * Returns: self: ((*FIXME*))
+
+--- image_size
+
+     * Returns: self: ((*FIXME*))
+
+--- set_image_description
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

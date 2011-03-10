@@ -1,0 +1,38 @@
+= class Gtk::MozEmbed::StatusFlags
+
+== Object Hierarchy
+
+* Object
+  * GLib::Flags
+    * Gtk::MozEmbed::StatusFlags
+
+== Instance Methods
+
+--- connect?
+
+     * Returns: self: ((*FIXME*))
+
+--- dns?
+
+     * Returns: self: ((*FIXME*))
+
+--- timeout?
+
+     * Returns: self: ((*FIXME*))
+
+--- usercanceled?
+
+     * Returns: self: ((*FIXME*))
+
+== Constants
+
+--- CONNECT
+--- DNS
+--- TIMEOUT
+--- USERCANCELED
+
+== See Also
+
+== ChangeLog
+
+

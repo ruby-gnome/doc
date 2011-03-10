@@ -1,0 +1,301 @@
+= class Gnome::Program
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Gnome::Program
+
+== Class Methods
+
+--- Gnome::Program.get
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::Program.locate_file
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::Program.new
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- app_datadir
+
+    Gets the Data prefix where this application was installed.
+     * Returns: Data prefix where this application was installed
+
+--- app_datadir=(app_datadir)
+
+    Sets the Data prefix where this application was installed.
+     * app_datadir: Data prefix where this application was installed
+     * Returns: app_datadir
+
+--- app_id
+
+    Gets the ID string to use for this application.
+     * Returns: ID string to use for this application
+
+--- app_libdir
+
+    Gets the Library prefix where this application was installed.
+     * Returns: Library prefix where this application was installed
+
+--- app_libdir=(app_libdir)
+
+    Sets the Library prefix where this application was installed.
+     * app_libdir: Library prefix where this application was installed
+     * Returns: app_libdir
+
+--- app_prefix
+
+    Gets the Prefix where this application was installed.
+     * Returns: Prefix where this application was installed
+
+--- app_prefix=(app_prefix)
+
+    Sets the Prefix where this application was installed.
+     * app_prefix: Prefix where this application was installed
+     * Returns: app_prefix
+
+--- app_sysconfdir
+
+    Gets the Configuration prefix where this application was installed.
+     * Returns: Configuration prefix where this application was installed
+
+--- app_sysconfdir=(app_sysconfdir)
+
+    Sets the Configuration prefix where this application was installed.
+     * app_sysconfdir: Configuration prefix where this application was installed
+     * Returns: app_sysconfdir
+
+--- app_version
+
+    Gets the Version of this application.
+     * Returns: Version of this application
+
+--- args
+
+     * Returns: self: ((*FIXME*))
+
+--- create_directories?
+
+    Gets the Create standard GNOME directories on startup.
+     * Returns: Create standard GNOME directories on startup
+
+--- enable_sound=(enable_sound)
+
+    Sets the Enable sound on startup.
+     * enable_sound: Enable sound on startup
+     * Returns: enable_sound
+
+--- enable_sound?
+
+    Gets the Enable sound on startup.
+     * Returns: Enable sound on startup
+
+--- espeaker
+
+    Gets the How to connect to esd.
+     * Returns: How to connect to esd
+
+--- espeaker=(espeaker)
+
+    Sets the How to connect to esd.
+     * espeaker: How to connect to esd
+     * Returns: espeaker
+
+--- gnome_datadir
+
+    Gets the Data prefix where GNOME was installed.
+     * Returns: Data prefix where GNOME was installed
+
+--- gnome_libdir
+
+    Gets the Library prefix where GNOME was installed.
+     * Returns: Library prefix where GNOME was installed
+
+--- gnome_path
+
+    Gets the Path in which to look for installed files.
+     * Returns: Path in which to look for installed files
+
+--- gnome_prefix
+
+    Gets the Prefix where GNOME was installed.
+     * Returns: Prefix where GNOME was installed
+
+--- gnome_sysconfdir
+
+    Gets the Configuration prefix where GNOME was installed.
+     * Returns: Configuration prefix where GNOME was installed
+
+--- goption_context
+
+    Gets the goption context pointer that Gnome::Program is using.
+     * Returns: The goption context pointer that Gnome::Program is using
+
+--- human_readable_name
+
+    Gets the Human readable name of this application.
+     * Returns: Human readable name of this application
+
+--- locate_file
+
+     * Returns: self: ((*FIXME*))
+
+--- options
+
+     * Returns: self: ((*FIXME*))
+
+--- popt_context
+
+    Gets the popt context pointer that Gnome::Program is using.
+     * Returns: The popt context pointer that Gnome::Program is using
+
+--- print_help
+
+     * Returns: self: ((*FIXME*))
+
+--- print_usage
+
+     * Returns: self: ((*FIXME*))
+
+--- set_app_datadir(app_datadir)
+
+    Same as app_datadir=.
+     * app_datadir: Data prefix where this application was installed
+     * Returns: self
+
+--- set_app_libdir(app_libdir)
+
+    Same as app_libdir=.
+     * app_libdir: Library prefix where this application was installed
+     * Returns: self
+
+--- set_app_prefix(app_prefix)
+
+    Same as app_prefix=.
+     * app_prefix: Prefix where this application was installed
+     * Returns: self
+
+--- set_app_sysconfdir(app_sysconfdir)
+
+    Same as app_sysconfdir=.
+     * app_sysconfdir: Configuration prefix where this application was installed
+     * Returns: self
+
+--- set_enable_sound(enable_sound)
+
+    Same as enable_sound=.
+     * enable_sound: Enable sound on startup
+     * Returns: self
+
+--- set_espeaker(espeaker)
+
+    Same as espeaker=.
+     * espeaker: How to connect to esd
+     * Returns: self
+
+== Constants
+
+--- FILE_DOMAIN_APP_CONFIG
+--- FILE_DOMAIN_APP_DATADIR
+--- FILE_DOMAIN_APP_HELP
+--- FILE_DOMAIN_APP_LIBDIR
+--- FILE_DOMAIN_APP_PIXMAP
+--- FILE_DOMAIN_APP_SOUND
+--- FILE_DOMAIN_CONFIG
+--- FILE_DOMAIN_DATADIR
+--- FILE_DOMAIN_HELP
+--- FILE_DOMAIN_LIBDIR
+--- FILE_DOMAIN_PIXMAP
+--- FILE_DOMAIN_SOUND
+--- FILE_DOMAIN_UNKNOWN
+
+== Properties
+
+--- app-datadir: String (Read/Write)
+
+    Data prefix where this application was installed
+
+--- app-id: String (Read)
+
+    ID string to use for this application
+
+--- app-libdir: String (Read/Write)
+
+    Library prefix where this application was installed
+
+--- app-prefix: String (Read/Write)
+
+    Prefix where this application was installed
+
+--- app-sysconfdir: String (Read/Write)
+
+    Configuration prefix where this application was installed
+
+--- app-version: String (Read)
+
+    Version of this application
+
+--- create-directories: true or false (Read/Write)
+
+    Create standard GNOME directories on startup
+
+--- enable-sound: true or false (Read/Write)
+
+    Enable sound on startup
+
+--- espeaker: String (Read/Write)
+
+    How to connect to esd
+
+--- gnome-datadir: String (Read/Write)
+
+    Data prefix where GNOME was installed
+
+--- gnome-libdir: String (Read/Write)
+
+    Library prefix where GNOME was installed
+
+--- gnome-path: String (Read/Write)
+
+    Path in which to look for installed files
+
+--- gnome-prefix: String (Read/Write)
+
+    Prefix where GNOME was installed
+
+--- gnome-sysconfdir: String (Read/Write)
+
+    Configuration prefix where GNOME was installed
+
+--- goption-context: gpointer (Read/Write)
+
+    The goption context pointer that Gnome::Program is using
+
+--- human-readable-name: String (Read/Write)
+
+    Human readable name of this application
+
+--- popt-context: gpointer (Read)
+
+    The popt context pointer that Gnome::Program is using
+
+--- popt-flags: Integer (Write)
+
+    The flags to use for popt
+
+--- popt-table: gpointer (Write)
+
+    The table of options for popt
+
+== See Also
+
+== ChangeLog
+
+

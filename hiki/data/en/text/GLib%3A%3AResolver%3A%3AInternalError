@@ -1,0 +1,18 @@
+= class GLib::Resolver::InternalError
+
+Unknown error
+
+== Object Hierarchy
+
+* Object
+  * Exception
+    * StandardError
+      * IOError
+        * GLib::Resolver::Error
+          * GLib::Resolver::InternalError
+
+== See Also
+
+== ChangeLog
+
+

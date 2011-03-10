@@ -1,0 +1,30 @@
+= News (2010-09-23)
+== Ruby-GNOME2 0.90.0 released
+((*Posted by kou on 2010-09-23 (Thu) 07:26:16*))
+
+Ruby-GNOME2 0.90.0 is out. Enjoy!
+
+NOTE: 0.90.x releases are for 1.0.0 major release.
+
+RubyGems support!
+
+== Downloads
+
+: ((<ruby-gtk2-0.90.0.tar.gz|URL:http://downloads.sourceforge.net/ruby-gnome2/ruby-gtk2-0.90.0.tar.gz>))
+  The minimum package which includes Ruby/GLib2, Ruby/ATK, Ruby/GdkPixbuf2, Ruby/Pango, Ruby/GTK2.
+
+: ((<ruby-gnome2-all-0.90.0.tar.gz|URL:http://downloads.sourceforge.net/ruby-gnome2/ruby-gnome2-all-0.90.0.tar.gz>))
+   All of Ruby-GNOME2 libraries.
+
+=== Changes
+
+==== Ruby/GTK2
+
+  * Bug fixes:
+    * [ruby-gnome2-devel-en] Gtk 2.20, Gtk::Builder and 'name'
+      add Gtk::Buildable#builder_name/set_builder_name.
+      [Simon Arnaud, Kouhei Sutou]
+
+=== Thanks
+
+  * Simon Arnaud

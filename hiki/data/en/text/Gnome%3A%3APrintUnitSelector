@@ -1,0 +1,112 @@
+= class Gnome::PrintUnitSelector
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::InitiallyUnowned
+        * Gtk::Object
+          * Gtk::Widget
+            * Gtk::Container
+              * Gtk::Box
+                * Gtk::HBox
+                  * Gnome::PrintUnitSelector
+
+== Class Methods
+
+--- Gnome::PrintUnitSelector.new(bases)
+
+    
+     * bases: Gnome::PrintUnit::UNIT_*
+     * Returns: A new Gnome::PrintUnitSelector object
+
+== Instance Methods
+
+--- add_adjustment(adjustment)
+
+     * adjustment: A Gtk::Adjustment object
+     * Returns: (({nil}))
+
+--- bases=(basis)
+--- set_bases(basis)
+
+     
+     * basis: Gnome::PrintUnit::UNIT_*
+     * Returns: (({nil}))
+
+--- remove_adjustment(adjustment)
+
+     
+     * adjustment: A Gtk::Adjustment object
+     * Returns: (({nil}))
+
+--- unit
+
+     
+     * Returns: A Gnome::PrintUnit
+
+--- unit=(unit)
+--- set_unit(unit)
+
+     
+     * unit: A Gnome::PrintUnit
+     * Returns: (({nil}))
+
+--- ref_accessible
+
+    See Atk::Implementor#ref_accessible.
+
+--- add_child
+
+    See Gtk::Buildable#add_child.
+
+--- construct_child
+
+    See Gtk::Buildable#construct_child.
+
+--- get_internal_child
+
+    See Gtk::Buildable#get_internal_child.
+
+--- name
+
+    See Gtk::Buildable#name.
+
+--- name=
+
+    See Gtk::Buildable#name=.
+
+--- set_buildable_property
+
+    See Gtk::Buildable#set_buildable_property.
+
+--- set_name
+
+    See Gtk::Buildable#set_name.
+
+--- builder_name
+
+    See Gtk::Buildable#builder_name.
+
+--- builder_name=
+
+    See Gtk::Buildable#builder_name=.
+
+--- set_builder_name
+
+    See Gtk::Buildable#set_builder_name.
+
+== Signals
+
+--- modified: self
+
+     * self: Gnome::PrintUnitSelector
+
+== See Also
+
+== ChangeLog
+
+* 2005-06-10 ((<kou>)): added
+
+- ((<kou>))

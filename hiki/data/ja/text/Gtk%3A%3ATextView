@@ -1,0 +1,540 @@
+= Gtk::TextView クラス
+Gtk::TextBufferの内容を表示するウィジェット
+
+== オブジェクト階層
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Gtk::Object
+        * Gtk::Widget
+          * Gtk::Container
+            * Gtk::TextView
+
+== クラスメソッド
+--- Gtk::TextView.new(buffer = nil)
+    　指定されたバッファの内容を表示する新しいGtk::TextViewを作成します。一つのバッファを複数のウィジェットで共有することもできます。bufferがnilの場合、自動的にデフォルトのバッファが作成されます。
+    * buffer: Gtk::TextBuffer 
+    * 戻り値: 新しいGtk::TextView
+
+== インスタンスメソッド
+--- buffer
+    　Gtk::TextViewに表示されているバッファを返します。
+    * 戻り値: Gtk::TextBuffer 
+--- buffer=(buffer)
+    　Gtk::TextViewに表示するバッファを設定します。
+    * buffer: Gtk::TextBuffer 
+    * 戻り値: buffer
+--- set_buffer(buffer)
+    　Gtk::TextView#buffer=と同じです。
+    * buffer: Gtk::TextBuffer 
+    * 戻り値: self
+
+--- scroll_to_mark(mark, within_margin, use_align, xalign, yalign)
+    　表示エリアのxalignとyalignが指し示す位置にmarkが来るようにGtk::TextViewをスクロールします。xalignに0.0が指定された場合、左端を意味し、1.0が指定された場合、右端を意味します。yalignに0.0が指定された場合、上端を意味し、1.0が指定された場合、下端を意味します。xalign、yalignともに、0.5の場合は中央の位置が指定されたことを意味します。{{br}}　use_alignにfalseが指定された場合、markが表示エリアに入るまでの必要最低限の距離をスクロールします, possibly not scrolling at all。{{br}}　within_marginに指定した値（0.0以上0.5未満）の分だけ有効な表示エリアが小さくなります。
+    * mark: Gtk::TextMark 
+    * within_margin: 表示エリアサイズに対するマージンの割合（0.0以上0.5未満）
+    * use_align: アラインメント引数を使用するかどうかを表す真偽値（falseの場合mark位置が表示エリアに入るまでの必要最低限の距離をスクロールします）
+    * xalign: 表示エリア内での、横方向のmarkのアラインメント
+    * yalign: 表示エリア内での、縦方向のmarkのアラインメント
+    * 戻り値: self
+
+--- scroll_to_iter(iter, within_margin, use_align, xalign, yalign)
+    　表示エリアのxalignとyalignが指し示す位置にiterが来るようにGtk::TextViewをスクロールします。xalignに0.0が指定された場合、左端を意味し、1.0が指定された場合、右端を意味します。yalignに0.0が指定された場合、上端を意味し、1.0が指定された場合、下端を意味します。xalign、yalignともに、0.5の場合は中央の位置が指定されたことを意味します。{{br}}　use_alignにfalseが指定された場合、iterが表示エリアに入るまでの必要最低限の距離をスクロールします, possibly not scrolling at all。{{br}}　within_marginに指定した値（0.0以上0.5未満）の分だけ有効な表示エリアが小さくなります。{{br}}　【注意】　このメソッドは、実行の直前に計算されたバッファ内の行の高さを使用します。そして行の高さはidleハンドラの中で計算されることに注意する必要があります。もし行の高さが計算される前にこのメソッドが呼び出されてしまった場合、望んだ結果にならないかもしれません。予期しない結果を避けるために、Gtk::TextView#scroll_to_mark( which saves a point to be scrolled to after line validation)を利用することを検討してください。
+    * iter: Gtk::TextIter 
+    * within_margin: 表示エリアサイズに対するマージンの割合（0.0以上0.5未満）
+    * use_align: アラインメント引数を使用するかどうかを表す真偽値（falseの場合mark位置が表示エリアに入るまでの必要最低限の距離をスクロールします）
+    * xalign: 表示エリア内での、横方向のiterのアラインメント
+    * yalign: 表示エリア内での、縦方向のiterのアラインメント
+    * 戻り値: スクロールが行われた場合、trueが返ります。
+
+--- scroll_mark_onscreen(mark)
+    　指定されたmarkが表示エリアに入るまでの必要最低限だけGtk::TextViewをスクロールします。
+    * mark: Gtk::TextViewのバッファ（Gtk::TextBuffer）内にあるmark
+    * 戻り値: self
+
+--- move_mark_onscreen(mark)
+    　バッファ内の指定されたmarkを現在表示されているエリアに移動します。
+    * mark: Gtk::TextMark 
+    * 戻り値: markが移動した場合（表示されているエリアになかった場合）、trueを返します。
+
+--- place_cursor_onscreen
+    　バッファ内のカーソルを現在表示されているエリアに移動します。（もし表示エリアになければ）
+    * 戻り値: カーソルを移動する必要があった場合、trueを返します。
+
+--- visible_rect
+    　バッファの現在表示されているエリアをバッファ内座標で取得します。バッファ内座標はGtk::TextView#buffer_to_window_coordsでウィンドウ内座標に変換することができます。
+    * 戻り値: Gdk::Rectangle
+
+--- get_iter_location(iter)
+    　iterの位置にある文字を、任意の座標に含むGdk::Rectangleを取得します。Gdk::Rectangleが持つ値はバッファ内座標です。バッファ内座標はGtk::TextView#buffer_to_window_coordsでウィンドウ内座標に変換することができます。
+    * iter : GtkTextIter 
+    * 戻り値: iterの位置にある文字を、任意の座標に含むGdk::Rectangle
+
+--- get_line_at_y(y)
+    　座標yの位置にある行の先頭を表すGtk::TextIterを取得します。yはバッファ内座標を指定して下さい。ウィンドウ内座標からバッファ内座標を得るには、Gtk::TextView#window_to_buffer_coordsを使用して下さい。戻り値のline_topはnilでなければ、iterを取得した行の上端の座標になります。
+    * y : y座標
+    * 戻り値: [target_iter, line_top]
+       * target_iter : Gtk::TextIter 
+       * line_top: iterを取得した行の上端の座標
+
+--- get_line_yrange(iter)
+    　指定されたiterを含む行の上端のy座標と行の高さを取得します。取得される座標はバッファ内座標です。バッファ内座標はGtk::TextView#buffer_to_window_coordsでウィンドウ内座標に変換することができます。
+    * iter : GtkTextIter 
+    * 戻り値: [y, height]
+       * y: y座標
+       * height: 行の高さ
+
+--- get_iter_at_location(x, y)
+    　バッファ内座標x, yの位置のGtk::TextIterを取得します。座標は表示エリアだけでなく、バッファ全体から見たものになります。指定する座標は、イベントから取得したものでない場合、Gtk::TextView#window_to_buffer_coordsでバッファ内座標に変換する必要があります。
+    * x: バッファ内x座標
+    * y: バッファ内y座標
+    * 戻り値: Gtk::TextIter 
+
+--- get_iter_at_position(x, y)
+    　バッファ内の座標x, yの位置にある文字を指し示すGtk::TextIterを取得します。座標は表示エリアだけでなく、バッファ全体から見たものになります。指定する座標は、イベントから取得したものでない場合、Gtk::TextView#window_to_buffer_coordsでバッファ内座標に変換する必要があります。{{br}}　このメソッドは、カーソル位置（文字の間）を指し示すGtk::TextIterを返すGtk::TextView#get_iter_at_locationとは違うことに注意してください。((-訳注：　これはメソッドの動作を見た上での推測ですが、Gtk::TextView#get_iter_at_locationは、仮に座標の場所をクリックした場合にカーソルが現れる場所を表すGtk::TextIterを返すメソッドだと思われます。つまり、指定した座標がバッファ内のある文字の前半分（日本語、英語などの場合は左側）のエリアに含まれる時は、文字の手前のカーソル位置を表すGtk::TextIterが返り、座標が文字の後ろ半分（日本語、英語などの場合は右側）のエリアに含まれる時は、文字の後ろのカーソル位置を表すGtk::TextIterが返るという具合です。それに対し、get_iter_at_positionは、常に座標上にある文字の手前のカーソル位置を表すGtk::TextIterが返るようです。戻り値のtrailingは、指定した座標が文字の前半分にある時には0が返り、後ろ半分の時には1が返るようです。メソッドの説明に、文字を指し示すGtk::TextIterを返すとありますが、これは結局offsetがその文字の位置と一致するGtk::TextIterを返す、という意味ではないかと思われます。（この注は推測なので、間違っている可能性もあります）-))((* Since 2.6 *))
+    * x: バッファ内x座標
+    * y: バッファ内y座標
+    * 戻り値: [iter, trailing]
+       * iter: Gtk::TextIter
+       * trailing: a trailing
+
+--- buffer_to_window_coords(win_type, buffer_x, buffer_y)
+    　座標buffer_x, buffer_yをwin_typeのウィンドウタイプのウィンドウ内座標に変換します。戻り値はwindow_x, window_yに格納されます。{{br}}　存在しないウィンドウの座標に変換することはできないので注意して下さい。（Gtk::TextView#set_border_window_sizeを参照）
+    * win_type: ((<GtkTextWindowType|Gtk::TextView#GtkTextWindowType>)) ただし Gtk::TextView::WINDOW_PRIVATE を除く。
+    * buffer_x: バッファ内x座標
+    * buffer_y: バッファ内y座標
+    * 戻り値: [window_x, window_y]
+       * window_x: ウィンドウ内x座標
+       * window_y: ウィンドウ内y座標
+
+--- window_to_buffer_coords(win_type, window_x, window_y)
+    　win_typeのウィンドウタイプのウィンドウ内座標をバッファ内座標に変換します。戻り値はbuffer_x, buffer_yに格納されます。{{br}}　存在しないウィンドウの座標を変換することはできないので注意して下さい。（Gtk::TextView#set_border_window_sizeを参照）
+    * win_type : ((<GtkTextWindowType|Gtk::TextView#GtkTextWindowType>)) ただし Gtk::TextView::WINDOW_PRIVATE を除く。
+    * window_x: ウィンドウ内x座標
+    * window_y: ウィンドウ内y座標
+    * 戻り値: [buffer_x, buffer_y]
+       * buffer_x: バッファ内x座標
+       * buffer_y: バッファ内y座標
+
+--- get_window(win_type)
+    　指定したwin_typeに対応するGdk::Windowを取得します。取得できるのは、ウィジェット全体を表すウィンドウ（win_type=Gtk::TextView::WINDOW_WIDGET）、上下左右の子ウィンドウ（win_type=Gtk::TextView::WINDOW_TOP、win_type=Gtk::TextView::WINDOW_BOTTOM、win_type=Gtk::TextView::WINDOW_LEFT、win_type=Gtk::TextView::WINDOW_RIGHT。border windowのこと。border windowについてはGtk::TextView#set_border_window_sizeを参照）、およびテキストバッファを表示するウィンドウ（win_type=Gtk::TextView::WINDOW_TEXT）です。{{br}}　ウィンドウの横幅あるいは縦幅が0である時はこれらのウィンドウは存在せず、nilが返ります。またウィジェットが具体化される（realized）前の状態の時も存在しません。
+    * win_type: 取得したいウィンドウの((<GtkTextWindowType|Gtk::TextView#GtkTextWindowType>))
+    * 戻り値: Gdk::Window または nil 
+
+--- get_window_type(window)
+    　このメソッドは通常、あるイベントがどのウィンドウで起きたかを調べるために使用されます。あるイベントシグナルをGtk::TextViewにconnectしていた場合、event.window（event=イベント系シグナルのハンドラの第2引数）に対してこのメソッドを呼び出すことで、ウィンドウ（のタイプ）を知ることができます。
+    * window: Gdk::Window
+    * 戻り値: ((<GtkTextWindowType|Gtk::TextView#GtkTextWindowType>)) 
+
+--- get_border_window_size(type)
+    　指定したタイプのborder windowの幅を取得します。下のGtk::TextView#set_border_window_sizeも参照してください。
+    * type: 幅を取得したいborder windowのタイプ（((<GtkTextWindowType|Gtk::TextView#GtkTextWindowType>))）
+    * 戻り値: ウィンドウの幅
+
+--- set_border_window_size(type, size)
+    　Gtk::TextView::WINDOW_LEFT（に対応するウィンドウ）やGtk::TextView::WINDOW_RIGHTの横幅、もしくはGtk::TextView::WINDOW_TOPやGtk::TextView::WINDOW_BOTTOMの縦幅を設定します。{{br}}　サイズを0に設定した場合、そのウィンドウは破棄されます。また、0より大きい値を設定した場合、（もしなければ）そのウィンドウが生成されます。{{br}}　このメソッドはborder windowに対してのみ使用することができ、Gtk::TextView::WINDOW_WIDGET、Gtk::TextView::WINDOW_TEXT、Gtk::TextView::WINDOW_PRIVATEに対しては動作しません。{{br}}　訳注：　border windowとは、Gtk::TextViewウィジェットの内側に、テキスト表示領域（Gtk::TextView::WINDOW_TEXT？）の四方を囲む形で表示される4つのGdk::Windowのことで、デフォルトの幅は0です（存在しない）。Gtk::TextView::WINDOW_LEFTやGtk::TextView::WINDOW_RIGHTは、Gtk::TextViewのleft_marginプロパティやrigth_marginプロパティとは関係ありません。
+    * type: 幅を変更したいウィンドウの((<GtkTextWindowType|Gtk::TextView#GtkTextWindowType>))
+    * size: 設定したい縦幅または横幅
+    * 戻り値: self
+
+--- forward_display_line(iter)
+    　指定されたiterを画面上（折り返された状態）の1行分だけテキストの末尾に向かって移動します。画面上の1行は段落（paragraph）とは異なります。段落は改行やその他の段落区切り文字列によって区切られたテキストのことです。一方、画面上の1行は段落の一部が折り返されただけのものである場合があります。折り返し（wrapping）がオフになっている場合のみ両者は一致します。画面上の1行はviewの幅によって内容が変化しますが、段落はデータそのもの（Gtk::TextBufferの中身）を指すため、そのようなことはありません。{{br}}　訳注：　実際には画面上の次の行の先頭に移動します。
+    * iter: Gtk::TextIter 
+    * 戻り値: iterが実際に移動し、かつ、もう一度移動できる場所にある場合のみtrue（訳注：　実際の動作は「iterが実際に移動した場合true」となるようです）
+
+--- backward_display_line(iter)
+    　指定されたiterを画面上（折り返された状態）の1行分だけテキストの先頭に向かって移動します。画面上の1行は段落（paragraph）とは異なります。段落は改行やその他の段落区切り文字列によって区切られたテキストのことです。一方、画面上の1行は段落の一部が折り返されただけのものである場合があります。折り返し（wrapping）がオフになっている場合のみ両者は一致します。画面上の1行はviewの幅によって内容が変化しますが、段落はデータそのもの（Gtk::TextBufferの中身）を指すため、そのようなことはありません。{{br}}　訳注：　実際には画面上の前の行の先頭または末尾に移動します。移動時に改行文字をまたぐかどうかによって動作が変わるようですが、どういう仕様でそうなるのかちょっと想像がつきません。
+    * iter: Gtk::TextIter 
+    * 戻り値: iterが実際に移動し、かつ、もう一度移動できる場所にある場合のみtrue（訳注：　実際の動作は「iterが実際に移動した場合true」となるようです）
+
+--- forward_display_line_end(iter)
+    　指定されたiterを画面上（折り返された状態）の行末に移動します。画面上の1行は段落（paragraph）とは異なります。段落は改行やその他の段落区切り文字列によって区切られたテキストのことです。一方、画面上の1行は段落の一部が折り返されただけのものである場合があります。折り返し（wrapping）がオフになっている場合のみ両者は一致します。画面上の1行はviewの幅によって内容が変化しますが、段落はデータそのもの（Gtk::TextBufferの中身）を指すため、そのようなことはありません。
+    * iter: Gtk::TextIter 
+    * 戻り値: iterが実際に移動し、かつ、もう一度移動できる場所にある場合のみtrue（訳注：　実際の動作は「iterが実際に移動した場合true」となるようです）
+
+--- backward_display_line_start(iter)
+    　指定されたiterを画面上（折り返された状態）の行頭に移動します。画面上の1行は段落（paragraph）とは異なります。段落は改行やその他の段落区切り文字列によって区切られたテキストのことです。一方、画面上の1行は段落の一部が折り返されただけのものである場合があります。折り返し（wrapping）がオフになっている場合のみ両者は一致します。画面上の1行はviewの幅によって内容が変化しますが、段落はデータそのもの（Gtk::TextBufferの中身）を指すため、そのようなことはありません。
+    * iter: Gtk::TextIter 
+    * 戻り値: iterが実際に移動し、かつ、もう一度移動できる場所にある場合のみtrue（訳注：　実際の動作は「iterが実際に移動した場合true」となるようです）
+
+--- starts_display_line(iter)
+    　iterが、画面上の見た目で行頭にあたる位置にあるかどうかを判定します。画面上の（改）行と段落（paragraph）の違いについてはGtk::TextView#forward_display_lineを参照して下さい。
+    * iter: Gtk::TextIter 
+    * 戻り値: 画面上の見た目で行頭にあたる位置にある場合true
+
+--- move_visually(iter, count)
+    　指定されたiterをcountに等しい画面上の文字数分だけ移動します。countが正の数ならテキストの末尾に向かって、負の数ならテキストの先頭に向かって移動します。{{br}}　訳注：　この項目はhttp://library.gnome.org/devel/gtk/stable/GtkTextView.htmlに記述されている内容と完全に食い違っていたため、左記のページの内容を元に書きました。この翻訳の方が実際の動作と一致しています。
+    * iter: Gtk::TextIter 
+    * count: 移動したい文字数
+    * 戻り値: iterが実際に移動し、かつ、もう一度移動できる場所にある場合のみtrue（訳注：　実際の動作は「iterが実際に移動した場合true」となるようです）
+
+--- add_child_at_anchor(child, anchor)
+#    Adds a child widget in the text buffer, at the given anchor.
+    　テキストバッファのanchorで指定された位置に子ウィジェットを追加します。
+    * child: Gtk::Widget 
+    * anchor: レシーバのGtk::TextViewで表示しているGtk::TextBuffer内のGtk::TextChildAnchor
+#a Gtk::TextChildAnchor in the Gtk::TextBuffer for the Gtk::TextView 
+    * 戻り値: self
+
+--- add_child_in_window(child, which_window, xpos, ypos)
+    テキストビューが内部に持つウィンドウ（Gdk::Window）上の固定の座標に子ウィジェットを追加します。 ウィジェットを追加するウィンドウは必ず0より大きなサイズのものである必要があります（Gtk::TextView#set_border_window_sizeを参照）。 Note that the child coordinates are given relative to the Gdk::Window in question, and that these coordinates have no sane relationship to scrolling. When placing a child in Gtk::TextView::WINDOW_WIDGET, scrolling is irrelevant, the child floats above all scrollable areas. But when placing a child in one of the scrollable windows (border windows or text window), you'll need to compute the child's correct position in buffer coordinates any time scrolling occurs or buffer changes occur, and then call Gtk::TextView#move_child to update the child's position. Unfortunately there's no good way to detect that scrolling has occurred, using the current API; a possible hack would be to update all child positions when the scroll adjustments change or the text buffer changes. See bug 64518 on bugzilla.gnome.org for status of fixing this issue.
+    * child: Gtk::Widget 
+    * which_window: 子ウィジェットを表示させるウィンドウの((<GtkTextWindowType|Gtk::TextView#GtkTextWindowType>))
+    * xpos: 子ウィジェットを表示させるウィンドウ内X座標
+    * ypos: 子ウィジェットを表示させるウィンドウ内Y座標
+    * 戻り値: self
+
+--- move_child(child, xpos, ypos)
+    Updates the position of a child, as for Gtk::TextView#add_child_in_window.
+    * child: テキストビューに追加済みの子ウィジェット
+    * xpos: 移動先のウィンドウ内X座標
+    * ypos: 移動先のウィンドウ内Y座標
+    * 戻り値: self
+
+--- wrap_mode
+    行の折り返し設定を取得します。
+    * 戻り値: 折り返し設定 ((<GtkWrapMode|Gtk::TextTag#GtkWrapMode>))
+--- wrap_mode=(wrap_mode)
+    行の折り返し設定を更新します。
+    * wrap_mode : ((<GtkWrapMode|Gtk::TextTag#GtkWrapMode>)) 
+    * 戻り値: wrap_mode
+--- set_wrap_mode(wrap_mode)
+    Gtk::TextView#wrap_mode=と同じ機能のメソッドです。
+    * wrap_mode : ((<GtkWrapMode|Gtk::TextTag#GtkWrapMode>)) 
+    * 戻り値: self
+
+--- editable?
+    Gtk::TextViewがデフォルトでは編集可能に設定されているかどうかを返します。バッファ内のテキストにTagがセットされている場合はTagの設定が優先されます。
+    * 戻り値: Gtk::TextViewがデフォルトでは編集可能に設定されているかどうか
+--- editable=(setting)
+    Gtk::TextViewがデフォルトでは編集可能かどうかを設定します。"editable"属性を設定したTagをバッファ内にセットすると、デフォルト設定を上書きすることができます。
+    * setting: 編集可能にするならtrue
+    * 戻り値: setting
+--- set_editable
+    Gtk::TextView#editable=と同じ機能のメソッドです。
+    * setting: 編集可能にするならtrue
+    * 戻り値: self
+
+--- cursor_visible?
+    カーソルが表示されているかどうかをチェックします。
+    * 戻り値: 挿入マーク（insertion mark）が表示されていればtrue
+--- cursor_visible=(setting)
+    挿入ポイント（insertion point）を表示するかどうかを切り替えます。編集可能なテキストを持たないバッファにはカーソルを表示しない方が良いことが多いので、そのような場合にこのメソッドを使用できます。
+    * setting: 挿入カーソルを表示するならtrue
+    * 戻り値: setting
+--- set_cursor_visible(setting)
+    Gtk::TextView#cursor_visible=と同じ機能のメソッドです。
+    * setting: 挿入カーソルを表示するならtrue
+    * 戻り値: self
+
+--- overwrite?
+    Gtk::TextViewの現在の編集モードが上書きモードかどうかを返します。   ((* Since 2.4 *)) 
+    * 戻り値: true if overwrite.
+--- overwrite=(setting)
+    Gtk::TextViewの現在の編集モードを上書きモードまたは挿入モードに変更します。 ((* Since 2.4 *))
+    * setting: 上書きモードにするならtrue、挿入モードにするならfalse
+    * 戻り値: setting
+--- set_overwrite(setting)
+    Gtk::TextView#overwrite=と同じ機能のメソッドです。 ((* Since 2.4 *))
+    * setting: 上書きモードにするならtrue、挿入モードにするならfalse
+    * 戻り値: self
+
+--- pixels_above_lines
+    段落（paragraph）の上側の余白のデフォルトサイズをピクセル単位で取得します。
+    * 戻り値: 段落の上側の余白のデフォルトサイズ（ピクセル単位）
+--- pixels_above_lines=(pixels_above_lines)
+    段落（paragraph）の上側の余白のデフォルトサイズをピクセル単位で設定します。バッファ（Gtk::TextBuffer）にタグ（Tag）をセットすることでデフォルトの設定を上書きすることができます。
+    * pixels_above_lines: 段落の上側の余白サイズ（ピクセル単位）
+    * 戻り値: pixels_above_lines
+--- set_pixels_above_lines(pixels_above_lines)
+    Gtk::TextView#pixels_above_lines=と同じ機能のメソッドです。
+    * pixels_above_lines: 段落の上側の余白サイズ（ピクセル単位）
+    * 戻り値: self
+
+--- pixels_below_lines
+    段落（paragraph）の下側の余白のデフォルトサイズをピクセル単位で取得します。
+    * 戻り値: 段落の下側の余白のデフォルトサイズ（ピクセル単位）default number of blank pixels below paragraphs 
+--- pixels_below_lines=(pixels_below_lines)
+    段落（paragraph）の下側の余白のデフォルトサイズをピクセル単位で設定します。バッファ（Gtk::TextBuffer）にタグ（Tag）をセットすることでデフォルトの設定を上書きすることができます。
+    * pixels_below_lines: 段落の下側の余白サイズ（ピクセル単位）
+    * 戻り値: pixels_below_lines
+--- set_pixels_below_lines(pixels_below_lines)
+    Gtk::TextView#pixels_below_lines=と同じ機能のメソッドです。
+    * pixels_below_lines: 段落の下側の余白サイズ（ピクセル単位）
+    * 戻り値: self
+
+--- pixels_inside_wrap
+    段落内の折り返し行のデフォルトの行間サイズをピクセル単位で取得します。((-訳注：　ここでは折り返し開始行の上側と折り返し終了行の下側は行間とみなしません。設定時も同じです。-))
+    * 戻り値: 折り返し行のデフォルトの行間サイズ
+--- pixels_inside_wrap=(pixels_inside_wrap)
+    段落内の折り返し行のデフォルトの行間サイズをピクセル単位で設定します。バッファ（Gtk::TextBuffer）にタグ（Tag）をセットすることでデフォルトの設定を上書きすることができます。
+    * pixels_inside_wrap: 折り返し行のデフォルトの行間サイズ（ピクセル単位）
+    * 戻り値: pixels_inside_wrap
+--- set_pixels_inside_wrap(pixels_inside_wrap)
+    Gtk::TextView#pixels_inside_wrap=と同じ機能のメソッドです。
+    * pixels_inside_wrap: 折り返し行のデフォルトの行間サイズ（ピクセル単位）
+    * 戻り値: self
+
+--- justification
+    Gtk::TextViewのデフォルトの行揃え設定を取得します。バッファ（Gtk::TextBuffer）にタグ（Tag）をセットすることでデフォルトの設定は上書きすることができます。
+    * 戻り値: ((<GtkJustification|Gtk#GtkJustification>))
+--- justification=(justification)
+    Gtk::TextViewのデフォルトの行揃え設定を変更します。バッファ（Gtk::TextBuffer）にタグ（Tag）をセットすることでデフォルトの設定は上書きすることができます。
+    * justification: ((<GtkJustification|Gtk#GtkJustification>)) 
+    * 戻り値: justification
+--- set_justification(justification)
+    Gtk::TextView#justification=と同じ機能のメソッドです。
+    * justification: ((<GtkJustification|Gtk#GtkJustification>))  
+    * 戻り値: self
+
+--- left_margin
+    テキストのデフォルトの左マージン（余白）サイズを取得します。バッファ（Gtk::TextBuffer）にタグ（Tag）をセットすることでデフォルトの設定は上書きすることができます。
+    * 戻り値: 左マージンのサイズ（ピクセル単位）
+--- left_margin=(left_margin)
+    テキストのデフォルトの左マージン（余白）サイズを変更します。バッファ（Gtk::TextBuffer）にタグ（Tag）をセットすることでデフォルトの設定は上書きすることができます。
+    * left_margin: 左マージンのサイズ（ピクセル単位）
+    * 戻り値: left_margin
+--- set_left_margin(left_margin)
+    Gtk::TextView#left_margin=と同じ機能のメソッドです。
+    * left_margin: 左マージンのサイズ（ピクセル単位）
+    * 戻り値: self
+
+--- right_margin
+    テキストのデフォルトの右マージン（余白）サイズを取得します。バッファ（Gtk::TextBuffer）にタグ（Tag）をセットすることでデフォルトの設定は上書きすることができます。
+    * 戻り値: 右マージンのサイズ（ピクセル単位）
+--- right_margin=(right_margin)
+    テキストのデフォルトの右マージン（余白）サイズを変更します。バッファ（Gtk::TextBuffer）にタグ（Tag）をセットすることでデフォルトの設定は上書きすることができます。
+    * right_margin: 右マージンのサイズ（ピクセル単位）
+    * 戻り値: right_margin
+--- set_right_margin(right_margin)
+    Gtk::TextView#right_margin=と同じ機能のメソッドです。
+    * right_margin: 右マージンのサイズ（ピクセル単位）
+    * 戻り値: self
+
+--- indent
+    段落のデフォルトの（自動）インデントサイズを取得します。バッファ（Gtk::TextBuffer）にタグ（Tag）をセットすることでデフォルトの設定は上書きすることができます。
+    * 戻り値: インデントサイズ（ピクセル単位）
+--- indent=(indent)
+    段落のデフォルトの（自動）インデントサイズを変更します。マイナスの値を指定してください。バッファ（Gtk::TextBuffer）にタグ（Tag）をセットすることでデフォルトの設定は上書きすることができます。
+    * indent : インデントサイズ（ピクセル単位）
+    * 戻り値: indent
+--- set_indent(indent)
+    Gtk::TextView#indent=と同じ機能のメソッドです。
+    * indent : インデントサイズ（ピクセル単位）
+    * 戻り値: self
+
+--- tabs
+    Gets the default tabs for text_view. Tags in the buffer may override the defaults. The returned array will be nil if "standard" (8-space) tabs are used.
+    * 戻り値: copy of default tab array, or nil if "standard" tabs are used
+--- tabs=(tabs)
+    Sets the default tab stops for paragraphs in the Gtk::TextView. Tags in the buffer may override the default.
+    * tabs: tabs as a Pango::TabArray 
+    * 戻り値: tabs
+--- set_tabs(tabs)
+    Same as Gtk::TextView#tabs=.
+    * tabs: tabs as a Pango::TabArray 
+    * 戻り値: self
+
+--- accepts_tab?
+    現在タブキーでタブ文字を入力できるモードかどうかを返します。Gtk::TextView#accepts_tab= を参照。
+    * 戻り値: タブキーを押した時にタブ文字が入力されるモードならtrue。キーボードフォーカスが移動するモードならfalse。 ((* Since 2.4 *))
+--- accepts_tab=(accepts_tab)
+    ユーザがタブキーを押した時の挙動を変更します。trueをセットすると、タブ文字が入力されるモードになります。falseをセットすると、フォーカスチェーンの次のウィジェットにキーボードフォーカスが移動するモードになります。
+    * accepts_tab: タブキーを押した時にタブ文字が入力されるモードにするならtrue。キーボードフォーカスが移動するモードにするならfalse。 ((* Since 2.4 *))
+    * 戻り値: accepts_tab
+--- set_accepts_tab(accepts_tab)
+    Gtk::TextView#accepts_tab=と同じ機能のメソッドです。 ((* Since 2.4 *))
+    * accepts_tab: タブキーを押した時にタブ文字が入力されるモードにするならtrue。キーボードフォーカスが移動するモードにするならfalse。 ((* Since 2.4 *))
+    * 戻り値: self
+
+--- default_attributes
+    デフォルトのテキスト属性（attributes）のコピーを返します。このテキスト属性はtagによって上書きされない場合に使用されるものです。 You'd typically pass the default attributes in to Gtk::TextIter#attributes in order to get the attributes in effect at a given text position.
+    * 戻り値 : Gtk::TextAttributes 
+
+--- backspace
+    backspaceシグナルを発行します。
+    * 戻り値: self
+--- copy_clipboard
+    copy-clipboardシグナルを発行します。
+    * 戻り値: self
+--- cut_clipboard
+    cut-clipboardシグナルを発行します。
+    * 戻り値: self
+--- delete_from_cursor(type, arg2)
+    delete-from-cursorシグナルを発行します。
+    * type: ((<GtkDeleteType|Gtk#GtkDeleteType>))
+    * arg2: Integer
+    * 戻り値: self
+--- insert_at_cursor(str)
+    insert-at-cursorシグナルを発行します。
+    * str: String
+    * 戻り値: self
+--- move_cursor(step, count, textend_selection)
+    move-cursorシグナルを発行します。
+    * step: ((<GtkMovementStep|Gtk#GtkMovementStep>))
+    * count: 移動するステップ数(Integer)
+    * extend_selection: 移動前のカーソル位置から移動後のカーソル位置までを選択状態にするならtrue
+    * 戻り値: self
+--- move_focus(type)
+    move-focusシグナルを発行します。
+    * type: ((<GtkDirectionType|Gtk#GtkDirectionType>))
+    * 戻り値: self
+--- move_viewport(step, arg2)
+    move-viewportシグナルを発行します。
+    * step: ((<GtkScrollStep|Gtk#GtkScrollStep>))
+    * arg2: Integer
+    * 戻り値: self
+--- page_horizontally(arg1, arg2)
+    page-horizontallyシグナルを発行します。
+    * arg1: Integer
+    * arg2: true or false
+    * 戻り値: self
+--- paste_clipboard
+    paste-clipboardシグナルを発行します。
+    * 戻り値: self
+--- select_all(setting)
+    select-allシグナルを発行します。
+    * setting: true or false
+    * 戻り値: self
+--- set_anchor
+    set-anchorシグナルを発行します。
+    * 戻り値: self
+--- set_scroll_adjustments(adj1, adj2)
+    set-scroll-adjustmentsシグナルを発行します。
+    * adj1: Gtk::Adjustment
+    * adj2: Gtk::Adjustment
+    * 戻り値: self
+--- toggle_overwrite
+    toggle-overwriteシグナルを発行します。
+    * 戻り値: self
+
+== 定数
+=== GtkTextWindowType
+--- WINDOW_PRIVATE
+--- WINDOW_WIDGET
+--- WINDOW_TEXT
+--- WINDOW_LEFT
+--- WINDOW_RIGHT
+--- WINDOW_TOP
+--- WINDOW_BOTTOM
+
+=== Priority
+--- PRIORITY_VALIDATE
+The priority at which the text view validates onscreen lines in an idle job in the background(Gdk::PRIORITY_REDRAW + 5).
+
+== プロパティ
+--- accepts-tab: true or false (Read/Write)
+    ユーザがタブキーを押した時にタブ文字が入力されるかどうか ((* Since 2.4 *))
+    * デフォルト値: true
+
+--- buffer: Gtk::TextBuffer (Read/Write)
+    表示中のバッファ
+
+--- cursor-visible: true or false (Read/Write)
+    挿入カーソル（キャレット）が表示されているかどうか
+    * デフォルト値: true
+
+--- editable: true or false (Read/Write)
+    テキストが編集可能な状態かどうか
+    * デフォルト値: true
+
+--- indent: Integer (Read/Write)
+    段落の（自動）インデントサイズ（ピクセル単位）
+    * 有効な値: >= 0
+    * デフォルト値: 0
+
+--- justification: Integer (Read/Write)
+    行揃え設定
+    * デフォルト値: Gtk::JUSTIFY_LEFT
+
+--- left-margin: Integer (Read/Write)
+    左マージンの幅（ピクセル単位）
+    * 有効な値: >= 0
+    * デフォルト値: 0
+
+--- overwrite: true or false (Read/Write)
+    テキストの編集方式が上書きモードかどうか ((* Since 2.4 *))
+    * デフォルト値: false
+
+--- pixels-above-lines: Integer (Read/Write)
+    段落の上側の余白（行間）サイズ（ピクセル単位）
+    * 有効な値: >= 0
+    * デフォルト値: 0  
+
+--- pixels-below-lines: Integer (Read/Write)
+    段落の下側の余白（行間）サイズ（ピクセル単位）
+    * 有効な値: >= 0
+    * デフォルト値: 0  
+
+--- pixels-inside-wrap: Integer (Read/Write)
+    段落内の折り返し行の行間サイズ（ピクセル単位）
+    * 有効な値: >= 0
+    * デフォルト値: 0  
+
+--- right-margin: Integer (Read/Write)
+    右マージンの幅（ピクセル単位）
+    * 有効な値: >= 0
+    * デフォルト値: 0  
+
+--- tabs: Pango::TabArray (Read/Write)
+    テキストのカスタムタブ設定
+
+--- wrap-mode: ((<GtkWrapMode|Gtk::TextTag#GtkWrapMode>)) (Read/Write)
+    Whether to wrap lines never, at word boundaries, or at character boundaries行の折り返し設定（行わないor単語単位で行うor文字単位で行う）
+    * デフォルト値: Gtk::TextTag::WRAP_NONE
+
+== シグナル
+--- backspace: self
+     * self: the Gtk::TextView
+--- copy-clipboard: self
+     * self: the Gtk::TextView
+--- cut-clipboard: self
+     * self: the Gtk::TextView
+--- delete-from-cursor: self, type, arg2
+     * self: the Gtk::TextView
+     * type: ((<GtkDeleteType|Gtk#GtkDeleteType>))
+     * arg2: Number
+--- insert-at-cursor: self, arg1
+     * self: the Gtk::TextView
+     * arg1: String
+--- move-cursor: self, step, arg2, arg3
+    The ::move-cursor signal is a keybinding signal which gets emitted when the user initiates a cursor movement. Applications should not connect to it, but may emit it with GLib::Instantiatable#signal_emit if they need to control scrolling programmatically.
+     * self: the Gtk::TextView
+     * step: ((<GtkMovementStep|Gtk#GtkMovementStep>))
+     * count: 移動するステップ数 (Integer)
+     * extend_selection: 移動前のカーソル位置から移動後のカーソル位置までを選択状態にするならtrue。しないならfalse
+--- move-focus: self, type
+     * self: the Gtk::TextView
+     * type: ((<GtkDirectionType|Gtk#GtkDirectionType>))
+--- move-viewport: self, step, arg2
+     * self: the Gtk::TextView
+     * step: ((<GtkScrollStep|Gtk#GtkScrollStep>))
+     * arg2: Integer
+--- page-horizontally: self, arg1, arg2
+     * self: the Gtk::TextView
+     * arg1: Integer
+     * arg2: true or false
+--- paste-clipboard: self
+     * self: the Gtk::TextView
+--- populate-popup: self, menu
+     * self: the Gtk::TextView
+     * menu: Gtk::Menu
+--- select-all: self, arg1
+     * self: the Gtk::TextView
+     * arg1: true or false
+--- set-anchor: self
+     * self: the Gtk::TextView
+--- set-scroll-adjustments: self, adj1, adj2
+     * self: the Gtk::TextView
+     * adj1: Gtk::Adjustment
+     * adj2: Gtk::Adjustment
+--- toggle-overwrite: self
+     * self: the Gtk::TextView
+
+== 参照
+Gtk::TextBuffer, Gtk::TextIter, ((<原文ページ|URL:http://ruby-gnome2.sourceforge.jp/hiki.cgi?Gtk%3A%3ATextView>))
+
+== ChangeLog
+* 2008-12-15 訳：　((<きたがわ>))
+* 2005-06-17 Added GTK+-2.4/2.6 methods. - ((<Masao>))
+* 2003-07-29 Added - ((<Masao>))

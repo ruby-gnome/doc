@@ -1,0 +1,22 @@
+= class GnomeVFS::Monitor::EventType
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * GnomeVFS::Monitor::EventType
+
+== Constants
+
+--- CHANGED
+--- CREATED
+--- DELETED
+--- METADATA_CHANGED
+--- STARTEXECUTING
+--- STOPEXECUTING
+
+== See Also
+
+== ChangeLog
+
+

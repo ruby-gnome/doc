@@ -1,0 +1,4 @@
+= Mapeando os Dados para a Tela: Gtk::TreeViewColumn e Gtk::CellRenderer
+{{link "tut-treeview-view-look", nil, "tut-treeview", "tut-treeview-renderer-renderer"}}
+
+Como falado anteriormente, as colunas de "tree view" representam as colunas visíveis na tela que têm um cabeçalho de coluna com um nome de coluna e podem ser redimensionadas e ordenadas. Um "tree view" é feito de colunas de "tree view", e você precisa de pelo menos uma coluna de "tree view" para que possa mostrar algo no "tree view". Colunas de "tree view", entretanto, não mostram qualquer coisa sozinhas, isso é feito por objetos especializados de Gtk::CellRenderer. Renderizadores de célula ("cell renderers") são posicionados dentro de colunas de "tree view" parecido com os componentes que são posicionados dentro de caixas ((<Gtk::HBoxes|Gtk::HBox>)).

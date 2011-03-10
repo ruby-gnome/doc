@@ -1,0 +1,79 @@
+= class Gdk::EventSelection
+Generated when a selection is requested or ownership of a selection is taken over by another client application. 
+== Object Hierarchy
+* Object
+  * GLib::Boxed
+    * Gdk::Event
+      * Gdk::EventAny
+        * Gdk::EventSelection
+
+== Class Methods
+--- Gdk::EventSelection.new(type)
+    Creates a new event of the given type. All fields are set to 0. ((* Since 2.2 *))
+    * type: Gdk::Event::SELECTION_CLEAR, Gdk::Event::SELECTION_NOTIFY, Gdk::Event::SELECTION_REQUEST
+    * Returns: a new Gdk::EventSelection.
+
+== Instance Methods
+--- selection
+    Gets the selection. 
+    * Returns: the selection(Gdk::Atom)
+--- selection=(selection)
+    Sets the selection
+    * selection: the selection(Gdk::Atom)
+    * Returns: selection
+--- set_selection(selection)
+    Same as Gdk::EventSelection#selection=.
+    * selection: the selection(Gdk::Atom)
+    * Returns: self
+
+--- target
+    Gets the target to which the selection should be converted.
+    * Returns: the target(Gdk::Atom)
+--- target=(target)
+    Sets the target to which the selection should be converted.
+    * target: the target(Gdk::Atom)
+    * Returns: target
+--- set_target(target)
+    Same as Gdk::EventSelection#target=.
+    * target: the target(Gdk::Atom)
+    * Returns: self
+
+--- property
+    Gets the property in which to place the result of the conversion. 
+    * Returns: the property(Gdk::Atom)
+--- property=(property)
+    Sets the property in which to place the result of the conversion. 
+    * property: the property(Gdk::Atom)
+    * Returns: property
+--- set_property(property)
+    Same as Gdk::EventSelection#property=.
+    * property: the property(Gdk::Atom)
+    * Returns: self
+
+--- time
+    Gets the time of the event in milliseconds. 
+    * Returns: the time of the event in milliseconds. 
+--- time=(time)
+    Sets the time of the event in milliseconds. 
+    * time: the time of the event in milliseconds. 
+    * Returns: time
+--- set_time(time)
+    Same as Gdk::EventSelection#time=.
+    * time: the time of the event in milliseconds. 
+    * Returns: self
+
+--- requestor
+    Gets the pointer address of the native window on which to place property. This method is not useful for Ruby/GTK2.
+    * Returns: the pointer address of the native window on which to place property. 
+--- requestor=(req)
+    Sets the pointer address of the native window on which to place property. This method is not useful for Ruby/GTK2.
+    * req: the pointer address of the native window on which to place property. 
+    * Returns: req
+--- set_requestor(req)
+    Same as Gdk::EventSelection#requestor=.
+    * req: the pointer address of the native window on which to place property. 
+    * Returns: self
+
+
+
+-((<Masao>))

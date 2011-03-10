@@ -1,0 +1,68 @@
+= class Gtk::MozEmbed::ReloadFlags
+
+== Object Hierarchy
+
+* Object
+  * GLib::Flags
+    * Gtk::MozEmbed::ReloadFlags
+
+== Instance Methods
+
+--- reloadbypasscache?
+
+     * Returns: self: ((*FIXME*))
+
+--- reloadbypassproxy?
+
+     * Returns: self: ((*FIXME*))
+
+--- reloadbypassproxyandcache?
+
+     * Returns: self: ((*FIXME*))
+
+--- reloadcharset?
+
+     * Returns: self: ((*FIXME*))
+
+--- reloadnormal?
+
+     * Returns: self: ((*FIXME*))
+
+--- bypasscache?
+
+     * Returns: self: ((*FIXME*))
+
+--- bypassproxy?
+
+     * Returns: self: ((*FIXME*))
+
+--- bypassproxyandcache?
+
+     * Returns: self: ((*FIXME*))
+
+--- charsetchange?
+
+     * Returns: self: ((*FIXME*))
+
+--- normal?
+
+     * Returns: self: ((*FIXME*))
+
+== Constants
+
+--- RELOADBYPASSCACHE
+--- RELOADBYPASSPROXY
+--- RELOADBYPASSPROXYANDCACHE
+--- RELOADCHARSET
+--- RELOADNORMAL
+--- BYPASSCACHE
+--- BYPASSPROXY
+--- BYPASSPROXYANDCACHE
+--- CHARSETCHANGE
+--- NORMAL
+
+== See Also
+
+== ChangeLog
+
+

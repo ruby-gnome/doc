@@ -1,0 +1,127 @@
+= class Gtk::Fixed
+
+The Gtk::Fixed widget is a container which can place child widgets at fixed positions and with fixed sizes, given in pixels. Gtk::Fixed performs no automatic layout management.
+
+For most applications, you should not use this container! It keeps you from having to learn about the other GTK+ containers, but it results in broken applications. With Gtk::Fixed, the following things will result in truncated text, overlapping widgets, and other display bugs: 
+
+* Themes, which may change widget sizes.
+* Fonts other than the one you used to write the app will of course change the size of widgets containing text; keep in mind that users may use a larger font because of difficulty reading the default, or they may be using Windows or the framebuffer port of GTK+, where different fonts are available.
+* Translation of text into other languages changes its size. Also, display of non-English text will use a different font in many cases.
+
+
+In addition, the fixed widget can't properly be mirrored in right-to-left languages such as Hebrew and Arabic. i.e. normally GTK+ will flip the interface to put labels to the right of the thing they label, but it can't do that with Gtk::Fixed. So your application will not be usable in right-to-left languages.
+
+Finally, fixed positioning makes it kind of annoying to add/remove GUI elements, since you have to reposition all the other elements. This is a long-term maintenance problem for your application.
+
+If you know none of these things are an issue for your application, and prefer the simplicity of Gtk::Fixed, by all means use the widget. But you should be aware of the tradeoffs.
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::InitiallyUnowned
+        * Gtk::Object
+          * Gtk::Widget
+            * Gtk::Container
+              * Gtk::Fixed
+
+== Class Methods
+
+--- Gtk::Fixed.new
+
+    Creates a new Gtk::Fixed.
+    * Returns: a new Gtk::Fixed.
+
+== Instance Methods
+
+--- put(widget, x, y)
+
+    Adds a widget to a Gtk::Fixed container at the given position.
+    * widget: the widget to add. 
+    * x: the horizontal position to place the widget at. 
+    * y: the vertical position to place the widget at.
+
+--- move(widget, x, y)
+
+    Moves a child of a Gtk::Fixed container to the given position.
+    * widget: the child widget. 
+    * x: the horizontal position to move the widget to. 
+    * y: the vertical position to move the widget to.
+
+--- has_window?
+
+    Gets whether the Gtk::Fixed has it's own Gdk::Window. See Gtk::Fixed#set_has_window.
+    * Returns: true if fixed has its own window.
+
+--- has_window=(has_window)
+
+    Sets whether a Gtk::Fixed widget is created with a separate Gdk::Window for widget.window or not. (By default, it will be created with no separate Gdk::Window). This function must be called while the Gtk::Fixed is not realized, for instance, immediately after the window is created.
+    * has_window: true if a separate window should be created.
+    * Returns: has_window
+
+--- set_has_window(has_window)
+
+    Same as Gtk::Fixed#has_window=.
+    * has_window: true if a separate window should be created.
+    * Returns: self
+
+--- ref_accessible
+
+    See Atk::Implementor#ref_accessible.
+
+--- add_child
+
+    See Gtk::Buildable#add_child.
+
+--- construct_child
+
+    See Gtk::Buildable#construct_child.
+
+--- get_internal_child
+
+    See Gtk::Buildable#get_internal_child.
+
+--- name
+
+    See Gtk::Buildable#name.
+
+--- name=
+
+    See Gtk::Buildable#name=.
+
+--- set_buildable_property
+
+    See Gtk::Buildable#set_buildable_property.
+
+--- set_name
+
+    See Gtk::Buildable#set_name.
+
+--- builder_name
+
+    See Gtk::Buildable#builder_name.
+
+--- builder_name=
+
+    See Gtk::Buildable#builder_name=.
+
+--- set_builder_name
+
+    See Gtk::Buildable#set_builder_name.
+
+== Child Properties
+
+--- x: Integer (Read/Write)
+
+    X position of child widget
+
+--- y: Integer (Read/Write)
+
+    Y position of child widget
+
+== See Also
+
+== ChangeLog
+
+((<Masao>))

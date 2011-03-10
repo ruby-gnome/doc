@@ -1,0 +1,104 @@
+= class Gdk::Keymap
+
+One Gdk::Keymap object exists for each user display. Gdk::Keymap.default returns the Gdk::Keymap for the default display; to obtain keymaps for other displays, use Gdk::Keymap.for_display. A keymap is a mapping from an Array([keycode, group, level]) to key values. the Array contains three pieces of information. 
+
+First, it contains the hardware keycode; this is an identifying number for a physical key. 
+
+Second, it contains a group; groups are not used on standard US keyboards, but are used in many other countries. On a keyboard with groups, there can be 3 or 4 symbols printed on a single key. The group indicates movement in a horizontal direction. Usually groups are used for two different languages. In group 0, a key might have two English characters, and in group 1 it might have two Hebrew characters. The Hebrew characters will be printed on the key next to the English characters. 
+
+Third, it contains the level of the key. The level indicates which symbol on the key will be used, in a vertical direction. So on a standard US keyboard, the key with the number "1" on it also has the exclamation point ("!") character on it. The level indicates whether to use the "1" or the "!" symbol. The letter keys are considered to have a lowercase letter at level 0, and an uppercase letter at level 1, though only the uppercase letter is printed. 
+
+In order to use a keymap to interpret a key event, it's necessary to first convert the keyboard state into an effective group and level. This is done via a set of rules that varies widely according to type of keyboard and user configuration. The method Gdk::Keymap#translate_keyboard_state accepts a keyboard state -- consisting of hardware keycode pressed, active modifiers, and active group -- applies the appropriate rules, and returns the group/level to be used to index the keymap, along with the modifiers which did not affect the group and level. i.e. it returns "unconsumed modifiers." The keyboard group may differ from the effective group used for keymap lookups because some keys don't have multiple groups - e.g. the Enter key is always in group 0 regardless of keyboard state. 
+
+Note that Gdk::Keymap#translate_keyboard_state also returns the keyval, i.e. it goes ahead and performs the keymap lookup in addition to telling you which effective group/level values were used for the lookup. Gdk::EventKey already contains this keyval, however, so you don't normally need to call Gdk::Keymap#translate_keyboard_state just to get the keyval.
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Gdk::Keymap
+
+== Class Methods
+
+--- Gdk::Keymap.default
+
+    Returns the Gdk::Keymap attached to the default display.
+    * Returns: the Gdk::Keymap attached to the default display.
+
+--- Gdk::Keymap.for_display(display)
+
+    Returns the GdkKeymap attached to display.  ((* Since 2.2 *))
+    * display: the Gdk::Display.  
+    * Returns: the Gdk::Keymap attached to display.
+
+== Instance Methods
+
+--- lookup_key(keycode, group, level)
+
+    Looks up the keyval mapped to a keycode/group/level triplet. If no keyval is bound to key, returns 0. For normal user input, you want to use Gdk::Keymap#translate_keyboard_state instead of this method, since the effective group/level may not be the same as the current keyboard state.
+    * keycode: The hardware keycode. This is an identifying number for a physical key. 
+    * group: Indicates movement in a horizontal direction. Usually groups are used for two different languages. In group 0, a key might have two English characters, and in group 1 it might have two Hebrew characters. The Hebrew characters will be printed on the key next to the English characters. 
+    * level: Indicates which symbol on the key will be used, in a vertical direction. So on a standard US keyboard, the key with the number "1" on it also has the exclamation point ("!") character on it. The level indicates whether to use the "1" or the "!" symbol. The letter keys are considered to have a lowercase letter at level 0, and an uppercase letter at level 1, though only the uppercase letter is printed.    * Returns: a keyval, or 0 if none was mapped to the given key
+
+--- translate_keyboard_state(hardware_keycode, state, group)
+
+    Translates the contents of a Gdk::EventKey into a keyval, effective group, and level. Modifiers that affected the translation and are thus unavailable for application use are returned in consumed_modifiers. The effective_group is the group that was actually used for the translation; some keys such as Enter are not affected by the active keyboard group. The level is derived from state. For convenience, Gdk::EventKey already contains the translated keyval, so this method isn't as useful as you might think. 
+    * hardware_keycode: a keycode  
+    * state: a modifier state (((<GdkModifierType|Gdk::Window#GdkModifierType>)))
+    * group: active keyboard group  
+    * Returns: [keyval, effective_group, level, consumed_modifiers] or nil if there was no keyval bound to the keycode/state/group
+       * keyval : the keyval  
+       * effective_group : the effective group  
+       * level : the level  
+       * consumed_modifiers :the modifiers(((<GdkModifierType|Gdk::Window#GdkModifierType>))) that were used to determine the group or level
+
+--- get_entries_for_keyval(keyval)
+
+    Obtains an array of keycode/group/level combinations that will generate keyval. Groups and levels are two kinds of keyboard mode; in general, the level determines whether the top or bottom symbol on a key is used, and the group determines whether the left or right symbol is used. On US keyboards, the shift key changes the keyboard level, and there are no groups. A group switch key might convert a keyboard between Hebrew to English modes, for example. Gdk::EventKey contains a group field that indicates the active keyboard group. The level is computed from the modifier mask. 
+    * keyval: a keyval, such as Gdk::Keyval::GDK_a, Gdk::Keyval::GDK_Up, Gdk::Keyval::GDK_Return, etc.  
+    * Returns: [[keycode1, group1, level1], [keycode2, group2, level2] ... ] or nil
+      * keycode: The hardware keycode. This is an identifying number for a physical key. 
+      * group: Indicates movement in a horizontal direction. Usually groups are used for two different languages. In group 0, a key might have two English characters, and in group 1 it might have two Hebrew characters. The Hebrew characters will be printed on the key next to the English characters. 
+      * level: Indicates which symbol on the key will be used, in a vertical direction. So on a standard US keyboard, the key with the number "1" on it also has the exclamation point ("!") character on it. The level indicates whether to use the "1" or the "!" symbol. The letter keys are considered to have a lowercase letter at level 0, and an uppercase letter at level 1, though only the uppercase letter is printed.
+
+--- get_entries_for_keycode(hardware_keycode)
+
+    Returns the keyvals bound to hardware_keycode. When a keycode is pressed by the user, the keyval from this list of entries is selected by considering the effective keyboard group and level. 
+    * hardware_keycode: a keycode  
+    * Returns: [[keycode1, group1, level1, keyval1], [keycode2, group2, level2, keyval2], ... ] or nil
+      * keycode: The hardware keycode. This is an identifying number for a physical key. 
+      * group: Indicates movement in a horizontal direction. Usually groups are used for two different languages. In group 0, a key might have two English characters, and in group 1 it might have two Hebrew characters. The Hebrew characters will be printed on the key next to the English characters. 
+      * level: Indicates which symbol on the key will be used, in a vertical direction. So on a standard US keyboard, the key with the number "1" on it also has the exclamation point ("!") character on it. The level indicates whether to use the "1" or the "!" symbol. The letter keys are considered to have a lowercase letter at level 0, and an uppercase letter at level 1, though only the uppercase letter is printed.
+      * keyval : the keyval
+
+--- direction
+
+    Returns the direction of the keymap. 
+    * Returns: the direction of the keymap(Pango::Context::DIRECTION_LTR or Pango::Context::DIRECTION_RTL)
+
+--- have_bidi_layouts?
+
+     * Returns: self: ((*FIXME*))
+
+== Signals
+
+--- direction-changed: self
+
+    The ::direction_changed signal gets emitted when the direction of the keymap changes.
+    self: Gdk::Keymap
+
+--- keys-changed: self
+
+    The ::keys_changed signal is emitted when the mapping represented by keymap changes.
+    * self: Gdk::Keymap
+
+--- state-changed: self
+
+     * self: Gdk::Keymap: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+- ((<Masao>))

@@ -1,0 +1,46 @@
+= Investiguer le comportement des signaux
+Comment trouvez-vous les signaux dont vous avez besoin dans vos programmes?
+
+Certains signaux importants peuvent se trouver en lisant des programmes d'exemples, mais d'autres ne sont même pas référencés dans la documentation de l'API GTK+.
+
+Voici une petite astuce pour directement trouver le signal adéquat.
+
+== 1 Tester tous les signaux d'un widget
+Lorsque j'ai besoin de tester le comportement de tous les signaux pour un widget en particulier, j'écris tout d'abord un petit script de test comme ci-dessous.
+
+Essayez de cliquer sur le widget, d'appuyer sur les touches du clavier, de déplacer le widget, etc... afin d'investiguer la nature et le moment de l'émission des signaux.
+
+ require 'gtk2'
+ widget = Gtk::Button.new("click")        #(1)
+ Gtk::Button.signals(false).each do |v|   #(2)
+   p v
+   widget.signal_connect(v) do
+     p "#{v} a été émis!"
+   end
+ end
+ Gtk::Window.new.set_default_size(100, 100).add(widget).show_all
+ Gtk.main
+
+Cet exemple utilise Gtk::Button, mais vous pouvez tester d'autres widgets en modifiant (1) et (2).
+
+Pour connaître la classe mère des signaux, affectez ((*true*)) à GLib::MetaInterface.signals.
+
+== 2 Tester un signal en particulier
+Pour tester un signal en particulier, essayez le script suivant:
+
+ require 'gtk2'
+ v = "clicked"                            #(1)
+ widget = Gtk::Button.new("click")        #(2)
+ widget.signal_connect(v) do
+   p "#{v} a été émis!"
+ end
+ Gtk::Window.new.set_default_size(100, 100).add(widget).show_all
+ Gtk.main
+
+Modifiez (1) et (2) en conséquence.
+
+== Modifications
+:2003-07-08 Masao Mutoh
+ Première version
+
+Traduction de la page anglaise par Laurent Sansonetti.

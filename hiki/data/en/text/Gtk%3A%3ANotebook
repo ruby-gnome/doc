@@ -1,0 +1,639 @@
+= class Gtk::Notebook
+
+The Gtk::Notebook widget is a Gtk::Container whose children are pages that can be switched between using tab labels along one edge.
+
+There are many configuration options for Gtk::Notebook. Among other things, you can choose on which edge the tabs appear (see Gtk::Notebook#tab_pos=), whether, if there are too many tabs to fit the noteobook should be made bigger or scrolling arrows added (see Gtk::Notebook#scrollable=), and whether there will be a popup menu allowing the users to switch pages. (see Gtk::Notebook#enable_popup=)
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::InitiallyUnowned
+        * Gtk::Object
+          * Gtk::Widget
+            * Gtk::Container
+              * Gtk::Notebook
+
+== Class Methods
+
+--- Gtk::Notebook.new
+
+    Creates a new Gtk::Notebook widget with no pages.
+    * Returns: the newly created Gtk::Notebook
+
+--- Gtk::Notebook.set_window_creation_hook
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- append_page(child, tab_label = nil)
+
+    Appends a page to notebook.
+    * child: the Gtk::Widget to use as the contents of the page. 
+    * tab_label: the Gtk::Widget to be used as the label for the page, or nil to use the default label, 'page N'. 
+    * Returns: self
+
+--- append_page_menu(child, tab_label = nil, menu_label = nil)
+
+    Appends a page to notebook, specifying the widget to use as the label in the popup menu.
+    * child : the Gtk::Widget to use as the contents of the page. 
+    * tab_label : the Gtk::Widget to be used as the label for the page, or nil to use the default label, 'page N'. 
+    * menu_label : the widget to use as a label for the page-switch menu, if that is enabled. If nil, and tab_label is a Gtk::Label or nil, then the menu label will be a newly created label with the same text as tab_label; If tab_label is not a Gtk::Label, menu_label must be specified if the page-switch menu is to be used. 
+    * Returns: self
+
+--- prepend_page(child, tab_label = nil)
+
+    Prepends a page to notebook.
+    * child: the Gtk::Widget to use as the contents of the page. 
+    * tab_label: the Gtk::Widget to be used as the label for the page, or nil to use the default label, 'page N'. 
+    * Returns: self
+
+--- prepend_page_menu(child, tab_label = nil, menu_label = nil)
+
+    Prepends a page to notebook, specifying the widget to use as the label in the popup menu.    * child: the Gtk::Widget to use as the contents of the page. 
+    * tab_label: the Gtk::Widget to be used as the label for the page, or nil to use the default label, 'page N'. 
+    * menu_label: the widget to use as a label for the page-switch menu, if that is enabled. If nil, and tab_label is a Gtk::Label or nil, then the menu label will be a newly created label with the same text as tab_label; If tab_label is not a Gtk::Label, menu_label must be specified if the page-switch menu is to be used. 
+    * Returns: self
+
+--- insert_page(position, child, tab_label = nil)
+
+    Insert a page into notebook at the given position
+    * position : the index (starting at 0) at which to insert the page, or -1 to append the page after all other pages. 
+    * child : the Gtk::Widget to use as the contents of the page. 
+    * tab_label : the Gtk::Widget to be used as the label for the page, or nil to use the default label, 'page N'. 
+    * Returns: self
+
+--- insert_page_menu(position, child, tab_label = nil, menu_label = nil)
+
+    Insert a page into notebook at the given position, specifying the widget to use as the label in the popup menu.
+    * position: the index (starting at 0) at which to insert the page, or -1 to append the page after all other pages. 
+    * child: the Gtk::Widget to use as the contents of the page. 
+    * tab_label: the Gtk::Widget to be used as the label for the page, or nil to use the default label, 'page N'. 
+    * menu_label: the widget to use as a label for the page-switch menu, if that is enabled. If nil, and tab_label is a Gtk::Label or nil, then the menu label will be a newly created label with the same text as tab_label; If tab_label is not a Gtk::Label, menu_label must be specified if the page-switch menu is to be used. 
+    * Returns: self
+
+--- remove_page(page_num)
+
+    Removes a page from the notebook given its index in the notebook.
+    * page_num: the index of a notebook page, starting from 0. If -1, the last page will be removed.
+
+--- page_num(child)
+
+    Finds the index of the page which contains the given child widget.
+    * child: a Gtk::Widget 
+    * Returns: the index of the page containing child, or -1 if child is not in the notebook.
+
+--- page
+
+    Returns the page number of the current page.
+    * Returns : the index (starting from 0) of the current page in the notebook. If the notebook has no pages, then -1 will be returned.
+
+--- page=(page_num)
+
+    Switches to the page number page_num.
+    * page_num: index of the page to switch to, starting from 0. If negative, the last page will be used. If greater than the number of pages in the notebook, nothing will be done. 
+    * Returns: page_num
+
+--- set_page(page_num)
+
+    Same as Gtk::Notebook#page=.
+    * page_num: index of the page to switch to, starting from 0. If negative, the last page will be used. If greater than the number of pages in the notebook, nothing will be done. 
+    * Returns: self
+
+--- next_page
+
+    Switches to the next page. Nothing happens if the current page is the last page. 
+    * Returns: self
+
+--- prev_page
+
+    Switches to the previous page. Nothing happens if the current page is the first page.
+    * Returns: self
+
+--- reorder_child(child, position)
+
+    Reorders the page containing child, so that it appears in position position. If position is greater than or equal to the number of children in the list or negative, child will be moved to the end of the list.
+    * child: the child to move 
+    * position: the new position, or -1 to move to the end 
+    * Returns: self
+
+--- tab_pos
+
+    Gets the edge at which the tabs for switching pages in the notebook are drawn.
+    * Returns: the edge at which the tabs are drawn
+
+--- tab_pos=(pos)
+
+    Sets the edge at which the tabs for switching pages in the notebook are drawn.
+    * pos: the edge to draw the tabs at. (((<GtkPositionType|Gtk#GtkPositionType>)))
+    * Returns: pos
+
+--- set_tab_pos(pos)
+
+    Same as Gtk::Notebook#tab_pos=.
+    * pos: the edge to draw the tabs at. (((<GtkPositionType|Gtk#GtkPositionType>)))
+    * Returns: self
+
+--- show_tabs?
+
+    Returns whether the tabs of the notebook are shown. See Gtk::Notebook#show_tabs=.
+    * Returns: true if the tabs are shown
+
+--- show_tabs=(pos)
+
+    Sets the edge at which the tabs for switching pages in the notebook are drawn.
+    * pos: the edge to draw the tabs at. 
+    * Returns: pos
+
+--- set_show_tabs(pos)
+
+    Same as Gtk::Notebook#show_tabs=.
+    * pos: the edge to draw the tabs at. 
+    * Returns: self
+
+--- show_border?
+
+    Returns whether a bevel will be drawn around the notebook pages. See Gtk::Notebook#show_border=.
+    * Returns: true if the bevel is drawn
+
+--- show_border=(show_border)
+
+    Sets whether a bevel will be drawn around the notebook pages. This only has a visual effect when the tabs are not shown. See Gtk::Notebook#show_tabs=.
+    * show_border: true if a bevel should be drawn around the notebook. 
+    * Returns: show_border
+
+--- set_show_border(show_border)
+
+    Same as Gtk::Notebook#show_border=.
+    * show_border: true if a bevel should be drawn around the notebook. 
+    * Returns: self
+
+--- scrollable?
+
+    Returns whether the tab label area has arrows for scrolling. See Gtk::Notebook#scrollable=.
+    * Returns: true if arrows for scrolling are present
+
+--- scrollable=(scrollable)
+
+    Sets whether the tab label area will have arrows for scrolling if there are too many tabs to fit in the area.
+    * scrollable: true if scroll arrows should be added 
+    * Returns: scrollable
+
+--- set_scrollable(scrollable)
+
+    Same as Gtk::Notebook#scrollable=.
+    * scrollable: true if scroll arrows should be added 
+    * Returns: self
+
+--- get_menu_label(child)
+
+    Retrieves the menu label widget of the page containing child.
+    * child: a widget contained in a page of notebook 
+    * Returns : the menu label, or nil if the notebook page does not have a menu label other than the default (the tab label).
+
+--- set_menu_label(child, menu_label)
+
+    Changes the menu label for the page containing child.
+    * child: the child widget 
+    * menu_label: the menu label widget, or nil for default 
+    * Returns: self
+
+--- get_menu_label_text(child)
+
+    Retrieves the menu label widget of the page containing child.
+    * child: a widget contained in a page of notebook 
+    * Returns: the menu label, or nil if the notebook page does not have a menu label other than the default (the tab label).
+
+--- set_menu_label_text(child, menu_text)
+
+    Creates a new label and sets it as the menu label of child.
+    * child: the child widget 
+    * menu_text: the label text(String)
+
+--- get_nth_page(page_num)
+
+    Returns the child widget contained in page number page_num.
+    * page_num: the index of a page in the notebook 
+    * Returns: the child widget, or nil if page_num is out of bounds.
+
+--- n_pages
+
+    Gets the number of pages in a notebook.  ((* Since 2.2 *)) 
+    * Returns: the number of pages in the notebook.
+
+--- get_tab_label(child)
+
+    Returns the tab label widget for the page child. nil is returned if child is not in notebook or if no tab label has specifically been set for child.
+    * child: the page 
+    * Returns: the tab label
+
+--- set_tab_label(child, tab_label)
+
+    Changes the tab label for child. If nil is specified for tab_label, then the page will have the label 'page N'.
+    * child: the page 
+    * tab_label: the tab label widget to use, or nil for default tab label. 
+    * Returns: self
+
+--- query_tab_label_packing(child)
+
+    Query the packing attributes for the tab label of the page containing child.
+    * child: the page 
+    * Returns: [expand, fill, pack_type]
+       * expand: true if expanded
+       * fill: true if filled 
+       * pack_type: the pack_type (((<Gtk#PackType>)))
+
+--- set_tab_label_packing(child, expand, fill, pack_type)
+
+    Sets the packing parameters for the tab label of the page containing child. See Gtk::Box#pack_start for the exact meaning of the parameters.
+    * child: the child widget 
+    * expand: whether to expand the bookmark or not 
+    * fill: whether the bookmark should fill the allocated area or not 
+    * pack_type : the position of the bookmark (((<Gtk#PackType>)))
+    * Returns: self
+
+--- get_tab_label_text(child)
+
+    Retrieves the text of the tab label for the page containing child.
+    * child: a widget contained in a page of notebook 
+    * Returns: value: the text of the tab label, or nil if the tab label widget is not a Gtk::Label. The string is owned by the widget and must not be freed.
+
+--- set_tab_label_text(child, tab_text)
+
+    Creates a new label and sets it as the tab label for the page containing child.
+    * child: the page 
+    * tab_text: the label text 
+    * Returns: self
+
+--- enable_popup?
+
+    Retrieves the popup menu for switching pages is enabled.
+    * Returns: true if the popup menu for switching pages is enabled.
+
+--- enable_popup=(enable_popup)
+
+    Sets the popup menu for switching pages is enabled.
+    * enable_popup: true if the popup menu for switching pages is enabled.
+    * Returns: enable_popup
+
+--- set_enable_popup(enable_popup)
+
+    Same as Gtk::Notebook#enable_popup=.
+    * enable_popup: true if the popup menu for switching pages is enabled.
+    * Returns: enable_popup
+
+--- tab_border=(tab_border)
+
+    Sets the value whether the tab labels have a border on all sides.
+    * tab_border: true if the tab labels have a border on all sides.
+    * Returns: tab_border
+
+--- set_tab_border(tab_border)
+
+    Same as Gtk::Notebook#tab_border=.
+    * tab_border: true if the tab labels have a border on all sides.
+    * Returns: self
+
+--- tab_hborder
+
+    Retrieves the value whether the tab labels have a horizontal border.
+    * Returns: true if the tab labels have a horizontal border.
+
+--- tab_hborder=(tab_hborder)
+
+    Sets the value whether the tab labels have a horizontal border.
+    * tab_hborder: true if the tab labels have a horizontal border.
+    * Returns: tab_hborder
+
+--- set_tab_hborder(tab_hborder)
+
+    Same as Gtk::Notebook#tab_hborder=.
+    * tab_hborder: true if the tab labels have a horizontal border.
+    * Returns: tab_hborder
+
+--- tab_vborder
+
+    Retrieves the value whether the tab labels have a vertical border.
+    * Returns: true if the tab labels have a vertical border.
+
+--- tab_vborder=(tab_vborder)
+
+    Sets the value whether the tab labels have a vertical border.
+    * tab_vborder: true if the tab labels have a vertical border.
+    * Returns: tab_vborder
+
+--- set_tab_vborder(tab_vborder)
+
+    Same as Gtk::Notebook#tab_vborder=.
+    * tab_vborder: true if the tab labels have a vertical border.
+    * Returns: tab_vborder
+
+--- homogeneous?
+
+    Retrieves the value whether the tabs must have all the same size.
+
+--- homogeneous=(homogeneous)
+
+    Sets the value whether the tabs must have all the same size.
+    * homogeneous: true if the tabs must have all the same size.
+    * Returns: homogeneous
+
+--- set_homogeneous(homogeneous)
+
+    Same as Gtk::Notebook#homogeneous=.
+    * homogeneous: true if the tabs must have all the same size.
+    * Returns: self
+
+--- change_current_page
+
+     * Returns: self: ((*FIXME*))
+
+--- focus_tab
+
+     * Returns: self: ((*FIXME*))
+
+--- get_tab_detachable
+
+     * Returns: self: ((*FIXME*))
+
+--- get_tab_reorderable
+
+     * Returns: self: ((*FIXME*))
+
+--- group
+
+    Gets the Group for tabs drag and drop.
+     * Returns: Group for tabs drag and drop
+
+--- group=(group)
+
+    Sets the Group for tabs drag and drop.
+     * group: Group for tabs drag and drop
+     * Returns: group
+
+--- group_id
+
+    Gets the Group ID for tabs drag and drop.
+     * Returns: Group ID for tabs drag and drop
+
+--- group_id=(group_id)
+
+    Sets the Group ID for tabs drag and drop.
+     * group_id: Group ID for tabs drag and drop
+     * Returns: group_id
+
+--- move_focus_out
+
+     * Returns: self: ((*FIXME*))
+
+--- ref_accessible
+
+    See Atk::Implementor#ref_accessible.
+
+--- reorder_tab
+
+     * Returns: self: ((*FIXME*))
+
+--- select_page
+
+     * Returns: self: ((*FIXME*))
+
+--- set_group(group)
+
+    Same as group=.
+     * group: Group for tabs drag and drop
+     * Returns: self
+
+--- set_group_id(group_id)
+
+    Same as group_id=.
+     * group_id: Group ID for tabs drag and drop
+     * Returns: self
+
+--- set_tab_detachable
+
+     * Returns: self: ((*FIXME*))
+
+--- set_tab_reorderable
+
+     * Returns: self: ((*FIXME*))
+
+--- add_child
+
+    See Gtk::Buildable#add_child.
+
+--- construct_child
+
+    See Gtk::Buildable#construct_child.
+
+--- get_internal_child
+
+    See Gtk::Buildable#get_internal_child.
+
+--- name
+
+    See Gtk::Buildable#name.
+
+--- name=
+
+    See Gtk::Buildable#name=.
+
+--- set_buildable_property
+
+    See Gtk::Buildable#set_buildable_property.
+
+--- set_name
+
+    See Gtk::Buildable#set_name.
+
+--- builder_name
+
+    See Gtk::Buildable#builder_name.
+
+--- builder_name=
+
+    See Gtk::Buildable#builder_name=.
+
+--- set_builder_name
+
+    See Gtk::Buildable#set_builder_name.
+
+== Constants
+
+=== GtkNotebookTab
+
+--- TAB_FIRST
+--- TAB_LAST
+
+== Properties
+
+--- enable-popup: true or false (Read/Write)
+
+    If true, pressing the right mouse button on the notebook pops up a menu that you can use to go to a page
+
+--- homogeneous: true or false (Read/Write)
+
+    Whether tabs should have homogeneous sizes
+
+--- page: Integer (Read/Write)
+
+    The index of the current page
+
+--- scrollable: true or false (Read/Write)
+
+    If true, scroll arrows are added if there are too many tabs to fit
+
+--- show-border: true or false (Read/Write)
+
+    Whether the border should be shown or not
+
+--- show-tabs: true or false (Read/Write)
+
+    Whether tabs should be shown or not
+
+--- tab-border: Integer (Write)
+
+    Width of the border around the tab labels
+
+--- tab-hborder: Integer (Read/Write)
+
+    Width of the horizontal border of tab labels
+
+--- tab-pos: Integer (Read/Write)
+
+    Which side of the notebook holds the tabs
+
+--- tab-vborder: Integer (Read/Write)
+
+    Width of the vertical border of tab labels
+
+--- group: gpointer (Read/Write)
+
+    Group for tabs drag and drop
+
+--- group-id: Integer (Read/Write)
+
+    Group ID for tabs drag and drop
+
+== Style Properties
+
+--- arrow-spacing: Integer (Read)
+
+    Scroll arrow spacing
+
+--- has-backward-stepper: true or false (Read)
+
+    Display the standard backward arrow button
+
+--- has-forward-stepper: true or false (Read)
+
+    Display the standard forward arrow button
+
+--- has-secondary-backward-stepper: true or false (Read)
+
+    Display a second backward arrow button on the opposite end of the tab area
+
+--- has-secondary-forward-stepper: true or false (Read)
+
+    Display a second forward arrow button on the opposite end of the tab area
+
+--- tab-curvature: Integer (Read)
+
+    Size of tab curvature
+
+--- tab-overlap: Integer (Read)
+
+    Size of tab overlap area
+
+== Child Properties
+
+--- detachable: true or false (Read/Write)
+
+    Whether the tab is detachable
+
+--- menu-label: String (Read/Write)
+
+    The string displayed in the child's menu entry
+
+--- position: Integer (Read/Write)
+
+    The index of the child in the parent
+
+--- reorderable: true or false (Read/Write)
+
+    Whether the tab is reorderable by user action or not
+
+--- tab-expand: true or false (Read/Write)
+
+    Whether to expand the child's tab or not
+
+--- tab-fill: true or false (Read/Write)
+
+    Whether the child's tab should fill the allocated area or not
+
+--- tab-label: String (Read/Write)
+
+    The string displayed on the child's tab label
+
+--- tab-pack: Gtk::PackType (Read/Write)
+
+    A Gtk::PackType indicating whether the child is packed with reference to the start or end of the parent
+
+== Signals
+
+--- change-current-page: self, arg1
+
+     * self: the Gtk::Notebook
+     * arg1: Number
+
+--- focus-tab: self, tab
+
+     * self: the Gtk::Notebook
+     * tab: ((<GtkNotebookTab|Gtk::Notebook#GtkNotebookTab>))
+
+--- move-focus-out: self, dir_type
+
+     * self: the Gtk::Notebook
+     * dir_type: ((<GtkDirectionType|Gtk#GtkDirectionType>))
+
+--- select-page: self, arg1
+
+     * self: the Gtk::Notebook
+     * arg1: true or false
+
+--- switch-page: self, page, page_num
+
+    Emitted when the user or a function changes the current page.
+    * self: the object which received the signal. 
+    * page: the new current Gtk::NotebookPage 
+    * page_num: the index of the page
+
+--- create-window: self
+
+     * self: Gtk::Notebook: ((*FIXME*))
+
+--- page-added: self
+
+     * self: Gtk::Notebook: ((*FIXME*))
+
+--- page-removed: self
+
+     * self: Gtk::Notebook: ((*FIXME*))
+
+--- page-reordered: self
+
+     * self: Gtk::Notebook: ((*FIXME*))
+
+--- reorder-tab: self
+
+     * self: Gtk::Notebook: ((*FIXME*))
+
+== See Also
+
+* Gtk::Container - For methods that apply to every Gtk::Container.
+
+== ChangeLog
+
+- ((<Masao>))

@@ -1,0 +1,23 @@
+= Tutorial Ruby/GTK2 
+
+== Resumen
+
+Este documento cubre la librería Ruby/GTK2, usada para construir interfaces gráficas (GUI) en el entorno GNOME2. Este tutorial es una traducción de la ((<Versión Inglesa|URL:../hiki.cgi?gtk2-tut>)).
+
+== Contenido
+
+* ((<Introducción|tut-gtk-intro>))
+* ((<Primeros pasos|gtk-primeros-pasos>))
+  * ((<Hola mundo|tut-gtk-holamundo>))
+  * ((<Teoría de Señales y Respuestas|tut-gtk-senales>))
+  * ((<Eventos|tut-gtk-eventos>))
+  * ((<Hola mundo en detalle|tut-gtk-holamundo-detalles>))
+* Avanzando
+  * ((<Más sobre manejadores de eventos|tut-gtk-senales-mas>))
+  * ((<Actualizando Hola Mundo|tut-gtk-holamundo2>))
+* ((<Empaquetado de widgets|tut-gtk-empaquetado-intro>))
+  * ((<Teoría de empaquetado en Cajas|tut-gtk-empaquetado-teoria>))
+  * ((<Detalles del empaquetado en Cajas|tut-gtk-empaquetado-cajas-detalles>))
+  * ((<Programa de demostración de empaquetado|tut-gtk-empaquetado-demo>))
+  * ((<Empaquetado usando tablas|tut-gtk-empaquetado-tablas>))
+  * ((<Ejemplo de empaquetado con tablas|tut-gtk-empaquetado-tablas-demo>))

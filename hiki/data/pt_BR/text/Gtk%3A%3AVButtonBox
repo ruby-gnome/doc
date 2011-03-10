@@ -1,0 +1,26 @@
+= Gtk::VButtonBox
+
+A button box should be used to provide a consistent layout of buttons throughout your application. The layout/spacing can be altered by the programmer, or if desired, by the user to alter the 'feel' of a program to a small degree. 
+
+== Object Hierarchy
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Gtk::Object
+        * Gtk::Widget
+          * Gtk::Container
+            * Gtk::Box
+              * Gtk::ButtonBox
+                * Gtk::VButtonBox
+
+== Class Methods
+--- Gtk::VButtonBox.new
+    Creates a new vertical button box. 
+    Returns: a new button box.
+
+== See Also
+* Gtk::Box - Used to pack widgets into button boxes. 
+* Gtk::ButtonBox - Provides functions for controlling button boxes.
+* Gtk::HButtonBox - Pack buttons horizontally
+ 
+- ((<Masao>))

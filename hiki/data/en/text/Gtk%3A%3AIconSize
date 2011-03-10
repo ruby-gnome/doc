@@ -1,0 +1,61 @@
+= module Gtk::IconSize
+
+== Module Functions
+
+--- Gtk::IconSize.lookup(size)
+
+    Obtains the pixel size of a semantic icon size, normally size would be Gtk::IconSize::MENU, Gtk::IconSize::BUTTON, etc. This function isn't normally needed, Gtk::Widget#render_icon is the usual way to get an icon for rendering, then just look at the size of the rendered pixbuf. The rendered pixbuf may not even correspond to the width/height returned by Gtk::IconSize.lookup, because themes are free to render the pixbuf however they like, including changing the usual size.
+    * size: an icon size(((<GtkIconSize|URL:GtkIconSize>)))
+    * Returns: [width, height] or nil
+       * width: location to store icon width 
+       * height: location to store icon height
+
+--- Gtk::IconSize.register(name, width, height)
+
+    Registers a new icon size, along the same lines as Gtk::IconSize::MENU, etc. Returns the Fixnum value for the size.
+    * name: name of the icon size 
+    * width: the icon width 
+    * height: the icon height 
+    * Returns: Fixnum value representing the size
+
+--- Gtk::IconSize.register_alias(alias, target)
+
+    Registers alias as another name for target. So calling Gtk::IconSize.from_name with alias as argument will return target.
+    * alias: an alias for target(String)
+    * target: an existing icon size(Gtk::IconSize)
+
+--- Gtk::IconSize.from_name(name)
+
+    Looks up the icon size associated with name.
+    * name: the name(String) to look up(String). 
+    * Returns: the icon size(Gtk::IconSize) with the given name.
+
+--- Gtk::IconSize.get_name(size)
+
+    Gets the canonical name of the given icon size. The returned string is statically allocated and should not be freed.
+    * size: a Gtk::IconSize. 
+    * Returns: the name of the given icon size.
+
+--- Gtk::IconSize.lookup_for_settings
+
+     * Returns: self: ((*FIXME*))
+
+== Constants
+
+=== GtkIconSize
+
+--- INVALID
+--- MENU
+--- SMALL_TOOLBAR
+--- LARGE_TOOLBAR
+--- BUTTON
+--- DND
+--- DIALOG
+
+== See Also
+
+Gtk::IconFactory, Gtk::IconSet, Gtk::IconSource
+
+== ChangeLog
+
+- ((<Masao>))

@@ -1,0 +1,223 @@
+= class Gtk::CellRendererPixbuf
+
+The Gtk::CellRendererPixbuf is used for rendering a cell to a Gdk::Drawable with Gdk::Pixbuf.
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::InitiallyUnowned
+        * Gtk::Object
+          * Gtk::CellRenderer
+            * Gtk::CellRendererPixbuf
+
+== Class Methods
+
+--- Gtk::CellRendererPixbuf.new
+
+    Creates a new Gtk::CellRendererPixbuf. Adjust rendering parameters using object properties. Object properties can be set globally (with GLib::Object#set_property). Also, with Gtk::TreeViewColumn, you can bind a property to a value in a Gtk::TreeModel. For example, you can bind the "pixbuf" property on the cell renderer to a pixbuf value in the model, thus rendering a different image in each row of the Gtk::TreeView.
+     * Returns : the new cell renderer
+
+== Instance Methods
+
+--- pixbuf
+
+    Returns Gdk::Pixbuf.
+    * Returns: Gdk::Pixbuf
+
+--- pixbuf=(pixbuf)
+
+    Sets the pixbuf of the Gtk::CellRendererPixbuf.
+    * pixbuf: Gdk::Pixbuf
+    * Returns: pixbuf
+
+--- set_pixbuf(pixbuf)
+
+    Same as Gtk::CellRendererPixbuf#pixbuf=.
+    * pixbuf: Gdk::Pixbuf
+    * Returns: self
+
+--- pixbuf_expander_closed
+
+    Returns the expander is closed or not.
+    * Returns: true if closed.
+
+--- pixbuf_expander_closed=(closed)
+
+    Sets the expander is closed or not.
+    * closed: true if closed.
+    * Returns: closed
+
+--- set_pixbuf_expander_closed(closed)
+
+    Same as Gtk::CellRendererPixbuf#pixbuf_expander_closed=.
+    * closed: true if closed.
+    * Returns: self
+
+--- pixbuf_expander_open
+
+    Returns the expander is opened or not.
+    * Returns: true or false
+
+--- pixbuf_expander_open=(open)
+
+    Sets the expander is opened or not.
+    * open: true if opened.
+    * Returns: open
+
+--- set_pixbuf_expander_open(open)
+
+    Same as Gtk::CellRendererPixbuf#pixbuf_expander_open=.
+    * open: true if opened.
+    * Returns: self
+
+--- follow_state?
+
+    Gets the value whether the rendered pixbuf should be colorized according to the state or not. ((* Since 2.8 *))
+    * Returns: true if the rendered pixbuf should be colorized according to the state
+
+--- follow_state=(follow_state)
+
+    Sets the value whether the rendered pixbuf should be colorized according to the state or not. ((* Since 2.8 *))
+    * follow_state: true if the rendered pixbuf should be colorized according to the state
+    * Returns: follow_state
+
+--- set_follow_state(follow_state)
+
+    Same as Gtk::CellRendererPixbuf#follow_state=. ((* Since 2.8 *))
+    * follow_state: true if the rendered pixbuf should be colorized according to the state
+    * Returns: self
+
+--- icon_name
+
+    Gets the name of the icon from the icon theme. ((* Since 2.8 *))
+    * Returns: The name of the icon from the icon theme (String)
+
+--- icon_name=(icon_name)
+
+    Sets the name of the icon from the icon theme. ((* Since 2.8 *))
+    * icon_name: The name of the icon from the icon theme (String)
+    * Returns: icon_name
+
+--- set_icon_name(icon_name)
+
+    Same as Gtk::CellRendererPixbuf#icon_name=. ((* Since 2.8 *))
+    * icon_name: The name of the icon from the icon theme (String)
+    * Returns: self
+
+--- stock_detail
+
+    Gets the Render detail to pass to the theme engine.
+    * Returns: Render detail to pass to the theme engine (String)
+
+--- stock_detail=(stock_detail)
+
+    Sets the Render detail to pass to the theme engine.
+    * stock_detail: Render detail to pass to the theme engine (String)
+    * Returns: stock_detail
+
+--- set_stock_detail(stock_detail)
+
+    Same as Gtk::CellRendererPixbuf#stock_detail=.
+    * stock_detail: Render detail to pass to the theme engine (String)
+    * Returns: self
+
+--- stock_id
+
+    Gets the  stock ID of the stock icon to render.
+    * Returns: The stock ID of the stock icon to render (String)
+
+--- stock_id=(stock_id)
+
+    Sets the  stock ID of the stock icon to render.
+    * stock_id: The stock ID of the stock icon to render (String)
+    * Returns: stock_id
+
+--- set_stock_id(stock_id)
+
+    Same as Gtk::CellRendererPixbuf#stock_id=.
+    * stock_id: The stock ID of the stock icon to render (String)
+    * Returns: self
+
+--- stock_size
+
+    Gets the  Gtk::IconSize value that specifies the size of the rendered icon.
+    * Returns: The Gtk::IconSize value that specifies the size of the rendered icon
+
+--- stock_size=(stock_size)
+
+    Sets the  Gtk::IconSize value that specifies the size of the rendered icon.
+    * stock_size: The Gtk::IconSize value that specifies the size of the rendered icon
+    * Returns: stock_size
+
+--- set_stock_size(stock_size)
+
+    Same as Gtk::CellRendererPixbuf#stock_size=.
+    * stock_size: The Gtk::IconSize value that specifies the size of the rendered icon
+    * Returns: self
+
+--- gicon
+
+    Gets the GIcon being displayed.
+     * Returns: The GIcon being displayed
+
+--- gicon=(gicon)
+
+    Sets the GIcon being displayed.
+     * gicon: The GIcon being displayed
+     * Returns: gicon
+
+--- set_gicon(gicon)
+
+    Same as gicon=.
+     * gicon: The GIcon being displayed
+     * Returns: self
+
+== Properties
+
+--- follow-state: true or false (Read/Write)
+
+    Whether the rendered pixbuf should be colorized according to the state ((* Since 2.8 *))
+    * Default value: false
+
+--- icon-name: String (Read/Write)
+
+    The name of the icon from the icon theme ((* Since 2.8 *))
+    * Default value: nil
+
+--- pixbuf: Gdk::Pixbuf (Read/Write)
+
+    The pixbuf to render
+
+--- pixbuf-expander-closed: Gdk::Pixbuf (Read/Write)
+
+    Pixbuf for closed expander
+
+--- pixbuf-expander-open: Gdk::Pixbuf (Read/Write)
+
+    Pixbuf for open expander
+
+--- stock-detail: String (Read/Write)
+
+    Render detail to pass to the theme engine
+    * Default value: nil
+
+--- stock-id: String (Read/Write)
+
+    The stock ID of the stock icon to render
+    * Default value: nil
+
+--- stock-size: Integer (Read/Write)
+
+    The Gtk::IconSize value that specifies the size of the rendered icon.
+
+--- gicon: GIcon (Read/Write)
+
+    The GIcon being displayed
+
+== See Also
+
+== ChangeLog
+
+* 2006-01-31 Apply 2.8 methods. Revised. - ((<Masao>))

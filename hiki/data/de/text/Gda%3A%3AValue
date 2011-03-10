@@ -1,0 +1,16 @@
+= class Gda::Value
+This class has been deprecated.
+
+You must use native Ruby classes like Fixnum/Bignum/Float,
+String, TrueClass/FalseClass, NilClass, Array or Time instead.
+
+In addition, you can use Gda::GeometricPoint, Gda::Money and
+Gda::Time classes.
+
+== Object Hierarchy
+* Gda::Value
+
+== See Also
+((<Gda>)).
+
+- ((<lrz>))

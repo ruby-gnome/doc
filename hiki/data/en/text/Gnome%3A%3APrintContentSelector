@@ -1,0 +1,116 @@
+= class Gnome::PrintContentSelector
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::InitiallyUnowned
+        * Gtk::Object
+          * Gtk::Widget
+            * Gtk::Container
+              * Gtk::Bin
+                * Gtk::Frame
+                  * Gnome::PrintContentSelector
+
+== Class Methods
+
+--- Gnome::PrintContentSelector.new
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- current
+
+    Gets the Current page.
+     * Returns: Current page
+
+--- current=(current)
+
+    Sets the Current page.
+     * current: Current page
+     * Returns: current
+
+--- ref_accessible
+
+    See Atk::Implementor#ref_accessible.
+
+--- set_current(current)
+
+    Same as current=.
+     * current: Current page
+     * Returns: self
+
+--- set_total(total)
+
+    Same as total=.
+     * total: Number of pages
+     * Returns: self
+
+--- total
+
+    Gets the Number of pages.
+     * Returns: Number of pages
+
+--- total=(total)
+
+    Sets the Number of pages.
+     * total: Number of pages
+     * Returns: total
+
+--- add_child
+
+    See Gtk::Buildable#add_child.
+
+--- construct_child
+
+    See Gtk::Buildable#construct_child.
+
+--- get_internal_child
+
+    See Gtk::Buildable#get_internal_child.
+
+--- name
+
+    See Gtk::Buildable#name.
+
+--- name=
+
+    See Gtk::Buildable#name=.
+
+--- set_buildable_property
+
+    See Gtk::Buildable#set_buildable_property.
+
+--- set_name
+
+    See Gtk::Buildable#set_name.
+
+--- builder_name
+
+    See Gtk::Buildable#builder_name.
+
+--- builder_name=
+
+    See Gtk::Buildable#builder_name=.
+
+--- set_builder_name
+
+    See Gtk::Buildable#set_builder_name.
+
+== Properties
+
+--- current: Integer (Read/Write)
+
+    Current page
+
+--- total: Integer (Read/Write)
+
+    Number of pages
+
+== See Also
+
+== ChangeLog
+
+

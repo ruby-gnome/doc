@@ -1,0 +1,63 @@
+= class GLib::FilterInputStream
+
+Base class for input stream implementations that perform some kind of filtering
+operation on a base stream. Typical examples of filtering operations are
+character set conversion, compression and byte order flipping. 
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::InputStream
+        * GLib::FilterInputStream
+
+== Known Subclasses
+
+     * GLib::BufferedInputStream
+     * GLib::ConverterInputStream
+
+== Instance Methods
+
+--- base_stream
+
+     Gets the underlying base stream on which the I/O operations will be done.
+
+     * Returns: The underlying base stream on which the I/O operations will be done
+
+--- close_base_stream=(close_base_stream)
+
+     Same as GLib::FilterInputStream#set_close_base_stream.
+
+     * Returns: ((|close_base_stream|))
+
+--- close_base_stream?
+
+     Checks if the base stream should be closed when the filter stream is closed.
+
+     * Returns: true if the base stream should be closed when the filter stream
+       is closed
+
+--- set_close_base_stream(close_base_stream)
+
+     Sets whether or not the base stream should be closed when the filter
+     stream is closed.
+
+     * close_base_stream: true if the base stream should be closed when the
+       filter stream is closed
+     * Returns: self
+
+== Properties
+
+--- base-stream: GLib::InputStream (Read/Write)
+
+     The underlying base stream on which the I/O operations will be done.
+
+--- close-base-stream: true or false (Read/Write)
+
+     Whether or not the base stream should be closed when the filter stream is
+     closed.
+
+== See Also
+
+== ChangeLog

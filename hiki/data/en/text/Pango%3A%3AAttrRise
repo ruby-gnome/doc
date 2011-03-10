@@ -1,0 +1,23 @@
+= class Pango::AttrRise
+
+== Object Hierarchy
+
+* Object
+  * Data
+    * Pango::Attribute
+      * Pango::AttrInt
+        * Pango::AttrRise
+
+== Class Methods
+
+--- Pango::AttrRise.new(rise)
+
+    Create a new baseline displacement attribute.
+    * rise: the amount that the text should be displaced vertically, in Pango units. Positive values displace the text upwards.  
+    * Returns: the new Pango::Attribute.
+
+== See Also
+
+== ChangeLog
+
+* 2005-11-15 Added. - ((<Masao>))

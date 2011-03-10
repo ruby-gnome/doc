@@ -1,0 +1,23 @@
+=level
+
+Simple script that shows sound level for each channel of an audio file.
+
+==Download
+{{attach_anchor("level.rb")}}
+
+==Screenshot
+{{image "level.png"}}
+
+==Usage
+$ ruby level.rb AUDIO_FILE_NAME
+
+==License
+Ruby's
+
+==Author
+Marcin Lewandowski
+
+{{br}}
+===Changelog
+:2009-11-15
+Initial release

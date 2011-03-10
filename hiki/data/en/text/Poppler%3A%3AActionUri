@@ -1,0 +1,42 @@
+= class Poppler::ActionUri
+
+== Object Hierarchy
+
+* Object
+  * GLib::Boxed
+    * Poppler::Action
+      * Poppler::ActionAny
+        * Poppler::ActionUri
+
+== Instance Methods
+
+--- uri
+
+    Gets the URI of the action.
+     * Returns: The URI of the action
+
+--- uri=(uri)
+
+    Sets the URI of the action.
+     * uri: The URI of the action
+     * Returns: uri
+
+--- set_uri(uri)
+
+    Same as uri=.
+     * uri: The URI of the action
+     * Returns: self
+
+== Properties
+
+--- uri: String (Read/Write)
+
+    The URI of the action
+
+== See Also
+
+== ChangeLog
+
+* 2006-05-18 ((<kou>)): completed.
+
+- ((<kou>))

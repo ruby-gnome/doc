@@ -1,0 +1,21 @@
+= class Pango::AttrSize
+
+== Object Hierarchy
+
+* Object
+  * Data
+    * Pango::Attribute
+      * Pango::AttrInt
+        * Pango::AttrSize
+
+== Class Methods
+
+--- Pango::AttrSize.new
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

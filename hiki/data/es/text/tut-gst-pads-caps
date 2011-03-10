@@ -1,0 +1,66 @@
+= Capacidades de un puerto
+{{link("tut-gst-pads-elem", nil, "tut-gst", "tut-gst-link-elements-intro")}}
+
+Ya que los puertos juegan un papel muy importantee en como se ve un elemento desde fuera, se ha implementado un mecanismo para describir un puerto usando capacidades ("capabilities").
+
+Describiremos brevemente que son las capacidades, lo suficiente para una comprensión básica de su concepto.
+
+== Qué es una capacidad
+
+Una capacidad se conecta a un puerto para describir que tipo de medio puede manejar.
+
+Una capacidad toma su nombre y consiste en un tipo MIME más un conjunto de propiedades.
+
+Abajo se muestran las capacidades del elemento mad, mostradas por (({gst-inspect})). Se pueden ver dos puertos: sink y src. Ambos incluyen informacion sobre su capacidad.
+
+El puerto sink (puerto de entrada) acepta datos del tipo MIME 'audio/mp3'. Tiene también tres propiedades: layer, bitrate y framed.
+
+El puerto src (puerto de salida) genera datos de tipo MIME 'audio/raw'. Y tiene cuatro propiedades: format, depth, rate y channels.
+
+  Pads:
+    SINK template: 'sink'
+      Availability: Always
+      Capabilities:
+        'mad_sink':
+          MIME type: 'audio/mp3':
+
+    SRC template: 'src'
+      Availability: Always
+      Capabilities:
+        'mad_src':
+          MIME type: 'audio/raw':
+          format: String: int
+          endianness: Integer: 1234
+          width: Integer: 16
+          depth: Integer: 16
+          channels: Integer range: 1 - 2
+          law: Integer: 0
+          signed: Boolean: TRUE
+          rate: Integer range: 11025 - 48000
+
+== Qué son las propiedades
+
+Las propiedades se usan para describir información extra sobre la capacidades. Las propiedades consisten básicamente en una clave (un string) y en un valor. Se pueden usar varios tipos de valor diferentes:
+
+* integer (Fixnum, Bignum);
+* integer range (Range);
+* boolean (TrueClass, FalseClass);
+* list (Array);
+* float (Float);
+* float (Range);
+* string (String).
+
+== ¿Para que se usan las capacidades?
+
+Las capacidades describen con gran detalle que tipo de medio es manejado por los puertos. Se usan normalmente para:
+
+* Autoconexión: encontrar automáticamente plugins con un conjunto de capacidades;
+* Detección de compatibilidad: cuando se conectan dos puertos, GStreamer puede verificar si los dos puertos están tratando con el mismo tipo de medio.
+
+== Obteniendo las capacidades de un puerto
+
+Un puerto puede tener una cadena de capacidades unidas a el. Se puede obtener la cadena de capacidades con Gst::Pad#caps o Gst::Pad#each_caps:
+
+  pad.each_caps do |caps|
+    puts "Capability name " + caps.name + ", MIME type " + caps.mime
+  end 

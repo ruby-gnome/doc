@@ -1,0 +1,132 @@
+= Ruby/GIO API Reference
+
+((<API Index|index-ruby-gio2>))
+
+== File Operations
+
+* GLib::File – File and Directory Handling
+* GLib::FileAttribute – Key-Value Paired File Attributes
+* GLib::FileAttributeInfo – Key-Value Paired File Attribute Information
+* GLib::FileAttributeInfoList – List of attribute information
+* GLib::FileInfo – File Information and Attributes
+* GLib::FileEnumerator – Enumerated File Routines
+* GLib::IO – Errors and Miscellanea
+* GLib::MountOperation – Object used for authentication and user interaction
+
+== File System Monitoring
+
+* GLib::FileMonitor – File Monitoring
+
+== Asynchronous I/O
+
+* GLib::Cancellable – Thread-safe Operation Cancellation Stack
+* GLib::AsyncResult – Asynchronous Function Results
+* GLib::IOScheduler – I/O Scheduler
+* GLib::SimpleAsyncResult – Simple asynchronous results implementation
+
+== Data Conversion
+
+* GLib::Converter – Data conversion interface
+* GLib::CharsetConverter – Convert between charsets
+* GLib::ZlibCompressor – Zlib compressor
+* GLib::ZlibDecompressor – Zlib decompressor
+
+== Streaming I/O
+
+* GLib::Seekable – Stream seeking interface
+* GLib::InputStream – Base class for implementing streaming input
+* GLib::OutputStream – Base class for implementing streaming output
+* GLib::IOStream – Base class for implementing read/write streams
+* GLib::FileInputStream – File input streaming operations
+* GLib::FileOutputStream – File output streaming operations
+* GLib::FileIOStream – File read and write streaming operations
+* GLib::FileDescriptorBased – Interface for file-descriptor-based I/O
+* GLib::FilterInputStream – Filter Input Stream
+* GLib::FilterOutputStream – Filter Output Stream
+* GLib::MemoryInputStream – Streaming input operations on memory chunks
+* GLib::MemoryOutputStream – Streaming output operations on memory chunks
+* GLib::BufferedInputStream – Buffered Input Stream
+* GLib::BufferedOutputStream – Buffered Output Stream
+* GLib::DataInputStream – Data Input Stream
+* GLib::DataOutputStream – Data Output Stream
+* GLib::UnixInputStream – Streaming input operations for Unix file descriptors
+* GLib::UnixOutputStream – Streaming output operations for Unix file descriptors
+* GLib::ConverterInputStream – Converter Input Stream
+* GLib::ConverterOutputStream – Converter Output Stream
+
+== File Types and Applications
+
+* GLib::ContentType – Platform-specific content typing
+* GLib::AppInfo – Application information and launch contexts
+* GLib::DesktopAppInfo – Application information from desktop files
+
+== Volumes and Drives
+
+* GLib::VolumeMonitor – Volume Monitor
+* GLib::Volume – Volume management
+* GLib::Mount – Mount management
+* GLib::Drive – Drive management
+* GLib::UnixMount – Unix mount
+* GLib::UnixMounts – Unix mounts
+* GLib::UnixMountPoint – Unix mount point
+* GLib::UnixMountEntry – Unix mount entry
+* GLib::UnixMountMonitor – Unix mount monitor
+
+== Icons
+
+* GLib::Icon – Interface for icons
+* GLib::FileIcon – Icons pointing to an image file
+* GLib::LoadableIcon – Loadable Icons
+* GLib::ThemedIcon – Icon theming support
+* GLib::EmblemedIcon – Icons with emblems
+* GLib::Emblem – An object for emblems
+
+== Failable Initialization
+
+* GLib::Initable – Failable object initialization interface
+* GLib::AsyncInitable – Asynchronously failable object initialization interface
+
+== Low-level Network Support
+
+* GLib::Socket – Low-level socket object
+* GLib::InetAddress – An IPv4/IPv6 Address
+* GLib::SocketAddress – Abstract base class for representing end-points for socket communication
+* GLib::InetSocketAddress – Internet GLib::SocketAddress
+* GLib::UnixSocketAddress – Unix GLib::SocketAddress
+* GLib::SocketControlMessage – A GLib::Socket control message
+* GLib::UnixFDList – An object containing a set of Unix file descriptors
+* GLib::UnixFDMessage – A GLib::SocketControlMessage containing a GLib::UnixFDList
+* GLib::Credentials – An object containing credentials
+* GLib::UnixCredentialsMessages – A GLib::SocketControlMessage containing credentials
+* GLib::Proxy – Interface for proxy handling
+* GLib::ProxyAddress – An internet address with proxy information
+
+== High-level network functionality
+
+* GLib::SocketClient – Helper for connecting to a network service
+* GLib::SocketConnection – A socket connection
+* GLib::UnixConnection – A Unix domain GLib::SocketConnection
+* GLib::TcpConnection – A TCP GLib::SocketConnection
+* GLib::SocketListener – Helper for accepting network client connections
+* GLib::SocketService – Make it easy to implement a network service
+* GLib::ThreadedSocketService – A threaded GLib::SocketService
+
+== DNS Resolution
+
+* GLib::Resolver – Asynchronous and cancellable DNS resolver
+* GLib::ProxyResolver – Asynchronous and cancellable network proxy resolver
+* GLib::SocketConnectable – Interface for potential socket end-points
+* GLib::NetworkAddress – A GLib::SocketConnectable for resolving hostnames
+* GLib::NetworkService – A GLib::SocketConnectable for resolving SRV targets
+* GLib::SrvTarget – DNS SRV record target
+
+== Utilities
+
+* GLib::FilenameCompleter – Filename Completer
+
+== Extending GIO
+
+* GLib::Vfs – Virtual File System
+* GLib::IOModule – Loadable GIO Modules
+* GLib::IOExtension – 
+* GLib::IOExtensionPoint – 

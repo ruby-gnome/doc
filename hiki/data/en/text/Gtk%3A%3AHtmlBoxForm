@@ -1,0 +1,28 @@
+= class Gtk::HtmlBoxForm
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Gtk::HtmlBox
+        * Gtk::HtmlBoxBlock
+          * Gtk::HtmlBoxForm
+
+== Class Methods
+
+--- Gtk::HtmlBoxForm.new
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- get_radio_group
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

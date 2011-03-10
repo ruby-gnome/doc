@@ -1,0 +1,21 @@
+= class Gtk::PrintDuplex
+
+== Object Hierarchy
+* Object
+  * GLib::Enum
+    * Gtk::PrintDuplex
+
+== Constants
+--- HORIZONTAL
+--- SIMPLEX
+--- VERTICAL
+
+== See Also
+
+* Gtk::PrintSettings
+
+== ChangeLog
+
+* 2006-07-09: updated for 2.10. - ((<kou>))
+
+- ((<kou>))

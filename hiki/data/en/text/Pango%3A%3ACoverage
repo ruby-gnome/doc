@@ -1,0 +1,48 @@
+= class Pango::Coverage
+
+== Object Hierarchy
+
+* Object
+  * GLib::Boxed
+    * Pango::Coverage
+
+== Class Methods
+
+--- Pango::Coverage.from_bytes
+
+     * Returns: self: ((*FIXME*))
+
+--- Pango::Coverage.new
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- get_level
+
+     * Returns: self: ((*FIXME*))
+
+--- max!
+
+     * Returns: self: ((*FIXME*))
+
+--- set
+
+     * Returns: self: ((*FIXME*))
+
+--- to_bytes
+
+     * Returns: self: ((*FIXME*))
+
+== Constants
+
+--- APPROXIMATE
+--- EXACT
+--- FALLBACK
+--- NONE
+
+== See Also
+
+== ChangeLog
+
+

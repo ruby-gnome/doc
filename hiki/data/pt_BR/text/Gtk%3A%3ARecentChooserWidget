@@ -1,0 +1,33 @@
+= class Gtk::RecentChooserWidget
+Gtk::RecentChooserWidget is a widget suitable for selecting recently used files. It is the main building block of a Gtk::RecentChooserDialog. Most applications will only need to use the latter; you can use Gtk::RecentChooserWidget as part of a larger window if you have special needs.
+
+Note that Gtk::RecentChooserWidget does not have any methods of its own. Instead, you should use the methods that work on a Gtk::RecentChooser.
+
+Recently used files are supported since GTK+ 2.10. 
+
+== Object Hierarchy
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::InitiallyUnowned
+        * Gtk::Object
+          * Gtk::Widget
+            * Gtk::Container
+              * Gtk::Box
+                * Gtk::VBox
+                  * Gtk::RecentChooserWidget
+
+== Included Modules
+* Gtk::RecentChooser
+
+== Class Methods
+--- Gtk::RecentChooserWidget.new(manager = nil)
+    Creates a new Gtk::RecentChooserWidget object. This is an embeddable widget used to access the recently used resources list. ((* Since 2.10 *))
+    * manager: a Gtk::RecentManager or nil. This is useful if you have implemented your own recent manager, or if you have a customized instance of a Gtk::RecentManager object.
+    * Returns: a new Gtk::RecentChooserWidget
+
+== See Also
+Gtk::RecentChooser, Gtk::RecentChooserDialog 
+
+== ChangeLog
+* 2007-01-30 Added. - ((<Masao>))

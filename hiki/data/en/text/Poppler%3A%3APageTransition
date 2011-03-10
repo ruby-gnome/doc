@@ -1,0 +1,99 @@
+= class Poppler::PageTransition
+
+== Object Hierarchy
+
+* Object
+  * GLib::Boxed
+    * Poppler::PageTransition
+
+== Instance Methods
+
+--- alignment
+
+     * Returns: self: ((*FIXME*))
+
+--- alignment=
+
+     * Returns: self: ((*FIXME*))
+
+--- angle
+
+     * Returns: self: ((*FIXME*))
+
+--- angle=
+
+     * Returns: self: ((*FIXME*))
+
+--- direction
+
+     * Returns: self: ((*FIXME*))
+
+--- direction=
+
+     * Returns: self: ((*FIXME*))
+
+--- duration
+
+     * Returns: self: ((*FIXME*))
+
+--- duration=
+
+     * Returns: self: ((*FIXME*))
+
+--- rectangular
+
+     * Returns: self: ((*FIXME*))
+
+--- rectangular=
+
+     * Returns: self: ((*FIXME*))
+
+--- scale
+
+     * Returns: self: ((*FIXME*))
+
+--- scale=
+
+     * Returns: self: ((*FIXME*))
+
+--- set_alignment
+
+     * Returns: self: ((*FIXME*))
+
+--- set_angle
+
+     * Returns: self: ((*FIXME*))
+
+--- set_direction
+
+     * Returns: self: ((*FIXME*))
+
+--- set_duration
+
+     * Returns: self: ((*FIXME*))
+
+--- set_rectangular
+
+     * Returns: self: ((*FIXME*))
+
+--- set_scale
+
+     * Returns: self: ((*FIXME*))
+
+--- set_type
+
+     * Returns: self: ((*FIXME*))
+
+--- type
+
+     * Returns: self: ((*FIXME*))
+
+--- type=
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

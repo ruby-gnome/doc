@@ -1,0 +1,166 @@
+Error!
+(eval):123:in `instance_eval': undefined method `[]=' for nil:NilClass
+/home/groups/r/ru/ruby-gnome2/cgi-bin/hiki/hiki/plugin/option.rb:13:in `instance_eval'
+/home/groups/r/ru/ruby-gnome2/cgi-bin/hiki/hiki/hiki/plugin.rb:207:in `eval'
+/home/groups/r/ru/ruby-gnome2/cgi-bin/hiki/hiki/plugin/option.rb:13:in `instance_eval'
+/home/groups/r/ru/ruby-gnome2/cgi-bin/hiki/hiki/hiki/plugin.rb:207:in `instance_eval'
+/home/groups/r/ru/ruby-gnome2/cgi-bin/hiki/hiki/hiki/plugin.rb:207:in `load'
+/home/groups/r/ru/ruby-gnome2/cgi-bin/hiki/hiki/hiki/plugin.rb:206:in `open'
+/home/groups/r/ru/ruby-gnome2/cgi-bin/hiki/hiki/hiki/plugin.rb:206:in `load'
+/home/groups/r/ru/ruby-gnome2/cgi-bin/hiki/hiki/hiki/plugin.rb:257:in `load_plugin'
+/home/groups/r/ru/ruby-gnome2/cgi-bin/hiki/hiki/hiki/plugin.rb:55:in `initialize'
+/home/groups/r/ru/ruby-gnome2/cgi-bin/hiki/hiki/hiki/plugin.rb:53:in `each'
+/home/groups/r/ru/ruby-gnome2/cgi-bin/hiki/hiki/hiki/plugin.rb:53:in `initialize'
+/home/groups/r/ru/ruby-gnome2/cgi-bin/hiki/hiki/hiki/command.rb:53:in `new'
+/home/groups/r/ru/ruby-gnome2/cgi-bin/hiki/hiki/hiki/command.rb:53:in `initialize'
+/home/groups/r/ru/ruby-gnome2/cgi-bin/hiki/hiki/hiki.rb:25:in `new'
+/home/groups/r/ru/ruby-gnome2/cgi-bin/hiki/hiki/hiki.rb:25
+/home/groups/r/ru/ruby-gnome2/cgi-bin/hiki/hiki/hiki.rb:24:in `open_db'
+/home/groups/r/ru/ruby-gnome2/cgi-bin/hiki/hiki/hiki.rb:24
+/home/groups/r/ru/ruby-gnome2/cgi-bin/hiki/de/hiki.cgi:13:in `require'
+/home/groups/r/ru/ruby-gnome2/cgi-bin/hiki/de/hiki.cgi:13
+-------------------(remove above, please)----
+ $options['referrermap.table'] = [
+  [["FootNotes - gnomedesktop.org", "http://gnomedesktop.org/"],
+    ['http://.*gnomedesktop.*/(.*)', '\1'],
+    ['http://.*gnomedesktop.(org|com)', '']
+  ],
+  [["FootNotes[ja]", "http://footnotes.gnome.gr.jp/"],
+    ['http://footnotes.gnome.gr.jp/(.*)', '\1']
+  ],
+  [["LWN.net", "http://lwn.net/Articles/"],
+    ['http://lwn.net/Articles/(.*)', '\1']
+  ],
+  [["Gentoo Linux", "http://packages.gentoo.org/"],
+    ['http://packages.gentoo.org/(.*)', '\1'],
+    ['http://www.gentoo.org/dyn/pkgs/dev-ruby/(.*)', '\1'],
+    ['http://gentoo-portage.com/browse-program.php\?program\=(.*)', '\1'],
+  ],
+  [["Rpmfind.Net", "http://rpmfind.net/"],
+    ['http://rpmfind.net/linux/RPM/cooker/contrib/(.*)', '\1']
+  ],
+  [["FreeBSD Ports", "http://www.freebsd.org/ports/"],
+    ['http://www.freebsd.org/ports/(.*)', '\1']
+  ],
+  [["Fresh Ports", "http://www.freshports.org/"],
+    ['http://www.freshports.org/devel/(.*)', '\1'],
+    ['http://www.freshports.org/ports-new.php', '\1'],
+  ],
+  [["The GNOME development site", "http://developer.gnome.org/"],
+    ['http://developer.gnome.org/(.*)', '\1']
+  ],
+  [["gnome-announce-list", "http://www.mail-archive.com/gnome-announce-list@gnome.org/"],
+    ['http://mail.gnome.org/archives/gnome-announce-list/(.*)', '\1'],
+    ['http://www.mail-archive.com/gnome-announce-list@gnome.org/(.*)', '\1'],
+  ],
+  [["FRESHMEAT", "http://freshmeat.net/"],
+    ['http://freshmeat.net/(.*)', '\1']
+  ],
+  [["GNOME-DB project web site", "http://www.gnome-db.org/"],
+    ['http://www.gnome-db.org/(.*)', '\1'],
+  ],
+  [["RubyGarden", "http://rubygarden.org/"],
+    ['http://(.*)rubygarden.(com|org)/ruby\?(.*)', '\1'],
+  ],
+  [["RAA", "http://raa.ruby-lang.org/"],
+    ['http://raa.ruby-lang.org/list.rhtml\?name\=(.*)', '\1'],
+  ],
+  [["AptGetSpecific", "http://debian.fam.cx/"],
+    ["http://debian.fam.cx/(.*)", '\1'],
+  ],
+  [["whytheluckystiff.net", "http://whytheluckystiff.net/"],
+    ['http://.*whytheluckystiff.net/(.*)', '\1'],
+  ],
+  [["Hiki Website", "http://www.namaraii.com/hiki/"],
+    ['http://.*namaraii.com/hiki/(.*)', '\1'],
+    ['http://.*namaraii.com/', ''],
+  ],
+  [["LINUXFR.ORG", "http://linuxfr.org/pub/"],
+    ['http://.*linuxfr.org/(.*)', '\1'],
+    ['https://.*linuxfr.org/(.*)', '\1'],
+  ],
+  [["planet gnome", "http://gnome.org/~jdub/planetgnome/"],
+    ['http://.*gnome.org/(~|%7E)jdub/planetgnome/(.*)', '\1'],
+  ],
+  [["Ruby-GNOME2 ML Mail archive", "http://sourceforge.net/mail/?group_id=53614"],
+    ['http://sourceforge.*/mailarchive/message.php\?msg_id\=(.*)', '\1'],
+    ['http://lists.sourceforge.jp/mailman/archives/ruby-gnome2-(.*)', '\1'],
+    ['http://sourceforge.*/mailarchive/message.php\?msg_id\=(.*)', '\1'],
+    ['http://sourceforge.net/mailarchive/forum.php.*forum_id=9432', 'ruby-gnome2-devel-ja'],
+    ['http://sourceforge.net/mailarchive/forum.php.*forum_id=9443', 'ruby-gnome2-devel-en'],
+  ],
+  [["Linux Today", "http://linuxtoday.com/"],
+    ['http://.*linuxtoday.com/(.*)', '\1'],
+  ],
+  [["GtkGLExt Website", "http://gtkglext.sourceforge.net/"],
+    ['http://gtkglext.sourceforge.net/', '\1'],
+  ],
+  [["ruby-list", "http://blade.nagaokaut.ac.jp/ruby/ruby-list/index.shtml"],
+    ["http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-list/(.*)", "\\1"]
+  ],
+  [["ruby-talk", "http://blade.nagaokaut.ac.jp/ruby/ruby-talk/index.shtml"],
+    ["http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-talk/(.*)", "\\1"],
+    ["http://.*rubytalk.(com|org)/cgi-bin/scat.rb/ruby/ruby-talk/(.*)", "\\2"],
+    ["http://.*ruby-talk.org/cgi-bin/scat.rb/ruby/ruby-talk/(.*)", "\\1"],
+    ["http://.*ruby-talk.org/blade/(.*)", "\\1"]
+  ],
+  [["ROX-Ruby", "http://rox-ruby.sourceforge.net/"],
+    ['http://rox-ruby.sourceforge.net/cms.php/(.*)', '\1'],
+    ['http://rox-ruby.sourceforge.net/(.*)', '\1'],
+  ],
+  [["lrz's Website", "http://lrz.unixtech.be/"],
+    ['http://lrz.unixtech.be/', '/'],
+    ['http://lrz.samika.net/(.*).html', '\1'],
+    ['http://lrz.samika.net/?date=(.*)', '\1'],
+    ['http://lrz.samika.net/', ''],
+    ['http://lrz.is-a-geek.org/', ''],
+  ],
+  [["Kita's Website","http://kitaj.no-ip.com/tdiary/"],
+    ['http://kitaj.*/tdiary/(.*).html', '\1'],
+    ['http://kitaj.*/tdiary?date=(.*)', '\1'],
+    ['http://kitaj.*/tdiary/', ''],
+    ['http://kitaj.*/(.*).html', ''],
+    ['http://kitaj.*/?date=(.*)', ''],
+  ],
+  [["TAMURA's Website","http://www.rubyist.net/~tamura/d/"],
+    ['http://www.(rubyist.net|ruby-lang.org)/~tamura/d/(.*).html', '\1'],
+    ['http://www.(rubyist.net|ruby-lang.org)/~tamura/d/?date=(.*)', '\1'],
+    ['http://www.(rubyist.net|ruby-lang.org)/~tamura/d/', ''],
+  ],
+  [["Masahiro's Website", 'http://web.sfc.keio.ac.jp/~s01397ms/'],
+    ['http://web.sfc.keio.ac.jp.*s01397ms/(.*)', '\1'],
+    ['http://web.sfc.keio.ac.jp.*s01397ms/d/(.*).html', '\1'],
+    ['http://web.sfc.keio.ac.jp.*s01397ms/d/?date=(.*)', '\1'],
+    ['http://web.sfc.keio.ac.jp.*s01397ms/d/', ''],
+  ],
+  [["Masao's Website", 'http://ponx.s5.xrea.com/hiki/'],
+    ['http://ponx.s5.xrea.com/hiki/(.*)', '\1'],
+    ['http://ponx.s5.xrea.com/hiki/(.*)hiki.cgi\?(.*)', '\1'],
+    ['http://ponx.s5.xrea.com/hiki/(.*).html', '\1'],
+    ['http://ponx.s5.xrea.com/hiki/ja/(.*)', '\1'],
+    ['http://ponx.s5.xrea.com/hiki/ja/(.*).html', '\1'],
+    ['http://ponx.s5.xrea.com/bibo/(.*).html', '\1'],
+    ['http://ponx.s5.xrea.com/bibo?date=(.*)', '\1'],
+    ['http://home2.highway.ne.jp/mutoh/tips2/(.*)', '\1'],
+    ['http://ponx.s5.xrea.com/bibo/', ''],
+  ],
+ ]
+  
+ $options["referrermap.deny_table"] = [
+  'http://sourceforge.jp/projects/ruby-gnome2/',
+  'http://www.localdomain/~iga/',
+  'http://prdownloads.sourceforge.net/ruby-gnome./',
+  'http://cnn.co.jp/',
+  'http://ime.nu/',
+  'http://sourceforge.net/project/showfiles.php?group_id=53614',
+  'http://sourceforge.net/forum/forum.php?forum_id=',
+  'http://64.4.',
+  'http://www.saulem.com/',
+  'http://www.trafficswarm.com/',
+  'http://sensorlogic.intranets.com/',
+  'http://www.linuxmail.org',
+  'http://us.f122.mail.yahoo.com/',
+  'http://dmoz.org/editors/',
+  'http://www.wholesale4.com/',
+  'http://bypass',
+ ]

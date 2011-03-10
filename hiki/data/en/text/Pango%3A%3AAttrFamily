@@ -1,0 +1,21 @@
+= class Pango::AttrFamily
+
+== Object Hierarchy
+
+* Object
+  * Data
+    * Pango::Attribute
+      * Pango::AttrString
+        * Pango::AttrFamily
+
+== Class Methods
+
+--- Pango::AttrFamily.new
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

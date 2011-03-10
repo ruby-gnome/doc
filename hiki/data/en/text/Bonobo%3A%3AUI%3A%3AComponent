@@ -1,0 +1,49 @@
+= class Bonobo::UI::Component
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Bonobo::Object
+        * Bonobo::UI::Component
+
+== Class Methods
+
+--- Bonobo::UI::Component.new
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- construct
+
+     * Returns: self: ((*FIXME*))
+
+--- name
+
+     * Returns: self: ((*FIXME*))
+
+--- name=
+
+     * Returns: self: ((*FIXME*))
+
+--- set_name
+
+     * Returns: self: ((*FIXME*))
+
+== Signals
+
+--- exec-verb: self
+
+     * self: Bonobo::UI::Component: ((*FIXME*))
+
+--- ui-event: self
+
+     * self: Bonobo::UI::Component: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

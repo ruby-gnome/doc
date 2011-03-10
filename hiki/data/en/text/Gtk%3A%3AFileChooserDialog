@@ -1,0 +1,377 @@
+= class Gtk::FileChooserDialog
+
+Gtk::FileChooserDialog is a dialog box suitable for use with "File/Open" or "File/Save as" commands. This widget works by putting a Gtk::FileChooserWidget inside a Gtk::Dialog. It includes the Gtk::FileChooser module, so you can use all of the Gtk::FileChooser methods on the file chooser dialog as well as those for Gtk::Dialog. ((<URL:http://library.gnome.org/devel/gtk/stable/filechooser.png>))
+
+Note that Gtk::FileChooserDialog does not have any methods of its own. Instead, you should use the methods that work on a Gtk::FileChooser. 
+
+==== Example of typical usage
+In the simplest of cases, you can use Gtk::FileChooserDialog as in the following code: 
+
+ dialog = Gtk::FileChooserDialog.new("Open File",
+                                      parent_window,
+                                      Gtk::FileChooser::ACTION_OPEN,
+                                      nil,
+                                      [Gtk::Stock::CANCEL, Gtk::Dialog::RESPONSE_CANCEL],
+                                      [Gtk::Stock::OPEN, Gtk::Dialog::RESPONSE_ACCEPT])
+  
+  
+ if dialog.run == Gtk::Dialog::RESPONSE_ACCEPT
+   puts "filename = #{dialog.filename}"
+ end
+ dialog.destroy
+
+Warning, there are some ((<encoding issues|Gtk::FileChooser#File+Names+and+Encodings>)) with the #filename method.
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::InitiallyUnowned
+        * Gtk::Object
+          * Gtk::Widget
+            * Gtk::Container
+              * Gtk::Bin
+                * Gtk::Window
+                  * Gtk::Dialog
+                    * Gtk::FileChooserDialog
+
+== Included Modules
+
+  * Gtk::FileChooser
+
+== Class Methods
+
+--- Gtk::FileChooserDialog.new(title = nil, parent = nil, action = nil, backend = nil, [button_face1, response_id1], [button_face2, response_id2], ...)
+
+    Creates a new Gtk::FileChooserDialog. ((* Since 2.4 *))
+    * title: Title of the dialog, or nil
+    * parent: Transient parent of the dialog, or nil
+    * action: Open or save mode for the dialog(Gtk::FileChooser::Action)
+    * backend: The name of the specific filesystem backend to use or nil. (e.g.) "gnome-vfs" 
+    * [button_face1, response_id1], [button_face2, response_id2], ...: Button face/response ID pairs should be listed.        
+       * button_face: Button face can be either a stock ID(Gtk::Stock constants) such as Gtk::Stock::OK, or some arbitrary text. 
+       * response_id: A response ID can be any positive number, or one of the values in the ((<Gtk::Dialog#ResponseType>)) enumeration. If the user clicks one of these dialog buttons, Gtk::Dialog will emit the "response" signal with the corresponding response ID. If a Gtk::Dialog receives the "delete_event" signal, it will emit "response" with a response ID of Gtk::Dialog::RESPONSE_DELETE_EVENT. However, destroying a dialog does not emit the "response" signal; so be careful relying on "response" when using the Gtk::Dialog::DESTROY_WITH_PARENT flag. Buttons are from left to right, so the first button in the list will be the leftmost button in the dialog.
+    * Returns: a new Gtk::FileChooserDialog
+
+--- Gtk::FileChooserDialog.new
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- action
+
+    See Gtk::FileChooser#action.
+
+--- action=
+
+    See Gtk::FileChooser#action=.
+
+--- add_filter
+
+    See Gtk::FileChooser#add_filter.
+
+--- add_shortcut_folder
+
+    See Gtk::FileChooser#add_shortcut_folder.
+
+--- add_shortcut_folder_uri
+
+    See Gtk::FileChooser#add_shortcut_folder_uri.
+
+--- current_folder
+
+    See Gtk::FileChooser#current_folder.
+
+--- current_folder=
+
+    See Gtk::FileChooser#current_folder=.
+
+--- current_folder_uri
+
+    See Gtk::FileChooser#current_folder_uri.
+
+--- current_folder_uri=
+
+    See Gtk::FileChooser#current_folder_uri=.
+
+--- current_name=
+
+    See Gtk::FileChooser#current_name=.
+
+--- do_overwrite_confirmation=
+
+    See Gtk::FileChooser#do_overwrite_confirmation=.
+
+--- do_overwrite_confirmation?
+
+    See Gtk::FileChooser#do_overwrite_confirmation?.
+
+--- extra_widget
+
+    See Gtk::FileChooser#extra_widget.
+
+--- extra_widget=
+
+    See Gtk::FileChooser#extra_widget=.
+
+--- filename
+
+    See Gtk::FileChooser#filename.
+
+--- filename=
+
+    See Gtk::FileChooser#filename=.
+
+--- filenames
+
+    See Gtk::FileChooser#filenames.
+
+--- filter
+
+    See Gtk::FileChooser#filter.
+
+--- filter=
+
+    See Gtk::FileChooser#filter=.
+
+--- filters
+
+    See Gtk::FileChooser#filters.
+
+--- local_only=
+
+    See Gtk::FileChooser#local_only=.
+
+--- local_only?
+
+    See Gtk::FileChooser#local_only?.
+
+--- preview_filename
+
+    See Gtk::FileChooser#preview_filename.
+
+--- preview_uri
+
+    See Gtk::FileChooser#preview_uri.
+
+--- preview_widget
+
+    See Gtk::FileChooser#preview_widget.
+
+--- preview_widget=
+
+    See Gtk::FileChooser#preview_widget=.
+
+--- preview_widget_active=
+
+    See Gtk::FileChooser#preview_widget_active=.
+
+--- preview_widget_active?
+
+    See Gtk::FileChooser#preview_widget_active?.
+
+--- ref_accessible
+
+    See Atk::Implementor#ref_accessible.
+
+--- remove_filter
+
+    See Gtk::FileChooser#remove_filter.
+
+--- remove_shortcut_folder
+
+    See Gtk::FileChooser#remove_shortcut_folder.
+
+--- remove_shortcut_folder_uri
+
+    See Gtk::FileChooser#remove_shortcut_folder_uri.
+
+--- select_all
+
+    See Gtk::FileChooser#select_all.
+
+--- select_filename
+
+    See Gtk::FileChooser#select_filename.
+
+--- select_multiple=
+
+    See Gtk::FileChooser#select_multiple=.
+
+--- select_multiple?
+
+    See Gtk::FileChooser#select_multiple?.
+
+--- select_uri
+
+    See Gtk::FileChooser#select_uri.
+
+--- set_action
+
+    See Gtk::FileChooser#set_action.
+
+--- set_current_folder
+
+    See Gtk::FileChooser#set_current_folder.
+
+--- set_current_folder_uri
+
+    See Gtk::FileChooser#set_current_folder_uri.
+
+--- set_current_name
+
+    See Gtk::FileChooser#set_current_name.
+
+--- set_do_overwrite_confirmation
+
+    See Gtk::FileChooser#set_do_overwrite_confirmation.
+
+--- set_extra_widget
+
+    See Gtk::FileChooser#set_extra_widget.
+
+--- set_filename
+
+    See Gtk::FileChooser#set_filename.
+
+--- set_filter
+
+    See Gtk::FileChooser#set_filter.
+
+--- set_local_only
+
+    See Gtk::FileChooser#set_local_only.
+
+--- set_preview_widget
+
+    See Gtk::FileChooser#set_preview_widget.
+
+--- set_preview_widget_active
+
+    See Gtk::FileChooser#set_preview_widget_active.
+
+--- set_select_multiple
+
+    See Gtk::FileChooser#set_select_multiple.
+
+--- set_show_hidden
+
+    See Gtk::FileChooser#set_show_hidden.
+
+--- set_uri
+
+    See Gtk::FileChooser#set_uri.
+
+--- set_use_preview_label
+
+    See Gtk::FileChooser#set_use_preview_label.
+
+--- shortcut_folder_uris
+
+    See Gtk::FileChooser#shortcut_folder_uris.
+
+--- shortcut_folders
+
+    See Gtk::FileChooser#shortcut_folders.
+
+--- show_hidden=
+
+    See Gtk::FileChooser#show_hidden=.
+
+--- show_hidden?
+
+    See Gtk::FileChooser#show_hidden?.
+
+--- unselect_all
+
+    See Gtk::FileChooser#unselect_all.
+
+--- unselect_filename
+
+    See Gtk::FileChooser#unselect_filename.
+
+--- unselect_uri
+
+    See Gtk::FileChooser#unselect_uri.
+
+--- uri
+
+    See Gtk::FileChooser#uri.
+
+--- uri=
+
+    See Gtk::FileChooser#uri=.
+
+--- uris
+
+    See Gtk::FileChooser#uris.
+
+--- use_preview_label=
+
+    See Gtk::FileChooser#use_preview_label=.
+
+--- use_preview_label?
+
+    See Gtk::FileChooser#use_preview_label?.
+
+--- add_child
+
+    See Gtk::Buildable#add_child.
+
+--- construct_child
+
+    See Gtk::Buildable#construct_child.
+
+--- get_internal_child
+
+    See Gtk::Buildable#get_internal_child.
+
+--- name
+
+    See Gtk::Buildable#name.
+
+--- name=
+
+    See Gtk::Buildable#name=.
+
+--- set_buildable_property
+
+    See Gtk::Buildable#set_buildable_property.
+
+--- set_name
+
+    See Gtk::Buildable#set_name.
+
+--- builder_name
+
+    See Gtk::Buildable#builder_name.
+
+--- builder_name=
+
+    See Gtk::Buildable#builder_name=.
+
+--- create_folders=
+
+    See Gtk::FileChooser#create_folders=.
+
+--- create_folders?
+
+    See Gtk::FileChooser#create_folders?.
+
+--- set_builder_name
+
+    See Gtk::Buildable#set_builder_name.
+
+--- set_create_folders
+
+    See Gtk::FileChooser#set_create_folders.
+
+== See Also
+
+Gtk::FileChooser, Gtk::Dialog
+
+== ChangeLog
+
+- ((<Masao>))

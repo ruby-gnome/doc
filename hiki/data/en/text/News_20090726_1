@@ -1,0 +1,90 @@
+= News (2009-07-26)
+== Ruby-GNOME2 0.19.1 released
+((*Posted by kou on 2009-07-26 (Sun) 08:49:22*))
+
+Ruby-GNOME2 0.19.1 is out. Enjoy!
+
+This release is a bug fix release of 0.19.0.
+
+== Downloads
+
+((<URL:http://sourceforge.net/project/showfiles.php?group_id=53614>))
+
+:ruby-gtk2-x.x.x.tar.gz
+  The minimum package which includes Ruby/GLib2, Ruby/ATK, Ruby/GdkPixbuf2, Ruby/Pango, Ruby/GTK2.
+
+:ruby-gnome2-all-x.x.x.tar.gz
+  All of Ruby-GNOME2 libraries.
+
+== Changes
+
+=== Ruby/GTK2
+
+  * use RUBYARCHDIR
+    [OBATA Akio]
+  * #2814953: install missing headers
+    [Mamoru Tasaka]
+
+=== Ruby/GLib2
+
+  * Bug fixes:
+    * avoid object allocation while GC
+      [OBATA Akio, Kouhei Sutou]
+  * use RUBYARCHDIR
+    [OBATA Akio]
+  * mkmf-gnome2.rb add "-I$(vendorarchdir)" to $CPPFLAGS.
+    [OBATA Akio, Kouhei Sutou]
+
+=== Ruby/ATK
+
+  * use RUBYARCHDIR
+    [OBATA Akio]
+
+=== Ruby/Pango
+
+  * use RUBYARCHDIR
+    [OBATA Akio]
+  * use gem version rcairo as fallback
+    [OBATA Akio]
+
+=== Ruby/Libart
+
+  * use RUBYARCHDIR
+    [OBATA Akio]
+
+=== Ruby/GdkPixbuf
+
+  * use gem version rcairo as fallback
+    [OBATA Akio]
+
+=== Ruby/GnomePrint
+
+  * install rblibgnomeprintversion.h
+    [OBATA Akio, Kouhei Sutou]
+
+=== Ruby/GtkMozEmbeded
+
+  * fix header generation error caused by missing file
+    [OBATA Akio]
+
+=== Ruby/VTE
+
+  * support VTE 0.20
+    [Kouhei Sutou]
+
+=== Ruby/PanelApplet
+
+  * #2815036: re-support Ruby 1.8.6.
+    [Mamoru Tasaka, Kouhei Sutou]
+
+=== Ruby/Libglade2
+
+  * Debian#519786: fix GC related SEGV when a widget in
+    glade is removed by hand.
+    [Arnaud Cornet, Kouhei Sutou]
+
+== Thanks
+
+  * OBATA Akio
+  * Mamoru Tasaka
+  * Arnaud Cornet

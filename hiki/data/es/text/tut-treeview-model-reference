@@ -1,0 +1,45 @@
+= Referencias a Filas: Gtk::TreeIter, Gtk::TreePath, Gtk::TreeRowReference
+{{link "tut-treeview-model-data", "tut-treeview-model", "tut-treeview", "tut-treeview-model-add"}}
+
+Hay varias formas de referirse a una fila específica. Los métodos que tienes que conocer son GTk::TreeIter y Gtk::TreePath.
+
+Un Gtk::TreePath es una forma directa de describir la posición de una fila dentro del modelo. Como un Gtk::TreeView siempre muestra todas las filas de un modelo, un TreePath siempre describe la misma fila tanto en el modelo como en la vista.
+
+{{image_right "treepath.png"}}
+
+La figura muestra el TreePath de cada elemento al lado de su etiqueta. Básicamente, cuenta los hijos desde un elemento raiz imaginario. Un TreePath vacío represententa la raíz imaginaria, e invisible. Ahora 'Songs' es el primer hijo (desde la raíz) y en consecuencia su TreePath es tan solo "0". 'Videos' es el segundo hijo desde la raíz, y su TreePath es "1". 'oggs' es el segundo hijo del primer elementeo desde la raíz, de modo que su TreePath es "0:1". Basta contar desde la raíz hasta el elemento en cuestión, para obtener el TreePath. Se puede crear un nuevo TreePath a partir de la ruta en string usando Gtk::TreePath.new, y a su vez se puede convertir un Gtk::TreeView dado en un string con Gtk::TreePath#to_str. En realidad, raramente se necesita usar la notación en string, la describimos aquí para mostrar el concepto de TreePath.
+
+En lugar de la notación en string, Gtk::TreePath usa un array de enteros intero. Se puede obtener la profundidad (p.e. el nivel de anidación) de un TreePath con Gtk::TreePath#depth. Una profundidad de 0 es el invisible e imaginario nodo raíz del modelo y de la vista. Una profundidad de 1 significa que el TreePath describe una fila de primer nivel. Como las listas (ListStore) son árboles sin hijos, todas las filas de una lista tienen siempre TreePaths de profundidad 1. Gtk::TreePath#indices devuelve el array interno de enteros de un TreePath. De cualquier manera, en raras ocasiones se necesita trabajar con él.
+
+Si se trabaja con TreePaths, probablemente se use un TreePath dado, y métodos como Gtk::TreePath#up!, Gtk::TreePath#down!, Gtk::TreePath#next!, Gtk::TreePath#prev!, Gtk::TreePath#ancestor?, Gtk::TreePath#decendent?. Hay que tener en cuenta que de esta forma se pueden construir y operar TreePaths que se refieren a filas que no existen en el modelo o en la vista.
+
+Otra forma de referirse a una fila en una lista o en un modelo es Gtk::TreeIter. Un TreeIter es una estructura que contiene un par de punteros que significan algo para el modelo que se está usando. Los TreeIters son usados internamente por los modelos, y a menudo contienen un puntero directo a los datos internos de la fila en cuestión. No se debe mirar el conteido de un TreeIter y tampoco modificarlo directamente. Todos los modelos proporcionan métodos que trabajan con TreeIter (p.e. obtener el TreeIter del hijo de la fila especificada por un TreeIter dado, etc.).
+
+Los TreeIter se usan para obtener datos del almacén, y para añadir datos en el mismo. También se obtiene un TreeIter como resultado si se añade una nueva fila a un almacén usando Gtk::ListStore#append o Gtk::TreeStore#append.
+
+Con frecuencia un TreeIter sólo es válido durante un corto periodo de tiempo, y puede volverse inválido si el almacén cambia. Por ello suele ser mala idea almacenar TreeIters. Se puede usar Gtk::TreeModel#flags para obtener los flags de un modelo, y comprobar su el flag ITERS_PERSIST está activado (en cuyo caso el TreeIter sería válido mientras exista la fila asociada), pero hay una forma mejor de seguir la pista de una fila: Gtk::TreeRowReference.
+
+Un Gtk::TreeRowReference es básicamente un objeto que toma un TreePath, y vigila los cambios en el modelo. Si algo cambia, como añadir o eliminar filas, o reordenarlas, el objeto TreeRowReference mantendrá el TreePath dado actualizado, de forma que siempre apunte a la misma fila que antes.
+
+En la práctica, el programador puede usar tanto TreeRowReferences para mantener el control de una fila a lo largo del tiempo, como almacenar TreeIter directamente (si, y solo si, el modelo tiene elementos persistentes). Usar TreeRowReferences es definitivamente el modo correcto de hacer las cosas, pero implica una considerable sobrecarga que puede afectar al rendimiento en caso de que el árbol tenga un gran número de filas.
+
+Un TreeIter se puede convertir fácilmente en un TreePath usando Gtk::TreeIter#path, y viceversa con Gtk::TreeModel#get_iter. Un TreeRowReference muestra el camino actual hasta una fila con Gtk::TreeRowReference#.path. No hay una forma directa de obtener un TreeIter de un TreeRowReference, hay que obtener el TreePath de el TreeRowReference y después convertirlo en un TreeIter.
+
+Como los TreeIter solo son válidos durante un corto periodo de tiempo, normalmente son asignados al principio, como en el siguiente ejemplo:
+
+ def traverse_list_store (liststore)
+   # se obtiene la primera fila del ListStore
+   return unless iter = liststore.iter_first
+
+   begin   
+     # ... se hace algo con la fila usando el iter...
+     # (Aquí la columna 0 del ListStore es de tipo String)
+     iter[0] = "Joe"
+   end while iter.next!
+
+   true
+ end
+
+El código anterior pregunta al modelo para llenar la estructura del TreeIter de forma que apunte a la primera fila del almacén (ListStore). Si hay una primera fila y el almacén no está vacío, entonces el TreeIter queda definido, y Gtk::TreeModel#iter_first devolverá TRUE. Si no existe la primera fila, devolverá FALSE. Si existe la primera fila, se entra en el bucle while y se realizan algunos cambios enla primera columna de los datos. Después llamamos al modelo para hacer que el TreeIter apunte a la siguiente fila, hasta que no queden más filas, que es cuando Gtk::TreeIter#next! devuleve FALSE. En lugar de recorrer el ListStore, se podría haber usado Gtk::TreeModel#each
+
+ liststore.each { |model,path,iter| iter[0]= "Joe" }

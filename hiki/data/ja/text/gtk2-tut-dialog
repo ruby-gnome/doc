@@ -1,0 +1,126 @@
+= ダイアログ
+ダイアログはユーザへのポップアップメッセージなどに使われるあらかじめいくつかのものがパックされたウィンドウである．
+
+GTK+-2.0になって非常に簡単にダイアログを生成できるようになったのでGTK+-1.2系開発者はぜひ新しい使い方に慣れていただきたい.
+
+また、ダイアログのサブクラスとして以下のウィジェットが定義されている．それぞれの目的にあわせてサブクラスを利用すると良いだろう．
+
+* ((<メッセージダイアログ(Gtk::MessageDialog)|gtk2-tut-messagedialog>)) - 確認・エラー・警告メッセージ等を表示する簡単なダイアログ
+* ((<アバウトダイアログ(Gtk::AboutDialog)|gtk2-tut-aboutdialog>)) - About画面用ダイアログ
+* ((<カラー選択ウィジェット、カラー選択ダイアログ|gtk2-tut-colorsel>)) - カラー選択ダイアログ
+* ((<ファイル選択ダイアログ(Gtk::FileChooserDialog)|gtk2-tut-filechooserdialog>)) - ファイル選択ダイアログ
+* ((<フォント選択ダイアログ(Gtk::FontSelectionDialog)|gtk2-tut-fontselectiondialog>)) - フォント選択ダイアログ
+
+
+ダイアログを作成するには：
+
+ Gtk::Dialog.new
+
+Dialogのインスタンスを作成するとウィンドウを1つ生成される．
+そのウィンドウの最上位にはvboxと呼ばれる垂直ボックス(Gtk::VBox)がパックされ，その内側にはセパレータとaction_areaと呼ばれる水平ボタンボックス(Gtk::HButtonBox)が含まれる．
+vboxやaction_areaはGtk::Dialog#vbox，Gtk::Dialog#action_areaで取得することができる．
+
+{{image_right "dialog.png"}}
+
+vboxにはユーザへの質問や，エラーメッセージを表示する((<ラベル|gtk2-tut-label>))などの任意のウィジェットをパックすることができる．
+そしてaction_areaにOKボタンとキャンセルボタンなどのボタンをパックし，それぞれのボタンに異なったシグナルを接続しユーザが選択した操作を行うことができる．
+action_areaには、Gtk::Box#pack_startを用いてボタンを配置することも可能だが，Gtk::Dialog#add_button, Gtk::Dialog#add_buttonsを使うと簡単にボタンを配置できる．
+
+  Gtk::Dialog#add_button(button_text, response_id)
+  Gtk::Dialog#add_buttons([button_text1, response_id1], [button_text2, response_id2], [button_text3, response_id3], ...)
+
+ダイアログはGtk.mainを使って通常のウィンドウと同様にイベントループを作ることもできるが，GTK+-2.0からGtk::Dialog#runという非常に便利なメソッドも用意されている．
+
+ボタンがクリックされたらダイアログをクローズする、という処理を行うだけの場合はGtk::Dialog#runを使うと便利である．
+
+  require 'gtk2'
+
+  window = Gtk::Window.new
+  window.signal_connect("destroy"){Gtk.main_quit}
+  button = Gtk::Button.new("Create Dialog")
+  button.signal_connect("clicked") do
+    d = Gtk::Dialog.new
+    label = Gtk::Label.new("Dialog is groovy")
+    label.show # vboxに追加したウィジェットは#showまたは#show_allする必要がある
+    d.vbox.pack_start(label, true, true, 30)
+    d.add_buttons(["OK", 1], ["Cancel", 2])
+    
+    p d.vbox
+    p d.action_area
+    
+    p d.run
+    d.destroy # runの後，そのダイアログを再利用しない場合はdestroyを呼ぶと良い
+    end
+  window.add(button).show_all
+
+  Gtk.main
+
+button_textはボタンのラベルになる．ストックアイテム(Gtk::Stockの定数値)を用いることもできる．一般的な使用方法ではGtk::Stockを使うようにすべきだろう．
+
+response_idはボタンがクリックされたときのレスポンスIDを設定する．レスポンスIDはGtk::Dialog#runの戻り値として返される値である．
+
+レスポンスIDには整数を渡すことができるが，Ruby/Gtk2ではあらかじめ以下の定数が定義されているので，それを利用してもよい．
+
+  * Gtk::Dialog::RESPONSE_NONE
+  * Gtk::Dialog::RESPONSE_REJECT
+  * Gtk::Dialog::RESPONSE_DELETE_EVENT
+  * Gtk::Dialog::RESPONSE_OK
+  * Gtk::Dialog::RESPONSE_CANCEL
+  * Gtk::Dialog::RESPONSE_CLOSE
+  * Gtk::Dialog::RESPONSE_YES
+  * Gtk::Dialog::RESPONSE_NO
+  * Gtk::Dialog::RESPONSE_APPLY
+  * Gtk::Dialog::RESPONSE_HELP
+
+
+== ボタンによっては閉じないダイアログ
+前述の例ではどのボタンをクリックしてもダイアログが閉じるような例を示したが、ここでは、「閉じる」ボタンをクリックした時のみクローズするようなダイアログの例を紹介する．
+
+  require 'gtk2'
+  
+  window = Gtk::Window.new
+  window.signal_connect("destroy"){Gtk.main_quit}
+  
+  button = Gtk::Button.new("Create Dialog")
+  button.signal_connect("clicked") do
+    dialog = Gtk::Dialog.new("Gtk::Dialog Sample", window, Gtk::Dialog::MODAL)
+    
+    dialog.window_position = Gtk::Window::POS_CENTER  #(1)
+    
+    dialog.vbox.pack_start(Gtk::Label.new("Gtk::Dialog Sample"), true, true, 30)
+    
+    dialog.add_button(Gtk::Stock::OK, Gtk::Dialog::RESPONSE_OK)
+    dialog.add_button(Gtk::Stock::CANCEL, Gtk::Dialog::RESPONSE_CANCEL)
+    dialog.add_button(Gtk::Stock::CLOSE, Gtk::Dialog::RESPONSE_CLOSE)
+    dialog.default_response = Gtk::Dialog::RESPONSE_CANCEL  #(2)
+   
+    dialog.signal_connect("response") do |widget, response|
+      case response
+      when Gtk::Dialog::RESPONSE_OK
+        p "OK"
+      when Gtk::Dialog::RESPONSE_CANCEL
+        p "Cancel"
+      when Gtk::Dialog::RESPONSE_CLOSE
+        p "Close"
+        dialog.destroy
+      end
+    end
+    dialog.show_all
+  end
+  
+  window.add(button).show_all
+  
+  Gtk.main
+ 
+{{image_right "dialog2.png"}}
+
+ポイントは、ダイアログ表示にGtk::Dialog#runを使わずにGtk::Widget#show_allを使ってダイアログを表示し、"response"シグナルを使ってボタンがクリックされたときの処理を記述しているところである．
+
+この例では、ダイアログ生成時に明示的に「モーダルダイアログ」であることを指定して、Gtk::Dialog#runと同様に親ウインドウにあるボタンの２度押しができないようにしている。
+
+また、"response"シグナルのブロックでは「閉じる」ボタンがクリックされたときのみGtk::Object#destroyを使ってダイアログを閉じている．
+
+なお、本筋ではないが、以下の２点についてもよく利用すると思うので注意しておこう．
+
+(1) Gtk::Window#window_position= ダイアログの表示位置を指定する．ここでは画面の中央に表示される．
+(2) Gtk::Dialog#default_respose= 初期表示時のデフォルトボタンを指定する．ここでは「キャンセル」ボタンに設定．

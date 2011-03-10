@@ -1,0 +1,70 @@
+= class Gdk::GLContext
+
+Rendering Context - OpenGL rendering context object
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Gdk::GLContext
+
+== Class Methods
+
+--- Gdk::GLContext.new(gldrawable, share_list, direct, render_type)
+
+    Creates a new OpenGL rendering context.
+    * gldrawable: a Gdk::GLDrawable
+    * share_list: the Gdk::GLContext with which to share display lists and texture objects. nil indicates that no sharing is to take place.
+    * direct: whether rendering is to be done with a direct connection to the graphics system.
+    * render_type: Gdk::GL::RGBA_TYPE or Gdk::GL::COLOR_INDEX_TYPE (currently not used).
+    * Returns: the new Gdk::GLContext.
+
+--- Gdk::GLContext.current
+
+    Returns the current Gdk::GLContext.
+    * Returns: the current Gdk::GLContext or nil if there is no current context.
+
+== Instance Methods
+
+--- gl_drawable
+
+    Gets the Gdk::GLDrawable to which the context is bound.
+    * Returns: the Gdk::GLDrawable or nil if no Gdk::GLDrawable is bound.
+
+--- gl_config
+
+    Gets the Gdk::GLConfig with which the context is configured.
+    * Returns: the Gdk::GLConfig.
+
+--- share_list
+
+    Gets the Gdk::GLContext with which the context shares the display lists and texture objects.
+    * Returns: the Gdk::GLContext.
+
+--- direct?
+
+    Returns whether the context is a direct rendering context.
+    * Returns: true if the Gdk::GLContext is a direct rendering contest.
+
+--- render_type
+
+    Gets the render_type of the context.
+    * Returns: Gdk::GL::RGBA_TYPE or Gdk::GL::COLOR_INDEX_TYPE.
+
+--- destroy
+
+    Destroys the OpenGL resources associated with the context.
+
+--- copy(src, mask)
+
+    Copy state from src rendering context to the context.
+    mask contains the bitwise-OR of the same symbolic names that are passed to the GL.PushAttrib() function. You can use GL::ALL_ATTRIB_BITS to copy all the rendering state information.
+    * src: the source Gdk::GLContext.
+    * Returns: false if it fails, true otherwise.
+
+== See Also
+
+== ChangeLog
+
+

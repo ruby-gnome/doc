@@ -1,0 +1,19 @@
+= class Gst::Index::LookupMethod
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * Gst::Index::LookupMethod
+
+== Constants
+
+--- AFTER
+--- BEFORE
+--- EXACT
+
+== See Also
+
+== ChangeLog
+
+

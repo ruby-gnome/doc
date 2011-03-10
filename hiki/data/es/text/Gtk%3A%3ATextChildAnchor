@@ -1,0 +1,27 @@
+= class Gtk::TextChildAnchor
+
+== Object Hierarchy
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Gtk::TextChildAnchor
+
+== Class Methods
+--- Gtk::TextChildAnchor.new
+    Creates a new Gtk::TextChildAnchor. Usually you would then insert it into a Gtk::TextBuffer with Gtk::TextBuffer#insert_child_anchor. To perform the creation and insertion in one step, use the convenience method Gtk::TextBuffer#create_child_anchor.
+    * Returns: a new Gtk::TextChildAnchor 
+
+== Instance Methods
+--- widgets
+    Gets an array of all widgets anchored at this child anchor. 
+    * Returns: an array of widgets anchored at anchor 
+
+--- deleted?
+    Determines whether a child anchor has been deleted from the buffer.
+    * Returns: true if the child anchor has been deleted from its buffer 
+
+== See Also
+Gtk::TextView
+
+
+-((<Masao>))

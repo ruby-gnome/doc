@@ -1,0 +1,152 @@
+= class Gnome::Druid
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::InitiallyUnowned
+        * Gtk::Object
+          * Gtk::Widget
+            * Gtk::Container
+              * Gnome::Druid
+
+== Class Methods
+
+--- Gnome::Druid.new
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::Druid.new_with_window
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- append_page
+
+     * Returns: self: ((*FIXME*))
+
+--- insert_page
+
+     * Returns: self: ((*FIXME*))
+
+--- page=
+
+     * Returns: self: ((*FIXME*))
+
+--- prepend_page
+
+     * Returns: self: ((*FIXME*))
+
+--- ref_accessible
+
+    See Atk::Implementor#ref_accessible.
+
+--- set_buttons_sensitive
+
+     * Returns: self: ((*FIXME*))
+
+--- set_page
+
+     * Returns: self: ((*FIXME*))
+
+--- set_show_finish(show_finish)
+
+    Same as show_finish=.
+     * show_finish: Show the 'Finish' button instead of the 'Next' button
+     * Returns: self
+
+--- set_show_help(show_help)
+
+    Same as show_help=.
+     * show_help: Show the 'Help' button
+     * Returns: self
+
+--- show_finish=(show_finish)
+
+    Sets the Show the 'Finish' button instead of the 'Next' button.
+     * show_finish: Show the 'Finish' button instead of the 'Next' button
+     * Returns: show_finish
+
+--- show_finish?
+
+    Gets the Show the 'Finish' button instead of the 'Next' button.
+     * Returns: Show the 'Finish' button instead of the 'Next' button
+
+--- show_help=(show_help)
+
+    Sets the Show the 'Help' button.
+     * show_help: Show the 'Help' button
+     * Returns: show_help
+
+--- show_help?
+
+    Gets the Show the 'Help' button.
+     * Returns: Show the 'Help' button
+
+--- add_child
+
+    See Gtk::Buildable#add_child.
+
+--- construct_child
+
+    See Gtk::Buildable#construct_child.
+
+--- get_internal_child
+
+    See Gtk::Buildable#get_internal_child.
+
+--- name
+
+    See Gtk::Buildable#name.
+
+--- name=
+
+    See Gtk::Buildable#name=.
+
+--- set_buildable_property
+
+    See Gtk::Buildable#set_buildable_property.
+
+--- set_name
+
+    See Gtk::Buildable#set_name.
+
+--- builder_name
+
+    See Gtk::Buildable#builder_name.
+
+--- builder_name=
+
+    See Gtk::Buildable#builder_name=.
+
+--- set_builder_name
+
+    See Gtk::Buildable#set_builder_name.
+
+== Properties
+
+--- show-finish: true or false (Read/Write)
+
+    Show the 'Finish' button instead of the 'Next' button
+
+--- show-help: true or false (Read/Write)
+
+    Show the 'Help' button
+
+== Signals
+
+--- cancel: self
+
+     * self: Gnome::Druid: ((*FIXME*))
+
+--- help: self
+
+     * self: Gnome::Druid: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

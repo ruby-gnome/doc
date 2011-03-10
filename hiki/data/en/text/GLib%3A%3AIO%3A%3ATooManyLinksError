@@ -1,0 +1,18 @@
+= class GLib::IO::TooManyLinksError
+
+The file contains too many symbolic links. 
+
+== Object Hierarchy
+
+* Object
+  * Exception
+    * StandardError
+      * IOError
+        * GLib::IO::Error
+          * GLib::IO::TooManyLinksError
+
+== See Also
+
+== ChangeLog
+
+

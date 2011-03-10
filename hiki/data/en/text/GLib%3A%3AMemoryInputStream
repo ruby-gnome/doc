@@ -1,0 +1,59 @@
+= class GLib::MemoryInputStream
+
+GLib::MemoryInputStream is a class for using arbitrary memory chunks as input
+for GIO streaming input operations.
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::InputStream
+        * GLib::MemoryInputStream
+
+== Included Modules
+
+  * GLib::Seekable
+
+== Class Methods
+
+--- GLib::MemoryInputStream.new
+
+     Creates a new GLib::MemoryInputStream.
+
+     * Returns: a Nnew GLib::MemoryInputStream
+
+== Instance Methods
+
+--- add_data(data)
+
+     Appends ((|data|)) to data that can be read from the input stream.
+
+     * data: A String of input data
+     * Returns: self
+
+--- can_seek?
+
+    See GLib::Seekable#can_seek?.
+
+--- can_truncate?
+
+    See GLib::Seekable#can_truncate?.
+
+--- seek
+
+    See GLib::Seekable#seek.
+
+--- tell
+
+    See GLib::Seekable#tell.
+
+--- truncate
+
+    See GLib::Seekable#truncate.
+
+== See Also
+
+== ChangeLog
+
+

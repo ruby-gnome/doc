@@ -1,0 +1,44 @@
+= Exemplo de Posicionamento de Tabela
+{{link "tut-gtk2-packing-tables", "tut-gtk2-packing-intro", "tut-gtk", nil}}
+
+{{image_right("en:tablepack.png")}}
+
+Aqui a gente faz uma janela com três botões em uma tabela 2x2. Os primeiros dois botões serão colocados na linha superior. Um terceiro, o botão de sair, será colocado na linha mais baixa, usando ("spanning") as duas colunas.
+
+Eis o código-fonte:
+
+  #!/usr/bin/env ruby
+
+  require 'gtk2'
+
+  window = Gtk::Window.new("Tabela")
+  window.signal_connect("delete_event") do
+      Gtk.main_quit
+      false
+  end
+  window.border_width = 20
+
+  # Cria uma tabela 2x2.
+  table = Gtk::Table.new(2, 2, true)
+  window.add(table)
+
+  [1, 2].each do |i|
+      button = Gtk::Button.new("botão #{i}")
+      button.signal_connect("clicked") do
+          puts "Olá de novo - o botão #{i} foi pressionado"
+      end
+      # Insere o botão 1 no quadrante esquerdo superior da tabela,
+      # e o botão 2 no quadrante direito superior da tabela.
+      table.attach_defaults(button, i - 1, i, 0, 1)
+  end
+
+  button = Gtk::Button.new("Sair")
+  button.signal_connect("clicked") do
+      Gtk::main_quit
+  end
+
+  # Insere o botão sair em ambos os quadrantes inferiores da tabela.
+  table.attach_defaults(button, 0, 2, 1, 2)
+
+  window.show_all
+  Gtk.main

@@ -1,0 +1,23 @@
+= class Gst::GhostPad
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Gst::Object
+        * Gst::Pad
+          * #<Class:0x7fd7e6089128>
+            * Gst::GhostPad
+
+== Class Methods
+
+--- Gst::GhostPad.new
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

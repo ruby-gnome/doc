@@ -1,0 +1,66 @@
+= class Poppler::FontsIter
+
+== Object Hierarchy
+
+* Object
+  * GLib::Boxed
+    * Poppler::FontsIter
+
+== Included Modules
+
+  * Enumerable
+
+== Instance Methods
+
+--- each
+
+    Yields each Poppler::FontsIter.
+     
+     * Returns: self
+
+--- embedded?
+
+     
+     * Returns: true if the font is embedded
+
+--- font_type
+
+     
+     * Returns: Popple::FontType
+
+--- full_name
+
+     
+     * Returns: full font name as String
+
+--- name
+
+     
+     * Returns: font name as String
+
+--- next
+
+     
+     * Returns: next Poppler::FontsIter
+
+--- subset?
+
+     
+     * Returns: true if the font is subset
+
+--- valid?
+
+     
+     * Returns: true if the font is valid
+
+--- file_name
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+* 2006-05-18 ((<kou>)): completed.
+
+- ((<kou>))

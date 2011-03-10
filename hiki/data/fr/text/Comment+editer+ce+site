@@ -1,0 +1,118 @@
+= Comment éditer ce site
+
+Ce site est écrit au format RD+.  RD+ est une version évoluée de RD.
+
+== A propos de RD
+Voici quelques documents intéressants (en anglais):
+* ((<RD working draft|URL:http://helium.ruby-lang.org/~rubikitch/RDP-en.cgi?cmd=view&name=RD>))
+* ((<Embedded Documentation in Programming Ruby|URL:http://www.pragmaticprogrammer.com/ruby/articles/rdtool.html>))
+
+== A propos des fonctionnalités RD+
+Vous trouverez ici une briève description des fonctionnalités ajoutées au format RD existant.  L'ensemble final forme RD+.
+=== ModuleNames
+La page ((<ModuleNames>)) est une liste des modules Ruby pour faciliter les liens dans Hiki.
+Les modules ajoutés dans ((<ModuleNames>)) sont directement accessibles par le nom, il n'est donc plus nécessaire d'écrire le nom des classes/modules entre (('((< >))')).
+
+* Pour les liens href  
+  * Hoge::Foo - Nom de classe
+  * Hoge::FOO - Constante
+  * Hoge::Foo#bar - Méthode d'instance
+  * Hoge::Foo.bar - Méthode de classe
+  * Hoge.bar - Fonction de module
+
+* Pour les noms liés
+  * Méthode de classe - "--- Hoge::Foo.new" 
+  * Méthode d'instance - "--- bar"
+
+N'oubliez pas d'écrire le nom de votre module dans ((<ModuleNames>)) avant.
+
+=== Ancrages auto-générés
+==== Style RD
+
+ ((<URL:url>))
+ ((<nom|URL:url>))
+
+* nom - Mots affichés.
+* url - URL
+
+ Exemples:
+ ((<URL:http://www.hoge.com/>))
+ ((<hoge|URL:http://www.hoge.com/>))
+
+ Résultat:
+ <a href="http://www.hoge.com/">http://www.hoge.com/</a>
+ <a href="http://www.hoge.com/">hoge</a>
+
+Les images référencées par des URLs (avec comme suffix png, jpg, jpeg ou gif) sont automatiquement affichées sur la page en cours.
+
+==== Style InterWiki
+InterWiki est un mécanisme permettant de générer des liens automatiquement à partir d'un dictionnaire (une page InterWikiName). 
+
+Format:
+
+ ((<nom|clef:option>)) 
+
+* nom - Mots affichés.
+* clef - Mot clef.  Remplace l'URL du InterWikiName si cette clef existe.
+* option - Ajoutez ici l'URL (facultatif). 
+
+ Exemples:
+ ((<Hiki>))
+ ((<masao:20020329>))
+ ((<Here|masao:20020329>))
+
+ Résultat:
+ <a href="http://www.namaraii.com/hiki.cgi?">Hiki</a>
+ <a href="http://ponx.s5.xrea.com/bibo/?date=20020329">masao</a>
+ <a href="http://ponx.s5.xrea.com/bibo/?date=20020329">Here</a>
+
+==== Comment écrire une page InterWikiName
+Le format d'une page InterWikiName est (('[[keyword|url]]')) suivie d'un jeu de caractères.
+
+ Exemples:
+ *[[Hiki|http://www.namaraii.com/hiki/hiki.cgi?]] euc
+ *[[masao|http://ponx.s5.xrea.com/bibo/?date=]] euc
+
+== Plugins
+=== Plugin status
+Permet de créer facilement une table d'avancement du projet facilement. 
+
+ {{status "Titre", "
+ GLib::Type|GType|#|hoge
+ GLib::TypePlugin|GTypePlugin|#|hoge
+ "}}
+
+=== Plugin image
+Affiche une image à partir d'un fichier attaché.  Vous devez attacher le fichier en question avant d'utiliser ce plugin.
+
+ {{image_left("foo.png")}}
+ {{image_right("foo.png")}}
+
+Si vous désirez forcer un retour à la ligne après une image, utiliser le plugin br:
+
+ {{br}}
+
+=== Plugin attach_anchor
+Affiche un lien vers un fichier attaché.
+
+ {{attach_anchor("foo.png")}}
+
+== Comment écrire une référence d'API
+Regardez les pages existantes.  N'hésitez-pas à me contacter en cas de problèmes.
+
+== Supprimer une page
+Vous pouvez supprimer une page Hiki, mais soyez prudent avec cette fonction.
+
+Voici la marche à suivre:
+
+(1) Editer la page.
+(2) Effacer le titre et le contenu de la page.
+(3) Entrez le mot de passe (c'est le même que le mot de passe Hiki) dans le champ approprié (juste à droite de l'option ((*Geler la page courante*))).
+(4) Cliquez sur Sauver.
+
+== Divers
+Entrainez-vous sur la ((<Page d'entrainement>))!
+
+- ((<Masao|URL:../hiki.cgi?Masao>))
+
+Traduction de la page anglaise par Laurent Sansonetti.

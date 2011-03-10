@@ -1,0 +1,69 @@
+= class Gtk::PrintBackend
+
+Represents a printer
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Gtk::PrintBackend
+
+== Instance Methods
+
+--- set_status(status)
+
+    Same as status=.
+     * status: The status of the print backend
+     * Returns: self
+
+--- status
+
+    Gets the status of the print backend.
+     * Returns: The status of the print backend
+
+--- status=(status)
+
+    Sets the status of the print backend.
+     * status: The status of the print backend
+     * Returns: status
+
+== Properties
+
+--- status: Integer (Read/Write)
+
+    The status of the print backend
+
+== Signals
+
+--- printer-added: self
+
+     * self:
+
+--- printer-list-changed: self
+
+     * self:
+
+--- printer-list-done: self
+
+     * self:
+
+--- printer-removed: self
+
+     * self:
+
+--- printer-status-changed: self
+
+     * self:
+
+--- request-password: self
+
+     * self: Gtk::PrintBackend: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+* 2006-07-10: updated for 2.10. - ((<kou>))
+
+- ((<kou>))

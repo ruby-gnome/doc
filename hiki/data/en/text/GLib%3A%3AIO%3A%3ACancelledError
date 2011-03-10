@@ -1,0 +1,18 @@
+= class GLib::IO::CancelledError
+
+The operation was cancelled; see Glib::Cancellable.
+
+== Object Hierarchy
+
+* Object
+  * Exception
+    * StandardError
+      * IOError
+        * GLib::IO::Error
+          * GLib::IO::CancelledError
+
+== See Also
+
+== ChangeLog
+
+

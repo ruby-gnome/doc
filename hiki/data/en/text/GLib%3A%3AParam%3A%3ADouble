@@ -1,0 +1,38 @@
+= class GLib::Param::Double
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Param
+      * GLib::Param::Double
+
+== Class Methods
+
+--- GLib::Param::Double.new
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- epsilon
+
+     * Returns: self: ((*FIXME*))
+
+--- maximum
+
+     * Returns: self: ((*FIXME*))
+
+--- minimum
+
+     * Returns: self: ((*FIXME*))
+
+--- range
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

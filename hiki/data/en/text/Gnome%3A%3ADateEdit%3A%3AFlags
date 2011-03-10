@@ -1,0 +1,38 @@
+= class Gnome::DateEdit::Flags
+
+== Object Hierarchy
+
+* Object
+  * GLib::Flags
+    * Gnome::DateEdit::Flags
+
+== Instance Methods
+
+--- show_time?
+
+     * Returns: self: ((*FIXME*))
+
+--- use_24_hr?
+
+     * Returns: self: ((*FIXME*))
+
+--- week_starts_on_monday?
+
+     * Returns: self: ((*FIXME*))
+
+--- display_seconds?
+
+     * Returns: self: ((*FIXME*))
+
+== Constants
+
+--- SHOW_TIME
+--- USE_24_HR
+--- WEEK_STARTS_ON_MONDAY
+--- DISPLAY_SECONDS
+
+== See Also
+
+== ChangeLog
+
+

@@ -1,0 +1,47 @@
+= Genaueres über Boxen
+
+{{link "tut-gtk2-packing-theory", "tut-gtk2-packing-intro", "tut-gtk", "tut-gtk2-packing-demo"}}
+
+Aufgrund dieser Flexibilität, kann das Anordnen von Boxen mit GTK zuerst etwas verwirrend sein. Es gibt viele verschiedene Optionen und es ist nicht immer sofort offensichtlich, wie sie alle zusammen gehören. Letztenendes gibt es aber genau fünf verschiedene Stile.
+
+{{image_left("packbox1.png")}}{{br}}
+
+Jede Zeile enthält eine horizontale Box (Gtk::HBox) mit verschiedenen Buttons. Der Aufruf von Gtk::Box#pack ist eine Kurzschreibweise, um alle Buttons in der HBox anzuordnen. Jeder Button wird in der HBox auf die gleiche Weise angeordnet (beispielsweise mit den gleichen Argumenten, die an die Methode Gtk::Box#pack_start übergeben werden).
+
+Die Methode Gtk::Box#pack_start sieht folgendermaßen aus:
+
+  Gtk::Box#pack_start(child, expand, fill, padding) 
+
+Das erste Argument ist das Objekt, dass Sie in der Box anordnen. Die Objekte werden in diesem Fall nur Buttons sein, also werden wir nur Buttons in den Boxen anordnen.
+
+Das Argument "expand" der Methoden Gtk::Box#pack_start und Gtk::Box#pack_end kontrolliert, ob die Widgets sich in der Box ausbreiten können:
+
+:Wenn expand true ist,
+ werden die Widgets den gesamten in der Box verfügbaren Platz ausfüllen.
+
+:Wenn expand false ist,
+ wird die Box zusammenschrumpfen, um nur den für die Widgets benötigten Platz einzunehmen.
+
+Indem Sie expand auf false setzen, können Sie Ihre Widgets links und rechts ausrichten. Andererseits werden sie alle expandiert, um die Box auszufüllen. Der gleiche Effekt kann durch die einzelne Verwendung von Gtk::Box#pack_start oder Gtk::Box#pack_end erzielt werden.
+
+Das Argument "fill" kontrolliert, wo der Platz, der dem Objekt über expand gegeben wurde, beansprucht wird:
+
+:Wenn fill true ist,
+ wird das Objekt erweitert, um den zugeordneten Platz auszufüllen.
+:Wenn fill false ist,
+ wird das Objekt in seiner ursprünglichen Größe belassen und mit zusätzlichem, freiem Platz umgeben.
+
+Beachten Sie, dass das Argument "fill" nur einen Effekt hat, wenn das Argument "expand" ebenfalls auf true gesetzt wurde.
+
+Wenn Sie eine neue horizontale Box erstellen, sieht der Code dazu folgendermaßen aus:
+
+  Gtk::HBox.new(homogeneous, spacing) 
+
+Das Argument "homogeneous" der Methode Gtk::HBox.new (das gilt auch für Gtk::VBox.new) kontrollliert, ob jedes Objekt innerhalb der Box die gleiche Größe zugeordnet bekommt - beispielsweise die gleiche Breite in einer horizontalen Box oder die gleiche Höhe in einer vertikalen Box). Wenn das Argument gesetzt wurde, funktionieren die Methoden Gtk::Box#pack_start und Gtk::Box#pack_end so, als wäre bei ihrem Aufruf das Argument "expand" auf true gesetzt worden.
+
+Was ist der Unterschied zwischen Spacing (wird gesetzt, wenn die Box erstellt wird) und Padding (wird gesetzt, wenn die Elemente eingefügt werden)?
+Spacing wird zwischen Objekten eingefügt und Padding wird an einer der Seiten des Objektes eingefügt. Der folgende Screenshot sollte das verdeutlichen:
+
+{{image_left("packbox2.png")}}{{br}}
+
+Im folgenden Abschnitt finden Sie den Code, der zur Erstellung des auf dem Screenshot sichtbaren Programmes verwendet wurde. Er ist ausführlich kommentiert, also dürften Sie hoffentlich keine Probleme haben, ihn zu verstehen. Probieren Sie es einfach aus und verändern Sie einige Dinge.

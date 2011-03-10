@@ -1,0 +1,29 @@
+= Théorie des signaux et callbacks
+
+Avant de regarder en détail le programme "Bonjour Monde", nous devrions étudier un peu comment GTK gère les 
+signaux et les callbacks.
+
+De la même façon que votre système délivre un signal aux processus au moment de l'arrêt de la machine ((-Notez bien que les signaux GTK n'ont aucun lien avec les signaux UNIX.  La bibliothèque GTK a été conçue pour être indépendant du système hôte.-)), GTK envoie
+un signal dans la boucle principale (Gtk.main) lorsqu'un événement spécial se produit.  La boucle principale appelle ensuite la fonction appropriée du composant graphique((-En anglais, ((*widget*)).-)).
+
+La boucle principale s'endormira jusqu'à ce qu'un nouveau signal sera reçu.
+
+Pour dire à un composant GTK qu'il doit exécuter du code lors d'un certain événement, nous devons installer un gestionnaire de signal((-En anglais, ((*signal handler*)).-)).
+
+Pour ce faire, il faut utiliser la méthode GLib::Instantiatable#signal_connect du composant graphique GTK (n'oubliez pas que GTK est basé sur la bibliothèque GLib):
+
+  GLib::Instantiatable#signal_connect("nom du signal") do
+      # Code à exécuter quand "nom du signal" sera attrapé.
+  end
+
+GLib::Instantiatable#signal_connect a besoin de deux paramêtres:
+* le nom du signal qui devra être attrapé; 
+* un bloc de code qui sera évalué au moment de la réception de ce signal.
+
+Le bloc de code peut également accepter un paramêtre additionnel:
+
+  GLib::Instantiatable#signal_connect("nom du signal") do |c|
+      # ...
+  end
+
+La variable c contiendra à ce moment une référence vers le composant à l'origine du signal.

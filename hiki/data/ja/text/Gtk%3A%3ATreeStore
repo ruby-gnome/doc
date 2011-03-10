@@ -1,0 +1,86 @@
+= class Gtk::TreeStore
+The Gtk::TreeStore object is a tree model for use with a Gtk::TreeView widget. It implements the Gtk::TreeModel interface, and consequentialy, can use all of the methods available there. It also implements the Gtk::TreeSortable interface so you can sort the list using the view. Finally, it also implements the tree drag and drop interfaces.
+
+== Object Hierarchy
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Gtk::TreeStore
+
+== Included Modules
+* Gtk::TreeDragDest
+* Gtk::TreeDragSource
+* Gtk::TreeModel
+* Gtk::TreeSortable
+
+== Class Methods
+--- Gtk::TreeStore.new(type1, type2, type3, ...)
+    Creates a new tree store as with columns each of the types passed in. As an example, Gtk::TreeStore.new(Integer, String, Gdk::Pixbuf) will create a new Gtk::TreeStore with three columns, of type Integer, String and Gdk::Pixbuf respectively.
+    * type1, type2, type3, ... : Object.class
+    * Returns: A new Gtk::TreeStore 
+
+== Instance Methods
+--- set_column_types(type1, type2, type3, ...)
+    This method is meant primarily for classes that inherit from Gtk::TreeStore, and should only be used when constructing a new Gtk::TreeStore. It will not function after a row has been added, or a method on the Gtk::TreeModel interface is called.
+    * type1, type2, type3, ... : Object.class
+    * Returns: self
+
+--- set_value(iter, column ,value)
+    Sets the data in the cell specified by iter and column. The type of value must be convertible to the type of the column. Use Gtk::TreeIter#set_value instead.
+    * iter: A valid Gtk::TreeIter for the row being modified 
+    * column: column number to modify 
+    * value: A new value for the cell 
+    * Returns: self
+
+--- remove(iter)
+    Removes iter from tree_store. After being removed, iter is set to the next valid row at that level, or invalidated if it previously pointed to the last one.
+    * iter: A valid Gtk::TreeIter 
+    * Returns: true if sucess to remove(GTK+-2.2 Feature).
+
+--- insert(parent, position)
+    Creates a new row at position. If parent is non-nil, then the row will be made a child of parent. Otherwise, the row will be created at the toplevel. If position is larger than the number of rows at that level, then the new row will be inserted to the end of the list. The new row will be empty after this method is called. To fill in values, you need to call Gtk::TreeIter#set_value or Gtk::TreeStore#set_value.
+    * parent: A valid Gtk::TreeIter, or nil
+    * position: position to insert the new row 
+    * Returns: A new row(Gtk::TreeIter)
+
+--- insert_before(parent, sibling)
+    Inserts a new row before sibling. If sibling is nil, then the row will be appended to parent 's children. If parent and sibling are nil, then the row will be appended to the toplevel. If both sibling and parent are set, then parent must be the parent of sibling. When sibling is set, parent is optional. The new row will be empty after this method is called. To fill in values, you need to call Gtk::TreeIter#set_value or Gtk::TreeStore#set_value.
+    * parent: A valid Gtk::TreeIter, or nil
+    * sibling: A valid Gtk::TreeIter, or nil 
+    * Returns: A new row(Gtk::TreeIter)
+
+--- insert_after(parent, sibling)
+    Inserts a new row after sibling. If sibling is nil, then the row will be prepended to the beginning of the parent 's children. If parent and sibling are nil, then the row will be prepended to the toplevel. If both sibling and parent are set, then parent must be the parent of sibling. When sibling is set, parent is optional. The new row will be empty after this method is called. To fill in values, you need to call Gtk::TreeIter#set_value or Gtk::TreeStore#set_value.
+    * parent: A valid Gtk::TreeIter, or nil
+    * sibling: A valid Gtk::TreeIter, or nil 
+    * Returns: A new row(Gtk::TreeIter)
+
+--- prepend(parent)
+    Prepends a new row to tree_store. If parent is non-nil, then it will prepend the new row before the first child of parent, otherwise it will prepend a row to the top level. The new row will be empty after this method is called. To fill in values, you need to call Gtk::TreeIter#set_value or Gtk::TreeStore#set_value.
+    * parent: A valid Gtk::TreeIter, or nil 
+    * Returns: a new row(Gtk::TreeIter)
+
+--- append(parent)
+    Appends a new row to tree_store. If parent is non-nil, then it will append the new row after the last child of parent, otherwise it will append a row to the top level. iter will be changed to point to this new row. The row will be empty after this function is called.The new row will be empty after this method is called. To fill in values, you need to call Gtk::TreeIter#set_value or Gtk::TreeStore#set_value.
+    * parent: A valid Gtk::TreeIter, or nil 
+    * Returns: a new row(Gtk::TreeIter)
+
+--- ancestor?(iter, descendant)
+    Returns true if iter is an ancestor of descendant. That is, iter is the parent (or grandparent or great-grandparent) of descendant.
+    * iter: A valid Gtk::TreeIter 
+    * descendant: A valid Gtk::TreeIter 
+    * Returns: true, if iter is an ancestor of descendant 
+
+--- iter_depth(iter)
+    Returns the depth of iter. This will be 0 for anything on the root level, 1 for anything down a level, etc.
+    * iter: A valid Gtk::TreeIter 
+    * Returns: The depth of iter 
+
+--- clear
+    Removes all rows from tree_store
+    * Returns: self
+
+
+
+-((<Masao>))
+

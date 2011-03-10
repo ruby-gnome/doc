@@ -1,0 +1,81 @@
+= Guida all'Installazione 
+
+== Microsoft Windows
+
+=== Note
+
+* L'installazione dovrebbe essere facile e veloce. I pacchetti minimi richiesti sono ((<Ruby|URL:http://www.ruby-lang.org>)), ((<"Ruby/GTK2"|URL:http://ruby-gnome2.sf.net>)) ed i binari delle GTK2 per Windows, resi disponibile da ((<Dropline|URL:http://www.dropline.net>)).
+* L'intero pacchetto Ruby-GNOME2 non è supportato su Windows, e potrebbe non esserlo mai, poichè richiede GNOME 2.
+* Le versioni di windows considerate sono Win9X/ME e WinNT/2000/XP/2003.
+* Questo processo di installazione è stato testato con Ruby 1.8, ma dovrebbe funzionare anche con la versione 1.6.
+
+=== Passi
+
+==== Uno
+
+* scaricate l' ((<installativo per Ruby creato dai Pragmatic Programmers|URL:http://rubyinstaller.sourceforge.net/>)). 
+* ((<ruby180-9.exe|URL:http://prdownloads.sourceforge.net/rubyinstaller/ruby180-9.exe?download>)) è la versione raccomandata per questo esempio. 
+* Installatelo in una qualunque directory (Es: c:\Ruby).
+
+==== Due
+
+* Scaricate ((<"i pacchetti binari di Ruby/GTK2 per Windows"|URL:http://sourceforge.net/project/showfiles.php?group_id=53614>)).
+* ((<ruby-gtk2-0.7.0-1-i386-msvcrt-1.8.zip|URL:http://prdownloads.sourceforge.net/ruby-gnome2/ruby-gtk2-0.4.0-1-i386-msvcrt-1.8.zip?download>)) è la versione raccomandata per questo esempio. 
+* Scompattatelo nella directory di installazione di ruby (Es: c:\Ruby).
+
+==== Tre
+
+* Scaricate ((<il Runtime Environment per GTK+2 creato da Dropline|URL:http://www.dropline.net/gtk/download.php>)).
+* ((<GTK-Runtime-Environment-2.2.1.2.exe|URL:http://prdownloads.sourceforge.net/gtk-win/GTK-Runtime-Environment-2.2.1.2.exe?download>)) è la versione raccomandata per questo esempio. 
+* Installatelo in una qualunque directory (Es: c:\Gtk).
+
+==== Quattro
+
+* Basta scaricare. E ora dobbiamo configurare tutto. Di base, esiste soltanto una variabile d'ambiente che deve essere modificata per contenere le directory dove si trovano i file binari importanti.
+* Convenzioni:
+  * ruby-install-dir è la directory dove è stato installato Ruby . Es: c:\Ruby
+  * gtk-install-dir è la directory dove sono state installate le GTK+2 . Es: c:\Gtk
+* Su Win9X/ME
+  * Modificate il file c:\autoexec.bat. Aggiungete una linea (Si, dovrebbe essere l'ultima per essere più sicuri) con scritto ((*SET PATH=%PATH%;ruby-install-dir\bin;gtk-install-dir\bin;gtk-install-dir\lib*)) . Riavviate per fare attuare i cambiamenti.
+* Su WinNT/2000/XP/2003
+  * Aprite Pannello di Controllo>Sistema>Avanzate>Variabili d'Ambiente. Se c'è una variabile di nome PATH, aggiungeteci ((*ruby-install-dir\bin;gtk-install-dir\bin;gtk-install-dir\lib*)). Se non ce n'è una , aggiungetela PATH ed impostatela a ((*ruby-install-dir\bin;gtk-install-dir\bin;gtk-install-dir\lib*)).
+
+==== Cinque
+
+* Ora di provate il tutto. Non preoccupatevi se qualcosa non va bene, c'è una sezione per la risoluzione dei problemi comuni più avanti.
+* I seguenti comandi devono essere digitati nel "Prompt DOS". Per aprire il Prompt DOS su:
+    * Win9X/ME cliccate su Avvio e poi Esegui. Digitate ((*command*)) e premete <INVIO>.
+    * WinNT/2000/XP/2003 cliccate su Avvio e poi Esegui. Digitate ((*cmd*)) e premete <INVIO>.
+    C:\>ruby -v
+    ruby 1.8.0 (2003-05-26) [i386-mswin32]
+
+    C:\>ruby -e "require 'gtk2'"
+
+    C:\>ruby -e "require 'gtk2';Gtk::Window.new('Hello Ruby-GNOME2 World!').show_all;Gtk.main"
+* Se questi comandi non danno errore, è fatta. Da qui in avanti potete seguire i ((<tutorials>)).
+
+=== Risoluzione dei Problemi
+--- Variabile d'ambiente PATH 
+    Controllate che la variabile d'ambiente PATH sia impostata correttamente. Scrivete SET PATH nel "Prompt DOS" e controllate che contenga ((*ruby-install-dir\bin;gtk-install-dir\bin;gtk-install-dir\lib*)) come spiegato prima. Ripetete la configurazione se necessario. Chiudete e riaprite il "Prompt DOS" per fargli caricare i nuovi valori su WinNT/2000/XP/2003, o riavviate su Win9X/ME.
+
+    PATH sul mio sistema è:
+      C:\>SET PATH
+      Path=C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\dev\python;C:\j2sdk1.4.2\bin;C:\ruby\bin;C:\Gtk\bin;C:\Gtk\lib
+
+    State attenti con le directory che hanno spazi nel nome, poichè potrebbero causare errori. Racchiudetele tra virgolette (Es: "c:\my spaced directory name") se ottenete degli errori relativi alla variabile d'ambiente PATH .
+--- ruby -v
+    se questo comando non funziona, controllate che ruby-install-dir\bin sia impostta correttamente all'interno del PATH .
+--- ruby -e "require 'gtk2'"
+    Se questo comando non funziona, controllate che gtk-install-dir\bin e gtk-install-dir\lib siano impotstate correttamente nel PATH .
+
+    Se avete ancora dei problemi, fateci sapere che tipo di errori state ottenendo tramite la ((<mailling lists|URL:http://sourceforge.net/mail/?group_id=53614>)).
+
+
+=== Autore
+* Joao Pedrosa - joaopedrosa at yahoo dot com
+
+=== Traduzione
+* ((<Gabriele>))
+
+=== ChangeLog
+:2003-10-18 prima versione

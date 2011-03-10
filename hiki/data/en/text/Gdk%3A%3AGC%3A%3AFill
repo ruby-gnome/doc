@@ -1,0 +1,20 @@
+= class Gdk::GC::Fill
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * Gdk::GC::Fill
+
+== Constants
+
+--- OPAQUE_STIPPLED
+--- SOLID
+--- STIPPLED
+--- TILED
+
+== See Also
+
+== ChangeLog
+
+

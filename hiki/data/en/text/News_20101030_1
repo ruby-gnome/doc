@@ -1,0 +1,35 @@
+= News (2010-10-30)
+== Ruby-GNOME2 0.90.5 released
+((*Posted by kou on 2010-10-30 (Sat) 12:42:47*))
+
+Ruby-GNOME2 0.90.5 is out. Enjoy!
+
+NOTE: 0.90.x releases are for 1.0.0 major release.
+
+A build system improvements release.
+
+== Downloads
+
+: ((<ruby-gtk2-0.90.5.tar.gz|URL:http://downloads.sourceforge.net/ruby-gnome2/ruby-gtk2-0.90.5.tar.gz>))
+  The minimum package which includes Ruby/GLib2, Ruby/GIO2, Ruby/ATK, Ruby/GdkPixbuf2, Ruby/Pango, Ruby/GTK2.
+
+: ((<ruby-gnome2-all-0.90.5.tar.gz|URL:http://downloads.sourceforge.net/ruby-gnome2/ruby-gnome2-all-0.90.5.tar.gz>))
+   All of Ruby-GNOME2 libraries.
+
+
+=== Changes
+
+==== All
+
+  * Improvements
+    * add --with-pkg-config-dir option to extconf.rb for *.pc.
+
+==== Ruby/GLib2
+
+  * Improvements
+    * glib-mkenums.rb can work with Ruby 1.9 on LANG=C.
+      [Kouhei Sutou]
+
+  * Bug fixes
+    * fix pkg-config gem dependency.
+      [Kouhei Sutou]

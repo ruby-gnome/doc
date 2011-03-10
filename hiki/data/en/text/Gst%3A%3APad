@@ -1,0 +1,251 @@
+= class Gst::Pad
+
+The link between Gst::Element objects.
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Gst::Object
+        * Gst::Pad
+
+== Instance Methods
+
+--- caps
+
+    Gets the capabilities of the pad element.
+    * Returns: a Gst::Caps object.
+
+--- direction
+
+    This method returns the pad's direction (see ((<GstPadDirection|Gst::Pad#GstPadDirection>))).
+    * Returns: the pad's direction (see ((<GstPadDirection|Gst::Pad#GstPadDirection>))).
+
+--- disabled?
+
+    Checks if the Gst::Pad::FLAG_DISABLED flag is set on the object.
+    * Returns: true if the flag is set, false otherwise.
+
+--- each_caps { |caps| ... }
+
+    Calls the block for each capability of the pad, 
+    passing a reference to the Gst::Caps object as parameter.
+    * Returns: always nil.
+
+--- each_event_mask { |event_mask| ... }
+
+    Calls the block for each event mask from the pad, passing
+    a reference to the Gst::EventMask object as parameter.
+    * Returns: always nil.
+
+--- each_format { |format| ... }
+
+    Calls the block for each supported format from the pad, passing
+    a reference to the Gst::Format object as parameter.
+    * Returns: always nil.
+
+--- each_query_type { |query_type| ... }
+
+    Calls the block for each supported query from the pad, passing
+    a reference to the Gst::QueryType object as parameter.
+    * Returns: always nil.
+
+--- event_masks
+
+    Gets the list of event masks from the pad.
+    * Returns: an array of Gst::EventMask objects.
+
+--- formats
+
+    Gets the list of supported formats from the pad.
+    * Returns: an array of Gst::Format objects.
+
+--- link(other_pad)
+
+    Links the current pad (source) to an other pad (sink).
+    * other_pad: a Gst::Pad.  
+    * Returns: true if the pads have been linked, false otherwise.
+
+--- name
+
+    This method returns the pad's name.
+    * Returns: the pad's name.
+
+--- negotiating?
+
+    Checks if the Gst::Pad::FLAG_NEGOTIATING flag is set on the object.
+    * Returns: true if the flag is set, false otherwise.
+
+--- pad_template
+
+    This method returns the Gst::PadTemplate object of this pad.
+    * Returns: the Gst::PadTemplate object of this pad.
+
+--- provides_event_masks?
+
+    Checks if the pad supports event masks not handled by
+    the default event masks dispatcher.
+    * Returns: true if supported, false otherwise.
+
+--- provides_formats?
+
+    Checks if the pad supports formats not handled by
+    the default format dispatcher.
+    * Returns: true if supported, false otherwise.
+
+--- provides_query_types?
+
+    Checks if the pad supports query types not handled by
+    the default query types dispatcher.
+    * Returns: true if supported, false otherwise.
+
+--- query(query_type, format=Gst::Format::DEFAULT)
+
+    Performs a query on the pad.
+    * format: a format (see ((<GstFormat|Gst::Format#GstFormat>))).  
+    * query_type: a query type (see ((<GstQueryType|Gst::QueryType#GstQueryType>))). 
+    * Returns: the query result value, or nil if the query could not be performed.
+
+--- query_types
+
+    Gets a list of supported queries that can be performed on the pad.
+    * Returns: an array of Gst::QueryType objects.
+
+--- send_event(event)
+
+    Sends an event to the pad, through a Gst::Event object.
+    * event: a Gst::Event.  
+    * Returns: true if the request event was successfully handled, false otherwise.
+
+--- unlink(other_pad)
+
+    Unlinks the current pad (source) from an other pad (sink).
+    * other_pad: a Gst::Pad.  
+    * Returns: self.
+
+--- set_template(template)
+
+    Same as template=.
+     * template: The Gst::PadTemplate of this pad
+     * Returns: self
+
+--- template
+
+    Gets the Gst::PadTemplate of this pad.
+     * Returns: The Gst::PadTemplate of this pad
+
+--- template=(template)
+
+    Sets the Gst::PadTemplate of this pad.
+     * template: The Gst::PadTemplate of this pad
+     * Returns: template
+
+--- >> (other_pad)
+
+     Links the current pad (source) to an other pad (sink).
+     * other_pad: Gst::Pad
+     * Returns: destination pad on success or nil on failure
+
+--- caps=
+
+     * Returns: self: ((*FIXME*))
+
+--- linked?
+
+     * Returns: self: ((*FIXME*))
+
+--- negotiated_caps
+
+     * Returns: self: ((*FIXME*))
+
+--- peer
+
+     * Returns: self: ((*FIXME*))
+
+--- set_caps
+
+     * Returns: self: ((*FIXME*))
+
+--- active=
+
+     * Returns: self: ((*FIXME*))
+
+--- set_active
+
+     * Returns: self: ((*FIXME*))
+
+== Constants
+
+=== GstPadDirection
+
+--- SINK
+--- SRC
+--- UNKNOWN
+=== GstPadFlags
+
+--- DISABLED
+--- DISPATCHING
+--- FLAG_LAST
+--- NEGOTIATING
+=== GstPadLinkReturn
+
+--- LINK_DELAYED
+--- LINK_DONE
+--- LINK_OK
+--- LINK_REFUSED
+=== GstPadPresence
+
+--- ALWAYS
+--- REQUEST
+--- SOMETIMES
+--- BLOCKED
+--- BLOCKING
+--- FLUSHING
+--- IN_GETCAPS
+--- IN_SETCAPS
+--- LINK_NOFORMAT
+--- LINK_NOSCHED
+--- LINK_WAS_LINKED
+--- LINK_WRONG_DIRECTION
+--- LINK_WRONG_HIERARCHY
+
+== Properties
+
+--- caps: Gst::Caps (Read)
+
+    The capabilities of the pad
+
+--- direction: Gst::PadDirection (Read/Write)
+
+    The direction of the pad
+
+--- template: Gst::PadTemplate (Read/Write)
+
+    The Gst::PadTemplate of this pad
+
+== Signals
+
+--- have-data: self
+
+     * self: Gst::Pad: ((*FIXME*))
+
+--- linked: self
+
+     * self: Gst::Pad: ((*FIXME*))
+
+--- request-link: self
+
+     * self: Gst::Pad: ((*FIXME*))
+
+--- unlinked: self
+
+     * self: Gst::Pad: ((*FIXME*))
+
+== See Also
+
+((<Gst>)).
+
+== ChangeLog
+
+- ((<lrz>))

@@ -1,0 +1,202 @@
+= class GLib::FileEnumerator
+
+GLib::FileEnumerator allows you to operate on a set of GLib::File objects,
+returning a GLib::FileInfo structure for each file enumerated (for example,
+GLib::File#enumerate_children will return a GLib::FileEnumerator for each of
+the children within a directory).
+
+To get the next file’s information from a GLib::FileEnumerator, use
+GLib::FileEnumerator#next_file or its asynchronous version,
+GLib::FileEnumerator#next_files_async(). Note that the asynchronous version
+will return an Array of GLib::FileInfos, whereas the synchronous will only
+return the next file in the enumerator.
+
+To close a GLib::FileEnumerator, use GLib::FileEnumerator#close, or its
+asynchronous version, GLib::FileEnumerator#close_async. Once a
+GLib::FileEnumerator is closed, no further actions may be performed on it.
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::FileEnumerator
+
+== Instance Methods
+
+--- close(cancellable = nil)
+
+     Releases all resources used by this enumerator, making the enumerator
+     raise GLib::IO::ClosedError on all further method calls.
+
+     This will be automatically called when the last reference is dropped, but
+     you might want to call this method to make sure resources are released as
+     early as possible.
+
+     A GLib::IO::Error is raised if the enumerator can’t be closed properly.
+
+     * cancellable: Optional GLib::Cancellable object, nil to ignore
+     * Returns: self
+
+--- close_async(io_priority = GLib::PRIORITY_DEFAULT, cancellable = nil){ |result| … }
+
+     Asynchronously closes the file enumerator.
+
+     If ((|cancellable|)) is not nil, then the operation can be cancelled by
+     triggering the cancellable object from another thread. If the operation
+     was cancelled, GLib::IO::CancelledError will be raised in
+     GLib::FileEnumerator#close_finish.
+
+     * io_priority: The I/O priority of the request
+     * cancellable: Optional GLib::Cancellable object, nil to ignore
+     * result: A GLib::AsyncResult
+     * Returns: self
+
+--- close_finish(result)
+
+     Finishes closing a file enumerator, started from GLib::FileEnumerator#close_async.
+
+     If the file enumerator was already closed when GLib::FileEnumerator#close_async
+     was called, then this function will report GLib::IO::ClosedError in ((|error|)), and
+     return false. If the file enumerator had pending operation when the close
+     operation was started, then this function will report GLib::IO::PendingError, and
+     return false.  If ((|cancellable|)) was not nil, then the operation may have been
+     cancelled by triggering the cancellable object from another thread. If the operation
+     was cancelled, the error GLib::IO::CancelledError will be set, and false will be
+     returned.
+
+     A GLib::IO::Error is raised if the enumerator couldn’t be closed properly.
+
+     * result: A GLib::AsyncResult
+     * Returns: self
+
+--- closed?
+
+     Checks if the file enumerator has been closed.
+
+     * Returns: true if the enumerator is closed
+
+--- container
+
+     Get the GLib::File container that is being enumerated.
+
+     Since 2.18
+
+     * Returns: The GLib::File that is being enumerated
+
+--- each(cancellable = nil){ |info| … }
+
+     Enumerate each information in this enumerator.
+
+     If a block is not given, then the result is a Enumerable::Enumerator
+     object that will yield GLib::FileInfo objects for all the files in this
+     enumerator.
+
+     If a block is given, then all the GLib::FileInfo object will be passed to
+     this block.
+
+     If ((|cancellable|)) is not nil, then the operation can be cancelled by
+     triggering the cancellable object from another thread.
+     GLib::IO::CancelledError will be raised if the operation is cancelled.
+
+     This method calls GLib::FileEnumerator#close when done, if no errors are
+     raised.
+
+     * cancellable: Optional GLib::Cancellable object, nil to ignore
+     * info: A GLib::FileInfo
+     * Returns: A GLib::FileEnumerator or, if a block is given, self
+
+--- each_async(num_files, io_priority = GLib::PRIORITY_DEFAULT, cancellable = nil){ |info| … }
+
+     Enumerate each information in this enumerator asynchronously.
+
+     If ((|cancellable|)) is not nil, then the operation can be cancelled by
+     triggering the cancellable object from another thread.
+     GLib::IO::CancelledError will be raised if the operation is cancelled.
+
+     This method calls GLib::FileEnumerator#close when done, if no errors are
+     raised.
+
+     * num_files: The number of file info objects to request
+     * io_priority: The I/O priority of the request
+     * cancellable: Optional GLib::Cancellable object, nil to ignore
+     * info: A GLib::FileInfo
+     * Returns: self
+
+--- has_pending?
+
+     Checks if the file enumerator has pending operations.
+
+     * Returns: true if this GLib::FileEnumerator has pending operations
+
+--- next_file(cancellable = nil)
+
+     Returns information for the next file in the enumerated object.  Will
+     block until the information is available. The GLib::FileInfo returned from
+     this function will contain attributes that match the attribute String that
+     was passed when the GLib::FileEnumerator was created.
+
+     A GLib::IO::Error is raised if the next GLib::FileInfo couldn’t be
+     fetched.
+
+     * cancellable: Optional GLib::Cancellable object, nil to ignore
+     * Returns: A GLib::FileInfo
+
+--- next_files_async(num_files, io_priority = GLib::PRIORITY_DEFAULT, cancellable = nil){ |result| … }
+
+     Request information for a number of files from the enumerator asynchronously.
+     When all I/O for the operation is finished, a GLib::AsyncResult will be
+     yielded.
+
+     The block may be called with less than ((|num_files|)) files in case of
+     error or at the end of the enumerator. In case of a partial error the
+     callback will be called with any succeeding items and no error, and on the
+     next request the error will be reported. If a request is cancelled,
+     fetching the result will raise a GLib::IO::CancelledError.
+
+     During an async request no other sync and async calls are allowed, and will
+     result in GLib::IO::PendingError errors.
+
+     Any outstanding I/O request with higher priority (lower numerical value) will
+     be executed before an outstanding request with lower priority. The default
+     priority is GLib::PRIORITY_DEFAULT.
+
+     * num_files: The number of file info objects to request
+     * io_priority: The I/O priority of the request
+     * cancellable: Optional GLib::Cancellable object, nil to ignore
+     * result: A GLib::AsyncResult
+     * Returns: self
+
+--- next_files_finish(result)
+
+     Finishes the asynchronous operation started with
+     GLib::FileEnumerator#next_files_async.
+
+     * result: A GLib::AsyncResult
+     * Returns: An Array of GLib::FileInfo objects
+
+--- pending=(pending)
+
+     Same as Glib::FileEnumerator#set_pending.
+
+     * Returns: ((|pending|))
+
+--- set_pending(pending)
+
+     Sets the file enumerator as having pending operations.
+
+     * pending: A boolean value
+     * Returns: self
+
+
+== Properties
+
+--- container: GLib::File (Write)
+
+    The container that is being enumerated
+
+== See Also
+
+== ChangeLog
+
+

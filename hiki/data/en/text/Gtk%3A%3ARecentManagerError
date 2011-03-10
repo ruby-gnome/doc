@@ -1,0 +1,35 @@
+= class Gtk::RecentManagerError
+
+== Object Hierarchy
+
+* Object
+  * Exception
+    * StandardError
+      * RuntimeError
+        * Gtk::RecentManagerError
+
+== Instance Methods
+
+--- code
+
+     * Returns: self: ((*FIXME*))
+
+--- domain
+
+     * Returns: self: ((*FIXME*))
+
+== Constants
+
+--- INVALID_ENCODING
+--- INVALID_URI
+--- NOT_FOUND
+--- NOT_REGISTERED
+--- READ
+--- UNKNOWN
+--- WRITE
+
+== See Also
+
+== ChangeLog
+
+

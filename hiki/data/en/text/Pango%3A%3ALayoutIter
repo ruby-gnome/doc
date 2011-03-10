@@ -1,0 +1,75 @@
+= class Pango::LayoutIter
+
+== Object Hierarchy
+
+* Object
+  * GLib::Boxed
+    * Pango::LayoutIter
+
+== Instance Methods
+
+--- at_last_line!
+
+     * Returns: self: ((*FIXME*))
+
+--- baseline
+
+     * Returns: self: ((*FIXME*))
+
+--- char_extents
+
+     * Returns: self: ((*FIXME*))
+
+--- cluster_extents
+
+     * Returns: self: ((*FIXME*))
+
+--- index
+
+     * Returns: self: ((*FIXME*))
+
+--- layout_extents
+
+     * Returns: self: ((*FIXME*))
+
+--- line
+
+     * Returns: self: ((*FIXME*))
+
+--- line_extents
+
+     * Returns: self: ((*FIXME*))
+
+--- line_yrange
+
+     * Returns: self: ((*FIXME*))
+
+--- next_char!
+
+     * Returns: self: ((*FIXME*))
+
+--- next_cluster!
+
+     * Returns: self: ((*FIXME*))
+
+--- next_line!
+
+     * Returns: self: ((*FIXME*))
+
+--- next_run!
+
+     * Returns: self: ((*FIXME*))
+
+--- run
+
+     * Returns: self: ((*FIXME*))
+
+--- run_extents
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

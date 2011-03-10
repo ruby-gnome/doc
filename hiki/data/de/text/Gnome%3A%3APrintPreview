@@ -1,0 +1,32 @@
+= class Gnome::PrintPreview
+
+== Object Hierarchy
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Gnome::PrintContext
+        * Gnome::PrintPreview
+
+== Class Methods
+--- Gnome::PrintPreview.new(config, canvas)
+--- Gnome::PrintPreview.new(config, canvas, transform, region)
+
+     Creates a new Gnome::PrintPreview object that use the
+     ((|canvas|)) Gnome::Canvas as its rendering backend.
+     
+     * config: A Gnome::PrintConfig object
+     * canvas: Canvas on which we display the print preview
+     * transform: A Art::Affine object
+     * region: A Art::DRect object
+     * Returns: A Gnome::PrintPreview suitable for using
+       with the GNOME print API. 
+
+== See Also
+
+Gnome::PrintContext
+
+== ChangeLog
+
+* 2005-06-10 ((<kou>)): added
+
+- ((<kou>))

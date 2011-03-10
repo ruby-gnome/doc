@@ -1,0 +1,12 @@
+= class Gdk::EventNoExpose
+Generated when the area of a Gdk::Drawable being copied, with Gdk::Drawable#draw_drawable. 
+
+== Object Hierarchy
+* Object
+  * GLib::Boxed
+    * Gdk::Event
+      * Gdk::EventAny
+        * Gdk::EventNoExpose
+
+
+-((<Masao>))

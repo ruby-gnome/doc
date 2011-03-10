@@ -1,0 +1,111 @@
+= class GLib::Param
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Param
+
+== Instance Methods
+
+--- blurb
+
+     * Returns: self: ((*FIXME*))
+
+--- construct?
+
+     * Returns: self: ((*FIXME*))
+
+--- construct_only?
+
+     * Returns: self: ((*FIXME*))
+
+--- default
+
+     * Returns: self: ((*FIXME*))
+
+--- flags
+
+     * Returns: self: ((*FIXME*))
+
+--- inspect
+
+     * Returns: self: ((*FIXME*))
+
+--- lax_validation?
+
+     * Returns: self: ((*FIXME*))
+
+--- name
+
+     * Returns: self: ((*FIXME*))
+
+--- nick
+
+     * Returns: self: ((*FIXME*))
+
+--- owner
+
+     * Returns: self: ((*FIXME*))
+
+--- owner_type
+
+     * Returns: self: ((*FIXME*))
+
+--- private?
+
+     * Returns: self: ((*FIXME*))
+
+--- readable?
+
+     * Returns: self: ((*FIXME*))
+
+--- readwrite?
+
+     * Returns: self: ((*FIXME*))
+
+--- ref_count
+
+     * Returns: self: ((*FIXME*))
+
+--- value_compare
+
+     * Returns: self: ((*FIXME*))
+
+--- value_convert
+
+     * Returns: self: ((*FIXME*))
+
+--- value_default
+
+     * Returns: self: ((*FIXME*))
+
+--- value_type
+
+     * Returns: self: ((*FIXME*))
+
+--- value_validate
+
+     * Returns: self: ((*FIXME*))
+
+--- writable?
+
+     * Returns: self: ((*FIXME*))
+
+== Constants
+
+--- CONSTRUCT
+--- CONSTRUCT_ONLY
+--- LAX_VALIDATION
+--- MASK
+--- PRIVATE
+--- READABLE
+--- READWRITE
+--- USER_SHIFT
+--- WRITABLE
+
+== See Also
+
+== ChangeLog
+
+

@@ -1,0 +1,29 @@
+= class Gnome::Program::FileDomain
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * Gnome::Program::FileDomain
+
+== Constants
+
+--- APP_CONFIG
+--- APP_DATADIR
+--- APP_HELP
+--- APP_LIBDIR
+--- APP_PIXMAP
+--- APP_SOUND
+--- CONFIG
+--- DATADIR
+--- HELP
+--- LIBDIR
+--- PIXMAP
+--- SOUND
+--- UNKNOWN
+
+== See Also
+
+== ChangeLog
+
+

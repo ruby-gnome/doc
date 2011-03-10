@@ -1,0 +1,19 @@
+= class GnomeVFS::MimeApplication::ArgumentType
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * GnomeVFS::MimeApplication::ArgumentType
+
+== Constants
+
+--- PATHS
+--- URIS
+--- URIS_FOR_NON_FILES
+
+== See Also
+
+== ChangeLog
+
+

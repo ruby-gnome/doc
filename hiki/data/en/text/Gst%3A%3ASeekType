@@ -1,0 +1,20 @@
+= class Gst::SeekType
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * Gst::SeekType
+
+== Constants
+
+--- CUR
+--- END
+--- NONE
+--- SET
+
+== See Also
+
+== ChangeLog
+
+

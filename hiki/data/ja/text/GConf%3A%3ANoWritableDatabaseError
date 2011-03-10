@@ -1,0 +1,5 @@
+= class GConf::NoWritableDatabaseError
+This error class gets raised whenever there is not a place to write a value.
+
+== Super Class
+* GConf::Error

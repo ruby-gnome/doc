@@ -1,0 +1,500 @@
+= class Gtk::ComboBox
+
+((<URL:http://library.gnome.org/devel/gtk/stable/combo-box.png>))
+
+A Gtk::ComboBox is a widget that allows the user to choose from a list of valid choices. The Gtk::ComboBox displays the selected choice. When activated, the Gtk::ComboBox displays a popup which allows the user to make a new choice. The style in which the selected value is displayed, and the style of the popup is determined by the current theme. It may be similar to a Gtk::OptionMenu, or similar to a Windows-style combo box. 
+
+Unlike its predecessors Gtk::Combo and Gtk::OptionMenu, the Gtk::ComboBox uses the model-view pattern; the list of valid choices is specified in the form of a tree model, and the display of the choices can be adapted to the data in the model by using cell renderers, as you would in a tree view. This is possible since Gtk::ComboBox implements the Gtk::CellLayout interface. The tree model holding the valid choices is not restricted to a flat list, it can be a real tree, and the popup will reflect the tree structure. 
+
+In addition to the model-view API, Gtk::ComboBox offers a simple API which is suitable for text-only combo boxes, and hides the complexity of managing the data in a model. It consists of the methods Gtk::ComboBox.new, Gtk::ComboBox#append_text, Gtk::ComboBox#insert_text, Gtk::ComboBox#prepend_text, Gtk::ComboBox#remove_text and Gtk::ComboBox#active_text.
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::InitiallyUnowned
+        * Gtk::Object
+          * Gtk::Widget
+            * Gtk::Container
+              * Gtk::Bin
+                * Gtk::ComboBox
+
+== Included Modules
+
+  * Gtk::CellEditable
+  * Gtk::CellLayout
+
+== Class Methods
+
+--- Gtk::ComboBox.new(is_text_only = true)
+
+    Creates a new Gtk::ComboBox. If is_text_only is true, you should only manipulate its data source with the following convenience methods: Gtk::ComboBox#append_text, Gtk::ComboBox#insert_text, Gtk::ComboBOx#prepend_text and Gtk::ComboBox#remove_text. ((* Since 2.4 *))
+    * is_text_only: true if just displaying strings, otherwise false.
+    * Returns: A new Gtk::ComboBox.
+
+--- Gtk::ComboBox.new(model)
+
+    Creates a new Gtk::ComboBox with the model initialized to model.  ((* Since 2.4 *))
+    * model: A Gtk::TreeModel.  
+    * Returns: A new Gtk::ComboBox.
+
+== Instance Methods
+
+--- wrap_width
+
+    Returns the wrap width which is used to determine the number of columns for the popup menu. If the wrap width is larger than 1, the combo box is in table mode. ((* Since 2.4 *))
+    * Returns: the wrap width
+
+--- wrap_width=(wrap_width)
+
+    Sets the wrap width for layouting the items in a grid. The wrap width is basically the preferred number of columns when you want to the popup to be layed out in a table. ((* Since 2.4 *))
+    * wrap_width: the wrap width(Integer)
+    * Returns: wrap_width
+
+--- set_wrap_width(wrap_width)
+
+    Same as Gtk::ComboBox#wrap_width=. ((* Since 2.4 *))
+    * wrap_width: the wrap width(Integer)
+    * Returns: self
+
+--- row_span_column
+
+    Returns the column with row span information.  ((* Since 2.6 *))
+    * Returns: The row span column.
+
+--- row_span_column=(row_span)
+
+    Sets the column with row span information. The row span column contains integers which indicate how many rows an item should span. ((* Since 2.4 *))
+    * row_span: A column in the model passed during construction. (Integer)
+    * Returns: row_span
+
+--- set_row_span_column(row_span)
+
+    Same as Gtk::ComboBox#row_span_column=. ((* Since 2.4 *))
+    * row_span: A column in the model passed during construction. (Integer)
+    * Returns: self
+
+--- column_span_column
+
+    Returns the column with column span information. ((* Since 2.6 *))
+    * Returns: the column span column.
+
+--- column_span_column=(column_span)
+
+    Sets the column with column span informationn. The column span column contains integers which indicate how many columns an item should span. ((* Since 2.4 *))
+    * column_span: A column in the model passed during construction. 
+    * Returns: column_span
+
+--- set_column_span_column(column_span)
+
+    Same as Gtk::ComboBox#column_span_column=.  ((* Since 2.4 *))
+    * column_span: A column in the model passed during construction. 
+    * Returns: self
+
+--- active
+
+    Returns the index of the currently active item, or -1 if there's no active item. If the model is a non-flat treemodel, and the active item is not an immediate child of the root of the tree, this method returns Gtk::TreePath#indices[0], where path is the Gtk::TreePath of the active item.  ((* Since 2.4 *))
+    * Returns: An integer which is the index of the currently active item, or -1 if there's no active item.
+
+--- active=(index)
+
+    Sets the active item  at index.
+    * index: The item which is currently active
+    * Returns: index
+
+--- set_active(index)
+
+    Same as Gtk::ComboBox#active=.
+    * index: The item which is currently active
+    * Returns: self
+
+--- active_iter
+
+    Returns  the current active item. ((* Since 2.4 *))
+    * Returns: the current active item(Gtk::TreeIter)
+
+--- active_iter=(iter)
+
+    Sets the current active item to be the one referenced by iter. iter must correspond to a path of depth one. ((* Since 2.4 *))
+    * iter: A Gtk::TreeIter
+    * Returns: iter
+
+--- set_active_iter(iter)
+
+    Same as Gtk::ComboBox#active_iter=.  ((* Since 2.4 *))
+    * iter: A Gtk::TreeIter
+    * Returns: self
+
+--- model
+
+    Returns the Gtk::TreeModel which is acting as data source. ((* Since 2.4 *))
+    * Returns: The Gtk::TreeModel for the combo box
+
+--- model=(model)
+
+    Sets the model. Will unset a previously set model (if applicable). If model is nil, then it will unset the model.  ((* Since 2.4 *))
+    * model: A Gtk::TreeModel
+    * Returns: model
+
+--- set_model(model)
+
+    Same as Gtk::ComboBox#model=. ((* Since 2.4 *))
+    * model: A Gtk::TreeModel
+    * Returns: self
+
+--- append_text(text)
+
+    Appends String to the list of strings stored in combo_box. Note that you can only use this method with combo boxes constructed with Gtk::ComboBox.new or Gtk::ComboBox.new(true). ((* Since 2.4 *))
+    * text: a String
+    * Returns: self
+
+--- insert_text(position, text)
+
+    Inserts String at position in the list of strings stored in combo_box. Note that you can only use this method with combo boxes constructed with Gtk::ComboBox.new or Gtk::ComboBox.new(true). ((* Since 2.4 *))
+    * position: An index to insert text. 
+    * text: a String
+    * Returns: self
+
+--- prepend_text(text)
+
+    Prepends string to the list of strings stored in combo_box. Note that you can only use this method with combo boxes constructed with Gtk::ComboBox.new or Gtk::ComboBox.new(true). ((* Since 2.4 *))
+    * text: a String
+    * Returns: self
+
+--- remove_text(position)
+
+    Removes the string at position from combo_box.  Note that you can only use this method with combo boxes constructed with Gtk::ComboBox.new or Gtk::ComboBox.new(true). ((* Since 2.4 *))
+    * position: Index of the item to remove. 
+    * Returns: self
+
+--- active_text
+
+    Returns the currently active string in combo_box or nil if none is selected. Note that you can only use this method with combo boxes constructed with Gtk::ComboBox.new(true) and with ((<Gtk::ComboBoxEntry>))s. ((* Since 2.6 *))
+    * Returns: a String containing the currently active text.
+
+--- popup
+
+    Pops up the menu or dropdown list of combo_box. 
+    This method is mostly intended for use by accessibility technologies; applications should have little use for it. ((* Since 2.4 *))
+    * Returns: self
+
+--- popdown
+
+    Hides the menu or dropdown list of combo_box. 
+    This method is mostly intended for use by accessibility technologies; applications should have little use for it. ((* Since 2.4 *))
+    * Returns: self
+
+--- popup_accessible
+
+    Gets the accessible object corresponding to the combo box's popup. ((* Since 2.6 *))
+    This method is mostly intended for use by accessibility technologies; applications should have little use for it.
+    * Returns: the accessible object corresponding to the combo box's popup (Atk::Object).
+
+--- set_row_separator_func{|model, iter| ... }
+
+    Sets the row separator method, which is used to determine whether a row should be drawn as a separator. If the row separator method is nil, no separators are drawn. This is the default value. ((* Since 2.6 *))
+    * {|model, iter| ... }: determining whether the row pointed to by iter should be rendered as a separator. A common way to implement this is to have a boolean column in the model, whose values the block returns. 
+      * model: the Gtk::TreeModel  
+      * iter: a Gtk::TreeIter pointing at a row in model  
+      * Returns: true if the row is a separator
+    * Returns: self
+
+--- add_tearoffs?
+
+    Gets the current value of the :add-tearoffs property. ((* Since 2.6 *))
+    * Returns: the current value of the :add-tearoffs property.
+
+--- add_tearoffs=(value)
+
+    Sets whether the popup menu should have a tearoff menu item. ((* Since 2.6 *))
+    * value: true to add tearoff menu items
+    * Returns: value
+
+--- set_add_tearoffs(value)
+
+    Same as Gtk::ComboBox#add_tearoffs=. ((* Since 2.6 *))
+    * value: true if dropdowns should have a tearoff menu item
+    * Returns: self
+
+--- tearoff_title
+
+    Gets the current title of the menu in tearoff mode. See Gtk::ComboBox#set_add_tearoffs ((*Since 2.10*))
+    * Returns: the menu's title in tearoff mode.
+
+--- tearoff_title=(value)
+
+    Sets the menu's title in tearoff mode. ((*Since 2.10*))
+    * value: a title for the menu in tearoff mode
+    * Returns: value
+
+--- set_tearoff_title(value)
+
+    Same as Gtk::ComboBox#tearoff_title=. ((*Since 2.10*))
+    * value: a title for the menu in tearoff mode
+    * Returns: self
+
+--- focus_on_click?
+
+    Gets the value whether the combo box grabs focus when it is clicked with the mouse or not. ((* Since 2.6 *))
+    * Returns: true if the combo box grabs focus when it is clicked with the mouse
+
+--- focus_on_click=(value)
+
+    Sets whether the combo box will grab focus when it is clicked with the mouse. Making mouse clicks not grab focus is useful in places like toolbars where you don't want the keyboard focus removed from the main area of the application. ((* Since 2.6 *))
+    * value: whether the combo box grabs focus when clicked with the mouse 
+    * Returns: value
+
+--- set_focus_on_click(value)
+
+    Same as Gtk::ComboBox#focus_on_click=. ((* Since 2.6 *))
+    * value: whether the combo box grabs focus when clicked with the mouse 
+    * Returns: self
+
+--- has_frame?
+
+    Gets the value whether the combo box draws a frame around the child or not. ((* Since 2.6 *))
+    * Returns: true if the combo box draws a frame around the child
+
+--- has_frame=(value)
+
+    Sets the value whether the combo box draws a frame around the child or not. ((* Since 2.6 *))
+    * value: true if the combo box draws a frame around the child
+    * Returns: value
+
+--- set_has_frame(value)
+
+    Same as Gtk::ComboBox#has_frame=. ((* Since 2.6 *))
+    * value: true if the combo box draws a frame around the child
+    * Returns: self
+
+--- add_attribute
+
+    See Gtk::CellLayout#add_attribute.
+
+--- clear
+
+    See Gtk::CellLayout#clear.
+
+--- clear_attributes
+
+    See Gtk::CellLayout#clear_attributes.
+
+--- editing_done
+
+    See Gtk::CellEditable#editing_done.
+
+--- move_active
+
+     * Returns: self: ((*FIXME*))
+
+--- pack_end
+
+    See Gtk::CellLayout#pack_end.
+
+--- pack_start
+
+    See Gtk::CellLayout#pack_start.
+
+--- popup_shown?
+
+    Gets the value whether the combo's dropdown is shown or not.
+     * Returns: true if the combo's dropdown is shown
+
+--- ref_accessible
+
+    See Atk::Implementor#ref_accessible.
+
+--- remove_widget
+
+    See Gtk::CellEditable#remove_widget.
+
+--- reorder
+
+    See Gtk::CellLayout#reorder.
+
+--- set_attributes
+
+    See Gtk::CellLayout#set_attributes.
+
+--- set_cell_data_func
+
+    See Gtk::CellLayout#set_cell_data_func.
+
+--- start_editing
+
+    See Gtk::CellEditable#start_editing.
+
+--- add_child
+
+    See Gtk::Buildable#add_child.
+
+--- construct_child
+
+    See Gtk::Buildable#construct_child.
+
+--- get_internal_child
+
+    See Gtk::Buildable#get_internal_child.
+
+--- name
+
+    See Gtk::Buildable#name.
+
+--- name=
+
+    See Gtk::Buildable#name=.
+
+--- set_buildable_property
+
+    See Gtk::Buildable#set_buildable_property.
+
+--- set_name
+
+    See Gtk::Buildable#set_name.
+
+--- builder_name
+
+    See Gtk::Buildable#builder_name.
+
+--- builder_name=
+
+    See Gtk::Buildable#builder_name=.
+
+--- button_sensitivity
+
+    Gets the value whether the dropdown button is sensitive when the model is empty or not.
+     * Returns: true if the dropdown button is sensitive when the model is empty
+
+--- button_sensitivity=(button_sensitivity)
+
+    Sets the value whether the dropdown button is sensitive when the model is empty or not.
+     * button_sensitivity: true if the dropdown button is sensitive when the model is empty
+     * Returns: button_sensitivity
+
+--- editing_canceled=
+
+    See Gtk::CellEditable#editing_canceled=.
+
+--- editing_canceled?
+
+    See Gtk::CellEditable#editing_canceled?.
+
+--- set_builder_name
+
+    See Gtk::Buildable#set_builder_name.
+
+--- set_button_sensitivity(button_sensitivity)
+
+    Same as button_sensitivity=.
+     * button_sensitivity: true if the dropdown button is sensitive when the model is empty
+     * Returns: self
+
+--- set_editing_canceled
+
+    See Gtk::CellEditable#set_editing_canceled.
+
+== Properties
+
+--- active: Integer (Read/Write)
+
+    The item which is currently active. If the model is a non-flat treemodel, and the active item is not an immediate child of the root of the tree, this property has the value Gtk::TreePath#indices[0], where path is the Gtk::TreePath of the active item. ((* Since 2.4 *))
+    * Allowed values: >= -1
+    * Default value: -1
+
+--- add-tearoffs: true or false (Read/Write)
+
+    The add-tearoffs property controls whether generated menus have tearoff menu items. 
+    Note that this only affects menu style combo boxes. ((* Since 2.6 *))
+    * Default value: false
+
+--- column-span-column: Integer (Read/Write)
+
+    If this is set to a non-negative value, it must be the index of a column of type Integer in the model. 
+    The values of that column are used to determine how many columns a value in the list will span. ((* Since 2.4 *))
+    * Allowed values: >= -1
+    * Default value: -1
+
+--- focus-on-click: true or false (Read/Write)
+
+    Whether the combo box grabs focus when it is clicked with the mouse. ((* Since 2.6 *))
+    * Default value: true
+
+--- has-frame: true or false (Read/Write)
+
+    Whether the combo box draws a frame around the child. ((* Since 2.6 *))
+    * Default value: true
+
+--- model: Gtk::TreeModel (Read/Write)
+
+    The model from which the combo box takes the values shown in the list. ((* Since 2.4 *))
+
+--- popup-shown: true or false (Read)
+
+    Whether the combo boxes dropdown is popped up. Note that this property is mainly useful, because it allows you to connect to notify::popup-shown. ((* Since 2.10 *))
+    * Default value: false
+
+--- row-span-column: Integer (Read/Write)
+
+    If this is set to a non-negative value, it must be the index of a column of type Integer in the model. 
+    The values of that column are used to determine how many rows a value in the list will span. Therefore, the values in the model column pointed to by this property must be greater than zero and not larger than wrap-width. ((* Since 2.4 *))
+    * Allowed values: >= -1
+    * Default value: -1
+
+--- tearoff-title: String (Read/Write)
+
+    A title that may be displayed by the window manager when the popup is torn-off. ((*Since 2.10*))
+    * Default value: ""
+
+--- wrap-width: Integer (Read/Write)
+
+    If wrap-width is set to a positive value, the list will be displayed in multiple columns, the number of columns is determined by wrap-width. ((* Since 2.4 *))
+    * Allowed values: >= 0
+    * Default value: 0
+
+--- button-sensitivity: Gtk::SensitivityType (Read/Write)
+
+    Whether the dropdown button is sensitive when the model is empty
+
+== Style Properties
+
+--- appears-as-list: true or false (Read)
+
+    Whether dropdowns should look like lists rather than menus. ((* Since 2.4 *))
+    * Default value: false
+
+--- arrow-size: Integer (Read)
+
+    Sets the minimum size of the arrow in the combo box. Note that the arrow size is coupled to the font size, so in case a larger font is used, the arrow will be larger than set by arrow size. ((* Since 2.12 *))
+    * Allowed values: >= 0
+    * Default value: 15
+
+--- shadow-type: Gtk::ShadowType (Read)
+
+    Which kind of shadow to draw around the combo box
+
+== Signals
+
+--- changed: self (Run Last)
+
+    The changed signal gets emitted when the active item is changed. The can be due to the user selecting a different item from the list, or due to a call to Gtk::ComboBox#active_iter=. ((* Since 2.4 *))
+     * self: the Gtk::ComboBox
+
+--- move-active: self
+
+     * self: Gtk::ComboBox: ((*FIXME*))
+
+--- popdown: self
+
+     * self: Gtk::ComboBox: ((*FIXME*))
+
+--- popup: self
+
+     * self: Gtk::ComboBox: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+* 2007-02-14 Apply GTK+-2.10 methods. - ((<Masao>))
+* 2006-02-01 Apply GTK+-2.6 methods. Revised. - ((<Masao>))

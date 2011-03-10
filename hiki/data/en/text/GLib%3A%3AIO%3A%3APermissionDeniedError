@@ -1,0 +1,18 @@
+= class GLib::IO::PermissionDeniedError
+
+Permission was denied.
+
+== Object Hierarchy
+
+* Object
+  * Exception
+    * StandardError
+      * IOError
+        * GLib::IO::Error
+          * GLib::IO::PermissionDeniedError
+
+== See Also
+
+== ChangeLog
+
+

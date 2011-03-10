@@ -1,0 +1,49 @@
+= class Pango::AttrList
+
+== Object Hierarchy
+
+* Object
+  * GLib::Boxed
+    * Pango::AttrList
+
+== Class Methods
+
+--- Pango::AttrList.new
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- change
+
+     * Returns: self: ((*FIXME*))
+
+--- each
+
+     * Returns: self: ((*FIXME*))
+
+--- filter
+
+     * Returns: self: ((*FIXME*))
+
+--- insert
+
+     * Returns: self: ((*FIXME*))
+
+--- insert_before
+
+     * Returns: self: ((*FIXME*))
+
+--- iterator
+
+     * Returns: self: ((*FIXME*))
+
+--- splice
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

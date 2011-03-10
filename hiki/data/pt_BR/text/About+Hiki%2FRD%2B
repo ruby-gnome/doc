@@ -1,0 +1,27 @@
+= About Hiki/RD+
+((<Hiki>)) is a WikiClone by TAKEUCHI Hitoshi.
+It's a lightweight and simple but cool WikiClone with ((<Ruby>)), ((<Amrita|URL:http://www.brain-tokyo.jp/research/amrita/>)).
+
+Hiki/RD+ is a Hiki base WikiClone but the syntax is ((<RD>)).
+And it's also some improvement for reading/writing API reference.
+
+Since Hiki-0.5, Hiki/RD+ has been merged to Hiki as a style.
+
+=== Features
+--- ModuleNames
+    ModuleNames is a module list for the link extension. The module entried ModuleNames create the links properly.
+
+--- Images
+    Image URL(suffix = png, jpg, jpeg, gif) extend as image.
+
+--- InterWiki+(InterWiki extention)
+    InterWiki is a mechanism to generate links automatically. You can make links to other sites easily.
+    InterWiki+ is a InterWiki extention. It's easier to make links.
+
+See ((<How to write this site>)) for more details.
+
+== Version Informations
+* ruby {{ruby_version_info}}
+* Hiki {{hiki_version_info}}
+
+- ((<Masao>))

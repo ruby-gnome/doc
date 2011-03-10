@@ -1,0 +1,63 @@
+= class Gdk::Window::Hints
+
+== Object Hierarchy
+
+* Object
+  * GLib::Flags
+    * Gdk::Window::Hints
+
+== Instance Methods
+
+--- aspect?
+
+     * Returns: self: ((*FIXME*))
+
+--- base_size?
+
+     * Returns: self: ((*FIXME*))
+
+--- max_size?
+
+     * Returns: self: ((*FIXME*))
+
+--- min_size?
+
+     * Returns: self: ((*FIXME*))
+
+--- pos?
+
+     * Returns: self: ((*FIXME*))
+
+--- resize_inc?
+
+     * Returns: self: ((*FIXME*))
+
+--- user_pos?
+
+     * Returns: self: ((*FIXME*))
+
+--- user_size?
+
+     * Returns: self: ((*FIXME*))
+
+--- win_gravity?
+
+     * Returns: self: ((*FIXME*))
+
+== Constants
+
+--- ASPECT
+--- BASE_SIZE
+--- MAX_SIZE
+--- MIN_SIZE
+--- POS
+--- RESIZE_INC
+--- USER_POS
+--- USER_SIZE
+--- WIN_GRAVITY
+
+== See Also
+
+== ChangeLog
+
+

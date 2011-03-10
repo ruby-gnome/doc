@@ -1,0 +1,76 @@
+=ペインドウィンドウウィジェット 
+ぺインドウィンドウウィジェットは，あるエリアを二つに分割したい場合に便利である．
+2つの領域の間には溝が描画され，ユーザは溝に付いたハンドルをドラッグして2つの領域の相対サイズを変更できる．
+分割の方向は水平方向(Gtk::HPaned)にも垂直方向(Gtk::VPaned)にもできる．
+
+新しくぺインドウィンドウを作成する：
+
+  Gtk::HPaned.new
+  Gtk::VPaned.new
+
+ぺインドウィンドウを作成したら，2つの領域に子ウィジェットを追加しよう．
+
+  Gtk::Paned#add1(child)
+  Gtk::Paned#add2(child)
+
+Gtk::Paned#add1は子ウィジェットを左側または上側の領域に追加し，Gtk::Paned#add2は子ウィジェットを右側または下側の領域に追加する．
+
+{{image_right "paned.png"}}
+例として架空の電子メールプログラムのユーザインタフェース部を作ってみよう．
+ウィンドウは垂直方向に2分割され，上側に電子メールのリストが，下側にはそのメールの本文が表示されるようになっている．
+{{br}}
+
+  #! /usr/bin/env ruby
+  require 'gtk2'
+  
+  def create_list
+  	scrolled_window = Gtk::ScrolledWindow.new
+  	scrolled_window.set_policy(Gtk::POLICY_AUTOMATIC, Gtk::POLICY_AUTOMATIC)
+  
+  	model = Gtk::ListStore.new(String)
+  	tree_view = Gtk::TreeView.new(model)
+  	scrolled_window.add_with_viewport(tree_view)
+  
+  	1.upto(9) do |i|
+  		model.set_value(model.append, 0, "Message ##{i}")
+  	end
+  
+  	cell = Gtk::CellRendererText.new
+  	column = Gtk::TreeViewColumn.new("Messages", cell, :text => 0)
+  	tree_view.append_column(column)
+  
+  	scrolled_window
+  end
+     
+  def create_text
+  	view = Gtk::TextView.new
+  	view.buffer.text = <<MAIL
+  From: pathfinder@nasa.gov
+  To: mom@nasa.gov
+  Subject: Made it!
+  
+  We just got in this morning. The weather has been
+  great - clear but cold, and there are lots of fun sights.
+  Sojourner says hi. See you soon.
+   -Path
+  MAIL
+  	scrolled_window = Gtk::ScrolledWindow.new
+  	scrolled_window.set_policy(Gtk::POLICY_AUTOMATIC, Gtk::POLICY_AUTOMATIC)
+  	scrolled_window.add(view)
+  	scrolled_window
+  end
+  
+  window = Gtk::Window.new
+  window.title = "Paned Windows"
+  window.signal_connect("destroy") {Gtk.main_quit}
+  window.border_width = 10
+  window.set_size_request(450, 400)
+  
+  vpaned = Gtk::VPaned.new
+  window.add(vpaned)
+  
+  vpaned.add1(create_list)
+  vpaned.add2(create_text)
+  
+  window.show_all
+  Gtk.main

@@ -1,0 +1,21 @@
+= class Pango::AttrStyle
+
+== Object Hierarchy
+
+* Object
+  * Data
+    * Pango::Attribute
+      * Pango::AttrInt
+        * Pango::AttrStyle
+
+== Class Methods
+
+--- Pango::AttrStyle.new
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

@@ -1,0 +1,33 @@
+= class Gtk::AnchorType
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * Gtk::AnchorType
+
+== Constants
+
+--- CENTER
+--- E
+--- EAST
+--- N
+--- NE
+--- NORTH
+--- NORTH_EAST
+--- NORTH_WEST
+--- NW
+--- S
+--- SE
+--- SOUTH
+--- SOUTH_EAST
+--- SOUTH_WEST
+--- SW
+--- W
+--- WEST
+
+== See Also
+
+== ChangeLog
+
+

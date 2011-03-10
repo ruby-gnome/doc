@@ -1,0 +1,298 @@
+= module Gtk::Drag
+
+GTK+ has a rich set of methods for doing inter-process communication via the drag-and-drop metaphor. GTK+ can do drag-and-drop (DND) via multiple protocols. The currently supported protocols are the Xdnd and Motif protocols. As well as the functions listed here, applications may need to use some facilities provided for Selections. Also, the Drag and Drop API makes use of signals in the Gtk::Widget class.
+
+== Module Functions
+
+--- Gtk::Drag.dest_set(widget, flags, targets, actions)
+
+    Sets a widget as a potential drop destination.
+    * widget: a Gtk::Widget
+    * flags: the flags that specify what actions GTK+ should take on behalf of a widget for drops onto that widget. The targets and actions fields only are used if Gtk::Drag::DEST_DEFAULT_MOTION or Gtk::Drag::DEST_DEFAULT_DROP are given. 
+    * targets: [[target1, flags1, info1], [target2, flags2, info2], ...]: an array of targets indicating the drop types that this widget will accept. 
+       * target: the drag type (String) 
+       * flags: Gtk::Drag#TargetFlags
+       * info: an application assigned integer ID. 
+    * actions: a bitmask of possible actions(((<GdkDragAction|Gdk::DragContext#GdkDragAction>))) for a drop onto this widget.
+    * Returns: self
+
+--- Gtk::Drag.dest_set_proxy(widget, proxy_window, protocol, use_coordinates)
+
+    Sets this widget as a proxy for drops to another window.
+    * widget: a Gtk::Widget 
+    * proxy_window: the Gdk::Window to which to forward drag events 
+    * protocol: the drag protocol(((<GdkDragProtocol|Gdk::DragContext#GdkDragProtocol>))) which the proxy_window accepts (You can use Gdk::DragContext.protocol to determine this) 
+    * use_coordinates: If true, send the same coordinates to the destination, because it is an embedded subwindow.  
+    * Returns: self
+
+--- Gtk::Drag.dest_unset(widget)
+
+    Clears information about a drop destination set with Gtk::Drag.dest_set. The widget will no longer receive notification of drags.
+    * widget: a Gtk::Widget
+    * Returns: self
+
+--- Gtk::Drag.dest_find_target(widget, context, target_list = nil)
+
+    Looks for a match between context.targets and the target_list, returning the first matching target, otherwise returning Gdk::Atom::NONE. target_list should usually be the return value from Gtk::Drag.dest_get_target_list, but some widgets may have different valid targets for different parts of the widget; in that case, they will have to implement a drag_motion handler that passes the correct target list to this method.
+    * widget: drag destination widget 
+    * context: Gdk::DragContext
+    * target_list: the Gtk::TargetList, or nil to use Gtk::Drag.dest_get_target_list
+    * Returns: first target(Gdk::Atom) that the source offers and the dest can accept, or Gdk::Atom::NONE
+
+--- Gtk::Drag.dest_get_target_list(widget)
+
+    Returns the list of targets this widget can accept from drag-and-drop.
+    * widget: a Gtk::Widget 
+    * Returns: the Gtk::TargetList, or nil if none
+
+--- Gtk::Drag.dest_set_target_list(widget, target_list)
+
+    Sets the target types that this widget can accept from drag-and-drop. The widget must first be made into a drag destination with Gtk::Drag.dest_set().
+    * widget: a Gtk::Widget that's a drag destination 
+    * target_list: the Gtk::TargetList or nil for none 
+    * Returns: self
+
+--- Gtk::Drag.dest_add_text_targets(widget)
+
+    Add the text targets supported by Gtk::Selection to the target list of the drag destination. The targets are added with info = 0. If you need another value, use Gtk::TargetList#add_text_targets and Gtk::Drag.dest_set_target_list. ((* Since 2.6 *))
+    * widget: a Gtk::Widget that's a drag destination  
+    * Returns: self
+
+--- Gtk::Drag.dest_add_image_targets(widget)
+
+    Add the image targets supported by Gtk::Selection to the target list of the drag destination. The targets are added with info = 0. If you need another value, use Gtk::TargetList#add_image_targets and Gtk::Drag.dest_set_target_list. ((* Since 2.6 *))
+    * widget: a Gtk::Widget that's a drag destination  
+    * Returns: self
+
+--- Gtk::Drag.dest_add_uri_targets(widget)
+
+    Add the URI targets supported by Gtk::Selection to the target list of the drag destination. The targets are added with info = 0. If you need another value, use Gtk::TargetList#add_uri_targets and Gtk::Drag.dest_set_target_list. ((* Since 2.6 *))
+    * widget: a Gtk::Widget that's a drag destination  
+    * Returns: self
+
+--- Gtk::Drag.dest_get_track_motion(widget)
+
+    Returns whether the widget has been configured to always emit ::drag-motion signals. ((* Since 2.10 *))
+    * widget: a Gtk::Widget that's a drag destination
+    * Returns: true if the widget always emits ::drag-motion
+
+--- Gtk::Drag.dest_set_track_motion(widget, track_motion)
+
+    Tells the widget to emit ::drag-motion and ::drag-leave events regardless of the targets and the Gtk::Drag::DEST_DEFAULT_MOTION flag. This may be used when a widget wants to do generic actions regardless of the targets that the source offers. ((* Since 2.10 *))
+    * widget: a Gtk::Widget that's a drag destination
+    * track_motion: true if to accept all targets
+    * Returns: self
+
+--- Gtk::Drag.finish(context, success, del, time)
+
+    Informs the drag source that the drop is finished, and that the data of the drag will no longer be required.
+    * context: the Gdk::DragContext. 
+    * success: a flag(true or false) indicating whether the drop was successful 
+    * del: a flag(true or false) indicating whether the source should delete the original data. (This should be true for a move) 
+    * time: the timestamp(Integer) from the "drag_data_drop" signal.  
+    * Returns: self
+
+--- Gtk::Drag.get_data(widget, context, target, time)
+
+    Gets the data associated with a drag. When the data is received or the retrieval fails, GTK+ will emit a "drag_data_received" signal. Failure of the retrieval is indicated by the length field of the selection_data signal parameter being negative. 
+    * widget: the Gtk::Widget that will receive the "drag_data_received" signal. 
+    * context: the Gdk::DragContext. 
+    * target: the target (form of the data) to retrieve (Gtk::TargetList). 
+    * time: a timestamp(Integer) for retrieving the data. This will generally be the time received in a "drag_data_motion" or "drag_data_drop" signal.  
+    * Returns: self
+
+--- Gtk::Drag.get_source_widget(context)
+
+    Determines the source widget for a drag.
+    * context: a (destination side) drag context. 
+    * Returns: if the drag is occurring within a single application, a pointer to the source widget. Otherwise, nil.
+
+--- Gtk::Drag.highlight(widget)
+
+    Draws a highlight around a widget. This will attach handlers to "expose_event" and "draw", so the highlight will continue to be displayed until Gtk::Drag.unhighlight is called.
+    * widget: a Gtk::Widget to highlight
+    * Returns: self
+
+--- Gtk::Drag.unhighlight(widget)
+
+    Removes a highlight set by Gtk::Drag.highlight from a widget.
+    * widget: a Gtk::Widget to remove the highlight from.  
+    * Returns: self
+
+--- Gtk::Drag.begin(widget, targets, actions, button, event)
+
+    Initiates a drag on the source side. The method only needs to be used when the application is starting drags itself, and is not needed when Gtk::Drag.source_set is used.
+    * widget: the source widget(Gtk::Widget). 
+    * targets: The targets (data formats) in which the source can provide the data(Gtk::TargetList). 
+    * actions: A bitmask of the allowed drag actions for this drag(((<GdkDragAction|Gdk::DragContext#GdkDragAction>))). 
+    * button: The button the user clicked to start the drag(Integer). 
+    * event: The Gdk::Event that triggered the start of the drag. 
+    * Returns: The Gdk::DragContext for this drag.
+
+--- Gtk::Drag.set_icon(context, object, hot_x, hot_y)
+
+    Changes the icon for a widget to a given widget/pixbuf/stock_id. GTK+ will not destroy the icon, so if you don't want it to persist, you should connect to the "drag_end" signal and destroy it yourself.
+    * context: the Gdk::DragContext for a drag. (This must be called with a context for the source side of a drag)
+    * object: a toplevel Gtk::Window, Gdk::Pixbuf or stock ID, to use as an icon
+    * hot_x: the X offset within widget of the hotspot.
+    * hot_y: the Y offset within widget of the hotspot.
+    * Returns: self
+
+--- Gtk::Drag.set_icon(context, colormap, pixmap, mask, hot_x, hot_y)
+
+    Sets pixmap as the icon for a given drag. GTK+ retains references for the arguments, and will release them when they are no longer needed. 
+    * context: the context for a drag. (This must be called with a context for the source side of a drag)
+    * colormap: the Gdk::Colormap of the icon
+    * pixmap: the image data(Gdk::Pixmap) for the icon
+    * mask: the transparency mask(Gdk::Pixmap, depth = 1) for the icon
+    * hot_x: the X offset within pixmap of the hotspot.
+    * hot_y: the Y offset within pixmap of the hotspot.
+    * Returns: self
+
+--- Gtk::Drag.set_icon_name(context, icon_name, hot_x, hot_y)
+
+    Sets the icon for a given drag from a named themed icon. See the docs for Gtk::IconTheme for more details. Note that the size of the icon depends on the icon theme (the icon is loaded at the symbolic size Gtk::IconSize::DND), thus hot_x and hot_y have to be used with care. ((*Since 2.8*))
+    * context: the context for a drag (this must be called with a context for the source side of a drag) (Gdk::DragContext)
+    * icon_name: name of icon to use (String)
+    * hot_x: the X offset of the hotspot within the icon (Fixnum)
+    * hot_y: the Y offset of the hotspot within the icon (Fixnum)
+    * Returns: self
+
+--- Gtk::Drag.icon_default=(context)
+
+    Sets the icon for a particular drag to the default icon. 
+    * context: the Gdk::DragContext for a drag. (This must be called with a context for the source side of a drag)
+    * Returns: context
+
+--- Gtk::Drag.set_icon_default(context)
+
+    Same as Gtk::Drag.icon_default=.
+    * context: the Gdk::DragContext for a drag. (This must be called with a context for the source side of a drag)
+    * Returns: self
+
+--- Gtk::Drag.threshold?(widget, start_x, start_y, current_x, current_y)
+
+    Checks to see if a mouse drag starting at (start_x, start_y) and ending at (current_x, current_y) has passed the GTK+ drag threshold, and thus should trigger the beginning of a drag-and-drop operation.
+    * widget: a Gtk::Widget
+    * start_x: X coordinate of start of drag
+    * start_y: Y coordinate of start of drag
+    * current_x: current X coordinate
+    * current_y: current Y coordinate
+    * Returns: true if the drag threshold has been passed.
+
+--- Gtk::Drag.source_set(widget, start_button_mask, targets, actions)
+
+    Sets up a widget so that GTK+ will start a drag operation when the user clicks and drags on the widget. The widget must have a window.
+    * widget: a Gtk::Widget
+    * start_button_mask: the bitmask of buttons that can start the drag (((<GdkModifierType|Gdk::Window#GdkModifierType>)))
+    * targets: [[target1, flags1, info1], [target2, flags2, info2], ...]: an array of targets indicating the drop types that this widget will accept. 
+    * actions: a bitmask of possible actions(((<GdkDragAction|Gdk::DragContext#GdkDragAction>))) for a drop onto this widget.
+       * target: the drag type (String) 
+       * flags: Gtk::Drag#TargetFlags
+       * info: an application assigned integer ID. 
+    * Returns: self
+
+--- Gtk::Drag.source_set_icon(widget, object)
+
+    Sets the icon that will be used for drags from a particular widget from a Gdk::Pixbuf/stock_id. GTK+ retains a reference for pixbuf and will release it when it is no longer needed.
+    * widget: a Gtk::Widget
+    * object: the Gdk::Pixbuf for the drag icon, or the ID of the stock icon to use
+    * Returns: self
+
+--- Gtk::Drag.source_set_icon(widget, colormap, pixmap, mask)
+
+    Sets the icon that will be used for drags from a particular widget from a pixmap/mask. GTK+ retains references for the arguments, and will release them when they are no longer needed. 
+    * widget: a Gtk::Widget
+    * colormap: the Gdk::Colormap of the icon
+    * pixmap: the image data(Gdk::Pixmap) for the icon
+    * mask: the transparency mask(Gdk::Pixmap, depth = 1) for an image.
+    * Returns: self
+
+--- Gtk::Drag.source_set_icon_name(widget, icon_name)
+
+    Sets the icon that will be used for drags from a particular source to a themed icon. See the docs for Gtk::IconTheme for more details. ((*Since 2.8*))
+    * widget: a Gtk::Widget
+    * icon_name: name of icon to use (String)
+    * Returns: self
+
+--- Gtk::Drag.source_unset(widget)
+
+    Undoes the effects of Gtk::Drag.source_set.
+    * widget: a Gtk::Widget
+    * Returns: self
+
+--- Gtk::Drag.source_set_target_list(widget, target_list)
+
+    Changes the target types that this widget offers for drag-and-drop. The widget must first be made into a drag source with Gtk::Drag.source_set.  ((* Since 2.4 *))
+    * widget: a Gtk::Widget that's a drag source
+    * target_list: an array of draggable targets, or nil for none
+
+--- Gtk::Drag.source_get_target_list(widget)
+
+    Gets the array of targets this widget can provide for drag-and-drop.   ((* Since 2.4 *))
+    * widget: a Gtk::Widget
+    * Returns: the Gtk::TargetList, or nil if none
+
+--- Gtk::Drag.source_add_text_targets(widget)
+
+    Add the text targets supported by Gtk::Selection to the target list of the drag source. The targets are added with info = 0. If you need another value, use Gtk::TargetList#add_text_targets and Gtk::Drag.source_set_target_list. ((* Since 2.6 *))
+    * widget: a Gtk::Widget that's is a drag source  
+    * Returns: self
+
+--- Gtk::Drag.source_add_image_targets(widget)
+
+    Add the writable image targets supported by Gtk::Selection to the target list of the drag source. The targets are added with info = 0. If you need another value, use Gtk::TargetList#add_image_targets and Gtk::Drag.source_set_target_list. ((* Since 2.6 *))
+    * widget: a Gtk::Widget that's is a drag source  
+    * Returns: self
+
+--- Gtk::Drag.source_add_uri_targets(widget)
+
+    Add the URI targets supported by Gtk::Selection to the target list of the drag source. The targets are added with info = 0. If you need another value, use Gtk::TargetList#add_uri_targets and Gtk::Drag.source_set_target_list. ((* Since 2.6 *))
+    * widget: a Gtk::Widget that's is a drag source  
+    * Returns: self
+
+== Constants
+
+=== DestDefaults
+
+The Gtk::Drag#DestDefaults enumeration specifies the various types of action that will be taken on behalf of the user for a drag destination site.
+
+--- DEST_DEFAULT_MOTION
+
+    If set for a widget, GTK+, during a drag over this widget will check if the drag matches this widget's list of possible targets and actions. GTK+ will then call Gdk::DragContext.drag_status as appropriate.
+
+--- DEST_DEFAULT_HIGHLIGHT
+
+    If set for a widget, GTK+ will draw a highlight on this widget as long as a drag is over this widget and the widget drag format and action are acceptable.
+
+--- DEST_DEFAULT_DROP
+
+    If set for a widget, when a drop occurs, GTK+ will will check if the drag matches this widget's list of possible targets and actions. If so, GTK+ will call Gtk::Drag.get_data on behalf of the widget. Whether or not the drop is successful, GTK+ will call Gtk::Drag.finish. If the action was a move, then if the drag was successful, then true will be passed for the delete parameter to Gtk::Drag.finish.
+
+--- DEST_DEFAULT_ALL
+
+    If set, specifies that all default actions should be taken.
+
+=== TargetFlags
+
+The Gtk::Drag#TargetFlags enumeration is used to specify constraints on an entry in a GtkTargetTable.
+
+--- TARGET_SAME_APP
+
+    If this is set, the target will only be selected for drags within a single application.
+
+--- TARGET_SAME_WIDGET
+
+    If this is set, the target will only be selected for drags within a single widget.
+
+--- TARGET_OTHER_APP
+--- TARGET_OTHER_WIDGET
+
+== See Also
+
+== ChangeLog
+
+* 2006-02-28 Apply GTK+-2.10. - ((<Masao>))
+* 2006-02-01 Apply GTK+-2.6. Revised. - ((<Masao>))
+* 2004-05-24 Done with 2.4 support - ((<Masao>))
+* 2003-09-23 First released - ((<Masao>))

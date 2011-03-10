@@ -1,0 +1,28 @@
+= Ruby/Libgda Tutorial
+
+== Synopsis
+
+GNOME Data Access (GDA) is an architecture whose purpose is to provide universal access to many different kinds and types of data sources. This goes from traditional relational database systems, to any imaginable kind of data source such as a mail server, a LDAP directory...
+
+This universality is obtained through the use of an easily extensible plug-in system as the mechanism for communication between the different components in the architecture. 
+
+This tutorial is written from the ((<"GNOME Data Access manual"|URL:http://www.gnome-db.org/docs/libgda/index.html>)) by ((<"Laurent Sansonetti"|lrz>)).  Original work is copyrighted by several people: Michael Lausch, Rodrigo Moya, Vivien Malerba, Sean Allen, Xabier Rodríguez Calvar and José Dapena Paz.
+
+== Table of Contents
+
+* ((<Introduction|tut-libgda-intro>))
+* Getting started
+  * ((<Installing|tut-libgda-install>))
+  * ((<Configuring|tut-libgda-config>))
+* Beginning
+  * ((<Initialising|tut-libgda-init>))
+  * ((<Connecting|tut-libgda-connect>))
+* Processing queries
+  * Executing sentences
+    * ((<Building commands|tut-libgda-build-queries>))
+    * ((<Making queries|tut-libgda-exec-queries>))
+  * ((<Managing data models and values|tut-libgda-datamodels>))
+* Transactions and batch processes
+  * ((<Managing transactions|tut-libgda-transactions>))
+* ((<Managing errors|tut-libgda-errors>))
+* ((<Full example|tut-libgda-full-example>))

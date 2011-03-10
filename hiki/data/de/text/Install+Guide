@@ -1,0 +1,13 @@
+= Installationsanleitungen
+
+== Unix-artige Systeme
+* ((<"Debian GNU/Linux"|Install Guide for Debian>))
+* ((<"Ubuntu GNU/Linux"|Install Guide for Ubuntu>))
+* ((<"SUSE GNU/Linux"|Install Guide for SUSE>))
+* ((<"Fedora GNU/Linux"|Install Guide for Fedora>))
+* ((<"Gentoo GNU/Linux"|Install guide for Gentoo>))
+* ((<FreeBSD|Install Guide for FreeBSD>))
+
+== MS-Windows-Systeme
+* ((<Microsoft Windows Installationsanleitung|Install Guide for Windows>))
+* ((<Microsoft Windows Kompilationsanleitung|compile_mingw>))

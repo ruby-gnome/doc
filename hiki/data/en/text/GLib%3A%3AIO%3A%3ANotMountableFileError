@@ -1,0 +1,18 @@
+= class GLib::IO::NotMountableFileError
+
+The file can’t be mounted.
+
+== Object Hierarchy
+
+* Object
+  * Exception
+    * StandardError
+      * IOError
+        * GLib::IO::Error
+          * GLib::IO::NotMountableFileError
+
+== See Also
+
+== ChangeLog
+
+

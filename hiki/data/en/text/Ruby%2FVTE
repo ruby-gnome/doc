@@ -1,0 +1,12 @@
+= Ruby/VTE API Reference
+
+((<API Index|index-ruby-vte>))
+
+* ((<Vte>))
+
+* Vte::Terminal - A terminal widget implementation.
+  * Vte::CharAttributes
+  * Vte::TerminalEraseBinding
+  * Vte::TerminalAntiAlias
+* Vte::TerminalAccessible - Accessibility peer of VteTerminal.
+* Vte::Reaper - A singleton object which catches SIGCHLD signals and converts them into GObject-style "child-exited" signals.

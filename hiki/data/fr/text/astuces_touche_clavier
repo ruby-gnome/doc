@@ -1,0 +1,28 @@
+= Déterminer quelle touche du clavier a été activée
+
+Démarrez ce programme et appuyez sur une ou plusieurs touches de votre clavier.  Vous pouvez facilement obtenir de cette façon pour chaque touche pressée la clef ainsi que la constante Gdk::Keyval associée.
+
+ require 'gtk2'
+ 
+ window = Gtk::Window.new
+ window.add_events(Gdk::Event::KEY_PRESS)
+ window.add(Gtk::Label.new("Press Key!"))
+ 
+ window.signal_connect("key-press-event") do |w, e|
+   p "#{e.keyval}, Gdk::Keyval::GDK_#{Gdk::Keyval.to_name(e.keyval)}"
+ end
+ 
+ window.set_default_size(100, 100).show_all
+ 
+ Gtk.main
+
+P.S.
+
+Cependant veuillez noter que ce programme obtiendra des résultats propres à votre environement.
+Certaines clefs ont des valeurs différentes en fonction de chaque environement de travail.
+
+== Modifications
+:2003-10-12 ((<Masao|URL:../hiki.cgi?Masao>))
+ Première version
+
+Traduction de la page anglaise par Laurent Sansonetti.

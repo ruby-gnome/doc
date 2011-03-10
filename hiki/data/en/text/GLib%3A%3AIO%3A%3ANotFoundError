@@ -1,0 +1,18 @@
+= class GLib::IO::NotFoundError
+
+The file couldn’t be found.
+
+== Object Hierarchy
+
+* Object
+  * Exception
+    * StandardError
+      * IOError
+        * GLib::IO::Error
+          * GLib::IO::NotFoundError
+
+== See Also
+
+== ChangeLog
+
+

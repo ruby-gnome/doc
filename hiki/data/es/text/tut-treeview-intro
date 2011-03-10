@@ -1,0 +1,11 @@
+=Listas y Árboles: el widget GtkTreeView
+{{link nil, nil, "tut-treeview", "tut-treeview-components"}}
+
+Gtk::TreeView es un widget que muestra listas (de una o varias columnas) y árboles. Reemplaza los antiguos widwets Gtk::CList y Gtk::CTree del Gtk+1.2. A pesar de que Gtk::TreeView es algo más difícil de dominar que sus predecesores, es mucho más potente y flexible, de modo que la mayoría de desarrolladores no querrá deshacerse de él una vez lo conozcan.
+
+El próposito de este capítulo no es proporcionar una documentación exhaustiva sobre GtkTreeView - que es precisamente para lo que sirve la API, que debería ser consultada al tiempo que se sigue este tutorial. El objetivo es introducir los aspectos más comunes de Gtk::TreeView, y demostrar como los diversos componentes y conceptos de GtkTreeView trabajan entre si. Además, se ha intentado aportar algo de luz al proceso de crear modelos de árbol y renders personalizados, algo que suele mencionarse pero raramente es explicado.  
+
+Los programadores que busquen una introducción rápida y descuidada que les enseñe todo lo que necesiten saber en menos de cinco párrafos no encontrarán lo que buscan aquí. Desde la experiencia del autor, un desarrollador que no entienda como trabajan juntos la vista de árbol y los modelos tendrá problemas cuando quiera modificar los ejemplos dados, mientras que aquellos que han trabajado con otros toolkits que emplean el sistema Modelo/Vista/Controlador encontrarán que esta referencia proporciona toda la información que necesitan de una forma más condensada. Por supuesto, aquellos que no estén de acuerdo pueden pasar directamente a ejemplo de código fuente.
+
+Hay que tener en cuenta que los ejemplos de código que aparecen en las secciones siguientes no demuestran necesariamente la mejor forma de usar Gtl::TreeView en una determinada situación. Hay diferentes maneras de alcanzar el mismo resultado, y los ejemplos simplemente muestran dichas formas, de forma que los desarrolladores puedan decidir cual de ellas es la más apropiada para una determinada tarea.
+

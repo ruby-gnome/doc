@@ -1,0 +1,25 @@
+= Status of Ruby/GnomePrint
+
+{{status "Ruby/GnomePrint", ["2.8", "2.10", "2.12"], "
+gnome-font-face|x|x|x|x|x|use Pango
+gnome-font|x|x|x|x|x|use Pango
+gnome-glyphlist|x|x|x|x|x|use Pango
+gnome-pgl|x|x|x|x|x|use Pango
+gnome-print-config|Gnome::PrintConfig|GnomePrintConfig|O|O|O|
+gnome-print-job|Gnome::PrintJob|GnomePrintJob|O|O|O|
+gnome-print-paper|Gnome::PrintPaper|GnomePrintPaper|O|O|O|
+gnome-print|Gnome::PrintContext|GnomePrintContext|O|O|O|
+Pango Integration|-|-|O|O|O|included in Gnome::PrintContext
+gnome-print-unit|Gnome::PrintUnit|GnomePrintUnit|O|O|O|
+gnome-rfont|x|x|x|x|x|use Pango
+gpa/gpa-root|Gnome::GPARoot|-|O|O|O|
+gpa/gpa-printer|Gnome::GPAPrinter|-|O|O|O|
+gpa/gpa-model|Gnome::GPAModel|-|O|O|O|
+gpa/gpa-node|Gnome::GPANode|-|O|O|O|
+gpa/gpa-settings|Gnome::GPASettings|-|O|O|O|
+gpa/gpa-list|Gnome::GPAList|-|O|O|O|
+gpa/gpa-state|Gnome::GPAState|-|O|O|O|
+"}}
+
+-
+kou

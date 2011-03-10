@@ -1,0 +1,53 @@
+= class GnomeVFS::URI::HideOptions
+
+== Object Hierarchy
+
+* Object
+  * GLib::Flags
+    * GnomeVFS::URI::HideOptions
+
+== Instance Methods
+
+--- fragment_identifier?
+
+     * Returns: self: ((*FIXME*))
+
+--- host_name?
+
+     * Returns: self: ((*FIXME*))
+
+--- host_port?
+
+     * Returns: self: ((*FIXME*))
+
+--- none?
+
+     * Returns: self: ((*FIXME*))
+
+--- password?
+
+     * Returns: self: ((*FIXME*))
+
+--- toplevel_method?
+
+     * Returns: self: ((*FIXME*))
+
+--- user_name?
+
+     * Returns: self: ((*FIXME*))
+
+== Constants
+
+--- FRAGMENT_IDENTIFIER
+--- HOST_NAME
+--- HOST_PORT
+--- NONE
+--- PASSWORD
+--- TOPLEVEL_METHOD
+--- USER_NAME
+
+== See Also
+
+== ChangeLog
+
+

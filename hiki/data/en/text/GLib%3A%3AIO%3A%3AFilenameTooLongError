@@ -1,0 +1,18 @@
+= class GLib::IO::FilenameTooLongError
+
+The filename contains too many characters.
+
+== Object Hierarchy
+
+* Object
+  * Exception
+    * StandardError
+      * IOError
+        * GLib::IO::Error
+          * GLib::IO::FilenameTooLongError
+
+== See Also
+
+== ChangeLog
+
+

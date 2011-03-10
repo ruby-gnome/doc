@@ -1,0 +1,10 @@
+=Lists and Trees: the Gtk::TreeView Widget
+{{link nil, nil, "tut-treeview", "tut-treeview-components"}}
+
+Gtk::TreeView is a widget that displays single- or multi-columned lists and trees. It replaces the old Gtk+-1.2 Gtk::CList and Gtk::CTree widgets. Even though Gtk::TreeView is slightly harder to master than its predecessors, it is so much more powerful and flexible that most application developers will not want to miss it once they have come to know it.
+
+The purpose of this chapter is not to provide an exhaustive documentation of GtkTreeView - that is what the API documentation is for, which should be read alongside with this tutorial. The goal is rather to present an introduction to the most commonly-used aspects of Gtk::TreeView, and to demonstrate how the various GtkTreeView components and concepts work together. Furthermore, an attempt has been made to shed some light on custom tree models and custom cell renderers, which seem to be often-mentioned, but rarely explained.
+
+Developers looking for a quick and dirty introduction that teaches them everything they need to know in less than five paragraphs will not find it here. In the author's experience, developers who do not understand how the tree view and the models work together will run into problems once they try to modify the given examples, whereas developers who have worked with other toolkits that employ the Model/View/Controller-design will find that the API reference provides all the information they need to know in more condensed form anyway. Those who disagree may jump straight to the working example code of course.
+
+Please note that the code examples in the following sections do not necessarily demonstrate how Gtk::TreeView is used best in a particular situation. There are different ways to achieve the same result, and the examples merely show those different ways, so that developers are able to decide which one is most suitable for the task at hand.

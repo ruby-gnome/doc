@@ -1,0 +1,125 @@
+{{link nil, "Install Guide", nil, nil}}
+= Install Guide for Ubuntu
+
+== Ubuntu 9.04 (Jaunty Jackalope)
+
+=== Installation 
+You can choose between two different methods to installing Ruby-GNOME2 in Ubuntu 9.04. 
+
+--- 1. Version 0.17.0 from the Ubuntu repository
+      Just install the meta-package ruby-gnome2.
+
+--- 2. Version 0.18.1 from our repository
+
+      Based on the work of Arnaud Cornet we have repackaged the bindings 0.18.1 for Ubuntu 9.04. To install them you have to ((<add|URL:https://help.ubuntu.com/community/Repositories/Ubuntu/>)) the following repository:
+
+       deb http://franz.hob-bruneck.info/downloads/ jaunty/
+      
+      Install the meta-package ruby-gnome2.
+
+--- 3. Version 0.19.1 from our repository (recommended)
+
+      Based on the work of Arnaud Cornet we have repackaged the up-to-date bindings for Ubuntu 9.04. To install them you have to ((<add|URL:https://help.ubuntu.com/community/Repositories/Ubuntu/>)) the following repository:
+
+       deb http://franz.hob-bruneck.info/downloads/ jaunty0191/
+      
+      Install the meta-package ruby-gnome2.
+Have fun!
+
+
+=== Bugs
+
+Report problems to ((<"Franz"|Franz>)).
+
+=== ChangeLog
+
+* 2009/04/25 Created - ((<"Franz"|Franz>))
+* 2009/05/08 packages for x86_64 added - ((<"Franz"|Franz>))
+* 2009/08/04 updated to newest bindings - ((<"Franz"|Franz>))
+
+
+== Ubuntu 8.10 (Intrepid Ibex)
+
+=== Installation 
+There are two possibilities to installing Ruby-GNOME2 in Ubuntu 8.10. 
+
+--- 1. Version 0.17.0 from the Ubuntu repository
+      Just install the meta-package ruby-gnome2.
+
+--- 2. Version 0.18.1 from our repository
+
+      Based on the work of Arnaud Cornet we have repackaged the up-to-date bindings for Ubuntu 8.10. To install them you have to ((<add|URL:https://help.ubuntu.com/community/Repositories/Ubuntu/>)) the following repository:
+
+       deb http://franz.hob-bruneck.info/downloads/ intrepid/
+      
+      Now install the meta-package ruby-gnome2.
+
+Have fun!
+
+
+=== Bugs
+
+Report problems to ((<"Franz"|Franz>)).
+
+=== ChangeLog
+
+* 2009/03/08 Created - ((<"Franz"|Franz>))
+
+
+== Ubuntu 7.10 (Gutsy Gibbon) and 8.04 (Hardy Heron)
+
+=== Installation 
+
+Since the latest bindings are already part of both Hardy and Gutsy, the only thing for you to do is to install them!
+
+Selecting and installing the meta-package "ruby-gnome2" ensures that the complete set of the Ruby-GNOME2-bindings is going to be installed. Programmers should additionally install the Ruby-GNOME2 class browser rbbr, which afterwards should be updated with the latest ((<nightly tarball|URL:http://ruby-gnome2.sourceforge.jp/data/ruby-gnome2-api.tar.gz>)). Simply move the content of the unpacked folder to /usr/share/rbbr/rd. Unless you need the Japanese version, you should delete the folder "ja".
+
+
+Have fun!
+
+=== Bugs
+
+Report problems to ((<"Franz"|Franz>)).
+
+=== ChangeLog
+
+* 2007/10/21 Created - ((<"Franz"|Franz>))
+* 2008/05/16 Updated - ((<"Franz"|Franz>))
+
+
+
+== Ubuntu 7.04 (Feisty Fawn)
+
+=== Installation 
+There are two possibilities to install Ruby-GNOME2 in Ubuntu 7.04. 
+
+--- 1. Version 0.15.0 from the standard repository
+      Make sure that the universe repository is ((<available|URL:https://help.ubuntu.com/community/Repositories/Ubuntu/>)) and install the meta-package ruby-gnome2.
+
+--- 2. Version 0.16.0 from the HOB-Bruneck repository (i386 and amd64)
+
+      Based on the work of Arnaud Cornet we have repackaged the up-to-date bindings for Ubuntu 7.04. To install them, you have to ((<add|URL:https://help.ubuntu.com/community/Repositories/Ubuntu/>)) the following repository:
+
+       deb http://franz.hob-bruneck.info/downloads/ feisty/
+      
+      Now install the meta-package ruby-gnome2.
+
+Have fun!
+
+
+=== Bugs
+
+Report problems to ((<"Franz"|Franz>)).
+
+=== ChangeLog
+
+* 2005/08/10 Created - ((<"Franz"|Franz>))
+* 2007/06/16 Updated - ((<"Franz"|Franz>))
+* 2007/06/17 Version 0.16.0 available - ((<"Franz"|Franz>))
+* 2007/08/22 packages for amd64 added - ((<"Franz"|Franz>))
+
+
+== Older versions of Ubuntu
+
+=== Installation 
+Just get the standard bindings of Ruby-GNOME2 (see possibility 1 above)

@@ -1,0 +1,173 @@
+= 画像の扱い(Gtk::Pixmap)
+((*まだ、Ruby/GTK(1)用です*))
+
+Gtk::Pixmapはイメージやアイコンを表示するためのウィジェットです。オフスクリーン描画オブジェクトであるGdk::Pixmapから生成されます。
+Gtk::Pixmapは一度生成した後は編集できません。これは一度生成された後にX serverにピクセルデータがストア（キャッシュ）されるためです。もし、一度生成した後に画像を編集したい場合はGtk::Imageを使います。
+
+((*Ruby/GTK2ではGdk::Bitmapが廃止されました。*))
+
+Ruby/GTK2ではGtk::Imageに変更された？
+
+== 基本的な使い方
+まずは、XPM形式<SUP><A HREF="#xpm">(※1)</A></SUP>のファイル（以下の例ではr.xpm）を用意しておき、それを表示させます。XPM形式ファイルの透明部分は背景色(この例ではGtk::Window)と同じ色になります。
+＃r.xpmは適当なXPM形式のファイルを使ってください。一応、この例題で使ったものを<A HREF="r.xpm">こちら</A>へ置いておきます。Rの文字内が透明部分です。
+  
+  require 'gtk'
+ 
+  window = Gtk::Window.new
+  window.realize
+  pix, mask = Gdk::Pixmap.create_from_xpm(window.window, nil, "r.xpm")      #(1)
+  pixmap =  Gtk::Pixmap.new(pix, mask)    #(2)
+  window.add(pixmap)
+  window.set_usize(100,100)
+  window.show_all
+  Gtk.main
+  
+(1)のGdk::Pixmap.create_from_xpm(gdkwindow,, transparent_color, filename)でXPM形式ファイルからpix(Gdk::Pixmap),mask(Gdk::Bitmap)を生成します。
+
+   * gdkwindow
+        window.windowは、Gdk::Windowオブジェクトです(Gtk::Windowでは無いため、単にwindowと書いてもだめです)。で、これは、Gdk::Pixmap.create_from_xpm()が呼び出される前に実体化(Gtk::Window#realize())されていなければなりません。
+   * transparent_color
+     「XPMの透明部分に指定する色」を指定します(Gdk::Color())。この例では透明(親ウィジェットの背景と同じ)にしたいのでnilを指定します。
+   * filename
+     ファイル名を指定します。
+   
+(2)では、(1)で生成したpix,maskからGtk::Pixmapを生成します(Gdk::Pixmapとは違うので注意！)。ちなみにpixは画像部分を、マスキング（透明にする）部分をmaskで指定します。
+
+=== ※ XPM(X Pixmap)形式について
+XPM形式はテキストベースで表現された画像表現形式の1つです。256色で透明色が使えます。XPM形式の画像は通常、拡張子.xpmで表されるファイルに保存します。Unix(つーかX)の世界では非常にポピュラーな存在で、大抵の画像ツール(gimp等)がこの形式をサポートしています。
+  すでに書きましたがXPMはテキストで表現されています。実際、.xpmファイルの中身を見てみると例えば
+  
+  /* XPM */
+  static char * r_xpm[] = {
+  "10 10 3 1",                ← 幅:10, 高さ10, 3色, 1文字を1ピクセルにマップする。
+  "   c None",                ← Noneは透明色を表します(cはモード識別子)
+  ".  c #FE0B0B",             ← RGBカラーを16進2桁で表す。
+  "+  c white",               ← メジャーな色は名称で指定できる...みたい(^^;)。
+  "+.......++",               ← ここからが実際の画像。
+  "+..    ..+",
+  "+..    ..+",
+  "+..   ...+",
+  "+.......++",
+  "+.....++++",
+  "+..++..+++",
+  "+..++...++",
+  "+..+++...+",
+  "+..++++..+"};
+  
+という感じに、C言語で表現されていることがわかります。
+ちなみに、モード識別子(上記例ではc)には上記のc(カラー)の他にm(白黒),g4(4階調の白黒),g(4階調を超える白黒),s(シンボリックなカラー名称)があるようです。ひとまず、cだけ知ってれば良さそうなんで、詳しくは調べてないですけど(^^;)。
+  
+
+== 透明部分に任意の色を指定する
+XPM形式ファイルの透明部分に任意の色(以下の例では黄色)を割り当てます。
+   <IMG SRC="r_yellow.jpg" AL    ="表示イメージ" ALIGN="RIGH    ">
+  
+  require 'gtk'
+
+  window = Gtk::Window.new
+  window.realize
+  pix, mask = Gdk::Pixmap.create_from_xpm(window.window, Gdk::Color.new(65535, 65535, 0), "r.xpm")
+  pixmap =  Gtk::Pixmap.new(pix, nil) 
+  window.add(pixmap)
+  window.set_usize(100,100)
+  window.show_all
+  Gtk.main
+  
+  
+Gdk::Colorに0〜65535の範囲でRed,Green,Blueの色を指定します。ここで指定した色がXPMの透明部分の色になります。
+ 
+次に、Gtk::Pixmap.newですが、1.の例だとmaskを指定していましたが、こちらは必ずnilを指定します。再びmask指定しちゃうと透明になっちゃうんですよね。私はこれにはまりました(結局、ruby-ext MLでyashiさんに教えていただきました)。
+ 
+
+== XPM形式の文字列からPixmapを生成する
+画像ファイルを別ファイルから読み込む形式にすると画像ツール(gimp等)で編集しやすいんで良いのですが、実際アプリケーションとして配布する場合、画像専用のディレクトリを用意するのがちょっと面倒くさい場合があります。
+ XPM形式のファイルは上述したようにC言語なら、そのままincludeしてしまえば良いのですが、Rubyの場合はRubyで扱える形式に書き直す必要があります。上述したXPM形式を使った例を示します。
+
+  require 'gtk'
+
+  #XPM                        # コメントはRuby形式に直す。
+  r_xpm = [                   # { → [に変更する。
+  "10 10 3 1", 
+  "   c None", 
+  ".  c #FE0B0B", 
+  "+  c #FFFFFF", 
+  "+.......++",   
+  "+..    ..+",
+  "+..    ..+",
+  "+..   ...+",
+  "+.......++",
+  "+.....++++",
+  "+..++..+++",
+  "+..++...++",
+  "+..+++...+",
+  "+..++++..+"]              # }; → ]に変更する。
+
+  window = Gtk::Window.new(Gtk::WINDOW_    OPLEVEL)
+  window.realize
+  pix, mask = Gdk::Pixmap.create_from_xpm_d(window.window, nil, r_xpm)   #微妙にメソッド名称が異なるので注意
+  pixmap =  Gtk::Pixmap.new(pix, mask)
+  window.add(pixmap)
+  window.set_usize(100,100)
+  window.show_all
+  Gtk.main
+
+== 画像に後から手を加える
+ <A NAME="alloc_color">Rの画像の上に線を引いて、さらにmask部分を変更して透明にする範囲を変えてみます。</A>このページの最初にGtk::Pixmapは編集できないと書きました。ここではGdk::Pixmapの方を編集して、最後にGtk::Pixmapを生成しているため、Gtk::Pixmap自体は編集していません。混乱しちゃうかな...。
+
+  require 'gtk'
+
+  window = Gtk::Window.new.realize
+  pix, mask = Gdk::Pixmap.create_from_xpm(window.window, Gdk::Color.new(65535, 50000, 0), "r.xpm")
+  geometry = pix.get_geometry
+  width = geometry[2]
+  height = geometry[3]
+
+  #(1)GCの生成
+  gc_pix = Gdk::GC.new(pix)
+  gc_mask = Gdk::GC.new(mask)
+
+  #(2)カラーオブジェクトの生成
+  green = Gdk::Color.new(0, 65535, 0)
+  blue = Gdk::Color.new(0, 0, 65535)
+  white = Gdk::Color.new(65535, 65535, 65535)
+  black = Gdk::Color.new(0, 0, 0)
+
+  #(3)カラーをカラーマップへ割り当てる
+  colormap = Gdk::Colormap.get_system
+  colormap.alloc_color(green, false, true)
+  colormap.alloc_color(blue, false, true)
+  colormap.alloc_color(white, false, true)
+  colormap.alloc_color(black, false, true)
+
+  #(4)色を指定して線を描画する。
+  gc_pix.set_foreground(green)
+  pix.draw_line(gc_pix, 0, 0, width, height)
+  gc_pix.set_foreground(blue)
+  pix.draw_line(gc_pix, 0, height, width, 0)
+
+  #(5)mask範囲を変更する。
+  gc_mask.set_foreground(black)
+  mask.draw_rectangle(gc_mask, true, 0, 0, width / 2, height / 2)
+  gc_mask.set_foreground(white)
+  mask.draw_rectangle(gc_mask, true, width / 2, height / 2, width / 2, height / 2)
+
+  window.add(Gtk::Pixmap.new(pix, mask))
+  window.set_usize(100,100).show_all
+  Gtk.main
+
+上記の結果は次のイメージのようになります。点線などは説明のために後から追加したものです。
+ 
+   * (1)で、pix(Gdk::Pixmap)とmask(Gdk::Bitmap)のGdk::GCを取得します。
+   * (2)で使用する色を生成しています。ここではgreen, blueと、maskで使用するためにwhite, blackを生成します。
+   * (3)のGdk::Colormap#alloc_color(color, writeable, bestmatch)でシステムにカラーを割り当てます。カラーを生成してからそれをカラーマップに割り当てるというやり方はちょっと美しくないと思うのですが、まぁおまじないだということで。
+ 
+   * color - 使用したいカラーを指定します。カラーマップに空きがある場合はそこにcolorを割り当ててそのインデックス値(pixel)を返します。
+   * writeable - 書き込み可能かどうか指定します。
+     カラーマップをGdk::Colormap.new(visual, true)とした場合に関係してきます。今回は(1)でシステムが使用するカラーマップを取得しますのでfalseを指定します。
+   * bestmatch - 使用したいカラーを割り当てられなかった場合に、できるだけ近いカラーを返します。
+     この辺のことについては<A HREF="color.html">カラーの扱い</A>も参考にしてください。
+   * (4)で、Gdk::GCに色を指定してから緑色と青色の線を画像の四隅に描画します。途中で線が途切れているのはmaskによって透明になっている部分です。
+   * (5)ではmaskを変更しています。maskしたい部分をblack、maskしない部分をwhiteで塗りつぶします。元々の画像のRの部分が丸々maskになっているのですが、(5)の部分で、まず(5-1)の点線で囲った長方形の部分を透明としています。次に(5-2)の点線で囲った長方形の部分を透明にしないとしています。(5-2)の左上の部分に少しだけオレンジ色の部分がありますが、ここは、元々Rの右足(?)の部分で色が指定されていないので、Gdk::Pixmap.create_from_xpm()の引数のtransparent_colorで指定された色が使われています。
+
+Gdk::Pixmap, Gdk::BitmapはともにGdk::Drawableのサブクラスです。Gdk::Drawableのメソッド(Gdk::Drawable#get_geometry(), Gdk::Drawable#draw_line(), Gdk::Drawable#draw_rectangle())については<A HREF="drawable.html">ウインドウへの直接描画あれこれ</A>を参照してください。

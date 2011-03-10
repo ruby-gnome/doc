@@ -1,0 +1,104 @@
+= class Gdk::PangoRenderer
+
+Gdk::PangoRenderer is a subclass of Pango::Renderer used for rendering Pango objects into GDK drawables. The default renderer for a particular screen is obtained with Gdk::PangoRenderer.default; Pango functions like Pango::Renderer#draw_layout and Pango::Renderer#draw_layout_line are then used to draw objects with the renderer.
+
+In most simple cases, applications can just use Gdk::Drawable#draw_layout, and don't need to directly use Gdk::PangoRenderer at all. Using the Gdk::PangoRenderer directly is most useful when working with a transformation such as a rotation, because the Pango drawing functions take user space coordinates (coordinates before the transformation) instead of device coordinates.
+
+In certain cases it can be useful to subclass Gdk::PangoRenderer. Examples of reasons to do this are to add handling of custom attributes by overriding 'prepare_run' or to do custom drawing of embedded objects by overriding 'draw_shape'.
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Pango::Renderer
+        * Gdk::PangoRenderer
+
+== Class Methods
+
+--- Gdk::PangoRenderer.new(screen = nil)
+
+    Creates a new PangoRenderer for screen. Normally you can use the results of Gdk::PangoRenderer.default rather than creating a new renderer.
+    * screen: a Gdk::Screen. If nil, screen is set from Gdk::Screen.default
+    * Returns: a newly created PangoRenderer
+
+--- Gdk::PangoRenderer.get_default(screen = nil)
+
+    Gets the default PangoRenderer for screen. This default renderer is shared by all users of the display, so properties such as the color or transformation matrix set for the renderer may be overwritten by functions such as Gdk::Drawable#draw_layout.
+    Before using the renderer, you need to call Gdk::PangoRenderer#drawable= and Gdk::PangoRenderer#gc= to set the drawable and graphics context to use for drawing.
+    * screen: a Gdk::Screen. If nil, screen is set from Gdk::Screen.default
+    * Returns: the default PangoRenderer for screen. The renderer is owned by GTK+ and will be kept around until the screen is closed.
+
+--- Gdk::PangoRenderer.default
+
+    This is an alias of Gdk::PangoRenderer.get_default(nil). 
+    * Returns: the default PangoRenderer for the current screen. The renderer is owned by GTK+ and will be kept around until the screen is closed.
+
+== Instance Methods
+
+--- drawable=(drawable)
+
+    Sets the drawable the renderer draws to.
+    * drawable: the new target Gdk::Drawable, or nil
+    * Returns: drawable
+
+--- set_drawable(drawable)
+
+    Same as Gdk::PangoRenderer#drawable=.
+    * drawable: the new target Gdk::Drawable, or nil
+    * Returns: self
+
+--- gc=(gc)
+
+    Sets the GC the renderer draws with. Note that the GC must not be modified until it is unset by calling the function again with NULL for the gc parameter, since GDK may make internal copies of the GC which won't be updated to follow changes to the original GC.
+    * gc: the new GC to use for Gdk::Drawable, or nil
+    * Returns: self
+
+--- set_gc(gc)
+
+    Same as Gdk::PangoRenderer#gc=.
+    * gc: the new GC to use for Gdk::Drawable, or nil
+    * Returns: self
+
+--- set_stipple(part, stipple)
+
+    Sets the stipple for one render part (foreground, background, underline, etc.) Note that this is overwritten when iterating through the individual styled runs of a Pango::Layout or Pango::LayoutLine. This method is thus only useful when you call low level methods like Pango::Renderer#draw_glyphs directly, or in the 'prepare_run' virtual function of a subclass of Gdk::PangoRenderer.
+    * part: the part to render with the stipple(((<PangoRenderPart|Pango::Renderer#PangoRenderPart>))
+    * stipple: the new stipple value (Gdk::Pixmap(depth = 1)) 
+    * Returns: self
+
+--- set_override_color(part, color)
+
+    Sets the color for a particular render part (foreground, background, underline, etc.), overriding any attributes on the layouts renderered with this renderer.
+    * part: the part to render to set the color of (((<PangoRenderPart|Pango::Renderer#PangoRenderPart>))
+    * color: the Gdk::Color to use, or nil to unset a previously set override color.
+    * Returns: self
+
+--- screen
+
+    Gets the Gdk::Screen for the renderer.
+    * Returns: the Gdk::Screen for the renderer
+
+--- screen=(screen)
+
+    Sets the Gdk::Screen for the renderer.
+    * screen: the Gdk::Screen for the renderer
+    * Returns: screen
+
+--- set_screen(screen)
+
+    Same as Gdk::PangoRenderer#screen=.
+    * screen: the Gdk::Screen for the renderer
+    * Returns: self
+
+== Properties
+
+--- screen: Gdk::Screen (Read/Write)
+
+    the Gdk::Screen for the renderer
+
+== See Also
+
+== ChangeLog
+
+* 2005-05-13 Added. - ((<Masao>))

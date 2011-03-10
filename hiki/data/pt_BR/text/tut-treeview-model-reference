@@ -1,0 +1,45 @@
+= Referenciando a Linhas: Gtk::TreeIter, Gtk::TreePath, Gtk::TreeRowReference
+{{link "tut-treeview-model-data", "tut-treeview-model", "tut-treeview", "tut-treeview-model-add"}}
+
+Existem diferentes maneiras de referenciar a uma linha específica. As duas que você terá que lidar são o Gtk::TreeIter e o Gtk::TreePath.
+
+Um Gtk::TreePath é uma maneira comparativamente direta de descrever a posição lógica de uma linha no "model". Como um Gtk::TreeView sempre mostra todas as linhas em um "model", um caminho de árvore ("tree path") sempre descreve a mesma linha em ambos, no "model" e no "view".
+
+{{image_right "en:treepath.png"}}
+
+A figura mostra o caminho de árvore em forma de string próximo ao rótulo. Basicamente, ele apenas conta os filhos da raiz ("root") imaginária da "tree view". Uma string vazia de caminho de árvore especificaria essa raiz invisível imaginária. Agora 'Songs' é o primeiro filho (a partir da raiz) e assim o seu caminho de árvore é apenas "0". 'Videos' é o segundo filho a partir da raiz, e eu caminho de árvore é "1". 'oggs' é o segundo filho do primeiro item a partir da raiz, assim o seu caminho de árvore é "0:1". Então você apenas conta a partir do root para a linha em questão, e voce pega o seu caminho de árvore. Você pode conseguir um novo Gtk::TreePath de um caminho em forma de string usando Gtk::TreePath.new, e você pode converter um dado Gtk::TreePath na sua notação de string com Gtk::TreePath#to_str. Comumente você raramente terá que lidar com a notação de string, ela é descrita meramente para demonstrar o conceito de caminhos de árvore.
+
+Em vez de notação de string, o Gtk::TreePath usa um array de integer internamente. Você pode pegar a profundidade (i.e., o nível de  "nesting") de um caminho de árvore com Gtk::TreePath#depth. Uma profundidade de 0 é o "node" da raiz invisível imaginária do "tree view" e do "model". Uma profundidade de 1 significa que o caminho de árvore descreve uma linha de nível superior. Como as listas são apenas árvores sem "nodes" filhos, todas as linhas em uma lista sempre tem caminhos de árvores de profundidade 1. O Gtk::TreePath#indices retorna o array de integer interno de um caminho de árvore. Você raramente precisará operar com eles também.
+
+Se você operar com caminhos de árvores, será mais provável que você use um caminho de árvore dado, e use métodos como  Gtk::TreePath#up!, Gtk::TreePath#down!, Gtk::TreePath#next!, Gtk::TreePath#prev!, Gtk::TreePath#ancestor?, Gtk::TreePath#decendent?. Note que dessa maneira você pode construir e operar em caminhos de árvore que referem as linhas que não existem no "model" ou no "view".
+
+Outra maneira para referir a uma linha em uma lista ou "model" de árvore é o Gtk::TreeIter. Um "iter" de árvore é apenas uma estrutura que contém alguns ponteiros que significam alguma coisa para o "model" que você está usando. "Iters" de árvore são usados internamente pelos "models", e eles frequentemente contêm um ponteiro direto para os dados internos da linha em questão. Você não deve nunca olhar no conteúdo de um "iter" de árvore e você não deve modificá-lo diretamente também. Todos os "models" de árvore provêm métodos que operam nos "iters" de árvore (ex.: pegue o "iter" de árvore para o filho de uma linha especificada poe um dado "iter" de árvore, etc.).
+
+"Iters" de árvore são frequentemente usados para recuperar dados de um armazenador, e para colocar dados em um armazenador. Você também pega um "iter" de árvore como resultado se você adicionar uma nova linha ao armazenador usando Gtk::ListStore#append ou Gtk::TreeStore#append.
+
+"Iters" de árvore são frequentemente apenas válidos por um curto período de tempo, e podem tornar-se inválidos se o armazenador for alterado. Assim é comumente uma má idéia armazenar "iters" de árvore. Você pode usar Gtk::TreeModel#flags para pegar os "flags" de um "model", e checar se o "flag" ITERS_PERSIST está configurado (no caso de um "iter" de árvore estará válido desde que a linha exista), mas existe uma maneira melhor de manter o controle de uma linha: Gtk::TreeRowReference.
+
+Um GtkTreeRowReference é basicamente um objeto que leva um caminho de árvore, e assiste o "model" por alterações. Se algo for alterado, como linhas sendo inseridas ou removidas, ou linhas sendo reordenadas, o objeto de referência de linha de árvore manterá o dado caminho de árvore atualizado, assim ele sempre apontará para a mesma linha de antes.
+
+Na prática um programador pode usar referências de linha de árvore para manter o controle de linhas pelo tempo necessário, ou armazenar "iters" de árvore diretamente (se, e apenas se, o "model" tem "iters" persistentes). Ambos o Gtk::ListStore e o Gtk::TreeStore têm "iters" persistentes. Usar referências de linha de árvore é definitivamente a maneira certa de fazer as coisas, mas vem com um considerável "overhead" que pode impactar a performance em caso de árvores que têm uma grande quantidade de linhas.
+
+"Iters" de árvore podem facilmente ser convertidos em caminhos de árvore usando using Gtk::TreeIter#path, e caminhos de árvore podem facilmente ser convertidos em "iters" de árvore usando Gtk::TreeModel#get_iter. Referências de linha de árvore revelam o caminho atual de uma linha com Gtk::TreeRowReference#.path. Não existe uma maneira direta para pegar um "iter" de árvore de uma referência de linha de árvore, você tem que recuperar o caminho da referência de linha de árvore primeiro e então convertê-lo em um "iter" de árvore.
+
+Como os "iters" de árvore são válidos por um curto tempo, eles comumente são alocados no "heap", como o exemplo a seguir:
+
+ def traverse_list_store (liststore)
+   # pega a primeira linha em um armazenador de lista
+   return unless iter = liststore.iter_first
+
+   begin   
+     # ... faz algo com essa linha usando o "iter" ...
+     # (Aqui coluna 0 do armazenador de lista é do tipo String)
+     iter[0] = "Silva"
+   end while iter.next!
+
+   true
+ end
+
+O código acima pede para o "model" preencher a estrutura de "iter" para fazê-lo apontar para a primeira linha no armazenador de lista. Se existe uma primeira linhae o armazenador não está vazio, o "iter" será configurado, e o Gtk::TreeModel#iter_first retornará TRUE. Se não existe uma primeira linha, ele apenas retornará FALSE. Se uma primeira linha existe, o loop while será iniciado e nós mudaremos algum dos dados da primeira linha. Então a gente pede para que o "model" faça o dado "iter" apontar para a próxima linha, até que não existem mais linhas, que será então que o Gtk::TreeIter#next! retornará FALSE. Em vez de navegar o armazenador de lista a gente podia também ter usado Gtk::TreeModel#each.
+
+ liststore.each { |model,path,iter| iter[0]= "Silva" }

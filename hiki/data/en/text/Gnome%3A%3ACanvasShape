@@ -1,0 +1,294 @@
+= class Gnome::CanvasShape
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::InitiallyUnowned
+        * Gtk::Object
+          * Gnome::CanvasItem
+            * Gnome::CanvasShape
+
+== Instance Methods
+
+--- cap_style
+
+    Gets the cap_style.
+     * Returns: ((*FIXME*))
+
+--- cap_style=(cap_style)
+
+    Sets the cap_style.
+     * cap_style: ((*FIXME*))
+     * Returns: cap_style
+
+--- dash
+
+    Gets the dash.
+     * Returns: ((*FIXME*))
+
+--- dash=(dash)
+
+    Sets the dash.
+     * dash: ((*FIXME*))
+     * Returns: dash
+
+--- fill_color=(fill_color)
+
+    Sets the fill_color.
+     * fill_color: ((*FIXME*))
+     * Returns: fill_color
+
+--- fill_color_gdk
+
+    Gets the fill_color_gdk.
+     * Returns: ((*FIXME*))
+
+--- fill_color_gdk=(fill_color_gdk)
+
+    Sets the fill_color_gdk.
+     * fill_color_gdk: ((*FIXME*))
+     * Returns: fill_color_gdk
+
+--- fill_color_rgba
+
+    Gets the fill_color_rgba.
+     * Returns: ((*FIXME*))
+
+--- fill_color_rgba=(fill_color_rgba)
+
+    Sets the fill_color_rgba.
+     * fill_color_rgba: ((*FIXME*))
+     * Returns: fill_color_rgba
+
+--- fill_stipple
+
+    Gets the fill_stipple.
+     * Returns: ((*FIXME*))
+
+--- fill_stipple=(fill_stipple)
+
+    Sets the fill_stipple.
+     * fill_stipple: ((*FIXME*))
+     * Returns: fill_stipple
+
+--- join_style
+
+    Gets the join_style.
+     * Returns: ((*FIXME*))
+
+--- join_style=(join_style)
+
+    Sets the join_style.
+     * join_style: ((*FIXME*))
+     * Returns: join_style
+
+--- miterlimit
+
+    Gets the miterlimit.
+     * Returns: ((*FIXME*))
+
+--- miterlimit=(miterlimit)
+
+    Sets the miterlimit.
+     * miterlimit: ((*FIXME*))
+     * Returns: miterlimit
+
+--- outline_color=(outline_color)
+
+    Sets the outline_color.
+     * outline_color: ((*FIXME*))
+     * Returns: outline_color
+
+--- outline_color_gdk
+
+    Gets the outline_color_gdk.
+     * Returns: ((*FIXME*))
+
+--- outline_color_gdk=(outline_color_gdk)
+
+    Sets the outline_color_gdk.
+     * outline_color_gdk: ((*FIXME*))
+     * Returns: outline_color_gdk
+
+--- outline_color_rgba
+
+    Gets the outline_color_rgba.
+     * Returns: ((*FIXME*))
+
+--- outline_color_rgba=(outline_color_rgba)
+
+    Sets the outline_color_rgba.
+     * outline_color_rgba: ((*FIXME*))
+     * Returns: outline_color_rgba
+
+--- outline_stipple
+
+    Gets the outline_stipple.
+     * Returns: ((*FIXME*))
+
+--- outline_stipple=(outline_stipple)
+
+    Sets the outline_stipple.
+     * outline_stipple: ((*FIXME*))
+     * Returns: outline_stipple
+
+--- path_def
+
+     * Returns: self: ((*FIXME*))
+
+--- path_def=
+
+     * Returns: self: ((*FIXME*))
+
+--- set_cap_style(cap_style)
+
+    Same as cap_style=.
+     * cap_style: ((*FIXME*))
+     * Returns: self
+
+--- set_dash(dash)
+
+    Same as dash=.
+     * dash: ((*FIXME*))
+     * Returns: self
+
+--- set_fill_color(fill_color)
+
+    Same as fill_color=.
+     * fill_color: ((*FIXME*))
+     * Returns: self
+
+--- set_fill_color_gdk(fill_color_gdk)
+
+    Same as fill_color_gdk=.
+     * fill_color_gdk: ((*FIXME*))
+     * Returns: self
+
+--- set_fill_color_rgba(fill_color_rgba)
+
+    Same as fill_color_rgba=.
+     * fill_color_rgba: ((*FIXME*))
+     * Returns: self
+
+--- set_fill_stipple(fill_stipple)
+
+    Same as fill_stipple=.
+     * fill_stipple: ((*FIXME*))
+     * Returns: self
+
+--- set_join_style(join_style)
+
+    Same as join_style=.
+     * join_style: ((*FIXME*))
+     * Returns: self
+
+--- set_miterlimit(miterlimit)
+
+    Same as miterlimit=.
+     * miterlimit: ((*FIXME*))
+     * Returns: self
+
+--- set_outline_color(outline_color)
+
+    Same as outline_color=.
+     * outline_color: ((*FIXME*))
+     * Returns: self
+
+--- set_outline_color_gdk(outline_color_gdk)
+
+    Same as outline_color_gdk=.
+     * outline_color_gdk: ((*FIXME*))
+     * Returns: self
+
+--- set_outline_color_rgba(outline_color_rgba)
+
+    Same as outline_color_rgba=.
+     * outline_color_rgba: ((*FIXME*))
+     * Returns: self
+
+--- set_outline_stipple(outline_stipple)
+
+    Same as outline_stipple=.
+     * outline_stipple: ((*FIXME*))
+     * Returns: self
+
+--- set_path_def
+
+     * Returns: self: ((*FIXME*))
+
+--- set_width_pixels(width_pixels)
+
+    Same as width_pixels=.
+     * width_pixels: ((*FIXME*))
+     * Returns: self
+
+--- set_width_units(width_units)
+
+    Same as width_units=.
+     * width_units: ((*FIXME*))
+     * Returns: self
+
+--- set_wind(wind)
+
+    Same as wind=.
+     * wind: ((*FIXME*))
+     * Returns: self
+
+--- width_pixels
+
+    Gets the width_pixels.
+     * Returns: ((*FIXME*))
+
+--- width_pixels=(width_pixels)
+
+    Sets the width_pixels.
+     * width_pixels: ((*FIXME*))
+     * Returns: width_pixels
+
+--- width_units
+
+    Gets the width_units.
+     * Returns: ((*FIXME*))
+
+--- width_units=(width_units)
+
+    Sets the width_units.
+     * width_units: ((*FIXME*))
+     * Returns: width_units
+
+--- wind
+
+    Gets the wind.
+     * Returns: ((*FIXME*))
+
+--- wind=(wind)
+
+    Sets the wind.
+     * wind: ((*FIXME*))
+     * Returns: wind
+
+== Properties
+
+--- cap-style: Gdk::CapStyle (Read/Write)
+--- dash: gpointer (Read/Write)
+--- fill-color: String (Write)
+--- fill-color-gdk: Gdk::Color (Read/Write)
+--- fill-color-rgba: Integer (Read/Write)
+--- fill-stipple: Gdk::Drawable (Read/Write)
+--- join-style: Gdk::JoinStyle (Read/Write)
+--- miterlimit: Float (Read/Write)
+--- outline-color: String (Write)
+--- outline-color-gdk: Gdk::Color (Read/Write)
+--- outline-color-rgba: Integer (Read/Write)
+--- outline-stipple: Gdk::Drawable (Read/Write)
+--- width-pixels: Integer (Read/Write)
+--- width-units: Float (Read/Write)
+--- wind: Integer (Read/Write)
+
+== See Also
+
+== ChangeLog
+
+

@@ -1,0 +1,28 @@
+= News (2009-09-24)
+== Ruby-GNOME2 0.19.3 released
+((*Posted by kou on 2009-09-24 (Thu) 11:43:51*))
+
+Ruby-GNOME2 0.19.3 is out. Enjoy!
+
+This release is a bug fix release of 0.19.2.
+
+== Downloads
+
+: ((<ruby-gtk2-0.19.3.tar.gz|URL:http://downloads.sourceforge.net/ruby-gnome2/ruby-gtk2-0.19.3.tar.gz>))
+  The minimum package which includes Ruby/GLib2, Ruby/ATK, Ruby/GdkPixbuf2, Ruby/Pango, Ruby/GTK2.
+
+: ((<ruby-gnome2-all-0.19.3.tar.gz|URL:http://downloads.sourceforge.net/ruby-gnome2/ruby-gnome2-all-0.19.3.tar.gz>))
+   All of Ruby-GNOME2 libraries.
+
+== Changes
+
+=== Ruby/GLib2
+
+  * Bug fix:
+    * really fix
+      'empty $(vendorarchdir) related build problem on CentOS 5.3 x86_64.'
+      [Simon Arnaud, Kouhei Sutou]
+
+== Thanks
+
+  * Simon Arnaud

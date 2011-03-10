@@ -1,0 +1,23 @@
+= class Poppler::Error
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * Poppler::Error
+
+== Constants
+
+--- ENCRYPTED
+--- INVALID
+--- BAD_CATALOG
+--- DAMAGED
+--- OPEN_FILE
+
+== See Also
+
+== ChangeLog
+
+* 2006-05-18 ((<kou>)): completed.
+
+- ((<kou>))

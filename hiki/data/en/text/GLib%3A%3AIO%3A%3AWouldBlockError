@@ -1,0 +1,18 @@
+= class GLib::IO::WouldBlockError
+
+The operation would block.
+
+== Object Hierarchy
+
+* Object
+  * Exception
+    * StandardError
+      * IOError
+        * GLib::IO::Error
+          * GLib::IO::WouldBlockError
+
+== See Also
+
+== ChangeLog
+
+

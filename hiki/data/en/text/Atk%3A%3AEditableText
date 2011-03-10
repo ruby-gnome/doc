@@ -1,0 +1,45 @@
+= module Atk::EditableText
+
+== Included Modules
+
+  * GLib::Interface
+
+== Instance Methods
+
+--- copy_text
+
+     * Returns: self: ((*FIXME*))
+
+--- cut_text
+
+     * Returns: self: ((*FIXME*))
+
+--- delete_text
+
+     * Returns: self: ((*FIXME*))
+
+--- insert_text
+
+     * Returns: self: ((*FIXME*))
+
+--- paste_text
+
+     * Returns: self: ((*FIXME*))
+
+--- set_run_attributes
+
+     * Returns: self: ((*FIXME*))
+
+--- set_text_contents
+
+     * Returns: self: ((*FIXME*))
+
+--- text_contents=
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

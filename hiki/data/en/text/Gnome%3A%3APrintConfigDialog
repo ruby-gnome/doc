@@ -1,0 +1,95 @@
+= class Gnome::PrintConfigDialog
+
+This interface is considered private and should not be used
+by applications directly!
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::InitiallyUnowned
+        * Gtk::Object
+          * Gtk::Widget
+            * Gtk::Container
+              * Gtk::Bin
+                * Gtk::Window
+                  * Gtk::Dialog
+                    * Gnome::PrintConfigDialog
+
+== Class Methods
+
+--- Gnome::PrintConfigDialog.new(config=nil)
+
+     Create a new Gnome::PrintConfigDialog window.
+
+     * config: Gnome::PrintConfig. Used
+       Gnome::PrintConfig#default if config is (({nil})).
+     * Returns: A newly created and initialised widget
+
+--- print_config=(print_config)
+--- set_print_config(print_config)
+
+    Sets the Printing Configuration to be used.
+     * print_config: Printing Configuration to be used
+     * Returns: print_config
+
+== Instance Methods
+
+--- ref_accessible
+
+    See Atk::Implementor#ref_accessible.
+
+--- add_child
+
+    See Gtk::Buildable#add_child.
+
+--- construct_child
+
+    See Gtk::Buildable#construct_child.
+
+--- get_internal_child
+
+    See Gtk::Buildable#get_internal_child.
+
+--- name
+
+    See Gtk::Buildable#name.
+
+--- name=
+
+    See Gtk::Buildable#name=.
+
+--- set_buildable_property
+
+    See Gtk::Buildable#set_buildable_property.
+
+--- set_name
+
+    See Gtk::Buildable#set_name.
+
+--- builder_name
+
+    See Gtk::Buildable#builder_name.
+
+--- builder_name=
+
+    See Gtk::Buildable#builder_name=.
+
+--- set_builder_name
+
+    See Gtk::Buildable#set_builder_name.
+
+== Properties
+
+--- print-config: Gnome::PrintConfig (Write)
+
+    Printing Configuration to be used
+
+== See Also
+
+== ChangeLog
+
+* 2005-06-09 ((<kou>)): added
+
+- ((<kou>))

@@ -1,0 +1,45 @@
+= class Gtk::HtmlBoxEmbedded
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Gtk::HtmlBox
+        * Gtk::HtmlBoxEmbedded
+
+== Instance Methods
+
+--- descent
+
+     * Returns: self: ((*FIXME*))
+
+--- descent=
+
+     * Returns: self: ((*FIXME*))
+
+--- set_descent
+
+     * Returns: self: ((*FIXME*))
+
+--- set_view
+
+     * Returns: self: ((*FIXME*))
+
+--- set_widget
+
+     * Returns: self: ((*FIXME*))
+
+--- view=
+
+     * Returns: self: ((*FIXME*))
+
+--- widget=
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

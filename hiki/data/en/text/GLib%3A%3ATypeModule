@@ -1,0 +1,36 @@
+= class GLib::TypeModule
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::TypeModule
+
+== Included Modules
+
+  * GLib::TypePlugin
+
+== Instance Methods
+
+--- name
+
+     * Returns: self: ((*FIXME*))
+
+--- name=
+
+     * Returns: self: ((*FIXME*))
+
+--- unuse
+
+     * Returns: self: ((*FIXME*))
+
+--- use
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

@@ -1,0 +1,18 @@
+= Manipulando Linha de Dados
+{{link "tut-treeview-model-add", "tut-treeview-model", "tut-treeview", "tut-treeview-model-retrieve"}}
+
+Adicionar linhas vazias a um armazenador de dados não é muito excitante, então vejamos como podemos adicionar e alterar dados em um armazenador. Isso é tipicamente feito com Gtk::TreeIter#[column]=.
+
+Eis um exemplo onde nós criamos um armazenador que armazena duas strings e um integer em cada linha: 
+
+ # Cria um armazenador para primeiro nome, último nome e ano de nascido
+ liststore = Gtk::ListStore.new(String, String, Integer)
+
+ # Adiciona uma linha vazia ao armazenador de lista.
+ iter = liststore.append
+
+ # Preenche os campos com alguns dados
+ iter[0] = "José"
+ iter[1] = "Silva"
+ iter[2] = 1970
+

@@ -1,0 +1,47 @@
+= module Atk::Selection
+
+== Included Modules
+
+  * GLib::Interface
+
+== Instance Methods
+
+--- add_selection
+
+     * Returns: self: ((*FIXME*))
+
+--- child_selected?
+
+     * Returns: self: ((*FIXME*))
+
+--- clear_selection
+
+     * Returns: self: ((*FIXME*))
+
+--- ref_selection
+
+     * Returns: self: ((*FIXME*))
+
+--- remove_selection
+
+     * Returns: self: ((*FIXME*))
+
+--- select_all_selection
+
+     * Returns: self: ((*FIXME*))
+
+--- selection_count
+
+     * Returns: self: ((*FIXME*))
+
+== Signals
+
+--- selection-changed: self
+
+     * self: Atk::Selection: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

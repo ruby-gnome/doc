@@ -1,0 +1,68 @@
+= Filas ("Queues")
+{{link("tut-gst-threads", nil, "tut-gst", nil)}}
+
+Um Gst::Queue é um elemento de filtro. Filas podem ser usadas para conectar dois elementos de uma maneira que os dados podem ser "buffered".
+
+Um "buffer" que é "sinked" para uma fila não será empurrado automaticamente para o próximo elemento conectado, mas será "buffered". Ele será empurrado para o próximo elemento tão logo um Gst::Pad#pull seja chamado no "pad" de origem da fila.
+
+As filas são usadas principalmente em conjunto com um Gst::Thread para fornecer uma conexão externa para os elementos de thread. Você poderia ter um thread alimentando "buffers" em uma Gst::Queue e outro thread chamando repetidamente Gst::Pad#pull na fila para alimentar seus elementos internos.
+
+Abaixo está uma figura de um decodificador em dois threads. A gente tem um thread (o thread de execução principal) lendo os dados de um arquivo, e outro decodificando os dados. 
+
+{{image_left("en:queue.png")}}
+{{br}}
+
+A implementação de fila de GStreamer padrão tem algumas propriedades que podem ser alteradas usando seus métodos de acesso. Para configurar o número máximo de "buffers" que podem ser colocados na fila para 30, faça:
+
+  queue.max_level = 30
+
+O tocador de MP3 a seguir mostra a você como criar o "pipeline" cima usando um thread e uma fila.
+
+  require 'gst'
+
+  Gst.init
+  unless ARGV.size == 1
+      $stderr.puts "Uso: "{__FILE__} <arquivo mp3>"
+      exit 1
+  end
+
+  playing = true
+
+  # cria um novo thread para guardar os elementos
+  thread = Gst::Thread.new
+
+  # cria um novo "bin" para guardar os elementos
+  bin = Gst::Bin.new
+
+  # cria um leitor de disco
+  filesrc = Gst::ElementFactory.make("filesrc")
+  filesrc.location = ARGV.first
+  filesrc.signal_connect("eos") do
+      puts "tem fim de dados, saindo..."
+      playing = false
+  end
+
+  # um decodificador
+  decoder = Gst::ElementFactory.make("mad")
+
+  # e um "sink" de áudio
+  audiosink = Gst::ElementFactory.make("osssink")
+  
+  # cria uma fila
+  queue = Gst::ElementFactory.make("queue")
+
+  # adiciona objetos ao "bin" principal
+  thread.add(decode, audiosink)
+  bin.add(filesrc, queue, thread)
+
+  # conecta os elementos
+  filesrc >> queue >> decode >> audiosink
+
+  # inicia a tocar
+  bin.play
+
+  while playing do
+      bin.iterate
+  end
+
+  bin.stop

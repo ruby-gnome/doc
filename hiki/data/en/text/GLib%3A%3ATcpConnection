@@ -1,0 +1,54 @@
+= class GLib::TcpConnection
+
+This is the subclass of GLib::SocketConnection that is created for TCP/IP
+sockets. 
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::IOStream
+        * GLib::SocketConnection
+          * GLib::TcpConnection
+
+== Instance Methods
+
+--- graceful_disconnect=(graceful_disconnect)
+
+     Same as Glib::TcpConnection#set_graceful_disconnect.
+
+     * Returns: Graceful_disconnect
+
+--- graceful_disconnect?
+
+     Checks whether or not close does a graceful disconnect.
+
+     * Returns: true if or not close does a graceful disconnect
+
+--- set_graceful_disconnect(graceful_disconnect)
+
+     This enables graceful disconnects on close. A graceful disconnect means
+     that we signal the recieving end that the connection is terminated and
+     wait for it to close the connection before closing the connection.
+
+     A graceful disconnect means that we can be sure that we successfully sent
+     all the outstanding data to the other end, or get an error reported.
+     However, it also means we have to wait for all the data to reach the other
+     side and for it to acknowledge this by closing the socket, which may take
+     a while. For this reason it is disabled by default.
+
+     * graceful_disconnect: true if close does a graceful disconnect
+     * Returns: self
+
+== Properties
+
+--- graceful-disconnect: true or false (Read/Write)
+
+    Whether or not close does a graceful disconnect
+
+== See Also
+
+== ChangeLog
+
+

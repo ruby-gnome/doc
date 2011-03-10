@@ -1,0 +1,66 @@
+= Evénements
+
+Les événements du serveur X Window sont également propagés dans GTK, de la même façon que les signaux dont nous venons de voir.
+
+Voici une liste exhaustive des événements pouvant être interceptés dans GTK:
+
+* event
+* button_press_event
+* button_release_event
+* scroll_event
+* motion_notify_event
+* delete_event
+* destroy_event
+* expose_event
+* key_press_event
+* key_release_event
+* enter_notify_event
+* leave_notify_event
+* configure_event
+* focus_in_event
+* focus_out_event
+* map_event
+* unmap_event
+* property_notify_event
+* selection_clear_event
+* selection_request_event
+* selection_notify_event
+* proximity_in_event
+* proximity_out_event
+* visibility_notify_event
+* client_event
+* no_expose_event
+* window_state_event
+
+Vous pouvez connecter un bloc de code à un signal X11 spécifique exactement de la même manière 
+que nous venons de voir avec les signaux GTK.  Il suffit simplement de procurer un des noms 
+d'événements cités plus haut à la place de "nom du signal":
+
+  GLib::Instantiatable#signal_connect("nom de l'événement") do
+      # Code à éxécuter à la réception de "nom de l'événement".
+  end
+
+Le code de callback peut accepter 2 paramêtres, comme ceci:
+
+  GLib::Instantiatable#signal_connect("nom de l'événement") do |c, e|
+      # ...
+  end
+
+(dans ce cas, c pointera sur le widget, et e sur l'événement).
+
+En fonction de la valeur de retour du bloc de code, GTK décidera si l'événement doit-être propagé ou non:
+
+* vrai (((*true*))), GTK considérera que l'événement a été traité ici, et arrêtera sa propagation;
+* faux (((*false*))), GTK continuera de propager l'événement.
+
+De la même façon, les sélections et le glisser-déposer((-En anglais, ((*drag-and-drop*)).-)) GDK sont aussi disponibles:
+
+* selection_received
+* selection_get
+* drag_begin_event
+* drag_end_event
+* drag_data_delete
+* drag_motion
+* drag_drop
+* drag_data_get
+* drag_data_received

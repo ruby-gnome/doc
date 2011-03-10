@@ -1,0 +1,40 @@
+= Buttons And Toggles
+{{link "tut-gtk2-contwidg-eventbox", "tut-gtk2-btt", "tut-gtk", "tut-gtk2-btt-toggle"}}
+
+
+== Submenues of "Buttons And Toggles" sections
+
+  * ((<Toggle Button|tut-gtk2-btt-toggle>))
+    * ((<Mnemonics|tut-gtk2-btt-toggle#Mnemonics>))
+  * ((<Check Button|tut-gtk2-btt-check>))
+    * ((<Using Stock Items|tut-gtk2-btt-check#Using Stock Items>))
+    * ((<Callbacks And Event Handling|tut-gtk2-btt-check#Callbacks And Event Handling Revisited - Callbacks are closures>))
+  * ((<Radio Button|tut-gtk2-btt-radio>))
+  * ((<** Not a button but vaguely related Button Box|tut-gtk2-btt-bttbox>))
+
+
+== Short Description
+
+In Gtk+ we can find many widgets that contain the word "Button" in their name, but the primary button widgets are just a few. Following is the list of those, and in Gtk documentation you will also find them under the same heading as this article (Buttons and Toggles):
+
+    * Gtk::Button - A widget that creates a signal when clicked on
+    * Gtk::CheckButton - Create widgets with a discrete toggle button
+    * Gtk::RadioButton - A choice from multiple check buttons
+    * Gtk::ToggleButton - Create buttons which retain their state
+    * Gtk::LinkButton - Create buttons bound to a URL
+
+It may be beneficial to look at the button hierarchy:
+
+ GtkButton
+ |   GtkToggleButton
+ |   |   GtkCheckButton
+ |   |   |   GtkRadioButton
+ |   GtkColorButton
+ |   GtkFontButton
+ |   GtkLinkButton
+ |   GtkOptionMenu
+ |   GtkScaleButton
+ |   |   GtkVolumeButton
+
+
+Some (most) of the above items will be explained in the following sections.

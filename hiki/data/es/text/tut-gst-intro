@@ -1,0 +1,14 @@
+= Introduccíon
+{{link(nil, nil, "tut-gst", "tut-gst-init")}}
+
+GStreamer es un entorno de trabajo para la creación de aplicaicones multimedia y de streaming. Su diseño fundamental proviene de la "video pipeline" en el Oregon Graduate Institute, así como de algunas ideas tomadas de DirectShow.
+
+El entorno de desarrollo GStreamer hace posible todo tipo de aplicaciones multimedia y se streaming. GStreamer está diseñado para hacer sencilla la creación de aplicaiones que manejen audio, vídeo o ambos.  El diseño en tuberías está pensado para no necesitar nada por encima de los filtros que apliquemos. Esto hace de GStreamer un buen marco para crear incluso aplicaciones de audio para el usuario final que requieren un buen rendimiento.
+
+Una de las aplicaciones más obvias de GStreamer es construir un reproductor multimedia. GStreamer incluye actualmente componentes para crear un reproductor que soporte una amplia variedad de formatos, incluyendo MP3, Ogg Vorbis, MPEG1, MPEG2, AVI, Quicktime, y muchos más. A pesar de ello, GStreamer es mucho más que otro reproductor multimedia. Sus principales ventajas son que los componentes se pueden mezclar y combinar en diferentes tuberías ('pipelines') haciendo posible escribir aplicaciones de edición de video/audio completamente funcionales.
+
+El entorno de trabajo se basa en plugins que proporcionan los diversos códecs y otras funcionalidades. Los plugins pueden ser enlazados y ordenados en una tubería. Esta tubería define el flujo de datos. Las tuberías también pueden ser editadascon un editor gráfico y guardarlas como XML de forma que las librerías de tubería pueden ser creadas con el mínimo esfuerzo.
+
+La función principal de GStreamer es porporcionar un entrono común para plugins, flujos de datos y manejo de tipos multimedia. También proporciona un APO para escribir aplicaciones usando diversos plugins.
+
+Este documento trata GStreamer desde el punto de vista de un programador de Ruby; describe como escribir una aplicacioón Ruby/Gstreamer usando las librerías y herramientas GStreamer.

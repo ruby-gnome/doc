@@ -1,0 +1,20 @@
+= module Gst::Seek
+
+== Constants
+
+--- FLAG_ACCURATE
+--- FLAG_FLUSH
+--- FLAG_KEY_UNIT
+--- FLAG_NONE
+--- FLAG_SEGMENT
+--- FLAG_SKIP
+--- TYPE_CUR
+--- TYPE_END
+--- TYPE_NONE
+--- TYPE_SET
+
+== See Also
+
+== ChangeLog
+
+

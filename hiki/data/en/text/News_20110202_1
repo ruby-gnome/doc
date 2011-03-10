@@ -1,0 +1,39 @@
+= News (2011-02-02)
+== Ruby-GNOME2 0.90.7 released
+((*Posted by kou on 2011-02-02 (Wed) 12:13:35*))
+
+NOTE: 0.90.x releases are for 1.0.0 major release.
+
+A package fix release of 0.90.6.
+
+== Install
+
+  % sudo gem install gtk2
+
+== Downloads
+
+: ((<ruby-gtk2-0.90.7.tar.gz|URL:http://downloads.sourceforge.net/ruby-gnome2/ruby-gtk2-0.90.7.tar.gz>))
+  The minimum package which includes Ruby/GLib2, Ruby/GIO2, Ruby/ATK, Ruby/GdkPixbuf2, Ruby/Pango, Ruby/GTK2.
+
+: ((<ruby-gnome2-all-0.90.7.tar.gz|URL:http://downloads.sourceforge.net/ruby-gnome2/ruby-gnome2-all-0.90.7.tar.gz>))
+   All of Ruby-GNOME2 libraries.
+
+=== Changes
+
+==== Ruby/GLib2
+
+  * Improvements
+    * force remove "-Wl,--noundefined" linker option because
+      Ruby-GNOME2 packages doesn't support the option.
+      [Dobai-Pataky Bálint, Kouhei Sutou]
+
+==== Ruby/GTK2
+
+  * Improvements
+    * use "MS-Windows" GTK+ theme by default on Windows.
+      [ashbb, Kouhei Sutou]
+
+=== Thanks
+
+  * ashbb
+  * Dobai-Pataky Bálint

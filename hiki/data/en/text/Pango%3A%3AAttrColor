@@ -1,0 +1,20 @@
+= class Pango::AttrColor
+
+== Object Hierarchy
+
+* Object
+  * Data
+    * Pango::Attribute
+      * Pango::AttrColor
+
+== Instance Methods
+
+--- value
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

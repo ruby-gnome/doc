@@ -1,0 +1,38 @@
+= class Gst::Element::Flags
+
+== Object Hierarchy
+
+* Object
+  * GLib::Flags
+    * Gst::Element::Flags
+
+== Instance Methods
+
+--- flag_last?
+
+     * Returns: self: ((*FIXME*))
+
+--- is_sink?
+
+     * Returns: self: ((*FIXME*))
+
+--- locked_state?
+
+     * Returns: self: ((*FIXME*))
+
+--- unparenting?
+
+     * Returns: self: ((*FIXME*))
+
+== Constants
+
+--- FLAG_LAST
+--- IS_SINK
+--- LOCKED_STATE
+--- UNPARENTING
+
+== See Also
+
+== ChangeLog
+
+

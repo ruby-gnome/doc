@@ -1,0 +1,62 @@
+= class GLib::AppLaunchContext
+
+Integrates the launch with the launching application. This is used to handle
+for instance startup notification and launching the new application on the same
+screen as the launching window. 
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::AppLaunchContext
+
+== Class Methods
+
+--- GLib::AppLaunchContext.new
+
+     Creates a new application launch context. This is not normally used,
+     instead you instantiate a subclass of this, such as Gdk::AppLaunchContext.
+
+     * Returns: A new GLib::AppLaunchContext
+
+== Instance Methods
+
+--- get_display(info, *files)
+
+     Gets the display string for the context. This is used to ensure new
+     applications are started on the same display as the launching application,
+     by setting the (({DISPLAY})) environment variable.
+
+     * info: A GLib::AppInfo
+     * files: An Array of GLib::File objects
+     * Returns: A display String for the display
+
+--- get_startup_notify_id(info, *files)
+
+     Initiates startup notification for the application and returns the
+     (({DESKTOP_STARTUP_ID})) for the launched operation, if supported.
+
+     Startup notification IDs are defined in the FreeDesktop.Org Startup
+     Notifications standard. 
+
+     * info: A GLib::AppInfo
+     * files: An Array of GLib::File objects
+     * Returns: A startup notification ID for the application, or nil if not
+       supported
+
+--- launch_failed(startup_notify_id)
+
+     Called when an application has failed to launch, so that it can cancel the
+     application startup notification started in
+     GLib::AppLaunchContext#get_startup_notify_id.
+
+     * startup_notify_id: The startup notification id that was returned by
+     * GLib::AppLaunchContext#get_startup_notify_id
+     * Returns: self
+
+== See Also
+
+== ChangeLog
+
+

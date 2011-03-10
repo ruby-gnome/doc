@@ -1,0 +1,377 @@
+= class Gnome::DruidPageStandard
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::InitiallyUnowned
+        * Gtk::Object
+          * Gtk::Widget
+            * Gtk::Container
+              * Gtk::Bin
+                * Gnome::DruidPage
+                  * Gnome::DruidPageStandard
+
+== Class Methods
+
+--- Gnome::DruidPageStandard.new
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- append_item
+
+     * Returns: self: ((*FIXME*))
+
+--- background=(background)
+
+    Sets the Background color.
+     * background: Background color
+     * Returns: background
+
+--- background_gdk
+
+    Gets the Background color as a Gdk::Color.
+     * Returns: Background color as a Gdk::Color
+
+--- background_gdk=(background_gdk)
+
+    Sets the Background color as a Gdk::Color.
+     * background_gdk: Background color as a Gdk::Color
+     * Returns: background_gdk
+
+--- background_set=(background_set)
+
+    Sets the Background color is set.
+     * background_set: Background color is set
+     * Returns: background_set
+
+--- background_set?
+
+    Gets the Background color is set.
+     * Returns: Background color is set
+
+--- contents_background=(contents_background)
+
+    Sets the Contents Background color.
+     * contents_background: Contents Background color
+     * Returns: contents_background
+
+--- contents_background_gdk
+
+    Gets the Contents Background color as a Gdk::Color.
+     * Returns: Contents Background color as a Gdk::Color
+
+--- contents_background_gdk=(contents_background_gdk)
+
+    Sets the Contents Background color as a Gdk::Color.
+     * contents_background_gdk: Contents Background color as a Gdk::Color
+     * Returns: contents_background_gdk
+
+--- contents_background_set=(contents_background_set)
+
+    Sets the Contents Background color is set.
+     * contents_background_set: Contents Background color is set
+     * Returns: contents_background_set
+
+--- contents_background_set?
+
+    Gets the Contents Background color is set.
+     * Returns: Contents Background color is set
+
+--- logo
+
+    Gets the Logo image.
+     * Returns: Logo image
+
+--- logo=(logo)
+
+    Sets the Logo image.
+     * logo: Logo image
+     * Returns: logo
+
+--- logo_background=(logo_background)
+
+    Sets the Logo Background color.
+     * logo_background: Logo Background color
+     * Returns: logo_background
+
+--- logo_background_gdk
+
+    Gets the Logo Background color as a Gdk::Color.
+     * Returns: Logo Background color as a Gdk::Color
+
+--- logo_background_gdk=(logo_background_gdk)
+
+    Sets the Logo Background color as a Gdk::Color.
+     * logo_background_gdk: Logo Background color as a Gdk::Color
+     * Returns: logo_background_gdk
+
+--- logo_background_set=(logo_background_set)
+
+    Sets the Logo Background color is set.
+     * logo_background_set: Logo Background color is set
+     * Returns: logo_background_set
+
+--- logo_background_set?
+
+    Gets the Logo Background color is set.
+     * Returns: Logo Background color is set
+
+--- ref_accessible
+
+    See Atk::Implementor#ref_accessible.
+
+--- set_background(background)
+
+    Same as background=.
+     * background: Background color
+     * Returns: self
+
+--- set_background_gdk(background_gdk)
+
+    Same as background_gdk=.
+     * background_gdk: Background color as a Gdk::Color
+     * Returns: self
+
+--- set_background_set(background_set)
+
+    Same as background_set=.
+     * background_set: Background color is set
+     * Returns: self
+
+--- set_contents_background(contents_background)
+
+    Same as contents_background=.
+     * contents_background: Contents Background color
+     * Returns: self
+
+--- set_contents_background_gdk(contents_background_gdk)
+
+    Same as contents_background_gdk=.
+     * contents_background_gdk: Contents Background color as a Gdk::Color
+     * Returns: self
+
+--- set_contents_background_set(contents_background_set)
+
+    Same as contents_background_set=.
+     * contents_background_set: Contents Background color is set
+     * Returns: self
+
+--- set_logo(logo)
+
+    Same as logo=.
+     * logo: Logo image
+     * Returns: self
+
+--- set_logo_background(logo_background)
+
+    Same as logo_background=.
+     * logo_background: Logo Background color
+     * Returns: self
+
+--- set_logo_background_gdk(logo_background_gdk)
+
+    Same as logo_background_gdk=.
+     * logo_background_gdk: Logo Background color as a Gdk::Color
+     * Returns: self
+
+--- set_logo_background_set(logo_background_set)
+
+    Same as logo_background_set=.
+     * logo_background_set: Logo Background color is set
+     * Returns: self
+
+--- set_title(title)
+
+    Same as title=.
+     * title: Title of the druid
+     * Returns: self
+
+--- set_title_foreground(title_foreground)
+
+    Same as title_foreground=.
+     * title_foreground: Foreground color of the title
+     * Returns: self
+
+--- set_title_foreground_gdk(title_foreground_gdk)
+
+    Same as title_foreground_gdk=.
+     * title_foreground_gdk: Foreground color of the title as a Gdk::Color
+     * Returns: self
+
+--- set_title_foreground_set(title_foreground_set)
+
+    Same as title_foreground_set=.
+     * title_foreground_set: Foreground color of the title is set
+     * Returns: self
+
+--- set_top_watermark(top_watermark)
+
+    Same as top_watermark=.
+     * top_watermark: Watermark image for the top
+     * Returns: self
+
+--- title
+
+    Gets the Title of the druid.
+     * Returns: Title of the druid
+
+--- title=(title)
+
+    Sets the Title of the druid.
+     * title: Title of the druid
+     * Returns: title
+
+--- title_foreground=(title_foreground)
+
+    Sets the Foreground color of the title.
+     * title_foreground: Foreground color of the title
+     * Returns: title_foreground
+
+--- title_foreground_gdk
+
+    Gets the Foreground color of the title as a Gdk::Color.
+     * Returns: Foreground color of the title as a Gdk::Color
+
+--- title_foreground_gdk=(title_foreground_gdk)
+
+    Sets the Foreground color of the title as a Gdk::Color.
+     * title_foreground_gdk: Foreground color of the title as a Gdk::Color
+     * Returns: title_foreground_gdk
+
+--- title_foreground_set=(title_foreground_set)
+
+    Sets the Foreground color of the title is set.
+     * title_foreground_set: Foreground color of the title is set
+     * Returns: title_foreground_set
+
+--- title_foreground_set?
+
+    Gets the Foreground color of the title is set.
+     * Returns: Foreground color of the title is set
+
+--- top_watermark
+
+    Gets the Watermark image for the top.
+     * Returns: Watermark image for the top
+
+--- top_watermark=(top_watermark)
+
+    Sets the Watermark image for the top.
+     * top_watermark: Watermark image for the top
+     * Returns: top_watermark
+
+--- vbox
+
+     * Returns: self: ((*FIXME*))
+
+--- add_child
+
+    See Gtk::Buildable#add_child.
+
+--- construct_child
+
+    See Gtk::Buildable#construct_child.
+
+--- get_internal_child
+
+    See Gtk::Buildable#get_internal_child.
+
+--- name
+
+    See Gtk::Buildable#name.
+
+--- name=
+
+    See Gtk::Buildable#name=.
+
+--- set_buildable_property
+
+    See Gtk::Buildable#set_buildable_property.
+
+--- set_name
+
+    See Gtk::Buildable#set_name.
+
+--- builder_name
+
+    See Gtk::Buildable#builder_name.
+
+--- builder_name=
+
+    See Gtk::Buildable#builder_name=.
+
+--- set_builder_name
+
+    See Gtk::Buildable#set_builder_name.
+
+== Properties
+
+--- background: String (Write)
+
+    Background color
+
+--- background-gdk: Gdk::Color (Read/Write)
+
+    Background color as a Gdk::Color
+
+--- background-set: true or false (Read/Write)
+
+    Background color is set
+
+--- contents-background: String (Write)
+
+    Contents Background color
+
+--- contents-background-gdk: Gdk::Color (Read/Write)
+
+    Contents Background color as a Gdk::Color
+
+--- contents-background-set: true or false (Read/Write)
+
+    Contents Background color is set
+
+--- logo: Gdk::Pixbuf (Read/Write)
+
+    Logo image
+
+--- logo-background: String (Write)
+
+    Logo Background color
+
+--- logo-background-gdk: Gdk::Color (Read/Write)
+
+    Logo Background color as a Gdk::Color
+
+--- logo-background-set: true or false (Read/Write)
+
+    Logo Background color is set
+
+--- title: String (Read/Write)
+
+    Title of the druid
+
+--- title-foreground: String (Write)
+
+    Foreground color of the title
+
+--- title-foreground-gdk: Gdk::Color (Read/Write)
+
+    Foreground color of the title as a Gdk::Color
+
+--- title-foreground-set: true or false (Read/Write)
+
+    Foreground color of the title is set
+
+--- top-watermark: Gdk::Pixbuf (Read/Write)
+
+    Watermark image for the top
+
+== See Also
+
+== ChangeLog
+
+

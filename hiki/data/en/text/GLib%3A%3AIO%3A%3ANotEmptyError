@@ -1,0 +1,18 @@
+= class GLib::IO::NotEmptyError
+
+The file is a directory that isn’t empty.
+
+== Object Hierarchy
+
+* Object
+  * Exception
+    * StandardError
+      * IOError
+        * GLib::IO::Error
+          * GLib::IO::NotEmptyError
+
+== See Also
+
+== ChangeLog
+
+

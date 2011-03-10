@@ -1,0 +1,38 @@
+= class Gtk::Drag::DestDefaults
+
+== Object Hierarchy
+
+* Object
+  * GLib::Flags
+    * Gtk::Drag::DestDefaults
+
+== Instance Methods
+
+--- all?
+
+     * Returns: self: ((*FIXME*))
+
+--- drop?
+
+     * Returns: self: ((*FIXME*))
+
+--- highlight?
+
+     * Returns: self: ((*FIXME*))
+
+--- motion?
+
+     * Returns: self: ((*FIXME*))
+
+== Constants
+
+--- ALL
+--- DROP
+--- HIGHLIGHT
+--- MOTION
+
+== See Also
+
+== ChangeLog
+
+

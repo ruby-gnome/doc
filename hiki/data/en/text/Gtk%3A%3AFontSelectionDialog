@@ -1,0 +1,136 @@
+= class Gtk::FontSelectionDialog
+
+The Gtk::FontSelectionDialog widget is a dialog box for selecting a font.
+To set the font which is initially selected, use Gtk::FontSelectionDialog#font_name=.
+To get the selected font use Gtk::FontSelectionDialog#font_name.
+To change the text which is shown in the preview area, use Gtk::FontSelectionDialog#preview_text=.
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::InitiallyUnowned
+        * Gtk::Object
+          * Gtk::Widget
+            * Gtk::Container
+              * Gtk::Bin
+                * Gtk::Window
+                  * Gtk::Dialog
+                    * Gtk::FontSelectionDialog
+
+== Class Methods
+
+--- Gtk::FontSelectionDialog.new(title = nil)
+
+    Creates a new Gtk::FontSelectionDialog.
+    * title: the title of the dialog box.
+    * Returns: a new Gtk::FontSelectionDialog.
+
+== Instance Methods
+
+--- font_name
+
+    Gets the currently-selected font name.
+    * Returns: the currently-selected font name, or nil if no font is selected.
+
+--- font_name=(fontname)
+
+    Sets the currently-selected font.
+    * fontname : a fontname. (String)
+    * Returns: fontname.
+
+--- set_font_name(fontname)
+
+    Same as Gtk::FontSelectionDialog#font_name=. ((*Notice*)): This method returns true or false not self.
+    * fontname : a fontname. (String)
+    * Returns : true if the font was found.
+
+--- preview_text
+
+    Gets the text displayed in the preview area.
+    * Returns: the text displayed in the preview area.
+
+--- preview_text=(text)
+
+    Sets the text displayed in the preview area.
+    * text: the text to display in the preview area. (String)
+    * Returns: text
+
+--- set_preview_text(text)
+
+    Same as Gtk::FontSelectionDialog#preview_text=.
+    * text: the text to display in the preview area. (String)
+    * Returns: text
+
+--- apply_button
+
+    Gets the apply button.
+    * Returns: the apply button(Gtk::Button)
+
+--- cancel_button
+
+    Gets the cancel button.
+    * Returns: the cancel button(Gtk::Button)
+
+--- ok_button
+
+    Gets the ok button.
+    * Returns: the ok button(Gtk::Button)
+
+--- font_selection
+
+    Gets the font_selection.
+    * Returns: the font_selection(Gtk::FontSelection)
+
+--- ref_accessible
+
+    See Atk::Implementor#ref_accessible.
+
+--- add_child
+
+    See Gtk::Buildable#add_child.
+
+--- construct_child
+
+    See Gtk::Buildable#construct_child.
+
+--- get_internal_child
+
+    See Gtk::Buildable#get_internal_child.
+
+--- name
+
+    See Gtk::Buildable#name.
+
+--- name=
+
+    See Gtk::Buildable#name=.
+
+--- set_buildable_property
+
+    See Gtk::Buildable#set_buildable_property.
+
+--- set_name
+
+    See Gtk::Buildable#set_name.
+
+--- builder_name
+
+    See Gtk::Buildable#builder_name.
+
+--- builder_name=
+
+    See Gtk::Buildable#builder_name=.
+
+--- set_builder_name
+
+    See Gtk::Buildable#set_builder_name.
+
+== See Also
+
+Gtk::FontSelection - the underlying widget for selecting fonts.
+
+== ChangeLog
+
+- ((<Masao>))

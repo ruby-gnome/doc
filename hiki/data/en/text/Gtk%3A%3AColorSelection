@@ -1,0 +1,234 @@
+= class Gtk::ColorSelection
+
+The Gtk::ColorSelection is a widget that is used to select a color. It consists of a color wheel and number of sliders and entry boxes for color parameters such as hue, saturation, value, red, green, blue, and opacity. It is found on the standard color selection dialog box Gtk::ColorSelectionDialog.
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::InitiallyUnowned
+        * Gtk::Object
+          * Gtk::Widget
+            * Gtk::Container
+              * Gtk::Box
+                * Gtk::VBox
+                  * Gtk::ColorSelection
+
+== Class Methods
+
+--- Gtk::ColorSelection.new
+
+    Creates a new Gtk::ColorSelection.
+    * Returns: a new Gtk::ColorSelection
+
+--- Gtk::ColorSelection.palette_from_string(str)
+
+    Parses aColor.parse.
+    * str: a string encoding a color palette. 
+    * Returns: return an array of Gdk::Color or nil.
+
+ Gtk::ColorSelection.palette_from_string("#6633ff:red:green")
+
+--- Gtk::ColorSelection.palette_to_string(colors)
+
+    Encodes a palette as a string, useful for persistent storage.
+    * colors: an array of colors(Gdk::Color). 
+    * Returns: allocated string encoding the palette.  color palette string; the string is a colon-separated list of color names readable by Gdk::
+
+--- Gtk::ColorSelection.set_change_palette_hook{|screen, colors| ... }
+
+    Installs a global method to be called whenever the user tries to modify the palette in a color selection. This method should save the new palette contents, and update the Gtk::Settings property "gtk-color-palette" so all Gtk::ColorSelection widgets will be modified. ((* Since 2.2 *))
+    * {|screen, colors| ... }: a blog which is installed as a global method.
+      * screen: Gdk::Screen
+      * colors: An Array of Gdk::Color
+    * Returns: self
+
+== Instance Methods
+
+--- has_opacity_control?
+
+    Determines whether the colorsel has an opacity control.
+    * Returns: true if the colorsel has an opacity control. false if it does't.
+
+--- has_opacity_control=(has_opacity)
+
+    Sets the colorsel to use or not use opacity.
+    * has_opacity: true if colorsel can set the opacity, false otherwise. 
+    * Returns: has_opacity
+
+--- set_has_opacity_control(has_opacity)
+
+    Same as Gtk::ColorSelection#has_opacity_control=.
+    * has_opacity: true if colorsel can set the opacity, false otherwise. 
+    * Returns: self
+
+--- has_palette?
+
+    Determines whether the color selector has a color palette.
+    * Returns: true if the selector has a palette. false if it hasn't.
+
+--- has_palette=(has_palette)
+
+    Shows and hides the palette based upon the value of has_palette.
+    * has_palette: true if palette is to be visible, false otherwise. 
+    * Returns: has_palette
+
+--- set_has_palette(has_palette)
+
+    Same as Gtk::ColorSelection#has_palette=.
+    * has_palette: true if palette is to be visible, false otherwise. 
+    * Returns: self
+
+--- current_alpha
+
+    Returns the maximum number of palette colors.
+    * Returns: the maximum number of palette indexes.
+
+--- current_alpha=(alpha)
+
+    Sets the current opacity to be alpha. The first time this is called, it will also set the original opacity to be alpha too.
+    * alpha: an integer between 0 and 65535. 
+    * Returns: alpha
+
+--- set_current_alpha(alpha)
+
+    Same as Gtk::ColorSelection#current_alpha=.
+    * alpha: an integer between 0 and 65535. 
+    * Returns: self
+
+--- current_color
+
+    Gtk::ColorSelection#current_color   gets the current color in the Gtk::ColorSelection widget.
+    * Returns: a Gdk::Color (the current color).
+
+--- current_color=(color)
+
+    Sets the current color to be color. The first time this is called, it will also set the original color to be color too.
+    * color: A Gdk::Color to set the current color with.
+    * Returns: color
+
+--- set_current_color(color)
+
+    Same as Gtk::ColorSelection#current_color=.
+    * color: A Gdk::Color to set the current color with.
+    * Returns: self
+
+--- previous_alpha
+
+    Returns the previous alpha value.
+    * Returns: an integer between 0 and 65535.
+
+--- previous_alpha=(alpha)
+
+    Sets the 'previous' alpha to be alpha. This method should be called with some hesitations, as it might seem confusing to have that alpha change.
+    * alpha: an integer between 0 and 65535. 
+    * Returns: alpha
+
+--- set_previous_alpha(alpha)
+
+    Same as Gtk::ColorSelection#previous_alpha=.
+    * alpha: an integer between 0 and 65535. 
+    * Returns: self
+
+--- previous_color
+
+    Fills color in with the original color value.
+    * Returns: a Gdk::Color to fill in with the original color value.
+
+--- previous_color=(color)
+
+    Sets the 'previous' color to be color. This method should be called with some hesitations, as it might seem confusing to have that color change. Calling Gtk::ColorSelection#current_color= will also set this color the first time it is called.
+    * color: a Gdk::Color to set the previous color with. 
+    * Returns: color
+
+--- set_previous_color(color)
+
+    Same as Gtk::ColorSelection#previous_color=.
+    * color: a Gdk::Color to set the previous color with. 
+    * Returns: self
+
+--- adjusting?
+
+    Gets the current state of the colorsel.
+    * Returns: true if the user is currently dragging a color around, and false if the selection has stopped.
+
+--- ref_accessible
+
+    See Atk::Implementor#ref_accessible.
+
+--- add_child
+
+    See Gtk::Buildable#add_child.
+
+--- construct_child
+
+    See Gtk::Buildable#construct_child.
+
+--- get_internal_child
+
+    See Gtk::Buildable#get_internal_child.
+
+--- name
+
+    See Gtk::Buildable#name.
+
+--- name=
+
+    See Gtk::Buildable#name=.
+
+--- set_buildable_property
+
+    See Gtk::Buildable#set_buildable_property.
+
+--- set_name
+
+    See Gtk::Buildable#set_name.
+
+--- builder_name
+
+    See Gtk::Buildable#builder_name.
+
+--- builder_name=
+
+    See Gtk::Buildable#builder_name=.
+
+--- set_builder_name
+
+    See Gtk::Buildable#set_builder_name.
+
+== Properties
+
+--- current-alpha: Integer (Read/Write)
+
+    The current opacity value (0 fully transparent, 65535 fully opaque)
+    * Allowed values: <= 65535
+    * Default value: 65535
+
+--- current-color: Gdk::Color (Read/Write)
+
+    The current color
+
+--- has-opacity-control: true or false (Read/Write)
+
+    Whether the color selector should allow setting opacity
+    * Default value: false
+
+--- has-palette: true or false (Read/Write)
+
+    Whether a palette should be used
+    * Default value: false
+
+== Signals
+
+--- color-changed: self
+
+    This signal is emitted when the color changes in the Gtk::ColorSelection according to its update policy.
+     * self: Gtk::ColorSelection
+
+== See Also
+
+== ChangeLog
+
+* 2007-02-14 Apply 2.10. - ((<Masao>))
+* 2006-02-01 Apply GTK+-2.2 methods. Revised. - ((<Masao>))

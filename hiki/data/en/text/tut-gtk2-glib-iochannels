@@ -1,0 +1,71 @@
+= GLib Short Introduction
+{{link "tut-gtk2-glib-filemanip", "tut-gtk2-glib", "tut-gtk", "tut-gtk2-txtw" }}
+
+== Input-Output Channels
+
+Beside file utility functions, GLib::IOChannel class also allows you to handle files. However, just like Ruby IO class and its descendants it also works with pipes and sockets. NOTE: you should use pipes only on Unix-like platforms, because on Windows socket domain overlaps with file descriptors.
+Bear in mind that while GLib::IOChannel class makes perfect sense in original "C" GLib implementation, from a programming perspective, I have yet to see one compelling reason why anyone should bother learning yet another perhaps even less powerful IO interface than the one which is part of the programming language they use. Hence, I reluctantly and only for the completeness sake include this section in our tutorial. 
+
+
+=== IOChannels And Files 
+
+Just like with File class in Ruby one way to create a new input/output channel is to use GLib::IOChannel.new(filename, mode = "r"), however, a preferable way most likely will be GLib::IOChannel.open(filename, mode = "r") [ {|channel|...} ]. These methods remove the need for Unix file descriptors, so they can safely be used on non-Unix operating systems. Both methods in fact open a new file or pipe as a GLib::IOChannel, but only the optionally latter accepts the block, and automatically closes the channel when processing in the block is finished.
+
+The following program uses creates two GLib::IOChannel objects. First, a file is created with some initial text, second, a channel then opens the file and reads its contents. Contrast this with the program in the File Manipulation section, where we used the file utility functions.
+
+ #!/usr/bin/env ruby
+ require 'gtk2'
+
+ # Build a filename in the user's home directory.
+ filename = File.expand_path("wk/temp", GLib::home_dir)
+
+ tries = 0
+ begin  # Establish error handling block
+   GLib::IOChannel.open(filename, mode = "a") do |ioc| # Open for appending.
+     ioc.puts("Hello world from GIOC!") # Output to the file.
+   end                                  # Automatically close.
+  
+ rescue => err
+   case err
+     when GLib::FileError # GLib::IOChannel # 
+       print "I/O ERROR (%s): %s\n" %  [err.class, err]
+       case err; when GLib::FileError::ACCES # GLib::IOChannel::FAILED
+         tries +=1
+         sleep 1         # This is the place for a dialogue
+         retry if tries < 3
+         exit(123)
+       end
+   else
+     print "Undefined ERROR: (%s): %s\nCode:%s\nDomain:%s\n" %
+       [err.class, err, err.code, err.domain]
+
+   end
+ else
+   puts "All went well."
+
+ end  # End error handling block-
+
+ if ( ! File.exists?(filename))
+   puts "File [%s] doesn't exist; ... aborting" % filename
+   exit(125)
+ end
+
+ GLib::IOChannel.open(filename, "r") do |ioc|   # Open for reading.
+   ioc.each { |line| puts line }     # Read and print all lines
+ end                                 # Automatically close.
+
+Currently there's trouble in the "error handling" land. This time GLib::IOChannel uses the erors belonging to GLib::FileError. As I have already said unless GLib::IOChannel would offer some improvement or other benefit, it seems it is not worth the troubles it causes to us users as well as developers.
+
+Following is the list of errors from the API documentation:
+
+:IOChannel Errors:
+
+  * GLib::IOChannel::FBIG : -  File too large.
+  * GLib::IOChannel::INVAL : - Invalid argument.
+  * GLib::IOChannel::IO : -    IO Error.
+  * GLib::IOChannel::ISDIR :  - File is a directory.
+  * GLib::IOChannel::NOSPC : -  No space left on device.
+  * GLib::IOChannel::NXIO : -   No such device or address.
+  * GLib::IOChannel::OVERFLOW : - Value too large for defined datatype.
+  * GLib::IOChannel::PIPE : - Broken pipe.
+  * GLib::IOChannel::FAILED : - Some other error.

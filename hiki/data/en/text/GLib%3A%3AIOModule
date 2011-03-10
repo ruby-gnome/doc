@@ -1,0 +1,37 @@
+= class GLib::IOModule
+
+Opaque module base class for extending GIO. 
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::TypeModule
+        * GLib::IOModule
+
+== Class Methods
+
+--- GLib::IOModule.new(filename)
+
+     Creates a new GLib::IOModule that will load the specific shared library
+     when in use. 
+
+     * filename: Filename of the shared library module
+     * Returns: A new GLib::IOModule
+
+== Instance Methods
+
+--- unuse
+
+    See GLib::TypePlugin#unuse.
+
+--- use
+
+    See GLib::TypePlugin#use.
+
+== See Also
+
+== ChangeLog
+
+

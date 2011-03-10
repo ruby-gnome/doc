@@ -1,0 +1,72 @@
+= module GLib::Seekable
+
+GLib::Seekable is included by streams (implementations of GLib::InputStream or
+GLib::OutputStream) that support seeking. 
+
+== Included Modules
+
+  * GLib::Interface
+
+== Known Implementations
+
+     * GLib::FileIOStream
+     * GLib::FileInputStream
+     * GLib::FileOutputStream
+     * GLib::MemoryInputStream
+     * GLib::MemoryOutputStream
+
+== Instance Methods
+
+--- can_seek?
+
+     Tests if the stream supports the Glib::Seekable interface.
+
+     * Returns: true if it can be seeked, false otherwise
+
+--- can_truncate?
+
+     Tests if the stream can be truncated.
+
+     * Returns: true if the stream can be truncated, false otherwise
+
+--- seek(offset, type = GLib::SEEK_CUR, cancellable = nil)
+
+     Seeks in the stream by the given ((|offset|)), modified by ((|type|)).
+
+     If ((|cancellable|)) is not nil, then the operation can be cancelled by
+     triggering the cancellable object from another thread. If the operation
+     was cancelled,  the error GLib::IO::CancelledError will be raised.
+
+     A GLib::IO::Error will be raised if seeking failed.
+
+     * offset: A Fixnum or Bignum
+     * type: A GLib::SeekType
+     * cancellable: Optional GLib::Cancellable object, nil to ignore
+     * Returns: self
+
+--- tell
+
+     Tells the current position within the stream.
+
+     * Returns: The offset from the beginning of the buffer
+
+--- truncate(offset, cancellable = nil)
+
+     Truncates a stream with a given ((|offset|)).
+
+     If ((|cancellable|)) is not nil, then the operation can be cancelled by
+     triggering the cancellable object from another thread. If the operation
+     was cancelled,  the error GLib::IO::CancelledError will be raised. If an
+     operation was partially finished when the operation was cancelled the
+     partial result will be returned, without an error.
+
+     * offset: A Fixnum or Bignum
+     * cancellable: Optional GLib::Cancellable object, nil to ignore
+     * Returns: self
+
+
+== See Also
+
+== ChangeLog
+
+

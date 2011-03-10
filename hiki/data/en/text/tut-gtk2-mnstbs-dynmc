@@ -1,0 +1,232 @@
+= Menus and Toolbars
+{{link "tut-gtk2-mnstbs-tbi", "tut-gtk2-mnstbs", "tut-gtk", "tut-gtk2-mnstbs-csti"}}
+
+== Dynamic Menu Creation
+
+While it is possible to manually create every menu and a toolbar item, doing so can be rather tedious. In order to automate menu and toolbar creation, GTK+ allows you to dynamically create menus from XML files.
+
+=== Creating UI Files
+
+User interface files are constructed in XML format. All of the content has to be contained between <ui> and </ui> tags. One type of dynamic UI that you can create is Gtk::MenuBar with the <menubar> tag shown in the following "menu.ui" listing.
+
+((*menu.ui*))
+ <ui>
+   <menubar name="MenuBar">
+     <menu name="FileMenu" action="File">
+       <menuitem name="FileOpen" action="Open"/>
+       <menuitem name="FileSave" action="Save"/>
+       <separator/>
+       <menuitem name="FileQuit" action="Quit"/>
+     </menu>
+     <menu name="EditMenu" action="Edit">
+       <menuitem name="EditCut" action="Cut"/>
+       <menuitem name="EditCopy" action="Copy"/>
+       <menuitem name="EditPaste" action="Paste"/>
+       <separator/>
+       <menuitem name="EditSelectAll" action="SelectAll"/>
+       <menuitem name="EditDeselect" action="Deselect"/>
+     </menu>
+     <menu name="HelpMenu" action="Help">
+       <menuitem name="HelpContents" action="Contents"/>
+       <menuitem name="HelpAbout" action="About"/>
+     </menu>
+   </menubar>
+ </ui>
+
+
+While not necessary, you should add the optional ((*name*)) attribute to every ((*menubar,*)) ((*menu*)) and ((*menuiten.*)) The "name" attribute can be used to access the actual widget. If name is not specified, ((*action*)) attribute can be used to access the widget.
+
+Each <menubar> can have any number of <menu> children. Both of these tags must be closed according to the XML rules. If a tag does not have a closing tag (e.g., </menuitem>, you must put a forward slash character (/) at the end of the tag. For example, both of the following two lines are acceptable:
+ <menuitem name="FileOpen" action="Open"/>
+ <menuitem name="FileOpen" action="Open"></menuitem>
+
+The ((*action*)) attribute is applied to all elements except top-level widgets and separators. When loading the UI file to associate a Gtk::Action object to each element, Gtk::UIManager uses the action attributes. There exists a relationship between this "action" attribute and Gtk::Action and  Gtk::ActionGroup objects. Most important for us here is how the attributes of Gtk::Action objects (name, stock id, label, accelerator, tool-tip, and callbacks) are initialized and shared with our application. (We will talk about this after we look at the UI files and see the example ruby program using them.)
+
+
+Separators can be placed in a menu with the <separator/> tag. You do not need to provide name or action information for separators. Upon encountering <separator/> tag Gtk::UIManager will insert a generic Gtk::SeparatorMenuItem.
+
+In addition to menu bars, you create toolbars in a UI file with the <toolbar> tag:
+
+((*toolbar.ui*))
+
+ <ui>
+   <toolbar name="Toolbar">
+     <toolitem name="FileOpen" action="Open"/>
+     <toolitem name="FileSave" action="Save"/>
+     <separator/>
+     <toolitem name="EditCut" action="Cut"/>
+     <toolitem name="EditCopy" action="Copy"/>
+     <toolitem name="EditPaste" action="Paste"/>
+     <separator/>
+     <toolitem name="EditSelectAll" action="SelectAll"/>
+     <separator/>
+     <toolitem name="HelpContents" action="Contents"/>
+     <toolitem name="HelpAbout" action="About"/>
+   </toolbar>
+ </ui>
+
+Each toolbar can contain any number of <toolitem> elements. Tool items are specified in the same manner as menu items, with an "action" and an optional "name" attributes. The same names can be used for <toolitem> elements in separate UI files, but names should be uniquely defined if you build both toolbar and menu bar in the same UI file.
+
+However you can use the same "action" for multiple elements. This will cause the elements to be drawn in the same way and to be connected to the same callback proc. For example the same "action" will be used for the "Cut" element in either "menu.ui" and "toolbar.ui" files in our example application (uimanager.rb).
+
+In addition to toolbars and menu bars, it is possible to define pop-up menus in a UI file. Notice that there are repeated  actions in all of the above UI files. Repeating actions allows you to define only a single Gtk::Action object for multiple instances of an "action".
+
+((*popup.ui*))
+ <ui>
+   <popup name="EntryPopup">
+     <menuitem name="EditCut" action="Cut"/>
+     <menuitem name="EditCopy" action="Copy"/>
+     <menuitem name="EditPaste" action="Paste"/>
+     <separator/>
+     <menuitem name="EditSelectAll" action="SelectAll"/>
+     <menuitem name="EditDeselect" action="Deselect"/>
+   </popup>
+ </ui>
+
+
+
+:Note:
+    While the toolbar, menu bar and pop-up menu in our example are split into separate UI files, you can include as many of these widgets as you like in one file. The only requirement is that the whole file content is contained within the <ui> and </ui> tag.
+
+
+== Loading UI Files
+
+After you create your UI files, you need to load them into your application, and retrieve the necessary widgets. To do this, you need to utilize the functionality provided by Gtk::ActionGroup and Gtk::UIManager.
+
+Gtk::ActionGroup is a set of items with name, stock identifier, label, keyboard accelerator, tool-tip, and a callback Proc object. The name of each action can be set to an action parameter from a UI file to associate it with the UI element.
+
+Gtk::UIManager is an object that allows you to dynamically load one or more user interface definitions. It will automatically create an accelerator group based on associated action groups and allow you to reference widgets based on the ((*name*)) parameter from the UI file. Our "uimanager.rb" example program is used to load the menu bar and toolbar from the UI files. The resulting application is shown in the figures below.
+
+{{image_left("mnstbs-dynmc-02.png")}}
+
+Each of the menu and tool items in the application are connected to simple callback Proc objects. Proc objects are like function pointers in C and C++, and can be passed around as variables. We did not focus here so much on the callbacks but rather on demonstration how to implement dynamic loading of menu bars and toolbars from the UI files. Indeed, from the example it should also be obvious how to associate individual items with the appropriate callback objects.
+
+{{br}}
+{{image_right("mnstbs-dynmc-01.png")}}
+
+{{br}}
+
+((*uimanager.rb*))
+
+ #!/usr/bin/env ruby
+ require 'gtk2'
+ 
+ # In an actual application, you would implement these 
+ # callback procs! 
+ open      = Proc.new { puts "open" }
+ save      = Proc.new { puts "save" }
+ quit      = Proc.new { puts "quit" }
+ cut       = Proc.new { puts "cut" }
+ copy      = Proc.new { puts "copy" }
+ paste     = Proc.new { puts "paste" }
+ selectall = Proc.new { puts "selectall" }
+ deselect  = Proc.new { puts "deselect" }
+ help      = Proc.new { puts "help" }
+ about     = Proc.new { puts "about" }
+
+ # name,        stock_id, label, accelerator, tool-tip,    callback
+ entries = [
+   ["File",      nil,     "_File",   nil,      nil,            nil ],
+   ["Open",      Gtk::Stock::OPEN,  nil, nil, "Open a file",   open],
+   ["Save",      Gtk::Stock::SAVE,  nil, nil, "Save the doc.", save],
+   ["Quit",      Gtk::Stock::QUIT,  nil, nil, "Quit the app.", quit],
+   ["Edit",      nil, "_Edit",      nil, nil,                  nil],
+   ["Cut",       Gtk::Stock::CUT,   nil, nil, "Cut the sel.",  cut],
+   ["Copy",      Gtk::Stock::COPY,  nil, nil, "Copy the sel.", copy],
+   ["Paste",     Gtk::Stock::PASTE, nil, nil, "Paste text",    paste],
+   ["SelectAll", Gtk::Stock::SELECT_ALL, nil, nil, "Sel all",  selectall],
+   ["Deselect",  nil, "_Deselect", "<Ctl>d", "Deselect all",   deselect],
+   ["Help",      nil, "_Help",      nil, nil,                  nil],
+   ["Contents",  Gtk::Stock::HELP,  nil, nil, "Get help",      help],
+   ["About",     Gtk::Stock::ABOUT, nil, nil, "More info ...", about]
+ ]
+ window = Gtk::Window.new(Gtk::Window::TOPLEVEL)
+ window.resizable = true
+ window.title = "UI Manager"
+ window.border_width = 10
+ window.signal_connect('delete_event') { Gtk.main_quit }
+ window.set_size_request(250, -1)
+ 
+ # Create a new action group and add all of the actions to it.
+ group = Gtk::ActionGroup.new("MainActionGroup")
+ group.add_actions(entries)
+   
+ # Create a new UI manager and build the menu bar and toolbar.
+ uimanager = Gtk::UIManager.new
+ uimanager.insert_action_group(group, 0);
+ uimanager.add_ui("menu.ui")
+ uimanager.add_ui("toolbar.ui")
+ 
+ # Retrieve the necessary widgets and associate accelerators.
+ menubar = uimanager.get_widget("/MenuBar")
+ toolbar = uimanager.get_widget("/Toolbar")
+ 
+ toolbar.toolbar_style = Gtk::Toolbar::Style::ICONS
+ window.add_accel_group(uimanager.accel_group)
+   
+ vbox = Gtk::VBox.new(false, 0)
+ vbox.pack_start_defaults(menubar)
+ vbox.pack_start_defaults(toolbar)
+ 
+ window.add(vbox)
+ window.show_all
+ Gtk.main
+
+The first thing you need to do when using Gtk::UIManager to dynamically load menus and toolbars is to create an list of action rows containing values for action object properties. Though it is possible to manually create every Gtk::Action, Gtk::ToggleAction, or Gtk::RadioAction objects, there is a much easier way with Gtk::ActionGroup#add_actions(entries). The ((*entries*)) argument is a two dimensional array containing rows of Gtk::Action properties. Gtk::Action object holds information about how a menu or toolbar item is drawn and what callback function should be called, if any, when the item is activated.
+
+:Gtk::Action properties:
+    If you look at the code in our example program (uimanager.rb)  you will notice that we need to provide a two dimensional array of objects to the Gtk::ActionGroup. We do this as follows:
+
+     group.add_actions(entries)
+
+    where each row in ((*entries*)) contains the following objects: 
+    * name (action string in UI file),
+    * stock id,
+    * label with mnemonics,
+    * accelerator - (a string understood by: Gtk::Accelerator.parse(accelerator))
+    * tool-tip
+    * callback proc object
+
+    Notice, that the ((*name*)) above must be the value of the ((*action*)) attribute in the UI file, not the "name" attribute as you may expect! The legal values for accelerator string for example are "<Control>a", "<Shift><Control>b", "F1"... Some of the modifiers can also be abbreviated for instance <Ctl> or <Ctrl>.
+
+Note that all rows in the list must actually be mapped to actions defined in UI files you plan to load with Gtk::UIManager into your application. You can not have a row that does not have a corresponding "action" attribute in these UI files. 
+
+Once the list of actions (rows of action attributes) is created you need to create a new Gtk::ActionGroup that will hold all the information stored in the list of action rows. You assign the actions from your list to just created group with  Gtk::ActionGroup#add_actions(entries). Let's look at the API for this method, where the the list of actions is mentioned explicitly and where the individual elements are explained:
+
+
+--- add_actions(entries)
+
+    This is a convenience method to create a number of actions and add them to the action group. 
+    The "activate" signals of the actions are connected to the procs and their accel paths are set to <Actions>/group-name/action-name.
+    * entries: [[name, stock_id, label, accelerator, tooltip, proc], ... ]: an array of action descriptions
+       * name: The name of the action. 
+       * stock_id: The stock id(the constant value of Gtk::Stock) for the action.
+       * label: The label for the action. This field should typically be marked for translation, see Gtk::ActionGroup#translation_domain=. 
+       * accelerator: The accelerator for the action, in the format understood by Gtk::Accelerator.parse.
+       * tooltip: The tooltip for the action. This field should typically be marked for translation, see Gtk::ActionGroup#translation_domain=. 
+       * proc: The proc object to call when the action is activated. The proc takes 2 parameters. 1st parameter is Gtk::ActionGroup, and 2nd one is Gtk::Action. 
+               (e.g.) prc = Proc.new {|actiongroup, action| ... }
+    * Returns: self
+
+After creating the Gtk::UIManager, associating (inserting) all of the action groups with it, and loading our UI files, the following step retrieves the necessary widgets and associate accelerators:
+
+ menubar = uimanager.get_widget("/MenuBar")
+ toolbar = uimanager.get_widget("/Toolbar")
+
+Gtk::UIManager#get_widget(path) looks up a widget by following the path argument. The path consists of the names specified in the XML description of the UI. separated by '/'. Elements which don't have a name or action attribute in the XML (e.g. <popup>) can be addressed by their XML element name (e.g. "popup"). The root element ("/ui") can be omitted in the path. Note that the widget found by following a path that ends in a <menu> element is the menuitem to which the menu is attached, not the menu itself. For example, if you wanted to access Gtk::Stock::OPEN element you would need to specify:
+
+ my_fopen_stock = uimanager.get_widget('/MenuBar/FileMenu/FileOpen')
+
+=== Additional Action Types
+
+Menu and toolbar items with stock images and keyboard accelerators are great, but what about using toggle buttons and radio buttons with Gtk::UIManager? For this GTK+ provides Gtk::ToggleAction, and Gtk::RadioAction objects, but to add them to the action group you would need Gtk::ActionGroup#add_toggle_actions(entries) and Gtk::ActionGroup#add_radio_actions(entries) {|action, current| ... }. You need to check these objects and the methods out because their argument ((*entries*)) differs slightly from what we've seen so far, and also the Proc objects are handled differently for each the "toggle" and "radio" widgets.
+
+=== Placeholders
+
+When creating UI files, you may want to mark a location in a menu where other menu items can be added at a later time. For instance, if you want to add a list of files to the File menu, you may not know how many files will there be in the list.
+
+For this situation, GTK+ provides the <placeholder> tag. In the following line of code, a <placeholder> tag is defined that can be used to mark the location in the File menu where recent file menu items can be added:
+
+ <placeholder name="FileRecentFiles"/>
+
+Within your application, you can use Gtk:UIManager#add_ui to add new user interface information at the location of the placeholder. 

@@ -1,0 +1,20 @@
+= class Gst::MessageAsyncDone
+
+== Object Hierarchy
+
+* Object
+  * Gst::MiniObject
+    * Gst::Message
+      * Gst::MessageAsyncDone
+
+== Class Methods
+
+--- Gst::MessageAsyncDone.new
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

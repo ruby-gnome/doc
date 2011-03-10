@@ -1,0 +1,27 @@
+= class Gtk::IMMulticontext
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Gtk::IMContext
+        * Gtk::IMMulticontext
+
+== Class Methods
+
+--- Gtk::IMMulticontext.new
+    Creates a new Gtk::IMMulticontext object.
+
+     * Returns: a new Gtk::IMMulticontext object.
+
+== Instance Methods
+
+--- append_menuitems
+    The append_menuitems method adds menuitems for various available input methods to a menu; the menuitems, when selected, will switch the input method for the context and the global default input method.
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog

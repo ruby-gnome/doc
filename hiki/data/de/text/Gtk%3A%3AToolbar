@@ -1,0 +1,276 @@
+= class Gtk::Toolbar
+Gtk::Toolbar is a bar of buttons and other widgets.
+
+A toolbar is created with a call to Gtk::Toolbar.new.
+
+Any of Gtk::ToggleButton, Gtk::RadioButton, or an arbitrary widget can be added to the toolbar with Gtk::Toolbar#append, Gtk::Toolbar#prepend, and Gtk::Toolbar#insert.
+
+Widgets can be visibly grouped by adding gaps between widgets using Gtk::Toolbar#append_space, Gtk::Toolbar#prepend_space, and Gtk::Toolbar#insert_space.
+
+== Object Hierarchy
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Gtk::Object
+        * Gtk::Widget
+          * Gtk::Container
+            * Gtk::Toolbar
+
+== Class Methods
+--- Gtk::Toolbar.new
+    Creates a new toolbar. 
+    * Returns: the newly-created toolbar.  
+
+== Instance Methods
+--- append(text, tooltip_text = nil, tooltip_private_text = nil, icon = nil) { ... }
+    Adds a new button to the end (right or bottom edges) of the given toolbar.
+    * text: give your toolbar button a label. 
+    * tooltip_text: a string that appears when the user holds the mouse over this item. 
+    * tooltip_private_text : used for context-sensitive help about this toolbar element. 
+    * icon: a Gtk::Widget that should be used as the button's icon. 
+    * { ... }: the block to be executed when the button is pressed. 
+    * Returns: the new toolbar item as a Gtk::Widget.  
+--- append(type, widget = nil, text = nil, tooltip_text = nil, tooltip_private_text = nil, icon = nil) { ... }
+    Adds a new element to the end of a toolbar.
+    If type == Gtk::Toolbar::CHILD_WIDGET, widget is used as the new element. If type == Gtk::Toolbar::CHILD_RADIOBUTTON, widget is used to determine the radio group for the new element. In all other cases, widget must be nil.
+    * type: a ((<GtkToolbarChildType|Gtk::Toolbar#GtkToolbarChildType>))
+    * widget: a Gtk::Widget, or nil.
+    * text: give your toolbar button a label. 
+    * tooltip_text: a string that appears when the user holds the mouse over this item. 
+    * tooltip_private_text : used for context-sensitive help about this toolbar element. 
+    * icon: a Gtk::Widget that should be used as the button's icon. 
+    * { ... }: the block to be executed when the button is pressed. 
+    * Returns: the new toolbar item as a Gtk::Widget.  
+--- append(widget, tooltip_text = nil, tooltip_private_text = nil)
+    Adds a widget to the end of the given toolbar.
+    * widget: a Gtk::Widget to add to the toolbar.
+    * tooltip_text: a string that appears when the user holds the mouse over this item. 
+    * tooltip_private_text : used for context-sensitive help about this toolbar element. 
+    * Returns: the new toolbar item as a Gtk::Widget.  
+--- append(stock_id, tooltip_text = nil, tooltip_private_text = nil){ ... }
+    Adds a stock item to the end of the given toolbar. If stock_id is not a known stock item ID, it's added verbatim, except that underscores are used to mark mnemonics (see Gtk::Label.new).
+    * stock_id: The id of the stock item you want to append. (((<Gtk::Stock>))).
+    * tooltip_text: a string that appears when the user holds the mouse over this item. 
+    * tooltip_private_text : used for context-sensitive help about this toolbar element. 
+    * Returns: the new toolbar item as a Gtk::Widget.  
+   
+--- append_space
+    Adds a new space to the end of the toolbar.
+    * Returns: self
+
+--- prepend(text, tooltip_text = nil, tooltip_private_text = nil, icon = nil) { ... }
+    Adds a new button to the beginning (top or left edges) of the given toolbar.
+    * text: give your toolbar button a label. 
+    * tooltip_text: a string that appears when the user holds the mouse over this item. 
+    * tooltip_private_text : used for context-sensitive help about this toolbar element. 
+    * icon: a Gtk::Widget that should be used as the button's icon. 
+    * { ... }: the block to be executed when the button is pressed. 
+    * Returns: the new toolbar item as a Gtk::Widget.  
+--- prepend(type, widget = nil, text = nil, tooltip_text = nil, tooltip_private_text = nil, icon = nil) { ... }
+    Adds a new element to the beginning of a toolbar.
+    If type == Gtk::Toolbar::CHILD_WIDGET, widget is used as the new element. If type == Gtk::Toolbar::CHILD_RADIOBUTTON, widget is used to determine the radio group for the new element. In all other cases, widget must be nil.
+    * type: a ((<GtkToolbarChildType|Gtk::Toolbar#GtkToolbarChildType>))
+    * widget: a Gtk::Widget, or nil.
+    * text: give your toolbar button a label. 
+    * tooltip_text: a string that appears when the user holds the mouse over this item. 
+    * tooltip_private_text : used for context-sensitive help about this toolbar element. 
+    * icon: a Gtk::Widget that should be used as the button's icon. 
+    * { ... }: the block to be executed when the button is pressed. 
+    * Returns: the new toolbar item as a Gtk::Widget.  
+--- prepend(widget, tooltip_text = nil, tooltip_private_text = nil)
+    Adds a widget to the beginning of the given toolbar.
+    * widget: a Gtk::Widget to add to the toolbar.
+    * tooltip_text: a string that appears when the user holds the mouse over this item. 
+    * tooltip_private_text : used for context-sensitive help about this toolbar element. 
+    * Returns: the new toolbar item as a Gtk::Widget.  
+--- prepend(stock_id, tooltip_text = nil, tooltip_private_text = nil){ ... }
+    Adds a stock item to the beginning of the given toolbar. If stock_id is not a known stock item ID, it's added verbatim, except that underscores are used to mark mnemonics (see Gtk::Label.new).
+
+    * stock_id: The id of the stock item you want to prepend. (((<Gtk::Stock>))).
+    * tooltip_text: a string that appears when the user holds the mouse over this item. 
+    * tooltip_private_text : used for context-sensitive help about this toolbar element. 
+    * Returns: the new toolbar item as a Gtk::Widget.  
+   
+--- prepend_space
+    Adds a new space to the beginning of the toolbar.
+    * Returns: self
+
+--- insert(position, text, tooltip_text = nil, tooltip_private_text = nil, icon = nil) { ... }
+    Inserts a new item into the toolbar. You must specify the position in the toolbar where it will be inserted.
+    * position: the number of widgets to insert this item after. 
+    * text: give your toolbar button a label. 
+    * tooltip_text: a string that appears when the user holds the mouse over this item. 
+    * tooltip_private_text : used for context-sensitive help about this toolbar element. 
+    * icon: a Gtk::Widget that should be used as the button's icon. 
+    * { ... }: the block to be executed when the button is pressed. 
+    * Returns: the new toolbar item as a Gtk::Widget.  
+--- insert(position, type, widget = nil, text = nil, tooltip_text = nil, tooltip_private_text = nil, icon = nil) { ... }
+    Inserts a new element in the toolbar at the given position. 
+    If type == Gtk::Toolbar::CHILD_WIDGET, widget is used as the new element. If type == Gtk::Toolbar::CHILD_RADIOBUTTON, widget is used to determine the radio group for the new element. In all other cases, widget must be nil.
+    * position: the number of widgets to insert this item after. 
+    * type: a ((<GtkToolbarChildType|Gtk::Toolbar#GtkToolbarChildType>))
+    * widget: a Gtk::Widget, or nil.
+    * text: give your toolbar button a label. 
+    * tooltip_text: a string that appears when the user holds the mouse over this item. 
+    * tooltip_private_text : used for context-sensitive help about this toolbar element. 
+    * icon: a Gtk::Widget that should be used as the button's icon. 
+    * { ... }: the block to be executed when the button is pressed. 
+    * Returns: the new toolbar item as a Gtk::Widget.  
+--- insert(position, widget, tooltip_text = nil, tooltip_private_text = nil)
+    Inserts a widget in the toolbar at the given position.
+    * position: the number of widgets to insert this item after. 
+    * widget: a Gtk::Widget to add to the toolbar.
+    * tooltip_text: a string that appears when the user holds the mouse over this item. 
+    * tooltip_private_text : used for context-sensitive help about this toolbar element. 
+    * Returns: the new toolbar item as a Gtk::Widget.  
+--- insert(position, stock_id, tooltip_text = nil, tooltip_private_text = nil){ ... }
+    Inserts a stock item at the specified position of the toolbar. If stock_id is not a known stock item ID, it's inserted verbatim, except that underscores are used to mark mnemonics (see Gtk::Label.new).
+    * position: the number of widgets to insert this item after. 
+    * stock_id: The id of the stock item you want to insert. (((<Gtk::Stock>))).
+    * tooltip_text: a string that appears when the user holds the mouse over this item. 
+    * tooltip_private_text : used for context-sensitive help about this toolbar element. 
+    * Returns: the new toolbar item as a Gtk::Widget.  
+   
+--- insert_space(position)
+    Inserts a new space in the toolbar at the specified position.
+    * position: the number of widgets after which a space should be inserted.  
+    * Returns: self
+
+--- remove_space(position)
+    Removes a space from the specified position.
+    * position: the index of the space to remove. 
+    * Returns: self
+
+--- orientation
+    Retrieves the current orientation of the toolbar. See Gtk::Toolbar#orientation=.
+    * Returns: the orientation 
+--- orientation=(orientation)
+    Sets whether a toolbar should appear horizontally or vertically.
+    * orientation: a new ((<Gtk::Orientation|Gtk#Orientation>)).  
+    * Returns: orientation
+--- set_orientation(orientation)
+    Same as Gtk::Toolbar#orientation=.
+    * orientation: a new ((<Gtk::Orientation|Gtk#Orientation>)).  
+    * Returns: self
+
+--- toolbar_style
+    Retrieves whether the toolbar has text, icons, or both . See Gtk::Toolbar#toolbar_style=.
+    * Returns : the current style of toolbar 
+--- toolbar_style=(style)
+    Alters the view of toolbar to display either icons only, text only, or both.
+    * style: the new style for toolbar. (((<GtkToolbarStyle|Gtk::Toolbar#GtkToolbarStyle>)))
+    * Returns: style
+--- set_toolbar_style(style)
+    Same as Gtk::Toolbar#toolbar_style=.
+    * style: the new style for toolbar. (((<GtkToolbarStyle|Gtk::Toolbar#GtkToolbarStyle>)))
+    * Returns: self
+
+--- unset_style
+    Unsets a toolbar style set with Gtk::Toolbar#toolbar_style=, so that user preferences will be used to determine the toolbar style.
+    * Returns: self
+
+--- tooltips?
+    Retrieves whether tooltips are enabled. See Gtk::Toolbar#tooltips=.
+    * Returns: true if tooltips are enabled 
+--- tooltips=(enable)
+    Sets if the tooltips of a toolbar should be active or not.
+    * enable: set to false to disable the tooltips, or true to enable them.  
+    * Returns: enable
+--- set_tooltips(enable)
+    Same as Gtk::Toolbar#tooltips=.
+    * enable: set to false to disable the tooltips, or true to enable them.  
+    * Returns: self
+
+--- icon_size
+    Retrieves the icon size fo the toolbar. See Gtk::Toolbar#icon_size=.
+    * Returns : the current icon size for the icons on the toolbar. 
+--- icon_size=(icon_size)
+    This method sets the size of stock icons in the toolbar. You can call it both before you add the icons and after they've been added. The size you set will override user preferences for the default icon size.
+    * icon_size: The ((<GtkIconSize|Gtk::IconSize#GtkIconSize>)) that stock icons in the toolbar shall have. 
+    * Returns: icon_size
+--- set_icon_size(icon_size)
+    This method sets the size of stock icons in the toolbar. You can call it both before you add the icons and after they've been added. The size you set will override user preferences for the default icon size.
+    * icon_size: The ((<GtkIconSize|Gtk::IconSize#GtkIconSize>)) that stock icons in the toolbar shall have. 
+    * Returns: self
+
+--- unset_icon_size
+    Unsets toolbar icon size set with Gtk::Toolbar#icon_size=, so that user preferences will be used to determine the icon size.
+    * Returns: self
+
+== Constants
+=== GtkToolbarStyle
+Used to customize the appearance of a Gtk::Toolbar. Note that setting the toolbar style overrides the user's preferences for the default toolbar style. 
+--- ICONS
+    Buttons display only icons in the toolbar.
+--- TEXT
+    Buttons display only text labels in the toolbar.
+--- BOTH
+    Buttons display text and icons in the toolbar. 
+--- BOTH_HORIZ
+    Buttons display icons and text alongside each other, rather than vertically stacked
+
+=== GtkToolbarSpaceStyle
+--- SPACE_EMPTY
+--- SPACE_LINE
+
+=== GtkToolbarChildType
+GtkToolbarChildType is used to set the type of new elements that are added to a Gtk::Toolbar.
+--- CHILD_SPACE
+    a space in the style of the toolbar's GtkToolbarSpaceStyle. 
+--- CHILD_BUTTON
+    a Gtk::Button. 
+--- CHILD_TOGGLEBUTTON
+    a Gtk::ToggleButton. 
+--- CHILD_RADIOBUTTON
+    a Gtk::RadioButton. 
+--- CHILD_WIDGET
+    a standard Gtk::Widget.  
+
+== Properties
+--- orientation: Gtk::Orientation (Read/Write)
+    The orientation of the toolbar
+
+--- toolbar-style: Integer (Read/Write)
+    How to draw the toolbar
+
+== Style Properties
+--- button-relief: Gtk::ReliefStyle (Read)
+    Type of bevel around toolbar buttons
+
+--- internal-padding: Integer (Read)
+    Amount of border space between the toolbar shadow and the buttons
+
+--- shadow-type: Gtk::ShadowType (Read)
+    Style of bevel around the toolbar
+
+--- space-size: Integer (Read)
+    Size of spacers
+
+--- space-style: Gtk::Toolbar::SpaceStyle (Read)
+    Whether spacers are vertical lines or just blank
+
+== Child Properties
+--- expand: true or false (Read/Write)
+    Whether the item should receive extra space when the toolbar grows
+
+--- homogeneous: true or false (Read/Write)
+    Whether the item should be the same size as other homogeneous items
+
+== Signals
+--- orientation-changed: self, orientation
+    Should be used if you wish to perform an action when the orientation of a toolbar is changed.
+    * self: the object which received the signal. 
+    * orientation: the new ((<Gtk::Orientation|Gtk#Orientation>)) of the toolbar.  
+
+--- style-changed: self, style
+    Should be used if you wish to perform an action when ever the style of a toolbar is adjusted. For example, this would be a useful signal to connect to if you want to display more items on the toolbar when it is in icon-only mode; each item takes less space on the bar.
+    * self: the object which received the signal. 
+    * style: the new ((<GtkToolbarStyle|Gtk::Toolbar#GtkToolbarStyle>)) of toolbar.  
+
+== See Also
+* Gtk::Tooltips - Change the properties of a Gtk::Toolbar's tooltips.
+
+
+== ChangeLog
+* 2005-05-07 Added Child/Style properties. - ((<Masao>))
+* 2003-05-26 Added - ((<Masao>))

@@ -1,0 +1,93 @@
+= class Gtk::HandleBox
+The Gtk::HandleBox widget allows a portion of a window to be "torn off". It is a bin widget which displays its child and a handle that the user can drag to tear off a separate window (the float window) containing the child widget. A thin ghost is drawn in the original location of the handlebox. By dragging the separate window back to its original location, it can be reattached.
+
+When reattaching, the ghost and float window, must be aligned along one of the edges, the snap edge. This either can be specified by the application programmer explicitely, or Ruby/GTK will pick a reasonable default based on the handle position.
+
+To make detaching and reattaching the handlebox as minimally confusing as possible to the user, it is important to set the snap edge so that the snap edge does not move when the handlebox is deattached. For instance, if the handlebox is packed at the bottom of a Gtk::VBox, then when the handlebox is detached, the bottom edge of the handlebox's allocation will remain fixed as the height of the handlebox shrinks, so the snap edge should be set to Gtk::POS_BOTTOM.
+
+== Object Hierarchy
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Gtk::Object
+        * Gtk::Widget
+          * Gtk::Container
+            * Gtk::Bin
+              * Gtk::HandleBox
+
+== Class Methods
+--- Gtk::HandleBox.new
+    Create a new handle box.
+    * Returns: a new Gtk::HandleBox.  
+
+== Instance Methods
+--- handle_position
+    Gets the handle position of the handle box. See Gtk::HandleBox#handle_position=.
+    * Returns: the current handle position. 
+
+--- handle_position=(pos_type)
+    Sets the side of the handlebox where the handle is drawn.
+    * pos_type: ((<GtkPositionType|Gtk#GtkPositionType>)). the side of the handlebox where the handle should be drawn.
+    * Returns: pos_type
+
+--- set_handle_position(pos_type)
+    Same as Gtk::HandleBox#handle_position=.
+    * pos_type: ((<GtkPositionType|Gtk#GtkPositionType>)). the side of the handlebox where the handle should be drawn.
+    * Returns: self
+
+--- shadow_type
+    Gets the shadow type for the handlebox.
+    * Returns: shadow type(((<GtkShadowType|Gtk#GtkShadowType>)))
+
+--- shadow_type=(shadow_type)
+    Sets the shadow type for the handlebox.
+    * shadow_type: shadow type(((<GtkShadowType|Gtk#GtkShadowType>)))
+    * Returns: shadow_type
+
+--- set_shadow_type(shadow_type)
+    Same as Gtk::HandleBox#shadow=.
+    * shadow_type: shadow type(((<GtkShadowType|Gtk#GtkShadowType>)))
+    * Returns: self
+
+--- snap_edge
+--- snap_edge=(edge)
+    Sets the snap edge of a handlebox. The snap edge is the edge of the detached child that must be aligned with the corresponding edge of the "ghost" left behind when the child was detached to reattach the torn-off window. Usually, the snap edge should be chosen so that it stays in the same place on the screen when the handlebox is torn off.
+    If the snap edge is not set, then an appropriate value will be guessed from the handle position. If the handle position is Gtk::POS_RIGHT or Gtk::POS_LEFT, then the snap edge will be Gtk::POS_TOP, otherwise it will be Gtk::POS_LEFT.
+    * edge: the snap edge, or -1 to unset the value; in which case GTK+ will try to guess an appropriate value in the future.  
+    * Returns: edge
+--- set_snap_edge(edge)
+    Same as Gtk::HandleBox#snap_edge=.
+    * edge: the snap edge, or -1 to unset the value; in which case GTK+ will try to guess an appropriate value in the future.  
+    * Returns: self
+
+--- child_detached?
+    Gets a value indicating whether the handlebox's child is attached or detached.
+    * Returns: true if child is detached.
+
+== Properties
+--- handle-position: Integer (Read/Write)
+    Position of the handle relative to the child widget
+
+--- shadow: Integer (Read/Write)
+    Deprecated property, use shadow_type instead
+
+--- shadow-type: Integer (Read/Write)
+    Appearance of the shadow that surrounds the container
+
+--- snap-edge: Integer (Read/Write)
+    Side of the handlebox that's lined up with the docking point to dock the handlebox
+
+--- snap-edge-set: true or false (Read/Write)
+    Whether to use the value from the snap_edge property or a value derived from handle_position
+
+== Signals
+--- child-attached: self, widget
+     * self: Gtk::HandleBox
+     * widget: the child widget of the handlebox. (this argument provides no extra information and is here only for backwards-compatibility) 
+
+--- child-dettached: self, widget
+     * self: Gtk::HandleBox
+     * widget: the child widget of the handlebox. (this argument provides no extra information and is here only for backwards-compatibility) 
+
+
+((<Masao>))

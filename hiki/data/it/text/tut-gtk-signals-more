@@ -1,0 +1,50 @@
+= Ancora su gestori di segnali
+
+Diamo ancora uno sguardo a GLib::Instantiatable#signal_connect:
+
+  % irb --simple-prompt
+  >> require 'gtk2'
+  => true
+  >> b = Gtk::Button.new("hoge")
+  => #<Gtk::Button:0x40a2a858 ptr=0x8237df8>
+  >> b.signal_connect("clicked") { puts 1 }
+  => 1
+  >> b.signal_connect("clicked") { puts 2 }
+  => 2
+  >>
+
+Notifica il valore integer di ritorno?
+
+Questo è un "tag" che identifica il tuo blocco callback. Come visto sopra, potresti avere tanti callback per segnali e per oggetti quanti ti servono e ognuno sarò eseguito al suo turno, nell'ordine che sono stati allegati.
+
+Ora vogliamo emettere un segnale manualmente. Il metodo GLib::Instantiatable#emit_signal manderà il nome del segnale specifico passato come argomento.
+
+Si può osservare che i nostri blocchi sono chiamati nell'ordine della loro installazione:
+
+  >> b.signal_emit("clicked")
+  1 
+  2
+  => nil
+  >>
+
+GLib::Instantiatable#signal_handler_disconnect è usato per rimuovere un gestore di segnali precedentemente installato, identificato da un tag restituito da GLib::Instantiatable#signal_connect:
+
+  >> b.signal_handler_disconnect 1
+  => #<Gtk::Button:0x40a2a858 ptr=0x8237df8>
+  >> b.signal_emit("clicked")
+  2
+  => nil
+  >>
+
+E' possibile anche disabilitare temporaneamente un blocco di codice callback con GLib::Instantiatable#signal_handler_block e GLib::Instantiatable#signal_handler_unblock:
+
+  >> b.signal_handler_block 2
+  => #<Gtk::Button:0x40a2a858 ptr=0x8237df8>
+  >> b.signal_emit("clicked")
+  => nil
+  >> b.signal_handler_unblock 2
+  => #<Gtk::Button:0x40a2a858 ptr=0x8237df8>
+  >> b.signal_emit("clicked")
+  2
+  => nil
+  >>

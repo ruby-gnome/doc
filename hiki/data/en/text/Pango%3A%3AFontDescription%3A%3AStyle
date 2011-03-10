@@ -1,0 +1,19 @@
+= class Pango::FontDescription::Style
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * Pango::FontDescription::Style
+
+== Constants
+
+--- ITALIC
+--- NORMAL
+--- OBLIQUE
+
+== See Also
+
+== ChangeLog
+
+

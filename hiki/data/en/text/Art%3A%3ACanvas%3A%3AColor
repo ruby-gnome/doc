@@ -1,0 +1,18 @@
+= module Art::Canvas::Color
+
+== Constants
+
+--- BLACK
+--- BLUE
+--- CYAN
+--- GREEN
+--- MAGENTA
+--- RED
+--- WHITE
+--- YELLOW
+
+== See Also
+
+== ChangeLog
+
+

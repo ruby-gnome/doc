@@ -1,0 +1,21 @@
+= class Gtk::HtmlBoxTableRow
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Gtk::HtmlBox
+        * Gtk::HtmlBoxTableRow
+
+== Class Methods
+
+--- Gtk::HtmlBoxTableRow.new
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

@@ -1,0 +1,97 @@
+= The Text View Widget
+{{link "tut-gtk2-txtw", "tut-gtk2-txtw", "tut-gtk", "tut-gtk2-txtw-textview"}}
+
+== Scrolled Windows
+
+Before you can learn about the Gtk::TextView widget, you need to learn about two container widgets called Gtk::ScrolledWindow and Gtk::Viewport. The scrollbars allow a widget to take more space than is visible on the screen. A widget that allows a Gtk::TextView widget to contain documents larger than the screen view is called Gtk::ScrolledWindow. As you know it contains two scrollbars, both of which have an associated Gtk::Adjustment object. The adjustment objects are used to track the current position and range of a scroll bar. Adjustments work "magically" behind the scene and in most situations one does not need to access adjustments directly.
+
+A scrollbar's adjustment holds information about scroll bounds, steps, and its current position.
+
+--- Gtk::Adjustment.new(value, lower, upper, step_inc, page_inc, page_size)
+
+    Creates a new Gtk::Adjustment. All argument types are Float. 
+    * value: the initial value. Value is the current position of the scrollbar between the bonds. This value must always be between the ((*lower*)) and ((*upper*)) values, which are the bounds of the adjustment.
+    * lower: the minimum value (Lower bound of the adjustment). 
+    * upper: the maximum value (Upper bound of the adjustment). 
+    * step_increment: the increment to use to make minor changes to the value. In a Gtk::Scrollbar this increment is used when the mouse is clicked on the arrows at the top and bottom of the scrollbar, to scroll by a small amount.  
+    * page_increment: the increment to use to make major changes to the value. In a Gtk::Scrollbar this increment is used when the mouse is clicked in the trough, to scroll by a large amount.  
+    * page_size: the page size. In a Gtk::Scrollbar this is the size of the area which is currently visible.
+
+
+The following listing demonstrates how to use use scrolled windows and viewports. As the scrollbar is moved, the viewport will scroll as well because adjustments are synchronized. New scrolled windows are created with:   Gtk::ScrolledWindow.new(hadjustment = nil, vadjustment = nil), where the two arguments are the scrolled window's adjustments; these will be shared with the scrollbars and the child widget to keep the bars in sync with the child. Though you could supply adjustments you previously created, usually you do not specify any arguments, hence using the default nil(s) instead, which causes the scrolled window to create them for you. In our example the adjustments are used when viewport is created with Gtk::Viewport.new(horizontal, vertical). The viewport adjustments are initialized with those from the scrolled window, ensuring that both containers will be scrolled at the same time.
+
+One of the decisions you have to make when setting up a scrolled window is to specify when the scrollbars will be visible. This is done with the policy arguments, which take one of the values defined in ((<GtkPolicyType|Gtk#GtkPolicyType>)). Though unlikely, another thing you may wish to set is the placement of the scrollbars. For that you have Gtk::Scrollbar#window_placement=(window_placement) method at your disposal. Lok for the correct argument values at ((<GtkCornerType|Gtk#GtkCornerType>)).
+
+After you have setup a scrolled window you should add a child widget which you intend to slide around with your scrollbars. There are two possible ways of doing this, and the method is chosen based on the type of child widget. If you are adding to your scrolling window a Gtk::TextView, Gtk::TreeView, Gtk::IconView, or Gtk::Layout widget you should use Gtk::Container#add method, since all five of these containers include native scrolling support.
+
+All other GTK+ widgets, such as our Gtk::Table, which do not have scrolling support, you must first add to a Gtk::Viewport widget, and then add the Gtk::Viewport to the scrolled window. Though this longer  method of adding a widget without the scrolling support to the scrolled window, demonstrates precisely what happens, you can use a convenience method Gtk::ScrolledWindow#add_with_viewport, which does exactly what we have just described. Namely, it adds the scrolling ability to a child widget such as for instance to our table, adds it (the table) to the viewport, and finally adds this viewport with the child (table) to the scrolling window.
+
+
+
+
+{{image_right("txtw-scrolledwin.png")}}
+{{br}}
+((*scrolledwindows.rb*))
+
+ #!/usr/bin/env ruby
+ require 'gtk2'
+
+ def button_clicked(b)
+   puts "Button (#{b.label}) pressed"
+ end
+ window = Gtk::Window.new(Gtk::Window::TOPLEVEL)
+ window.resizable = true
+ window.title = "Scrolled Windows & Viewports"
+ window.border_width = 10
+ window.signal_connect('delete_event') { Gtk.main_quit }
+ window.set_size_request(350, 300)
+ table1 = Gtk::Table.new(10, 10, true)
+ table2 = Gtk::Table.new(10, 10, true)
+ table1.row_spacings = 5
+ table2.row_spacings = 5
+ table1.column_spacings = 5
+ table2.column_spacings = 5
+
+ options = Gtk::EXPAND|Gtk::FILL
+ x = 10; y = 10
+ # Pack each table with 100 buttons. */
+ x.times do |i|
+   y.times do |j|
+     b1 = Gtk::Button.new("V:%2d,%2d" % [i,j])
+     b2 = Gtk::Button.new("S:%2d,%2d" % [i,j])
+     b1.signal_connect('clicked') { |w| button_clicked(w) }
+     b2.signal_connect('clicked') { |w| button_clicked(w) }
+              # child, x1,    x2, y1,    y2, x-opt,   y-opt, xpad, ypad
+     table1.attach(b1,  i, i + 1,  j, j + 1, options, options, 0, 0)
+     table2.attach(b2,  i, i + 1,  j, j + 1, options, options, 0, 0)
+   end
+ end
+ # Create a scrolled window and a viewport, each with one table.
+ # Use the adjustments in the scrolled window to synchronize
+ # both containers.
+ swin       = Gtk::ScrolledWindow.new
+ horizontal = swin.hadjustment
+ vertical   = swin.vadjustment
+ viewport   = Gtk::Viewport.new(horizontal, vertical)
+
+ swin.border_width = 5
+ viewport.border_width = 5
+ swin.set_policy(Gtk::POLICY_AUTOMATIC, Gtk::POLICY_ALWAYS)
+
+ swin.add_with_viewport(table1)
+ viewport.add(table2)
+
+ # Pack the widgets into a GtkVBox and then into the window.
+ vbox = Gtk::VBox.new(true, 5)
+ vbox.pack_start_defaults(viewport)
+ vbox.pack_start_defaults(swin)
+
+ window.add(vbox)
+ window.show_all
+ Gtk.main
+
+The scrolled window is simply a container with scrollbars. Neither the container nor the scrollbars perform any action by themselves. Scrolling is handled by the child widget, which is why the child widget must have a scrolling support. As you know by now, most GTK+ widgets originally do not include such a support - we mentioned only five that do. For all others scrolling behaviour is added via portview. Adjustments are also tightly related to scrolling. When you add a child widget with scrolling support to a scrolled window adjustments for both x and y axis are added. If the child does not have scrolling capabilities nothing will happen, which is why widgets without these capabilities are first added  to a viewport. Since viewport does not have any scrollbars the adjustments must be added to it:
+
+ viewport = Gtk::Viewport.new(horizontal, vertical)
+
+The viewport relies entirely on adjustment mechanism to manage its position on the screen. When the scrollbar is dragged or clicked the value in the adjustment is changed and the 'value_changed' signal is emitted, and indeed this action will cause the the child widget to render itself accordingly. The scrollbars in Gtk::ScrolledWindow widget are used as an easy mechanism for adjusting the current value of the adjustment.

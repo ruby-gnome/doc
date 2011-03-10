@@ -1,0 +1,35 @@
+= class GLib::Socket::Type
+
+Flags used when creating a GLib::Socket. Some protocols may not implement all
+the socket types. 
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * GLib::Socket::Type
+
+== Constants
+
+--- DATAGRAM
+
+        Connectionless, unreliable datagram passing (for example, UDP)
+
+--- INVALID
+
+        Type unknown or wrong
+
+--- SEQPACKET
+
+        Reliable connection-based passing of datagrams of fixed maximum length
+        (for example, SCTP)
+
+--- STREAM
+
+        Reliable connection-based byte-streams (for example, TCP)
+
+== See Also
+
+== ChangeLog
+
+

@@ -1,0 +1,278 @@
+= Ruby/GTK API Reference
+
+((<API Index|index-ruby-gtk2>))
+
+== Table of Contents
+
+=== I. GTK+ Overview
+* ((<"GTK+ API Reference"|URL:http://library.gnome.org/devel/gtk/stable/index.html>))
+* ((<Install Guide>))
+* ((<Tutorials|tutorials>))
+
+=== II. GTK+ Core Reference
+* ((<Gtk>)) - General. Library initialization, main event loop, events, Standard Constants and Version Information.
+* Accelerator Groups - Groups of global keyboard accelerators for an entire Gtk::Window
+   * Gtk::AccelGroup
+   * Gtk::AccelKey
+   * Gtk::Accelerator
+* Accelerator Maps - Loadable keyboard accelerator specifications
+   * Gtk::AccelMap
+* Gtk::Clipboard - Storing data on clipboards
+* Gtk::Drag - Drag and Drop. Functions for controlling drag and drop handling
+* Gtk::IconTheme - Looking up icons by name
+   * Gtk::IconInfo
+   * Gtk::IconTheme
+* Gtk::Stock - Stock Items. Prebuilt common menu/toolbar items and corresponding icons
+* Themeable Stock Images - Manipulating stock icons
+   * Gtk::IconSource
+   * Gtk::IconFactory
+   * Gtk::IconSet
+   * Gtk::IconSize
+* Resource Files - Routines for handling resource files
+   * Gtk::RC
+   * Gtk::RcStyle
+* Gtk::Settings - Sharing settings between applications
+* Gtk::BindingSet - Key bindings for individual widgets
+* ((<Gtk::GC>)) - Graphics Contexts. A shared pool of ((<Gdk::GC>)) objects
+* Styles - Functions for drawing widget parts
+   * Gtk::Style
+   * Gtk::Border
+* Selections - Functions for handling inter-process communication via selections
+   * Gtk::TargetList
+   * Gtk::Selection
+   * Gtk::SelectionData
+   
+=== III. GTK+ Widgets and Objects
+* ((<Object Hierarchy|ruby-gtk-object-hierarchy>))
+
+* ((<Widget Gallery|URL:http://library.gnome.org/devel/gtk/stable/ch02.html>)) - Jump to the GTK+ document
+* Windows
+
+  * Gtk::Dialog - Create popup windows
+  * Gtk::Invisible - A widget which is not displayed
+  * Gtk::MessageDialog - A convenient message window
+  * Gtk::Window - Toplevel which can contain other widgets
+  * Gtk::WindowGroup - Limit the effect of grabs
+  * Gtk::AboutDialog - Display information about an application
+  * Gtk::Assistant - A widget used to guide users through multi-step operations 
+
+* Display Widgets
+
+  * Gtk::AccelLabel - A label which displays an accelerator key on the right of the text
+  * Gtk::Image - A widget displaying an image
+  * Gtk::Label - A widget that displays a small to medium amount of text
+  * Gtk::ProgressBar - A widget which indicates progress visually
+  * Gtk::Statusbar - Report messages of minor importance to the user
+  * Gtk::StatusIcon - Display an icon in the system tray 
+
+* Buttons and Toggles
+
+  * Gtk::Button - A widget that creates a signal when clicked on
+  * Gtk::CheckButton - Create widgets with a discrete toggle button
+  * Gtk::RadioButton - A choice from multiple check buttons
+  * Gtk::ToggleButton - Create buttons which retain their state
+  * Gtk::LinkButton - Create buttons bound to a URL 
+
+* Numeric/Text Data Entry
+
+  * Gtk::Entry - A single line text entry field
+  * Gtk::EntryCompletion - Completion functionality for Gtk::Entry
+  * Gtk::HScale - A horizontal slider widget for selecting a value from a range
+  * Gtk::VScale - A vertical slider widget for selecting a value from a range
+  * Gtk::SpinButton - Retrieve an integer or floating-point number from the user
+  * Gtk::Editable - Interface for text-editing widgets
+
+* Multiline Text Editor
+
+  * Text Widget Overview - Overview of Gtk::TextBuffer, Gtk::TextView, and friends
+  * Gtk::TextIter - Text buffer iterator
+  * Gtk::TextMark - A position in the buffer preserved across buffer modifications
+  * Gtk::TextBuffer - Stores attributed text for display in a Gtk::TextView
+  * Gtk::TextTag - A tag that can be applied to text in a Gtk::TextBuffer
+  * Gtk::TextTagTable - Collection of tags that can be used together
+  * Gtk::TextView - Widget that displays a Gtk::TextBuffer
+
+* Tree, List and Icon Grid Widgets
+
+  * Tree and List Widget Overview - Overview of Gtk::TreeModel, Gtk::TreeView, and other associated widgets
+  * Gtk::TreeModel - The tree interface used by Gtk::TreeView
+  * Gtk::TreeSelection - The selection object for Gtk::TreeView
+  * Gtk::TreeViewColumn - A visible column in a Gtk::TreeView widget
+  * Gtk::TreeView - A widget for displaying both trees and lists
+  * Gtk::TreeDragDest, Gtk::TreeDragSource - Interfaces for drag-and-drop support in Gtk::TreeView
+  * Gtk::CellView - A widget displaying a single row of a Gtk::TreeModel
+  * Gtk::IconView - A widget which displays a list of icons in a grid
+  * Gtk::TreeSortable - The interface for sortable models used by Gtk::TreeView
+  * Gtk::TreeModelSort - A Gtk::TreeModel which makes an underlying tree model sortable
+  * Gtk::TreeModelFilter - A Gtk::TreeModel which hides parts of an underlying tree model
+  * Gtk::CellLayout - An interface for packing cells
+  * Gtk::CellRenderer - An object for rendering a single cell on a GdkDrawable
+  * Gtk::CellEditable - Interface for widgets which can are used for editing cells
+  * Gtk::CellRendererAccel - Renders a keyboard accelerator in a cell 
+  * Gtk::CellRendererCombo - Renders a combobox in a cell
+  * Gtk::CellRendererPixbuf - Renders a pixbuf in a cell
+  * Gtk::CellRendererProgress - Renders numbers as progress bars
+  * Gtk::CellRendererSpin - Renders a spin button in a cell 
+  * Gtk::CellRendererText - Renders text in a cell
+  * Gtk::CellRendererToggle - Renders a toggle button in a cell
+  * Gtk::ListStore - A list-like data structure that can be used with the Gtk::TreeView
+  * Gtk::TreeStore - A tree-like data structure that can be used with the Gtk::TreeView
+  * Gtk::TreePath - object for referring to rows within a tree model
+  * Gtk::TreeIter - a reference to a specific node on a specific model
+  * Gtk::TreeRowReference - object that monitors a tree model for changes
+
+* Menus, Combo Box, Toolbar
+
+  * Gtk::ComboBox - A widget used to choose from a list of items
+  * Gtk::ComboBoxEntry - A text entry field with a dropdown list
+  * Gtk::ItemFactory - A factory for menus
+  * Gtk::Menu - A menu widget
+  * Gtk::MenuBar - A subclass widget for Gtk::MenuShell which holds Gtk::MenuItem widgets
+  * Gtk::MenuItem - The widget used for item in menus
+  * Gtk::MenuShell - A base class for menu objects
+  * Gtk::ImageMenuItem - A menu item with an icon
+  * Gtk::RadioMenuItem - A choice from multiple check menu items
+  * Gtk::CheckMenuItem - A menu item with a check box
+  * Gtk::SeparatorMenuItem - A separator used in menus
+  * Gtk::TearoffMenuItem - A menu item used to tear off and reattach its menu
+  * Gtk::Toolbar - Create bars of buttons and other widgets
+  * Gtk::ToolItem - The base class of widgets that can be added to Gtk::Toolbar
+  * Gtk::SeparatorToolItem - A toolbar item that separates groups of other toolbar items
+  * Gtk::ToolButton - A Gtk::ToolItem subclass that displays buttons
+  * Gtk::MenuToolButton - A Gtk::ToolItem containing a button with an additional dropdown menu
+  * Gtk::ToggleToolButton - A Gtk::ToolItem containing a toggle button
+  * Gtk::RadioToolButton - A toolbar item that contains a radio button
+
+* Action-based menus and toolbars
+
+  * Gtk::UIManager - Constructing menus and toolbars from an XML description
+  * Gtk::ActionGroup - A group of actions
+  * Gtk::Action - An action which can be triggered by a menu or toolbar item
+  * Gtk::ToggleAction - An action which can be toggled between two states
+  * Gtk::RadioAction - An action of which only one in a group can be active
+
+* Selectors (File/Font/Color/Input Devices)
+
+  * Gtk::ColorButton - A button to launch a color selection dialog
+  * Gtk::ColorSelection - A widget used to select a color
+  * Gtk::ColorSelectionDialog - A standard dialog box for selecting a color
+  * Gtk::FileSelection - Prompt the user for a file or directory name
+  * Gtk::FileChooser - File chooser interface used by Gtk::FileChooserWidget and Gtk::FileChooserDialog
+  * Gtk::FileChooserButton - A button to launch a file selection dialog
+  * Gtk::FileChooserDialog - A file chooser dialog, suitable for "File/Open" or "File/Save" commands
+  * Gtk::FileChooserWidget - File chooser widget that can be embedded in other widgets
+  * Gtk::FileFilter - A filter for selecting a file subset
+  * Gtk::FontButton - A button to launch a font selection dialog
+  * Gtk::FontSelection - A widget for selecting fonts
+  * Gtk::FontSelectionDialog - A dialog box for selecting fonts
+  * Gtk::InputDialog - Configure devices for the XInput extension
+
+* Layout Containers
+
+  * Gtk::Alignment - A widget which controls the alignment and size of its child
+  * Gtk::AspectFrame - A frame that constrains its child to a particular aspect ratio
+  * Gtk::HBox - A horizontal container box
+  * Gtk::VBox - A vertical container box
+  * Gtk::HButtonBox - A container for arranging buttons horizontally
+  * Gtk::VButtonBox - A container for arranging buttons vertically
+  * Gtk::Fixed - A container which allows you to position widgets at fixed coordinates
+  * Gtk::HPaned - A container with two panes arranged horizontally
+  * Gtk::VPaned - A container with two panes arranged vertically
+  * Gtk::Layout - Infinite scrollable area containing child widgets and/or custom drawing
+  * Gtk::Notebook - A tabbed notebook container
+  * Gtk::Table - Pack widgets in regular patterns
+  * Gtk::Expander - A container which can hide its child
+
+* Ornaments
+
+  * Gtk::Frame - A bin with a decorative frame and optional label
+  * Gtk::HSeparator - A horizontal separator
+  * Gtk::VSeparator - A vertical separator
+
+* Scrolling
+
+  * Gtk::HScrollbar - A horizontal scrollbar
+  * Gtk::VScrollbar - A vertical scrollbar
+  * Gtk::ScrolledWindow - Adds scrollbars to its child widget
+
+* Printing
+
+  * Gtk::PrintOperation - High-level Printing API
+  * Gtk::PrintContext - Encapsulates context for drawing pages
+  * Gtk::PrintSettings - Stores print settings
+  * Gtk::PageSetup - Stores page setup information
+  * Gtk::PaperSize - Support for named paper sizes
+  * Gtk::Printer - Represents a printer
+  * Gtk::PrintJob - Represents a print job
+  * Gtk::PrintUnixDialog - A print dialog
+  * Gtk::PageSetupUnixDialog - A page setup dialog
+
+* Miscellaneous
+
+  * Gtk::Adjustment - A Gtk::Object representing an adjustable bounded value
+  * Gtk::Arrow - Displays an arrow
+  * Gtk::Calendar - Displays a calendar and allows the user to select a date
+  * Gtk::DrawingArea - A widget for custom user interface elements
+  * Gtk::EventBox - A widget used to catch events for widgets which do not have their own window
+  * Gtk::HandleBox - a widget for detachable window portions
+  * Gtk::IMContextSimple - An input method context supporting table-based input methods
+  * Gtk::IMMulticontext - An input method context supporting multiple, loadable input methods
+  * Gtk::SizeGroup - Grouping widgets so they request the same size
+  * Gtk::Tooltip - Add tips to your widgets
+  * Gtk::Viewport - An adapter which makes widgets scrollable
+  * Gtk::Accessible - Accessibility support for widgets
+
+* Abstract Base Classes
+
+  * Gtk::Bin - A container with just one child
+  * Gtk::Box - Base class for box containers
+  * Gtk::ButtonBox - Base class for Gtk::HButtonBox and Gtk::VButtonBox
+  * Gtk::Container - Base class for widgets which contain other widgets
+  * Gtk::Item - Abstract base class for Gtk::MenuItem, Gtk::ListItem and Gtk::TreeItem
+  * Gtk::Misc - Base class for widgets with alignments and padding
+  * Gtk::Object - The base class of the GTK+ type hierarchy
+  * Gtk::Paned - Base class for widgets with two adjustable panes
+  * Gtk::Range - Base class for widgets which visualize an adjustment
+  * Gtk::Scale - Base class for Gtk::HScale and Gtk::VScale
+  * Gtk::Scrollbar - Base class for Gtk::HScrollbar and Gtk::VScrollbar
+  * Gtk::Separator - Base class for Gtk::HSeparator and Gtk::VSeparator
+  * Gtk::Widget - Base class for all widgets
+  * Gtk::IMContext - Base class for input method contexts
+
+* Cross-process Embedding
+
+  * Gtk::Plug - Toplevel for embedding into other processes
+  * Gtk::Socket - Container for widgets from other processes
+
+* Special-purpose features
+
+  * Gtk::Curve - Allows direct editing of a curve
+  * Gtk::GammaCurve - a subclass of Gtk::Curve for editing gamma curves.
+  * Gtk::Ruler - Base class for horizontal or vertical rulers
+  * Gtk::HRuler - A horizontal ruler.
+  * Gtk::VRuler - A vertical ruler.
+
+* Interface builder
+
+  * Gtk::Buildable - Interface for objects that can be built by GtkBuilder
+  * Gtk::Builder - Build an interface from an XML UI definition
+
+* Recently Used Documents
+
+  * Gtk::RecentManager - Managing Recently Used Files
+  * Gtk::RecentChooser - Interface implemented by Gtk::RecentChooserWidget, Gtk::RecentChooserMenu and Gtk::RecentChooserDialog
+  * Gtk::RecentChooserDialog - Displays recently used files in a dialog
+  * Gtk::RecentChooserMenu - Displays recently used files in a menu
+  * Gtk::RecentChooserWidget - Displays recently used files
+  * Gtk::RecentFilter - A filter for selecting a subset of recently used files
+
+
+* Deprecated
+  * See ((<"Status of Ruby/GTK">))
+
+=== V. GTK+ Tools
+* ((<gtk-query-immodules-2.0|URL:http://library.gnome.org/devel/gtk/stable/gtk-query-immodules-2.0.html>)) - Input method module registration utility (Jump to GTK+ document)
+* ((<gtk-update-icon-cache|URL:http://library.gnome.org/devel/gtk/stable/gtk-update-icon-cache.html>)) - Icon theme caching utility (Jump to GTK+ document)
+
+=== VI. Index and Status
+* ((<"Ruby/GTK classes/modules index and documented status"|api-gtk-index>))

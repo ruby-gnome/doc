@@ -1,0 +1,35 @@
+= class Gst::Bus
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Gst::Object
+        * Gst::Bus
+
+== Instance Methods
+
+--- add_watch(priority = G_PRIORITY_DEFAULT, &block)
+
+     Adds a bus watch to the default main context. This block is used to receive asynchronous messages in the main loop.
+     There can only be a single bus watch per bus, you must remove it before you can set a new one.The watch can be removed using GLib::Source.remove or by returning FALSE from block.
+     * priority: priority of the watch. G_PRIORITY_DEFAULT by default.
+     * block: watch block. It is passed two parameters: bus & message. If this block returns FALSE it'll be removed from main loop.
+     * Returns: event source id
+
+== Signals
+
+--- message: self
+
+     * self: Gst::Bus: ((*FIXME*))
+
+--- sync-message: self
+
+     * self: Gst::Bus: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

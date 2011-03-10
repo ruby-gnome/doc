@@ -1,0 +1,16 @@
+= class GLib::InitiallyUnowned
+
+All the fields in the GLib::InitiallyUnowned properties/methods are private to the GLib::InitiallyUnowned implementation and should never be accessed directly.
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::InitiallyUnowned
+
+== See Also
+
+== ChangeLog
+
+*2007-01-30: Added for GTK+-2.10. ((<Masao>))

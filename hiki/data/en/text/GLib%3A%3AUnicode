@@ -1,0 +1,601 @@
+= module GLib::Unicode
+
+== Module Functions
+
+--- GLib::Unicode.canonical_ordering(ucs4)
+
+     Computes the canonical ordering of a string. This
+     rearranges decomposed characters in the string
+     according to their combining classes. See the Unicode
+     manual for more information.
+
+     * ucs4: a UCS-4 encoded String
+     * Returns: the canonical ordering of ((|ucs4|))
+
+--- GLib::Unicode.canonical_decomposition(unichar)
+
+     Computes the canonical decomposition of a Unicode
+     character.
+
+     * unichar: a Unicode character as Integer
+     * Returns: a string of Unicode characters.
+
+== Constants
+
+=== Type
+
+These are the possible character classifications from the Unicode
+specification. See
+((<URL:http://www.unicode.org/Public/UNIDATA/UnicodeData.html>)).
+
+--- CONTROL
+
+      General category "Other, Control" (Cc)
+
+--- FORMAT
+
+      General category "Other, Format" (Cf)
+
+--- UNASSIGNED
+
+      General category "Other, Not Assigned" (Cn)
+
+--- PRIVATE_USE
+
+      General category "Other, Private Use" (Co)
+
+--- SURROGATE
+
+      General category "Other, Surrogate" (Cs)
+
+--- LOWERCASE_LETTER
+
+      General category "Letter, Lowercase" (Ll)
+
+--- MODIFIER_LETTER
+
+      General category "Letter, Modifier" (Lm)
+
+--- OTHER_LETTER
+
+      General category "Letter, Other" (Lo)
+
+--- TITLECASE_LETTER
+
+      General category "Letter, Titlecase" (Lt)
+
+--- UPPERCASE_LETTER
+
+      General category "Letter, Uppercase" (Lu)
+
+--- COMBINING_MARK
+
+      General category "Mark, Spacing Combining" (Mc)
+
+--- ENCLOSING_MARK
+
+      General category "Mark, Enclosing" (Me)
+
+--- NON_SPACING_MARK
+
+      General category "Mark, Nonspacing" (Mn)
+
+--- DECIMAL_NUMBER
+
+      General category "Number, Decimal Digit" (Nd)
+
+--- LETTER_NUMBER
+
+      General category "Number, Letter" (Nl)
+
+--- OTHER_NUMBER
+
+      General category "Number, Other" (No)
+
+--- CONNECT_PUNCTUATION
+
+      General category "Punctuation, Connector" (Pc)
+
+--- DASH_PUNCTUATION
+
+      General category "Punctuation, Dash" (Pd)
+
+--- CLOSE_PUNCTUATION
+
+      General category "Punctuation, Close" (Pe)
+
+--- FINAL_PUNCTUATION
+
+      General category "Punctuation, Final quote" (Pf)
+
+--- INITIAL_PUNCTUATION
+
+      General category "Punctuation, Initial quote" (Pi)
+
+--- OTHER_PUNCTUATION
+
+      General category "Punctuation, Other" (Po)
+
+--- OPEN_PUNCTUATION
+
+      General category "Punctuation, Open" (Ps)
+
+--- CURRENCY_SYMBOL
+
+      General category "Symbol, Currency" (Sc)
+
+--- MODIFIER_SYMBOL
+
+      General category "Symbol, Modifier" (Sk)
+
+--- MATH_SYMBOL
+
+      General category "Symbol, Math" (Sm)
+
+--- OTHER_SYMBOL
+
+      General category "Symbol, Other" (So)
+
+--- LINE_SEPARATOR
+
+      General category "Separator, Line" (Zl)
+
+--- PARAGRAPH_SEPARATOR
+
+      General category "Separator, Paragraph" (Zp)
+
+--- SPACE_SEPARATOR
+
+      General category "Separator, Space" (Zs)
+
+=== BreakType
+
+These are the possible line break classifications. The five
+Hangul types were added in Unicode 4.1, so, has been
+introduced in GLib 2.10. Note that new types may be added in
+the future. Applications should be ready to handle unknown
+values. They may be regarded as
+GLib::Unicode::BreakType::UNKNOWN. See
+((<URL:http://www.unicode.org/unicode/reports/tr14/>)).
+
+--- AFTER
+--- ALPHABETIC
+--- AMBIGUOUS
+--- BEFORE
+--- BEFORE_AND_AFTER
+--- CARRIAGE_RETURN
+--- CLOSE_PUNCTUATION
+--- COMBINING_MARK
+--- COMPLEX_CONTEXT
+--- CONTINGENT
+--- EXCLAMATION
+--- HANGUL_LVT_SYLLABLE
+--- HANGUL_LV_SYLLABLE
+--- HANGUL_L_JAMO
+--- HANGUL_T_JAMO
+--- HANGUL_V_JAMO
+--- HYPHEN
+--- IDEOGRAPHIC
+--- INFIX_SEPARATOR
+--- INSEPARABLE
+--- LINE_FEED
+--- MANDATORY
+--- NEXT_LINE
+--- NON_BREAKING_GLUE
+--- NON_STARTER
+--- NUMERIC
+--- OPEN_PUNCTUATION
+--- POSTFIX
+--- PREFIX
+--- QUOTATION
+--- SPACE
+--- SURROGATE
+--- SYMBOL
+--- UNKNOWN
+--- WORD_JOINER
+--- ZERO_WIDTH_SPACE
+=== Script
+
+The GLib::Unicode::Script enumeration identifies different
+writing systems. The values correspond to the names as
+defined in the Unicode standard. The enumeration has been
+added in GLib 2.14. Note that new types may be added in the
+future.  Applications should be ready to handle unknown
+values. See ((<Unicode Standard Annex 24: Script
+names|URL:http://www.unicode.org/reports/tr24/>)). ((*Since
+2.14*))
+
+--- INVALID_CODE
+
+      a value never returned from GLib::UniChar.get_script
+
+--- COMMON
+
+      a character used by multiple different scripts
+
+--- INHERITED
+
+      a mark glyph that takes its script from the base glyph
+      to which it is attached
+
+--- ARABIC
+
+      Arabic
+
+--- ARMENIAN
+
+      Armenian
+
+--- BENGALI
+
+      Bengali
+
+--- BOPOMOFO
+
+      Bopomofo
+
+--- CHEROKEE
+
+      Cherokee
+
+--- COPTIC
+
+      Coptic
+
+--- CYRILLIC
+
+      Cyrillic
+
+--- DESERET
+
+      Deseret
+
+--- DEVANAGARI
+
+      Devanagari
+
+--- ETHIOPIC
+
+      Ethiopic
+
+--- GEORGIAN
+
+      Georgian
+
+--- GOTHIC
+
+      Gothic
+
+--- GREEK
+
+      Greek
+
+--- GUJARATI
+
+      Gujarati
+
+--- GURMUKHI
+
+      Gurmukhi
+
+--- HAN
+
+      Han
+
+--- HANGUL
+
+      Hangul
+
+--- HEBREW
+
+      Hebrew
+
+--- HIRAGANA
+
+      Hiragana
+
+--- KANNADA
+
+      Kannada
+
+--- KATAKANA
+
+      Katakana
+
+--- KHMER
+
+      Khmer
+
+--- LAO
+
+      Lao
+
+--- LATIN
+
+      Latin
+
+--- MALAYALAM
+
+      Malayalam
+
+--- MONGOLIAN
+
+      Mongolian
+
+--- MYANMAR
+
+      Myanmar
+
+--- OGHAM
+
+      Ogham
+
+--- OLD_ITALIC
+
+      Old Italic
+
+--- ORIYA
+
+      Oriya
+
+--- RUNIC
+
+      Runic
+
+--- SINHALA
+
+      Sinhala
+
+--- SYRIAC
+
+      Syriac
+
+--- TAMIL
+
+      Tamil
+
+--- TELUGU
+
+      Telugu
+
+--- THAANA
+
+      Thaana
+
+--- THAI
+
+      Thai
+
+--- TIBETAN
+
+      Tibetan
+
+--- CANADIAN_ABORIGINAL
+
+      Canadian Aboriginal
+
+--- YI
+
+      Yi
+
+--- TAGALOG
+
+      Tagalog
+
+--- HANUNOO
+
+      Hanunoo
+
+--- BUHID
+
+      Buhid
+
+--- TAGBANWA
+
+      Tagbanwa
+
+--- BRAILLE
+
+      Braille
+
+--- CYPRIOT
+
+      Cypriot
+
+--- LIMBU
+
+      Limbu
+
+--- OSMANYA
+
+      Osmanya
+
+--- SHAVIAN
+
+      Shavian
+
+--- LINEAR_B
+
+      Linear B
+
+--- TAI_LE
+
+      Tai Le
+
+--- UGARITIC
+
+      Ugaritic
+
+--- NEW_TAI_LUE
+
+      New Tai Lue
+
+--- BUGINESE
+
+      Buginese
+
+--- GLAGOLITIC
+
+      Glagolitic
+
+--- TIFINAGH
+
+      Tifinagh
+
+--- SYLOTI_NAGRI
+
+      Syloti Nagri
+
+--- OLD_PERSIAN
+
+      Old Persian
+
+--- KHAROSHTHI
+
+      Kharoshthi
+
+--- UNKNOWN
+
+      an unassigned code point
+
+--- BALINESE
+
+      Balinese
+
+--- CUNEIFORM
+
+      Cuneiform
+
+--- PHOENICIAN
+
+      Phoenician
+
+--- SCRIPT_PHAGS_PA
+
+      Phags-pa
+
+--- NKO
+
+      N'Ko
+
+--- BREAK_AFTER
+--- BREAK_ALPHABETIC
+--- BREAK_AMBIGUOUS
+--- BREAK_BEFORE
+--- BREAK_BEFORE_AND_AFTER
+--- BREAK_CARRIAGE_RETURN
+--- BREAK_CLOSE_PUNCTUATION
+--- BREAK_COMBINING_MARK
+--- BREAK_COMPLEX_CONTEXT
+--- BREAK_CONTINGENT
+--- BREAK_EXCLAMATION
+--- BREAK_HANGUL_LVT_SYLLABLE
+--- BREAK_HANGUL_LV_SYLLABLE
+--- BREAK_HANGUL_L_JAMO
+--- BREAK_HANGUL_T_JAMO
+--- BREAK_HANGUL_V_JAMO
+--- BREAK_HYPHEN
+--- BREAK_IDEOGRAPHIC
+--- BREAK_INFIX_SEPARATOR
+--- BREAK_INSEPARABLE
+--- BREAK_LINE_FEED
+--- BREAK_MANDATORY
+--- BREAK_NEXT_LINE
+--- BREAK_NON_BREAKING_GLUE
+--- BREAK_NON_STARTER
+--- BREAK_NUMERIC
+--- BREAK_OPEN_PUNCTUATION
+--- BREAK_POSTFIX
+--- BREAK_PREFIX
+--- BREAK_QUOTATION
+--- BREAK_SPACE
+--- BREAK_SURROGATE
+--- BREAK_SYMBOL
+--- BREAK_UNKNOWN
+--- BREAK_WORD_JOINER
+--- BREAK_ZERO_WIDTH_SPACE
+--- SCRIPT_ARABIC
+--- SCRIPT_ARMENIAN
+--- SCRIPT_BALINESE
+--- SCRIPT_BENGALI
+--- SCRIPT_BOPOMOFO
+--- SCRIPT_BRAILLE
+--- SCRIPT_BUGINESE
+--- SCRIPT_BUHID
+--- SCRIPT_CANADIAN_ABORIGINAL
+--- SCRIPT_CHEROKEE
+--- SCRIPT_COMMON
+--- SCRIPT_COPTIC
+--- SCRIPT_CUNEIFORM
+--- SCRIPT_CYPRIOT
+--- SCRIPT_CYRILLIC
+--- SCRIPT_DESERET
+--- SCRIPT_DEVANAGARI
+--- SCRIPT_ETHIOPIC
+--- SCRIPT_GEORGIAN
+--- SCRIPT_GLAGOLITIC
+--- SCRIPT_GOTHIC
+--- SCRIPT_GREEK
+--- SCRIPT_GUJARATI
+--- SCRIPT_GURMUKHI
+--- SCRIPT_HAN
+--- SCRIPT_HANGUL
+--- SCRIPT_HANUNOO
+--- SCRIPT_HEBREW
+--- SCRIPT_HIRAGANA
+--- SCRIPT_INHERITED
+--- SCRIPT_INVALID_CODE
+--- SCRIPT_KANNADA
+--- SCRIPT_KATAKANA
+--- SCRIPT_KHAROSHTHI
+--- SCRIPT_KHMER
+--- SCRIPT_LAO
+--- SCRIPT_LATIN
+--- SCRIPT_LIMBU
+--- SCRIPT_LINEAR_B
+--- SCRIPT_MALAYALAM
+--- SCRIPT_MONGOLIAN
+--- SCRIPT_MYANMAR
+--- SCRIPT_NEW_TAI_LUE
+--- SCRIPT_NKO
+--- SCRIPT_OGHAM
+--- SCRIPT_OLD_ITALIC
+--- SCRIPT_OLD_PERSIAN
+--- SCRIPT_ORIYA
+--- SCRIPT_OSMANYA
+--- SCRIPT_PHOENICIAN
+--- SCRIPT_RUNIC
+--- SCRIPT_SHAVIAN
+--- SCRIPT_SINHALA
+--- SCRIPT_SYLOTI_NAGRI
+--- SCRIPT_SYRIAC
+--- SCRIPT_TAGALOG
+--- SCRIPT_TAGBANWA
+--- SCRIPT_TAI_LE
+--- SCRIPT_TAMIL
+--- SCRIPT_TELUGU
+--- SCRIPT_THAANA
+--- SCRIPT_THAI
+--- SCRIPT_TIBETAN
+--- SCRIPT_TIFINAGH
+--- SCRIPT_UGARITIC
+--- SCRIPT_UNKNOWN
+--- SCRIPT_YI
+--- SCRIPT_CARIAN
+--- SCRIPT_CHAM
+--- SCRIPT_KAYAH_LI
+--- SCRIPT_LEPCHA
+--- SCRIPT_LYCIAN
+--- SCRIPT_LYDIAN
+--- SCRIPT_OL_CHIKI
+--- SCRIPT_REJANG
+--- SCRIPT_SAURASHTRA
+--- SCRIPT_SUNDANESE
+--- SCRIPT_VAI
+
+== See Also
+
+== ChangeLog
+
+  * 2006-12-10: merged with GLib::UnicodeBreak and GLib::UnicodeScript. - ((<kou>))
+  * 2006-12-10: moved from GLib. - ((<kou>))

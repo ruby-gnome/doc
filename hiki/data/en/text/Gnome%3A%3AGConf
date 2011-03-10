@@ -1,0 +1,17 @@
+= module Gnome::GConf
+
+== Module Functions
+
+--- Gnome::GConf.get_app_settings_relative
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::GConf.get_gnome_libs_settings_relative
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

@@ -1,0 +1,287 @@
+= class GLib::DataInputStream
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::InputStream
+        * GLib::FilterInputStream
+          * GLib::BufferedInputStream
+            * GLib::DataInputStream
+
+== Class Methods
+
+--- GLib::DataInputStream.new(base_stream, byte_order = GLib::DATA_STREAM_BYTE_ORDER_BIG_ENDIAN, newline_type = GLib::DATA_STREAM_NEWLINE_TYPE_LF)
+
+     Creates a new data input stream for ((|base_stream|)) with the given
+     ((|byte_order|)) and ((|newline_type|))
+
+     * base_stream: A GLib::InputStream
+     * Returns: a new GLib::DataInputStream
+
+== Instance Methods
+
+--- byte_order
+
+    Gets the byte order.
+
+     * Returns: The byte order as a GLib::DataStreamByteOrder
+
+--- byte_order=(byte_order)
+
+     Same as GLib::DataInputStream#set_byte_order.
+
+     * Returns: ((|byte_order|))
+
+--- each{ |line| … }
+
+     Same as GLib::DataInputStream#each_line.
+
+--- each_async(io_priority = GLib::PRIORITY_DEFAULT, cancellable = nil){ |line| … }
+
+     Same as GLib::DataInputStream#each_line_async.
+
+--- each_line{ |line … }
+
+     Yield each line in the input stream.
+
+     * line: A String containing the line of read data
+     * Returns: self
+
+--- each_line_async
+
+     Yield each line in the input stream, asynchronously.
+
+     * io_priority: The I/O priority of the request
+     * cancellable: Optional GLib::Cancellable object, nil to ignore
+     * line: A String containing the line of read data
+     * Returns: self
+
+--- newline_type
+
+     Gets the accepted types of line ending.
+
+     * Returns: The accepted types of line ending as a
+       GLib::DataStreamNewlineType
+
+--- newline_type=(newline_type)
+
+     Same as GLib::DataStreamNewlineType#set_newline_type.
+
+--- read_byte(cancellable = nil)
+
+     Reads an unsigned 8-bit/1-byte value from the stream.
+
+     A GLib::IO::Error is raised if a 8-bit value can’t be read.
+
+     * cancellable: Optional GLib::Cancellable object, nil to ignore
+     * Returns: An unsigned 8-bit/1-byte value read from the stream
+
+--- read_int16(cancellable = nil)
+
+     Reads a 16-bit/2-byte value from the stream.
+
+     In order to get the correct byte order for this read operation, see
+     GLib::DataInputStream#byte_order and GLib::DataInputStream#byte_order=.
+
+     A GLib::IO::Error is raised if a 16-bit value can’t be read.
+
+     * stream: A given GLib::DataInputStream
+     * cancellable: Optional GLib::Cancellable object, nil to ignore
+     * Returns: A signed 16-bit/2-byte value read from stream
+
+--- read_int32(cancellable = nil)
+
+     Reads a signed 32-bit/4-byte value from the stream.
+
+     In order to get the correct byte order for this read operation,
+     see GLib::DataInputStream#byte_order and GLib::DataInputStream#byte_order=.
+
+     If ((|cancellable|)) is not nil, then the operation can be cancelled by
+     triggering the cancellable object from another thread. If the operation
+     was cancelled, GLib::IO::CancelledError will be raised.
+
+     A GLib::IO::Error is raised if a 32-bit value can’t be read.
+
+     * stream: A given GLib::DataInputStream
+     * cancellable: Optional GLib::Cancellable object, nil to ignore
+     * Returns: A signed 32-bit/4-byte value read from the stream
+
+--- read_int64(cancellable = nil)
+
+     Reads a 64-bit/8-byte value from ((|stream|)).
+
+     In order to get the correct byte order for this read operation, see
+     GLib::DataInputStream#byte_order and GLib::DataInputStream#byte_order=.
+
+     If ((|cancellable|)) is not nil, then the operation can be cancelled by
+     triggering the cancellable object from another thread. If the operation
+     was cancelled, GLib::IO::CancelledError will be raised.
+
+     A GLib::IO::Error is raised if a 64-bit value can’t be read.
+
+     * stream: A given GLib::DataInputStream
+     * cancellable: Optional GLib::Cancellable object, nil to ignore
+     * Returns: A signed 64-bit/8-byte value read from stream
+
+--- read_line(cancellable = nil)
+
+     Reads a line from the data input stream.
+
+     If ((|cancellable|)) is not nil, then the operation can be cancelled by
+     triggering the cancellable object from another thread. If the operation
+     was cancelled, GLib::IO::CancelledError will be raised.
+
+     A GLib::IO::Error is raised if a line can’t be read.
+
+     * cancellable: Optional GLib::Cancellable object, nil to ignore
+     * Returns: A String with the line that was read in (without the newlines),
+       or nil if there’s no content to read
+
+--- read_line_async(io_priority = GLib::PRIORITY_DEFAULT, cancellable = nil){ |result| … }
+
+     The asynchronous version of GLib::DataInputStream#read_line.  It is an
+     error to have two outstanding calls to this function.
+
+     When the operation is finished, a GLib::AsyncResult will be yielded.  You
+     can then call GLib::DataInputStream#read_line_finish to get the result of
+     the operation.
+
+     Since 2.20
+
+     * io_priority: The I/O priority of the request
+     * cancellable: Optional GLib::Cancellable object, nil to ignore
+     * result: A GLib::AsyncResult
+     * Returns: self
+
+--- read_line_finish(result, length)
+
+     Finish an asynchronous call started by
+     GLib::DataInputStream#read_line_async.
+
+     A GLib::IO::Error is raised if a line couldn’t be read.
+
+     Since 2.20
+
+     * result: The GLib::AsyncResult that was provided to the callback
+     * Returns: A String with the line that was read in (without the newlines),
+       or nil if there’s no content to read
+
+--- read_uint16(cancellable = nil)
+
+     Reads an unsigned 16-bit/2-byte value from ((|stream|)).
+
+     In order to get the correct byte order for this read operation, see
+     GLib::DataInputStream#byte_order and GLib::DataInputStream#byte_order=.
+
+     A GLib::IO::Error is raised if a 16-bit value can’t be read.
+
+     * cancellable: Optional GLib::Cancellable object, nil to ignore
+     * Returns: An unsigned 16-bit/2-byte value read from the stream
+
+--- read_uint32(cancellable = nil)
+
+     Reads an unsigned 32-bit/4-byte value from ((|stream|)).
+
+     In order to get the correct byte order for this read operation, see
+     GLib::DataInputStream#byte_order and GLib::DataInputStream#byte_order=.
+
+     If ((|cancellable|)) is not nil, then the operation can be cancelled by
+     triggering the cancellable object from another thread. If the operation
+     was cancelled, GLib::IO::CancelledError will be raised.
+
+     A GLib::IO::Error is raised if a 32-bit value can’t be read.
+
+     * cancellable: Optional GLib::Cancellable object, nil to ignore
+     * Returns: An unsigned 32-bit/4-byte value read from the stream
+
+--- read_uint64(cancellable = nil)
+
+     Reads an unsigned 64-bit/8-byte value from ((|stream|)).
+
+     In order to get the correct byte order for this read operation,
+     see GLib::DataInputStream#byte_order.
+
+     If ((|cancellable|)) is not nil, then the operation can be cancelled by
+     triggering the cancellable object from another thread. If the operation
+     was cancelled, GLib::IO::CancelledError will be raised.
+
+     A GLib::IO::Error is raised if a 64-bit value can’t be read.
+
+     * cancellable: Optional GLib::Cancellable object, nil to ignore
+     * Returns: An unsigned 64-bit/8-byte read from the stream
+
+--- read_upto(stop_chars, cancellable = nil)
+
+     Reads a String from the data input stream, up to, but not including, the
+     first occurrence of any of the stop characters.
+
+
+     * stop_chars: Characters to terminate the read
+     * cancellable: Optional GLib::Cancellable object, nil to ignore
+     * Returns: A String with the data that was read before encountering
+       any of the stop characters
+
+--- read_upto_async(stop_chars, io_priority = GLib::PRIORITY_DEFAULT, cancellable = nil){ |result| … }
+
+     The asynchronous version of GLib::DataInputStream#read_upto.  It is an
+     error to have two outstanding calls to this function.
+
+     When the operation is finished, a GLib::AsyncResult will be yielded. You
+     can then call GLib::DataInputStream#read_upto_finish to get the result of
+     the operation.
+
+     Since 2.20
+
+     * stop_chars: Characters to terminate the read
+     * io_priority: The I/O priority of the request
+     * cancellable: Optional GLib::Cancellable object, nil to ignore
+     * result: A GLib::AsyncResult
+     * Returns: self
+
+--- read_upto_finish(result, length)
+
+     Finish an asynchronous call started by
+     GLib::DataInputStream#read_upto_async.
+
+     Since 2.20
+
+     * result: The GLib::AsyncResult that was provided to the callback
+     * Returns: A String with the data that was read before encountering
+       any of the stop characters
+
+--- set_byte_order(byte_order)
+
+     Sets the byte order.
+
+     * byte_order: The GLib::DataStreamByteOrder
+     * Returns: self
+
+--- set_newline_type(newline_type)
+
+     Sets the newline type.
+
+     * newline_type: The accepted types of line ending as a
+       GLib::DataStreamNewlineType
+     * Returns: self
+
+== Properties
+
+--- byte-order: GLib::DataStreamByteOrder (Read/Write)
+
+    The byte order
+
+    Default value: GLib::DATA_STREAM_BYTE_ORDER_BIG_ENDIAN
+
+--- newline-type: GLib::DataStreamNewlineType (Read/Write)
+
+    The accepted types of line ending
+
+    Default value: GLib::DATA_STREAM_NEWLINE_TYPE_LF
+
+== See Also
+
+== ChangeLog
+
+

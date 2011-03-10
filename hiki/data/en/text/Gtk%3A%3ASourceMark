@@ -1,0 +1,42 @@
+= class Gtk::SourceMark
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Gtk::TextMark
+        * Gtk::SourceMark
+
+== Class Methods
+
+--- Gtk::SourceMark.new
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- category
+
+    Gets the mark category.
+     * Returns: The mark category
+
+--- next
+
+     * Returns: self: ((*FIXME*))
+
+--- prev
+
+     * Returns: self: ((*FIXME*))
+
+== Properties
+
+--- category: String (Read/Write)
+
+    The mark category
+
+== See Also
+
+== ChangeLog
+
+

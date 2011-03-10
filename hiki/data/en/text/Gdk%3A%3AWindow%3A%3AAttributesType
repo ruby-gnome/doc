@@ -1,0 +1,63 @@
+= class Gdk::Window::AttributesType
+
+== Object Hierarchy
+
+* Object
+  * GLib::Flags
+    * Gdk::Window::AttributesType
+
+== Instance Methods
+
+--- colormap?
+
+     * Returns: self: ((*FIXME*))
+
+--- cursor?
+
+     * Returns: self: ((*FIXME*))
+
+--- noredir?
+
+     * Returns: self: ((*FIXME*))
+
+--- title?
+
+     * Returns: self: ((*FIXME*))
+
+--- type_hint?
+
+     * Returns: self: ((*FIXME*))
+
+--- visual?
+
+     * Returns: self: ((*FIXME*))
+
+--- wmclass?
+
+     * Returns: self: ((*FIXME*))
+
+--- x?
+
+     * Returns: self: ((*FIXME*))
+
+--- y?
+
+     * Returns: self: ((*FIXME*))
+
+== Constants
+
+--- COLORMAP
+--- CURSOR
+--- NOREDIR
+--- TITLE
+--- TYPE_HINT
+--- VISUAL
+--- WMCLASS
+--- X
+--- Y
+
+== See Also
+
+== ChangeLog
+
+

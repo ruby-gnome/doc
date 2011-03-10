@@ -1,0 +1,7 @@
+= Status of Ruby/GtkTrayIcon
+
+This is a Ruby wrapper to the EggTrayIcon class, which is going to be deprecated when GTK+/GDK will feature the same thing.
+
+{{status "Ruby/GtkSourceView", "
+Tray widget|Gtk::TrayIcon|EggTrayIcon|O
+"}}

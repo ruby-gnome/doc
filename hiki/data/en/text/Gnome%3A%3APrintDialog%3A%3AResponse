@@ -1,0 +1,19 @@
+= class Gnome::PrintDialog::Response
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * Gnome::PrintDialog::Response
+
+== Constants
+
+--- CANCEL
+--- PREVIEW
+--- PRINT
+
+== See Also
+
+== ChangeLog
+
+

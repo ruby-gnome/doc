@@ -1,0 +1,38 @@
+= class Gst::Index::AssocFlags
+
+== Object Hierarchy
+
+* Object
+  * GLib::Flags
+    * Gst::Index::AssocFlags
+
+== Instance Methods
+
+--- delta_unit?
+
+     * Returns: self: ((*FIXME*))
+
+--- key_unit?
+
+     * Returns: self: ((*FIXME*))
+
+--- last?
+
+     * Returns: self: ((*FIXME*))
+
+--- none?
+
+     * Returns: self: ((*FIXME*))
+
+== Constants
+
+--- DELTA_UNIT
+--- KEY_UNIT
+--- LAST
+--- NONE
+
+== See Also
+
+== ChangeLog
+
+

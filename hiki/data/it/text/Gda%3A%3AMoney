@@ -1,0 +1,17 @@
+= class Gda::Money
+This structure symbolizes a amount of money associated with a currency,
+via two fields: 'currency', and 'amount'.
+
+	euro = Gda::Money.new
+	euro.currency = 1.5
+	euro.amount = 100
+
+== Object Hierarchy
+* Object
+  * Struct
+    * Gda::Money
+
+== See Also
+((<Gda>)).
+
+- ((<lrz>))

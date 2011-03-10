@@ -1,0 +1,53 @@
+= Sokoban
+This is a sample for Ruby/GnomeCanvas2, Ruby/GConf2 and Ruby/GTK2.
+
+== What's Sokoban?
+Sokoban is a traditional puzzle game.
+
+The rule is:
+Push all ruby stones into the storage(cyan area).
+You can push a ruby stone only.
+
+See ((<URL:http://www.cs.ualberta.ca/~games/Sokoban/>)) for more details.
+
+The stage data is from ((<xsokoban|URL:http://www.cs.cornell.edu/andru/xsokoban.html>)).
+
+== Download
+{{attach_anchor("sokoban.tar.gz")}}
+
+== Requirements
+Developed environments are:
+* ruby 1.8.0 (2003-06-10) [i686-linux]
+* Ruby-GNOME2-0.5.0
+* libart_lgpl-2.3.12
+
+The libart_lgpl-2.3.11 may crush sokoban.
+
+(RedHat9 use this version of libart_lgpl)
+
+{{image_right "sokoban-20030915.png"}}
+
+== Usage
+$ ruby sokoban.rb
+
+== License
+Ruby's
+
+== Author
+((<Masao>))
+
+{{br}}
+=== Changelog
+:2006-10-22
+ Improved "Undo" by Dmitri Priimak.Code cleanup.
+
+:2003-09-15
+ typo fixed
+:2003-09-08
+ Fix a bug to handle arrow keys. This problem appears after Ruby-GNOME2-0.7.0.
+:2003-06-16
+ Add Continue stage automatically using Ruby/GConf.
+:2003-06-15
+ Add Undo(one time only per a moving)
+:2003-06-14
+ Initial release

@@ -1,0 +1,16 @@
+= Plugins
+{{link("tut-gst-elements-properties", nil, "tut-gst", "tut-gst-pads-elem")}}
+
+Um plugin é uma biblioteca compartilhada que deve implementar uma função, plugin_init, que cria todas as fábricas de elemento e registra todas as definições de tipo contidas no plugin. Sem essa função, um plugin não pode ser registrado.
+
+Os plugins são mantidos no sistema de plugin. Como opção, as definições de tipo e as fábricas de elemento podem ser salvas em uma representação de XML, assim o sistema de plugin não tem que carregar todos os plugins disponíveis com a finalidade de saber as suas definições.
+
+Atualmente os plugins tem que ser escritos em C. Você não pode criar plugins de GStreamer em Ruby, mas você ainda pode acessar os plugins existentes.
+
+Você pode perguntar por uma lista de plugins disponíveis com o método Gst::Registry.plugins ou Gst::Registry.each_plugin, como mostra este exemplo:
+
+  Gst::Registry.each_plugin do |plugin|
+    puts "plugin: " + plugin.name
+  end
+
+Você também pode conseguir mais informações usando métodos como Gst::Plugin#filename, Gst::Plugin#description, Gst::Plugin#major_version, Gst::Plugin#minor_version, Gst::Plugin#license, etc...

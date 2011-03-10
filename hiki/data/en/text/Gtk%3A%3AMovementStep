@@ -1,0 +1,26 @@
+= class Gtk::MovementStep
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * Gtk::MovementStep
+
+== Constants
+
+--- BUFFER_ENDS
+--- DISPLAY_LINES
+--- DISPLAY_LINE_ENDS
+--- HORIZONTAL_PAGES
+--- LOGICAL_POSITIONS
+--- PAGES
+--- PARAGRAPHS
+--- PARAGRAPH_ENDS
+--- VISUAL_POSITIONS
+--- WORDS
+
+== See Also
+
+== ChangeLog
+
+

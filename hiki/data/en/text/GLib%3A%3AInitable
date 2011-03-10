@@ -1,0 +1,47 @@
+= module GLib::Initable
+
+GLib::Initable is implemented by objects that can fail during initialization.
+If an object implements this interface the GLib::Initable#init function must be
+called as the first thing after construction. If Glib::Initable#init isn’t
+called, or if it raises an error, all further operations on the object should
+fail, generally with a GLib::NotInitializedError.
+
+== Included Modules
+
+  * GLib::Interface
+
+== Instance Methods
+
+--- init(cancellable = nil)
+
+     Initializes the object implementing the interface. This must be done
+     before any real use of the object after initial construction.
+
+     Implementations may also support cancellation. If ((|cancellable|)) is not
+     nil, then initialization can be cancelled by triggering the cancellable
+     object from another thread. If the operation was cancelled,
+     GLib::IO::CancelledError will be raised. If ((|cancellable|)) is not nil
+     and the object doesn’t support cancellable initialization,
+     GLib::IO::NotSupportedError will be raised.
+
+     If this method is not called, or raises an error then all operations
+     on the object should fail, generally raising the error
+     GLib::IO::NotInitializedError.
+
+     Implementations of this method must be idempotent, that is, multiple calls
+     to this function with the same argument should return the same results.
+     Only the first call initializes the object, further calls return the
+     result of the first call. This is so that it’s safe to implement the
+     singleton pattern in the GLib::Object constructor function.
+
+     Since 2.22
+
+     * cancellable: Optional GLib::Cancellable object, nil to ignore
+     * Returns: self
+
+
+== See Also
+
+== ChangeLog
+
+

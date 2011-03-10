@@ -1,0 +1,148 @@
+= class Gtk::Menu
+A Gtk::Menu is a Gtk::MenuShell that implements a drop down menu consisting of a list of Gtk::MenuItem objects which can be navigated and activated by the user to perform application functions.
+
+A Gtk::Menu is most commonly dropped down by activating a Gtk::MenuItem in a Gtk::MenuBar or popped up by activating a Gtk::MenuItem in another Gtk::Menu. 
+
+A Gtk::Menu can also be popped up by activating a Gtk::OptionMenu. Other composite widgets such as the Gtk::Notebook can pop up a Gtk::Menu as well.
+
+Applications can display a Gtk::Menu as a popup menu by calling the Gtk::Menu#popup method. The example below shows how an application can pop up a menu when the 3rd mouse button is pressed. 
+
+=== Example 1. Displays a popup menu with 3rd mouse button
+  require 'gtk2'
+   
+  window = Gtk::Window.new
+  menu = Gtk::Menu.new
+  menu.append(Gtk::MenuItem.new("Test1"))
+  menu.append(Gtk::MenuItem.new("Test2"))
+  
+  menu.show_all
+  window.add_events(Gdk::Event::BUTTON_PRESS_MASK)
+  window.signal_connect("button_press_event") do |widget, event|
+    if (event.button == 3)
+      menu.popup(nil, nil, event.button, event.time)
+    end	
+  end
+  window.set_default_size(300, 100).show_all
+  
+  Gtk.main
+
+== Object Hierarchy
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Gtk::Object
+        * Gtk::Widget
+          * Gtk::Container
+            * Gtk::MenuShell
+              * Gtk::Menu
+
+== Class Methods
+--- Gtk::Menu.new
+    Creates a new Gtk::Menu.
+    * Returns: a new Gtk::Menu.  
+
+== Instance Methods
+--- reorder_child(child, position)
+    Moves a Gtk::MenuItem to a new position within the Gtk::Menu.
+    * child: the Gtk::MenuItem to move. 
+    * position: the new position to place child. Positions are numbered from 0 to n-1.  
+    * Returns: self
+
+--- popup(parent_menu_shell, parent_menu_item, button, activate_time){|menu, x, y, push_in| ... }
+    Displays a menu and makes it available for selection. Applications can use this function to display context-sensitive menus, and will typically supply nil for the parent_menu_shell, parent_menu_item parameters and block. The default menu positioning function will position the menu at the current pointer position.
+    * parent_menu_shell: the menu shell containing the triggering menu item. 
+    * parent_menu_item: the menu item whose activation triggered the popup. 
+    * button: the button which was pressed to initiate the event. 
+    * activate_time: the time at which the activation event occurred.  
+    * {|menu, x, y, push_in| ... }: a user supplied block used to position the menu. You should return [x, y] in this block.
+       * menu: the Gtk::Menu
+       * x: address of the Number representing the horizontal position where the menu shall be drawn.  
+       * y: address of the Number representing the vertical position where the menu shall be drawn.
+       * push_in: 
+    * Returns: self
+
+--- accel_group
+    Gets the Gtk::AccelGroup which holds global accelerators for the menu. See Gtk::Menu#accel_group=.
+    * Returns: the Gtk::AccelGroup associated with the menu.  
+--- accel_group=(accel_group)
+    Set the Gtk::AccelGroup which holds global accelerators for the menu. This accelerator group needs to also be added to all windows that this menu is being used in with Gtk::Window#add_accel_group, in order for those windows to support all the accelerators contained in this group.
+    * accel_group: the Gtk::AccelGroup to be associated with the menu. 
+    * Returns: accel_group
+--- set_accel_group(accel_group)
+    Same as Gtk::Menu#accel_group=.
+    * accel_group: the Gtk::AccelGroup to be associated with the menu. 
+    * Returns: self
+
+--- accel_path=(accel_path)
+    Sets an accelerator path for this menu from which accelerator paths for its immediate children, its menu items, can be constructed. The main purpose of this function is to spare the programmer the inconvenience of having to call Gtk::MenuItem#accel_path= on each menu item that should support runtime user changable accelerators. Instead, by just calling Gtk::Menu#accel_path= on their parent, each menu item of this menu, that contains a label describing its purpose, automatically gets an accel path assigned. For example, a menu containing menu items "New" and "Exit", will, after Gtk::Menu#accel_path = "<Gnumeric-Sheet>/File" has been called, assign its items the accel paths: "<Gnumeric-Sheet>/File/New" and "<Gnumeric-Sheet>/File/Exit". Assigning accel paths to menu items then enables the user to change their accelerators at runtime. More details about accelerator paths and their default setups can be found at Gtk::AccelMap.add_entry.
+     * accel_path: a valid accelerator path
+     * Returns: accel_path
+--- set_accel_path(accel_path)
+    Same as Gtk::Menu#accel_path=.
+     * accel_path: a valid accelerator path
+     * Returns: self
+
+--- tearoff_title
+    Returns the title of the menu. See Gtk::Menu#title=.
+    * Returns: the title of the menu, or nil if the menu has no title set on it. 
+--- tearoff_title=(title)
+    Sets the title string for the menu. The title is displayed when the menu is shown as a tearoff menu.    * title: a string containing the title for the menu. 
+    * Returns: title
+--- set_tearoff_title(title)
+    Same as Gtk::Menu#tearoff_title=.
+    * title: a string containing the title for the menu. 
+    * Returns: self
+
+--- tearoff_state?
+    Returns whether the menu is torn off. See Gtk::Menu#tearoff_state=.
+    * Returns: true if the menu is currently torn off. 
+--- tearoff_state=(torn_off)
+    Changes the tearoff state of the menu. A menu is normally displayed as drop down menu which persists as long as the menu is active. It can also be displayed as a tearoff menu which persists until it is closed or reattached.
+    * torn_off: If true, menu is displayed as a tearoff menu.  
+    * Returns: torn_off
+--- set_tearoff_state(torn_off)
+    Same as Gtk::Menu#tearoff_state=.
+    * torn_off: If true, menu is displayed as a tearoff menu.  
+    * Returns: self
+
+--- popdown
+    Removes the menu from the screen.
+    * Returns: self
+
+--- reposition
+    Repositions the menu according to its position method.
+    * Returns: self
+
+--- active
+    Returns the selected menu item from the menu. This is used by the Gtk::OptionMenu.
+    * Returns: the Gtk::MenuItem that was last selected in the menu. If a selection has not yet been made, the first menu item is selected.  
+--- active=(index)
+    Selects the specified menu item within the menu. This is used by the Gtk::OptionMenu and should not be used by anyone else.
+    * index : the index of the menu item to select. Index values are from 0 to n-1.  
+    * Returns: index
+--- set_active(index)
+    Same as Gtk::Menu#active=.
+    * index : the index of the menu item to select. Index values are from 0 to n-1.  
+    * Returns: self
+
+--- attach_to_widget(attach_widget){|attach_widgt, menu| ... }
+    Attaches the menu to the widget and provides a callback method that will be invoked when the menu calls Gtk::Menu#detach during its destruction.
+    * attach_widget: the Gtk::Widget that the menu will be attached to. 
+    * {|attach_widgt, menu| ... }: the user supplied block that will be called when the menu calls Gtk::Menu#detach.  
+       * attach_widget: the Gtk::Widget that the menu is being detached from. 
+       * menu: the Gtk::Menu being detached.  
+    * Returns: self
+
+--- detach
+    Returns the Gtk::Widget that the menu is attached to.
+    * Returns: the Gtk::Widget that the menu is attached to.  
+
+--- attach_widget
+    Returns the Gtk::Widget that the menu is attached to.
+    * Returns: the Gtk::Widget that the menu is attached to.  
+
+== Properties
+--- tearoff-title: String (Read/Write)
+    A title that may be displayed by the window manager when this menu is torn-off
+
+- ((<Masao>))

@@ -1,0 +1,119 @@
+= class Gdk::Rectangle
+
+== Object Hierarchy
+
+* Object
+  * GLib::Boxed
+    * Gdk::Rectangle
+
+== Class Methods
+
+--- Gdk::Rectangle.new(x, y, width, height)
+
+    Creates a ne Gdk::Rectangle
+    * x: x value(Integer)
+    * y: y value(Integer)
+    * width: width value(Integer)
+    * height: height value(Integer)
+    * Returns: self
+
+== Instance Methods
+
+--- x
+
+    Gets the x value.
+    * Returns: x value
+
+--- x=(x)
+
+    Sets the x value.
+    * x: a new x value.
+    * Returns: x
+
+--- set_x(x)
+
+    Same as Gdk::Rectangle#x=.
+    * Returns: self
+
+--- y
+
+    Gets the y value.
+    * Returns: y value
+
+--- y=(y)
+
+    Sets the y value.
+    * y: a new y value.
+    * Returns: y
+
+--- set_y(y)
+
+    Same as Gdk::Rectangle#y=.
+    * Returns: self
+
+--- width
+
+    Gets the width value.
+    * Returns: width value
+
+--- width=(width)
+
+    Sets the width value.
+    * width: a new width value.
+    * Returns: width
+
+--- set_width(width)
+
+    Same as Gdk::Rectangle#width=.
+    * Returns: self
+
+--- height
+
+    Gets the height value.
+    * Returns: height value
+
+--- height=(height)
+
+    Sets the height value.
+    * height: a new height value.
+    * Returns: height
+
+--- set_height(height)
+
+    Same as Gdk::Rectangle#height=.
+    * Returns: self
+
+--- &(other)
+
+    Gets a new Gtk::Allocation that is intersection of the two rectangles. 
+    * Returns: a new Gdk::Rectangle or nil
+
+--- intersect(other)
+
+    Same as Gdk::Rectangle#&
+    * Returns: a new Gdk::Rectangle or nil
+
+--- |(other)
+
+    Gets a new Gdk::Rectangle that combines all of this region and the second region. 
+    * Returns: a new Gdk::Rectangle or nil
+
+--- union(other)
+
+    Same as Gdk::Rectangle#|.
+    * Returns: a new Gdk::Rectangle or nil
+
+--- to_a
+
+    Gets the values as an Array. 
+    * Returns: [x, y, width, height] 
+       * x: x value(Integer) 
+       * y: y value(Integer) 
+       * width: width value(Integer) 
+       * height: height value(Integer)
+
+== See Also
+
+== ChangeLog
+
+((<Masao>))

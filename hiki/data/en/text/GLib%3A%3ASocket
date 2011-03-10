@@ -1,0 +1,189 @@
+= class GLib::Socket
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::Socket
+
+== Included Modules
+
+  * GLib::SocketConnectable
+
+== Class Methods
+
+--- GLib::Socket.new_from_fd
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- accept
+
+     * Returns: self: ((*FIXME*))
+
+--- bind
+
+     * Returns: self: ((*FIXME*))
+
+--- blocking=
+
+     * Returns: self: ((*FIXME*))
+
+--- blocking?
+
+     * Returns: self: ((*FIXME*))
+
+--- check_connect_result
+
+     * Returns: self: ((*FIXME*))
+
+--- close
+
+     * Returns: self: ((*FIXME*))
+
+--- closed?
+
+     * Returns: self: ((*FIXME*))
+
+--- condition_check
+
+     * Returns: self: ((*FIXME*))
+
+--- condition_wait
+
+     * Returns: self: ((*FIXME*))
+
+--- connect
+
+     * Returns: self: ((*FIXME*))
+
+--- connected?
+
+     * Returns: self: ((*FIXME*))
+
+--- create_source
+
+     * Returns: self: ((*FIXME*))
+
+--- each
+
+    See GLib::SocketConnectable#each.
+
+--- enumerate
+
+    See GLib::SocketConnectable#enumerate.
+
+--- family
+
+    Gets the family of the socket address.
+     * Returns: The family of the socket address
+
+--- fd
+
+     * Returns: self: ((*FIXME*))
+
+--- keepalive=
+
+     * Returns: self: ((*FIXME*))
+
+--- keepalive?
+
+     * Returns: self: ((*FIXME*))
+
+--- listen
+
+     * Returns: self: ((*FIXME*))
+
+--- listen_backlog
+
+     * Returns: self: ((*FIXME*))
+
+--- listen_backlog=
+
+     * Returns: self: ((*FIXME*))
+
+--- local_address
+
+     * Returns: self: ((*FIXME*))
+
+--- protocol
+
+     * Returns: self: ((*FIXME*))
+
+--- receive
+
+     * Returns: self: ((*FIXME*))
+
+--- receive_from
+
+     * Returns: self: ((*FIXME*))
+
+--- remote_address
+
+     * Returns: self: ((*FIXME*))
+
+--- send
+
+     * Returns: self: ((*FIXME*))
+
+--- send_to
+
+     * Returns: self: ((*FIXME*))
+
+--- set_blocking
+
+     * Returns: self: ((*FIXME*))
+
+--- set_keepalive
+
+     * Returns: self: ((*FIXME*))
+
+--- set_listen_backlog
+
+     * Returns: self: ((*FIXME*))
+
+--- shutdown
+
+     * Returns: self: ((*FIXME*))
+
+--- socket_type
+
+     * Returns: self: ((*FIXME*))
+
+--- speaks_ipv4?
+
+     * Returns: self: ((*FIXME*))
+
+== Constants
+
+--- FAMILY_INVALID
+--- FAMILY_IPV4
+--- FAMILY_IPV6
+--- FAMILY_UNIX
+--- MSG_DONTROUTE
+--- MSG_NONE
+--- MSG_OOB
+--- MSG_PEEK
+--- PROTOCOL_DEFAULT
+--- PROTOCOL_SCTP
+--- PROTOCOL_TCP
+--- PROTOCOL_UDP
+--- PROTOCOL_UNKNOWN
+--- TYPE_DATAGRAM
+--- TYPE_INVALID
+--- TYPE_SEQPACKET
+--- TYPE_STREAM
+
+== Properties
+
+--- family: GSocketFamily (Read)
+
+    The family of the socket address
+
+== See Also
+
+== ChangeLog
+
+

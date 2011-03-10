@@ -1,0 +1,137 @@
+= class Gtk::Combo
+The Gtk::Combo widget consists of a single-line text entry field and a drop-down list. The drop-down list is displayed when the user clicks on a small arrow button to the right of the entry field.
+
+As of GTK+ 2.4, Gtk::Combo has been deprecated in favor of Gtk::ComboBox. 
+
+== Object Hierarchy
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Gtk::Object
+        * Gtk::Widget
+          * Gtk::Container
+            * Gtk::Box
+              * Gtk::HBox
+                * Gtk::Combo
+
+== Class Methods
+--- Gtk::Combo.new(text_items = nil)
+    Creates a new Gtk::Combo.
+    * text_items: text items for display. ["item1", "item2", ....]
+    * Returns: a new Gtk::Combo.
+
+== Instance Methods
+--- popdown_strings=(text_items)
+    Sets all of the items in the popup list. 
+    * text_items : an array of strings. ["item1", "item2", ....]
+    * Returns: text_items
+--- set_popdown_strings(text_items)
+    Same as Gtk::Combo#popdown_strings=.
+    * text_items : an array of strings. ["item1", "item2", ....]
+    * Returns: self
+
+--- value_in_list?
+    Gets the value whether the value entered must match one of the values in the list.
+--- value_in_list=(ok_if_empty)
+    Sets the value whether the value entered must match one of the values in the list.
+    * ok_if_empty: true if an empty value is considered valid.  
+    * Returns: ok_if_empty
+--- set_value_in_list(val, ok_if_empty)
+    Specifies whether the value entered in the text entry field must match one of the values in the list. If this is set then the user will not be able to perform any other action until a valid value has been entered.
+    If an empty field is acceptable, the ok_if_empty parameter should be true.
+    * val: true if the value entered must match one of the values in the list. 
+    * ok_if_empty: true if an empty value is considered valid.  
+    * Returns: self
+
+--- allow_empty?
+    Gets the value whether an empty value may be entered in the field.
+    * Returns: true if an empty value may be entered in the field.
+--- allow_empty=(allow_empty)
+    Sets the value whether an emptyvalue may be entered in the field.
+    * allow_empty: true if an empty value may be entered in the field.
+    * Returns: allow_empty
+--- set_allow_empty(allow_empty)
+    Same as Gtk::Combo#allow_empty=.
+    * allow_empty: true if an empty value may be entered in the field.
+    * Returns: self
+
+--- case_sensitive?
+    Gets the value wheter the list item matching is case sensitive.
+    * Returns: true if the list item matching is case sensitive.
+--- case_sensitive=(sensitive)
+    Sets the value wheter list item matching is case sensitive.
+    * sensitive: true if the list item matching is case sensitive.
+    * Returns: sensitive
+--- set_case_sensitive(sensitive)
+    Same as Gtk::Combo#case_sensitive=.
+    * sensitive: true if the list item matching is case sensitive.
+    * Returns: self
+
+--- enable_arrow_keys?
+    Gets the value whether the arrow keys move through the list of items.
+    * Returns: true if the arrow keys move through the list of items
+--- enable_arrow_keys=(enable)
+    Sets the value whether the arrow keys move through the list of items.
+    * enable: true if the arrow keys move through the list of items
+    * Returns: enable
+--- set_enable_arrow_keys(enable)
+    Same as Gtk::Combo#enable_arrow_keys=.
+    * enable: true if the arrow keys move through the list of items
+    * Returns: enable
+
+--- enable_arrows_always?
+    Gets the value whether the arrow keys work, even if the entry contents are not in the list.
+    * Returns: true if the arrow keys work.
+--- enable_arrows_always=(enable)
+    Sets the value whether the arrow keys work, even if the entry contents are not in the list.
+    * enable: true if the arrow keys work.
+    * Returns: enable
+--- set_enable_arrows_always(enable)
+    Same as Gtk::Combo#enable_arrows_always=.
+    * enable: true if the arrow keys work.
+    * Returns: self
+
+--- disable_activate
+    Stops the Gtk::Combo widget from showing the popup list when the Gtk::Entry emits the "activate" signal, i.e. when the Return key is pressed. This may be useful if, for example, you want the Return key to close a dialog instead.
+     * Returns: self
+
+--- entry
+    Gets the Gtk::Entry.
+    * Returns: the Gtk::Entry.
+
+--- use_arrows=(val)
+    Specifies if the arrow (cursor) keys can be used to step through the items in the list. This is on by default.
+    * val: true if the arrow keys can be used to step through the items in the list.  
+    * Returns: val
+--- set_use_arrows(val)
+    Same as Gtk::Combo#use_arrow=.
+    * val: true if the arrow keys can be used to step through the items in the list.  
+    * Returns: val
+
+--- use_arrows_always=(val)
+    Specifies if the arrow keys will still work even if the current contents of the Gtk::Entry field do not match any of the list items. 
+    * val: true if the arrow keys will still work even if the current contents of the Gtk::Entry field do not match any of the list items.  
+    * Returns: val
+--- set_use_arrows_always(val)
+    Same as Gtk::Combo#use_arrows_always=.
+    * val: true if the arrow keys will still work even if the current contents of the Gtk::Entry field do not match any of the list items.  
+    * Returns: self
+
+== Properties
+--- allow-empty: true or false (Read/Write)
+    Whether an empty value may be entered in this field
+
+--- case-sensitive: true or false (Read/Write)
+    Whether list item matching is case sensitive
+
+--- enable-arrow-keys: true or false (Read/Write)
+    Whether the arrow keys move through the list of items
+
+--- enable-arrows-always: true or false (Read/Write)
+    Obsolete property, ignored
+
+--- value-in-list: true or false (Read/Write)
+    Whether entered values must already be present in the list
+
+== ChangeLog
+* 2006-02-01 Added "Deprecated" information. - ((<Masao>))

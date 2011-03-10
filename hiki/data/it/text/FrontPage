@@ -1,0 +1,54 @@
+= Benvenuti nel sito web del progetto Ruby-GNOME2
+
+Ruby-GNOME2 è un'insieme di estensioni del linguaggio Ruby per l'ambiente di sviluppo GNOME 2.0. Si tratta della nuova versione di Ruby-GNOME
+
+Ruby-GNOME2 include le librerie:
+
+--- ruby-gtk2
+    Ruby/GLib2, Ruby/ATK, Ruby/GdkPixbuf2, Ruby/Pango, Ruby/GTK2
+
+--- ruby-gnome2-all
+    ruby-gtk2, Ruby/GnomeCanvas2, Ruby/GNOME2, Ruby/Libart2, Ruby/Libglade2, Ruby/GConf2, Ruby/GnomeVFS, Ruby/GStreamer, Ruby/GtkGLExt, Ruby/GtkHtml2, Ruby/Libgda, Ruby/GtkSourceView, Ruby/PanelApplet, Ruby/GnomePrint, Ruby/GnomePrintUI, Ruby/RSVG, Ruby/GtkMozEmbed
+
+--- ruby-gtktrayicon
+    Ruby/GtkTrayIcon
+
+
+Ruby-GNOME2 fornisce anche i programmi:
+
+--- rbbr
+    Visualizzatore di classi Ruby
+
+
+== Contenuti
+* ((<Referenza API|Ruby-GNOME2 API Reference>)) (in inglese)
+* ((<Guide|tutorials>))
+* ((<Guida d'installazione>))
+* ((<Trucchi|URL:../hiki.cgi?Ruby-GNOME2+Tips>))
+* ((<Esempi|URL:../hiki.cgi?Samples>))
+* ((<Icone|URL:../hiki.cgi?Icons>))
+* ((<Collegamenti|links>))
+
+== Per sviluppatori
+* ((<Come implementare Ruby-GNOME2>))
+* ((<Regole di conversione e nominazione>))
+* ((<Stato>))
+
+== Per modificare questo sito
+Questo sito non può essere modificato da chiunque. È necessario avere un account. 
+Se volete creare o modificare pagine di questo sito o contribuire alla sua traduzione in italiano, inviate un messaggio alla mailing list.
+
+* ((<Come scrivere su questo sito>))
+* ((<"Informazioni su Hiki/RD+">))
+* ((<"Aggiungere una news"|create_news>))
+* ((<"Opzioni"|options>))
+
+== Altro
+* ((<"Cronologia "|URL:../hiki.cgi?History >))
+* ((<"Classifica degli accessi a questo sito">))
+* ((<"googleplot"|URL:/googleplot/>))
+* ((<"Linked Map"|linkedmap>))
+* ((<"Copyright/Licenza"| License >))
+* ((<"Autori "|URL:../hiki.cgi?Authors >))
+
+Su un totale di: {{totalpages}} pagine

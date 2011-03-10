@@ -1,0 +1,20 @@
+= class Gdk::Pixbuf::GdkPixbufRotation
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * Gdk::Pixbuf::GdkPixbufRotation
+
+== Constants
+
+--- CLOCKWISE
+--- COUNTERCLOCKWISE
+--- NONE
+--- UPSIDEDOWN
+
+== See Also
+
+== ChangeLog
+
+

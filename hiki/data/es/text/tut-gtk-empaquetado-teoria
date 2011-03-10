@@ -1,0 +1,15 @@
+= Teoría del Empaquetado en Cajas
+{{link "tut-gtk-empaquetado-intro", "tut-gtk-empaquetado-intro", "tut-gtk", "tut-gtk-empaquetado-cajas-detalles"}}
+
+La mayoría del empaquetado se consigue creando cajas. Estas son widgets invisibles capaces de almacenar otros widgets en su interior. Hay dos formatos: cajas horizontales y cajas verticales.
+Cuando empaquetamos widgets en una caja horizontal, los objetos se insertan horizontalmente de izquierda a derecha o de derecha a izquierda dependiendo del método usado.
+En una caja vertical, los widgets son empaquetados de arriba a abajo y viceversa.
+Se puede usar cualquier combinación con cajas dentro o fuera de otras cajas para crear el efecto deseado.
+
+Para crear una nueva caja horizontal usamos Gtk::HBox.new, y para cajas verticales, Gtk::VBox.new.
+Los métodos Gtk::Box#pack_start y Gtk::Box#pack_end se usan para situar objetos dentro de estos contenedores.
+El método Gtk::Box#pack_start trabaja de arriba a abajo en cajas verticales, y de izquierda a derecha en cajas horizontales. Gtk::Box#pack_end hace lo contrario, empaqueta de abajo a arriba en las verticales y de derecha a izquierda en las horizontales.
+El uso de estos métodos permite alinear nuestros widgets a izquierda o derecha y pueden ser combinados para conseguir el efecto deseado.
+Usaremos Gtk::Box#pack_start en la mayoría de los ejemplos. Un objeto puede ser otro contenedor o un widget. De hecho, muchos widgets son contenedores de por sí, incluyendo los botones, que generalmente solo contienen una etiqueta.
+
+Usando estos métodos, GTK sabe donde quieres colocar tus widgets y trabaja automáticamente al redimensionar o jugar con ellos. Hay otras opciones que indican como deben ser empaquetados tus widgets. Como puedes imaginar, estos métodos dan bastante flexibilidad al situar y crear widgets.

@@ -1,0 +1,57 @@
+= class GLib::PollFD
+
+== Object Hierarchy
+
+* Object
+  * GLib::Boxed
+    * GLib::PollFD
+
+== Class Methods
+
+--- GLib::PollFD.new
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- events
+
+     * Returns: self: ((*FIXME*))
+
+--- events=
+
+     * Returns: self: ((*FIXME*))
+
+--- fd
+
+     * Returns: self: ((*FIXME*))
+
+--- fd=
+
+     * Returns: self: ((*FIXME*))
+
+--- revents
+
+     * Returns: self: ((*FIXME*))
+
+--- revents=
+
+     * Returns: self: ((*FIXME*))
+
+--- set_events
+
+     * Returns: self: ((*FIXME*))
+
+--- set_fd
+
+     * Returns: self: ((*FIXME*))
+
+--- set_revents
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

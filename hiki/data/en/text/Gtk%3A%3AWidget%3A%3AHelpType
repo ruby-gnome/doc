@@ -1,0 +1,18 @@
+= class Gtk::Widget::HelpType
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * Gtk::Widget::HelpType
+
+== Constants
+
+--- TOOLTIP
+--- WHATS_THIS
+
+== See Also
+
+== ChangeLog
+
+

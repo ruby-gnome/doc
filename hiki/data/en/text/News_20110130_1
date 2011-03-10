@@ -1,0 +1,96 @@
+= News (2011-01-30)
+== Ruby-GNOME2 0.90.6 released
+((*Posted by kou on 2011-01-30 (Sun) 05:48:57*))
+
+NOTE: 0.90.x releases are for 1.0.0 major release.
+
+Removed deprecated packages. All supported packages support
+RubyGems. All supported packages except Ruby/VTE and
+Ruby/GStreamer support also Windows binary bundled gem.
+
+== Downloads
+
+: ((<ruby-gtk2-0.90.6.tar.gz|URL:http://downloads.sourceforge.net/ruby-gnome2/ruby-gtk2-0.90.6.tar.gz>))
+  The minimum package which includes Ruby/GLib2, Ruby/GIO2, Ruby/ATK, Ruby/GdkPixbuf2, Ruby/Pango, Ruby/GTK2.
+
+: ((<ruby-gnome2-all-0.90.6.tar.gz|URL:http://downloads.sourceforge.net/ruby-gnome2/ruby-gnome2-all-0.90.6.tar.gz>))
+   All of Ruby-GNOME2 libraries.
+
+=== Changes
+
+==== All
+
+  * remove all deprecated packages.
+    [Masaaki Aoyagi]
+  * all supported packages support RubyGems.
+    [Masaaki Aoyagi]
+
+==== Ruby/GLib2
+
+  * Imrpovements
+    * add gnome2-raketask.rb that is a utility library to
+      define Rake tasks for Ruby-GNOME2 packages.
+      [Masaaki Aoyagi, Kouhei Sutou]
+
+  * Fixes
+    * fix GType conversion.
+      [Kouhei Sutou]
+    * fix rcairo installed by RubyGems detection.
+      [Masaaki Aoyagi]
+
+==== Ruby/GIO2
+
+  * Improvements
+    * support GIO 2.26.
+      [Nikolai Weibull]
+
+==== Ruby/GStreamer
+
+  * Improvements
+    * add Gst::MissingURISourceMessage.
+      [Vincent Carmona, Kouhei Sutou]
+    * support RubyGems.
+      [Masaaki Aoyagi]
+
+==== Ruby/Pango
+
+  * Fixes
+    * rename Pango::LayoutIter#at_last_line! to
+      at_last_line? because at_last_line is a predicate
+      method. (at_last_line! still exists for backward compatibility.)
+      [mrkn, Kouhei Sutou]
+
+==== Ruby/GtkMozEmbed
+
+  * Improvements
+    * support RubyGems.
+      [Masaaki Aoyagi]
+  * Fixes
+    * support "2.0b7" style module version. #3141244
+      [reandr, Kouhei Sutou]
+
+==== Ruby/GooCanvas
+
+  * Improvements
+    * support RubyGems.
+      [Masaaki Aoyagi]
+
+==== Ruby/GtkSourceView2
+
+  * Improvements
+    * support RubyGems.
+      [Masaaki Aoyagi]
+
+==== Ruby/VTE
+
+  * Improvements
+    * support RubyGems.
+      [Masaaki Aoyagi]
+
+=== Thanks
+
+  * Vincent Carmona
+  * mrkn
+  * reandr
+  * Nikolai Weibull
+  * Masaaki Aoyagi

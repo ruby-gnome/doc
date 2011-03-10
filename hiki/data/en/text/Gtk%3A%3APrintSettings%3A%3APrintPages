@@ -1,0 +1,20 @@
+= class Gtk::PrintSettings::PrintPages
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * Gtk::PrintSettings::PrintPages
+
+== Constants
+
+--- ALL
+--- CURRENT
+--- RANGES
+--- SELECTION
+
+== See Also
+
+== ChangeLog
+
+

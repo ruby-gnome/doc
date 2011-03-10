@@ -1,0 +1,68 @@
+= class GnomeVFS::Error
+
+== Object Hierarchy
+
+* Object
+  * Exception
+    * StandardError
+      * RuntimeError
+        * GnomeVFS::Error
+
+== Instance Methods
+
+--- code
+
+     * Returns: self: ((*FIXME*))
+
+--- domain
+
+     * Returns: self: ((*FIXME*))
+
+== Constants
+
+--- ACCESS_DENIED
+--- BAD_FILE
+--- BAD_PARAMETERS
+--- CANCELLED
+--- CORRUPTED_DATA
+--- DIRECTORY_BUSY
+--- DIRECTORY_NOT_EMPTY
+--- EOF
+--- ERROR_IO
+--- FILE_EXISTS
+--- GENERIC
+--- HOST_HAS_NO_ADDRESS
+--- HOST_NOT_FOUND
+--- INTERNAL
+--- INTERRUPTED
+--- INVALID_HOST_NAME
+--- INVALID_OPEN_MODE
+--- INVALID_URI
+--- IN_PROGRESS
+--- IS_DIRECTORY
+--- LOGIN_FAILED
+--- LOOP
+--- NAME_TOO_LONG
+--- NOT_A_DIRECTORY
+--- NOT_FOUND
+--- NOT_OPEN
+--- NOT_PERMITTED
+--- NOT_SAME_FILE_SYSTEM
+--- NOT_SUPPORTED
+--- NO_MEMORY
+--- NO_SPACE
+--- PROTOCOL_ERROR
+--- READ_ONLY
+--- READ_ONLY_FILE_SYSTEM
+--- SERVICE_NOT_AVAILABLE
+--- SERVICE_OBSOLETE
+--- TOO_BIG
+--- TOO_MANY_LINKS
+--- TOO_MANY_OPEN_FILES
+--- WRONG_FORMAT
+
+== See Also
+
+== ChangeLog
+
+

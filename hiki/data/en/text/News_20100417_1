@@ -1,0 +1,89 @@
+= News (2010-04-17)
+== Ruby-GNOME2 0.19.4 released
+((*Posted by kou on 2010-04-17 (Sat) 03:03:54*))
+
+Ruby-GNOME2 0.19.4 is out. Enjoy!
+
+This release has many bug fixes and some improvements. The
+fixed bugs include a memory leak bug on GC. If your
+application live long time, you should upgrade.
+
+== Downloads
+
+: ((<ruby-gtk2-0.19.4.tar.gz|URL:http://downloads.sourceforge.net/ruby-gnome2/ruby-gtk2-0.19.4.tar.gz>))
+  The minimum package which includes Ruby/GLib2, Ruby/ATK, Ruby/GdkPixbuf2, Ruby/Pango, Ruby/GTK2.
+
+: ((<ruby-gnome2-all-0.19.4.tar.gz|URL:http://downloads.sourceforge.net/ruby-gnome2/ruby-gnome2-all-0.19.4.tar.gz>))
+   All of Ruby-GNOME2 libraries.
+
+== Changes
+
+=== Ruby/GLib2
+
+  * Bug fixes:
+    * fixed type_register on Ruby 1.9.
+      [Simon Arnaud, Kouhei Sutou]
+    * fixed memory leak in GC.
+      [Kouhei Sutou]
+
+=== Ruby/GTK2
+
+  * Bug fixes:
+    * [#2865895] support GdkWindow's cursor property.
+      NOTE: GTK+ 2.18.0 is unsupported version.
+      [Guillaume Cottenceau, Mamoru Tasaka]
+    * Gtk::MenuItem.new accepts nil as a label.
+      [Kazuhiro NISHIYAMA, Kouhei Sutou]
+    * fixed wrong conversion in Gtk::TreePath#<=>.
+      [Takeuchi Yusuke, Kouhei Sutou]
+    * fix Gtk::RecentInfo#application_info's double free bug.
+      [Kouhei Sutou]
+  * Improvements:
+    * Gdk::Window#invalidate accepts nil as 'area'
+      argument. It means 'invalidates whole window'.
+      [Hiroyuki Ito]
+    * Gtk::Clipbord#request_text sets UTF-8 encoding in Ruby
+      1.9.
+      [Rg Rg, Kouhei Sutou]
+    * add Gtk::TreePath#==.
+      [Takeuchi Yusuke, Kouhei Sutou]
+
+=== Ruby/Pango
+
+  * Improvements:
+    * add Pango::Gravity.
+      [Hiroyuki Ito, Kouhei Sutou]
+
+=== Ruby/GdkPixbuf
+
+  * add Gdk::Pixbuf#pixels=.
+    [Michal Suchanek]
+
+=== Ruby/GStreamer
+
+  * Bug fixes:
+    * [#2920997] fix argument type. [Johan Kiviniemi]
+  * [#2924886] implement Gst::MessageTag#parse. [Vincent Carmona]
+
+=== Ruby/GtkMozEmbed
+
+  * Bug Fixes:
+    * [#2924766] fix -Wl,-rpath syntax. [OBATA Akio]
+    * [#2925285] Gtk::MozEmbed#chrome_mask fails.
+      [tobi, Kouhei Sutou]
+    * support XULRunner 1.9.2. [OBATA Akio]
+
+== Thanks
+
+  * Guillaume Cottenceau
+  * Mamoru Tasaka
+  * Michal Suchanek
+  * Simon Arnaud
+  * Kazuhiro NISHIYAMA
+  * Johan Kiviniemi
+  * OBATA Akio
+  * Hiroyuki Ito
+  * Rg Rg
+  * Vincent Carmona
+  * tobi
+  * Takeuchi Yusuke

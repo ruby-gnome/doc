@@ -1,0 +1,200 @@
+= class Gnome::DateEdit
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::InitiallyUnowned
+        * Gtk::Object
+          * Gtk::Widget
+            * Gtk::Container
+              * Gtk::Box
+                * Gtk::HBox
+                  * Gnome::DateEdit
+
+== Class Methods
+
+--- Gnome::DateEdit.new
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- dateedit_flags
+
+    Gets the Flags for how DateEdit looks.
+     * Returns: Flags for how DateEdit looks
+
+--- dateedit_flags=(dateedit_flags)
+
+    Sets the Flags for how DateEdit looks.
+     * dateedit_flags: Flags for how DateEdit looks
+     * Returns: dateedit_flags
+
+--- initial_time
+
+    Gets the initial time.
+     * Returns: The initial time
+
+--- initial_time=(initial_time)
+
+    Sets the initial time.
+     * initial_time: The initial time
+     * Returns: initial_time
+
+--- lower_hour
+
+    Gets the Lower hour in the time popup selector.
+     * Returns: Lower hour in the time popup selector
+
+--- lower_hour=(lower_hour)
+
+    Sets the Lower hour in the time popup selector.
+     * lower_hour: Lower hour in the time popup selector
+     * Returns: lower_hour
+
+--- ref_accessible
+
+    See Atk::Implementor#ref_accessible.
+
+--- set_dateedit_flags(dateedit_flags)
+
+    Same as dateedit_flags=.
+     * dateedit_flags: Flags for how DateEdit looks
+     * Returns: self
+
+--- set_initial_time(initial_time)
+
+    Same as initial_time=.
+     * initial_time: The initial time
+     * Returns: self
+
+--- set_lower_hour(lower_hour)
+
+    Same as lower_hour=.
+     * lower_hour: Lower hour in the time popup selector
+     * Returns: self
+
+--- set_popup_range
+
+     * Returns: self: ((*FIXME*))
+
+--- set_time(time)
+
+    Same as time=.
+     * time: The time currently selected
+     * Returns: self
+
+--- set_upper_hour(upper_hour)
+
+    Same as upper_hour=.
+     * upper_hour: Upper hour in the time popup selector
+     * Returns: self
+
+--- time
+
+    Gets the time currently selected.
+     * Returns: The time currently selected
+
+--- time=(time)
+
+    Sets the time currently selected.
+     * time: The time currently selected
+     * Returns: time
+
+--- upper_hour
+
+    Gets the Upper hour in the time popup selector.
+     * Returns: Upper hour in the time popup selector
+
+--- upper_hour=(upper_hour)
+
+    Sets the Upper hour in the time popup selector.
+     * upper_hour: Upper hour in the time popup selector
+     * Returns: upper_hour
+
+--- add_child
+
+    See Gtk::Buildable#add_child.
+
+--- construct_child
+
+    See Gtk::Buildable#construct_child.
+
+--- get_internal_child
+
+    See Gtk::Buildable#get_internal_child.
+
+--- name
+
+    See Gtk::Buildable#name.
+
+--- name=
+
+    See Gtk::Buildable#name=.
+
+--- set_buildable_property
+
+    See Gtk::Buildable#set_buildable_property.
+
+--- set_name
+
+    See Gtk::Buildable#set_name.
+
+--- builder_name
+
+    See Gtk::Buildable#builder_name.
+
+--- builder_name=
+
+    See Gtk::Buildable#builder_name=.
+
+--- set_builder_name
+
+    See Gtk::Buildable#set_builder_name.
+
+== Constants
+
+--- SHOW_TIME
+--- USE_24_HR
+--- WEEK_STARTS_ON_MONDAY
+--- DISPLAY_SECONDS
+
+== Properties
+
+--- dateedit-flags: Gnome::DateEditFlags (Read/Write)
+
+    Flags for how DateEdit looks
+
+--- initial-time: Integer (Read/Write)
+
+    The initial time
+
+--- lower-hour: Integer (Read/Write)
+
+    Lower hour in the time popup selector
+
+--- time: Integer (Read/Write)
+
+    The time currently selected
+
+--- upper-hour: Integer (Read/Write)
+
+    Upper hour in the time popup selector
+
+== Signals
+
+--- date-changed: self
+
+     * self: Gnome::DateEdit: ((*FIXME*))
+
+--- time-changed: self
+
+     * self: Gnome::DateEdit: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

@@ -1,0 +1,145 @@
+= module Gdk::Selection
+
+The X selection mechanism provides a way to transfer arbitrary chunks of data between programs. A selection is a essentially a named clipboard, identified by a string interned as a Gdk::Atom. By claiming ownership of a selection, an application indicates that it will be responsible for supplying its contents. The most common selections are PRIMARY and CLIPBOARD. 
+
+The contents of a selection can be represented in a number of formats, called targets. Each target is identified by an atom. A list of all possible targets supported by the selection owner can be retrieved by requesting the special target TARGETS. When a selection is retrieved, the data is accompanied by a type (an atom), and a format (an integer, representing the number of bits per item). See Properties and Atoms for more information. 
+
+The functions in Gdk::Selection only contain the lowlevel parts of the selection protocol. A considerably more complicated implementation is needed on top of this. GTK+ contains such an implementation in the functions in Gtk::Selection and programmers should use those functions instead of the ones presented here. If you plan to implement selection handling directly on top of the functions here, you should refer to the X Inter-client Communication Conventions Manual (ICCCM).
+
+== Module Functions
+
+--- Gdk::Selection.owner_set(owner, selection, time, send_event)
+
+    Sets the owner of the given selection. 
+    * owner: a Gdk::Window or nil to indicate that the the owner for the given should be unset.  
+    * selection: an Gdk::Atom identifying a selection.  
+    * time: timestamp(Integer) to use when setting the selection. If this is older than the timestamp given last time the owner was set for the given selection, the request will be ignored.  
+    * send_event: if true, and the new owner is different from the current owner, the current owner will be sent a SelectionClear event.  
+    * Returns: true if the selection owner was successfully changed to owner, otherwise false.
+
+--- Gdk::Selection.owner_set(display, owner, selection, time, send_event)
+
+    Sets the GdkWindow owner as the current owner of the selection selection. ((* Since 2.2*))
+    * display: the Gdk::Display
+    * owner: a Gdk::Window or nil to indicate that the the owner for the given should be unset.  
+    * selection: an Gdk::Atom identifying a selection.  
+    * time: timestamp(Integer) to use when setting the selection. If this is older than the timestamp given last time the owner was set for the given selection, the request will be ignored.  
+    * send_event: if true, and the new owner is different from the current owner, the current owner will be sent a SelectionClear event.  
+    * Returns: true if the selection owner was successfully changed to owner, otherwise false.
+
+--- Gdk::Selection.owner_get(selection)
+
+    Determines the owner of the given selection
+    * selection: an Gdk::Atom indentifying a selection
+    * Returns: if there is a selection owner for this window, and it is a window known to the current process, the Gdk::Window that owns the selection, otherwise nil. Note that the return value may be owned by a different process if a foreign window was previously created for that window, but a new foreign window will never be created by this call.
+
+--- Gdk::Selection.owner_get(display, selection)
+
+    Determines the owner of the given selection. Note that the return value may be owned by a different process if a foreign window was previously created for that window, but a new foreign window will never be created by this call.
+    * display : a Gdk::Display
+    * selection: an Gdk::Atom indentifying a selection
+    * Returns: if there is a selection owner for this window, and it is a window known to the current process, the Gdk::Window that owns the selection, otherwise nil. Note that the return value may be owned by a different process if a foreign window was previously created for that window, but a new foreign window will never be created by this call.
+
+--- Gdk::Selection.convert(requestor, selection, target, time)
+
+    Retrieves the contents of a selection in a given form. 
+    * requestor: a Gdk::Window.  
+    * selection: an Gdk::Atom identifying the selection to get the contents of.  
+    * target: the form in which to retrieve the selection(Gdk::Atom).
+    * time: the timestamp(Integer) to use when retrieving the selection. The selection owner may refuse the request if it did not own the selection at the time indicated by the timestamp.  
+    * Returns: self
+
+--- Gdk::Selection.property_get(requestor)
+
+    Retrieves selection data that was stored by the selection data in response to a call to Gdk::Selection.convert. This function will not be used by applications, who should use the Gtk::Clipboard API instead.
+    * requestor : the Gdk::Window on which the data is stored  
+    * Returns: [data, prop_type, prop_format]
+      * data: The retrieved data(String). If the retrieval failed, nil we be stored here.
+      * prop_type: The type of the property(Gdk::Atom).  
+      * prop_format: The format of the property(Integer).
+
+--- Gdk::Selection.send_notify(requestor, selection, target, property, time)
+
+    Sends a response to SelectionRequest event. 
+    * display: the Gdk::Display where requestor is realized
+    * requestor: window to which to deliver response(Integer)
+    * selection: selection that was requested(Gdk::Atom)
+    * target: target that was selected(Gdk::Atom)
+    * property: property in which the selection owner stored the data, or GDK_NONE to indicate that the request was rejected(Gdk::Atom)
+    * time: timestamp(Integer)
+    * Returns: self
+
+== Constants
+
+--- PRIMARY
+
+    A Gdk::Atom representing the PRIMARY selection.
+
+--- SECONDARY
+
+    A Gdk::Atom representing the SECONDARY selection.
+
+--- CLIPBOARD
+
+    A Gdk::Atom representing the CLIPBOARD selection.
+
+--- TARGET_BITMAP
+
+    A Gdk::Atom representing the BITMAP selection target.
+
+--- TARGET_COLORMAP
+
+    A Gdk::Atom representing the COLORMAP selection target.
+
+--- TARGET_DRAWABLE
+
+    A Gdk::Atom representing the DRAWABLE selection target.
+
+--- TARGET_PIXMAP
+
+    A Gdk::Atom representing the PIXMAP selection target.
+
+--- TARGET_STRING
+
+    A Gdk::Atom representing the STRING selection target.
+
+--- TYPE_ATOM
+
+    A Gdk::Atom representing the ATOM selection type.
+
+--- TYPE_BITMAP
+
+    A Gdk::Atom representing the BITMAP selection type.
+
+--- TYPE_COLORMAP
+
+    A Gdk::Atom representing the COLORMAP selection type.
+
+--- TYPE_DRAWABLE
+
+    A Gdk::Atom representing the DRAWABLE selection type.
+
+--- TYPE_INTEGER
+
+    A Gdk::Atom representing the INTEGER selection type.
+
+--- TYPE_PIXMAP
+
+    A Gdk::Atom representing the PIXMAP selection type.
+
+--- TYPE_WINDOW
+
+    A Gdk::Atom representing the WINDOW selection type.
+
+--- TYPE_STRING
+
+    A Gdk::Atom representing the STRING selection type. 
+
+
+* 2004-05-25 Initial upload - ((<Masao>))
+
+== See Also
+
+== ChangeLog
+
+

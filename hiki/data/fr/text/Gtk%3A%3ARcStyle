@@ -1,0 +1,138 @@
+= class Gtk::RcStyle
+Gtk::RcStyle is used to represent a set of information about the appearance of a widget. This can later be composited together with other Gtk::RcStyle to form a Gtk::Style. 
+
+== Object Hierarchy
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Gtk::RcStyle
+
+== Class Methods
+--- Gtk::RcStyle.new
+    Creates a new Gtk::RcStyle with no fields set. 
+    * Returns: the newly-created Gtk::RcStyle  
+
+== Instance Methods
+--- name
+    Gets the name.
+    * Returns: name
+--- name=(name)
+    Sets the name.
+    * name: the name
+    * Returns: name
+--- set_name(name)
+    Same as Gtk::RcStyle#name=.
+    * name: the name
+    * Returns: self
+
+--- bg_pixmap_name(state)
+    Gets the background pixmap name on the state.
+    * state: ((<GtkStateType|Gtk#GtkStateType>))
+    * Returns: self
+--- set_bg_pixmap_name(state, name)
+    Sets the background pixmap name on the state.
+    * state: ((<GtkStateType|Gtk#GtkStateType>))
+    * name: a pixmap-name.
+    * Returns: name
+
+--- font_desc
+    Gets the font description.
+    * Returns: the Pango::FontDescription or nil
+--- font_desc=(font_desc)
+    Sets the font description
+    * font_desc: a Pango::FontDescription
+    * Returns: font_desc
+--- set_font_desc(font_desc)
+    Same as Gtk::RcStyle#font_desc=.
+    * font_desc: a Pango::FontDescription
+    * Returns: self
+
+--- color_flags(state)
+    Gets the color flags on the state.
+    * state: ((<GtkStateType|Gtk#GtkStateType>))
+    * Returns: the color flags(((<GtkRcFlags|Gtk::RC#GtkRcFlags>)))
+--- set_color_flags(state, flags)
+    Sets the color flags on the state.
+    * state: ((<GtkStateType|Gtk#GtkStateType>))
+    * flags: the color flags(((<GtkRcFlags|Gtk::RC#GtkRcFlags>)))
+    * Returns: self
+
+--- fg(state)
+    Gets the foreground color on the state.
+    * state: ((<GtkStateType|Gtk#GtkStateType>))
+    * Returns: the Gdk::Color
+--- set_fg(state, r, g, b)
+    Sets the foreground color on the state.
+    * state: ((<GtkStateType|Gtk#GtkStateType>))
+    * r: red (0 - 65535)
+    * g: green (0 - 65535)
+    * b: blue (0 - 65535)
+    * Returns: self
+
+--- bg(state)
+    Gets the background color on the state.
+    * state: ((<GtkStateType|Gtk#GtkStateType>))
+    * Returns: the Gdk::Color
+--- set_bg(state, r, g, b)
+    Sets the background color on the state.
+    * state: ((<GtkStateType|Gtk#GtkStateType>))
+    * r: red (0 - 65535)
+    * g: green (0 - 65535)
+    * b: blue (0 - 65535)
+    * Returns: self
+
+--- text(state)
+    Gets the background color on the state.
+    * state: ((<GtkStateType|Gtk#GtkStateType>))
+    * Returns: the Gdk::Color
+--- set_text(state, r, g, b)
+    Sets the background color on the state.
+    * state: ((<GtkStateType|Gtk#GtkStateType>))
+    * r: red (0 - 65535)
+    * g: green (0 - 65535)
+    * b: blue (0 - 65535)
+    * Returns: self
+
+--- base(state)
+    Gets the background color on the state.
+    * state: ((<GtkStateType|Gtk#GtkStateType>))
+    * Returns: the Gdk::Color
+--- set_base(state, r, g, b)
+    Sets the background color on the state.
+    * state: ((<GtkStateType|Gtk#GtkStateType>))
+    * r: red (0 - 65535)
+    * g: green (0 - 65535)
+    * b: blue (0 - 65535)
+    * Returns: self
+
+--- xthickness
+    Gets the xthickness which is used for various padding values in GTK, such as the space taken up by frames.
+    * Returns: xthickness(Integer)
+--- xthickness=(xthickness)
+    Sets the xthickness which is used for various padding values in GTK, such as the space taken up by frames.
+    * xthickness: xthickness(Integer)
+    * Returns: xthickness
+--- set_xthickness(xthickness)
+    Same as Gtk::RcStyle#xthickness=.
+    * xthickness: xthickness(Integer)
+    * Returns: self
+
+--- ythickness
+    Gets the ythickness which is used for various padding values in GTK, such as the space taken up by frames.
+    * Returns: ythickness(Integer)
+--- ythickness=(ythickness)
+    Sets the ythickness which is used for various padding values in GTK, such as the space taken up by frames.
+    * ythickness: ythickness(Integer)
+    * Returns: ythickness
+--- set_ythickness(ythickness)
+    Same as Gtk::RcStyle#ythickness=.
+    * ythickness: ythickness(Integer)
+    * Returns: self
+
+== See Also
+((<Gtk::RC>)), Gtk::Style
+
+== ChangeLog
+* 2005-06-15: Fixed wrong explanations of set_(fg|bg|text|base) [bug:1219911] y ((<Masao>))
+* 2005-03-29: Added. - ((<Masao>))
+

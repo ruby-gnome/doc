@@ -1,0 +1,51 @@
+= Status Page
+This is the spot where you find out the status of all the work being done on, or around Ruby-GNOME2.
+
+== Milestones
+* Version-0.0: ... 
+* Version-0.1: All classes/modules status Will become '#' or 'O'. And '-' is also OK. This release makes sure of backward compatibility. 
+* Version-1.0: All classes/modules will become 'O'. 
+
+== Status
+* ((<"Ruby/GLib"|"Status of Ruby/GLib">)) - Masahiro Sakai
+* ((<"Ruby/GIO"|"Status of Ruby/GIO">)) - Nikolai Weibull
+* ((<"Ruby/ATK"|"Status of Ruby/ATK">)) - Masao Mutoh
+* ((<"Ruby/Pango"|"Status of Ruby/Pango">))- Masao Mutoh
+* ((<"Ruby/GdkPixbuf"|"Status of Ruby/GdkPixbuf">))- Masao Mutoh
+* ((<"Ruby/GDK"|"Status of Ruby/GDK">)) - Masao Mutoh
+* ((<"Ruby/GTK"|"Status of Ruby/GTK">)) - Masao Mutoh
+* ((<"Ruby/GNOME"|"Status of Ruby/GNOME">)) - KUBO Takehiro
+* ((<"Ruby/GStreamer"|"Status of Ruby/GStreamer">)) - Laurent Sansonetti
+* ((<"Ruby/GConf"|"Status of Ruby/GConf">)) - Nikolai Weibull
+* ((<"Ruby/GnomeCanvas"|"Status of Ruby/GnomeCanvas">)) - KUBO Takehiro
+* ((<"Ruby/GnomePrint"|"Status of Ruby/GnomePrint">)) - Kouhei Sutou
+* ((<"Ruby/GnomePrintUI"|"Status of Ruby/GnomePrintUI">)) - Kouhei Sutou
+* ((<"Ruby/GnomeVFS"|"Status of Ruby/GnomeVFS">)) - Nikolai Weibull
+* ((<"Ruby/GtkGLExt"|"Status of Ruby/GtkGLExt">)) - Vincent Isambart
+* ((<"Ruby/GtkHtml2"|"Status of Ruby/GtkHtml2">)) - Martin Povolny
+* ((<"Ruby/GtkMozEmbed"|"Status of Ruby/GtkMozEmbed">)) - Mirko Maischberger
+* ((<"Ruby/GtkSourceView"|"Status of Ruby/GtkSourceView">)) - Laurent Sansonetti
+* ((<"Ruby/GtkTrayIcon"|"Status of Ruby/GtkTrayIcon">)) - Laurent Sansonetti
+* ((<"Ruby/Libart"|"Status of Ruby/Libart">)) - Masao Mutoh
+* ((<"Ruby/Libgda"|"Status of Ruby/Libgda">)) - Laurent Sansonetti
+* ((<"Ruby/Libglade"|"Status of Ruby/Libglade">)) - Masao Mutoh
+* ((<"Ruby/PanelApplet"|"Status of Ruby/PanelApplet">)) - Masao Mutoh
+* ((<"Ruby/RSVG"|"Status of Ruby/RSVG">)) - Kouhei Sutou
+* ((<"Ruby/Poppler"|"Status of Ruby/Poppler">)) - Kouhei Sutou
+* ((<"Ruby/VTE"|"Status of Ruby/VTE">)) - Kouhei Sutou
+
+== External Ruby bindings for GNOME Libraries
+* ((<libxml2|URL:http://rubyforge.org/projects/xml-tools/>))
+* ((<libxslt|URL:http://rubyforge.org/projects/xml-tools/>))
+
+== TODO
+Libraries we still need to cover:
+* ((<At-spi|URL:http://developer.gnome.org/doc/API/2.0/at-spi/index.html>))
+  Should it be integrated in Ruby/ATK?
+* ((<Gail|URL:http://developer.gnome.org/doc/API/2.0/gail/index.html>))
+  Should it be integrated in Ruby/ATK?
+* ((<Bonobo-activation|URL:http://developer.gnome.org/doc/API/2.0/bonobo-activation/index.html>))
+* ((<libBonobo|URL:http://developer.gnome.org/doc/API/2.0/libbonobo/index.html>))
+* ((<libBonoboui|URL:http://developer.gnome.org/doc/API/2.0/libbonoboui/index.html>))
+* ((<libGSF|URL:http://developer.gnome.org/doc/API/2.0/libgsf/index.html>))
+* ((<GooCanvas|URL:http://sourceforge.net/projects/goocanvas>)) |((<"Ruby/GooCanvas"|URL:http://www.cozmixng.org/retro/projects/ruby-goocanvas/>))

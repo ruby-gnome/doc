@@ -1,0 +1,22 @@
+= Theory of Packing Boxes
+{{link "tut-gtk2-packing-intro", "tut-gtk2-packing-intro", "tut-gtk", "tut-gtk2-packing-box-details"}}
+
+Most packing is done by creating boxes.  These are invisible widget containers that we can pack our widgets into 
+which come in two forms, a horizontal box, and a vertical box.
+When packing widgets into a horizontal box, the objects are inserted horizontally from left to right or right to 
+left depending on the method used. 
+In a vertical box, widgets are packed from top to bottom or vice versa. You may use any combination of boxes inside 
+or beside other boxes to create the desired effect.
+
+To create a new horizontal box, we use Gtk::HBox.new, and for vertical boxes, Gtk::VBox.new. 
+The Gtk::Box#pack_start and Gtk::Box#pack_end methods are used to place objects inside of these containers. 
+The Gtk::Box#pack_start method will start at the top and work its way down in a vbox, and pack left to right in an 
+hbox. Gtk::Box#pack_end will do the opposite, packing from bottom to top in a vbox, and right to left in an hbox. 
+Using these methods allows us to right justify or left justify our widgets and may be mixed in any way to achieve 
+the desired effect. 
+We will use Gtk::Box#pack_start in most of our examples. An object may be another container or a widget. In fact, 
+many widgets are actually containers themselves, including the button, but we usually only use a label inside a button.
+
+By using these methods, GTK knows where you want to place your widgets so it can do automatic resizing and other 
+nifty things. There are also a number of options as to how your widgets should be packed. As you can imagine, this 
+method gives us a quite a bit of flexibility when placing and creating widgets.

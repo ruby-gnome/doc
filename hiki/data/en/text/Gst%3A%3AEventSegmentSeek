@@ -1,0 +1,22 @@
+= class Gst::EventSegmentSeek
+A segment seek event.
+
+== Object Hierarchy
+* Object
+  * GLib::Boxed
+    * Gst::Event
+      * Gst::EventSeek
+        * Gst::EventSegmentSeek
+
+== Class Methods
+--- Gst::EventSegmentSeek.new(type, start_offset, end_offset)
+    Allocates a new segment seek event with the given parameters.
+    * end_offset: an ending offset.  
+    * type: an event seek type (see ((<GstSeekType|Gst::EventSeek#GstSeekType>))). 
+    * start_offset: a starting offset. 
+    * Returns: a newly allocated Gst::EventSegmentSeek object.
+
+== See Also
+((<Gst>)).
+
+- ((<lrz>))

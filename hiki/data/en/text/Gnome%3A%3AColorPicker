@@ -1,0 +1,251 @@
+= class Gnome::ColorPicker
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::InitiallyUnowned
+        * Gtk::Object
+          * Gtk::Widget
+            * Gtk::Container
+              * Gtk::Bin
+                * Gtk::Button
+                  * Gnome::ColorPicker
+
+== Class Methods
+
+--- Gnome::ColorPicker.new
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- alpha
+
+    Gets the alpha value of the chosen color.
+     * Returns: The alpha value of the chosen color
+
+--- alpha=(alpha)
+
+    Sets the alpha value of the chosen color.
+     * alpha: The alpha value of the chosen color
+     * Returns: alpha
+
+--- blue
+
+    Gets the amount of blue in the chosen color.
+     * Returns: The amount of blue in the chosen color
+
+--- blue=(blue)
+
+    Sets the amount of blue in the chosen color.
+     * blue: The amount of blue in the chosen color
+     * Returns: blue
+
+--- d
+
+     * Returns: self: ((*FIXME*))
+
+--- dither=(dither)
+
+    Sets the value whether or not to dither to color or not.
+     * dither: true if or not to dither to color
+     * Returns: dither
+
+--- dither?
+
+    Gets the value whether or not to dither to color or not.
+     * Returns: true if or not to dither to color
+
+--- green
+
+    Gets the amount of green in the chosen color.
+     * Returns: The amount of green in the chosen color
+
+--- green=(green)
+
+    Sets the amount of green in the chosen color.
+     * green: The amount of green in the chosen color
+     * Returns: green
+
+--- i16
+
+     * Returns: self: ((*FIXME*))
+
+--- i8
+
+     * Returns: self: ((*FIXME*))
+
+--- red
+
+    Gets the amount of red in the chosen color.
+     * Returns: The amount of red in the chosen color
+
+--- red=(red)
+
+    Sets the amount of red in the chosen color.
+     * red: The amount of red in the chosen color
+     * Returns: red
+
+--- ref_accessible
+
+    See Atk::Implementor#ref_accessible.
+
+--- set_alpha(alpha)
+
+    Same as alpha=.
+     * alpha: The alpha value of the chosen color
+     * Returns: self
+
+--- set_blue(blue)
+
+    Same as blue=.
+     * blue: The amount of blue in the chosen color
+     * Returns: self
+
+--- set_d
+
+     * Returns: self: ((*FIXME*))
+
+--- set_dither(dither)
+
+    Same as dither=.
+     * dither: true if or not to dither to color
+     * Returns: self
+
+--- set_green(green)
+
+    Same as green=.
+     * green: The amount of green in the chosen color
+     * Returns: self
+
+--- set_i16
+
+     * Returns: self: ((*FIXME*))
+
+--- set_i8
+
+     * Returns: self: ((*FIXME*))
+
+--- set_red(red)
+
+    Same as red=.
+     * red: The amount of red in the chosen color
+     * Returns: self
+
+--- set_title(title)
+
+    Same as title=.
+     * title: The title to give to the color picker
+     * Returns: self
+
+--- set_use_alpha(use_alpha)
+
+    Same as use_alpha=.
+     * use_alpha: true if or not to give the color an alpha value
+     * Returns: self
+
+--- title
+
+    Gets the title to give to the color picker.
+     * Returns: The title to give to the color picker
+
+--- title=(title)
+
+    Sets the title to give to the color picker.
+     * title: The title to give to the color picker
+     * Returns: title
+
+--- use_alpha=(use_alpha)
+
+    Sets the value whether or not to give the color an alpha value or not.
+     * use_alpha: true if or not to give the color an alpha value
+     * Returns: use_alpha
+
+--- use_alpha?
+
+    Gets the value whether or not to give the color an alpha value or not.
+     * Returns: true if or not to give the color an alpha value
+
+--- add_child
+
+    See Gtk::Buildable#add_child.
+
+--- construct_child
+
+    See Gtk::Buildable#construct_child.
+
+--- get_internal_child
+
+    See Gtk::Buildable#get_internal_child.
+
+--- name
+
+    See Gtk::Buildable#name.
+
+--- name=
+
+    See Gtk::Buildable#name=.
+
+--- set_buildable_property
+
+    See Gtk::Buildable#set_buildable_property.
+
+--- set_name
+
+    See Gtk::Buildable#set_name.
+
+--- builder_name
+
+    See Gtk::Buildable#builder_name.
+
+--- builder_name=
+
+    See Gtk::Buildable#builder_name=.
+
+--- set_builder_name
+
+    See Gtk::Buildable#set_builder_name.
+
+== Properties
+
+--- alpha: Integer (Read/Write)
+
+    The alpha value of the chosen color
+
+--- blue: Integer (Read/Write)
+
+    The amount of blue in the chosen color
+
+--- dither: true or false (Read/Write)
+
+    Whether or not to dither to color
+
+--- green: Integer (Read/Write)
+
+    The amount of green in the chosen color
+
+--- red: Integer (Read/Write)
+
+    The amount of red in the chosen color
+
+--- title: String (Read/Write)
+
+    The title to give to the color picker
+
+--- use-alpha: true or false (Read/Write)
+
+    Whether or not to give the color an alpha value
+
+== Signals
+
+--- color-set: self
+
+     * self: Gnome::ColorPicker: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

@@ -1,0 +1,99 @@
+= Compile Guide for MS Windows (mswin32, mingw32)
+This is a guide on how to compile and install ruby-1.8.1 and ruby-gtk2-0.16.0 on Microsoft Windows.
+You can use the *.[so|rb] files which you will get following this article as a library for ((<Ruby Installer For Windows|URL:http://rubyinstaller.sourceforge.net/>)).
+
+== Install MinGW and MSYS
+First, install MinGW and MSYS. This guide is based on the default configurations.
+
+((<URL:http://www.mingw.org/>))
+* MinGW-5.1.2.exe (using the default installation options) 
+   * Installed to c:\MinGW
+
+* MSYS-1.0.10.exe (using the default installation options)
+   * Installed to c:\msys\1.0
+
+If you try cvs version of Ruby-GNOME2, you also need to install msysDTK-1.0.1.exe.
+
+Just follow the default settings upon questions during the installation.
+At once, while installing MSYS, you will need to input where MinGW is installed (which should be c:/MinGW). 
+Notice that you need to install them in this specific order (MinGW at first, MSYS after).
+
+== Install GTK+ Libraries from ((<GLADE for Windows|URL:http://sourceforge.net/projects/gladewin32/>)).
+Download the latest gtk-dev package from ((<GLADE for Windows|URL:http://sourceforge.net/project/showfiles.php?group_id=98754>)).
+
+* gtk-dev-2.10.11-win32-1.exe
+   * Installed to c:\GTK
+
+== Compile/Install Ruby
+Download ruby-1.8.5-p12.tar.gz from ((<URL:http://www.ruby-lang.org/>)).
+Put it in c:\msys\1.0\home\(username)\.
+
+Then, from the MSYS console (you can find it from the desktop icon or via the start menu), do as below:
+
+ $ tar xvzf ruby-1.8.5-p12.tar.gz
+ $ cd ruby-1.8.5
+ $ configure --prefix=/MinGW
+ $ make
+ $ make install
+
+ruby-1.8.5 is installed on c:\MinGW\[bin|lib|share|].
+
+== Compile/Install ruby-gnome2-0.16.0
+=== Compiling Ruby/GLib2
+At first, you need to compile Ruby/GLib first.
+
+ $ tar xvzf ruby-gnome2-0.16.0.tar.gz
+ $ cd ruby-gnome2-0.16.0
+ $ export PATH=/c/GTK/bin:$PATH
+ $ cd glib
+ $ unset RUBYOPT
+ $ /c/MinGW/bin/ruby.exe extconf.rb --ruby=/c/MinGW/bin/ruby.exe
+ $ make
+ $ make install
+
+=== Compiling/Installing rcairo
+rcairo is required by other Ruby-GNOME2 libraries such as Ruby/GTK2.
+
+You need to compile/install rcairo before compiling other Ruby-GNOME2
+libraries.
+
+Download rcairo from http://cairographics.org/releases/ and put it in c:\msys\1.0\home\(username)\. 
+
+ $ tar xvzf rcairo-1.2.0.tar.gz
+ $ cd rcairo-1.2.0
+ $ /c/MinGW/bin/ruby.exe setup.rb
+
+=== Compiling other Ruby-GNOME2 libraries
+Then you can compile other Ruby-GNOME2 libraries. Note to set CAIRO_PATH correctly.
+
+ $ cd ../ruby-gnome2-0.16.0
+ $ export CAIRO_PATH=/c/msys/1.0/home/(username)/rcairo
+ $ /c/MinGW/bin/ruby.exe extconf.rb --ruby=/c/MinGW/bin/ruby.exe
+ $ make
+ $ make install
+
+Some sub-libraries won't succeed to install because these libraries aren't installed from gladewin32. But don't mind.
+All target files are installed on c:\MinGW\lib\ruby\site_ruby\1.8\*.rb and c:\MinGW\lib\ruby\site_ruby\1.8\i386-msvcrt\*.[so|h].
+
+== How to use them with ((<Ruby Installer For Windows|URL:http://rubyinstaller.sourceforge.net/>))
+Copy c:\MinGW\lib\ruby\site_ruby\1.8\*.rb and c:\MinGW\lib\ruby\site_ruby\1.8\i386-msvcrt\*.so to the directory where you installed the Ruby Installer.
+(e.g.) If you installed it to c:\ruby, then copy c:\MinGW\lib\ruby\site_ruby\1.8\*.rb to c:\ruby\lib\ruby\site_ruby\1.8\, and copy c:\MinGW\lib\ruby\site_ruby\1.8\i386-msvcrt\*.so to c:\ruby\lib\ruby\site_ruby\1.8\
+
+== See Also
+If you have some troubles, see also ((<Install Guide for Windows>)).
+
+== ChangeLog
+:2008-04-09 ((<Joachim Glauche>))
+  * Fixed Glade for Windows links
+:2006-12-26 ((<Masao>))
+  * Revised.
+:2004-08-07 ((<Masao>))
+  * Revised.
+:2004-08-07 ((<Masao>))
+  * Apply GTK+-2.4.0 from ((<GLADE for Windows|URL:http://gladewin32.sourceforge.net/>)) and ((<ruby182-14_rc7a.exe|URL:http://rubyforge.org/frs/?group_id=167>)).
+:2004-03-14 ((<lrz>))
+  * Fixed some typos.
+:2004-03-14 ((<Masao>))
+  * Updated version information.
+:2004-03-11 ((<Masao>))
+  * Initial release.

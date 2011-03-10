@@ -1,0 +1,14 @@
+= class Gst::MessageStepDone
+
+== Object Hierarchy
+
+* Object
+  * Gst::MiniObject
+    * Gst::Message
+      * Gst::MessageStepDone
+
+== See Also
+
+== ChangeLog
+
+

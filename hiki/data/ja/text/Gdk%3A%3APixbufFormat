@@ -1,0 +1,42 @@
+= class Gdk::PixbufFormat
+A Gdk::PixbufFormat contains information about the image format accepted by a module. 
+
+== Object Hierarchy
+* Object
+  * GLib::Boxed
+    * Gdk::PixbufFormat
+
+== Instance Methods
+--- name
+    Returns the name of the format. ((* Since 2.2 *))
+    * Returns: the name of the format.
+
+--- description
+    Returns the description of the format. ((* Since 2.2 *))
+    * Returns: the description of the format
+
+--- mime_types
+    Returns the mime types supported by the format. ((* Since 2.2 *))
+    * Returns: an Array of mime types
+
+--- extensions
+    Returns the filename extensions typically used for files in the given format. ((* Since 2.2 *))
+    * Returns: an Array of filename extensions
+
+--- writable?
+    Returns whether pixbufs can be saved in the given format. ((* Since 2.2 *))
+    * Returns: true if pixbufs can be saved in the given format, or false
+
+--- domain
+    Returns the message domain for the description. 
+    * Returns: the message domain for the description
+
+--- signature
+    Returns the signature of the module.  ((* Since 2.2 *))
+    * Returns: [[prefix1, mask1, relevance1], [prefix2, mask2, relevance2], ... ]
+       * prefix: the prefix for this pattern
+       * mask: mask containing bytes which modify how the prefix is matched against test data
+       * relevance: relevance of this pattern 
+
+
+- ((<Masao>))

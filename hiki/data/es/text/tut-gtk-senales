@@ -1,0 +1,28 @@
+= Mecanismo de señales y respuestas
+{{link "tut-gtk-holamundo", "gtk-primeros-pasos", "tut-gtk", "tut-gtk-eventos"}}
+
+Antes de estudiar el programa "Hola Mundo" en detalle, vamos a estudiar un poco como gestiona GTK las señales y respuestas.
+
+Al igual que tu sistema devuelve una señal a los procesos al apagarse (Notese que las señales GTK no están relacionadas de ninguna forma con las señales UNIX). El toolkit GTK ha sido diseñado para ser independiente de la plataforma en la que se ejecuta.), GTK envía una señal al proceso principal (Gtk.main) cuando un evento ocurre. El proceso principal puede entonces llamar a la función apropiada asociada al componente que envió la señal.
+
+Hasta que se recibe una señal, el proceso principal se encuentra dormido.
+
+Para indicar a un componente GTK que debe responder a una señal específica, y entonces ejecutar el código apropiado, necesitamos un manejador de señales.
+
+Esto se consigue con el método GLib::Instantiatable#signal_connect, que es parte de la librería Ruby/GLib (no hay que olvidar que GTK se basa en GLib):
+
+  GLib::Instantiatable#signal_connect("nombre de señal") do
+      # Código a ajecutar al capturar "nombre de señal".
+  end
+
+GLib::Instantiatable#signal_connect necesita 2 cosas:
+* el nombre de la señal que será capturada; 
+* el bloque de código que será ejecutado tras recibir la señal.
+
+EL bloque de código puede tomar un parámetro opcional:
+
+  GLib::Instantiatable#signal_connect("nombre de señal") do |w|
+      # ...
+  end
+
+El componente que generó la señal será sustituido en adelante por el parámetro w.

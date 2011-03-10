@@ -1,0 +1,106 @@
+= Install Guide
+{{link nil, "Install Guide", nil, nil}}
+
+== Microsoft Windows (mswin32, mingw32)
+
+=== Note
+
+* The installation should be quick and easy. The minimum packages are ((<Ruby|URL:http://www.ruby-lang.org>)), ((<"Ruby/GTK2"|URL:http://ruby-gnome2.sf.net>)).
+* The entire Ruby-GNOME2 package isn't supported on Windows yet, and may never be, as it requires GNOME 2.
+* The versions of Windows are categorized in Win9X/ME and WinNT/2000/XP/2003.
+* This installation process was tested with Ruby 1.8.
+
+=== Steps
+
+==== One
+
+* Download ((<Ruby packaged by One-Click Ruby Installer  Project|URL:http://rubyinstaller.rubyforge.org/wiki/wiki.pl>)). 
+* ((<ruby185-22.exe|URL:http://rubyforge.org/frs/?group_id=167>)) is recommended for this example. 
+* Install it in any directory (Ex: c:\Ruby).
+
+==== Two
+
+* Download ((<"Ruby/GTK2 binaries for Windows"|URL:http://sourceforge.net/project/showfiles.php?group_id=53614>)).
+* ((<ruby-gnome2-0.16.0-1-i386-mswin32.exe|URL:http://prdownloads.sourceforge.net/ruby-gnome2/ruby-gnome2-0.16.0-1-i386-mswin32.exe?download>)) is recommended for this example.
+* Execute it. 
+  Basically, you don't need to change any settings. There are three points you can set it by yourself.
+  * GTK2 Runtime: If you have your own GTK2 binaries(and the bin-path is added to PATH), you may check off this option. But it is heavily recommanded to check on this option.
+  * Register Environment Variables: The GTK2 Runtime bin-path is added to PATH. If you want to use tools such as msginit, msgmerge, etc ..., this option is useful. But if you don't need them, you shouldn't check this option. Especially, if you have some other GTK2 applications, it may causes any DLL conflicts.
+  * Choose the install directory: Note that you need to choose the ruby-install-dir(Ex: c:\Ruby).
+
+==== Three
+
+* Time to test it. Don't worry if something didn't go well, as there is a trouble shooting area below.
+* The following commands should be typed on the "Prompt for DOS". To open the Prompt for DOS on:
+    * Win9X/ME click on the Start Button and Run(Execute ?). Type ((*command*)) and hit the <ENTER> key.
+    * WinNT/2000/XP/2003 click on the Start Button and Run(Execute ?). Type ((*cmd*)) and hit the <ENTER> key.
+    C:\>ruby -v
+    ruby 1.8.0 (2003-05-26) [i386-mswin32]
+ 
+    C:\>ruby -e "require 'gtk2'"
+ 
+    C:\>ruby -rgtk2 -e "Gtk::Window.new.show;Gtk.main"
+* If it didn't return any error, it's done. From here you can follow one of our ((<tutorials>)).
+
+=== Trouble Shooting
+--- ruby -v
+    If this command doesn't work, check if ruby-install-dir\bin is set correcly in the PATH Env. Var. .
+--- Font configuration
+    If you can't show labels/menus in you language, add font-setting to C:\Ruby\lib\GTK\etc\gtk-2.0\gtkrc
+
+   style "user-font"
+   {
+     font_name="ms pgothic 10"
+   }
+   widget_class "*" style "user-font"
+
+--- Can't load gtk2 module
+    If C:\>ruby -e "require 'gtk2'" returns an error and you can't load gtk2 module, there are some reasons:
+    * You have some GTK+ libraries on your computer, and gtk2 module found another one what you don't intend.
+       * Remove all of GTK+ libraries once, and re-install new one, again.
+    * Your GTK+ libraries may be older than ruby-gtk2 package are required. 
+       * Remove GTK+ libraries once, and re-install new one.
+
+--- "The procedure entry point libiconv_set_relocation_prefix count not be located" when load gtk2 module"
+    According to ((<ruby-talk:178580>)), You need to copy iconv.dll like as:
+
+     C:\ruby\bin\iconv.dll ==> C:\ruby\bin\iconv.old_dll
+     C:\Program Files\GTK\bin\iconv.dll ==> C:\ruby\bin\iconv.dll
+
+--- "XML_SetDoctypeDeclHandler not found in xmlparse.dll"
+    According to ((<Bug 1381072|URL:http://sourceforge.net/tracker/index.php?func=detail&aid=1381072&group_id=53614&atid=470969>)), xmlparse.dll(and xmltok.dll) are duplicated on your system. So remove(rename) these dll first except GTK dlls(Ex: c:\ruby\lib\GTK\bin). 
+
+=== Author
+* Joao Pedrosa - joaopedrosa@yahoo.com
+
+=== ChangeLog
+:2007-02-12 Masao Mutoh
+ Rewrite to use the newest Ruby-GNOME2 Win32 GUI Installer.
+:2006-04-27 Masao Mutoh
+ Add a FAQ from Bug#1381072.
+:2006-04-15 Masao Mutoh
+ Add a FAQ about libiconv problem.
+:2005-12-25 Masao Mutoh
+ Update ruby-gtk2, gtk2.
+:2005-07-31 Masao Mutoh
+ Update ruby, ruby-gtk2, gtk2.
+:2005-04-16 Masao Mutoh
+ Update ruby, ruby-gtk2, gtk2.
+:2004-08-10 Masao Mutoh
+ Update ruby, ruby-gtk2, gtk2. Revised.
+:2004-08-10 Masao Mutoh
+ Update gtk-win32-aio package to 2.4-rc12. Revised.
+:2004-08-09 Masao Mutoh
+ Update Ruby-GNOME2 package to 0.10.0. And Use GLADE for Win32 package instead of Dropline.
+:2003-12-18 Masao Mutoh
+ Update Ruby-GNOME2 package to 0.8.0.
+:2003-12-14 Masao Mutoh
+ Add Font configuration, and update some old informations.
+:2003-11-05 Masahiro Sakai
+ Update dropline gtk package to GTK-Runtime-Environment-2.2.4.1.exe
+:2003-09-08 Masahiro Sakai
+ Update for Ruby-GNOME2 0.7.0
+:2003-06-05 Masao Mutoh
+ Change Library name(Ruby-GTK to Ruby/GTK)
+:2003-06-04 Joao Pedrosa
+ Initial release

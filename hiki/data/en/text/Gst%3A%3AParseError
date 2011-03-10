@@ -1,0 +1,35 @@
+= class Gst::ParseError
+
+== Object Hierarchy
+
+* Object
+  * Exception
+    * StandardError
+      * RuntimeError
+        * Gst::ParseError
+
+== Instance Methods
+
+--- code
+
+     * Returns: self: ((*FIXME*))
+
+--- domain
+
+     * Returns: self: ((*FIXME*))
+
+== Constants
+
+--- COULD_NOT_SET_PROPERTY
+--- EMPTY
+--- EMPTY_BIN
+--- LINK
+--- NO_SUCH_ELEMENT
+--- NO_SUCH_PROPERTY
+--- SYNTAX
+
+== See Also
+
+== ChangeLog
+
+

@@ -1,0 +1,8 @@
+= Dicas de Ruby-GNOME2
+
+* ((<Como escrever os caracteres não-ascii.|tips_i18n>))
+* ((<Investigue os comportamentos de sinais ("eventos").|tips_signals>))
+* ((<Altere um ícone em um botão de uma toolbar.|tips_toolbar_icon>))
+* ((<Investigue qual tecla é pressionada.|tips_key_pressed>))
+* ((<Criando uma TreeView "lazy".|tips_lazy_treeview>))
+* ((<"Suportando internacionalização (i18n) no Ruby/Libglade."|tips_libglade_i18n>))

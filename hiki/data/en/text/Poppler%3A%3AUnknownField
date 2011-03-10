@@ -1,0 +1,15 @@
+= class Poppler::UnknownField
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Poppler::FormField
+        * Poppler::UnknownField
+
+== See Also
+
+== ChangeLog
+
+

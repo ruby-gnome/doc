@@ -1,0 +1,11 @@
+= module Gtk::TreeDragSource
+
+== Included Modules
+
+  * GLib::Interface
+
+== See Also
+
+== ChangeLog
+
+- ((<Masao>))

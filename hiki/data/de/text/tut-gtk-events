@@ -1,0 +1,65 @@
+= Ereignisse
+{{link "tut-gtk-signals", "tut-gtk-intro", "tut-gtk", "tut-gtk-helloworld-details"}}
+
+Zusätzlich zu den oben erwähnten Signal-Mechanismen, werden Ereignisse des XWindow-Systems ebenfalls in GTK wiedergegeben.
+
+Hier ist eine ausführliche Liste von abfangbaren Ereignissen:
+
+* event
+* button_press_event
+* button_release_event
+* scroll_event
+* motion_notify_event
+* delete_event
+* destroy_event
+* expose_event
+* key_press_event
+* key_release_event
+* enter_notify_event
+* leave_notify_event
+* configure_event
+* focus_in_event
+* focus_out_event
+* map_event
+* unmap_event
+* property_notify_event
+* selection_clear_event
+* selection_request_event
+* selection_notify_event
+* proximity_in_event
+* proximity_out_event
+* visibility_notify_event
+* client_event
+* no_expose_event
+* window_state_event
+
+Sie können Code mit einem X11-spezifischen Ereignis auf gleiche gleiche Weise verbinden, wie wir gerade anhand der GTK-Signale gesehen haben. Verwenden Sie einfach einen der oben angegebenen Ereignisnamen anstelle von "event name":
+
+  GLib::Instantiatable#signal_connect("event name") do
+      # Code, der bei Empfang des Ereignisses "event name" ausgeführt werden soll.
+  end
+
+Der Callback-Block kann zwei Parameter annehmen, wie im folgenden Code beschrieben:
+
+  GLib::Instantiatable#signal_connect("event name") do |w, e|
+      # ...
+  end
+
+(in diesem Fall referenziert w das Widget, welches das Ereignis ausgelöst hat und e das Ereignis selber).
+
+In Abhängigkeit von dem Rückgabewert des Blocks kann GTK entscheiden, ob das Ereignis weiterverarbeitet werden soll oder nicht:
+
+* wenn true, wird GTK die Ereignisverarbeitung hier beenden;
+* wenn false, wird GTK das Ereignis weiter verbreiten [xxx explain more]
+
+Außerdem senden GDK-Selektionen und Drag'n'Drop-Aktionen verschiedene Ereignisse, aber diese werden von GTK-Signalen wiedergespiegelt:
+
+* selection_received
+* selection_get
+* drag_begin_event
+* drag_end_event
+* drag_data_delete
+* drag_motion
+* drag_drop
+* drag_data_get
+* drag_data_received

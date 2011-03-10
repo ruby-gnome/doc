@@ -1,0 +1,45 @@
+= The Text View Widget
+{{link "tut-gtk2-glib-iochannels", "tut-gtk2-txtw", "tut-gtk", "tut-gtk2-txtw-scrolledwin"}}
+
+:Contents of this chapter:
+
+  * ((<The Text View Widget|tut-gtk2-txtw>)) (this page)
+    * 1 ((<Scrolled Windows|tut-gtk2-txtw-scrolledwin>))
+    * 2 ((<Text Views|tut-gtk2-txtw-textview>))
+      * 2.1 ((<Text Buffers|tut-gtk2-txtw-textview#Text Buffers>))
+      * 2.2 ((<Text View Properties|tut-gtk2-txtw-textview#Text View Properties>)){{image_right("dialog-warning-s2.png")}}
+      * 2.3 ((<Pango Tab Arrays|tut-gtk2-txtw-textview#Pango Tab Arrays>)) (!)
+    * 3 ((<Text Iterators and Marks|tut-gtk2-txtw-itrsmrks>)){{image_right("dialog-warning-s2.png")}}
+      * 3.1 ((<Editing the Text Buffer|tut-gtk2-txtw-itrsmrks#Editing the Text Buffer>)) (!,f)
+      * 3.2 ((<Retrieving Text Iterators and Marks|tut-gtk2-txtw-itrsmrks#Retrieving Text Iterators and Marks>))
+      * 3.3 ((<Changing Text Buffer Contents|tut-gtk2-txtw-itrsmrks#Changing Text Buffer Contents>))
+      * 3.4 ((<Cutting, Copying and Pasting|tut-gtk2-txtw-itrsmrks#Cutting, Copying and Pasting>))
+      * 3.5 ((<Searching in the Text Buffer|tut-gtk2-txtw-itrsmrks#Searching in the Text Buffer>))
+      * 3.6 ((<Scrolling the Text Buffer|tut-gtk2-txtw-itrsmrks#Scrolling the Text Buffer>))
+    * 4 ((<Text Tags|tut-gtk2-txtw-ttags>))
+    * 5 ((<Inserting Images|tut-gtk2-txtw-iimgs>))
+    * 6 ((<Inserting Child Widgets|tut-gtk2-txtw-icw>))
+    * 7 ((<GtkSourceView|tut-gtk2-txtw-gsw>))
+    * 8 ((<Test Your Understanding|tut-gtk2-txtw-tyu>))
+
+In this chapter we will learn how to use the Gtk::TextView widget. This widget is similar to the Gtk::Entry widget, except it is capable of holding text that spans multiple lines. Scrolled windows will be used to allow the text to exist beyond the boundaries of the screen. But before we dive into the main subject of this chapter we have to introduce a few of new widgets. The first two will be scrolled windows and view ports. Scrolled windows are composed of two scrollbars that are used to scroll the child widget. There are a few widgets that support scrolling, for example Gtk::Layout, Gtk::TreeView and Gtk::TextView. For all other widgets that you want to scroll, you will need to add them first to a Gtk::Viewport object, which then provides scrolling behaviour to its child.
+
+
+:In this chapter you will learn:
+
+  * How to use the scrolled windows and viewports.
+  * How to use the Gtk::TextView widget and apply the text buffers.
+  * What is the purpose of iterators and text marks in a text buffer.
+  * Methods of applying styles to the text (document).
+  * How to cut, copy and paste to and from clipboard.
+  * How to insert images and other child widgets into a text view.
+
+Following are to our topic directly related widgets
+
+:Multiline Text Editor Widgets:
+    * Gtk::TextIter - Text buffer iterator
+    * Gtk::TextMark - A position in the buffer preserved across buffer modifications
+    * Gtk::TextBuffer - Stores attributed text for display in a Gtk::TextView
+    * Gtk::TextTag - A tag that can be applied to text in a Gtk::TextBuffer
+    * Gtk::TextTagTable - Collection of tags that can be used together
+    * Gtk::TextView - Widget that displays a Gtk::TextBuffer

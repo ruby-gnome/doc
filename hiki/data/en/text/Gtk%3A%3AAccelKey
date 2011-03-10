@@ -1,0 +1,76 @@
+= class Gtk::AccelKey
+
+== Object Hierarchy
+
+* Object
+  * GLib::Boxed
+    * Gtk::AccelKey
+
+== Class Methods
+
+--- Gtk::AccelKey.new
+
+    Creates new Gtk::AccelKey.
+    * Returns: new Gtk::AccelKey
+
+== Instance Methods
+
+--- key
+
+    Gets the GDK key code.
+    * Returns: self
+
+--- key=(key)
+
+    Sets a GDK key code.
+    * key: a GDK key code.
+    * Returns: key
+
+--- set_key(key)
+
+    Same as Gtk::AccelKey#key=.
+    * key: a GDK key code.
+    * Returns: self
+
+--- mods
+
+    Gets the accelerator modifier mask (((<GdkModifierType|Gdk::Window#GdkModifierType>))).
+    * Returns: accelerator modifier mask (((<GdkModifierType|Gdk::Window#GdkModifierType>)))
+
+--- mods=(mods)
+
+    Sets the accelerator modifier mask.(((<GdkModifierType|Gdk::Window#GdkModifierType>)))
+    (e.g.)Gdk::Window::CONTROL_MASK | Gdk::Window::SHIFT_MASK | Gdk::Window::MOD1_MASK, that is, Control, Shift, and Alt.
+    * mods: accelerator modifier mask (((<GdkModifierType|Gdk::Window#GdkModifierType>)))
+    * Returns: mods
+
+--- set_mods(mods)
+
+    Same as Gtk::AccelKey#mods=.
+    * mods: accelerator modifier mask (((<GdkModifierType|Gdk::Window#GdkModifierType>)))
+    * Returns: self
+
+--- flags
+
+    Gets the accel flags (((<GtkAccelFlags|Gtk#GtkAccelFlags>))).
+    * Returns: the accel flags (((<GtkAccelFlags|Gtk#GtkAccelFlags>))).
+
+--- flags=(flags)
+
+    Sets accel flags (((<GtkAccelFlags|Gtk#GtkAccelFlags>))).
+    * flags: accel flags (((<GtkAccelFlags|Gtk#GtkAccelFlags>))).
+    * Returns: self
+
+--- set_flags
+
+    Same as Gtk::AccelKey#flags=.
+    * flags: accel flags (((<GtkAccelFlags|Gtk#GtkAccelFlags>))).
+    * Returns: self
+
+== See Also
+
+Gtk::AccelGroup, Gtk::Accelerator
+
+== ChangeLog
+
+-((<Masao>))

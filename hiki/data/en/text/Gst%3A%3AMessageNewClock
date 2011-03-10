@@ -1,0 +1,26 @@
+= class Gst::MessageNewClock
+
+== Object Hierarchy
+
+* Object
+  * Gst::MiniObject
+    * Gst::Message
+      * Gst::MessageNewClock
+
+== Class Methods
+
+--- Gst::MessageNewClock.new
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- parse
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

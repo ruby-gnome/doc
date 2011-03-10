@@ -1,0 +1,18 @@
+= Criando um Gst::Element
+{{link("tut-gst-elements-intro", nil, "tut-gst", "tut-gst-elements-properties")}}
+
+Um objeto Gst::Element é criado de uma fábrica. Para criar um elemento, você tem que conseguir acessoa um objeto Gst::ElementFactory usando um nome único de fábrica.
+
+O exemplo de código a seguir é usado para pegar uma fábrica que pode ser usada para criar um elemento "mad", um decodificador de mp3.
+
+  factory = Gst::ElementFactory.find("mad")
+
+Uma vez que você tenha que a referência para a fábrica de elementos, você pode criar um elemento real com o fragmento de código a seguir:
+
+  element = factory.create("decoder")
+
+O Gst::ElementFactory#create usará a fábrica de elemento para criar um elemento com o nome fornecido. O nome do elemento é algo que você pode usar depois para buscar pelo elemento em um Gst::Bin, por exemplo. Você pode passar nil como o nome do argumento para pegar um nome padrão e único (o qual é o valor padrão desse argumento).
+
+Um atalho simples existe para criar um elemento a partir de uma fábrica. O exemplo a seguir cria um elemento chamado "decoder" a partir da fábrica de elementos chamada "mad". Este método de conveniência é usado largamento para criar um elemento.
+
+  element = Gst::ElementFactory.make("mad", "decoder")

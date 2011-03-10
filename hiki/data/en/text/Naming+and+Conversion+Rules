@@ -1,0 +1,163 @@
+= Ruby-GNOME2 naming/conversion rules
+You should conform to this document when implementing Ruby-GNOME components.
+
+== The project name
+This project name is "Ruby-GNOME2". 
+
+Notice: It's not Ruby-Gnome2, Ruby/GNOME2, Gnome2-Ruby, brah, brah ... ;).
+
+== Library names
+Ruby-GNOME2 means the whole project.
+
+If you want to talk about a Ruby-GNOME2 component, use "/".  Examples:
+
+* Ruby/GNOME - gnome2 module
+* Ruby/GnomeCanvas - gnomecanvas2 module
+* Ruby/GTK - gtk2 module
+* Ruby/GLib - glib2 module (glib2 is always required by other libraries)
+* Ruby/Libglade - libglade module
+
+You also can say as Ruby/GNOME2, Ruby/GTK2, if you need to make the distinction between the actual framework (Ruby-GNOME2) and the old one (Ruby-GNOME, based on GTK+1.2).
+
+== Class/Module names
+Usually, a ruby object is mapping to a C struct. Separate it at first prefix.
+
+* GtkWidget -> Gtk::Widget
+* GtkTextView -> Gtk::TextView
+* GdkGLWindow -> Gdk::GLWindow
+* GnomeCanvas -> Gnome::Canvas
+* GnomeCanvasItem -> Gnome::CanvasItem
+* GnomeDruidPageEdge -> Gnome::DruidPageEdge
+* PangoFontFamily -> Pango::FontFamily
+* GConfClient -> GConf::Client
+
+We don't separate them so many like as:
+* GtkTextView -> Gtk::Text::View (NG)
+* GnomeDruidPageEdge -> Gnome::Druid::Page::Edge (NG)
+And like as:
+* GdkGLWindow -> GdkGL::Window (NG)
+* GnomeCanvasItem -> GnomeCanvas::Item (NG)
+
+But there are some exceptions:
+* GObject -> GLib::Object
+* GnomeVFSDirectory -> GnomeVFS::Directory
+* HtmlDocument(Ruby/GtkHtml2) -> Gtk::HtmlDocument
+
+If there isn't serious problem, you should take common way.
+
+== Accessors (Setter/Getter methods)
+
+There are two patterns. In each pattern, you should implement all the methods.
+
+* Method has only one argument
+
+ setter: hoge=(a)             # Return a.
+         set_hoge(a)          # Return self.
+ getter: hoge                 # Return hoge's value.
+
+* Method has 2 or more arguments for setters or has an/2 or more arguments for getters
+
+ setter: set_fuga(a, b)       # Return self.
+ getter: fuga                 # Have no argument. Return fuga's value.
+         get_fuga(a)          # Have an argument. Return fuga's value.
+         get_fuga(a, b)       # Have arguments. Return fuga's value.
+
+== is_* methods
+Convert is_foo -> foo?, since it is more natural in Ruby.
+
+== has_*, use_* methods
+If the method return gboolean, add '?' to the end of the name of the method.
+
+  has_foo -> has_foo?
+  use_bar -> use_bar?
+
+== set/get_has_*, set/get_use_* methods
+
+  get_has_foo -> has_foo?
+  set_has_foo -> has_foo=(a), set_has_foo(a)
+  get_use_foo -> use_foo?
+  set_use_foo -> use_foo=(a), set_use_foo(a)
+
+== classname_foo_set_bar, classname_foo_get_bar ...
+There are some methods which don't start with a verb like set/get/is/has/use. We think these patterns are not good naming. But we don't convert (remove verbs) like as follows.
+
+  gtk_classname_foo_set_bar -> Gtk::ClassName#foo_set_bar
+  gtk_classname_foo_get_bar -> Gtk::ClassName#foo_get_bar
+  gtk_classname_foo_get_bar -> Gtk::ClassName#foo_get_bar?
+  gtk_classname_foo_is_bar -> Gtk::ClassName#foo_is_bar?
+  gtk_classname_foo_has_bar -> Gtk::ClassName#foo_has_bar?
+  gtk_classname_foo_use_bar -> Gtk::ClassName#foo_use_bar?
+
+== Destructive methods(which changes the object itself)
+Usually, destructive methods have a "!" at the end of their name.  For example, Gtk::TreeIter#first!, #next!, Gtk::TreePath#prev!, #next!, #up!, #down!.
+
+(*) Note that '!' in Ruby means "careful", or "dangerous".  It's used to alert the programmer.
+
+== *_foreach methods
+Convert them to 'each'.
+
+== list_foos methods
+If it returns an array which is converted from GList or GSList, rename them to 'foos'.
+
+== The methods which return boolean variable
+Add '?' to end of the name of method (example: foo -> foo?), if the method aims to return a value.
+
+For example:
+
+  do_something -> do_something  # Do something, as result, return gboolean.
+  some_status -> some_status?   # Get statuses or properties.
+
+== Instance methods which return void
+Return self.
+
+== initialize
+Return Qnil.
+
+== Class methods/Module methods which return void
+Return self.
+
+== Constants
+Sometimes this definition is difficult. When you are confused about this, you should ask on the mailing list.
+
+* If the constants belong to an object (class or module), include the constants among members of the object.
+  For example, in the case of GtkDialog:
+
+      GtkDialogFlags
+         GTK_DIALOG_MODAL               -> Gtk::Dialog::MODAL
+         GTK_DIALOG_DESTROY_WITH_PARENT -> Gtk::Dialog::DESTROY_WITH_PARENT
+         GTK_DIALOG_NO_SEPARATOR        -> Gtk::Dialog::NO_SEPARATOR
+  
+      GtkResponseType
+         GTK_RESPONSE_NONE     ->  Gtk::Dialog::RESPONSE_NONE
+         GTK_RESPONSE_REJECT   ->  Gtk::Dialog::RESPONSE_REJECT
+         GTK_RESPONSE_ACCEPT   ->  Gtk::Dialog::RESPONSE_ACCEPT
+
+* The constants are independant from objects (Almost in 'Standard Enumerations'):
+
+    GTK_FOO_BAR -> Gtk::FOO_BAR
+
+== Classes, Modules and Methods
+Usually a C structure is mapped into a ruby class. But if there is no C structure, you may implement the group as a Ruby module.
+
+There is also an exception: methods that first argument is other class's instance.  In this case, it may be better to implement the method in the other class.
+
+== Plural methods which have the same meaning but accept different arguments
+Combine them in a single method.
+
+== foo_at_pos(x, y), foo_for_something(sometihg), etc.
+You may omit _at_pos, _for_something. Mainly this rule is applied to "plural methods which have the same meaning but accept diffrent arguments", but you can choose this rule for a single method.
+
+== Miscellaneous
+* You can add new methods which do not exist in the C library.
+* You can rename some functions of the C library, to make them more natural from Ruby.
+
+These points are not forbidden, because Ruby-GNOME2 is not just a Ruby wrapper for GNOME/GTK+.  But you need to propose your idea to the mailing list before.
+
+=== ChangeLog
+:2005-09-19 ((<Masao>))
+  * "Class methods/Module methods which return void" => Returns self, not Qnil.
+  * Added "foo_at_pos(x, y), foo_for_something(sometihg), etc."
+:2003-10-11 ((<Masao>))
+ Add Class/Modlue names.
+:2003-10-05 ((<Masao>))
+ Add list_foos rule.

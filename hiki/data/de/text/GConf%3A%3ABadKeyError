@@ -1,0 +1,5 @@
+= class GConf::BadKeyError
+This error class gets raised whenever GConf gets a key or directory reference that contains illegal characters or is malformed in some way.
+
+== Super Class
+* GConf::Error

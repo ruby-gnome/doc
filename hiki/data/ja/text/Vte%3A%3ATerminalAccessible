@@ -1,0 +1,28 @@
+= class Vte::TerminalAccessible
+
+== Object Hierarchy
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Atk::Object
+        * Gtk::Accessible
+          * Vte::TerminalAccessible
+
+== Included Modules
+* Atk::Text
+* Atk::Component
+
+== Class Methods
+--- Vte::TerminalAccessible.new
+     
+    Creates a new accessibility peer for the terminal widget.
+
+     * Returns: the new Atk::Object
+
+== See Also
+
+== ChangeLog
+
+* 2006-05-18 ((<kou>)): completed.
+
+- ((<kou>))

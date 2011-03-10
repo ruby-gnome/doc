@@ -1,0 +1,18 @@
+= class GLib::IO::FailedError
+
+A generic error condition for when any operation fails. 
+
+== Object Hierarchy
+
+* Object
+  * Exception
+    * StandardError
+      * IOError
+        * GLib::IO::Error
+          * GLib::IO::FailedError
+
+== See Also
+
+== ChangeLog
+
+

@@ -1,0 +1,73 @@
+= class Gtk::UIManager::ItemType
+
+== Object Hierarchy
+
+* Object
+  * GLib::Flags
+    * Gtk::UIManager::ItemType
+
+== Instance Methods
+
+--- accelerator?
+
+     * Returns: self: ((*FIXME*))
+
+--- auto?
+
+     * Returns: self: ((*FIXME*))
+
+--- menu?
+
+     * Returns: self: ((*FIXME*))
+
+--- menubar?
+
+     * Returns: self: ((*FIXME*))
+
+--- menuitem?
+
+     * Returns: self: ((*FIXME*))
+
+--- placeholder?
+
+     * Returns: self: ((*FIXME*))
+
+--- popup?
+
+     * Returns: self: ((*FIXME*))
+
+--- separator?
+
+     * Returns: self: ((*FIXME*))
+
+--- toolbar?
+
+     * Returns: self: ((*FIXME*))
+
+--- toolitem?
+
+     * Returns: self: ((*FIXME*))
+
+--- popup_with_accels?
+
+     * Returns: self: ((*FIXME*))
+
+== Constants
+
+--- ACCELERATOR
+--- AUTO
+--- MENU
+--- MENUBAR
+--- MENUITEM
+--- PLACEHOLDER
+--- POPUP
+--- SEPARATOR
+--- TOOLBAR
+--- TOOLITEM
+--- POPUP_WITH_ACCELS
+
+== See Also
+
+== ChangeLog
+
+

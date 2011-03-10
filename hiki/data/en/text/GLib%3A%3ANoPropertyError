@@ -1,0 +1,15 @@
+= class GLib::NoPropertyError
+
+== Object Hierarchy
+
+* Object
+  * Exception
+    * StandardError
+      * NameError
+        * GLib::NoPropertyError
+
+== See Also
+
+== ChangeLog
+
+

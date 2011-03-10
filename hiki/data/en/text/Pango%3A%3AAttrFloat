@@ -1,0 +1,20 @@
+= class Pango::AttrFloat
+
+== Object Hierarchy
+
+* Object
+  * Data
+    * Pango::Attribute
+      * Pango::AttrFloat
+
+== Instance Methods
+
+--- value
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

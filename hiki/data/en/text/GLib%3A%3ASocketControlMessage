@@ -1,0 +1,88 @@
+= class GLib::SocketControlMessage
+
+A GLib::SocketControlMessage is a special-purpose utility message that can be
+sent to or received from a GLib::Socket. These types of messages are often called
+“ancillary data”.
+
+The message can represent some sort of special instruction to or information
+from the socket or can represent a special kind of transfer to the peer (for
+example, sending a file description over a Unix socket).
+
+These messages are sent with GLib::Socket#send_message and received with
+Glib::Socket#receive_message.
+
+To extend the set of control message that can be sent, subclass this class and
+override the get_size, get_level, get_type and serialize methods.
+
+To extend the set of control messages that can be received, subclass this class
+and implement the deserialize method. Also, make sure your class is registered
+with the GLib::Type typesystem before calling GLib::Socket#receive_message to
+read such a message. 
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::SocketControlMessage
+
+== Class Methods
+
+--- GLib::SocketControlMessage.deserialize(level, type, data)
+
+     Tries to deserialize a socket control message of a given ((|level|)) and
+     ((|type|)).  This will ask all known (to GLib::Type) subclasses of
+     GLib::SocketControlMessage if they can understand this kind of message and
+     if so deserialize it into a GLib::SocketControlMessage.
+
+     If there is no implementation for this kind of control message, nil will
+     be returned. 
+
+     * level: A socket level
+     * type: A socket control message type for the given ((|level|))
+     * data: A String containing the message data
+     * Returns: The deserialized message, or nil
+
+== Instance Methods
+
+--- level
+
+     Returns the “level” (that is, the originating protocol) of the control
+     message.  This is often SOL_SOCKET.
+
+     Since 2.22
+
+     * Returns: An integer describing the level
+
+--- msg_type
+
+     Returns the protocol specific type of the control message.  For instance,
+     for Unix fd passing this would be SCM_RIGHTS.
+
+     Since 2.22
+
+     * Returns: An integer describing the type of control message
+
+--- serialize
+
+     Converts the data in the message to bytes placed in the message.
+
+     Since 2.22
+
+     * Returns: A String containing the serialization
+
+--- size
+
+     Returns the space required for the control message, not including headers
+     or alignment.
+
+     Since 2.22
+
+     * Returns: The number of bytes required
+
+
+== See Also
+
+== ChangeLog
+
+

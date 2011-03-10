@@ -1,0 +1,202 @@
+= Additional GTK+ Widgets
+{{link "tut-gtk2-agtkw", "tut-gtk2-agtkw", "tut-gtk", "tut-gtk2-agtkw-cal"}}
+
+
+
+== Drawing Widgets
+
+In order to draw shapes and text on a Gdk::Window you need a Gdk::Drawable object.
+
+
+
+:Here is how the API introduces Gdk::Drawable:
+
+    Gdk::Drawable is the base class for all objects that can accept drawing commands.
+
+    {{br}}
+    The Gdk::Drawable interface enables one to draw lines, points, elliptical arcs, rectangles, text, or images. In order to use a Gdk::Drawable, you must also have a Gdk::GC (graphics context) object to control the style of your drawing. The Gdk::GC can control the colour, for example. In all of the methods that take a width or height parameter, -1 may be used to indicate that the largest possible meaningful value should be used instead of giving an explicit dimension.
+
+
+Gdk::Drawable provides a number of drawing instance methods.
+
+:Drawing instance methods:
+
+    * Gdk::Drawable#draw_point(gc, x, y)
+    * Gdk::Drawable#draw_points(gc, points)
+    * Gdk::Drawable#draw_line(gc, x1, y1, x2, y2)
+    * Gdk::Drawable#draw_lines(gc, points)
+    * Gdk::Drawable#draw_pixbuf(gc, pixbuf, src_x, src_y, dest_x, ddest_y, w, h, dither, xd, yd)
+    * Gdk::Drawable#draw_segments(gc, segments)
+    * Gdk::Drawable#draw_rectangle(gc, filled, x, y, width, height)
+    * Gdk::Drawable#draw_arc(gc, filled, x, y, width, height, angle1, angle2)
+    * Gdk::Drawable#draw_polygon(gc, filled, points)
+    * Gdk::Drawable#draw_trapezoids(gc, trapezoids)
+    * Gdk::Drawable#draw_glyphs(gc, font, x, y, glyphs)
+    * Gdk::Drawable#draw_glyphs_transformed(gc, matrix, font, x, y, glyphs)
+    * Gdk::Drawable#draw_layout_line(gc, x, y, line, fg = nil, bg = nil)
+    * Gdk::Drawable#draw_layout(gc, x, y, layout, fg = nil, bg = nil)
+    * Gdk::Drawable#draw_drawable(gc, src, xsrc, ysrc, xdest, ydest, width, height)
+    * Gdk::Drawable#draw_image(gc, image, xsrc, ysrc, xdest, ydest, width, height)
+
+    * Gdk::Window#clear
+    * Gdk::Window#clear_area(x, y, width, height, gen_expose = false)
+
+
+
+GTK+ provides Gtk::DrawingArea widget, which is simply a blank slate on which you can draw. Gtk::DrawingArea provides only one non-deprecated method: Gtk::DrawingArea.new, which takes no arguments and returns new drawing area widget. To begin using the widget, you need to use the Gdk::Drawable's drawing instance methods to draw on the widget's Gdk::Window. Gdk::Window object is also a Gdk::Drawable object.
+
+One advantage of Gtk::DrawingArea  is that it derives from Gtk::Widget, which means that it can be connected to GDK events. There are a number of events to which you will want to connect your drawing area. You will first want to connect to realize so that you can handle any tasks that need to be performed when the widget is instantiated, such as creating GDK resources. The ((*configure-event*)) signal will notify you when you have to handle a change in the size of the widget. Also, ((*expose-event*)) will allow you to redraw the widget when a portion is exposed that was previously hidden. The "expose-event" signal is especially important, because if you want the content of the drawing area to persist over "expose-event" callbacks, you will have to redraw its content. Lastly you can connect to button and mouse click events so that the user can interact with with the widget. 
+
+
+:Note:
+    In order to receive certain types of events, you will need to add them to the list of widget events that are supported with Gtk::Widget#add_events. Also, to receive keyboard input from  the user, you will need to set the Gtk::Widget::CAN_FOCUS (see: ((<GtkWidgetFlags|Gtk::Widget#GtkWidgetFlags>))), since only focused widgets can detect key presses.
+
+
+
+=== A Drawing Area Example
+
+
+{{image_left("agtkw-01-drawingareas.png")}}
+
+The following example program (drawingareas.rb) implements a simple drawing program using the Gtk::DrawingArea widget. Points will be drawn on the screen when the user clicks a mouse button and when the pointer is dragged while the button is clicked. 
+
+The current content of the drawing area's Gdk::Window is cleared when the user presses the Delete key. {{image_right("dialog-warning.png")}} But if the "+" key is pressed, the program demonstrate Gdk::Drawable drawing methods. However, there is a problem with this last feature, namely it is lost as soon as the ((*expose_event*)) is emitted. While this is very simple program, it  nonetheless shows how to interact with the Gtk::DrawingArea widget and use events with it.
+
+Creating a drawing area is a no brainier, however, preparing the new drawing area to catch events needs to be mentioned. You accomplish this with the Gtk::Widget#add_events instance methods, and you assemble the signals to be monitored for by or(ing) together Gdk::Event mask values (((<GdkEventMask|Gdk::Event#GdkEventMask>))). Another interesting thing is how to monitor for different key strokes. You are comparing Gdk::EventKey's keyval property to Gdk::Keyval constants (see: ((<GdkKeyvals|Gdk::Keyval#GdkKeyvals>))).
+
+{{br}}
+((*drawingareas.rb*))
+
+ #!/usr/bin/env ruby
+ 
+ require 'gtk2'
+ 
+ # Draw a point where the user pressed the mouse and points on each
+ # of the four sides of that point.
+ 
+ # Gdk::EventButton
+ def button_pressed(area, event, arr)
+   x = event.x
+   y = event.y
+   points = [ [x,y], [x+1,y], [x-1,y], [x,y+1], [x,y-1] ]
+   area.window.draw_points(area.style.fg_gc(area.state), points)
+   arr << [x, y]
+ end
+ 
+ # Draw a point where mouse pointer was moved while a button was
+ # pressed along with points on each of the four sides of that point.
+ 
+ # Gdk::EventMotion
+ def motion_notify(area, event, arr)
+   x = event.x
+   y = event.y
+   points = [ [x,y], [x+1,y], [x-1,y], [x,y+1], [x,y-1] ]
+   area.window.draw_points(area.style.fg_gc(area.state), points)
+   arr << [x, y]
+ end
+ 
+ # Clear the drawing area when the user presses the Delete key,
+ # and demonstrate Gdk::Drawable drawing methods if the "+" key
+ # is pressed.
+ 
+ # Gdk::EventKey
+ def key_pressed(area, event, arr)
+   if event.keyval == Gdk::Keyval::GDK_Delete
+     area.window.clear
+     arr.each { |e| e[0] = e[1] = 0 }
+   elsif event.keyval == Gdk::Keyval::GDK_plus
+     alloc = area.allocation
+     area.window.draw_rectangle(area.style.fg_gc(area.state), false, 10, 10, 100, 50)
+     area.window.draw_arc(area.style.fg_gc(area.state), true,
+              alloc.width/2, alloc.height/2, alloc.width/2, alloc.height/2, 0, 64 * 360)
+   end
+ end
+ 
+ # Redraw all of the points when an expose-event occurs. If you do
+ # not do this, the drawing area will be cleared.
+ 
+ # Gdk::EventExpose
+ def expose_event(area, event, arr)
+   # Loop through the coordinates, redrawing them onto
+   # the drawing area.
+   arr.each do |e|
+     points = []
+     x = e[0]
+     y = e[1]
+     points = [ [x,y], [x+1,y], [x-1,y], [x,y+1], [x,y-1] ]
+     area.window.draw_points(area.style.fg_gc(area.state), points)
+   end
+ end
+ window = Gtk::Window.new(Gtk::Window::TOPLEVEL)
+ window.resizable = true
+ window.title = "Drawing Areas"
+ window.border_width = 10
+ 
+ window.signal_connect('delete_event') { Gtk.main_quit }
+ window.set_size_request(200, 150)
+ 
+ # Create a pointer array to hold image data. Then, add event
+ # masks to the new drawing area widget.
+ 
+ parray = Array.new
+ area = Gtk::DrawingArea.new
+ area.can_focus = true
+ 
+ # Gtk::Widget#add_events
+ area.add_events(Gdk::Event::BUTTON_PRESS_MASK  |
+                 Gdk::Event::BUTTON_MOTION_MASK |
+                 Gdk::Event::KEY_PRESS_MASK)
+                   
+ area.signal_connect('button_press_event')  { |w, e| button_pressed(area, e, parray) }
+ area.signal_connect('motion_notify_event') { |w, e| motion_notify( area, e, parray) }
+ area.signal_connect('key_press_event')     { |w, e| key_pressed(   area, e, parray) }
+ area.signal_connect('expose_event')        { |w, e| expose_event(  area, e, parray) }
+ 
+ window.add(area)
+ window.show_all
+ 
+ # You must do this after the widget is visible because
+ # it must first be realized for the GdkWindow to be valid!
+ 
+ # Gdk::Window#set_cursor
+ # gdk_window_set_cursor (area->window, gdk_cursor_new (GDK_PENCIL))
+ 
+ area.window.set_cursor(Gdk::Cursor.new(Gdk::Cursor::PENCIL))
+ 
+ Gtk.main
+
+You should notice a few things in the above listing. First, a ((*parray*)) is used to track the points that are added to the drawing area. This is fine when we draw lines with the mouse, however when a Gdk::Drawable's  drawing instance methods are used their output is not saved in the array. This is important, because every time ((*expose_event*)) is emitted (and this is every time focus is changed, or mouse is dragged outside our application window) the drawing area is cleared, and has to be repainted. We can repaint what we have saved but not what was generated by Gdk::Drawable's  drawing instance methods! 
+
+{{image_right("agtkw-02-drawingareas.png")}}
+
+My first image above suffered due to the just described problem with the ((*expose_event*)), and here on the right hand side image we can see that there is a solution to this problem. To fix it we need to place  our shape drawing instance methods or algorithms into the callback triggered by the offending ((*expose_event*)) event.
+
+However, I would like to add that the solution I provide here is extremely inefficient, first, I bundled the drawing methods within the each loop to prevent a random ((*expose_event*)) to trigger what was intended to be done by the user when he or she pressed the "+" key, and also the drawing methods reside in two places now. All this is to satisfy the programming environment - I believed this is turned on its head, namely the programming environment should support you the programmer!!! 
+
+Following is the awkward fix:
+
+
+{{br}}
+
+ def expose_event(area, event, arr)
+   # Loop through the coordinates, redrawing them onto
+   # the drawing area.
+   arr.each do |e|
+     points = []
+     x = e[0]
+     y = e[1]
+     points = [ [x,y], [x+1,y], [x-1,y], [x,y+1], [x,y-1] ]
+     area.window.draw_points(area.style.fg_gc(area.state), points)
+     alloc = area.allocation
+     area.window.draw_rectangle(area.style.fg_gc(area.state), false, 10, 10, 75, 50)
+     area.window.draw_arc(area.style.fg_gc(area.state), true, 
+           alloc.width/2, alloc.height/2, alloc.width/3, alloc.height/3, 0, 64 * 360)
+   end
+ end
+
+
+When we draw our lines we add four additional points around the original (x,y) position, which has a line thickening effect. {{image_right("dialog-warning.png")}} All in all, this program shows some serious drawbacks in the way vector graphic is implemented in GTK+. I do believe that GTK+ flaws in this area and even more so in GTK+ Ruby implementation, are one of major disadvantages of GTK+ system in general and perhaps the main reason that GTK+ has never become what it deserves to be!
+
+It is true, that Cairo graphic is supposed to address and solve most of these vector graphic issues and major flaws that plague GTK+, but I also believe, that native GTK+ handling of vector graphics should be fixed regardless of how well Cairo graphics will be adopted and implemented.
+
+ 

@@ -1,0 +1,20 @@
+= class GLib::Socket::Family
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * GLib::Socket::Family
+
+== Constants
+
+--- INVALID
+--- IPV4
+--- IPV6
+--- UNIX
+
+== See Also
+
+== ChangeLog
+
+

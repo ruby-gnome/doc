@@ -1,0 +1,34 @@
+= class GLib::SocketAddress::Family
+
+The protocol family of a GLib::SocketAddress. (These values are identical to
+the system defines AF_INET, AF_INET6 and AF_UNIX, if available.) 
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * GLib::SocketAddress::Family
+
+== Constants
+
+--- INVALID
+
+     No address family
+
+--- IPV4
+
+     The IPv4 family
+
+--- IPV6
+
+     The IPv6 family
+
+--- UNIX
+
+     The Unix domain family
+
+== See Also
+
+== ChangeLog
+
+

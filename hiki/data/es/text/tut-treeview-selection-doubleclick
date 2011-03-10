@@ -1,0 +1,15 @@
+= Haciendo doble-click en una fila 
+{{link "tut-treeview-selection-handle", nil, "tut-treeview", "tut-treeview-selection-contextmenu"}}
+
+Capturando un doble-click sobre una fila es muy sencillo; se consigue conectandola a una la señal "row-activated" del TreeView, de esta forma:
+
+  view.signal_connect("row-activated") do |view, path, column|
+    puts "Row #{path.to_str} fué pulsada!" 
+
+    if iter = view.model.get_iter(path)
+      puts "Doble-click en la fila de nombre #{iter[0]}!"
+    end
+  end
+    
+
+

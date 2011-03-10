@@ -1,0 +1,26 @@
+= class Gtk::HBox
+Gtk::HBox is a container that organizes child widgets into a single row. 
+Use the Gtk::Box packing interface to determine the arrangement, spacing, width, and alignment of Gtk::HBox children. 
+All children are allocated the same height. 
+
+== Object Hierarchy
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Gtk::Object
+        * Gtk::Widget
+          * Gtk::Container
+            * Gtk::Box
+              * Gtk::HBox
+
+== Class Methods
+--- Gtk::HBox.new(homogeneous = false, spacing = nil)
+    Creates a new Gtk::HBox. 
+    * homogeneous: true if all children are to be given equal space allotments.  
+    * spacing: the number of pixels to place by default between children.  
+    * Returns: a new Gtk::HBox.  
+
+== See Also
+Gtk::VBox a sister class that organizes widgets into a column.
+
+- ((<Masao>))

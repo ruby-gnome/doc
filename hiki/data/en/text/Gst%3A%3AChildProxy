@@ -1,0 +1,21 @@
+= module Gst::ChildProxy
+
+== Included Modules
+
+  * GLib::Interface
+
+== Signals
+
+--- child-added: self
+
+     * self: Gst::ChildProxy: ((*FIXME*))
+
+--- child-removed: self
+
+     * self: Gst::ChildProxy: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

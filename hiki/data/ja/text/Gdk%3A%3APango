@@ -1,0 +1,16 @@
+= module Gdk::Pango
+Pango is the text layout system used by GDK and GTK+. The functions and types in this section are used to render Pango objects to GDK. drawables, and also extend the set of Pango attributes to include stippling and embossing.
+
+Creating a Pango::Layout object is the first step in rendering text, and requires getting a handle to a Pango::Context. For GTK+ programs, you'll usually want to use Gtk::Widget#pango_context, or Gtk::Widget#create_pango_layout, rather than using the lowlevel Gdk::Pango.context. Once you have a Pango::Layout, you can set the text and attributes of it with Pango functions like Pango::layout#text= and get its size with Pango::Layout#size. (Note that Pango uses a fixed point system internally, so converting between Pango units and pixels using Pango::SCALE or the Pango.pixels) 
+
+Rendering a Pango layout is done most simply with Gdk::Drawable#draw_layout; you can also draw pieces of the layout with Gdk::Drawable#draw_layout or Gdk::Drawable#draw_glyphs. Gdk::PangoRenderer is a subclass of Pango::Renderer that is used internally to implement these functions. Using it directly or subclassing it can be useful in some cases. See the Gdk::PangoRenderer documentation for details.
+
+== Module Functions
+--- Gdk::Pango.context(screen = nil)
+    Creates a Pango::Context for screen. If screen = nil, the default GDK screen is used.
+    When using GTK+, normally you should use Gtk::Widget#pango_context instead of this function, to get the appropriate context for the widget you intend to render text onto.
+    * screen: the Gdk::Screen for which the context is to be created, or nil
+    * Returns: a new Pango::Context for screen
+
+== ChangeLog
+* 2005-05-08 Added. - ((<Masao>))

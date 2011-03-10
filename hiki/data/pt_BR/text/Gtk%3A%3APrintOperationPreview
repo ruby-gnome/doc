@@ -1,0 +1,38 @@
+= module Gtk::PrintOperationPreview
+
+== Included Modules
+* GLib::Interface
+
+== Instance Methods
+--- end_preview
+    Ends a preview. ((* Since 2.10 *))
+    * Returns: self
+
+--- render_page(page_numer)
+     Renders a page to the preview. ((* Since 2.10 *))
+     * page_number: the page to render
+     * Returns: self
+
+--- selected?(page_number)
+     Returns whether the given page is included in the set of pages that
+     have been selected for printing. ((* Since 2.10 *))
+     * page_number: a page number
+     * Returns: true if the page has been selected for printing
+
+== Signals
+--- got-page-size: self, context, page_setup
+     * self: a Gtk::PrintOperationPreview
+     * context: a Gtk::PrintContext
+     * page_setup: a Gtk::PageSetup
+
+--- ready: self, context
+     * self: a Gtk::PrintOperationPreview
+     * context: a Gtk::PrintContext
+
+== See Also
+
+== ChangeLog
+* 2006-11-4: Modified - ((<Masao>))
+* 2006-07-09: updated for 2.10. - ((<kou>))
+
+- ((<kou>))

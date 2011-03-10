@@ -1,0 +1,14 @@
+= News (2003-12-21)
+== rbbr-0.5.1
+((*Posted by Masao on 2003-12-21 (Sun) 13:46:35*))
+
+rbbr-0.5.1 is now available. Enjoy!
+
+== Changes
+* Work without Ruby-GetText-Package.
+* Improved Win32 support(click rbbr.rbw to execute)
+* Added belarusian translation.
+* API documentations are updated(Ruby/Libgda is added).
+* Fixed some bugs.
+
+Go ((<URL:http://ruby-gnome2.sourceforge.jp/hiki.cgi?rbbr>)) !

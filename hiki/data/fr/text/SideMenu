@@ -1,0 +1,22 @@
+{{language "fr"}}
+
+{{image_left "http://ruby-gnome2.sourceforge.jp/logo-gy.png"}}
+
+= Ruby-GNOME2
+* ((<Accueil|FrontPage>))
+* ((<Nouvelles|URL:http://sourceforge.net/news/?group_id=53614>))
+* ((<Projet|URL:http://sourceforge.net/projects/ruby-gnome2>))
+* ((<Bogues|URL:http://sourceforge.net/tracker/?group_id=53614&atid=470969>))
+* ((<Subversion|URL:http://sourceforge.net/svn/?group_id=53614>))
+* ((<Télécharger|URL:http://sourceforge.net/project/showfiles.php?group_id=53614>))
+* ((<Listes de diffusion|URL:http://sourceforge.net/mail/?group_id=53614>))
+
+* ((<Référence de l'API|URL:../hiki.cgi?Ruby-GNOME2 API Reference>))
+* ((<Tutoriels|tutoriels>))
+* ((<Exemples de programmes|URL:../hiki.cgi?Samples>))
+* ((<Avancement du projet|URL:../hiki.cgi?Status>))
+
+== Recent Pages
+{{recent(20, '(News|options)')}}
+{{br}}
+{{sf_logo}}

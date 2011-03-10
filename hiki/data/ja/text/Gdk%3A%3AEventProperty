@@ -1,0 +1,57 @@
+= class Gdk::EventProperty
+Describes a property change on a window. 
+
+== Object Hierarchy
+* Object
+  * GLib::Boxed
+    * Gdk::Event
+      * Gdk::EventAny
+        * Gdk::EventProperty
+
+== Instance Methods
+--- atom
+    the property that was changed.
+    * Returns: the property(Gdk::Atom) that was changed.
+--- atom=(atom)
+    Sets the property that was changed.
+    * atom: the property(Gdk::Atom) that was changed.
+    * Returns: atom
+--- set_atom(atom)
+    Same as Gdk::EventProperty#atom=.
+    * atom: the property(Gdk::Atom) that was changed.
+    * Returns: self
+
+--- time
+    Gets the time of the event in milliseconds. 
+    * Returns: the time of the event in milliseconds
+--- time=(time)
+    Sets the time of the event in milliseconds.
+    * time: the time of the event in milliseconds
+    * Returns: time
+--- set_time(time)
+    Same as Gdk::EventProperty#time=.
+    * time: the time of the event in milliseconds
+    * Returns: self
+
+--- state
+    Gets the value whether the property was changed or deleted.  
+    * Returns: Gdk::EventProperty::PROPERTY_NEW_VALUE if the property was changed, or Gdk::EventProperty::PROPERTY_DELETE if the property was deleted
+--- state=(state)
+    Sets the value whether the property was changed or deleted.
+    * state: Gdk::EventProperty::PROPERTY_NEW_VALUE if the property was changed, or Gdk::EventProperty::PROPERTY_DELETE if the property was deleted
+    * Returns: state
+--- set_state(state)
+    Same as Gdk::EventProperty#state=.
+    * state: Gdk::EventProperty::PROPERTY_NEW_VALUE if the property was changed, or Gdk::EventProperty::PROPERTY_DELETE if the property was deleted
+    * Returns: self
+
+== Constants
+=== GdkPropertyState
+Specifies the type of a property change.
+--- PROPERTY_NEW_VALUE
+    The property value was changed.
+--- PROPERTY_DELETE
+    The property was deleted. 
+
+
+-((<Masao>))

@@ -1,0 +1,31 @@
+= class Gnome::PrintError
+
+Exception for Ruby/GnomePrint.
+
+== Object Hierarchy
+* Object
+  * Exception
+    * StandardError
+      * Gnome::PrintError
+
+== Class Methods
+--- Gnome::PrintError.new(code)
+     
+     * code: Return code which is Gnome::PrintReturnCode object
+     * Returns: self
+
+== Instance Methods
+
+--- code
+     
+     * Returns: Gnome::PrintReturnCode object
+
+== See Also
+
+Gnome::PrintReturnCode
+
+== ChangeLog
+
+* 2005-06-08 ((<kou>)): added.
+
+- ((<kou>))

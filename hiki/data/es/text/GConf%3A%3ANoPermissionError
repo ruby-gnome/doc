@@ -1,0 +1,5 @@
+= class GConf::NoPermissionError
+This error class gets raised whenever something has been tried, for which there are not sufficient permissions to do.
+
+== Super Class
+* GConf::Error

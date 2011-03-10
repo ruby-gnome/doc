@@ -1,0 +1,66 @@
+= Guide de compilation pour Microsoft Windows (mswin32, mingw32)
+
+Ce guide explique comment compiler et installer Ruby 1.8.1 et Ruby/GTK 0.9.1 sur Microsoft Windows.
+Vous pouvez utiliser les fichiers .so et .rb que vous obtiendrez en suivant ce guide comme une bibliothèque pour
+((<l'installeur Ruby pour Windows|URL:http://rubyinstaller.sourceforge.net/>)).
+
+== Installation de MinGW, MSYS
+En premier lieu, il faut installer MinGW, MSYS.  Ce guide se base sur les configurations par défaut.
+
+((<URL:http://www.mingw.org/>))
+* MinGW-3.1.0-1.exe (options d'installation par défaut)
+   * Installez-le sur c:\MinGW
+
+* MSYS-1.0.9.exe  (options d'installation par défaut)
+   * Installez-le sur c:\msys\1.0
+
+Utilisez les paramêtres par défaut lors des questions.
+Au moment de l'installation de MSYS, il vous sera demandé d'indiquer le chemin d'accès de MinGW.  Il s'agit de c:/MinGW. 
+Notez que vous devez d'abord installer MinGW, et ensuite MSYS.
+
+== Installation de l'environnement de développement GTK+ de Dropline Systems
+Téléchargez l'environnement de développement GTK+ à cette adresse: ((<URL:http://www.dropline.net/gtk/>)).
+
+* GTK-Development-Environment-2.2.4-2.exe
+   * Installez-le sur c:\Dev-C++
+
+== Compilation et Installation de Ruby
+Téléchargez ruby-1.8.1.tar.gz à partir de ((<URL:http://www.ruby-lang.org/>)).
+Copiez l'archive dans c:\msys\1.0\home\(username)\.
+
+Ensuite, à partir de la console MSYS (vous pouvez y accéder via l'icone sur votre bureau, ou le menu démarrer), exécutez les commandes suivantes:
+
+ $ tar xvzf ruby-1.8.1.tar.gz
+ $ cd ruby-1.8.1
+ $ configure --prefix=/MinGW
+ $ make
+ $ make install
+
+ruby-1.8.1 est installé sur c:\MinGW\[bin|lib|share|].
+
+== Compilation et Installation de ruby-gtk2-0.9.1
+
+ $ tar xvzf ruby-gtk2-0.9.1.tar.gz
+ $ cd ruby-gtk2-0.9.0
+ $ export PATH=/c/Dev-C++/bin:$PATH
+ $ /c/MinGW/bin/ruby.exe extconf.rb --ruby=/c/MinGW/bin/ruby.exe
+ $ make
+ $ make install
+
+Tous les fichiers résultant de l'opération seront installé sur c:\MinGW\lib\ruby\site_ruby\1.8\*.rb et c:\MinGW\lib\ruby\site_ruby\1.8\i386-msvcrt\*.[so|h]
+
+== Comment les utiliser avec ((<l'installeur Ruby pour Windows|URL:http://rubyinstaller.sourceforge.net/>))
+Copiez c:\MinGW\lib\ruby\site_ruby\1.8\*.rb and c:\MinGW\lib\ruby\site_ruby\1.8\i386-msvcrt\*.so dans le répertoire ou vous avez préalablement installé l'installeur Ruby.
+
+Par exemple, si vous l'avez installé sur c:\ruby, copiez c:\MinGW\lib\ruby\site_ruby\1.8\*.rb dans c:\ruby\lib\ruby\site_ruby\1.8\, et copiez c:\MinGW\lib\ruby\site_ruby\1.8\i386-msvcrt\*.so dans c:\ruby\lib\ruby\site_ruby\1.8\
+
+== Voir également
+Si vous avez des problèmes, regardez également ((<Guide Installation Windows>)).
+
+== Modifications
+:2004-03-14 ((<Masao|URL:../hiki.cgi?Masao>))
+  * Mise-à-jour des informations de version.
+:2004-03-11 ((<Masao|URL:../hiki.cgi?Masao>))
+  * Première version.
+
+Page traduite de l'anglais par Laurent Sansonetti.

@@ -1,0 +1,52 @@
+= class Gtk::DrawingArea
+The Gtk::DrawingArea widget is used for creating custom user interface elements. It's essentially a blank widget; you can draw on widget.window. After creating a drawing area, the application may want to connect to: 
+
+* Mouse and button press signals to respond to input from the user. (Use Gtk::Widget#add_events() to enable events you wish to receive.) 
+* The "realize" signal to take any necessary actions when the widget is instantiated on a particular display. (Create GDK resources in response to this signal.) 
+* The "configure_event" signal to take any necessary actions when the widget changes size. 
+* The "expose_event" signal to handle redrawing the contents of the widget. 
+
+The following code portion demonstrates using a drawing area to display a circle in the normal widget foreground color. Note that GDK automatically clears the exposed area to the background color before sending the expose event, and that drawing is implicitly clipped to the exposed area.
+
+=== Example 1. Simple Gtk::DrawingArea usage.
+ require 'gtk2'
+ 
+ area = Gtk::DrawingArea.new
+ area.set_size_request(100,100)
+ area.signal_connect("expose_event") do
+   alloc = area.allocation
+   area.window.draw_arc(area.style.fg_gc(area.state), true, 
+                        0, 0, alloc.width, alloc.height, 0, 64 * 360) 
+ end
+ 
+ Gtk::Window.new.add(area).show_all
+ 
+ Gtk.main
+
+Expose events are normally delivered when a drawing area first comes onscreen, or when it's covered by another window and then uncovered (exposed). You can also force an expose event by adding to the "damage region" of the drawing area's window; Gtk::Widget#queue_draw_area and Gdk::Window#invalidate_rect are equally good ways to do this. You'll then get an expose event for the invalid region. 
+
+The available routines for drawing are documented on the GDK Drawing Primitives page. See also Gdk::Pixbuf#render_to_drawable for drawing a Gdk::Pixbuf. 
+
+To receive mouse events on a drawing area, you will need to enable them with Gtk::Widget#add_events. To receive keyboard events, you will need to set the Gtk::Widget::CAN_FOCUS flag on the drawing area, and should probably draw some user-visible indication that the drawing area is focused. Use the Gtk::Widget::HAS_FOCUS in your expose event handler to decide whether to draw the focus indicator. See Gtk::Style#paint_focus for one way to draw focus. 
+
+== Object Hierarchy
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::InitiallyUnowned
+        * Gtk::Object
+          * Gtk::Widget
+            * Gtk::DrawingArea
+
+== Class Methods
+--- Gtk::DrawingArea.new
+    Creates a new drawing area.
+    * Returns: a new Gtk::DrawingArea  
+
+== See Also
+Sometimes Gtk::Image is a useful alternative to a drawing area. You can put a Gdk::Pixmap in the Gtk::Image and draw to the Gdk::Pixmap, calling Gtk::Widget#queue_draw on the Gtk::Image when you want to refresh to the screen.
+
+
+== ChangeLog
+* 2007-02-14 Apply 2.10. - ((<Masao>))
+* 2006-02-02 Revised. - ((<Masao>))

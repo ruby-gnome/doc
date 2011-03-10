@@ -1,0 +1,15 @@
+= Teoria de Caixas de Posicionamento
+{{link "tut-gtk2-packing-intro", "tut-gtk2-packing-intro", "tut-gtk", "tut-gtk2-packing-box-details"}}
+
+A maioria do posicionamento é feito criando caixas. Essas são "containers" de componentes invisíveis nas quais a gente pode posicionar os componentes dentro. Elas vêm em duas formas: uma caixa horizontal e uma caixa vertical.
+Quando posiciona componentes dentro de uma caixa horizontal, os objetos são inseridos horizontalmente da esquerda para a direita ou da direita para a esquerda, dependendo do método usado. 
+Em uma caixa vertical, os componentes são posicionados de cima para baixo ou vice-versa. Você pode usar qualquer combinação de caixas dentro ou ao lado de outras caixas para criar o efeito desejado.
+
+Para criar uma nova caixa horizontal, a gente usa Gtk::HBox.new, e para caixas verticais, Gtk::VBox.new. 
+Os métodos Gtk::Box#pack_start e Gtk::Box#pack_end são usados para colocar objetos dentro desses "containers".
+O método Gtk::Box#pack_start iniciará no topo e trabalhar até em baixo em uma vbox, e posicionar da esquerda para a direita em uma 
+hbox. Gtk::Box#pack_end fará o oposto, posicionando de baixo para cima em uma vbox, e direita para a esquerda em uma hbox. 
+Usar esses métodos nos permite justificar a direita ou esquerda nossos componentes e podem ser misturados de qualquer jeito para alcançar o efeito desejado. 
+Usaremos Gtk::Box#pack_start na maioria dos nossos exemplos. Um objeto pode ser outro "container" ou um componente. De fato, muitos componentes são na verdade "containers" também, incluindo botões, mas a gente comumente usa apenas o rótulo ("label") dentro de um botão.
+
+Por usar esses métodos, a GTK sabe onde você quer posicionar seus componentes, assim ela pode redimensionar automaticamente e fazer outras coisas interessantes. Existem também um número de opções sobre como seus componentes devem ser posicionados. Como você pode imaginar, este método nos dá um bocado de flexibilidade ao colocar e criar componentes.

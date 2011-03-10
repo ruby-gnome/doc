@@ -1,0 +1,11 @@
+= Gladeでテキストエディタを作ってみよう
+普通はHello Worldからはじめたいところですが、ここではいきなりテキストエディタを作ってみます。いきなり難しすぎるって？これがびっくりするほど簡単なんですって。
+
+アプリケーション名は、そうですねぇ「こんにちは世界エディタ（英語名：Hello World Editor）、プログラム名：「hwedit」に決定！
+
+* ((<プライマリ（メイン）ウィンドウを作る|libglade2-tut-mainwindow>))
+* ((<コンテナウィジェットを追加する|libglade2-tut-container>))
+* ((<メニューを追加する|libglade2-tut-menu>))
+* ((<テキストエディタ(Gtk::TextView)を追加する|libglade2-tut-textview>))
+* ((<各種ダイアログを追加する|libglade2-tut-dialogs>))
+

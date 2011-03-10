@@ -1,0 +1,200 @@
+= class Gtk::Frame
+
+The frame widget is a Gtk::Bin that surrounds its child with a decorative frame and an optional label. If present, the label is drawn in a gap in the top side of the frame. The position of the label can be controlled with Gtk::Frame#set_label_align.
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::InitiallyUnowned
+        * Gtk::Object
+          * Gtk::Widget
+            * Gtk::Container
+              * Gtk::Bin
+                * Gtk::Frame
+
+== Class Methods
+
+--- Gtk::Frame.new(label = nil)
+
+    Create a new Frame, with optional label label. If label is nil, the label is omitted.
+    * label: label text(String)
+    * Returns: Create a new Gtk::Frame
+
+== Instance Methods
+
+--- label
+
+    If the frame's label widget is a Gtk::Label, return the text in the label widget. (The frame will have a Gtk::Label for the label widget if a non-nil argument was passed to Gtk::Frame.new.)
+    * Returns: the text in the label, or nil if there was no label widget or the lable widget was not a Gtk::Label.
+
+--- label=(label)
+
+    Set the text of the label. If label is nil, the current label, if any, is removed.
+    * label: label text(String)
+    * Returns: label
+
+--- set_label(label)
+
+    Same as Gtk::Frame#label=.
+    * label: label text(String)
+    * Returns: self
+
+--- label_align
+
+    Retrieves the X and Y alignment of the frame's label. See Gtk::Frame#set_label_align.
+    * Returns: [xalign, yalign]. 
+      * xalign: location to store X alignment of frame's label, or nil 
+      * yalign: location to store X alignment of frame's label, or nil
+
+--- set_label_align(xalign, yalign)
+
+    Set the alignment of the Frame widget's label. The default value for a newly created Frame is 0.0.
+    * xalign: The position of the label along the top edge of the widget. A value of 0.0 represents left alignment; 1.0 represents right alignment. 
+    * yalign: The y alignment of the label. Currently ignored.
+    * Returns: self
+
+--- label_xalign
+
+    Retrieves the X alignment of the frame's label.
+    * Returns: the X alignment of the frame's label.
+
+--- label_xalign=(xalign)
+
+    Sets the X alignment of the frame's label.
+    * xalign: the X alignment of the frame's label.
+    * Returns: xalign
+
+--- set_label_xalign(xalign)
+
+    Same as Gtk::Frame#label_xalign=.
+    * xalign: the X alignment of the frame's label.
+    * Returns: self
+
+--- label_yalign
+
+    Retrieves the Y alignment of the frame's label.
+    * Returns: the Y alignment of the frame's label.
+
+--- label_yalign=(yalign)
+
+    Sets the Y alignment of the frame's label.
+    * yalign: the Y alignment of the frame's label.
+    * Returns: yalign
+
+--- set_label_yalign(xalign)
+
+    Same as Gtk::Frame#label_yalign=.
+    * yalign: the Y alignment of the frame's label.
+    * Returns: self
+
+--- label_widget
+
+    Retrieves the label widget for the frame. See Gtk::Frame#label_widget=.
+    * Returns: the label widget, or nil if there is none.
+
+--- label_widget=(widget)
+
+    Set the label widget for the frame. This is the widget that will appear embedded in the top edge of the frame as a title.
+    * widget: the new label widget 
+    * Returns: widget
+
+--- set_label_widget(widget)
+
+    Same as Gtk::Frame#label_widget=.
+    * widget: the new label widget 
+    * Returns: self
+
+--- shadow_type
+
+    Gets the shadow type for the handlebox.
+    * Returns: shadow type(((<GtkShadowType|Gtk#GtkShadowType>)))
+
+--- shadow_type=(shadow_type)
+
+    Sets the shadow type for the handlebox.
+    * shadow_type: shadow type(((<GtkShadowType|Gtk#GtkShadowType>)))
+    * Returns: shadow_type
+
+--- set_shadow_type(shadow_type)
+
+    Same as Gtk::Frame#shadow=.
+    * shadow_type: shadow type(((<GtkShadowType|Gtk#GtkShadowType>)))
+    * Returns: self
+
+--- ref_accessible
+
+    See Atk::Implementor#ref_accessible.
+
+--- add_child
+
+    See Gtk::Buildable#add_child.
+
+--- construct_child
+
+    See Gtk::Buildable#construct_child.
+
+--- get_internal_child
+
+    See Gtk::Buildable#get_internal_child.
+
+--- name
+
+    See Gtk::Buildable#name.
+
+--- name=
+
+    See Gtk::Buildable#name=.
+
+--- set_buildable_property
+
+    See Gtk::Buildable#set_buildable_property.
+
+--- set_name
+
+    See Gtk::Buildable#set_name.
+
+--- builder_name
+
+    See Gtk::Buildable#builder_name.
+
+--- builder_name=
+
+    See Gtk::Buildable#builder_name=.
+
+--- set_builder_name
+
+    See Gtk::Buildable#set_builder_name.
+
+== Properties
+
+--- label: String (Read/Write)
+
+    Text of the frame's label
+
+--- label-widget: Gtk::Widget (Read/Write)
+
+    A widget to display in place of the usual frame label
+
+--- label-xalign: Float (Read/Write)
+
+    The horizontal alignment of the label
+
+--- label-yalign: Float (Read/Write)
+
+    The vertical alignment of the label
+
+--- shadow: Integer (Read/Write)
+
+    Deprecated property, use shadow_type instead
+
+--- shadow-type: Integer (Read/Write)
+
+    Appearance of the frame border
+
+== See Also
+
+== ChangeLog
+
+((<Masao>))

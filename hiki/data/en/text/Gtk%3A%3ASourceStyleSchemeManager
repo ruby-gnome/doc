@@ -1,0 +1,74 @@
+= class Gtk::SourceStyleSchemeManager
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Gtk::SourceStyleSchemeManager
+
+== Class Methods
+
+--- Gtk::SourceStyleSchemeManager.default
+
+     * Returns: self: ((*FIXME*))
+
+--- Gtk::SourceStyleSchemeManager.new
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- append_search_path
+
+     * Returns: self: ((*FIXME*))
+
+--- force_rescan
+
+     * Returns: self: ((*FIXME*))
+
+--- get_scheme
+
+     * Returns: self: ((*FIXME*))
+
+--- prepend_search_path
+
+     * Returns: self: ((*FIXME*))
+
+--- scheme_ids
+
+    Gets the List of the ids of the available style schemes.
+     * Returns: List of the ids of the available style schemes
+
+--- search_path
+
+    Gets the List of directories and files where the style schemes are located.
+     * Returns: List of directories and files where the style schemes are located
+
+--- search_path=(search_path)
+
+    Sets the List of directories and files where the style schemes are located.
+     * search_path: List of directories and files where the style schemes are located
+     * Returns: search_path
+
+--- set_search_path(search_path)
+
+    Same as search_path=.
+     * search_path: List of directories and files where the style schemes are located
+     * Returns: self
+
+== Properties
+
+--- scheme-ids: Array (Read)
+
+    List of the ids of the available style schemes
+
+--- search-path: Array (Read/Write)
+
+    List of directories and files where the style schemes are located
+
+== See Also
+
+== ChangeLog
+
+

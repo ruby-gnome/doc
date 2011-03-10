@@ -1,0 +1,18 @@
+= class GnomeVFS::Monitor::Type
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * GnomeVFS::Monitor::Type
+
+== Constants
+
+--- DIRECTORY
+--- FILE
+
+== See Also
+
+== ChangeLog
+
+

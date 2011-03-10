@@ -1,0 +1,35 @@
+= class Pango::AttrIterator
+
+== Object Hierarchy
+
+* Object
+  * GLib::Boxed
+    * Pango::AttrIterator
+
+== Instance Methods
+
+--- attrs
+
+     * Returns: self: ((*FIXME*))
+
+--- font
+
+     * Returns: self: ((*FIXME*))
+
+--- get
+
+     * Returns: self: ((*FIXME*))
+
+--- next!
+
+     * Returns: self: ((*FIXME*))
+
+--- range
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

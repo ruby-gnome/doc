@@ -1,0 +1,179 @@
+= module GLib::UTF8
+
+== Module Functions
+
+--- GLib::UTF8.get_char(utf8, validate=false)
+     Converts a sequence of bytes encoded as UTF-8 to a
+     Unicode character.
+
+     If ((|validate|)) is true, this method checks for
+     incomplete characters, for invalid characters such as
+     characters that are out of the range of Unicode, and
+     for overlong encodings of valid characters.
+
+     * utf8: a UTF-8 encoded String
+     * validate: whether validate or not
+     * Returns: the resulting character. If ((|validate|))
+       is true and ((|utf8|)) starts with a partial sequence
+       at the end of a string that could begin a valid
+       character, returns -2; otherwise ((|validate|)) is
+       true and ((|utf8|)) doesn't not start with a valid
+       UTF-8 encoded Unicode character, returns -1.
+
+--- GLib::UTF8.size(utf8)
+     Returns the length of the string in characters.
+
+     * utf8: a UTF-8 encoded String
+     * Returns: the length of the string in characters
+
+--- GLib::UTF8.reverse(utf8)
+     Reverses a UTF-8 string. ((|utf8|)) must be valid UTF-8
+     encoded text. (Use GLib::UTF8.validate on all text
+     before trying to use UTF-8 utility functions with it.)
+
+     * utf8: a UTF-8 encoded String
+     * Returns: a string which is the reverse of ((|utf8|)).
+
+--- GLib::UTF8.validate(utf8)
+     Validates UTF-8 encoded text. str is the text to validate
+
+     Returns (({true})) if all of ((|utf8|)) was valid. Many GLib
+     and GTK+ routines require valid UTF-8 as input; so data
+     read from a file or the network should be checked with
+     GLib::UTF8.validate before doing anything else with it.
+
+     * utf8: a UTF-8 encoded String
+     * Returns: (({true})) if the text was valid UTF-8
+
+--- GLib::UTF8.upcase(utf8)
+     Converts all Unicode characters in the string that have
+     a case to uppercase. The exact manner that this is done
+     depends on the current locale, and may result in the
+     number of characters in the string increasing. (For
+     instance, the German ess-zet will be changed to SS.)
+
+     * utf8: a UTF-8 encoded String
+     * Returns: a string, with all characters converted to
+       uppercase.
+
+--- GLib::UTF8.downcase(utf8)
+     Converts all Unicode characters in the string that have
+     a case to lowercase. The exact manner that this is done
+     depends on the current locale, and may result in the
+     number of characters in the string changing.
+
+     * utf8: a UTF-8 encoded String
+     * Returns: a string, with all characters converted to
+       lowercase.
+
+--- GLib::UTF8.casefold(utf8)
+     Converts a string into a form that is independent of
+     case. The result will not correspond to any particular
+     case, but can be compared for equality or ordered with
+     the results of calling GLib::UTF8.casefold on other
+     strings.
+
+     Note that calling GLib::UTF8.casefold followed by
+     GLib::UTF8.collate is only an approximation to the
+     correct linguistic case insensitive ordering, though it
+     is a fairly good one. Getting this exactly right would
+     require a more sophisticated collation function that
+     takes case sensitivity into account. GLib does not
+     currently provide such a function.
+
+     * utf8: a UTF-8 encoded String
+     * Returns: a string, that is a case independent form of
+       ((|utf8|)).
+
+--- GLib::UTF8.normalize(utf8, mode=GLib::NomralizeMode::DEFAULT)
+     Converts a string into canonical form, standardizing
+     such issues as whether a character with an accent is
+     represented as a base character and combining accent or
+     as a single precomposed character. You should generally
+     call GLib::UTF8.normalize before comparing two Unicode
+     strings.
+
+     The normalization mode GLib::NormalizeMode::DEFAULT
+     only standardizes differences that do not affect the
+     text content, such as the above-mentioned accent
+     representation. GLib::NormalizeMode::ALL also
+     standardizes the "compatibility" characters in Unicode,
+     such as SUPERSCRIPT THREE to the standard forms (in
+     this case DIGIT THREE). Formatting information may be
+     lost but for most text operations such characters
+     should be considered the same. For example,
+     GLib::UTF8.collate normalizes with
+     GLib::NormalizeMode::ALL as its first step.
+
+     GLib::NormalizeMode::DEFAULT_COMPOSE and
+     GLib::NormalizeMode::ALL_COMPOSE are like
+     GLib::NormalizeMode::DEFAULT and
+     GLib::NormalizeMode::ALL, but returned a result with
+     composed forms rather than a maximally decomposed
+     form. This is often useful if you intend to convert the
+     string to a legacy encoding or pass it to a system with
+     less capable Unicode handling.
+
+     * utf8: a UTF-8 encoded String
+     * Returns: a string, that is the normalized form of
+       ((|utf8|)).
+
+--- GLib::UTF8.collate(utf8_a, utf8_b)
+     Compares two strings for ordering using the
+     linguistically correct rules for the current
+     locale. When sorting a large number of strings, it will
+     be significantly faster to obtain collation keys with
+     GLib::UTF8.collate_key and compare the keys with
+     String#<=> when sorting instead of sorting the original
+     strings.
+
+     * utf8_a: a UTF-8 encoded String
+     * utf8_b: a UTF-8 encoded String
+     * Returns: < 0 if ((|utf8_a|)) compares before
+       ((|utf8_b|)), 0 if they compare equal, > 0 if
+       ((|utf8_a|)) compares after ((|utf8_b|)).
+
+--- GLib::UTF8.collate_key(utf8, for_filename=false)
+     Converts a string into a collation key that can be
+     compared with other collation keys produced by the same
+     function using String#<=>. The results of comparing the
+     collation keys of two strings with String#<=> will
+     always be the same as comparing the two original keys
+     with GLib::UTF8.collate.
+
+     If ((|for_filename|)) is true, in order to sort
+     filenames correctly, this method treats the dot '.'
+     as a special case. Most dictionary orderings seem to
+     consider it insignificant, thus producing the ordering
+     "event.c" "eventgenerator.c" "event.h" instead of
+     "event.c" "event.h" "eventgenerator.c". Also, we would
+     like to treat numbers intelligently so that "file1"
+     "file10" "file5" is sorted as "file1" "file5" "file10".
+
+     * utf8: a UTF-8 encoded String
+     * for_filename: whether convert for filename or not.
+     * Returns: a string.
+
+--- GLib::UTF8.to_utf16(utf8)
+     Convert a string from UTF-8 to UTF-16. If the
+     conversion is not successful, it causes
+     GLib::ConvertError.
+
+     * utf8: a UTF-8 encoded String
+     * Returns: a UTF-16 encoded String
+
+--- GLib::UTF8.to_ucs4(utf8, fast=false)
+     Convert a string from UTF-8 to a 32-bit fixed width
+     representation as UCS-4. If ((|fast|)) isn't true and
+     the conversion is not successful, it causes
+     GLib::ConvertError.
+
+
+     * utf8: a UTF-8 encoded String
+     * fast: whether skip validating ((|utf8|)) or not to
+       run as fast as possible.
+     * Returns: a UCS-4 encoded String
+
+== ChangeLog
+
+  * 2006-12-10: moved from GLib. - ((<kou>))

@@ -1,0 +1,87 @@
+= class GLib::EmblemedIcon
+
+GLib::EmblemedIcon is an implementation of GLib::Icon that supports adding an
+emblem to an icon. Adding multiple emblems to an icon is ensured via
+GLib::EmblemedIcon#add_emblem.
+
+Note that GLib::EmblemedIcon allows no control over the position of the
+emblems. See also GLib::Emblem for more information. 
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::EmblemedIcon
+
+== Included Modules
+
+  * GLib::Icon
+
+== Class Methods
+
+--- GLib::EmblemedIcon.new(icon, emblem)
+
+     Creates a new emblemed icon for ((|icon|)) with the emblem ((|emblem|)).
+
+     * Returns: a new GLib::EmblemedIcon
+
+== Instance Methods
+
+--- <<(emblem)
+
+     Same as GLib::EmblemedIcon#add_emblem.
+
+--- ==(other)
+
+    See GLib::Icon#==.
+
+--- add_emblem(emblem)
+
+     Adds ((|emblem|)) to the list of GLib::Emblems.
+
+     Since 2.18
+
+     * emblem: A GLib::Emblem
+
+--- emblems
+
+     Gets an Array of emblems for the icon.
+
+     Since 2.18
+
+     * Returns: An Array of GLib::Emblems that are owned by the icon
+
+--- eql?(other)
+
+    See GLib::Icon#eql?.
+
+--- hash
+
+    See GLib::Icon#hash.
+
+--- icon
+
+     Gets the main icon for the emblemed icon.
+
+     Since 2.18
+
+     * Returns: A GLib::Icon that is owned by the emblemed icon
+
+--- to_s
+
+    See GLib::Icon#to_s.
+
+--- to_str
+
+    See GLib::Icon#to_str.
+
+--- to_string
+
+    See GLib::Icon#to_string.
+
+== See Also
+
+== ChangeLog
+
+

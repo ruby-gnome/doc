@@ -1,0 +1,120 @@
+= class Gtk::LinkButton
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::InitiallyUnowned
+        * Gtk::Object
+          * Gtk::Widget
+            * Gtk::Container
+              * Gtk::Bin
+                * Gtk::Button
+                  * Gtk::LinkButton
+
+== Class Methods
+
+--- Gtk::LinkButton.new
+
+     * Returns: self: ((*FIXME*))
+
+--- Gtk::LinkButton.set_uri_hook
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- ref_accessible
+
+    See Atk::Implementor#ref_accessible.
+
+--- set_uri(uri)
+
+    Same as uri=.
+     * uri: The URI bound to this button
+     * Returns: self
+
+--- uri
+
+    Gets the URI bound to this button.
+     * Returns: The URI bound to this button
+
+--- uri=(uri)
+
+    Sets the URI bound to this button.
+     * uri: The URI bound to this button
+     * Returns: uri
+
+--- add_child
+
+    See Gtk::Buildable#add_child.
+
+--- construct_child
+
+    See Gtk::Buildable#construct_child.
+
+--- get_internal_child
+
+    See Gtk::Buildable#get_internal_child.
+
+--- name
+
+    See Gtk::Buildable#name.
+
+--- name=
+
+    See Gtk::Buildable#name=.
+
+--- set_buildable_property
+
+    See Gtk::Buildable#set_buildable_property.
+
+--- set_name
+
+    See Gtk::Buildable#set_name.
+
+--- builder_name
+
+    See Gtk::Buildable#builder_name.
+
+--- builder_name=
+
+    See Gtk::Buildable#builder_name=.
+
+--- set_builder_name
+
+    See Gtk::Buildable#set_builder_name.
+
+--- set_visited(visited)
+
+    Same as visited=.
+     * visited: true if this link has been visited
+     * Returns: self
+
+--- visited=(visited)
+
+    Sets the value whether this link has been visited. or not.
+     * visited: true if this link has been visited
+     * Returns: visited
+
+--- visited?
+
+    Gets the value whether this link has been visited. or not.
+     * Returns: true if this link has been visited
+
+== Properties
+
+--- uri: String (Read/Write)
+
+    The URI bound to this button
+
+--- visited: true or false (Read/Write)
+
+    Whether this link has been visited.
+
+== See Also
+
+== ChangeLog
+
+

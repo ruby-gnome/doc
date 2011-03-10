@@ -1,0 +1,5 @@
+port makes installation very simple, just do
+
+sudo port install rb-gnome
+
+If you don't have port, you can get macport here: http://www.macports.org/install.php (something to note is that it is going to favor installing everything in /opt/local, and that libxml2 is known to have problems installing automagically with +zlib, which is required for glade-3)

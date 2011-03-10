@@ -1,0 +1,126 @@
+= class GLib::Object
+
+The base object.
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+
+== Class Methods
+
+--- GLib::Object.install_property(pspec, propid = 1)
+
+    Installs a new property. This is usually done in the class initializer.
+    * property_id: the id for the new property
+    * pspec: the GLib::Param for the new property
+    * Returns: nil
+
+--- GLib::Object.property(name)
+
+    Looks up the GLib::Param for a property of a class.
+    * name: the name of the property to look up (Symbol or String)
+    * Returns: the GLib::Param for the property, or raise GLib::NoPropertyError if the class doesn't have a property of that name
+
+--- GLib::Object.properties(inherited = true)
+
+    Returns an Array of GLib::Param for all properties of a class.
+    * inherited: if true, also returns ((<GLib::Param>))s which are defined by superclasses, otherwise false
+    * Returns: an Array of ((<GLib::Param>))s
+
+--- GLib::Object.new(params = nil)
+
+    Creates a new instance of a GLib::Object subtype and sets its properties. Usually this method is overrided by subclasses.
+    * params: properties as Hash {prop1 => val1, prop2 => val2, ...} or nil.
+    * Returns: self
+
+--- GLib::Object.new!(params = nil)
+
+    Same as GLib::Object.new. This method isn't overrided by subclasses's initialize method.
+    * params: properties as Hash {prop1 => val1, prop2 => val2, ...} or nil.
+    * Returns: self
+
+--- GLib::Object.type_register(type_name = Object.name)
+
+    Registers type_name as the name of a new dynamic type derived from parent_type. The type system uses the information contained in the GTypePlugin structure pointed to by plugin to manage the type and its instances (if not abstract). The value of flags determines the nature (e.g. abstract or not) of the type.
+    * type_name: the name of the new type. The default is value of Object.name.
+    * Returns: nil
+
+== Instance Methods
+
+--- notify(property_name)
+
+    Emits a "notify" signal for the property property_name on object.
+    * property_name: the name of a property installed on the class of object.
+    * Returns: self
+
+--- freeze_notify
+
+    Stops emission of "notify" signals on object. The signals are queued until GLib::Object#thaw_notify is called on object.
+    This is necessary for accessors that modify multiple properties to prevent premature notification while the object is still being modified. 
+    * Returns: self
+
+--- freeze_notify{ ... }
+
+    Stops emission of "notify" signals on object with a block. You don't need to call GLib::Object#thaw_notify.
+    * Returns: self
+
+--- thaw_notify
+
+    Reverts the effect of a previous call to GLib::Object#freeze_notify. This causes all queued "notify" signals on object to be emitted.
+    * Returns: self
+
+--- set_property(name, val)
+
+    Sets a property on an object.
+    * name: the name of the property to set (String or Symbol)
+    * value: the value
+    * Returns: self
+
+--- get_property(name)
+
+    Gets a property of an object.
+    * name: the name of the property to get (String or Symbol)
+    * Returns: the value
+
+--- destroyed?
+
+    Return true if the C object has been destroyed.
+    * Returns: true if the C object has been destroyed, otherwise false.
+
+--- inspect
+
+    Inspect the object.
+    * Returns: Inspected String.
+
+--- ref_count
+
+    Returns current reference count. This is used for debugging of Ruby-GNOME2 itself. Usually user applications don't need to use this method.
+    * Returns: self
+
+--- singleton_method_added(id)
+
+    Internal used only.
+    * id: an Symbol
+    * Returns: self
+
+== Constants
+
+--- LOG_DOMAIN
+
+    Log domain for GLib::Object.
+
+== Signals
+
+--- notify: self
+
+    The notify signal is emitted on an object when one of its properties has been changed. Note that getting this signal doesn't guarantee that the value of the property has actually changed, it may also be emitted when the setter for the property is called to reinstate the previous value.
+    self: the object which received the signal.
+    pspec: the GLib::Param of the property which changed
+
+== See Also
+
+== ChangeLog
+
+* 2005-05-15 Added. - ((<Masao>))

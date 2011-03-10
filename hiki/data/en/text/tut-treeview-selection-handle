@@ -1,0 +1,80 @@
+= Handling Selections
+{{link "tut-treeview-renderer-bold", nil, "tut-treeview", "tut-treeview-selection-doubleclick"}}
+
+One of the most basic features of a list or tree view is that rows can be selected or unselected. Selections are handled using the Gtk::TreeSelection object of a tree view. Every tree view automatically has a Gtk::TreeSelection associated with it, and you can get it using Gtk::TreeView#selection. Selections are handled completely on the tree view side, which means that the model knows nothing about which rows are selected or not. There is no particular reason why selection handling could not have been implemented with methods accessing the tree view widget directly, but for reasons of API cleanliness and code clarity the Gtk+ developers decided to create this special GtkTreeSelection object that then internally deals with the tree view widget. 
+
+There are three ways to deal with tree view selections: either you get a list of the currently selected rows whenever you need it, for example within a context menu method, or you keep track of all select and unselect actions and keep a list of the currently selected rows around for whenever you need them; as a last resort, you can also traverse your list or tree and check each single row for whether it is selected or not (which you need to do if you want all rows that are not selected for example).
+
+== Selection Modes
+
+You can use Gtk::TreeSelection#mode= to influence the way that selections are handled. There are four selection modes: 
+
+* Gtk::SELECTION_NONE - no items can be selected
+* Gtk::SELECTION_SINGLE - no more than one item can be selected
+* Gtk::SELECTION_BROWSE - exactly one item is always selected
+* Gtk::SELECTION_MULTIPLE - any number of items can be selected
+
+== Getting the Currently Selected Rows
+
+You can access the currently selected rows by traversing all selected rows using Gtk::TreeSelection#selected_each.
+
+If the selection mode you are using is either Gtk::SELECTION_SINGLE or Gtk::SELECTION_BROWSE, the most convenient way to get the selected row is the Gtk::TreeSelection#selected method, which will return a Gtk::TreeIter pointing to the selected row (if a row is selected), or nil otherwise.  It is used like this:
+
+  selection = view.selection
+
+  if iter = selection.selected
+    puts "selected row is #{iter[0]}"
+  else
+    puts "no row selected"
+  end
+
+One thing you need to be aware of is that you need to take care when removing rows from the model with the Gtk::TreeSelection#selected_each method. The easiest solution to removing multiple rows was described ((<earlier|tut-treeview-model-remove>)), ie. get tree row references for all selected rows and then remove the rows one by one. You cannot remove rows from within the code block in any case, that is simply not allowed.
+
+Here is an example of how to use Gtk::TreeSelection#selected_each:
+
+  selection.selected_each do |model, path, iter|
+    puts "#{iter[0]} is selected"
+  end
+
+== Using Selection Functions
+
+You can set up a custom selection function with Gtk::TreeSelection#set_select_function. This code block will then be called every time a row is going to be selected or unselected (meaning: it will be called before the selection status of that row is changed). Selection functions are commonly used for the following things:
+
+* Keeping track of the currently selected items (then you maintain a list of selected items yourself). In this case, note again that your code block is called before the row's selection status is changed. In other words: if the row is going to be selected, then the boolean path_currently_selected argument that is passed is still FALSE. Also note that it might not always be called when a row is removed, so you either have to unselect a row before you remove it to make sure your selection function is called and removes the row from your list, or check the validity of a row when you process the selection list you keep. You should not store tree paths in your self-maintained list of of selected rows, because whenever rows are added or removed or the model is resorted the paths might point to other rows. Use tree row references or other unique means of identifying a row instead.
+* Telling Gtk+ whether it is allowed to select or unselect that specific row (you should make sure though that it is otherwise obvious to a user whether a row can be selected or not, otherwise the user will be confused if she just cannot select or unselect a row). This is done by returning TRUE or FALSE.
+* Taking additional action whenever a row is selected or unselected. 
+
+Yet another simple example:
+
+  selection.set_select_function do |selection, model, path, currently_selected|
+    if iter = model.get_iter(path)
+      if ! currently_selected
+        puts "#{iter[0]} is about to be selected"
+          else
+        puts "#{iter[0]} is about to be unselected"
+      end
+    end
+
+    # allow selection state to change
+    true
+  end
+
+== Checking Whether a Row is Selected
+
+You can check whether a given row is selected or not using the Gtk::TreeSelection#iter_is_selected? and Gtk::TreeSelection#path_is_selected? methods. If you want to know all rows that are ((*not*)) selected, for example, you could just traverse the whole list or tree, and use the above methods to check for each row whether it is selected or not.
+
+== Selecting and Unselecting Rows
+
+You can select or unselect rows manually with Gtk::TreeSelection#select_iter, Gtk::TreeSelection#select_path, Gtk::TreeSelection#unselect_iter, Gtk::TreeSelection#unselect_path, Gtk::TreeSelection#select_all, and Gtk::TreeSelection#unselect_all should you ever need to do that.
+
+== Getting the Number of Selected Rows
+
+Sometimes you want to know the number of rows that are currently selected (for example to set context menu entries active or inactive before you pop up a context menu). If you are using selection mode Gtk::SELECTION_SINGLE or Gtk::SELECTION_BROWSE, this is trivial to check with Gtk::TreeSelection#selected, which will return either a Gtk::TreeIter if a row is selected or nil otherwise.  Obviously, if you are using Gtk::SELECTION_NONE the number of selected rows will always be 0.
+
+If you are using Gtk::SELECTION_MULTIPLE or want a more general approach that works for all selection modes, here is a simple method utilizing the Gtk::TreeSelection#selected_each method:
+
+  def count_selected_rows(selection)
+    count = 0
+    selection.selected_each { count += 1 }
+    count
+  end

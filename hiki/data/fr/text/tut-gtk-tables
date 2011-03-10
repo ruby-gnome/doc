@@ -1,0 +1,70 @@
+= Placement avec les tables
+
+Étudions une autre méthode de placement: les tables. Elles peuvent s'avérer très utiles dans certaines situations.
+
+En utilisant des tables, on crée une grille dans laquelle on peut placer les widgets. Ceux-ci peuvent occuper tous les endroits que l'on désire.
+
+La première chose à faire est, bien sûr, d'étudier le constructeur Gtk::Table.new:
+
+  Gtk::Table.new(rows, columns, homogeneous) 
+
+Le premier paramètre est le nombre de lignes de la table et le deuxième, le nombre de colonnes.
+
+Le paramètre homogeneous s'occupe de la façon dont les cases de la table seront dimensionnées. Si homogeneous vaut true, les cases prennent la taille du plus grand widget de la table. S'il vaut false, la taille des cases dépend du widget le plus haut de la ligne et du plus large de cette colonne.
+
+Le nombre de lignes et colonnes va de 0 à n, où n est le nombre spécifié dans l'appel à Gtk::Table.new. Ainsi, avec rows = 2 et columns = 2, la table ressemblera à ceci:
+
+  .0          1          2
+  0+----------+----------+
+   |          |          |
+  1+----------+----------+
+   |          |          |
+  2+----------+----------+
+
+On notera que le système de coordonnées part du coin en haut à gauche. Pour placer un widget dans une case, ou utilise la méthode suivante:
+
+  Gtk::Table#attach(child, 
+                    left_attach, right_attach, top_attach, bottom_attach, 
+                    xoptions, yoptions, 
+                    xpadding, ypadding)
+
+Le premier argument (child) est le widget que l'on veut placer dans la table.
+
+Les paramètres left et right attach spécifient l'emplacement du widget et le nombre de cases à utiliser. Par exemple, si on veut placer un bouton dans le coin inférieur droit de notre table 2x2 et que l'on désire ne remplir que cette case, left_attach vaudra 1, right_attach vaudra 2; top_attach vaudra 1 et bottom_attach vaudra 2.
+
+Maintenant, si on veut un widget occupant toute la ligne supérieure de notre table 2x2, on utilisera les valeurs left_attach = 0, right_attach = 2, top_attach = 0, bottom_attach = 1.
+
+Les paramètres xoptions et yoptions servent à préciser les options de placement et peuvent être combinées par un OU logique((-Dans Ruby, l'opérateur OU est représenté par le caractère | (pipe).-)) pour permettre des options multiples.
+
+Ces options sont:
+
+:Gtk::FILL
+ Si la case de la table est plus large que le widget, alors ce dernier s'élargira pour occuper toute la place disponible.
+
+:Gtk::SHRINK
+ Si la table a moins de place qu'il ne lui en faut (généralement, à cause d'un redimensionnement de la fenêtre par l'utilisateur), les widgets sont alors simplement poussés vers le bas de la fenêtre et disparaissent. Si Gtk::SHRINK est spécifié, les widgets se réduiront en même temps que la table.
+
+:Gtk:EXPAND
+ Cette option provoque l'extension de la table pour qu'elle utilise tout l'espace restant dans la fenêtre.
+
+Les paramêtres de padding jouent le même rôle que pour les boîtes, ils créent une zone libre, spécifiée en pixels, autour du widget.
+
+Gtk::Table#attach a beaucoup d'options. Voici donc une méthode-raccourci:
+
+  Gtk::Table#attach_defaults(widget, left_attach, right_attach, top_attach, bottom_attach)
+
+Les options X et Y valent par défaut GTK_FILL | GTK_EXPAND, et X et Y padding valent 0. Les autres paramètres sont les mêmes que ceux de la méthode précédente.
+
+Il existe aussi les méthodes Gtk::Table#set_row_spacing et Gtk::Table#set_col_spacing. Elles permettent de placer des espaces après une ligne ou une colonne.
+
+  Gtk::Table#set_row_spacing(row, spacing)
+  Gtk::Table#set_col_spacing(column, spacing) 
+
+Notez que pour les colonnes, l'espace est ajouté à droite de la colonne et pour les lignes, il est ajouté en dessous.
+
+On peut aussi configurer un espacement pour toutes les lignes et/ou colonnes avec:
+
+  Gtk::Table#set_row_spacings(spacing)
+  Gtk::Table#set_col_spacings(spacing) 
+
+Notez qu'avec ces appels, la dernière ligne et la dernière colonne n'ont pas d'espace supplémentaire.

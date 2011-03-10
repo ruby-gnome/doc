@@ -1,0 +1,38 @@
+= class Pango::FontsetSimple
+
+Pango::FontsetSimple is a implementation of the abstract Pango::Fontset base class in terms of an Array of fonts, which the creator provides when constructing the Pango::FontsetSimple.
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Pango::Fontset
+        * Pango::FontsetSimple
+
+== Class Methods
+
+--- Pango::FontSetSimple.new(language)
+
+    Creates a new Pango::FontsetSimple for the given language.
+    * language: a Pango::Language tag  
+    * Returns: a Pango::FontsetSimple.
+
+== Instance Methods
+
+--- append(font)
+
+    Adds a font to the fontset.
+    * font: a Pango::Font
+    * Returns: self
+
+--- size
+
+    Returns the number of fonts in the fontset.
+    * Returns: the size of fontset.
+
+== See Also
+
+== ChangeLog
+
+* 2005-10-21 Added. ((<Masao>))

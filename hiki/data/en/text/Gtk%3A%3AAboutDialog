@@ -1,0 +1,434 @@
+= class Gtk::AboutDialog
+
+The Gtk::AboutDialog offers a simple way to display information about a program like its logo, name, copyright, website and license. It is also possible to give credits to the authors, documenters, translators and artists who have worked on the program. An about dialog is typically opened when the user selects the About option from the Help menu. All parts of the dialog are optional.
+
+About dialog often contain links and email addresses. Gtk::AboutDialog supports this by offering global hooks, which are called when the user clicks on a link or email address, see Gtk::AboutDialog.set_email_hook and Gtk::AboutDialog.set_url_hook. Email addresses in the authors, documenters and artists properties are recognized by looking for <user@host>, URLs are recognized by looking for http://url, with url extending to the next space, tab or line break.
+
+To make constructing a Gtk::AboutDialog as convenient as possible, you can use the function Gtk::AboutDialog.show which constructs and shows a dialog and keeps it around so that it can be shown again.
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::InitiallyUnowned
+        * Gtk::Object
+          * Gtk::Widget
+            * Gtk::Container
+              * Gtk::Bin
+                * Gtk::Window
+                  * Gtk::Dialog
+                    * Gtk::AboutDialog
+
+== Class Methods
+
+--- Gtk::AboutDialog.new
+
+    Creates a new Gtk::AboutDialog. ((* Since 2.6 *))
+    * Returns: a newly created Gtk::AboutDialog
+
+--- Gtk::AboutDialog.set_email_hook{|about, link| ... }
+
+    Installs a global function to be called whenever the user activates an email link in an about dialog. ((* Since 2.6 *))
+    * {|about, link| ....} : A global function as a block.
+      * about: Gtk::AboutDialog
+      * link: the URL or email address to which the activated link points
+    * Returns: self
+
+--- Gtk::AboutDialog.set_url_hook{|about, link| ... }
+
+    Installs a global function to be called whenever the user activates a URL link in an about dialog. ((* Since 2.6 *))
+    * {|about, link| ....} : A global function as a block.
+      * about: Gtk::AboutDialog
+      * link: the URL or email address to which the activated link points
+    * Returns: self
+
+--- Gtk::AboutDialog.show(parent, {prop1 => value1, prop2 => value2, .... })
+
+    This is a convenience method for showing an application's about box. The constructed dialog is associated with the parent window and reused for future invocations of this method. ((* Since 2.6 *))
+    * parent: transient parent, or nil for non
+    * {prop1 => value1, prop2 => value2, .... }: A hash of properties. 
+      * prop => value: a property name(Symbol or String) and the value.
+    * Returns: self
+
+== Instance Methods
+
+--- name
+
+    Gets the name of the program. If this is not set, it defaults to GLib.application_name. ((* Since 2.6 *))
+    * Returns: The name of the program (String)
+
+--- name=(name)
+
+    Sets the name of the program. If this is not set, it defaults to GLib.application_name. ((* Since 2.6 *))
+    * name: The name of the program (String)
+    * Returns: name
+
+--- set_name(name)
+
+    Same as Gtk::AboutDialog#name=. ((* Since 2.6 *))
+    * name: The name of the program (String)
+    * Returns: self
+
+--- version
+
+    Gets the version string. ((* Since 2.6 *))
+    * Returns: The version (String)
+
+--- version=(version)
+
+    Sets the version string. ((* Since 2.6 *))
+    * version: The version (String)
+    * Returns: version
+
+--- set_version(version)
+
+    Same as Gtk::AboutDialog#version=. ((* Since 2.6 *))
+    * version: The version (String)
+    * Returns: self
+
+--- copyright
+
+    Gets the copyright string.  ((* Since 2.6 *))
+    * Returns: copyright (String)
+
+--- copyright=(copyright)
+
+    Sets the copyright string. This should be a short string of one or two lines. ((* Since 2.6 *))
+    * copyright: copyright (String)
+    * Returns: copyright
+
+--- set_copyright(copyright)
+
+    Same as Gtk::AboutDialog#copyright=. ((* Since 2.6 *))
+    * copyright: copyright (String)
+    * Returns: self
+
+--- comments
+
+    Gets the comments string. ((* Since 2.6 *))
+    * Returns: comments (String)
+
+--- comments=(comments)
+
+    Sets the comments string. This should be a short string of one or two lines. ((* Since 2.6 *))
+    * comments: comments (String)
+    * Returns: comments
+
+--- set_comments(comments)
+
+    Same as Gtk::AboutDialog#comments=. ((* Since 2.6 *))
+    * comments: comments (String)
+    * Returns: self
+
+--- license
+
+    Gets the license information. ((* Since 2.6 *))
+    * Returns: The license information (String)
+
+--- license=(license)
+
+    Sets the license information to be displayed in the secondary license dialog. If license is nil, the license button is hidden. ((* Since 2.6 *))
+    * license: The license information (String)
+    * Returns: license
+
+--- set_license(license)
+
+    Same as Gtk::AboutDialog#license=. ((* Since 2.6 *))
+    * license: The license information (String)
+    * Returns: self
+
+--- wrap_license
+
+    Returns whether the license text in about is automatically wrapped. ((*Since 2.8*))
+
+--- wrap_license=(wrap_license)
+
+    Sets whether the license text in about is automatically wrapped. ((*Since 2.8*))
+    * wrap_license: whether to wrap the license (true or false)
+    * Returns: wrap_license
+
+--- set_wrap_license=(wrap_license)
+
+    Same as Gtk::AboutDialog#wrap_license=(wrap_license). ((*Since 2.8*))
+    * wrap_license: whether to wrap the license (true or false)
+    * Returns: self
+
+--- website
+
+    Gets the website URL. ((* Since 2.6 *))
+    * Returns: The website URL
+
+--- website=(website)
+
+    Sets the website URL. ((* Since 2.6 *))
+    * website: The website URL
+    * Returns: website
+
+--- set_website(website)
+
+    Same as Gtk::AboutDialog#website=. ((* Since 2.6 *))
+    * website: The website URL
+    * Returns: self
+
+--- website_label
+
+    Gets the label for the link to the website. If this is not set, it defaults to the URL. ((* Since 2.6 *))
+    * Returns: The label for the link to the website of the program
+
+--- website_label=(website_label)
+
+    Sets the label for the link to the website. If this is not set, it defaults to the URL. ((* Since 2.6 *))
+    * website_label: The label for the link to the website of the program
+    * Returns: website_label
+
+--- set_website_label(website_label)
+
+    Same as Gtk::AboutDialog#website_label=. ((* Since 2.6 *))
+    * website_label: The label for the link to the website
+    * Returns: self
+
+--- authors
+
+    Gets the Array of authors which are displayed in the authors tab of the secondary credits dialog. ((* Since 2.6 *))
+    * Returns: Array of authors
+
+--- authors=(authors)
+
+    Sets the Array of authors which are displayed in the authors tab of the secondary credits dialog. ((* Since 2.6 *))
+    * authors: Array of authors
+    * Returns: authors
+
+--- set_authors(authors)
+
+    Same as Gtk::AboutDialog#authors=. ((* Since 2.6 *))
+    * authors: Array of authors
+    * Returns: self
+
+--- artists
+
+    Gets the Array of people who have contributed artwork to the program. The artists  are displayed in the artists tab of the secondary credits dialog. ((* Since 2.6 *))
+    * Returns: Array of people
+
+--- artists=(artists)
+
+    Sets the Array of people who have contributed artwork to the program. The artists  are displayed in the artists tab of the secondary credits dialog. ((* Since 2.6 *))
+    * artists: Array of people
+    * Returns: artists
+
+--- set_artists(artists)
+
+    Same as Gtk::AboutDialog#artists=. ((* Since 2.6 *))
+    * artists: Array of people
+    * Returns: self
+
+--- documenters
+
+    Gets the Array of people documenting the program. The documenters are displayed in the documenters tab of the secondary credits dialog. ((* Since 2.6 *))
+    * Returns: Array of people
+
+--- documenters=(documenters)
+
+    Sets the Array of people documenting the program. The documenters are displayed in the documenters tab of the secondary credits dialog. ((* Since 2.6 *))
+    * documenters: Array of people
+    * Returns: documenters
+
+--- set_documenters(documenters)
+
+    Same as Gtk::AboutDialog#documenters=. ((* Since 2.6 *))
+    * documenters: Array of people
+    * Returns: self
+
+--- translator_credits
+
+    Gets the translator credits string which is displayed in the translators tab of the secondary credits dialog. The credits string is separated each translators with '\n'. ((* Since 2.6 *))
+    * Returns: credits to the translators
+
+--- translator_credits=(translator_credits)
+
+    Sets the translator credits string which is displayed in the translators tab of the secondary credits dialog. The credits string is separated each translators with '\n'. ((* Since 2.6 *))
+    * translator_credits: credits to the translators, separated with '\n'
+    * Returns: translator_credits
+
+--- set_translator_credits(translator_credits)
+
+    Same as Gtk::AboutDialog#translator_credits=. ((* Since 2.6 *))
+    * translator_credits: credits to the translators separated with '\n'
+    * Returns: self
+
+--- logo
+
+    Gets the pixbuf displayed as logo in the about dialog. If this is not set, it defaults to Gtk::Window.default_icon_list. ((* Since 2.6 *))
+    * Returns: A Gdk::Pixbuf displayed as logo for the about dialog.
+
+--- logo=(logo)
+
+    Sets a pixbuf displayed as logo in the about dialog. If this is not set, it defaults to Gtk::Window.default_icon_list. ((* Since 2.6 *))
+    * logo: A Gdk::Pixbuf displayed as logo for the about dialog.
+    * Returns: logo
+
+--- set_logo(logo)
+
+    Same as Gtk::AboutDialog#logo=. ((* Since 2.6 *))
+    * logo: A Gdk::Pixbuf displayed as logo for the about dialog.
+    * Returns: self
+
+--- logo_icon_name
+
+    Gets the icon name displayed as logo in the about dialog. ((* Since 2.6 *))
+    * Returns: A icon name displayed as logo in the about dialog.
+
+--- logo_icon_name=(logo_icon_name)
+
+    Sets an icon name displayed as logo in the about dialog. ((* Since 2.6 *))
+    * logo_icon_name: An icon name
+    * Returns: logo_icon_name
+
+--- set_logo_icon_name(logo_icon_name)
+
+    Same as Gtk::AboutDialog#logo_icon_name=. ((* Since 2.6 *))
+    * logo_icon_name: An icon name
+    * Returns: self
+
+--- program_name
+
+    Gets the name of the program. If this is not set, it defaults to g_get_application_name().
+     * Returns: The name of the program. If this is not set, it defaults to g_get_application_name()
+
+--- program_name=(program_name)
+
+    Sets the name of the program. If this is not set, it defaults to g_get_application_name().
+     * program_name: The name of the program. If this is not set, it defaults to g_get_application_name()
+     * Returns: program_name
+
+--- ref_accessible
+
+    See Atk::Implementor#ref_accessible.
+
+--- set_program_name(program_name)
+
+    Same as program_name=.
+     * program_name: The name of the program. If this is not set, it defaults to g_get_application_name()
+     * Returns: self
+
+--- set_wrap_license(wrap_license)
+
+    Same as wrap_license=.
+     * wrap_license: true if to wrap the license text.
+     * Returns: self
+
+--- wrap_license?
+
+    Gets the value whether to wrap the license text. or not.
+     * Returns: true if to wrap the license text.
+
+--- add_child
+
+    See Gtk::Buildable#add_child.
+
+--- construct_child
+
+    See Gtk::Buildable#construct_child.
+
+--- get_internal_child
+
+    See Gtk::Buildable#get_internal_child.
+
+--- set_buildable_property
+
+    See Gtk::Buildable#set_buildable_property.
+
+--- builder_name
+
+    See Gtk::Buildable#builder_name.
+
+--- builder_name=
+
+    See Gtk::Buildable#builder_name=.
+
+--- set_builder_name
+
+    See Gtk::Buildable#set_builder_name.
+
+== Properties
+
+--- artists: Array (Read/Write)
+
+    Array of people who have contributed artwork to the program ((* Since 2.6 *))
+
+--- authors: Array (Read/Write)
+
+    Array of authors of the program ((* Since 2.6 *))
+
+--- comments: String (Read/Write)
+
+    Comments about the program ((* Since 2.6 *))
+    * Default value: nil
+
+--- copyright: String (Read/Write)
+
+    Copyright information for the program ((* Since 2.6 *))
+    * Default value: nil
+
+--- documenters: Array (Read/Write)
+
+    Array of people documenting the program ((* Since 2.6 *))
+
+--- license: String (Read/Write)
+
+    The license of the program ((* Since 2.6 *))
+    * Default value: nil
+
+--- wrap-license: true or false (Read/Write)
+
+    Whether to wrap the text in the license dialog. Default value: false. ((*Since 2.8*))
+
+--- logo: Gdk::Pixbuf (Read/Write)
+
+    A logo for the about box. If this is not set, it defaults to Gtk::Window.default_icon_list ((* Since 2.6 *))
+
+--- logo-icon-name: String (Read/Write)
+
+    A named icon to use as the logo for the about box. ((* Since 2.6 *))
+    * Default value: nil
+
+--- name: String (Read/Write)
+
+    The name of the program. If this is not set, it defaults to GLib.application_name ((* Since 2.6 *))
+    * Default value: nil
+
+--- translator-credits: String (Read/Write)
+
+    Credits to the translators. This string should be marked as translatable ((* Since 2.6 *))
+    * Default value: nil
+
+--- version: String (Read/Write)
+
+    The version of the program ((* Since 2.6 *))
+    * Default value: nil
+
+--- website: String (Read/Write)
+
+    The URL for the link to the website of the program ((* Since 2.6 *))
+    * Default value: nil
+
+--- website-label: String (Read/Write)
+
+    The label for the link to the website of the program. If this is not set, it defaults to the URL ((* Since 2.6 *))
+    * Default value: nil
+
+--- wrap-license: true of false (Read/Write)
+
+    Whether to wrap the text in the license dialog. ((* Since 2.8 *))
+    * Default value: false
+
+--- program-name: String (Read/Write)
+
+    The name of the program. If this is not set, it defaults to g_get_application_name()
+
+== See Also
+
+== ChangeLog
+
+* 2005-09-18 Added GTK+-2.8 methods/properties - ((<Masao>))
+* 2005-05-05 Added - ((<Masao>))

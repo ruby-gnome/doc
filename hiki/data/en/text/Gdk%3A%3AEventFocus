@@ -1,0 +1,44 @@
+= class Gdk::EventFocus
+
+Describes a change of keyboard focus.
+
+== Object Hierarchy
+
+* Object
+  * GLib::Boxed
+    * Gdk::Event
+      * Gdk::EventAny
+        * Gdk::EventFocus
+
+== Class Methods
+
+--- Gdk::EventFocus.new(type = Gdk::FOCUS_CHANGE)
+
+    Creates a new event of the given type. All fields are set to 0. ((* Since 2.2 *))
+    * type: Gdk::Event::FOCUS_CHANGE
+    * Returns: a new Gdk::EventFocus.
+
+== Instance Methods
+
+--- in?
+
+    Gets the value whether the window has gained the keyboard focus or has lost the focus. 
+    * Returns: true if the window has gained the keyboard focus, false if it has lost the focus.
+
+--- in=(val)
+
+    Sets the value whether the window has gained the keyboard focus or has lost the focus. 
+    * val: true if the window has gained the keyboard focus, false if it has lost the focus.  
+    * Returns: val
+
+--- set_in(val)
+
+    Same as Gdk::EventFocus#in=.
+    * val: true if the window has gained the keyboard focus, false if it has lost the focus.  
+    * Returns: self
+
+== See Also
+
+== ChangeLog
+
+-((<Masao>))

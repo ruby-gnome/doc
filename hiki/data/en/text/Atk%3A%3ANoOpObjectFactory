@@ -1,0 +1,21 @@
+= class Atk::NoOpObjectFactory
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Atk::ObjectFactory
+        * Atk::NoOpObjectFactory
+
+== Class Methods
+
+--- Atk::NoOpObjectFactory.new
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

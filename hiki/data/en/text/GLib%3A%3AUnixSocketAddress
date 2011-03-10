@@ -1,0 +1,85 @@
+= class GLib::UnixSocketAddress
+
+Support for Unix domain (also known as local) sockets.
+
+Unix domain sockets are generally visible in the filesystem. However, some
+systems support abstract socket names which are not visible in the filesystem
+and not affected by the filesystem permissions, visibility, etc. Currently this
+is only supported under Linux. If you attempt to use abstract sockets on other
+systems, function calls may raise GLib::IO::NotSupportedError. You can use
+GLib::UnixSocketAddress.abstract_names_supported? to see if abstract names are
+supported.
+
+Note that GLib::UnixSocketAddress belongs to the Unix-specific GIO interfaces.
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::Socket
+        * GLib::UnixSocketAddress
+
+== Class Methods
+
+--- GLib::UnixSocketAddress.abstract_names_supported?
+
+     * Returns: self: ((*FIXME*))
+
+--- GLib::UnixSocketAddress.new(path)
+
+     Creates a new GLib::UnixSocketAddress for ((|path|)).
+
+     To create abstract socket addresses, on systems that support that, use
+     GLib::UnixSocketAddress.new_with_type.
+
+     * Returns: a new GLib::UnixSocketAddress
+
+
+== Instance Methods
+
+--- abstract?
+
+    Checks whether or not this is an abstract address.
+
+     * Returns: true if this is an abstract address
+
+--- each
+
+    See GLib::SocketConnectable#each.
+
+--- enumerate
+
+    See GLib::SocketConnectable#enumerate.
+
+--- path
+
+    Gets the Unix socket path.
+
+     * Returns: The Unix socket path
+
+--- path_as_array
+
+    Gets the Unix socket path, as byte array.
+
+     * Returns: The Unix socket path, as byte array
+
+== Properties
+
+--- abstract: true or false (Read/Write)
+
+    Whether or not this is an abstract address
+
+--- path: String (Read/Write)
+
+    The Unix socket path
+
+--- path-as-array: GLib::ByteArray (Read/Write)
+
+    The Unix socket path, as byte array
+
+== See Also
+
+== ChangeLog
+
+

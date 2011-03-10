@@ -1,0 +1,41 @@
+=Sokoban
+Dies ist ein Beispiel für die Benutzung von Ruby/GnomeCanvas2, Ruby/GConf2 und Ruby/GTK2.
+
+==Was ist Sokoban?
+Sokoban ist ein traditionelles Ratespiel. Die Regel lautet: Schiebe alle Rubine ins Lager (hellblauer Bereich). Siehe ((<URL:http://www.cs.ualberta.ca/~games/Sokoban/>)) für Details.
+
+Sokoban benutzt Daten von ((<xsokoban|URL:http://www.cs.cornell.edu/andru/xsokoban.html>)).
+
+== Herunterladen
+{{attach_anchor("sokoban.tar.gz")}}
+
+== Systemvoraussetzungen
+Der Entwickler benutzte:
+* ruby 1.8.0 (2003-06-10) [i686-linux]
+* Ruby-GNOME2-0.5.0
+* libart_lgpl-2.3.12
+
+Libart_lgpl-2.3.11 (benutzt von Redhat 9) könnte Sokoban zum Abstürzen bringen.
+
+{{image_right "sokoban-20030915.png"}}
+
+== Syntax
+ $ ruby sokoban.rb
+
+== Lizenz
+Dieselbe wie Ruby.
+
+== Author
+((<Masao>))
+
+=== Änderungen
+:2003-09-15
+ Tippfehler
+:2003-09-08
+ Fehler in der Behandlung der Pfeiltasten. Trat auf bei Ruby-GNOME2-0.7.0.
+:2003-06-16
+ Add Continue stage automatically using Ruby/GConf.
+:2003-06-15
+ "Rückgängig" hinzugefügt.
+:2003-06-14
+ Urversion veröffentlicht.

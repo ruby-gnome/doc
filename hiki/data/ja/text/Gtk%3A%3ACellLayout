@@ -1,0 +1,61 @@
+= module Gtk::CellLayout
+Gtk::CellLayout is an interface to be implemented by all objects which want to provide a Gtk::TreeViewColumn-like API for packing cells, setting attributes and data funcs.
+ 
+== Included Modules
+* GLib::Interface
+
+== Instance Methods
+--- pack_start(cell, expand)
+    Packs the cell into the beginning of cell_layout. If expand is false, then the cell is allocated no more space than it needs. Any unused space is divided evenly between cells for which expand is true. ((*Since 2.4*))
+    * cell: A Gtk::CellRenderer 
+    * expand: true if cell is to be given extra space allocated to self(cell_layout)
+    * Returns: self
+
+--- pack_end(cell, expand)
+    Adds the cell to the end of cell_layout. If expand is false, then the cell is allocated no more space than it needs. Any unused space is divided evenly between cells for which expand is true. ((*Since 2.4*))
+    * cell: A Gtk::CellRenderer
+    * expand: true if cell is to be given extra space allocated to self(cell_layout)
+    * Returns: self
+
+--- reorder
+    Re-inserts cell at position. Note that cell has already to be packed into self(cell_layout) for this to function properly.
+    * cell: A Gtk::CellRenderer to reorder.   ((*Since 2.4*))
+    * position: New position to insert cell at.  
+    * Returns: self
+
+--- clear
+    Unsets all the mappings on all renderers on self(cell_layout) and removes all renderers from self(cell_layout).  ((*Since 2.4*))
+    * Returns: self
+
+--- set_attributes(cell, attributes)
+    Sets the attributes in list as the attributes of self(cell_layout). All existing attributes are removed, and replaced with the new attributes.   ((*Since 2.4*))
+    * cell: A Gtk::CellRenderer. 
+    * attributes: {attr1 => col1, attr2 => col2, ... }
+       * attr: An attribute on the renderer.  (Symbol or String)
+       * col: The column position on the model to get the attribute from.(Integer)  
+    * Returns: self
+
+--- add_attribute(cell, attributes, column)
+    Adds an attribute mapping to the list in self(cell_layout). The column is the column of the model to get a value from, and the attribute is the parameter on cell to be set from the value. So for example if column 2 of the model contains strings, you could have the :text attribute of a Gtk::CellRendererText get its values from column 2.  ((*Since 2.4*))
+    * cell: A Gtk::CellRenderer. 
+    * attribute: An attribute on the renderer.  (Symbol or String)
+    * column: The column position on the model to get the attribute from.(Integer)  
+    * Returns: self
+
+--- set_cell_data_func(cell) {|cell_layout, cell, treemodel, iter| ... }
+    Sets a block to use for cell_layout. This method is used instead of the standard attributes mapping for setting the column value, and should set the value of cell_layout's cell renderer(s) as appropriate.  ((*Since 2.4*))
+    * cell: A Gtk::CellRenderer.
+    * {|cell_layout, cell, treemodel, iter| ... }: A block which should set the value of cell_layout's cell renderer(s) as appropriate or nil if you want to remove and older one.
+       * cell_layout: self(a Gtk::CellLayout)
+       * cell: the cell renderer whose value is to be set  
+       * treemodel : the Gtk::TreeModel  
+       * iter: a Gtk::TreeIter indicating the row to set the value for  
+    * Returns: self
+
+--- clear_attributes(cell)
+    Clears all existing attributes previously set with Gtk::CellLayout.set_attributes.
+    * cell: A Gtk::CellRenderer to clear the attribute mapping on.  ((*Since 2.4*)) 
+    * Returns: self
+
+
+-((<Masao>))

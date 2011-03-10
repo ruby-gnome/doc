@@ -1,0 +1,69 @@
+= class Gtk::RadioAction
+A Gtk::RadioAction is similar to Gtk::RadioMenuItem. A number of radio actions can be linked together so that only one may be active at any one time. 
+
+== Object Hierarchy
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Gtk::Action
+        * Gtk::ToggleAction
+          * Gtk::RadioAction
+
+== Class Methods
+--- Gtk::RadioAction.new(name, label, tooltip, stock_id, value)
+    Creates a new Gtk::RadioAction object. To add the action to a Gtk::ActionGroup and set the accelerator for the action, call Gtk::ActionGroup#add_action. ((* Since 2.4 *))
+    * name: A unique name for the action  
+    * label: The label displayed in menu items and on buttons  
+    * tooltip: A tooltip for this action  
+    * stock_id: The stock icon(Gtk::Stock constants) to display in widgets representing this action  
+    * value: The value which Gtk::RadioAction#current_value should return if this action is selected.  
+    * Returns: a new Gtk::RadioAction  
+
+== Instance Methods
+--- current_value
+    Obtains the value property of the the currently active member of the group to which action belongs. ((* Since 2.4 *))
+    * Returns: The value of the currently active group member
+
+--- group
+    Returns an Array of the ((<Gtk::RadioAction>))s in a group. ((* Since 2.4 *))
+    * Returns: an Array of the ((<Gtk::RadioAction>))s
+--- group=(group)
+    Sets the radio action whose group this action belongs to. ((* Since 2.4 *))
+    * group: The Gtk::RadioAction whose group this action belongs to.
+    * Returns: group
+--- set_group(group)
+    Same as Gtk::RadioAction#group=. ((* Since 2.4 *))
+    * group: The Gtk::RadioAction whose group this action belongs to.
+    * Returns: self
+
+--- value
+    Gets the value which Gtk::RadioAction#current_value should return if this action is selected. ((* Since 2.4 *))
+    * Returns: The value which Gtk::RadioAction#current_value should return if this action is selected
+--- value=(value)
+    Sets the value which Gtk::RadioAction#current_value should return if this action is selected. ((* Since 2.4 *))
+    * value: An Integer
+    * Returns: value
+--- set_value(value)
+    Same as Gtk::RadioAction#value=. ((* Since 2.4 *))
+    * value: An Integer
+    * Returns: self
+
+== Properties
+--- group: Gtk::RadioAction (Write)
+    The radio action whose group this action belongs to. ((* Since 2.4 *))
+
+--- value: Integer (Read/Write)
+    The value returned by Gtk::RadioAction#current_value when this action is the current action of its group. ((* Since 2.4 *))
+    * Default value: 0
+--- current-value: Integer (Read/Write)
+    The value property of the currently active member of the group to which this action belongs. ((*Since 2.10*))
+    * Default value: 0
+
+== Signals
+--- changed: self
+    The ::changed signal is emitted on every member of a radio group when the active member is changed. The signal gets emitted after the ::activate signals for the previous and current active members. ((* Since 2.4 *))
+     * self: Gtk::RadioAction
+
+== ChangeLog
+* 2006-11-04 Apply 2.10. - ((<Masao>))
+* 2005-02-09 ((<Masao>)) Initial post.

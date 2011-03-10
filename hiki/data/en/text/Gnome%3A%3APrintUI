@@ -1,0 +1,15 @@
+= module Gnome::PrintUI
+
+== Constants
+
+--- LOG_DOMAIN
+--- BINDING_VERSION
+--- BUILD_VERSION
+
+== See Also
+
+== ChangeLog
+
+* 2005-06-10 ((<kou>)): added
+
+- ((<kou>))

@@ -1,0 +1,1506 @@
+= class Gtk::Settings
+
+Sharing settings between applications.
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Gtk::Settings
+
+== Class Methods
+
+--- Gtk::Settings.default
+
+    Gets the Gtk::Settings object for the default GDK screen, creating it if necessary. See Gtk::Settings.get_for_screen.
+    * Returns: A Gtk::Settings object. If there is no default screen, then returns nil
+
+--- Gtk::Settings.get_for_screen(screen)
+
+    Gets the Gtk::Settings object for screen, creating it if necessary. ((*Since 2.2*))
+    * screen: A Gdk::Screen
+    * Returns: A Gtk::Settings object
+
+--- Gtk::Settings.install_property(pspec)
+
+    Install a new property. 
+    * pspec: a subclass of GLib::Param for the new property
+    * Returns: self
+
+--- Gtk::Settings.install_property(pspec){|pspec, str| ... }
+
+    Install a new property with a block of property parser. The block have to return a new property value, or nil if you can't convert the RC string
+    * {|pspec, str| ... }: a block of property parser. it parses str and returns new value or nil.
+      * pspec: A subclass of GLib::Param
+      * str: RC string
+
+--- Gtk::Settings.rc_property_parse_color(pspec, color_str)
+
+    Parses a color given either by its name or in the form { red, green, blue } where red, green and blue are integers between 0 and 65535 or floating-point numbers between 0 and 1. 
+    * pspec: A subclass of GLib::Param (Usually use GLib::Param::Int)
+    * color_str: A color string such as "{444444, 555555, 65535}"
+    * Returns: A Gdk::Color
+
+--- Gtk::Settings.rc_property_parse_enum(pspec, enum_str)
+
+    The enumeration value can be specified by its name, its nickname or its numeric value. For consistency with flags parsing, the value may be surrounded by parentheses.
+    * pspec: A subclass of GLib::Param (Usually GLib::Param::Enum)
+    * enum_str: A name of GLib::Enum value such as "center" of GtkAcnhorType
+    * Returns: A GLib::Enum
+
+--- Gtk::Settings.rc_property_parse_flags(pspec, flags_str)
+
+    Flags can be specified by their name, their nickname or numerically. Multiple flags can be specified in the form "( flag1 | flag2 | ... )".
+    * pspec: A subclass of GLib::Param (Usually GLib::Param::Flags)
+    * flags_str: A name of GLib::Flags value such as "(scroll-mask|structure-mask)" of GdkEventMask
+    * Returns: A GLib::Flags
+
+--- Gtk::Settings.rc_property_parse_requisition(pspec, req_str)
+
+    Parses a requisition in the form "{ width, height }" for integers width and height.
+    * pspec: A subclass of GLib::Param (Usually GLib::Param::Int)
+    * req_str: A requisition string such as "{10, 20}"
+    * Returns: [width, height]
+
+--- Gtk::Settings.rc_property_parse_border(pspec, prop_str)
+
+    Parses borders in the form "{ left, right, top, bottom }" for integers left, right, top and bottom.
+    * pspec: A subclass of GLib::Param (Usually GLib::Param::Int)
+    * prop_str: A border string such as "{0, 100, 10, 200}"
+    * Returns: A Gtk::Border
+
+== Instance Methods
+
+--- set_property_value(name, value, origin)
+
+    Sets the property value.
+    * name: The name of propery
+    * value: The value of the property. Valid types are Integer, Float or String
+    * origin: origin should be something like "filename:linenumber" for rc files, or e.g. "XProperty" for other sources
+    * Returns: self
+
+--- gtk_alternative_button_order?
+
+    Gets the value whether buttons in dialogs should use the alternative button order or not.
+    * Returns: true if buttons in dialogs should use the alternative button order
+
+--- gtk_alternative_button_order=(setting)
+
+    Sets the value whether buttons in dialogs should use the alternative button order or not.
+    * setting: true if buttons in dialogs should use the alternative button order
+    * Returns: setting
+
+--- set_gtk_alternative_button_order(setting)
+
+    Same as Gtk::Settings#gtk_alternative_button_order=.
+    * setting: true if buttons in dialogs should use the alternative button order
+    * Returns: self
+
+--- gtk_button_images?
+
+    Gets the value whether stock icons should be shown in buttons or not.
+    * Returns: true if stock icons should be shown in buttons
+
+--- gtk_button_images=(setting)
+
+    Sets the value whether stock icons should be shown in buttons or not.
+    * setting: true if stock icons should be shown in buttons
+    * Returns: setting
+
+--- set_gtk_button_images(setting)
+
+    Same as Gtk::Settings#gtk_button_images=.
+    * setting: true if stock icons should be shown in buttons
+    * Returns: self
+
+--- gtk_can_change_accels?
+
+    Gets the value whether menu accelerators can be changed by pressing a key over the menu item or not.
+    * Returns: true if menu accelerators can be changed by pressing a key over the menu item
+
+--- gtk_can_change_accels=(setting)
+
+    Sets the value whether menu accelerators can be changed by pressing a key over the menu item or not.
+    * setting: true if menu accelerators can be changed by pressing a key over the menu item
+    * Returns: gtk_can_change_accels
+
+--- set_gtk_can_change_accels(setting)
+
+    Same as Gtk::Settings#gtk_can_change_accels=.
+    * setting: true if menu accelerators can be changed by pressing a key over the menu item
+    * Returns: self
+
+--- gtk_color_palette
+
+    Gets the Palette to use in the color selector.
+    * Returns: Palette to use in the color selector
+
+--- gtk_color_palette=(palette)
+
+    Sets the Palette to use in the color selector. The Palette is a String of "color1:color2:..." format.
+    * palette: Palette String to use in the color selector such as "black:white:..."
+    * Returns: palette
+
+--- set_gtk_color_palette(palette)
+
+    Same as Gtk::Settings#gtk_color_palette=.
+    * palette: Palette String to use in the color selector such as "black:white:..."
+    * Returns: self
+
+--- gtk_cursor_blink?
+
+    Gets the value whether the cursor should blink or not.
+    * Returns: true if the cursor should blink
+
+--- gtk_cursor_blink=(setting)
+
+    Sets the value whether the cursor should blink or not.
+    * setting: true if the cursor should blink
+    * Returns: gtk_cursor_blink
+
+--- set_gtk_cursor_blink(setting)
+
+    Same as Gtk::Settings#gtk_cursor_blink=.
+    * setting: true if the cursor should blink
+    * Returns: self
+
+--- gtk_cursor_blink_time
+
+    Gets the length of the cursor blink cycle, in milleseconds.
+    * Returns: Length of the cursor blink cycle, in milleseconds
+
+--- gtk_cursor_blink_time=(time)
+
+    Sets the length of the cursor blink cycle, in milleseconds.
+    * time: Length of the cursor blink cycle, in milleseconds
+    * Returns: gtk_cursor_blink_time
+
+--- set_gtk_cursor_blink_time(time)
+
+    Same as Gtk::Settings#gtk_cursor_blink_time=.
+    * time: Length of the cursor blink cycle, in milleseconds
+    * Returns: self
+
+--- gtk_dnd_drag_threshold
+
+    Gets the number of pixels the cursor can move before dragging.
+    * Returns: Number of pixels the cursor can move before dragging
+
+--- gtk_dnd_drag_threshold=(val)
+
+    Sets the number of pixels the cursor can move before dragging.
+    * val: Number of pixels the cursor can move before dragging (Integer)
+    * Returns: gtk_dnd_drag_threshold
+
+--- set_gtk_dnd_drag_threshold(val)
+
+    Same as Gtk::Settings#gtk_dnd_drag_threshold=.
+    * val: Number of pixels the cursor can move before dragging (Integer)
+    * Returns: self
+
+--- gtk_double_click_distance
+
+    Gets the Maximum distance allowed between two clicks for them to be considered a double click (in pixels).
+    * Returns: Maximum distance allowed between two clicks for them to be considered a double click
+
+--- gtk_double_click_distance=(val)
+
+    Sets the Maximum distance allowed between two clicks for them to be considered a double click (in pixels).
+    * val: Maximum distance allowed between two clicks for them to be considered a double click (Integer)
+    * Returns: gtk_double_click_distance
+
+--- set_gtk_double_click_distance(val)
+
+    Same as Gtk::Settings#gtk_double_click_distance=.
+    * val: Maximum distance allowed between two clicks for them to be considered a double click (Integer)
+    * Returns: self
+
+--- gtk_double_click_time
+
+    Gets the Maximum time allowed between two clicks for them to be considered a double click (in milliseconds).
+    * Returns: Maximum time allowed between two clicks for them to be considered a double click (Integer)
+
+--- gtk_double_click_time=(val)
+
+    Sets the Maximum time allowed between two clicks for them to be considered a double click (in milliseconds).
+    * gtk_double_click_time: Maximum time allowed between two clicks for them to be considered a double click (Integer)
+    * Returns: val
+
+--- set_gtk_double_click_time(val)
+
+    Same as Gtk::Settings#gtk_double_click_time=.
+    * val: Maximum time allowed between two clicks for them to be considered a double click (Integer)
+    * Returns: self
+
+--- gtk_entry_select_on_focus?
+
+    Gets the value whether to select the contents of an entry when it is focused or not.
+    * Returns: true if to select the contents of an entry when it is focused
+
+--- gtk_entry_select_on_focus=(setting)
+
+    Sets the value whether to select the contents of an entry when it is focused or not.
+    * setting: true if to select the contents of an entry when it is focused
+    * Returns: gtk_entry_select_on_focus
+
+--- set_gtk_entry_select_on_focus(setting)
+
+    Same as Gtk::Settings#gtk_entry_select_on_focus=.
+    * setting: true if to select the contents of an entry when it is focused
+    * Returns: self
+
+--- gtk_font_name
+
+    Gets the Name of default font to use.
+    * Returns: Name of default font to use
+
+--- gtk_font_name=(setting)
+
+    Sets the Name of default font to use.
+    * setting: Name of default font to use
+    * Returns: setting
+
+--- set_gtk_font_name(setting)
+
+    Same as Gtk::Settings#gtk_font_name=.
+    * setting: Name of default font to use
+    * Returns: self
+
+--- gtk_icon_sizes
+
+    Gets the List of icon sizes (gtk-menu=16,16;gtk-button=20,20....
+    * Returns: List of icon sizes as a String (gtk-menu=16,16;gtk-button=20,20...
+
+--- gtk_icon_sizes=(sizes)
+
+    Sets the List of icon sizes (gtk-menu=16,16;gtk-button=20,20....
+    * gtk_icon_sizes: List of icon sizes as a String (gtk-menu=16,16;gtk-button=20,20...
+    * Returns: sizes
+
+--- set_gtk_icon_sizes(sizes)
+
+    Same as Gtk::Settings#gtk_icon_sizes=.
+    * sizes: List of icon sizes as a String (gtk-menu=16,16;gtk-button=20,20...
+    * Returns: self
+
+--- gtk_icon_theme_name
+
+    Gets the name of icon theme to use.
+    * Returns: Name of icon theme to use
+
+--- gtk_icon_theme_name=(name)
+
+    Sets the name of icon theme to use.
+    * name: Name of icon theme to use
+    * Returns: name
+
+--- set_gtk_icon_theme_name(name)
+
+    Same as Gtk::Settings#gtk_icon_theme_name=.
+    * name: Name of icon theme to use
+    * Returns: self
+
+--- gtk_key_theme_name
+
+    Gets the name of key theme RC file to load.
+    * Returns: name of key theme RC file to load
+
+--- gtk_key_theme_name=(name)
+
+    Sets the name of key theme RC file to load.
+    * name: Name of key theme RC file to load
+    * Returns: name
+
+--- set_gtk_key_theme_name(name)
+
+    Same as Gtk::Settings#gtk_key_theme_name=.
+    * name: Name of key theme RC file to load
+    * Returns: self
+
+--- gtk_menu_bar_accel
+
+    Gets the keybinding to activate the menu bar.
+    * Returns: Keybinding to activate the menu bar
+
+--- gtk_menu_bar_accel=(accel)
+
+    Sets the keybinding to activate the menu bar.
+    * gtk_menu_bar_accel: Keybinding to activate the menu bar (String)
+    * Returns: accel
+
+--- set_gtk_menu_bar_accel(accel)
+
+    Same as Gtk::Settings#gtk_menu_bar_accel=.
+    * accel: Keybinding to activate the menu bar (String)
+    * Returns: self
+
+--- gtk_menu_bar_popup_delay
+
+    Gets the delay before the submenus of a menu bar appear.
+    * Returns: Delay before the submenus of a menu bar appear
+
+--- gtk_menu_bar_popup_delay=(delay)
+
+    Sets the Delay before the submenus of a menu bar appear.
+    * delay: Delay before the submenus of a menu bar appear (Integer)
+    * Returns: delay
+
+--- set_gtk_menu_bar_popup_delay(delay)
+
+    Same as Gtk::Settings#gtk_menu_bar_popup_delay=.
+    * delay: Delay before the submenus of a menu bar appear (Integer)
+    * Returns: self
+
+--- gtk_menu_images?
+
+    Gets the value whether images should be shown in menus or not.
+    * Returns: true if images should be shown in menus
+
+--- gtk_menu_images=(setting)
+
+    Sets the value whether images should be shown in menus or not.
+    * setting: true if images should be shown in menus
+    * Returns: setting
+
+--- set_gtk_menu_images(setting)
+
+    Same as Gtk::Settings#gtk_menu_images=.
+    * setting: true if images should be shown in menus
+    * Returns: self
+
+--- gtk_menu_popdown_delay
+
+    Gets the  time before hiding a submenu when the pointer is moving towards the submenu.
+    * Returns: The time before hiding a submenu when the pointer is moving towards the submenu
+
+--- gtk_menu_popdown_delay=(delay)
+
+    Sets the  time before hiding a submenu when the pointer is moving towards the submenu.
+    * delay: The time before hiding a submenu when the pointer is moving towards the submenu (Integer)
+    * Returns: delay
+
+--- set_gtk_menu_popdown_delay(delay)
+
+    Same as Gtk::Settings#gtk_menu_popdown_delay=.
+    * delay: The time before hiding a submenu when the pointer is moving towards the submenu (Integer)
+    * Returns: self
+
+--- gtk_menu_popup_delay
+
+    Gets the Minimum time the pointer must stay over a menu item before the submenu appear.
+    * Returns: Minimum time the pointer must stay over a menu item before the submenu appear
+
+--- gtk_menu_popup_delay=(delay)
+
+    Sets the Minimum time the pointer must stay over a menu item before the submenu appear.
+    * delay: Minimum time the pointer must stay over a menu item before the submenu appear (Integer)
+    * Returns: delay
+
+--- set_gtk_menu_popup_delay(delay)
+
+    Same as Gtk::Settings#gtk_menu_popup_delay=.
+    * delay: Minimum time the pointer must stay over a menu item before the submenu appear (Integer)
+    * Returns: self
+
+--- gtk_modules
+
+    Gets the List of currently active GTK modules as String.
+    * Returns: List of currently active GTK modules as String
+
+--- gtk_modules=(gtk_modules)
+
+    Sets the List of currently active GTK modules as String.
+    * gtk_modules: List of currently active GTK modules as String
+    * Returns: gtk_modules
+
+--- set_gtk_modules(gtk_modules)
+
+    Same as Gtk::Settings#gtk_modules=.
+    * gtk_modules: List of currently active GTK modules as String
+    * Returns: self
+
+--- gtk_split_cursor?
+
+    Gets the value whether two cursors should be displayed for mixed left-to-right and right-to-left text or not.
+    * Returns: true if two cursors should be displayed for mixed left-to-right and right-to-left text
+
+--- gtk_split_cursor=(setting)
+
+    Sets the value whether two cursors should be displayed for mixed left-to-right and right-to-left text or not.
+    * setting: true if two cursors should be displayed for mixed left-to-right and right-to-left text
+    * Returns: setting
+
+--- set_gtk_split_cursor(setting)
+
+    Same as Gtk::Settings#gtk_split_cursor=.
+    * setting: true if two cursors should be displayed for mixed left-to-right and right-to-left text
+    * Returns: self
+
+--- gtk_theme_name
+
+    Gets the Name of theme RC file to load.
+    * Returns: Name of theme RC file to load
+
+--- gtk_theme_name=(name)
+
+    Sets the Name of theme RC file to load.
+    * name: Name of theme RC file to load
+    * Returns: name
+
+--- set_gtk_theme_name(name)
+
+    Same as Gtk::Settings#gtk_theme_name=.
+    * name: Name of theme RC file to load
+    * Returns: self
+
+--- gtk_toolbar_icon_size
+
+    Gets the Size of icons in default toolbars.
+    * Returns: Size of icons in default toolbars
+
+--- gtk_toolbar_icon_size=(icon_size)
+
+    Sets the Size of icons in default toolbars.
+    * icon_size: Size of icons in default toolbars (Gtk::IconSize)
+    * Returns: icon_size
+
+--- set_gtk_toolbar_icon_size(icon_size)
+
+    Same as Gtk::Settings#gtk_toolbar_icon_size=.
+    * icon_size: Size of icons in default toolbars (Gtk::IconSize)
+    * Returns: self
+
+--- gtk_toolbar_style
+
+    Gets the value whether default toolbars have text only, text and icons, icons only, etc. or not.
+    * Returns: true if default toolbars have text only, text and icons, icons only, etc.
+
+--- gtk_toolbar_style=(style)
+
+    Sets the value whether default toolbars have text only, text and icons, icons only, etc. or not.
+    * style: true if default toolbars have text only, text and icons, icons only, etc. (((<GtkToolbarStyle|Gtk::Toolbar#GtkToolbarStyle>)))
+    * Returns: style
+
+--- set_gtk_toolbar_style(style)
+
+    Same as Gtk::Settings#gtk_toolbar_style=.
+    * style: true if default toolbars have text only, text and icons, icons only, etc.(((<GtkToolbarStyle|Gtk::Toolbar#GtkToolbarStyle>)))
+    * Returns: self
+
+--- gtk_xft_antialias
+
+    Gets the value whether to antialias Xft fonts; 0 = no, 1 = yes, -1 = default or not.
+    * Returns: 0 = no, 1 = yes, -1 = default
+
+--- gtk_xft_antialias=(val)
+
+    Sets the value whether to antialias Xft fonts; 0 = no, 1 = yes, -1 = default or not.
+    * val: An Integer (0 = no, 1 = yes, -1 = default)
+    * Returns: val
+
+--- set_gtk_xft_antialias(val)
+
+    Same as Gtk::Settings#gtk_xft_antialias=.
+    * val: An Integer (0 = no, 1 = yes, -1 = default)
+    * Returns: self
+
+--- gtk_xft_dpi
+
+    Gets the Resolution for Xft, in 1024 * dots/inch. -1 to use default value.
+    * Returns: Resolution for Xft as Integer
+
+--- gtk_xft_dpi=(dpi)
+
+    Sets the Resolution for Xft, in 1024 * dots/inch. -1 to use default value.
+    * dpi: Resolution for Xft as Integer
+    * Returns: dpi
+
+--- set_gtk_xft_dpi(dpi)
+
+    Same as Gtk::Settings#gtk_xft_dpi=.
+    * dpi: Resolution for Xft as Integer
+    * Returns: self
+
+--- gtk_xft_hinting
+
+    Gets the value whether to hint Xft fonts; 0 = no, 1 = yes, -1 = default or not.
+    * Returns: 0 = no, 1 = yes, -1 = default
+
+--- gtk_xft_hinting=(hinting)
+
+    Sets the value whether to hint Xft fonts; 0 = no, 1 = yes, -1 = default or not.
+    * hinting: 0 = no, 1 = yes, -1 = default
+    * Returns: hinting
+
+--- set_gtk_xft_hinting(hinting)
+
+    Same as Gtk::Settings#gtk_xft_hinting=.
+    * hinting: 0 = no, 1 = yes, -1 = default
+    * Returns: self
+
+--- gtk_xft_hintstyle
+
+    Gets the degree of hinting to use; none, slight, medium, or full.
+    * Returns: What degree of hinting to use; none, slight, medium, or full
+
+--- gtk_xft_hintstyle=(hintstyle)
+
+    Sets the degree of hinting to use; none, slight, medium, or full.
+    * hintstyle: What degree of hinting to use; none, slight, medium, or full
+    * Returns: hintstyle
+
+--- set_gtk_xft_hintstyle(hintstyle)
+
+    Same as Gtk::Settings#gtk_xft_hintstyle=.
+    * hintstyle: What degree of hinting to use; none, slight, medium, or full
+    * Returns: self
+
+--- gtk_xft_rgba
+
+    Gets the Type of subpixel antialiasing; none, rgb, bgr, vrgb, vbgr.
+    * Returns: Type of subpixel antialiasing; none, rgb, bgr, vrgb, vbgr
+
+--- gtk_xft_rgba=(rgba)
+
+    Sets the Type of subpixel antialiasing; none, rgb, bgr, vrgb, vbgr.
+    * rgba: Type of subpixel antialiasing; none, rgb, bgr, vrgb, vbgr
+    * Returns: rgba
+
+--- set_gtk_xft_rgba(rgba)
+
+    Same as Gtk::Settings#gtk_xft_rgba=.
+    * rgba: Type of subpixel antialiasing; none, rgb, bgr, vrgb, vbgr
+    * Returns: self
+
+--- color_hash
+
+    Gets the A hash table representation of the color scheme..
+     * Returns: A hash table representation of the color scheme.
+
+--- gtk_alternative_sort_arrows=(gtk_alternative_sort_arrows)
+
+    Sets the value whether the direction of the sort indicators in list and tree views is inverted compared to the default (where down means ascending) or not.
+     * gtk_alternative_sort_arrows: true if the direction of the sort indicators in list and tree views is inverted compared to the default (where down means ascending)
+     * Returns: gtk_alternative_sort_arrows
+
+--- gtk_alternative_sort_arrows?
+
+    Gets the value whether the direction of the sort indicators in list and tree views is inverted compared to the default (where down means ascending) or not.
+     * Returns: true if the direction of the sort indicators in list and tree views is inverted compared to the default (where down means ascending)
+
+--- gtk_color_scheme
+
+    Gets the A palette of named colors for use in themes.
+     * Returns: A palette of named colors for use in themes
+
+--- gtk_color_scheme=(gtk_color_scheme)
+
+    Sets the A palette of named colors for use in themes.
+     * gtk_color_scheme: A palette of named colors for use in themes
+     * Returns: gtk_color_scheme
+
+--- gtk_cursor_blink_timeout
+
+    Gets the Time after which the cursor stops blinking, in seconds.
+     * Returns: Time after which the cursor stops blinking, in seconds
+
+--- gtk_cursor_blink_timeout=(gtk_cursor_blink_timeout)
+
+    Sets the Time after which the cursor stops blinking, in seconds.
+     * gtk_cursor_blink_timeout: Time after which the cursor stops blinking, in seconds
+     * Returns: gtk_cursor_blink_timeout
+
+--- gtk_cursor_theme_name
+
+    Gets the Name of the cursor theme to use, or NULL to use the default theme.
+     * Returns: Name of the cursor theme to use, or NULL to use the default theme
+
+--- gtk_cursor_theme_name=(gtk_cursor_theme_name)
+
+    Sets the Name of the cursor theme to use, or NULL to use the default theme.
+     * gtk_cursor_theme_name: Name of the cursor theme to use, or NULL to use the default theme
+     * Returns: gtk_cursor_theme_name
+
+--- gtk_cursor_theme_size
+
+    Gets the Size to use for cursors, or 0 to use the default size.
+     * Returns: Size to use for cursors, or 0 to use the default size
+
+--- gtk_cursor_theme_size=(gtk_cursor_theme_size)
+
+    Sets the Size to use for cursors, or 0 to use the default size.
+     * gtk_cursor_theme_size: Size to use for cursors, or 0 to use the default size
+     * Returns: gtk_cursor_theme_size
+
+--- gtk_enable_accels=(gtk_enable_accels)
+
+    Sets the value whether menu items should have accelerators or not.
+     * gtk_enable_accels: true if menu items should have accelerators
+     * Returns: gtk_enable_accels
+
+--- gtk_enable_accels?
+
+    Gets the value whether menu items should have accelerators or not.
+     * Returns: true if menu items should have accelerators
+
+--- gtk_enable_animations=(gtk_enable_animations)
+
+    Sets the value whether to enable toolkit-wide animations. or not.
+     * gtk_enable_animations: true if to enable toolkit-wide animations.
+     * Returns: gtk_enable_animations
+
+--- gtk_enable_animations?
+
+    Gets the value whether to enable toolkit-wide animations. or not.
+     * Returns: true if to enable toolkit-wide animations.
+
+--- gtk_enable_mnemonics=(gtk_enable_mnemonics)
+
+    Sets the value whether labels should have mnemonics or not.
+     * gtk_enable_mnemonics: true if labels should have mnemonics
+     * Returns: gtk_enable_mnemonics
+
+--- gtk_enable_mnemonics?
+
+    Gets the value whether labels should have mnemonics or not.
+     * Returns: true if labels should have mnemonics
+
+--- gtk_entry_password_hint_timeout
+
+    Gets the How long to show the last input character in hidden entries.
+     * Returns: How long to show the last input character in hidden entries
+
+--- gtk_entry_password_hint_timeout=(gtk_entry_password_hint_timeout)
+
+    Sets the How long to show the last input character in hidden entries.
+     * gtk_entry_password_hint_timeout: How long to show the last input character in hidden entries
+     * Returns: gtk_entry_password_hint_timeout
+
+--- gtk_error_bell=(gtk_error_bell)
+
+    Sets the When true, keyboard navigation and other errors will cause a beep.
+     * gtk_error_bell: When true, keyboard navigation and other errors will cause a beep
+     * Returns: gtk_error_bell
+
+--- gtk_error_bell?
+
+    Gets the When true, keyboard navigation and other errors will cause a beep.
+     * Returns: When true, keyboard navigation and other errors will cause a beep
+
+--- gtk_fallback_icon_theme
+
+    Gets the Name of a icon theme to fall back to.
+     * Returns: Name of a icon theme to fall back to
+
+--- gtk_fallback_icon_theme=(gtk_fallback_icon_theme)
+
+    Sets the Name of a icon theme to fall back to.
+     * gtk_fallback_icon_theme: Name of a icon theme to fall back to
+     * Returns: gtk_fallback_icon_theme
+
+--- gtk_file_chooser_backend
+
+    Gets the Name of the Gtk::FileChooser backend to use by default.
+     * Returns: Name of the Gtk::FileChooser backend to use by default
+
+--- gtk_file_chooser_backend=(gtk_file_chooser_backend)
+
+    Sets the Name of the Gtk::FileChooser backend to use by default.
+     * gtk_file_chooser_backend: Name of the Gtk::FileChooser backend to use by default
+     * Returns: gtk_file_chooser_backend
+
+--- gtk_im_module
+
+    Gets the Which IM module should be used by default.
+     * Returns: Which IM module should be used by default
+
+--- gtk_im_module=(gtk_im_module)
+
+    Sets the Which IM module should be used by default.
+     * gtk_im_module: Which IM module should be used by default
+     * Returns: gtk_im_module
+
+--- gtk_keynav_cursor_only=(gtk_keynav_cursor_only)
+
+    Sets the When true, there are only cursor keys available to navigate widgets.
+     * gtk_keynav_cursor_only: When true, there are only cursor keys available to navigate widgets
+     * Returns: gtk_keynav_cursor_only
+
+--- gtk_keynav_cursor_only?
+
+    Gets the When true, there are only cursor keys available to navigate widgets.
+     * Returns: When true, there are only cursor keys available to navigate widgets
+
+--- gtk_keynav_wrap_around=(gtk_keynav_wrap_around)
+
+    Sets the value whether to wrap around when keyboard-navigating widgets or not.
+     * gtk_keynav_wrap_around: true if to wrap around when keyboard-navigating widgets
+     * Returns: gtk_keynav_wrap_around
+
+--- gtk_keynav_wrap_around?
+
+    Gets the value whether to wrap around when keyboard-navigating widgets or not.
+     * Returns: true if to wrap around when keyboard-navigating widgets
+
+--- gtk_label_select_on_focus=(gtk_label_select_on_focus)
+
+    Sets the value whether to select the contents of a selectable label when it is focused or not.
+     * gtk_label_select_on_focus: true if to select the contents of a selectable label when it is focused
+     * Returns: gtk_label_select_on_focus
+
+--- gtk_label_select_on_focus?
+
+    Gets the value whether to select the contents of a selectable label when it is focused or not.
+     * Returns: true if to select the contents of a selectable label when it is focused
+
+--- gtk_print_backends
+
+    Gets the List of the Gtk::PrintBackend backends to use by default.
+     * Returns: List of the Gtk::PrintBackend backends to use by default
+
+--- gtk_print_backends=(gtk_print_backends)
+
+    Sets the List of the Gtk::PrintBackend backends to use by default.
+     * gtk_print_backends: List of the Gtk::PrintBackend backends to use by default
+     * Returns: gtk_print_backends
+
+--- gtk_print_preview_command
+
+    Gets the Command to run when displaying a print preview.
+     * Returns: Command to run when displaying a print preview
+
+--- gtk_print_preview_command=(gtk_print_preview_command)
+
+    Sets the Command to run when displaying a print preview.
+     * gtk_print_preview_command: Command to run when displaying a print preview
+     * Returns: gtk_print_preview_command
+
+--- gtk_recent_files_limit
+
+    Gets the Number of recently used files.
+     * Returns: Number of recently used files
+
+--- gtk_recent_files_limit=(gtk_recent_files_limit)
+
+    Sets the Number of recently used files.
+     * gtk_recent_files_limit: Number of recently used files
+     * Returns: gtk_recent_files_limit
+
+--- gtk_scrolled_window_placement
+
+    Gets the Where the contents of scrolled windows are located with respect to the scrollbars, if not overridden by the scrolled window's own placement..
+     * Returns: Where the contents of scrolled windows are located with respect to the scrollbars, if not overridden by the scrolled window's own placement.
+
+--- gtk_scrolled_window_placement=(gtk_scrolled_window_placement)
+
+    Sets the Where the contents of scrolled windows are located with respect to the scrollbars, if not overridden by the scrolled window's own placement..
+     * gtk_scrolled_window_placement: Where the contents of scrolled windows are located with respect to the scrollbars, if not overridden by the scrolled window's own placement.
+     * Returns: gtk_scrolled_window_placement
+
+--- gtk_show_input_method_menu=(gtk_show_input_method_menu)
+
+    Sets the value whether the context menus of entries and text views should offer to change the input method or not.
+     * gtk_show_input_method_menu: true if the context menus of entries and text views should offer to change the input method
+     * Returns: gtk_show_input_method_menu
+
+--- gtk_show_input_method_menu?
+
+    Gets the value whether the context menus of entries and text views should offer to change the input method or not.
+     * Returns: true if the context menus of entries and text views should offer to change the input method
+
+--- gtk_show_unicode_menu=(gtk_show_unicode_menu)
+
+    Sets the value whether the context menus of entries and text views should offer to insert control characters or not.
+     * gtk_show_unicode_menu: true if the context menus of entries and text views should offer to insert control characters
+     * Returns: gtk_show_unicode_menu
+
+--- gtk_show_unicode_menu?
+
+    Gets the value whether the context menus of entries and text views should offer to insert control characters or not.
+     * Returns: true if the context menus of entries and text views should offer to insert control characters
+
+--- gtk_timeout_expand
+
+    Gets the Expand value for timeouts, when a widget is expanding a new region.
+     * Returns: Expand value for timeouts, when a widget is expanding a new region
+
+--- gtk_timeout_expand=(gtk_timeout_expand)
+
+    Sets the Expand value for timeouts, when a widget is expanding a new region.
+     * gtk_timeout_expand: Expand value for timeouts, when a widget is expanding a new region
+     * Returns: gtk_timeout_expand
+
+--- gtk_timeout_initial
+
+    Gets the Starting value for timeouts, when button is pressed.
+     * Returns: Starting value for timeouts, when button is pressed
+
+--- gtk_timeout_initial=(gtk_timeout_initial)
+
+    Sets the Starting value for timeouts, when button is pressed.
+     * gtk_timeout_initial: Starting value for timeouts, when button is pressed
+     * Returns: gtk_timeout_initial
+
+--- gtk_timeout_repeat
+
+    Gets the Repeat value for timeouts, when button is pressed.
+     * Returns: Repeat value for timeouts, when button is pressed
+
+--- gtk_timeout_repeat=(gtk_timeout_repeat)
+
+    Sets the Repeat value for timeouts, when button is pressed.
+     * gtk_timeout_repeat: Repeat value for timeouts, when button is pressed
+     * Returns: gtk_timeout_repeat
+
+--- gtk_tooltip_browse_mode_timeout
+
+    Gets the Timeout after which browse mode is disabled.
+     * Returns: Timeout after which browse mode is disabled
+
+--- gtk_tooltip_browse_mode_timeout=(gtk_tooltip_browse_mode_timeout)
+
+    Sets the Timeout after which browse mode is disabled.
+     * gtk_tooltip_browse_mode_timeout: Timeout after which browse mode is disabled
+     * Returns: gtk_tooltip_browse_mode_timeout
+
+--- gtk_tooltip_browse_timeout
+
+    Gets the Timeout before tooltip is shown when browse mode is enabled.
+     * Returns: Timeout before tooltip is shown when browse mode is enabled
+
+--- gtk_tooltip_browse_timeout=(gtk_tooltip_browse_timeout)
+
+    Sets the Timeout before tooltip is shown when browse mode is enabled.
+     * gtk_tooltip_browse_timeout: Timeout before tooltip is shown when browse mode is enabled
+     * Returns: gtk_tooltip_browse_timeout
+
+--- gtk_tooltip_timeout
+
+    Gets the Timeout before tooltip is shown.
+     * Returns: Timeout before tooltip is shown
+
+--- gtk_tooltip_timeout=(gtk_tooltip_timeout)
+
+    Sets the Timeout before tooltip is shown.
+     * gtk_tooltip_timeout: Timeout before tooltip is shown
+     * Returns: gtk_tooltip_timeout
+
+--- gtk_touchscreen_mode=(gtk_touchscreen_mode)
+
+    Sets the When true, there are no motion notify events delivered on this screen.
+     * gtk_touchscreen_mode: When true, there are no motion notify events delivered on this screen
+     * Returns: gtk_touchscreen_mode
+
+--- gtk_touchscreen_mode?
+
+    Gets the When true, there are no motion notify events delivered on this screen.
+     * Returns: When true, there are no motion notify events delivered on this screen
+
+--- set_gtk_alternative_sort_arrows(gtk_alternative_sort_arrows)
+
+    Same as gtk_alternative_sort_arrows=.
+     * gtk_alternative_sort_arrows: true if the direction of the sort indicators in list and tree views is inverted compared to the default (where down means ascending)
+     * Returns: self
+
+--- set_gtk_color_scheme(gtk_color_scheme)
+
+    Same as gtk_color_scheme=.
+     * gtk_color_scheme: A palette of named colors for use in themes
+     * Returns: self
+
+--- set_gtk_cursor_blink_timeout(gtk_cursor_blink_timeout)
+
+    Same as gtk_cursor_blink_timeout=.
+     * gtk_cursor_blink_timeout: Time after which the cursor stops blinking, in seconds
+     * Returns: self
+
+--- set_gtk_cursor_theme_name(gtk_cursor_theme_name)
+
+    Same as gtk_cursor_theme_name=.
+     * gtk_cursor_theme_name: Name of the cursor theme to use, or NULL to use the default theme
+     * Returns: self
+
+--- set_gtk_cursor_theme_size(gtk_cursor_theme_size)
+
+    Same as gtk_cursor_theme_size=.
+     * gtk_cursor_theme_size: Size to use for cursors, or 0 to use the default size
+     * Returns: self
+
+--- set_gtk_enable_accels(gtk_enable_accels)
+
+    Same as gtk_enable_accels=.
+     * gtk_enable_accels: true if menu items should have accelerators
+     * Returns: self
+
+--- set_gtk_enable_animations(gtk_enable_animations)
+
+    Same as gtk_enable_animations=.
+     * gtk_enable_animations: true if to enable toolkit-wide animations.
+     * Returns: self
+
+--- set_gtk_enable_mnemonics(gtk_enable_mnemonics)
+
+    Same as gtk_enable_mnemonics=.
+     * gtk_enable_mnemonics: true if labels should have mnemonics
+     * Returns: self
+
+--- set_gtk_entry_password_hint_timeout(gtk_entry_password_hint_timeout)
+
+    Same as gtk_entry_password_hint_timeout=.
+     * gtk_entry_password_hint_timeout: How long to show the last input character in hidden entries
+     * Returns: self
+
+--- set_gtk_error_bell(gtk_error_bell)
+
+    Same as gtk_error_bell=.
+     * gtk_error_bell: When true, keyboard navigation and other errors will cause a beep
+     * Returns: self
+
+--- set_gtk_fallback_icon_theme(gtk_fallback_icon_theme)
+
+    Same as gtk_fallback_icon_theme=.
+     * gtk_fallback_icon_theme: Name of a icon theme to fall back to
+     * Returns: self
+
+--- set_gtk_file_chooser_backend(gtk_file_chooser_backend)
+
+    Same as gtk_file_chooser_backend=.
+     * gtk_file_chooser_backend: Name of the Gtk::FileChooser backend to use by default
+     * Returns: self
+
+--- set_gtk_im_module(gtk_im_module)
+
+    Same as gtk_im_module=.
+     * gtk_im_module: Which IM module should be used by default
+     * Returns: self
+
+--- set_gtk_keynav_cursor_only(gtk_keynav_cursor_only)
+
+    Same as gtk_keynav_cursor_only=.
+     * gtk_keynav_cursor_only: When true, there are only cursor keys available to navigate widgets
+     * Returns: self
+
+--- set_gtk_keynav_wrap_around(gtk_keynav_wrap_around)
+
+    Same as gtk_keynav_wrap_around=.
+     * gtk_keynav_wrap_around: true if to wrap around when keyboard-navigating widgets
+     * Returns: self
+
+--- set_gtk_label_select_on_focus(gtk_label_select_on_focus)
+
+    Same as gtk_label_select_on_focus=.
+     * gtk_label_select_on_focus: true if to select the contents of a selectable label when it is focused
+     * Returns: self
+
+--- set_gtk_print_backends(gtk_print_backends)
+
+    Same as gtk_print_backends=.
+     * gtk_print_backends: List of the Gtk::PrintBackend backends to use by default
+     * Returns: self
+
+--- set_gtk_print_preview_command(gtk_print_preview_command)
+
+    Same as gtk_print_preview_command=.
+     * gtk_print_preview_command: Command to run when displaying a print preview
+     * Returns: self
+
+--- set_gtk_recent_files_limit(gtk_recent_files_limit)
+
+    Same as gtk_recent_files_limit=.
+     * gtk_recent_files_limit: Number of recently used files
+     * Returns: self
+
+--- set_gtk_scrolled_window_placement(gtk_scrolled_window_placement)
+
+    Same as gtk_scrolled_window_placement=.
+     * gtk_scrolled_window_placement: Where the contents of scrolled windows are located with respect to the scrollbars, if not overridden by the scrolled window's own placement.
+     * Returns: self
+
+--- set_gtk_show_input_method_menu(gtk_show_input_method_menu)
+
+    Same as gtk_show_input_method_menu=.
+     * gtk_show_input_method_menu: true if the context menus of entries and text views should offer to change the input method
+     * Returns: self
+
+--- set_gtk_show_unicode_menu(gtk_show_unicode_menu)
+
+    Same as gtk_show_unicode_menu=.
+     * gtk_show_unicode_menu: true if the context menus of entries and text views should offer to insert control characters
+     * Returns: self
+
+--- set_gtk_timeout_expand(gtk_timeout_expand)
+
+    Same as gtk_timeout_expand=.
+     * gtk_timeout_expand: Expand value for timeouts, when a widget is expanding a new region
+     * Returns: self
+
+--- set_gtk_timeout_initial(gtk_timeout_initial)
+
+    Same as gtk_timeout_initial=.
+     * gtk_timeout_initial: Starting value for timeouts, when button is pressed
+     * Returns: self
+
+--- set_gtk_timeout_repeat(gtk_timeout_repeat)
+
+    Same as gtk_timeout_repeat=.
+     * gtk_timeout_repeat: Repeat value for timeouts, when button is pressed
+     * Returns: self
+
+--- set_gtk_tooltip_browse_mode_timeout(gtk_tooltip_browse_mode_timeout)
+
+    Same as gtk_tooltip_browse_mode_timeout=.
+     * gtk_tooltip_browse_mode_timeout: Timeout after which browse mode is disabled
+     * Returns: self
+
+--- set_gtk_tooltip_browse_timeout(gtk_tooltip_browse_timeout)
+
+    Same as gtk_tooltip_browse_timeout=.
+     * gtk_tooltip_browse_timeout: Timeout before tooltip is shown when browse mode is enabled
+     * Returns: self
+
+--- set_gtk_tooltip_timeout(gtk_tooltip_timeout)
+
+    Same as gtk_tooltip_timeout=.
+     * gtk_tooltip_timeout: Timeout before tooltip is shown
+     * Returns: self
+
+--- set_gtk_touchscreen_mode(gtk_touchscreen_mode)
+
+    Same as gtk_touchscreen_mode=.
+     * gtk_touchscreen_mode: When true, there are no motion notify events delivered on this screen
+     * Returns: self
+
+--- gtk_auto_mnemonics=(gtk_auto_mnemonics)
+
+    Sets the value whether mnemonics should be automatically shown and hidden when the user presses the mnemonic activator. or not.
+     * gtk_auto_mnemonics: true if mnemonics should be automatically shown and hidden when the user presses the mnemonic activator
+     * Returns: gtk_auto_mnemonics
+
+--- gtk_auto_mnemonics?
+
+    Gets the value whether mnemonics should be automatically shown and hidden when the user presses the mnemonic activator. or not.
+     * Returns: true if mnemonics should be automatically shown and hidden when the user presses the mnemonic activator
+
+--- gtk_enable_event_sounds=(gtk_enable_event_sounds)
+
+    Sets the value whether to play any event sounds at all or not.
+     * gtk_enable_event_sounds: true if to play any event sounds at all
+     * Returns: gtk_enable_event_sounds
+
+--- gtk_enable_event_sounds?
+
+    Gets the value whether to play any event sounds at all or not.
+     * Returns: true if to play any event sounds at all
+
+--- gtk_enable_input_feedback_sounds=(gtk_enable_input_feedback_sounds)
+
+    Sets the value whether to play event sounds as feedback to user input or not.
+     * gtk_enable_input_feedback_sounds: true if to play event sounds as feedback to user input
+     * Returns: gtk_enable_input_feedback_sounds
+
+--- gtk_enable_input_feedback_sounds?
+
+    Gets the value whether to play event sounds as feedback to user input or not.
+     * Returns: true if to play event sounds as feedback to user input
+
+--- gtk_enable_tooltips=(gtk_enable_tooltips)
+
+    Sets the value whether tooltips should be shown on widgets or not.
+     * gtk_enable_tooltips: true if tooltips should be shown on widgets
+     * Returns: gtk_enable_tooltips
+
+--- gtk_enable_tooltips?
+
+    Gets the value whether tooltips should be shown on widgets or not.
+     * Returns: true if tooltips should be shown on widgets
+
+--- gtk_fontconfig_timestamp
+
+    Gets the Timestamp of current fontconfig configuration.
+     * Returns: Timestamp of current fontconfig configuration
+
+--- gtk_fontconfig_timestamp=(gtk_fontconfig_timestamp)
+
+    Sets the Timestamp of current fontconfig configuration.
+     * gtk_fontconfig_timestamp: Timestamp of current fontconfig configuration
+     * Returns: gtk_fontconfig_timestamp
+
+--- gtk_recent_files_max_age
+
+    Gets the Maximum age of recently used files, in days.
+     * Returns: Maximum age of recently used files, in days
+
+--- gtk_recent_files_max_age=(gtk_recent_files_max_age)
+
+    Sets the Maximum age of recently used files, in days.
+     * gtk_recent_files_max_age: Maximum age of recently used files, in days
+     * Returns: gtk_recent_files_max_age
+
+--- gtk_sound_theme_name
+
+    Gets the XDG sound theme name.
+     * Returns: XDG sound theme name
+
+--- gtk_sound_theme_name=(gtk_sound_theme_name)
+
+    Sets the XDG sound theme name.
+     * gtk_sound_theme_name: XDG sound theme name
+     * Returns: gtk_sound_theme_name
+
+--- set_gtk_auto_mnemonics(gtk_auto_mnemonics)
+
+    Same as gtk_auto_mnemonics=.
+     * gtk_auto_mnemonics: true if mnemonics should be automatically shown and hidden when the user presses the mnemonic activator
+     * Returns: self
+
+--- set_gtk_enable_event_sounds(gtk_enable_event_sounds)
+
+    Same as gtk_enable_event_sounds=.
+     * gtk_enable_event_sounds: true if to play any event sounds at all
+     * Returns: self
+
+--- set_gtk_enable_input_feedback_sounds(gtk_enable_input_feedback_sounds)
+
+    Same as gtk_enable_input_feedback_sounds=.
+     * gtk_enable_input_feedback_sounds: true if to play event sounds as feedback to user input
+     * Returns: self
+
+--- set_gtk_enable_tooltips(gtk_enable_tooltips)
+
+    Same as gtk_enable_tooltips=.
+     * gtk_enable_tooltips: true if tooltips should be shown on widgets
+     * Returns: self
+
+--- set_gtk_fontconfig_timestamp(gtk_fontconfig_timestamp)
+
+    Same as gtk_fontconfig_timestamp=.
+     * gtk_fontconfig_timestamp: Timestamp of current fontconfig configuration
+     * Returns: self
+
+--- set_gtk_recent_files_max_age(gtk_recent_files_max_age)
+
+    Same as gtk_recent_files_max_age=.
+     * gtk_recent_files_max_age: Maximum age of recently used files, in days
+     * Returns: self
+
+--- set_gtk_sound_theme_name(gtk_sound_theme_name)
+
+    Same as gtk_sound_theme_name=.
+     * gtk_sound_theme_name: XDG sound theme name
+     * Returns: self
+
+== Properties
+
+--- gtk-alternative-button-order: true or false (Read/Write)
+
+    Whether buttons in dialogs should use the alternative button order
+    * Default value: false
+
+--- gtk-button-images: true or false (Read/Write)
+
+    Whether stock icons should be shown in buttons
+    * Default value: true
+
+--- gtk-can-change-accels: true or false (Read/Write)
+
+    Whether menu accelerators can be changed by pressing a key over the menu item
+    * Default value: false
+
+--- gtk-color-palette: String (Read/Write)
+
+    Palette to use in the color selector
+    * Default value: "black:white:gray50:red:purple:blue:light blue:green:yellow:orange:lavender:brown:goldenrod4:dodger blue:pink:light green:gray10:gray30:gray75:gray90"
+
+--- gtk-cursor-blink: true or false (Read/Write)
+
+    Whether the cursor should blink
+    * Default value: true
+
+--- gtk-cursor-blink-time: Integer (Read/Write)
+
+    Length of the cursor blink cycle, in milleseconds
+    * Allowed values: >= 100
+    * Default value: 1200
+
+--- gtk-dnd-drag-threshold: Integer (Read/Write)
+
+    Number of pixels the cursor can move before dragging
+    * Allowed values: >= 1
+    * Default value: 8
+
+--- gtk-double-click-distance: Integer (Read/Write)
+
+    Maximum distance allowed between two clicks for them to be considered a double click (in pixels)
+    * Allowed values: >= 0
+    * Default value: 5
+
+--- gtk-double-click-time: Integer (Read/Write)
+
+    Maximum time allowed between two clicks for them to be considered a double click (in milliseconds)
+    * Allowed values: >= 0
+    * Default value: 250
+
+--- gtk-entry-select-on-focus: true or false (Read/Write)
+
+    Whether to select the contents of an entry when it is focused
+    * Default value: true
+
+--- gtk-font-name: String (Read/Write)
+
+    Name of default font to use
+    * Default value: "Sans 10"
+
+--- gtk-icon-sizes: String (Read/Write)
+
+    List of icon sizes (gtk-menu=16,16;gtk-button=20,20...
+    * Default value: nil
+
+--- gtk-icon-theme-name: String (Read/Write)
+
+    Name of icon theme to use
+    * Default value: "hicolor"
+
+--- gtk-key-theme-name: String (Read/Write)
+
+    Name of key theme RC file to load
+    * Default value: nil
+
+--- gtk-menu-bar-accel: String (Read/Write)
+
+    Keybinding to activate the menu bar
+    * Default value: "F10"
+
+--- gtk-menu-bar-popup-delay: Integer (Read/Write)
+
+    Delay before the submenus of a menu bar appear
+    * Allowed values: >= 0
+    * Default value: 0
+
+--- gtk-menu-images: true or false (Read/Write)
+
+    Whether images should be shown in menus
+    * Default value: true
+
+--- gtk-menu-popdown-delay: Integer (Read/Write)
+
+    The time before hiding a submenu when the pointer is moving towards the submenu
+    * Allowed values: >= 0
+    * Default value: 1000
+
+--- gtk-menu-popup-delay: Integer (Read/Write)
+
+    Minimum time the pointer must stay over a menu item before the submenu appear
+    * Allowed values: >= 0
+    * Default value: 225
+
+--- gtk-modules: String (Read/Write)
+
+    List of currently active GTK modules
+    * Default value: nil
+
+--- gtk-split-cursor: true or false (Read/Write)
+
+    Whether two cursors should be displayed for mixed left-to-right and right-to-left text
+    * Default value: true
+
+--- gtk-theme-name: String (Read/Write)
+
+    Name of theme RC file to load
+    * Default value: "Default"
+
+--- gtk-toolbar-icon-size: Gtk::IconSize::IconSize (Read/Write)
+
+    Size of icons in default toolbars
+    * Default value: Gtk::IconSize::LARGE_TOOLBAR
+
+--- gtk-toolbar-style: Gtk::Toolbar::Style (Read/Write)
+
+    Whether default toolbars have text only, text and icons, icons only, etc.
+    * Default value: Gtk::Toolbar::BOTH
+
+--- gtk-xft-antialias: Integer (Read/Write)
+
+    Whether to antialias Xft fonts; 0=no, 1=yes, -1=default
+    * Allowed values: [-1,1]
+    * Default value: -1
+
+--- gtk-xft-dpi: Integer (Read/Write)
+
+    Resolution for Xft, in 1024 * dots/inch. -1 to use default value
+    * Allowed values: [-1,1048576]
+    * Default value: -1
+
+--- gtk-xft-hinting: Integer (Read/Write)
+
+    Whether to hint Xft fonts; 0=no, 1=yes, -1=default
+    * Allowed values: [-1,1]
+    * Default value: -1
+
+--- gtk-xft-hintstyle: String (Read/Write)
+
+    What degree of hinting to use; none, slight, medium, or full
+    * Default value: nil
+
+--- gtk-xft-rgba: String (Read/Write)
+
+    Type of subpixel antialiasing; none, rgb, bgr, vrgb, vbgr
+    * Default value: nil
+
+--- color-hash: GHashTable (Read)
+
+    A hash table representation of the color scheme.
+
+--- gtk-alternative-sort-arrows: true or false (Read/Write)
+
+    Whether the direction of the sort indicators in list and tree views is inverted compared to the default (where down means ascending)
+
+--- gtk-color-scheme: String (Read/Write)
+
+    A palette of named colors for use in themes
+
+--- gtk-cursor-blink-timeout: Integer (Read/Write)
+
+    Time after which the cursor stops blinking, in seconds
+
+--- gtk-cursor-theme-name: String (Read/Write)
+
+    Name of the cursor theme to use, or NULL to use the default theme
+
+--- gtk-cursor-theme-size: Integer (Read/Write)
+
+    Size to use for cursors, or 0 to use the default size
+
+--- gtk-enable-accels: true or false (Read/Write)
+
+    Whether menu items should have accelerators
+
+--- gtk-enable-animations: true or false (Read/Write)
+
+    Whether to enable toolkit-wide animations.
+
+--- gtk-enable-mnemonics: true or false (Read/Write)
+
+    Whether labels should have mnemonics
+
+--- gtk-entry-password-hint-timeout: Integer (Read/Write)
+
+    How long to show the last input character in hidden entries
+
+--- gtk-error-bell: true or false (Read/Write)
+
+    When true, keyboard navigation and other errors will cause a beep
+
+--- gtk-fallback-icon-theme: String (Read/Write)
+
+    Name of a icon theme to fall back to
+
+--- gtk-file-chooser-backend: String (Read/Write)
+
+    Name of the Gtk::FileChooser backend to use by default
+
+--- gtk-im-module: String (Read/Write)
+
+    Which IM module should be used by default
+
+--- gtk-keynav-cursor-only: true or false (Read/Write)
+
+    When true, there are only cursor keys available to navigate widgets
+
+--- gtk-keynav-wrap-around: true or false (Read/Write)
+
+    Whether to wrap around when keyboard-navigating widgets
+
+--- gtk-label-select-on-focus: true or false (Read/Write)
+
+    Whether to select the contents of a selectable label when it is focused
+
+--- gtk-print-backends: String (Read/Write)
+
+    List of the Gtk::PrintBackend backends to use by default
+
+--- gtk-print-preview-command: String (Read/Write)
+
+    Command to run when displaying a print preview
+
+--- gtk-recent-files-limit: Integer (Read/Write)
+
+    Number of recently used files
+
+--- gtk-scrolled-window-placement: Gtk::CornerType (Read/Write)
+
+    Where the contents of scrolled windows are located with respect to the scrollbars, if not overridden by the scrolled window's own placement.
+
+--- gtk-show-input-method-menu: true or false (Read/Write)
+
+    Whether the context menus of entries and text views should offer to change the input method
+
+--- gtk-show-unicode-menu: true or false (Read/Write)
+
+    Whether the context menus of entries and text views should offer to insert control characters
+
+--- gtk-timeout-expand: Integer (Read/Write)
+
+    Expand value for timeouts, when a widget is expanding a new region
+
+--- gtk-timeout-initial: Integer (Read/Write)
+
+    Starting value for timeouts, when button is pressed
+
+--- gtk-timeout-repeat: Integer (Read/Write)
+
+    Repeat value for timeouts, when button is pressed
+
+--- gtk-tooltip-browse-mode-timeout: Integer (Read/Write)
+
+    Timeout after which browse mode is disabled
+
+--- gtk-tooltip-browse-timeout: Integer (Read/Write)
+
+    Timeout before tooltip is shown when browse mode is enabled
+
+--- gtk-tooltip-timeout: Integer (Read/Write)
+
+    Timeout before tooltip is shown
+
+--- gtk-touchscreen-mode: true or false (Read/Write)
+
+    When true, there are no motion notify events delivered on this screen
+
+--- gtkhtml-minimum-font-size: Float (Read/Write)
+
+    The minimum font size used when rendering text
+
+--- gtk-auto-mnemonics: true or false (Read/Write)
+
+    Whether mnemonics should be automatically shown and hidden when the user presses the mnemonic activator.
+
+--- gtk-enable-event-sounds: true or false (Read/Write)
+
+    Whether to play any event sounds at all
+
+--- gtk-enable-input-feedback-sounds: true or false (Read/Write)
+
+    Whether to play event sounds as feedback to user input
+
+--- gtk-enable-tooltips: true or false (Read/Write)
+
+    Whether tooltips should be shown on widgets
+
+--- gtk-fontconfig-timestamp: Integer (Read/Write)
+
+    Timestamp of current fontconfig configuration
+
+--- gtk-recent-files-max-age: Integer (Read/Write)
+
+    Maximum age of recently used files, in days
+
+--- gtk-sound-theme-name: String (Read/Write)
+
+    XDG sound theme name
+
+== See Also
+
+== ChangeLog
+
+* 2005-05-07 Added. - ((<Masao>))

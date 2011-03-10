@@ -1,0 +1,43 @@
+= class Gst::IndexEntry
+
+An index's entry.
+
+== Object Hierarchy
+
+* Object
+  * GLib::Boxed
+    * Gst::IndexEntry
+
+== Instance Methods
+
+--- data
+
+    Gets the internal data stored in the entry.  The data depends of the type
+    of the entry:
+    	* Gst::IndexEntry::ID: the description of the ID, as a String. 
+    	* Gst::IndexEntry::ASSOCIATION: an Array that contains the number of associations, a Gst::Format, the value of the format and the association flags (see ((<GstAssocFlags|Gst::Index#GstAssocFlags>))).
+    	* Gst::IndexEntry::FORMAT: an Array that contains a Gst::Format and its value.
+    	* Gst::IndexEntry::OBJECt: not yet implemented.
+    * Returns: the internal data of the entry.
+
+--- entry_type
+
+    This method returns the type of the entry (see ((<GstIndexEntryType|Gst::IndexEntry#GstIndexEntryType>))).
+    * Returns: the type of the entry (see ((<GstIndexEntryType|Gst::IndexEntry#GstIndexEntryType>))).
+
+== Constants
+
+=== GstIndexEntryType
+
+--- ASSOCIATION
+--- FORMAT
+--- ID
+--- OBJECT
+
+== See Also
+
+((<Gst>)).
+
+== ChangeLog
+
+- ((<lrz>))

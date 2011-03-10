@@ -1,0 +1,20 @@
+= class Gst::MessageError
+
+== Object Hierarchy
+
+* Object
+  * Gst::MiniObject
+    * Gst::Message
+      * Gst::MessageError
+
+== Instance Methods
+
+--- parse
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

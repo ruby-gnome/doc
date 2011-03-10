@@ -1,0 +1,20 @@
+= class Gtk::ExpanderStyle
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * Gtk::ExpanderStyle
+
+== Constants
+
+--- COLLAPSED
+--- EXPANDED
+--- SEMI_COLLAPSED
+--- SEMI_EXPANDED
+
+== See Also
+
+== ChangeLog
+
+

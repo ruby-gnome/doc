@@ -1,0 +1,39 @@
+= Tutorial de Ruby/GStreamer
+
+== Synopsis
+
+O GStreamer é um "framework" para criar aplicações de multimídia ("streaming multimedia application"). O "framework" de desenvolvimento de GStreamer torna possível escrever qualquer tipo de aplicação de multimídia. O "framework" de GStreamer foi criado para torná-lo fácil de escrever aplicações que lidam com áudio e/ou vídeo. 
+
+Este tutorial é escrito a partir do ((<Manual de Desenvolvimento de Aplicações de GStreamer|URL:http://www.freedesktop.org/~gstreamer/data/doc/gstreamer/stable/manual/html/index.html>)) por ((<"Laurent Sansonetti"|lrz>)). O documento original foi produzido por diversas pessoas: Wim Taymans, Steve Baker e Andy Wingo.
+
+== Tabela de Conteúdo
+
+* ((<Introdução|tut-gst-intro>))
+* Conceitos Básicos
+  * ((<Inicializando o GStreamer|tut-gst-init>))
+  * Elementos
+    * ((<O Que é um Elemento|tut-gst-elements-intro>))
+    * ((<Criando Elementos|tut-gst-elements-create>))
+    * ((<Propriedades de Elementos|tut-gst-elements-properties>))
+  * ((<Plugins|tut-gst-plugins>))
+  * "Pads"
+    * ((<Pegando "Pads" de um Elemento|tut-gst-pads-elem>))
+    * ((<Capacidades de um "Pad"|tut-gst-pads-caps>))
+  * ((<Ligando Elementos|tut-gst-link-elements-intro>))
+  * "Bins"
+    * ((<Criando "Bins"|tut-gst-bins-create>))
+    * ((<Adicionando Elementos a um "Bin"|tut-gst-bins-add>))
+    * ((<"Custom Bins"|tut-gst-bins-custom>))
+    * ((<Pads Fantasmas|tut-gst-bins-ghost-pads>))
+  * ((<Estados de Elemento|tut-gst-elements-state>))
+* Construindo uma Applicação
+  * A Sua Primeira Aplicação
+    * ((<Olá Mundo|tut-gst-helloworld>))
+    * ((<Conclusão|tut-gst-helloworld-conclusion>))  
+  * Mais Sobre Fábricas
+    * ((<O Problema Com o Olá Mundo|tut-gst-helloworld-problem>))
+    * ((<Mais Sobre Tipos "MIME"|tut-gst-mime-types>))
+    * ((<Tipos de GStreamer|tut-gst-types>))
+* Conceitos Avançados
+  * ((<Threads|tut-gst-threads>))
+  * ((<Filas ("Queues")|tut-gst-queues>))

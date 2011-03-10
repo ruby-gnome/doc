@@ -1,0 +1,18 @@
+= class GnomeVFS::FindDirectoryKind
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * GnomeVFS::FindDirectoryKind
+
+== Constants
+
+--- DESKTOP
+--- TRASH
+
+== See Also
+
+== ChangeLog
+
+

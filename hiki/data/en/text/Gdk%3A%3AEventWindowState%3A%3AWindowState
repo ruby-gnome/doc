@@ -1,0 +1,53 @@
+= class Gdk::EventWindowState::WindowState
+
+== Object Hierarchy
+
+* Object
+  * GLib::Flags
+    * Gdk::EventWindowState::WindowState
+
+== Instance Methods
+
+--- above?
+
+     * Returns: self: ((*FIXME*))
+
+--- below?
+
+     * Returns: self: ((*FIXME*))
+
+--- fullscreen?
+
+     * Returns: self: ((*FIXME*))
+
+--- iconified?
+
+     * Returns: self: ((*FIXME*))
+
+--- maximized?
+
+     * Returns: self: ((*FIXME*))
+
+--- sticky?
+
+     * Returns: self: ((*FIXME*))
+
+--- withdrawn?
+
+     * Returns: self: ((*FIXME*))
+
+== Constants
+
+--- ABOVE
+--- BELOW
+--- FULLSCREEN
+--- ICONIFIED
+--- MAXIMIZED
+--- STICKY
+--- WITHDRAWN
+
+== See Also
+
+== ChangeLog
+
+

@@ -1,0 +1,257 @@
+= ウインドウへの直接描画 - Gdk::Drawable
+((*まだRuby/GTK(1)用です*)) ((*Ruby/GTK(2)用は*))((<ウインドウへの直接描画(2) - Gdk::Drawable>))
+
+Gdk::Drawableは、Gdk::Pixmap, Gdk::Windowのスーパークラスで、ウィジェット自体に直接描画する場合に使用します。
+ここでは、主にGdk::Windowを例に使っていますが、基本的にはGdk::Pixmap, Gdk::Bitmapでも同様です。
+GTK+の各ウィジェットはGdk::Drawableにあるメソッドを使用して描画を行います(実際はC言語で記述されているのですが)。したがって、これらのクラス、メソッドを直接使うというのはあまりないかもしれませんが、これらを駆使すれば自分なりの新しいウィジェットを作ることもできるかもしれません。
+それから、通常、Ruby/GTK上でお絵かきをする場合は、Gtk::DrawingAreaとかGtk::Curve, Gtk::Preview等を使った方が良いかもしれません、ってまだ勉強してないのでそちらの方は知らないんですけど(^^;)。
+
+== 直線を描画する
+ここでは、Gtk::Windowが持つGdk::Window自体に直線を描画してみます。
+<IMG SRC="draw_line.jpg" ALT="表示イメージ" ALIGN="RIGHT">
+
+  require 'gtk'
+  
+  window = Gtk::Window.new
+  window.set_usize(100, 100)
+  window.set_app_paintable(true)           #(1)
+  window.realize                           #(2)
+
+  drawable = window.window                 #(3)
+
+  p geometry = drawable.get_geometry       #(4)
+  width = geometry[2]
+  height = geometry[3]
+
+  gc = Gdk::GC.new(drawable)               #(5)
+
+  green = Gdk::Color.new(0, 65535, 0)      #(6)
+  colormap = Gdk::Colormap.get_system      #(7)
+  colormap.alloc_color(green, false, true) #(8)
+
+  window.signal_connect(Gtk::Widget::SIGNAL_EXPOSE_EVENT) do |win, evt|   #(9)
+    p "expose_event"
+    gc.set_foreground(green)                    #(10)
+    drawable.draw_line(gc, 0, 0, width, height) #(11)
+  end
+
+  window.show_all
+
+  Gtk.main
+ 
+
+ 
+   * (1)でGtk::Widget#set_paintable(paintable)でそのWidget上で描画が可能かどうかを指定します。これがfalseだと描画できません。
+   * (2)でwindowを先にrealizeしています。ここでrealizeしておかないと、(3)のdrawableがnilになります。
+   * (3)ではGtk::Windowが持つ、Gdk::Window(Gtk,Gdkの違いに注意してください)をdrawableに代入しています。
+   * (4)のGdk::Drawable#get_geometryは、そのGdk::Drawableのジオメトリ情報を配列の形で取得できます。配列の先頭から、[x, y, width, height, depth]です。x, yはGdk::Drawableの左上隅のx,y座標、width, height, depthはそれぞれ幅、高さ、色の深さです。ここではそのうちのwidth,heightを使用します。
+   * (5)でdrawableのグラフィックコンテキストを取得します。グラフィックコンテキストについては<A HREF="gc.html">Gdk::GC</A>を参照してください。
+   * (6),(7),(8)で緑色を生成して、それをカラーマップに登録しています。うーん、やっぱり美しくない....。まぁ、この辺の話は<A HREF="color.html">カラーの扱い</A>も参考にしてやってください。
+   * (9)でシグナルGtk::Widget::SIGNAL_EXPOSE_EVENTを補足して、その中で描画処理を行っています。EXPOSE_EVENTというのはウインドウが別のウインドウに隠れている状態から前面に来たとき発生するイベントですので、ここではウインドウが前面に出るたびに再描画をしています(実際に試してみてください、イベントが発生する度に"expose_event"と表示されます)。したがって、ここに重い処理を書く場合は、ちょっと工夫が必要そうです。
+そうそう、ここで渡されるwinはwindowと同じものです。
+   * (10)で描画色を緑色に設定しています。Gdk::Drawableに描画する場合はその前にGdk::GC#set_foreground(color)でカラーを指定してあげます。ただし、ここで指定するGdk::Colorは必ずカラーマップへアロケートされていなければなりません((6),(7),(8)を行ったもののみ)。
+   * (11)で実際に描画します。
+
+Gdk::Drawable#draw_line(gc,x1,y1,x2,y2)
+    * gc - グラフィックコンテキスト(Gdk::GC)
+    * x1,y1 - 始点のx,y座標
+    * x2,y2 - 終点のx,y座標
+  
+
+== 点・四角・円などを描画する
+直線以外にもいろいろと描画するためのメソッドが用意されていますので、それらを使ってみます。
+<IMG SRC="draw_others.jpg" ALT="表示イメージ" ALIGN="RIGHT">
+
+
+  require 'gtk'
+  
+  window = Gtk::Window.new
+  window.set_usize(200,150)
+  window.set_app_paintable(true)  
+  window.realize                
+
+  drawable = window.window    
+
+  geometry = drawable.get_geometry
+  width  = geometry[2]
+  height = geometry[3]
+
+  gc = Gdk::GC.new(drawable)
+
+  red     = Gdk::Color.new(65535, 0, 0)
+  green   = Gdk::Color.new(0, 65535, 0)
+  blue    = Gdk::Color.new(0, 0, 50000)
+  gray    = Gdk::Color.new(30000, 30000, 30000)
+  yellow  = Gdk::Color.new(65535, 65535, 0)
+  orange  = Gdk::Color.new(65535, 50000, 0)
+  skyblue = Gdk::Color.new(30000, 30000, 65535)
+
+  colormap = Gdk::Colormap.get_system
+  colormap.alloc_color(red, false, true)
+  colormap.alloc_color(green, false, true)
+  colormap.alloc_color(blue, false, true)
+  colormap.alloc_color(gray, false, true)
+  colormap.alloc_color(yellow, false, true)
+  colormap.alloc_color(orange, false, true)
+  colormap.alloc_color(skyblue, false, true)
+
+  window.signal_connect(Gtk::Widget::SIGNAL_EXPOSE_EVENT) do |win, evt|   
+    gc.set_foreground(red)
+    drawable.draw_point(gc, 10, 10)
+    drawable.draw_point(gc, 10, 12)
+    drawable.draw_point(gc, 10, 14)
+    
+    gc.set_foreground(blue)
+    drawable.draw_points(gc, [[20, 10], [20, 12], [20, 14]])
+    
+    gc.set_foreground(green)
+    drawable.draw_lines(gc, [[30, 10], [50, 30], [30, 40], [40, 50]])
+    
+    gc.set_foreground(gray)
+    drawable.draw_segments(gc, [[60, 10, 80, 30], [90, 40, 100, 20]])
+    
+    gc.set_foreground(yellow)
+    drawable.draw_rectangle(gc, true, 110, 10, 20, 20) 
+    drawable.draw_rectangle(gc, false, 150, 10, 30, 20) 
+    
+    gc.set_foreground(orange)
+    drawable.draw_arc(gc, false, 10, 70, 50, 50, 0, 360 * 64) 
+    drawable.draw_arc(gc, false, 70, 70, 50, 50, 360 * 10, 360 * 64 / 4) 
+    drawable.draw_arc(gc, true, 70, 90, 50, 50, 0, 360 * 64 / 4) 
+    
+    gc.set_foreground(skyblue)
+    drawable.draw_polygon(gc, false, [[160, 50], [150, 80], [190, 90]])
+    drawable.draw_polygon(gc, true, [[150, 90], [140, 130], [180, 140]])
+  end
+
+  window.show_all
+  Gtk.main
+ 
+
+  * Gdk::Drawable#draw_point(gc, x, y)
+    (x,y)に点を描画します。
+  * Gdk::Drawable#draw_points(gc, array)
+    array = [[x1, y1], [x2, y2], [x3, y3], .....]という感じで配列を指定すると、それぞれの点をまとめて描画します。
+  * Gdk::Drawable#draw_lines(gc, array)
+    複数の点を指定し、指定された点を順番に結んだ線を描画します。
+    こちらも、Gdk::Drawable#draw_points()と同様に、array = [[x1, y1], [x2, y2], [x3, y3], .....]と点の配列を渡します。
+  * Gdk::Drawable#draw_segments(gc, array)
+    こちらも複数の線を描画します。Gdk::Drawable#draw_lines()とは異なり、複数の線を指定し、それぞれの線はそれぞれ独立した線になります。配列は、
+    array = [[x11, y11, x12, y12], [x21, y21, x22, y22] ....]
+    のように指定します。
+  * Gdk::Drawable#draw_rectangle(gc, filled, x, y, width, height)
+    四角形を描画します。filledにtrueを指定すると、四角形の内側を塗りつぶし、falseを指定すると塗りつぶしません。
+  * Gdk::Drawable#draw_arc(gc, filled, x, y, width, height, angle1, angle2)
+    円を描画します。ちょっと難しいです。
+    最初の方の引数は四角形と同じです。widthとheightが同じであれば円になりますし、違くなれば楕円です。angle1は、円の始点の位置を角度で指定します。0が時計の3時に当たる部分を意味します。angle1の単位は1/64度ですので、360 * 64でちょうど一周分です。angle2は終点の位置をangle1からの相対角度で指定します。単位はangle1と同じで、完全な円を描く場合は360 * 64を指定します。
+  * Gdk::Drawable#draw_polygon(gc, array)
+    複数の点を指定し、指定された点を順番に結んでいきます。Gdk::Drawable#draw_lines()に近いのですが、最後の点と最初の点を結んで矩形にするところが異なります。。配列は、
+    array = [[x1, y1], [x2, y2], [x3, y3] ....]
+    のように指定します。
+
+== 文字を描画する
+直接文字列を表示することもできます。
+
+
+  require 'gtk'
+
+  window = Gtk::Window.new
+  window.set_usize(150,100)
+  window.set_app_paintable(true)
+  window.realize
+
+  drawable = window.window
+
+  gc = Gdk::GC.new(drawable)
+
+  red  = Gdk::Color.new(65535, 0, 0)
+  blue = Gdk::Color.new(0, 0, 50000)
+
+  colormap = Gdk::Colormap.get_system
+  colormap.alloc_color(red, false, true)
+  colormap.alloc_color(blue, false, true)
+
+  font = Gdk::Font.fontset_load(
+      "-adobe-helvetica-medium-r-normal--14-*-*-*-*-*-iso8859-1, -misc-fixed-medium-r-normal--14-*-*-*-*-*-jisx0208.1983-0")
+ 
+  window.signal_connect(Gtk::Widget::SIGNAL_EXPOSE_EVENT) do |win, evt|
+    gc.set_foreground(red)
+    drawable.draw_string(font, gc, 20, 20, "フォントテスト")
+    gc.set_foreground(blue)
+    drawable.draw_string(font, gc, 20, 50, "font test")
+  end
+
+  window.show_all
+  Gtk.main
+
+Gdk::Drawable#draw_string(font, gc, x, y, text)
+
+  * font - フォントオブジェクト(Gdk::Font)
+  * gc - グラフィックコンテキスト(Gdk::GC)
+  * x, y - 描画を行う左上隅の座標
+  * text - 文字列    
+
+ちなみに、Gdk::Drawable#draw_text()というのもあるのですが、内部的には全く同じで単なる別名です。
+
+== XPM画像を描画する
+XPM画像を描画してみます。画像は<A HREF="r.xpm">こちら</A>を利用してください。
+
+  require 'gtk'
+  
+  window = Gtk::Window.new
+  window.set_usize(170, 170)
+  window.set_app_paintable(true)
+  window.realize
+  
+  drawable = window.window
+  
+  pix, mask = Gdk::Pixmap.create_from_xpm(drawable, nil, "r.xpm")
+  
+  gc = Gdk::GC.new(drawable)
+  
+  window.signal_connect(Gtk::Widget::SIGNAL_EXPOSE_EVENT) do |win, evt|
+    #drawable.draw_pixmap(gc, pix, 0, 0, 30, 30, -1, -1)  #(1)
+    drawable.draw_pixmap(gc, pix, 30, 30, 60, 60, 40, 40)
+  end
+
+  window.show_all
+  Gtk.main
+
+Gdk::Drawable#draw_pixmap(gc, pixmap, xsrc, ysrc, xdest, ydest, width, height)でPixmapを描画しますが、結構いろいろ指定する必要があります。それぞれの意味については下図を参照してください。
+なお、 width, heightにそれぞれ-1を指定すると、その画像自体の大きさが指定されます。コメントしてある(1)の記述方法が一般的だと思います。
+
+<TABLE ALIGN="CENTER" CELLSPACING=0 BORDER=1><TR><TD><IMG SRC="draw_xpm.jpg" ALT="表示イメージ"></TD></TR></TABLE>
+それから、Bitmapを描画するメソッドとしてGdk::Drawable#draw_bitmap()があります。マスクなどで使えるかもしれませんが、Gdk::Drawable#draw_pixmap()を使っても同じです(引数は全く同じです)。
+
+== XPM画像と透明化
+ちょっと本題からズレてしまうのですが、XPM画像を描画し、さらに背景を透明にしてみます。画像は同じく<A HREF="r.xpm">こちら</A>を利用してください。
+
+
+  require 'gtk'
+
+  window = Gtk::Window.new
+  window.set_usize(200,200)
+  window.set_app_paintable(true)
+  window.realize
+
+  drawable = window.window
+
+  pix, mask = Gdk::Pixmap.create_from_xpm(drawable, nil, "r.xpm")
+
+  gc = Gdk::GC.new(drawable)
+
+  window.shape_combine_mask(mask, 30, 30) 
+
+  window.signal_connect(Gtk::Widget::SIGNAL_EXPOSE_EVENT) do |win, evt|
+    drawable.draw_pixmap(gc, pix, 0, 0, 30, 30, -1, -1)
+  end
+
+  window.show_all
+  Gtk.main
+
+Gtk::Window#shape_combine_mask(mask, x, y)の maskにマスク範囲のGdk::Bitmapを、x, yにマスク位置の左上隅の座標を指定します。
+
+== Gdk::Imageを描画する
+Gdk::ImageもGdk::Drawable#draw_image(gc, image, xsrc, ysrc, xdest, ydest, width, height)を使って描画できます。このメソッドは第2引数にGdk::Imageを指定する以外はGdk::Drawable#draw_pixmap()と同様です。
+サンプルは「カラーの扱い」→「指定したPixmapをちょっとだけ明るく表示する」（<A HREF="color.html#convert_direct">ここ</A>と<A HREF="color.html#convert_pseudo">ここ</A>）にありますのでそちらを参考にしてください。
+なお、そちらの例ではGdk::Pixmapに対して描画していますが、これはGdk::Drawableのメソッドですので、そのサブクラスであるGdk::Pixmap, Gdk::Bitmap, Gdk::Windowのいずれで使用できます。

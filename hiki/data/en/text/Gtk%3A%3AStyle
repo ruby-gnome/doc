@@ -1,0 +1,735 @@
+= class Gtk::Style
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Gtk::Style
+
+== Class Methods
+
+--- Gtk::Style.new
+
+    Creates a new Gtk::Style.
+    * Returns: a new Gtk::Style.
+
+--- Gtk::Style.draw_insertion_cursor
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- attached?
+
+    Returns whether the style is attached to a window.
+    * Returns: true if the style is attached to a window.
+
+--- copy
+
+    Returns a copy object.
+    * Returns: a copy object
+
+--- attach(window)
+
+    Attaches a style to a window; this process allocates the colors and creates the GC's for the style - it specializes it to a particular visual and colormap. The process may involve the creation of a new style if the style has already been attached to a window with a different style and colormap.
+    * window: a Gdk::Window. 
+    * Returns: Either style, or a newly-created Gtk::Style. If the style is newly created, the style parameter will be dereferenced, and the new style will have a reference count belonging to the caller.
+
+--- detach
+
+    Detaches the style from the window.
+    * Returns: self
+
+--- set_background(window, state_type)
+
+    Sets the background of window to the background color or pixmap specified by style for the given state.
+    * window: a Gdk::Window
+    * state_type: a state (((<GtkStateType|Gtk#GtkStateType>)))
+    * Returns: self
+
+--- apply_default_background(window, set_bg, state_type, area, x, y, width, height)
+
+    Apply default background. This method is for internal use.
+    * window: a Gdk::Window
+    * set_bg: true if background is enable.
+    * state_type: a state (((<GtkStateType|Gtk#GtkStateType>)))
+    * area: a Gdk::Rectangle to intersect to below x, y, width, height or nil.
+    * x: 
+    * y: 
+    * width: 
+    * height: 
+    * Returns: self
+
+--- lookup_icon_set(stock_id)
+
+    Returns iconset for stock_id.
+    * stock_id: StockID(See Gtk::Stock)
+    * Returns: a Gtk::IconSet or nil
+
+--- render_icon(source, direction, state, size, widget, detail)
+
+    Renders the icon specified by source at the given size according to the given parameters and returns the result in a pixbuf.
+    * source: the Gtk::IconSource specifying the icon to render 
+    * direction: a text direction 
+    * state: a state (((<GtkStateType|Gtk#GtkStateType>)))
+    * size: the size(((<GtkIconSize|Gtk#GtkIconSize>))) to render the icon at. A size of (Gtk::IconSize)-1 means render at the size of the source and don't scale. 
+    * widget: the Gtk::Widget
+    * detail: a style detail(String)
+    * Returns: a newly-created Gdk::Pixbuf containing the rendered icon
+
+--- paint_arrow(window, state_type, shadow_type, area, widget, detail, arrow_type, fill, x, y, width, height)
+
+     * window: a Gdk::Window  
+     * state_type: a state type (((<GtkStateType|Gtk#GtkStateType>)))
+     * shadow_type: a shadow type (((<GtkShadowType|Gtk#GtkShadowType>)))
+     * area: a Gdk::Rectangle to which the output is clipped
+     * widget: a Gtk::Widget
+     * detail: a String or nil
+     * arrow_type: an arrow type (((<GtkArrowType|Gtk::Arrow#Gtk::ArrowType>))).
+     * fill: true or false
+     * x: 
+     * y: 
+     * width:   
+     * height: 
+     * Returns: self
+
+--- paint_box(window, state_type, shadow_type, area, widget, detail, x, y, width, height)
+
+     * window: a Gdk::Window  
+     * state_type: a state type (((<GtkStateType|Gtk#GtkStateType>)))
+     * shadow_type: a shadow type (((<GtkShadowType|Gtk#GtkShadowType>)))
+     * area: a Gdk::Rectangle to which the output is clipped
+     * widget: a Gtk::Widget
+     * detail: a String or nil
+     * x: 
+     * y: 
+     * width:   
+     * height: 
+     * Returns: self
+
+--- paint_box_gap(window, state_type, shadow_type, area, widget, detail, x, y, width, height, gap_side, gap_x, gap_width)
+
+     * window: a Gdk::Window  
+     * state_type: a state type (((<GtkStateType|Gtk#GtkStateType>)))
+     * shadow_type: a shadow type (((<GtkShadowType|Gtk#GtkShadowType>)))
+     * area: a Gdk::Rectangle to which the output is clipped
+     * widget: a Gtk::Widget
+     * detail: a String or nil
+     * x: 
+     * y: 
+     * width:   
+     * height: 
+     * gap_side: ((<GtkPositionType|Gtk::GtkPositionType>))
+     * gap_x:   
+     * gap_width:   
+     * Returns: self
+
+--- paint_check(window, state_type, shadow_type, area, widget, detail, x, y, width, height)
+
+     * window: a Gdk::Window  
+     * state_type: a state type (((<GtkStateType|Gtk#GtkStateType>)))
+     * shadow_type: a shadow type (((<GtkShadowType|Gtk#GtkShadowType>)))
+     * area: a Gdk::Rectangle to which the output is clipped
+     * widget: a Gtk::Widget
+     * detail: a String or nil
+     * x: 
+     * y: 
+     * width:   
+     * height: 
+     * Returns: self
+
+--- paint_diamond(window, state_type, shadow_type, area, widget, detail, x, y, width, height)
+
+     * window: a Gdk::Window  
+     * state_type: a state type (((<GtkStateType|Gtk#GtkStateType>)))
+     * shadow_type: a shadow type (((<GtkShadowType|Gtk#GtkShadowType>)))
+     * area: a Gdk::Rectangle to which the output is clipped
+     * widget: a Gtk::Widget
+     * detail: a String or nil
+     * x: 
+     * y: 
+     * width:   
+     * height: 
+     * Returns: self
+
+--- paint_extension(window, state_type, shadow_type, area, widget, detail, x, y, width, height, gap_side)
+
+     * window: a Gdk::Window  
+     * state_type: a state type (((<GtkStateType|Gtk#GtkStateType>)))
+     * shadow_type: a shadow type (((<GtkShadowType|Gtk#GtkShadowType>)))
+     * area: a Gdk::Rectangle to which the output is clipped
+     * widget: a Gtk::Widget
+     * detail: a String or nil
+     * x: 
+     * y: 
+     * width:   
+     * height: 
+     * gap_side: ((<GtkPositionType|Gtk::GtkPositionType>))
+     * Returns: self
+
+--- paint_flat_box(window, state_type, shadow_type, area, widget, detail, x, y, width, height)
+
+     * window: a Gdk::Window  
+     * state_type: a state type (((<GtkStateType|Gtk#GtkStateType>)))
+     * shadow_type: a shadow type (((<GtkShadowType|Gtk#GtkShadowType>)))
+     * area: a Gdk::Rectangle to which the output is clipped
+     * widget: a Gtk::Widget
+     * detail: a String or nil
+     * x: 
+     * y: 
+     * width:   
+     * height: 
+     * Returns: self
+
+--- paint_focus(window, state_type, area, widget, detail, x, y, width, height)
+
+     * window: a Gdk::Window  
+     * state_type: a state type (((<GtkStateType|Gtk#GtkStateType>)))
+     * area: a Gdk::Rectangle to which the output is clipped
+     * widget: a Gtk::Widget
+     * detail: a String or nil
+     * x: 
+     * y: 
+     * width:   
+     * height: 
+     * Returns: self
+
+--- paint_handle(window, state_type, shadow_type, area, widget, detail, x, y, width, height, orientation)
+
+     * window: a Gdk::Window  
+     * state_type: a state type (((<GtkStateType|Gtk#GtkStateType>)))
+     * shadow_type: a shadow type (((<GtkShadowType|Gtk#GtkShadowType>)))
+     * area: a Gdk::Rectangle to which the output is clipped
+     * widget: a Gtk::Widget
+     * detail: a String or nil
+     * x: 
+     * y: 
+     * width:   
+     * height: 
+     * orientation: (((<Gtk::Orientation|Gtk#Orientation>)))
+     * Returns: self
+
+--- paint_hline(window, state_type, shadow_type, area, widget, detail, x1, x2, y)
+
+    Draws a horizontal line from (x1, y) to (x2, y) in window using the given style and state.
+     * window: a Gdk::Window  
+     * state_type: a state type (((<GtkStateType|Gtk#GtkStateType>)))
+     * area: a Gdk::Rectangle to which the output is clipped
+     * widget: a Gtk::Widget
+     * detail: a String or nil
+     * x1 : the starting x coordinate 
+     * x2 : the ending x coordinate 
+     * y : the y coordinate 
+     * Returns: self
+
+--- paint_option(window, state_type, shadow_type, area, widget, detail, x, y, width, height)
+
+     * window: a Gdk::Window  
+     * state_type: a state type (((<GtkStateType|Gtk#GtkStateType>)))
+     * shadow_type: a shadow type (((<GtkShadowType|Gtk#GtkShadowType>)))
+     * area: a Gdk::Rectangle to which the output is clipped
+     * widget: a Gtk::Widget
+     * detail: a String or nil
+     * x: 
+     * y: 
+     * width:   
+     * height: 
+     * Returns: self
+
+--- paint_polygon(window, state_type, shadow_type, area, widget, detail, points, fill)
+
+     * window: a Gdk::Window  
+     * state_type: a state type (((<GtkStateType|Gtk#GtkStateType>)))
+     * shadow_type: a shadow type (((<GtkShadowType|Gtk#GtkShadowType>)))
+     * area: a Gdk::Rectangle to which the output is clipped
+     * widget: a Gtk::Widget
+     * detail: a String or nil
+     * points : [x, y]
+     * fill : true or false
+     * Returns: self
+
+--- paint_shadow(window, state_type, shadow_type, area, widget, detail, x, y, width, height)
+
+     * window: a Gdk::Window  
+     * state_type: a state type (((<GtkStateType|Gtk#GtkStateType>)))
+     * shadow_type: a shadow type (((<GtkShadowType|Gtk#GtkShadowType>)))
+     * area: a Gdk::Rectangle to which the output is clipped
+     * widget: a Gtk::Widget
+     * detail: a String or nil
+     * x: 
+     * y: 
+     * width:   
+     * height: 
+     * Returns: self
+
+--- paint_shadow_gap(window, state_type, shadow_type, area, widget, detail, x, y, width, height, gap_side, gap_x, gap_width)
+
+     * window: a Gdk::Window  
+     * state_type: a state type (((<GtkStateType|Gtk#GtkStateType>)))
+     * shadow_type: a shadow type (((<GtkShadowType|Gtk#GtkShadowType>)))
+     * area: a Gdk::Rectangle to which the output is clipped
+     * widget: a Gtk::Widget
+     * detail: a String or nil
+     * x: 
+     * y: 
+     * width:   
+     * height: 
+     * gap_side: ((<GtkPositionType|Gtk::GtkPositionType>))
+     * gap_x:   
+     * gap_width:
+     * Returns: self
+
+--- paint_slider(window, state_type, shadow_type, area, widget, detail, x, y, width, height, orientation)
+
+     * window: a Gdk::Window  
+     * state_type: a state type (((<GtkStateType|Gtk#GtkStateType>)))
+     * shadow_type: a shadow type (((<GtkShadowType|Gtk#GtkShadowType>)))
+     * area: a Gdk::Rectangle to which the output is clipped
+     * widget: a Gtk::Widget
+     * detail: a String or nil
+     * x: 
+     * y: 
+     * width:   
+     * height: 
+     * orientation: (((<Gtk::Orientation|Gtk#Orientation>)))
+     * Returns: self
+
+--- paint_tab(window, state_type, shadow_type, area, widget, detail, x, y, width, height)
+
+     * window: a Gdk::Window  
+     * state_type: a state type (((<GtkStateType|Gtk#GtkStateType>)))
+     * shadow_type: a shadow type (((<GtkShadowType|Gtk#GtkShadowType>)))
+     * area: a Gdk::Rectangle to which the output is clipped
+     * widget: a Gtk::Widget
+     * detail: a String or nil
+     * x: 
+     * y: 
+     * width:   
+     * height: 
+     * Returns: self
+
+--- paint_vline(window, state_type, area, widget, detail, y1, y2, x)
+
+    Draws a vertical line from (x, y1) to (x, y1) in window using the given style and state.
+     * window : a Gdk::Window 
+     * state_type: a state type (((<GtkStateType|Gtk#GtkStateType>)))
+     * area: a Gdk::Rectangle to which the output is clipped
+     * widget: a Gtk::Widget
+     * detail: a String or nil
+     * y1: the starting y coordinate 
+     * y2: the ending y coordinate 
+     * x: the x coordinate 
+     * Returns: self
+
+--- paint_expander(window, state_type, area, widget, detail, x, y, expander_style)
+
+     * window : a Gdk::Window 
+     * state_type: a state type (((<GtkStateType|Gtk#GtkStateType>)))
+     * area: a Gdk::Rectangle to which the output is clipped
+     * widget: a Gtk::Widget
+     * detail: a String or nil
+     * x:
+     * y:
+     * expander_style: a expnader style(((<GtkExpanderStyle|Gtk#GtkExpanderStyle>)))
+     * Returns: self
+
+--- paint_layout(window, state_type, use_text, area, widget, detail, x, y, layout)
+
+     * window : a GdkWindow 
+     * state_type: a state type (((<GtkStateType|Gtk#GtkStateType>)))
+     * use_text: true or false
+     * area: a Gdk::Rectangle to which the output is clipped
+     * widget: a Gtk::Widget
+     * detail: a String or nil
+     * x:
+     * y:
+     * layout: a Pango::Layout
+     * Returns: self
+
+--- paint_resize_grip(window, state_type, area, widget, detail, edge, x, y, width, height)
+
+     * window: a Gdk::Window  
+     * state_type: a state type (((<GtkStateType|Gtk#GtkStateType>)))
+     * area: a Gdk::Rectangle to which the output is clipped
+     * widget: a Gtk::Widget
+     * detail: a String or nil
+     * edge: a edget type (((<GdkWindowEdge|Gdk::Window#GdkWindowEdge>)))
+     * x:
+     * y:
+     * width:
+     * height:
+     * Returns: self
+
+--- fg(state_type)
+
+    Gets the foreground color of the state.
+    * state_type: a ((<GtkStateType|Gtk#GtkStateType>))
+    * Returns: the Gdk::Color
+
+--- set_fg(state_type, r, g, b)
+
+    Sets the foreground color of the state.
+    * state_type: a ((<GtkStateType|Gtk#GtkStateType>))
+    * r: The red component of the color. This is a value between 0 and 65535, with 65535 indicating full intensitiy.
+    * g: The green component of the color.
+    * b: The blue component of the color.
+    * Returns: self
+
+--- bg(state_type)
+
+    Gets the background color of the state.
+    * state_type: a ((<GtkStateType|Gtk#GtkStateType>))
+    * Returns: the Gdk::Color
+
+--- set_bg(state_type, r, g, b)
+
+    Sets the background color of the state.
+    * state_type: a ((<GtkStateType|Gtk#GtkStateType>))
+    * r: The red component of the color. This is a value between 0 and 65535, with 65535 indicating full intensitiy.
+    * g: The green component of the color.
+    * b: The blue component of the color.
+    * Returns: self
+
+--- light(state_type)
+
+    Gets the light color of the state.
+    * state_type: a ((<GtkStateType|Gtk#GtkStateType>))
+    * Returns: the Gdk::Color
+
+--- set_light(state_type, r, g, b)
+
+    Sets the light color of the state.
+    * state_type: a ((<GtkStateType|Gtk#GtkStateType>))
+    * r: The red component of the color. This is a value between 0 and 65535, with 65535 indicating full intensitiy.
+    * g: The green component of the color.
+    * b: The blue component of the color.
+    * Returns: self
+
+--- dark(state_type)
+
+    Gets the dark color of the state.
+    * state_type: a ((<GtkStateType|Gtk#GtkStateType>))
+    * Returns: the Gdk::Color
+
+--- set_dark(state_type, r, g, b)
+
+    Sets the dark color of the state.
+    * state_type: a ((<GtkStateType|Gtk#GtkStateType>))
+    * r: The red component of the color. This is a value between 0 and 65535, with 65535 indicating full intensitiy.
+    * g: The green component of the color.
+    * b: The blue component of the color.
+    * Returns: self
+
+--- mid(state_type)
+
+    Gets the mid color of the state.
+    * state_type: a ((<GtkStateType|Gtk#GtkStateType>))
+    * Returns: the Gdk::Color
+
+--- set_mid(state_type, r, g, b)
+
+    Sets the mid color of the state.
+    * state_type: a ((<GtkStateType|Gtk#GtkStateType>))
+    * r: The red component of the color. This is a value between 0 and 65535, with 65535 indicating full intensitiy.
+    * g: The green component of the color.
+    * b: The blue component of the color.
+    * Returns: self
+
+--- text(state_type)
+
+    Gets the text color of the state.
+    * state_type: a ((<GtkStateType|Gtk#GtkStateType>))
+    * Returns: the Gdk::Color
+
+--- set_text(state_type, r, g, b)
+
+    Sets the text color of the state.
+    * state_type: a ((<GtkStateType|Gtk#GtkStateType>))
+    * r: The red component of the color. This is a value between 0 and 65535, with 65535 indicating full intensitiy.
+    * g: The green component of the color.
+    * b: The blue component of the color.
+    * Returns: self
+
+--- base(state_type)
+
+    Gets the base color of the state.
+    * state_type: a ((<GtkStateType|Gtk#GtkStateType>))
+    * Returns: the Gdk::Color
+
+--- set_base(state_type, r, g, b)
+
+    Sets the base color of the state.
+    * state_type: a ((<GtkStateType|Gtk#GtkStateType>))
+    * r: The red component of the color. This is a value between 0 and 65535, with 65535 indicating full intensitiy.
+    * g: The green component of the color.
+    * b: The blue component of the color.
+    * Returns: self
+
+--- text_aa(state_type)
+
+    Gets the text_aa(Halfway between text/base) color of the state.
+    * state_type: a ((<GtkStateType|Gtk#GtkStateType>))
+    * Returns: the Gdk::Color
+
+--- set_text_aa(state_type, r, g, b)
+
+    Sets the text_aa color of the state.
+    * state_type: a ((<GtkStateType|Gtk#GtkStateType>))
+    * r: The red component of the color. This is a value between 0 and 65535, with 65535 indicating full intensitiy.
+    * g: The green component of the color.
+    * b: The blue component of the color.
+    * Returns: self
+
+--- black
+
+    Gets the black color of this style.
+    * Returns: the Gdk::Color
+
+--- set_black(r, g, b)
+
+    Sets the black color value of this style.
+    * r: Red (0 - 65535)
+    * g: Green (0 - 65535)
+    * b: blue (0 - 65535)
+    * Returns: self
+
+--- white
+
+    Gets the white color of this style.
+    * Returns: the Gdk::Color
+
+--- set_white(r, g, b)
+
+    Sets the white color value of this style.
+    * r: Red (0 - 65535)
+    * g: Green (0 - 65535)
+    * b: blue (0 - 65535)
+    * Returns: self
+
+--- font_desc
+
+    Gets the font description.
+    * Returns: Pango::FontDescription
+
+--- font_desc=(font_desc)
+
+    Sets the font description.
+    * font_desc: a Pango::FontDescription
+    * Returns: font_desc
+
+--- set_font_desc(font_desc)
+
+    Same as Gtk::Style#font_desc=.
+    * Returns: self
+
+--- xthickness
+
+    Gets the xthickness.
+    * Returns: xthickness
+
+--- xthickness=(xthickness)
+
+    Sets the xthickness.
+    * Returns: xthickness
+
+--- set_xthickness(xthickness)
+
+    Sets the xthickness.
+    * Returns: self
+
+--- ythickness
+
+    Gets the ythickness.
+    * Returns: ythickness
+
+--- ythickness=(ythickness)
+
+    Sets the ythickness.
+    * Returns: ythickness
+
+--- set_ythickness(ythickness)
+
+    Sets the ythickness.
+    * Returns: self
+
+--- fg_gc(state_type)
+
+    Gets the ((<Gdk::GC>)) value of the foreground color.
+    * state_type: a ((<GtkStateType|Gtk#GtkStateType>))
+    * Returns: the ((<Gdk::GC>))
+
+--- set_fg_gc(state_type, gc)
+
+    Sets the ((<Gdk::GC>)) value of the foreground color.
+    * state_type: a ((<GtkStateType|Gtk#GtkStateType>))
+    * gc: a ((<Gdk::GC>)).
+    * Returns: self
+
+--- bg_gc(state_type)
+
+    Gets the ((<Gdk::GC>)) value of the background color.
+    * state_type: a ((<GtkStateType|Gtk#GtkStateType>))
+    * Returns: the ((<Gdk::GC>))
+
+--- set_bg_gc(state_type, gc)
+
+    Sets the ((<Gdk::GC>)) value of the background color.
+    * state_type: a ((<GtkStateType|Gtk#GtkStateType>))
+    * gc: a ((<Gdk::GC>)).
+    * Returns: self
+
+--- light_gc(state_type)
+
+    Gets the ((<Gdk::GC>)) value of the light color.
+    * state_type: a ((<GtkStateType|Gtk#GtkStateType>))
+    * Returns: the ((<Gdk::GC>))
+
+--- set_light_gc(state_type, gc)
+
+    Sets the ((<Gdk::GC>)) value of the light color.
+    * state_type: a ((<GtkStateType|Gtk#GtkStateType>))
+    * gc: a ((<Gdk::GC>)).
+    * Returns: self
+
+--- dark_gc(state_type)
+
+    Gets the ((<Gdk::GC>)) value of the dark color.
+    * state_type: a ((<GtkStateType|Gtk#GtkStateType>))
+    * Returns: the ((<Gdk::GC>))
+
+--- set_dark_gc(state_type, gc)
+
+    Sets the ((<Gdk::GC>)) value of the dark color.
+    * state_type: a ((<GtkStateType|Gtk#GtkStateType>))
+    * gc: a ((<Gdk::GC>)).
+    * Returns: self
+
+--- mid_gc(state_type)
+
+    Gets the ((<Gdk::GC>)) value of the mid color.
+    * state_type: a ((<GtkStateType|Gtk#GtkStateType>))
+    * Returns: the ((<Gdk::GC>))
+
+--- set_mid_gc(state_type, gc)
+
+    Sets the ((<Gdk::GC>)) value of the mid color.
+    * state_type: a ((<GtkStateType|Gtk#GtkStateType>))
+    * gc: a ((<Gdk::GC>)).
+    * Returns: self
+
+--- text_gc(state_type)
+
+    Gets the ((<Gdk::GC>)) value of the text color.
+    * state_type: a ((<GtkStateType|Gtk#GtkStateType>))
+    * Returns: the ((<Gdk::GC>))
+
+--- set_text_gc(state_type, gc)
+
+    Sets the ((<Gdk::GC>)) value of the text color.
+    * state_type: a ((<GtkStateType|Gtk#GtkStateType>))
+    * gc: a ((<Gdk::GC>)).
+    * Returns: self
+
+--- base_gc(state_type)
+
+    Gets the ((<Gdk::GC>)) value of the base color.
+    * state_type: a ((<GtkStateType|Gtk#GtkStateType>))
+    * Returns: the ((<Gdk::GC>))
+
+--- set_base_gc(state_type, gc)
+
+    Sets the ((<Gdk::GC>)) value of the base color.
+    * state_type: a ((<GtkStateType|Gtk#GtkStateType>))
+    * gc: a ((<Gdk::GC>)).
+    * Returns: self
+
+--- text_aa_gc(state_type)
+
+    Gets the ((<Gdk::GC>)) value of the text_aa(Halfway between text/base) color.
+    * state_type: a ((<GtkStateType|Gtk#GtkStateType>))
+    * Returns: the ((<Gdk::GC>))
+
+--- set_text_aa_gc(state_type, gc)
+
+    Sets the ((<Gdk::GC>)) value of the text_aa color.
+    * state_type: a ((<GtkStateType|Gtk#GtkStateType>))
+    * gc: a ((<Gdk::GC>)).
+    * Returns: self
+
+--- black_gc
+
+    Gets the ((<Gdk::GC>)) value of black color.
+    * Returns: the ((<Gdk::GC>))
+
+--- black_gc=(gc)
+
+    Sets the ((<Gdk::GC>)) value of black color.
+    * gc: ((<Gdk::GC>))
+    * Returns: gc
+
+--- set_black_gc(gc)
+
+    Same as Gtk::Style#black_gc=.
+    * gc: ((<Gdk::GC>))
+    * Returns: self
+
+--- white_gc
+
+    Gets the ((<Gdk::GC>)) value of white color.
+    * Returns: ((<the Gdk::GC>))
+
+--- white_gc=(gc)
+
+    Sets the ((<Gdk::GC>)) value of white color.
+    * gc: ((<Gdk::GC>))
+    * Returns: gc
+
+--- set_white_gc(gc)
+
+    Same as Gtk::Style#white_gc=.
+    * gc: ((<Gdk::GC>))
+    * Returns: self
+
+--- bg_pixmap(state_type)
+
+    Gets the background pixmap.
+    * state_type: a ((<GtkStateType|Gtk#GtkStateType>))
+    * Returns: the Gdk::Pixmap
+
+--- set_bg_pixmap(state_type, pixmap)
+
+    Sets the Gdk::GC value of the text_aa color.
+    * state_type: a ((<GtkStateType|Gtk#GtkStateType>))
+    * pixmap: a Gdk::Pixmap.
+    * Returns: self
+
+--- clone
+
+    Copy the object.
+    * Returns: a copied object.
+
+--- dup
+
+    Copy the object.
+    * Returns: a copied object.
+
+--- lookup_color
+
+     * Returns: self: ((*FIXME*))
+
+== Signals
+
+--- realize: self
+
+     * self: Gtk::Style: ((*FIXME*))
+
+--- unrealize: self
+
+     * self: Gtk::Style: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+- ((<Masao>))

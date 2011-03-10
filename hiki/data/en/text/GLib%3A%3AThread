@@ -1,0 +1,26 @@
+= class GLib::Thread
+
+== Object Hierarchy
+
+* Object
+  * GLib::Thread
+
+== Class Methods
+
+--- GLib::Thread.init
+
+     * Returns: self: ((*FIXME*))
+
+--- GLib::Thread.supported?
+
+     * Returns: self: ((*FIXME*))
+
+== Constants
+
+--- LOG_DOMAIN
+
+== See Also
+
+== ChangeLog
+
+

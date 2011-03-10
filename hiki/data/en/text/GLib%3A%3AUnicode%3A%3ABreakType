@@ -1,0 +1,52 @@
+= class GLib::Unicode::BreakType
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * GLib::Unicode::BreakType
+
+== Constants
+
+--- AFTER
+--- ALPHABETIC
+--- AMBIGUOUS
+--- BEFORE
+--- BEFORE_AND_AFTER
+--- CARRIAGE_RETURN
+--- CLOSE_PUNCTUATION
+--- COMBINING_MARK
+--- COMPLEX_CONTEXT
+--- CONTINGENT
+--- EXCLAMATION
+--- HANGUL_LVT_SYLLABLE
+--- HANGUL_LV_SYLLABLE
+--- HANGUL_L_JAMO
+--- HANGUL_T_JAMO
+--- HANGUL_V_JAMO
+--- HYPHEN
+--- IDEOGRAPHIC
+--- INFIX_SEPARATOR
+--- INSEPARABLE
+--- LINE_FEED
+--- MANDATORY
+--- NEXT_LINE
+--- NON_BREAKING_GLUE
+--- NON_STARTER
+--- NUMERIC
+--- OPEN_PUNCTUATION
+--- POSTFIX
+--- PREFIX
+--- QUOTATION
+--- SPACE
+--- SURROGATE
+--- SYMBOL
+--- UNKNOWN
+--- WORD_JOINER
+--- ZERO_WIDTH_SPACE
+
+== See Also
+
+== ChangeLog
+
+

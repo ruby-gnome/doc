@@ -1,0 +1,106 @@
+= class Gtk::CellRendererCombo
+
+Gtk::CellRendererCombo renders text in a cell like Gtk::CellRendererText from which it is derived. But while Gtk::CellRendererText offers a simple entry to edit the text, Gtk::CellRendererCombo offers a Gtk::ComboBox or Gtk::ComboBoxEntry widget to edit the text. The values to display in the combo box are taken from the tree model specified in the model property.
+
+The combo cell renderer takes care of adding a text cell renderer to the combo box and sets it to display the column specified by its text-column property. Further cell renderers can be added in a handler for the editing-started signal.
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::InitiallyUnowned
+        * Gtk::Object
+          * Gtk::CellRenderer
+            * Gtk::CellRendererText
+              * Gtk::CellRendererCombo
+
+== Class Methods
+
+--- Gtk::CellRendererCombo.new
+
+    Creates a new Gtk::CellRendererCombo. Adjust how text is drawn using object properties. Also, with Gtk::TreeViewColumn, you can bind a property to a value in a Gtk::TreeModel. For example, you can bind the "text" property on the cell renderer to a string value in the model, thus rendering a different string in each row of the GtkTreeView. ((*Since 2.6*))
+    * Returns:the new Gtk::CellRendererCombo
+
+== Instance Methods
+
+--- has_entry?
+
+    If true, the cell renderer will include an entry and allow to enter values other than the ones in the popup list. ((*Since 2.6*))
+    * Returns: true if it allow to enter strings other than the chosen ones, otherwise false
+
+--- has_entry=(has_entry)
+
+    Sets the value whether the cell renderer allows to enter strings other than the chosen ones or not. ((*Since 2.6*))
+    * has_entry: true if it allow to enter strings other than the chosen ones, otherwise false
+    * Returns: has_entry
+
+--- set_has_entry(has_entry)
+
+    Same as Gtk::CellRendererCombo#has_entry=. ((*Since 2.6*))
+    * has_entry: true if it allow to enter strings other than the chosen ones, otherwise false
+    * Returns: self
+
+--- model
+
+    Gets the Gtk::TreeModel containing the possible values for the combo box.  Use the text_column property to specify the column holding the values. ((*Since 2.6*))
+    * Returns: The Gtk::TreeModel containing the possible values for the combo box
+
+--- model=(model)
+
+    Sets the Gtk::TreeModel containing the possible values for the combo box.  Use the text_column property to specify the column holding the values. ((*Since 2.6*))
+    * model: The Gtk::TreeModel containing the possible values for the combo box
+    * Returns: model
+
+--- set_model(model)
+
+    Same as Gtk::CellRendererCombo#model=. ((*Since 2.6*))
+    * model: The Gtk::TreeModel containing the possible values for the combo box
+    * Returns: self
+
+--- text_column
+
+    Gets the column number which specifies the model column which holds the possible values for the combo box. Note that this refers to the Gtk::TreeModel specified in the Gtk::CellRendererCombo#model=, not the model backing the tree view to which this cell renderer is attached. ((*Since 2.6*))
+    * Returns: the column number
+
+--- text_column=(text_column)
+
+    Sets the column number which specifies the model column which holds the possible values for the combo box. Note that this refers to the Gtk::TreeModel specified in the Gtk::CellRendererCombo#model=, not the model backing the tree view to which this cell renderer is attached. ((*Since 2.6*))
+    * text_column: the column number
+    * Returns: text_column
+
+--- set_text_column(text_column)
+
+    Same as Gtk::CellRendererCombo#text_column=. ((*Since 2.6*))
+    * text_column: the column number
+    * Returns: self
+
+== Properties
+
+--- has-entry: true or false (Read/Write)
+
+    If true, the cell renderer will include an entry and allow to enter values other than the ones in the popup list. ((*Since 2.6*))
+    * Default value: true
+
+--- model: Gtk::TreeModel (Read/Write)
+
+    Holds a tree model containing the possible values for the combo box. Use the text_column property to specify the column holding the values. ((*Since 2.6*))
+
+--- text-column: Integer (Read/Write)
+
+    Specifies the model column which holds the possible values for the combo box. Note that this refers to the model specified in the model property, not the model backing the tree view to which this cell renderer is attached. Gtk::CellRendererCombo automatically adds a text cell renderer for this column to its combo box. ((*Since 2.6*))
+    * Allowed values: >= -1
+    * Default value: -1
+
+== Signals
+
+--- changed: self
+
+     * self: Gtk::CellRendererCombo: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+* 2007-02-03 Apply GTK+-2.10. - ((<Masao>))
+* 2005-05-05 Added - ((<Masao>))

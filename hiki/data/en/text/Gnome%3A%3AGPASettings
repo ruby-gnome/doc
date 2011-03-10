@@ -1,0 +1,38 @@
+= class Gnome::GPASettings
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Gnome::GPANode
+        * Gnome::GPASettings
+
+== Class Methods
+
+--- new(name, id)
+
+    
+     * name: the name of settings. (String)
+     * id: the id of settings. (String)
+     * Returns: new settings.
+
+--- new(model, name, id)
+
+    
+     * model: the model of settings. (Gnome::GPAModel)
+     * name: the name of settings. (String)
+     * id: the id of settings. (String)
+     * Returns: new settings.
+
+#--- new(model, tree)
+#
+#     * model: the model of settings. (Gnome::GPAModel)
+#     * tree: the XML tree of settings. ()
+#     * Returns: new settings.
+
+== See Also
+
+== ChangeLog
+
+- kou

@@ -1,0 +1,18 @@
+= class GLib::IO::IsDirectoryError
+
+The file is a directory.
+
+== Object Hierarchy
+
+* Object
+  * Exception
+    * StandardError
+      * IOError
+        * GLib::IO::Error
+          * GLib::IO::IsDirectoryError
+
+== See Also
+
+== ChangeLog
+
+

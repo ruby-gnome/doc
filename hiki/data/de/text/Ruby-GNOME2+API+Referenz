@@ -1,0 +1,22 @@
+= Ruby-GNOME2 API-Referenz
+Diese Dokumente enthalten die deutsche Ruby-Version der ((<GNOME 2.0 API-Referenz|URL:http://developer.gnome.org/doc/API/>)):
+
+* ((<"Ruby/GConf">))
+* ((<"Ruby/GDK">))
+* Ruby/GdkPixbuf
+* ((<"Ruby/GLib">))
+* Ruby/GNOME
+* Ruby/GnomeCanvas
+* ((<"Ruby/GnomeVFS">))
+* ((<"Ruby/GStreamer">))
+* ((<"Ruby/GTK">))
+* ((<"Ruby/GtkGLExt">))
+* Ruby/Libart
+* ((<"Ruby/Libgda">))
+* Ruby/Libglade
+* Ruby/Pango
+
+== Aktuelle Version (Download)
+Die jeweils aktuelle Version der Ruby_GNOME2 API-Referenz im RD-Format ist ebenfalls als Tarball erhältlich:
+
+((<URL:http://ruby-gnome2.sourceforge.jp/data/ruby-gnome2-api.tar.gz>))

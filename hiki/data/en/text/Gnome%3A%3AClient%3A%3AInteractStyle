@@ -1,0 +1,19 @@
+= class Gnome::Client::InteractStyle
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * Gnome::Client::InteractStyle
+
+== Constants
+
+--- ANY
+--- ERRORS
+--- NONE
+
+== See Also
+
+== ChangeLog
+
+

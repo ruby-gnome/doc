@@ -1,0 +1,69 @@
+= class Art::DRect
+
+== Object Hierarchy
+
+* Object
+  * Data
+    * Art::DRect
+
+== Class Methods
+
+--- Art::DRect.new
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- &
+
+     * Returns: self: ((*FIXME*))
+
+--- dup
+
+     * Returns: self: ((*FIXME*))
+
+--- empty?
+
+     * Returns: self: ((*FIXME*))
+
+--- to_a
+
+     * Returns: self: ((*FIXME*))
+
+--- to_irect
+
+     * Returns: self: ((*FIXME*))
+
+--- to_s
+
+     * Returns: self: ((*FIXME*))
+
+--- transform
+
+     * Returns: self: ((*FIXME*))
+
+--- x0
+
+     * Returns: self: ((*FIXME*))
+
+--- x1
+
+     * Returns: self: ((*FIXME*))
+
+--- y0
+
+     * Returns: self: ((*FIXME*))
+
+--- y1
+
+     * Returns: self: ((*FIXME*))
+
+--- |
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

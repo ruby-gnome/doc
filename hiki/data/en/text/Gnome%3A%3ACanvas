@@ -1,0 +1,253 @@
+= class Gnome::Canvas
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::InitiallyUnowned
+        * Gtk::Object
+          * Gtk::Widget
+            * Gtk::Container
+              * Gtk::Layout
+                * Gnome::Canvas
+
+== Class Methods
+
+--- Gnome::Canvas.cap_gdk_to_art
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::Canvas.color
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::Canvas.convert_color
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::Canvas.get_butt_points
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::Canvas.get_miter_points
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::Canvas.join_gdk_to_art
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::Canvas.new
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::Canvas.polygon_to_point
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- aa?
+
+    Gets the antialiasing mode of the canvas..
+     * Returns: The antialiasing mode of the canvas.
+
+--- c2w
+
+     * Returns: self: ((*FIXME*))
+
+--- center_scroll_region=
+
+     * Returns: self: ((*FIXME*))
+
+--- center_scroll_region?
+
+     * Returns: self: ((*FIXME*))
+
+--- dither
+
+     * Returns: self: ((*FIXME*))
+
+--- dither=
+
+     * Returns: self: ((*FIXME*))
+
+--- focused_item
+
+    Gets the focused_item.
+     * Returns: ((*FIXME*))
+
+--- focused_item=(focused_item)
+
+    Sets the focused_item.
+     * focused_item: ((*FIXME*))
+     * Returns: focused_item
+
+--- get_color
+
+     * Returns: self: ((*FIXME*))
+
+--- get_color_pixel
+
+     * Returns: self: ((*FIXME*))
+
+--- get_item_at
+
+     * Returns: self: ((*FIXME*))
+
+--- pixels_per_unit=
+
+     * Returns: self: ((*FIXME*))
+
+--- ref_accessible
+
+    See Atk::Implementor#ref_accessible.
+
+--- request_redraw
+
+     * Returns: self: ((*FIXME*))
+
+--- root
+
+     * Returns: self: ((*FIXME*))
+
+--- scroll_offsets
+
+     * Returns: self: ((*FIXME*))
+
+--- scroll_region
+
+     * Returns: self: ((*FIXME*))
+
+--- scroll_to
+
+     * Returns: self: ((*FIXME*))
+
+--- set_center_scroll_region
+
+     * Returns: self: ((*FIXME*))
+
+--- set_dither
+
+     * Returns: self: ((*FIXME*))
+
+--- set_focused_item(focused_item)
+
+    Same as focused_item=.
+     * focused_item: ((*FIXME*))
+     * Returns: self
+
+--- set_pixels_per_unit
+
+     * Returns: self: ((*FIXME*))
+
+--- set_scroll_region
+
+     * Returns: self: ((*FIXME*))
+
+--- set_stipple_origin
+
+     * Returns: self: ((*FIXME*))
+
+--- stipple_origin=
+
+     * Returns: self: ((*FIXME*))
+
+--- update_now
+
+     * Returns: self: ((*FIXME*))
+
+--- update_svp
+
+     * Returns: self: ((*FIXME*))
+
+--- w2c
+
+     * Returns: self: ((*FIXME*))
+
+--- w2c_affine
+
+     * Returns: self: ((*FIXME*))
+
+--- w2c_d
+
+     * Returns: self: ((*FIXME*))
+
+--- window_to_world
+
+     * Returns: self: ((*FIXME*))
+
+--- world_to_window
+
+     * Returns: self: ((*FIXME*))
+
+--- add_child
+
+    See Gtk::Buildable#add_child.
+
+--- construct_child
+
+    See Gtk::Buildable#construct_child.
+
+--- get_internal_child
+
+    See Gtk::Buildable#get_internal_child.
+
+--- name
+
+    See Gtk::Buildable#name.
+
+--- name=
+
+    See Gtk::Buildable#name=.
+
+--- set_buildable_property
+
+    See Gtk::Buildable#set_buildable_property.
+
+--- set_name
+
+    See Gtk::Buildable#set_name.
+
+--- builder_name
+
+    See Gtk::Buildable#builder_name.
+
+--- builder_name=
+
+    See Gtk::Buildable#builder_name=.
+
+--- set_builder_name
+
+    See Gtk::Buildable#set_builder_name.
+
+== Constants
+
+--- BUILD_VERSION
+--- EPSILON
+--- LOG_DOMAIN
+
+== Properties
+
+--- aa: true or false (Read/Write)
+
+    The antialiasing mode of the canvas.
+
+--- focused-item: Gnome::CanvasItem (Read/Write)
+
+== Signals
+
+--- draw-background: self
+
+     * self: Gnome::Canvas: ((*FIXME*))
+
+--- render-background: self
+
+     * self: Gnome::Canvas: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

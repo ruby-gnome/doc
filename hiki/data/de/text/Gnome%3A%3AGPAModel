@@ -1,0 +1,12 @@
+= class Gnome::GPAModel
+
+== Object Hierarchy
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Gnome::GPANode
+        * Gnome::GPAModel
+
+== See Also
+
+- kou

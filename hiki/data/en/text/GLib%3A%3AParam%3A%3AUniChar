@@ -1,0 +1,20 @@
+= class GLib::Param::UniChar
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Param
+      * GLib::Param::UniChar
+
+== Class Methods
+
+--- GLib::Param::UniChar.new
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

@@ -1,0 +1,60 @@
+= class Gdk::EventAny
+
+Contains the fields which are common to all event structs.
+
+== Object Hierarchy
+
+* Object
+  * GLib::Boxed
+    * Gdk::Event
+      * Gdk::EventAny
+
+== Class Methods
+
+--- Gdk::EventAny.new(type)
+
+    Creates a new event of the given type. All fields are set to 0. ((*Since 2.2*))
+    * type: Gdk::Event::DELETE, Gdk::Event::DESTROY, Gdk::Event::MAP, Gdk::Event::UNMAP
+    * Returns: a new Gdk::EventAny.
+
+== Instance Methods
+
+--- send_event?
+
+    Gets the value whether the event was sent explicity or not.
+    * Returns: true or false
+
+--- send_event=(send_event)
+
+    Sets the value whether the event was sent explicitly (e.g. using XSendEvent).  
+    * send_event: true if the event was sent explicitly.
+    * Returns: send_event
+
+--- set_send_event(send_event)
+
+    Same as Gdk::EventAny#send_event=.
+    * send_event: true if the event was sent explicitly.
+    * Returns: self
+
+--- window
+
+    Retrieves the window which receives the event.
+    * Returns: Gdk::Window whitch recieves the event
+
+--- window=(window)
+
+    Sets the window which receives the event.
+    * window: a Gdk::Window which receives the event.
+    * Returns: window
+
+--- set_window(window)
+
+    Same as Gdk::EventAny#window=.
+    * window: a Gdk::Window which receives the event.
+    * Returns: self
+
+== See Also
+
+== ChangeLog
+
+- ((<Masao>))

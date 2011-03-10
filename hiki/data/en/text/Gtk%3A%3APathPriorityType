@@ -1,0 +1,22 @@
+= class Gtk::PathPriorityType
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * Gtk::PathPriorityType
+
+== Constants
+
+--- APPLICATION
+--- GTK
+--- HIGHEST
+--- LOWEST
+--- RC
+--- THEME
+
+== See Also
+
+== ChangeLog
+
+

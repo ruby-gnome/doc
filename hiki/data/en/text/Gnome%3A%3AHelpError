@@ -1,0 +1,30 @@
+= class Gnome::HelpError
+
+== Object Hierarchy
+
+* Object
+  * Exception
+    * StandardError
+      * RuntimeError
+        * Gnome::HelpError
+
+== Instance Methods
+
+--- code
+
+     * Returns: self: ((*FIXME*))
+
+--- domain
+
+     * Returns: self: ((*FIXME*))
+
+== Constants
+
+--- INTERNAL
+--- NOT_FOUND
+
+== See Also
+
+== ChangeLog
+
+

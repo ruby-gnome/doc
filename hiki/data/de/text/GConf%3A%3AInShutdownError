@@ -1,0 +1,5 @@
+= class GConf::InShutdownError
+This error class gets raised whenever an operation is sent to the GConf daemon, which is in fact shutting down.
+
+== Super Class
+* GConf::Error

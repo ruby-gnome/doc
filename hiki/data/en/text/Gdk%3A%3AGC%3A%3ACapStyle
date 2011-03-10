@@ -1,0 +1,20 @@
+= class Gdk::GC::CapStyle
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * Gdk::GC::CapStyle
+
+== Constants
+
+--- BUTT
+--- NOT_LAST
+--- PROJECTING
+--- ROUND
+
+== See Also
+
+== ChangeLog
+
+

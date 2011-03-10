@@ -1,0 +1,67 @@
+= Eventos
+{{link "tut-gtk-signals", "tut-gtk-intro", "tut-gtk", "tut-gtk-helloworld-details"}}
+
+Em adição ao mecanismo de sinal acima, eventos do Servidor de Janelas X são também refletidos na GTK.
+
+Eis uma lista exaustiva de eventos pegáveis:
+
+* event
+* button_press_event
+* button_release_event
+* scroll_event
+* motion_notify_event
+* delete_event
+* destroy_event
+* expose_event
+* key_press_event
+* key_release_event
+* enter_notify_event
+* leave_notify_event
+* configure_event
+* focus_in_event
+* focus_out_event
+* map_event
+* unmap_event
+* property_notify_event
+* selection_clear_event
+* selection_request_event
+* selection_notify_event
+* proximity_in_event
+* proximity_out_event
+* visibility_notify_event
+* client_event
+* no_expose_event
+* window_state_event
+
+Você pode conectar algum código a um evento X11 específico exatamente da mesma maneira como vímos previamente com os sinais de GTK.  Apenas forneça um dos "nomes de evento" mencionados acima em vez de um "nome de sinal":
+
+  GLib::Instantiatable#signal_connect("nome de evento") do
+      # Código a executar na recepção de "nome de evento".
+  end
+
+O código de "callback" pode aceitar 2 parâmetros, como a seguir::
+
+  GLib::Instantiatable#signal_connect("nome de evento") do |w, e|
+      # ...
+  end
+
+(nesse caso, "w" referirá ao componente e "e" ao evento).
+
+Dependendo do valor de retorno do bloco de código, a GTK decidirá se o evento deverá ser espalhado ou não:
+
+* se verdadeiro ("true"), a GTK parará o processamento de evento aqui;
+* se falso ("false"), a GTK continuará a propagar o evento.
+
+Também, as seleções e "drag-and-drop" de GDK disparam vários eventos, mas esses são refletidos por sinais de GTK:
+
+* selection_received
+* selection_get
+* drag_begin_event
+* drag_end_event
+* drag_data_delete
+* drag_motion
+* drag_drop
+* drag_data_get
+* drag_data_received
+
+

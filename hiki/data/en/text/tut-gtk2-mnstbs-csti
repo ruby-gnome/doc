@@ -1,0 +1,94 @@
+= Menus and Toolbars
+{{link "tut-gtk2-mnstbs-dynmc", "tut-gtk2-mnstbs", "tut-gtk", "tut-gtk2-mnstbs-tyu"}}
+
+== Custom Stock Items
+
+From the last section you should have noticed that Gtk::Action objects accept stock identifiers to add an image to the menu or toolbar items. You may not always find the appropriate icon among the predefined or by the GTK+ provided stock items. It would be nice if you were able to create your own stock items. It turns out that exactly that can be accomplished with the Gtk::IconFactory and a few supporting classes like  Gtk::IconSource and Gtk::IconSet.
+
+You start out with your image which you must somehow convert to a stock item. For this you need to turn it into an Gtk::IconSource object. Once you create an Gtk::IconSource object you must pass it either an image file or a pixbuf of the image which you would like to use to create a stock item. Depending on the format of your image you would use either Gtk::IconSource#filename  or  Gtk::IconSource#pixbuf instance methods.
+
+Because you may have multiple icon sources to represent different sizes, or any other visible variations you need to supply the entire set of these sources to Gtk::IconFactory. This is why we need to use yet another step before we can add our image to icon factory. This step is adding each individual source to Gtk::IconSet. Indeed when there is only a single source it too must be added to the set.
+
+Only after you have created the necessary icon sets, they can be added to the   icon factory, which is used to organize all of the stock items for a particular theme. Icon factories are added to the global list that GTK+ searches to find a stock item.
+
+
+
+{{image_left("mnstbs-csi-rb.png")}}
+{{image_right("dialog-warning.png")}}
+
+There are a few a slight problem with the way Gtk::IconFactory, Gtk::Toolbar and rendering of newly created stock items is implemented. The image here on the left is from Ruby GNOME2 (rel 2-0.17.0) implementation. It shows three problems. First is that Gtk::Toolbar does not display anything. It should display icons for the new stock items as well as their stock ids. The third problem is that Gtk::Toolbar does not display the labels which we explicitly set when we create tool button item. We can see that Gtk::IconFactory and the rest of associated classes and objects managed to store the image, since when we shrink the size of the window so that the arrow has to be used to see the items beyond the visible area, icons do appear. C GTK+ implementation, for which the image is here below on the right, exhibits very similar faulting behaviour, however it does display at least the stock ids, as well as the labels on the GtkToolbar widget.
+
+{{image_right("mnstbs-csi-c.png")}}
+{{br}}
+{{image_left("mnstbs-csi-rb2.png")}}
+However, I have just discovered that all is not so bad as first appeared, namely, if you set the following:
+{{br}}
+ toolbar.toolbar_style = Gtk::Toolbar::Style::ICONS
+
+as you can see the icons appear. Let us look at the code:
+{{br}}
+
+
+((*iconfactory.rb*))
+
+ #!/usr/bin/env ruby
+ require 'gtk2'
+ 
+ def add_stock_icon(factory, loc, stock_id)
+   source = Gtk::IconSource.new
+   set = Gtk::IconSet.new
+   source.filename = loc
+   set.add_source(source)
+   factory.add(stock_id, set)
+ end
+ 
+ window = Gtk::Window.new(Gtk::Window::TOPLEVEL)
+ window.resizable = true
+ window.title = "Icon Factory"
+ window.border_width = 10
+ window.signal_connect('delete_event') { Gtk.main_quit }
+ 
+ # Note: size (30,-1) helps us show the BUG
+ window.set_size_request(30, -1)
+ 
+ class NewStockIcon
+   attr_accessor :location, :stock_id, :label
+   def initialize(loc, stk, lbl)
+     @location, @stock_id, @label = loc, stk, lbl
+   end
+ end
+ path="/users/iwk/gtk+/c/ch09/"
+ list = [
+   NewStockIcon.new(path + "checklist.png",  "check-list", "Check _List"),
+   NewStockIcon.new(path + "calculator.png", "calculator", "_Calculator"),
+   NewStockIcon.new(path + "camera.png",     "screenshot", "_Screenshots"),
+   NewStockIcon.new(path + "cpu.png",        "cpu",        "CPU _Info"),
+   NewStockIcon.new(path + "desktop.png",    "desktop",    "View _Desktop")
+ ]
+ factory = Gtk::IconFactory.new
+ toolbar = Gtk::Toolbar.new
+
+ # Loop through the list of items and add new stock items.
+ list.each_with_index do |e, i|
+   add_stock_icon(factory, e.location, e.stock_id)
+   item = Gtk::ToolButton.new(e.stock_id, e.label)
+   toolbar.insert(i, item)
+ end
+ factory.add_default
+ toolbar.show_arrow = true
+ toolbar.toolbar_style = Gtk::Toolbar::Style::BOTH
+ window.add(toolbar)
+ window.show_all
+ Gtk.main
+
+
+Images you need to run this example program:
+
+{{image_left("checklist.png")}}
+{{image_left("calculator.png")}}
+{{image_left("camera.png")}}
+{{image_left("cpu.png")}}
+{{image_left("desktop.png")}}
+{{br}}
+For those of you who would like to play with this program, and need images You should download them and put them into a directory to which you should point the following path variable (see the example program above):
+ path="/users/iwk/gtk+/c/ch09/"

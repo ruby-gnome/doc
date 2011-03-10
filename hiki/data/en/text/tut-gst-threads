@@ -1,0 +1,35 @@
+= Threads
+{{link("tut-gst-types", nil, "tut-gst", "tut-gst-queues")}}
+
+GStreamer has support for multithreading through the use of the Gst::Thread object. This object is in fact a special Gst::Bin that will become a thread when started.
+
+To construct a new thread you will perform something like: 
+
+  # create the thread object
+  thread = Gst::Thread.new
+
+  # add some plugins here
+  thread.add(funky_src, cool_effect)
+
+  # link elements here
+  ...
+
+  # start playing
+  thread.play
+
+The above program will create a thread with two elements in it. As soon as it is set to the Gst::Element::STATE_PLAYING state, the thread will start to iterate itself. You never need to explicitly iterate a thread.
+
+== Constraints Placed on the Pipeline by the Gst::Thread
+
+Within the pipeline, everything is the same as in any other bin. The difference lies at the thread boundary, at the link between the thread and the outside world (containing bin). Since GStreamer is fundamentally buffer-oriented rather than byte-oriented, the natural solution to this problem is an element that can "buffer" the buffers between the threads, in a thread-safe fashion. This element is the queue (Gst::Queue), described more fully in the chapter called ((<Queues|tut-gst-queues>)). It doesn't matter if the queue is placed in the containing bin or in the thread itself, but it needs to be present on one side or the other to enable inter-thread communication.
+
+== When Would You Want to Use a Thread?
+
+If you are writing a GUI application, making the top-level bin a thread will make your GUI more responsive. If it were a pipeline instead, it would have to be iterated by your application's event loop, which increases the latency between events (say, keyboard presses) and responses from the GUI. In addition, any slight hang in the GUI would delay iteration of the pipeline, which (for example) could cause pops in the output of the sound card, if it is an audio pipeline.
+
+A thread can be visualised as below:
+
+{{image_left("thread.png")}}
+{{br}}
+
+As a practical example, you can read the sources of our ((<Simple Audio Player>)).

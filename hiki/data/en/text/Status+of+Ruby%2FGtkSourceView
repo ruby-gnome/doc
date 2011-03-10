@@ -1,0 +1,19 @@
+= Status of Ruby/GtkSourceView
+
+GtkSourceView is a subclass of GtkTextView - see the ((<"Gtk manual"|URL:http://library.gnome.org/devel/gtk/stable/TextWidget.html>)) for an overview of the relationship between the view widget, buffer and markers etc.
+
+Ruby/GtkSourceView contains complete bindings for GtkSourceView 1.0.x serie.  Check out the ((<README|URL:http://cvs.sourceforge.net/viewcvs.py/*checkout*/ruby-gnome2/gtksourceview/README?content-type=text%2Fplain&rev=1.5>)) file to see the GtkSourceView exact version that it requires.
+
+{{status "Ruby/GtkSourceView", ["1.0", "1.4", "1.6", "1.8"], "
+GtkSourceBuffer|Gtk::SourceBuffer|GtkSourceBuffer|O|O|O|O|
+Searching in a GtkSourceBuffer|Gtk::SourceBuffer|GtkSourceBuffer|O|O|O|O|
+GtkSourceMarker|Gtk::SourceMarker|GtkSourceMarker|O|O|O|O|
+GtkSourceView|Gtk::SourceView|GtkSourceView|O|O|O|O|
+GtkSourceLanguage|Gtk::SourceLanguage|GtkSourceLanguage|O|O|O|O|
+GtkSourceLanguagesManager|Gtk::SourceLanguagesManager|GtkSourceLanguagesManager|O|O|O|O|
+GtkSourceStyleScheme|Gtk::SourceStyleScheme|GtkSourceStyleScheme|O|O|O|O|
+GtkSourceTags|Gtk::SourceTag, Gtk::SyntaxTag, Gtk::PatternTag, Gtk::SourceTagStyle|GtkSourceTag, GtkSyntaxTag, GtkPatternTag, GtkSourceTagStyle|O|O|O|O|Some classes are not documented yet.
+GtkSourceTagTable|Gtk::SourceTagTable|GtkSourceTagTable|O|O|O|O|
+GtkSourceTagStyle|Gtk::SourceTagStyle|GtkSourceTagStyle|O|O|O|O|
+GtkSourcePrintJob|Gtk::SourcePrintJob|GtkSourcePrintJob|O|O|O|O|not documented yet.
+"}}

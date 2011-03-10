@@ -1,0 +1,22 @@
+= class Gtk::ScrollStep
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * Gtk::ScrollStep
+
+== Constants
+
+--- ENDS
+--- HORIZONTAL_ENDS
+--- HORIZONTAL_PAGES
+--- HORIZONTAL_STEPS
+--- PAGES
+--- STEPS
+
+== See Also
+
+== ChangeLog
+
+

@@ -1,0 +1,19 @@
+= class Gdk::GC::JoinStyle
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * Gdk::GC::JoinStyle
+
+== Constants
+
+--- BEVEL
+--- MITER
+--- ROUND
+
+== See Also
+
+== ChangeLog
+
+

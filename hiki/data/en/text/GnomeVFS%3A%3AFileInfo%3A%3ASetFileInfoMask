@@ -1,0 +1,58 @@
+= class GnomeVFS::FileInfo::SetFileInfoMask
+
+== Object Hierarchy
+
+* Object
+  * GLib::Flags
+    * GnomeVFS::FileInfo::SetFileInfoMask
+
+== Instance Methods
+
+--- acl?
+
+     * Returns: self: ((*FIXME*))
+
+--- name?
+
+     * Returns: self: ((*FIXME*))
+
+--- none?
+
+     * Returns: self: ((*FIXME*))
+
+--- owner?
+
+     * Returns: self: ((*FIXME*))
+
+--- permissions?
+
+     * Returns: self: ((*FIXME*))
+
+--- selinux_context?
+
+     * Returns: self: ((*FIXME*))
+
+--- symlink_name?
+
+     * Returns: self: ((*FIXME*))
+
+--- time?
+
+     * Returns: self: ((*FIXME*))
+
+== Constants
+
+--- ACL
+--- NAME
+--- NONE
+--- OWNER
+--- PERMISSIONS
+--- SELINUX_CONTEXT
+--- SYMLINK_NAME
+--- TIME
+
+== See Also
+
+== ChangeLog
+
+

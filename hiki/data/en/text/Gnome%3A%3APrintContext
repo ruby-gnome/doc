@@ -1,0 +1,694 @@
+= class Gnome::PrintContext
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Gnome::PrintContext
+
+== Included Modules
+
+  * Gnome::PrintPango
+
+== Class Methods
+
+--- Gnome::PrintContext.new(config=nil)
+
+     
+     * config: a Gnome::PrintConfig object, can be (({nil}))
+       in which case a default Gnome::PrintConfig is created.
+     * Returns: a Gnome::PrintContext object.
+
+== Instance Methods
+
+--- arc_to(x, y, radius, angle1, angle2, clockwise)
+
+     Adds an arc with control points ((|x|)) and ((|y|))
+     with a radius ((|radius|)) and from ((|angle1|)) to
+     ((|andgle2|)) in ((|degrees|)). If ((|clockwise|)) is
+     true then direction is clockwise, otherwise
+     counterclockwise.
+
+     * x: X position of control point in user coordinates
+     * y: Y position of control point in user coordinates
+     * radius: the radius of the arc
+     * angle1: start angle in degrees
+     * angle2: end angle in degrees
+     * clockwise: direction of movement, (({false}))
+       counterclockwise (({true})) clockwise
+     * Returns: nil on success, otherwise raises an
+       exception of Gnome::PrintError
+
+--- begin_page(name=nil)
+
+     Starts new output page with ((|name|)). Naming is used
+     for interactive contexts like Gnome::PrintPreview and Document
+     Structuring Convention conformant PostScript output. This
+     function has to be called before any drawing methods and
+     immediately after each #show_page albeit the last
+     one. It also resets graphic state values (transformation,
+     color, line properties, font), so one has to define these
+     again at the beginning of each page.
+     
+     Automatically calls Gnome::PrintContext#show_page if
+     block is given.
+     
+     * name: Name of the page, nil if you just want to use
+       the page number of the page
+     * Returns: nil on success, otherwise raises an
+       exception of Gnome::PrintError
+
+--- bpath(bpath, append=true)
+
+     
+     Adds all ((|bpath|)) segments up to Art::END to currentpath. If
+     ((|append|)) is false, currentpath is cleared first, otherwise
+     segments are appended to existing path. This is identical to
+     adding all segments by hand, so the final state of
+     currentpoint depends on segments processed.
+
+     See also Gnome::PrintContext#path.
+
+     * bpath: Art::Bpath
+     * append : Whether to append to currentpath
+     * Returns: nil on success, otherwise raises an
+       exception of Gnome::PrintError
+
+--- clip
+
+     
+     Defines drawing region as inside area of currentpath. If
+     path is self-intersecting or consists of several overlapping
+     subpaths, nonzero rule is used to define the inside orea of
+     path. All open subpaths of currentpath are closed. If
+     currentpath is empty, Gnome::PrintError is raised. And
+     the error has error code
+     Gnome::PrintReturnCode::ERROR_NOCURRENTPATH. Currentpath is
+     emptied by this function.
+
+     * Returns: nil on success, otherwise raises an
+       exception of Gnome::PrintError
+
+--- close
+
+     Informs given Gnome::PrintContext that application has
+     finished print job. From that point on, pc has to be
+     considered illegal pointer, and any further printing
+     operation with it may kill application. Some printing
+     contexts may not start printing before context is closed.
+     
+     * Returns: nil on success, otherwise raises an
+       exception of Gnome::PrintError
+
+--- close_path
+
+     
+     Closes the last segment of currentpath, optionally drawing
+     straight line segment from its endpoint to starting
+     point. Erases currentpoint. If currentpath is empty,
+     Gnome::PrintError is raised. And the error has error
+     code Gnome::PrintReturnCode::ERROR_NOCURRENTPATH.
+
+     * Returns: nil on success, otherwise raises an
+       exception of Gnome::PrintError
+
+--- concat(matrix)
+
+     Appends ((|matrix|)) to current transformation matrix
+     (CTM). The resulting transformation from user
+     coordinates to page coordinates is, as if coordinates
+     would first be transformed by ((|matrix|)), and the results
+     by CTM. Matrix is given in column order, i.e.
+
+       X' = X * m[0] + Y * m[2] + m[4]
+       Y' = X * m[1] + Y * m[3] + m[5]
+
+     * matrix: 3x2 affine transformation matrix
+     * Returns: nil on success, otherwise raises an
+       exception of Gnome::PrintError
+
+--- create_transport
+
+     * Returns: nil on success, otherwise raises an
+       exception of Gnome::PrintError
+
+--- curve_to(x1, y1, x2, y2, x3, y3)
+
+     
+     Adds new cubig bezier segment with control points
+     ((|x1|)),((|y1|)) and ((|x2|)),((|y2|)) and endpoint
+     ((|x3|)),((|y3|)) to currentpath. Moves
+     currentpoint to ((|x3|)),((|y3|)). If currentpoint is
+     not defined, raises Gnome::PrintError. And the error
+     has error code
+     Gnome::PrintReturnCode::ERROR_NOCURRENTPOINT.
+
+     * Returns: nil on success, otherwise raises an
+       exception of Gnome::PrintError
+
+--- end_doc
+
+     to be called at the end of any copy of the document
+     before the next copy starts. It will do such things as
+     ejecting a page in duplex printing.
+     
+     * Returns: nil on success, otherwise raises an
+       exception of Gnome::PrintError
+
+--- eoclip
+
+     Defines drawing region as inside area of
+     currentpath. If path is self-intersecting or consists
+     of several overlapping subpaths, even-odd rule is used
+     to define the inside area of path. All open subpaths of
+     currentpath are closed. If currentpath is empty,
+     Gnome::PrintError is raised. And the error has error
+     code Gnome::PrintReturnCode::ERROR_NOCURRENTPATH.
+     Currentpath is emptied by this function.
+     
+     * Returns: nil on success, otherwise raises an
+       exception of Gnome::PrintError
+
+--- eofill
+
+     Fills the inside area of currentpath, using current
+     graphic state. If path is self-intersecting or consists
+     of several overlapping subpaths, even-odd rule is used
+     to define the inside area of path. All open subpaths of
+     currentpath are closed. If currentpath is empty,
+     Gnome::PrintError is raised. And the error has error
+     code Gnome::PrintReturnCode::ERROR_NOCURRENTPATH.
+     Currentpath is emptied by this function.
+     
+     * Returns: nil on success, otherwise raises an
+       exception of Gnome::PrintError
+
+--- fill
+
+     
+     Fills the inside area of currentpath, using current
+     graphic state. If path is self-intersecting or consists
+     of several overlapping subpaths, nonzero rule is used
+     to define the inside area of path. All open subpaths of
+     currentpath are closed. If currentpath is empty,
+     Gnome::PrintError is raised. And the error has error
+     code Gnome::PrintReturnCode::ERROR_NOCURRENTPATH.
+     Currentpath is emptied by this function.
+
+     * Returns: nil on success, otherwise raises an
+       exception of Gnome::PrintError
+
+--- gray_image(data, width, height, rowstride)
+
+     Draws grayscale image into unit square (0,0 - 1,1) in
+     current coordinate system. Image buffer has to be 1
+     byte per pixel, with value 255 marking white and 0
+     black.
+     
+     * data: Image pixel buffer (String)
+     * width: Image buffer width
+     * height: Image buffer height
+     * rowstride: Image buffer rowstride
+     * Returns: nil on success, otherwise raises an
+       exception of Gnome::PrintError
+
+--- image(pixbuf)
+
+     Convenience method for Gnome::PrintContext#rgb_image and
+     Gnome::PrintContext#rgba_image.
+
+     Can customize context by passing block. Receiver
+     Gnome::PrintContext and passed Gdk::Pixbuf are passed
+     to the block.
+
+     * pixbuf: Gdk::Pixbuf
+     * Returns: nil on success, otherwise raises an
+       exception of Gnome::PrintError
+
+--- line_stroked(x0, y0, x1, y1)
+
+     A convenience function to draw a line. Uses
+     Gnome::PrintContext#stroke to do the actual work.
+
+     * x0: X position of start point in user coordinates
+     * y0: Y position of start point in user coordinates
+     * x1: X position of end point in user coordinates
+     * y1: Y position of end point in user coordinates
+     * Returns: nil on success, otherwise raises an
+       exception of Gnome::PrintError
+
+--- line_to(x, y)
+
+     Adds new straight line segment from currentpoint to
+     ((|x|)),((|y|)) to currentpath. Moves currentpoint to
+     ((|x|)),((|y|)). If currentpoint is not defined, raises
+     Gnome::PrintError. And the error has error code
+     Gnome::PrintReturnCode::ERROR_NOCURRENTPOINT.
+
+     * x: X position in user coordinates
+     * y: Y position in user coordinates
+     * Returns: nil on success, otherwise raises an
+       exception of Gnome::PrintError
+
+--- move_to(x, y)
+
+     
+     Starts new subpath in currentpath with coordinates
+     ((|x|)),((|y|)). Moves currentpoint to x,y.
+
+     * x: X position in user coordinates
+     * y: Y position in user coordinates
+     * Returns: nil on success, otherwise raises an
+       exception of Gnome::PrintError
+
+--- new_path
+
+     Resets currentpath to empty path. As currentpoint is
+     defined as the last point of open path segment, is also
+     erases currentpoint.
+     
+     * Returns: nil on success, otherwise raises an
+       exception of Gnome::PrintError
+
+--- pages
+
+    
+     * Returns: number of pages
+
+--- path(path, append=true)
+
+     Convenience method for Gnome::PrintContext#bpath and
+     Gnome::PrintContext#vpath.
+
+     * path: Art::Bpath or Art::Vpath
+     * append : Whether to append to currentpath
+     * Returns: nil on success, otherwise raises an
+       exception of Gnome::PrintError
+
+--- rect_filled(x, y, width, height)
+
+     A convenience function to draw a filled rectangle. Uses
+     Gnome::PrintContext#stroke to do the actual work.
+
+     * x: X position of origin of rectangle in user coordinates
+     * y: Y position of origin of rectangle in user coordinates
+     * width: Width of the rectangle
+     * height: Height of the rectangle
+     * Returns: nil on success, otherwise raises an
+       exception of Gnome::PrintError
+
+--- rect_stroked(x, y, width, height)
+
+     A convenience function to draw a rectangle. Uses
+     Gnome::PrintContext#stroke to do the actual work.
+     
+     * x: X position of origin of rectangle in user coordinates
+     * y: Y position of origin of rectangle in user coordinates
+     * width: Width of the rectangle
+     * height: Height of the rectangle
+     * Returns: nil on success, otherwise raises an
+       exception of Gnome::PrintError
+
+--- restore
+
+     
+     Retrieves last saved graphic state from stack
+     (pop). Stack has to be at least the size of one.
+
+     * Returns: nil on success, otherwise raises an
+       exception of Gnome::PrintError
+
+--- rgb_image(data, width, height, rowstride)
+
+     Draws RGB color image into unit square (0,0 - 1,1) in
+     current coordinate system. Image buffer has to be 3
+     bytes per pixel, order RGB, with value 255 marking
+     maximum and 0 minimum value.
+     
+     * data: Image pixel buffer (String)
+     * width: Image buffer width
+     * height: Image buffer height
+     * rowstride: Image buffer rowstride
+     * Returns: nil on success, otherwise raises an
+       exception of Gnome::PrintError
+
+--- rgba_image(data, width, height, rowstride)
+
+     Draws RGB color image with transparency channel image
+     into unit square (0,0 - 1,1) in current coordinate
+     system. Image buffer has to be 4 bytes per pixel, order
+     RGBA, with value 255 marking maximum and 0 minimum
+     value. Alpha value 255 means full opacity, 0 full
+     transparency.
+
+     * data: Image pixel buffer (String)
+     * width: Image buffer width
+     * height: Image buffer height
+     * rowstride: Image buffer rowstride     
+     * Returns: nil on success, otherwise raises an
+       exception of Gnome::PrintError
+
+--- rotate(theta)
+
+     Rotates user coordinate system theta degrees
+     counterclockwise.
+
+     * theta: Angle in degrees
+     * Returns: nil on success, otherwise raises an
+       exception of Gnome::PrintError
+
+--- save
+
+     Saves current graphic state (transformation, color,
+     line properties, font) into stack (push). Values itself
+     remain unchanged. You can later restore saved values,
+     using Gnome::PrintContext#restore, but not over page
+     boundaries. Graphic state stack has to be cleared for
+     each Gnome::PrintContext#showpage, i.e. the number of
+     Gnome::PrintContext#save has to match the number of
+     Gnome::PrintContext#restore for each page.
+     
+     Automatically restores if block given.
+     
+     * Returns: nil on success, otherwise raises an
+       exception of Gnome::PrintError
+
+--- scale(sx, sy)
+
+     Scales user coordinate system by given X and Y values.
+     
+     * sx: X scale
+     * sy: Y scale
+     * Returns: nil on success, otherwise raises an
+       exception of Gnome::PrintError
+
+--- set_dash(values, offset)
+
+     Sets line dashing to given pattern. If size of
+     ((|values|)) is odd, the result is, as if actual number
+     of segments is 2 times bigger, and 2 copies of dash arrays
+     concatenated. If size of ((|values|)) is 0, line is set
+     solid.
+     
+     Dash segment lengths are given in user
+     coordinates, so the actual dash lengths depend on CTM
+     at the time of Gnome::PrintContext#stroke or
+     Gnome::PrintContext#stroke_path. Dashing is always
+     uniform in all directions, regardless of the stretching
+     factor of CTM.
+     
+     Default is solid line.
+     
+     * values: Array of dash segment lengths
+     * offset: Line starting offset in dash
+     * Returns: nil on success, otherwise raises an
+       exception of Gnome::PrintError
+
+--- set_line_cap(cap_type)
+--- line_cap=(cap_type)
+
+     Sets cap type for line endpoints.
+     
+       * butt: Art::PATH_STROKE_CAP_BUTT 
+       * round: Art::PATH_STROKE_CAP_ROUND
+       * square: Art::PATH_STROKE_CAP_SQUARE
+     
+     Default cap type is butt.
+
+     * cap_type: Art::PATH_STROKE_CAP_BUTT,
+       Art::PATH_STROKE_CAP_ROUND or Art::PATH_STROKE_CAP_SQUARE
+     * Returns: nil on success, otherwise raises an
+       exception of Gnome::PrintError
+
+--- set_line_join(join_type)
+--- line_join=(join_type)
+
+     Sets join type for non-colinear line segments.
+     
+       * miter: Art::PATH_STROKE_JOIN_MITER
+       * round: Art::PATH_STROKE_JOIN_ROUND
+       * bevel: Art::PATH_STROKE_JOIN_BEVEL
+
+     Default join type is miter.
+
+     * join_type: Art::PATH_STROKE_JOIN_MITER,
+       Art::PATH_STROKE_JOIN_ROUND or Art::PATH_STROKE_JOIN_BEVEL
+     * Returns: nil on success, otherwise raises an
+       exception of Gnome::PrintError
+
+--- set_line_width(width)
+--- line_width=(width)
+
+     Sets line width in graphic state to given value. Value
+     is given in user coordinates, so effective line width
+     depends on CTM at the moment of Gnome::PrintContext#stroke or
+     Gnome::PrintContext#stroke_path. Line width is always uniform in
+     all directions, regardless of stretch factor of
+     CTM. Default line width is 1.0 in user coordinates.
+     
+     * width: Line width in user coordinates
+     * Returns: nil on success, otherwise raises an
+       exception of Gnome::PrintError
+
+--- set_miter_limit(limit)
+--- miter_limit=(limit)
+
+     Sets minimum angle between two lines, in which case
+     miter join is used. For smaller angles, join is
+     beveled. Default miter limit is 4 degrees.
+
+     * limit: Miter limit in degrees
+     * Returns: nil on success, otherwise raises an
+       exception of Gnome::PrintError
+
+--- set_opacity(opacity)
+--- opacity=(opacity)
+
+     Sets painting opacity in graphic state to given
+     value. Value is clamped to 0.0 - 1.0 region, 0.0
+     meaning full transparency and 1.0 completely opaque
+     paint.
+
+     * opacity: Opacity value
+     * Returns: nil on success, otherwise raises an
+       exception of Gnome::PrintError
+
+--- set_rgb_color(r, g, b)
+
+     
+     Sets color in graphic state to RGB triplet. This does
+     not imply anything about which colorspace is used
+     internally. Channel values are clamped to 0.0 - 1.0
+     region, 0.0 meaning minimum.
+
+     * r: Red channel value
+     * g: Green channel value
+     * b: Blue channel value
+     * Returns: nil on success, otherwise raises an
+       exception of Gnome::PrintError
+
+--- show(text)
+
+     Draws UTF-8 text at currentpoint, using current font
+     from graphic state. Input text is validated, and
+     Gnome::PrintError which has error code
+     Gnome::PrintReturnCode::ERROR_BADVALUE raised, if it is
+     not valid UTF-8. Both currentpath and currentpoint are
+     erased.
+     
+     In Ruby/GnomePrint, use Gnome::PrintPango interface
+     instead of this.
+     
+     * text: UTF-8 string
+     * Returns: nil on success, otherwise raises an
+       exception of Gnome::PrintError
+
+--- show_page
+
+     Finishes rendering of current page, and marks it as
+     shown. All subsequent drawing methods will fail, until
+     new page is started with
+     Gnome::PrintContext#begin_page. Printing
+     contexts may process drawing methods differently - some
+     do rendering immediately (like Gnome::PrintPreview), some
+     accumulate all operators to internal stack, and only
+     after Gnome::PrintContext#show_page is any output produced.
+     
+     * Returns: nil on success, otherwise raises an
+       exception of Gnome::PrintError
+
+--- show_sized(text, bytes)
+
+     Draws UTF-8 text at currentpoint, using current font
+     from graphic state. Input text is validated, and
+     Gnome::PrintError which has error code
+     Gnome::PrintReturnCode::ERROR_BADVALUE raised, if it is
+     not valid UTF-8. Both currentpath and currentpoint are
+     erased.
+
+     * text: UTF-8 text string
+     * bytes: Number of bytes to use from string     
+     * Returns: nil on success, otherwise raises an
+       exception of Gnome::PrintError
+
+--- stroke
+
+     Strokes currentpath, i.e. draws line along it, with
+     style, defined by current graphic state values. If
+     currentpath is empty, Gnome::PrintError is raised. And
+     the error has error code
+     Gnome::PrintReturnCode::ERROR_NOCURRENTPATH. Currentpath
+     is emptied by this function.
+     
+     * Returns: nil on success, otherwise raises an
+       exception of Gnome::PrintError
+
+--- stroke_path
+
+     
+     Converts currentpath to new path, that is identical to
+     area painted by gnome_print_stroke function, using
+     currentpath. I.e. strokepath followed by fill giver
+     result identical to stroke. If currentpath is empty,
+     raised Gnome::PrintError which has error code
+     Gnome::PrintReturnCode::ERROR_NOCURRENTPATH. Stroked
+     path is always closed, so currentpoint is erased.
+
+     * Returns: nil on success, otherwise raises an
+       exception of Gnome::PrintError
+
+--- translate(x, y)
+
+     Move the starting point of user coordinate system to
+     given point.
+
+     * x: New starting X
+     * y: New starting Y
+     * Returns: nil on success, otherwise raises an
+       exception of Gnome::PrintError
+
+--- vpath(vpath, append=true)
+
+     Adds all ((|vpath|)) line segments up to Art::END to
+     currentpath. If ((|append|)) is false, currentpath is cleared
+     first, otherwise segments are appended to existing
+     path. This is identical to adding all segments by hand,
+     so the final state of currentpoint depends on segments
+     processed.
+
+     See also Gnome::PrintContext#path.
+
+     * vpath: Arg::Vpath
+     * append: Whether to append to currentpath
+     * Returns: nil on success, otherwise raises an
+       exception of Gnome::PrintError
+
+--- circle_to
+
+     * Returns: self: ((*FIXME*))
+
+--- config
+
+    Gets the Config.
+     * Returns: Config
+
+--- config=(config)
+
+    Sets the Config.
+     * config: Config
+     * Returns: config
+
+--- create_layout
+
+    See Gnome::PrintPango#create_layout.
+
+--- filter
+
+    Gets the Filter.
+     * Returns: Filter
+
+--- filter=(filter)
+
+    Sets the Filter.
+     * filter: Filter
+     * Returns: filter
+
+--- glyph_string
+
+    See Gnome::PrintPango#glyph_string.
+
+--- layout
+
+    See Gnome::PrintPango#layout.
+
+--- layout_line
+
+    See Gnome::PrintPango#layout_line.
+
+--- rounded_rect
+
+     * Returns: self: ((*FIXME*))
+
+--- rounded_rect_filled
+
+     * Returns: self: ((*FIXME*))
+
+--- rounded_rect_stroked
+
+     * Returns: self: ((*FIXME*))
+
+--- set_config(config)
+
+    Same as config=.
+     * config: Config
+     * Returns: self
+
+--- set_filter(filter)
+
+    Same as filter=.
+     * filter: Filter
+     * Returns: self
+
+--- set_transport(transport)
+
+    Same as transport=.
+     * transport: Transport
+     * Returns: self
+
+--- transport
+
+    Gets the Transport.
+     * Returns: Transport
+
+--- transport=(transport)
+
+    Sets the Transport.
+     * transport: Transport
+     * Returns: transport
+
+--- update_context
+
+    See Gnome::PrintPango#update_context.
+
+== Properties
+
+--- config: Gnome::PrintConfig (Read/Write)
+
+    Config
+
+--- filter: Gnome::PrintFilter (Read/Write)
+
+    Filter
+
+--- transport: Gnome::PrintTransport (Read/Write)
+
+    Transport
+
+== See Also
+
+== ChangeLog
+
+* 2005-06-08 ((<kou>)): completed
+
+- ((<kou>))

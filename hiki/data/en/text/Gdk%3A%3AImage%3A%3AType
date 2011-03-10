@@ -1,0 +1,19 @@
+= class Gdk::Image::Type
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * Gdk::Image::Type
+
+== Constants
+
+--- FASTEST
+--- NORMAL
+--- SHARED
+
+== See Also
+
+== ChangeLog
+
+

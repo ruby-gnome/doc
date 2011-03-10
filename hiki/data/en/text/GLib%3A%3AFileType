@@ -1,0 +1,46 @@
+= class GLib::FileType
+
+Indicates the file’s on-disk type. 
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * GLib::FileType
+
+== Constants
+
+--- UNKNOWN
+
+     The file’s type is unknown
+
+--- REGULAR
+
+     The file handle represents a regular file
+
+--- DIRECTORY
+
+     The file handle represents a directory
+
+--- SYMBOLIC_LINK
+
+     The file handle represents a symbolic link (Unix systems)
+
+--- SPECIAL
+
+     The file is a “special” file, such as a socket, fifo, block device, or
+     character device
+
+--- SHORTCUT
+
+     The file is a shortcut (Windows systems)
+
+--- MOUNTABLE
+
+     The file is a mountable location
+
+== See Also
+
+== ChangeLog
+
+

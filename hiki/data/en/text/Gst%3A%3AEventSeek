@@ -1,0 +1,48 @@
+= class Gst::EventSeek
+
+A seek event.
+
+== Object Hierarchy
+
+* Object
+  * Gst::MiniObject
+    * Gst::Event
+      * Gst::EventSeek
+
+== Class Methods
+
+--- Gst::EventSeek.new(type, offset)
+
+    Allocates a new seek event with the given parameters.
+    Types (METHOD_) cam be OR'ed (|) with flags (FLAG_).
+    * type: an event seek type (see ((<GstSeekType|Gst::EventSeek#GstSeekType>))). 
+    * offset: an offset.  
+    * Returns: a newly allocated Gst::EventSeek object.
+
+== Instance Methods
+
+--- parse
+
+     * Returns: self: ((*FIXME*))
+
+== Constants
+
+=== GstSeekType
+
+--- FLAG_ACCURATE
+--- FLAG_FLUSH
+--- FLAG_KEY_UNIT
+--- FLAG_SEGMENT_LOOP
+--- METHOD_CUR
+--- METHOD_END
+--- METHOD_SET
+
+== See Also
+
+((<Gst::EventSegmentSeek>)), ((<Gst>)).
+
+- ((<lrz>))
+
+== ChangeLog
+
+

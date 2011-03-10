@@ -1,0 +1,5 @@
+= class GConf::ParseError
+This error class gets raised whenever a directory operation is performed on a key.
+
+== Super Class
+* GConf::Error

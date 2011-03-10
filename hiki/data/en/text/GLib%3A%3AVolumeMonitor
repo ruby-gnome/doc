@@ -1,0 +1,156 @@
+= class GLib::VolumeMonitor
+
+GLib::VolumeMonitor is for listing the user interesting devices and volumes on
+the computer. In other words, what a file selector or file manager would show
+in a sidebar.
+
+GLib::VolumeMonitor is not thread-default-context aware, and so should not be
+used other than from the main thread, with no thread-default-context active. 
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::VolumeMonitor
+
+== Class Methods
+
+--- GLib::VolumeMonitor.get
+
+     Gets the volume monitor used by GIO.
+
+     * Returns: The GLib::VolumeMonitor used by GIO
+
+== Instance Methods
+
+--- connected_drives
+
+     Gets an Array of drives connected to the system.
+
+     * Returns: An Array of connected GLib::Drive objects
+
+--- get_mount_for_uuid(uuid)
+
+     Finds a GLib::Mount object by its UUID (see GLib::Mount#uuid).
+
+     * uuid: The UUID to look for
+     * Returns: A GLib::Mount, or nil if no such mount is available
+
+--- get_volume_for_uuid(uuid)
+
+     Finds a GLib::Volume object by its UUID (see GLib::Volume#uuid).
+
+     * uuid: The UUID to look for
+     * Returns: A GLib::Volume, or nil if no such volume is available
+
+--- mounts
+
+     Gets an Array of the mounts on the system.
+
+     * Returns: An Array of GLib::Mount objects
+
+--- volumes
+
+     Gets an array of the volumes on the system.
+
+     * Returns: An Array of GLib::Volume objects
+
+
+== Constants
+
+--- EXTENSION_POINT_NAME
+
+     Extension point for volume monitor functionality. See Extending GIO. 
+
+== Signals
+
+--- drive-changed: self, drive
+
+     This signal is emitted when a drive changes.
+
+     * self: The GLib::VolumeMonitor that’s emitting the signal
+     * drive: The GLib::Drive that changed 
+
+--- drive-connected: self, drive
+
+     This signal is emitted when a drive is connected.
+
+     * self: The GLib::VolumeMonitor that’s emitting the signal
+     * drive: The GLib::Drive that was connected
+
+--- drive-disconnected: self, drive
+
+     This signal is emitted when a drive is disconnected.
+
+     * self: The GLib::VolumeMonitor that’s emitting the signal
+     * drive: The GLib::Drive that was discconnected
+
+--- drive-eject-button: self, drive
+
+     This signal is emitted when a drive’s eject button is pressed.
+
+     * self: The GLib::VolumeMonitor that’s emitting the signal
+     * drive: The GLib::Drive whose eject button was pressed
+
+--- drive-stop-button: self, drive
+
+     This signal is emitted when a drive’s stop button is pressed.
+
+     * self: The GLib::VolumeMonitor that’s emitting the signal
+     * drive: The GLib::Drive whose stop button was pressed
+
+--- mount-added: self, mount
+
+     This signal is emitted when a mount is added.
+
+     * self: The GLib::VolumeMonitor that’s emitting the signal
+     * mount: The GLib::Mount that was added
+
+--- mount-changed: self, mount
+
+     This signal is emitted when a mount is changed.
+
+     * self: The GLib::VolumeMonitor that’s emitting the signal
+     * mount: The GLib::Mount that was changed
+
+--- mount-pre-unmount: self, mount
+
+     This signal is emitted when a mount is about to be removed.
+
+     * self: The GLib::VolumeMonitor that’s emitting the signal
+     * mount: The GLib::Mount that is being unmounted
+
+--- mount-removed: self, mount
+
+     This signal is emitted when a mount is removed.
+
+     * self: The GLib::VolumeMonitor that’s emitting the signal
+     * mount: The GLib::Mount that was removed
+
+--- volume-added: self, volume
+
+     This signal is emitted when a volue is added.
+
+     * self: The GLib::VolumeMonitor that’s emitting the signal
+     * volume: The GLib::Volume that was added
+
+--- volume-changed: self, volume
+
+     This signal is emitted when a volue is changed.
+
+     * self: The GLib::VolumeMonitor that’s emitting the signal
+     * volume: The GLib::Volume that was changed
+
+--- volume-removed: self, volume
+
+     This signal is emitted when a volue is removed.
+
+     * self: The GLib::VolumeMonitor that’s emitting the signal
+     * volume: The GLib::Volume that was removed
+
+== See Also
+
+== ChangeLog
+
+

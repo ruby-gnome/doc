@@ -1,0 +1,11 @@
+= module Gtk::DomAbstractView
+
+== Included Modules
+
+  * GLib::Interface
+
+== See Also
+
+== ChangeLog
+
+

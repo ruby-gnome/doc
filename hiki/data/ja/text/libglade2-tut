@@ -1,0 +1,77 @@
+= Glade, Ruby/Libglade2チュートリアル
+
+== はじめに
+((<Glade|URL:http://glade.gnome.org/>))はGNOME向けのGUIビルダです。もともとC言語向けだったのですが、Gladeが生成するGUI情報が記述されたXMLファイル(Glade XMLファイル)とLibgladeを使うことで、C言語以外の言語からも簡単に使うことができるようになりました。Rubyでも、Ruby/Libglade2経由で使うことができます。
+
+Gladeは地域化(L10n:Localization)((-地域化(Localization、L10n、ローカライズ)：　プログラムを使用される国や地域に合わせてカスタマイズすること。ここでは、プログラム内で使用される固定テキスト（メッセージと呼ぶ）を特定地域向けに翻訳したものを用意すること。-))のためのフレームワーク(GetTextベース)を持っています。GTK+も国際化(I18n:Internationalization)((-国際化(Internationalization、I18n)：　プログラムを簡単に地域化できる構造にすること。具体的には、ソースコードを改変せずに地域化することを可能にする等。-))されたGUIツールキットであり、この2つのを組み合わせることで国際化アプリケーションを簡単に開発することができます。Glade/GTK+とRubyであなたのGUIアプリケーションを世界に発信しましょう！
+
+{{br}}
+
+本チュートリアルでは、Glade, Ruby-GNOME2(Ruby/Libglade2, Ruby/GTK)を用いたGUIアプリケーションの開発手順を説明します。
+
+また同時に、((<Ruby-GetText-Package|URL:http://ponx.s5.xrea.com/hiki/ja/ruby-gettext.html>))を利用した、地域化（L10n）されたアプリケーションの開発手順についても説明します。
+
+== 目次
+=== まずはGladeでGUIの雛形をつくる
+最初にGladeを使ってGUIの雛形を作ります。Gladeの使い方を知っている方はこの章を読み飛ばしていただいて構いません。
+* ((<Gladeのインストール|libglade2-tut-install>))
+* ((<Gladeの起動 - 英語モードで！|libglade2-tut-run>))
+   * MS Windowsの場合
+   * Linux/FreeBSDの場合
+* ((<プロジェクトの新規作成とGladeウインドウの説明|libglade2-tut-create-newprj>))
+   * プロジェクトの新規作成
+   * Gladeウインドウの説明
+      * メインウインドウ
+      * ウィジェットパレットウインドウ
+      * プロパティウインドウ
+* ((<Gladeでテキストエディタを作ってみよう|libglade2-tut-textedit>))
+   * ((<プライマリ（メイン）ウィンドウを作る|libglade2-tut-mainwindow>))
+      * Widgetタブ
+      * Signalsタブ
+   * ((<コンテナウィジェットを追加する|libglade2-tut-container>))
+   * ((<メニューを追加する|libglade2-tut-menu>))
+      * メニューアイテムの編集
+   * ((<テキストエディタ(Gtk::TextView)を追加する|libglade2-tut-textview>))
+   * ((<各種ダイアログを作る|libglade2-tut-dialogs>))
+      * ファイル選択ダイアログ
+      * Aboutダイアログ
+* ((<プロジェクトの保存|libglade2-tut-save>))
+
+=== Ruby/Libglade2でGUIの雛形に命を吹き込む
+ここから、われらがRuby/Libgladeの登場です。
+
+* ((<テンプレートの生成|libglade2-tut-create-template>))
+   * MS Windowsの場合
+   * Linux/FreeBSDの場合
+   * テンプレートを実行する
+
+* ((<テンプレートの参照|libglade2-tut-about-template>))
+* ((<テンプレートからソースコード(Rubyスクリプト)へ|libglade2-tut-create-src>))
+   * まずはコピペ
+   * イベントハンドラの実装
+
+* ((<Localization(L10n): 文字列の地域化|libgade2-tut-l10n>))
+   * ソースコード(Rubyスクリプト)をL10n対応させる
+   * rgettextによるカタログファイルのひな型(potファイル)の抽出
+   * ロケール別メッセージカタログ（poファイル）の作成
+   * メッセージカタログのバイナリ化（moファイルの作成）とインストール
+
+* ((<setup.rbを用いた開発|libglade2-tut-setup>))
+   
+* ((<その他のTips|libglade2-tut-tips>))
+   * Gtk::Object#destroyはしないように
+   * プロジェクトの単位
+
+=== 参考文献
+   * GLADEホームページ - ((<URL:http://glade.gnome.org/>))
+   * GNOME Human Interface Guidelines - ((<URL:http://library.gnome.org/devel/hig-book/>)){{br}}{{br}}
+   * GTK/GNOMEによるGUIプログラミング - Sugaya's PukiWiki - ((<URL:http://www.iim.ics.tut.ac.jp/~sugaya/wiki/wiki/index.php?GTK%2FGNOME%A4%CB%A4%E8%A4%EBGUI%A5%D7%A5%ED%A5%B0%A5%E9%A5%DF%A5%F3%A5%B0>)){{br}}{{br}}
+   * Ruby-GetText-Package - よたらぼ 保管庫 - ((<URL:http://www.yotabanana.com/hiki/ja/ruby-gettext.html?ruby-gettext>))
+   * FFTT : ruby-gettext - ((<URL:http://tech.feedforce.jp/ruby-gettext.html>))
+   * (書籍)Inside Linux Software オープンソースソフトウェアのからくりとしくみ - ((<URL:http://www.seshop.com/Detail.asp?pid=7679>))
+
+=== ChangeLog
+* 2004/11/08 ((<むとう>))
+   * 新規作成
+* 2008/09/24〜 ((<きたがわ>))
+   * 改訂・加筆　（とりあえず大がかりな更新は終了しました。情報を訂正・追加したい方はぜひどうぞ。）

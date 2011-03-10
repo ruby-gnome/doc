@@ -1,0 +1,21 @@
+= class GLib::Mount::MountFlags
+
+Flags used when mounting a mount. 
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * GLib::Mount::MountFlags
+
+== Constants
+
+--- NONE
+
+     No flags set
+
+== See Also
+
+== ChangeLog
+
+

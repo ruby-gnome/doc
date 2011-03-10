@@ -1,0 +1,8 @@
+= Conclusion
+{{link("tut-gst-helloworld", nil, "tut-gst", "tut-gst-helloworld-problem")}}
+
+This concludes our first example. As you see, setting up a pipeline is very low-level but powerful. You will see later in this manual how you can create a custom MP3 element with a higher-level API.
+
+It should be clear from the example that we can very easily replace the filesrc element with an httpsrc element, giving you instant network streaming. An element could be built to handle icecast connections, for example.
+
+We can also choose to use another type of sink instead of the audiosink. We could use a disksink to write the raw samples to a file, for example. It should also be clear that inserting filters, like a stereo effect, into the pipeline is not that hard to do. The most important thing is that you can reuse already existing elements.

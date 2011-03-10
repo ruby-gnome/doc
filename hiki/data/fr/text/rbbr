@@ -1,0 +1,45 @@
+= rbbr - Navigateur Ruby
+rbbr est une application pour naviguer dans la hiérarchie de modules/classes et leurs constantes et méthodes.
+
+== Captures d'écran
+* Fenêtre principale - {{attach_anchor("rbbr-fr.png")}}.
+* Navigateur d'icônes et d'éléments prédéfinis - {{attach_anchor("rbbr-stock-fr.png")}}.
+
+== Téléchargement
+Allez voir ((<URL:http://sourceforge.net/project/showfiles.php?group_id=53614>)).
+
+== Requis
+* ruby 1.8.0 ou supérieur
+* Ruby/GTK2 0.6.0 ou supérieur
+* (optionnel) Documents de l'API Ruby-GNOME2 en RD+ ((<URL:http://ruby-gnome2.sourceforge.jp/data/ruby-gnome2-api.tar.gz>)).  Ils sont inclus dans l'archive rbbr-withapi. 
+* (optionnel) Ruby-GetText 0.5.2 ou supérieur pour l'internationalisation du programme ((<URL:http://ponx.s5.xrea.com/hiki/ruby-gettext.html>))
+* (optionnel) ri 0.8a ((<URL:http://raa.ruby-lang.org/list.rhtml?name=ri>))
+* (optionnel) ReFe 0.7.1 ou supérieur (Japonais uniquement) ((<URL:http://www.loveruby.net/en/refe.html>))
+
+== Installation
+(1)Installez les paquetages Ruby-GetText, ri et ReFe (optionnel).
+(2)Décompressez ruby-gnome2-api.tar.gz (optionnel) et l'archive de rbbr.
+(3)Copiez ruby-gnome2-api/* dans (répertoire de base de rbbr)/data/rbbr/rd/* (optionnel).
+(4)Allez dans le répertoire de base de rbbr et entrez:
+
+ $ ruby install.rb config
+ $ ruby install.rb setup
+ ($ su)
+ # ruby install.rb install
+
+Vous pouvez aussi installer les fichiers dans un répertoire particulier en donnant des options supplémentaires à install.rb. Essayez "ruby setup.rb --help".
+
+== Comment obtenir la référence de l'API Ruby-GNOME2
+Vous pouvez obtenir l'archive de la nuit dernière à l'adresse suivante:
+
+((<URL:http://ruby-gnome2.sourceforge.jp/data/ruby-gnome2-api.tar.gz>))
+
+Et vous pouvez l'utiliser pour écraser les anciennes données installées dans (répertoire des données partagées)/rbbr/rd/.
+
+== Utilisation
+Lancez la commande suivante:
+
+   $ rbbr
+
+== Licence
+Ce programme est un logiciel libre. Vous pouvez le distribuer/modifier sous les termes de la licence de distribution Ruby.

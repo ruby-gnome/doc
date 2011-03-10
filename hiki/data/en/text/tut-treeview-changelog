@@ -1,0 +1,65 @@
+= Changelog
+{{link "tut-treeview-license-credits", nil, "tut-treeview", nil}}
+
+== Ruby Adaption
+:2004-4-10 Joao Pedrosa
+
+Fixed what I think was a redundant paragraph, probably caused by bad copy/paste in the last paragraph of the "Cell Renderers" section.
+
+:2003-12-03 Matthew Berg
+
+Extended "How to Make a Whole Row Bold or Coloured" section and added a code example
+
+:2003-11-23 Matthew Berg
+
+More minor language changes
+
+Restored cell data function sections
+
+:2003-11-22 Matthew Berg
+
+Terminology and formatting fixes suggested by Masao.
+
+:2003-11-20 Matthew Berg
+
+Removed references to "get selected rows" and "count selected rows" methods until such time as they are implemented
+
+Simplified some examples to focus more squarely on the topic being discussed
+
+:2003-11-19 Matthew Berg
+
+Removed references to "cell data func" until such time as its implemented
+
+Removed paragraph explaining inheritence, since that's to be assumed with Ruby 
+
+:2003-11-16 Matthew Berg
+
+Initial release 
+
+Removed references to custom models 
+ 
+Changed references from C functions to Ruby methods
+
+== Original Document
+:2003-10-28 Tim-Philipp Müller
+Editable cells will work fine even if selection is set to GTK_SELECTION_NONE. Removed sentences that say otherwise.
+
+:2003-10-23 Tim-Philipp Müller
+Fix 'jumpy' selections in custom model GtkTreeSortable interface implementation. gtk_tree_model_rows_reordered() does not seem to work like the API reference implies (see bug #124790)
+
+Added section about how to get the cell renderer a button click happened on
+
+Added section about editable cells with spin buttons (and a CellRendererSpin implementation to the examples)
+
+:2003-10-10 Tim-Philipp Müller
+Make custom model GtkTreeSortable implementation emit "sort-column-changed" signal when sortid is changed
+
+Fixed code typo in selection function section; added a paragraph about rule hint to 'make whole row coloured or bold' section
+
+:2003-10-07 Tim-Philipp Müller
+Reformatted source code to make it fit on pages when generating ps/pdf output
+
+Added link to PDF and docbook XML versions.
+
+:2003-09-23 Tim-Philipp Müller
+Initial Release

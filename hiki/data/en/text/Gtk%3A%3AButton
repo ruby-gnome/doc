@@ -1,0 +1,410 @@
+= class Gtk::Button
+
+The Gtk::Button widget is generally used to attach a function to that is called when the button is pressed. The various signals and how to use them are outlined below. 
+
+The Gtk::Button widget can hold any valid child widget. That is it can hold most any other standard Gtk::Widget. The most commonly used child is the Gtk::Label. 
+
+((<URL:http://library.gnome.org/devel/gtk/stable/button.png>))
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::InitiallyUnowned
+        * Gtk::Object
+          * Gtk::Widget
+            * Gtk::Container
+              * Gtk::Bin
+                * Gtk::Button
+
+== Included Modules
+
+  * #<Module:0x7fd7f0570268>
+
+== Class Methods
+
+--- Gtk::Button.new
+
+    Creates a Gtk::Button widget.
+    * Returns: The newly created Gtk::Button widget.
+
+--- Gtk::Button.new(text, use_underline = true)
+
+    Creates a Gtk::Button widget with a Gtk::Label child containing the given text.
+    * text: The text you want the Gtk::Label to hold.  
+    * use_underline: If true and characters in label are preceded by an underscore, they are underlined. If you need a literal underscore character in a label, use '__' (two underscores). The first underlined character represents a keyboard accelerator called a mnemonic. Pressing Alt and that key activates the button.
+    * Returns: The newly created Gtk::Button widget.
+
+--- Gtk::Button.new(stock_id)
+
+    Creates a new Gtk::Button containing the image and text from a stock item(constants of Gtk::Stock). For example, Gtk::Stock::OK, Gtk::Stock::APPLY. 
+    * Returns: The newly created Gtk::Button widget.
+
+== Instance Methods
+
+--- pressed
+
+    Emits a 'pressed' signal to itself. 
+    * Returns: self
+    * Returns: self
+
+--- released
+
+    Emits a 'released' signal to itself. 
+    * Returns: self
+
+--- clicked
+
+    Emits a 'clicked' signal to itself. 
+    * Returns: self
+
+--- enter
+
+    Emits a 'enter' signal to itself. 
+    * Returns: self
+
+--- leave
+
+    Emits a 'leave' signal to itself. 
+    * Returns: self
+
+--- activate
+
+    Emits a 'activate' signal to itself.
+    * Returns: self
+
+--- relief
+
+    Returns the current relief style of the given Gtk::Button. 
+    * Returns: The current ((<GtkReliefStyle|Gtk#GtkReliefStyle>))
+
+--- relief=(newstyle)
+
+    Sets the relief style of the edges of the given Gtk::Button widget. Three styles exist, Gtk::RELIEF_NORMAL, Gtk::RELIEF_HALF, Gtk::RELIEF_NONE. The default style is, as one can guess, Gtk::RELIEF_NORMAL.     
+    * newstyle: The ((<GtkReliefStyle|Gtk#GtkReliefStyle>)) as described above.  
+    * Returns: newstyle
+
+--- set_relief(newstyle)
+
+    Same as Gtk::Button#relief=.
+    * newstyle: The GtkReliefStyle.
+    * Returns: self
+
+--- label
+
+    Fetches the text from the label of the button, as set by Gtk::Button#label=. If the label text has not been set the return value will be nil. This will be the case if you create an empty button with Gtk::Button.new to use as a container.
+    * Returns: The text of the label widget.
+
+--- label=(text)
+
+    Sets the text of the label of the button to str. This text is also used to select the stock item if Gtk::Button#use_stock= is used. 
+    This will also clear any previously set labels.
+    * text: a string for the label text, a constant of Gtk::Stock for the stock item.
+    * Returns: text
+
+--- set_label(text)
+
+    Same as Gtk::Button#label=.
+    * text: a string for the label text, a constant of Gtk::Stock for the stock item.
+    * Returns: self
+
+--- use_stock?
+
+    Returns whether the button label is a stock item.
+
+--- use_stock=(use_stock)
+
+    If true, the label set on the button is used as a stock id to select the stock item for the button.
+    * use_stock: true if the button should use a stock item  
+    * Returns: use_stock
+
+--- set_use_stock(use_stock)
+
+    Same as Gtk::Button#use_stock=.
+    * use_stock: true if the button should use a stock item  
+    * Returns: self
+
+--- use_underline?
+
+    Returns whether an embedded underline in the button label indicates a mnemonic. See Gtk::Button#use_underline=.
+    * Returns: true if an embedded underline in the button label indicates the mnemonic accelerator keys.
+
+--- use_underline=(use_underline)
+
+    If true, an underline in the text of the button label indicates the next character should be used for the mnemonic accelerator key.
+    * use_underline: true if underlines in the text indicate mnemonics  
+    * Returns: use_underline
+
+--- set_use_underline(use_underline)
+
+    Same as Gtk::Button#use_underline=.
+    * use_underline: true if underlines in the text indicate mnemonics  
+    * Returns: self
+
+--- focus_on_click?
+
+    Returns whether the button grabs focus when it is clicked with the mouse. See Gtk::Button#focus_on_click=. ((* Since 2.4 *))
+    * Returns: true if the button grabs focus when it is clicked with the mouse
+
+--- focus_on_click=(focus_on_click)
+
+    Sets whether the button will grab focus when it is clicked with the mouse. Making mouse clicks not grab focus is useful in places like toolbars where you don't want the keyboard focus removed from the main area of the application. ((* Since 2.4 *))
+    * focus_on_click: true if the button grabs focus when clicked with the mouse
+    * Returns: focus_on_click
+
+--- set_focus_on_click(focus_on_click)
+
+    Same as Gtk::Button#focus_on_click=. ((* Since 2.4 *))
+    * focus_on_click: true if the button grabs focus when clicked with the mouse
+    * Returns: self
+
+--- alignment
+
+    Gets the alignment of the child in the button. ((* Since 2.4 *))
+    * Returns: [xalign, yalign]
+      * xalign : horizontal alignment  
+      * yalign : vertical alignment
+
+--- set_alignment(xalign, yalign)
+
+    Sets the alignment of the child. This property has no effect unless the child is a Gtk::Misc or a Gtk::Alignment. ((* Since 2.4 *))
+    * xalign: the horizontal position of the child, 0.0 is left aligned, 1.0 is right aligned (Float)
+    * yalign: the vertical position of the child, 0.0 is top aligned, 1.0 is bottom aligned (Float)
+    * Returns: self
+
+--- xalign
+
+    Gets the horizontal position of child in available space. 0.0 is left aligned, 1.0 is right aligned. ((* Since 2.4 *))
+    * Returns: the horizontal position of the child, 0.0 is left aligned, 1.0 is right aligned (Float)
+
+--- xalign=(xalign)
+
+    Sets the Horizontal position of child in available space. 0.0 is left aligned, 1.0 is right aligned. ((* Since 2.4 *))
+    * xalign: the horizontal position of the child, 0.0 is left aligned, 1.0 is right aligned (Float)
+    * Returns: xalign
+
+--- set_xalign(xalign)
+
+    Same as Gtk::Button#xalign=. ((* Since 2.4 *))
+    * xalign: the horizontal position of the child, 0.0 is left aligned, 1.0 is right aligned (Float)
+    * Returns: self
+
+--- yalign
+
+    Gets the vertical position of child in available space. 0.0 is left aligned, 1.0 is right aligned. ((* Since 2.4 *))
+    * Returns: the vertical position of the child, 0.0 is left aligned, 1.0 is right aligned (Float)
+
+--- yalign=(yalign)
+
+    Sets the vertical position of child in available space. 0.0 is left aligned, 1.0 is right aligned. ((* Since 2.4 *))
+    * yalign: the vertical position of the child, 0.0 is left aligned, 1.0 is right aligned (Float)
+    * Returns: yalign
+
+--- set_yalign(yalign)
+
+    Same as Gtk::Button#yalign=. ((* Since 2.4 *))
+    * yalign: the vertical position of the child, 0.0 is left aligned, 1.0 is right aligned (Float)
+    * Returns: self
+
+--- image
+
+    Gets the Child widget to appear next to the button text. ((* Since 2.6 *))
+     * Returns: Child widget to appear next to the button text
+
+--- image=(image)
+
+    Set the image of button to the given widget. Note that it depends on the gtk-button-images setting whether the image will be displayed or not, you don't have to call Gtk::Widget#show on image yourself. ((* Since 2.6 *))
+     * image: a Gtk::Widget to set as the image for the button 
+     * Returns: image
+
+--- set_image(image)
+
+    Same as Gtk::Button#image=. ((* Since 2.6 *))
+    * image: a Gtk::Widget to set as the image for the button 
+    * Returns: self
+
+--- image_position
+
+    Gets the position of the image relative to the text inside the button. ((*Since 2.10*))
+    * Returns: the position (Gtk#GtkPositionType)
+
+--- image_position=(pos)
+
+    Sets the position of the image relative to the text inside the button. ((*Since 2.10*))
+    * Returns: pos
+
+--- set_image_position(pos)
+
+    Same as Gtk::Button#image_position=. ((*Since 2.10*))
+    * Returns: self
+
+--- ref_accessible
+
+    See Atk::Implementor#ref_accessible.
+
+--- add_child
+
+    See Gtk::Buildable#add_child.
+
+--- construct_child
+
+    See Gtk::Buildable#construct_child.
+
+--- get_internal_child
+
+    See Gtk::Buildable#get_internal_child.
+
+--- name
+
+    See Gtk::Buildable#name.
+
+--- name=
+
+    See Gtk::Buildable#name=.
+
+--- set_buildable_property
+
+    See Gtk::Buildable#set_buildable_property.
+
+--- set_name
+
+    See Gtk::Buildable#set_name.
+
+--- builder_name
+
+    See Gtk::Buildable#builder_name.
+
+--- builder_name=
+
+    See Gtk::Buildable#builder_name=.
+
+--- set_builder_name
+
+    See Gtk::Buildable#set_builder_name.
+
+== Properties
+
+--- focus-on-click: true or false (Read/Write)
+
+    Whether the button grabs focus when it is clicked with the mouse
+    * Default value: true
+
+--- image: Gtk::Widget (Read/Write)
+
+    Child widget to appear next to the button text
+
+--- image-position: Gtk#GtkPositionType (Read/Write)
+
+    The position of the image relative to the text inside the button. ((*Since 2.10*))
+    * Default value: Gtk#POS_LEFT
+
+--- label: String (Read/Write)
+
+    Text of the label widget inside the button, if the button contains a label widget
+    * Default value: nil
+
+--- relief: Gtk#GtkReliefStyle (Read/Write)
+
+    The border relief style
+    * Default value: Gtk::RELIEF_NORMAL
+
+--- use-stock: true or false (Read/Write)
+
+    If set, the label is used to pick a stock item instead of being displayed
+    * Default value: false
+
+--- use-underline: true or false (Read/Write)
+
+    If set, an underline in the text indicates the next character should be used for the mnemonic accelerator key
+    * Default value: false
+
+--- xalign: Float (Read/Write)
+
+    Horizontal position of child in available space. 0.0 is left aligned, 1.0 is right aligned. ((* Since 2.4 *))
+    * Allowed values: [0,1]
+    * Default value: 0.5
+
+--- yalign: Float (Read/Write)
+
+    Vertical position of child in available space. 0.0 is top aligned, 1.0 is bottom aligned. ((* Since 2.4 *))
+    * Allowed values: [0,1]
+    * Default value: 0.5
+
+== Style Properties
+
+--- child-displacement-x: Integer (Read)
+
+    How far in the x direction to move the child when the button is depressed
+    * Default value: 0
+
+--- child-displacement-y: Integer (Read)
+
+    How far in the y direction to move the child when the button is depressed
+    * Default value: 0
+
+--- default-border: Gtk::Border (Read)
+
+    Extra space to add for CAN_DEFAULT buttons
+
+--- default-outside-border: Gtk::Border (Read)
+
+    Extra space to add for CAN_DEFAULT buttons that is always drawn outside the border
+
+--- displace-focus: true or false (Read)
+
+    Whether the child_displacement_x/_y properties should also affect the focus rectangle. ((* Since 2.6 *))
+    * Default value: false
+
+--- inner-border: Gtk::Border (Read)
+
+    Border between button edges and child. ((* Since 2.10 *))
+
+--- image-spacing: Integer (Read)
+
+    Spacing in pixels between the image and label
+
+== Signals
+
+--- activate: self
+
+    The "activate" signal on Gtk::Button is an action signal and emitting it causes the button to animate press then release. Applications should never connect to this signal, but use the "clicked" signal.
+    * self: Gtk::Button
+
+--- clicked: self
+
+    Emitted when the button has been activated (pressed and released).
+    
+    Emitted when a button clicked on by the mouse and the cursor stays on the button. If the cursor is not on the button when the mouse button is released, the signal is not emitted. 
+    * self: Gtk::Button
+
+--- enter: self
+
+    Emitted when the mouse cursor enters the region of the button. 
+    ((* Deprecated: Use the GtkWidget::enter-notify-event signal. *))
+    * self: Gtk::Button
+
+--- leave: self
+
+    Emitted when the mouse cursor leaves the region of the button. 
+    ((* Deprecated: Use the GtkWidget::leave-notify-event signal. *))
+    * self: Gtk::Button
+
+--- pressed: self
+
+    Emitted when the button is initially pressed. 
+    ((* Deprecated: Use the GtkWidget::button-press-event signal. *))
+    * self: Gtk::Button
+
+--- released: self
+
+    Emitted when a button which is pressed is released, no matter where the mouse cursor is.
+    ((* Deprecated: Use the GtkWidget::button-release-event signal.*))
+    * self: Gtk::Button
+
+== See Also
+
+== ChangeLog
+
+* 2007-01-31 Applied GTK+-2.10. - ((<Masao>))
+* 2006-01-27 Applied GTK+-2.6. Revised. - ((<Masao>))

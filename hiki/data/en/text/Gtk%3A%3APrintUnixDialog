@@ -1,0 +1,319 @@
+= class Gtk::PrintUnixDialog
+
+Gtk::PrintUnixDialog implements a print dialog for platforms
+which don't provide a native print dialog, like Unix. It can
+be used very much like any other GTK+ dialog, at the cost of
+the portability offered by ((<Gtk::PrintOperation>))
+
+In order to print something with Gtk::PrintUnixDialog, you
+need to use Gtk::PrintUnixDialog#selected_printer to
+obtain a Gtk::Printer object and use it to construct a
+Gtk::PrintJob using Gtk::PrintJob.new.
+
+Gtk:PrintUnixDialog uses the following response values:
+* Gtk::Dialog::RESPONSE_OK: for the "Print" button
+* Gtk::Dialog::RESPONSE_APPLY: for the "Preview" button
+* Gtk::Dialog::RESPONSE_CANCEL: for the "Cancel" button
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::InitiallyUnowned
+        * Gtk::Object
+          * Gtk::Widget
+            * Gtk::Container
+              * Gtk::Bin
+                * Gtk::Window
+                  * Gtk::Dialog
+                    * Gtk::PrintUnixDialog
+
+== Class Methods
+
+--- Gtk::PrintUnixDialog.new(title=nil, parent=nil)
+
+     Creates a new Gtk::PrintUnixDialog. ((* Since 2.10 *))
+
+     * title: Title of the dialog, or nil
+     * parent: Transient parent of the dialog, or nil
+     * Returns: a new Gtk::PrintUnixDialog
+
+== Instance Methods
+
+--- add_custom_tab(child, tab_label)
+
+     Adds a custom tab to the print dialog.((* Since 2.10 *))
+     * child: the Gtk::Widget to put in the custom tab
+     * tab_label: the Gtk::Widget to use as tab label
+
+--- manual_capability=(capabilities)
+
+     This lets you specify the printing capabilities your
+     application supports. For instance, if you can handle
+     scaling the output then you pass
+     Gtk::PrintUnixDialog::CAPABILITY_SCALE. If you don't pass that,
+     then the dialog will only let you select the scale if
+     the printing system automatically handles scaling.((* Since 2.10 *))
+     * capabilities: the printing capabilities of your application (Gtk::PrintUnixDialog#Capabilities)
+     * Returns: capabilities
+
+--- set_manual_capability(capabilities)
+
+     Same as manual_capabilities=.((* Since 2.10 *))
+     * capabilities: the printing capabilities of your application (Gtk::PrintUnixDialog#Capabilities)
+     * Returns: self
+
+--- settings
+
+     Gets a new Gtk::PrintSettings object that represents the
+     current values in the print dialog. Note that this creates a new object. ((* Since 2.10 *))
+     * Returns: a new Gtk::PrintSettings object with the values from self
+
+--- settings=(settings)
+
+     Sets the Gtk::PrintSettings for the Gtk::PrintUnixDialog. Typically,
+     this is used to restore saved print settings from a previous print
+     operation before the print dialog is shown.((* Since 2.10 *))
+     * settings: a Gtk#PrintSettings, or nil
+     * Returns: settings
+
+--- set_settings(settings)
+
+     Same as #settings=. ((* Since 2.10 *))
+     * settings: a Gtk#PrintSettings, or nil
+     * Returns: self
+
+--- current_page
+
+    Gets the current page in the document.((* Since 2.10 *))
+     * Returns: The current page in the document
+
+--- current_page=(current_page)
+
+    Sets the current page in the document.((* Since 2.10 *))
+     * current_page: The current page in the document
+     * Returns: current_page
+
+--- set_current_page(current_page)
+
+    Same as current_page=.((* Since 2.10 *))
+     * current_page: The current page in the document
+     * Returns: self
+
+--- page_setup
+
+    Gets the Gtk::PageSetup to use.((* Since 2.10 *))
+     * Returns: The Gtk::PageSetup to use
+
+--- page_setup=(page_setup)
+
+    Sets the Gtk::PageSetup to use.((* Since 2.10 *))
+     * page_setup: The Gtk::PageSetup to use
+     * Returns: page_setup
+
+--- set_page_setup(page_setup)
+
+    Same as page_setup=.((* Since 2.10 *))
+     * page_setup: The Gtk::PageSetup to use
+     * Returns: self
+
+--- print_settings
+
+    Gets the Gtk::PrintSettings used for initializing the dialog.((* Since 2.10 *))
+     * Returns: The Gtk::PrintSettings used for initializing the dialog
+
+--- print_settings=(print_settings)
+
+    Sets the Gtk::PrintSettings used for initializing the dialog.((* Since 2.10 *))
+     * print_settings: The Gtk::PrintSettings used for initializing the dialog
+     * Returns: print_settings
+
+--- set_print_settings(print_settings)
+
+    Same as print_settings=.((* Since 2.10 *))
+     * print_settings: The Gtk::PrintSettings used for initializing the dialog
+     * Returns: self
+
+--- selected_printer
+
+    Gets the Gtk::Printer which is selected.((* Since 2.10 *))
+     * Returns: The Gtk::Printer which is selected
+
+--- ref_accessible
+
+    See Atk::Implementor#ref_accessible.
+
+--- add_child
+
+    See Gtk::Buildable#add_child.
+
+--- construct_child
+
+    See Gtk::Buildable#construct_child.
+
+--- get_internal_child
+
+    See Gtk::Buildable#get_internal_child.
+
+--- name
+
+    See Gtk::Buildable#name.
+
+--- name=
+
+    See Gtk::Buildable#name=.
+
+--- set_buildable_property
+
+    See Gtk::Buildable#set_buildable_property.
+
+--- set_name
+
+    See Gtk::Buildable#set_name.
+
+--- builder_name
+
+    See Gtk::Buildable#builder_name.
+
+--- builder_name=
+
+    See Gtk::Buildable#builder_name=.
+
+--- embed_page_setup=(embed_page_setup)
+
+    Sets the true if page setup combos are embedded in Gtk::PrintUnixDialog.
+     * embed_page_setup: true if page setup combos are embedded in Gtk::PrintUnixDialog
+     * Returns: embed_page_setup
+
+--- embed_page_setup?
+
+    Gets the true if page setup combos are embedded in Gtk::PrintUnixDialog.
+     * Returns: true if page setup combos are embedded in Gtk::PrintUnixDialog
+
+--- has_selection=(has_selection)
+
+    Sets the value whether the application has a selection or not.
+     * has_selection: true if the application has a selection
+     * Returns: has_selection
+
+--- has_selection?
+
+    Gets the value whether the application has a selection or not.
+     * Returns: true if the application has a selection
+
+--- manual_capabilities
+
+    Gets the Capabilities the application can handle.
+     * Returns: Capabilities the application can handle
+
+--- manual_capabilities=(manual_capabilities)
+
+    Sets the Capabilities the application can handle.
+     * manual_capabilities: Capabilities the application can handle
+     * Returns: manual_capabilities
+
+--- set_builder_name
+
+    See Gtk::Buildable#set_builder_name.
+
+--- set_embed_page_setup(embed_page_setup)
+
+    Same as embed_page_setup=.
+     * embed_page_setup: true if page setup combos are embedded in Gtk::PrintUnixDialog
+     * Returns: self
+
+--- set_has_selection(has_selection)
+
+    Same as has_selection=.
+     * has_selection: true if the application has a selection
+     * Returns: self
+
+--- set_manual_capabilities(manual_capabilities)
+
+    Same as manual_capabilities=.
+     * manual_capabilities: Capabilities the application can handle
+     * Returns: self
+
+--- set_support_selection(support_selection)
+
+    Same as support_selection=.
+     * support_selection: true if the dialog supports selection
+     * Returns: self
+
+--- support_selection=(support_selection)
+
+    Sets the value whether the dialog supports selection or not.
+     * support_selection: true if the dialog supports selection
+     * Returns: support_selection
+
+--- support_selection?
+
+    Gets the value whether the dialog supports selection or not.
+     * Returns: true if the dialog supports selection
+
+== Constants
+
+=== Capabilities
+
+An enum for specifying which features the print dialog should offer. I neither Gtk::PrintUnixDialog#CAPABILITY_GENERATE_PDF nor Gtk::PrintUnixDialog#CAPABILITY_GENERATE_PS is specified, GTK+ assumes that all formats are supported.
+
+--- CAPABILITY_PAGE_SET
+--- CAPABILITY_COPIES
+--- CAPABILITY_COLLATE
+--- CAPABILITY_REVERSE
+--- CAPABILITY_SCALE
+--- CAPABILITY_GENERATE_PDF
+
+   The program will send the document to the printer in PDF format
+
+--- CAPABILITY_GENERATE_PS
+
+   The program will send the document to the printer in Postscript format
+
+--- CAPABILITY_PREVIEW
+--- CAPABILITY_NUMBER_UP
+--- CAPABILITY_NUMBER_UP_LAYOUT
+
+== Properties
+
+--- current-page: Integer (Read/Write)
+
+    The current page in the document
+
+--- page-setup: Gtk::PageSetup (Read/Write)
+
+    The Gtk::PageSetup to use
+
+--- print-settings: Gtk::PrintSettings (Read/Write)
+
+    The Gtk::PrintSettings used for initializing the dialog
+
+--- selected-printer: Gtk::Printer (Read)
+
+    The Gtk::Printer which is selected
+
+--- embed-page-setup: true or false (Read/Write)
+
+    true if page setup combos are embedded in Gtk::PrintUnixDialog
+
+--- has-selection: true or false (Read/Write)
+
+    Whether the application has a selection
+
+--- manual-capabilities: Gtk::PrintCapabilities (Read/Write)
+
+    Capabilities the application can handle
+
+--- support-selection: true or false (Read/Write)
+
+    Whether the dialog supports selection
+
+== See Also
+
+== ChangeLog
+
+* 2006-11-04: Modified. - ((<Masao>))
+* 2006-07-09: updated for 2.10. - ((<kou>))
+
+- ((<kou>))

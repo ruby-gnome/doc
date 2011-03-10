@@ -1,0 +1,43 @@
+= class Poppler::LinkMapping
+
+== Object Hierarchy
+
+* Object
+  * GLib::Boxed
+    * Poppler::LinkMapping
+
+== Instance Methods
+
+--- action
+
+     
+     * Returns: Poppler::Action
+
+--- area
+
+     
+     * Returns: Poppler::Rectangle
+
+--- action=
+
+     * Returns: self: ((*FIXME*))
+
+--- area=
+
+     * Returns: self: ((*FIXME*))
+
+--- set_action
+
+     * Returns: self: ((*FIXME*))
+
+--- set_area
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+* 2006-05-19 ((<kou>)): completed.
+
+- ((<kou>))

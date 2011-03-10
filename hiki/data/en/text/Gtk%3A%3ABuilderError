@@ -1,0 +1,27 @@
+= class Gtk::BuilderError
+
+((*Since 2.12*))
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * Gtk::BuilderError
+
+== Constants
+
+--- INVALID_ATTRIBUTE
+--- INVALID_TAG
+--- INVALID_TYPE_FUNCTION
+--- INVALID_VALUE
+--- MISSING_ATTRIBUTE
+--- MISSING_PROPERTY_VALUE
+--- UNHANDLED_TAG
+--- DUPLICATE_ID
+--- VERSION_MISMATCH
+
+== See Also
+
+== ChangeLog
+
+  * 2008-04-10 ((<kou>)): created.

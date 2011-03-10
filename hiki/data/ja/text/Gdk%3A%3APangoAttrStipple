@@ -1,0 +1,22 @@
+= class Gdk::PangoAttrStipple
+A Pango text attribute containing a stipple bitmap to be used when rendering the text.
+
+== Object Hierarchy
+* Object
+  * Data
+    * Pango::Attribute
+      * Gdk::PangoAttrStipple
+
+== Class Methods
+--- Gdk::PangoAttrStipple.new(stipple)
+    Creates a new attribute containing a stipple bitmap to be used when rendering the text.
+    * stipple: a Gdk::Pixmap(depth = 1) to be set as stipple
+    * Returns: new Gdk::PangoAttrStipple
+
+== Instance Methods
+--- value
+    Gets the stipple bitmap.
+    * Returns: the stipple bitmap (Gdk::Pixmap)
+
+== ChangeLog
+* 2005-05-08 Added. - ((<Masao>))

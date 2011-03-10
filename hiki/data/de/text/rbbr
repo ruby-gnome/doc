@@ -1,0 +1,74 @@
+= rbbr - Ruby Browser
+rbbr ist eine Anwendung zum Durchsehen von Modul- und Klassenhierarchien und ihrer Methoden und Konstanten.
+
+== Screenshots
+* Hauptfenster - {{attach_anchor("rbbr.jpg")}}
+* Stock Item und Icon-Browser - {{attach_anchor("rbbr_stock.jpg")}}
+
+== Download
+((<URL:http://sourceforge.net/project/showfiles.php?group_id=53614>))
+
+== Requirements
+* ruby 1.6.x, 1.8.x, 1.9.x
+* Ruby/GTK2 0.9.1 (ältere Versionen funktionieren nicht mit dieser Version)
+* (optional) Ruby-GNOME2 API-Dokumente in RD+((<URL:http://ruby-gnome2.sourceforge.jp/data/ruby-gnome2-api.tar.gz>)). Das rbbr-withapi  Paket enthält diese.
+* (optional) ri 0.8a ((<URL:http://raa.ruby-lang.org/list.rhtml?name=ri>)). 
+   * Auf ruby-1.8.x oder höher müssen Sie dies nicht installieren.
+* (optional) ReFe 0.8.0 oder höher (bisher nur auf Japanisch) ((<URL:http://www.loveruby.net/en/refe.html>))
+* (optional) Ruby-GetText-Paket 0.5.5 oder höher für lokalisierte Menüs und Labels((<URL:http://ponx.s5.xrea.com/hiki/ruby-gettext.html>))
+   * Ruby-GetText-Paket 0.5.4 enthält einen Bug. Sie brauchen die aktuelle Version hiervon.
+   * Außerdem brauchen Sie Racc-1.4.3 oder höher, um dieses Paket zu installieren. ((<URL:http://www.ruby-lang.org/raa/list.rhtml?name=racc>))
+
+== Installation
+(1)Installieren Sie Racc, das Ruby-GetText-Paket, ri, ReFe. (Optional)
+(2)Entpacken Sie ruby-gnome2-api.tar.gz (optional) und das rbbr-Archiv.
+(3)Kopieren Sie ruby-gnome2-api/* nach ./data/rbbr/rd/* in rbbr's Basisverzeichnis. (optional)
+(4)Wechseln Sie in rbbr's Basisverzeichnis und schreiben Sie:
+
+ $ ruby install.rb config
+ $ ruby install.rb setup
+ ($ su)
+ $ ruby install.rb install
+
+Sie können die Dateien in ein Verzeichnis Ihrer Wahl installieren, indem Sie install.rb einige Optionen übergeben. Versuchen Sie "ruby install.rb --help", um weitere Informationen zu bekommen.
+
+== Wie bekomme ich eine Ruby-GNOME2 API-Referenz?
+Sie können das aktuelle Archiv unter der folgenden URL herunterladen:
+
+((<URL:http://ruby-gnome2.sourceforge.jp/data/ruby-gnome2-api.tar.gz>))
+
+Sie können dieses benutzen, um eine alte Installation (gewöhnlich in ./rbbr/rd/ im Shared-Verzeichnis) zu überschreiben.
+
+== Benutzung
+=== rbbr starten
+:Linux, *BSD, Cygwin
+  Rufen Sie das folgende Kommando auf:
+
+  $ rbbr
+                                                                                
+:MS Windows(außer Cygwin)
+  (Doppel- oder einzel-)klicken Sie auf ruby-install-dir\bin\rbbr.rbw im Explorer an.
+
+Wenn Sie einen Fehler bei ri oder rdoc bekommen, müssen Sie erst Dokumente für ri erstellen.
+
+  $ rdoc --ri
+
+Benutzen Sie "rdoc --help", um weitere Details zu bekommen.
+
+=== Wie finde ich Klassen und Module?
+==== Grundlegende Suche
+Geben Sie "gtk::widget" in der Such-Textbox ein und klicken Sie den "Search"-Button.
+Sie können dann in der Liste Gtk::Widget, Gtk::Widget::Flags, Gtk::Widget::HelpType, und weiteres finden.
+
+Groß- und Kleinschreibung wird in der Suche ignoriert.
+
+==== Reguläre Ausdrücke
+Sie können reguläre Ausdrücke in den Suchbegriffen benutzen.
+Als Beispiel: Sie möchten nur "Gtk::Widget" finden. Geben Sie "Gtk::Widget$" in der Textbox ein.
+
+==== Methodensuche
+Sie können Klassen und Module mit einer Methode suchen.
+Beispielsweise finden Sie mit "Gtk.main", "Gtk main" oder "Gtk#main": Gtk.main
+
+== Lizenz
+Dieses Programm ist freie Software. Sie können dieses Programm unter den gleichen Einschränkungen der Ruby Distribute License bearbeiten und weitervertreiben.

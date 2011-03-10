@@ -1,0 +1,20 @@
+= class GLib::IO::FailedHandledError
+
+The Operation failed and a helper program has already interacted with the user.
+Do not display any error dialog. 
+
+== Object Hierarchy
+
+* Object
+  * Exception
+    * StandardError
+      * IOError
+        * GLib::IO::Error
+          * GLib::IO::FailedHandledError
+
+
+== See Also
+
+== ChangeLog
+
+

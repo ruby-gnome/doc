@@ -1,0 +1,26 @@
+= class Pango::AttrLanguage
+
+== Object Hierarchy
+
+* Object
+  * Data
+    * Pango::Attribute
+      * Pango::AttrLanguage
+
+== Class Methods
+
+--- Pango::AttrLanguage.new
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- value
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

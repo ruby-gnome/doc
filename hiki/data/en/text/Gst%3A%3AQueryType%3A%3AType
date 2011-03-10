@@ -1,0 +1,29 @@
+= class Gst::QueryType::Type
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * Gst::QueryType::Type
+
+== Constants
+
+--- CONVERT
+--- DURATION
+--- FORMATS
+--- JITTER
+--- LATENCY
+--- NONE
+--- POSITION
+--- RATE
+--- SEEKING
+--- SEGMENT
+--- BUFFERING
+--- CUSTOM
+--- URI
+
+== See Also
+
+== ChangeLog
+
+

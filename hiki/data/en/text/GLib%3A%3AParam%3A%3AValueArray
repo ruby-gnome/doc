@@ -1,0 +1,20 @@
+= class GLib::Param::ValueArray
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Param
+      * GLib::Param::ValueArray
+
+== Class Methods
+
+--- GLib::Param::ValueArray.new
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

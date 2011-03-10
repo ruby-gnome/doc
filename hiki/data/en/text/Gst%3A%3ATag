@@ -1,0 +1,62 @@
+= module Gst::Tag
+
+Helper module to the tagging interface.
+
+== Module Functions
+
+--- Gst::Tag.exists?(tag)
+
+    Checks if the given tag is already registered.
+    * tag: the name of the tag.  
+    * Returns: true if the tag is registered, false otherwise.
+
+--- Gst::Tag.fixed?(tag)
+
+    Checks if the given tag is fixed. A fixed tag can only contain one value. 
+    Unfixed tags can contain lists of values.
+    * tag: the name of the tag.  
+    * Returns: true if the tag is fixed, false otherwise.
+
+--- Gst::Tag.get_description(tag)
+
+    This method returns the human-readable description of this tag.
+    * tag: the name of the tag.  
+    * Returns: the human-readable description of this tag.
+
+--- Gst::Tag.get_flag(tag)
+
+    Gets the flag of the given tag.
+    * tag: the name of the tag.  
+    * Returns: the flag of this tag (see ((<GstTagFlag|Gst::Tag#GstTagFlag>))).
+
+--- Gst::Tag.get_nick(tag)
+
+    This method returns the human-readable name of this tag.
+    * tag: the name of the tag.  
+    * Returns: the human-readable name of this tag.
+
+== Constants
+
+=== GstTagFlag
+
+--- FLAG_COUNT
+--- FLAG_DECODED
+--- FLAG_ENCODED
+--- FLAG_META
+--- FLAG_UNDEFINED
+=== GstTagMergeMode
+
+--- MERGE_APPEND
+--- MERGE_COUNT
+--- MERGE_KEEP
+--- MERGE_KEEP_ALL
+--- MERGE_PREPEND
+--- MERGE_REPLACE
+--- MERGE_REPLACE_ALL
+--- MERGE_UNDEFINED
+
+== See Also
+
+== ChangeLog
+
+- ((<lrz>))

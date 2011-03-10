@@ -1,0 +1,14 @@
+= class Gst::MessageStreamStatus
+
+== Object Hierarchy
+
+* Object
+  * Gst::MiniObject
+    * Gst::Message
+      * Gst::MessageStreamStatus
+
+== See Also
+
+== ChangeLog
+
+

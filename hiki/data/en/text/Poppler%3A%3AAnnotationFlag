@@ -1,0 +1,73 @@
+= class Poppler::AnnotationFlag
+
+== Object Hierarchy
+
+* Object
+  * GLib::Flags
+    * Poppler::AnnotationFlag
+
+== Instance Methods
+
+--- hidden?
+
+     * Returns: self: ((*FIXME*))
+
+--- invisible?
+
+     * Returns: self: ((*FIXME*))
+
+--- locked?
+
+     * Returns: self: ((*FIXME*))
+
+--- locked_contents?
+
+     * Returns: self: ((*FIXME*))
+
+--- no_rotate?
+
+     * Returns: self: ((*FIXME*))
+
+--- no_view?
+
+     * Returns: self: ((*FIXME*))
+
+--- no_zoom?
+
+     * Returns: self: ((*FIXME*))
+
+--- print?
+
+     * Returns: self: ((*FIXME*))
+
+--- read_only?
+
+     * Returns: self: ((*FIXME*))
+
+--- toggle_no_view?
+
+     * Returns: self: ((*FIXME*))
+
+--- unknown?
+
+     * Returns: self: ((*FIXME*))
+
+== Constants
+
+--- HIDDEN
+--- INVISIBLE
+--- LOCKED
+--- LOCKED_CONTENTS
+--- NO_ROTATE
+--- NO_VIEW
+--- NO_ZOOM
+--- PRINT
+--- READ_ONLY
+--- TOGGLE_NO_VIEW
+--- UNKNOWN
+
+== See Also
+
+== ChangeLog
+
+

@@ -1,0 +1,59 @@
+= class Gtk::MenuBar
+The Gtk::MenuBar is a subclass of Gtk::MenuShell which contains one to many Gtk::MenuItem. The result is a standard menu bar which can hold many menu items. 
+
+== Object Hierarchy
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Gtk::Object
+        * Gtk::Widget
+          * Gtk::Container
+            * Gtk::MenuShell
+              * Gtk::MenuBar
+
+== Class Methods
+--- Gtk::MenuBar.new
+    Creates the new Gtk::MenuBar
+    * Returns: the Gtk::MenuBar
+
+== Instance Methods
+--- pack_direction
+    Retrieves the current pack direction of the menubar. See Gtk::MenuBar#pack_direction=(pack_dir). ((*Since 2.8*))
+    * Returns: the direction (Gtk::MenuBar::PackDirection)
+--- pack_direction=(pack_dir)
+    Sets how items should be packed inside a menubar. ((*Since 2.8*))
+    * Returns: the direction (Gtk::MenuBar::PackDirection)
+--- set_pack_direction(pack_dir)
+    Same as Gtk::MenuBar#pack_direction=(pack_dir). ((*Since 2.8*))
+    * Returns: self
+
+--- child_pack_direction
+    Retrieves the current child pack direction of the menubar. See Gtk::MenuBar#child_pack_direction=(pack_dir). ((*Since 2.8*))
+    * Returns: the direction (Gtk::MenuBar::PackDirection)
+--- child_pack_direction=(pack_dir)
+    Sets how widgets should be packed inside the children of a menubar. ((*Since 2.8*))
+    * Returns: the direction (Gtk::MenuBar::PackDirection)
+--- set_child_pack_direction(pack_dir)
+    Same as Gtk::MenuBar#child_pack_direction=(pack_dir). ((*Since 2.8*))
+    * Returns: self
+
+== Constants
+=== PackDirection
+Defines how items should be packed. ((*Since 2.8*))
+--- PACK_DIRECTION_LTR
+--- PACK_DIRECTION_RTL
+--- PACK_DIRECTION_TTB
+--- PACK_DIRECTION_BTT
+
+== Properties
+--- pack-direction: Gtk::MenuBar::PackDirection (Read/Write)
+    The pack direction of the menubar. It determines how menuitems are arranged in the menubar. Default value: LTR. ((*Since 2.8*))
+--- child-pack-direction: Gtk::MenuBar::PackDirection (Read/Write)
+    The pack direction of the menubar. It determines how the widgets contained in child menuitems are arranged. Default value: LTR. ((*Since 2.8*))
+
+== See Also
+* Gtk::MenuShell
+* Gtk::Menu
+* Gtk::MenuItem
+
+- ((<Masao>))

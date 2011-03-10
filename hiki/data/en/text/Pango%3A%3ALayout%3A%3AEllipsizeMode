@@ -1,0 +1,20 @@
+= class Pango::Layout::EllipsizeMode
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * Pango::Layout::EllipsizeMode
+
+== Constants
+
+--- END
+--- MIDDLE
+--- NONE
+--- START
+
+== See Also
+
+== ChangeLog
+
+

@@ -1,0 +1,20 @@
+= class Pango::AttrBool
+
+== Object Hierarchy
+
+* Object
+  * Data
+    * Pango::Attribute
+      * Pango::AttrBool
+
+== Instance Methods
+
+--- value
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

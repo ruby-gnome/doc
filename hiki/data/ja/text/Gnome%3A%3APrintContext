@@ -1,0 +1,155 @@
+= class Gnome::PrintContext
+
+== Class Methods
+
+--- new(config)
+     * config: a Gnome::PrintConfig object.
+     * Returns: a Gnome::PrintContext object.
+
+== Instance Methods
+--- close
+     * Returns:
+
+--- create_transport
+     * Returns:
+
+--- new_path
+     * Returns:
+
+--- move_to(x, y)
+     * Returns:
+
+--- line_to(x, y)
+     * Returns:
+
+--- curve_to(x1, y1, x2, y2, x3, y3)
+     * Returns:
+
+--- close_path
+     * Returns:
+
+--- stroke_path
+     * Returns:
+
+--- bpath(bpath, apeend)
+     * bpath: Art::Bpath
+     * append: boolean
+     * Returns:
+
+--- vpath(vpath, append)
+     * vpath: Art::Vpath
+     * append: boolean
+     * Returns:
+
+--- arc_to(x, y, radius, angle1, angle2, direction)
+     * Returns:
+
+--- set_rgb_color(r, g, b)
+     * Returns:
+
+--- set_opacity(opacity)
+     * Returns:
+
+--- set_line_width(width)
+     * Returns:
+
+--- set_miter_limit(limit)
+     * Returns:
+
+--- set_line_join(join_type)
+     * Returns:
+
+--- set_line_cap(cap_type)
+     * Returns:
+
+--- set_dash(values, offset)
+     * Returns:
+
+#--- set_font(font)
+#     * Returns:
+
+--- clip
+     * Returns:
+
+--- eoclip
+     * Returns:
+
+--- concat(matrix)
+     * matrix: 2x3 array of double
+     * Returns:
+
+--- scale(sx, sy)
+     * Returns:
+
+--- rotate(theta)
+     * Returns:
+
+--- translate(x, y)
+     * Returns:
+
+--- save
+     Saves current graphic state. Automatically restores if block given.
+     * Returns:
+
+--- restore
+     Restores saved graphic state.
+     * Returns:
+
+--- fill
+     * Returns:
+
+--- eofill
+     * Returns:
+
+--- stroke
+     * Returns:
+
+--- show(text)
+     Shows text.
+     * text: string.
+     * Returns:
+
+--- show_sized(text, size)
+     * text: string.
+     * size: shown text size.
+     * Returns:
+
+#--- glyph_list(glyph_list)
+#     * Returns:
+
+--- gray_image(data, width, height, rowstride)
+     * Returns:
+
+--- rgb_image(data, width, height, rowstride)
+     * Returns:
+
+--- rgba_image(data, width, height, rowstride)
+     * Returns:
+
+--- begin_page(name=nil)
+     Begins page. Automatically shows if block given.
+     * name: page name. The page number is used when ((|name|)) is nil.
+     * Returns:
+
+--- show_page
+     Show current page.
+     * Returns:
+
+--- end_doc
+     * Returns:
+
+--- line_stroked(x1, y1, x2, y2)
+     * Returns:
+
+--- rect_stroked(x, y, width, height)
+     * Returns:
+
+--- rect_filled(x, y, width, height)
+     * Returns:
+
+== Constants
+== See Also
+
+# Gnome::PrintReturnCode
+
+- kou

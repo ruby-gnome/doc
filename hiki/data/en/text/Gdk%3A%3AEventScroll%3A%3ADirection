@@ -1,0 +1,20 @@
+= class Gdk::EventScroll::Direction
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * Gdk::EventScroll::Direction
+
+== Constants
+
+--- DOWN
+--- LEFT
+--- RIGHT
+--- UP
+
+== See Also
+
+== ChangeLog
+
+

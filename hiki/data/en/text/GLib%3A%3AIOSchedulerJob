@@ -1,0 +1,72 @@
+= class GLib::IOSchedulerJob
+
+Schedules asynchronous I/O operations. GLib::IOSchedulerJob integrates into the
+main event loop (GLib::MainLoop) and may use threads if they are available.
+
+Each I/O operation has a priority, and the scheduler uses the priorities to
+determine the order in which operations are executed. They are not used to
+determine system-wide I/O scheduling. Priorities are integers, with lower
+numbers indicating higher priority. It is recommended to choose priorities
+between GLib::PRIORITY_LOW and GLib::PRIORITY_HIGH, with GLib::PRIORITY_DEFAULT
+as a default. 
+
+== Object Hierarchy
+
+* Object
+  * GLib::Boxed
+    * GLib::IOSchedulerJob
+
+== Class Methods
+
+--- GLib::IOSchedulerJob.cancel_all_jobs
+
+     Cancells all cancellable I/O jobs.
+
+     A job is cancellable if a GLib::Cancellable was passed to
+     GLib::IOSchedulerJob.push_job
+
+     * Returns: self
+
+--- GLib::IOSchedulerJob.push_job(io_priority = GLib::PRIORITY_DEFAULT,
+cancellable = nil){ |job, cancellable| … }
+
+     Schedules the I/O job to run.
+
+     If cancellable is not nil it can be used to cancel the I/O job by calling
+     GLib::Cancellable#cancel or GLib::IOSchedulerJob.cancel_all_jobs.
+
+     Note that depending on whether threads are available, the GIOScheduler may
+     run jobs in separate threads or in an idle in the mainloop.
+
+     Long-running jobs should periodically check the cancellable to see if they
+     have been cancelled. 
+
+     * io_priority: The I/O priority of the request
+     * cancellable: Optional GLib::Cancellable, or nil to ignore
+     * job: The GLib::IOSchedulerJob
+     * Returns: self
+
+== Instance Methods
+
+--- send_to_mainloop{ … }
+
+     Used from an I/O job to send a callback to be run in the thread that the
+     job was started from, waiting for the result (and thus blocking the I/O
+     job). 
+
+     * Returns: true if the callback’s result was true
+
+--- send_to_mainloop_async{ … }
+
+     Used from an I/O job to send a callback to be run asynchronously in the
+     thread that the job was started from. The callback will be run when the
+     main loop is available, but at that time the I/O job might have finished.
+     The return value from the callback is ignored.
+
+     * Returns: self
+
+== See Also
+
+== ChangeLog
+
+

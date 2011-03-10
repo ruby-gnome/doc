@@ -1,0 +1,191 @@
+= class Gnome::PrintDialog
+
+== Object Hierarchy
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Gtk::Object
+        * Gtk::Widget
+          * Gtk::Container
+            * Gtk::Bin
+              * Gtk::Window
+                * Gtk::Dialog
+                  * Gnome::PrintDialog
+
+== Class Methods
+--- Gnome::PrintDialog.new(job=nil, title="Gnome::PrintDialog", flags=Gnome::PrintDialog::RANGE|Gnome::PrintDialog::COPIES)
+
+     Create a new Gnome::PrintDialog window.
+
+     The following options flags are available:
+
+       * Gnome::PrintDialog::RANGE: A range widget container
+         will be created. A range widget must be created
+         separately, using one of the
+         Gnome::PrintDialog#construct_range_* methods.
+
+       * Gnome::PrintDialog::COPIES: A copies widget will be
+         created.
+
+     * job: Gnome::PrintJob or (({nil}))
+     * title: Title of window.
+     * flags: Options for created widget.
+     * Returns:  A newly created and initialised widget.
+
+== Instance Methods
+--- config
+
+     * Returns: Setupped Gnome::PrintConfig
+
+--- construct_range_custom(widget)
+    
+     Install a custom range specification widget.
+     
+     * widget: A widget which will be placed in a "Range"
+       frame in the main display.
+     * Returns: (({nil}))
+
+--- construct_range_any(flags, widget, current_label, range_label)
+     
+     Create a generic range area within the print range
+     dialogue. The flags field contains a mask of which
+     options you wish displayed:
+
+       * Gnome::PrintDialog::RANGE_CURRENT: A label
+         (({current_label})) will be displayed.
+       * Gnome::PrintDialog::RANGE_ALL: A label "All" will be
+         displayed.
+       * Gnome::PrintDIalog::RANGE_RANGE: A label
+         (({range_label})) will be displayed, next to the
+         range specification widget range_widget.
+       * Gnome::PrintDialog::RANGE_SELECTION: A label
+         "Selection" will be displayed.
+
+     * flags: Options flags, which ranges are displayed.
+     * widget: Widget to display for the range option.
+     * current_label: Label to display next to the 'current
+       page' button.
+     * range_label: Label to display next to the 'range'
+       button.
+     * Returns: (({nil}))
+
+--- construct_range_page(flags, start, end, current_label, range_label)
+
+     Construct a generic page/sheet range area.
+
+     * flags: Option flags. See
+       Gnome::PrintDialog#construct_range_any.
+     * start: First page which may be printed.
+     * end: Last page which may be printed.
+     * current_label: Label text for current option.
+     * range_label: Label text for range option.
+     * Returns: (({nil}))
+
+--- copies
+
+     Retrieves the number of copies and collation indicator
+     from the print dialogue. If the print dialogue does not
+     have a copies indicator, then a default of 1 copy is
+     returned.
+
+     * Returns: An array of the number of copies and
+       collation flag.
+
+--- range
+
+     Return the range option selected by the user. This is a
+     bitmask with only 1 bit set, out of:
+
+       * Gnome::PrintDialog::RANGE_CURRENT: The current
+         option selected.
+       * Gnome::PrintDialog::RANGE_ALL: The all option
+         selected.
+       * Gnome::PrintDialog::RANGE_RANGE: The range option
+         selected.
+       * Gnome::PrintDialog::RANGE_SELECTION: The selection option
+         selected.
+       * Gnome::PrintDialog::RANGE_SELECTION_UNSENSITIVE:
+         The selection option selected.
+
+     * Returns: A bitmask with one option set.
+
+--- range_page
+
+     Retrieves the user choice for range type and range, if
+     the user has requested a range of pages to print.
+
+     * Returns: An array of the user-specified start page,
+       the user-specified end page and a bitmask with the
+       user-selection set. See Gnome::PrintDialog#range for
+       bitmask.
+
+--- run
+
+     Runs a Gnome::PrintDialog.
+     
+     Note: this routine does not destroy the dialog!
+     
+     * Returns: The user response
+
+--- set_copies(copies, collate)
+
+     Sets the print copies and collation status in the print dialogue.
+
+     * copies: New number of copies.
+     * collate: New collation status.
+     * Returns: (({nil}))
+
+--- print_config=(print_config)
+    Sets the Printing Configuration to be used.
+     * print_config: Printing Configuration to be used
+     * Returns: print_config
+--- set_print_config(print_config)
+    Same as Gnome::PrintDialog#print_config=.
+     * print_config: Printing Configuration to be used
+     * Returns: self
+
+== Constants
+
+=== Flags for Gnome::PrintDialog.new
+
+--- COPIES
+--- RANGE
+
+=== Range types
+
+--- RANGETYPE_CUSTOM
+--- RANGETYPE_NONE
+--- RANGETYPE_PAGES
+
+=== Range flags for Gnome::PrintDialog#range
+
+--- RANGE_ALL
+--- RANGE_CURRENT
+--- RANGE_RANGE
+--- RANGE_SELECTION
+--- RANGE_SELECTION_UNSENSITIVE
+
+=== Responses for Gnome::PrintDialog#run
+
+--- RESPONSE_CANCEL
+--- RESPONSE_PREVIEW
+--- RESPONSE_PRINT
+
+=== Others
+
+--- Flags
+--- RangeFlags
+--- RangeType
+--- Response
+
+== Properties
+--- print-config: gpointer (Write)
+    Printing Configuration to be used
+
+== See Also
+
+== ChangeLog
+
+* 2005-06-10 ((<kou>)): added
+
+- ((<kou>))

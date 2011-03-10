@@ -1,0 +1,19 @@
+= このチュートリアルを読むにあたって
+
+==方針
+当初は((<本家のチュートリアル|URL:http://ruby-gnome2.sourceforge.net/tut/toc.htm>))をベースに翻訳をしていましたが，
+* チュートリアルのソースがあまりRubyっぽくない
+* そもそも本家のチュートリアルは，((<GTK+ 2.0 Tutorial|URL:http://www.gtk.org/tutorial/>))をベースにしている
+* ((<きた>))の翻訳能力がイマイチ((-実はコレが一番のネック-))
+* それじゃ，いっそのこと((<GTK v1.2 チュートリアル(日本語版)|URL:http://www.kitanet.ne.jp/~asler/linux/gtk/ja/gtk_tut_ja.html>))
+  をベースにRuby化，GTK+ 2.0化した方がいいんじゃないの?
+ということで，((<GTK v1.2 チュートリアル(日本語版)|URL:http://www.kitanet.ne.jp/~asler/linux/gtk/ja/gtk_tut_ja.html>))の成果を
+最大限再利用させて頂くことにしました．
+
+さらに、現在のメンテナである((<むとう>))がRuby/GTK(1)向けに公開していたRuby/GTKメモをRuby/GTK2向けに改変して取り込み、オリジナルのGTKチュートリアルより詳しいチュートリアルになることを目指します。
+
+((*すみません，以下はまだメモです*))
+
+* irbで試行するときにThread.start{Gtk.main}してるのは，irbで試行するときに便利だからです．通常のスクリプトでは使わないように．
+* チュートリアルで紹介していないメソッドや定数の調べ方
+* .irbrcに設定しておくと便利な設定

@@ -1,0 +1,25 @@
+= Investigate what key is pressed
+Run this script and press key what you investigate. You can get key value and that Gdk::Keyval constant easily.
+
+ require 'gtk2'
+ 
+ window = Gtk::Window.new
+ window.add_events(Gdk::Event::KEY_PRESS)
+ window.add(Gtk::Label.new("Press Key!"))
+ 
+ window.signal_connect("key-press-event") do |w, e|
+   p "#{e.keyval}, Gdk::Keyval::GDK_#{Gdk::Keyval.to_name(e.keyval)}"
+ end
+ 
+ window.set_default_size(100, 100).show_all
+ 
+ Gtk.main
+
+P.S.
+
+Please notice this script can get the key value on your own environment only.
+Some key values have different values on each environments.
+
+== ChangeLog
+:2003-10-12 ((<Masao>))
+ Initial Release

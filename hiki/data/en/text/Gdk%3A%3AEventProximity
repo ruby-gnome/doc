@@ -1,0 +1,61 @@
+= class Gdk::EventProximity
+
+Proximity events are generated when using GDK's wrapper for the XInput extension. The XInput extension is an add-on for standard X that allows you to use nonstandard devices such as graphics tablets. A proximity event indicates that the stylus has moved in or out of contact with the tablet, or perhaps that the user's finger has moved in or out of contact with a touch screen.
+
+== Object Hierarchy
+
+* Object
+  * GLib::Boxed
+    * Gdk::Event
+      * Gdk::EventAny
+        * Gdk::EventProximity
+
+== Class Methods
+
+--- Gdk::EventProximity.new(type)
+
+    Creates a new event of the given type. All fields are set to 0. ((* Since 2.2 *))
+    * type: Gdk::Event::PROXIMITY_IN, Gdk::Event::PROXIMITY_OUT
+    * Returns: a new Gdk::EventProximity.
+
+== Instance Methods
+
+--- time
+
+    Gets the time of the event in milliseconds. 
+    * Returns: the time of the event in milliseconds
+
+--- time=(time)
+
+    Sets the time of the event in milliseconds. 
+    * time: the time of the event in milliseconds
+    * Returns: time
+
+--- set_time(time)
+
+    Same as Gdk::EventProximity#time=.
+    * time: the time of the event in milliseconds
+    * Returns: self
+
+--- device
+
+    Gets the Gdk::Device where the event originated. 
+    * Returns: the Gdk::Device where the event originated.
+
+--- device=(device)
+
+    Sets the Gdk::Device where the event originated. 
+    * device: the Gdk::Device where the event originated.
+    * Returns: device
+
+--- set_device(device)
+
+    Same as Gdk::EventProximity#device=.
+    * device: the Gdk::Device where the event originated.
+    * Returns: self
+
+== See Also
+
+== ChangeLog
+
+-((<Masao>))

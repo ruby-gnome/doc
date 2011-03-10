@@ -1,0 +1,18 @@
+= class GLib::IO::NotRegularFileError
+
+The file is not a regular file.
+
+== Object Hierarchy
+
+* Object
+  * Exception
+    * StandardError
+      * IOError
+        * GLib::IO::Error
+          * GLib::IO::NotRegularFileError
+
+== See Also
+
+== ChangeLog
+
+

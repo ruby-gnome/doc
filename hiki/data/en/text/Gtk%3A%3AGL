@@ -1,0 +1,29 @@
+= module Gtk::GL
+
+== Module Functions
+
+--- Gtk::GL.init(argv = ARGV)
+
+    Call this function before using any other GdkGLExt functions in your applications. It will initialize everything needed to operate the library and parses some standard command line options. argv is adjusted accordingly so your own code will never see those standard arguments.
+    The only difference between this function and Gdk::GL#init is that Gtk::GL#init checks for more parameters. You should use this function instead of Gdk::GL#init.
+    Note: This function will throw RuntimeError if it was unable to initialize the library for some reason.
+    * argv: the ARGV value. Any parameters understood by Gtk::GL.init are stripped before return.
+    * Returns: self
+
+== Constants
+
+--- BINARY_AGE
+--- INTERFACE_AGE
+--- MAJOR_VERSION
+--- MICRO_VERSION
+--- MINOR_VERSION
+--- BUILD_VERSION
+--- LOG_DOMAIN
+
+== See Also
+
+((<Gdk::GL>))
+
+== ChangeLog
+
+

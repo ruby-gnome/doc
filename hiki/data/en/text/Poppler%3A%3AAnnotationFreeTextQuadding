@@ -1,0 +1,19 @@
+= class Poppler::AnnotationFreeTextQuadding
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * Poppler::AnnotationFreeTextQuadding
+
+== Constants
+
+--- CENTERED
+--- LEFT_JUSTIFIED
+--- RIGHT_JUSTIFIED
+
+== See Also
+
+== ChangeLog
+
+

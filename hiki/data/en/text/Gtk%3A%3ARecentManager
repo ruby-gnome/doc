@@ -1,0 +1,113 @@
+= class Gtk::RecentManager
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Gtk::RecentManager
+
+== Class Methods
+
+--- Gtk::RecentManager.default
+
+     * Returns: self: ((*FIXME*))
+
+--- Gtk::RecentManager.get_for_screen
+
+     * Returns: self: ((*FIXME*))
+
+--- Gtk::RecentManager.new
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- add_item
+
+     * Returns: self: ((*FIXME*))
+
+--- filename
+
+    Gets the full path to the file to be used to store and read the list.
+     * Returns: The full path to the file to be used to store and read the list
+
+--- has_item?
+
+     * Returns: self: ((*FIXME*))
+
+--- items
+
+     * Returns: self: ((*FIXME*))
+
+--- limit
+
+    Gets the maximum number of items to be returned by gtk_recent_manager_get_items().
+     * Returns: The maximum number of items to be returned by gtk_recent_manager_get_items()
+
+--- limit=(limit)
+
+    Sets the maximum number of items to be returned by gtk_recent_manager_get_items().
+     * limit: The maximum number of items to be returned by gtk_recent_manager_get_items()
+     * Returns: limit
+
+--- lookup_item
+
+     * Returns: self: ((*FIXME*))
+
+--- move_item
+
+     * Returns: self: ((*FIXME*))
+
+--- purge_items
+
+     * Returns: self: ((*FIXME*))
+
+--- remove_item
+
+     * Returns: self: ((*FIXME*))
+
+--- screen=
+
+     * Returns: self: ((*FIXME*))
+
+--- set_limit(limit)
+
+    Same as limit=.
+     * limit: The maximum number of items to be returned by gtk_recent_manager_get_items()
+     * Returns: self
+
+--- set_screen
+
+     * Returns: self: ((*FIXME*))
+
+--- size
+
+    Gets the size of the recently used resources list.
+     * Returns: The size of the recently used resources list
+
+== Properties
+
+--- filename: String (Read/Write)
+
+    The full path to the file to be used to store and read the list
+
+--- limit: Integer (Read/Write)
+
+    The maximum number of items to be returned by gtk_recent_manager_get_items()
+
+--- size: Integer (Read)
+
+    The size of the recently used resources list
+
+== Signals
+
+--- changed: self
+
+     * self: Gtk::RecentManager: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

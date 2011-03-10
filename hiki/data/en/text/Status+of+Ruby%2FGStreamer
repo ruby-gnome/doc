@@ -1,0 +1,59 @@
+= Status of Ruby/GStreamer
+
+{{status "Ruby/GStreamer core", "
+Gstreamer|Gst|-|O
+GstAutoplug|Gst::Autoplug|GstAutoplug|O
+GstAutoplugFactory|Gst::AutoplugFactory|GstAutoplugFactory|O
+GstBin|Gst::Bin|GstBin|O
+GstBuffer|Gst::Buffer|GstBuffer|-
+GstBufferPool|Gst::BufferPool|GstBufferPool|-
+GstCaps|Gst::Caps|GstCaps|#
+GstClock|Gst::Clock|GstClock|O
+GstClockEntry|Gst::ClockEntry|GstClockEntry|O|Wrapper for GstClockID
+GstCpu|Gst::Cpu|GstCpu|O|As a module
+GstData|Gst::Data|GstData|-
+GstElement|Gst::Element|GstElement|#
+GstElementFactory|Gst::ElementFactory|GstElementFactory|#
+GstEvent|Gst::Event|GstEvent|#
+GstEventDiscontinuous|Gst::EventDiscontinuous|-|-|Wrapper for gst_event_new_discontinuous
+GstEventMask|Gst::EventMask|GstEventMask|O
+GstEventSeek|Gst::EventSeek|-|O|Wrapper for gst_event_new_seek
+GstEventSegmentSeek|Gst::EventSegmentSeek|-|O|Wrapper for gst_event_new_segment_seek
+GstEventSize|Gst::EventSize|-|O|Wrapper for gst_event_new_size
+GstFormat|Gst::Format|GstFormat|O
+GstIndex|Gst::Index|GstIndex|-
+GstIndexFactory|Gst::IndexFactory|GstIndexFactory|#
+GstInfo|Gst::Info|GstInfo|x|Used internally for debugging purposes.
+GstObject|Gst::Object|GstObject|O
+GstPad|Gst::Pad|GstPad|#
+GstPadTemplate|Gst::PadTemplate|GstPadTemplate|O
+GstParse|Gst::Parse|GstParse|O|Is gst_parse_launchv() needed?
+GstPipeline|Gst::Pipeline|GstPipeline|O
+GstPlugin|Gst::Plugin|GstPlugin|#|Still impossible to make Ruby plugins
+GstPluginFeature|Gst::PluginFeature|GstPluginFeature|O
+GstProbe|Gst::Probe|GstProbe|-
+GstProps|Gst::Props|GstProps|#
+GstQuery|Gst::QueryType|GstQuery|O
+GstRegistry|Gst::Registry|GstRegistry|O
+GstRegistryPool|Gst::RegistryPool|GstRegistryPool|#|As a module
+GstScheduler|Gst::Scheduler|GstScheduler|-
+GstSchedulerFactory|Gst::SchedulerFactory|GstSchedulerFactory|#
+GstStructure|Gst::Structure|GstStructure|x|Replaced by hash.
+GstSystemClock|Gst::SystemClock|GstSystemClock|O
+GstThread|Gst::Thread|GstThread|O
+GstTag|Gst::Tag|GstTag|O|As a module
+GstTagSetter|Gst::TagSetter|GstTagSetter|#|As an interface
+GstType|Gst::Type|GstType|O
+GstTypeFactory|Gst::TypeFactory|GstTypeFactory|#|Still impossible to handle new types in Ruby
+GstUtils|Gst::Utils|GstUtils|-
+GstXML|Gst::XML|GstXML|#|Missing: parse_doc, write and make_element.
+"}}
+
+{{status "Ruby/GStreamer media-info", "
+GstMediaInfo|Gst::MediaInfo|GstMediaInfo|O|Note: read_many, get_next and info_write not yet natively implemented
+GstMediaInfoStream|Gst::MediaInfoStream|GstMediaInfoStream|O
+GstMediaInfoTrack|Gst::MediaInfoTrack|GstMediaInfoTrack|O
+"}}
+
+-
+((<lrz>))

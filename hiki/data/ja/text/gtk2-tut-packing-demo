@@ -1,0 +1,157 @@
+= パッキングのデモンストレーションプログラム
+
+  #! /usr/bin/env ruby
+  
+  require 'gtk2'
+  
+  # ラベル付きボタンを埋め込んだ新しい hbox を作る．
+  # Gtk::HBox.newやGtk::Box#pack_startの引数はこのメソッドの引数として渡される．
+  def make_box(homogeneous, spacing, expand, fill, padding)
+  	box = Gtk::HBox.new(homogeneous, spacing)
+  
+  	"Gtk::Box#pack_start (button, #{expand}, #{fill}, #{padding})".split(/ /).each do |s|
+  		button = Gtk::Button.new(s)
+  		box.pack_start(button, expand, fill, padding)
+  	end
+  
+  	box
+  end
+  
+  # 引数のチェック
+  # ruby foo.rb 1 というようにプログラムの引数として1〜3の数値を入力すると３種類のデモを表示する．
+  #
+  which = ARGV.shift
+  unless which
+  	$stderr.puts "usage: #{$0} num"
+  	$stderr.puts "	where num is 1, 2, or 3."
+  	exit 1
+  end
+  
+  # ウィンドウを作成．
+  # main window に "delete_event" を接続するのを覚えておこう．
+  window = Gtk::Window.new
+  window.signal_connect("delete_event") do
+  	Gtk::main_quit
+  	false
+  end
+  window.border_width = 10
+  
+  # make_box で作成する水平ボックスをパックするための垂直ボックス(VBox)を
+  # 作成する．
+  # この垂直ボックスに，ボタンを埋め込んだ水平ボックスを積み上げていく．
+  box1 = Gtk::VBox.new(false, 0)
+  
+  case which.to_i
+  when 1
+  	# プログラムの引数が1の時のデモ
+  	# ラベルを作成する．
+  	# Gtk::Misc#set_alignment についてはウィジェットの属性のセクションで説
+  	# 明する．
+  	label = Gtk::Label.new("Gtk::HBox.new(false, 0)")
+  	label.set_alignment(0, 0)
+  	box1.pack_start(label, false, false, 0)
+  
+  	# 左から，Gtk::HBox.new の homegeneous，spacing，
+  	# Gtk::HBox#pack_start の expand，fill，padding
+  	[
+  		[false, 0, false, false, 0],
+  		[false, 0, true,  false, 0],
+  		[false, 0, true,  true,  0],
+  	].each do |args|
+  		# 指定された条件で水平ボックスを作成し，垂直ボックスに上からパックし
+  		# ていく．
+  		box2 = make_box(*args)
+  		box1.pack_start(box2, false, false, 0)
+  	end
+  
+  	# Gtk::Separator については後程．
+  	separator = Gtk::HSeparator.new
+  	box1.pack_start(separator, false, true, 5)
+  
+  
+  	# 上と同様である．
+  	label = Gtk::Label.new("Gtk::HBox.new(true, 0)")
+  	label.set_alignment(0, 0)
+  	box1.pack_start(label, false, false, 0)
+  
+  	[
+  		[true, 0, true, false, 0],
+  		[true, 0, true, true,  0],
+  	].each do |args|
+  		box2 = make_box(*args)
+  		box1.pack_start(box2, false, false, 0)
+  	end
+  
+  	separator = Gtk::HSeparator.new
+  	box1.pack_start(separator, false, true, 5)
+  
+  when 2
+  	# プログラムの引数が2の時のデモ
+  	label = Gtk::Label.new("Gtk::HBox.new(false, 10)")
+  	label.set_alignment(0, 0)
+  	box1.pack_start(label, false, false, 0)
+  
+  	[
+  		[false, 10, true, false, 0],
+  		[false, 10, true, true,  0],
+  	].each do |args|
+  		box2 = make_box(*args)
+  		box1.pack_start(box2, false, false, 0)
+  	end
+  
+  	separator = Gtk::HSeparator.new
+  	box1.pack_start(separator, false, true, 5)
+  
+  	label = Gtk::Label.new("Gtk::HBox.new(false, 0)")
+  	label.set_alignment(0, 0)
+  	box1.pack_start(label, false, false, 0)
+  
+  	[
+  		[false, 0, true, false, 10],
+  		[false, 0, true, true,  10],
+  	].each do |args|
+  		box2 = make_box(*args)
+  		box1.pack_start(box2, false, false, 0)
+  	end
+  
+  	separator = Gtk::HSeparator.new
+  	box1.pack_start(separator, false, true, 5)
+  
+  when 3
+  	# プログラムの引数が3の時のデモ
+  	# これは Gtk::Box#pack_end を使ってウィジェットを右揃えするデモである．
+  
+  	# まず最初にこれまでのように新しいボックスを作成する．
+  	box2 = make_box(false, 0, false, false, 0)
+  
+  	# このラベルは右端に位置する．
+  	label = Gtk::Label.new("end")
+  	box2.pack_end(label, false, false, 0)
+  	box1.pack_start(box2, false, false, 0)
+  
+  	# ここではセパレータのサイズを明示的に 400x5 に設定する．
+  	# 従って make_box で作成した水平ボックスも 400 ピクセル幅になり，"end" 
+  	# ラベルはこの水平ボックス中の他のラベルと分離される．
+  	# セパレータのサイズを指定しなかった場合，この水平ボックスの全てのウィ
+  	# ジェットは可能な限り密着してパックされてしまう．
+  	separator = Gtk::HSeparator.new
+  	separator.set_size_request(400, 5)
+  	box1.pack_start(separator, false, true, 5)
+  end
+  
+  # 終了ボタンを作成して，新に作成した水平ボックスにパックする．
+  quitbox = Gtk::HBox.new(false, 0)
+  button = Gtk::Button.new("Quit")
+  button.signal_connect("clicked") do
+  	Gtk.main_quit
+  end 
+  
+  quitbox.pack_start(button, true, false, 0)
+  box1.pack_start(quitbox, true, false, 0)
+  window.add(box1)
+  
+  # すべてのウィジェットを表示する．
+  window.show_all
+  
+  # 最後は当然 Gtk.main である．
+  Gtk.main

@@ -1,0 +1,29 @@
+= class Gst::SchedulerFactory
+Create schedulers from a factory.
+
+== Object Hierarchy
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Gst::PluginFeature
+        * Gst::SchedulerFactory
+
+== Class Methods
+--- Gst::SchedulerFactory.default_name
+    This method returns the default scheduler factory name.
+    * Returns: the default scheduler factory name.
+
+--- Gst::SchedulerFactory.set_default_name(name)
+    Sets the default scheduler name.
+    * name: the name of the default scheduler factory used as a default.  
+    * Returns: self.
+
+== Instance Methods
+--- to_s
+    This method returns a String representing the factory.
+    * Returns: a String representing the factory.
+
+== See Also
+((<Gst>)).
+
+- ((<lrz>))

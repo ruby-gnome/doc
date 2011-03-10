@@ -1,0 +1,29 @@
+= Install Guide
+{{link nil, "Install Guide", nil, nil}}
+
+== Debian GNU/Linux
+
+=== Installing
+
+Official packages are available for stable, testing and unstable Debian. Each binding is available as a separate package. For example,the GTK+
+binding is available as libgtk2-ruby. You can install all the packages by
+installing the ruby-gnome2 package, which depends on all the others. Running
+"apt-get install ruby-gnome2" as root should do the trick.
+
+Make sure you read the README.Debian file, which is available in
+/usr/share/doc/<package>.
+
+=== Bugs in Packages
+
+Bugs in the packages should be filed as normal in the ((<Debian Bug Tracking
+System|URL:http://bugs.debian.org>)).
+
+=== ChangeLog
+
+* 2009/02/16 Drop all out of date information (Arnaud Cornet)
+* 2004/04/22 The packages are now available for the testing distribution - ((<Dafydd>)).
+* 2004/03/31 0.9.1 is now in sid, buildable on more architectures - ((<Dafydd>))
+* 2004/03/14 Updated to reflect new official packages - ((<Dafydd>))
+* 2003/09/20 Add description about ruby interpreter version - ((<Hiroshi>))
+* 2003/03/28 Change file name - ((<Masao>))
+* 2003/03/28 Created - ((<Hiroshi>))

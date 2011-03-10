@@ -1,0 +1,18 @@
+= class Gnome::GPAState
+
+== Object Hierarchy
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Gnome::GPANode
+        * Gnome::GPAState
+
+== Class Methods
+--- new(id)
+    
+     * id: the id of state.
+     * Returns: the new Gnome::GPAState.
+
+== See Also
+
+- kou

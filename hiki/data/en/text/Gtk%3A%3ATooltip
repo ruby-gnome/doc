@@ -1,0 +1,52 @@
+= class Gtk::Tooltip
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Gtk::Tooltip
+
+== Instance Methods
+
+--- custom=
+
+     * Returns: self: ((*FIXME*))
+
+--- icon=
+
+     * Returns: self: ((*FIXME*))
+
+--- markup=
+
+     * Returns: self: ((*FIXME*))
+
+--- set_custom
+
+     * Returns: self: ((*FIXME*))
+
+--- set_icon
+
+     * Returns: self: ((*FIXME*))
+
+--- set_icon_from_stock
+
+     * Returns: self: ((*FIXME*))
+
+--- set_markup
+
+     * Returns: self: ((*FIXME*))
+
+--- set_text
+
+     * Returns: self: ((*FIXME*))
+
+--- text=
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

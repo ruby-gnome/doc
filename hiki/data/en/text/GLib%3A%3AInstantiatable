@@ -1,0 +1,85 @@
+= class GLib::Instantiatable
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+
+== Class Methods
+
+--- GLib::Instantiatable.method_added
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- signal_connect(detailed_signal, *other_args){|instance, *signal_related_args, *other_args| ... }
+
+    Connects a block to a signal for a particular object.
+    The handler will be called before the default handler of the signal.
+    * detailed_signal: a string of the form "signal-name::detail".
+    * other_args: extra arguments to pass handler.
+    * Returns : the handler id
+
+--- signal_connect_after(detailed_signal, *other_args){|instance, *signal_related_args, *other_args| ... }
+
+    Connects a block to a signal for a particular object.
+    The handler will be called after the default handler of the signal.
+    * detailed_signal: a string of the form "signal-name::detail".
+    * other_args: extra arguments to pass handler.
+    * Returns : the handler id
+
+--- signal_emit(detailed_signal, *args)
+
+    Emits a signal.
+    * detailed_signal: a string of the form "signal-name::detail".
+    * args: parameters to be passed to the signal,
+
+--- signal_emit_stop
+
+    (FIXME)
+
+--- signal_handler_block(handler_id)
+--- signal_handler_block(handler_id){ ... }
+
+    Blocks a handler of an instance so it will not be called during any signal emissions unless it is unblocked again. Thus "blocking" a signal handler means to temporarily deactive it, a signal handler has to be unblocked exactly the same amount of times it has been blocked before to become active again.
+    The handler_id has to be a valid signal handler id, connected to a signal of instance.
+    * handler_id : Handler id of the handler to be blocked.
+
+--- signal_handler_unblock(handler_id)
+
+    Undoes the effect of a previous GLib::Instantiatable#signal_handler_block call. A blocked handler is skipped during signal emissions and will not be invoked, unblocking it (for exactly the amount of times it has been blocked before) reverts its "blocked" state, so the handler will be recognized by the signal system and is called upon future or currently ongoing signal emissions (since the order in which handlers are called during signal emissions is deterministic, whether the unblocked handler in question is called as part of a currently ongoing emission depends on how far that emission has proceeded yet).
+    The handler_id has to be a valid id of a signal handler that is connected to a signal of instance and is currently blocked.
+    * handler_id : Handler id of the handler to be unblocked.
+
+--- signal_handler_disconnect(handler_id)
+
+    Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to. The handler_id becomes invalid and may be reused.
+    The handler_id has to be a valid signal handler id, connected to a signal of instance.
+    * handler_id : Handler id of the handler to be disconnected.
+
+--- signal_handler_is_connected?(handler_id)
+
+    Returns whether handler_id is the id of a handler connected to instance.
+    * handler_id : the handler id.
+    * Returns : whether handler_id identifies a handler connected to instance.
+
+- ((<sakai>))
+
+--- clone
+
+     * Returns: self: ((*FIXME*))
+
+--- gtype
+
+     * Returns: self: ((*FIXME*))
+
+--- signal_has_handler_pending?
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

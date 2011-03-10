@@ -1,0 +1,48 @@
+= class Gnome::App::UIInfoConfigurableTypes
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * Gnome::App::UIInfoConfigurableTypes
+
+== Constants
+
+--- ABOUT
+--- CLEAR
+--- CLOSE
+--- CLOSE_WINDOW
+--- COPY
+--- CUT
+--- END_GAME
+--- FIND
+--- FIND_AGAIN
+--- HINT
+--- NEW
+--- NEW_GAME
+--- NEW_WINDOW
+--- OPEN
+--- PASTE
+--- PAUSE_GAME
+--- PREFERENCES
+--- PRINT
+--- PRINT_SETUP
+--- PROPERTIES
+--- QUIT
+--- REDO
+--- REDO_MOVE
+--- REPLACE
+--- RESTART_GAME
+--- REVERT
+--- SAVE
+--- SAVE_AS
+--- SCORES
+--- SELECT_ALL
+--- UNDO
+--- UNDO_MOVE
+
+== See Also
+
+== ChangeLog
+
+

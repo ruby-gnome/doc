@@ -1,0 +1,53 @@
+= class Gtk::IconInfo
+Contains information found when looking up an icon in an icon theme. 
+
+== Object Hierarchy
+* Object
+  * GLib::Boxed
+    * Gtk::IconInfo
+
+== Instance Methods
+--- base_size
+    Gets the base size for the icon. The base size is a size for the icon that was specified by the icon theme creator. This may be different than the actual size of image; an example of this is small emblem icons that can be attached to a larger icon. These icons will be given the same base size as the larger icons to which they are attached.
+    * Returns: the base size, or 0, if no base size is known for the icon.  
+
+--- filename
+    Gets the filename for the icon. If the Gtk::IconTheme::LOOKUP_USE_BUILTIN flag was passed to Gtk::IconTheme#lookup_icon, there may be no filename if a builtin icon is returned; in this case, you should use Gtk::IconInfo#builtin_pixbuf.
+    * Returns: the filename for the icon, or nil if Gtk::IconInfo#builtin_pixbuf should be used instead.
+--- builtin_pixbuf
+    Gets the built-in image for this icon, if any. To allow GTK+ to use built in icon images, you must pass the Gtk::IconTheme::LOOKUP_USE_BUILTIN to Gtk::IconTheme#lookup_icon.
+    * Returns: the built-in image pixbuf(Gdk::Pixbuf), or nil. 
+
+--- load_icon
+    Renders an icon previously looked up in an icon theme using Gtk::IconTheme#lookup_icon; the size will be based on the size passed to Gtk::IconTheme#lookup_icon. Note that the resulting pixbuf may not be exactly this size; an icon theme may have icons that differ slightly from their nominal sizes, and in addition GTK+ will avoid scaling icons that it considers sufficiently close to the requested size or for which the source image would have to be scaled up too far. (This maintains sharpness.)
+    * Returns: the rendered icon (Gdk::Pixbuf)
+
+--- raw_coordinates=(raw_coordinates)
+    Sets whether the coordinates returned by Gtk::IconInfo#embedded_rect and Gtk::IconInfo#attach_points should be returned in their original form as specified in the icon theme, instead of scaled appropriately for the pixbuf returned by Gtk::IconInfo#load_icon. 
+    Raw coordinates are somewhat strange; they are specified to be with respect to the unscaled pixmap for PNG and XPM icons, but for SVG icons, they are in a 1000x1000 coordinate space that is scaled to the final size of the icon. You can determine if the icon is an SVG icon by using Gtk::IconInfo#filename, and seeing if it is non-nil and ends in '.svg'. 
+    This method is provided primarily to allow compatibility wrappers for older API's, and is not expected to be useful for applications.
+    * raw_coordinates: true if the coordinates of embedded rectangles and attached points should be returned in their original (unscaled) form, false otherwise.  
+    * Returns: raw_coordinates
+--- set_raw_coordinates(raw_coordinates)
+    Same as Gtk::IconInfo#raw_coordintates=.
+    * raw_coordinates: true if the coordinates of embedded rectangles and attached points should be returned in their original (unscaled) form, false otherwise.  
+    * Returns: self
+
+--- embedded_rect
+    Gets the coordinates of a rectangle within the icon that can be used for display of information such as a preview of the contents of a text file. See Gtk::IconInfo#raw_coordinates= for further information about the coordinate system.
+    * Returns: Gdk::Rectangle if the icon has an embedded rectangle, otherwise nil.  
+
+--- attach_points
+    Fetches the set of attach points for an icon. An attach point is a location in the icon that can be used as anchor points for attaching emblems or overlays to the icon.
+    * Returns: An Array of points([x, y]), or nil if there are no attach points for the icon.
+
+--- display_name
+    Gets the display name for an icon. A display name is a string to be used in place of the icon name in a user visible context like a list of icons.
+    * Returns: the display name for the icon or nil, if the icon doesn't have a specified display name. 
+
+== See Also
+Gtk::IconTheme
+
+
+== ChangeLog
+* 2005-1-27 Added. - Masao

@@ -1,0 +1,38 @@
+= class Gtk::Drag::TargetFlags
+
+== Object Hierarchy
+
+* Object
+  * GLib::Flags
+    * Gtk::Drag::TargetFlags
+
+== Instance Methods
+
+--- other_app?
+
+     * Returns: self: ((*FIXME*))
+
+--- other_widget?
+
+     * Returns: self: ((*FIXME*))
+
+--- same_app?
+
+     * Returns: self: ((*FIXME*))
+
+--- same_widget?
+
+     * Returns: self: ((*FIXME*))
+
+== Constants
+
+--- OTHER_APP
+--- OTHER_WIDGET
+--- SAME_APP
+--- SAME_WIDGET
+
+== See Also
+
+== ChangeLog
+
+

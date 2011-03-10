@@ -1,0 +1,492 @@
+= module Gtk::FileChooser
+Gtk::FileChooser is an interface that can be implemented by file selection widgets. In GTK+, the main objects that implement this interface are Gtk::FileChooserWidget, Gtk::FileChooserDialog, and Gtk::FileChooserButton. You do not need to write an object that implements the Gtk::FileChooser interface unless you are trying to adapt an existing file selector to expose a standard programming interface. 
+
+== Description
+
+=== File Names and Encodings
+When the user is finished selecting files in a Gtk::FileChooser, your program can get the selected names either as filenames or as URIs. For URIs, the normal escaping rules are applied if the URI contains non-ASCII characters. However, filenames are always returned in the character set specified by the G_FILENAME_ENCODING environment variable. Please see the Glib documentation for more details about this variable. 
+
+==== Important
+This means that while you can pass the result of Gtk::FileChooser#filename to open(2) or fopen(3), you may not be able to directly set it as the text of a Gtk::Label widget unless you convert it first to UTF-8, which all GTK+ widgets expect. You should use GLib.filename_to_utf8 to convert filenames into strings that can be passed to GTK+ widgets. 
+
+
+=== Adding a Preview Widget
+You can add a custom preview widget to a file chooser and then get notification about when the preview needs to be updated. To install a preview widget, use Gtk::FileChooser#preview_widget=. Then, connect to the GtkFileChooser::update-preview signal to get notified when you need to update the contents of the preview. 
+
+Your callback should use Gtk::FileChooser#preview_filename to see what needs previewing. Once you have generated the preview for the corresponding file, you must call Gtk::FileChooser#preview_widget_active= with a boolean flag(true or false) that indicates whether your callback could successfully generate a preview. 
+
+==== Example 2. Sample Usage
+
+  preview = Gtk::Image.new
+  filechooser.preview_widget = preview
+  filechooser.signal_connect("update-preview") {
+    filename = filechooser.preview_filename
+    pixbuf = Gdk::Pixbuf.new(filename, 128, 128)
+    preview.set_from_pixbuf(pixbuf)
+    filechooser.preview_widget_active(have_preview);
+  }
+	
+
+=== Adding Extra Widgets
+You can add extra widgets to a file chooser to provide options that are not present in the default design. For example, you can add a toggle button to give the user the option to open a file in read-only mode. You can use Gtk::FileChooser#extra_widget= to insert additional widgets in a file chooser. 
+
+==== Example 3. Sample Usage
+
+  toggle = Gtk::CheckButton.new("Open file read-only")
+  toggle.show
+  filechooser.extra_widget = toggle
+
+((* Note *)): If you want to set more than one extra widget in the file chooser, you can a container such as a Gtk::VBox or a Gtk::Table and include your widgets in it. Then, set the container as the whole extra widget. 
+
+
+=== Key Bindings
+Internally, GTK+ implements a file chooser's graphical user interface with the private GtkFileChooserDefaultClass. This widget has several key bindings and their associated signals. This section describes the available key binding signals. 
+
+==== Example 4. Gtk::FileChooser key binding example
+The default keys that activate the key-binding signals in GtkFileChooserDefaultClass are as follows: 
+
+* location-popup: Control-L 
+* up-folder: Alt-Up 
+* down-folder: Alt-Down 
+* home-folder: Alt-Home 
+
+To change these defaults to something else, you could include the following fragment in your .gtkrc-2.0 file: 
+
+ binding "my-own-gtkfilechooser-bindings" {
+   bind "<Alt><Shift>l" {
+     "location-popup" ()
+   }
+   bind "<Alt><Shift>Up" {
+     "up-folder" ()
+   }
+   bind "<Alt><Shift>Down" {
+     "down-folder" ()
+   }
+   bind "<Alt><Shift>Home" {
+     "home-folder-folder" ()
+   }
+ }
+ 
+ class "GtkFileChooserDefault" binding "my-own-gtkfilechooser-bindings"
+
+
+:The "GtkFileChooserDefault::location-popup" signal
+ This is used to make the file chooser show a "Location" dialog which the user can use to manually type the name of the file he wishes to select. By default this is bound to Control-L. 
+:The "GtkFileChooserDefault::up-folder" signal
+ This is used to make the file chooser go to the parent of the current folder in the file hierarchy. By default this is bound to Alt-Up. 
+:The "GtkFileChooserDefault::down-folder" signal
+ This is used to make the file chooser go to a child of the current folder in the file hierarchy. The subfolder that will be used is displayed in the path bar widget of the file chooser. For example, if the path bar is showing "/foo/bar/baz", then this will cause the file chooser to switch to the "baz" subfolder. By default this is bound to Alt-Down. 
+
+:The "GtkFileChooserDefault::home-folder" signal
+ This is used to make the file chooser show the user's home folder in the file list. By default this is bound to Alt-Home. 
+
+
+== Included Modules
+* GLib::Interface
+
+== Instance Methods
+--- action
+    Gets the type of operation that the file chooser is performing; see Gtk::FileChooser#action=. ((*Since 2.4*))
+    * Returns: the action that the file selector is performing (Gtk::FileChooser::Action)
+--- action=(action)
+    Sets the type of operation that the chooser is performing; the user interface is adapted to suit the selected action. For example, an option to create a new folder might be shown if the action is Gtk::FileChooser::ACTION_SAVE but not if the action is Gtk::FileChooser::ACTION_OPEN. ((*Since 2.4*))
+    * action: the action that the file selector is performing (Gtk::FileChooser::Action)
+    * Returns: action
+--- set_action(action)
+    Same as Gtk::FileChooser#action=. ((*Since 2.4*))
+    * action: the action that the file selector is performing (Gtk::FileChooser::Action)
+    * Returns: self
+
+--- local_only?
+    Gets whether only local files can be selected in the file selector. See Gtk::FileChooser#local_only=. ((*Since 2.4*))
+    * Returns: true if only local files can be selected
+--- local_only=(local_only)
+    Sets whether only local files can be selected in the file selector. If local_only is true (the default), then the selected file are files are guaranteed to be accessible through the operating systems native file file system and therefore the application only needs to worry about the filename methods in Gtk::FileChooser, like Gtk::FileChooser#filename, rather than the URI methods like Gtk::FileChooser#uri, ((*Since 2.4*))
+    * local_only: true if only local files can be selected 
+    * Returns: local_only
+--- set_local_only(local_only)
+    Same as Gtk::FileChooser#local_only=. ((*Since 2.4*))
+    * local_only: true if only local files can be selected 
+    * Returns: self
+
+--- select_multiple?
+    Gets whether multiple files can be selected in the file selector. See Gtk::FileChooser#select_multiple=. ((*Since 2.4*))
+    * Returns: true if multiple files can be selected.  
+--- select_multiple=(select_multiple)
+    Sets whether multiple files can be selected in the file selector. This is only relevant if the action is set to be Gtk::FileChooser::ACTION_OPEN or Gtk::FileChooser::ACTION_SAVE. It cannot be set with either of the folder actions. ((*Since 2.4*))
+    * select_multiple: true if multiple files can be selected.  
+    * Returns: select_multiple
+--- set_select_multiple
+    Same as Gtk::FileChooser#select_multiple=. ((*Since 2.4*))
+    * select_multiple: true if multiple files can be selected.  
+    * Returns: self
+
+--- show_hidden?
+    Gets whether hidden files and folders are displayed in the file selector. See Gtk::FileChooser#show_hidden=. ((*Since 2.6*))
+    * Returns: true if hidden files and folders are displayed.
+--- show_hidden=(show_hidden)
+    Sets whether hidden files and folders are displayed in the file selector. ((*Since 2.6*))
+    * show_hidden: true if hidden files and folders should be displayed.  
+    * Returns: show_hidden
+--- set_show_hidden(show_hidden)
+    Same as Gtk::FileChooser#show_hidden=. ((*Since 2.6*))
+    * Returns: self
+
+--- current_name=(name)
+    Sets the current name in the file selector, as if entered by the user. Note that the name passed in here is a UTF-8 string rather than a filename. This method is meant for such uses as a suggested name in a "Save As..." dialog. 
+    If you want to preselect a particular existing file, you should use Gtk::FileChooser#filename= instead. ((*Since 2.4*))
+    * name: the filename to use, as a UTF-8 string  
+    * Returns: name
+--- set_current_name(name)
+    Same as Gtk::FileChooser#current_name=. ((*Since 2.4*))
+    * name: the filename to use, as a UTF-8 string  
+    * Returns: self
+
+--- filename
+    Gets the filename for the currently selected file in the file selector. If multiple files are selected, one of the filenames will be returned at random. 
+    If the file chooser is in folder mode, this method returns the selected folder. ((*Since 2.4*))
+    * Returns: The currently selected filename, or nil if no file is selected, or the selected file can't be represented with a local filename.  
+--- filename=(filename)
+    Sets filename as the current filename for the the file chooser; If the file name isn't in the current folder of chooser, then the current folder of chooser will be changed to the folder containing filename. This is equivalent to a sequence of Gtk::FileChooser#unselect_all followed by Gtk::FileChooser#select_filename. If either the folder couldn't be changed and the file wasn't selected, it raises Gtk::FileChooserError or Gtk::FileSystemError.
+    Note that the file must exist, or nothing will be done except for the directory change. To pre-enter a filename for the user, as in a save-as dialog, use GtkFileChooser#current_name=. ((*Since 2.4*))
+    * filename: the filename to set as current  
+    * Returns: filename
+--- set_filename(filename)
+    Same as Gtk::FileChooser#filename=. ((*Since 2.4*))
+    * filename: the filename to set as current  
+    * Returns: self
+
+--- select_filename(filename)
+    Selects a filename. If the file name isn't in the current folder of chooser, then the current folder of chooser will be changed to the folder containing filename. ((*Since 2.4*))
+    * filename: the filename to select  
+    * Returns: true if both the folder could be changed and the file was selected successfully, false otherwise.
+--- unselect_filename(filename)
+    Unselects a currently selected filename. If the filename is not in the current directory, does not exist, or is otherwise not currently selected, does nothing. ((*Since 2.4*))
+    * filename: the filename to unselect  
+
+    * Returns: self
+
+--- select_all
+    Selects all the files in the current folder of a file chooser. ((*Since 2.4*))
+    * Returns: self
+
+--- unselect_all
+    Unselects all the files in the current folder of a file chooser. ((*Since 2.4*))
+    * Returns: self
+
+--- filenames
+    Lists all the selected files and subfolders in the current folder of chooser. The returned names are full absolute paths. If files in the current folder cannot be represented as local filenames they will be ignored. (See Gtk::FileChooser#uris) ((*Since 2.4*))
+    * Returns: an Array containing the filenames of all selected files and subfolders in the current folder. 
+
+--- current_folder
+    Gets the current folder of chooser as a local filename. See Gtk::FileChooser#current_folder=. ((*Since 2.4*))
+    * Returns: the full path of the current folder, or nil if the current path cannot be represented as a local filename.
+--- current_folder=(filename)
+    Sets the current folder for chooser from a local filename. The user will be shown the full contents of the current folder, plus user interface elements for navigating to other folders. If the folder couldn't be changed, it raises Gtk::FileChooserError or Gtk::FileSystemError. ((*Since 2.4*))
+    * filename: the full path of the new current folder  
+    * Returns: filename
+--- set_current_folder(filename)
+    Same as Gtk::FileChooser#current_folder=. ((*Since 2.4*))
+    * filename: the full path of the new current folder  
+    * Returns: self
+
+--- uri
+    Gets the URI for the currently selected file in the file selector. If multiple files are selected, one of the filenames will be returned at random. 
+    If the file chooser is in folder mode, this function returns the selected folder. ((*Since 2.4*))
+    * Returns: The currently selected URI, or nil if no file is selected. 
+--- uri=(uri)
+    Sets the file referred to by uri as the current file for the the file chooser; If the file name isn't in the current folder of chooser, then the current folder of chooser will be changed to the folder containing uri. This is equivalent to a sequence of Gtk::FileChooser#unselect_all followed by Gtk::FileChooser#select_uri. If either the folder couldn't be changed or the URI wasn't selected, it raises Gtk::FileChooserError or Gtk::FileSystemError.
+    Note that the file must exist, or nothing will be done except for the directory change. To pre-enter a filename for the user, as in a save-as dialog, use Gtk::FileChooser#current_name=.  ((*Since 2.4*))
+    * uri: the URI to set as current  
+    * Returns: uri
+--- set_uri(uri)
+    Same as Gtk::FileChooser#uri=. ((*Since 2.4*))
+    * uri: the URI to set as current  
+    * Returns: self
+
+--- select_uri(uri)
+    Selects the file to by uri. If the URI doesn't refer to a file in the current folder of chooser, then the current folder of chooser will be changed to the folder containing filename. ((*Since 2.4*))
+    * uri: the URI to select  
+    * Returns: true if both the folder could be changed and the URI was selected successfully, false otherwise. 
+--- unselect_uri(uri)
+    Unselects the file referred to by uri. If the file is not in the current directory, does not exist, or is otherwise not currently selected, does nothing. ((*Since 2.4*))
+    * uri: the URI to unselect  
+    * Returns: self
+
+--- uris
+    Lists all the selected files and subfolders in the current folder of chooser. The returned names are full absolute URIs. ((*Since 2.4*))
+    * Returns: an Array containing the URIs of all selected files and subfolders in the current folder. 
+
+--- current_folder_uri
+    Gets the current folder of chooser as an URI. See Gtk::FileChooser#current_folder_uri=. ((*Since 2.4*))
+    * Returns: the URI for the current folder  
+--- current_folder_uri=(uri)
+    Sets the current folder for chooser from an URI. The user will be shown the full contents of the current folder, plus user interface elements for navigating to other folders. If the folder couldn't be changed, Gtk::FileChooserError or Gtk::FileSystemError are occured. ((*Since 2.4*))
+    * uri: the URI for the new current folder  
+    * Returns: uri
+--- set_current_folder_uri(uri)
+    Same as Gtk::FileChooser#current_folder_uri=. ((*Since 2.4*))
+    * uri: the URI for the new current folder  
+    * Returns: self
+
+--- preview_widget
+    Gets the current preview widget; see Gtk::FileChooser#preview_widget=. ((*Since 2.4*))
+    * Returns: the current preview widget, or nil 
+--- preview_widget=(preview_widget)
+    Sets an application-supplied widget to use to display a custom preview of the currently selected file. To implement a preview, after setting the preview widget, you connect to the ::update-preview signal, and call Gtk::FileChooser#preview_filename or Gtk::FileChooser#preview_uri on each change. If you can display a preview of the new file, update your widget and set the preview active using Gtk::FileChooser#preview_widget_active=. Otherwise, set the preview inactive. 
+    When there is no application-supplied preview widget, or the application-supplied preview widget is not active, the file chooser may display an internally generated preview of the current file or it may display no preview at all. ((*Since 2.4*))
+    * preview_widget: widget for displaying preview.  
+    * Returns: preview_widget
+--- set_preview_widget(preview_widget)
+    Same as Gtk::FileChooser#preview_widget=. ((*Since 2.4*))
+    * preview_widget: widget for displaying preview.  
+    * Returns: self
+
+--- preview_widget_active?
+    Gets whether the preview widget set by Gtk::FileChooser#preview_widget= should be shown for the current filename. See Gtk::FileChooser#preview_widget_active=. ((*Since 2.4*))
+    * Returns: true if the preview widget is active for the current filename.  
+--- preview_widget_active=(active)
+    Sets whether the preview widget set by Gtk::FileChooser#preview_widget_active= should be shown for the current filename. When active is set to false, the file chooser may display an internally generated preview of the current file or it may display no preview at all. See Gtk::FileChooser#preview_widget= for more details. ((*Since 2.4*))
+    * active: true if it displays the user-specified preview widget, false otherwise.
+    * Returns: active
+--- set_preview_widget_active(active)
+    Same as Gtk::FileChooser#preview_widget_active=. ((*Since 2.4*))
+    * active: true if it displays the user-specified preview widget, otherwise false.
+    * Returns: self
+
+--- use_preview_label?
+    Gets whether a stock label should be drawn with the name of the previewed file. See Gtk::FileChooser#use_preview_label=. ((*Since 2.4*))
+    * Returns: true if the file chooser is set to display a label with the name of the previewed file, false otherwise.  
+--- use_preview_label=(use_label)
+    Sets whether the file chooser should display a stock label with the name of the file that is being previewed; the default is true. Applications that want to draw the whole preview area themselves should set this to false and display the name themselves in their preview widget.  ((*Since 2.4*))
+    See also: Gtk::FileChooser#preview_widget=.
+    * use_label: true if it displays a stock label with the name of the previewed file  
+    * Returns: use_label
+--- set_use_preview_label(use_label)
+    Same as Gtk::FileChooser#use_preview_label=. ((*Since 2.4*))
+    * use_label: true if it displays a stock label with the name of the previewed file  
+    * Returns: self
+
+--- preview_filename
+    Gets the filename that should be previewed in a custom preview widget. See Gtk::FileChooser#preview_widget=. ((*Since 2.4*))
+    * Returns : the filename to preview, or nil if no file is selected, or if the selected file cannot be represented as a local filename. 
+
+--- preview_uri
+    Gets the URI that should be previewed in a custom preview widget. See Gtk::FileChooser#preview_widget=. ((*Since 2.4*))
+    * Returns: the URI for the file to preview, or nil if no file is selected.  
+
+--- extra_widget
+    Gets the current preview widget; see Gtk::FileChooser#extra_widget=. ((*Since 2.4*))
+    * Returns: the current extra widget(Gtk::Widget), or nil  
+--- extra_widget=(extra_widget)
+    Sets an application-supplied widget to provide extra options to the user. ((*Since 2.4*))
+    * extra_widget: widget for extra options  
+
+    * Returns: extra_widget
+--- set_extra_widget(extra_widget)
+    Same as Gtk::FileChooser#exra_widget=. ((*Since 2.4*))
+    * extra_widget: widget for extra options  
+    * Returns: self
+
+--- add_filter(filter)
+    Adds filter to the list of filters that the user can select between. When a filter is selected, only files that are passed by that filter are displayed. ((*Since 2.4*))
+    * filter: a Gtk::FileFilter
+    * Returns: self
+--- remove_filter(filter)
+    Removes filter from the list of filters that the user can select between. ((*Since 2.4*))
+    * filter: a Gtk::FileFilter  
+    * Returns: self
+
+--- filters
+    Lists the current set of user-selectable filters; see Gtk::FileChooser#add_filter=, Gtk::FileChooser#remove_filter. ((*Since 2.4*))
+    * Returns: an Array containing the current set of user selectable filters. 
+
+--- filter
+    Gets the current filter; see Gtk::FileChooser#filter=. ((*Since 2.4*))
+    * Returns : the current filter, or nil. 
+--- filter=(filter)
+    Sets the current filter; only the files that pass the filter will be displayed. If the user-selectable list of filters is non-empty, then the filter should be one of the filters in that list. Setting the current filter when the list of filters is empty is useful if you want to restrict the displayed set of files without letting the user change it. ((*Since 2.4*))
+    * filter: a Gtk::FileFilter  
+    * Returns: filter
+--- set_filter(filter)
+    Same as Gtk::FileChooser#filter=. ((*Since 2.4*))
+    * filter: a Gtk::FileFilter  
+    * Returns: self
+
+--- add_shortcut_folder(folder)
+    Adds a folder to be displayed with the shortcut folders in a file chooser. Note that shortcut folders do not get saved, as they are provided by the application. For example, you can use this to add a "/usr/share/mydrawprogram/Clipart" folder to the volume list. Raise Gtk::FileChooserError or Gtk::FileSystemError if the folder couldn't be added. ((*Since 2.4*))
+    * folder: filename of the folder to add.
+    * Returns: self 
+--- remove_shortcut_folder(folder)
+    Removes a folder from a file chooser's list of shortcut folders. Raise Gtk::FileChooserError or Gtk::FileSystemError if the operation failed. ((*Since 2.4*))
+    * folder: filename of the folder to remove  
+    * Returns: self
+--- shortcut_folders
+    Queries the list of shortcut folders in the file chooser, as set by Gtk::FileChooser#add_shortcut_folder. ((*Since 2.4*))
+    * Returns: An Array of folder filenames
+
+--- add_shortcut_folder_uri(uri)
+    Adds a folder URI to be displayed with the shortcut folders in a file chooser. Note that shortcut folders do not get saved, as they are provided by the application. For example, you can use this to add a "file:///usr/share/mydrawprogram/Clipart" folder to the volume list. Raise Gtk::FileChooserError or Gtk::FileSystemError if the folder couldn't be added. ((*Since 2.4*))
+    * uri: URI of the folder to add  
+    * Returns: self 
+--- remove_shortcut_folder_uri(uri)
+    Removes a folder URI from a file chooser's list of shortcut folders. Raise Gtk::FileChooserError or Gtk::FileSystemError if the folder couldn't be added. ((*Since 2.4*))
+    * uri: URI of the folder to remove  
+    * Returns: self 
+--- shortcut_folder_uris
+    Queries the list of shortcut folders in the file chooser, as set by Gtk::FileChooser#add_shortcut_folder_uri. ((*Since 2.4*))
+    * Returns: An Array of folder URIs
+
+--- file_system_backend=(backend)
+    Set the name of file system backend to use. ((*Since 2.4*))
+    * backend: the name of file system backend.
+    * Returns: backend
+--- set_file_system_backend(backend)
+    Same as Gtk::FileChooser#file_system_backend=.
+    * backend: the name of file system backend. ((*Since 2.4*))
+    * Returns: self
+
+--- do_overwrite_confirmation=(do_overwrite_confirmation)
+    Sets whether a file chooser in Gtk::FileChooser::ACTION_SAVE mode will present a confirmation dialog if the user types a file name that already exists. This is false by default. Regardless of this setting, the chooser will emit the "confirm-overwrite" signal when appropriate. If all you need is the stock confirmation dialog, set this property to true. You can override the way confirmation is done by actually handling the "confirm-overwrite" signal; please refer to its documentation for the details. ((*Since 2.8*))
+    * do_overwrite_confirmation: whether to confirm overwriting in save mode
+    * Returns: do_overwrite_confirmation
+
+--- set_do_overwrite_confirmation(do_overwrite_confirmation)
+    Same as Gtk::FileChooser#do_overwrite_confirmation=. ((*Since 2.8*))
+    * do_overwrite_confirmation: whether to confirm overwriting in save mode
+    * Returns: self
+
+--- do_overwrite_confirmation?
+    Queries whether a file chooser is set to confirm for overwriting when the user types a file name that already exists. ((*Since 2.8*))
+    * Returns: true if the file chooser will present a confirmation dialog; false otherwise.
+
+== Constants
+=== Action
+Describes whether a Gtk::FileChooser is being used to open existing files or to save to a possibly new file.  ((*Since 2.4*))
+--- ACTION_OPEN
+    Indicates open mode. The file chooser will only let the user pick an existing file. 
+--- ACTION_SAVE
+    Indicates save mode. The file chooser will let the user pick an existing file, or type in a new filename. 
+--- ACTION_SELECT_FOLDER
+    Indicates an Open mode for selecting folders. The file chooser will let the user pick an existing folder. 
+--- ACTION_CREATE_FOLDER
+    Indicates a mode for creating a new folder. The file chooser will let the user name an existing or new folder. 
+=== Confirmation
+Used as a return value of handlers for the confirm-overwrite signal. This value determines whether the file chooser will present the stock confirmation dialog, accept the user's choice of a filename, or let the user choose another filename. ((*Since 2.8*))
+--- CONFIRMATION_CONFIRM
+    The file chooser will present its stock dialog to confirm about overwriting an existing file.
+--- CONFIRMATION_ACCEPT_FILENAME
+    The file chooser will terminate and accept the user's choice of a file name.
+--- CONFIRMATION_SELECT_AGAIN
+    The file chooser will continue running, so as to let the user select another file name.
+
+== Properties
+--- action: Gtk::FileChooser::Action (Read/Write)
+    The type of operation that the file selector is performing. ((*Since 2.4*))
+    * Default value: Gtk::FileChooser::ACTION_OPEN
+
+--- extra-widget: Gtk::Widget (Read/Write)
+    Application supplied widget for extra options. ((*Since 2.4*))
+
+--- file-system-backend: String (Read/Write)
+    Name of file system backend to use. ((*Since 2.4*))
+    * Default value: nil
+
+--- filter: Gtk::FileFilter (Read/Write)
+    The current filter for selecting which files are displayed. ((*Since 2.4*))
+
+--- local-only: true or false (Read/Write)
+    Whether the selected file(s) should be limited to local file: URLs. ((*Since 2.4*))
+    * Default value: true
+
+--- preview-widget: Gtk::Widget (Read/Write)
+    Application supplied widget for custom previews. ((*Since 2.4*))
+
+--- preview-widget-active: true or false (Read/Write)
+    Whether the application supplied widget for custom previews should be shown. ((*Since 2.4*))
+    * Default value: true
+
+--- select-multiple: true or false (Read/Write)
+    Whether to allow multiple files to be selected. ((*Since 2.4*))
+    * Default value: false
+
+--- show-hidden: true or false (Read/Write)
+    Whether the hidden files and folders should be displayed. ((*Since 2.4*))
+    * Default value: false
+
+--- use-preview-label: true or false (Read/Write)
+    Whether to display a stock label with the name of the previewed file. ((*Since 2.4*))
+    * Default value: true
+
+--- do-overwrite-confirmation: true or false (Read/Write)
+    Whether a file chooser in Gtk::FileChooser::ACTION_SAVE will present an overwrite confirmation dialog if the user selects a file name that already exists. Default value: false. ((*Since 2.8*))
+
+== Signals
+
+--- current-folder-changed: self
+    This signal is emitted when the current folder in a Gtk::FileChooser changes. This can happen due to the user performing some action that changes folders, such as selecting a bookmark or visiting a folder on the file list. It can also happen as a result of calling a method to explicitly change the current folder in a file chooser. 
+    Normally you do not need to connect to this signal, unless you need to keep track of which folder a file chooser is showing. 
+    See also: Gtk::FileChooser#current_folder=, Gtk::FileChooser#current_folder, Gtk::FileChooser#current_folder_uri=, Gtk::FileChooser#current_folder_uri. ((*Since 2.4*))
+     * self: Gtk::FileChooser
+
+--- file-activated: self
+    This signal is emitted when the user "activates" a file in the file chooser. This can happen by double-clicking on a file in the file list, or by pressing Enter. 
+    Normally you do not need to connect to this signal. It is used internally by Gtk::FileChooserDialog to know when to activate the default button in the dialog. 
+    See also: Gtk::FileChooser#filename, Gtk::FileChooser#filenames, Gtk::FileChooser#uri, Gtk::FileChooser#uris. ((*Since 2.4*))
+     * self: Gtk::FileChooser
+
+--- selection-changed: self
+    This signal is emitted when there is a change in the set of selected files in a Gtk::FileChooser. This can happen when the user modifies the selection with the mouse or the keyboard, or when explicitly calling functions to change the selection. 
+    Normally you do not need to connect to this signal, as it is easier to wait for the file chooser to finish running, and then to get the list of selected files using the method mentioned below. 
+    See also: Gtk::FileChooser#select_filename, Gtk::FileChooser#unselect_filename, Gtk::FileChooser#filename, Gtk::FileChooser#filenames, Gtk::FileChooser#select_uri, Gtk::FileChooser#unselect_uri, Gtk::FileChooser#uri, Gtk::FileChooser#uris. ((*Since 2.4*))
+    * self: Gtk::FileChooser
+
+--- update-preview: self
+    This signal is emitted when the preview in a file chooser should be regenerated. For example, this can happen when the currently selected file changes. You should use this signal if you want your file chooser to have a preview widget. 
+    Once you have installed a preview widget with Gtk::FileChooser#preview_widget=, you should update it when this signal is emitted. You can use the methods Gtk::FileChooser#preview_filename or Gtk::FileChooser#preview_uri to get the name of the file to preview. Your widget may not be able to preview all kinds of files; your callback must call Gtk::FileChooser#preview_wiget_active= to inform the file chooser about whether the preview was generated successfully or not. 
+    Please see the example code in the section called “((<Adding a Preview Widget|Gtk::FileChooser#Adding a Preview Widget>))”. 
+    See also: Gtk::FileChooser#preview_widget=, Gtk::FileChooser#preview_widget_active=, Gtk::FileChooser#use_preview_label=, Gtk::FileChooser#preview_filename, Gtk::FileChooser#preview_uri. ((*Since 2.4*))
+     * self: Gtk::FileChooser
+
+--- confirm-overwrite: self
+    This signal gets emitted whenever it is appropriate to present a confirmation dialog when the user has selected a file name that already exists. The signal only gets emitted when the file chooser is in Gtk::FileChooser::ACTION_SAVE mode.
+    Most applications just need to turn on the :do-overwrite-confirmation property (or call the Gtk::FileChooser#do_overwrite_confirmation= function), and they will automatically get a stock confirmation dialog. Applications which need to customize this behavior should do that, and also connect to the confirm-overwrite signal.
+    A signal handler for this signal must return a Gtk::FileChooserConfirmation value, which indicates the action to take. If the handler determines that the user wants to select a different filename, it should return Gtk::FileChooser::CONFIRMATION_SELECT_AGAIN. If it determines that the user is satisfied with his choice of file name, it should return Gtk::FileChooser::CONFIRMATION_ACCEPT_FILENAME. On the other hand, if it determines that the stock confirmation dialog should be used, it should return Gtk::FileChooser::CONFIRMATION_CONFIRM. The following example illustrates this. ((*Since 2.8*)) 
+
+      chooser = Gtk::FileChooserDialog.new("file save",
+                                           nil,
+                                           Gtk::FileChooser::ACTION_SAVE,
+                                           nil,
+                                           [Gtk::Stock::SAVE, Gtk::Dialog::RESPONSE_ACCEPT], [Gtk::Stock::CANCEL, Gtk::Dialog::RESPONSE_CANCEL])
+      chooser.do_overwrite_confirmation = true
+      chooser.signal_connect("confirm-overwrite") { |fc|
+          retval = nil
+          uri = chooser.uri
+          if is_uri_read_only(uri)
+              if user_wants_to_replace_read_only_file(uri)
+                  retval = Gtk::FileChooser::CONFIRMATION_ACCEPT_FILENAME
+              else
+                  retval = Gtk::FileChooser::CONFIRMATION_SELECT_AGAIN
+              end
+          else
+              retval = Gtk::FileChooser::CONFIRMATION_CONFIRM  # fall back to the default dialog
+          end
+          # return the wanted value
+          retval
+      }
+      
+      chooser.run { |response|
+          if response == Gtk::Dialog::RESPONSE_ACCEPT
+              save_to_file(chooser.filename)
+          end
+      }
+      chooser.destroy
+
+
+== See Also
+Gtk::FileChooserDialog, Gtk::FileChooserWidget, Gtk::FileChooserButton 
+
+== ChangeLog
+* 2007-03-01 Modified. -- ((<Masao>))
+* 2005-09-11 Document 2.8 additions -- ((<gc>))
+* 2005-01-20 Initial upload -- ((<Masao>))

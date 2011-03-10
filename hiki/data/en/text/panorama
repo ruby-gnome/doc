@@ -1,0 +1,23 @@
+=panorama
+
+Simple script that shows panorama (left/right) meter for an audio file.
+
+==Download
+{{attach_anchor("panorama.rb")}}
+
+==Screenshot
+{{image "panorama.png"}}
+
+==Usage
+$ ruby panorama.rb AUDIO_FILE_NAME
+
+==License
+Ruby's
+
+==Author
+Marcin Lewandowski
+
+{{br}}
+===Changelog
+:2009-11-15
+Initial release

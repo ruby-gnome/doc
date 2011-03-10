@@ -1,0 +1,39 @@
+= Guide d'installation pour Debian GNU/Linux
+
+=== Note
+
+* Les paquetages Ruby-GNOME2 pour Debian ne sont pas encore officiels.  Il peut donc y avoir des incompatibilités avec d'autres paquetages existants.
+* Seule la version "release" est disponible.
+* Seule l'architecture i386 est supportée.
+* Il existe deux paquetages disponibles: un pour woody (stable, avec ruby 1.6) et un pour sid (instable, avec ruby 1.8).
+
+=== woody (stable)
+* Seulement pour ruby 1.6.
+* Installez XFree86 4.2 et GNOME 2.2.  Vous pouvez consulter le guide d'installation ((<GNOME2 on Debian|URL:http://people.debian.org/~walters/gnome2.html>)) (anglais uniquement) pour avoir plus d'informations concernant cette procédure.
+* Ajoutez la ligne suivante dans voter fichier /etc/apt/sources.list:
+    deb http://ruby.yi.org/debian/ woody-gnome2 ruby-gnome2
+* Démarrez les commandes suivantes en étant root:
+    apt-get update
+    apt-get install ruby-gnome2
+* Vous pouvez maintenant démarrer (en tant qu'utilisateur normal) le programme rbbr afin de tester si l'installation s'est correctement déroulée:
+    /usr/bin/rbbr
+
+=== sid (instable)
+* Seulement pour ruby 1.8.
+* Ajoutez la ligne suivante dans votre fichier /etc/apt/sources.list:
+    deb http://ruby.yi.org/debian/ sid ruby-gnome2
+* Démarrez les commandes suivantes en étant root:
+    apt-get update
+    apt-get install ruby-gnome2
+* Vous pouvez maintenant démarrer (en tant qu'utilisateur normal) le programme rbbr afin de tester si l'installation s'est correctement déroulée:
+    /usr/bin/rbbr
+
+=== Modifications
+:2003/09/20 Hiroshi
+ Ajout d'une description concernant les différentes versions de Ruby
+:2003/03/28 Masao 
+ Changement du nom de fichier
+:2003/03/28 Hiroshi
+ Première version
+
+Traduction de la page anglaise par Laurent Sansonetti.

@@ -1,0 +1,80 @@
+= Hello Worldの改良
+
+{{image_right("helloworld2.png")}}
+多少改良したhelloworldを見てみよう．
+今度はコールバックの例としてより良いものとなっている．
+また，次のトピックであるウィジェットのパッキングについても少しだけ触れている．
+
+  #!/usr/bin/env ruby
+  
+  # いつものおまじない
+  require 'gtk2'
+  
+  # ボタンを押すとこのメソッドが呼ばれる
+  def callback(widget)
+     # ウィジェットのlabelというプロパティを表示している．
+     # どのようなプロパティが利用できるかについてはAPIリファレンスを参照．
+     puts "Hello again - #{widget.label}(#{widget}) was pressed."
+  end
+  
+  # ウィンドウを作る
+  window = Gtk::Window.new
+  
+  # ウィンドウのタイトルとボーダーを指定する
+  window.title = "Hello Buttons"
+  window.border_width = 10
+  
+  # 'delete_event'が発行されると即座にプログラムを終了する．
+  window.signal_connect('delete_event') do
+    Gtk.main_quit
+    false
+  end
+  
+  
+  # ウィジェットをパックするボックスを作成する。
+  # 詳細は "パッキング"セクションで説明する。
+  # ボックスは全く表示されず、単にウィジェットを配置するためのツールとして使われる。
+  box1 = Gtk::HBox.new(false, 0)
+  
+  # メインウインドウにボックスを配置する．
+  window.add(box1)
+  
+  # "Button 1"というラベルを持ったボタンを作成する．
+  button1 = Gtk::Button.new("Button 1")
+  
+  # ボタンがクリックされたら，クリックされたボタンウィジェットへの参照を引数としてcallbackを呼び出す．
+  button1.signal_connect( "clicked" ) do |w|
+    callback(w)
+  end
+  
+  # window.addではなく，ボタンを不可視のボックスにパックする。
+  # このボックスは先程ウィンドウの中にパックしたボックスである．
+  box1.pack_start(button1, true, true, 0)
+  
+  # 2つ目のボタンについても同様のステップを繰り返す．
+  button2 = Gtk::Button.new("Button 2")
+  
+  # 同じcallbackを呼び出すが，引数は別のボタンウィジェットへの参照である．
+  button2.signal_connect("clicked") do |w|
+    callback(w)
+  end
+  
+  box1.pack_start(button2, true, true, 0)
+  
+  # 以下のようにそれぞれのウィジェットのshowメソッドを呼び出してもよい．
+  #   button1.show
+  #   button2.show
+  #   box1.show
+  #   window.show
+  window.show_all
+  Gtk.main
+
+最初のhelloworld.rbと同じ方法でこのスクリプトを実行することができる．
+今回はプログラムを終了させるのが簡単でないことに気付くだろう。
+終了させるためにはウィンドウマネージャを使うかコマンドラインからkillする必要がある。
+
+練習問題としてして，プログラムを終了させる三番目のボタン"Quit"を追加してみよう
+((-実際に手を動かしてみよう．-))．
+
+次のセクションを読みながらGtk::Box#pack_startメソッドのオプションを色々と設定してみるのも良いだろう．
+ウィンドウのサイズを変えてみて、どの様になるか観察してみよう。 

@@ -1,0 +1,55 @@
+= ウィジェット概観
+GTKでウィジェットを作成する一般的なステップは次の通りである: 
+
+(1) Gtk::*.new - 新たにウィジェットを作成するための様々なメソッドの一つ。
+    これらについては全てこのセクションで詳しく解説する。 
+(1) 使用したいシグナルとイベント全てを適切なハンドラに接続する。
+(1) ウィジェットの属性を設定する。
+(1) 目的に応じ、Gtk::Container#addやGtk::Box#pack_start等のメソッドを使用して
+    ウィジェットをコンテナにパックする。 
+(1) ウィジェットに対しGtk::Widget#showを呼び出す。
+
+Gtk::Widget#showは，ウィジェットの属性の設定が済んで表示の準備が整ったことをGTKに知らせる。
+ウィジェットを再び非表示にする場合はGtk::Widget#hideを使用する。
+ウィジェットを表示する順番は重要ではないが、最後にウィンドウを表示することをお勧めする。
+そうすることで作ったウィジェットが一つ一つばらばらにスクリーンに表示されるのではなく、
+全体が一度にポップアップするからだ。
+ウィンドウがGtk::Widget#showメソッドにより表示されるまでは、
+ウイジェット(ウィンドウもウィジェットである)の子は表示されない。 
+
+Gtk::Widget#show_allは再帰的に子ウィジェットを表示してくれる．
+Gtk::Widget#show_allを使用すれば，いちいち全てのウィジェットでGtk::Widget#showを呼出す必要はない．
+
+== ウィンドウを持たないウィジェット
+以下のウィジェットは対応するウィンドウを持たない。
+もしイベントを捕捉したければ、Gtk::EventBoxを使う必要がある。
+((<イベントボックス|gtk2-tut-gtk-eventbox>))を参照のこと。
+
+* Gtk::Alignment
+* Gtk::Arrow
+* Gtk::Bin
+* Gtk::Box
+* Gtk::Button
+* Gtk::CheckButton
+* Gtk::Fixed
+* Gtk::Image
+* Gtk::Label
+* Gtk::MenuItem
+* Gtk::Notebook
+* Gtk::Paned
+* Gtk::RadioButton
+* Gtk::Range
+* Gtk::ScrolledWindow
+* Gtk::Separator
+* Gtk::Table
+* Gtk::Toolbar
+* Gtk::AspectFrame
+* Gtk::Frame
+* Gtk::VBox
+* Gtk::HBox
+* Gtk::VSeparator
+* Gtk::HSeparator
+
+以降では，各々のウィジェットを順々に調べたり，
+それらを表示する簡単なサンプルを書いてみたりすることでRuby/GTK2の探求を進めて行く．
+Ruby/GTK2に付属するsample/配下の各種サンプルスクリプトも参考にするとよいだろう．

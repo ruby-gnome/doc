@@ -1,0 +1,32 @@
+= class Gnome::GPANode
+
+== Object Hierarchy
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Gnome::GPANode
+
+== Instance Methods
+--- id
+    
+     * Returns: the id of node.
+--- set_value(value)
+--- value=(value)
+    
+     * value: the value of node.
+     * Returns: ((|true|)) when success, or ((|false|)).
+--- value
+    
+     * Returns: the value of node.
+
+== Signals
+--- child-added: self
+     * self: 
+--- child-removed: self
+     * self: 
+--- modified: self
+     * self: 
+
+== See Also
+
+- kou

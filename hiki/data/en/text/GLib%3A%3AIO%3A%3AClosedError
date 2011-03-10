@@ -1,0 +1,18 @@
+= class GLib::IO::ClosedError
+
+The file has been closed.
+
+== Object Hierarchy
+
+* Object
+  * Exception
+    * StandardError
+      * IOError
+        * GLib::IO::Error
+          * GLib::IO::ClosedError
+
+== See Also
+
+== ChangeLog
+
+

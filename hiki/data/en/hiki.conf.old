@@ -1,0 +1,12 @@
+$site_name = "Ruby-GNOME2 Project Website"
+$author_name = "Ruby-GNOME2 Project Team"
+$mail = "ruby-gnome2-cvs@lists.sourceforge.jp"
+$theme = "ruby-gnome2"
+$password = "lIyM1s/ayc5/Q"
+$theme_url = "ja/theme"
+$sidebar_class = "sidebar"
+$main_class = "main"
+$theme_path = "/home/groups/r/ru/ruby-gnome2/htdocs/theme"
+$mail_on_update = true
+$use_sidebar = true
+$auto_link = false

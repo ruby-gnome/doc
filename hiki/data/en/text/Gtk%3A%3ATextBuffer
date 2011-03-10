@@ -1,0 +1,570 @@
+= class Gtk::TextBuffer
+
+You may wish to begin by reading the ((<text widget conceptual overview>)) which gives an overview of all the objects and data types related to the text widget and how they work together.
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Gtk::TextBuffer
+
+== Class Methods
+
+--- Gtk::TextBuffer.new
+
+    Creates a new text buffer.
+    * table: a tag table, or nil to create a new one 
+    * Returns: a new text buffer
+
+== Instance Methods
+
+--- line_count
+
+    Obtains the number of lines in the buffer. This value is cached, so the method is very fast.
+    * Returns : number of lines in the buffer
+
+--- char_count
+
+    Gets the number of characters in the buffer; note that characters and bytes are not the same, you can't e.g. expect the contents of the buffer in string form to be this many bytes long. The character count is cached, so this method is very fast.
+    * Returns: number of characters in the buffer
+
+--- tag_table
+
+    Get the Gtk::TextTagTable associated with this buffer.
+    * Returns: the buffer's tag table
+
+--- insert(iter, text)
+
+    Inserts the text at position iter. Emits the "insert_text" signal; insertion actually occurs in the default handler for the signal. iter is invalidated when insertion occurs (because the buffer contents change), but the default signal handler revalidates it to point to the end of the inserted text.
+    * iter : a position in the buffer (Gtk::TextIter)
+    * text : UTF-8 format text to insert 
+    * Returns: self
+
+--- insert(iter, text, tag1, tag2, tag3, ...)
+
+    Inserts text into buffer at iter, applying an array of tags to the newly-inserted text. Equivalent to calling Gtk::TextBuffer#insert(iter, text), then Gtk::TextBuffer#apply_tag on the inserted text.
+    * iter: an iterator in buffer 
+    * text: UTF-8 text 
+    * tag1, tag2, tag3, ...: tags(tag name of String or Gtk::TextTag)
+    * Returns: self
+
+--- insert(iter, pixbuf)
+
+    Inserts an image into the text buffer at iter. The image will be counted as one character in character counts, and when obtaining the buffer contents as a string, will be represented by the Unicode "object replacement character" 0xFFFC. Note that the "slice" variants for obtaining portions of the buffer as a string include this character for pixbufs, but the "text" variants do not. e.g. see Gtk::TextBuffer#get_slice and Gtk::TextBuffer#get_text.
+    * iter: location to insert the pixbuf (Gtk::TextIter)
+    * pixbuf: a Gdk::Pixbuf 
+    * Returns: self
+
+--- insert(iter, anchor)
+
+    Inserts a child widget anchor into the text buffer at iter. The anchor will be counted as one character in character counts, and when obtaining the buffer contents as a string, will be represented by the Unicode "object replacement character" 0xFFFC. Note that the "slice" variants for obtaining portions of the buffer as a string include this character for child anchors, but the "text" variants do not. e.g. see Gtk::TextBuffer#get_slice and Gtk::TextBuffer#get_text. Consider Gtk::TextBuffer#create_child_anchor as a more convenient alternative to this method. The buffer will add a reference to the anchor, so you can unref it after insertion.
+    * iter: location to insert the anchor (Gtk::TextIter)
+    * anchor: a Gtk::TextChildAnchor 
+    * Returns: self
+
+--- insert_with_tags(iter, text, tag1, tag2, tag3, ...)
+
+    Deprecated. Use insert(iter, text, tag1, tag2, tag3, ...) instead.
+
+--- insert_pixbuf(iter, pixbuf)
+
+    Deprecated. Use insert(iter, pixbuf) instead.
+
+--- insert_child_anchor(iter, anchor)
+
+    Deprecated. Use insert(iter, anchor) instead.
+
+--- insert_at_cursor(text)
+
+    Simply calls Gtk::TextBuffer#insert, using the current cursor position as the insertion point.
+    * text: some text in UTF-8 format 
+    * Returns: self
+
+--- insert_interactive(iter, text, default_editable)
+
+    Like Gtk::TextBuffer#insert, but the insertion will not occur if iter is at a non-editable location in the buffer. Usually you want to prevent insertions at ineditable locations if the insertion results from a user action (is interactive).
+    default_editable indicates the editability of text that doesn't have a tag affecting editability applied to it. Typically the result of Gtk::TextView#editable? is appropriate here.
+    * iter : a position in buffer (Gtk::TextIter)
+    * text : some UTF-8 text 
+    * default_editable : default editability of buffer(true or false)
+    * Returns : true if the text was actually inserted
+
+--- insert_interactive_at_cursor(text, default_editable)
+
+    Calls Gtk::TextBuffer#insert_interactive at the cursor position.
+    default_editable indicates the editability of text that doesn't have a tag affecting editability applied to it. Typically the result of Gtk::TextView#editable? is appropriate here.
+    * text : text in UTF-8 format 
+    * default_editable : default editability of buffer (true or false)
+    * Returns : true if text was actually inserted
+
+--- insert_range(iter, start, end)
+
+    Copies text, tags, and pixbufs between start and end (the order of start and end doesn't matter) and inserts the copy at iter. Used instead of simply getting/inserting text because it preserves images and tags. If start and end are in a different buffer from buffer, the two buffers must share the same tag table.
+    Implemented via emissions of the insert_text and apply_tag signals, so expect those.
+    * iter: a position in buffer (Gtk::TextIter)
+    * start: a position in a Gtk::TextBuffer (Gtk::TextIter)
+    * end: another position in the same buffer as start (Gtk::TextIter)
+    * Returns: self
+
+--- insert_range_interactive(iter, start, end, default_editable)
+
+    Same as Gtk::TextBuffer#insert_range, but does nothing if the insertion point isn't editable. The default_editable parameter indicates whether the text is editable at iter if no tags enclosing iter affect editability. Typically the result of Gtk::TextView#editable? is appropriate here.
+    * iter : a position in buffer (Gtk::TextIter)
+    * start : a position in a Gtk::TextBuffer (Gtk::TextIter)
+    * end : another position in the same buffer as start (Gtk::TextIter)
+    * default_editable : default editability of the buffer (true or false)
+    * Returns : true if an insertion was possible at iter
+
+--- create_child_anchor(iter)
+
+    This is a convenience method which simply creates a child anchor with Gtk::TextChildAnchor.new and inserts it into the buffer with Gtk::TextBuffer#insert_child_anchor. The new anchor is owned by the buffer; no reference count is returned to the caller of Gtk::TextBuffer#create_child_anchor.
+    * iter: location in the buffer (Gtk::TextIter)
+    * Returns: the new Gtk::TextChildAnchor
+
+--- delete(start, end)
+
+    Deletes text between start and end. The order of start and end is not actually relevant; Gtk::TextBuffer#delete will reorder them. This method actually emits the "delete_range" signal, and the default handler of that signal deletes the text. Because the buffer is modified, all outstanding iterators become invalid after calling this method; however, the start and end will be re-initialized to point to the location where text was deleted.
+    * start: a position in buffer (Gtk::TextIter)
+    * end: another position in buffer (Gtk::TextIter)
+    * Returns: self
+
+--- delete_interactive(start, end, default_editable)
+
+    Deletes all editable text in the given range. Calls Gtk::TextBuffer#delete for each editable sub-range of [start, end]. start and end are revalidated to point to the location of the last deleted range, or left untouched if no text was deleted.
+    * start: start of range to delete (Gtk::TextIter)
+    * end: end of range (Gtk::TextIter)
+    * default_editable: true if the buffer is editable by default 
+    * Returns: true if some text was actually deleted
+
+--- text
+
+    Same as Gtk::TextBuffer#get_text(nil, nil, false)
+    * Returns: an UTF-8 string.
+
+--- get_text(start = nil, end = nil, include_hidden_chars = false)
+
+    Returns the text in the range [start, end]. Excludes undisplayed text (text marked with tags that set the invisibility attribute) if include_hidden_chars is false. Does not include characters representing embedded images, so byte and character indexes into the returned string do not correspond to byte and character indexes into the buffer. Contrast with Gtk::TextBuffer#get_slice.
+    * start: start of a range (Gtk::TextIter). If nil, set the first position in the text buffer. 
+    * end: end of a range (Gtk::TextIter). If nil, set the last position in the text buffer.
+    * include_hidden_chars: true if including invisible text 
+    * Returns: an UTF-8 string
+
+--- text=(text)
+
+    Deletes current contents of buffer, and inserts text instead. text must be valid UTF-8.
+    * text : UTF-8 text to insert 
+    * Returns: text
+
+--- set_text(text)
+
+    Same as Gtk::TextBuffer#text=.
+    * Returns: self
+
+--- slice
+
+    Same as Gtk::TextBuffer#get_slice(nil, nil, false)
+    * Returns: an UTF-8 string.
+
+--- get_slice(start = nil, end = nil, include_hidden_chars = false)
+
+    Returns the text in the range [start,end]. Excludes undisplayed text (text marked with tags that set the invisibility attribute) if include_hidden_chars is false. The returned string includes a 0xFFFC character whenever the buffer contains embedded images, so byte and character indexes into the returned string do correspond to byte and character indexes into the buffer. Contrast with Gtk::TextBuffer#get_text. Note that 0xFFFC can occur in normal text as well, so it is not a reliable indicator that a pixbuf or widget is in the buffer.
+    * start: start of a range (Gtk::TextIter)
+    * end: end of a range (Gtk::TextIter)
+    * include_hidden_chars: true if including invisible text 
+    * Returns: an allocated UTF-8 string
+
+--- create_mark(mark_name, iter, left_gravity)
+
+    Creates a mark at position iter. If mark_name is nil, the mark is anonymous; otherwise, the mark can be retrieved by name using Gtk::TextBuffer#get_mark. If a mark has left gravity, and text is inserted at the mark's current location, the mark will be moved to the left of the newly-inserted text. If the mark has right gravity (left_gravity = false), the mark will end up on the right of newly-inserted text. The standard left-to-right cursor is a mark with right gravity (when you type, the cursor stays on the right side of the text you're typing).
+    The caller of this method does not own a reference to the returned Gtk::TextMark, so you can ignore the return value if you like. Marks are owned by the buffer and go away when the buffer does.
+    Emits the "mark_set" signal as notification of the mark's initial placement.
+    * mark_name: name for mark(String), or nil 
+    * iter: location to place mark (Gtk::TextIter)
+    * left_gravity: true if the mark has left gravity, false if the mark has right gravity
+    * Returns: the new Gtk::TextMark
+
+--- move_mark(mark, iter)
+
+    Moves mark to the new location iter. Emits the "mark_set" signal as notification of the move.
+    * mark: a Gtk::TextMark or mark name (String)
+    * iter: new location for mark in buffer (Gtk::TextIter)
+    * Returns: self
+
+--- delete_mark(mark)
+
+    Deletes mark, so that it's no longer located anywhere in the buffer. Gtk::TextMark#deleted? will return TRUE after this function has been called on a mark; Gtk::TextMark#deleted? indicates that a mark no longer belongs to a buffer. The "mark_deleted" signal will be emitted as notification after the mark is deleted.
+    * mark: a Gtk::TextMark or mark name (String) in buffer 
+    * Returns: self
+
+--- get_mark(name)
+
+    Returns the mark named name in buffer, or nil if no such mark exists in the buffer.
+    * name: a mark name 
+    * Returns: a Gtk::TextMark, or nil
+
+--- selection_bound
+
+    Returns the mark that represents the selection bound. Equivalent to calling Gtk::TextBuffer#get_mark to get the mark named "selection_bound", but very slightly more efficient, and involves less typing.
+    The currently-selected text in buffer is the region between the "selection_bound" and "insert" marks. If "selection_bound" and "insert" are in the same place, then there is no current selection. Gtk::TextBuffer#selection_bounds is another convenient method for handling the selection, if you just want to know whether there's a selection and what its bounds are.
+    * Returns: selection bound mark (Gtk::TextMark)
+
+--- place_cursor(iter)
+
+    This method moves the "insert" and "selection_bound" marks simultaneously. If you move them to the same place in two steps with Gtk::TextBuffer#move_mark, you will temporarily select a region in between their old and new locations, which can be pretty inefficient since the temporarily-selected region will force stuff to be recalculated. This method moves them as a unit, which can be optimized.
+    * iter: a Gtk::TextIter where to put the cursor 
+    * Returns: self
+
+--- apply_tag(tag, start, end)
+
+    Emits the "apply_tag" signal on buffer. The default handler for the signal applies tag to the given range. start and end do not have to be in order.
+    * tag: a Gtk::TextTag or tag name (String)
+    * start: one bound of range to be tagged (Gtk::TextIter)
+    * end: other bound of range to be tagged (Gtk::TextIter)
+    * Returns: self
+
+--- remove_tag(tag, start, end)
+
+    Emits the "remove_tag" signal. The default handler for the signal removes all occurrences of tag from the given range. start and end don't have to be in order.
+    * tag: a Gtk::TextTag or tag name (String)
+    * start: one bound of range to be untagged (Gtk::TextIter)
+    * end: other bound of range to be untagged (Gtk::TextIter)
+    * Returns: self
+
+--- remove_all_tags(start, end)
+
+    Removes all tags in the range between start and end. Be careful with this method; it could remove tags added in code unrelated to the code you're currently writing. That is, using this method is probably a bad idea if you have two or more unrelated code sections that add tags.
+    * start: one bound of range to be untagged (Gtk::TextIter)
+    * end: other bound of range to be untagged (Gtk::TextIter)
+    * Returns: self
+
+--- create_tag(tag_name, properties)
+
+    Creates a tag and adds it to the tag table for buffer. Equivalent to calling Gtk::TextTag.new and then adding the tag to the buffer's tag table. The returned tag is owned by the buffer's tag table, so the ref count will be equal to one.
+    If tag_name is nil, the tag is anonymous.
+    If tag_name is non-nil, a tag called tag_name must not already exist in the tag table for this buffer.
+    * tag_name: name of the new tag, or nil
+    * properties: a hash of property names and values {name1 => value1, name2 => value2, ...}
+    * Returns: a new Gtk::TextTag
+
+--- get_iter_at_line_offset(line_number, char_offset)
+
+    Obtains an iterator pointing to char_offset within the given line. The char_offset must exist, offsets off the end of the line are not allowed. Note characters, not bytes; UTF-8 may encode one character as multiple bytes.
+    * line_number: line number counting from 0 
+    * char_offset: char offset from start of line 
+    * Returns: a Gtk::TextIter
+
+--- get_iter_at_offset(char_offset)
+
+    Gets the iter to a position char_offset chars from the start of the entire buffer.
+    * char_offset : char offset from start of buffer, counting from 0 
+    * Returns: a Gtk::TextIter
+
+--- get_iter_at_line(line_number)
+
+    Gets the iter to the start of the given line.
+    * line_number: line number counting from 0 
+    * Returns: a Gtk::TextIter
+
+--- get_iter_at_line_index(line_number, byte_index)
+
+    Obtains an iterator pointing to byte_index within the given line. byte_index must be the start of a UTF-8 character, and must not be beyond the end of the line. Note bytes, not characters; UTF-8 may encode one character as multiple bytes.
+    * line_number: line number counting from 0 
+    * byte_index: byte index from start of line 
+    * Returns: a Gtk::TextIter
+
+--- get_iter_at_mark(mark)
+
+    Gets the iter with the current position of mark.
+    * mark: a Gtk::TextMark in buffer 
+    * Returns: a Gtk::TextIter
+
+--- get_iter_at_child_anchor(anchor)
+
+    Obtains the location of anchor within buffer.
+    * anchor: a child anchor that appears in buffer 
+    * Returns: a Gtk::TextIter
+
+--- start_iter
+
+    Gets the iter of the first position in the text buffer. This is the same as using Gtk::TextBuffer#get_iter_at_offset to get the iter at character offset 0.
+    * Returns: a Gtk::TextIter
+
+--- end_iter
+
+    Gets the "end iterator," one past the last valid character in the text buffer. If dereferenced with Gtk::TextIter#char, the end iterator has a character value of 0. The entire buffer lies in the range from the first position in the buffer (call Gtk::TextBuffer#start_iter to get character position 0) to the end iterator.
+    * Returns: a Gtk::TextIter
+
+--- bounds
+
+    Retrieves the first and last iterators in the buffer, i.e. the entire buffer lies within the range [start, end].
+    * Returns: [start, end]
+       * start: a Gtk::TextIter to initialize with first position in the buffer 
+       * end: a Gtk::TextIter to initialize with the end iterator
+
+--- modified?
+
+    Indicates whether the buffer has been modified since the last call to Gtk::TextBuffer#modified= set the modification flag to false. Used for example to enable a "save" function in a text editor.
+    * Returns: true if the buffer has been modified
+
+--- modified=(setting)
+
+    Used to keep track of whether the buffer has been modified since the last time it was saved. Whenever the buffer is saved to disk, call Gtk::TextBuffer#modified=(false). When the buffer is modified, it will automatically toggled on the modified bit again. When the modified bit flips, the buffer emits a "modified_changed" signal.
+    * setting: modification flag setting 
+    * Returns: setting
+
+--- set_modified(setting)
+
+    Same as Gtk::TextBuffer#modified=.
+    * setting: modification flag setting 
+    * Returns: self
+
+--- delete_selection(interactive, default_editable)
+
+    Deletes the range between the "insert" and "selection_bound" marks, that is, the currently-selected text. If interactive is true, the editability of the selection will be considered (users can't delete uneditable text).
+    * interactive: true if the deletion is caused by user interaction 
+    * default_editable: true if the buffer is editable by default 
+    * Returns: true if there was a non-empty selection to delete
+
+--- paste_clipboard(clipboard, override_location, default_editable)
+
+    Pastes the contents of a clipboard at the insertion point, or at override_location. (Note: pasting is asynchronous, that is, we'll ask for the paste data and return, and at some point later after the main loop runs, the paste data will be inserted.)
+    * clipboard : the Gtk::Clipboard to paste from 
+    * override_location : location to insert pasted text, or nil for at the cursor 
+    * default_editable : true if the buffer is editable by default 
+    * Returns: self
+
+--- copy_clipboard(clipboard)
+
+    Copies the currently-selected text to a clipboard.
+    * clipboard: the Gtk::Clipboard object to copy to. 
+    * Returns: self
+
+--- cut_clipboard(clipboard, default_editable)
+
+    Copies the currently-selected text to a clipboard, then deletes said text if it's editable.
+    * clipboard: the Gtk::Clipboard object to cut to
+    * default_editable : true if the buffer is editable by default 
+    * Returns: self
+
+--- selection_bounds
+
+    If some text is selected; it returns the bounds of the selection in start and end and true as selected (if the selection has length 0, then start and end are filled in with the same value and selected becomes false). start and end will be in ascending order.
+    * Returns: [start, end, selected]
+      * start: iterator to initialize with selection start 
+      * end: iterator to initialize with selection end 
+      * selected: true if some text is selected, otherwise false
+
+--- begin_user_action
+--- begin_user_action{...}
+
+    Called to indicate that the buffer operations between here and a call to Gtk::TextBuffer#end_user_action are part of a single user-visible operation. The operations between Gtk::TextBuffer#begin_user_action and Gtk::TextBuffer#end_user_action can then be grouped when creating an undo stack. Gtk::TextBuffer maintains a count of calls to Gtk::TextBuffer#begin_user_action that have not been closed with a call to Gtk::TextBuffer#end_user_action, and emits the "begin_user_action" and "end_user_action" signals only for the outermost pair of calls. This allows you to build user actions from other user actions.
+    The "interactive" buffer mutation methods, such as Gtk::TextBuffer#insert_interactive, automatically call begin/end user action around the buffer operations they perform, so there's no need to add extra calls if you user action consists solely of a single call to one of those methods.
+    * {...}: after the block, Gtk::TextBuffer#end_user_action is called automatically.
+    * Returns: self
+
+--- end_user_action
+
+    Should be paired with a call to Gtk::TextBuffer#begin_user_action. See that method for a full explanation.
+    * Returns: self
+
+--- add_selection_clipboard(clipboard)
+
+    Adds clipboard to the list of clipboards in which the selection contents of buffer are available. In most cases, clipboard will be the Gtk::Clipboard of type Gdk::Selection::PRIMARY for a view of buffer.
+    * clipboard: a Gtk::Clipboard 
+    * Returns: self
+
+--- remove_selection_clipboard(clipboard)
+
+    Removes a Gtk::Clipboard added with Gtk::TextBuffer#add_selection_clipboard.
+    * clipboard: a Gtk::Clipboard added to buffer by Gtk::TextBuffer#add_selection_clipboard. 
+    * Returns: self
+
+--- add_mark
+
+     * Returns: self: ((*FIXME*))
+
+--- backspace
+
+     * Returns: self: ((*FIXME*))
+
+--- copy_target_list
+
+    Gets the list of targets this buffer supports for clipboard copying and DND source.
+     * Returns: The list of targets this buffer supports for clipboard copying and DND source
+
+--- cursor_position
+
+    Gets the position of the insert mark (as offset from the beginning of the buffer).
+     * Returns: The position of the insert mark (as offset from the beginning of the buffer)
+
+--- deserialize
+
+     * Returns: self: ((*FIXME*))
+
+--- deserialize_can_create_tags?
+
+     * Returns: self: ((*FIXME*))
+
+--- deserialize_formats
+
+     * Returns: self: ((*FIXME*))
+
+--- deserialize_set_can_create_tags
+
+     * Returns: self: ((*FIXME*))
+
+--- has_selection?
+
+    Gets the value whether the buffer has some text currently selected or not.
+     * Returns: true if the buffer has some text currently selected
+
+--- paste_target_list
+
+    Gets the list of targets this buffer supports for clipboard pasting and DND destination.
+     * Returns: The list of targets this buffer supports for clipboard pasting and DND destination
+
+--- register_deserialize_format
+
+     * Returns: self: ((*FIXME*))
+
+--- register_deserialize_target
+
+     * Returns: self: ((*FIXME*))
+
+--- register_serialize_format
+
+     * Returns: self: ((*FIXME*))
+
+--- register_serialize_target
+
+     * Returns: self: ((*FIXME*))
+
+--- select_range
+
+     * Returns: self: ((*FIXME*))
+
+--- serialize
+
+     * Returns: self: ((*FIXME*))
+
+--- serialize_formats
+
+     * Returns: self: ((*FIXME*))
+
+--- unregister_deserialize_format
+
+     * Returns: self: ((*FIXME*))
+
+--- unregister_serialize_format
+
+     * Returns: self: ((*FIXME*))
+
+== Properties
+
+--- tag-table: Gtk::TextTagTable (Read/Write)
+
+    Text Tag Table.
+
+--- copy-target-list: Gtk::TargetList (Read)
+
+    The list of targets this buffer supports for clipboard copying and DND source
+
+--- cursor-position: Integer (Read)
+
+    The position of the insert mark (as offset from the beginning of the buffer)
+
+--- has-selection: true or false (Read)
+
+    Whether the buffer has some text currently selected
+
+--- paste-target-list: Gtk::TargetList (Read)
+
+    The list of targets this buffer supports for clipboard pasting and DND destination
+
+--- text: String (Read/Write)
+
+    Current text of the buffer
+
+== Signals
+
+--- apply-tag: self, tag, iter1, iter2
+
+     * self: Gtk::TextBuffer
+     * tag: Gtk::TextTag
+     * iter1: Gtk::TextIter
+     * iter2: Gtk::TextIter
+
+--- begin-user-action: self
+
+     * self: Gtk::TextBuffer
+
+--- changed: self
+
+     * self: Gtk::TextBuffer
+
+--- delete-range: self, iter1, iter2
+
+     * self: Gtk::TextBuffer
+     * iter1: Gtk::TextIter
+     * iter2: Gtk::TextIter
+
+--- end-user-action: self
+
+     * self: Gtk::TextBuffer
+
+--- insert-child-anchor: self, iter, anchor
+
+     * self: Gtk::TextBuffer
+     * iter: Gtk::TextIter
+     * anchor: Gtk::TextChildAnchor
+
+--- insert-pixbuf: self, iter, pixbuf
+
+     * self: Gtk::TextBuffer
+     * iter: Gtk::TextIter
+     * pixbuf: Gdk::Pixbuf
+
+--- insert-text: self, iter, text, len
+
+     * self: Gtk::TextBuffer
+     * iter: Gtk::TextIter
+     * text: String
+     * len: length of the text
+
+--- mark-deleted: self, mark
+
+     * self: Gtk::TextBuffer
+     * mark: Gtk::TextMark
+
+--- mark-set: self, iter, mark
+
+     * self: Gtk::TextBuffer
+     * iter: Gtk::TextIter
+     * mark: Gtk::TextMark
+
+--- modified-changed: self
+
+     * self: Gtk::TextBuffer
+
+--- remove-tag: self, tag, iter1, iter2
+
+     * self: Gtk::TextBuffer
+     * tag: Gtk::TextTag
+     * iter1: Gtk::TextIter
+     * iter2: Gtk::TextIter
+
+--- paste-done: self
+
+     * self: Gtk::TextBuffer: ((*FIXME*))
+
+== See Also
+
+Gtk::TextView, Gtk::TextIter, Gtk::TextMark
+
+== ChangeLog
+
+* 2005-12-17 Removed Gtk::TextBuffer#set_tag_table, #tag_table=. - ((<Masao>))
+* 2005-10-07 Added. - ((<Masao>))
+
+- ((<Masao>))

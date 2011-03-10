@@ -1,0 +1,158 @@
+= class Poppler::Page
+
+== Object Hierarchy
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Poppler::Page
+
+== Instance Methods
+
+--- render(src_x, src_y, src_width, src_height, scale, rotation, pixbuf)
+     
+    First scale the document to match the specified pixels
+    per point, then render the rectangle given by the upper
+    left corner at (src_x, src_y) and src_width and
+    src_height.
+
+     * src_x: source x as Integer
+     * src_y: source y as Integer
+     * src_width: source width as Integer
+     * src_height: source height as Integer
+     * scale: scale specified as pixels per point
+     * rotation: rotate the document by the specified degree
+     * pixbuf: pixbuf to render into
+     * Returns: nil
+
+--- render(cairo)
+
+     Render the page to the given cairo context.
+
+     * cairo: cairo context to render to
+     * Returns: nil
+
+--- render(ps_file)
+
+     Render the page on a postscript file
+
+     * ps_file: the Poppler::PSFile to render to
+     * Returns: nil
+
+--- size
+
+     Gets the size of page at the current scale and rotation.
+
+     * Returns: an array of the width and the height of page
+
+--- index
+
+     Returns the index of page.
+     
+     * Returns: index value of page
+
+--- thumbnail
+
+     Get the embedded thumbnail for the specified page.  If
+     the document doesn't have an embedded thumbnail for the
+     page, this method returns nil.
+
+     * Returns: the tumbnail as a Gdk::Pixbuf or nil if the
+       document doesn't have a thumbnail for this page.
+
+--- thumbnail_size
+
+     Returns the width and height of the thumbnail if page
+     has a thumbnail associated with it. The values of width
+     and height are not changed if no appropriate thumbnail
+     exists.
+
+     * Returns: an array of the width and the height of page
+
+--- find_text(text)
+
+     Returs an array of rectangles for each occurance of the
+     text on the page. The coordinates are in PDF points.
+
+     * text: the text to search for (UTF-8 encoded)
+     * Returns: an array of Popple::Rectangle
+
+--- get_text(rect)
+
+     Retrieves the contents of the specified rectangle as text
+
+     * rect: the rectangle including the text
+     * Returns: the contents of the rectangle as a string
+
+--- link_mapping
+
+     Returns a list of Poppler::LinkMapping items that map
+     from a location on page to a Poppler::Action.
+
+     * Returns: An array of Poppler::LinkMapping
+
+--- get_selection_region(scale)
+
+    Returns a region containing the area that would be
+    rendered by Poppler::Page#render_selection.
+
+     * scale: scale specified as pixels per point
+     * Returns: start and end point of selection as a Poppler::Rectangle
+
+--- render_selection(scale, rotation, pixbuf, selection, old_selection, glyph_color, background_color)
+
+    Render the selection specified by (({selection})) for
+    page into (({pixbuf})).  The selection will be rendered
+    at (({scale})), using (({glyph_color})) for the glyphs
+    and (({background_color})) for the selection background.
+
+    If non-nil, (({old_selection})) specifies the selection
+    that is already rendered in (({pixbuf})), in which case
+    this function will (some day) only render the changed
+    part of the selection.
+
+     * scale: scale specified as pixels per point
+     * rotation: rotate the document by the specified degree
+     * pixbuf: Gdk::Pixbuf to render to
+     * selection: start and end point of selection as a Poppler::Rectangle
+     * old_selection: previous selection as a Poppler::Rectangle or nil
+     * glyph_color: Gdk::Color to use for drawing glyphs
+     * background_color: Gdk::Color to use for the selection background
+     * Returns: nil
+
+--- render_selection(cairo, selection, old_selection, glyph_color, background_color)
+
+    Render the selection specified by (({selection})) for
+    page to the given cairo context.  The selection will be
+    rendered, using (({glyph_color})) for the glyphs
+    and (({background_color})) for the selection background.
+
+    If non-nil, (({old_selection})) specifies the selection
+    that is already rendered to (({cairo})), in which case
+    this function will (some day) only render the changed
+    part of the selection.
+
+     * cairo: cairo context to render to
+     * selection: start and end point of selection as a Poppler::Rectangle
+     * old_selection: previous selection as a Poppler::Rectangle or nil
+     * glyph_color: Gdk::Color to use for drawing glyphs
+     * background_color: Gdk::Color to use for the selection background
+     * Returns: nil
+
+--- label
+    Gets the label of the page.
+     * Returns: The label of the page
+
+== Properties
+--- label: String (Read)
+    The label of the page
+
+== See Also
+
+* Cairo::Context
+
+== ChangeLog
+
+* 2006-05-27 ((<kou>)): make Poppler::Page#render and Poppler::Page#render_to_ps generic method.
+* 2006-05-19 ((<kou>)): completed.
+
+- ((<kou>))

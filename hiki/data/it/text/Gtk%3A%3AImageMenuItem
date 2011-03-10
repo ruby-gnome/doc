@@ -1,0 +1,50 @@
+= class Gtk::ImageMenuItem
+A Gtk::ImageMenuItem is a menu item which has an icon next to the text label. 
+Note that the user can disable display of menu icons, so make sure to still fill in the text label. 
+
+== Object Hierarchy
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Gtk::Object
+        * Gtk::Widget
+          * Gtk::Container
+            * Gtk::Bin
+              * Gtk::Item
+                * Gtk::MenuItem
+                  * Gtk::ImageMenuItem
+
+== Class Methods
+--- Gtk::ImageMenuItem.new(label = nil, use_underline = true)
+    Creates a new Gtk::ImageMenuItem. 
+    * label: the string to use for the label.  
+    * use_undeline: true if underscores in label indicate the mnemonic for the menu item.
+    * Returns : a new Gtk::ImageMenuItem.  
+
+--- Gtk::ImageMenuItem.new(stock_id, accel_group = nil)
+    Creates a new Gtk::ImageMenuItem containing the image and text from a stock item(Gtk::Stock constants like Gtk::Stock::OK and Gtk::Stock::APPLY). 
+    If you want this menu item to have changeable accelerators, then pass in nil for accel_group. Next call Gtk::MenuItem#accel_path= with an appropriate path for the menu item, use Gtk::Stock.lookup to look up the standard accelerator for the stock item, and if one is found, call Gtk::AccepMap.add_entry to register it.
+    * stock_id: a stock item(Gtk::Stock constans).
+    * accel_group: the Gtk::AccelGroup to add the menu items accelerator to, or nil. 
+    * Returns: a new Gtk::ImageMenuItem.  
+    
+== Instance Methods
+--- image
+    Gets the widget that is currently set as the image of image_menu_item. See Gtk::ImageMenuItem#image=.
+    * Returns: the widget set as image of image_menu_item.  
+
+--- image=(image)
+    Sets the image of image_menu_item to the given widget.
+    * image: a widget(Gtk::Widget) to set as the image for the menu item.  
+    * Returns: image.
+
+--- set_image(image)
+    Same as Gtk::ImageMenuItem#image=.
+    * image: a widget(Gtk::Widget) to set as the image for the menu item.  
+    * Returns: self.
+
+== Properties
+--- image: Gtk::Widget (Read/Write)
+    Child widget to appear next to the menu text
+
+- ((<Masao>))

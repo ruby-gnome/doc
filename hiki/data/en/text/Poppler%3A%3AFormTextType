@@ -1,0 +1,19 @@
+= class Poppler::FormTextType
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * Poppler::FormTextType
+
+== Constants
+
+--- FILE_SELECT
+--- MULTILINE
+--- NORMAL
+
+== See Also
+
+== ChangeLog
+
+

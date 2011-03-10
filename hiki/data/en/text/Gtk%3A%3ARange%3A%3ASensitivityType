@@ -1,0 +1,19 @@
+= class Gtk::Range::SensitivityType
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * Gtk::Range::SensitivityType
+
+== Constants
+
+--- AUTO
+--- OFF
+--- ON
+
+== See Also
+
+== ChangeLog
+
+

@@ -1,0 +1,63 @@
+= class Gnome::CanvasGroup
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::InitiallyUnowned
+        * Gtk::Object
+          * Gnome::CanvasItem
+            * Gnome::CanvasGroup
+
+== Instance Methods
+
+--- set_x(x)
+
+    Same as x=.
+     * x: X
+     * Returns: self
+
+--- set_y(y)
+
+    Same as y=.
+     * y: Y
+     * Returns: self
+
+--- x
+
+    Gets the X.
+     * Returns: X
+
+--- x=(x)
+
+    Sets the X.
+     * x: X
+     * Returns: x
+
+--- y
+
+    Gets the Y.
+     * Returns: Y
+
+--- y=(y)
+
+    Sets the Y.
+     * y: Y
+     * Returns: y
+
+== Properties
+
+--- x: Float (Read/Write)
+
+    X
+
+--- y: Float (Read/Write)
+
+    Y
+
+== See Also
+
+== ChangeLog
+
+

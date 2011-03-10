@@ -1,0 +1,821 @@
+= class Gnome::CanvasText
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::InitiallyUnowned
+        * Gtk::Object
+          * Gnome::CanvasItem
+            * Gnome::CanvasText
+
+== Instance Methods
+
+--- anchor
+
+    Gets the anchor.
+     * Returns: ((*FIXME*))
+
+--- anchor=(anchor)
+
+    Sets the anchor.
+     * anchor: ((*FIXME*))
+     * Returns: anchor
+
+--- attributes
+
+    Gets the attributes.
+     * Returns: ((*FIXME*))
+
+--- attributes=(attributes)
+
+    Sets the attributes.
+     * attributes: ((*FIXME*))
+     * Returns: attributes
+
+--- clip=(clip)
+
+    Sets the clip.
+     * clip: ((*FIXME*))
+     * Returns: clip
+
+--- clip?
+
+    Gets the clip.
+     * Returns: ((*FIXME*))
+
+--- clip_height
+
+    Gets the clip_height.
+     * Returns: ((*FIXME*))
+
+--- clip_height=(clip_height)
+
+    Sets the clip_height.
+     * clip_height: ((*FIXME*))
+     * Returns: clip_height
+
+--- clip_width
+
+    Gets the clip_width.
+     * Returns: ((*FIXME*))
+
+--- clip_width=(clip_width)
+
+    Sets the clip_width.
+     * clip_width: ((*FIXME*))
+     * Returns: clip_width
+
+--- family
+
+    Gets the Name of the font family, e.g. Sans, Helvetica, Times, Monospace.
+     * Returns: Name of the font family, e.g. Sans, Helvetica, Times, Monospace
+
+--- family=(family)
+
+    Sets the Name of the font family, e.g. Sans, Helvetica, Times, Monospace.
+     * family: Name of the font family, e.g. Sans, Helvetica, Times, Monospace
+     * Returns: family
+
+--- family_set=(family_set)
+
+    Sets the value whether this tag affects the font family or not.
+     * family_set: true if this tag affects the font family
+     * Returns: family_set
+
+--- family_set?
+
+    Gets the value whether this tag affects the font family or not.
+     * Returns: true if this tag affects the font family
+
+--- fill_color
+
+    Gets the Text color, as string.
+     * Returns: Text color, as string
+
+--- fill_color=(fill_color)
+
+    Sets the Text color, as string.
+     * fill_color: Text color, as string
+     * Returns: fill_color
+
+--- fill_color_gdk
+
+    Gets the Text color, as a Gdk::Color.
+     * Returns: Text color, as a Gdk::Color
+
+--- fill_color_gdk=(fill_color_gdk)
+
+    Sets the Text color, as a Gdk::Color.
+     * fill_color_gdk: Text color, as a Gdk::Color
+     * Returns: fill_color_gdk
+
+--- fill_color_rgba
+
+    Gets the Text color, as an R/G/B/A combined integer.
+     * Returns: Text color, as an R/G/B/A combined integer
+
+--- fill_color_rgba=(fill_color_rgba)
+
+    Sets the Text color, as an R/G/B/A combined integer.
+     * fill_color_rgba: Text color, as an R/G/B/A combined integer
+     * Returns: fill_color_rgba
+
+--- fill_stipple
+
+    Gets the fill_stipple.
+     * Returns: ((*FIXME*))
+
+--- fill_stipple=(fill_stipple)
+
+    Sets the fill_stipple.
+     * fill_stipple: ((*FIXME*))
+     * Returns: fill_stipple
+
+--- font
+
+    Gets the Font description as a string.
+     * Returns: Font description as a string
+
+--- font=(font)
+
+    Sets the Font description as a string.
+     * font: Font description as a string
+     * Returns: font
+
+--- font_desc
+
+    Gets the Font description as a Pango::FontDescription struct.
+     * Returns: Font description as a Pango::FontDescription struct
+
+--- font_desc=(font_desc)
+
+    Sets the Font description as a Pango::FontDescription struct.
+     * font_desc: Font description as a Pango::FontDescription struct
+     * Returns: font_desc
+
+--- justification
+
+    Gets the justification.
+     * Returns: ((*FIXME*))
+
+--- justification=(justification)
+
+    Sets the justification.
+     * justification: ((*FIXME*))
+     * Returns: justification
+
+--- markup=(markup)
+
+    Sets the Marked up text to render.
+     * markup: Marked up text to render
+     * Returns: markup
+
+--- rise
+
+    Gets the Offset of text above the baseline (below the baseline if rise is negative).
+     * Returns: Offset of text above the baseline (below the baseline if rise is negative)
+
+--- rise=(rise)
+
+    Sets the Offset of text above the baseline (below the baseline if rise is negative).
+     * rise: Offset of text above the baseline (below the baseline if rise is negative)
+     * Returns: rise
+
+--- rise_set=(rise_set)
+
+    Sets the value whether this tag affects the rise or not.
+     * rise_set: true if this tag affects the rise
+     * Returns: rise_set
+
+--- rise_set?
+
+    Gets the value whether this tag affects the rise or not.
+     * Returns: true if this tag affects the rise
+
+--- scale
+
+    Gets the Size of font, relative to default size.
+     * Returns: Size of font, relative to default size
+
+--- scale=(scale)
+
+    Sets the Size of font, relative to default size.
+     * scale: Size of font, relative to default size
+     * Returns: scale
+
+--- scale_set=(scale_set)
+
+    Sets the value whether this tag affects font scaling or not.
+     * scale_set: true if this tag affects font scaling
+     * Returns: scale_set
+
+--- scale_set?
+
+    Gets the value whether this tag affects font scaling or not.
+     * Returns: true if this tag affects font scaling
+
+--- set_anchor(anchor)
+
+    Same as anchor=.
+     * anchor: ((*FIXME*))
+     * Returns: self
+
+--- set_attributes(attributes)
+
+    Same as attributes=.
+     * attributes: ((*FIXME*))
+     * Returns: self
+
+--- set_clip(clip)
+
+    Same as clip=.
+     * clip: ((*FIXME*))
+     * Returns: self
+
+--- set_clip_height(clip_height)
+
+    Same as clip_height=.
+     * clip_height: ((*FIXME*))
+     * Returns: self
+
+--- set_clip_width(clip_width)
+
+    Same as clip_width=.
+     * clip_width: ((*FIXME*))
+     * Returns: self
+
+--- set_family(family)
+
+    Same as family=.
+     * family: Name of the font family, e.g. Sans, Helvetica, Times, Monospace
+     * Returns: self
+
+--- set_family_set(family_set)
+
+    Same as family_set=.
+     * family_set: true if this tag affects the font family
+     * Returns: self
+
+--- set_fill_color(fill_color)
+
+    Same as fill_color=.
+     * fill_color: Text color, as string
+     * Returns: self
+
+--- set_fill_color_gdk(fill_color_gdk)
+
+    Same as fill_color_gdk=.
+     * fill_color_gdk: Text color, as a Gdk::Color
+     * Returns: self
+
+--- set_fill_color_rgba(fill_color_rgba)
+
+    Same as fill_color_rgba=.
+     * fill_color_rgba: Text color, as an R/G/B/A combined integer
+     * Returns: self
+
+--- set_fill_stipple(fill_stipple)
+
+    Same as fill_stipple=.
+     * fill_stipple: ((*FIXME*))
+     * Returns: self
+
+--- set_font(font)
+
+    Same as font=.
+     * font: Font description as a string
+     * Returns: self
+
+--- set_font_desc(font_desc)
+
+    Same as font_desc=.
+     * font_desc: Font description as a Pango::FontDescription struct
+     * Returns: self
+
+--- set_justification(justification)
+
+    Same as justification=.
+     * justification: ((*FIXME*))
+     * Returns: self
+
+--- set_markup(markup)
+
+    Same as markup=.
+     * markup: Marked up text to render
+     * Returns: self
+
+--- set_rise(rise)
+
+    Same as rise=.
+     * rise: Offset of text above the baseline (below the baseline if rise is negative)
+     * Returns: self
+
+--- set_rise_set(rise_set)
+
+    Same as rise_set=.
+     * rise_set: true if this tag affects the rise
+     * Returns: self
+
+--- set_scale(scale)
+
+    Same as scale=.
+     * scale: Size of font, relative to default size
+     * Returns: self
+
+--- set_scale_set(scale_set)
+
+    Same as scale_set=.
+     * scale_set: true if this tag affects font scaling
+     * Returns: self
+
+--- set_size(size)
+
+    Same as size=.
+     * size: Font size (as a multiple of PANGO_SCALE, eg. 12*PANGO_SCALE for a 12pt font size)
+     * Returns: self
+
+--- set_size_points(size_points)
+
+    Same as size_points=.
+     * size_points: Font size in points (eg. 12 for a 12pt font size)
+     * Returns: self
+
+--- set_size_set(size_set)
+
+    Same as size_set=.
+     * size_set: true if this tag affects the font size
+     * Returns: self
+
+--- set_stretch(stretch)
+
+    Same as stretch=.
+     * stretch: Font stretch
+     * Returns: self
+
+--- set_stretch_set(stretch_set)
+
+    Same as stretch_set=.
+     * stretch_set: true if this tag affects the font stretch
+     * Returns: self
+
+--- set_strikethrough(strikethrough)
+
+    Same as strikethrough=.
+     * strikethrough: true if to strike through the text
+     * Returns: self
+
+--- set_strikethrough_set(strikethrough_set)
+
+    Same as strikethrough_set=.
+     * strikethrough_set: true if this tag affects strikethrough
+     * Returns: self
+
+--- set_style(style)
+
+    Same as style=.
+     * style: Font style
+     * Returns: self
+
+--- set_style_set(style_set)
+
+    Same as style_set=.
+     * style_set: true if this tag affects the font style
+     * Returns: self
+
+--- set_text(text)
+
+    Same as text=.
+     * text: Text to render
+     * Returns: self
+
+--- set_underline(underline)
+
+    Same as underline=.
+     * underline: Style of underline for this text
+     * Returns: self
+
+--- set_underline_set(underline_set)
+
+    Same as underline_set=.
+     * underline_set: true if this tag affects underlining
+     * Returns: self
+
+--- set_variant(variant)
+
+    Same as variant=.
+     * variant: Font variant
+     * Returns: self
+
+--- set_variant_set(variant_set)
+
+    Same as variant_set=.
+     * variant_set: true if this tag affects the font variant
+     * Returns: self
+
+--- set_weight(weight)
+
+    Same as weight=.
+     * weight: Font weight
+     * Returns: self
+
+--- set_weight_set(weight_set)
+
+    Same as weight_set=.
+     * weight_set: true if this tag affects the font weight
+     * Returns: self
+
+--- set_x(x)
+
+    Same as x=.
+     * x: ((*FIXME*))
+     * Returns: self
+
+--- set_x_offset(x_offset)
+
+    Same as x_offset=.
+     * x_offset: ((*FIXME*))
+     * Returns: self
+
+--- set_y(y)
+
+    Same as y=.
+     * y: ((*FIXME*))
+     * Returns: self
+
+--- set_y_offset(y_offset)
+
+    Same as y_offset=.
+     * y_offset: ((*FIXME*))
+     * Returns: self
+
+--- size
+
+    Gets the Font size (as a multiple of PANGO_SCALE, eg. 12*PANGO_SCALE for a 12pt font size).
+     * Returns: Font size (as a multiple of PANGO_SCALE, eg. 12*PANGO_SCALE for a 12pt font size)
+
+--- size=(size)
+
+    Sets the Font size (as a multiple of PANGO_SCALE, eg. 12*PANGO_SCALE for a 12pt font size).
+     * size: Font size (as a multiple of PANGO_SCALE, eg. 12*PANGO_SCALE for a 12pt font size)
+     * Returns: size
+
+--- size_points
+
+    Gets the Font size in points (eg. 12 for a 12pt font size).
+     * Returns: Font size in points (eg. 12 for a 12pt font size)
+
+--- size_points=(size_points)
+
+    Sets the Font size in points (eg. 12 for a 12pt font size).
+     * size_points: Font size in points (eg. 12 for a 12pt font size)
+     * Returns: size_points
+
+--- size_set=(size_set)
+
+    Sets the value whether this tag affects the font size or not.
+     * size_set: true if this tag affects the font size
+     * Returns: size_set
+
+--- size_set?
+
+    Gets the value whether this tag affects the font size or not.
+     * Returns: true if this tag affects the font size
+
+--- stretch
+
+    Gets the Font stretch.
+     * Returns: Font stretch
+
+--- stretch=(stretch)
+
+    Sets the Font stretch.
+     * stretch: Font stretch
+     * Returns: stretch
+
+--- stretch_set=(stretch_set)
+
+    Sets the value whether this tag affects the font stretch or not.
+     * stretch_set: true if this tag affects the font stretch
+     * Returns: stretch_set
+
+--- stretch_set?
+
+    Gets the value whether this tag affects the font stretch or not.
+     * Returns: true if this tag affects the font stretch
+
+--- strikethrough=(strikethrough)
+
+    Sets the value whether to strike through the text or not.
+     * strikethrough: true if to strike through the text
+     * Returns: strikethrough
+
+--- strikethrough?
+
+    Gets the value whether to strike through the text or not.
+     * Returns: true if to strike through the text
+
+--- strikethrough_set=(strikethrough_set)
+
+    Sets the value whether this tag affects strikethrough or not.
+     * strikethrough_set: true if this tag affects strikethrough
+     * Returns: strikethrough_set
+
+--- strikethrough_set?
+
+    Gets the value whether this tag affects strikethrough or not.
+     * Returns: true if this tag affects strikethrough
+
+--- style
+
+    Gets the Font style.
+     * Returns: Font style
+
+--- style=(style)
+
+    Sets the Font style.
+     * style: Font style
+     * Returns: style
+
+--- style_set=(style_set)
+
+    Sets the value whether this tag affects the font style or not.
+     * style_set: true if this tag affects the font style
+     * Returns: style_set
+
+--- style_set?
+
+    Gets the value whether this tag affects the font style or not.
+     * Returns: true if this tag affects the font style
+
+--- text
+
+    Gets the Text to render.
+     * Returns: Text to render
+
+--- text=(text)
+
+    Sets the Text to render.
+     * text: Text to render
+     * Returns: text
+
+--- text_height
+
+    Gets the Height of the rendered text.
+     * Returns: Height of the rendered text
+
+--- text_width
+
+    Gets the Width of the rendered text.
+     * Returns: Width of the rendered text
+
+--- underline
+
+    Gets the Style of underline for this text.
+     * Returns: Style of underline for this text
+
+--- underline=(underline)
+
+    Sets the Style of underline for this text.
+     * underline: Style of underline for this text
+     * Returns: underline
+
+--- underline_set=(underline_set)
+
+    Sets the value whether this tag affects underlining or not.
+     * underline_set: true if this tag affects underlining
+     * Returns: underline_set
+
+--- underline_set?
+
+    Gets the value whether this tag affects underlining or not.
+     * Returns: true if this tag affects underlining
+
+--- variant
+
+    Gets the Font variant.
+     * Returns: Font variant
+
+--- variant=(variant)
+
+    Sets the Font variant.
+     * variant: Font variant
+     * Returns: variant
+
+--- variant_set=(variant_set)
+
+    Sets the value whether this tag affects the font variant or not.
+     * variant_set: true if this tag affects the font variant
+     * Returns: variant_set
+
+--- variant_set?
+
+    Gets the value whether this tag affects the font variant or not.
+     * Returns: true if this tag affects the font variant
+
+--- weight
+
+    Gets the Font weight.
+     * Returns: Font weight
+
+--- weight=(weight)
+
+    Sets the Font weight.
+     * weight: Font weight
+     * Returns: weight
+
+--- weight_set=(weight_set)
+
+    Sets the value whether this tag affects the font weight or not.
+     * weight_set: true if this tag affects the font weight
+     * Returns: weight_set
+
+--- weight_set?
+
+    Gets the value whether this tag affects the font weight or not.
+     * Returns: true if this tag affects the font weight
+
+--- x
+
+    Gets the x.
+     * Returns: ((*FIXME*))
+
+--- x=(x)
+
+    Sets the x.
+     * x: ((*FIXME*))
+     * Returns: x
+
+--- x_offset
+
+    Gets the x_offset.
+     * Returns: ((*FIXME*))
+
+--- x_offset=(x_offset)
+
+    Sets the x_offset.
+     * x_offset: ((*FIXME*))
+     * Returns: x_offset
+
+--- y
+
+    Gets the y.
+     * Returns: ((*FIXME*))
+
+--- y=(y)
+
+    Sets the y.
+     * y: ((*FIXME*))
+     * Returns: y
+
+--- y_offset
+
+    Gets the y_offset.
+     * Returns: ((*FIXME*))
+
+--- y_offset=(y_offset)
+
+    Sets the y_offset.
+     * y_offset: ((*FIXME*))
+     * Returns: y_offset
+
+== Properties
+
+--- anchor: Gtk::AnchorType (Read/Write)
+--- attributes: Pango::AttrList (Read/Write)
+--- clip: true or false (Read/Write)
+--- clip-height: Float (Read/Write)
+--- clip-width: Float (Read/Write)
+--- family: String (Read/Write)
+
+    Name of the font family, e.g. Sans, Helvetica, Times, Monospace
+
+--- family-set: true or false (Read/Write)
+
+    Whether this tag affects the font family
+
+--- fill-color: String (Read/Write)
+
+    Text color, as string
+
+--- fill-color-gdk: Gdk::Color (Read/Write)
+
+    Text color, as a Gdk::Color
+
+--- fill-color-rgba: Integer (Read/Write)
+
+    Text color, as an R/G/B/A combined integer
+
+--- fill-stipple: Gdk::Drawable (Read/Write)
+--- font: String (Read/Write)
+
+    Font description as a string
+
+--- font-desc: Pango::FontDescription (Read/Write)
+
+    Font description as a Pango::FontDescription struct
+
+--- justification: Gtk::Justification (Read/Write)
+--- markup: String (Write)
+
+    Marked up text to render
+
+--- rise: Integer (Read/Write)
+
+    Offset of text above the baseline (below the baseline if rise is negative)
+
+--- rise-set: true or false (Read/Write)
+
+    Whether this tag affects the rise
+
+--- scale: Float (Read/Write)
+
+    Size of font, relative to default size
+
+--- scale-set: true or false (Read/Write)
+
+    Whether this tag affects font scaling
+
+--- size: Integer (Read/Write)
+
+    Font size (as a multiple of PANGO_SCALE, eg. 12*PANGO_SCALE for a 12pt font size)
+
+--- size-points: Float (Read/Write)
+
+    Font size in points (eg. 12 for a 12pt font size)
+
+--- size-set: true or false (Read/Write)
+
+    Whether this tag affects the font size
+
+--- stretch: Pango::Stretch (Read/Write)
+
+    Font stretch
+
+--- stretch-set: true or false (Read/Write)
+
+    Whether this tag affects the font stretch
+
+--- strikethrough: true or false (Read/Write)
+
+    Whether to strike through the text
+
+--- strikethrough-set: true or false (Read/Write)
+
+    Whether this tag affects strikethrough
+
+--- style: Pango::Style (Read/Write)
+
+    Font style
+
+--- style-set: true or false (Read/Write)
+
+    Whether this tag affects the font style
+
+--- text: String (Read/Write)
+
+    Text to render
+
+--- text-height: Float (Read)
+
+    Height of the rendered text
+
+--- text-width: Float (Read)
+
+    Width of the rendered text
+
+--- underline: Pango::Underline (Read/Write)
+
+    Style of underline for this text
+
+--- underline-set: true or false (Read/Write)
+
+    Whether this tag affects underlining
+
+--- variant: Pango::Variant (Read/Write)
+
+    Font variant
+
+--- variant-set: true or false (Read/Write)
+
+    Whether this tag affects the font variant
+
+--- weight: Integer (Read/Write)
+
+    Font weight
+
+--- weight-set: true or false (Read/Write)
+
+    Whether this tag affects the font weight
+
+--- x: Float (Read/Write)
+--- x-offset: Float (Read/Write)
+--- y: Float (Read/Write)
+--- y-offset: Float (Read/Write)
+
+== See Also
+
+== ChangeLog
+
+

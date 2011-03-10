@@ -1,0 +1,21 @@
+= class Pango::AttrStrikethrough
+
+== Object Hierarchy
+
+* Object
+  * Data
+    * Pango::Attribute
+      * Pango::AttrBool
+        * Pango::AttrStrikethrough
+
+== Class Methods
+
+--- Pango::AttrStrikethrough.new
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

@@ -1,0 +1,31 @@
+=Mit nicht-ASCII-Zeichen arbeiten
+
+Alle Strings, die Gtk+-Funktionen übergeben werden, müssen utf8-kodiert sein. Selbstverständlich gilt für Ruby-GNOME2 dasselbe.
+
+Da Sie es wahrscheinlich gewohnt sind, ihre Ruby-Skripte in ihrer gewohnten Kodierung - nicht notwendigerweise UTF-8 - zu schreiben, verwirrt es sie möglicherweise, wenn Texte in Ruby-GNOME2-Programmen nicht so erscheinen, wie sie es sollten.
+
+In diesem Fall haben Sie folgende Möglichkeiten:
+
+== 1. Skripte in UTF-8 schreiben
+
+Dies ist die einfachste Methode, wenn Sie einen Editor benutzen, der UTF-8 unterstützt. Wenn Sie nicht die K-Option angeben, muss ihr Programm die folgende Zeile beinhalten:
+ $KCODE = 'u'
+
+== 2. Skripte in beliebiger Kodierung schreiben und nach UTF-8 umwandeln
+
+Wenn Ihr Skript nicht utf8-kodiert ist, lässt es sich mit den folgenden Befehlen einer UNIX-Shell umwandeln und ausführen:
+ iconv -f <Ihre Kodierung> -t utf-8 foo.rb | ruby -
+Beispiel für die in Deutschland übliche Kodierung Latin-1 (iso-8859-1):
+ iconv -f latin1 -t utf-8 foo.rb | ruby -
+Auch bei dieser Methode muss ihr Skript (({$KCODE = 'u'})) enthalten.
+
+== 3. Glib.convert benutzen
+
+Glib.convert wandelt einen String von einer Kodierung in eine andere um.
+ require 'gtk2'
+ Gtk::Button.new(GLib.convert("RYOUKAI", "utf-8", "euc-jp"))  #str, to, from
+Für statische String ist diese Vorgehensweise allerdings zu umständlich. Sie bietet sich dagegen an, wenn Texte aus Dateien oder Netzwerken gelesen werden sollen.
+
+== 4. Ruby-GetText benutzen
+
+Die bisher angeboten Vorgehensweisen unterstützen nicht i18n/l10n, was jedoch nötig ist, wenn Sie ihr Programm für die ganze Welt verfügbar machen wollen. Das ((<Ruby-GetText-Paket|URL:http://ponx.s5.xrea.com/hiki/ruby-gettext.html>)) ist eine Lösung, englischen Text automatisch durch Text in der Sprache des Benutzers zu ersetzen. Es ist kompatibel mit der GNU-Gettext-Software.

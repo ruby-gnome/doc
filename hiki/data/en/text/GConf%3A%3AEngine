@@ -1,0 +1,23 @@
+= class GConf::Engine
+
+A GConf::Engine represents a connection to a GConf database.  The default GConf::Engine, returned by a call to GConf::Engine.new with no arguments, represents the current users own GConf database.  A GConf::Engine should be used in conjunction with a GConf::Client, as it has no methods of its own.
+
+== Object Hierarchy
+
+* Object
+  * GLib::Boxed
+    * GConf::Engine
+
+== Class Methods
+
+--- GConf::Engine.new(address = nil)
+
+    Creates a GConf::Engine for the given address, or for the current user if the address is omitted.
+    * address: a configuration source address
+    * Returns: a new GConf::Engine
+
+== See Also
+
+== ChangeLog
+
+- ((<lone-star>))

@@ -1,0 +1,18 @@
+= Inicializando
+{{link("tut-libgda-config", nil, "tut-libgda", "tut-libgda-connect")}}
+
+Primeiramente, você tem que inicializar a biblioteca Ruby/Libgda, i.e., chamar o método Gda.init:
+
+  Gda.init("TestGDA", "0.1")
+
+O primeiro parâmetro é o nome do seu programa, e o segundo é a sua versão.  
+Gda.init também recuperará os parãmetros da linha de comando de Ruby e os usará para inicializar a GDA.
+
+Após inicializar você pode trabalhar normalmente ou fazer um bloco de código com a coisa toda, chamando Gda.main. Nesse caso você precisará chamar Gda.main_quit para sair do programa, mas continua que o método Gda.main_quit será chamado explicitamente após o fim do seu bloco.
+
+  Gda.init("TestGDA", "0.1")
+  # FAZER: criar uma fonte de dados 'arrakis'.
+  Gda.main do
+      # FAZER: abrir uma conexão para 'arrakis' e executar as buscas.
+      # FAZER: remover fonte de dados 'arrakis'.
+  end

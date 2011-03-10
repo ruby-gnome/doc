@@ -1,0 +1,35 @@
+= class Gtk::Item
+The Gtk::Item widget is an abstract base class for Gtk::MenuItem. 
+
+== Object Hierarchy
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Gtk::Object
+        * Gtk::Widget
+          * Gtk::Container
+            * Gtk::Bin
+              * Gtk::Item
+
+== Instance Methods
+--- select
+    Emits the "select" signal on the given item. 
+    * Returns: self
+
+--- deselect
+    Emits the "deselect" signal on the given item. 
+
+--- toggle
+    Emits the "toggle" signal on the given item. 
+
+== Signals
+--- select: self
+     * self: the object which received the signal.
+
+--- deselect: self
+     * self: the object which received the signal.
+
+--- toggle: self
+     * self: the object which received the signal.
+
+- ((<Masao>))

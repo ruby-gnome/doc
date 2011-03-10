@@ -1,0 +1,35 @@
+= class Gtk::Invisible
+The Gtk::Invisible widget is used internally in GTK+, and is probably not useful for application developers.
+It is used for reliable pointer grabs and selection handling in the code for drag-and-drop
+
+== Object Hierarchy
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Gtk::Object
+        * Gtk::Widget
+          * Gtk::Invisible
+
+== Class Methods
+--- Gtk::Invisible.new
+    Creates a new Gtk::Invisible.
+    * Returns: a new Gtk::Invisible.  
+
+== Instance Methods
+--- screen
+    ((*Since 2.2*)) Returns the Gdk::Screen object associated with invisible
+    * Returns: the associated Gdk::Screen.  
+--- screen=(screen)
+    ((*Since 2.2*)) Sets the Gdk::Screen where the GtkInvisible object will be displayed.
+    * screen: a Gdk::Screen
+    * Returns: screen
+--- set_screen(screen)
+    ((*Since 2.2*)) Same as Gtk::Invisible#screen=.
+    * screen: a Gdk::Screen  
+    * Returns: self
+
+== Properties
+--- screen: Gdk::Screen (Read/Write)
+    The screen where this window will be displayed
+
+- ((<Masao>))

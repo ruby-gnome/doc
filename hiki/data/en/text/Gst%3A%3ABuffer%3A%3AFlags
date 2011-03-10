@@ -1,0 +1,68 @@
+= class Gst::Buffer::Flags
+
+== Object Hierarchy
+
+* Object
+  * GLib::Flags
+    * Gst::Buffer::Flags
+
+== Instance Methods
+
+--- delta_unit?
+
+     * Returns: self: ((*FIXME*))
+
+--- discont?
+
+     * Returns: self: ((*FIXME*))
+
+--- gap?
+
+     * Returns: self: ((*FIXME*))
+
+--- in_caps?
+
+     * Returns: self: ((*FIXME*))
+
+--- last?
+
+     * Returns: self: ((*FIXME*))
+
+--- preroll?
+
+     * Returns: self: ((*FIXME*))
+
+--- readonly?
+
+     * Returns: self: ((*FIXME*))
+
+--- media1?
+
+     * Returns: self: ((*FIXME*))
+
+--- media2?
+
+     * Returns: self: ((*FIXME*))
+
+--- media3?
+
+     * Returns: self: ((*FIXME*))
+
+== Constants
+
+--- DELTA_UNIT
+--- DISCONT
+--- GAP
+--- IN_CAPS
+--- LAST
+--- PREROLL
+--- READONLY
+--- MEDIA1
+--- MEDIA2
+--- MEDIA3
+
+== See Also
+
+== ChangeLog
+
+

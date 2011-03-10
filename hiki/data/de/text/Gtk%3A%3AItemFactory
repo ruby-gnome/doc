@@ -1,0 +1,123 @@
+= class Gtk::ItemFactory
+A factory for menus.
+
+== Object Hierarchy
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Gtk::Object
+        * Gtk::ItemFactory
+
+== Class Methods
+--- Gtk::ItemFactory.new(container_type, path, accel_group = nil)
+    Creates a new Gtk::ItemFactory.
+    * container_type: the kind of menu to create; can be Gtk::ItemFactory::TYPE_MENU_BAR, Gtk::ItemFactory::TYPE_MENU or Gtk::ItemFactory::TYPE_OPTION_MENU  
+    * path: the factory path of the new item factory, a string of the form "<name>"  
+    * accel_group: a Gtk::AccelGroup to which the accelerators for the menu items will be added, or nil to create a new one  
+    * Returns: a new Gtk::ItemFactory  
+
+--- Gtk::ItemFactory.from_widget(widget)
+    Obtains the item factory from which a widget was created.
+    * widget: a Gtk::Widget  
+    * Returns: the item factory from which widget was created, or nil  
+
+--- Gtk::ItemFactory.path_from_widget(widget)
+    If widget has been created by an item factory, returns the full path to it. (The full path of a widget is the concatenation of the factory path specified in Gtk::ItemFactory.new with the path specified in the array from which the widget was created.)
+    * widget: a Gtk::Widget  
+    * Returns: the full path to widget if it has been created by an item factory, nil otherwise. This value is owned by GTK+ and must not be modified or freed.  
+    * Returns: self
+
+== Instance Methods
+--- construct(container_type, path, accel_group = nil)
+    Initializes an item factory.
+    * container_type : the kind of menu to create; can be Gtk::ItemFactory::TYPE_MENU_BAR, Gtk::ItemFactory::TYPE_MENU or Gtk::ItemFactory::TYPE_OPTION_MENU
+    * path : the factory path of ifactory, a string of the form "<name>"  
+    * accel_group : a Gtk::AccelGroup to which the accelerators for the menu items will be added, or nil to create a new one  
+    * Returns: self
+
+--- get_item(path)
+    Obtains the menu item which corresponds to path. 
+    If the widget corresponding to path is a menu item which opens a submenu, then the item is returned. If you are interested in the submenu, use Gtk::ItemFactory#get_widget instead.
+    * path: the path to the menu item  
+    * Returns: the menu item for the given path, or nil if path doesn't lead to a menu item  
+--- get_widget(path)
+    Obtains the widget which corresponds to path. 
+    If the widget corresponding to path is a menu item which opens a submenu, then the submenu is returned. If you are interested in the menu item, use Gtk::ItemFactory#get_item instead.
+    * path: the path to the widget
+    * Returns: the widget for the given path, or nil if path doesn't lead to a widget  
+
+--- create_item(path, item_type = nil, accelerator = nil, extdata = nil, data = nil){|data, item| ... }
+    Creates an item for entry.
+    * path: the path to the menu item
+    * item_type: ((<GtkItemType|Gtk::ItemFactroy#GtkItemType>)). A simple item when nil is given. If it is set path, it is for a radio item to link against.
+    * accelerator: the accelerator for the item or nil. e.g. "<Control>q", "<Shift>s". See Gtk::Accelerator.parse for more details.
+    * extdata: extra data for some item types:
+       * Gtk::ItemFactroy::IMAGE_ITEM  -> Gdk::Pixbuf
+       * Gtk::ItemFactroy::STOCK_ITEM  -> Stock item(constants of Gtk::Stock)
+    * data: the data passed to the block.
+    * {|data, item| ... }: the callback block.
+    * Returns: self
+
+--- create_items(entries)
+    Creates the menu items from the entries.
+    * entries: array of item entries([item1, item2, ... ]).
+      an item is [path, item_type = nil, accelerator = nil, extdata = nil, proc = nil, data = nil]
+       * path: the path to the menu item
+       * item_type: ((<GtkItemType|Gtk::ItemFactroy#GtkItemType>)). A simple item when nil is given. If it is set path, it is for a radio item to link against.
+       * accelerator: the accelerator for the item or nil. e.g. "<Control>q", "<Shift>s". See Gtk::Accelerator.parse for more details.
+       * extdata: extra data for some item types:
+          * Gtk::ItemFactroy::IMAGE_ITEM  -> Gdk::Pixbuf
+          * Gtk::ItemFactroy::STOCK_ITEM  -> Stock item(constants of Gtk::Stock)
+       * proc: the callback block.
+       * data: the data passed to the block.
+    * Returns: self
+--- delete_item(path)
+    Deletes the menu item which was created for path by the given item factory.
+    * path: a path 
+    * Returns: self
+--- popup(x, y, mouse_button, time)
+    Pops up the menu constructed from the item factory at (x, y). This method is for Gtk::ItemFactory::TYPE_MENU only.
+    * x: the x position(Number)
+    * y: the y position(Number)
+    * mouse_button: the mouse button which was pressed to initiate this action(Number)
+    * time: a timestamp for this action(Number)
+    * Returns: self
+
+== Constants
+=== GtkItemType
+GtkItemTypes are original constants for Ruby/GTK2. 
+--- TITLE
+    <Title> - a title item.
+--- ITEM
+    <Item> - a simple item.
+--- IMAGE_ITEM
+    <ImageItem> - an item holding an image(Gdk::Pixbuf)
+--- STOCK_ITEM
+    <StockItem> - an item holding a stock image 
+--- CHECK_ITEM
+    <CheckItem> - a check item
+--- TOGGLE_ITEM
+    <ToggleItem> - a toggle item
+--- RADIO_ITEM
+    <RadioItem> - a radio item
+--- SEPARATOR
+    <Separator> - a separator
+--- TEAROFF
+    <Tearoff> - a tearoff separator
+--- BRANCH
+    <Branch> - an item to hold sub items
+--- LAST_BRANCH
+    <LastBranch> - a right justified item to hold sub items
+    You shouldn't use this for "help" menu. See Gtk::MenuItem#right_justified.
+
+=== GtkContainerType
+GtkContainerTypes are original constants for Ruby/GTK2. 
+--- TYPE_MENU
+    As Gtk::Menu
+--- TYPE_MENU_BAR
+    As Gtk::MenuBar
+--- TYPE_OPTION_MENU
+    As Gtk::OptionMenu
+
+
+- ((<Masao>))

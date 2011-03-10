@@ -1,0 +1,133 @@
+= class Gnome::PrintUnit
+
+== Object Hierarchy
+* Object
+  * GLib::Boxed
+    * Gnome::PrintUnit
+
+== Class Methods
+--- Gnome::PrintUnit.default
+    
+     Used to get the default Gnome::PrintUnit
+
+     * Returns: the default Gnome::PrintUnit
+
+--- Gnome::PrintUnit.get_by_abbreviation(abbreviation)
+     
+     Get a unit based on its abbreviation, for example "cm",
+     "pts" or "in".
+
+     * abbreviation:  Abbreviation of the unit, as a string
+     * Returns: a Gnome::PrintUnit, (({nil})) on error
+
+--- Gnome::PrintUnit.get_by_name(name)
+     
+     Get a unit based on its name, for example "Millimeter"
+     or "Inches".
+     
+     * name: Name of the unit, as a string
+     * Returns: a Gnome::PrintUnit, (({nil})) on error
+
+--- Gnome::PrintUnit.get_identity(base)
+
+     Retrieves the Gnome::PrintUnit referenced by base ((|base|))
+     
+     * base: The base of the Gnome::PrintUnit to retrieve,
+       as a Gnome::PrintUnit::UNIT_*.
+     * Returns: The Gnome::PrintUnit representing
+       ((|base|)), (({nil})) on error
+
+--- Gnome::PrintUnit.get_list(bases)
+     
+     Gets a list of the units represented by the bases
+     ((|bases|)). To get a list of all units then use
+     Gnome::PrintUnit::UNIT_ALL.
+
+     * bases: The bases to include in the list, as a
+       Gnome::PrintUnit::UNIT_*. Can combine bases by using
+       Gnome::PrintUnitBase#|.
+     * Returns: An array of representing ((|bases|)), an
+       empty array on error
+
+== Instance Methods
+--- abbr
+     
+     * Returns: The abbreviation of (({self}))
+
+--- abbr_plural
+     
+     * Returns: The plural form of abbreviation of (({self}))
+
+--- base
+     
+     * Returns: The base of (({self})), as Gnome::PrintUnitBase
+
+--- convert_distance(distance, to)
+    
+     Check whether a conversion between (({self})) and
+     ((|to|)) can be made
+
+     * distance: The distance to convert, as a number
+     * to: Units to convert to, as a Gnome::PrintUnit
+     * Returns: The converted distance on success, (({nil})) on
+       error
+
+--- convert_distance_full(distance, to, ctm_scale, device_scale)
+     
+     Convert a distance from one unit to another. You should
+     supply a scale as necessary.
+
+     ((|ctm_scale|)) is userspace->absolute,
+     ((|device_scale|)) is device->absolute
+
+     * distance: The distance to convert, as a number
+     * to: Units to convert to, as a Gnome::PrintUnit
+     * ctm_scale: The userspace scale to use, as a number
+     * device_scale: The device scale to use, as a number
+     * Returns: The converted distance on success, (({nil}))
+       on error
+
+--- name
+     
+     * Returns: The name of (({self}))
+
+--- plural
+     
+     * Returns: The plural form of name of (({self}))
+
+--- unit_to_base
+     
+     * Returns: The unit to base of (({self}))
+
+--- version
+     
+     * Returns: The version of (({self}))
+
+== Constants
+--- PS_UNIT
+
+--- ABSOLUTE
+     Real world distances - i.e. mm, cm...
+
+--- ALL
+     Represents all unit base.
+     This is convinient when use Gnome::PrintUnit#get_list.
+
+--- DEVICE
+     Semi-real device-dependent distances i.e. pixels
+
+--- DIMENSIONLESS
+     For percentages and like
+
+--- USERSPACE
+     Mathematical coordinates
+
+== See Also
+
+Gnome::PrintUnitBase
+
+== ChangeLog
+
+* 2005-06-09 ((<kou>)): completed
+
+- ((<kou>))

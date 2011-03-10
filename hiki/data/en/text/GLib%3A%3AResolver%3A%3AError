@@ -1,0 +1,17 @@
+= class GLib::Resolver::Error
+
+Base class for errors related to GLib::Resolver.
+
+== Object Hierarchy
+
+* Object
+  * Exception
+    * StandardError
+      * IOError
+        * GLib::Resolver::Error
+
+== See Also
+
+== ChangeLog
+
+

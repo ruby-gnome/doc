@@ -1,0 +1,84 @@
+= O Olá Mundo de Ruby/GTK2 (comentado)
+{{link "tut-gtk-events", "tut-gtk-intro", "tut-gtk", "tut-gtk-signals-more"}}
+
+Agora que acabamos de ver a teoria de eventos e sinais, estamos prontos para olhar em detalhes no programa "Olá Mundo".
+
+Primeiramente, ele inicializa a Ruby/GTK2. Este código é exigido para todos os programas Ruby/GTK2.
+
+  #!/usr/bin/env ruby
+  =begin
+    helloworld.rb - Ruby/GTK first sample script.
+  
+    Copyright (c) 2002,2003 Ruby-GNOME2 Project Team
+    This program is licenced under the same licence as Ruby-GNOME2.
+  
+    $Id: helloworld.rb,v 1.4 2003/02/01 16:46:22 mutoh Exp $
+  =end
+  
+  require 'gtk2'
+
+Aqui a gente cria um botão nomeado "Olá Mundo".
+Gtk::Button.new cria um botão GTK e configura seu rótulo para o parâmetro de String que a gente provém.
+Atualmente, o botão não é parte de uma janela GTK, e não está visível.
+
+  button = Gtk::Button.new("Olá Mundo")
+
+O código a seguir imprimirá "Olá Mundo" no terminal cada vez que o botão for pressionado.
+
+Isso é feito conectando um bloco de código que coloca a nossa mensagem no sinal "clicked" (clicado) do botão. 
+
+  button.signal_connect("clicked") {
+    puts "Olá Mundo"
+  }
+
+Agora é hora de criar uma janela. Como o botão, a janela não está visível ainda na tela.
+
+  window = Gtk::Window.new
+
+A gente decide conectar diversos gerenciadores de sinais a janela:
+
+* "delete_event" será disparado quando a janela é morta ("killed") pelo gerenciador de janelas (usualmente quando o usuário a fecha manualmente).  Note que a gente retorna um valor "false" neste gerenciador: ele significa que o processamento deste evento ainda não terminou. A GTK irá assim gerar um sinal "destroy" (destrua).
+* "destroy" será gerado logo após o "delete_event".  
+  No gerenciador, a gente fecha a aplicação chamando Gtk.main_quit.
+
+2 mensagens serão impressas quando o usuário fechar a janela: primeiramente "ocorreu um evento delete" e então um "ocorreu um evento destroy".
+
+  window.signal_connect("delete_event") {
+    puts "ocorreu um evento delete"
+    #true
+    false
+  }
+
+  window.signal_connect("destroy") {
+    puts "ocorreu um evento destroy"
+    Gtk.main_quit
+  }
+
+Agora a gente configura aqui a largura da borda da janela para 10 pixels. O que isso significa ?
+
+As janelas GTK são de fato "containers". Um container é um componente que pode hospedar outros componentes dentro dele.
+Nossa janela aqui mostrará uma borda de 10 pixels ao redor do componente contido.  
+
+  window.border_width = 10
+
+É o momento de associar nosso botão com a nossa janela. Isso é feito posicionando ("packing") o botão dentro da janela. 
+
+  window.add(button)
+
+O próximo passo é para mostrar nosso trabalho na tela. Precisamos mostrar dois componentes: o botão e a janela.
+
+Então a gente podia ter escrito isto:
+
+  button.show
+  window.show
+
+Mas como o botão está posicionado dentro da janela, a gente pode assim chamar Gtk::Widget#show_all na janela.
+Esse método chamará Gtk::Widget#show na janela e em cada um dos componentes contidos nela (aqui existe apenas um componente posicionado: o botão).
+
+  window.show_all
+
+Finalmente, a gente entra no loop principal, chamando Gtk.main. O programa assim dormirá até que um evento de Janela X seja gerado. Perceba que Gtk.main não retornará ao chamador.  
+
+Mas o usuário ainda estará capaz de terminar o programa, uma vez que a gente chama Gtk.main_quit quando o evento "destroy" é recebido.  
+
+  Gtk.main  

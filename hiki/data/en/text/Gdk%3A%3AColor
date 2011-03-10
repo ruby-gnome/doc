@@ -1,0 +1,104 @@
+= class Gdk::Color
+
+== Object Hierarchy
+
+* Object
+  * GLib::Boxed
+    * Gdk::Color
+
+== Class Methods
+
+--- Gdk::Color.new(red, green, blue)
+
+    Creats a new Gdk::Color.
+    * red: The red component of the color. This is a value between 0 and 65535, with 65535 indicating full intensitiy. 
+    * green: The blue component of the color 
+    * blue: The green component of the color
+    * Returns: The newly created Gdk::Color
+
+--- Gdk::Color.parse(spec)
+
+    Parses a textual specification of a color and fill in the red, green, and blue fields of a Gdk::Color structure. The color is not allocated, you must call Gdk::Colormap#alloc_color yourself. The text string can be in any of the forms accepted by XParseColor; these include name for a color from rgb.txt, such as DarkSlateGray, or a hex specification such as 305050.
+    If spec can't be parsed, the ArgumentError will be occured.
+    * spec: the string specifying the color. 
+    * Returns: the Gdk::Color
+
+== Instance Methods
+
+--- ==(other)
+
+    Compares two colors. 
+    * other: another Gdk::Color. 
+    * Returns: true if the two colors compare equal
+
+--- to_s
+
+    Returns a textual specification of color in the hexadecimal form #rrrrggggbbbb, where r, g and b are hex digits representing the red, green and blue components respectively. ((*Since 2.12*))
+    * Returns: the textual specification of color.
+
+--- to_a
+
+    Retrieves the value of the color.
+    * Returns: [red, green, blue]
+
+--- red
+
+    Gets the value of red.
+    * Returns: self
+
+--- red=(red)
+
+    Sets the value of red.
+    * red: The red component of the color. This is a value between 0 and 65535, with 65535 indicating full intensitiy. 
+    * Returns: red
+
+--- set_red(red)
+
+    Same as Gdk::Color#red=.
+    * red: The red component of the color. This is a value between 0 and 65535, with 65535 indicating full intensitiy. 
+    * Returns: self
+
+--- green=(green)
+
+    Sets the value of green.
+    * green: The green component of the color. This is a value between 0 and 65535, with 65535 indicating full intensitiy. 
+    * Returns: green
+
+--- set_green(green)
+
+    Same as Gdk::Color#green=.
+    * green: The green component of the color. This is a value between 0 and 65535, with 65535 indicating full intensitiy. 
+    * Returns: self
+
+--- blue=(blue)
+
+    Sets the value of blue.
+    * blue: The blue component of the color. This is a value between 0 and 65535, with 65535 indicating full intensitiy. 
+    * Returns: blue
+
+--- set_blue(blue)
+
+    Same as Gdk::Color#blue=.
+    * blue: The blue component of the color. This is a value between 0 and 65535, with 65535 indicating full intensitiy. 
+    * Returns: self
+
+--- pixel
+
+    Retrieves the value used to draw this color on the screen (for allocated colors).
+    * Returns: the value used to draw this color on the screen
+
+--- blue
+
+     * Returns: self: ((*FIXME*))
+
+--- green
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+Gdk::Colormap
+
+== ChangeLog
+
+((<Masao>))

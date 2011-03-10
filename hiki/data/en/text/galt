@@ -1,0 +1,5 @@
+=Matthew Berg
+
+Hi!  I'm a long time user and fan of Gnome (since the 0.13 release) and a new fan of Ruby.  So far I've only provided a few small patches, and contributed some documentation.  My current project is adapting the ((<GTK+ 2.0 TreeView Tutorial|URL:http://scentric.net/temp/tutorial/>)) to Ruby.  When I complete that I hope to help implenet new widgets in Ruby/GTK.
+
+I have also been developing an ((<audio player|URL:http://www.gothpoodle.com/~galt/player.html>)) utilizing ((<"Ruby/GTK">)), ((<"Ruby/GStreamer">)), Ruby/Libglade, and Ruby/Libgda.  In the near future I plan on utilizing ((<"Ruby/GConf">)) for preferences, and eventually Ruby/PanelApplet when it becomes part of the main distribution.

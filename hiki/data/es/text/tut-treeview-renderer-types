@@ -1,0 +1,15 @@
+= GtkCellRendererText y los tipos Integer, TrueClass y Float
+{{link "tut-treeview-renderer-celldatafunc", "tut-treeview-renderer", "tut-treeview", "tut-treeview-renderer-example"}}
+
+Se ha comentado antes que, al usar atributos para conectar los datos del modelo a una propiedad del CellRenderer, los datos de la columna del modelo especificados en Gtk::TreeView#add_atributes deben ser siempre del mismo tipo que recibe la propiedad como argumento.
+
+Esto ocurre generalmente, pero hay una excepción: si se quiere agragar una propiedad "text" del CellRendererText a una columna del modelo, dicha columna no necesita ser de tipo String, también puede ser de otros tipos: TrueClass, Integer, Fixnum, o Float. El CellRendererText se encarga de mostrar los valores de forma correcta automáticamente en el TreeView. Por ejemplo:
+
+  list = Gtk::ListStore.new(String, Integer)
+
+  renderer = Gtk::CellRenderer.new
+  col = Gtk::TreeViewColumn.new("Age", renderer, :text => 1)
+
+Incluso aunque la propiedad "text" requeriría un valor string, usamos una columna del modelo de tipo integer al asignar el atributo. El integer será convertido automáticamente a string antes de que la propiedad del CellRenderer sea asignada.
+
+Si se usa la clase Float, no hay forma de indicar al CellRendererText cuantos dígitos tras la coma decimal deben ser dibujados. Si se quiere mostrar un cierto número de decimales, se necesita usar una ((<función sobre datos de celda|tut-treeview-renderer-celldatafunc>)).

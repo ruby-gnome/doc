@@ -1,0 +1,14 @@
+= Boxen anordnen: Theoretisches
+{{link "tut-gtk2-packing-intro", "tut-gtk2-packing-intro", "tut-gtk", "tut-gtk2-packing-box-details"}}
+
+Meistens wird das Anordnen von Widgets über Boxen erledigt. Boxen sind unsichtbare Widget-Container, die wir in unsere Widgets einfügen können. Es gibt zwei Arten von Boxen: horizontale und vertikale Boxen.
+Wenn Sie Widgets in eine horizontale Box einfügen, werden die Objekte horizontal von links nach rechts (oder in Abhängigkeit von der verwendeten Methode möglicherweise auch umgekehrt).
+In einer vertikalen Box werden Widgets von oben nach unten (oder andersherum) angeordnet. Sie können eine Kombination von Boxen innerhalb oder neben anderen Boxen benutzen, um den jeweils gewünschten Effekt zu erzielen.
+
+Um eine neue horizontale Box zu erstellen, benutzen wir Gtk::HBox.new und für vertikale Boxen entsprechend Gtk::VBox.new.
+Die Methoden Gtk::Box#pack_start und Gtk::Box#pack_end werden benutzt, um Objekte in diesen Containern einzufügen
+Die Methode Gtk::Box#pack_start beginnt oben und arbeitet sich ihren Weg nach unten in einer VBox und von links nach rechts in einer HBox. Gtk::Box#pack_end macht genau das Gegenteil: diese Methode ordnet die Widgets von unten nach oben in einer VBox und von links nach rechts in einer HBox.
+Der Einsatz dieser Methoden erlaubt es uns, Widgets rechts oder links auszurichten und diese Methoden miteinander zu mischen, um das jeweils gewollte Ergebnis zu bekommen.
+Wir werden Gtk::Box#pack_start in den meisten unserer Beispiele verwenden. Ein Objekt kann ein weiterer Container oder ein Widget sein. Tatsächlich sind viele Widgets für sich selbst Container, einschließlich dem Button, indem wir normalerweise aber nur ein Label einfügen werden.
+
+Indem diese Methoden angewendet werden, teilen Sie GTK mit, wo Sie Ihre Widgets platzieren möchen. Daher ists GTK in der Lage, automatische Größenänderungen und andere Dinge zu erledigen. Außerdem gibt es einige Optionen, mit denen Sie festlegen können, wie ein Widget angeordnet werden soll. Wie Sie sich vorstellen können, gibt uns diese Methode ein gewisses Maß an Flexibilität, wenn wir Widgets erstellen und anordnen.

@@ -1,0 +1,18 @@
+= class GLib::IO::PendingError
+
+Operations are still pending.
+
+== Object Hierarchy
+
+* Object
+  * Exception
+    * StandardError
+      * IOError
+        * GLib::IO::Error
+          * GLib::IO::PendingError
+
+== See Also
+
+== ChangeLog
+
+

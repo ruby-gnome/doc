@@ -1,0 +1,46 @@
+= Das Verhalten von Signalen erkunden
+{{link nil, "Ruby-GNOME2+Tips", nil, nil}}
+
+Wie finden Sie heraus, welche Signale Sie benötigen?
+
+Einige repräsentative Signale können in vielen Beispielen gefunden werden, aber andere werden nicht einmal in den GTK+ API-Dokumentationen beschrieben.
+
+Hier wird beschrieben, wie man diese findet.
+
+== 1. Probieren Sie alle Signale eines verwendeten Widgets aus
+Wenn Sie das Verhalten von Signalen kennen wollen, schreiben Sie Testskripte wie das folgende.
+
+Versuchen Sie, das Widget anzuklicken, Tasten auf der Tastatur zu drücken, das Widget zu bewegen. Dann können Sie herausfinden, welche Signale wann gesendet werden.
+
+ require 'gtk2'
+ widget = Gtk::Button.new("click")        #(1)
+ Gtk::Button.signals(false).each do |v|   #(2)
+   p v
+   widget.signal_connect(v) do
+     p "#{v} is occured."
+   end
+ end
+ Gtk::Window.new.set_default_size(100, 100).add(widget).show_all
+ Gtk.main
+
+Das ist ein Beispiel, in dem ein Gtk::Button benutzt wird. Sie können aber selbstverständlich andere Widgets und Signale untersuchen, indem Sie (1) und (2) anpassen.
+
+Wenn Sie wissen müssen, welche Signale die Superklasse enthält, weisen Sie GLib::MetaInterface.signals auf true.
+
+== 2. Ein Signal genauer untersuchen
+Im zweiten Schritt, wenn Sie Details über Signale benötigen, probieren Sie das folgende Skript:
+
+ require 'gtk2'
+ v = "clicked"                            #(1)
+ widget = Gtk::Button.new("click")        #(2)
+ widget.signal_connect(v) do
+   p "#{v} is occured."
+ end
+ Gtk::Window.new.set_default_size(100, 100).add(widget).show_all
+ Gtk.main
+
+Verändern Sie (1) und (2), je nach Ihren Bedürfnissen.
+
+== ChangeLog
+:08.07.2003 Masao Mutoh
+ Initial Release

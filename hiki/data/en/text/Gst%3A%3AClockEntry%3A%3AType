@@ -1,0 +1,18 @@
+= class Gst::ClockEntry::Type
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * Gst::ClockEntry::Type
+
+== Constants
+
+--- PERIODIC
+--- SINGLE
+
+== See Also
+
+== ChangeLog
+
+

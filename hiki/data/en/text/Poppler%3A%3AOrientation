@@ -1,0 +1,22 @@
+= class Poppler::Orientation
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * Poppler::Orientation
+
+== Constants
+
+--- LANDSCAPE
+--- PORTRAIT
+--- SEASCAPE
+--- UPSIDEDOWN
+
+== See Also
+
+== ChangeLog
+
+* 2006-05-19 ((<kou>)): completed.
+
+- ((<kou>))

@@ -1,0 +1,42 @@
+= class Poppler::ActionGotoDest
+
+== Object Hierarchy
+
+* Object
+  * GLib::Boxed
+    * Poppler::Action
+      * Poppler::ActionAny
+        * Poppler::ActionGotoDest
+
+== Instance Methods
+
+--- dest
+
+    Gets the destination of the action.
+     * Returns: The destination of the action
+
+--- dest=(dest)
+
+    Sets the destination of the action.
+     * dest: The destination of the action
+     * Returns: dest
+
+--- set_dest(dest)
+
+    Same as dest=.
+     * dest: The destination of the action
+     * Returns: self
+
+== Properties
+
+--- dest: Poppler::Dest (Read/Write)
+
+    The destination of the action
+
+== See Also
+
+== ChangeLog
+
+* 2006-05-18 ((<kou>)): completed.
+
+- ((<kou>))

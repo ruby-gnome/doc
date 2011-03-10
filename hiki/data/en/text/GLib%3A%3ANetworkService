@@ -1,0 +1,105 @@
+= class GLib::NetworkService
+
+Like GLib::NetworkAddress does with hostnames, GLib::NetworkService provides an
+easy way to resolve a SRV record, and then attempt to connect to one of the
+hosts that implements that service, handling service priority/weighting,
+multiple IP addresses, and multiple address families.
+
+See GLib::SrvTarget for more information about SRV records, and see
+GLib::SocketConnectable for and example of using the connectable interface. 
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::NetworkService
+
+== Included Modules
+
+  * GLib::SocketConnectable
+
+== Class Methods
+
+--- GLib::NetworkService.new(service, protocol, domain)
+
+     Creates a new GLib::NetworkService representing the given service,
+     protocol, and domain. This will initially be unresolved; use the
+     GLib::SocketConnectable interface to resolve it. 
+
+     * service: The service type to look up (for example, “ldap”)
+     * protocol: The networking protocol to use for ((|service|)) (for example,
+       “tcp”)
+     * domain: The DNS domain to look up the service in
+     * Returns: a new GLib::NetworkService
+
+== Instance Methods
+
+--- domain
+
+     Gets the Network domain, for example, “example.com”.
+
+     * Returns: The Network domain, for example, “example.com”.
+
+--- each
+
+    See GLib::SocketConnectable#each.
+
+--- enumerate
+
+    See GLib::SocketConnectable#enumerate.
+
+--- protocol
+
+     Gets the Network protocol, for example, “tcp”.
+
+     * Returns: The Network protocol, for example, “tcp”
+
+--- scheme
+
+     Gets the Network scheme (default is to use service).
+
+     * Returns: The Network scheme (default is to use service)
+
+--- scheme=(scheme)
+
+     Same as GLib::SocketConnectable#set_scheme.
+
+     * Returns: ((|scheme|))
+
+--- service
+
+     Gets the Service name, for example, “ldap”
+
+     * Returns: Service name, eg "ldap"
+
+--- set_scheme(scheme)
+
+     Sets the Network scheme (default is to use service).
+
+     * scheme: Network scheme (default is to use service)
+     * Returns: self
+
+== Properties
+
+--- domain: String (Read/Write)
+
+    The Network domain, for example, “example.com”
+
+--- protocol: String (Read/Write)
+
+    The Network protocol, for example, “tcp”
+
+--- scheme: String (Read/Write)
+
+    The Network scheme (default is to use service)
+
+--- service: String (Read/Write)
+
+    The Service name, for example, “ldap”
+
+== See Also
+
+== ChangeLog
+
+

@@ -1,0 +1,101 @@
+= class Gtk::TreePath
+
+A path is essentially a potential node. It is a location on a model that may or may not actually correspond to a node on a specific model. The Gtk::TreePath struct can be converted into either an array of unsigned integers or a string. The string form is a list of numbers separated by a colon. Each number refers to the offset at that level. Thus, the path "0" refers to the root node and the path "2:4" refers to the fifth child of the third node.
+
+== Object Hierarchy
+
+* Object
+  * GLib::Boxed
+    * Gtk::TreePath
+
+== Class Methods
+
+--- Gtk::TreePath.new(path = nil)
+
+    Creates a new Gtk::TreePath initialized to path. path is expected to be a colon separated list of numbers. For example, the string "10:4:0" would create a path of depth 3 pointing to the 11th child of the root node, the 5th child of that 11th child, and the 1st child of that 5th child. If an invalid path string is passed in, error is occured.
+    * path: The string representation of a path. 
+    * Returns: A newly created Gtk::TreePath.
+
+== Instance Methods
+
+--- <=>(b)
+
+    Compares two paths. If self appears before b in a tree, then -1 is returned. If b appears before self, then 1 is returned. If the two nodes are equal, then 0 is returned. 
+    * b: A GtkTreePath to compare with. 
+    * Returns: The relative positions of a and b
+
+--- to_str
+
+    Generates a string representation of the path. This string is a ':' separated list of numbers. For example, "4:10:0:3" would be an acceptable return value for this string.
+    * Returns : A newly string.
+
+--- append_index(index)
+
+    Appends a new index to a path. As a result, the depth of the path is increased.
+    * index : The index. 
+    * Returns: self
+
+--- prepend_index(index)
+
+    Prepends a new index to a path. As a result, the depth of the path is increased.
+    * index : The index. 
+    * Returns: self
+
+--- depth
+
+    Returns the current depth of path.
+    * Returns: The depth of path(Number)
+
+--- indices
+
+    Returns the current indices of path. This is an array of integers, each representing a node in a tree. This value should not be freed.
+    * Returns : The current indices, or nil.
+
+--- next!
+
+    Moves the path to point to the next node at the current depth.
+    * Returns: self
+
+--- prev!
+
+    Moves the path to point to the previous node at the current depth, if it exists.
+    * Returns: true if path has a previous node, and the move was made.
+
+--- up!
+
+    Moves the path to point to it's parent node, if it has a parent.
+    * Returns: true if path has a parent, and the move was made.
+
+--- down!
+
+    Moves path to point to the first child of the current path.
+    * Returns: self
+
+--- ancestor?(descendant)
+
+    Returns true if descendant is a descendant of path.
+    * descendant: another Gtk::TreePath 
+    * Returns: true if descendant is contained inside path
+
+--- descendant?(ancestor)
+
+    Returns true if path is a descendant of ancestor.
+    * ancestor: another Gtk::TreePath 
+    * Returns: true if ancestor contains path somewhere below it
+
+--- to_s
+
+     * Returns: self: ((*FIXME*))
+
+--- ==
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+  * Gtk::TreeModel
+  * Gtk::TreeView
+
+== ChangeLog
+
+- ((<Masao>))

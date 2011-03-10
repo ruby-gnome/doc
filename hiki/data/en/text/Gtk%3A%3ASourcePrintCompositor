@@ -1,0 +1,304 @@
+= class Gtk::SourcePrintCompositor
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Gtk::SourcePrintCompositor
+
+== Class Methods
+
+--- Gtk::SourcePrintCompositor.new
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- body_font_name
+
+    Gets the Name of the font to use for the text body (e.g. "Monospace 10").
+     * Returns: Name of the font to use for the text body (e.g. "Monospace 10")
+
+--- body_font_name=(body_font_name)
+
+    Sets the Name of the font to use for the text body (e.g. "Monospace 10").
+     * body_font_name: Name of the font to use for the text body (e.g. "Monospace 10")
+     * Returns: body_font_name
+
+--- buffer
+
+    Gets the Gtk::SourceBuffer object to print.
+     * Returns: The Gtk::SourceBuffer object to print
+
+--- draw_page
+
+     * Returns: self: ((*FIXME*))
+
+--- footer_font_name
+
+    Gets the Name of the font to use for the page footer (e.g. "Monospace 10").
+     * Returns: Name of the font to use for the page footer (e.g. "Monospace 10")
+
+--- footer_font_name=(footer_font_name)
+
+    Sets the Name of the font to use for the page footer (e.g. "Monospace 10").
+     * footer_font_name: Name of the font to use for the page footer (e.g. "Monospace 10")
+     * Returns: footer_font_name
+
+--- get_bottom_margin
+
+     * Returns: self: ((*FIXME*))
+
+--- get_left_margin
+
+     * Returns: self: ((*FIXME*))
+
+--- get_right_margin
+
+     * Returns: self: ((*FIXME*))
+
+--- get_top_margin
+
+     * Returns: self: ((*FIXME*))
+
+--- header_font_name
+
+    Gets the Name of the font to use for the page header (e.g. "Monospace 10").
+     * Returns: Name of the font to use for the page header (e.g. "Monospace 10")
+
+--- header_font_name=(header_font_name)
+
+    Sets the Name of the font to use for the page header (e.g. "Monospace 10").
+     * header_font_name: Name of the font to use for the page header (e.g. "Monospace 10")
+     * Returns: header_font_name
+
+--- highlight_syntax=(highlight_syntax)
+
+    Sets the value whether to print the document with highlighted syntax or not.
+     * highlight_syntax: true if to print the document with highlighted syntax
+     * Returns: highlight_syntax
+
+--- highlight_syntax?
+
+    Gets the value whether to print the document with highlighted syntax or not.
+     * Returns: true if to print the document with highlighted syntax
+
+--- line_numbers_font_name
+
+    Gets the Name of the font to use for the line numbers (e.g. "Monospace 10").
+     * Returns: Name of the font to use for the line numbers (e.g. "Monospace 10")
+
+--- line_numbers_font_name=(line_numbers_font_name)
+
+    Sets the Name of the font to use for the line numbers (e.g. "Monospace 10").
+     * line_numbers_font_name: Name of the font to use for the line numbers (e.g. "Monospace 10")
+     * Returns: line_numbers_font_name
+
+--- n_pages
+
+    Gets the number of pages in the document (-1 means the document has not been completely paginated).
+     * Returns: The number of pages in the document (-1 means the document has not been completely paginated)
+
+--- paginate
+
+     * Returns: self: ((*FIXME*))
+
+--- pagination_progress
+
+     * Returns: self: ((*FIXME*))
+
+--- print_footer=(print_footer)
+
+    Sets the value whether to print a footer in each page or not.
+     * print_footer: true if to print a footer in each page
+     * Returns: print_footer
+
+--- print_footer?
+
+    Gets the value whether to print a footer in each page or not.
+     * Returns: true if to print a footer in each page
+
+--- print_header=(print_header)
+
+    Sets the value whether to print a header in each page or not.
+     * print_header: true if to print a header in each page
+     * Returns: print_header
+
+--- print_header?
+
+    Gets the value whether to print a header in each page or not.
+     * Returns: true if to print a header in each page
+
+--- print_line_numbers
+
+    Gets the Interval of printed line numbers (0 means no numbers).
+     * Returns: Interval of printed line numbers (0 means no numbers)
+
+--- print_line_numbers=(print_line_numbers)
+
+    Sets the Interval of printed line numbers (0 means no numbers).
+     * print_line_numbers: Interval of printed line numbers (0 means no numbers)
+     * Returns: print_line_numbers
+
+--- set_body_font_name(body_font_name)
+
+    Same as body_font_name=.
+     * body_font_name: Name of the font to use for the text body (e.g. "Monospace 10")
+     * Returns: self
+
+--- set_bottom_margin
+
+     * Returns: self: ((*FIXME*))
+
+--- set_footer_font_name(footer_font_name)
+
+    Same as footer_font_name=.
+     * footer_font_name: Name of the font to use for the page footer (e.g. "Monospace 10")
+     * Returns: self
+
+--- set_footer_format
+
+     * Returns: self: ((*FIXME*))
+
+--- set_header_font_name(header_font_name)
+
+    Same as header_font_name=.
+     * header_font_name: Name of the font to use for the page header (e.g. "Monospace 10")
+     * Returns: self
+
+--- set_header_format
+
+     * Returns: self: ((*FIXME*))
+
+--- set_highlight_syntax(highlight_syntax)
+
+    Same as highlight_syntax=.
+     * highlight_syntax: true if to print the document with highlighted syntax
+     * Returns: self
+
+--- set_left_margin
+
+     * Returns: self: ((*FIXME*))
+
+--- set_line_numbers_font_name(line_numbers_font_name)
+
+    Same as line_numbers_font_name=.
+     * line_numbers_font_name: Name of the font to use for the line numbers (e.g. "Monospace 10")
+     * Returns: self
+
+--- set_print_footer(print_footer)
+
+    Same as print_footer=.
+     * print_footer: true if to print a footer in each page
+     * Returns: self
+
+--- set_print_header(print_header)
+
+    Same as print_header=.
+     * print_header: true if to print a header in each page
+     * Returns: self
+
+--- set_print_line_numbers(print_line_numbers)
+
+    Same as print_line_numbers=.
+     * print_line_numbers: Interval of printed line numbers (0 means no numbers)
+     * Returns: self
+
+--- set_right_margin
+
+     * Returns: self: ((*FIXME*))
+
+--- set_tab_width(tab_width)
+
+    Same as tab_width=.
+     * tab_width: Width of a tab character expressed in spaces
+     * Returns: self
+
+--- set_top_margin
+
+     * Returns: self: ((*FIXME*))
+
+--- set_wrap_mode(wrap_mode)
+
+    Same as wrap_mode=.
+     * wrap_mode: true if to wrap lines never, at word boundaries, or at character boundaries
+     * Returns: self
+
+--- tab_width
+
+    Gets the Width of a tab character expressed in spaces.
+     * Returns: Width of a tab character expressed in spaces
+
+--- tab_width=(tab_width)
+
+    Sets the Width of a tab character expressed in spaces.
+     * tab_width: Width of a tab character expressed in spaces
+     * Returns: tab_width
+
+--- wrap_mode
+
+    Gets the value whether to wrap lines never, at word boundaries, or at character boundaries. or not.
+     * Returns: true if to wrap lines never, at word boundaries, or at character boundaries
+
+--- wrap_mode=(wrap_mode)
+
+    Sets the value whether to wrap lines never, at word boundaries, or at character boundaries. or not.
+     * wrap_mode: true if to wrap lines never, at word boundaries, or at character boundaries
+     * Returns: wrap_mode
+
+== Properties
+
+--- body-font-name: String (Read/Write)
+
+    Name of the font to use for the text body (e.g. "Monospace 10")
+
+--- buffer: Gtk::SourceBuffer (Read/Write)
+
+    The Gtk::SourceBuffer object to print
+
+--- footer-font-name: String (Read/Write)
+
+    Name of the font to use for the page footer (e.g. "Monospace 10")
+
+--- header-font-name: String (Read/Write)
+
+    Name of the font to use for the page header (e.g. "Monospace 10")
+
+--- highlight-syntax: true or false (Read/Write)
+
+    Whether to print the document with highlighted syntax
+
+--- line-numbers-font-name: String (Read/Write)
+
+    Name of the font to use for the line numbers (e.g. "Monospace 10")
+
+--- n-pages: Integer (Read)
+
+    The number of pages in the document (-1 means the document has not been completely paginated).
+
+--- print-footer: true or false (Read/Write)
+
+    Whether to print a footer in each page
+
+--- print-header: true or false (Read/Write)
+
+    Whether to print a header in each page
+
+--- print-line-numbers: Integer (Read/Write)
+
+    Interval of printed line numbers (0 means no numbers)
+
+--- tab-width: Integer (Read/Write)
+
+    Width of a tab character expressed in spaces
+
+--- wrap-mode: Gtk::WrapMode (Read/Write)
+
+    Whether to wrap lines never, at word boundaries, or at character boundaries.
+
+== See Also
+
+== ChangeLog
+
+

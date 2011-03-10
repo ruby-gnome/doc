@@ -1,0 +1,106 @@
+= Container Widgets
+{{link "tut-gtk2-contwidg-hvpane", "tut-gtk2-contwidg", "tut-gtk", "tut-gtk2-contwidg-fixedcont"}}
+
+This topics was already covered by the original author of this tutorial ((<Laurent Sansonetti|lrz>)) under the title ((<Packing Using Tables|tut-gtk2-packing-tables>)). However, because the Japanese GTK+ tutorials from which Laurent was translating is still not complete I decided to use as the base for our "short tutorial" a GTK+ book instead hence, this article may seem redundant. I believe that you can avoid the trouble by skipping over to the next topics ((<Fixed Containers|tut-gtk2-contwidg-fixedcont>)).
+
+== Tables
+
+So far, with the exception of the above mentioned ((<Packing Using Tables|tut-gtk2-packing-tables>)) all of the layout containers we used allowed us to pack widgets in two-dimensional space. The main advantage of using Gtk::Table over using multiple Gtk::HBox and Gtk::VBox widgets is that children in adjacent columns and rows are aligned automatically next to each other. However, this may not always be what you want and boxes may be best alternative. Nevertheless, here we will focus on the Gtk::Table class. Following figure and program align three widgets inside a simple table:
+
+
+{{br}}
+{{image_right("contwidg-table-grid-s1.png")}}
+
+This illustrates the fact that that tables allow one widget to span multiple rows and columns providing the layout is of rectangular shape. When reading the following program please pay attention to "Gtk::Table#table_attach" methods. In particular concentrate on the arguments "left", "right", "top", and "bottom"  in this order. These parameters define individual cells within the table. Indeed, the first point to understand is that (0,0) coordinates in the table identify the top-left corner. The other more disturbing point is that these arguments ("left", "right", "top", and "bottom") represent table coordinates (x1, x2) and (y1, y2) which is not the standard way to identify points on a plain as we all learnt in our basic math courses, namely (x1, y1) and (x2, y2). 
+{{image_left("contwidg-tables.png")}}
+To understand the Gtk::Tables you have to make this mental adjustment. Refer to the above figure here on the top right, where each cell is expressed with the pairs (x1, x2) and (y1, y2) rather than with the standard math notation for (x,y) pairs of coordinates.  Following is the program that places children widgets in the same order as are depicted in the figure on the right hand side above.
+
+
+
+ #!/usr/bin/env ruby
+
+ require 'gtk2'
+
+ window = Gtk::Window.new
+ window.border_width = 10
+ window.set_size_request(150, -1)
+ window.title = "tables"
+
+ window.signal_connect('delete_event') { false }
+ window.signal_connect('destroy') { Gtk.main_quit }
+
+                   # rows, columns, homogeneous
+ table = Gtk::Table.new(2,    2,    true)
+
+ label1 = Gtk::Label.new("Enter the following information ...")
+ label2 = Gtk::Label.new("Name: ")
+ name = Gtk::Entry.new
+
+ options = Gtk::EXPAND|Gtk::FILL
+             # child, x1, x2, y1, y2, x-opt,   y-opt,   xpad, ypad
+ table.attach(label1,  0,  2,  0,  1, options, options, 0,    0)
+ table.attach(label2,  0,  1,  1,  2, options, options, 0,    0)
+ table.attach(name,    1,  2,  1,  2, options, options, 0,    0)
+
+ window.add(table)
+ window.show_all
+ Gtk.main
+
+
+Note that the coordinate system starts in the upper left hand corner. To place a widget into a box, use the following method:
+
+  Gtk::Table#attach(child, 
+                    left_attach, right_attach, top_attach, bottom_attach, 
+                    xoptions, yoptions, 
+                    xpadding, ypadding)
+
+The first argument ("child") is the widget you wish to place in the table.
+
+The left and right attach arguments specify where to place the widget, and how many boxes to use. If you want a button in the lower right table entry of our 2x2 table, and want it to fill that entry only, left_attach would be = 1, right_attach = 2, top_attach = 1, bottom_attach = 2.
+
+Now, if you wanted a widget to take up the whole top row of our 2x2 table, you'd use left_attach = 0, right_attach = 2, top_attach = 0, bottom_attach = 1.
+
+The xoptions and yoptions are used to specify packing options and may be bitwise OR'ed together((-In Ruby, the OR operator is represented by the | (pipe) character.-)) to allow multiple options.
+
+These options are:
+
+:Gtk::FILL
+ If the table box is larger than the widget, then this widget will expand to use all the room available.
+
+:Gtk::SHRINK
+ If the table widget was allocated less space than was requested (usually by the user resizing the window), then the widgets would normally just be pushed off the bottom of the window and disappear. If Gtk::SHRINK is specified, the widgets will shrink with the table.
+
+:Gtk::EXPAND
+ This will cause the table to expand to use up any remaining space in the window.
+
+Padding is just like in Gtk::Box, creating a clear area around the widget specified in pixels.
+
+Gtk::Table#attach has a lot of options. So, there's a shortcut:
+
+  Gtk::Table#attach_defaults(widget, left_attach, right_attach, top_attach, bottom_attach)
+
+The X and Y options default to Gtk::FILL | Gtk::EXPAND, and X and Y padding are set to 0. The rest of the arguments are identical to the previous method.
+
+We also have Gtk::Table#set_row_spacing and Gtk::Table#set_col_spacing. These place spacing between the rows at the specified row or column.
+
+  Gtk::Table#set_row_spacing(row, spacing)
+  Gtk::Table#set_col_spacing(column, spacing) 
+
+Note that for columns, the space goes to the right of the column, and for rows, the space goes below the row.
+
+You can also set a consistent spacing of all rows and/or columns with:
+
+  Gtk::Table#set_row_spacings(spacing)
+  Gtk::Table#set_col_spacings(spacing) 
+
+Note that with these calls, the last row and last column do not get any spacing.
+
+
+
+=== GtkAttachOptions  (Documentation: module Gtk):
+
+Denotes the expansion properties that a widget will have when it (or it's parent) is resized.
+
+* EXPAND  = 1 << 0. The widget should expand to take up any extra space in its container that has been allocated.
+* SHRINK = 1 << 1. The widget should shrink as and when possible.
+* FILL = 1 << 2. The widget should fill the space allocated to it. 

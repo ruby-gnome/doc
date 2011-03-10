@@ -1,0 +1,236 @@
+= Status of Ruby/GTK
+
+{{status "Ruby/GTK", ["2.0", "2.2", "2.4", "2.6", "2.8", "2.10", "2.12"], "
+Main loop and Events|Gtk module|-|O|O|O|#|#|#|#| Done except Gtk#get_option_group. 
+Keyboard Accelerator Groups|Gtk::AccelGroup|GtkAccelGroup|O|O|O|O|O|O|O|
+Keyboard Accelerator Groups|Gtk::Accelerator|GtkAccelerator|O|O|O|O|O|O|O| As a module.
+Keyboard Accelerator Groups|Gtk::AccelGroupEntry|GtkAccelGroupEntry|O|O|O|O|O|O|O|
+Keyboard Accelerator Groups|Gtk::AccelKey|GtkAccelKey|O|O|O|O|O|O|O|
+Accelerator Maps|Gtk::AccelMap|-|#|#|#|#|#|#|#|As a module until 2.2. As a class since 2.4. Done except Gtk::AccelMap.load_scanner.
+Clipboards|Gtk::Clipboard|GtkClipboard|O|O|O|O|O|O|O|
+Drag and Drop|Gtk::Drag|-|O|O|O|O|O|O|O|As a module
+GtkIconTheme|Gtk::IconTheme|GtkIconTheme|-|-|O|O|O|O||Since 2.4
+GtkIconTheme|Gtk::IconInfo|GtkIconInfo|-|-|O|O|O|O|O|Since 2.4
+Stock Items|Gtk::Stock|Stock Items|O|O|O|O|O|O|O|As a module
+Themeable Stock Images|Gtk::IconFactory|GtkIconFactory|O|O|O|O|O|O|O|
+Themeable Stock Images|Gtk::IconSet|GtkIconSet|O|O|O|O|O|O|O|
+Themeable Stock Images|Gtk::IconSource|GtkIconSource|O|O|O|O|O|O|O|
+Themeable Stock Images|Gtk::IconSize|Themeable Stock Images|O|O|O|O|O|O|O|As a module
+Resource Files|Gtk::RcStyle|GtkRcStyle|O|O|O|O|O|O|O|
+Resource Files|Gtk::RC|-|#|#|#|#|#|#|#|As a module. Almost done except functions which need GScanner.
+Settings|Gtk::RcProperty|-|x|x|x|x|x|x|#| This is used internally only.
+Settings|Gtk::Settings|GtkSettings|O|O|O|O|O|O||
+Bindings|Gtk::BindingSet|GtkBindingSet|O|O|O|O|O|O|O|
+Bindings|Gtk::BindingEntry|GtkBindingEntry|x|x|x|x|x|x|x|This is used internally only.
+Bindings|Gtk::BindingSignal|GtkBindingSignal|x|x|x|x|x|x|x|This is used internally only.
+Bindings|Gtk::BindingArg|GtkBindingArg|x|x|x|x|x|x|x|This is used internally only.
+Standard Enumerations|Gtk module(constants)|-|O|O|O|O|O|O||
+Graphics Contexts|Gtk::GC|-|x|x|x|x|x|x|x| Don't need this. Use Gdk::GC instead.
+Styles|Gtk::Style|GtkStyle|O|O|O|O|O|O|O|
+Styles|Gtk::Border|GtkBorder|O|O|O|O|O|O|O|
+Selections|Gtk::Selection|-|O|O|O|O|O|O|O|
+Selections|Gtk::TargetEntry|GtkTargetEntry|x|x|x|x|x|x|x|Use [target, flag, info] instead.
+Selections|Gtk::TargetList|GtkTargetList|O|O|O|O|O|O|O|
+Selections|Gtk::TargetPair|GtkTargetPair|x|x|x|x|x|x|x| This is used internally only.
+Selections|Gtk::SelectionData|GtkSelectionData|O|O|O|O|O|O|O|GtkSelectionData is defined in Gtk::Widget. GtkSelection functions are defined in Selections.
+Version Information|Gtk module(constants)|-|O|O|O|O|O|O|O|
+Signals|-|-|x|x|x|x|x|x|x|Obsolete. Use GLib::Signal instead.
+Types|-|-|x|x|x|x|x|x|x|Obsolete. Use GLib::Type instead.
+Windows|Gtk::Dialog|GtkDialog|O|O|O|O|O|O|O|
+Windows|Gtk::Invisible|GtkInvisible|O|O|O|O|O|O|O|
+Windows|Gtk::MessageDialog|GtkMessageDialog|O|O|O|O|O|O|O|
+Windows|Gtk::Window|GtkWindow|O|O|O|O|O|O||
+Windows|Gtk::WindowGroup|GtkWindowGroup|O|O|O|O|O|O|O|
+Windows|Gtk::AboutDialog|GtkAboutDialog|-|-|-|O|O|O||Since 2.6
+Windows|Gtk::Assistant|GtkAssistant|-|-|-|-|-|O|O|Since 2.10
+Display Widgets|Gtk::AccelLabel|GtkAccelLabel|O|O|O|O|O|O|O|
+Display Widgets|Gtk::Image|GtkImage|O|O|O|O|O|O|O|
+Display Widgets|Gtk::Label|GtkLabel|O|O|O|O|O|O|O|
+Display Widgets|Gtk::ProgressBar|GtkProgressBar|O|O|O|O|O|O|O|
+Display Widgets|Gtk::Statusbar|GtkStatusbar|O|O|O|O|O|O|O|
+Buttons and Toggles|Gtk::Button|GtkButton|O|O|O|O|O|O|O|
+Buttons and Toggles|Gtk::CheckButton|GtkCheckButton|O|O|O|O|O|O|O|
+Buttons and Toggles|Gtk::RadioButton|GtkRadioButton|O|O|O|O|O|O|O|
+Buttons and Toggles|Gtk::ToggleButton|GtkToggleButton|O|O|O|O|O|O|O|
+Buttons and Toggles|Gtk::LinkButton|GtkLinkButton|-|-|-|-|-|O|O|Since 2.10
+Buttons and Toggles|Gtk::ScaleButton|GtkScaleButton|-|-|-|-|-|-|O|Since 2.12
+Buttons and Toggles|Gtk::VolumeButton|GtkVolumeButton|-|-|-|-|-|-|O|Since 2.12
+Numeric/Text Data Entry|Gtk::Entry|GtkEntry|O|O|O|O|O|O||
+Numeric/Text Data Entry|Gtk::EntryCompletion|GtkEntryCompletion|-|-|O|O|O|O||Since 2.4
+Numeric/Text Data Entry|Gtk::HScale|GtkHScale|O|O|O|O|O|O||
+Numeric/Text Data Entry|Gtk::VScale|GtkVScale|O|O|O|O|O|O||
+Numeric/Text Data Entry|Gtk::SpinButton|GtkSpinButton|O|O|O|O|O|O|O|
+Numeric/Text Data Entry|Gtk::Editable|-|O|O|O|O|O|O|O|As a module
+Multiline Text Editor|Gtk::TextIter|GtkTextIter|O|O|O|O|O|O|O|
+Multiline Text Editor|Gtk::TextMark|GtkTextMark|O|O|O|O|O|O|O|
+Multiline Text Editor|Gtk::TextBuffer|GtkTextBuffer|O|O|O|O|O|O|O|Gtk::TextBuffer#get_insert not implemented.
+Multiline Text Editor|Gtk::TextTag|GtkTextTag|O|O|O|O|O|O|
+Multiline Text Editor|Gtk::TextAppearance|GtkTextAppearance|O|O|O|O|O|O|O|In GtkTextTag
+Multiline Text Editor|Gtk::TextAttributes|GtkTextAttributes|O|O|O|O|O|O|O|In GtkTextTag
+Multiline Text Editor|Gtk::TextTagTable|GtkTextTagTable|O|O|O|O|O|O|O|
+Multiline Text Editor|Gtk::TextView|GtkTextView|O|O|O|O|O|O|O|
+Multiline Text Editor|Gtk::TextChildAnchor|GtkTextChildAnchor|O|O|O|O|O|O|O|In GtkTextView
+Tree,List and Icon Grid Widgets|Gtk::TreeModel|GtkTreeModel|O|O|O|O|O|O||
+Tree,List and Icon Grid Widgets|Gtk::TreeIter|GtkTreeIter|O|O|O|O|O|O|O|In GtkTreeModel
+Tree,List and Icon Grid Widgets|Gtk::TreePath|GtkTreePath|O|O|O|O|O|O|O|In GtkTreeModel
+Tree,List and Icon Grid Widgets|Gtk::TreeRowReference|GtkTreeRowReference|O|O|O|O|O|O|O|In GtkTreeModel
+Tree,List and Icon Grid Widgets|Gtk::TreeModelIface|GtkTreeModelIface|x|x|x|x|x|x|x|In GtkTreeModel. Don't need to implement.
+Tree,List and Icon Grid Widgets|Gtk::TreeSelection|GtkTreeSelection|O|O|O|O|O|O|O|
+Tree,List and Icon Grid Widgets|Gtk::TreeViewColumn|GtkTreeViewColumn|O|O|O|O|O|O|O|
+Tree,List and Icon Grid Widgets|Gtk::TreeView|GtkTreeView|O|O|O|O|O|O|O|
+Tree,List and Icon Grid Widgets|Gtk::TreeDragDest|GtkTreeDragDest|O|O|O|O|O|O|O|As a module. GtkTreeView drag-and-drop
+Tree,List and Icon Grid Widgets|Gtk::TreeDragSource|GtkTreeDragSource|O|O|O|O|O|O|O|As a module. GtkTreeView drag-and-drop
+Tree,List and Icon Grid Widgets|Gtk::TreeDragDestIface|GtkTreeDragDestIface|x|x|x|x|x|x|x|GtkTreeView drag-and-drop
+Tree,List and Icon Grid Widgets|Gtk::TreeDragSourceIface|GtkTreeDragSourceIface|x|x|x|x|x|x|x|GtkTreeView drag-and-drop
+Tree,List and Icon Grid Widgets|Gtk::TreeSortable|GtkTreeSortable|O|O|O|O|O|O|O|
+Tree,List and Icon Grid Widgets|Gtk::TreeModelSort|GtkTreeModelSort|O|O|O|O|O|O|O|
+Tree,List and Icon Grid Widgets|Gtk::TreeModelFilter|GtkTreeModelFilter|-|-|O|O|O|O|O|Since 2.4
+Tree,List and Icon Grid Widgets|Gtk::CellEditable|-|O|O|O|O|O|O|O|As a module
+Tree,List and Icon Grid Widgets|Gtk::CellLayout|GtkCellLayout|-|-|O|O|O|O||Since 2.4
+Tree,List and Icon Grid Widgets|Gtk::CellRenderer|GtkCellRenderer|O|O|O|O|O|O|O|
+Tree,List and Icon Grid Widgets|Gtk::CellRendererAccel|GtkCellRendererAccel|-|-|-|-|-|O|O|Since 2.10
+Tree,List and Icon Grid Widgets|Gtk::CellRendererCombo|GtkCellRendererCombo|-|-|-|O|O|O|O|Since 2.6
+Tree,List and Icon Grid Widgets|Gtk::CellRendererPixbuf|GtkCellRendererPixbuf|O|O|O|O|O|O|O|
+Tree,List and Icon Grid Widgets|Gtk::CellRendererProgress|GtkCellRendererProgress|-|-|-|O|O|O|O|Since 2.6
+Tree,List and Icon Grid Widgets|Gtk::CellRendererSpin|GtkCellRendererSpin|-|-|-|-|-|O|O|Since 2.10
+Tree,List and Icon Grid Widgets|Gtk::CellRendererText|GtkCellRendererText|O|O|O|O|O|O|O|
+Tree,List and Icon Grid Widgets|Gtk::CellRendererToggle|GtkCellRendererToggle|O|O|O|O|O|O|O|
+Tree,List and Icon Grid Widgets|Gtk::CellView|GtkCellView|-|-|-|O|O|O|O|Since 2.6
+Tree,List and Icon Grid Widgets|Gtk::IconView|GtkIconView|-|-|-|O|O|O|O|Since 2.6
+Tree,List and Icon Grid Widgets|Gtk::ListStore|GtkListStore|O|O|O|O|O|O||
+Tree,List and Icon Grid Widgets|Gtk::TreeStore|GtkTreeStore|O|O|O|O|O|O||
+Menus, Combo Box, Toolbar|Gtk::ComboBox|GtkComboBox|-|-|O|O|O|O|O|Since 2.4
+Menus, Combo Box, Toolbar|Gtk::ComboBoxEntry|GtkComboBoxEntry|-|-|O|O|O|O|O|Since 2.4
+Menus, Combo Box, Toolbar|Gtk::Menu|GtkMenu|O|O|O|O|O|O|O|
+Menus, Combo Box, Toolbar|Gtk::MenuBar|GtkMenuBar|O|O|O|O|O|O|O|
+Menus, Combo Box, Toolbar|Gtk::MenuItem|GtkMenuItem|O|O|O|O|O|O|O|
+Menus, Combo Box, Toolbar|Gtk::MenuShell|GtkMenuShell|O|O|O|O|O|O|O|
+Menus, Combo Box, Toolbar|Gtk::ImageMenuItem|GtkImageMenuItem|O|O|O|O|O|O|O|
+Menus, Combo Box, Toolbar|Gtk::RadioMenuItem|GtkRadioMenuItem|O|O|O|O|O|O|O|
+Menus, Combo Box, Toolbar|Gtk::CheckMenuItem|GtkCheckMenuItem|O|O|O|O|O|O|O|
+Menus, Combo Box, Toolbar|Gtk::SeparatorMenuItem|GtkSeparatorMenuItem|O|O|O|O|O|O|O|
+Menus, Combo Box, Toolbar|Gtk::TearoffMenuItem|GtkTearoffMenuItem|O|O|O|O|O|O|O|
+Menus, Combo Box, Toolbar|Gtk::RecentChooserMenu|GtkRecentChooserMenu|-|-|-|-|-|O|O|Since 2.10
+Menus, Combo Box, Toolbar|Gtk::Toolbar|GtkToolbar|O|O|O|O|O|O|O|
+Menus, Combo Box, Toolbar|Gtk::ToolItem|GtkToolItem|-|-|O|O|O|O||Since 2.4
+Menus, Combo Box, Toolbar|Gtk::SeparatorToolItem|GtkSeparatorToolItem|-|-|O|O|O|O|O|Since 2.4
+Menus, Combo Box, Toolbar|Gtk::ToolButton|GtkToolButton|-|-|O|O|O|O|O|Since 2.4
+Menus, Combo Box, Toolbar|Gtk::MenuToolButton|GtkMenuToolButton|-|-|-|O|O|O||Since 2.6
+Menus, Combo Box, Toolbar|Gtk::ToggleToolButton|GtkToggleToolButton|-|-|O|O|O|O|O|Since 2.4
+Menus, Combo Box, Toolbar|Gtk::RadioToolButton|GtkRadioToolButton|-|-|O|O|O|O|O|Since 2.4
+Action-based menus and toolbars|Gtk::UIManager|GtkUIManager|-|-|O|O|O|O|O|Since 2.4
+Action-based menus and toolbars|Gtk::ActionGroup|GtkActionGroup|-|-|O|O|O|O|O|Since 2.4
+Action-based menus and toolbars|Gtk::Action|GtkAction|-|-|O|O|O|O|O|Since 2.4
+Action-based menus and toolbars|Gtk::ToggleAction|GtkToggleAction|-|-|O|O|O|O|O|Since 2.4
+Action-based menus and toolbars|Gtk::RadioAction|GtkRadioAction|-|-|O|O|O|O|O|Since 2.4
+Action-based menus and toolbars|Gtk::RecentAction|GtkRecentAction|-|-|-|-|-|-|O|Since 2.12
+Selectors|Gtk::ColorButton|GtkColorButton|-|-|O|O|O|O|O|Since 2.4
+Selectors|Gtk::ColorSelection|GtkColorSelection|O|O|O|O|O|O|O|Done except Gtk::ColorSelection.set_change_palette_hook
+Selectors|Gtk::ColorSelectionDialog|GtkColorSelectionDialog|O|O|O|O|O|O|O|
+Selectors|Gtk::FileSelection|GtkFileSelection|O|O|O|O|O|O|O|
+Selectors|Gtk::FileChooser|GtkFileChooser|-|-|O|O|O|O|O|Since 2.4
+Selectors|Gtk::FileChooserButton|GtkFileChooserButton|-|-|-|O|O|O|O|Since 2.6
+Selectors|Gtk::FileChooserDialog|GtkFileChooserDialog|-|-|O|O|O|O|O|Since 2.4
+Selectors|Gtk::FileChooserWidget|GtkFileChooserWidget|-|-|O|O|O|O|O|Since 2.4
+Selectors|Gtk::FileFilter|GtkFileFilter|-|-|O|O|O|O|O|Since 2.4
+Selectors|-|GtkFileFilterInfo|-|-|x|x|x|x|x|Use [contains, uri, display_name, mime_type] instead. (Since 2.4)
+Selectors|Gtk::FontButton|GtkFontButton|-|-|O|O|O|O|O|Since 2.4
+Selectors|Gtk::FontSelection|GtkFontSelection|O|O|O|O|O|O|O|
+Selectors|Gtk::FontSelectionDialog|GtkFontSelectionDialog|O|O|O|O|O|O|O|
+Selectors|Gtk::InputDialog|GtkInputDialog|O|O|O|O|O|O|O|
+Selectors|Gtk::RecentChooserWidget|GtkRecentChooserWidget|-|-|-|-|-|O|O|Since 2.10
+Selectors|Gtk::RecentChooserDialog|GtkRecentChooserDialog|-|-|-|-|-|O|O|Since 2.10
+Layout Containers|Gtk::Alignment|GtkAlignment|O|O|O|O|O|O|O|
+Layout Containers|Gtk::AspectFrame|GtkAspectFrame|O|O|O|O|O|O|O|
+Layout Containers|Gtk::HBox|GtkHBox|O|O|O|O|O|O|O|
+Layout Containers|Gtk::VBox|GtkVBox|O|O|O|O|O|O|O|
+Layout Containers|Gtk::HButtonBox|GtkHButtonBox|O|O|O|O|O|O|O|
+Layout Containers|Gtk::VButtonBox|GtkVButtonBox|O|O|O|O|O|O|O|
+Layout Containers|Gtk::Fixed|GtkFixed|O|O|O|O|O|O|O|
+Layout Containers|Gtk::HPaned|GtkHPaned|O|O|O|O|O|O|O|
+Layout Containers|Gtk::VPaned|GtkVPaned|O|O|O|O|O|O|O|
+Layout Containers|Gtk::Layout|GtkLayout|O|O|O|O|O|O|O|
+Layout Containers|Gtk::Notebook|GtkNotebook|O|O|O|O|O|O||
+Layout Containers|Gtk::NotebookPage|GtkNotebookPage|O|O|O|O|O|O|O|
+Layout Containers|Gtk::Table|GtkTable|O|O|O|O|O|O|O|
+Layout Containers|Gtk::Expander|GtkExpander|-|-|O|O|O|O|O|Since 2.4
+Ornaments|Gtk::Frame|GtkFrame|O|O|O|O|O|O|O|
+Ornaments|Gtk::HSeparator|GtkHSeparator|O|O|O|O|O|O|O|
+Ornaments|Gtk::VSeparator|GtkVSeparator|O|O|O|O|O|O|O|
+Scrolling|Gtk::HScrollbar|GtkHScrollbar|O|O|O|O|O|O|O|
+Scrolling|Gtk::VScrollbar|GtkVScrollbar|O|O|O|O|O|O|O|
+Scrolling|Gtk::ScrolledWindow|GtkScrolledWindow|O|O|O|O|O|O|O|
+Printing|Gtk::PageSetup|GtkPageSetup|-|-|-|-|-|O||Since 2.10
+Printing|Gtk::PageSetupUnixDialog|GtkPageSetupUnixDialog|-|-|-|-|-|O||Since 2.10
+Printing|Gtk::PaperSize|GtkPaperSize|-|-|-|-|-|O||Since 2.10
+Printing|Gtk::Printer|GtkPrinter|-|-|-|-|-|O||Since 2.10
+Printing|Gtk::PrintJob|GtkPrintJob|-|-|-|-|-|O||Since 2.10
+Printing|Gtk::PrintOperation|GtkPrintOperation|-|-|-|-|-|O||Since 2.10
+Printing|Gtk::PrintSettings|GtkPrintSettings|-|-|-|-|-|O||Since 2.10
+Printing|Gtk::PrintUnixDialog|GtkPrintUnixDialog|-|-|-|-|-|O||Since 2.10
+Miscellaneous|Gtk::Adjustment|GtkAdjustment|O|O|O|O|O|O|O|
+Miscellaneous|Gtk::Arrow|GtkArrow|O|O|O|O|O|O|O|
+Miscellaneous|Gtk::Calendar|GtkCalendar|O|O|O|O|O|O|O|
+Miscellaneous|Gtk::DrawingArea|GtkDrawingArea|O|O|O|O|O|O|O|
+Miscellaneous|Gtk::EventBox|GtkEventBox|O|O|O|O|O|O|O|
+Miscellaneous|Gtk::HandleBox|GtkHandleBox|O|O|O|O|O|O|O|
+Miscellaneous|Gtk::IMContextSimple|GtkIMContextSimple|O|O|O|O|O|O|O|
+Miscellaneous|Gtk::IMMulticontext|GtkIMMulticontext|O|O|O|O|O|O|O|
+Miscellaneous|Gtk::SizeGroup|GtkSizeGroup|O|O|O|O|O|O|O|
+Miscellaneous|Gtk::Tooltips|GtkTooltips|O|O|O|O|O|O|O|
+Miscellaneous|Gtk::Tooltip|GtkTooltip|-|-|-|-|-|-|O|Since 2.12
+Miscellaneous|Gtk::Viewport|GtkViewport|O|O|O|O|O|O|O|
+Miscellaneous|Gtk::Accessible|GtkAccessible|O|O|O|O|O|O|O|AtkObject
+Miscellaneous|Gtk::StatusIcon|GtkStatusIcon|-|-|-|-|-|O||Since 2.10
+Abstract Base Classes|Gtk::Bin|GtkBin|O|O|O|O|O|O|O|
+Abstract Base Classes|Gtk::Box|GtkBox|O|O|O|O|O|O|O|
+Abstract Base Classes|Gtk::ButtonBox|GtkButtonBox|O|O|O|O|O|O|O|
+Abstract Base Classes|Gtk::Container|GtkContainer|O|O|O|O|O|O|O|
+Abstract Base Classes|Gtk::Item|GtkItem|O|O|O|O|O|O|O|
+Abstract Base Classes|Gtk::Misc|GtkMisc|O|O|O|O|O|O|O|
+Abstract Base Classes|Gtk::Object|GtkObject|O|O|O|O|O|O|O|
+Abstract Base Classes|Gtk::Paned|GtkPaned|O|O|O|O|O|O|O|
+Abstract Base Classes|Gtk::Range|GtkRange|O|O|O|O|O|O||
+Abstract Base Classes|Gtk::Scale|GtkScale|O|O|O|O|O|O||
+Abstract Base Classes|Gtk::Scrollbar|GtkScrollbar|O|O|O|O|O|O|O|
+Abstract Base Classes|Gtk::Separator|GtkSeparator|O|O|O|O|O|O|O|
+Abstract Base Classes|Gtk::Widget|GtkWidget|O|O|O|O|O|O|O|
+Abstract Base Classes|Gtk::IMContext|GtkIMContext|O|O|O|O|O|O|O|
+Abstract Base Classes|Gtk::Requisition|GtkRequisition|x|x|x|x|x|x|x|Use [width, height] instead. included in Gtk::Widget
+Abstract Base Classes|Gtk::Allocation|GtkAllocation|O|O|O|O|O|O|O|included in Gtk::Widget
+Abstract Base Classes|Gtk::WidgetAuxInfo|GtkWidgetAuxInfo|x|x|x|x|x|x|x|Use internal only. included in Gtk::Widget
+Abstract Base Classes|Gtk::WidgetShapeInfo|GtkWidgetShapeInfo|x|x|x|x|x|x|x|Use internal only. included in Gtk::Widget
+Cross-process Embedding|Gtk::Socket|GtkSocket|O|O|O|O|O|O|O|
+Cross-process Embedding|Gtk::Plug|GtkPlug|O|O|O|O|O|O|O|
+Special-purpose features|Gtk::Curve|GtkCurve|O|O|O|O|O|O|O|
+Special-purpose features|Gtk::GammaCurve|GtkGammaCurve|O|O|O|O|O|O|O|Will this be obsoleted by GTK+?
+Special-purpose features|Gtk::Ruler|GtkRuler|O|O|O|O|O|O|O|
+Special-purpose features|Gtk::HRuler|GtkHRuler|O|O|O|O|O|O|O|
+Special-purpose features|Gtk::VRuler|GtkVRuler|O|O|O|O|O|O|O|
+Interface builder|Gtk::Buildable|GtkBuildable|-|-|-|-|-|-|O|Since 2.12
+Interface builder|Gtk::Builder|GtkBuilder|-|-|-|-|-|-|O|Since 2.12
+Recently Used Documents|Gtk::RecentManager|GtkRecentManager|-|-|-|-|-|O|O|Since 2.10
+Recently Used Documents|Gtk::RecentData|GtkRecentInfo|-|-|-|-|-|O|O|Since 2.10
+Recently Used Documents|Gtk::RecentInfo|GtkRecentInfo|-|-|-|-|-|O|O|Since 2.10
+Recently Used Documents|Gtk::RecentChooser|GtkRecentChooser|-|-|-|-|-|O|O|Since 2.10
+Recently Used Documents|Gtk::RecentChooserDialog|GtkRecentChooserDialog|-|-|-|-|-|O|O|Since 2.10
+Recently Used Documents|Gtk::RecentChooserMenu|GtkRecentChooserMenu|-|-|-|-|-|O|O|Since 2.10
+Recently Used Documents|Gtk::RecentChooserWidget|GtkRecentChooserWidget|-|-|-|-|-|O|O|Since 2.10
+Recently Used Documents|Gtk::RecentFilter|GtkRecentFilter|-|-|-|-|-|O|O|Since 2.10
+Recently Used Documents|Gtk::RecentFilterInfo|GtkRecentFilterInfo|-|-|-|-|-|O|O|Since 2.10
+Deprecated|Gtk::CList|GtkCList|x|x|x|x|x|x|x|
+Deprecated|Gtk::CTree|GtkCTree|x|x|x|x|x|x|x|
+Deprecated|Gtk::List|GtkList|x|x|x|x|x|x|x|
+Deprecated|Gtk::ListItem|GtkListItem|x|x|x|x|x|x|x|
+Deprecated|Gtk::Pixmap|GtkPixmap|x|x|x|x|x|x|x|
+Deprecated|Gtk::Progress|GtkProgress|O|O|O|O|O|O|O|Deprecated, but this used super class of Gtk::ProgressBar.
+Deprecated|Gtk::Preview|GtkPreview|x|x|x|x|x|x|x|
+Deprecated|Gtk::OldEditable|GtkOldEditable|x|x|x|x|x|x|x|
+Deprecated|Gtk::Text|GtkText|x|x|x|x|x|x|x|
+Deprecated|Gtk::TipsQuery|GtkTipsQuery|x|x|x|x|x|x|x|
+Deprecated|Gtk::Tree|GtkTree|x|x|x|x|x|x|x|
+Deprecated|Gtk::TreeItem|GtkTreeItem|x|x|x|x|x|x|x|
+Deprecated|Gtk::OptionMenu|GtkOptionMenu|O|O|x|x|x|x|x|Deprecated since 2.4. 
+Deprecated|Gtk::ItemFactory|GtkItemFactory|O|O|x|x|x|x|x|Deprecated since 2.4. We shouldn't implement other methods, maybe. 
+Deprecated|Gtk::Combo|GtkCombo|O|O|x|x|x|x|x| Deprecated since 2.4.
+"}}

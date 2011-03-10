@@ -1,0 +1,211 @@
+= class Gnome::AppBar
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::InitiallyUnowned
+        * Gtk::Object
+          * Gtk::Widget
+            * Gtk::Container
+              * Gtk::Box
+                * Gtk::HBox
+                  * Gnome::AppBar
+
+== Class Methods
+
+--- Gnome::AppBar.new
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- clear_prompt
+
+     * Returns: self: ((*FIXME*))
+
+--- clear_stack
+
+     * Returns: self: ((*FIXME*))
+
+--- default=
+
+     * Returns: self: ((*FIXME*))
+
+--- has_progress=(has_progress)
+
+    Sets the Create a progress widget..
+     * has_progress: Create a progress widget.
+     * Returns: has_progress
+
+--- has_progress?
+
+    Gets the Create a progress widget..
+     * Returns: Create a progress widget.
+
+--- has_status=(has_status)
+
+    Sets the Create a status widget..
+     * has_status: Create a status widget.
+     * Returns: has_status
+
+--- has_status?
+
+    Gets the Create a status widget..
+     * Returns: Create a status widget.
+
+--- install_menu_hints
+
+     * Returns: self: ((*FIXME*))
+
+--- interactivity
+
+    Gets the Level of user activity required..
+     * Returns: Level of user activity required.
+
+--- interactivity=(interactivity)
+
+    Sets the Level of user activity required..
+     * interactivity: Level of user activity required.
+     * Returns: interactivity
+
+--- pop
+
+     * Returns: self: ((*FIXME*))
+
+--- progress
+
+     * Returns: self: ((*FIXME*))
+
+--- progress_percentage=
+
+     * Returns: self: ((*FIXME*))
+
+--- push
+
+     * Returns: self: ((*FIXME*))
+
+--- ref_accessible
+
+    See Atk::Implementor#ref_accessible.
+
+--- refresh
+
+     * Returns: self: ((*FIXME*))
+
+--- response
+
+     * Returns: self: ((*FIXME*))
+
+--- set_default
+
+     * Returns: self: ((*FIXME*))
+
+--- set_has_progress(has_progress)
+
+    Same as has_progress=.
+     * has_progress: Create a progress widget.
+     * Returns: self
+
+--- set_has_status(has_status)
+
+    Same as has_status=.
+     * has_status: Create a status widget.
+     * Returns: self
+
+--- set_interactivity(interactivity)
+
+    Same as interactivity=.
+     * interactivity: Level of user activity required.
+     * Returns: self
+
+--- set_progress_percentage
+
+     * Returns: self: ((*FIXME*))
+
+--- set_prompt
+
+     * Returns: self: ((*FIXME*))
+
+--- set_status
+
+     * Returns: self: ((*FIXME*))
+
+--- status
+
+     * Returns: self: ((*FIXME*))
+
+--- status=
+
+     * Returns: self: ((*FIXME*))
+
+--- add_child
+
+    See Gtk::Buildable#add_child.
+
+--- construct_child
+
+    See Gtk::Buildable#construct_child.
+
+--- get_internal_child
+
+    See Gtk::Buildable#get_internal_child.
+
+--- name
+
+    See Gtk::Buildable#name.
+
+--- name=
+
+    See Gtk::Buildable#name=.
+
+--- set_buildable_property
+
+    See Gtk::Buildable#set_buildable_property.
+
+--- set_name
+
+    See Gtk::Buildable#set_name.
+
+--- builder_name
+
+    See Gtk::Buildable#builder_name.
+
+--- builder_name=
+
+    See Gtk::Buildable#builder_name=.
+
+--- set_builder_name
+
+    See Gtk::Buildable#set_builder_name.
+
+== Properties
+
+--- has-progress: true or false (Read/Write)
+
+    Create a progress widget.
+
+--- has-status: true or false (Read/Write)
+
+    Create a status widget.
+
+--- interactivity: Gnome::PreferencesType (Read/Write)
+
+    Level of user activity required.
+
+== Signals
+
+--- clear-prompt: self
+
+     * self: Gnome::AppBar: ((*FIXME*))
+
+--- user-response: self
+
+     * self: Gnome::AppBar: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

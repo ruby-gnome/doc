@@ -1,0 +1,126 @@
+= class Bonobo::DockBand
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::InitiallyUnowned
+        * Gtk::Object
+          * Gtk::Widget
+            * Gtk::Container
+              * Bonobo::DockBand
+
+== Class Methods
+
+--- Bonobo::DockBand.new
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- append
+
+     * Returns: self: ((*FIXME*))
+
+--- drag_begin
+
+     * Returns: self: ((*FIXME*))
+
+--- drag_end
+
+     * Returns: self: ((*FIXME*))
+
+--- drag_to
+
+     * Returns: self: ((*FIXME*))
+
+--- get_child_offset
+
+     * Returns: self: ((*FIXME*))
+
+--- get_item_by_name
+
+     * Returns: self: ((*FIXME*))
+
+--- get_num_children
+
+     * Returns: self: ((*FIXME*))
+
+--- insert
+
+     * Returns: self: ((*FIXME*))
+
+--- layout_add
+
+     * Returns: self: ((*FIXME*))
+
+--- orientation
+
+     * Returns: self: ((*FIXME*))
+
+--- orientation=
+
+     * Returns: self: ((*FIXME*))
+
+--- prepend
+
+     * Returns: self: ((*FIXME*))
+
+--- ref_accessible
+
+    See Atk::Implementor#ref_accessible.
+
+--- set_child_offset
+
+     * Returns: self: ((*FIXME*))
+
+--- set_orientation
+
+     * Returns: self: ((*FIXME*))
+
+--- add_child
+
+    See Gtk::Buildable#add_child.
+
+--- construct_child
+
+    See Gtk::Buildable#construct_child.
+
+--- get_internal_child
+
+    See Gtk::Buildable#get_internal_child.
+
+--- name
+
+    See Gtk::Buildable#name.
+
+--- name=
+
+    See Gtk::Buildable#name=.
+
+--- set_buildable_property
+
+    See Gtk::Buildable#set_buildable_property.
+
+--- set_name
+
+    See Gtk::Buildable#set_name.
+
+--- builder_name
+
+    See Gtk::Buildable#builder_name.
+
+--- builder_name=
+
+    See Gtk::Buildable#builder_name=.
+
+--- set_builder_name
+
+    See Gtk::Buildable#set_builder_name.
+
+== See Also
+
+== ChangeLog
+
+

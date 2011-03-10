@@ -1,0 +1,41 @@
+= module GLib::Interface
+
+== Module Functions
+
+--- GLib::Interface.append_features
+
+     * Returns: self: ((*FIXME*))
+
+--- GLib::Interface.gtype
+
+     * Returns: self: ((*FIXME*))
+
+--- GLib::Interface.install_property
+
+     * Returns: self: ((*FIXME*))
+
+--- GLib::Interface.properties
+
+     * Returns: self: ((*FIXME*))
+
+--- GLib::Interface.property
+
+     * Returns: self: ((*FIXME*))
+
+--- GLib::Interface.signal
+
+     * Returns: self: ((*FIXME*))
+
+--- GLib::Interface.signal_new
+
+     * Returns: self: ((*FIXME*))
+
+--- GLib::Interface.signals
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

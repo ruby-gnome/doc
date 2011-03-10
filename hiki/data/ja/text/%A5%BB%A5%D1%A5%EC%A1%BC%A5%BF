@@ -1,0 +1,75 @@
+= Gtk::Separator
+Gtk::Separator自身は抽象クラスで、それ自体をインスタンスにすることはできません。代わりに、横線を引く場合はGtk::HSeparatorを、縦線を引く場合はGtk::VSeparatorを使います。
+
+== 基本的な使い方(上下に分割)
+まずは上下に分割してみます。簡単です。
+
+  require 'gtk'
+
+  vbox = Gtk::VBox.new
+
+  label1 = Gtk::Label.new("Label 1")
+  label2 = Gtk::Label.new("Label 2")
+  separator = Gtk::HSeparator.new
+
+  vbox.pack_start(label1)
+  vbox.pack_start(separator)
+  vbox.pack_start(label2)
+
+  window = Gtk::Window.new
+  window.set_usize(300,300)
+  window.add(vbox)
+  window.show_all
+  Gtk.main
+ 
+
+
+== 基本的な使い方(左右に分割)
+今度は左右に分割してみます。ってまぁ、あえて例を挙げるまでも無いような気もしますが。
+
+  require 'gtk'
+
+  hbox = Gtk::HBox.new
+
+  label1 = Gtk::Label.new("Label 1")
+  label2 = Gtk::Label.new("Label 2")
+  separator = Gtk::VSeparator.new
+
+  hbox.pack_start(label1)
+  hbox.pack_start(separator)
+  hbox.pack_start(label2)
+
+  window = Gtk::Window.new
+  window.set_usize(300,300)
+  window.add(hbox)
+  window.show_all
+  Gtk.main
+
+
+== 色をつける＆ウィジェット間にスペースを入れる
+上記2つの例だけだとあまりにもつまらないので、1つだけおまけ。Gtk::SeparatorがGtk::Widgetのサブクラスであることを利用します。GTK+のテーマによって実行結果が異なるかも。
+
+  require 'gtk'
+
+  vbox = Gtk::VBox.new
+
+  style = Gtk::Style.new
+  style.set_fg(Gtk::STATE_NORMAL, 0, 65535, 0)
+  style.set_bg(Gtk::STATE_NORMAL, 65535, 0, 0)
+
+  button1 = Gtk::Button.new("Button 1")
+  button2 = Gtk::Button.new("Button 2")
+  separator = Gtk::HSeparator.new
+  separator.set_usize(100,200)
+  separator.set_style(style)
+
+  vbox.pack_start(button1)
+  vbox.pack_start(separator)
+  vbox.pack_start(button2)
+
+  window = Gtk::Window.new
+  window.set_usize(300,300)
+  window.add(vbox)
+  window.show_all
+  Gtk.main
+   

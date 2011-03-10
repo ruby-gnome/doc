@@ -1,0 +1,21 @@
+= module Gnome::I18n
+
+== Module Functions
+
+--- Gnome::I18n.get_language_list
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::I18n.pop_c_numeric_locale
+
+     * Returns: self: ((*FIXME*))
+
+--- Gnome::I18n.push_c_numeric_locale
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

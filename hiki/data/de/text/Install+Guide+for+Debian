@@ -1,0 +1,22 @@
+=Installationsanleitung für Debian
+== Installation
+Momentan existieren offizielle Ruby-GNOME2-Pakete nur für die instabile Debian-Distribution (Sid). Dort ist jede Anbindung einzeln als Paket installierbar. So heißt das Gtk+-Paket z.B. libgtk2-ruby. Um alle Ruby-GNOME2-Pakete auf einmal zu installieren, ist `apt-get install ruby-gnome2` auszuführen.
+
+Nach der Installation sollten die README.Debian-Dateien gelesen werden, die sich in /usr/share/doc/<package> befinden.
+
+== Bugs melden
+Bugs sollten im ((<Debian Bug Tracking System|URL:http://bugs.debian.org/>)) gemeldet werden. Fragen über die Pakete gehen direkt an deren Verwalter, Dafydd Harries <daf@muse.19inch.net>.
+
+== Testing
+Bevor die Pakete in der Testing-Distribution angeboten werden können, müssen zunächst einige Probleme gelöst werden. Fakt ist, das sich Ruby-GNOME2 zurzeit aufgrund von Abhängigkeitsproblemen nicht auf den Plattformen hurd-i386, mips und sh kompilieren lässt.
+
+== Rbbr
+Rbbr ist noch kein offizielles Paket, wird aber hoffentlich bald hochgeladen werden. Ein inoffizielles Paket ist auf ((<Dafydd's persönlichem APT-Lager|URL:http://muse.19inch.net/~daf/debian/>)) erhältlich.
+
+== Log
+
+* 2004/03/31 0.9.1 befindet sich nun in Sid und ist auf mehreren Architekturen kompilierbar - ((<Dafydd>))
+* 2004/03/14 Aktualisiert bezgl. der neuen offiziellen Pakete - ((<Dafydd>))
+* 2003/09/20 Beschreibungen über Ruby-Version hinzugefügt - ((<Hiroshi>))
+* 2003/03/28 Dateinamen geändert - ((<Masao>))
+* 2003/03/28 Erstellt - ((<Hiroshi>))

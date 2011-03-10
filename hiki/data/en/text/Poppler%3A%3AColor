@@ -1,0 +1,65 @@
+= class Poppler::Color
+
+== Object Hierarchy
+
+* Object
+  * GLib::Boxed
+    * Poppler::Color
+
+== Class Methods
+
+--- Poppler::Color.new
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- blue
+
+     * Returns: self: ((*FIXME*))
+
+--- blue=
+
+     * Returns: self: ((*FIXME*))
+
+--- green
+
+     * Returns: self: ((*FIXME*))
+
+--- green=
+
+     * Returns: self: ((*FIXME*))
+
+--- inspect
+
+     * Returns: self: ((*FIXME*))
+
+--- red
+
+     * Returns: self: ((*FIXME*))
+
+--- red=
+
+     * Returns: self: ((*FIXME*))
+
+--- set_blue
+
+     * Returns: self: ((*FIXME*))
+
+--- set_green
+
+     * Returns: self: ((*FIXME*))
+
+--- set_red
+
+     * Returns: self: ((*FIXME*))
+
+--- to_a
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

@@ -1,0 +1,81 @@
+= class GLib::FileIcon
+
+GLib::FileIcon specifies an icon by pointing to an image file to be used as
+icon. 
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::FileIcon
+
+== Included Modules
+
+  * GLib::Icon
+  * GLib::LoadableIcon
+
+== Class Methods
+
+--- GLib::FileIcon.new(file)
+
+     Creates a new icon for a file.
+
+     * file: a GLib::File
+     * Returns: a new GLib::File for the given ((|file|)), or nil on error
+
+== Instance Methods
+
+--- ==(other)
+
+    See GLib::Icon#==.
+
+--- eql?(other)
+
+    See GLib::Icon#eql?.
+
+--- file
+
+    Gets the file containing the icon.
+
+     * Returns: The GLib::File containing the icon
+
+--- hash
+
+    See GLib::Icon#hash.
+
+--- load
+
+    See GLib::LoadableIcon#load.
+
+--- load_async
+
+    See GLib::LoadableIcon#load_async.
+
+--- load_finish
+
+    See GLib::LoadableIcon#load_finish.
+
+--- to_s
+
+    See GLib::Icon#to_s.
+
+--- to_str
+
+    See GLib::Icon#to_str.
+
+--- to_string
+
+    See GLib::Icon#to_string.
+
+== Properties
+
+--- file: GLib::File (Read/Write)
+
+    The file containing the icon
+
+== See Also
+
+== ChangeLog
+
+

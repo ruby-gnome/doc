@@ -1,0 +1,306 @@
+= module GLib::Drive
+
+GLib::Drive represents a piece of hardware connected to the machine. It’s
+generally only created for removable hardware or hardware with removable media.
+
+GLib::Drive is a container class for GLib::Volume objects that stem from the
+same piece of media. As such, GLib::Drive abstracts a drive with (or without)
+removable media and provides operations for querying whether media is
+available, determing whether media change is automatically detected and
+ejecting the media.
+
+If the GLib::Drive reports that media isn't automatically detected, one can
+poll for media; typically one should not do this periodically as a poll for
+media operation is potententially expensive and may spin up the drive creating
+noise.
+
+GLib::Drive supports starting and stopping drives with authentication support
+for the former. This can be used to support a diverse set of use cases
+including connecting/disconnecting iSCSI devices, powering down external disk
+enclosures and starting/stopping multi-disk devices such as RAID devices. Note
+that the actual semantics and side-effects of starting/stopping a GLib::Drive
+may vary according to implementation. To choose the correct verbs in, for
+example, a file manager, use GLib::Drive#start_stop_type.
+
+For porting from GnomeVFS, note that there is no equivalent of GLib::Drive in
+that API. 
+
+== Included Modules
+
+  * GLib::Interface
+
+== Instance Methods
+
+--- can_eject?
+
+     Checks if a drive can be ejected.
+
+     * Returns: true if the drive can be ejected, false otherwise
+
+--- can_poll_for_media?
+
+     Checks if a drive can be polled for media changes.
+
+     * Returns: true if the drive can be polled for media changes,
+       false otherwise
+
+--- can_start?
+
+     Checks if a drive can be started.
+
+     Since 2.22
+
+     * Returns: true if the drive can be started, false otherwise
+
+--- can_start_degraded?
+
+     Checks if a drive can be started degraded.
+
+     Since 2.22
+
+     * Returns: true if the drive can be started degraded, false otherwise
+
+--- can_stop?
+
+     Checks if a drive can be stopped.
+
+     Since 2.22
+
+     * Returns: true if the drive can be stopped, false otherwise
+
+--- eject_with_operation(flags = GLib::Mount::UNMOUNT_NONE, mount_operation = nil, cancellable = nil){ |result| … }
+
+     Ejects a drive. This is an asynchronous operation, and is finished by
+     calling GLib::Drive#eject_with_operation_finish inside the block.
+
+     Since 2.22
+
+     * flags: Flags affecting the unmount if required for eject
+     * mount_operation: A GLib::MountOperation or nil to avoid user interaction
+     * cancellable: Optional GLib::Cancellable object, nil to ignore
+     * result: A GLib::AsyncResult
+     * Returns: self
+
+--- eject_with_operation_finish(result)
+
+     Finishes ejecting a drive.
+     
+     A GLib::IO::Error is raised if this drive couldn’t be ejected.
+
+     Since 2.22
+
+     * result: A GLib::AsyncResult
+     * Returns: true if the drive was successfully ejected, false otherwise
+
+--- enumerate_identifiers
+
+     Same as GLib::Drive#identifiers.
+
+--- get_identifier(kind)
+
+     Gets the identifier of the given kind for the drive.
+
+     * kind: The kind of identifier to return
+     * Returns: A String containing the requested identfier, or nil if the
+       GLib::Drive doesn’t have this kind of identifier
+
+--- has_media?
+
+     Checks if the drive has media. Note that the OS may not be polling the
+     drive for media changes; see GLib::Drive#media_check_automatic?  for more
+     details.
+
+     * Returns: true if the drive has media, false otherwise
+
+--- has_volumes?
+
+     Check if the drive has any mountable volumes.
+
+     * Returns: true if the drive contains volumes, false otherwise
+
+--- icon
+
+     Gets the icon for the drive.
+
+     * Returns: The GLib::Icon for the drive
+
+--- identifiers
+
+     Gets the kinds of identifiers that the drive has. Use
+     GLib::Drive#get_identifier to obtain the identifiers themselves.
+
+     * Returns: An Array of String identifiers
+
+--- media_check_automatic?
+
+     Checks if the drive is capabable of automatically detecting media changes.
+
+     * Returns: true if the drive is capabable of automatically detecting
+       media changes, false otherwise
+
+--- media_removable?
+
+     Checks if the drive supports removable media.
+
+     * Returns: true if the drive supports removable media, false otherwise
+
+--- name
+
+     Gets the name of the drive.
+
+     * Returns: A String containing the drive’s name
+
+--- poll_for_media(cancellable = nil){ |result| … }
+
+     Asynchronously polls the drive to see if media has been inserted or
+     removed.
+
+     When the operation is finished, a GLib::AsyncResult will be yielded.  You
+     can then call GLib::Drive#poll_for_media_finish to obtain the result of
+     the operation.
+
+     * cancellable: Optional GLib::Cancellable object, nil to ignore
+     * result: A GLib::AsyncResult
+     * Returns: self
+
+--- poll_for_media_finish(result)
+
+     Finishes an operation started with GLib::Drive#poll_for_media on a drive.
+
+     A GLib::IO::Error is raised if this drive couldn’t be polled for media.
+
+     * result: A GLib::AsyncResult
+     * Returns: self
+
+--- start(flags = GLib::Mount::MOUNT_NONE, mount_operation = nil, cancellable = nil){ |result| … }
+
+     Asynchronously starts the drive.
+
+     When the operation is finished, a GLib::AsyncResult will be yielded.  You
+     can then call GLib::Drive#start_finish to obtain the result of the
+     operation.
+
+     Since 2.22
+
+     * flags: Flags affecting the start operation
+     * mount_operation: A GLib::MountOperation, or nil to avoid user
+       interaction
+     * cancellable: Optional GLib::Cancellable object, nil to ignore
+     * result: A GLib::AsyncResult
+     * Returns: self
+
+--- start_finish(result)
+
+     Finishes starting the drive.
+
+     A GLib::IO::Error is raised if this drive couldn’t be started.
+
+     Since 2.22
+
+     * result: A GLib::AsyncResult
+     * Returns: self
+
+--- start_stop_type
+
+     Gets a hint about how the drive can be started/stopped.
+
+     Since 2.22
+
+     * Returns: The GLib::Drive::StartStopType of this drive
+
+--- stop(flags = GLib::Mount::UNMOUNT_NONE, mount_operation = nil, cancellable = nil){ |result| … }
+
+     Asynchronously stops the drive.
+
+     When the operation is finished, a GLib::AsyncResult will be yielded.  You
+     can then call GLib::Drive#stop_finish to obtain the result of the
+     operation.
+
+     Since 2.22
+
+     * flags: Flags affecting the unmount if required for stopping
+     * mount_operation: A GLib::MountOperation, or nil to avoid user interaction
+     * cancellable: Optional GLib::Cancellable object, nil to ignore
+     * result: A GLib::AsyncResult
+     * Returns: self
+
+--- stop_finish(result)
+
+     Finishes stopping the drive.
+
+     A GLib::IO::Error is raised if this drive couldn’t be stopped.
+
+     Since 2.22
+
+     * result: A GLib::AsyncResult
+     * Returns: self
+
+--- volumes
+
+     Get an Array of mountable volumes for the drive.
+
+     * Returns: An Array containing any GLib::Volume objects on the given the
+       drive
+
+
+== Constants
+
+--- START_NONE
+
+     No flags set
+
+--- START_STOP_TYPE_MULTIDISK
+
+     The start/stop methods will assemble/disassemble a virtual drive from
+     several physcal drives
+
+--- START_STOP_TYPE_NETWORK
+
+     The start/stop methods are used for connecting to/disconnecting from the
+     drive over the networ
+
+--- START_STOP_TYPE_PASSWORD
+
+     The start/stop methods will lock/unlock the disk (for example, using the
+     ATA “SECURITY UNLOCK DEVICE” command)
+
+--- START_STOP_TYPE_SHUTDOWN
+
+     The stop method will physically shut down the drive and, for example,
+     powwer down the port the drive is attached to
+
+--- START_STOP_TYPE_UNKNOWN
+
+     Unknown, or drive doesn’t support start/stop
+
+== Signals
+
+--- changed: self
+
+     This signal is emitted when the drive’s state has changed.
+
+     * self: The GLib::Drive that is emitting this signal
+
+--- disconnected: self
+
+     This signal is emitted when the drive’s state has changed.
+
+     * self: The GLib::Drive that is emitting this signal
+
+--- eject-button: self
+
+     This signal is emitted when the drive’s state has changed.
+
+     * self: The GLib::Drive that is emitting this signal
+
+--- stop-button: self
+
+     This signal is emitted when the drive’s state has changed.
+
+     * self: The GLib::Drive that is emitting this signal
+
+== See Also
+
+== ChangeLog
+
+

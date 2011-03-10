@@ -1,0 +1,201 @@
+= Ruby/GTK classes/modules index and documented status
+
+* ((<Gtk>)) - Done for 2.8.
+* Gtk::AboutDialog - Done for 2.10.
+* Gtk::Accelerator - Done for 2.10.
+* Gtk::AccelGroup - Done for 2.10.
+* Gtk::AccelGroupEntry - Done for 2.10.
+* Gtk::AccelKey - Done for 2.10.
+* Gtk::AccelLabel - Done for 2.10.
+* Gtk::AccelMap - Done for 2.10.
+* Gtk::Accessible - Done for 2.10.
+* Gtk::Action - Done for 2.10.
+* Gtk::ActionGroup - Done for 2.10.
+* Gtk::Adjustment - Done for 2.10.
+* Gtk::Alignment - Done for 2.10.
+* Gtk::Allocation - Done for 2.10.
+* Gtk::Arrow - Done for 2.10.
+* Gtk::Assistant - Done for 2.10.
+* Gtk::AspectFrame - Done for 2.10.
+* Gtk::Bin - Done for 2.10.
+* Gtk::BindingSet - Done for 2.10.
+* Gtk::Box - Done for 2.10.
+* Gtk::Border - Done for 2.10.
+* Gtk::Builder - Done for 2.12.
+* Gtk::Button - Done for 2.10.
+* Gtk::ButtonBox - Done for 2.10.
+* Gtk::Calendar - Done for 2.10.
+* Gtk::CellEditable - Done for 2.10.
+* Gtk::CellLayout - Done for 2.10.
+* Gtk::CellRenderer - Done for 2.10.
+* Gtk::CellRendererAccel - Done for 2.10.
+* Gtk::CellRendererCombo - Done for 2.10.
+* Gtk::CellRendererPixbuf - Done for 2.10.
+* Gtk::CellRendererProgress - Done for 2.10.
+* Gtk::CellRendererSpin - Done for 2.10.
+* Gtk::CellRendererText - Done for 2.10.
+* Gtk::CellRendererToggle - Done for 2.10.
+* Gtk::CellView - Done for 2.10.
+* Gtk::CheckButton - Done for 2.10.
+* Gtk::CheckMenuItem - Done for 2.10.
+* Gtk::Clipboard - Done for 2.10.
+* Gtk::ColorButton - Done for 2.10.
+* Gtk::ColorSelection - Done for 2.10.
+* Gtk::ColorSelectionDialog - Done for 2.10.
+* Gtk::Combo - Deprecated.
+* Gtk::ComboBox - Done for 2.10.
+* Gtk::ComboBoxEntry - Done for 2.10.
+* Gtk::Container - Done for 2.10.
+* Gtk::Curve - Done for 2.10.
+* Gtk::Dialog - Done for 2.10.
+* Gtk::Drag - Done for 2.10.
+* Gtk::DrawingArea - Done for 2.10.
+* Gtk::Editable - Done for 2.10.
+* Gtk::Entry - Done for 2.10.
+* Gtk::EntryCompletion - Done for 2.10.
+* Gtk::EventBox - Done for 2.10.
+* Gtk::Expander - Done for 2.10.
+* Gtk::FileChooser - Done for 2.6.
+* Gtk::FileChooserButton - Done for 2.6.
+* Gtk::FileChooserDialog - Done for 2.4.
+* Gtk::FileChooserError - Done for 2.6.
+* Gtk::FileChooserWidget - Done for 2.4.
+* Gtk::FileFilter - Done for 2.6.
+* Gtk::FileSelection - Done.
+* Gtk::FileSystemError - Done for 2.6.
+* Gtk::Fixed - Done.
+* Gtk::FontButton - Done for 2.4.
+* Gtk::FontSelection - Done.
+* Gtk::FontSelectionDialog - DOne.
+* Gtk::Frame - Done.
+* Gtk::GammaCurve
+* Gtk::HandleBox - Done.
+* Gtk::HBox - Done.
+* Gtk::HButtonBox - Done.
+* Gtk::HPaned - Done.
+* Gtk::HRuler - Done.
+* Gtk::HScale - Done for 2.8.
+* Gtk::HScrollbar - Done for 2.8.
+* Gtk::HSeparator - Done for 2.8.
+* Gtk::IconFactory - Done.
+* Gtk::IconInfo - Done for 2.6.
+* Gtk::IconSet - Done.
+* Gtk::IconSize - Done.
+* Gtk::IconSource - Done.
+* Gtk::IconTheme - Done for 2.6.
+* Gtk::IconThemeError - Done for 2.6.
+* Gtk::IconView - Done for 2.8.
+* Gtk::Image - Done for 2.10.
+* Gtk::ImageMenuItem - Done.
+* Gtk::IMContext
+* Gtk::IMContextSimple
+* Gtk::IMMulticontext
+* Gtk::InputDialog - Done for 2.8.
+* Gtk::Invisible - Done.
+* Gtk::Item - Done.
+* Gtk::ItemFactory - Done.
+* Gtk::Label - Done for 2.6.
+* Gtk::Layout - Done.
+* Gtk::ListStore - Done for 2.10.
+* Gtk::Menu - Done.
+* Gtk::MenuBar - Done.
+* Gtk::MenuItem - Done.
+* Gtk::MenuShell - Done.
+* Gtk::MenuToolButton - Done for 2.6.
+* Gtk::MessageDialog  - Done for 2.10.
+* Gtk::Misc - Done.
+* Gtk::Notebook - Done.
+* Gtk::NotebookPage - Done.
+* Gtk::Object - Done.
+* Gtk::OptionMenu - Done.
+* Gtk::PageSetup - Done for 2.10.
+* Gtk::PageSetupUnixDialog - Done for 2.10.
+* Gtk::Paned - Done for 2.10.
+* Gtk::PaperSize - Done for 2.10.
+* Gtk::Plug - Done.
+* Gtk::PrintBackend - Done for 2.10.
+* Gtk::PrintContext - Done for 2.10.
+* Gtk::Printer - Done for 2.10.
+* Gtk::PrintError - Done for 2.10.
+* Gtk::PrintJob - Done for 2.10.
+* Gtk::PrintOperation - Done for 2.10.
+* Gtk::PrintOperationPreview - Done for 2.10.
+* Gtk::PrintSettings - Done for 2.10.
+* Gtk::PrintUnixDialog - Done for 2.10.
+* Gtk::Progress - Done.
+* Gtk::ProgressBar - Done.
+* Gtk::RadioAction - Done for 2.10.
+* Gtk::RadioButton - Done.
+* Gtk::RadioMenuItem - Done.
+* Gtk::RadioToolButton
+* Gtk::Range - Done for 2.10.
+* ((<Gtk::RC>)) - Done for 2.6.
+* Gtk::RcStyle - Done for 2.6.
+* Gtk::RecentManager
+* Gtk::RecentChooser
+* Gtk::RecentChooserDialog - Done for 2.10.
+* Gtk::RecentChooserMenu - Done for 2.10.
+* Gtk::RecentChooserWidget - Done for 2.10.
+* Gtk::RecentFilter
+* Gtk::Ruler - Done for 2.6.
+* Gtk::Scale - Done for 2.8.
+* Gtk::Scrollbar - Done for 2.8.
+* Gtk::ScrolledWindow - Done.
+* Gtk::Selection - Done.
+* Gtk::SelectionData - Done.
+* Gtk::Separator - Done for 2.8.
+* Gtk::SeparatorMenuItem - Done.
+* Gtk::SeparatorToolItem - Done for 2.6.
+* Gtk::Settings - Done for 2.6.
+* Gtk::SizeGroup - Done for 2.8.
+* Gtk::Socket - Done.
+* Gtk::SpinButton - Done.
+* Gtk::Statusbar - Done.
+* Gtk::StatusIcon - Done for 2.10.
+* Gtk::Stock - Done for 2.8.
+* Gtk::Style - Done.
+* Gtk::Table - Done.
+* Gtk::TargetList - Done.
+* Gtk::TearoffMenuItem - Done.
+* Gtk::TextApperance
+* Gtk::TextAttributes
+* Gtk::TextBuffer - Done.
+* Gtk::TextChildAnchor - Done.
+* Gtk::TextIter - Done for 2.8.
+* Gtk::TextMark - Done.
+* Gtk::TextTag - Done.
+* Gtk::TextTagTable  - Done.
+* Gtk::TextView - Done for 2.6.
+* Gtk::ToggleAction - Done for 2.6.
+* Gtk::ToggleButton - Done.
+* Gtk::ToggleToolButton - Done for 2.6.
+* Gtk::Toolbar - Done.
+* Gtk::ToolButton - Done for 2.8.
+* Gtk::ToolItem - Done for 2.6.
+* Gtk::Tooltips - Done.
+* Gtk::TreeDragDest - Done.
+* Gtk::TreeDragSource - Done.
+* Gtk::TreeIter - Done.
+* Gtk::TreeModel - Done.
+* Gtk::TreeModelSort - Done.
+* Gtk::TreeModelFilter - Done for 2.6.
+* Gtk::TreePath - Done.
+* Gtk::TreeRowReference - Done for 2.8.
+* Gtk::TreeSelection - Done.
+* Gtk::TreeSortable - Done.
+* Gtk::TreeStore - Done for 2.10.
+* Gtk::TreeView - Done for 2.8.
+* Gtk::TreeViewColumn - Done for 2.8.
+* Gtk::UIManager - Done.
+* Gtk::Unit - Done for 2.10.
+* Gtk::VBox - Done.
+* Gtk::VButtonBox - Done.
+* Gtk::Viewport - Done.
+* Gtk::VPaned - Done.
+* Gtk::VRuler - Done.
+* Gtk::VScale - Done for 2.8.
+* Gtk::VScrollbar - Done for 2.8.
+* Gtk::VSeparator - Done for 2.8.
+* Gtk::Widget - Done for 2.8.
+* Gtk::Window - Done for 2.10.
+* Gtk::WindowGroup - Done for 2.10.

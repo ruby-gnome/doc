@@ -1,0 +1,184 @@
+= class Gtk::HtmlBox
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Gtk::HtmlBox
+
+== Instance Methods
+
+--- absolute_x
+
+     * Returns: self: ((*FIXME*))
+
+--- absolute_y
+
+     * Returns: self: ((*FIXME*))
+
+--- after
+
+     * Returns: self: ((*FIXME*))
+
+--- after=
+
+     * Returns: self: ((*FIXME*))
+
+--- append_child
+
+     * Returns: self: ((*FIXME*))
+
+--- apply_positioned_offset
+
+     * Returns: self: ((*FIXME*))
+
+--- ascent
+
+     * Returns: self: ((*FIXME*))
+
+--- before
+
+     * Returns: self: ((*FIXME*))
+
+--- before=
+
+     * Returns: self: ((*FIXME*))
+
+--- bidi_level
+
+     * Returns: self: ((*FIXME*))
+
+--- bottom_border_width
+
+     * Returns: self: ((*FIXME*))
+
+--- bottom_margin
+
+     * Returns: self: ((*FIXME*))
+
+--- bottom_mbp_sum
+
+     * Returns: self: ((*FIXME*))
+
+--- bottom_padding
+
+     * Returns: self: ((*FIXME*))
+
+--- box_remove
+
+     * Returns: self: ((*FIXME*))
+
+--- check_min_max_width_height
+
+     * Returns: self: ((*FIXME*))
+
+--- containing_block
+
+     * Returns: self: ((*FIXME*))
+
+--- containing_block_height
+
+     * Returns: self: ((*FIXME*))
+
+--- containing_block_width
+
+     * Returns: self: ((*FIXME*))
+
+--- descent
+
+     * Returns: self: ((*FIXME*))
+
+--- find_root_box
+
+     * Returns: self: ((*FIXME*))
+
+--- handles_events
+
+     * Returns: self: ((*FIXME*))
+
+--- horizontal_mbp_sum
+
+     * Returns: self: ((*FIXME*))
+
+--- insert_after
+
+     * Returns: self: ((*FIXME*))
+
+--- left_border_width
+
+     * Returns: self: ((*FIXME*))
+
+--- left_margin
+
+     * Returns: self: ((*FIXME*))
+
+--- left_mbp_sum
+
+     * Returns: self: ((*FIXME*))
+
+--- left_padding
+
+     * Returns: self: ((*FIXME*))
+
+--- parent?
+
+     * Returns: self: ((*FIXME*))
+
+--- right_border_width
+
+     * Returns: self: ((*FIXME*))
+
+--- right_margin
+
+     * Returns: self: ((*FIXME*))
+
+--- right_mbp_sum
+
+     * Returns: self: ((*FIXME*))
+
+--- right_padding
+
+     * Returns: self: ((*FIXME*))
+
+--- set_after
+
+     * Returns: self: ((*FIXME*))
+
+--- set_before
+
+     * Returns: self: ((*FIXME*))
+
+--- top_border_width
+
+     * Returns: self: ((*FIXME*))
+
+--- top_margin
+
+     * Returns: self: ((*FIXME*))
+
+--- top_mbp_sum
+
+     * Returns: self: ((*FIXME*))
+
+--- top_padding
+
+     * Returns: self: ((*FIXME*))
+
+--- unrelayouted_down
+
+     * Returns: self: ((*FIXME*))
+
+--- unrelayouted_up
+
+     * Returns: self: ((*FIXME*))
+
+--- vertical_mbp_sum
+
+     * Returns: self: ((*FIXME*))
+
+== See Also
+
+== ChangeLog
+
+

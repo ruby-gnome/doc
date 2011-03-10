@@ -1,0 +1,56 @@
+= class Gdk::Atom
+
+Gdk::Atom is an opaque type representing a string as an index into a table of strings on the X server
+
+Each window under X can have any number of associated properties attached to it. Properties are arbitrary chunks of data identified by atoms. (An atom is a numeric index into a string table on the X server. They are used to transfer strings efficiently between clients without having to transfer the entire string.) A property has an associated type, which is also identified using an atom.
+
+== Object Hierarchy
+
+* Object
+  * GLib::Boxed
+    * Gdk::Atom
+
+== Class Methods
+
+--- Gdk::Atom.new(atom)
+
+    Creates a new Gdk::Atom.
+    * atom: an Atom value(Integer)
+    * Returns: a new Gdk::Atom
+
+--- Gdk::Atom.intern(atom_name, only_if_exists)
+
+    Finds or creates an atom corresponding to a given string.
+    * atom_name: a string. 
+    * only_if_exists: if true, do not create a new atom, but just return the atom if it already exists. 
+    * Returns: the atom corresponding to atom_name, or, if only_if_exists is true, and an atom does not already exists for the string, Gdk::Atom::NONE. Currently, the flag is ignored, since checking the existance of an atom is as expensive as creating it.
+    * Returns: self
+
+== Instance Methods
+
+--- ==(other)
+
+    Checks if two atoms are equal. 
+    * Returns: true if two atoms are equal.
+
+--- name
+
+    Determines the string corresponding to an atom.
+    * Returns: a string corresponding to atom.
+
+--- to_i
+
+    Gets the value of Gdk::Atom.
+    * Returns: the value of Gdk::Atom
+
+((<Masao>))
+
+== Constants
+
+--- NONE
+
+== See Also
+
+== ChangeLog
+
+

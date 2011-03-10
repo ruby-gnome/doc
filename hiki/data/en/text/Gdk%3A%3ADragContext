@@ -1,0 +1,234 @@
+= class Gdk::DragContext
+
+Gdk::DragContext provides a low level interface for drag and drop. The X backend of GDK supports both the Xdnd and Motif drag and drop protocols transparently, the Win32 backend supports the WM_DROPFILES protocol. 
+
+GTK+ provides a higher level abstraction based on top of these functions, and so they are not normally needed in GTK+ applications. See the Drag and Drop section of the GTK+ documentation for more information.
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Gdk::DragContext
+
+== Class Methods
+
+--- Gdk::DragContext.new
+
+    Creates a new Gdk::DragContext.
+    * Returns: the newly created Gdk::DragContext.
+
+--- Gdk::DragContext.drag_begin(window, targets)
+
+    Starts a drag and creates a new drag context for it. This method is called by the drag source.
+    * window: the source Gdk::Window for this drag.  
+    * targets: the array of offered targets(Gdk::Atom).  
+    * Returns: a newly created Gdk::DragContext.
+
+--- Gdk::DragContext.get_protocol(xid)
+
+    Finds out the DND protocol supported by a window.
+    * xid: the X id of the destination window.  
+    * Returns: [protocol, xid]
+      * protocol: supported DND protocol(((<GdkDragProtocol|Gdk::DragContext#GdkDragProtocol>)))
+      * xid: the X id of the window where the drop should happen. This may be xid or the X id of a proxy window, or None if xid doesn't support Drag and Drop.
+
+--- Gdk::DragContext.get_protocol(display, xid)
+
+    Finds out the DND protocol supported by a window. ((* Since 2.2 *))
+    * display: the Gdk::Display where the destination window resides 
+    * xid: the X id of the destination window.  
+    * Returns: [protocol, xid]
+      * protocol: supported DND protocol(((<GdkDragProtocol|Gdk::DragContext#GdkDragProtocol>)))
+      * xid: the X id of the window where the drop should happen. This may be xid or the X id of a proxy window, or None if xid doesn't support Drag and Drop.
+
+== Instance Methods
+
+--- selection
+
+    Returns the selection atom for the current source window.
+    * Returns : the selection atom(Gdk::Atom).
+
+--- drag_abort(time)
+
+    Aborts a drag without dropping.  This method is called by the drag source.
+    * time: the timestamp(Integer) for this operation. 
+    * Returns: self
+
+--- drop_reply(ok, time)
+
+    Accepts or rejects a drop. This method is called by the drag destination in response to a drop initiated by the drag source.
+    * ok: true if the drop is accepted.  
+    * time: the timestamp(Integer) for this operation.  
+    * Returns: self
+
+--- drag_drop(time)
+
+    Drops on the current destination. This method is called by the drag source.
+    * time: the timestamp(Integer) for this operation.  
+    * Returns: self
+
+--- find_window(drag_window, x_root, y_root)
+
+    Finds the destination window and DND protocol to use at the given pointer position. This method is called by the drag source to obtain the dest_window and protocol parameters for Gdk::DragContext#drag_motion.
+    * drag_window: a Gdk::Window which may be at the pointer position, but should be ignored, since it is put up by the drag source as an icon.  
+    * x_root: the x position of the pointer in root coordinates 
+    * y_root: the y position of the pointer in root coordinates
+    * Returns: [dest_window, protocol]
+      * dest_window: the destination Gdk::Window 
+      * protocol: the DND protocol (((<GdkDragProtocol|Gdk::DragContext#GdkDragProtocol>)))
+
+--- find_window(drag_window, screen, x_root, y_root)
+
+    Finds the destination window and DND protocol to use at the given pointer position. This method is called by the drag source to obtain the dest_window and protocol parameters for Gdk::DragContext#drag_motion.  ((* Since 2.2 *))
+    * drag_window: a Gdk::Window which may be at the pointer position, but should be ignored, since it is put up by the drag source as an icon.  
+    * screen: the screen where the destination window is sought. 
+    * x_root: the x position of the pointer in root coordinates 
+    * y_root: the y position of the pointer in root coordinates
+    * Returns: [dest_window, protocol]
+      * dest_window: the destination Gdk::Window 
+      * protocol: the DND protocol (((<GdkDragProtocol|Gdk::DragContext#GdkDragProtocol>)))
+
+--- drag_motion(dest_window, protocol, x_root, y_root, suggested_action, possible_actions, time)
+
+    Updates the drag context when the pointer moves or the set of actions changes. This method is called by the drag source.
+    * dest_window: the new destination Gdk::Window, obtained by Gdk::DragContext#find_window.  
+    * protocol: the DND protocol(((<GdkDragProtocol|Gdk::DragContext#GdkDragProtocol>))) in use, obtained by Gdk::DragContext#find_window.  
+    * x_root: the x position of the pointer in root coordinates.  
+    * y_root: the y position of the pointer in root coordinates.  
+    * suggested_action: the suggested action.   (((<GdkDragAction|Gdk::DragContext#GdkDragAction>)))
+    * possible_actions: the possible actions.   (((<GdkDragAction|Gdk::DragContext#GdkDragAction>)))
+    * time: the timestamp(Integer) for this operation.  
+    * Returns : FIXME
+
+--- drop_finish(success, time)
+
+    Ends the drag operation after a drop. This method is called by the drag destination.
+    * success: true if the data was successfully received.  
+    * time: the timestamp(Integer) for this operation.  
+    * Returns: self
+
+--- protocol
+
+    Gets the DND protocol which governs this drag. 
+    * Returns: the DND protocol(((<GdkDragProtocol|Gdk::DragContext#GdkDragProtocol>)))
+
+--- source?
+
+    Gets the value whether the context is used on the source side or destination side. 
+    * Returns: true if the context is used on the source side.
+
+--- source_window
+
+    the source of this drag. 
+    * Returns: the Gdk::Window
+
+--- dest_window
+
+    Gets the destination window of this drag.
+    * Returns: the Gdk::Window
+
+--- targets
+
+    Gets the array of targets offered by the source. 
+    * Returns: an array of targets(Gdk::Atom)
+
+--- actions
+
+    Gets the bitmask of actions proposed by the source when suggested_action is Gdk::DragContext::ACTION_ASK. 
+    * Returns: ((<GdkDragAction|Gdk::DragContext#GdkDragAction>))
+
+--- suggested_action
+
+    Gets the action suggested by the source.
+    * Returns: ((<GdkDragAction|Gdk::DragContext#GdkDragAction>))
+
+--- action
+
+    Gets the action chosen by the destination. 
+    * Returns: ((<GdkDragAction|Gdk::DragContext#GdkDragAction>))
+
+--- start_time
+
+    Gets the timestamp recording the start time of this drag. 
+    * Returns: the timestamp(Integer)
+
+--- drag_status(action, time)
+
+    Selects one of the actions offered by the drag source. This method is called by the drag destination in response to Gdk::DragContext#drag_motion called by the drag source.
+    * action: the selected action which will be taken when a drop happens, or 0 to indicate that a drop will not be accepted.  (((<GdkDragAction|Gdk::DragContext#GdkDragAction>)))
+    * time: the timestamp(Integer) for this operation
+    * Returns: self
+
+--- drag_drop_succeeded?
+
+     * Returns: self: ((*FIXME*))
+
+== Constants
+
+=== GdkDragProtocol
+
+Used in Gdk::DragContext to indicate the protocol according to which DND is done.
+
+--- PROTO_MOTIF
+
+    The Motif DND protocol.
+
+--- PROTO_XDND
+
+    The Xdnd protocol.
+
+--- PROTO_ROOTWIN
+
+    An extension to the Xdnd protocol for unclaimed root window drops.
+
+--- PROTO_NONE
+
+    no protocol.
+
+--- PROTO_WIN32_DROPFILES
+
+    The simple WM_DROPFILES protocol.
+
+--- PROTO_OLE2
+
+    The complex OLE2 DND protocol (not implemented).
+
+--- PROTO_LOCAL
+
+    Intra-application DND.
+
+=== GdkDragAction
+
+Used in Gdk::DragContext to indicate what the destination should do with the dropped data.
+
+--- ACTION_DEFAULT
+--- ACTION_COPY
+
+    Copy the data.
+
+--- ACTION_MOVE
+
+    Move the data, i.e. first copy it, then delete it from the source using the DELETE target of the X selection protocol.
+
+--- ACTION_LINK
+
+    Add a link to the data. Note that this is only useful if source and destination agree on what it means.
+
+--- ACTION_PRIVATE
+
+    Special action which tells the source that the destination will do something that the source doesn't understand.
+
+--- ACTION_ASK
+
+    Ask the user what to do with the data. 
+
+
+
+* 2004-05-26 Initial publish - ((<Masao>))
+
+== See Also
+
+== ChangeLog
+
+

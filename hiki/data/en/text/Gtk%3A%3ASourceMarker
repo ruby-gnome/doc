@@ -1,0 +1,105 @@
+= class Gtk::SourceMarker
+
+A source marker.
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * Gtk::SourceMarker
+
+== Class Methods
+
+--- Gtk::SourceMarker.new
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- buffer
+
+    This method returns the buffer associated with this marker, as a Gtk::SourceBuffer object.
+    * Returns: the buffer associated with this marker, as a Gtk::SourceBuffer object.
+
+--- line
+
+    This method returns the line number of this marker.
+    * Returns: the line number of this marker.
+
+--- marker_type
+
+    This method returns the type of the marker.
+    * Returns: the type of the marker.
+
+--- marker_type=(type)
+
+    Sets the type of the marker.
+    * type: the type of the marker (as a string).  
+    * Returns: the given parameter 'type'.
+
+--- marker_type=(type)
+
+    Sets the type of the marker.
+    * type: the type of the marker (as a string).  
+    * Returns: the given parameter 'type'.
+
+--- name
+
+    This method returns the name of this marker.
+    * Returns: the name of this marker.
+
+--- next
+
+    This method returns the next Gtk::SourceMarker after the marker.
+    * Returns: the next Gtk::SourceMarker after the marker.
+
+--- prev
+
+    This method returns the previous Gtk::SourceMarker before the marker.
+    * Returns: the previous Gtk::SourceMarker before the marker.
+
+--- set_marker_type(type)
+
+    Sets the type of the marker.
+    * type: the type of the marker (as a string).  
+    * Returns: self.
+
+--- deleted?
+
+     * Returns: self: ((*FIXME*))
+
+--- left_gravity?
+
+    Gets the value whether the mark has left gravity or not.
+     * Returns: true if the mark has left gravity
+
+--- set_visible
+
+     * Returns: self: ((*FIXME*))
+
+--- visible=
+
+     * Returns: self: ((*FIXME*))
+
+--- visible?
+
+     * Returns: self: ((*FIXME*))
+
+== Properties
+
+--- left-gravity: true or false (Read/Write)
+
+    Whether the mark has left gravity
+
+--- name: String (Read/Write)
+
+    Mark name
+
+== See Also
+
+((<Gtk>)).
+
+== ChangeLog
+
+- ((<lrz>))

@@ -1,0 +1,37 @@
+= class Poppler::ViewerPreferences
+
+== Object Hierarchy
+
+* Object
+  * GLib::Flags
+    * Poppler::ViewerPreferences
+
+== Instance Methods
+
+--- center_window?
+--- direction_rtl?
+--- display_doc_title?
+--- fit_window?
+--- hide_menubar?
+--- hide_toolbar?
+--- hide_windowui?
+--- unset?
+
+== Constants
+
+--- CENTER_WINDOW
+--- DIRECTION_RTL
+--- DISPLAY_DOC_TITLE
+--- FIT_WINDOW
+--- HIDE_MENUBAR
+--- HIDE_TOOLBAR
+--- HIDE_WINDOWUI
+--- UNSET
+
+== See Also
+
+== ChangeLog
+
+* 2006-05-19 ((<kou>)): completed.
+
+- ((<kou>))

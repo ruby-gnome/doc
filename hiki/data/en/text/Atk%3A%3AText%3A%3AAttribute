@@ -1,0 +1,61 @@
+= class Atk::Text::Attribute
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * Atk::Text::Attribute
+
+== Class Methods
+
+--- Atk::Text::Attribute.for_name
+
+     * Returns: self: ((*FIXME*))
+
+--- Atk::Text::Attribute.type_register
+
+     * Returns: self: ((*FIXME*))
+
+== Instance Methods
+
+--- get_value
+
+     * Returns: self: ((*FIXME*))
+
+== Constants
+
+--- BG_COLOR
+--- BG_FULL_HEIGHT
+--- BG_STIPPLE
+--- DIRECTION
+--- EDITABLE
+--- FAMILY_NAME
+--- FG_COLOR
+--- FG_STIPPLE
+--- INDENT
+--- INVALID
+--- INVISIBLE
+--- JUSTIFICATION
+--- LANGUAGE
+--- LAST_DEFINED
+--- LEFT_MARGIN
+--- PIXELS_ABOVE_LINES
+--- PIXELS_BELOW_LINES
+--- PIXELS_INSIDE_WRAP
+--- RIGHT_MARGIN
+--- RISE
+--- SCALE
+--- SIZE
+--- STRETCH
+--- STRIKETHROUGH
+--- STYLE
+--- UNDERLINE
+--- VARIANT
+--- WEIGHT
+--- WRAP_MODE
+
+== See Also
+
+== ChangeLog
+
+

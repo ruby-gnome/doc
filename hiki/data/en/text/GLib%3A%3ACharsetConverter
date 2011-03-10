@@ -1,0 +1,102 @@
+= class GLib::CharsetConverter
+
+GLib::CharsetConverter is an implementation of GLib::Converter based on GLib::IConv. 
+
+== Object Hierarchy
+
+* Object
+  * GLib::Instantiatable
+    * GLib::Object
+      * GLib::CharsetConverter
+
+== Included Modules
+
+  * GLib::Converter
+  * GLib::Initable
+
+== Class Methods
+
+--- GLib::CharsetConverter.new(to, from)
+
+     Creates a new GLib::CharsetConverter.
+
+     A GLib::IO::Error will be raised if either character encoding is
+     unsupported.
+
+     * to: Destination character encoding name
+     * from: Destination character encoding name
+     * Returns: A new GLib::CharsetConverter
+
+== Instance Methods
+
+--- convert(input, flags = GLib::Converter::NO_FLAGS)
+
+    See GLib::Converter#convert.
+
+--- from_charset
+
+    Gets the character encoding to convert from.
+
+     * Returns: The character encoding to convert from
+
+--- init
+
+    See GLib::Initable#init.
+
+--- num_fallbacks
+
+     Gets the number of fallbacks that this GLib::CharsetConverter has applied
+     so far.
+
+     Since 2.24
+
+     * converter: A GLib::CharsetConverter
+     * Returns: The Number of fallbacks that ((|converter|)) has applied
+
+--- reset
+
+    See GLib::Converter#reset.
+
+--- set_use_fallback(use_fallback)
+
+    Sets the fallback character to use (of form “\<hexval>”) for invalid bytes.
+
+     * use_fallback: Fallback character to use (of form “\<hexval>”) for
+       invalid bytes
+     * Returns: self
+
+--- to_charset
+
+    Gets the character encoding to convert to.
+
+     * Returns: The character encoding to convert to
+
+--- use_fallback=(use_fallback)
+
+     Same as GLib::CharsetConverter#set_use_fallback.
+
+     Returns: ((|use_fallback|))
+
+--- use_fallback?
+
+    Gets the fallback character used (of form “\<hexval>”) for invalid bytes.
+
+     * Returns: Fallback character used (of form “\<hexval>”) for invalid bytes
+
+== Properties
+
+--- from-charset: String (Read/Write)
+
+    The character encoding to convert from
+
+--- to-charset: String (Read/Write)
+
+    The character encoding to convert to
+
+--- use-fallback: true or false (Read/Write)
+
+    Fallback character used (of form “\<hexval>”) for invalid bytes
+
+== See Also
+
+== ChangeLog

@@ -1,0 +1,21 @@
+= class Gtk::PrintPages
+
+== Object Hierarchy
+* Object
+  * GLib::Enum
+    * Gtk::PrintPages
+
+== Constants
+--- ALL
+--- CURRENT
+--- RANGES
+
+== See Also
+
+* Gtk::PrintSettings
+
+== ChangeLog
+
+* 2006-07-09: updated for 2.10. - ((<kou>))
+
+- ((<kou>))

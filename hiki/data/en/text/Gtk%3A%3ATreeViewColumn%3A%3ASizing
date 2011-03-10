@@ -1,0 +1,19 @@
+= class Gtk::TreeViewColumn::Sizing
+
+== Object Hierarchy
+
+* Object
+  * GLib::Enum
+    * Gtk::TreeViewColumn::Sizing
+
+== Constants
+
+--- AUTOSIZE
+--- FIXED
+--- GROW_ONLY
+
+== See Also
+
+== ChangeLog
+
+

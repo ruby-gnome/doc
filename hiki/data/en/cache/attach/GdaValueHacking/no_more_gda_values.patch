@@ -1,0 +1,481 @@
+? no_more_gda_values.patch
+Index: src/rbgda.c
+===================================================================
+RCS file: /cvsroot/ruby-gnome2/ruby-gnome2/libgda/src/rbgda.c,v
+retrieving revision 1.11
+diff -u -r1.11 rbgda.c
+--- src/rbgda.c	12 Dec 2003 19:29:06 -0000	1.11
++++ src/rbgda.c	19 Jan 2004 19:30:50 -0000
+@@ -39,6 +39,8 @@
+     extern void Init_gda_error(void);
+     extern void Init_gda_export(void);
+     extern void Init_gda_field_attributes(void);
++    extern void Init_gda_geometric_point(void);
++    extern void Init_gda_money(void);
+     extern void Init_gda_parameter(void);
+     extern void Init_gda_parameter_list(void);
+     extern void Init_gda_provider(void);
+@@ -46,8 +48,8 @@
+     extern void Init_gda_row(void);
+     extern void Init_gda_select(void);
+     extern void Init_gda_table(void);
++    extern void Init_gda_time(void);
+     extern void Init_gda_transaction(void);
+-    extern void Init_gda_value(void);
+ 
+     Init_gda_client();
+     Init_gda_command();
+@@ -68,7 +70,6 @@
+     Init_gda_select();
+     Init_gda_table();
+     Init_gda_transaction();
+-    Init_gda_value();
+ }
+ 
+ /*
+Index: src/rbgda.h
+===================================================================
+RCS file: /cvsroot/ruby-gnome2/ruby-gnome2/libgda/src/rbgda.h,v
+retrieving revision 1.13
+diff -u -r1.13 rbgda.h
+--- src/rbgda.h	12 Dec 2003 19:29:06 -0000	1.13
++++ src/rbgda.h	19 Jan 2004 19:30:51 -0000
+@@ -43,6 +43,8 @@
+ extern VALUE cGdaError;
+ extern VALUE cGdaExport;
+ extern VALUE cGdaFieldAttributes;
++extern VALUE cGdaGeometricPoint;
++extern VALUE cGdaMoney;
+ extern VALUE cGdaParameter;
+ extern VALUE cGdaParameterList;
+ extern VALUE cGdaProvider;
+@@ -50,8 +52,8 @@
+ extern VALUE cGdaRow;
+ extern VALUE cGdaSelect;
+ extern VALUE cGdaTable;
++extern VALUE cGdaTime;
+ extern VALUE cGdaTransaction;
+-extern VALUE cGdaValue;
+ 
+ #define GDA_COMMAND(o)          ((GdaCommand *)o)
+ #define GDA_DATASOURCE(o)       ((GdaDataSourceInfo *)o)
+@@ -82,7 +84,7 @@
+ #define RGDA_SELECT(o)           (GDA_SELECT(RVAL2GOBJ(o)))
+ #define RGDA_TABLE(o)            (GDA_TABLE(RVAL2GOBJ(o)))
+ #define RGDA_TRANSACTION(o)      (GDA_TRANSACTION(RVAL2GOBJ(o)))
+-#define RGDA_VALUE(o)            (GDA_VALUE(RVAL2BOXED(o, GDA_TYPE_VALUE)))
++#define RGDA_VALUE(o)            (GDA_VALUE(rb_rb_value_to_gda_value(o)))
+ 
+ #define RGDA_CLIENT_NEW(o)           (GOBJ2RVAL(GDA_CLIENT(o)))
+ #define RGDA_COMMAND_NEW(o)          (BOXED2RVAL(GDA_COMMAND(o), GDA_TYPE_COMMAND))
+@@ -103,10 +105,14 @@
+ #define RGDA_SELECT_NEW(o)           (GOBJ2RVAL(GDA_SELECT(o)))
+ #define RGDA_TABLE_NEW(o)            (GOBJ2RVAL(GDA_TABLE(o)))
+ #define RGDA_TRANSACTION_NEW(o)      (GOBJ2RVAL(GDA_TRANSACTION(o)))
+-#define RGDA_VALUE_NEW(o)            (BOXED2RVAL(GDA_VALUE(o), GDA_TYPE_VALUE))
++#define RGDA_VALUE_NEW(o)            (rb_gda_value_to_rb_value(GDA_VALUE(o)))
+ 
+ /* rbgdaconnection.c */
+ VALUE rb_gda_connection_close(VALUE self);
+ 
++/* rbgdavalue.c */
++VALUE rb_gda_value_to_rb_value(GdaValue *value);
++GdaValue *rb_rb_value_to_gda_value(VALUE value);
++
+ #endif /* __RBGDA_H_ */
+ 
+Index: src/rbgdageometricpoint.c
+===================================================================
+RCS file: src/rbgdageometricpoint.c
+diff -N src/rbgdageometricpoint.c
+--- /dev/null	1 Jan 1970 00:00:00 -0000
++++ src/rbgdageometricpoint.c	19 Jan 2004 19:30:51 -0000
+@@ -0,0 +1,39 @@
++
++/*
++ * Copyright (C) 2003 Laurent Sansonetti <lrz@gnome.org>
++ *
++ * This file is part of Ruby/Libgda.
++ *
++ * Ruby/Libgda is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU Lesser General Public
++ * License as published by the Free Software Foundation; either
++ * version 2.1 of the License, or (at your option) any later version.
++ *
++ * Ruby/Libgda is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++ * Lesser General Public License for more details.
++ *
++ * You should have received a copy of the GNU Lesser General Public
++ * License along with Ruby/Libgda; if not, write to the Free Software
++ * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307  USA
++ */
++
++#include "rbgda.h"
++
++/*
++ * Class: Gda::GeometricPoint
++ * This structure symbolizes a geometric point, via two fields: 'x' and 'y'.
++ *
++ *	pt = Gda::GeometricPoint.new
++ *	pt.x = 10
++ *	pt.y = 20
++ *	x, y = pt.to_a
++ */
++VALUE cGdaGeometricPoint;
++
++void Init_gda_geometric_point(void) {
++    cGdaGeometricPoint = rb_struct_define("GeometricPoint", "x", "y", NULL);
++    rb_set_class_path(cGdaGeometricPoint, mGda, "GeometricPoint");
++    rb_const_set(mGda, rb_intern("GeometricPoint"), cGdaGeometricPoint);
++}
+Index: src/rbgdamoney.c
+===================================================================
+RCS file: src/rbgdamoney.c
+diff -N src/rbgdamoney.c
+--- /dev/null	1 Jan 1970 00:00:00 -0000
++++ src/rbgdamoney.c	19 Jan 2004 19:30:51 -0000
+@@ -0,0 +1,39 @@
++
++/*
++ * Copyright (C) 2003 Laurent Sansonetti <lrz@gnome.org>
++ *
++ * This file is part of Ruby/Libgda.
++ *
++ * Ruby/Libgda is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU Lesser General Public
++ * License as published by the Free Software Foundation; either
++ * version 2.1 of the License, or (at your option) any later version.
++ *
++ * Ruby/Libgda is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++ * Lesser General Public License for more details.
++ *
++ * You should have received a copy of the GNU Lesser General Public
++ * License along with Ruby/Libgda; if not, write to the Free Software
++ * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307  USA
++ */
++
++#include "rbgda.h"
++
++/*
++ * Class: Gda::Money
++ * This structure symbolizes a amount of money associated with a currency,
++ * via two fields: 'currency', and 'amount'.
++ *
++ *	euro = Gda::Money.new
++ *	euro.currency = 1.5
++ *	euro.amount = 100
++ */
++VALUE cGdaMoney;
++
++void Init_gda_money(void) {
++    cGdaMoney = rb_struct_define("Money", "currency", "amount", NULL);
++    rb_set_class_path(cGdaMoney, mGda, "Money");
++    rb_const_set(mGda, rb_intern("Money"), cGdaMoney);
++}
+Index: src/rbgdaparameter.c
+===================================================================
+RCS file: /cvsroot/ruby-gnome2/ruby-gnome2/libgda/src/rbgdaparameter.c,v
+retrieving revision 1.5
+diff -u -r1.5 rbgdaparameter.c
+--- src/rbgdaparameter.c	2 Jan 2004 21:29:05 -0000	1.5
++++ src/rbgdaparameter.c	19 Jan 2004 19:30:51 -0000
+@@ -33,11 +33,11 @@
+  * Class method: new(name, value)
+  * name: the name for the parameter being created.
+  * value: a value for the parameter, which can be either a boolean, string,
+- * integer, or an existing Gda::Value (it can be nil as well). 
++ * or integer (it can be nil as well). 
+  *
+  * Creates a new Gda::Parameter object, which is usually used with
+  * Gda::ParameterList.  Raises an exception if the 'value' parameter is
+- * an unknown object (not nil, boolean, string, integer or Gda::Value).
++ * an unknown object (not nil, boolean, string, or integer).
+  *
+  * Returns: a newly created Gda::Parameter object.
+  */
+@@ -64,10 +64,6 @@
+         param = gda_parameter_new_double(RVAL2CSTR(name),
+                                          NUM2DBL(value));   
+     }
+-    else if (CLASS_OF(value) == cGdaValue) {
+-        param = gda_parameter_new_from_value(RVAL2CSTR(name),
+-                                             RGDA_VALUE(value));   
+-    }
+     else {
+         rb_raise(rb_eArgError, "Invalid object for the 'value' parameter.");
+     }
+Index: src/rbgdatime.c
+===================================================================
+RCS file: src/rbgdatime.c
+diff -N src/rbgdatime.c
+--- /dev/null	1 Jan 1970 00:00:00 -0000
++++ src/rbgdatime.c	19 Jan 2004 19:30:51 -0000
+@@ -0,0 +1,41 @@
++
++/*
++ * Copyright (C) 2003 Laurent Sansonetti <lrz@gnome.org>
++ *
++ * This file is part of Ruby/Libgda.
++ *
++ * Ruby/Libgda is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU Lesser General Public
++ * License as published by the Free Software Foundation; either
++ * version 2.1 of the License, or (at your option) any later version.
++ *
++ * Ruby/Libgda is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++ * Lesser General Public License for more details.
++ *
++ * You should have received a copy of the GNU Lesser General Public
++ * License along with Ruby/Libgda; if not, write to the Free Software
++ * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307  USA
++ */
++
++#include "rbgda.h"
++
++/*
++ * Class: Gda::Time
++ * This structure symbolizes a time snapshot, via the following fields: 'hour', 
++ * 'minute', 'second' and 'timezone'.
++ *
++ *	# 5h 25min 30sec
++ *	t = Gda::Time.new
++ *	t.hour = 5
++ *	t.minute = 25
++ *	t.second = 30
++ */
++VALUE cGdaTime;
++
++void Init_gda_time(void) {
++    cGdaTime = rb_struct_define("Time", "hour", "minute", "second", "timezone", NULL);
++    rb_set_class_path(cGdaTime, mGda, "Time");
++    rb_const_set(mGda, rb_intern("Time"), cGdaTime);
++}
+Index: src/rbgdavalue.c
+===================================================================
+RCS file: /cvsroot/ruby-gnome2/ruby-gnome2/libgda/src/rbgdavalue.c,v
+retrieving revision 1.10
+diff -u -r1.10 rbgdavalue.c
+--- src/rbgdavalue.c	14 Jan 2004 18:09:37 -0000	1.10
++++ src/rbgdavalue.c	19 Jan 2004 19:30:52 -0000
+@@ -21,70 +21,154 @@
+ 
+ #include "rbgda.h"
+ 
+-/*
+- * Class: Gda::Value
+- * Data values.
+- */
+-VALUE cGdaValue;
+-
+-/*
+- * Method: to_s
+- *
+- * Converts a Gda::Value to its string representation.
+- *
+- * Returns: a formatted string.
+- */
+-static VALUE rb_gda_value_to_s(self)
+-    VALUE self;
++VALUE rb_gda_value_to_rb_value(value)
++    GdaValue *value;
+ {
+-    return CSTR2RVAL(gda_value_stringify(RGDA_VALUE(self)));
+-}
++    gpointer binary;
++    glong size;
++    const GdaDate *dt;
++    const GdaGeometricPoint *pt;
++    const GdaValueList *ls;
++    VALUE ary;
++    const GdaMoney *mn;
++    const GdaNumeric *gn;
++    gint64 num;
++    gdouble dnum;
++    const GdaTime *gt;
++    const GdaTimestamp *st;
++    struct tm tm;
+ 
+-/*
+- * Method: <=>(an_other_value)
+- * an_other_value: the other value to be compared to.
+- *
+- * Compares two Gda::Value objects of the same type.
+- *
+- * Returns: if both values have the same type, returns 0 if both contain the
+- * same value, an integer less than 0 if the value is less than the other or an
+- * integer greater than 0 if the value is greater than the other.
+- */
+-static VALUE rb_gda_value_cmp(self, other_value)
+-    VALUE self;
+-{
+-    return INT2FIX(gda_value_compare(RGDA_VALUE(self),
+-                                     RGDA_VALUE(other_value)));
+-}
++    switch (value->type)
++    {
++    case GDA_VALUE_TYPE_NULL:
++        return Qnil;
++        
++    case GDA_VALUE_TYPE_BIGINT:
++        return LL2NUM(gda_value_get_bigint(value));
++        
++    case GDA_VALUE_TYPE_BIGUINT:
++        return ULL2NUM(gda_value_get_biguint(value));
++        
++    case GDA_VALUE_TYPE_BINARY:
++        binary = gda_value_get_binary(value, &size);
++        return rb_str_new(binary, size);
++        
++    case GDA_VALUE_TYPE_BLOB:
++        /* TODO */
++        return Qnil;
++        
++    case GDA_VALUE_TYPE_BOOLEAN:
++        return CBOOL2RVAL(gda_value_get_boolean(value));
++        
++    case GDA_VALUE_TYPE_DATE:
++        dt = gda_value_get_date(value);
++        return rb_funcall(rb_path2class("Date"), rb_intern("new"), 3,
++                  INT2FIX(dt->year),
++                  INT2FIX(dt->month),
++                  INT2FIX(dt->day));
++                  
++    case GDA_VALUE_TYPE_DOUBLE:
++        return rb_float_new(gda_value_get_double(value));
++        
++    case GDA_VALUE_TYPE_GEOMETRIC_POINT:
++        pt = gda_value_get_geometric_point(value);
++        return rb_struct_new(cGdaGeometricPoint,
++                     rb_float_new(pt->x),
++                     rb_float_new(pt->y));
++                     
++    case GDA_VALUE_TYPE_GOBJECT:
++        /* TODO: register unregistered GObjects with Ruby-GLib */
++        return GOBJ2RVAL(G_OBJECT(gda_value_get_gobject(value)));
++        
++    case GDA_VALUE_TYPE_INTEGER:
++        return INT2NUM(gda_value_get_integer(value));
++        
++    case GDA_VALUE_TYPE_LIST:
++        ls = gda_value_get_list(value);
++        ary = rb_ary_new2(ls == NULL ? 0 : g_list_length((GList *)ls));
++        for ( ; ls != NULL; ls = ls->next) {
++            rb_ary_push(ary,
++                rb_gda_value_to_rb_value((GdaValue *)ls->data));
++        }
++        return ary;
++        
++    case GDA_VALUE_TYPE_MONEY:
++        mn = gda_value_get_money(value);
++        return rb_struct_new(cGdaMoney,
++                     CSTR2RVAL(mn->currency),
++                     INT2NUM(mn->amount));
++                     
++    case GDA_VALUE_TYPE_NUMERIC:
++        /* XXX: is this sufficient? */
++        gn = gda_value_get_numeric(value);
++        if (gn->precision == 0) {
++            return sscanf(gn->number, "%Ld", &num) == 1 ?
++                LL2NUM(num) : CSTR2RVAL(gn->number);
++        } else {
++            return sscanf(gn->number, "%lf", &dnum) == 1 ?
++                rb_float_new(dnum) : CSTR2RVAL(gn->number);
++        }
++        
++    case GDA_VALUE_TYPE_SINGLE:
++        return rb_float_new(gda_value_get_single(value));
++        
++    case GDA_VALUE_TYPE_SMALLINT:
++        return FIX2INT(gda_value_get_smallint(value));
++        
++    case GDA_VALUE_TYPE_SMALLUINT:
++        return UINT2NUM(gda_value_get_smalluint(value));
++        
++    case GDA_VALUE_TYPE_STRING:
++        return CSTR2RVAL(gda_value_get_string(value));
++        
++    case GDA_VALUE_TYPE_TIME:
++        gt = gda_value_get_time(value);
++        return rb_struct_new(cGdaTime,
++                     UINT2NUM(gt->hour),
++                     UINT2NUM(gt->minute),
++                     UINT2NUM(gt->second),
++                     LONG2NUM(gt->timezone));
++                     
++    case GDA_VALUE_TYPE_TIMESTAMP:
++        st = gda_value_get_timestamp(value);
++        tm.tm_year = st->year;
++        tm.tm_mon = st->month;
++        tm.tm_mday = st->day;
++        tm.tm_hour = st->hour;
++        tm.tm_min = st->minute;
++        tm.tm_sec = st->second;
++        /* XXX: this is glibc special, perhaps make conversion here */
++        tm.tm_gmtoff = st->timezone;
++        return rb_time_new(mktime(&tm), st->fraction);
++        
++    case GDA_VALUE_TYPE_TINYINT:
++        return FIX2INT(gda_value_get_tinyint(value));
++        
++    case GDA_VALUE_TYPE_TINYUINT:
++        return UINT2NUM(gda_value_get_tinyuint(value));
++        
++    case GDA_VALUE_TYPE_TYPE:
++        /* XXX: TODO */
++        return Qnil;
++        
++    case GDA_VALUE_TYPE_UINTEGER:
++        return UINT2NUM(gda_value_get_uinteger(value));
++        
++    case GDA_VALUE_TYPE_UNKNOWN:
++        /* XXX: this needs better error message */
++        rb_raise(rb_eTypeError, "Unknown column type");
+ 
+-/*
+- * Method: ==(an_other_value)
+- * an_other_value: the other value to be compared to.
+- *
+- * Checks if two Gda::Value objects of the same type contains the same value.
+- *
+- * Returns: true if they both have the same type and contain the same
+- * value, false otherwise.
+- */
+-static VALUE rb_gda_value_equ(self, other_value)
+-    VALUE self;
+-{
+-    gboolean ok = FALSE;
+-    if (!NIL_P(other_value))
+-        ok = gda_value_compare(RGDA_VALUE(self), RGDA_VALUE(other_value)) == 0;
+-    return CBOOL2RVAL(ok);
++    default:
++        /* XXX: is this really an exception, perhaps better as
++         * rb_notimplement */
++        rb_raise(rb_eTypeError, "Unsupported GdaValueType (%d)",
++             value->type);
++    }
+ }
+ 
+-void Init_gda_value(void) {
+-    VALUE c = G_DEF_CLASS(GDA_TYPE_VALUE, "Value", mGda);
+-    
+-    rb_define_method(c, "to_s", rb_gda_value_to_s, 0);
+-    rb_define_method(c, "<=>",  rb_gda_value_cmp,  1);
+-    rb_define_method(c, "==",   rb_gda_value_equ,  1);
+-    
+-    G_DEF_CLASS(GDA_TYPE_VALUE_TYPE, "Type", c);
+-    G_DEF_CONSTANTS(c, GDA_TYPE_VALUE_TYPE, "GDA_VALUE_");
+-    
+-    cGdaValue = c;
++GdaValue *rb_rb_value_to_gda_value(value)
++    VALUE value;
++{
++    /* FIXME: implement me! */
++    return NULL;
+ }
+-

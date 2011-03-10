@@ -1,0 +1,39 @@
+= News (2007-02-12)
+== Ruby-GNOME2 Win32 GUI Installer
+((*Posted by Masao on 2007-02-12 (Mon) 13:12:39*))
+
+I released the new Ruby-GNOME2 Win32 GUI Installer.
+
+This will be replaced current win32 binary package (ruby-gtk2-x.x.x-1-i386-msvcrt-1.8.zip).
+This is the alpha release. Let's try and report bugs.
+
+
+== Download
+((<ruby-gnome2-0.16.0-1-i386-mswin32.exe|URL:http://sourceforge.net/project/showfiles.php?group_id=53614>))
+
+== Features
+=== Includes GTK2(gladewin32) and some other libraries.
+You don't need to install gladewin32 by yourself. This must reduce almost of all installation problems and provide a easy/simple installation process.
+
+=== Avoid DLL conflict
+This installer doesn't set PATH environment forcely(as a option). And each Ruby-GNOME2 libraries find GTK2 libraries which this installer has. So this doesn't effect other GTK2 based applications which include GTK2 itself and other GTK2 libararies doesn't effect Ruby-GNOME2. 
+
+=== Included Ruby-GNOME2 libraries
+--- Same as ruby-gtk2-0.16.0-1-i386-msvcrt-1.8.zip
+      * Ruby/GLib2
+      * Ruby/ATK
+      * Ruby/Pango
+      * Ruby/GdkPixbuf2
+      * Ruby/GTK2
+      * Ruby/Libglade2
+      * Ruby/GtkGLExt
+      * Ruby/Libart2
+--- Added
+      * Ruby/GnomeCanvas2
+      * Ruby/GnomePrint2
+      * Ruby/GnomePrintUI2
+      * Ruby/GtkSourceView
+      * Ruby/RSVG2
+--- Others
+      * rcairo-1.2.6
+      * Glade2, GtkThemeSelector and other development tools included gladewin32.
