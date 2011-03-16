@@ -1,0 +1,4 @@
+*.tab.rb
+rd2texi-lib.rb
+rd2latex-lib.rb
+rd2html-jp.rb
