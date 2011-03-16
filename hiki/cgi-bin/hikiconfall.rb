@@ -3,7 +3,7 @@
 
 base_dir = File.expand_path(File.join(File.dirname(__FILE__), ".."))
 
-@data_path       = File.join(base_dir, "data")
+@data_path       = File.join(base_dir, "data/")
 @repos_type      = 'git'
 @index_page      = 'http://ruby-gnome2.sourceforge.jp/'
 @base_url        = 'http://ruby-gnome2.sourceforge.jp/'
