@@ -1,7 +1,10 @@
 # $Id: hikiconf.rb.sample,v 1.7 2004/09/14 02:21:10 fdiary Exp $
 # Copyright (C) 2002-2003 TAKEUCHI Hitoshi <hitoshi@namaraii.com>
-
-base_dir = File.expand_path(File.join(File.dirname(__FILE__), ".."))
+if File.dirname(__FILE__) =~ /cgi-bin$/
+  base_dir = File.expand_path(File.join(File.dirname(__FILE__), ".."))
+else
+  base_dir = File.expand_path(File.join(File.dirname(__FILE__), "../.."))
+end
 
 @data_path       = File.join(base_dir, "data/")
 @repos_type      = 'git'
