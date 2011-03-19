@@ -125,7 +125,11 @@ class HikiWriter
 
   def replace_wikipage_anchor!(body)
     @@wikipage_rex ||= /\<a(.*?)#{@conf.cgi_name}\?*(.*?)(["'])(.*?)\<\/a\>/
-    body.gsub!(@@wikipage_rex) { "<a#{$1}./#{$2.size == 0 ? "FrontPage" : $2}.html#{$3}#{$4}</a>" }
+    body.gsub!(@@wikipage_rex) { "<a#{$1}./#{wikiname2html($2)}#{$3}#{$4}</a>" }
+  end
+
+  def wikiname2html(name)
+    name.size == 0 || name == 'FrontPage' ? "" : "#{name}.html"
   end
 end
 
