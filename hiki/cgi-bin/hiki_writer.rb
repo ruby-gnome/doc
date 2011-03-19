@@ -106,7 +106,7 @@ class HikiWriter
   end
 
   def write(page_name, page_body)
-    File.open(@out_dir + '/' + page_name + '.html', 'w') do |fp|
+    File.open(@out_dir + '/' + page_name.gsub(/^FrontPage$/, 'index') + '.html', 'w') do |fp|
       fp.write adjust(page_body)
     end
   end
