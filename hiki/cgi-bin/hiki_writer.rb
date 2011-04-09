@@ -70,6 +70,7 @@ class HikiWriter
     opt.on('-p pagename', '--pagename pagename') { |pagename| @options[:pagename] = [pagename] }
     opt.on('-o outdir', '--outdir outdir') { |outdir| @options[:outdir] = outdir }
     opt.on('-l lang', '--lang lang') { |lang| @options[:lang] = lang }
+    opt.on('--no-theme') { @options[:no_theme] = true }
     opt.parse!(ARGV)
   end
 
@@ -109,6 +110,11 @@ class HikiWriter
     File.open(@out_dir + '/' + page_name.gsub(/^FrontPage$/, 'index') + '.html', 'w') do |fp|
       fp.write adjust(page_body)
     end
+    copy_theme unless @options[:no_theme]
+  end
+
+  def copy_theme
+    FileUtils.cp_r @conf.theme_path, File.dirname(@out_dir)
   end
 
   def adjust(body)
