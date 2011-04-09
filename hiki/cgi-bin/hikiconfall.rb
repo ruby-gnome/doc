@@ -20,7 +20,7 @@ end
 @mail            = 'ruby-gnome2-cvs@lists.sourceforge.jp'
 @theme           = 'ruby-gnome2'
 @theme_url       = '/theme'
-@theme_path      = File.join(base_dir, "hiki", "theme")
+@theme_path      = File.join(base_dir, "cgi-bin", "hiki", "theme")
 @use_sidebar     = true
 @main_class      = 'main'
 @sidebar_class   = 'sidebar'
