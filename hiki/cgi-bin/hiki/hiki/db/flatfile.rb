@@ -176,15 +176,15 @@ module Hiki
 
     def set_references(p, r)
       f = p.escape
-      refs = r.join(',')
+      r = r.split(/\s*,\s*/) if r.is_a?(String)
       saverefs = false
       @info.transaction(true) do
-	saverefs = (@info[f] && refs != @info[f][:references]) || ! @info[f]
+	saverefs = (@info[f] && r != @info[f][:references]) || ! @info[f]
       end
       if saverefs
 	@info.transaction do
 	  @info[f] = default unless @info[f]
-	  @info[f][:references] = r.join(',')
+	  @info[f][:references] = r
 	end
       end
     end
