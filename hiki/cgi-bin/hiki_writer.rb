@@ -85,6 +85,7 @@ class HikiWriter
   end
 
   def run
+    cmd = nil
     @files.each_with_index do |file, index|
       page_name = File.basename(file)
       db = @conf.database
@@ -103,11 +104,12 @@ class HikiWriter
     require 'cgi'
     puts CGI.escapeHTML( "#{err} (#{err.class})\n" )
     puts CGI.escapeHTML( err.backtrace.join( "\n" ) )
-    puts cmd.instance_variable_get(:@p)
+    puts cmd.instance_variable_get(:@p) unless cmd.nil?
   end
 
   def write(page_name, page_body)
-    File.open(@out_dir + '/' + page_name.gsub(/^FrontPage$/, 'index') + '.html', 'w') do |fp|
+    output_file_name = File.join(@out_dir, page_name_to_file_name(page_name))
+    File.open(output_file_name, 'w') do |fp|
       fp.write adjust(page_body)
     end
     copy_theme unless @options[:no_theme]
@@ -131,11 +133,26 @@ class HikiWriter
 
   def replace_wikipage_anchor!(body)
     @@wikipage_rex ||= /\<a(.*?)#{@conf.cgi_name}\?*(.*?)(["'])(.*?)\<\/a\>/
-    body.gsub!(@@wikipage_rex) { "<a#{$1}./#{wikiname2html($2)}#{$3}#{$4}</a>" }
+    body.gsub!(@@wikipage_rex) { "<a#{$1}./#{resolve_anchor($2)}#{$3}#{$4}</a>" }
   end
 
-  def wikiname2html(name)
-    name.size == 0 || name == 'FrontPage' ? "" : "#{name}.html"
+  def page_name_to_file_name(name)
+    case name
+    when "FrontPage"
+      'index.html'
+    else
+      "#{name}.html"
+    end
+  end
+
+  def resolve_anchor(anchor)
+    case anchor
+    when "", "FrontPage"
+      ""
+    else
+      path, fragment = anchor.split(/\#/, 2)
+      "#{CGI.escape(path)}.html#{fragment}"
+    end
   end
 end
 
