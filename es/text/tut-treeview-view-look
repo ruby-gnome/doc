@@ -1,8 +1,0 @@
-= Look and Feel de un Tree View
-{{link "tut-treeview-view-connect", "tut-treeview-view", "tut-treeview", "tut-treeview-renderer"}}
-
-Hay un par de formas de influir en el aspecto de un treeview. Se puede mostrar u ocultar los encabezados de las columnas con Gtk::TreeView#headers_visible=, y hacer que sean clickables o no con Gtk::TreeView#headers_clickable= (esto se hace de forma automática si activas la ordenación).
-
-Gtk::TreeView#rules_hint= activará o desactivará el resaltado de lineas en el treeview. Como su nombre indica, esta opción es tan solo una recomendación (hint); ya que al final depende del tema Gtk+ instalado el que se muestre o no el resaltado de lineas. Los usuarios suelen tener férreas costumbres en cuanto al resaltado de líneas en las listas, por lo que seguramente sea buena idea proporcionar una opción para desactivar el resaltado si lo activas por defecto en un treeview.
-
-La columna de extensores se puede habilitar con Gtk::TreeView#expander_column=. Esta es la columna donde los elementos hijo se indentan con respecto a sus elementos padre, y donde las filas con hijos tienen un una flecha de 'expansión' con la que los hijos de un determinado nodo puede ser mostrados u ocultados. Por defecto, esta es la primera columna.

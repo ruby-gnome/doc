@@ -1,8 +1,0 @@
-= Empaquetado de Widgets
-{{link "tut-gtk-holamundo2", nil, "tut-gtk", "tut-gtk-empaquetado-teoria"}}
-
-Cuando creamos una aplicación, normalmente queremos situar más de un widget en la ventana.
-
-Nuestro primer ejemplo holamundo tiene un solo widget, por lo que podemos usar simplemente Gtk::Container#add para "empaquetar" el widget en la ventana. Pero cuando queremos insertar más de un widget, ¿como controlar donde se coloca cada uno de ellos? 
-
-Aquí es donde aparece el empaquetado.

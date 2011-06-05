@@ -1,5 +1,0 @@
-= class GConf::IsDirError
-This error class gets raised whenever a key operation is performed on a directory.
-
-== Super Class
-* GConf::Error

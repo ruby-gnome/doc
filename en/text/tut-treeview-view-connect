@@ -1,6 +1,0 @@
-= Connecting Tree View and Model
-{{link "tut-treeview-view", "tut-treeview-view", "tut-treeview", "tut-treeview-view-look"}}
-
-Before we proceed to the next section where we display data on the screen, we need connect our data store to the tree view, so it knows where to get the data to display from. This is achieved with Gtk::TreeView#model=, which will by itself do very little. However, it is a prerequisite for what we do in the following sections.  Alternately you can pass the model as a parameter when you call Gtk::TreeView.new. 
-
-Gtk::TreeView#model will return the model that is currently attached to a given tree view, which is useful in callbacks where you only get passed the tree view widget (after all, we do not want to go down the road of global variables, which will inevitably lead to the Dark Side, do we?).

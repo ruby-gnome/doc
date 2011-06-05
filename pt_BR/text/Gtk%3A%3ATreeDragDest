@@ -1,7 +1,0 @@
-= module Gtk::TreeDragDest
-
-== Included Modules
-* GLib::Interface
-
-
-- ((<Masao>))

@@ -1,8 +1,0 @@
-= "Look and Feel" de "Tree View" 
-{{link "tut-treeview-view-connect", "tut-treeview-view", "tut-treeview", "tut-treeview-renderer"}}
-
-Existem algumas maneiras de influenciar o "look and feel" do "tree view". Você pode esconder ou mostrar os cabeçalhos de coluna com  Gtk::TreeView#headers_visible=, e configurá-los clicáveis ou não com Gtk::TreeView#headers_clickable= (o qual seria feito automaticamente para você se você habilitasse a ordenação).
-
-O Gtk::TreeView#rules_hint= habilitará ou desabilitará linhas regradas no "tree view". Como o nome do método indica, essa configuração é apenas uma sugestão; no final isso depende do mecanismo de tema de GTK+ ativo se os "tree view" mostram linhas regradas ou não. Os usuários parecem ter sentimentos fortes sobre as regras em "tree views", então é provavelmente uma boa idéia fornecer uma opção em algum lugar para desabilitar a sugestão de regra se você configurá-la nas "tree views" (mas aí, as pessoas também parecem ter sentimentos fortes sobre abundância de opções e opções padrões "sensíveis", então qualquer coisa que você fizer deixará alguém brabo em algum momento).
-
-A coluna expansora pode ser configurada com Gtk::TreeView#expander_column=. Isso é a coluna onde os elementos filhos são "indentados" com respeito aos seus pais, e onde as linhas com filhos tem uma seta "expansora" com a qual os filhos de um "node" podem ser comprimeidos (escondidos) ou expandidos (mostrados). Por padrão, essa é a primeira coluna.

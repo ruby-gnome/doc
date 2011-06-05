@@ -1,5 +1,0 @@
-= class GConf::OverriddenError
-This error class gets raised whenever a "set" or "unset" operation is performed on a read-only resource. This is usually done by system administrators.
-
-== Super Class
-* GConf::Error

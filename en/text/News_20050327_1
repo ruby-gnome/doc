@@ -1,7 +1,0 @@
-= News (2005-03-27)
-== Ruby/GtkMozEmbed-0.3.1
-((*Posted by Masao on 2005-03-27 (Sun) 14:45:38*))
-
-Ruby/GtkMozEmbed-0.3.1 released.
-
-It fixes the LD_LIBRARY_PATH oddity and some other build bug reported by Kazuhiro and Paul.

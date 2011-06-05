@@ -1,8 +1,0 @@
-= Conclusión
-{{link("tut-gst-helloworld", nil, "tut-gst", "tut-gst-helloworld-problem")}}
-
-Esto concluye nuestro primer ejemplo. COmo se puede apreciar, configurar una tubería es un trabajo de bajo nivel pero muy poderoso. Se verá más adelante en este manual como crear un elemento mp3 personalizado com una API de más alto nivel.
-
-Queda claro en el ejemplo que se puede reemplazar fácilmente el elemento filesrc por un elemento httpsrc, otorgando instantáneamente streaming por internet. Se puede construir un elemento para manejar coneziones icecast, por ejemplo.
-
-Podemos incluso usar otro tipo de salida en lugar de audiosink. Podemos usar un disksink para escibir las pistas es bruto a un fichero. También se ve claramente que insertar filtros, como un efecto stereo, en la tubería no es difícil de hacer. Lo más importante es que los elemento existentes se pueden reutilizar.

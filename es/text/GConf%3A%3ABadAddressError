@@ -1,5 +1,0 @@
-= class GConf::BadAddressError
-This error class gets raised whenever GConf is not able to resolve an address.
-
-== Super Class
-* GConf::Error

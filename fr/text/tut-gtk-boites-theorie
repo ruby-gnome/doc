@@ -1,9 +1,0 @@
-= Théorie des boîtes de placement
-
-La majeure partie du placement est réalisée en créant des boîtes.  Ce sont des conteneurs invisibles (qui sont également des widgets), dans lesquels nous pouvons placer d'autres widgets.  Il existe deux formes de boîtes: horizontales et verticales.
-Lorsque l'on place des widgets dans une boîte horizontale, les objets sont insérés horizontalement de gauche à droite, ou de droite à gauche en fonction de la méthode utilisée.
-Dans une boîte verticale, les widgets sont placés de haut en bas ou vice versa.  Vous pouvez utiliser n'importe quelle combinaison de boîtes à l'intérieur ou à côté d'autres boîtes pour créer l'effet désiré.
-
-Pour créer une nouvelle boîte horizontale, on appelle Gtk::HBox.new, et pour les boîtes verticales, Gtk::VBox.new. Les méthodes Gtk::Box#pack_start et Gtk::Box#pack_end servent à placer les objets à l'intérieur de ces containers. La méthode Gtk::Box#pack_start placera de haut en bas dans une boîte verticale et de gauche à droite dans une boîte horizontale. Gtk::Box#pack_end fera le contraire en plaçant de bas en haut et de droite à gauche. En utilisant ces fonctions, on peut aligner à droite ou à gauche nos widgets et même les mélanger de n'importe quelle façon pour obtenir l'effet désiré. Dans la plupart de nos exemples, on utilisera Gtk::Box#pack_start. Un objet peut être un autre container ou un widget. En fait, de nombreux widgets (dont les boutons) sont eux-mêmes des containers, mais on utilise généralement seulement une étiquette dans un bouton.
-
-En utilisant ces méthodes, GTK sait où vous voulez placer vos widgets et il peut donc les dimensionner automatiquement et faire d'autres choses bien pratiques. Il existe aussi plusieurs options permettant de préciser comment les widgets doivent être placés. Comme vous pouvez l'imaginer, cette méthode nous donne pas mal de liberté pour placer et créer les widgets.

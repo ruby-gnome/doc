@@ -1,8 +1,0 @@
-= Creando un TreeView
-{{link "tut-treeview-model-remove", nil, "tut-treeview", "tut-treeview-view-connect"}}
-
-Con el fina de mostrar datos en un TreeView, es necesario crear uno primero, y es necesario indicarle donde obtener los datos a mostrar.
-
-Un nuevo TreeView se crea con:
-
-  view = Gtk::TreeView.new

@@ -1,8 +1,0 @@
-= Widgets anordnen
-{{link "tut-gtk-helloworld2", nil, "tut-gtk", "tut-gtk2-packing-theory"}}
-
-Wenn Sie eine Anwendung erstellen, möchten Sie natürlich mehrere Widgets in einem Fenster verwenden.
-
-Unser erstes "Hallo Welt"-Beispiel hat nur ein einziges Widget, also konnten wir es einfach in das Fenster einfügen, indem wir Gtk::Container#add aufgerufen haben. Aber wenn Sie mehr als ein Widget in ein Fenster einfügen wollen, wie kontrollieren Sie, wo das Widget eingefügt wird?
-
-Das ist der Punkt, an dem das Packen oder Anordnen ins Spiel kommt.

@@ -1,8 +1,0 @@
-Gtk::ScaleButton provides a button which pops up a scale widget if clicked.
-This scale widget then allows you to set its value.
-
-Gtk::ScaleButton is commonly used for volume controls in multimedia applications.
-
-To respond to a changed value:
-  scale_button = Gtk::ScaleButton.new(Gtk::IconSize::BUTTON) 
-  scale_button.signal_connect(:value_changed) { |widget, value| puts "value changed: #{value}" }

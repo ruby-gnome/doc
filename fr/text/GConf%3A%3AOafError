@@ -1,5 +1,0 @@
-= class GConf::OafError
-This error class gets raised whenever GConf detects an error in the liboaf library.
-
-== Super Class
-* GConf::Error

@@ -1,8 +1,0 @@
-= Ruby-GNOME2 Tipps
-
-* ((<Mit nicht-ASCII-Zeichen arbeiten|tips_i18n>))
-* ((<Das Verhalten von Signalen erkunden|tips_signals>))
-* ((<Das Icon auf einem Werkzeugkasten-Button ändern|tips_toolbar_icon>))
-* ((<Herausfinden, welche Taste gedrückt wurde|tips_key_pressed>))
-* ((<Ein "faules" TreeView-Objekt erstellen|tips_lazy_treeview>))
-* ((<"Internationalisation (i18n) in Ruby/Libglade unterstützen"|tips_libglade_i18n>))

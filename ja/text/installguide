@@ -1,6 +1,0 @@
-= インストールガイド
-
-* ((<Cygwin編|インストールガイド Cygwin編>))
-* ((<"Debian GNU/Linux編"|インストールガイド Debian編>))
-* ((<"Windows編(mswin32,mingw32)"|インストールガイド Windows編>))
-* ((<"コンパイルガイドWindows編(mswin32,mingw32)"|compile_mingw>))

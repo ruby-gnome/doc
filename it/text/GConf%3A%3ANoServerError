@@ -1,5 +1,0 @@
-= class GConf::NoServerError
-This error class gets raised whenever the server can not be launched or contacted.
-
-== Super Class
-* GConf::Error

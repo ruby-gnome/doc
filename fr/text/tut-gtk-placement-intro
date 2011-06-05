@@ -1,7 +1,0 @@
-= Placement des widgets
-
-Lorsqu'on crée une application, on veut mettre plus qu'un simple bouton dans une fenêtre. 
-
-Notre premier exemple "Bonjour Monde" n'utilisait qu'un seul widget et on pouvait donc simplement faire un appel à Gtk::Container#add pour placer le widget dans la fenêtre. Mais si l'on désire en mettre plus, comment peut-on contrôler l'endroit où le widget sera positionné ? 
-
-C'est ici que le placement entre en jeu.

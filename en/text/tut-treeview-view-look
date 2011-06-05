@@ -1,8 +1,0 @@
-= Tree View Look and Feel
-{{link "tut-treeview-view-connect", "tut-treeview-view", "tut-treeview", "tut-treeview-renderer"}}
-
-There are a couple of ways to influence the look and feel of the tree view. You can hide or show column headers with Gtk::TreeView#headers_visible=, and set them clickable or not with Gtk::TreeView#headers_clickable= (which will be done automatically for you if you enable sorting).
-
-Gtk::TreeView#rules_hint= will enable or disable ruled lines in the tree view. As the name of the method implies, this setting is only a hint; in the end it depends on the active Gtk+ theme engine if the tree view shows ruled lines or not. Users seem to have strong feelings about rules in tree views, so it is probably a good idea to provide an option somewhere to disable rule hinting if you set it on tree views (but then, people also seem to have strong feelings about options abundance and 'sensible' default options, so whatever you do will probably upset someone at some point).
-
-The expander column can be set with Gtk::TreeView#expander_column=. This is the column where child elements are indented with respect to their parents, and where rows with children have an 'expander' arrow with which a node's children can be collapsed (hidden) or expanded (shown). By default, this is the first column.

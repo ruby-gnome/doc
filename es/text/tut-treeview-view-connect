@@ -1,6 +1,0 @@
-= Conectando un TreeView y un Modelo
-{{link "tut-treeview-view", "tut-treeview-view", "tut-treeview", "tut-treeview-view-look"}}
-
- Antes de pasar a la siguiente sección donde se mostrarán los datos en pantalla, es necesario conectar nuestro almacén al treeview, para que sepa donde obtener los datos a mostrar. Esto se consigue con el método Gtk::TreeView#model=, que por si mismo hace muy poco. Sin embargo, es un requisito previo a lo que haremos en las siguientes secciones. Como alternativa, se puede pasar el modelo como parámetro al llamar a Gtk::TreeView.new.
- 
-Gtk::TreeView#model devolverá el modelo que está conectado actualmente a un treeview dado, lo cual es útil en respuestas en las que solo se recibre el widget treeview (después de todo, no queremos volver al camino de la variables globales, lo que nos llevaría unevitablemente al Lado Oscuro, cierto?).

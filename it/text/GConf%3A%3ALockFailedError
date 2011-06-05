@@ -1,5 +1,0 @@
-= class GConf::LockFailedError
-This error class gets raised whenever GConf fails to get a lockfile.
-
-== Super Class
-* GConf::Error

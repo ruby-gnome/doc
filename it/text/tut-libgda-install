@@ -1,7 +1,0 @@
-= Installing Ruby/Libgda
-
-Ruby/Libgda è parte del progetto Ruby-GNOME2 .  Consultate una delle nostre guide ((<install guides|Guida d'installazione>)) per maggiori dettagli sull'installazione di Ruby-GNOME2 .
-
-Ovviamente, Ruby/Libgda dipende dalla libreria libgda, disponibile tramite il ((<GNOME DB project|URL:http://www.gnome-db.org/>)).  Potete dare un'occhiata alla sezione((<"'Installing' section"|URL:http://www.gnome-db.org/docs/libgda/installation-installing.html>)) del loor manuale.
-
-Per favore, verificate di aver compilato/installato tutti i provider GDA necessari.

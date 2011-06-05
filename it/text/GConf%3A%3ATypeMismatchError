@@ -1,5 +1,0 @@
-= class GConf::TypeMismatchError
-This error class gets raised whenever a requested type does not match the actual type.
-
-== Super Class
-* GConf::Error
